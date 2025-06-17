@@ -1,0 +1,40 @@
+### General ###
+
+[project]
+name = "wukong-engine"
+version = "0.1.0"
+description = "Engine for constructing knowledge graphs from unstructured documents."
+authors = [{ name = "BFFV" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.poetry]
+packages = [{ include = "wukong_engine", from = "src" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+### Linter / Formatter ###
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.pyright]
+typeCheckingMode = "basic"
+reportAssertAlwaysTrue = false
+reportDuplicateImport = false
+reportPrivateUsage = false
+reportRedeclaration = false
+reportShadowedImports = false
+reportUndefinedVariable = false
+reportUnnecessaryCast = false
+reportUnsupportedDunderAll = false
+reportUnusedExpression = false
+reportUnusedImport = false
+reportUnusedVariable = false
+reportWildcardImportFromLibrary = false
