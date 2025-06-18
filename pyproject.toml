@@ -4,9 +4,10 @@
 name = "wukong-engine"
 version = "0.1.0"
 description = "Engine for constructing knowledge graphs from unstructured documents."
-authors = [{ name = "BFFV" }]
 readme = "README.md"
 requires-python = ">=3.13"
+license = "Proprietary"
+authors = [{ name = "BFFV" }]
 dependencies = [
     "nltk (>=3.9.1,<4.0.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
@@ -17,6 +18,9 @@ dependencies = [
     "unidecode (>=1.4.0,<2.0.0)",
     "levenshtein (>=0.27.1,<0.28.0)",
 ]
+
+[project.urls]
+repository = "https://github.com/MillenniumDB/wukong-engine"
 
 ### Packaging ###
 
@@ -31,7 +35,7 @@ packages = [{ include = "wukong_engine", from = "src" }]
 where = ["src"]
 include = ["wukong_engine"]
 
-### Linter / Formatter ###
+### Development ###
 
 [tool.ruff]
 line-length = 120
