@@ -1,0 +1,181 @@
+{
+    "parameters": {
+        "role": "An expert legal analyst specializing in Chilean civil law, operating exclusively within the Chilean continental law system and with extensive experience in identifying legal issues and structuring civil disputes.",
+        "context": "Civil judgments from the Chilean Supreme Court.",
+        "input_language": "spanish",
+        "output_language": "spanish",
+        "included_entities": [
+            "Sentencia",
+            "Persona"
+        ],
+        "included_relations": [
+            "VotaEn"
+        ]
+    },
+    "entities": {
+        "Sentencia": {
+            "core_entity": true,
+            "description": "A civil judgment from the Chilean Supreme Court. The final determination of a civil lawsuit, declaring the rights and duties of the parties involved.",
+            "primary_key": "rol",
+            "properties": {
+                "rol": {
+                    "type": "string",
+                    "description": "A unique numerical identifier used to represent the current judgment at the Supreme Court. It is never mentioned in the beginning. Explicitly mentioned at the end, after the paragraph that starts with 'Registrese...' and before the paragraph that starts with 'Pronunciado por...'. May be located at the end of the line that talks about 'Redacción a cargo de...'. Must be in the format: <N>-<M>, where both <N> and <M> are valid integers. It is sometimes ended with symbols ('.', '.-'), or preceded by ('No', 'Nro', 'N°'), but only consider the numbers.",
+                    "example": "13.500-2025, or 13-2025, or 1300-25",
+                    "required": true
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "The date of the current judgment at the Supreme Court. Explicitly mentioned either at the very beginning, or at the very end. It appears written in words, do not infer it from the 'rol'. Must be in the format: TYYYYMMDD, where YYYY is the year, MM is the month, and DD is the day. If MM is not available, consider it as 01. If DD is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
+                    "example": "T20240115",
+                    "required": true
+                },
+                "problema": {
+                    "type": "string",
+                    "description": "The central problem that gives rise to the legal dispute present in the judgment. Concise and written as a legal concept.",
+                    "example": "Incumplimiento de Promesa de Compraventa",
+                    "required": true
+                },
+                "decision_CA": {
+                    "type": "string",
+                    "description": "The specific decision taken by the Court of Appeals relative to the decision of the Court of First Instance. Usually explained near the beginning, when talking about the Court of Appeals and the First Instance.",
+                    "options": [
+                        "Confirma",
+                        "Revoca",
+                        "Modifica"
+                    ]
+                },
+                "efecto_final": {
+                    "type": "string",
+                    "description": "An explanation of the final legal consequence obtained from the entire chain of court decisions in the judgment. Should be concise.",
+                    "required": true
+                }
+            }
+        },
+        "Hecho": {
+            "description": "A factual and established event that is related to the original issue in a judgment. Must be an event that happened outside of tribunals and before the process of the legal dispute.",
+            "primary_key": "evento",
+            "detect_duplicates": false,
+            "properties": {
+                "evento": {
+                    "type": "string",
+                    "description": "A short description of the event in the context of the legal dispute, without mentioning any specific dates. Should be concise and use legal terms whenever possible.",
+                    "example": "Las partes suscribieron contrato de promesa de compraventa respecto de inmueble ubicado en Las Condes con precio determinado.",
+                    "required": true
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "The date of the event. Must be in the format: TYYYYMMDD, where YYYY is the year, MM is the month, and DD is the day. If MM is not available, consider it as 01. If DD is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
+                    "example": "T20240115",
+                    "required": true
+                }
+            }
+        },
+        "DisposicionLegal": {
+            "description": "A specific legal provision that is applied in a judgment for the purpose of legal reasoning.",
+            "primary_key": "nombre",
+            "duplicates": "exact",
+            "properties": {
+                "fuente": {
+                    "type": "string",
+                    "description": "The name of the legal body that contains the legal provision. Must be in the format: <TYPE> N° <N>, where <TYPE> is the type of legal body (e.g. Ley, Decreto, Constitución, Decreto con Fuerza de Ley, Código Civil, Código Penal, etc...), and <N> is the associated number (a valid integer). Do not consider Artículo or Numeral as <TYPE> or numbers used for them as <N>. If <N> is not mentioned, the format must be: <TYPE>. If <TYPE> is not mentioned, the entire value must be: NULL.",
+                    "example": "Ley N° 20600, or Decreto con Fuerza de Ley N° 707, or Código Civil",
+                    "required": true
+                },
+                "articulo": {
+                    "type": "string",
+                    "description": "The number of the specific article from 'fuente' that is being considered (a valid integer). Do not consider Numeral as the article number.",
+                    "example": "20",
+                    "required": true
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "The unique name of the legal provision. Corresponds to: <SOURCE> Art <ART>, where <SOURCE> is the value of 'fuente' and <ART> is the value of 'articulo'.",
+                    "example": "Ley N° 20600 Art 20, or Decreto con Fuerza de Ley N° 707 Art 10, or Código Civil Art 200",
+                    "required": true
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "A textual description of the legal provision represented by 'nombre', summarizing it's official definition in the Chilean law. Should be concise.",
+                    "required": true
+                }
+            }
+        },
+        "Persona": {
+            "description": "A natural person who participates or is mentioned in a judgment.",
+            "primary_key": "nombre",
+            "duplicates": "all",
+            "properties": {
+                "nombre": {
+                    "type": "string",
+                    "description": "The person's name.",
+                    "example": "Juan Andrés Pérez González",
+                    "required": true
+                }
+            }
+        }
+    },
+    "relations": {
+        "Contiene": {
+            "origin": [
+                "Sentencia"
+            ],
+            "target": [
+                "Hecho"
+            ],
+            "description": "A judgment that contains a factual and established event.",
+            "bypass_LLM": true,
+            "force_unique": true
+        },
+        "AplicadaEn": {
+            "origin": [
+                "DisposicionLegal"
+            ],
+            "target": [
+                "Sentencia"
+            ],
+            "description": "Application of a legal provision for the purpose of legal reasoning in a judgment, interpreting it as a legal norm.",
+            "primary_key": "norma",
+            "duplicates": "all",
+            "properties": {
+                "norma": {
+                    "type": "string",
+                    "description": "The role/interpretation given to the legal provision in the context of the judgment. Should be concise.",
+                    "example": "Norma que permite la resolución de contratos bilaterales por incumplimiento.",
+                    "required": true
+                },
+                "aplicacion": {
+                    "type": "string",
+                    "description": "An explanation of how the 'norma' is being applied in the context of legal reasoning in the judgment. Should be concise.",
+                    "example": "Fundamento para resolver el contrato de promesa por incumplimiento.",
+                    "required": true
+                }
+            }
+        },
+        "VotaEn": {
+            "origin": [
+                "Persona"
+            ],
+            "target": [
+                "Sentencia"
+            ],
+            "description": "A judicial officer that participates in the voting to decide the final resolution of a judgment. This is mentioned at the end of the judgment, where the voting is recorded.",
+            "force_unique": true,
+            "properties": {
+                "decision": {
+                    "type": "string",
+                    "description": "Whether the judicial officer is in favor or against the final resolution of the judgment.",
+                    "options": [
+                        "A Favor",
+                        "En Contra"
+                    ],
+                    "required": true
+                },
+                "explicacion": {
+                    "type": "string",
+                    "description": "The reasoning behind the vote given by the judicial officer. Should be concise."
+                }
+            }
+        }
+    }
+}
