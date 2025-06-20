@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .config import Singleton
+from .config import SingletonBase
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 DATA_MODEL_PATH = Path('./data_model.json')
 
 
-class DataModel(metaclass=Singleton):
+class DataModel(SingletonBase):
     """
     Data Model for a specific dataset.
     """
@@ -43,8 +43,8 @@ class DataModel(metaclass=Singleton):
             data_model = json.loads(
                 data_model_path.read_text(encoding='utf-8'), object_pairs_hook=self._no_duplicate_keys_hook
             )
-        except json.JSONDecodeError:
-            raise ValueError(f'Invalid structure for the Data Model in "{data_model_path}"')
+        except json.JSONDecodeError as error:
+            raise ValueError(f'Invalid structure for the Data Model in "{data_model_path}"') from error
 
         # Validate the data model
         self._validate_model(data_model)
@@ -156,7 +156,7 @@ class DataModel(metaclass=Singleton):
             for origin in origin_entities:
                 for target in target_entities:
                     # Materialize relation info
-                    materialized_relation_info = {key: value for key, value in relation_info.items()}
+                    materialized_relation_info = dict(relation_info.items())
                     materialized_relation_info['origin'] = origin
                     materialized_relation_info['target'] = target
                     materialized_relation_info['relation_name'] = relation_name

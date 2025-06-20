@@ -40,6 +40,31 @@ include = ["wukong_engine"]
 [tool.ruff]
 line-length = 120
 
+[tool.ruff.lint]
+#select = ["E", "F", "B", "I", "UP", "SIM", "C4", "N", "INP", "ANN"]
+select = ["ALL"]
+ignore = [
+    "E501",
+    "ANN401",
+    "Q",
+    "D",
+    "TRY",
+    "EM",
+    "C",
+    "COM",
+    "G",
+    "A",
+    "FBT",
+    "PLR",
+    "BLE",
+    "RET",
+    "FURB",
+    "S",
+    "ANN",
+    "PTH",
+    "ERA",
+]
+
 [tool.ruff.format]
 quote-style = "single"
 

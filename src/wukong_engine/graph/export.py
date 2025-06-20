@@ -215,7 +215,7 @@ def object_to_mdb(
     """
     # Properties for entities and relations
     property_info = object_info.get('properties', {})
-    property_names = [property for property in property_info]
+    property_names = list(property_info)
 
     # Write to QM file
     export_path = object_export_dir / 'KnowledgeGraph.qm'
@@ -286,7 +286,7 @@ def object_to_neo4j(
     if object_type == 'relation':
         headers = [':START_ID', ':END_ID']
     property_info = object_info.get('properties', {})
-    headers.extend([property for property in property_info])
+    headers.extend(list(property_info))
     label_field_name = ':LABEL'
     if object_type == 'relation':
         label_field_name = ':TYPE'
@@ -366,7 +366,7 @@ def object_to_json(
     """
     # Properties for entities and relations
     property_info = object_info.get('properties', {})
-    property_names = [property for property in property_info]
+    property_names = list(property_info)
 
     # Process data from objects
     for object in data:

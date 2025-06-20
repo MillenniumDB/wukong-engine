@@ -69,7 +69,7 @@ def save_json_data(data: Any, file_path: Path) -> None:
         logger.error(f'Failed to save JSON data to file "{file_path}". Reason: {error}.')
 
 
-def delete_dir_contents(dir_path: Path, items_to_keep: list[str] = []) -> None:
+def delete_dir_contents(dir_path: Path, items_to_keep: list[str] | None = None) -> None:
     """
     Delete all contents (files and directories) within a specified directory.
     """
@@ -77,6 +77,8 @@ def delete_dir_contents(dir_path: Path, items_to_keep: list[str] = []) -> None:
         if not dir_path.exists():
             logger.error(f'Cannot delete the contents. The directory "{dir_path}" does not exist.')
             return
+        if items_to_keep is None:
+            items_to_keep = []
         for item in dir_path.iterdir():
             if item.name in items_to_keep:
                 continue

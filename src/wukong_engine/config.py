@@ -2,7 +2,7 @@ import logging
 import os
 import tomllib
 from pathlib import Path
-from typing import Any
+from typing import Any, ClassVar, TypeVar
 
 from dotenv import load_dotenv
 
@@ -22,22 +22,29 @@ logger = logging.getLogger(__name__)
 # Paths
 CONFIG_PATH = Path('./config.toml')
 
+# Type Variables
+T = TypeVar('T', bound='SingletonBase')
+
 
 class Singleton(type):
     """
     Class to adapt the Singleton design pattern.
     """
 
-    _instances = {}
+    _instances: ClassVar[dict[type[Any], Any]] = {}
 
-    def __call__(cls, *args, **kwargs):
+    def __call__(cls: type[T], *args: Any, **kwargs: Any) -> T:
         # If a specific class has already been instantiated before, return the existing instance
         if cls not in cls._instances:
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
 
 
-class Config(metaclass=Singleton):
+class SingletonBase(metaclass=Singleton):
+    pass
+
+
+class Config(SingletonBase):
     """
     Configuration class for the WUKONG engine.
     """
@@ -61,8 +68,8 @@ class Config(metaclass=Singleton):
         # Load the configuration
         try:
             config = tomllib.loads(config_path.read_text(encoding='utf-8'))
-        except tomllib.TOMLDecodeError:
-            raise ValueError(f'Invalid structure for the Configuration in "{config_path}"')
+        except tomllib.TOMLDecodeError as error:
+            raise ValueError(f'Invalid structure for the Configuration in "{config_path}"') from error
 
         # Store the valid configuration
         self._pipeline = config['pipeline']
@@ -75,7 +82,7 @@ class Config(metaclass=Singleton):
         """
         return bool(self._pipeline.get(step, False))
 
-    def get(self, key: str, default=None) -> Any:
+    def get(self, key: str, default: Any = None) -> Any:
         """
         Get a specific configuration parameter.
         """

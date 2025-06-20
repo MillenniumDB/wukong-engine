@@ -397,7 +397,7 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
         _description_
     """
     # Important parameters
-    primary_key = relation_info.get('primary_key', None)  # Used for deduplication, if defined
+    primary_key = relation_info.get('primary_key')  # Used for deduplication, if defined
     force_unique = relation_info.get(
         'force_unique', False
     )  # If True, relations with the same RelationId are considered instant duplicates
@@ -545,12 +545,9 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], e
     entity_stats = load_json_data(entity_stats_path)
     n_origin_entities = entity_stats[relation_info['origin']]['final_entities']
     n_target_entities = entity_stats[relation_info['target']]['final_entities']
-    if not (1 <= int(rel_origin_number) <= n_origin_entities):
-        return False  # OriginId is not in the range of valid entities
-    if not (1 <= int(rel_target_number) <= n_target_entities):
-        return False  # TargetId is not in the range of valid entities
-
-    return True
+    valid_origin_range = 1 <= int(rel_origin_number) <= n_origin_entities
+    valid_target_range = 1 <= int(rel_target_number) <= n_target_entities
+    return valid_origin_range and valid_target_range
 
 
 def merge_property_values(current_value: Any, new_value: Any, property_info: dict[str, Any]) -> Any:
@@ -581,7 +578,7 @@ def merge_property_values(current_value: Any, new_value: Any, property_info: dic
         return property_value
 
     # If an example is present, keep the value that is most similar to it
-    example_value = property_info.get('example', None)
+    example_value = property_info.get('example')
     if example_value:
         # Choose best match based on Levenshtein distance similarity
         candidates = [property_value, candidate_value]
