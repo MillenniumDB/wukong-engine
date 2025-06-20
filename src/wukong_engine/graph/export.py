@@ -371,12 +371,12 @@ def object_to_json(
     # Process data from objects
     for object in data:
         # Remove keys that are not necessary
-        for key in object:
-            extra_keys = []
-            if object_type == 'entity':
-                extra_keys = ['_ObjectId']
-            elif object_type == 'relation':
-                extra_keys = ['_OriginId', '_TargetId']
+        extra_keys = []
+        if object_type == 'entity':
+            extra_keys = ['_ObjectId']
+        elif object_type == 'relation':
+            extra_keys = ['_OriginId', '_TargetId']
+        for key in list(object):
             if key not in property_names + extra_keys:
                 del object[key]
 
