@@ -40,7 +40,9 @@ class DataModel(metaclass=Singleton):
 
         # Load the data model
         try:
-            data_model = json.loads(data_model_path.read_text(encoding='utf-8'))
+            data_model = json.loads(
+                data_model_path.read_text(encoding='utf-8'), object_pairs_hook=self._no_duplicate_keys_hook
+            )
         except json.JSONDecodeError:
             raise ValueError(f'Invalid structure for the Data Model in "{data_model_path}"')
 
@@ -52,6 +54,15 @@ class DataModel(metaclass=Singleton):
         self._entities = data_model['entities']
         self._relations = data_model['relations']
         logger.info(f'Data Model loaded successfully from: "{data_model_path}"')
+
+    @staticmethod
+    def _no_duplicate_keys_hook(pairs):
+        seen = set()
+        for key, _ in pairs:
+            if key in seen:
+                raise ValueError(f'Data Model contains duplicate key "{key}"')
+            seen.add(key)
+        return dict(pairs)
 
     @staticmethod
     def _validate_model(data_model: dict[str, Any]) -> None:
