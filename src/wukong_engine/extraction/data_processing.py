@@ -43,12 +43,12 @@ class BasicDuplicateMatcher:
         Returns:
             _description_
         """
-        repr = 'BasicDuplicateMatcher:\n\n{'
+        str_repr = 'BasicDuplicateMatcher:\n\n{'
         for element, key in self._element_index.items():
-            repr += f"'{key}': '{element}', "
-        if repr[-2:] == ', ':
-            repr = repr[:-2]
-        return repr + '}\n'
+            str_repr += f"'{key}': '{element}', "
+        if str_repr[-2:] == ', ':
+            str_repr = str_repr[:-2]
+        return str_repr + '}\n'
 
     def insert(self, element_key: str, element: str) -> None:
         """Insert a new element into the index
@@ -87,6 +87,7 @@ class FuzzyDuplicateMatcher:
 
     def __init__(
         self,
+        *,
         confident_threshold: float = 0.7,
         potential_threshold: float = 0.4,
         similarity_cutoff: int = 90,
@@ -132,12 +133,12 @@ class FuzzyDuplicateMatcher:
         Returns:
             _description_
         """
-        repr = 'FuzzyDuplicateMatcher:\n\n{'
+        str_repr = 'FuzzyDuplicateMatcher:\n\n{'
         for key, element in self._element_mapping.items():
-            repr += f"'{key}': '{element}', "
-        if repr[-2:] == ', ':
-            repr = repr[:-2]
-        return repr + '}\n'
+            str_repr += f"'{key}': '{element}', "
+        if str_repr[-2:] == ', ':
+            str_repr = str_repr[:-2]
+        return str_repr + '}\n'
 
     @staticmethod
     def _calculate_text_similarity(value_a: str, value_b: str) -> int:
@@ -154,12 +155,10 @@ class FuzzyDuplicateMatcher:
         ratio = fuzz.ratio(value_a, value_b)
         token_set_ratio = fuzz.token_set_ratio(value_a, value_b)
 
-        # Combine the ratios to get a final similarity score
+        # Combine the ratios and return the final similarity score
         # Good Ratios (Normal/Token Set): (0.5|0.5) >= 93, (0.6|0.4) >= 92, (0.7|0.3) >= 91, (0.8|0.2) >= 90
         # Tested and fine-tuned with different examples to work well with name-like values
-        text_similarity = round(ratio * 0.8 + token_set_ratio * 0.2)
-
-        return text_similarity
+        return round(ratio * 0.8 + token_set_ratio * 0.2)
 
     def insert(self, element_key: str, element: str) -> None:
         """Insert a new element into the LSH
@@ -225,7 +224,10 @@ class FuzzyDuplicateMatcher:
             # The cut-off score was tested with different examples to work well with name-like values
             matches = {match_key: self._element_mapping[match_key] for match_key in duplicate_matches}
             best_match = process.extractOne(
-                clean_value, matches, scorer=self._calculate_text_similarity, score_cutoff=self._similarity_cutoff
+                clean_value,
+                matches,
+                scorer=self._calculate_text_similarity,
+                score_cutoff=self._similarity_cutoff,
             )
 
             # Near-duplicate with enough similarity was detected
@@ -293,7 +295,9 @@ def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) 
 
 
 def clean_relations(
-    relations: list[dict[str, Any]], relation_info: dict[str, Any], entity_stats_path: Path
+    relations: list[dict[str, Any]],
+    relation_info: dict[str, Any],
+    entity_stats_path: Path,
 ) -> list[dict[str, Any]]:
     """Clean relations and remove invalid ones
 
@@ -376,7 +380,9 @@ def remove_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[
         # Merge the new entity with the original one
         for key in entity_info['properties']:
             original_entity[key] = merge_property_values(
-                original_entity[key], entity[key], entity_info['properties'][key]
+                original_entity[key],
+                entity[key],
+                entity_info['properties'][key],
             )
 
         # Gather all references to partial entities
@@ -397,10 +403,12 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
         _description_
     """
     # Important parameters
-    primary_key = relation_info.get('primary_key')  # Used for deduplication, if defined
-    force_unique = relation_info.get(
-        'force_unique', False
-    )  # If True, relations with the same RelationId are considered instant duplicates
+
+    # Used for deduplication, if defined
+    primary_key = relation_info.get('primary_key')
+
+    # If force_unique is True, relations with the same RelationId are considered instant duplicates
+    force_unique = relation_info.get('force_unique', False)
 
     # Special Case: Duplicate detection is disabled (and force_unique is False)
     if not relation_info.get('detect_duplicates', True) and not force_unique:
@@ -464,7 +472,9 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
             # Merge the new relation with the original one
             for key in relation_info['properties']:
                 original_relation[key] = merge_property_values(
-                    original_relation[key], relation[key], relation_info['properties'][key]
+                    original_relation[key],
+                    relation[key],
+                    relation_info['properties'][key],
                 )
 
             # Gather all references to partial relations
@@ -530,7 +540,8 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], e
     # Check if OriginId and TargetId are properly formatted
     origin_id_split = relation['_OriginId'].split('_')
     target_id_split = relation['_TargetId'].split('_')
-    if len(origin_id_split) != 2 or len(target_id_split) != 2:
+    n_components = 2
+    if len(origin_id_split) != n_components or len(target_id_split) != n_components:
         return False
 
     # Check if OriginId and TargetId contain valid components

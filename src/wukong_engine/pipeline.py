@@ -22,7 +22,6 @@ logger = logging.getLogger(__name__)
 nltk_download('stopwords', quiet=True)
 
 # Paths
-# ORIGINAL_DOCS_DIR = Path('./docs/original/')
 TEXT_DOCS_DIR = Path('./docs/text/')
 DOCS_DIR = Path('./docs/processed/')
 CHUNKS_DIR = Path('./docs/chunks/')

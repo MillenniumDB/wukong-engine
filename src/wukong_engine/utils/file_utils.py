@@ -20,10 +20,9 @@ def load_text_data(file_path: Path) -> str:
     try:
         if file_path.exists():
             return file_path.read_text(encoding='utf-8')
-        else:
-            logger.error(f'Cannot load text data. The file "{file_path}" does not exist.')
-    except Exception as error:
-        logger.error(f'Failed to load text data from file "{file_path}". Reason: {error}.')
+        logger.error(f'Cannot load text data. The file "{file_path}" does not exist.')
+    except Exception:
+        logger.exception(f'An unexpected error occurred while loading text data from file "{file_path}".')
     return ''
 
 
@@ -34,10 +33,9 @@ def load_json_data(file_path: Path) -> Any:
     try:
         if file_path.exists():
             return json.loads(file_path.read_text(encoding='utf-8'))
-        else:
-            logger.error(f'Cannot load JSON data. The file "{file_path}" does not exist.')
-    except Exception as error:
-        logger.error(f'Failed to load JSON data from file "{file_path}". Reason: {error}.')
+        logger.error(f'Cannot load JSON data. The file "{file_path}" does not exist.')
+    except Exception:
+        logger.exception(f'An unexpected error occurred while loading JSON data from file "{file_path}".')
     return None
 
 
@@ -51,8 +49,8 @@ def save_text_data(data: str, file_path: Path, mode: str = 'w') -> None:
                 file.write(data)
         else:
             logger.error(f'The file "{file_path}" has an invalid path and cannot be saved.')
-    except Exception as error:
-        logger.error(f'Failed to save text data to file "{file_path}". Reason: {error}.')
+    except Exception:
+        logger.exception(f'An unexpected error occurred while saving text data to file "{file_path}".')
 
 
 def save_json_data(data: Any, file_path: Path) -> None:
@@ -65,8 +63,8 @@ def save_json_data(data: Any, file_path: Path) -> None:
                 json.dump(data, file, indent=4, ensure_ascii=False)
         else:
             logger.error(f'The file "{file_path}" has an invalid path and cannot be saved.')
-    except Exception as error:
-        logger.error(f'Failed to save JSON data to file "{file_path}". Reason: {error}.')
+    except Exception:
+        logger.exception(f'An unexpected error occurred while saving JSON data to file "{file_path}".')
 
 
 def delete_dir_contents(dir_path: Path, items_to_keep: list[str] | None = None) -> None:
@@ -86,5 +84,5 @@ def delete_dir_contents(dir_path: Path, items_to_keep: list[str] | None = None) 
                 item.unlink()
             elif item.is_dir():
                 shutil.rmtree(item)
-    except Exception as error:
-        logger.error(f'Failed to delete the contents of directory "{dir_path}". Reason: {error}.')
+    except Exception:
+        logger.exception(f'An unexpected error occurred while deleting the contents of directory "{dir_path}".')

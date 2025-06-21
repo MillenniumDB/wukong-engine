@@ -5,7 +5,7 @@ import threading
 import time
 from typing import Any
 
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 
 from wukong_engine.config import Config
 
@@ -50,7 +50,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
 
     # Process prompt with the LLM API, with a maximum number of retries
     logger.info(
-        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{prompt_data["document_name"]}"'
+        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{prompt_data["document_name"]}"',
     )
     result = prompt_data
     response = None
@@ -69,19 +69,24 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
 
             # Response from the LLM API
             response = completion.choices[0].message.content
-        except Exception as error:  # Catch any error from the LLM API
+            if response is None:
+                raise ValueError('LLM API response is "None"')
+            break
+        except (OpenAIError, ValueError) as error:  # Catch specific OpenAI API errors
             logger.error(f'LLM API call failed, the call will be retried. Reason: {error}.')
+        except Exception:  # Catch unknown errors
+            logger.exception('An unexpected error occurred during the LLM API call.')
 
-            # If maximum retries reached, return an empty response
-            retries += 1
-            if retries > MAX_RETRIES:
-                logger.error('Maximum retries reached. Returning empty response.')
-                result['response'] = []
-                return result
+        # If maximum retries reached, return an empty response
+        retries += 1
+        if retries > MAX_RETRIES:
+            logger.error('Maximum retries reached. Returning empty response.')
+            result['response'] = []
+            return result
 
-            # Retry using exponential backoff
-            time.sleep(delay)
-            delay *= exponential_base * (1 + random.random())
+        # Retry using exponential backoff
+        time.sleep(delay)
+        delay *= exponential_base * (1 + random.random())  # noqa: S311
 
     # Load and return response
     try:

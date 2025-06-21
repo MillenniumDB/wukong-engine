@@ -8,6 +8,12 @@ from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, 
 # Logging
 logger = logging.getLogger(__name__)
 
+# Data Type Names
+STR_NAMES = ('str', 'char', 'varchar', 'character', 'text', 'byte', 'bytes')
+INT_NAMES = ('int', 'int8', 'int16', 'int32', 'int64', 'short int', 'long int', 'short', 'long')
+FLOAT_NAMES = ('float32', 'float64', 'double', 'long double', 'decimal')
+BOOL_NAMES = ('boolean',)
+
 
 def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
     """
@@ -33,7 +39,7 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
         # If entity file does not exist, skip it
         if not entity_path.exists():
             logger.error(
-                f'MDB export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.'
+                f'MDB export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.',
             )
             continue
 
@@ -61,7 +67,7 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
         # If relation file does not exist, skip it
         if not relation_path.exists():
             logger.error(
-                f'MDB export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.'
+                f'MDB export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.',
             )
             continue
 
@@ -99,7 +105,7 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
         # If entity file does not exist, skip it
         if not entity_path.exists():
             logger.error(
-                f'Neo4j export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.'
+                f'Neo4j export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.',
             )
             continue
 
@@ -127,7 +133,7 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
         # If relation file does not exist, skip it
         if not relation_path.exists():
             logger.error(
-                f'Neo4j export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.'
+                f'Neo4j export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.',
             )
             continue
 
@@ -165,7 +171,7 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
         # If entity file does not exist, skip it
         if not entity_path.exists():
             logger.error(
-                f'JSON export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.'
+                f'JSON export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.',
             )
             continue
 
@@ -193,7 +199,7 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
         # If relation file does not exist, skip it
         if not relation_path.exists():
             logger.error(
-                f'JSON export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.'
+                f'JSON export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.',
             )
             continue
 
@@ -217,53 +223,39 @@ def object_to_mdb(
     property_info = object_info.get('properties', {})
     property_names = list(property_info)
 
+    # Create data type mapping
+    data_type_mapping = build_data_type_mapping()
+
     # Write to QM file
     export_path = object_export_dir / 'KnowledgeGraph.qm'
-    with open(export_path, 'a', encoding='utf-8') as qm_file:
-        for object in data:
+    with export_path.open('a', encoding='utf-8') as qm_file:
+        for obj in data:
             # Add ID fields
             row = ''
             if object_type == 'entity':
-                row += f'{object["_ObjectId"]} :{object_label}'
+                row += f'{obj["_ObjectId"]} :{object_label}'
             elif object_type == 'relation':
-                row += f'{object["_OriginId"]}->{object["_TargetId"]} :{object_label}'
+                row += f'{obj["_OriginId"]}->{obj["_TargetId"]} :{object_label}'
 
             # Add property fields
             for field in property_names:
                 property_type = property_info[field].get('type', 'string').lower()
-                if property_type in ('str', 'char', 'varchar', 'character', 'text', 'byte', 'bytes'):
-                    property_type = 'string'
-                if property_type in (
-                    'int',
-                    'int8',
-                    'int16',
-                    'int32',
-                    'int64',
-                    'short int',
-                    'long int',
-                    'short',
-                    'long',
-                ):
-                    property_type = 'integer'
-                if property_type in ('float32', 'float64', 'double', 'long double', 'decimal'):
-                    property_type = 'float'
-                if property_type in ('boolean',):
-                    property_type = 'bool'
+                property_type = data_type_mapping.get(property_type, property_type)
                 match property_type:
                     case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string
-                        field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                        field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                         field_value = f'"{field_value.replace('"', "'")}"'
                     case 'integer':  # Convert to int
-                        field_value = int(object.get(field, 0))
+                        field_value = int(obj.get(field, 0))
                     case 'float':  # Convert to float
-                        field_value = float(object.get(field, 0.0))
+                        field_value = float(obj.get(field, 0.0))
                     case 'bool':  # Convert to bool in general format
-                        field_value = str(object.get(field, False)).lower()
+                        field_value = str(obj.get(field, False)).lower()
                     case _:  # Unknown type, print a warning and convert to string
                         logger.warning(
-                            f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.'
+                            f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.',
                         )
-                        field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                        field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                         field_value = f'"{field_value.replace('"', "'")}"'
                 row += f' {field}:{field_value}'
 
@@ -292,20 +284,23 @@ def object_to_neo4j(
         label_field_name = ':TYPE'
     headers.append(label_field_name)
 
+    # Create data type mapping
+    data_type_mapping = build_data_type_mapping()
+
     # Write to CSV file
     object_export_path = object_export_dir / f'{object_label}.csv'
-    with open(object_export_path, 'w', encoding='utf-8') as csv_file:
+    with object_export_path.open('w', encoding='utf-8') as csv_file:
         # Write headers
         csv_file.write(','.join(headers) + '\n')
 
         # Write data
-        for object in data:
+        for obj in data:
             # Add ID fields
             row = ''
             if object_type == 'entity':
-                row += object['_ObjectId']
+                row += obj['_ObjectId']
             elif object_type == 'relation':
-                row += f'{object["_OriginId"]},{object["_TargetId"]}'
+                row += f'{obj["_OriginId"]},{obj["_TargetId"]}'
 
             # Add property fields
             property_headers = headers[1:-1]
@@ -313,39 +308,22 @@ def object_to_neo4j(
                 property_headers = headers[2:-1]
             for field in property_headers:
                 property_type = property_info[field].get('type', 'string').lower()
-                if property_type in ('str', 'char', 'varchar', 'character', 'text', 'byte', 'bytes'):
-                    property_type = 'string'
-                if property_type in (
-                    'int',
-                    'int8',
-                    'int16',
-                    'int32',
-                    'int64',
-                    'short int',
-                    'long int',
-                    'short',
-                    'long',
-                ):
-                    property_type = 'integer'
-                if property_type in ('float32', 'float64', 'double', 'long double', 'decimal'):
-                    property_type = 'float'
-                if property_type in ('boolean',):
-                    property_type = 'bool'
+                property_type = data_type_mapping.get(property_type, property_type)
                 match property_type:
                     case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string
-                        field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                        field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                         field_value = f'"{field_value.replace('"', "'")}"'
                     case 'integer':  # Convert to int
-                        field_value = int(object.get(field, 0))
+                        field_value = int(obj.get(field, 0))
                     case 'float':  # Convert to float
-                        field_value = float(object.get(field, 0.0))
+                        field_value = float(obj.get(field, 0.0))
                     case 'bool':  # Convert to bool in general format
-                        field_value = str(object.get(field, False)).lower()
+                        field_value = str(obj.get(field, False)).lower()
                     case _:  # Unknown type, print a warning and convert to string
                         logger.warning(
-                            f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.'
+                            f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.',
                         )
-                        field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                        field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                         field_value = f'"{field_value.replace('"', "'")}"'
                 row += f',{field_value}'
 
@@ -368,59 +346,55 @@ def object_to_json(
     property_info = object_info.get('properties', {})
     property_names = list(property_info)
 
+    # Create data type mapping
+    data_type_mapping = build_data_type_mapping()
+
     # Process data from objects
-    for object in data:
+    for obj in data:
         # Remove keys that are not necessary
         extra_keys = []
         if object_type == 'entity':
             extra_keys = ['_ObjectId']
         elif object_type == 'relation':
             extra_keys = ['_OriginId', '_TargetId']
-        for key in list(object):
+        for key in list(obj):
             if key not in property_names + extra_keys:
-                del object[key]
+                del obj[key]
 
         # Process property fields
         for field in property_names:
             property_type = property_info[field].get('type', 'string').lower()
-            if property_type in ('str', 'char', 'varchar', 'character', 'text', 'byte', 'bytes'):
-                property_type = 'string'
-            if property_type in (
-                'int',
-                'int8',
-                'int16',
-                'int32',
-                'int64',
-                'short int',
-                'long int',
-                'short',
-                'long',
-            ):
-                property_type = 'integer'
-            if property_type in ('float32', 'float64', 'double', 'long double', 'decimal'):
-                property_type = 'float'
-            if property_type in ('boolean',):
-                property_type = 'bool'
+            property_type = data_type_mapping.get(property_type, property_type)
             match property_type:
                 case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string
-                    field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                    field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                     field_value = f'"{field_value.replace('"', "'")}"'
                 case 'integer':  # Convert to int
-                    field_value = int(object.get(field, 0))
+                    field_value = int(obj.get(field, 0))
                 case 'float':  # Convert to float
-                    field_value = float(object.get(field, 0.0))
+                    field_value = float(obj.get(field, 0.0))
                 case 'bool':  # Convert to bool in general format
-                    field_value = str(object.get(field, False)).lower()
+                    field_value = str(obj.get(field, False)).lower()
                 case _:  # Unknown type, print a warning and convert to string
                     logger.warning(
-                        f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.'
+                        f'Unknown type for property "{field}" of "{object_label}": {property_type}. Converting to string instead.',
                     )
-                    field_value = str(object.get(field, '')).replace('\n', ' ').replace('\r', ' ')
+                    field_value = str(obj.get(field, '')).replace('\n', ' ').replace('\r', ' ')
                     field_value = f'"{field_value.replace('"', "'")}"'
 
             # Update the field
-            object[field] = field_value
+            obj[field] = field_value
 
     # Write processed data to JSON file
     object_export_path = object_export_dir / f'{object_label}.json'
     save_json_data(data, object_export_path)
+
+
+def build_data_type_mapping() -> dict[str, str]:
+    data_type_groups = (STR_NAMES, INT_NAMES, FLOAT_NAMES, BOOL_NAMES)
+    final_data_types = ('string', 'integer', 'float', 'bool')
+    data_type_mapping = {}
+    for idx, data_type_group in enumerate(data_type_groups):
+        for data_type in data_type_group:
+            data_type_mapping[data_type] = final_data_types[idx]
+    return data_type_mapping

@@ -3,7 +3,6 @@ from argparse import ArgumentParser
 from pathlib import Path
 
 from .pipeline import execute_pipeline
-from .utils.text_utils import remove_sentence_dot
 
 ### Logging Configuration ###
 
@@ -23,8 +22,8 @@ class LevelFormatter(logging.Formatter):
 # Logging formats for different levels
 level_formats = {
     logging.WARNING: '[WARNING] %(message)s',
-    logging.ERROR: '[ERROR] Error: %(message)s',
-    logging.CRITICAL: '[CRITICAL] Error: %(message)s',
+    logging.ERROR: '[ERROR] %(message)s',
+    logging.CRITICAL: '[CRITICAL_ERROR] %(message)s',
     logging.DEBUG: '[DEBUG] %(message)s',
 }
 default_format = '%(message)s'
@@ -52,13 +51,10 @@ def main() -> None:
     """
     # Define command line arguments
     parser = ArgumentParser(
-        prog='wukong_engine', description='Engine for constructing knowledge graphs from unstructured documents.'
+        prog='wukong_engine',
+        description='Engine for constructing knowledge graphs from unstructured documents.',
     )
-    parser.add_argument(
-        'data_dir',
-        type=Path,
-        help='Path to the directory containing the data (e.g. data/example)',
-    )
+    parser.add_argument('data_dir', type=Path, help='Path to the directory containing the data (e.g. data/example)')
 
     # Parse command line arguments
     args = parser.parse_args()
@@ -71,8 +67,10 @@ def main() -> None:
     # Execute the pipeline
     try:
         execute_pipeline(args.data_dir)
-    except Exception as error:
-        logger.critical(f'{remove_sentence_dot(str(error))}.')
+    except (ValueError, FileNotFoundError) as error:
+        logger.critical(f'{str(error).removesuffix(".")}.')
+    except Exception:
+        logger.exception('An unexpected error occurred during pipeline execution.')
 
 
 # Execute WUKONG engine

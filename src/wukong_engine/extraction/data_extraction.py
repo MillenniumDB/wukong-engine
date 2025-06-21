@@ -16,7 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def find_entities(
-    entity_model: dict[str, Any], docs_dir: Path, prompts_dir: Path, results_dir: Path, clear_results: bool = False
+    entity_model: dict[str, Any],
+    docs_dir: Path,
+    prompts_dir: Path,
+    results_dir: Path,
+    *,
+    clear_results: bool = False,
 ) -> None:
     """Find entities of the given types in the given documents
 
@@ -48,12 +53,17 @@ def find_entities(
             try:
                 results = future.result()  # Wait for the API call to complete
                 process_partial_entities(results, entity_model, partial_entities_dir)  # Process the partial results
-            except Exception as error:
-                logger.error(f'Entity extraction failed. Reason: {error}.')
+            except Exception:
+                logger.exception('An unexpected error occurred during entity extraction.')
 
 
 def find_relations(
-    relation_model: dict[str, Any], docs_dir: Path, prompts_dir: Path, results_dir: Path, clear_results: bool = False
+    relation_model: dict[str, Any],
+    docs_dir: Path,
+    prompts_dir: Path,
+    results_dir: Path,
+    *,
+    clear_results: bool = False,
 ) -> None:
     """Find relations of the given types in the given documents
 
@@ -91,8 +101,8 @@ def find_relations(
             try:
                 results = future.result()  # Wait for the API call to complete
                 process_partial_relations(results, relation_model, partial_relations_dir)  # Process the partial results
-            except Exception as error:
-                logger.error(f'Relation extraction failed. Reason: {error}.')
+            except Exception:
+                logger.exception('An unexpected error occurred during relation extraction.')
 
 
 def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
@@ -113,7 +123,7 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
     required_paths = (partial_entities_dir, entities_dir, relations_dir)
     if not all(required_path.exists() for required_path in required_paths):
         raise FileNotFoundError(
-            'Entity Processing failed. Some necessary files are missing. Please run the program again including the previous steps.'
+            'Entity Processing failed. Some necessary files are missing. Please run the program again including the previous steps.',
         )
 
     # Initialize the document references file
@@ -151,7 +161,9 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
 
         # Create global ID mapping for entities
         entity_mapping, object_mapping = build_global_entity_mapping(
-            entities, entity_name, core_entity=entity_info.get('core_entity', False)
+            entities,
+            entity_name,
+            core_entity=entity_info.get('core_entity', False),
         )
 
         # Create relations between final entities and their source documents
@@ -199,7 +211,7 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     required_paths = (partial_relations_dir, relations_dir, entity_stats_path)
     if not all(required_path.exists() for required_path in required_paths):
         raise FileNotFoundError(
-            'Relation Processing failed. Some necessary files are missing. Please run the program again including the previous steps.'
+            'Relation Processing failed. Some necessary files are missing. Please run the program again including the previous steps.',
         )
 
     # Initialize the final relations file for each relation type
@@ -215,7 +227,7 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         relation_results_dir = partial_relations_dir / materialized_relation_name
         if not relation_results_dir.exists():
             logger.error(
-                f'Relation processing failed. No partial results found for relation type "{materialized_relation_name}".'
+                f'Relation processing failed. No partial results found for relation type "{materialized_relation_name}".',
             )
             continue
 
@@ -284,9 +296,9 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
         document_name = document_path.stem
         document = load_text_data(document_path)
 
-        ### LLM Prompt Information ###
+        # LLM Prompt Information
         prompts_data.append(
-            {'document_name': document_name, 'object_name': entity_name, 'user_role': document, 'system_role': prompt}
+            {'document_name': document_name, 'object_name': entity_name, 'user_role': document, 'system_role': prompt},
         )
 
     return prompts_data
@@ -330,7 +342,11 @@ def process_partial_entities(results: dict[str, Any], entity_model: dict[str, An
 
 
 def get_relation_prompts(
-    relation_name: str, relation_info: dict[str, Any], docs_dir: Path, prompts_dir: Path, results_dir: Path
+    relation_name: str,
+    relation_info: dict[str, Any],
+    docs_dir: Path,
+    prompts_dir: Path,
+    results_dir: Path,
 ) -> list[dict[str, Any]]:
     """Generate a list of dictionaries containing the prompt data for the given relation type and documents
 
@@ -376,7 +392,7 @@ def get_relation_prompts(
             final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
             if not final_origin_entities_path.exists():
                 logger.error(
-                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".'
+                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
                 )
                 continue
 
@@ -394,7 +410,7 @@ def get_relation_prompts(
             final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
             if not final_target_entities_path.exists():
                 logger.error(
-                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".'
+                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
                 )
                 continue
 
@@ -440,14 +456,17 @@ def get_relation_prompts(
                 'object_name': relation_name,
                 'user_role': user_role,
                 'system_role': prompt,
-            }
+            },
         )
 
     return prompts_data
 
 
 def bypass_ai_processing(
-    relation_name: str, relation_info: dict[str, Any], docs_dir: Path, results_dir: Path
+    relation_name: str,
+    relation_info: dict[str, Any],
+    docs_dir: Path,
+    results_dir: Path,
 ) -> Iterator[dict[str, Any]]:
     """Bypass LLM processing and assume that a relation is valid for all origin/target entities
 
@@ -488,7 +507,7 @@ def bypass_ai_processing(
             final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
             if not final_origin_entities_path.exists():
                 logger.error(
-                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".'
+                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
                 )
                 continue
 
@@ -509,7 +528,7 @@ def bypass_ai_processing(
             final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
             if not final_target_entities_path.exists():
                 logger.error(
-                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".'
+                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
                 )
                 continue
 
@@ -527,13 +546,15 @@ def bypass_ai_processing(
         logger.info(f'Processing type "{relation_name}" and document "{document_name}" without using the LLM')
         results = {'document_name': document_name, 'object_name': relation_name, 'response': []}
         results['response'] = {
-            'results': origin_entities + target_entities  # Either origin or target will be empty here
+            'results': origin_entities + target_entities,  # Either origin or target will be empty here
         }
         yield results
 
 
 def process_partial_relations(
-    results: dict[str, Any], relation_model: dict[str, Any], partial_relations_dir: Path
+    results: dict[str, Any],
+    relation_model: dict[str, Any],
+    partial_relations_dir: Path,
 ) -> None:
     """Process partial relations obtained from the LLM (or from the bypass)
 
@@ -573,7 +594,10 @@ def process_partial_relations(
 
 
 def build_global_entity_mapping(
-    entities: list[dict[str, Any]], entity_name: str, core_entity: bool = False
+    entities: list[dict[str, Any]],
+    entity_name: str,
+    *,
+    core_entity: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Construct global ID mappings for entities (ReferenceId -> ObjectId, ObjectId -> EntityIdx)
 
@@ -609,7 +633,12 @@ def build_global_entity_mapping(
     return entity_id_mapping, object_id_mapping
 
 
-def build_entity_references(entities: list[dict[str, Any]], references_path: Path, core_entity: bool = False) -> None:
+def build_entity_references(
+    entities: list[dict[str, Any]],
+    references_path: Path,
+    *,
+    core_entity: bool = False,
+) -> None:
     """Create relations between entities and their source documents
 
     Args:
@@ -625,10 +654,7 @@ def build_entity_references(entities: list[dict[str, Any]], references_path: Pat
         # Core entities are extracted from full documents
         if core_entity:
             document_number = entity['_ReferenceIds'][0]
-            reference_relation = {
-                '_OriginId': entity['_ObjectId'],
-                '_TargetId': f'Document_{document_number}',
-            }
+            reference_relation = {'_OriginId': entity['_ObjectId'], '_TargetId': f'Document_{document_number}'}
             entity_references.append(reference_relation)
         else:  # Regular entities are extracted from document chunks
             for reference_id in entity['_ReferenceIds']:
@@ -652,7 +678,9 @@ def build_entity_references(entities: list[dict[str, Any]], references_path: Pat
 
 
 def update_partial_entities(
-    partial_entities: list[dict[str, Any]], final_entities: list[dict[str, Any]], object_mapping: dict[str, int]
+    partial_entities: list[dict[str, Any]],
+    final_entities: list[dict[str, Any]],
+    object_mapping: dict[str, int],
 ) -> None:
     """Copy final entity values to partial entities, mapping with their ObjectId
 

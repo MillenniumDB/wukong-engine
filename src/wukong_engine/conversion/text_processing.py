@@ -29,12 +29,12 @@ def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Pat
     # If the input directory does not exist, abort the process
     if not text_dir.exists():
         raise FileNotFoundError(
-            f'Document Processing failed. The text documents directory "{text_dir}" does not exist.'
+            f'Document Processing failed. The text documents directory "{text_dir}" does not exist.',
         )
 
     # Gather all input plain text files
     document_paths = sorted(
-        [doc_path for doc_path in text_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt']
+        [doc_path for doc_path in text_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt'],
     )
 
     # Iterate over each file and process it
@@ -86,7 +86,7 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
             doc_path
             for doc_path in docs_dir.iterdir()
             if doc_path.is_file() and doc_path.suffix == '.txt' and doc_path.name.startswith('document_')
-        ]
+        ],
     )
 
     # Iterate over each document and process it into chunks

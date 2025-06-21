@@ -3,7 +3,6 @@ from typing import Any
 
 from wukong_engine.data_model import DataModel
 from wukong_engine.utils.file_utils import delete_dir_contents, save_text_data
-from wukong_engine.utils.text_utils import remove_sentence_dot
 
 # Prompt templates for entity and relation extraction
 
@@ -175,10 +174,10 @@ def generate_prompts(prompts_dir: Path) -> None:
 
     # Get role (if none provided, the LLM is a knowledge graph expert)
     default_role = 'An AI expert specialized in knowledge graph extraction'
-    role = remove_sentence_dot(data_model.parameters.get('role', default_role))
+    role = data_model.parameters.get('role', default_role).removesuffix('.')
 
     # Get context and input language (if none provided, the LLM must figure out the context)
-    context = remove_sentence_dot(data_model.parameters.get('context', 'A context you must identify'))
+    context = data_model.parameters.get('context', 'A context you must identify').removesuffix('.')
     context += f'. The text is written in {data_model.parameters.get("input_language", "english")}'
 
     # Store general information about the data model
@@ -200,7 +199,10 @@ def generate_prompts(prompts_dir: Path) -> None:
 
 
 def build_entity_prompt(
-    entity_name: str, entity_info: dict[str, Any], general_info: dict[str, str], entity_prompts_dir: Path
+    entity_name: str,
+    entity_info: dict[str, Any],
+    general_info: dict[str, str],
+    entity_prompts_dir: Path,
 ) -> None:
     """Build prompt for a specific entity
 
@@ -220,25 +222,25 @@ def build_entity_prompt(
         prop_dict = {
             'name': property_name,
             'type': property_info['type'],
-            'description': remove_sentence_dot(property_info['description']),
-            'example': remove_sentence_dot(property_info.get('example', '')),
+            'description': property_info['description'].removesuffix('.'),
+            'example': property_info.get('example', '').removesuffix('.'),
             'options': property_info.get('options', []),
         }
         properties.append(prop_dict)
 
     # Properties object string
     prop_object_str = ''
-    for property in properties:
+    for prop in properties:
         spaces = 4 if core_entity else 12
-        example_str = f'For example: "{property["example"]}". ' if property['example'] else ''
-        options_str = 'Must take one of the following values:' if property['options'] else ''
-        for option in property['options']:
+        example_str = f'For example: "{prop["example"]}". ' if prop['example'] else ''
+        options_str = 'Must take one of the following values:' if prop['options'] else ''
+        for option in prop['options']:
             options_str += f' "{option}",'
         values_str = f'{options_str[:-1]}. ' if options_str else example_str
         not_found_str = (
             'If not found, this value must be "NULL". Do not use the example property values as placeholders.'
         )
-        prop_object_str += f'\n{spaces * " "}"{property["name"]}": Value of type \'{property["type"]}\'. // {property["description"]}. {values_str}{not_found_str}'
+        prop_object_str += f'\n{spaces * " "}"{prop["name"]}": Value of type \'{prop["type"]}\'. // {prop["description"]}. {values_str}{not_found_str}'
 
     # Select prompt template
     prompt_template = CORE_ENTITY_PROMPT if core_entity else ENTITY_PROMPT
@@ -248,7 +250,7 @@ def build_entity_prompt(
         ROLE=general_info['role'],
         CONTEXT=general_info['context'],
         NAME=f"'{entity_name}'",
-        DESCRIPTION=remove_sentence_dot(entity_info['description']),
+        DESCRIPTION=entity_info['description'].removesuffix('.'),
         PRIMARY_KEY=primary_key,
         PROPERTIES=prop_object_str,
         LANGUAGE=general_info['language'],
@@ -280,25 +282,25 @@ def build_relation_prompt(
         prop_dict = {
             'name': property_name,
             'type': property_info['type'],
-            'description': remove_sentence_dot(property_info['description']),
-            'example': remove_sentence_dot(property_info.get('example', '')),
+            'description': property_info['description'].removesuffix('.'),
+            'example': property_info.get('example', '').removesuffix('.'),
             'options': property_info.get('options', []),
         }
         properties.append(prop_dict)
 
     # Properties object string
     prop_object_str = ''
-    for property in properties:
+    for prop in properties:
         spaces = 12
-        example_str = f'For example: "{property["example"]}". ' if property['example'] else ''
-        options_str = 'Must take one of the following values:' if property['options'] else ''
-        for option in property['options']:
+        example_str = f'For example: "{prop["example"]}". ' if prop['example'] else ''
+        options_str = 'Must take one of the following values:' if prop['options'] else ''
+        for option in prop['options']:
             options_str += f' "{option}",'
         values_str = f'{options_str[:-1]}. ' if options_str else example_str
         not_found_str = (
             'If not found, this value must be "NULL". Do not use the example property values as placeholders.'
         )
-        prop_object_str += f'\n{spaces * " "}"{property["name"]}": Value of type \'{property["type"]}\'. // {property["description"]}. {values_str}{not_found_str}'
+        prop_object_str += f'\n{spaces * " "}"{prop["name"]}": Value of type \'{prop["type"]}\'. // {prop["description"]}. {values_str}{not_found_str}'
 
     # If there are no properties, remove the properties object section from the prompt
     if not properties:
@@ -328,10 +330,10 @@ def build_relation_prompt(
             # Special Case: Relations with Core Entities
             core_entity_description = ''
             if origin_core_entity:
-                core_entity_description = remove_sentence_dot(entity_model[origin]['description'])
+                core_entity_description = entity_model[origin]['description'].removesuffix('.')
                 prompt_template = CORE_ENTITY_ORIGIN_RELATION_PROMPT
             elif target_core_entity:
-                core_entity_description = remove_sentence_dot(entity_model[target]['description'])
+                core_entity_description = entity_model[target]['description'].removesuffix('.')
                 prompt_template = CORE_ENTITY_TARGET_RELATION_PROMPT
 
             # Build LLM prompt for the relation
@@ -341,7 +343,7 @@ def build_relation_prompt(
                 ORIGIN=f"'{origin}'",
                 TARGET=f"'{target}'",
                 NAME=f"'{relation_name}'",
-                DESCRIPTION=remove_sentence_dot(relation_info['description']),
+                DESCRIPTION=relation_info['description'].removesuffix('.'),
                 CORE_ENTITY_DESCRIPTION=core_entity_description,
                 PROPERTIES=prop_object_str,
                 LANGUAGE=general_info['language'],

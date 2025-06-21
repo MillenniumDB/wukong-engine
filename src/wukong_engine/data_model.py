@@ -41,7 +41,8 @@ class DataModel(Singleton):
         # Load the data model
         try:
             data_model = json.loads(
-                data_model_path.read_text(encoding='utf-8'), object_pairs_hook=self._no_duplicate_keys_hook
+                data_model_path.read_text(encoding='utf-8'),
+                object_pairs_hook=self._no_duplicate_keys_hook,
             )
         except json.JSONDecodeError as error:
             raise ValueError(f'Invalid structure for the Data Model in "{data_model_path}"') from error
@@ -71,7 +72,7 @@ class DataModel(Singleton):
         for entity_name in data_model['entities']:
             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', entity_name):
                 raise ValueError(
-                    f'Invalid entity name "{entity_name}". Entity names must start with a letter and contain only alphanumeric characters.'
+                    f'Invalid entity name "{entity_name}". Entity names must start with a letter and contain only alphanumeric characters.',
                 )
             if entity_name.lower() in ('document', 'chunk'):
                 raise ValueError(f'Entity name "{entity_name}" is reserved for special entities and cannot be used')
@@ -80,11 +81,11 @@ class DataModel(Singleton):
         for relation_name in data_model['relations']:
             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', relation_name):
                 raise ValueError(
-                    f'Invalid relation name "{relation_name}". Relation names must start with a letter and contain only alphanumeric characters.'
+                    f'Invalid relation name "{relation_name}". Relation names must start with a letter and contain only alphanumeric characters.',
                 )
             if relation_name.lower() in ('chunkof', 'extractedfrom'):
                 raise ValueError(
-                    f'Relation name "{relation_name}" is reserved for special relations and cannot be used'
+                    f'Relation name "{relation_name}" is reserved for special relations and cannot be used',
                 )
 
         # Validate property naming conventions
@@ -92,11 +93,11 @@ class DataModel(Singleton):
             for prop_name in object_info.get('properties', {}):
                 if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]*', prop_name):
                     raise ValueError(
-                        f'Invalid property name "{prop_name}" from "{object_name}". Property names must start with a letter and contain only alphanumeric characters and underscores.'
+                        f'Invalid property name "{prop_name}" from "{object_name}". Property names must start with a letter and contain only alphanumeric characters and underscores.',
                     )
                 if prop_name.lower() == 'extracted_from':
                     raise ValueError(
-                        f'Property name "{prop_name}" from "{object_name}" is reserved for special properties and cannot be used'
+                        f'Property name "{prop_name}" from "{object_name}" is reserved for special properties and cannot be used',
                     )
 
     def _process_model(self) -> None:
@@ -114,29 +115,14 @@ class DataModel(Singleton):
 
         # Add special entities
         special_entities = {
-            'Document': {
-                'special_entity': True,
-                'properties': {
-                    'name': {'type': 'string'},
-                },
-            },
-            'Chunk': {
-                'special_entity': True,
-                'properties': {
-                    'text': {'type': 'string'},
-                },
-            },
+            'Document': {'special_entity': True, 'properties': {'name': {'type': 'string'}}},
+            'Chunk': {'special_entity': True, 'properties': {'text': {'type': 'string'}}},
         }
         self._entities.update(special_entities)
 
         # Add special relations
         special_relations = {
-            'ChunkOf': {
-                'special_relation': True,
-                'properties': {
-                    'chunk_number': {'type': 'integer'},
-                },
-            },
+            'ChunkOf': {'special_relation': True, 'properties': {'chunk_number': {'type': 'integer'}}},
             'ExtractedFrom': {'special_relation': True},
         }
         self._relations.update(special_relations)

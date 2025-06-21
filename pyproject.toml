@@ -39,33 +39,27 @@ include = ["wukong_engine"]
 
 [tool.ruff]
 line-length = 120
+indent-width = 4
 
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "E501",
-    "ANN401", # Allow usage of ANY for type hints
+    "E501",   # Ignore long lines that cannot be auto-formatted
+    "ANN401", # Allow ANY for type hints
+    "G004",   # Allow f-strings on logging messages
     "TD",     # Free format for TODOs
     "Q",
     "D",
     "TRY",
     "EM",
     "C",
-    "COM",
-    "G",
-    "A",
-    "FBT",
-    "PLR",
-    "BLE",
-    "RET",
-    "FURB",
-    "S",
-    "PTH",
-    "ERA",
 ]
 
 [tool.ruff.format]
 quote-style = "single"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = false
 
 [tool.pyright]
 typeCheckingMode = "basic"
