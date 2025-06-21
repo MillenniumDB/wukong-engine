@@ -9,17 +9,15 @@ from .utils.text_utils import remove_sentence_dot
 
 
 # Custom logging formatter
-class LevelBasedFormatter(logging.Formatter):
-    def __init__(self, format_map, default_format):
+class LevelFormatter(logging.Formatter):
+    def __init__(self, format_map: dict[int, str], default_format: str) -> None:
         super().__init__()
-        self.format_map = format_map
-        self.default_format = default_format
+        self.default_formatter = logging.Formatter(default_format)
+        self.formatters = {level: logging.Formatter(fmt) for level, fmt in format_map.items()}
 
-    def format(self, record):
-        # Set the format based on the log level
-        format_str = self.format_map.get(record.levelno, self.default_format)
-        self._style._fmt = format_str
-        return super().format(record)
+    def format(self, record: logging.LogRecord) -> str:
+        formatter = self.formatters.get(record.levelno, self.default_formatter)
+        return formatter.format(record)
 
 
 # Logging formats for different levels
@@ -33,7 +31,7 @@ default_format = '%(message)s'
 
 # Logging Handler
 handler = logging.StreamHandler()  # Outputs to console (stdout/stderr)
-handler.setFormatter(LevelBasedFormatter(level_formats, default_format))
+handler.setFormatter(LevelFormatter(level_formats, default_format))
 
 # Root Logger
 logger = logging.getLogger()

@@ -42,8 +42,7 @@ def find_entities(
         prompts_data.extend(entity_prompts_data)
 
     # Execute the LLM prompt processing in parallel, since API calls are slow
-    config = Config()
-    with ThreadPoolExecutor(max_workers=config.get('max_worker_threads', None)) as executor:
+    with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
         futures = [executor.submit(process_prompt, prompt_data) for prompt_data in prompts_data]
         for future in as_completed(futures):
             try:
@@ -86,8 +85,7 @@ def find_relations(
         prompts_data.extend(relation_prompts_data)
 
     # Execute the LLM prompt processing in parallel, since API calls are slow
-    config = Config()
-    with ThreadPoolExecutor(max_workers=config.get('max_worker_threads', None)) as executor:
+    with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
         futures = [executor.submit(process_prompt, prompt_data) for prompt_data in prompts_data]
         for future in as_completed(futures):
             try:
@@ -112,7 +110,8 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
     delete_dir_contents(relations_dir, items_to_keep=['ChunkOf.json'])
 
     # If the result directories do not exist, abort the process
-    if not all([partial_entities_dir.exists(), entities_dir.exists(), relations_dir.exists()]):
+    required_paths = (partial_entities_dir, entities_dir, relations_dir)
+    if not all(required_path.exists() for required_path in required_paths):
         raise FileNotFoundError(
             'Entity Processing failed. Some necessary files are missing. Please run the program again including the previous steps.'
         )
@@ -197,7 +196,8 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     entity_stats_path = results_dir / 'entities/_stats.json'
 
     # If the result directories do not exist, abort the process
-    if not all([partial_relations_dir.exists(), relations_dir.exists(), entity_stats_path.exists()]):
+    required_paths = (partial_relations_dir, relations_dir, entity_stats_path)
+    if not all(required_path.exists() for required_path in required_paths):
         raise FileNotFoundError(
             'Relation Processing failed. Some necessary files are missing. Please run the program again including the previous steps.'
         )

@@ -41,11 +41,11 @@ include = ["wukong_engine"]
 line-length = 120
 
 [tool.ruff.lint]
-#select = ["E", "F", "B", "I", "UP", "SIM", "C4", "N", "INP", "ANN"]
 select = ["ALL"]
 ignore = [
     "E501",
-    "ANN401",
+    "ANN401", # Allow usage of ANY for type hints
+    "TD",     # Free format for TODOs
     "Q",
     "D",
     "TRY",
@@ -60,7 +60,6 @@ ignore = [
     "RET",
     "FURB",
     "S",
-    "ANN",
     "PTH",
     "ERA",
 ]

@@ -1,21 +1,34 @@
 import json
 import logging
 import random
+import threading
 import time
 from typing import Any
 
 from openai import OpenAI
 
-from wukong_engine.config import OPENAI_API_KEY
+from wukong_engine.config import Config
 
 # Logging
 logger = logging.getLogger(__name__)
 
 # Configuration
-client = OpenAI(api_key=OPENAI_API_KEY)  # Initialize OpenAI client with API key
 LLM_MODEL = 'gpt-4.1-mini'  # Best model for price/performance ratio
 MAX_RETRIES = 5  # Maximum number of retries for LLM API calls
 TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic output)
+
+
+class OpenAIClientProvider:
+    _instance: OpenAI | None = None
+    _lock: threading.Lock = threading.Lock()
+
+    @classmethod
+    def get_client(cls) -> OpenAI:
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    cls._instance = OpenAI(api_key=Config().get_env('OPENAI_API_KEY'))
+        return cls._instance
 
 
 def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
@@ -27,6 +40,9 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
     Returns:
         _description_
     """
+    # Get OpenAI client
+    client = OpenAIClientProvider.get_client()
+
     # Settings for retrying LLM API calls
     retries = 0  # Retry counter
     delay = 1  # Initial delay before retrying (in seconds)

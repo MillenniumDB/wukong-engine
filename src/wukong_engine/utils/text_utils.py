@@ -15,8 +15,7 @@ def normalize_text(text: str) -> str:
     Returns:
         _description_
     """
-    data_model = DataModel()  # Get data model
-    language = data_model.parameters.get('output_language', 'english')
+    language = DataModel().parameters.get('output_language', 'english')  # Get language
     stop_words = stopwords.words(language)  # Remove language-specific stop words
     relevant_text = ' '.join([word for word in text.lower().split() if word not in stop_words])
     simple_text = unidecode(relevant_text.replace('¬', '').replace('°', ''))  # Remove non-ascii characters

@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .config import SingletonBase
+from .utils.patterns import Singleton
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 DATA_MODEL_PATH = Path('./data_model.json')
 
 
-class DataModel(SingletonBase):
+class DataModel(Singleton):
     """
     Data Model for a specific dataset.
     """
@@ -56,7 +56,7 @@ class DataModel(SingletonBase):
         logger.info(f'Data Model loaded successfully from: "{data_model_path}"')
 
     @staticmethod
-    def _no_duplicate_keys_hook(pairs):
+    def _no_duplicate_keys_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         seen = set()
         for key, _ in pairs:
             if key in seen:
