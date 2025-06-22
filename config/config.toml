@@ -3,13 +3,14 @@
 #################
 # This is the configuration file for the WUKONG Engine.
 # You can modify the values below to customize the execution of the tool.
-# For more information, refer to the documentation (https://github.com/MillenniumDB/wukong-engine/docs/configuration.md).
+# For more information, see: https://github.com/MillenniumDB/wukong-engine/blob/main/docs/configuration.md
+# or the README sub-section "Engine Configuration"
 
 ##################
 # PIPELINE STEPS #
 ##################
-[pipeline]
 # Enable or disable each step in the pipeline (true/false)
+[pipeline]
 
 # This step is responsible for processing the plain text files
 # Note: This step requires the original plain text documents to be available
@@ -31,10 +32,10 @@ export_graph = true
 ##############
 # PARAMETERS #
 ##############
-[parameters]
 # Customize different parameters
+[parameters]
 
-# List of formats for exporting the results
+### List of formats for exporting the results ###
 # You can choose from the following formats:
 # "mdb": MillenniumDB Quad Model file
 # "neo4j": Neo4j CSV files
@@ -42,13 +43,13 @@ export_graph = true
 # Default: ["mdb", "neo4j", "json"]
 export_formats = ["mdb", "neo4j", "json"]
 
-# Maximum number of tokens for each document chunk
+### Maximum number of tokens for each document chunk ###
 # This is used to control the size of the text processed by each LLM call
-# Adjust this value based on the LLM's context window size and your needs
+# Adjust this value based on the LLM's context window, API request/response size and your needs
 # Default: 2000
 max_tokens = 2000
 
-# Maximum number of worker threads to use for API calls
+### Maximum number of worker threads to use for API calls ###
 # This controls the concurrency of API requests to the LLM
 # Adjust this value based on your system's capabilities and the LLM's rate limits
 # Default: 10

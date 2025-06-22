@@ -12,7 +12,7 @@ from wukong_engine.utils.patterns import Singleton
 logger = logging.getLogger(__name__)
 
 # Paths
-CONFIG_PATH = Path('./config.toml')
+CONFIG_PATH = Path('./config/config.toml')
 
 
 class Config(Singleton):
@@ -20,14 +20,14 @@ class Config(Singleton):
     Configuration class for the WUKONG engine.
     """
 
-    def __init__(self, config_path: Path = CONFIG_PATH) -> None:
+    def __init__(self) -> None:
         # Components of the configuration
         self._pipeline = {}
         self._parameters = {}
         self._env = {}
 
         # Initialize the configuration
-        self._load_config(config_path)
+        self._load_config(CONFIG_PATH)
 
     def _load_config(self, config_path: Path) -> None:
         """
