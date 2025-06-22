@@ -3,7 +3,7 @@
 #################
 # This is the configuration file for the WUKONG Engine.
 # You can modify the values below to customize the execution of the tool.
-# For more information, refer to the documentation.
+# For more information, refer to the documentation (https://github.com/MillenniumDB/wukong-engine/docs/configuration.md).
 
 ##################
 # PIPELINE STEPS #
@@ -14,19 +14,19 @@
 # This step is responsible for processing the plain text files
 # Note: This step requires the original plain text documents to be available
 # Note: Only skip this step if you have already completed it at least once
-document_processing = false
+document_processing = true
 
 # This step is responsible for extracting entities from the processed documents
 # Note: This step requires the processed documents to be available
-entity_extraction = false
+entity_extraction = true
 
 # This step is responsible for extracting relations between entities from the processed documents
 # Note: This step requires the extracted entities to be available
-relation_extraction = false
+relation_extraction = true
 
 # This step is responsible for exporting the knowledge graph to various formats
 # Note: This step requires the extracted entities and relations to be available
-export_graph = false
+export_graph = true
 
 ##############
 # PARAMETERS #

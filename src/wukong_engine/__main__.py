@@ -52,7 +52,7 @@ def main() -> None:
     # Define command line arguments
     parser = ArgumentParser(
         prog='wukong_engine',
-        description='Engine for constructing knowledge graphs from unstructured documents.',
+        description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
     parser.add_argument('data_dir', type=Path, help='Path to the directory containing the data (e.g. data/example)')
 

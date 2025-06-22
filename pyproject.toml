@@ -1,9 +1,9 @@
-### General ###
+### Project ###
 
 [project]
 name = "wukong-engine"
 version = "0.1.0"
-description = "Engine for constructing knowledge graphs from unstructured documents."
+description = "Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs."
 readme = "README.md"
 requires-python = ">=3.13"
 license = "Proprietary"
