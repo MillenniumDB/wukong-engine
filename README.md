@@ -1,8 +1,10 @@
-# WUKONG Engine <!-- omit from toc -->
+<!-- omit from toc -->
+# WUKONG Engine
 
 Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.
 
-## 📚 Table of Contents <!-- omit from toc -->
+<!-- omit from toc -->
+## 📚 Table of Contents
 - [🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs](#-wukong-weaving-unstructured-knowledge-onto-navigable-graphs)
 - [⚙️ Setup](#️-setup)
   - [Pre-requisites](#pre-requisites)
