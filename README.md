@@ -20,6 +20,8 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
 The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **data model**.
 It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI assistants**.
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## ⚙️ Setup
 
 ### Pre-requisites
@@ -91,6 +93,8 @@ For local development/usage, create a `.env` file in the root directory of the p
 
 For production/deployment, set these variables directly in your server/cloud environment.
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 🚀 Usage
 
 ### Data Directory
@@ -142,6 +146,8 @@ After executing the command, the engine will process the **documents** in the sp
 
 The resulting **knowledge graph** files will be exported to the `<path/to/data_dir>/exports/` directory.
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 📦 Package Structure
 
 The **WUKONG** engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
@@ -160,6 +166,8 @@ wukong_engine/
 
 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 🗺️ Roadmap
 
 TODO: Reference CHANGELOG and development.
@@ -168,3 +176,5 @@ TODO: Reference CHANGELOG and development.
 - [ ] Add CLI with subcommands
 - [ ] More robust validation
 - [ ] Publish to PyPI
+
+[📚 Back to Table of Contents](#-table-of-contents)
