@@ -1,8 +1,8 @@
-# WUKONG Engine <!-- omit in toc -->
+# WUKONG Engine <!-- omit from toc -->
 
 Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.
 
-# 📚 Table of Contents <!-- omit in toc -->
+## 📚 Table of Contents <!-- omit from toc -->
 - [🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs](#-wukong-weaving-unstructured-knowledge-onto-navigable-graphs)
 - [⚙️ Setup](#️-setup)
   - [Pre-requisites](#pre-requisites)
@@ -15,14 +15,14 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
 - [📦 Package Structure](#-package-structure)
 - [🗺️ Roadmap](#️-roadmap)
 
-# 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
+## 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
 
 The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **data model**.
 It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI assistants**.
 
-# ⚙️ Setup
+## ⚙️ Setup
 
-## Pre-requisites
+### Pre-requisites
 
 Before setting up the **WUKONG** engine, ensure you have the following installed:
 
@@ -46,7 +46,7 @@ Before setting up the **WUKONG** engine, ensure you have the following installed
   For containerization and running the engine in a consistent environment.
   Install Docker by ...TODO: provide instructions or link to the Docker installation guide.
 
-## Installation
+### Installation
 
 To set up the **WUKONG** engine, follow these steps:
 
@@ -78,7 +78,7 @@ python -m pip install -r requirements.txt  # Install dependencies
 python -m pip install -e .  # Install the package in editable mode
 ```
 
-## Environment
+### Environment
 
 The following environment variables are required for the engine to function properly:
 
@@ -91,9 +91,9 @@ For local development/usage, create a `.env` file in the root directory of the p
 
 For production/deployment, set these variables directly in your server/cloud environment.
 
-# 🚀 Usage
+## 🚀 Usage
 
-## Data Directory
+### Data Directory
 
 To run the **WUKONG** engine, a data directory containing the **data model** and the **documents** to be processed is required.
 This data directory must follow a specific structure to be recognized as valid by the engine.
@@ -116,14 +116,14 @@ For a detailed description of the data model schema and available options, refer
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
-## Engine Configuration
+### Engine Configuration
 
 The **WUKONG** engine can be configured by editing the `config.toml` file that is present in the `config/` directory of the project.
 The configuration file comes with default settings to run the engine normally, but you can customize it to suit your needs.
 
 For more information on the available configuration options, refer to the [Configuration](docs/configuration.md) documentation.
 
-## Running the Engine
+### Running the Engine
 
 After setting up a **data directory** and looking at the **configuration**, you can run the **WUKONG** engine using the following command (from the root of the project):
 
@@ -142,7 +142,7 @@ After executing the command, the engine will process the **documents** in the sp
 
 The resulting **knowledge graph** files will be exported to the `<path/to/data_dir>/exports/` directory.
 
-# 📦 Package Structure
+## 📦 Package Structure
 
 The **WUKONG** engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
 
@@ -160,7 +160,7 @@ wukong_engine/
 
 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
 
-# 🗺️ Roadmap
+## 🗺️ Roadmap
 
 TODO: Reference CHANGELOG and development.
 
