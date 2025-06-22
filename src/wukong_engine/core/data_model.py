@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .utils.patterns import Singleton
+from wukong_engine.utils.patterns import Singleton
 
 # Logging
 logger = logging.getLogger(__name__)

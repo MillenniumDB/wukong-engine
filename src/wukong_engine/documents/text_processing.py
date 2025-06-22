@@ -2,7 +2,7 @@ from pathlib import Path
 
 from semantic_text_splitter import TextSplitter
 
-from wukong_engine.config import Config
+from wukong_engine.config.config import Config
 from wukong_engine.utils.file_utils import delete_dir_contents, load_text_data, save_json_data, save_text_data
 
 # Configuration

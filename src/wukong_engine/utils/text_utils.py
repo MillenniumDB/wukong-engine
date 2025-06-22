@@ -3,7 +3,7 @@ import re
 from nltk.corpus import stopwords
 from unidecode import unidecode
 
-from wukong_engine.data_model import DataModel
+from wukong_engine.core.data_model import DataModel
 
 
 def normalize_text(text: str) -> str:

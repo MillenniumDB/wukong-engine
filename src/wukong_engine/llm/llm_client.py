@@ -7,7 +7,7 @@ from typing import Any
 
 from openai import OpenAI, OpenAIError
 
-from wukong_engine.config import Config
+from wukong_engine.config.config import Config
 
 # Logging
 logger = logging.getLogger(__name__)

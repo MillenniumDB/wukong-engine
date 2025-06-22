@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from wukong_engine.data_model import DataModel
+from wukong_engine.core.data_model import DataModel
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, save_json_data
 
 # Logging

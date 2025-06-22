@@ -5,10 +5,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
-from wukong_engine.config import Config
+from wukong_engine.config.config import Config
+from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
-from .ai_models import process_prompt
 from .data_processing import clean_entities, clean_relations, remove_duplicate_entities, remove_duplicate_relations
 
 # Logging
