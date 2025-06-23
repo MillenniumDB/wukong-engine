@@ -84,16 +84,12 @@ python -m pip install -e .  # Install the package in editable mode
 
 ### Environment
 
-The following environment variables are required for the engine to function properly:
+The **WUKONG** engine requires certain **environment variables** to be set for proper operation.
+These variables are defined in the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values.
 
-```env
-# OpenAI API key for LLM interaction
-OPENAI_API_KEY=YOUR_API_KEY
-```
+For **local development/usage**, create a `.env` file in the root directory of the project and copy the contents from `.env.example` into it, replacing the placeholder values with the real ones for all the environment variables.
 
-For local development/usage, create a `.env` file in the root directory of the project and add the required variables there.
-
-For production/deployment, set these variables directly in your server/cloud environment.
+For **production/deployment**, set these variables directly in your server/cloud environment.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -112,7 +108,9 @@ your-data-dir/
 │   │   ├── document1.txt
 │   │   ├── document2.txt
 │   │   └── ...
-└── data_model.json
+│   └── ...
+├── data_model.json
+└── ...
 ```
 
 The `docs/text/` directory should contain the **plain text** files to be processed (with the `.txt` extension).
@@ -155,7 +153,7 @@ The resulting **knowledge graph** files will be exported to the `<path/to/data_d
 The **WUKONG** engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
 
 ```
-wukong_engine/
+src/wukong_engine/
 ├── __main__.py  # Entry point
 ├── config/      # Configuration and environment
 ├── core/        # Core logic for the engine pipeline
