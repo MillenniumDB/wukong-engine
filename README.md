@@ -14,6 +14,7 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
   - [Data Directory](#data-directory)
   - [Engine Configuration](#engine-configuration)
   - [Running the Engine](#running-the-engine)
+  - [Output Knowledge Graph](#output-knowledge-graph)
 - [📦 Package Structure](#-package-structure)
 - [🗺️ Roadmap](#️-roadmap)
 
@@ -105,8 +106,8 @@ The expected structure is as follows:
 your-data-dir/
 ├── docs/
 │   ├── text/
-│   │   ├── document1.txt
-│   │   ├── document2.txt
+│   │   ├── document_1.txt
+│   │   ├── document_2.txt
 │   │   └── ...
 │   └── ...
 ├── data_model.json
@@ -144,7 +145,19 @@ python -m wukong_engine <path/to/data_dir>
 
 After executing the command, the engine will process the **documents** in the specified data directory and generate a **knowledge graph** based on the provided **data model**. This process may take some time depending on the size/number of documents and the complexity of the data model (from a few seconds to multiple hours or longer).
 
-The resulting **knowledge graph** files will be exported to the `<path/to/data_dir>/exports/` directory.
+### Output Knowledge Graph
+
+The resulting **knowledge graph** will contain all the extracted entities and relations specified in the **data model**, as well as the following **special entities**:
+
+- `Document`: Represents the original documents.
+- `Chunk`: Represents the text chunks obtained from the original documents, which are used for extracting the user-defined entities and relations.
+
+Additionally, the graph will contain the following **special relations**:
+
+- `ChunkOf`: Links the `Chunk` entities to their corresponding `Document` entities.
+- `ExtractedFrom`: Links user-defined entities from the data model to the respective `Chunk` or `Document` entities from where they were extracted.
+
+The output files for the **knowledge graph** will be exported to the `<path/to/data_dir>/exports/` directory.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

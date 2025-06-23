@@ -267,10 +267,10 @@ def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) 
     cleaned_entities = []  # List to store cleaned entities
     for entity in entities:
         valid_entity = True
-        for property_name, property_data in entity_info['properties'].items():
+        for property_name, property_data in entity_info.get('properties', {}).items():
             # Get the property value and convert it to a string
             property_value = str(entity.get(property_name, 'NULL'))  # Get the property value
-            if property_data['type'] in ('integer', 'float', 'bool'):
+            if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
                 property_value = str(property_value)
 
             # Make sure all null/invalid values are detected
@@ -313,10 +313,10 @@ def clean_relations(
     cleaned_relations = []  # List to store cleaned relations
     for relation in relations:
         valid_required_properties = True
-        for property_name, property_data in relation_info['properties'].items():
+        for property_name, property_data in relation_info.get('properties', {}).items():
             # Get the property value and convert it to a string
             property_value = str(relation.get(property_name, 'NULL'))  # Get the property value
-            if property_data['type'] in ('integer', 'float', 'bool'):
+            if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
                 property_value = str(property_value)
 
             # Make sure all null/invalid values are detected
@@ -378,11 +378,11 @@ def remove_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[
         original_entity = entities[int(match_idx)]  # Original entity that is a duplicate match
 
         # Merge the new entity with the original one
-        for key in entity_info['properties']:
+        for key in entity_info.get('properties', {}):
             original_entity[key] = merge_property_values(
                 original_entity[key],
                 entity[key],
-                entity_info['properties'][key],
+                entity_info.get('properties', {})[key],
             )
 
         # Gather all references to partial entities
@@ -451,7 +451,7 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
                 # Primary key is not defined: do not deduplicate
                 if not primary_key:
                     # Consider the relation unique if at least one property is not NULL
-                    if any(relation[prop] != 'NULL' for prop in relation_info['properties']):
+                    if any(relation[prop] != 'NULL' for prop in relation_info.get('properties', {})):
                         unique_relations.append(relation)
                     continue  # Next relation
 
@@ -470,17 +470,16 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
             original_relation = relations[int(match_idx)]  # Original relation that is a duplicate match
 
             # Merge the new relation with the original one
-            for key in relation_info['properties']:
+            for key in relation_info.get('properties', {}):
                 original_relation[key] = merge_property_values(
                     original_relation[key],
                     relation[key],
-                    relation_info['properties'][key],
+                    relation_info.get('properties', {})[key],
                 )
 
             # Gather all references to partial relations
-            if (
-                len(relation_info['properties']) > 0
-            ):  # Skip if there are no properties, as no new information is provided by the duplicates
+            # (Skip if there are no properties, as no new information is provided by the duplicates)
+            if len(relation_info.get('properties', {})) > 0:
                 original_relation['_ReferenceIds'].extend(relation['_ReferenceIds'])
 
     # Return the list of unique relations

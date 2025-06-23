@@ -178,13 +178,13 @@ def generate_prompts(prompts_dir: Path) -> None:
 
     # Get context and input language (if none provided, the LLM must figure out the context)
     context = data_model.parameters.get('context', 'A context you must identify').removesuffix('.')
-    context += f'. The text is written in {data_model.parameters.get("input_language", "english")}'
+    context += f'. The text is written in {data_model.parameters.get("input_language", "english").lower()}'
 
     # Store general information about the data model
     model_config = {
         'role': role,
         'context': context,
-        'language': data_model.parameters.get('output_language', 'english'),
+        'language': data_model.parameters.get('output_language', 'english').lower(),
     }
 
     # Build entity prompts
@@ -218,10 +218,10 @@ def build_entity_prompt(
 
     # Gather property info
     properties = []
-    for property_name, property_info in entity_info['properties'].items():
+    for property_name, property_info in entity_info.get('properties', {}).items():
         prop_dict = {
             'name': property_name,
-            'type': property_info['type'],
+            'type': property_info.get('type', 'string'),
             'description': property_info['description'].removesuffix('.'),
             'example': property_info.get('example', '').removesuffix('.'),
             'options': property_info.get('options', []),
@@ -281,7 +281,7 @@ def build_relation_prompt(
     for property_name, property_info in relation_info.get('properties', {}).items():
         prop_dict = {
             'name': property_name,
-            'type': property_info['type'],
+            'type': property_info.get('type', 'string'),
             'description': property_info['description'].removesuffix('.'),
             'example': property_info.get('example', '').removesuffix('.'),
             'options': property_info.get('options', []),
@@ -301,10 +301,6 @@ def build_relation_prompt(
             'If not found, this value must be "NULL". Do not use the example property values as placeholders.'
         )
         prop_object_str += f'\n{spaces * " "}"{prop["name"]}": Value of type \'{prop["type"]}\'. // {prop["description"]}. {values_str}{not_found_str}'
-
-    # If there are no properties, remove the properties object section from the prompt
-    if not properties:
-        prop_object_str = ''
 
     # Create a relation prompt for each combination of origin and target
     origin_entities = relation_info['origin']

@@ -49,7 +49,7 @@ The sub-packages contain modules that serve the following purposes:
 The configuration for the **WUKONG** engine is managed inside the `config/` directory (in the root of the project).
 The configuration is currently defined in a single file:
 
-`config.toml`: Defines customizable behavior for the tool, such as choosing which steps of the pipeline to execute, among other functional parameters.
+- `config.toml`: Defines customizable behavior for the tool, such as choosing which steps of the pipeline to execute, among other functional parameters.
 
 The details for the engine configuration can be found in the [Configuration](./configuration.md) documentation.
 
@@ -58,9 +58,9 @@ The details for the engine configuration can be found in the [Configuration](./c
 ## 🗂️ Data
 
 The **WUKONG** engine processes documents and generates a knowledge graph based on a data model defined by the user.
-To achieve this, the user must provide a data directory with a specific structure, containing the documents and the data model.
+To achieve this, the user must provide a data directory with a specific structure, containing the **documents** and the **data model**.
 
-For testing purposes, an example data directory is provided inside the `data/` directory, containing the following:
+For testing purposes, an **example** data directory is provided inside the `data/` directory, containing the following:
 
 ```
 data/example/
