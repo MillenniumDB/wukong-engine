@@ -10,6 +10,7 @@ This document describes the expected data model format for a `data_model.json` f
 - [🧩 Entities](#-entities)
 - [🔗 Relations](#-relations)
 - [💡 Data Model Example](#-data-model-example)
+- [Later](#later)
 
 ## 🧾 Data Model Schema
 
@@ -284,3 +285,7 @@ Example of the `relations` section in a data model:
 A full example of a properly formatted data model is inside the provided [Data Model Example File](../data/example/data_model.json), located in `data/example/data_model.json`.
 
 [📚 Back to Table of Contents](#-table-of-contents)
+
+## Later
+
+- use tables instead

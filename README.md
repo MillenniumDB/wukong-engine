@@ -1,5 +1,5 @@
 <!-- omit from toc -->
-# WUKONG Engine
+# 🧰 WUKONG Engine
 
 Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.
 
@@ -17,11 +17,11 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
   - [Output Knowledge Graph](#output-knowledge-graph)
 - [📦 Package Structure](#-package-structure)
 - [🗺️ Roadmap](#️-roadmap)
+- [Later](#later)
 
 ## 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
 
-The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **data model**.
-It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI assistants**.
+The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **data model**. It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI assistants**.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -29,7 +29,7 @@ It leverages the power of **Large Language Models (LLMs)** to extract entities a
 
 ### Pre-requisites
 
-Before setting up the **WUKONG** engine, ensure you have the following installed:
+Before setting up the project, ensure you have the following software installed:
 
 - **Python 3.13+**
 
@@ -49,11 +49,11 @@ Before setting up the **WUKONG** engine, ensure you have the following installed
 - **Docker** (optional)
 
   For containerization and running the engine in a consistent environment.
-  Install Docker by ...TODO: provide instructions or link to the Docker installation guide.
+  Install Docker by ...
 
 ### Installation
 
-To set up the **WUKONG** engine, follow these steps:
+To set up the project, follow these steps:
 
 1. Clone the repository and navigate to the project directory:
 
@@ -85,12 +85,9 @@ python -m pip install -e .  # Install the package in editable mode
 
 ### Environment
 
-The **WUKONG** engine requires certain **environment variables** to be set for proper operation.
-These variables are defined in the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values.
+The project requires certain **environment variables** to be set for proper operation. Refer to the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values for the available environment variables.
 
-For **local development/usage**, create a `.env` file in the root directory of the project and copy the contents from `.env.example` into it, replacing the placeholder values with the real ones for all the environment variables.
-
-For **production/deployment**, set these variables directly in your server/cloud environment.
+For more information on these environment variables, see the dedicated section inside the [Configuration](docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -98,11 +95,11 @@ For **production/deployment**, set these variables directly in your server/cloud
 
 ### Data Directory
 
-To run the **WUKONG** engine, a data directory containing the **data model** and the **documents** to be processed is required.
+To run the engine, a data directory containing the **data model** and the **documents** to be processed is required.
 This data directory must follow a specific structure to be recognized as valid by the engine.
 The expected structure is as follows:
 
-```
+```sh
 your-data-dir/
 ├── docs/
 │   ├── text/
@@ -123,14 +120,14 @@ An **example** data directory is provided for testing purposes, located in `data
 
 ### Engine Configuration
 
-The **WUKONG** engine can be configured by editing the `config.toml` file that is present in the `config/` directory of the project.
+The engine can be configured by editing the `config.toml` file that is present in the `config/` directory of the project.
 The configuration file comes with default settings to run the engine normally, but you can customize it to suit your needs.
 
 For more information on the available configuration options, refer to the [Configuration](docs/configuration.md) documentation.
 
 ### Running the Engine
 
-After setting up a **data directory** and looking at the **configuration**, you can run the **WUKONG** engine using the following command (from the root of the project):
+After setting up a **data directory** and looking at the **configuration**, you can run the engine using the following command (from the root of the project):
 
 ```sh
 poetry run python -m wukong_engine <path/to/data_dir>
@@ -163,9 +160,9 @@ The output files for the **knowledge graph** will be exported to the `<path/to/d
 
 ## 📦 Package Structure
 
-The **WUKONG** engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
+The engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
 
-```
+```sh
 src/wukong_engine/
 ├── __main__.py  # Entry point
 ├── config/      # Configuration and environment
@@ -191,3 +188,8 @@ TODO: Reference CHANGELOG and development.
 - [ ] Publish to PyPI
 
 [📚 Back to Table of Contents](#-table-of-contents)
+
+## Later
+
+- Roadmap
+- ref to development, changelog, contributing, code of conduct

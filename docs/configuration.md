@@ -1,17 +1,33 @@
 <!-- omit from toc -->
 # ⚙️ Configuration
 
-This document provides an overview of the configuration options available for the **WUKONG** engine.
+This document provides an overview of the configuration options available for the project.
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
-- [🧾 Configuration File](#-configuration-file)
+- [🌍 Environment Variables](#-environment-variables)
+- [🔧 Engine Configuration](#-engine-configuration)
 - [➡️ Pipeline Steps](#️-pipeline-steps)
 - [🎛️ Engine Parameters](#️-engine-parameters)
+- [Later](#later)
 
-## 🧾 Configuration File
+## 🌍 Environment Variables
 
-The **WUKONG** engine uses a [TOML](https://toml.io/en/) configuration file to define its settings, which is located at `config/config.toml`. This file has the following structure:
+The project uses **environment variables** to store secrets and configuration values that are required for the engine to function properly. The following variables are available:
+
+| Variable         | Required | Description                        | Default / Example    |
+| ---------------- | -------- | ---------------------------------- | -------------------- |
+| `OPENAI_API_KEY` | ✅        | OpenAI API key for LLM interaction | `sk-xxxxxxxxxxxxxxx` |
+
+These variables are defined in the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values.
+
+For **local development/usage**, create a `.env` file in the root directory of the project and copy the contents from `.env.example` into it, replacing the placeholder values with the real ones for all the environment variables.
+
+For **production/deployment**, set these variables directly in your server/cloud environment.
+
+## 🔧 Engine Configuration
+
+The engine uses a [TOML](https://toml.io/en/) configuration file to define its settings, which is located at `config/config.toml`. This file has the following structure:
 
 ```toml
 [pipeline]
@@ -29,7 +45,7 @@ The `pipeline` section defines the steps of the engine pipeline to be executed, 
 
 ## ➡️ Pipeline Steps
 
-The `pipeline` section defines the steps that the **WUKONG** engine will execute during its processing. Each step can be enabled or disabled by setting its value to `true` or `false`. The available steps are:
+The `pipeline` section defines the steps that the engine will execute during its processing. Each step can be enabled or disabled by setting its value to `true` or `false`. The available steps are:
 
 - `document_processing`: Processing of the user-provided documents, including text extraction and chunking. `[bool]`
 
@@ -51,7 +67,7 @@ The `pipeline` section defines the steps that the **WUKONG** engine will execute
 
 ## 🎛️ Engine Parameters
 
-The `parameters` section contains various parameters that control the behavior of the **WUKONG** engine. The available parameters are:
+The `parameters` section contains various parameters that control the behavior of the engine. The available parameters are:
 
 - `export_formats`: List of available knowledge graph formats for exporting the results. The currently supported formats are: `"mdb"` **(MillenniumDB Quad Model File)**, `"neo4j"` **(Neo4j CSV Files)**, `"json"` **(JSON Files)**. `[string array]`
 
@@ -66,3 +82,7 @@ The `parameters` section contains various parameters that control the behavior o
   **Default:** `10`
 
 [📚 Back to Table of Contents](#-table-of-contents)
+
+## Later
+
+- tables
