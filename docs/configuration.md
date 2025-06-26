@@ -9,7 +9,6 @@ This document provides an overview of the configuration options available for th
 - [🔧 Engine Configuration](#-engine-configuration)
 - [➡️ Pipeline Steps](#️-pipeline-steps)
 - [🎛️ Engine Parameters](#️-engine-parameters)
-- [Later](#later)
 
 ## 🌍 Environment Variables
 
@@ -47,21 +46,12 @@ The `pipeline` section defines the steps of the engine pipeline to be executed, 
 
 The `pipeline` section defines the steps that the engine will execute during its processing. Each step can be enabled or disabled by setting its value to `true` or `false`. The available steps are:
 
-- `document_processing`: Processing of the user-provided documents, including text extraction and chunking. `[bool]`
-
-  **Default:** `true`
-
-- `entity_extraction`: Extraction and processing of entities from the documents, converting them into **JSON** objects. The processing includes cleaning and deduplication of entities. `[bool]`
-
-  **Default:** `true`
-
-- `relation_extraction`: Extraction and processing of relations from the documents, converting them into **JSON** objects. The processing includes cleaning and deduplication of relations. `[bool]`
-
-  **Default:** `true`
-
-- `export_graph`: Exporting the extracted entities and relations into various knowledge graph formats, such as **MillenniumDB**, **Neo4j**, and **JSON**. `[bool]`
-
-  **Default:** `true`
+| Step                  | Description                                                                                       | Type   | Default |
+| --------------------- | ------------------------------------------------------------------------------------------------- | ------ | ------- |
+| `document_processing` | Processing of the user-provided documents, including text extraction and chunking.                | `bool` | `true`  |
+| `entity_extraction`   | Extraction and processing of entities from the documents, converting them into **JSON** objects.  | `bool` | `true`  |
+| `relation_extraction` | Extraction and processing of relations from the documents, converting them into **JSON** objects. | `bool` | `true`  |
+| `export_graph`        | Exporting the extracted entities and relations into various knowledge graph formats.              | `bool` | `true`  |
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -69,20 +59,10 @@ The `pipeline` section defines the steps that the engine will execute during its
 
 The `parameters` section contains various parameters that control the behavior of the engine. The available parameters are:
 
-- `export_formats`: List of available knowledge graph formats for exporting the results. The currently supported formats are: `"mdb"` **(MillenniumDB Quad Model File)**, `"neo4j"` **(Neo4j CSV Files)**, `"json"` **(JSON Files)**. `[string array]`
-
-  **Default:** `["mdb", "neo4j", "json"]`
-
-- `max_tokens`: Maximum number of **tokens** contained by each document chunk. This is used to control the size of the text processed by each **LLM API call**. Adjust this value based on the LLM's context window, API request/response size limits and your specific needs. `[integer]`
-
-  **Default:** `2000`
-
-- `max_worker_threads`: Maximum number of **worker threads** to use for **LLM API calls**. This controls the concurrency of API requests to the LLM. Adjust this value based on your system's capabilities and the LLM API rate limits. `[integer]`
-
-  **Default:** `10`
+| Parameter            | Description                                                                                                                                                                                                                                                    | Type           | Default                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------------- |
+| `export_formats`     | List of available knowledge graph formats for exporting the results. The currently supported formats are: `"mdb"` **(MillenniumDB Quad Model File)**, `"neo4j"` **(Neo4j CSV Files)**, `"json"` **(JSON Files)**.                                              | `string array` | `["mdb", "neo4j", "json"]` |
+| `max_tokens`         | Maximum number of **tokens** contained by each document chunk. This is used to control the size of the text processed by each **LLM API call**. Adjust this value based on the LLM's context window, API request/response size limits and your specific needs. | `integer`      | `2000`                     |
+| `max_worker_threads` | Maximum number of **worker threads** to use for **LLM API calls**. This controls the concurrency of API requests to the LLM. Adjust this value based on your system's capabilities and the LLM API rate limits.                                                | `integer`      | `10`                       |
 
 [📚 Back to Table of Contents](#-table-of-contents)
-
-## Later
-
-- tables

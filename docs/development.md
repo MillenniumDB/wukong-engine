@@ -6,10 +6,6 @@ This document outlines the development practices and setup for the project.
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [⚙️ Setup](#️-setup)
-  - [Pre-requisites](#pre-requisites)
-  - [Installation](#installation)
-  - [Environment](#environment)
-  - [Running the Project](#running-the-project)
 - [🎨 Code Style](#-code-style)
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
@@ -18,59 +14,7 @@ This document outlines the development practices and setup for the project.
 
 ## ⚙️ Setup
 
-### Pre-requisites
-
-Before setting up the project for development, ensure you have the following installed:
-
-- **Python 3.13+**
-
-  The engine is built to support `Python 3.13` or higher.
-  A very useful tool for managing **Python** versions is [pyenv](https://github.com/pyenv/pyenv).
-
-- **Poetry 2.1+**
-
-  For managing dependencies, virtual environments and packaging.
-  Install by following the [Poetry installation guide](https://python-poetry.org/docs/#installation).
-
-- **Git**
-
-  For version control and cloning the repository.
-
-### Installation
-
-To set up the project, follow these steps:
-
-1. Clone the repository and navigate to the project directory:
-
-```sh
-git clone https://github.com/MillenniumDB/wukong-engine.git
-cd wukong-engine
-```
-
-2. Install dependencies:
-
-First, make sure that you have the correct **Python** version set up in your environment (this is simple with **pyenv** commands).
-
-Now run the following command in the project directory.
-
-```sh
-poetry install
-```
-
-### Environment
-
-The project requires certain **environment variables** to be set for proper operation.
-These variables are defined in the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values.
-
-For development, create a `.env` file in the root directory of the project and copy the contents from `.env.example` into it, replacing the placeholder values with the real ones for all the environment variables.
-
-If new environment variables are required in the future, they should be added to the `.env.example` file and documented in their dedicated section inside the [Configuration](./configuration.md) documentation.
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
-### Running the Project
-
-The
+To set up the project for development, follow the steps outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations (optional or not)** provided there.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -94,13 +38,14 @@ The project follows multiple code style conventions and practices to ensure code
 
 ## 🧾 Code Documentation
 
+(Complete later...)
 Docstrings should follow the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) for consistency and clarity.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## 🧪 Testing
 
-A
+Currently, the project **does not implement** testing functionalities. For now, making sure that the code works well with the provided example data directory is sufficient. The example directory is located at `data/example/`.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
