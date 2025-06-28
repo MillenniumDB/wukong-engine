@@ -70,7 +70,7 @@ This project uses a simple branching model:
 
 Please create your feature branches **from `dev`**, and open pull requests **targeting `dev`**.
 
-> 🔗 For branch naming conventions and contribution workflow, see our [Contributions Guide](../.github/CONTRIBUTING.md).
+> 🔗 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

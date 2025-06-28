@@ -1,7 +1,7 @@
 ---
 name: 💡 Feature Request
 about: Suggest a new feature or improvement
-title: "[Feature] <short summary>"
+title: "Short description of the requested feature (e.g. Add support for MDB export format)"
 labels: enhancement
 assignees: ''
 

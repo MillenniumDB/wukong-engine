@@ -1,7 +1,7 @@
 ---
-name: 🚀 Pull Request
+name: 🔃 Generic
 about: Describe the changes you made and why
-title: "[PR] <short summary>"
+title: "<pr-type>: short description"
 labels: ''
 assignees: ''
 

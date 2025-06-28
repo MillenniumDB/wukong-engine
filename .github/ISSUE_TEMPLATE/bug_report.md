@@ -1,7 +1,7 @@
 ---
 name: 🐛 Bug Report
 about: Report a bug or unexpected behavior in the project
-title: "[Bug] <short summary>"
+title: "Describe the bug briefly (e.g. Crash when loading config)"
 labels: bug
 assignees: ''
 

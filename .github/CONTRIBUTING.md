@@ -6,7 +6,7 @@ Thanks for your interest in contributing! Here's how you can help and what to kn
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🚀 Getting Started](#-getting-started)
-- [🐛 Reporting Bugs \& 💡 Suggesting Features](#-reporting-bugs---suggesting-features)
+- [🐛 Reporting Bugs / 💡 Suggesting Features](#-reporting-bugs---suggesting-features)
 - [✅ Submitting Changes](#-submitting-changes)
 - [🏷️ Naming Conventions](#️-naming-conventions)
   - [Commit Messages](#commit-messages)
@@ -38,13 +38,13 @@ git checkout -b my-feature-branch
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🐛 Reporting Bugs & 💡 Suggesting Features
+## 🐛 Reporting Bugs / 💡 Suggesting Features
 
 Before making changes or submitting a pull request, please open an **Issue**:
 
-- To **report a bug**, include steps to reproduce it and the expected behavior.
-- To **suggest a new feature or improvement**, briefly describe the problem it solves.
-- Use the available **issue templates** to help structure your submission.
+- To **report a bug**, include steps to reproduce it and the expected behavior
+- To **suggest a new feature or improvement**, briefly describe the problem it solves
+- Use the available **issue templates** provided in **GitHub** to help structure your submission
 
 This helps us track ideas, avoid duplicates, and prioritize development.
 
@@ -54,19 +54,20 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Pull the latest changes** from the `dev` branch and resolve any merge conflicts.
-- ✅ **Follow the code style guidelines**.
-- ✅ **Add or update tests** for new features or bug fixes.
-- ✅ **Ensure all tests pass**.
-- ✅ **Run the tool locally** to confirm it works as expected.
-- ✅ **Include clear and descriptive commit messages**.
-- ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files).
+- ✅ **Pull the latest changes** from the `dev` branch and resolve any merge conflicts
+- ✅ **Follow the code style guidelines**
+- ✅ **Add or update tests** for new features or bug fixes
+- ✅ **Ensure all tests pass**
+- ✅ **Run the tool locally** to confirm it works as expected
+- ✅ **Include clear and descriptive commit messages**
+- ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
 
 Once ready, open a **Pull Request** from your **feature branch** to the `dev` branch with:
 
 - A clear title and summary of the changes
-- Any relevant issue numbers (e.g. #42)
+- Reference to any **relevant issue numbers** (e.g. Closes #42)
 - Screenshots or output if useful for understanding the change
+- Use the available **PR templates** provided in **GitHub** to help structure your submission
 
 Your **PR** will be reviewed by a maintainer. Please be patient and open to feedback!
 
@@ -123,14 +124,14 @@ Here are the available values for `<type>` with some branch name examples:
 
 For naming **pull requests**, use the following convention:
 
-`<type>: short description <optional-issue-number>`
+`<type>: short description`
 
-Here, `<type>` can be any of the **commit message types** listed previously, and `<optional-issue-number>` is used to indicate the **GitHub Issue** this **PR** addresses (if applicable), with the following format: `(#<issue-number>)`.
+Here, `<type>` can be any of the **commit message types** listed previously.
 
 Example **PR** titles:
 
 - `feat: add support for custom data models`
-- `fix: resolve issue with document parsing (#123)`
+- `fix: resolve issue with document parsing`
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

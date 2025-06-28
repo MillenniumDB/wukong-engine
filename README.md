@@ -16,8 +16,8 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
   - [Running the Engine](#running-the-engine)
   - [Output Knowledge Graph](#output-knowledge-graph)
 - [📦 Package Structure](#-package-structure)
-- [🗺️ Roadmap](#️-roadmap)
 - [🤝 Contributing](#-contributing)
+- [🗺️ Roadmap](#️-roadmap)
 
 ## 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
 
@@ -45,11 +45,6 @@ Before setting up the project, ensure you have the following software installed:
 - **Git**
 
   For version control and cloning the repository.
-
-- **Docker** (optional)
-
-  For containerization and running the engine in a consistent environment.
-  Install Docker by ...
 
 ### Installation
 
@@ -179,6 +174,17 @@ src/wukong_engine/
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
+## 🤝 Contributing
+
+Contributions are welcome!
+Please review the following resources:
+
+- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+- [Contribution Guide](.github/CONTRIBUTING.md)
+- [Development Guidelines](./docs/development.md)
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 🗺️ Roadmap
 
 TODO: Reference CHANGELOG.
@@ -187,16 +193,5 @@ TODO: Reference CHANGELOG.
 - [ ] Add CLI with subcommands
 - [ ] More robust validation
 - [ ] Publish to PyPI
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
-## 🤝 Contributing
-
-Contributions are welcome!
-Please review the following resources:
-
-- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
-- [Contributions Guide](.github/CONTRIBUTING.md)
-- [Development Guidelines](./docs/development.md)
 
 [📚 Back to Table of Contents](#-table-of-contents)
