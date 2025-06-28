@@ -1,11 +1,12 @@
 <!-- omit from toc -->
 # 🤝 Contributing to the Project
 
-Thanks for your interest in contributing! Here's how you can help and what to know before opening a **PR**.
+Thanks for your interest in contributing! Here's how you can help and what to know before you start.
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🚀 Getting Started](#-getting-started)
+- [🐛 Reporting Bugs \& 💡 Suggesting Features](#-reporting-bugs---suggesting-features)
 - [✅ Submitting Changes](#-submitting-changes)
 - [🏷️ Naming Conventions](#️-naming-conventions)
   - [Commit Messages](#commit-messages)
@@ -37,9 +38,21 @@ git checkout -b my-feature-branch
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
+## 🐛 Reporting Bugs & 💡 Suggesting Features
+
+Before making changes or submitting a pull request, please open an **Issue**:
+
+- To **report a bug**, include steps to reproduce it and the expected behavior.
+- To **suggest a new feature or improvement**, briefly describe the problem it solves.
+- Use the available **issue templates** to help structure your submission.
+
+This helps us track ideas, avoid duplicates, and prioritize development.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## ✅ Submitting Changes
 
-Before submitting your contribution, please make sure to:
+Before submitting a contribution, please make sure to:
 
 - ✅ **Pull the latest changes** from the `dev` branch of the original repository and resolve any merge conflicts.
 - ✅ **Follow the code style guidelines**.
@@ -52,7 +65,7 @@ Before submitting your contribution, please make sure to:
 Once ready, open a **Pull Request** from your **feature branch** to the `dev` branch of the original repository with:
 
 - A clear title and summary of the changes
-- Any relevant issue numbers (e.g. Closes #42)
+- Any relevant issue numbers (e.g. #42)
 - Screenshots or output if useful for understanding the change
 
 Your **PR** will be reviewed by a maintainer. Please be patient and open to feedback!
