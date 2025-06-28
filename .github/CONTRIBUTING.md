@@ -54,7 +54,7 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Pull the latest changes** from the `dev` branch of the original repository and resolve any merge conflicts.
+- ✅ **Pull the latest changes** from the `dev` branch and resolve any merge conflicts.
 - ✅ **Follow the code style guidelines**.
 - ✅ **Add or update tests** for new features or bug fixes.
 - ✅ **Ensure all tests pass**.
@@ -62,7 +62,7 @@ Before submitting a contribution, please make sure to:
 - ✅ **Include clear and descriptive commit messages**.
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files).
 
-Once ready, open a **Pull Request** from your **feature branch** to the `dev` branch of the original repository with:
+Once ready, open a **Pull Request** from your **feature branch** to the `dev` branch with:
 
 - A clear title and summary of the changes
 - Any relevant issue numbers (e.g. #42)
