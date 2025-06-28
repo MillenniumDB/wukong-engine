@@ -36,7 +36,7 @@ Before setting up the project, ensure you have the following software installed:
   The engine requires `Python 3.13` or higher.
   A very useful tool for managing **Python** versions is [pyenv](https://github.com/pyenv/pyenv).
 
-- **Poetry 2.1+** (optional but recommended)
+- **Poetry 2.1+** (recommended)
 
   For managing dependencies, virtual environments and packaging.
   Install by following the [Poetry installation guide](https://python-poetry.org/docs/#installation).

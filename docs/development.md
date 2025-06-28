@@ -5,16 +5,28 @@ This document outlines the development practices and setup for the project.
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
-- [⚙️ Setup](#️-setup)
+- [🚀 Getting Started](#-getting-started)
 - [🎨 Code Style](#-code-style)
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
-- [📦 Package Structure](#-package-structure)
-- [Later](#later)
+- [🌿 Branching Strategy](#-branching-strategy)
+- [🧱 Project Structure](#-project-structure)
+- [🤝 Contributing](#-contributing)
 
-## ⚙️ Setup
+## 🚀 Getting Started
 
-To set up the project for development, follow the steps outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations (optional or not)** provided there.
+To set up the project for development, follow these steps:
+
+1. Perform the general set up for the project outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations (optional or not)** provided there.
+
+2. Switch to the development branch and create a new feature branch:
+
+```sh
+git checkout dev  # Make sure you're on the dev branch
+git checkout -b my-feature-branch
+```
+
+Now you can start development inside your branch. Make sure to follow the development practices described in the sections below.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -22,7 +34,7 @@ To set up the project for development, follow the steps outlined in the [README]
 
 The project follows multiple code style conventions and practices to ensure code quality, extensibility and maintainability. The following tools are used to enforce these standards:
 
-- **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through its [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields in your `settings.json` file to make sure that **Ruff** is properly configured:
+- **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through its [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
 
 ```json
 "editor.formatOnSave": true,
@@ -49,26 +61,29 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 📦 Package Structure
+## 🌿 Branching Strategy
 
-The project is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
+This project uses a simple branching model:
 
-```sh
-src/wukong_engine/
-├── __main__.py  # Entry point
-├── config/      # Configuration and environment
-├── core/        # Core logic for the engine pipeline
-├── documents/   # Document pre-processing
-├── extraction/  # Data extraction logic
-├── graph/       # Graph database interaction
-├── llm/         # LLM interaction
-└── utils/       # Utility functions and shared components
-```
+- `main`: Stable release-ready code. Always production-safe.
+- `dev`: Active development branch. All feature branches should be based here.
+
+Please create your feature branches **from `dev`**, and open pull requests **targeting `dev`**.
+
+> 🔗 For branch naming conventions and contribution workflow, see our [Contributions Guide](../.github/CONTRIBUTING.md).
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🧱 Project Structure
+
+The project is organized into several directories and files, each serving a specific purpose.
 
 For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## Later
+## 🤝 Contributing
 
-- ref to contributing
+To contribute to this project — including code changes, documentation, or testing — please refer to our [Contributing Guide](../.github/CONTRIBUTING.md). It includes conventions for branches, commits, pull requests, and more.
+
+[📚 Back to Table of Contents](#-table-of-contents)

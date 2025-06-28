@@ -10,8 +10,8 @@ This document provides a detailed overview of the project structure.
 - [🗂️ Data](#️-data)
 - [🧪 Tests](#-tests)
 - [📖 Documentation](#-documentation)
+- [🐙 GitHub](#-github)
 - [🗃️ Project Files](#️-project-files)
-- [Later](#later)
 
 ## 💻 Source Code
 
@@ -97,9 +97,18 @@ The `README.md` file located in the root of the project contains an overview of 
 The extended documentation for the central aspects of the project is organized in the `docs/` directory, which includes:
 
 - `configuration.md`: Configuration file format and available options for engine configuration.
-- `data-model.md`: Data model schema and available options for specifying entities and relations.
+- `data-model.md`: Data model format and available options for specifying entities and relations.
 - `development.md`: Development guidelines, including code style and contribution practices.
 - `project-structure.md`: Project structure and organization of the source code.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🐙 GitHub
+
+The `.github/` directory contains repository-specific files used by **GitHub** to manage community standards and collaboration workflows. It currently includes:
+
+- `CONTRIBUTING.md`: Guidelines for contributing to the project, including how to set up the project for external contributors, naming conventions, and how to submit changes.
+- `CODE_OF_CONDUCT.md`: Code of conduct for contributors, outlining expected behavior and community standards.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -116,7 +125,3 @@ The root directory of the project contains several other files that serve specif
 - `.gitignore`: Specifies files and directories that should be ignored by **Git** for source control.
 
 [📚 Back to Table of Contents](#-table-of-contents)
-
-## Later
-
-- Add .github stuff
