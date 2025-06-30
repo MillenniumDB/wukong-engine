@@ -1,35 +1,45 @@
-## 📄 Description
+## 🧩 Type
 
-Please include a summary of the changes and the related issue. Explain the motivation and context.
-
-Closes #<issue_number> (if applicable)
-
-## 🧩 Type of Change
+_Select all types of changes that apply:_
 
 - [ ] ✨ **feat** – A new feature
 - [ ] 🐛 **fix** – A bug fix
-- [ ] 📝 **docs** – Documentation only changes
-- [ ] 🎨 **style** – Changes that do not affect meaning (white-space, formatting, missing semi-colons, etc.)
-- [ ] ♻️ **refactor** – Code changes that neither fix a bug nor add a feature
-- [ ] ✅ **test** – Adding or correcting tests
+- [ ] 📝 **docs** – Documentation-only changes
+- [ ] 🎨 **style** – Code style changes (white-space, formatting, etc.)
+- [ ] ♻️ **refactor** – Code refactoring that doesn't change behavior
+- [ ] ⚡️ **perf** – Performance improvements
+- [ ] ✅ **test** – Adding or updating tests
 - [ ] 🔧 **chore** – Routine maintenance tasks or tooling
-- [ ] 🚀 **perf** – Performance improvements
 - [ ] ⚙️ **build** – Changes that affect the build system or external dependencies
 - [ ] 🔁 **ci** – Changes to CI configuration files or scripts
 
-## 🧪 Testing
+> 🏷️ Use the following **PR Title Convention**: `<main-type>: short description`
+>
+> **Example:** `feat: add support for custom data models`
 
-Describe the tests that you ran to verify your changes. Provide instructions so others can reproduce.
+## 📄 Description
 
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] Manual testing
+Clearly describe what this **PR** does and why the change is needed.
+
+> If this **PR** addresses specific **issues**, please reference them here.
+>
+> **Example:** Closes #<issue_number>
 
 ## ✅ Checklist
 
-- [ ] My code follows the project’s style guidelines
-- [ ] I have performed a self-review of my own code
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my code
 - [ ] I have commented my code where necessary
-- [ ] I have made corresponding changes to the documentation
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] All new and existing tests pass
+- [ ] I have made corresponding changes to the documentation (if applicable)
+- [ ] I have added/updated tests, and they all pass (if applicable)
+- [ ] I have pulled the latest changes from `dev` and resolved any conflicts
+
+## 🧪 Testing
+
+Describe how this **PR** was tested and how a reviewer can verify it.
+
+If applicable, include the instructions and commands necessary for running the tests and validating the changes.
+
+## 🧠 Additional Notes
+
+_Add any additional information, screenshots, design notes, or context here._

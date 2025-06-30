@@ -1,36 +1,40 @@
 ---
 name: 🐛 Bug Report
-about: Report a bug or unexpected behavior in the project
+about: Report a bug or unexpected behavior
 title: "Describe the bug briefly (e.g. Crash when loading config)"
 labels: bug
 assignees: ''
-
 ---
 
-## Description
+## 🐞 Description
 
-A clear and concise description of what the bug is.
+Describe the bug clearly and concisely.
 
-## Steps to Reproduce
+## 🔁 Steps to Reproduce
 
-1. Go to '...'
-2. Run '...'
-3. See error
+1. ...
+2. ...
+3. ...
 
-## Expected Behavior
+## 💥 Expected vs. Actual Behavior
 
-What did you expect to happen?
+**Expected:**
+What you expected to happen.
 
-## Screenshots (optional)
+**Actual:**
+What actually happened.
 
-If applicable, add screenshots to help explain your problem.
+## 🧪 Environment
 
-## Environment
+- OS: (e.g. Windows 11, Ubuntu 22.04)
+- Python version: (e.g. 3.13)
+- Project version: (e.g. v0.1.0)
 
-- OS: [e.g. Windows 11, Ubuntu 22.04]
-- Python version: [e.g. 3.10]
-- Package version: [e.g. v0.1.2]
+## 📎 Additional Context
 
-## Additional Context
+Screenshots, logs, error messages, or any other information useful to debug the issue.
 
-Any other information that might help us debug the issue.
+## ✅ Checklist
+
+- [ ] I’ve searched for similar issues
+- [ ] I’ve tested with the latest version of the project

@@ -1,28 +1,33 @@
 ---
-name: 💡 Feature Request
-about: Suggest a new feature or improvement
+name: ✨ Feature Request
+about: Suggest a new feature or enhancement
 title: "Short description of the requested feature (e.g. Add support for MDB export format)"
 labels: enhancement
 assignees: ''
-
 ---
 
-## Summary
+## ✨ Description
 
-Briefly describe the feature or enhancement you're proposing.
+Describe the new feature or enhancement you'd like to see.
 
-## Motivation
+## 💡 Motivation
 
-Why would this feature be useful? What problem does it solve?
+Why is this feature useful? What problem does it solve?
 
-## Suggested Solution
+## 📋 Proposed Solution
 
-Do you have an idea of how it could be implemented?
+If you have a solution, describe how it could be implemented.
 
-## Alternatives Considered
+## 🔄 Alternatives Considered
 
-Have you considered any other approaches?
+Have you considered any alternative solutions or workarounds?
+Why did you decide against them?
 
-## Additional Context
+## 📎 Additional Context
 
 Add any other context, mockups, or references here.
+
+## ✅ Checklist
+
+- [ ] I’ve checked that this feature isn’t already requested
+- [ ] This feature is aligned with the project goals

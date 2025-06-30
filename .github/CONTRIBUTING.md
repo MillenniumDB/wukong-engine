@@ -67,7 +67,7 @@ Once ready, open a **Pull Request** from your **feature branch** to the `dev` br
 - A clear title and summary of the changes
 - Reference to any **relevant issue numbers** (e.g. Closes #42)
 - Screenshots or output if useful for understanding the change
-- Use the available **PR templates** provided in **GitHub** to help structure your submission
+- Use the available **PR template** provided in **GitHub** to help structure your submission
 
 Your **PR** will be reviewed by a maintainer. Please be patient and open to feedback!
 
