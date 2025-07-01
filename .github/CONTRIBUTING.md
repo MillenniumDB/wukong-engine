@@ -79,23 +79,23 @@ Your **PR** will be reviewed by a maintainer. Please be patient and open to feed
 
 For writing **commit messages**, use the following convention:
 
-`<optional-emoji> <type>: short description`
+`<optional-emoji> <type>(optional scope): short description`
 
 Here are the available values for `<type>` with some commit message examples:
 
-| Type       | Purpose                                              | Commit Example                                             |
-| ---------- | ---------------------------------------------------- | ---------------------------------------------------------- |
-| `feat`     | Introduces a new feature                             | `feat: add validator for user input`                       |
-| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing` |
-| `docs`     | Adds or improves documentation                       | `docs: update usage section in README`                     |
-| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`   |
-| `refactor` | Code refactoring that doesn't change behavior        | `refactor: simplify prompt generation logic`               |
-| `perf`     | Improves performance                                 | `perf: optimize text parsing with regex pre-compilation`   |
-| `test`     | Adds or modifies tests                               | `test: add edge case tests for LLM output parser`          |
-| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependencies in pyproject.toml`             |
-| `build`    | Changes that affect the build system or dependencies | `build: switch to poetry for package management`           |
-| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add GitHub Actions workflow for testing`              |
-| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`            |
+| Type       | Purpose                                              | Commit Example                                                   |
+| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
+| `feat`     | Introduces a new feature                             | `feat(api): add validator for user input`                        |
+| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing`       |
+| `docs`     | Adds or improves documentation                       | `docs(readme): improve usage section`                            |
+| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`         |
+| `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
+| `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
+| `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependencies in pyproject.toml`                   |
+| `build`    | Changes that affect the build system or dependencies | `build: switch to poetry for package management`                 |
+| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add GitHub Actions workflow for testing`                    |
+| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
 
 The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required. The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/).
 
@@ -124,14 +124,14 @@ Here are the available values for `<type>` with some branch name examples:
 
 For naming **pull requests**, use the following convention:
 
-`<type>: short description`
+`<type>(optional scope): short description`
 
 Here, `<type>` can be any of the **commit message types** listed previously.
 
 Example **PR** titles:
 
-- `feat: add support for custom data models`
-- `fix: resolve issue with document parsing`
+- `feat(core): add support for custom data models`
+- `fix(parsing): resolve issue with document parsing`
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

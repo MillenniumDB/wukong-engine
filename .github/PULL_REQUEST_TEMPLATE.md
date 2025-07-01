@@ -13,9 +13,9 @@ Select all types of changes that apply to this **PR**:
 - [ ] ⚙️ **build** – Changes that affect the build system or external dependencies
 - [ ] 🔁 **ci** – Changes to CI configuration files or scripts
 
-Use the following **naming convention** for the title of this **PR**: `<main-type>: short description`
+Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 
-**Example:** `feat: add support for custom data models`
+**Example:** `feat(core): add support for custom data models`
 
 ## 📄 Description
 
