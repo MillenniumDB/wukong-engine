@@ -72,7 +72,7 @@ def my_function(param1: int, param2: str) -> bool:
 
 ## 🧪 Testing
 
-Currently, the project **does not implement** testing functionalities. For now, making sure that the code works well with the provided example data directory is sufficient. The example directory is located at `data/example/`.
+Currently, the project **does not implement** testing functionalities. For now, making sure that the code works well with the provided **example data directory** is sufficient. The example directory is located at `data/example/`.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -83,7 +83,7 @@ The project uses a simple branching model:
 - `main`: Stable release-ready code. Always production-safe.
 - `dev`: Active development branch. All feature branches should be based here.
 
-Please create your feature branches **from `dev`**, and open pull requests **targeting `dev`**.
+Please create your feature branches **from** `dev`, and open pull requests **targeting** `dev`.
 
 > 🤝 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
 
