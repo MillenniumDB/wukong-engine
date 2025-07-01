@@ -1,6 +1,6 @@
 ## 🧩 Type
 
-Select all types of changes that apply:
+Select all types of changes that apply to this **PR**:
 
 - [ ] ✨ **feat** – A new feature
 - [ ] 🐛 **fix** – A bug fix
@@ -13,17 +13,17 @@ Select all types of changes that apply:
 - [ ] ⚙️ **build** – Changes that affect the build system or external dependencies
 - [ ] 🔁 **ci** – Changes to CI configuration files or scripts
 
-> 🏷️ Use the following **PR Title Convention**: `<main-type>: short description`
->
-> **Example:** `feat: add support for custom data models`
+Use the following **naming convention** for the title of this **PR**: `<main-type>: short description`
+
+**Example:** `feat: add support for custom data models`
 
 ## 📄 Description
 
-Clearly describe what this **PR** does and why the change is needed.
+Clearly describe what this **PR** does and why this change is needed.
 
-> 🔗 If this **PR** addresses specific **issues**, please reference them here.
->
-> **Example:** Closes #<issue_number>
+If this **PR** addresses specific **issues**, please reference them here with their respective **numbers**.
+
+**Example:** Closes #N
 
 ## ✅ Checklist
 
