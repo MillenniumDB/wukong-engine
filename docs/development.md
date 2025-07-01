@@ -50,8 +50,23 @@ The project follows multiple code style conventions and practices to ensure code
 
 ## 🧾 Code Documentation
 
-(Complete later...)
-Docstrings should follow the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) for consistency and clarity.
+The project uses **docstrings** to document **functions, classes, and modules**. This is crucial for maintaining code readability and understanding the purpose of each component. The **Ruff** linter configuration used in the project enforces these standards.
+
+These **docstrings** should follow the [Google Style Format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) for consistency and clarity. Here’s a brief example of this format, using a generic function:
+
+```python
+def my_function(param1: int, param2: str) -> bool:
+    """Brief description of the function.
+
+    Args:
+        param1: Description of the first parameter.
+        param2: Description of the second parameter.
+
+    Returns:
+        Description of the return value.
+    """
+    # Function implementation
+```
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -63,14 +78,14 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 ## 🌿 Branching Strategy
 
-This project uses a simple branching model:
+The project uses a simple branching model:
 
 - `main`: Stable release-ready code. Always production-safe.
 - `dev`: Active development branch. All feature branches should be based here.
 
 Please create your feature branches **from `dev`**, and open pull requests **targeting `dev`**.
 
-> 🔗 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
+> 🤝 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

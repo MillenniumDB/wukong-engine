@@ -82,7 +82,7 @@ python -m pip install -e .  # Install the package in editable mode
 
 The project requires certain **environment variables** to be set for proper operation. Refer to the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values for the available environment variables.
 
-> 🔗 For more information on these environment variables, see the dedicated section inside the [Configuration](docs/configuration.md) documentation.
+> 🌍 For more information on these environment variables, see the dedicated section inside the [Configuration](docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -112,14 +112,14 @@ The `data_model.json` file should define the desired **entity/relation schema** 
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
-> 🔗 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
+> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
 
 ### Engine Configuration
 
 The engine can be configured by editing the `config.toml` file that is present in the `config/` directory of the project.
 The configuration file comes with default settings to run the engine normally, but you can customize it to suit your needs.
 
-> 🔗 For more information on the available configuration options, refer to the [Configuration](docs/configuration.md) documentation.
+> ⚙️ For more information on the available configuration options, refer to the [Configuration](docs/configuration.md) documentation.
 
 ### Running the Engine
 
@@ -170,7 +170,7 @@ src/wukong_engine/
 └── utils/       # Utility functions and shared components
 ```
 
-> 🔗 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
+> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -187,11 +187,13 @@ Please review the following resources:
 
 ## 🗺️ Roadmap
 
-TODO: Reference CHANGELOG.
+Here are some planned features and improvements for future releases of the project:
 
-- [ ] Support YAML format for data models
-- [ ] Add CLI with subcommands
-- [ ] More robust validation
-- [ ] Publish to PyPI
+- [ ] Data validation for data model and configuration files
+- [ ] Data validation for LLM responses
+- [ ] Improved wrapper for LLM interaction
+- [ ] Support for PDF input documents
+
+> 📝 For a detailed list of past updates, see the [Changelog](./CHANGELOG.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)

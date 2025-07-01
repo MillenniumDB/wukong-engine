@@ -1,6 +1,6 @@
 ## 🧩 Type
 
-_Select all types of changes that apply:_
+Select all types of changes that apply:
 
 - [ ] ✨ **feat** – A new feature
 - [ ] 🐛 **fix** – A bug fix
@@ -21,7 +21,7 @@ _Select all types of changes that apply:_
 
 Clearly describe what this **PR** does and why the change is needed.
 
-> If this **PR** addresses specific **issues**, please reference them here.
+> 🔗 If this **PR** addresses specific **issues**, please reference them here.
 >
 > **Example:** Closes #<issue_number>
 
@@ -42,4 +42,4 @@ If applicable, include the instructions and commands necessary for running the t
 
 ## 🧠 Additional Notes
 
-_Add any additional information, screenshots, design notes, or context here._
+Add any additional information, screenshots, design notes, or context here.
