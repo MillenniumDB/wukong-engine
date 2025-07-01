@@ -6,7 +6,7 @@ Thanks for your interest in contributing! Here's how you can help and what to kn
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🚀 Getting Started](#-getting-started)
-- [🐛 Reporting Bugs / 💡 Suggesting Features](#-reporting-bugs---suggesting-features)
+- [🐛 Reporting Bugs / ✨ Suggesting Features](#-reporting-bugs---suggesting-features)
 - [✅ Submitting Changes](#-submitting-changes)
 - [🏷️ Naming Conventions](#️-naming-conventions)
   - [Commit Messages](#commit-messages)
@@ -38,7 +38,7 @@ git checkout -b my-feature-branch
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🐛 Reporting Bugs / 💡 Suggesting Features
+## 🐛 Reporting Bugs / ✨ Suggesting Features
 
 Before making changes or submitting a pull request, please open an **Issue**:
 
