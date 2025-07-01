@@ -108,11 +108,9 @@ your-data-dir/
 
 The `docs/text/` directory should contain the **plain text** files to be processed (with the `.txt` extension).
 
-The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format.
+The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format. For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
-
-> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
 
 ### Engine Configuration
 
@@ -136,6 +134,12 @@ source venv/bin/activate  # Activate the virtual environment (on Windows use `ve
 python -m wukong_engine <path/to/data_dir>
 ```
 
+As an example, if you want to run the engine on the provided **example data directory** (with **Poetry**), you can use the following command:
+
+```sh
+poetry run python -m wukong_engine data/example/
+```
+
 After executing the command, the engine will process the **documents** in the specified data directory and generate a **knowledge graph** based on the provided **data model**. This process may take some time depending on the size/number of documents and the complexity of the data model (from a few seconds to multiple hours or longer).
 
 ### Output Knowledge Graph
@@ -148,7 +152,7 @@ The resulting **knowledge graph** will contain all the extracted entities and re
 Additionally, the graph will contain the following **special relations**:
 
 - `ChunkOf`: Links the `Chunk` entities to their corresponding `Document` entities.
-- `ExtractedFrom`: Links user-defined entities from the data model to the respective `Chunk` or `Document` entities from where they were extracted.
+- `ExtractedFrom`: Links user-defined entities from the data model to the respective `Chunk` or `Document` entities from where they got extracted.
 
 The output files for the **knowledge graph** will be exported to the `<path/to/data_dir>/exports/` directory.
 
