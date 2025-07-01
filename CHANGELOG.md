@@ -1,3 +1,4 @@
+<!-- omit from toc -->
 # 📝 Changelog
 
 All notable changes to this project will be documented in this file.
@@ -5,11 +6,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!-- omit from toc -->
+## 📚 Table of Contents
+- [\[Unreleased\]](#unreleased)
+  - [✨ Added](#-added)
+
 ## [Unreleased]
 
 ### ✨ Added
 
-- Initial release of the **WUKONG Engine**.
+- Initial release of the **WUKONG** engine.
 - Data model schema for representing knowledge graphs.
 - Configuration file for engine settings.
 - Support for processing plain text documents.
@@ -23,3 +29,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Poetry** configuration for dependency management.
 - Linting and formatting setup with **Ruff** and **Pyright**.
 - Custom templates for pull requests and issues.
+
+[📚 Back to Table of Contents](#-table-of-contents)
