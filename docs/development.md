@@ -1,5 +1,5 @@
 <!-- omit from toc -->
-# 🛠️ Development
+# 🛠️ Development Guidelines
 
 This document outlines the development practices and setup for the project.
 

@@ -185,9 +185,9 @@ src/wukong_engine/
 Contributions are welcome!
 Please review the following resources:
 
-- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
-- [Contribution Guide](.github/CONTRIBUTING.md)
-- [Development Guidelines](./docs/development.md)
+- 📜 [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+- 🤝 [Contribution Guide](.github/CONTRIBUTING.md)
+- 🛠️ [Development Guidelines](./docs/development.md)
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -195,6 +195,7 @@ Please review the following resources:
 
 Here are some planned features and improvements for future releases of the project:
 
+- [ ] Support for more data types in the data model (e.g. `integer`, `float`, `bool`)
 - [ ] Data validation for data model and configuration files
 - [ ] Data validation for LLM responses
 - [ ] Improved wrapper for LLM interaction
