@@ -14,9 +14,9 @@ This document provides an overview of the configuration options available for th
 
 The project uses **environment variables** to store secrets and configuration values that are required for the engine to function properly. The following variables are available:
 
-| Variable         | Required | Description                        | Default / Example    |
-| ---------------- | :------: | ---------------------------------- | -------------------- |
-| `OPENAI_API_KEY` |    ✅     | OpenAI API key for LLM interaction | `sk-xxxxxxxxxxxxxxx` |
+| Variable         | Required | Description                         | Default / Example    |
+| ---------------- | :------: | ----------------------------------- | -------------------- |
+| `OPENAI_API_KEY` |    ✅     | OpenAI API key for LLM interaction. | `sk-xxxxxxxxxxxxxxx` |
 
 These variables are defined in the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values.
 
