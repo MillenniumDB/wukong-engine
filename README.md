@@ -108,7 +108,9 @@ your-data-dir/
 
 The `docs/text/` directory should contain the **plain text** files to be processed (with the `.txt` extension).
 
-The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format. For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
+The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format.
+
+> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
