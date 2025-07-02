@@ -22,9 +22,10 @@ class LevelFormatter(logging.Formatter):
 
 
 def setup_logging(level: int = logging.INFO) -> None:
-    """
-    Set up the logging configuration for the WUKONG engine.
-    This function is called to initialize the logging system.
+    """Set up global logging configuration.
+
+    Args:
+        level: The logging level to set for the root logger. Defaults to logging.INFO.
     """
     # Logging Handler
     handler = logging.StreamHandler()  # Outputs to console (stdout/stderr)

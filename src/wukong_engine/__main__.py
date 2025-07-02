@@ -10,9 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    """
-    Entry point for the WUKONG engine.
-    """
+    """Initialize the engine and execute the main pipeline."""
     # Define command line arguments
     parser = ArgumentParser(
         prog='wukong_engine',

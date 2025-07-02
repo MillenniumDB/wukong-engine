@@ -7,13 +7,13 @@ from wukong_engine.core.data_model import DataModel
 
 
 def normalize_text(text: str) -> str:
-    """Normalize text to a simpler representation
+    """Normalize the input text to a simplified form.
 
     Args:
-        text: _description_
+        text: Input text to be normalized.
 
     Returns:
-        _description_
+        Normalized text with stop words and non-alphanumeric characters removed, and converted to lowercase.
     """
     language = DataModel().parameters.get('output_language', 'english').lower()  # Get language
     stop_words = stopwords.words(language)  # Remove language-specific stop words
