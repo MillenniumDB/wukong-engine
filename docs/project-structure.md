@@ -39,7 +39,7 @@ The sub-packages contain modules that serve the following purposes:
 - `core`: Main orchestration, including the engine pipeline execution and data model loading/validation.
 - `documents`: Document preparation and pre-processing.
 - `extraction`: Data extraction from documents and post-processing (cleaning and deduplication).
-- `graph`: Exporting data to a knowledge graph format.
+- `graph`: Graph-related utilities such as exporting data to a knowledge graph format.
 - `llm`: Communication with LLM APIs and prompting.
 - `utils`: Shared utilities like logging, file/text helpers, and reusable design patterns.
 

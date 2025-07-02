@@ -42,7 +42,11 @@ line-length = 120
 indent-width = 4
 
 [tool.ruff.lint]
-select = ["ALL"]
+select = ["ALL"] # Select all rules as a base
+extend-select = [
+    "D401", # Require imperative mood for first line in docstrings
+    "D404", # First line in docstrings should not start with "This"
+]
 ignore = [
     "E501",   # Ignore long lines that cannot be auto-formatted
     "ANN401", # Allow ANY for type hints
@@ -52,7 +56,7 @@ ignore = [
     "TRY003", # Allow long custom exception messages
     "TRY400", # Allow logging exceptions without a traceback
     "TD",     # Free format for TODOs
-    "D",      # TODO: Configure when docstrings are added
+    "D100",   # TODO: Remove later
 ]
 
 [tool.ruff.lint.flake8-quotes]
@@ -61,6 +65,9 @@ multiline-quotes = "double"
 
 [tool.ruff.lint.mccabe]
 max-complexity = 15
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.ruff.format]
 quote-style = "single"

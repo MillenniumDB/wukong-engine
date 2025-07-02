@@ -9,13 +9,13 @@ logger = logging.getLogger(__name__)
 
 
 def load_text_data(file_path: Path) -> str:
-    """
-    Load text data from a specified file.
+    """Load text data from a specified file.
 
     Args:
-        file_path (Path): The path to the text file.
+        file_path: Path to the file from which to load text data.
+
     Returns:
-        str | None: The content of the file as a string, or None if the file does not exist or an error occurs.
+        The text data loaded from the file, or an empty string if the file does not exist or an error occurs.
     """
     try:
         if file_path.exists():
@@ -27,8 +27,13 @@ def load_text_data(file_path: Path) -> str:
 
 
 def load_json_data(file_path: Path) -> Any:
-    """
-    Load JSON data from a specified file.
+    """Load JSON data from a specified file.
+
+    Args:
+        file_path: Path to the file from which to load JSON data.
+
+    Returns:
+        The JSON data loaded from the file, or None if the file does not exist or an error occurs.
     """
     try:
         if file_path.exists():
@@ -40,8 +45,12 @@ def load_json_data(file_path: Path) -> Any:
 
 
 def save_text_data(data: str, file_path: Path, mode: str = 'w') -> None:
-    """
-    Save text data to a specified file.
+    """Save text data to a specified file.
+
+    Args:
+        data: The text data to save.
+        file_path: Path to the file where the text data should be saved.
+        mode: The mode in which to open the file. Defaults to 'w' for write.
     """
     try:
         if file_path.parent.exists():
@@ -54,8 +63,11 @@ def save_text_data(data: str, file_path: Path, mode: str = 'w') -> None:
 
 
 def save_json_data(data: Any, file_path: Path) -> None:
-    """
-    Save JSON data to a specified file.
+    """Save JSON data to a specified file.
+
+    Args:
+        data: The JSON data to save.
+        file_path: Path to the file where the JSON data should be saved.
     """
     try:
         if file_path.parent.exists():
@@ -68,8 +80,11 @@ def save_json_data(data: Any, file_path: Path) -> None:
 
 
 def delete_dir_contents(dir_path: Path, items_to_keep: list[str] | None = None) -> None:
-    """
-    Delete all contents (files and directories) within a specified directory.
+    """Delete the contents of a directory, optionally keeping specified items.
+
+    Args:
+        dir_path: Path to the directory whose contents should be deleted.
+        items_to_keep: A list of item names to keep in the directory. If None, all items will be deleted. Defaults to None.
     """
     try:
         if not dir_path.exists():
