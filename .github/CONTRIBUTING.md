@@ -92,12 +92,12 @@ Here are the available values for `<type>` with some commit message examples:
 | `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
 | `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
 | `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
-| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependencies in pyproject.toml`                   |
 | `build`    | Changes that affect the build system or dependencies | `build: switch to poetry for package management`                 |
 | `ci`       | Changes to CI/CD pipelines or configs                | `ci: add GitHub Actions workflow for testing`                    |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependencies in pyproject.toml`                   |
 | `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
 
-The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required. The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/).
+The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required. The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [VS Code Gitmoji Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
 
 ### Branch Names
 
