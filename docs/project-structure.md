@@ -107,7 +107,7 @@ The extended documentation for the central aspects of the project is organized i
 
 The `.github/` directory contains repository-specific files used by **GitHub** to manage community standards and collaboration workflows. It currently includes:
 
-- `CONTRIBUTING.md`: Guidelines for contributing to the project, including how to set up the project for external contributors, naming conventions, and how to submit changes.
+- `CONTRIBUTING.md`: Guidelines for contributing to the project, including how to set up the project for external contributors and how to submit changes.
 - `CODE_OF_CONDUCT.md`: Code of conduct for contributors, outlining expected behavior and community standards.
 - `ISSUE_TEMPLATE/`: Directory containing templates and settings for creating issues.
 - `PULL_REQUEST_TEMPLATE.md`: Template for creating pull requests.

@@ -45,7 +45,7 @@ For a detailed description of the entire project structure and its components, r
 
 The project follows multiple code style conventions and practices to ensure code quality, extensibility and maintainability. The following tools are used to enforce these standards:
 
-- **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through its [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
+- **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
 
 ```json
 "editor.formatOnSave": true,
@@ -96,7 +96,7 @@ The project uses a simple branching model:
 
 Please create your own branches **from** `develop`, and open pull requests **targeting** `develop`.
 
-> 🤝 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
+> 🤝 For more information about the general contribution guidelines, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -125,7 +125,7 @@ Here are the available values for `<type>` with some commit message examples:
 | `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
 
 The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required.
-The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [VS Code Gitmoji Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
+The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [Gitmoji VS Code Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
 
 ### Branch Names
 
