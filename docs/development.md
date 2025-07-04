@@ -56,13 +56,13 @@ The project follows multiple code style conventions and practices to ensure code
 
 - **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
 
-```json
-"editor.formatOnSave": true,
-"editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-},
-"ruff.configurationPreference": "filesystemFirst",
-```
+  ```json
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+  },
+  "ruff.configurationPreference": "filesystemFirst",
+  ```
 
 - **Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool.
 
