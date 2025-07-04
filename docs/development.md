@@ -6,6 +6,7 @@ This document outlines the development practices and setup for the project.
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🚀 Getting Started](#-getting-started)
+- [🧱 Project Structure](#-project-structure)
 - [🎨 Code Style](#-code-style)
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
@@ -14,8 +15,6 @@ This document outlines the development practices and setup for the project.
   - [Commit Messages](#commit-messages)
   - [Branch Names](#branch-names)
   - [Pull Request Titles](#pull-request-titles)
-- [🧱 Project Structure](#-project-structure)
-- [🤝 Contributing](#-contributing)
 
 ## 🚀 Getting Started
 
@@ -31,6 +30,14 @@ git checkout -b my-feature-branch
 ```
 
 Now you can start development inside your branch. Make sure to follow the development practices described in the sections below.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🧱 Project Structure
+
+The project is organized into several directories and files, each serving a specific purpose.
+
+For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -154,19 +161,5 @@ Example **PR** titles:
 
 - `feat(core): add support for custom data models`
 - `hotfix(parsing): resolve critical error with document parsing`
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
-## 🧱 Project Structure
-
-The project is organized into several directories and files, each serving a specific purpose.
-
-For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project-structure.md) documentation.
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
-## 🤝 Contributing
-
-To contribute to this project — including code changes, documentation, or testing — please refer to our [Contributing Guide](../.github/CONTRIBUTING.md). It includes conventions for branches, commits, pull requests, and more.
 
 [📚 Back to Table of Contents](#-table-of-contents)

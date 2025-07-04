@@ -2,16 +2,17 @@
 
 Select all types of changes that apply to this **PR**:
 
-- [ ] ✨ **feat** – A new feature
-- [ ] 🐛 **fix** – A bug fix
+- [ ] ✨ **feat** – New features or enhancements
+- [ ] 🐛 **fix** – Bug fixes
+- [ ] 🚑 **hotfix** – Urgent fixes to production code
+- [ ] 🚀 **release** – Preparing a new release
 - [ ] 📝 **docs** – Documentation-only changes
-- [ ] 🎨 **style** – Code style changes (white-space, formatting, etc.)
-- [ ] ♻️ **refactor** – Code refactoring that doesn't change behavior
+- [ ] ♻️ **refactor** – Code restructuring without behavior change
 - [ ] ⚡️ **perf** – Performance improvements
-- [ ] ✅ **test** – Adding or updating tests
-- [ ] 🔧 **chore** – Routine maintenance tasks or tooling
-- [ ] ⚙️ **build** – Changes that affect the build system or external dependencies
-- [ ] 🔁 **ci** – Changes to CI configuration files or scripts
+- [ ] ✅ **test** – Experimental work or testing
+- [ ] 📦 **build** – Changes that affect the build system or dependencies
+- [ ] 🤖 **ci** – Changes to CI/CD pipelines or configs
+- [ ] 🔧 **chore** – Routine tasks like maintenance, dependency updates
 
 Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 
