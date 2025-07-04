@@ -88,6 +88,8 @@ def my_function(param1: int, param2: str) -> bool:
     # Function implementation
 ```
 
+> 🎨 For more details on how to write docstrings in this format, refer to the [Google Style Guide](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings).
+
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## 🧪 Testing
