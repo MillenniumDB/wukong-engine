@@ -7,25 +7,29 @@ T = TypeVar('T', bound='Singleton')
 
 
 class SingletonMeta(type):
-    """_summary_.
+    """Metaclass that provides the Singleton design pattern.
 
-    Args:
-        type: _description_
+    Ensures that only one instance of a class exists. Any attempt to
+    instantiate the class will return the same existing instance.
 
-    Returns:
-        _description_
+    Attributes:
+        _instances: Class attribute. Mapping of class types to their singleton instances.
     """
 
     _instances: ClassVar[dict[type[Any], Any]] = {}
 
     def __call__(cls: type[T], *args: Any, **kwargs: Any) -> T:  # pyright: ignore[reportGeneralTypeIssues]
-        """_summary_.
+        """Return the singleton instance of a given class.
+
+        If an instance does not exist, it is created with the given arguments.
+        Subsequent calls return the same instance.
 
         Args:
-            cls: _description_
+            *args: Positional arguments forwarded to the class constructor.
+            **kwargs: Keyword arguments forwarded to the class constructor.
 
         Returns:
-            _description_
+            The singleton instance of the class.
         """
         # If a specific class has already been instantiated before, return the existing instance
         if cls not in cls._instances:
@@ -34,4 +38,4 @@ class SingletonMeta(type):
 
 
 class Singleton(metaclass=SingletonMeta):
-    pass
+    """Base class for implementing the Singleton design pattern."""

@@ -11,13 +11,29 @@ DEFAULT_FORMAT = '%(message)s'
 
 
 class LevelFormatter(logging.Formatter):
+    """Custom log formatter that applies different formats based on the log severity level."""
+
     def __init__(self, format_map: dict[int, str], default_format: str) -> None:
+        """Initialize the instance with specific formats for different log levels.
+
+        Args:
+            format_map: A dictionary mapping log levels to their respective format strings.
+            default_format: Default format string to use for log levels not specified in `format_map`.
+        """
         super().__init__()
-        self.default_formatter = logging.Formatter(default_format)
-        self.formatters = {level: logging.Formatter(fmt) for level, fmt in format_map.items()}
+        self._default_formatter = logging.Formatter(default_format)
+        self._formatters = {level: logging.Formatter(fmt) for level, fmt in format_map.items()}
 
     def format(self, record: logging.LogRecord) -> str:
-        formatter = self.formatters.get(record.levelno, self.default_formatter)
+        """Format a log record based on its severity level.
+
+        Args:
+            record: The log record to format.
+
+        Returns:
+            A formatted log message based on the severity level of the record.
+        """
+        formatter = self._formatters.get(record.levelno, self._default_formatter)
         return formatter.format(record)
 
 
@@ -25,7 +41,7 @@ def setup_logging(level: int = logging.INFO) -> None:
     """Set up global logging configuration.
 
     Args:
-        level: The logging level to set for the root logger. Defaults to logging.INFO.
+        level: The logging level to set for the root logger.
     """
     # Logging Handler
     handler = logging.StreamHandler()  # Outputs to console (stdout/stderr)

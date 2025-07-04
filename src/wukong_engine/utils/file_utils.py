@@ -50,7 +50,7 @@ def save_text_data(data: str, file_path: Path, mode: str = 'w') -> None:
     Args:
         data: The text data to save.
         file_path: Path to the file where the text data should be saved.
-        mode: The mode in which to open the file. Defaults to 'w' for write.
+        mode: The mode in which to open the file.
     """
     try:
         if file_path.parent.exists():
@@ -84,7 +84,7 @@ def delete_dir_contents(dir_path: Path, items_to_keep: list[str] | None = None) 
 
     Args:
         dir_path: Path to the directory whose contents should be deleted.
-        items_to_keep: A list of item names to keep in the directory. If None, all items will be deleted. Defaults to None.
+        items_to_keep: A list of item names to keep in the directory. If None, all items will be deleted.
     """
     try:
         if not dir_path.exists():
