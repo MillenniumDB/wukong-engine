@@ -4,8 +4,6 @@ Select all types of changes that apply to this **PR**:
 
 - [ ] ✨ **feat** – New features or enhancements
 - [ ] 🐛 **fix** – Bug fixes
-- [ ] 🚑 **hotfix** – Urgent fixes to production code
-- [ ] 🚀 **release** – Preparing a new release
 - [ ] 📝 **docs** – Documentation-only changes
 - [ ] ♻️ **refactor** – Code restructuring without behavior change
 - [ ] ⚡️ **perf** – Performance improvements
@@ -13,6 +11,8 @@ Select all types of changes that apply to this **PR**:
 - [ ] 📦 **build** – Changes that affect the build system or dependencies
 - [ ] 🤖 **ci** – Changes to CI/CD pipelines or configs
 - [ ] 🔧 **chore** – Routine tasks like maintenance, dependency updates
+- [ ] 🚀 **release** – Preparing a new release
+- [ ] 🚑 **hotfix** – Urgent fixes to production code
 
 Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 

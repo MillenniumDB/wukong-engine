@@ -199,7 +199,6 @@ Here are some planned features and improvements for future releases of the proje
 - [ ] Data validation for data model and configuration files
 - [ ] Data validation for LLM responses
 - [ ] Improved wrapper for LLM interaction
-- [ ] Support for PDF input documents
 
 > 📝 For a detailed list of past updates, see the [Changelog](./CHANGELOG.md).
 

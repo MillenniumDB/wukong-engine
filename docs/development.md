@@ -11,10 +11,19 @@ This document outlines the development practices and setup for the project.
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
 - [🌿 Branching Strategy](#-branching-strategy)
+  - [Core Branches](#core-branches)
+  - [Supporting Branches](#supporting-branches)
+    - [Development Branches](#development-branches)
+    - [Release Branches](#release-branches)
+    - [Hotfix Branches](#hotfix-branches)
 - [🏷️ Naming Conventions](#️-naming-conventions)
   - [Commit Messages](#commit-messages)
-  - [Branch Names](#branch-names)
+  - [Supporting Branch Names](#supporting-branch-names)
   - [Pull Request Titles](#pull-request-titles)
+- [📦 Project Versioning](#-project-versioning)
+- [⚙️ Tooling \& Infrastructure](#️-tooling--infrastructure)
+  - [Dependency Management](#dependency-management)
+  - [Continuous Integration/Deployment](#continuous-integrationdeployment)
 
 ## 🚀 Getting Started
 
@@ -89,18 +98,58 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 ## 🌿 Branching Strategy
 
-The project uses a simple branching model:
+The project uses a variant of the **Git Flow** branching model to manage development and releases. This helps maintain a clean and organized codebase, allowing for parallel development of features, bug fixes, and stable releases.
 
-- `main`: Stable release-ready code. Always production-safe.
-- `develop`: Active development branch. All feature branches should be based here.
+> 🤝 For information about the general contribution guidelines, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
 
-Please create your own branches **from** `develop`, and open pull requests **targeting** `develop`.
+### Core Branches
 
-> 🤝 For more information about the general contribution guidelines, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
+The project has two core branches that serve as the foundation for development:
+
+- `main`: Stable branch containing production-ready code. Each release is tagged here.
+- `develop`: Active development branch where all feature branches are merged. It reflects the latest development state.
+
+> 🚫 Do not commit directly to `main` or `develop`.
+
+### Supporting Branches
+
+Supporting branches are created and used for specific purposes, after which they are merged back into their respective base branches and then removed.
+
+#### Development Branches
+
+Used for general development of new features, bug fixes, or other changes.
+
+- **Base:** `develop`
+- **Merged Into:** `develop`
+- **Example:** `feat/add-new-parser`
+
+These branches can serve multiple purposes, see the [Naming Conventions](#️-naming-conventions) section for more details on all available types (excluding `release` and `hotfix`).
+
+#### Release Branches
+
+Used to prepare a new release for the project — includes version bumping, changelogs, etc.
+
+- **Base:** `develop`
+- **Merged Into:** `main` and `develop`
+- **Example:** `release/v1.0.0`
+
+After **QA and final adjustments**, this branch is merged and the `main` branch is then **tagged** as a release.
+
+#### Hotfix Branches
+
+Used to quickly patch production code.
+
+- **Base:** `main`
+- **Merged Into:** `main` and `develop`
+- **Example:** `hotfix/fix-login-crash`
+
+Hotfixes should be kept small and scoped only to the urgent issue.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## 🏷️ Naming Conventions
+
+The project follows specific naming conventions for **commit messages**, **supporting branch names**, and **pull request titles** to maintain clarity and consistency across the codebase.
 
 ### Commit Messages
 
@@ -127,9 +176,9 @@ Here are the available values for `<type>` with some commit message examples:
 The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required.
 The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [Gitmoji VS Code Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
 
-### Branch Names
+### Supporting Branch Names
 
-For naming **short-lived branches**, use the following convention:
+For naming **supporting branches**, use the following convention:
 
 `<type>/<short-descriptive-name>`
 
@@ -139,8 +188,6 @@ Here are the available values for `<type>` with some branch name examples:
 | ---------- | ---------------------------------------------------- | ---------------------------- |
 | `feat`     | New features or enhancements                         | `feat/api-support`           |
 | `fix`      | Bug fixes                                            | `fix/login-error`            |
-| `hotfix`   | Urgent fixes to production code                      | `hotfix/fix-login-crash`     |
-| `release`  | Preparing a new release                              | `release/v1.0.0`             |
 | `docs`     | Documentation-only changes                           | `docs/api-reference`         |
 | `refactor` | Code restructuring without behavior change           | `refactor/simplify-pipeline` |
 | `perf`     | Performance improvements                             | `perf/cache-optimization`    |
@@ -148,6 +195,8 @@ Here are the available values for `<type>` with some branch name examples:
 | `build`    | Changes that affect the build system or dependencies | `build/migrate-to-poetry`    |
 | `ci`       | Changes to CI/CD pipelines or configs                | `ci/setup-github-actions`    |
 | `chore`    | Routine tasks like maintenance, dependency updates   | `chore/update-dependencies`  |
+| `release`  | Preparing a new release                              | `release/v1.0.0`             |
+| `hotfix`   | Urgent fixes to production code                      | `hotfix/fix-login-crash`     |
 
 ### Pull Request Titles
 
@@ -155,11 +204,44 @@ For naming **pull requests**, use the following convention:
 
 `<type>(optional scope): short description`
 
-Here, `<type>` can be any of the **branch types** listed previously.
+Here, `<type>` can be any of the **supporting branch types** listed previously.
 
 Example **PR** titles:
 
 - `feat(core): add support for custom data models`
 - `hotfix(parsing): resolve critical error with document parsing`
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 📦 Project Versioning
+
+We follow [Semantic Versioning](https://semver.org/) **(MAJOR.MINOR.PATCH)** to manage project versions:
+
+- **MAJOR**: Incompatible API changes or breaking changes
+- **MINOR**: New features that are backwards compatible
+- **PATCH**: Bug fixes or small improvements
+
+> 🌿 The expected use of release branches is shown in the [Branching Strategy](#-branching-strategy) section.
+>
+> 📝 All releases are documented in the [CHANGELOG](../CHANGELOG.md) file.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## ⚙️ Tooling & Infrastructure
+
+This project uses a set of foundational tools and automation to support development and delivery.
+
+### Dependency Management
+
+[Poetry](https://python-poetry.org/) is used for managing project dependencies and virtual environments.
+The following files are key to this setup:
+
+- **Dependencies/Packaging:** `pyproject.toml`
+- **Poetry Lockfile:** `poetry.lock`
+- **Pip-compatible Lockfile:** `requirements.txt`
+
+### Continuous Integration/Deployment
+
+Currently, the project **does not implement CI/CD** functionalities.
 
 [📚 Back to Table of Contents](#-table-of-contents)
