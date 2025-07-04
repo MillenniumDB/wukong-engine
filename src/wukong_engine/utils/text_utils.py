@@ -10,10 +10,10 @@ def normalize_text(text: str) -> str:
     """Normalize the input text to a simplified form.
 
     Args:
-        text: Input text to be normalized.
+        text: The input text to be normalized.
 
     Returns:
-        Normalized text with stop words and non-alphanumeric characters removed, and converted to lowercase.
+        The normalized text with stop words and non-alphanumeric characters removed, and converted to lowercase.
     """
     language = DataModel().parameters.get('output_language', 'english').lower()  # Get language
     stop_words = stopwords.words(language)  # Remove language-specific stop words

@@ -18,7 +18,7 @@ class LevelFormatter(logging.Formatter):
 
         Args:
             format_map: A dictionary mapping log levels to their respective format strings.
-            default_format: Default format string to use for log levels not specified in `format_map`.
+            default_format: The default format string to use for log levels not specified in `format_map`.
         """
         super().__init__()
         self._default_formatter = logging.Formatter(default_format)

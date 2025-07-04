@@ -32,8 +32,14 @@ EXPORTS_DIR = Path('./exports/')
 
 
 def execute_pipeline(data_dir: Path) -> None:
-    """
-    Execute the WUKONG engine pipeline.
+    """Execute the WUKONG Engine pipeline.
+
+    Args:
+        data_dir: The path to the data directory containing the documents and data model.
+
+    Raises:
+        FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
+        ValueError: If the configuration or data model is invalid, or environment variables are missing.
     """
     # Define relevant paths
     text_docs_dir = data_dir / TEXT_DOCS_DIR

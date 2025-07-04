@@ -25,8 +25,8 @@ class SingletonMeta(type):
         Subsequent calls return the same instance.
 
         Args:
-            *args: Positional arguments forwarded to the class constructor.
-            **kwargs: Keyword arguments forwarded to the class constructor.
+            *args: The positional arguments forwarded to the class constructor.
+            **kwargs: The keyword arguments forwarded to the class constructor.
 
         Returns:
             The singleton instance of the class.

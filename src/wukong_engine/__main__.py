@@ -33,12 +33,12 @@ def main() -> None:
     # Execute the pipeline
     try:
         execute_pipeline(args.data_dir)
-    except (ValueError, FileNotFoundError) as error:
+    except (FileNotFoundError, ValueError) as error:
         logger.critical(f'{str(error).removesuffix(".")}.')
     except Exception:
         logger.exception('An unexpected error occurred during pipeline execution.')
 
 
-# Execute WUKONG engine
+# Execute WUKONG Engine
 if __name__ == '__main__':
     main()

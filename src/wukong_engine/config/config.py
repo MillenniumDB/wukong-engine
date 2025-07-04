@@ -16,11 +16,19 @@ CONFIG_PATH = Path('./config/config.toml')
 
 
 class Config(Singleton):
-    """
-    Configuration class for the WUKONG engine.
+    """Central configuration manager for the WUKONG Engine.
+
+    Loads and validates the engine configuration,
+    exposing the resulting settings as attributes or access methods.
+
+    The configuration is loaded once and is assumed to be immutable for the duration of the program.
     """
 
     def __init__(self) -> None:
+        """Initialize the configuration manager.
+
+        Loads the configuration and processes it to store each relevant component.
+        """
         # Components of the configuration
         self._pipeline = {}
         self._parameters = {}
@@ -30,8 +38,14 @@ class Config(Singleton):
         self._load_config(CONFIG_PATH)
 
     def _load_config(self, config_path: Path) -> None:
-        """
-        Load configuration from a JSON file.
+        """Load configuration from a TOML file and environment variables, making sure its valid.
+
+        Args:
+            config_path: The path to the TOML configuration file.
+
+        Raises:
+            FileNotFoundError: If the configuration file does not exist.
+            ValueError: If the configuration file has an invalid structure or if required environment variables are missing.
         """
         # Check if the config file exists
         if not config_path.exists():
@@ -57,19 +71,36 @@ class Config(Singleton):
         logger.info(f'Configuration loaded successfully from: "{config_path}"')
 
     def is_enabled(self, step: str) -> bool:
-        """
-        Check if a specific step in the pipeline is enabled.
+        """Check whether a specific pipeline step is enabled.
+
+        Args:
+            step: The name of the pipeline step to check.
+
+        Returns:
+            True if the step is enabled, False otherwise.
         """
         return bool(self._pipeline.get(step, False))
 
     def get(self, key: str, default: Any = None) -> Any:
-        """
-        Get a specific configuration parameter.
+        """Get a specific configuration parameter value.
+
+        Args:
+            key: The name of the configuration parameter to retrieve.
+            default: The default value to return if the parameter is not found.
+
+        Returns:
+            The value of the configuration parameter if it exists, otherwise the default value.
         """
         return self._parameters.get(key, default)
 
     def get_env(self, key: str, default: Any = None) -> Any:
-        """
-        Get a specific environment variable value.
+        """Get a specific environment variable value.
+
+        Args:
+            key: The name of the environment variable to retrieve.
+            default: The default value to return if the environment variable is not found.
+
+        Returns:
+            The value of the environment variable if it exists, otherwise the default value.
         """
         return self._env.get(key, default)

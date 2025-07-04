@@ -10,13 +10,15 @@ TIKTOKEN_MODEL = 'gpt-4'  # Tokenizer model to use for splitting text
 
 
 def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Path) -> None:
-    """
-    Process plain text documents and store them as ordered files and entities.
+    """Process documents by loading their contents, saving them in a standard format, and creating document entities.
 
     Args:
-        input_dir: a
-        processed_dir: _description_
-        results_dir: _description_
+        text_dir: The path to the directory containing the plain text documents to be processed.
+        processed_dir: The path to the directory where processed documents will be saved.
+        results_dir: The path to the directory where entities/relations will be stored.
+
+    Raises:
+        FileNotFoundError: If the input documents directory does not exist.
     """
     # Prepare target directories
     processed_dir.mkdir(parents=True, exist_ok=True)
@@ -63,12 +65,12 @@ def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Pat
 
 
 def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None:
-    """Split documents into smaller chunks and save them as separate plain text files and entities/relations
+    """Separate documents into smaller chunks and create their respective entities and relations.
 
     Args:
-        docs_dir: _description_
-        chunks_dir: _description_
-        results_dir: _description_
+        docs_dir: The path to the directory containing the documents to be chunked.
+        chunks_dir: The path to the directory where the chunks will be saved.
+        results_dir: The path to the directory where entities/relations will be stored.
     """
     # Prepare target directories
     chunks_dir.mkdir(parents=True, exist_ok=True)

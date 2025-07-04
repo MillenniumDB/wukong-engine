@@ -14,11 +14,21 @@ DATA_MODEL_PATH = Path('./data_model.json')
 
 
 class DataModel(Singleton):
-    """
-    Data Model for a specific dataset.
+    """Data Model manager for the WUKONG Engine.
+
+    Loads and validates the data model, providing access to its components as properties.
+
+    The data model is loaded once and is assumed to be immutable for the duration of the program.
     """
 
     def __init__(self, data_dir: Path = Path()) -> None:
+        """Initialize the Data Model manager.
+
+        Loads the data model and processes it to store each relevant component.
+
+        Args:
+            data_dir: The path to the data directory where the data model file is located.
+        """
         # Components of the Data Model
         self._parameters = {}
         self._entities = {}
@@ -26,15 +36,20 @@ class DataModel(Singleton):
         self._materialized_relations = {}
 
         # Initialize the Data Model
-        self._load_model(data_dir)
+        self._load_model(data_dir / DATA_MODEL_PATH)
         self._process_model()
 
-    def _load_model(self, data_dir: Path) -> None:
-        """
-        Load data model from a file.
+    def _load_model(self, data_model_path: Path) -> None:
+        """Load the data model from a JSON file, making sure its valid.
+
+        Args:
+            data_model_path: The path to the JSON data model file.
+
+        Raises:
+            FileNotFoundError: If the data model file does not exist.
+            ValueError: If the data model file has an invalid structure or contents.
         """
         # Check if the data model file exists
-        data_model_path = data_dir / DATA_MODEL_PATH
         if not data_model_path.exists():
             raise FileNotFoundError(f'Data Model file "{data_model_path}" not found')
 
@@ -58,6 +73,17 @@ class DataModel(Singleton):
 
     @staticmethod
     def _no_duplicate_keys_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        """Validate that the provided key/value pairs do not contain duplicate keys.
+
+        Args:
+            pairs: A list of key/value pairs to validate.
+
+        Returns:
+            A dictionary containing the key/value pairs if no duplicate keys are found.
+
+        Raises:
+            ValueError: If duplicate keys are found in the provided pairs.
+        """
         seen = set()
         for key, _ in pairs:
             if key in seen:
@@ -67,7 +93,14 @@ class DataModel(Singleton):
 
     @staticmethod
     def _validate_model(data_model: dict[str, Any]) -> None:
-        """Validate the data model to ensure it contains the required structure."""
+        """Validate the data model to ensure it follows the required naming conventions.
+
+        Args:
+            data_model: The data model to validate, containing entities, relations, and their properties.
+
+        Raises:
+            ValueError: If any entity, relation, or property name does not follow the naming conventions.
+        """
         # Validate entity naming conventions
         for entity_name in data_model['entities']:
             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', entity_name):
@@ -101,9 +134,7 @@ class DataModel(Singleton):
                     )
 
     def _process_model(self) -> None:
-        """
-        Process the data model to prepare it for data extraction.
-        """
+        """Process the data model to prepare entities and relations for use in the engine."""
         # Keep only the included entities and relations
         included_entities = self._parameters.get('included_entities', list(self._entities.keys()))
         self._entities = {key: value for key, value in self._entities.items() if key in included_entities}
@@ -128,9 +159,7 @@ class DataModel(Singleton):
         self._relations.update(special_relations)
 
     def _materialize_relation_model(self) -> None:
-        """
-        Materialize the relation model for all Origin and Target entities.
-        """
+        """Materialize the relation model to create specific relations between entity pairs."""
         # Iterate over the relation model and build materialized relations
         core_entities = list(self.core_entities.keys())
         for relation_name, relation_info in self._relations.items():
@@ -167,16 +196,12 @@ class DataModel(Singleton):
 
     @property
     def parameters(self) -> dict[str, Any]:
-        """
-        A
-        """
+        """A dictionary containing the parameters of the data model."""
         return self._parameters
 
     @property
     def entities(self) -> dict[str, Any]:
-        """
-        A
-        """
+        """A dictionary containing all regular entities in the data model (core/special entities are excluded)."""
         return {
             key: value
             for key, value in self._entities.items()
@@ -185,35 +210,25 @@ class DataModel(Singleton):
 
     @property
     def core_entities(self) -> dict[str, Any]:
-        """
-        A
-        """
+        """A dictionary containing all core entities in the data model."""
         return {key: value for key, value in self._entities.items() if value.get('core_entity', False)}
 
     @property
     def special_entities(self) -> dict[str, Any]:
-        """
-        A
-        """
+        """A dictionary containing all special entities in the data model."""
         return {key: value for key, value in self._entities.items() if value.get('special_entity', False)}
 
     @property
     def relations(self) -> dict[str, Any]:
-        """
-        A
-        """
+        """A dictionary containing all regular relations in the data model (special relations are excluded)."""
         return {key: value for key, value in self._relations.items() if not value.get('special_relation', False)}
 
     @property
-    def materialized_relations(self) -> dict[str, Any]:
-        """
-        A
-        """
-        return self._materialized_relations
+    def special_relations(self) -> dict[str, Any]:
+        """A dictionary containing all special relations in the data model."""
+        return {key: value for key, value in self._relations.items() if value.get('special_relation', False)}
 
     @property
-    def special_relations(self) -> dict[str, Any]:
-        """
-        A
-        """
-        return {key: value for key, value in self._relations.items() if value.get('special_relation', False)}
+    def materialized_relations(self) -> dict[str, Any]:
+        """A dictionary containing all materialized relations between entity pairs."""
+        return self._materialized_relations
