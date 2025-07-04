@@ -10,6 +10,10 @@ This document outlines the development practices and setup for the project.
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
 - [🌿 Branching Strategy](#-branching-strategy)
+- [🏷️ Naming Conventions](#️-naming-conventions)
+  - [Commit Messages](#commit-messages)
+  - [Branch Names](#branch-names)
+  - [Pull Request Titles](#pull-request-titles)
 - [🧱 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
 
@@ -22,7 +26,7 @@ To set up the project for development, follow these steps:
 2. Switch to the development branch and create a new feature branch:
 
 ```sh
-git checkout dev  # Make sure you're on the dev branch
+git checkout develop  # Make sure you're on the develop branch
 git checkout -b my-feature-branch
 ```
 
@@ -81,11 +85,75 @@ Currently, the project **does not implement** testing functionalities. For now, 
 The project uses a simple branching model:
 
 - `main`: Stable release-ready code. Always production-safe.
-- `dev`: Active development branch. All feature branches should be based here.
+- `develop`: Active development branch. All feature branches should be based here.
 
-Please create your feature branches **from** `dev`, and open pull requests **targeting** `dev`.
+Please create your own branches **from** `develop`, and open pull requests **targeting** `develop`.
 
 > 🤝 For branch naming conventions and contribution workflow, see our [Contribution Guide](../.github/CONTRIBUTING.md).
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🏷️ Naming Conventions
+
+### Commit Messages
+
+For writing **commit messages**, use the following convention:
+
+`<optional-emoji> <type>(optional scope): short description`
+
+Here are the available values for `<type>` with some commit message examples:
+
+| Type       | Purpose                                              | Commit Example                                                   |
+| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
+| `feat`     | Introduces a new feature                             | `feat(api): add validator for user input`                        |
+| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing`       |
+| `docs`     | Adds or improves documentation                       | `docs(readme): improve usage section`                            |
+| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`         |
+| `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
+| `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
+| `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
+| `build`    | Changes that affect the build system or dependencies | `build(docker): restructure build process`                       |
+| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add linting step to GitHub Actions`                         |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependency versions`                              |
+| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
+
+The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required.
+The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [VS Code Gitmoji Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
+
+### Branch Names
+
+For naming **short-lived branches**, use the following convention:
+
+`<type>/<short-descriptive-name>`
+
+Here are the available values for `<type>` with some branch name examples:
+
+| Type       | Purpose                                              | Branch Example               |
+| ---------- | ---------------------------------------------------- | ---------------------------- |
+| `feat`     | New features or enhancements                         | `feat/api-support`           |
+| `fix`      | Bug fixes                                            | `fix/login-error`            |
+| `hotfix`   | Urgent fixes to production code                      | `hotfix/fix-login-crash`     |
+| `release`  | Preparing a new release                              | `release/v1.0.0`             |
+| `docs`     | Documentation-only changes                           | `docs/api-reference`         |
+| `refactor` | Code restructuring without behavior change           | `refactor/simplify-pipeline` |
+| `perf`     | Performance improvements                             | `perf/cache-optimization`    |
+| `test`     | Experimental work or testing                         | `test/improve-config-tests`  |
+| `build`    | Changes that affect the build system or dependencies | `build/migrate-to-poetry`    |
+| `ci`       | Changes to CI/CD pipelines or configs                | `ci/setup-github-actions`    |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `chore/update-dependencies`  |
+
+### Pull Request Titles
+
+For naming **pull requests**, use the following convention:
+
+`<type>(optional scope): short description`
+
+Here, `<type>` can be any of the **branch types** listed previously.
+
+Example **PR** titles:
+
+- `feat(core): add support for custom data models`
+- `hotfix(parsing): resolve critical error with document parsing`
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

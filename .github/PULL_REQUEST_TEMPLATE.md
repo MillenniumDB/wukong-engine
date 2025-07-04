@@ -32,7 +32,7 @@ If this **PR** addresses specific **issues**, please reference them here with th
 - [ ] I have commented my code where necessary
 - [ ] I have made corresponding changes to the documentation (if applicable)
 - [ ] I have added/updated tests, and they all pass (if applicable)
-- [ ] I have pulled the latest changes from `dev` and resolved any conflicts
+- [ ] I have pulled the latest changes from `develop` and resolved any conflicts
 
 ## 🧪 Testing
 

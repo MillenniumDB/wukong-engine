@@ -6,12 +6,9 @@ Thanks for your interest in contributing! Here's how you can help and what to kn
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🚀 Getting Started](#-getting-started)
-- [🐛 Reporting Bugs / ✨ Suggesting Features](#-reporting-bugs---suggesting-features)
+- [📋 Opening Issues](#-opening-issues)
 - [✅ Submitting Changes](#-submitting-changes)
-- [🏷️ Naming Conventions](#️-naming-conventions)
-  - [Commit Messages](#commit-messages)
-  - [Branch Names](#branch-names)
-  - [Pull Request Titles](#pull-request-titles)
+- [🛠️ Development Practices](#️-development-practices)
 - [📜 Code of Conduct](#-code-of-conduct)
 
 ## 🚀 Getting Started
@@ -30,7 +27,7 @@ cd wukong-engine
 3. Switch to the development branch and create a new feature branch for your changes:
 
 ```sh
-git checkout dev  # Make sure you're on the dev branch
+git checkout develop  # Make sure you're on the develop branch
 git checkout -b my-feature-branch
 ```
 
@@ -38,9 +35,9 @@ git checkout -b my-feature-branch
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🐛 Reporting Bugs / ✨ Suggesting Features
+## 📋 Opening Issues
 
-Before making changes or submitting a pull request, please open an **Issue**:
+Before making changes or submitting pull requests, please open an **Issue**:
 
 - To **report a bug**, include steps to reproduce it and the expected behavior
 - To **suggest a new feature or improvement**, briefly describe the problem it solves
@@ -54,7 +51,7 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Pull the latest changes** from the `dev` branch and resolve any merge conflicts
+- ✅ **Pull the latest changes** from the `develop` branch and resolve any merge conflicts
 - ✅ **Follow the code style guidelines**
 - ✅ **Add or update tests** for new features or bug fixes
 - ✅ **Ensure all tests pass**
@@ -62,7 +59,7 @@ Before submitting a contribution, please make sure to:
 - ✅ **Include clear and descriptive commit messages**
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
 
-Once ready, open a **Pull Request** from your **feature branch** to the `dev` branch with:
+Once ready, open a **Pull Request** from **your branch** to the `develop` branch with:
 
 - A clear title and summary of the changes
 - Reference to any **relevant issue numbers** (e.g. Closes #42)
@@ -73,65 +70,11 @@ Your **PR** will be reviewed by a maintainer. Please be patient and open to feed
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🏷️ Naming Conventions
+## 🛠️ Development Practices
 
-### Commit Messages
+This project follows specific development practices to ensure code quality, maintainability, and consistency.
 
-For writing **commit messages**, use the following convention:
-
-`<optional-emoji> <type>(optional scope): short description`
-
-Here are the available values for `<type>` with some commit message examples:
-
-| Type       | Purpose                                              | Commit Example                                                   |
-| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
-| `feat`     | Introduces a new feature                             | `feat(api): add validator for user input`                        |
-| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing`       |
-| `docs`     | Adds or improves documentation                       | `docs(readme): improve usage section`                            |
-| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`         |
-| `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
-| `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
-| `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
-| `build`    | Changes that affect the build system or dependencies | `build: switch to poetry for package management`                 |
-| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add GitHub Actions workflow for testing`                    |
-| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependencies in pyproject.toml`                   |
-| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
-
-The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required. The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [VS Code Gitmoji Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
-
-### Branch Names
-
-For naming **feature branches**, use the following convention:
-
-`<type>/<short-descriptive-name>`
-
-Here are the available values for `<type>` with some branch name examples:
-
-| Type       | Purpose                                    | Branch Example               |
-| ---------- | ------------------------------------------ | ---------------------------- |
-| `feature`  | New features or enhancements               | `feature/add-api-support`    |
-| `fix`      | Bug fixes                                  | `fix/handle-null-values`     |
-| `docs`     | Documentation-only changes                 | `docs/update-readme`         |
-| `test`     | Adding or modifying tests                  | `test/improve-config-tests`  |
-| `refactor` | Code restructuring without behavior change | `refactor/simplify-pipeline` |
-| `chore`    | Maintenance tasks (e.g. tooling, deps)     | `chore/update-dependencies`  |
-| `ci`       | Continuous integration config changes      | `ci/setup-github-actions`    |
-| `build`    | Build system updates                       | `build/add-docker-support`   |
-| `hotfix`   | Urgent fixes to production code            | `hotfix/fix-login-crash`     |
-| `release`  | Preparing a new release                    | `release/1.0.0`              |
-
-### Pull Request Titles
-
-For naming **pull requests**, use the following convention:
-
-`<type>(optional scope): short description`
-
-Here, `<type>` can be any of the **commit message types** listed previously.
-
-Example **PR** titles:
-
-- `feat(core): add support for custom data models`
-- `fix(parsing): resolve issue with document parsing`
+For a detailed overview of these development practices, please refer to the [Development Guidelines](../docs/development.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
