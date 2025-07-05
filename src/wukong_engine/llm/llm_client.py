@@ -19,11 +19,27 @@ TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic outpu
 
 
 class OpenAIClientProvider:
+    """Client provider that manages a singleton instance of the OpenAI client.
+
+    Attributes:
+        _instance: Class attribute. The singleton instance of the OpenAI client.
+        _lock: Class attribute. A threading lock to ensure thread-safety when creating the singleton instance.
+    """
+
     _instance: OpenAI | None = None
     _lock: threading.Lock = threading.Lock()
 
     @classmethod
     def get_client(cls) -> OpenAI:
+        """Get the singleton instance of the OpenAI client.
+
+        Checks if the client instance already exists, in which case it's returned.
+        If it doesn't exist, it creates a new instance (with thread-safety)
+        and stores it in the `_instance` class attribute before returning it.
+
+        Returns:
+            The singleton instance of the OpenAI client.
+        """
         if cls._instance is None:
             with cls._lock:
                 if cls._instance is None:
@@ -32,13 +48,23 @@ class OpenAIClientProvider:
 
 
 def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
-    """Process a single prompt to find entities/relations of a given type in a document
+    """Process a prompt using the OpenAI LLM API.
+
+    Sends a request to the OpenAI LLM API with the provided prompt data,
+    handles retries using exponential backoff in case of failure,
+    and returns the response in a structured format.
 
     Args:
-        prompt_data: _description_
+        prompt_data: A dictionary containing the prompt data, which includes:
+            - `object_name`: The name of the entity/relation for which the prompt is being processed.
+            - `document_name`: The name of the document associated with the prompt.
+            - `system_role`: The system role message for the LLM, setting the context and instructions.
+            - `user_role`: The user role message for the LLM, containing the information to be processed.
 
     Returns:
-        _description_
+        A dictionary containing the original prompt data and the response from the LLM API.
+        The response is structured as a JSON object, or an empty list if it could not be decoded
+        or the amount of retries for the LLM API calls exceeded the maximum allowed.
     """
     # Get OpenAI client
     client = OpenAIClientProvider.get_client()

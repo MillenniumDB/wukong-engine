@@ -16,8 +16,11 @@ BOOL_NAMES = ('boolean',)
 
 
 def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
-    """
-    Export JSON data from results_dir to export_dir, converting to the MillenniumDB format.
+    """Export entities and relations to a knowledge graph in the MillenniumDB format.
+
+    Args:
+        results_dir: The path to the directory containing the entities and relations.
+        export_dir: The path to the directory where the knowledge graph files will be exported.
     """
     # Prepare directories
     export_dir.mkdir(parents=True, exist_ok=True)
@@ -78,8 +81,11 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
 
 
 def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
-    """
-    Export JSON data from results_dir to export_dir, converting to the Neo4j format.
+    """Export entities and relations to a knowledge graph in the Neo4j format.
+
+    Args:
+        results_dir: The path to the directory containing the entities and relations.
+        export_dir: The path to the directory where the knowledge graph files will be exported.
     """
     # Prepare directories
     export_dir.mkdir(parents=True, exist_ok=True)
@@ -144,8 +150,11 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
 
 
 def export_to_json(results_dir: Path, export_dir: Path) -> None:
-    """
-    Export JSON data from results_dir to export_dir.
+    """Export entities and relations to a knowledge graph in JSON format.
+
+    Args:
+        results_dir: The path to the directory containing the entities and relations.
+        export_dir: The path to the directory where the knowledge graph files will be exported.
     """
     # Prepare directories
     export_dir.mkdir(parents=True, exist_ok=True)
@@ -216,8 +225,14 @@ def object_to_mdb(
     object_type: str,
     object_export_dir: Path,
 ) -> None:
-    """
-    Convert JSON data to the MillenniumDB format and export to a QM file.
+    """Convert a specific entity/relation type to the MillenniumDB format and export it to a Quad Model file.
+
+    Args:
+        data: A list of dictionaries representing instances of the entity/relation type.
+        object_label: The name of the entity/relation type.
+        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_type: The type of each object inside `data`, either 'entity' or 'relation'.
+        object_export_dir: The path to the directory where the MillenniumDB Quad Model file will be exported.
     """
     # Properties for entities and relations
     property_info = object_info.get('properties', {})
@@ -270,8 +285,14 @@ def object_to_neo4j(
     object_type: str,
     object_export_dir: Path,
 ) -> None:
-    """
-    Convert JSON data to the Neo4j format and export to CSV files.
+    """Convert a specific entity/relation type to the Neo4j format and export it to a CSV file.
+
+    Args:
+        data: A list of dictionaries representing instances of the entity/relation type.
+        object_label: The name of the entity/relation type.
+        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_type: The type of each object inside `data`, either 'entity' or 'relation'.
+        object_export_dir: The path to the directory where the Neo4j CSV file will be exported.
     """
     # Neo4j Headers for entities and relations
     headers = ['ObjectId:ID']
@@ -339,8 +360,14 @@ def object_to_json(
     object_type: str,
     object_export_dir: Path,
 ) -> None:
-    """
-    Process and export JSON data.
+    """Process a specific entity/relation type in JSON format and export it to a JSON file.
+
+    Args:
+        data: A list of dictionaries representing instances of the entity/relation type.
+        object_label: The name of the entity/relation type.
+        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_type: The type of each object inside `data`, either 'entity' or 'relation'.
+        object_export_dir: The path to the directory where the JSON file will be exported.
     """
     # Properties for entities and relations
     property_info = object_info.get('properties', {})
@@ -391,6 +418,12 @@ def object_to_json(
 
 
 def build_data_type_mapping() -> dict[str, str]:
+    """Build a mapping of data type names to their corresponding supported type name.
+
+    Returns:
+        A dictionary mapping potential data type names to their corresponding supported type name.
+        The supported type names are: `string`, `integer`, `float`, and `bool`.
+    """
     data_type_groups = (STR_NAMES, INT_NAMES, FLOAT_NAMES, BOOL_NAMES)
     final_data_types = ('string', 'integer', 'float', 'bool')
     data_type_mapping = {}

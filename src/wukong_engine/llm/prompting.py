@@ -156,10 +156,10 @@ Use the {LANGUAGE} language."""
 
 
 def generate_prompts(prompts_dir: Path) -> None:
-    """Generate LLM prompts for information extraction
+    """Generate prompts for extracting entities and relations based on the data model.
 
     Args:
-        prompts_dir: _description_
+        prompts_dir: The path to the directory where the generated prompts will be saved.
     """
     # Create and clean output directory structure
     prompts_dir.mkdir(parents=True, exist_ok=True)
@@ -204,13 +204,13 @@ def build_entity_prompt(
     general_info: dict[str, str],
     entity_prompts_dir: Path,
 ) -> None:
-    """Build prompt for a specific entity
+    """Build a prompt to be used for extracting a specific entity.
 
     Args:
-        entity_name: _description_
-        entity_info: _description_
-        general_info: _description_
-        entity_prompts_dir: _description_
+        entity_name: The name of the entity to extract.
+        entity_info: A dictionary containing information about the entity, following the data model specifications.
+        general_info: A dictionary containing general information about the data model parameters.
+        entity_prompts_dir: The path to the directory where the generated entity prompt will be saved.
     """
     # General entity info
     core_entity = entity_info.get('core_entity', False)  # If True, the entity is represented by an entire document
@@ -267,14 +267,14 @@ def build_relation_prompt(
     general_info: dict[str, str],
     relation_prompts_dir: Path,
 ) -> None:
-    """Build prompt for a specific relation
+    """Build a prompt to be used for extracting a specific relation.
 
     Args:
-        relation_name: _description_
-        relation_info: _description_
-        entity_model: _description_
-        general_info: _description_
-        relation_prompts_dir: _description_
+        relation_name: The name of the relation to extract.
+        relation_info: A dictionary containing information about the relation, following the data model specifications.
+        entity_model: A dictionary containing all entities from the data model and their relevant information.
+        general_info: A dictionary containing general information about the data model parameters.
+        relation_prompts_dir: The path to the directory where the generated relation prompt will be saved.
     """
     # Gather property info
     properties = []
