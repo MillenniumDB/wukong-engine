@@ -97,7 +97,7 @@ The `README.md` file located in the root of the project contains an overview of 
 The extended documentation for the central aspects of the project is organized in the `docs/` directory, which includes:
 
 - `configuration.md`: Configuration file format and available options for engine configuration.
-- `data-model.md`: Data model format and available options for specifying entities and relations.
+- `data-model.md`: Data model format and available options for specifying entity and relation types.
 - `development.md`: Development guidelines, including code style and testing practices.
 - `project-structure.md`: Project structure and organization of the source code.
 

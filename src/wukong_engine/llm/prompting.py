@@ -204,13 +204,13 @@ def build_entity_prompt(
     general_info: dict[str, str],
     entity_prompts_dir: Path,
 ) -> None:
-    """Build a prompt to be used for extracting a specific entity.
+    """Build a prompt to be used for extracting a specific entity type.
 
     Args:
-        entity_name: The name of the entity to extract.
-        entity_info: A dictionary containing information about the entity, following the data model specifications.
+        entity_name: The name of the entity type to extract.
+        entity_info: A dictionary containing information about the entity type, following the data model specifications.
         general_info: A dictionary containing general information about the data model parameters.
-        entity_prompts_dir: The path to the directory where the generated entity prompt will be saved.
+        entity_prompts_dir: The path to the directory where the generated entity type prompt will be saved.
     """
     # General entity info
     core_entity = entity_info.get('core_entity', False)  # If True, the entity is represented by an entire document
@@ -267,14 +267,14 @@ def build_relation_prompt(
     general_info: dict[str, str],
     relation_prompts_dir: Path,
 ) -> None:
-    """Build a prompt to be used for extracting a specific relation.
+    """Build a prompt to be used for extracting a specific relation type.
 
     Args:
-        relation_name: The name of the relation to extract.
-        relation_info: A dictionary containing information about the relation, following the data model specifications.
-        entity_model: A dictionary containing all entities from the data model and their relevant information.
+        relation_name: The name of the relation type to extract.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        entity_model: A dictionary containing all entity types from the data model and their relevant information.
         general_info: A dictionary containing general information about the data model parameters.
-        relation_prompts_dir: The path to the directory where the generated relation prompt will be saved.
+        relation_prompts_dir: The path to the directory where the generated relation type prompt will be saved.
     """
     # Gather property info
     properties = []

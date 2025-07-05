@@ -96,10 +96,10 @@ class DataModel(Singleton):
         """Validate the data model to ensure it follows the required naming conventions.
 
         Args:
-            data_model: The data model to validate, containing entities, relations, and their properties.
+            data_model: The data model to validate, containing definitions for entity/relation types and their properties.
 
         Raises:
-            ValueError: If any entity, relation, or property name does not follow the naming conventions.
+            ValueError: If any entity/relation type or property name does not follow the naming conventions.
         """
         # Validate entity naming conventions
         for entity_name in data_model['entities']:
@@ -134,7 +134,7 @@ class DataModel(Singleton):
                     )
 
     def _process_model(self) -> None:
-        """Process the data model to prepare entities and relations for use in the engine."""
+        """Process the data model to prepare entity and relation types for use in the engine."""
         # Keep only the included entities and relations
         included_entities = self._parameters.get('included_entities', list(self._entities.keys()))
         self._entities = {key: value for key, value in self._entities.items() if key in included_entities}
@@ -159,7 +159,7 @@ class DataModel(Singleton):
         self._relations.update(special_relations)
 
     def _materialize_relation_model(self) -> None:
-        """Materialize the relation model to create specific relations between entity pairs."""
+        """Materialize the relation model to create specific relation types between entity type pairs."""
         # Iterate over the relation model and build materialized relations
         core_entities = list(self.core_entities.keys())
         for relation_name, relation_info in self._relations.items():
@@ -201,7 +201,7 @@ class DataModel(Singleton):
 
     @property
     def entities(self) -> dict[str, Any]:
-        """A dictionary containing all regular entities in the data model (core/special entities are excluded)."""
+        """A dictionary containing all regular entity types in the data model (core/special entities are excluded)."""
         return {
             key: value
             for key, value in self._entities.items()
@@ -210,25 +210,25 @@ class DataModel(Singleton):
 
     @property
     def core_entities(self) -> dict[str, Any]:
-        """A dictionary containing all core entities in the data model."""
+        """A dictionary containing all core entity types in the data model."""
         return {key: value for key, value in self._entities.items() if value.get('core_entity', False)}
 
     @property
     def special_entities(self) -> dict[str, Any]:
-        """A dictionary containing all special entities in the data model."""
+        """A dictionary containing all special entity types in the data model."""
         return {key: value for key, value in self._entities.items() if value.get('special_entity', False)}
 
     @property
     def relations(self) -> dict[str, Any]:
-        """A dictionary containing all regular relations in the data model (special relations are excluded)."""
+        """A dictionary containing all regular relation types in the data model (special relations are excluded)."""
         return {key: value for key, value in self._relations.items() if not value.get('special_relation', False)}
 
     @property
     def special_relations(self) -> dict[str, Any]:
-        """A dictionary containing all special relations in the data model."""
+        """A dictionary containing all special relation types in the data model."""
         return {key: value for key, value in self._relations.items() if value.get('special_relation', False)}
 
     @property
     def materialized_relations(self) -> dict[str, Any]:
-        """A dictionary containing all materialized relations between entity pairs."""
+        """A dictionary containing all materialized relation types between entity type pairs."""
         return self._materialized_relations

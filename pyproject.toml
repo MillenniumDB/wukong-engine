@@ -56,7 +56,6 @@ ignore = [
     "TRY003", # Allow long custom exception messages
     "TRY400", # Allow logging exceptions without a traceback
     "TD",     # Free format for TODOs
-    "D100",   # TODO: Remove later
 ]
 
 [tool.ruff.lint.flake8-quotes]

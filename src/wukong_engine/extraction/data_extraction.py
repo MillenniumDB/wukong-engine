@@ -23,14 +23,17 @@ def find_entities(
     *,
     clear_results: bool = False,
 ) -> None:
-    """Find entities of the given types in the given documents
+    """Find all entities contained in the input documents, in accordance with the given entity model.
+
+    Gathers prompts for each entity type, processes them in parallel using LLMs,
+    and saves the results in a structured manner.
 
     Args:
-        entity_model: _description_
-        docs_dir: _description_
-        prompts_dir: _description_
-        results_dir: _description_
-        thread_workers: _description_. Defaults to 1.
+        entity_model: A dictionary containing entity types from the data model and their relevant information.
+        docs_dir: The path to the directory containing the input documents.
+        prompts_dir: The path to the directory containing the prompts for the LLM.
+        results_dir: The path to the directory where the results are stored.
+        clear_results: Whether to clear the partial results directory before starting the procedure.
     """
     # Path to partial entity results
     partial_results_dir = results_dir / 'partials/'
@@ -65,14 +68,17 @@ def find_relations(
     *,
     clear_results: bool = False,
 ) -> None:
-    """Find relations of the given types in the given documents
+    """Find all relations contained in the input documents, in accordance with the given relation model.
+
+    Gathers prompts for each relation type, processes them in parallel using LLMs (unless bypassed),
+    and saves the results in a structured manner.
 
     Args:
-        relation_model: _description_
-        docs_dir: _description_
-        prompts_dir: _description_
-        results_dir: _description_
-        thread_workers: _description_. Defaults to 1.
+        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        docs_dir: The path to the directory containing the input documents.
+        prompts_dir: The path to the directory containing the prompts for the LLM.
+        results_dir: The path to the directory where the results are stored.
+        clear_results: Whether to clear the partial results directory before starting the procedure.
     """
     # Path to partial relation results
     partial_relations_dir = results_dir / 'partials/relations/'
@@ -106,11 +112,18 @@ def find_relations(
 
 
 def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
-    """Process entities to remove duplicates and invalid objects, and save the final results
+    """Process extracted entities to remove duplicates and invalid objects, saving the final results.
+
+    Consolidates the results of entity extraction, cleans the entities, removes duplicates,
+    and saves the final entities into a single file for each entity type.
 
     Args:
-        entity_model: _description_
-        results_dir: _description_
+        entity_model: A dictionary containing entity types from the data model and their relevant information.
+        results_dir: The path to the directory where the results are stored.
+
+    Raises:
+        FileNotFoundError: If the necessary result directories do not exist,
+            indicating that the initial entity extraction process was not completed successfully or has not been run yet.
     """
     # Paths to partial and final results
     partial_entities_dir = results_dir / 'partials/entities/'
@@ -195,11 +208,18 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
 
 
 def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None:
-    """Process relations to remove duplicates and invalid objects, and save the final results
+    """Process extracted relations to remove duplicates and invalid objects, saving the final results.
+
+    Consolidates the results of relation extraction, cleans the relations, removes duplicates,
+    and saves the final relations into a single file for each relation type.
 
     Args:
-        relation_model: _description_
-        results_dir: _description_
+        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        results_dir: The path to the directory where the results are stored.
+
+    Raises:
+        FileNotFoundError: If the necessary result directories do not exist,
+            indicating that either the entity processing step or the initial relation extraction process was not completed successfully or has not been run yet.
     """
     # Paths to partial and final results
     partial_relations_dir = results_dir / 'partials/relations/'
@@ -268,16 +288,16 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
 
 
 def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> list[dict[str, Any]]:
-    """Generate a list of dictionaries containing the prompt data for the given entity type and documents
+    """Generate a list of dictionaries containing the prompt data for the given entity type and documents.
 
     Args:
-        entity_name: _description_
-        docs_dir: _description_
-        prompts_dir: _description_
-        partial_results_dir: _description_
+        entity_name: The name of the entity type to process.
+        docs_dir: The path to the directory containing the input documents.
+        prompts_dir: The path to the directory containing the prompts for the LLM.
 
     Returns:
-        _description_
+        A list of dictionaries, each containing the prompt data necessary for extracting
+        the given entity type from a specific document.
     """
     # Get the prompt for this entity type
     prompt_path = prompts_dir / f'entities/{entity_name}.txt'
@@ -305,12 +325,12 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
 
 
 def process_partial_entities(results: dict[str, Any], entity_model: dict[str, Any], partial_entities_dir: Path) -> None:
-    """Process partial entities obtained from the LLM
+    """Process partial entities extracted by the LLM and save them to a partial results directory.
 
     Args:
-        results: _description_
-        entity_model: _description_
-        partial_results_dir: _description_
+        results: A dictionary containing the results of the LLM entity extraction process.
+        entity_model: A dictionary containing entity types from the data model and their relevant information.
+        partial_entities_dir: The path to the directory where the partial entities are stored.
     """
     # Get entity and document names
     entity_name = results['object_name']
@@ -348,17 +368,18 @@ def get_relation_prompts(
     prompts_dir: Path,
     results_dir: Path,
 ) -> list[dict[str, Any]]:
-    """Generate a list of dictionaries containing the prompt data for the given relation type and documents
+    """Generate a list of dictionaries containing the prompt data for the given relation type and documents.
 
     Args:
-        relation_name: _description_
-        relation_info: _description_
-        docs_dir: _description_
-        prompts_dir: _description_
-        partial_results_dir: _description_
+        relation_name: The name of the relation type to process.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        docs_dir: The path to the directory containing the input documents.
+        prompts_dir: The path to the directory containing the prompts for the LLM.
+        results_dir: The path to the directory where the results are stored.
 
     Returns:
-        _description_
+        A list of dictionaries, each containing the prompt data necessary for extracting
+        the given relation type from a specific document.
     """
     # Get the prompt for this relation type
     prompt_path = prompts_dir / f'relations/{relation_name}.txt'
@@ -468,17 +489,20 @@ def bypass_ai_processing(
     docs_dir: Path,
     results_dir: Path,
 ) -> Iterator[dict[str, Any]]:
-    """Bypass LLM processing and assume that a relation is valid for all origin/target entities
+    """Extract relations directly without using the LLM.
+
+    Available only when one of the entity types is a core entity. Extracts relations
+    by loading all the partial entities that are found in each document for the non-core entity type of the relation, and assuming that
+    the relation always exists between these partial entities and the core entity that represents their respective document.
 
     Args:
-        relation_name: _description_
-        relation_info: _description_
-        docs_dir: _description_
-        prompts_dir: _description_
-        results_dir: _description_
+        relation_name: The name of the relation type to process.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        docs_dir: The path to the directory containing the input documents.
+        results_dir: The path to the directory where the results are stored.
 
-    Returns:
-        _description_
+    Yields:
+        A dictionary containing the results of the relation extraction process for each document.
     """
     # If the documents are not found, discard this relation type
     if not docs_dir.exists():
@@ -556,12 +580,12 @@ def process_partial_relations(
     relation_model: dict[str, Any],
     partial_relations_dir: Path,
 ) -> None:
-    """Process partial relations obtained from the LLM (or from the bypass)
+    """Process partial relations extracted by the LLM and save them to a partial results directory.
 
     Args:
-        results: _description_
-        relation_model: _description_
-        partial_results_dir: _description_
+        results: A dictionary containing the results of the LLM relation extraction process.
+        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        partial_relations_dir: The path to the directory where the partial relations are stored.
     """
     # Get relation and document names
     relation_name = results['object_name']
@@ -599,15 +623,17 @@ def build_global_entity_mapping(
     *,
     core_entity: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Construct global ID mappings for entities (ReferenceId -> ObjectId, ObjectId -> EntityIdx)
+    """Create mappings to link partial entities of a given type to their final instances and ObjectIds.
 
     Args:
-        entities: _description_
-        entity_name: _description_
-        core_entity: _description_. Defaults to False.
+        entities: A list of dictionaries representing fully processed entities.
+        entity_name: The name of the given entity type.
+        core_entity: Whether the entity type is a core entity.
 
     Returns:
-        _description_
+        A tuple containing two dictionaries
+            - A mapping from ReferenceIds (representing partial entities) to ObjectIds (representing fully processed entities).
+            - A mapping from ObjectIds to the index of the corresponding entities in the final entities list.
     """
     # Initialize mappings
     entity_id = 1
@@ -639,12 +665,12 @@ def build_entity_references(
     *,
     core_entity: bool = False,
 ) -> None:
-    """Create relations between entities and their source documents
+    """Build special relations to represent references between entities and their source documents.
 
     Args:
-        entities: _description_
-        references_path: _description_
-        core_entity: _description_. Defaults to False.
+        entities: A list of dictionaries representing fully processed entities.
+        references_path: The path to the file where the reference relations are stored.
+        core_entity: Whether the entities are core entities.
     """
     # Iterate through entities and assign their source document references
     reference_relations = []
@@ -682,12 +708,12 @@ def update_partial_entities(
     final_entities: list[dict[str, Any]],
     object_mapping: dict[str, int],
 ) -> None:
-    """Copy final entity values to partial entities, mapping with their ObjectId
+    """Update partial entities with values from their corresponding final instances.
 
     Args:
-        new_entities: _description_
-        source_entities: _description_
-        object_mapping: _description_
+        partial_entities: A list of dictionaries representing partial entities.
+        final_entities: A list of dictionaries representing fully processed entities.
+        object_mapping: A dictionary that allows mapping the partial entities to their final instances.
     """
     for partial_entity in partial_entities:
         source_entity = final_entities[object_mapping[partial_entity['_ObjectId']]]
@@ -698,10 +724,10 @@ def update_partial_entities(
 
 
 def build_relation_references(relations: list[dict[str, Any]]) -> None:
-    """Store reference between relations and their source documents
+    """Create references between relations and their source documents using a special property.
 
     Args:
-        relations: _description_
+        relations: A list of dictionaries representing fully processed relations.
     """
     # Iterate through relations and assign their source document references
     for relation in relations:
