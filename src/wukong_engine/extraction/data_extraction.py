@@ -9,7 +9,7 @@ from wukong_engine.config.config import Config
 from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
-from .data_processing import clean_entities, clean_relations, remove_duplicate_entities, remove_duplicate_relations
+from .data_processing import clean_entities, clean_relations, merge_duplicate_entities, merge_duplicate_relations
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -112,9 +112,9 @@ def find_relations(
 
 
 def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
-    """Process extracted entities to remove duplicates and invalid objects, saving the final results.
+    """Process extracted entities to merge duplicates and remove invalid objects, saving the final results.
 
-    Consolidates the results of entity extraction, cleans the entities, removes duplicates,
+    Consolidates the results of entity extraction, cleans the entities, merges duplicates,
     and saves the final entities into a single file for each entity type.
 
     Args:
@@ -168,8 +168,8 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
         entities = clean_entities(entities, entity_info)
         stats_dict[entity_name]['cleaned_entities'] = len(entities)
 
-        # Remove duplicate entities
-        entities = remove_duplicate_entities(entities, entity_info)
+        # Merge duplicate entities
+        entities = merge_duplicate_entities(entities, entity_info)
         stats_dict[entity_name]['final_entities'] = len(entities)
 
         # Create global ID mapping for entities
@@ -208,9 +208,9 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
 
 
 def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None:
-    """Process extracted relations to remove duplicates and invalid objects, saving the final results.
+    """Process extracted relations to merge duplicates and remove invalid objects, saving the final results.
 
-    Consolidates the results of relation extraction, cleans the relations, removes duplicates,
+    Consolidates the results of relation extraction, cleans the relations, merges duplicates,
     and saves the final relations into a single file for each relation type.
 
     Args:
@@ -267,8 +267,8 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         relations = clean_relations(relations, relation_info, entity_stats_path)
         stats_dict[materialized_relation_name]['cleaned_relations'] = len(relations)
 
-        # Remove duplicate relations
-        relations = remove_duplicate_relations(relations, relation_info)
+        # Merge duplicate relations
+        relations = merge_duplicate_relations(relations, relation_info)
         stats_dict[materialized_relation_name]['final_relations'] = len(relations)
 
         # Store reference between final relations and their source documents
@@ -492,7 +492,7 @@ def bypass_ai_processing(
     """Extract relations directly without using the LLM.
 
     Available only when one of the entity types is a core entity. Extracts relations
-    by loading all the partial entities that are found in each document for the non-core entity type of the relation, and assuming that
+    by loading all the partial entities that are found in each document for the non-core entity type of the relation, and then assuming that
     the relation always exists between these partial entities and the core entity that represents their respective document.
 
     Args:
@@ -623,7 +623,7 @@ def build_global_entity_mapping(
     *,
     core_entity: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Create mappings to link partial entities of a given type to their final instances and ObjectIds.
+    """Create mappings to link partial entities of a given type to their final instances and identifiers.
 
     Args:
         entities: A list of dictionaries representing fully processed entities.

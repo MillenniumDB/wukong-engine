@@ -38,4 +38,7 @@ class SingletonMeta(type):
 
 
 class Singleton(metaclass=SingletonMeta):
-    """Base class for implementing the Singleton design pattern."""
+    """Base class for implementing the Singleton design pattern.
+
+    This design pattern ensures that only one instance of a class exists throughout the program execution.
+    """

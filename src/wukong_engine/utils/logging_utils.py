@@ -40,8 +40,11 @@ class LevelFormatter(logging.Formatter):
 def setup_logging(level: int = logging.INFO) -> None:
     """Set up global logging configuration.
 
+    Configures the root logger and sets up handlers for different log severity levels.
+    Manages third-party loggers to adjust their verbosity.
+
     Args:
-        level: The logging level to set for the root logger.
+        level: The base logging level to set for the root logger.
     """
     # Logging Handler
     handler = logging.StreamHandler()  # Outputs to console (stdout/stderr)

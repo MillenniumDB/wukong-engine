@@ -10,7 +10,10 @@ TIKTOKEN_MODEL = 'gpt-4'  # Tokenizer model to use for splitting text
 
 
 def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Path) -> None:
-    """Process documents by loading their contents, saving them in a standard format, and creating document entities.
+    """Process input documents to prepare them for data extraction.
+
+    Loads input plain text documents and saves them in new files with standardized filenames.
+    Creates `Document` entities to represent each document and then saves them in a JSON file.
 
     Args:
         text_dir: The path to the directory containing the plain text documents to be processed.
@@ -65,7 +68,11 @@ def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Pat
 
 
 def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None:
-    """Separate documents into smaller chunks and create their respective entities and relations.
+    """Separate documents into smaller chunks and prepare them for data extraction.
+
+    Splits each document into smaller chunks based on a specified token limit per chunk.
+    Creates `Chunk` entities to represent each chunk, and `ChunkOf` relations to link them to their respective full documents.
+    All entities and relations are then saved to their respective JSON files.
 
     Args:
         docs_dir: The path to the directory containing the documents to be chunked.

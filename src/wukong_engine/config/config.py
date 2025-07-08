@@ -19,7 +19,7 @@ class Config(Singleton):
     """Central configuration manager for the WUKONG Engine.
 
     Loads and validates the engine configuration,
-    exposing the resulting settings as attributes or access methods.
+    exposing the resulting settings as attributes and access methods.
 
     The configuration is loaded once and is assumed to be immutable for the duration of the program.
     """

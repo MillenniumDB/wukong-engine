@@ -56,13 +56,13 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
 
     Args:
         prompt_data: A dictionary containing the prompt data, which includes:
-            - `object_name`: The name of the entity/relation type for which the prompt is being processed.
-            - `document_name`: The name of the document associated with the prompt.
-            - `system_role`: The system role message for the LLM, setting the context and instructions.
-            - `user_role`: The user role message for the LLM, containing the information to be processed.
+            - 'object_name': The name of the entity/relation type for which the prompt is being processed.
+            - 'document_name': The name of the document associated with the prompt.
+            - 'system_role': The system role message for the LLM, setting the context and instructions.
+            - 'user_role': The user role message for the LLM, containing the information to be processed.
 
     Returns:
-        A dictionary containing the original prompt data and the response from the LLM API.
+        A dictionary containing the original prompt data and the response from the LLM API (inside a new `response` key).
         The response is structured as a JSON object if it's valid, or as an empty list if it could not be decoded
         or the amount of retries for the LLM API calls exceeded the maximum allowed.
     """

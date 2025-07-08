@@ -158,6 +158,8 @@ Use the {LANGUAGE} language."""
 def generate_prompts(prompts_dir: Path) -> None:
     """Generate prompts for extracting entities and relations based on the data model.
 
+    Builds extraction prompts for each entity and relation type included in the data model.
+
     Args:
         prompts_dir: The path to the directory where the generated prompts will be saved.
     """

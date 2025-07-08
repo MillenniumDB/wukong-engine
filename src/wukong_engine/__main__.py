@@ -39,6 +39,6 @@ def main() -> None:
         logger.exception('An unexpected error occurred during pipeline execution.')
 
 
-# Execute WUKONG Engine
+# Execute the WUKONG Engine
 if __name__ == '__main__':
     main()

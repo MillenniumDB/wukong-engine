@@ -254,14 +254,16 @@ class FuzzyDuplicateMatcher:
 
 
 def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Clean entities and remove invalid ones
+    """Clean entities and remove invalid ones.
+
+    Cleans entities by checking their properties and validating them against the data model specifications.
 
     Args:
-        entities: _description_
-        entity_info: _description_
+        entities: A list of dictionaries representing entities of a specific type.
+        entity_info: A dictionary containing information about the entity type, following the data model specifications.
 
     Returns:
-        _description_
+        A list of dictionaries representing all the valid entities remaining after the cleaning process.
     """
     # Iterate over all entities and their properties
     cleaned_entities = []  # List to store cleaned entities
@@ -299,15 +301,18 @@ def clean_relations(
     relation_info: dict[str, Any],
     entity_stats_path: Path,
 ) -> list[dict[str, Any]]:
-    """Clean relations and remove invalid ones
+    """Clean relations and remove invalid ones.
+
+    Cleans relations by checking their origin/target entities as well as their properties,
+    validating them against the data model specifications.
 
     Args:
-        relations: _description_
-        relation_info: _description_
-        entity_stats_path: _description_
+        relations: A list of dictionaries representing relations of a specific type between entities.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        entity_stats_path: The path to the entity statistics file, which contains information about the number of entities for each type.
 
     Returns:
-        _description_
+        A list of dictionaries representing all the valid relations remaining after the cleaning process.
     """
     # Iterate over all relations and their properties
     cleaned_relations = []  # List to store cleaned relations
@@ -337,15 +342,18 @@ def clean_relations(
     return cleaned_relations
 
 
-def remove_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Remove duplicate entities
+def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) -> list[dict[str, Any]]:
+    """Detect duplicate entities and merge them together.
+
+    Deduplicates entities based on their primary key, by making use of a string similarity index.
+    The specific behavior of this process is managed through the data model specifications.
 
     Args:
-        entities: _description_
-        entity_info: _description_
+        entities: A list of dictionaries representing entities of a specific type.
+        entity_info: A dictionary containing information about the entity type, following the data model specifications.
 
     Returns:
-        _description_
+        A list of dictionaries representing all the unique entities remaining after the deduplication process.
     """
     # Special Case: Core entities are always unique
     if entity_info.get('core_entity', False):
@@ -379,7 +387,7 @@ def remove_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[
 
         # Merge the new entity with the original one
         for key in entity_info.get('properties', {}):
-            original_entity[key] = merge_property_values(
+            original_entity[key] = choose_property_value(
                 original_entity[key],
                 entity[key],
                 entity_info.get('properties', {})[key],
@@ -392,15 +400,19 @@ def remove_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[
     return unique_entities
 
 
-def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Remove duplicate relations
+def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
+    """Detect duplicate relations and merge them together.
+
+    Deduplicates relations with the same pair of origin/target entities,
+    by making use of a string similarity index applied over their primary keys (if present).
+    The specific behavior of this process is managed through the data model specifications.
 
     Args:
-        relations: _description_
-        relation_info: _description_
+        relations: A list of dictionaries representing relations of a specific type between entities.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
 
     Returns:
-        _description_
+        A list of dictionaries representing all the unique relations remaining after the deduplication process.
     """
     # Important parameters
 
@@ -471,7 +483,7 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
 
             # Merge the new relation with the original one
             for key in relation_info.get('properties', {}):
-                original_relation[key] = merge_property_values(
+                original_relation[key] = choose_property_value(
                     original_relation[key],
                     relation[key],
                     relation_info.get('properties', {})[key],
@@ -486,51 +498,51 @@ def remove_duplicate_relations(relations: list[dict[str, Any]], relation_info: d
     return unique_relations
 
 
-def is_null_value(value: str) -> bool:
-    """Check if a property value is null
+def is_null_value(property_value: str) -> bool:
+    """Check whether a property value is considered null/empty.
 
     Args:
-        value: _description_
+        property_value: The property value to check.
 
     Returns:
-        _description_
+        True if the property value is null/empty, False otherwise.
     """
-    return normalize_text(value) in ('null', 'none', 'nan', 'n/a', '')
+    return normalize_text(property_value) in ('null', 'none', 'nan', 'n/a', '')
 
 
-def is_valid_value(value: str, property_info: dict[str, Any]) -> bool:
-    """Check if a property value is valid
+def is_valid_value(property_value: str, property_info: dict[str, Any]) -> bool:
+    """Check whether a property value is valid, according to the data model specifications.
 
     Args:
-        value: _description_
-        property_info: _description_
+        property_value: The property value to check.
+        property_info: A dictionary containing information about the property, following the data model specifications.
 
     Returns:
-        _description_
+        True if the property value is valid, False otherwise.
     """
     # Check if the value is null
-    if is_null_value(value):
+    if is_null_value(property_value):
         return False
 
     # Check if the value is restricted to certain options
     value_options = property_info.get('options', [])
-    if value_options and value not in value_options:
-        logger.debug(f'Invalid Property Value: "{value}". Must be one of {value_options}.')
+    if value_options and property_value not in value_options:
+        logger.debug(f'Invalid Property Value: "{property_value}". Must be one of {value_options}.')
         return False
 
     return True
 
 
 def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], entity_stats_path: Path) -> bool:
-    """Check if a relation between two entities is valid
+    """Check whether a relation is valid, according to the data model specifications and available entities.
 
     Args:
-        relation: _description_
-        relation_info: _description_
-        entity_stats_path: _description_
+        relation: A dictionary representing a relation of a specific type between a pair of entities.
+        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        entity_stats_path: The path to the entity statistics file, which contains information about the number of entities for each type.
 
     Returns:
-        _description_
+        True if the relation is valid, False otherwise.
     """
     # Check if OriginId and TargetId are defined
     if relation['_OriginId'] == 'NULL' or relation['_TargetId'] == 'NULL':
@@ -560,16 +572,16 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], e
     return valid_origin_range and valid_target_range
 
 
-def merge_property_values(current_value: Any, new_value: Any, property_info: dict[str, Any]) -> Any:
-    """Decide a new property value based on the existing ones from duplicate objects
+def choose_property_value(current_value: Any, new_value: Any, property_info: dict[str, Any]) -> Any:
+    """Choose the best fitting property value between the current one and a potential new value.
 
     Args:
-        current_value: _description_
-        new_value: _description_
-        property_info: _description_
+        current_value: The current value of the property.
+        new_value: The new value to consider for the property.
+        property_info: A dictionary containing information about the property, following the data model specifications.
 
     Returns:
-        _description_
+        The best fitting property value between the current one and the new value, according to the data model specifications.
     """
     property_value = str(current_value)
     candidate_value = str(new_value)
@@ -602,13 +614,14 @@ def merge_property_values(current_value: Any, new_value: Any, property_info: dic
 
 
 def group_relations(relations: list[dict[str, Any]]) -> dict[str, list[int]]:
-    """Group relations by their origin and target entities
+    """Group relations by their origin/target entity pair.
 
     Args:
-        relations: _description_
+        relations: A list of dictionaries representing relations of a specific type between entities.
 
     Returns:
-        _description_
+        A dictionary where the keys are relation IDs (OriginId_TargetId) and the values are lists of indices of relations
+        that share the same origin and target entities.
     """
     grouped_relations = {}
     for idx, relation in enumerate(relations):
