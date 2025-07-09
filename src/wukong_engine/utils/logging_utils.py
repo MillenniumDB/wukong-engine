@@ -1,3 +1,12 @@
+"""Provides utilities for logging configuration.
+
+This module defines functions and classes to set up
+and manage the logging system of the engine.
+
+Functions:
+    setup_logging: Configures the global logging settings.
+"""
+
 import logging
 
 # Logging formats

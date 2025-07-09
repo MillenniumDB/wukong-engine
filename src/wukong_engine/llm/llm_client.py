@@ -1,3 +1,11 @@
+"""Implements a client for LLM APIs.
+
+This module defines a client interface for interacting with LLM APIs.
+
+Functions:
+    process_prompt: Processes a prompt and returns the response using the OpenAI LLM API.
+"""
+
 import json
 import logging
 import random
@@ -48,7 +56,7 @@ class OpenAIClientProvider:
 
 
 def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
-    """Process a prompt using the OpenAI LLM API.
+    """Process a prompt and return the response using the OpenAI LLM API.
 
     Sends a request to the OpenAI LLM API with the provided prompt data,
     handles retries using exponential backoff in case of failure,

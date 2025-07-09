@@ -1,3 +1,15 @@
+"""The main entry point for executing the WUKONG Engine.
+
+This module is executed as a script and handles:
+    - Parsing command-line arguments
+    - Initializing the logging configuration
+    - Validating the input data directory
+    - Running the engine pipeline
+
+Example:
+    python -m wukong_engine data/example
+"""
+
 import logging
 from argparse import ArgumentParser
 from pathlib import Path

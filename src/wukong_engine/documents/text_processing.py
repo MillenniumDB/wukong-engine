@@ -1,3 +1,8 @@
+"""Implements text processing for document preparation.
+
+This module provides functions to prepare text documents for data extraction.
+"""
+
 from pathlib import Path
 
 from semantic_text_splitter import TextSplitter

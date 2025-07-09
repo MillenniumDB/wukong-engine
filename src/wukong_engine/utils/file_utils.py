@@ -1,3 +1,16 @@
+"""Provides utilities for file operations.
+
+This module defines helper functions to handle common file operations
+in a consistent and error-tolerant manner.
+
+Functions:
+    load_text_data: Loads text data from a specified file.
+    load_json_data: Loads JSON data from a specified file.
+    save_text_data: Saves text data to a specified file.
+    save_json_data: Saves JSON data to a specified file.
+    delete_dir_contents: Deletes the contents of a directory.
+"""
+
 import json
 import logging
 import shutil

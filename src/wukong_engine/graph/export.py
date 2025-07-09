@@ -1,3 +1,9 @@
+"""Implements a knowledge graph export functionality.
+
+This module provides functions to export available entities and relations
+to various knowledge graph formats.
+"""
+
 import logging
 from pathlib import Path
 from typing import Any

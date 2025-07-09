@@ -1,3 +1,8 @@
+"""Implements prompt generation for data extraction tasks.
+
+This module provides functions to generate prompts for extracting entities/relations from text.
+"""
+
 from pathlib import Path
 from typing import Any
 

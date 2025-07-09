@@ -1,3 +1,9 @@
+"""Implements data extraction from text documents.
+
+This module defines functions to extract and process entities/relations
+from unstructured text documents.
+"""
+
 import json
 import logging
 from collections.abc import Iterator

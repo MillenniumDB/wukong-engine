@@ -1,6 +1,17 @@
-"""Implements the configuration manager class.
+"""Provides configuration management for the engine.
 
-As
+This module implements the `Config` class, responsible for loading,
+validating, and exposing configuration settings used by the engine.
+
+Classes:
+    Config: A singleton class that manages the engine's configuration.
+
+Example:
+    from wukong_engine.config.config import Config
+
+    config = Config()
+    if config.is_enabled('export_graph'):
+        export_formats = config.get('export_formats', ['mdb'])
 """
 
 import logging

@@ -1,3 +1,12 @@
+"""Provides utilities for text processing.
+
+This module defines helper functions to handle common
+text processing tasks.
+
+Functions:
+    normalize_text: Normalizes input text to a more standard form.
+"""
+
 import re
 
 from nltk.corpus import stopwords

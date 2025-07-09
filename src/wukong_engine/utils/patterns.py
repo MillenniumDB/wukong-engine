@@ -1,3 +1,19 @@
+"""Provides implementations of common design patterns.
+
+This module defines classes that implement common software design patterns.
+
+Classes:
+    Singleton: A base class for implementing the Singleton design pattern.
+
+Example:
+    from wukong_engine.utils.patterns import Singleton
+
+    class MySingleton(Singleton):
+        pass
+
+    my_instance = MySingleton()
+"""
+
 from typing import Any, ClassVar, TypeVar
 
 ### Singleton ###

@@ -1,3 +1,13 @@
+"""Implements the engine pipeline.
+
+This module provides functions to execute the complete engine pipeline,
+extracting data from unstructured text documents, processing it,
+and then exporting the results to various knowledge graph formats.
+
+Functions:
+    execute_pipeline: Runs the full engine pipeline over a given data directory.
+"""
+
 import logging
 from pathlib import Path
 

@@ -1,3 +1,9 @@
+"""Provides data processing utilities for data extraction.
+
+This module defines functions and classes to clean, validate,
+and deduplicate data that represents entities and relations.
+"""
+
 import logging
 from pathlib import Path
 from typing import Any
