@@ -14,33 +14,32 @@ DATA_MODEL_PATH = Path('./data_model.json')
 
 
 class DataModel(Singleton):
-    """Data Model manager for the WUKONG Engine.
+    """The data model manager for the WUKONG Engine.
 
     Loads and validates the data model, providing access to its components as properties.
-
     The data model is loaded once and is assumed to be immutable for the duration of the program.
     """
 
     def __init__(self, data_dir: Path = Path()) -> None:
-        """Initialize the Data Model manager.
+        """Initialize the data model manager.
 
         Loads the data model and processes it to store each relevant component.
 
         Args:
             data_dir: The path to the data directory where the data model file is located.
         """
-        # Components of the Data Model
+        # Components of the data model
         self._parameters = {}
         self._entities = {}
         self._relations = {}
         self._materialized_relations = {}
 
-        # Initialize the Data Model
+        # Initialize the data model
         self._load_model(data_dir / DATA_MODEL_PATH)
         self._process_model()
 
     def _load_model(self, data_model_path: Path) -> None:
-        """Load the data model from a JSON file, making sure its valid.
+        """Load the data model from a JSON file, making sure it has a valid format.
 
         Args:
             data_model_path: The path to the JSON data model file.
@@ -51,7 +50,7 @@ class DataModel(Singleton):
         """
         # Check if the data model file exists
         if not data_model_path.exists():
-            raise FileNotFoundError(f'Data Model file "{data_model_path}" not found')
+            raise FileNotFoundError(f'Data model file "{data_model_path}" not found')
 
         # Load the data model
         try:
@@ -60,7 +59,7 @@ class DataModel(Singleton):
                 object_pairs_hook=self._no_duplicate_keys_hook,
             )
         except json.JSONDecodeError as error:
-            raise ValueError(f'Invalid structure for the Data Model in "{data_model_path}"') from error
+            raise ValueError(f'Invalid structure for the data model in "{data_model_path}"') from error
 
         # Validate the data model
         self._validate_model(data_model)
@@ -69,7 +68,7 @@ class DataModel(Singleton):
         self._parameters = data_model['parameters']
         self._entities = data_model['entities']
         self._relations = data_model['relations']
-        logger.info(f'Data Model loaded successfully from: "{data_model_path}"')
+        logger.info(f'Data model loaded successfully from: "{data_model_path}"')
 
     @staticmethod
     def _no_duplicate_keys_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -87,7 +86,7 @@ class DataModel(Singleton):
         seen = set()
         for key, _ in pairs:
             if key in seen:
-                raise ValueError(f'Data Model contains duplicate key "{key}"')
+                raise ValueError(f'Data model contains duplicate key "{key}"')
             seen.add(key)
         return dict(pairs)
 

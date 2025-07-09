@@ -12,14 +12,21 @@ from wukong_engine.utils.text_utils import normalize_text
 logger = logging.getLogger(__name__)
 
 # Configuration
-DEBUG_DUPLICATE_MATCHER = True  # Set to True to enable debug mode for duplicate matching
+DEBUG_STRING_MATCHER = True  # Set to True to enable debug mode for string matching
 
 
-class BasicDuplicateMatcher:
-    """Match exact duplicates using basic string normalization"""
+class BasicStringMatcher:
+    """A basic string similarity index that matches identical elements.
+
+    Matches normalized elements based on exact string equality.
+
+    Attributes:
+        _element_keys: A set of all element keys contained in the index.
+        _element_index: A mapping of elements to their keys, allowing for quick element lookups.
+    """
 
     def __init__(self) -> None:
-        """_summary_"""
+        """Initialize the index as an empty structure."""
         # Set of element keys in the index
         self._element_keys = set()
 
@@ -27,23 +34,23 @@ class BasicDuplicateMatcher:
         self._element_index = {}
 
     def __contains__(self, element_key: str) -> bool:
-        """Check if an element key is in the index
+        """Check if an element key is in the index.
 
         Args:
-            element_key: _description_
+            element_key: The element key to check for.
 
         Returns:
-            _description_
+            True if the element key is present, False otherwise.
         """
         return element_key in self._element_keys
 
     def __repr__(self) -> str:
-        """String representation of the object
+        """Get a string representation of the index.
 
         Returns:
-            _description_
+            A string representation of the index, showing all elements and their keys.
         """
-        str_repr = 'BasicDuplicateMatcher:\n\n{'
+        str_repr = 'BasicStringMatcher:\n\n{'
         for element, key in self._element_index.items():
             str_repr += f"'{key}': '{element}', "
         if str_repr[-2:] == ', ':
@@ -51,11 +58,11 @@ class BasicDuplicateMatcher:
         return str_repr + '}\n'
 
     def insert(self, element_key: str, element: str) -> None:
-        """Insert a new element into the index
+        """Insert an element into the index.
 
         Args:
-            element_key: _description_
-            element: _description_
+            element_key: A unique key that identifies the element to insert.
+            element: The element to insert into the index.
         """
         # Insert the new element into the inverted mapping
         self._element_index[normalize_text(element)] = element_key
@@ -64,26 +71,48 @@ class BasicDuplicateMatcher:
         self._element_keys.add(element_key)
 
     def query(self, element: str) -> str | None:
-        """Query the index for exact matches
+        """Query the index for an element match.
 
         Args:
-            element: _description_
+            element: The element to query in the index.
 
         Returns:
-            _description_
+            The matching element key if a match was found, otherwise None.
         """
         # Look for the exact element in the inverted mapping
         return self._element_index.get(normalize_text(element), None)
 
     def clear(self) -> None:
-        """Remove all elements from the index"""
+        """Clear the index by removing all elements and keys."""
         # Clear the inverted mapping and the set of keys
         self._element_index.clear()
         self._element_keys.clear()
 
 
-class FuzzyDuplicateMatcher:
-    """Match near-duplicates based on LSH and fuzzy matching"""
+class FuzzyStringMatcher:
+    """A string similarity index that matches similar elements using MinHashLSH and fuzzy matching.
+
+    Matches normalized elements considering two levels of similarity:
+
+    1. Confident Match: Elements that are very similar. Found by using a hash-based index (MinHashLSH) with a high threshold.
+    2. Potential Match: Elements that are somewhat similar. Found by using a hash-based index (MinHashLSH) with a lower threshold.
+
+    The matching process works as follows:
+
+    1. When an element is inserted, it is first normalized and hashed using the MinHash algorithm.
+    2. The inserted element is added to two separate MinHashLSH indices, one for confident matches and the other for potential matches.
+    3. When querying, the element to query is also normalized and hashed.
+    4. The MinHashLSH index for confident matches is queried first, returning the best confident match if found.
+    5. The best confident match is determined by comparing the similarity scores of all confident matches using a fuzzy matching algorithm.
+    6. If no confident matches are found, the MinHashLSH index for potential matches is queried.
+    7. The best potential match is determined in the same way as with confident matches.
+    8. If no potential matches are found, the index returns None.
+
+    Attributes:
+        _element_mapping: A mapping of element keys to their corresponding elements.
+        _lsh_confident: A MinHashLSH index used to query for confident string matches.
+        _lsh_potential: A MinHashLSH index used to query for potential string matches.
+    """
 
     def __init__(
         self,
@@ -92,48 +121,48 @@ class FuzzyDuplicateMatcher:
         potential_threshold: float = 0.4,
         similarity_cutoff: int = 90,
         num_perm: int = 128,
-        debug: bool = DEBUG_DUPLICATE_MATCHER,
+        debug: bool = DEBUG_STRING_MATCHER,
     ) -> None:
-        """_summary_
+        """Initialize the index with the specified parameters.
 
         Args:
-            confident_threshold: _description_. Defaults to 0.7.
-            potential_threshold: _description_. Defaults to 0.4.
-            similarity_cutoff: _description_. Defaults to 90.
-            num_perm: _description_. Defaults to 128.
-            debug: _description_. Defaults to DEBUG_DUPLICATE_MATCHER.
+            confident_threshold: The similarity threshold for confident matches. The higher the threshold, the more similar the elements must be to be considered a confident match.
+            potential_threshold: The similarity threshold for potential matches. The higher the threshold, the more similar the elements must be to be considered a potential match.
+            similarity_cutoff: The minimum similarity score to consider for potential matches. Any potential match below this score will be ignored.
+            num_perm: The number of permutation functions used in the MinHash algorithm for the MinHashLSH indices.
+            debug: Whether to enable debug mode for string matching. If active, all non-exact matches will be logged as debug information.
         """
         # Mapping for Key -> Element in the index
         self._element_mapping = {}
 
-        # Locality Sensitive Hashing (LSH) index for text deduplication
+        # Locality Sensitive Hashing (LSH) index for string matching
         # Confident LSH (threshold=0.7), Potential LSH (threshold=0.4)
         self._similarity_cutoff = similarity_cutoff
         self._num_permutations = num_perm
         self._lsh_confident = MinHashLSH(threshold=confident_threshold, num_perm=num_perm)
         self._lsh_potential = MinHashLSH(threshold=potential_threshold, num_perm=num_perm)
 
-        # Parameter for debugging duplicate matching
+        # Parameter for debugging string matching
         self._debug = debug
 
     def __contains__(self, element_key: str) -> bool:
-        """Check if an element key is in the index
+        """Check if an element key is in the index.
 
         Args:
-            element_key: _description_
+            element_key: The element key to check for.
 
         Returns:
-            _description_
+            True if the element key is present, False otherwise.
         """
         return element_key in self._element_mapping
 
     def __repr__(self) -> str:
-        """String representation of the object
+        """Get a string representation of the index.
 
         Returns:
-            _description_
+            A string representation of the index, showing all elements and their keys.
         """
-        str_repr = 'FuzzyDuplicateMatcher:\n\n{'
+        str_repr = 'FuzzyStringMatcher:\n\n{'
         for key, element in self._element_mapping.items():
             str_repr += f"'{key}': '{element}', "
         if str_repr[-2:] == ', ':
@@ -142,14 +171,18 @@ class FuzzyDuplicateMatcher:
 
     @staticmethod
     def _calculate_text_similarity(value_a: str, value_b: str) -> int:
-        """Calculate similarity between two string values
+        """Calculate the similarity score between two strings.
+
+        Uses the Levenshtein Distance metric to calculate different string similarity ratios,
+        and then combines them using a weighted average to obtain a final string similarity score.
+        The final score ranges from 0 to 100, where higher scores indicate more similar strings.
 
         Args:
-            value_a: _description_
-            value_b: _description_
+            value_a: The first string to compare.
+            value_b: The second string to compare.
 
         Returns:
-            _description_
+            The final similarity score between the two strings.
         """
         # Calculate similarity ratios based on Levenshtein distance
         ratio = fuzz.ratio(value_a, value_b)
@@ -161,11 +194,11 @@ class FuzzyDuplicateMatcher:
         return round(ratio * 0.8 + token_set_ratio * 0.2)
 
     def insert(self, element_key: str, element: str) -> None:
-        """Insert a new element into the LSH
+        """Insert an element into the index.
 
         Args:
-            element_key: _description_
-            element: _description_
+            element_key: A unique key that identifies the element to insert.
+            element: The element to insert into the index.
         """
         # Insert the new element into the internal mapping
         clean_value = normalize_text(element)
@@ -181,13 +214,13 @@ class FuzzyDuplicateMatcher:
         self._lsh_potential.insert(element_key, element_hash)
 
     def query(self, element: str) -> str | None:
-        """Query the LSH for potential near-duplicate matches
+        """Query the index for an element match.
 
         Args:
-            element: _description_
+            element: The element to query in the index.
 
         Returns:
-            _description_
+            The matching element key if a match was found, otherwise None.
         """
         # Apply MinHash to the element
         clean_value = normalize_text(element)
@@ -195,15 +228,15 @@ class FuzzyDuplicateMatcher:
         for word in clean_value.split():
             element_hash.update(word.encode('utf-8'))
 
-        # Query the LSH for confident near-duplicate matches
-        duplicate_matches = self._lsh_confident.query(element_hash)
+        # Query the LSH for confident matches
+        matches = self._lsh_confident.query(element_hash)
 
-        # Confident near-duplicates found
-        if duplicate_matches:
+        # Confident matches found
+        if matches:
             # If there are multiple matches, look for the best one by checking similarity with fuzzy matching
-            match_key = str(duplicate_matches[0])
-            if len(duplicate_matches) > 1:
-                matches = {match_key: self._element_mapping[match_key] for match_key in duplicate_matches}
+            match_key = str(matches[0])
+            if len(matches) > 1:
+                matches = {match_key: self._element_mapping[match_key] for match_key in matches}
                 *_, match_key = process.extractOne(clean_value, matches, scorer=self._calculate_text_similarity) or (
                     match_key,
                 )
@@ -212,17 +245,17 @@ class FuzzyDuplicateMatcher:
             if self._debug:
                 match_value = self._element_mapping[match_key]
                 if match_value != clean_value:
-                    logger.debug(f'Confident Duplicate Match: "{match_value}", "{clean_value}"')
+                    logger.debug(f'Confident String Match: "{match_value}", "{clean_value}"')
             return match_key
 
-        # Query the LSH for potential near-duplicate matches
-        duplicate_matches = self._lsh_potential.query(element_hash)
+        # Query the LSH for potential matches
+        matches = self._lsh_potential.query(element_hash)
 
-        # Potential near-duplicates found
-        if duplicate_matches:
+        # Potential matches found
+        if matches:
             # Look for the best match by checking similarity with fuzzy matching
             # The cut-off score was tested with different examples to work well with name-like values
-            matches = {match_key: self._element_mapping[match_key] for match_key in duplicate_matches}
+            matches = {match_key: self._element_mapping[match_key] for match_key in matches}
             best_match = process.extractOne(
                 clean_value,
                 matches,
@@ -230,7 +263,7 @@ class FuzzyDuplicateMatcher:
                 score_cutoff=self._similarity_cutoff,
             )
 
-            # Near-duplicate with enough similarity was detected
+            # String match with enough similarity was detected
             if best_match:
                 *_, match_key = best_match
 
@@ -238,14 +271,14 @@ class FuzzyDuplicateMatcher:
                 if self._debug:
                     match_value = self._element_mapping[match_key]
                     if match_value != clean_value:
-                        logger.debug(f'Potential Duplicate Match: "{match_value}", "{clean_value}"')
+                        logger.debug(f'Potential String Match: "{match_value}", "{clean_value}"')
                 return match_key
 
-        # No duplicates found
+        # No matches found
         return None
 
     def clear(self) -> None:
-        """Remove all elements from the LSH"""
+        """Clear the index by removing all elements and keys."""
         # Remove all elements from the LSH and clear the mapping
         for key in self._element_mapping:
             self._lsh_confident.remove(key)
@@ -364,10 +397,10 @@ def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[s
         return entities
 
     # Choose duplicate matcher based on data model option
-    duplicate_matcher = BasicDuplicateMatcher()
+    duplicate_matcher = BasicStringMatcher()
     duplicates_to_find = entity_info.get('duplicates', 'all').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
-        duplicate_matcher = FuzzyDuplicateMatcher()
+        duplicate_matcher = FuzzyStringMatcher()
 
     # Iterate over all entities and look for duplicates
     unique_entities = []  # List to store unique entities
@@ -427,10 +460,10 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
         return relations
 
     # Choose duplicate matcher based on data model option
-    duplicate_matcher = BasicDuplicateMatcher()
+    duplicate_matcher = BasicStringMatcher()
     duplicates_to_find = relation_info.get('duplicates', 'all').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
-        duplicate_matcher = FuzzyDuplicateMatcher()
+        duplicate_matcher = FuzzyStringMatcher()
 
     # Group relations by their origin and target entities
     grouped_relations = group_relations(relations)

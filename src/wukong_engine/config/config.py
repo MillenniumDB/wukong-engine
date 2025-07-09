@@ -16,11 +16,10 @@ CONFIG_PATH = Path('./config/config.toml')
 
 
 class Config(Singleton):
-    """Central configuration manager for the WUKONG Engine.
+    """The central configuration manager for the WUKONG Engine.
 
     Loads and validates the engine configuration,
     exposing the resulting settings as attributes and access methods.
-
     The configuration is loaded once and is assumed to be immutable for the duration of the program.
     """
 
@@ -38,7 +37,7 @@ class Config(Singleton):
         self._load_config(CONFIG_PATH)
 
     def _load_config(self, config_path: Path) -> None:
-        """Load configuration from a TOML file and environment variables, making sure its valid.
+        """Load the configuration from a TOML file and environment variables, making sure it has a valid format.
 
         Args:
             config_path: The path to the TOML configuration file.
@@ -55,7 +54,7 @@ class Config(Singleton):
         try:
             config = tomllib.loads(config_path.read_text(encoding='utf-8'))
         except tomllib.TOMLDecodeError as error:
-            raise ValueError(f'Invalid structure for the Configuration in "{config_path}"') from error
+            raise ValueError(f'Invalid structure for the configuration in "{config_path}"') from error
 
         # Store the valid configuration
         self._pipeline = config['pipeline']

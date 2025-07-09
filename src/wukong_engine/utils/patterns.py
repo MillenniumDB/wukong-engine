@@ -7,7 +7,7 @@ T = TypeVar('T', bound='Singleton')
 
 
 class SingletonMeta(type):
-    """Metaclass that provides the Singleton design pattern.
+    """A metaclass that provides the Singleton design pattern.
 
     Ensures that only one instance of a class exists. Any attempt to
     instantiate the class will return the same existing instance.
@@ -38,7 +38,7 @@ class SingletonMeta(type):
 
 
 class Singleton(metaclass=SingletonMeta):
-    """Base class for implementing the Singleton design pattern.
+    """A base class for implementing the Singleton design pattern.
 
-    This design pattern ensures that only one instance of a class exists throughout the program execution.
+    This design pattern ensures that only one instance of a class exists throughout the execution of the program.
     """

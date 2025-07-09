@@ -11,10 +11,10 @@ DEFAULT_FORMAT = '%(message)s'
 
 
 class LevelFormatter(logging.Formatter):
-    """Custom log formatter that applies different formats based on the log severity level."""
+    """A custom log formatter that applies different formats based on the log severity level."""
 
     def __init__(self, format_map: dict[int, str], default_format: str) -> None:
-        """Initialize the instance with specific formats for different log levels.
+        """Initialize the log formatter with specific formats for different log levels.
 
         Args:
             format_map: A dictionary mapping log levels to their respective format strings.

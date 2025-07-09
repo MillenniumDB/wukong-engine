@@ -19,7 +19,7 @@ TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic outpu
 
 
 class OpenAIClientProvider:
-    """Client provider that manages a singleton instance of the OpenAI client.
+    """A client provider that manages a singleton instance of the OpenAI client.
 
     Attributes:
         _instance: Class attribute. The singleton instance of the OpenAI client.

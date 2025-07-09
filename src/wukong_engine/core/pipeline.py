@@ -35,10 +35,11 @@ def execute_pipeline(data_dir: Path) -> None:
     """Execute the WUKONG Engine pipeline.
 
     Orchestrates the entire pipeline, which includes:
-        - Document processing
-        - Entity extraction
-        - Relation extraction
-        - Knowledge graph export
+
+    1. Document processing
+    2. Entity extraction
+    3. Relation extraction
+    4. Knowledge graph export
 
     Args:
         data_dir: The path to the data directory containing the documents and data model.
