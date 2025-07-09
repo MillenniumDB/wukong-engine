@@ -14,7 +14,7 @@ DATA_MODEL_PATH = Path('./data_model.json')
 
 
 class DataModel(Singleton):
-    """The data model manager for the WUKONG Engine.
+    """The data model manager for the WUKONG engine.
 
     Loads and validates the data model, providing access to its components as properties.
     The data model is loaded once and is assumed to be immutable for the duration of the program.

@@ -1,3 +1,8 @@
+"""Implements the configuration manager class.
+
+As
+"""
+
 import logging
 import os
 import tomllib
@@ -16,7 +21,7 @@ CONFIG_PATH = Path('./config/config.toml')
 
 
 class Config(Singleton):
-    """The central configuration manager for the WUKONG Engine.
+    """The central configuration manager for the WUKONG engine.
 
     Loads and validates the engine configuration,
     exposing the resulting settings as attributes and access methods.

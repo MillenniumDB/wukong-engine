@@ -32,7 +32,7 @@ EXPORTS_DIR = Path('./exports/')
 
 
 def execute_pipeline(data_dir: Path) -> None:
-    """Execute the WUKONG Engine pipeline.
+    """Execute the WUKONG engine pipeline.
 
     Orchestrates the entire pipeline, which includes:
 

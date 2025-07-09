@@ -1,4 +1,4 @@
-"""WUKONG Engine package.
+"""The WUKONG engine package.
 
-This package manages an engine that constructs knowledge graphs from unstructured documents.
+This package manages a tool that constructs knowledge graphs from unstructured documents.
 """
