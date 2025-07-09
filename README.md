@@ -110,7 +110,7 @@ The `docs/text/` directory should contain the **plain text** files to be process
 
 The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format.
 
-> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
+> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data_model.md) documentation.
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
@@ -176,7 +176,7 @@ src/wukong_engine/
 └── utils/       # Utility functions and shared components
 ```
 
-> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
+> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project_structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

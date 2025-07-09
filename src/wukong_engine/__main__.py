@@ -1,4 +1,4 @@
-"""The main entry point for executing the WUKONG Engine.
+"""The main entry point for executing the WUKONG engine.
 
 This module is executed as a script and handles:
     - Parsing command-line arguments

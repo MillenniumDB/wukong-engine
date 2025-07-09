@@ -248,7 +248,7 @@ def object_to_mdb(
     data_type_mapping = build_data_type_mapping()
 
     # Write to QM file
-    export_path = object_export_dir / 'KnowledgeGraph.qm'
+    export_path = object_export_dir / 'knowledge_graph.qm'
     with export_path.open('a', encoding='utf-8') as qm_file:
         for obj in data:
             # Add ID fields
