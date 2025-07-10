@@ -208,14 +208,16 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-######### Custom #########
+######### Docker #########
 
-# Example data
-data/*
-!data/example/
-data/example/*
-!data/example/data_model.json
-!data/example/docs/
-data/example/docs/*
-!data/example/docs/original/
-!data/example/docs/text/
+# Unnecessary files/directories
+*
+
+# Essential files
+!pyproject.toml
+!README.md
+!requirements.txt
+
+# Essential directories
+!src/
+!config/
