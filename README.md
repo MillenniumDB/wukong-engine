@@ -116,8 +116,7 @@ An **example** data directory is provided for testing purposes, located in `data
 
 ### Engine Configuration
 
-The engine can be configured by editing the `config.toml` file that is present in the `config/` directory of the project.
-The configuration file comes with default settings to run the engine normally, but you can customize it to suit your needs.
+The engine configuration is managed through a **TOML** file, which can be **optionally provided** as a command-line argument when running the program. If no custom configuration is specified, the engine will use the default configuration located at `config/default.toml`, using the default values for all parameters and running the entire pipeline.
 
 > ⚙️ For more information on the available configuration options, refer to the [Configuration](docs/configuration.md) documentation.
 
