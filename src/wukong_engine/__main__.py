@@ -7,7 +7,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    python -m wukong_engine data/example
+    python -m wukong_engine data/example --config config/default.toml
 """
 
 import logging
@@ -28,7 +28,18 @@ def main() -> None:
         prog='wukong_engine',
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
-    parser.add_argument('data_dir', type=Path, help='Path to the directory containing the data (e.g. data/example)')
+    parser.add_argument(
+        'data_dir',
+        type=Path,
+        help='Path to the directory containing the data (e.g. data/example)',
+    )
+    parser.add_argument(
+        '--config',
+        type=Path,
+        default=Path('./config/default.toml'),
+        help='Path to the engine configuration file (e.g. config/default.toml)',
+        metavar='CONFIG_FILE',
+    )
 
     # Parse command line arguments
     args = parser.parse_args()
@@ -44,7 +55,7 @@ def main() -> None:
 
     # Execute the pipeline
     try:
-        execute_pipeline(args.data_dir)
+        execute_pipeline(args.data_dir, args.config)
     except (FileNotFoundError, ValueError) as error:
         logger.critical(f'{str(error).removesuffix(".")}.')
     except Exception:

@@ -48,9 +48,9 @@ The sub-packages contain modules that serve the following purposes:
 ## ⚙️ Configuration
 
 The configuration for the engine is managed inside the `config/` directory (in the root of the project).
-The configuration is currently defined in a single file:
+The default configuration is currently defined in a single file:
 
-- `config.toml`: Defines customizable behavior for the tool, such as choosing which steps of the pipeline to execute, among other functional parameters.
+- `default.toml`: Defines customizable behavior for the tool, such as choosing which steps of the pipeline to execute, among other functional parameters.
 
 The details for the engine configuration can be found in the [Configuration](./configuration.md) documentation.
 

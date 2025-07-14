@@ -28,7 +28,7 @@ For **production/deployment**, set these variables directly in your server/cloud
 
 ## 🔧 Engine Configuration
 
-The engine uses a [TOML](https://toml.io/en/) configuration file to define its settings, which is located at `config/config.toml`. This file has the following structure:
+The engine uses a [TOML](https://toml.io/en/) configuration file to define its settings. which is located at `config/config.toml`. This file has the following structure:
 
 ```toml
 [pipeline]

@@ -219,3 +219,7 @@ data/example/*
 data/example/docs/*
 !data/example/docs/original/
 !data/example/docs/text/
+
+# Custom configuration
+config/*.toml
+!config/default.toml
