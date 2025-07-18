@@ -9,6 +9,7 @@ This document provides a detailed overview of the project structure.
 - [⚙️ Configuration](#️-configuration)
 - [🗂️ Data](#️-data)
 - [🧪 Tests](#-tests)
+- [📜 Scripts](#-scripts)
 - [📖 Documentation](#-documentation)
 - [🐙 GitHub](#-github)
 - [🗃️ Project Files](#️-project-files)
@@ -16,7 +17,7 @@ This document provides a detailed overview of the project structure.
 ## 💻 Source Code
 
 The engine is implemented in **Python** and follows a modular architecture to facilitate maintainability and extensibility.
-The source code is organized into a package named `wukong_engine`, which contains all the necessary modules and sub-packages to run the engine.
+The source code is contained inside the `src/` directory and organized into a package named `wukong_engine`, which contains all the necessary modules and sub-packages to run the engine.
 The package structure is as follows:
 
 ```sh
@@ -47,10 +48,10 @@ The sub-packages contain modules that serve the following purposes:
 
 ## ⚙️ Configuration
 
-The configuration for the engine is managed inside the `config/` directory (in the root of the project).
-The configuration is currently defined in a single file:
+The default configuration for the engine is managed inside the `config/` directory.
+This configuration is currently defined in a single file:
 
-- `config.toml`: Defines customizable behavior for the tool, such as choosing which steps of the pipeline to execute, among other functional parameters.
+- `default.toml`: Specifies the default behavior of the tool, executing the entire engine pipeline and using the default values for all parameters.
 
 The details for the engine configuration can be found in the [Configuration](./configuration.md) documentation.
 
@@ -90,6 +91,15 @@ The `tests/` directory is meant to contain a test suite for the engine. This is 
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
+## 📜 Scripts
+
+The `scripts/` directory contains utility scripts that can be used to perform various tasks. It currently includes:
+
+- `build.sh`/`build.ps1`: Shell scripts to build a **Docker** image for the engine (support for **Bash** and **PowerShell**).
+- `run.sh`/`run.ps1`: Shell scripts to run the engine inside a **Docker** container (support for **Bash** and **PowerShell**).
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 📖 Documentation
 
 The `README.md` file located in the root of the project contains an overview of the project, its purpose, and how to set it up and run it.
@@ -124,6 +134,8 @@ The root directory of the project contains several other files that serve specif
 - `poetry.lock`: Lock file for **Poetry**, containing the exact versions of dependencies used in the project.
 - `requirements.txt`: Equivalent to `poetry.lock`, but in a format compatible with **pip**.
 - `.env.example`: Example file for environment variables.
+- `Dockerfile`: Specifies base images, dependencies, and build steps for creating the **Docker** image for the project.
+- `.dockerignore`: Specifies files and directories that should be ignored by **Docker** when building the image for the project.
 - `.gitignore`: Specifies files and directories that should be ignored by **Git** for source control.
 
 [📚 Back to Table of Contents](#-table-of-contents)
