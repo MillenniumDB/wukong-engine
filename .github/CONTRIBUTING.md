@@ -49,18 +49,18 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Follow the code style guidelines**
+- ✅ **Follow the code style/documentation guidelines** outlined in the [Development Guide](../docs/development.md)
 - ✅ **Add or update tests** for new features or bug fixes
 - ✅ **Ensure all tests pass**
-- ✅ **Run the tool locally** to confirm it works as expected
-- ✅ **Include clear and descriptive commit messages**
+- ✅ **Run the program locally** to confirm it works as expected
+- ✅ **Include clear and descriptive commit messages**, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
 - ✅ **Rebase your branch** onto the original/upstream `develop` branch and resolve all conflicts
 
 Once ready, open a **Pull Request** from **your branch** to the original/upstream `develop` branch with:
 
-- A clear title and summary of the changes
-- Reference to any **relevant issue numbers** (e.g. Closes #42)
+- A clear title and summary of the changes, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
+- Reference to any **relevant issue numbers** (e.g. Closes #77)
 - Screenshots or output if useful for understanding the change
 - Use the available **PR template** provided in **GitHub** to help structure your submission
 

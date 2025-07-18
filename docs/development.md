@@ -128,9 +128,11 @@ Topic branches are created from `develop` and can serve **multiple development p
 
 After the work is done, follow these steps:
 
-1. **Rebase** the topic branch onto the latest version of `develop`, squashing/rewording commits where necessary and fixing any conflicts that may arise
-2. Open a **Pull Request** from the topic branch targeting `develop`, and merge it after the review is complete
-3. After the **PR** is merged into `develop`, delete the topic branch
+1. **Rebase** the topic branch onto the latest version of `develop`, reordering commits if necessary and fixing any conflicts that may arise
+2. While **rebasing** interactively, take the opportunity to **pick/reword/squash/fixup commits** where necessary, to keep the history clean
+3. After the local **rebase** is complete, make sure to also update the topic branch on **GitHub** with `git push --force-with-lease`
+4. Open a **Pull Request** from the topic branch targeting `develop`, and merge it after the review is complete
+5. After the **PR** is merged into `develop`, delete the topic branch
 
 #### Release Branches
 
@@ -183,19 +185,20 @@ For writing **commit messages**, use the following convention:
 
 Here are the available values for `<type>` with some commit message examples:
 
-| Type       | Purpose                                              | Commit Example                                                   |
-| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
-| `feat`     | Introduces a new feature                             | `feat(api): add validator for user input`                        |
-| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing`       |
-| `docs`     | Adds or improves documentation                       | `docs(readme): improve usage section`                            |
-| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`         |
-| `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
-| `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
-| `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
-| `build`    | Changes that affect the build system or dependencies | `build(docker): restructure build process`                       |
-| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add linting step to GitHub Actions`                         |
-| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependency versions`                              |
-| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
+| Type       | Purpose                                              | Commit Example                                                     |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| `feat`     | Introduces a new feature                             | `✨ feat(api): add validator for user input`                        |
+| `fix`      | Fixes a bug                                          | `🐛 fix: correct file not found error in document processing`       |
+| `docs`     | Adds or improves documentation                       | `📝 docs(readme): improve usage section`                            |
+| `style`    | Code style changes (formatting, whitespace, etc.)    | `🎨 style: improve order of functions in processing module`         |
+| `refactor` | Code refactoring that doesn't change behavior        | `♻️ refactor(llm): simplify prompt generation logic`                |
+| `perf`     | Improves performance                                 | `⚡️ perf(parser): optimize text parsing with regex pre-compilation` |
+| `test`     | Adds or modifies tests                               | `✅ test(llm): add edge case tests for LLM output parser`           |
+| `build`    | Changes that affect the build system or dependencies | `🔧 build(docker): restructure build process`                       |
+| `ci`       | Changes to CI/CD pipelines or configs                | `👷 ci: add linting step to GitHub Actions`                         |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `⬆️ chore: update dependency versions`                              |
+| `revert`   | Reverts a previous commit                            | `⏪ revert: revert "feat: add text deduplication"`                  |
+| `merge`    | Merges changes from a Pull Request into a branch     | `🔀 merge(#77): feat/api-support into develop`                      |
 
 The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required.
 The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [Gitmoji VS Code Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
