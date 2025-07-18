@@ -15,17 +15,16 @@ Thanks for your interest in contributing! Here's how you can help and what to kn
 
 First, fork this repository to your own **GitHub** account.
 
-Clone your fork locally and navigate to the project directory:
+After that, clone **your fork** locally and navigate to the project directory:
 
 ```sh
 git clone https://github.com/your-username/wukong-engine.git
 cd wukong-engine
 ```
 
-Switch to the development branch and create a new feature branch for your changes:
+Now create a new feature branch for your changes:
 
 ```sh
-git checkout develop
 git checkout -b my-feature-branch
 ```
 
@@ -55,9 +54,9 @@ Before submitting a contribution, please make sure to:
 - ✅ **Run the program locally** to confirm it works as expected
 - ✅ **Include clear and descriptive commit messages**, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
-- ✅ **Rebase your branch** onto the original/upstream `develop` branch and resolve all conflicts
+- ✅ **Rebase your branch** onto the original/upstream `main` branch and resolve all conflicts
 
-Once ready, open a **Pull Request** from **your branch** to the original/upstream `develop` branch with:
+Once ready, open a **Pull Request** from **your branch** to the original/upstream `main` branch with:
 
 - A clear title and summary of the changes, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
 - Reference to any **relevant issue numbers** (e.g. Closes #77)

@@ -34,7 +34,7 @@ If this **PR** addresses specific **issues**, please reference them here with th
 - [ ] I have followed the commit/branch/PR naming conventions of this project
 - [ ] I have made corresponding changes to the documentation (if applicable)
 - [ ] I have added/updated tests, and they all pass (if applicable)
-- [ ] My branch is up-to-date with `develop` after a rebase, and all conflicts have been resolved (if applicable)
+- [ ] My branch is up-to-date with `main` after a rebase, and all conflicts have been resolved (if applicable)
 
 ## 🧪 Testing
 
@@ -46,6 +46,8 @@ If applicable, include the instructions and commands necessary for running the t
 
 Add any additional information, screenshots, design notes, or context here.
 
-Use the following **naming convention** for the **merge commit** of this **PR**: `🔀 merge(#<PR-number>): <source-branch> into <target-branch>`
+Use the following **naming convention** for the **merge commit** of this **PR**: `🔀 merge(#<PR-number>): <source-branch>`
 
-**Example:** `🔀 merge(#77): feat/api-support into develop`
+**Example:** `🔀 merge(#77): feat/api-support`
+
+**Example:** `🔀 merge(#80): hotfix/fix-login-crash into release/v1.1.0`, if the **target branch** is not `main`
