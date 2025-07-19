@@ -108,7 +108,7 @@ The extended documentation for the central aspects of the project is organized i
 
 - `configuration.md`: Configuration file format and available options for engine configuration.
 - `data_model.md`: Data model format and available options for specifying entity and relation types.
-- `development.md`: Development guidelines, including code style and testing practices.
+- `development.md`: Development guidelines, including code style/testing practices, and branching/naming conventions.
 - `project_structure.md`: Project structure and organization of the source code.
 
 [📚 Back to Table of Contents](#-table-of-contents)

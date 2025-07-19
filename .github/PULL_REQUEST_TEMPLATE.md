@@ -14,6 +14,8 @@ Select all types of changes that apply to this **PR**:
 - [ ] 🚀 **release** – Preparing a new release
 - [ ] 🚑 **hotfix** – Urgent fixes to production code
 
+-----------------------
+
 Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 
 **Example:** `feat(core): add support for custom data models`
@@ -29,11 +31,12 @@ If this **PR** addresses specific **issues**, please reference them here with th
 ## ✅ Checklist
 
 - [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code where necessary
+- [ ] I have performed a self-review of my code and commented it where necessary
+- [ ] I have respected the branch strategy and workflow of this project
+- [ ] I have followed the commit/branch/PR naming conventions of this project
 - [ ] I have made corresponding changes to the documentation (if applicable)
 - [ ] I have added/updated tests, and they all pass (if applicable)
-- [ ] My branch is up-to-date with `develop` after a rebase, and all conflicts have been resolved (if applicable)
+- [ ] My branch is up-to-date with `main` after a rebase, and all conflicts have been resolved (if applicable)
 
 ## 🧪 Testing
 
@@ -44,3 +47,9 @@ If applicable, include the instructions and commands necessary for running the t
 ## 🧠 Additional Notes
 
 Add any additional information, screenshots, design notes, or context here.
+
+-----------------------
+
+Use the following **naming convention** for the **merge commit** of this **PR**: `🔀 merge(#<PR-number>): <source-branch>`
+
+**Example:** `🔀 merge(#77): feat/api-support`
