@@ -46,8 +46,8 @@ If applicable, include the instructions and commands necessary for running the t
 
 Add any additional information, screenshots, design notes, or context here.
 
+-----------------------
+
 Use the following **naming convention** for the **merge commit** of this **PR**: `🔀 merge(#<PR-number>): <source-branch>`
 
 **Example:** `🔀 merge(#77): feat/api-support`
-
-**Example:** `🔀 merge(#80): hotfix/fix-login-crash into release/v1.1.0`, if the **target branch** is not `main`
