@@ -13,25 +13,22 @@ Thanks for your interest in contributing! Here's how you can help and what to kn
 
 ## 🚀 Getting Started
 
-To set up the project as an external contributor, follow these steps:
+First, fork this repository to your own **GitHub** account.
 
-1. Fork this repository to your own **GitHub** account.
-
-2. Clone your fork locally and navigate to the project directory:
+After that, clone **your fork** locally and navigate to the project directory:
 
 ```sh
 git clone https://github.com/your-username/wukong-engine.git
 cd wukong-engine
 ```
 
-3. Switch to the development branch and create a new feature branch for your changes:
+Now create a new feature branch for your changes:
 
 ```sh
-git checkout develop  # Make sure you're on the develop branch
 git checkout -b my-feature-branch
 ```
 
-4. Take a look at the [Development Guide](../docs/development.md) and follow the setup instructions and development practices for the project.
+Take a look at the [Development Guide](../docs/development.md) and follow the setup instructions and development practices for the project.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -51,18 +48,18 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Pull the latest changes** from the `develop` branch and resolve any merge conflicts
-- ✅ **Follow the code style guidelines**
+- ✅ **Follow the code style/documentation guidelines** outlined in the [Development Guide](../docs/development.md)
 - ✅ **Add or update tests** for new features or bug fixes
 - ✅ **Ensure all tests pass**
-- ✅ **Run the tool locally** to confirm it works as expected
-- ✅ **Include clear and descriptive commit messages**
+- ✅ **Run the program locally** to confirm it works as expected
+- ✅ **Include clear and descriptive commit messages**, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
+- ✅ **Rebase your branch** onto the original/upstream `main` branch and resolve all conflicts
 
-Once ready, open a **Pull Request** from **your branch** to the `develop` branch with:
+Once ready, open a **Pull Request** from **your branch** to the original/upstream `main` branch with:
 
-- A clear title and summary of the changes
-- Reference to any **relevant issue numbers** (e.g. Closes #42)
+- A clear title and summary of the changes, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
+- Reference to any **relevant issue numbers** (e.g. Closes #77)
 - Screenshots or output if useful for understanding the change
 - Use the available **PR template** provided in **GitHub** to help structure your submission
 

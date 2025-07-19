@@ -7,10 +7,11 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    python -m wukong_engine data/example
+    python -m wukong_engine data/example --config config/default.toml
 """
 
 import logging
+import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
@@ -28,7 +29,18 @@ def main() -> None:
         prog='wukong_engine',
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
-    parser.add_argument('data_dir', type=Path, help='Path to the directory containing the data (e.g. data/example)')
+    parser.add_argument(
+        'data_dir',
+        type=Path,
+        help='Path to the directory containing the data (e.g. data/example)',
+    )
+    parser.add_argument(
+        '--config',
+        type=Path,
+        default=Path('./config/default.toml'),
+        help='Path to the engine configuration file (e.g. config/default.toml)',
+        metavar='CONFIG_FILE',
+    )
 
     # Parse command line arguments
     args = parser.parse_args()
@@ -37,18 +49,15 @@ def main() -> None:
     setup_logging(level=logging.INFO)
     logger.info('Starting WUKONG Engine...')
 
-    # Check if data directory exists
-    if not args.data_dir.exists():
-        logger.critical(f'Data directory "{args.data_dir}" does not exist.')
-        return
-
     # Execute the pipeline
     try:
-        execute_pipeline(args.data_dir)
+        execute_pipeline(args.data_dir, args.config)
     except (FileNotFoundError, ValueError) as error:
         logger.critical(f'{str(error).removesuffix(".")}.')
+        sys.exit(1)
     except Exception:
         logger.exception('An unexpected error occurred during pipeline execution.')
+        sys.exit(1)
 
 
 # Execute the WUKONG engine

@@ -41,7 +41,7 @@ RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
 
 
-def execute_pipeline(data_dir: Path) -> None:
+def execute_pipeline(data_dir: Path, config_path: Path) -> None:
     """Execute the WUKONG engine pipeline.
 
     Orchestrates the entire pipeline, which includes:
@@ -53,6 +53,7 @@ def execute_pipeline(data_dir: Path) -> None:
 
     Args:
         data_dir: The path to the data directory containing the documents and data model.
+        config_path: The path to the engine configuration file.
 
     Raises:
         FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
@@ -67,7 +68,7 @@ def execute_pipeline(data_dir: Path) -> None:
     exports_dir = data_dir / EXPORTS_DIR
 
     # Get configuration
-    config = Config()
+    config = Config(config_path)
 
     # Get data model
     data_model = DataModel(data_dir=data_dir)

@@ -11,9 +11,9 @@ This document outlines the development practices and setup for the project.
 - [🧾 Code Documentation](#-code-documentation)
 - [🧪 Testing](#-testing)
 - [🌿 Branching Strategy](#-branching-strategy)
-  - [Core Branches](#core-branches)
+  - [Core Branch](#core-branch)
   - [Supporting Branches](#supporting-branches)
-    - [Development Branches](#development-branches)
+    - [Topic Branches](#topic-branches)
     - [Release Branches](#release-branches)
     - [Hotfix Branches](#hotfix-branches)
 - [🏷️ Naming Conventions](#️-naming-conventions)
@@ -23,18 +23,16 @@ This document outlines the development practices and setup for the project.
 - [📦 Project Versioning](#-project-versioning)
 - [⚙️ Tooling \& Infrastructure](#️-tooling--infrastructure)
   - [Dependency Management](#dependency-management)
+  - [Containerization](#containerization)
   - [Continuous Integration/Deployment](#continuous-integrationdeployment)
 
 ## 🚀 Getting Started
 
-To set up the project for development, follow these steps:
+Perform the general set up for the project outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations** provided there.
 
-1. Perform the general set up for the project outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations (optional or not)** provided there.
-
-2. Switch to the development branch and create a new feature branch:
+After that, create a new feature branch from `main`:
 
 ```sh
-git checkout develop  # Make sure you're on the develop branch
 git checkout -b my-feature-branch
 ```
 
@@ -52,19 +50,19 @@ For a detailed description of the entire project structure and its components, r
 
 ## 🎨 Code Style
 
-The project follows multiple code style conventions and practices to ensure code quality, extensibility and maintainability. The following tools are used to enforce these standards:
+The project follows multiple code style conventions and practices to ensure code quality, extensibility and maintainability. The following tools are used to enforce these standards.
 
-- **Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
+**Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
 
-  ```json
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-  },
-  "ruff.configurationPreference": "filesystemFirst",
-  ```
+```json
+"editor.formatOnSave": true,
+"editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+},
+"ruff.configurationPreference": "filesystemFirst",
+```
 
-- **Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool.
+**Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -100,52 +98,76 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 ## 🌿 Branching Strategy
 
-The project uses a variant of the **Git Flow** branching model to manage development and releases. This helps maintain a clean and organized codebase, allowing for parallel development of features, bug fixes, and stable releases.
+The project uses a variant of the **GitHub Flow** branching model to manage development and releases. This model is designed to be simple and effective for continuous delivery, allowing for quick iterations and deployments.
 
-> 🤝 For information about the general contribution guidelines, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
+> 🤝 For an overview of the expected workflow for external contributors, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
 
-### Core Branches
+### Core Branch
 
-The project has two core branches that serve as the foundation for development:
+The project has a single core branch that serves as the foundation for development:
 
-- `main`: Stable branch containing production-ready code. Each release is tagged here.
-- `develop`: Active development branch where all feature branches are merged. It reflects the latest development state.
+- `main`: Development branch containing the latest stable features. All changes should be merged into this branch after review and testing.
 
-> 🚫 Do not commit directly to `main` or `develop`.
+> 🚫 Never commit directly to `main`.
 
 ### Supporting Branches
 
-Supporting branches are created and used for specific purposes, after which they are merged back into their respective base branches and then removed.
+Supporting branches are created and used for specific purposes, and can be categorized into three main types, as described below.
 
-#### Development Branches
+#### Topic Branches
 
 Used for general development of new features, bug fixes, or other changes.
 
-- **Base:** `develop`
-- **Merged Into:** `develop`
+- **Base:** `main`
 - **Example:** `feat/add-new-parser`
 
-These branches can serve multiple purposes, see the [Naming Conventions](#️-naming-conventions) section for more details on all available types (excluding `release` and `hotfix`).
+Topic branches can serve **multiple development purposes**. See the [Naming Conventions](#️-naming-conventions) section for more details on all available branch types (excluding `release` and `hotfix`).
+
+The expected workflow for these branches is as follows:
+
+1. Create the topic branch from `main` and use it for development
+2. After the changes are ready, **rebase** the topic branch onto the latest `main`, reordering commits if necessary and fixing any conflicts that may arise
+3. While **rebasing** interactively, take the opportunity to **pick/reword/squash/fixup commits** where necessary, to keep the history clean
+4. After the local **rebase** is complete, make sure to also update the remote topic branch on **GitHub** with `git push --force-with-lease`
+5. Open a **Pull Request** from the topic branch targeting `main`, and merge it after the review is complete
+6. After the **PR** is merged into `main`, delete the topic branch
 
 #### Release Branches
 
 Used to prepare a new release for the project — includes version bumping, changelogs, etc.
 
-- **Base:** `develop`
-- **Merged Into:** `main` and `develop`
+- **Base:** `main`
 - **Example:** `release/v1.0.0`
 
-After **QA and final adjustments**, this branch is merged and the `main` branch is then **tagged** as a release.
+Release branches are created when the project is ready for a **new version release**, and they allow for **final adjustments and QA/Staging**.
+
+The expected workflow for these branches is as follows:
+
+1. Create the release branch from `main` and use it for final adjustments, such as version bumping and updating changelogs
+2. Perform any necessary **testing and QA** on the release branch
+3. After the release is ready, **tag** the latest commit on the release branch with the released version (e.g. `v1.0.0`)
+4. Create a **GitHub Release** for the tagged commit, including release notes and changelog
+5. Open a **Pull Request** from the release branch targeting `main`, and merge it while solving any conflicts that may arise
+6. After the **PR** is merged into `main`, delete the release branch
 
 #### Hotfix Branches
 
 Used to quickly patch production code.
 
-- **Base:** `main`
-- **Merged Into:** `main` and `develop`
+- **Base:** `release tag` (e.g. `v1.0.0`)
 - **Example:** `hotfix/fix-login-crash`
 
-Hotfixes should be kept small and scoped only to the urgent issue.
+Hotfix branches are created for **urgent fixes** that need to be applied to the production codebase immediately.
+
+The expected workflow for these branches is as follows:
+
+1. Create the hotfix branch from the `release tag` that matches the production environment (e.g. `v1.0.0`)
+2. Make the necessary changes to fix the issue on the hotfix branch
+3. After the hotfix is ready, **tag** the latest commit on the hotfix branch with the released patch (e.g. `v1.0.1`)
+4. Create a **GitHub Release** for the tagged commit, including patch notes and fixes
+5. Open a **Pull Request** from the hotfix branch targeting `main`, and merge it while solving any conflicts that may arise
+6. If there is an active **release branch**, open a **Pull Request** from the hotfix branch targeting the **release branch**, and merge it while solving any conflicts that may arise
+7. After the **PR** is merged into `main` (and into the **release branch** if the previous step applies), delete the hotfix branch
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -161,19 +183,20 @@ For writing **commit messages**, use the following convention:
 
 Here are the available values for `<type>` with some commit message examples:
 
-| Type       | Purpose                                              | Commit Example                                                   |
-| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
-| `feat`     | Introduces a new feature                             | `feat(api): add validator for user input`                        |
-| `fix`      | Fixes a bug                                          | `fix: correct file not found error in document processing`       |
-| `docs`     | Adds or improves documentation                       | `docs(readme): improve usage section`                            |
-| `style`    | Code style changes (formatting, whitespace, etc.)    | `style: improve order of functions in processing module`         |
-| `refactor` | Code refactoring that doesn't change behavior        | `refactor(llm): simplify prompt generation logic`                |
-| `perf`     | Improves performance                                 | `perf(parser): optimize text parsing with regex pre-compilation` |
-| `test`     | Adds or modifies tests                               | `test(llm): add edge case tests for LLM output parser`           |
-| `build`    | Changes that affect the build system or dependencies | `build(docker): restructure build process`                       |
-| `ci`       | Changes to CI/CD pipelines or configs                | `ci: add linting step to GitHub Actions`                         |
-| `chore`    | Routine tasks like maintenance, dependency updates   | `chore: update dependency versions`                              |
-| `revert`   | Reverts a previous commit                            | `revert: revert "feat: add text deduplication"`                  |
+| Type       | Purpose                                              | Commit Example                                                     |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| `feat`     | Introduces a new feature                             | `✨ feat(api): add validator for user input`                        |
+| `fix`      | Fixes a bug                                          | `🐛 fix: correct file not found error in document processing`       |
+| `docs`     | Adds or improves documentation                       | `📝 docs(readme): improve usage section`                            |
+| `style`    | Code style changes (formatting, whitespace, etc.)    | `🎨 style: improve order of functions in processing module`         |
+| `refactor` | Code refactoring that doesn't change behavior        | `♻️ refactor(llm): simplify prompt generation logic`                |
+| `perf`     | Improves performance                                 | `⚡️ perf(parser): optimize text parsing with regex pre-compilation` |
+| `test`     | Adds or modifies tests                               | `✅ test(llm): add edge case tests for LLM output parser`           |
+| `build`    | Changes that affect the build system or dependencies | `🔧 build(docker): restructure build process`                       |
+| `ci`       | Changes to CI/CD pipelines or configs                | `👷 ci: add linting step to GitHub Actions`                         |
+| `chore`    | Routine tasks like maintenance, dependency updates   | `⬆️ chore: update dependency versions`                              |
+| `revert`   | Reverts a previous commit                            | `⏪ revert: revert "feat: add text deduplication"`                  |
+| `merge`    | Merges changes from a Pull Request into `main`       | `🔀 merge(#77): feat/api-support`                                   |
 
 The `<optional-emoji>` can be used to visually categorize the commit, but is not strictly required.
 The project uses the emoji convention from [Gitmoji](https://gitmoji.dev/), which is also available in the [Gitmoji VS Code Extension](https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode).
@@ -223,7 +246,7 @@ We follow [Semantic Versioning](https://semver.org/) **(MAJOR.MINOR.PATCH)** to 
 - **MINOR**: New features that are backwards compatible
 - **PATCH**: Bug fixes or small improvements
 
-> 🌿 The expected use of release branches is shown in the [Branching Strategy](#-branching-strategy) section.
+> 🌿 The expected use of release/hotfix branches is shown in the [Branching Strategy](#-branching-strategy) section.
 >
 > 📝 All releases are documented in the [CHANGELOG](../CHANGELOG.md) file.
 
@@ -242,8 +265,17 @@ The following files are key to this setup:
 - **Poetry Lockfile:** `poetry.lock`
 - **Pip-compatible Lockfile:** `requirements.txt`
 
+### Containerization
+
+[Docker](https://www.docker.com/) is used to provide a consistent environment for users to run the project, as well as to facilitate deployment.
+
+The `Dockerfile` defines the **image/container setup**, and the `scripts/` directory contains utility shell scripts for **simplifying usage of the Docker container**.
+
 ### Continuous Integration/Deployment
 
-Currently, the project **does not implement CI/CD** functionalities.
+Currently, the project **does not implement CI/CD** functionalities. The following ideas could be implemented in the future, using **GitHub Actions**:
+
+- **CI**: Run **tests** and other checks on each **Pull Request**
+- **CD**: Automatically deploy to **production** on **tagged releases/hotfixes**, and to **staging** on updates to **release branches**
 
 [📚 Back to Table of Contents](#-table-of-contents)

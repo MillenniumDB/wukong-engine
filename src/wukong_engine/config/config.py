@@ -28,7 +28,7 @@ from wukong_engine.utils.patterns import Singleton
 logger = logging.getLogger(__name__)
 
 # Paths
-CONFIG_PATH = Path('./config/config.toml')
+DEFAULT_CONFIG_PATH = Path('./config/default.toml')
 
 
 class Config(Singleton):
@@ -39,10 +39,14 @@ class Config(Singleton):
     The configuration is loaded once and is assumed to be immutable for the duration of the program.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, config_path: Path = DEFAULT_CONFIG_PATH) -> None:
         """Initialize the configuration manager.
 
         Loads the configuration and processes it to store each relevant component.
+        Uses a custom configuration file if provided, otherwise falls back to the default configuration.
+
+        Args:
+            config_path: The path to the engine configuration file.
         """
         # Components of the configuration
         self._pipeline = {}
@@ -50,7 +54,7 @@ class Config(Singleton):
         self._env = {}
 
         # Initialize the configuration
-        self._load_config(CONFIG_PATH)
+        self._load_config(config_path)
 
     def _load_config(self, config_path: Path) -> None:
         """Load the configuration from a TOML file and environment variables, making sure it has a valid format.
