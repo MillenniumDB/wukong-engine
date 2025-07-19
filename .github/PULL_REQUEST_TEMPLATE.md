@@ -14,6 +14,8 @@ Select all types of changes that apply to this **PR**:
 - [ ] 🚀 **release** – Preparing a new release
 - [ ] 🚑 **hotfix** – Urgent fixes to production code
 
+-----------------------
+
 Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 
 **Example:** `feat(core): add support for custom data models`
