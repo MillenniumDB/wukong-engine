@@ -9,15 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
+- [\[0.1.0\] - 2025-07-21](#010---2025-07-21)
   - [✨ Added](#-added)
 
 ## [Unreleased]
+
+*
+
+## [0.1.0] - 2025-07-21
 
 ### ✨ Added
 
 - Initial release of the **WUKONG** engine.
 - Data model schema for representing knowledge graphs.
 - Configuration file for engine settings.
+- **Docker** support for containerization on **Linux/MacOS/Windows**.
+- Support for a custom configuration file provided by the user.
 - Support for processing plain text documents.
 - Support for **GPT 4.1-mini** as the default **LLM** for extracting information from documents.
 - Support for exporting knowledge graphs in **MDB**, **Neo4j** and **JSON** format.
@@ -29,5 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Poetry** configuration for dependency management.
 - Linting and formatting setup with **Ruff** and **Pyright**.
 - Custom templates for pull requests and issues.
+- **WUKONG** engine logos.
 
 [📚 Back to Table of Contents](#-table-of-contents)
