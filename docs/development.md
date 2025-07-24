@@ -57,7 +57,17 @@ The project follows multiple code style conventions and practices to ensure code
 ```json
 "editor.formatOnSave": true,
 "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
     "source.organizeImports": "explicit"
+},
+"notebook.formatOnSave.enabled": true,
+"notebook.defaultFormatter": "charliermarsh.ruff",
+"notebook.codeActionsOnSave": {
+    "notebook.source.fixAll": "explicit",
+    "notebook.source.organizeImports": "explicit"
+},
+"[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
 },
 "ruff.configurationPreference": "filesystemFirst",
 ```
