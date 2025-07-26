@@ -1,3 +1,8 @@
+<!-- Banner Logo -->
+<p align="center">
+  <img src="assets/logo/banner/1024-rounded.png" alt="Logo" width="100%"/>
+</p>
+
 <!-- omit from toc -->
 # WUKONG Engine
 

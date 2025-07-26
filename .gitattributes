@@ -1,0 +1,15 @@
+# Default: files are treated as text and normalized
+* text=auto
+
+# Treat images as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.ico binary
+*.webp binary
+
+# Treat fonts as binary
+*.ttf binary
+*.otf binary

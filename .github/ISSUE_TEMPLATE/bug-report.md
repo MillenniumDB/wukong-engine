@@ -28,7 +28,7 @@ What actually happened.
 
 - OS: (e.g. Windows 11, Ubuntu 22.04)
 - Python version: (e.g. 3.13)
-- Project version: (e.g. v0.1.0)
+- Project version: (e.g. v1.0.0)
 
 ## 📎 Additional Context
 
