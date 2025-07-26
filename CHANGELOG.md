@@ -9,14 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.1.0\] - 2025-07-21](#010---2025-07-21)
+- [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
   - [✨ Added](#-added)
 
 ## [Unreleased]
 
-*
+- No changes yet.
 
-## [0.1.0] - 2025-07-21
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## [0.1.0] - 2025-07-25
 
 ### ✨ Added
 

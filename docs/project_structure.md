@@ -11,6 +11,7 @@ This document provides a detailed overview of the project structure.
 - [🧪 Tests](#-tests)
 - [📜 Scripts](#-scripts)
 - [📖 Documentation](#-documentation)
+- [🎨 Assets](#-assets)
 - [🐙 GitHub](#-github)
 - [🗃️ Project Files](#️-project-files)
 
@@ -113,6 +114,14 @@ The extended documentation for the central aspects of the project is organized i
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
+## 🎨 Assets
+
+The `assets/` directory contains static files used by the project, such as images and logos. It currently includes the following sub-directories:
+
+- `logo/`: Contains the project's logo in various formats for different use cases (e.g. branding, banner, icon).
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
 ## 🐙 GitHub
 
 The `.github/` directory contains repository-specific files used by **GitHub** to manage community standards and collaboration workflows. It currently includes:
@@ -137,5 +146,6 @@ The root directory of the project contains several other files that serve specif
 - `Dockerfile`: Specifies base images, dependencies, and build steps for creating the **Docker** image for the project.
 - `.dockerignore`: Specifies files and directories that should be ignored by **Docker** when building the image for the project.
 - `.gitignore`: Specifies files and directories that should be ignored by **Git** for source control.
+- `.gitattributes`: Specifies attributes for files in the **Git** repository, such as line endings and merge strategies.
 
 [📚 Back to Table of Contents](#-table-of-contents)
