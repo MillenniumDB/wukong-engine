@@ -44,7 +44,7 @@ Now you can start development inside your branch. Make sure to follow the develo
 
 The project is organized into several directories and files, each serving a specific purpose.
 
-For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project_structure.md) documentation.
+For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

@@ -82,7 +82,7 @@ data/example/
 - The `data_model.json` file contains the example data model in **JSON** format.
 
 To make use of the engine, the user must first create and set up their own data directory with the same structure as the example above.
-The details for building your own data model schema can be found in the [Data Model](./data_model.md) documentation.
+The details for building your own data model schema can be found in the [Data Model](./data-model.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -108,9 +108,9 @@ The `README.md` file located in the root of the project contains an overview of 
 The extended documentation for the central aspects of the project is organized in the `docs/` directory, which includes:
 
 - `configuration.md`: Configuration file format and available options for engine configuration.
-- `data_model.md`: Data model format and available options for specifying entity and relation types.
+- `data-model.md`: Data model format and available options for specifying entity and relation types.
 - `development.md`: Development guidelines, including code style/testing practices, and branching/naming conventions.
-- `project_structure.md`: Project structure and organization of the source code.
+- `project-structure.md`: Project structure and organization of the source code.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
