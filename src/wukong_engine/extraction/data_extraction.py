@@ -82,7 +82,7 @@ def find_relations(
 
     Args:
         relation_model: A dictionary containing relation types from the data model and their relevant information.
-        docs_dir: The path to the directory containing the input documents.
+        docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
         clear_results: Whether to clear the partial results directory before starting the procedure.
@@ -271,7 +271,7 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         stats_dict[materialized_relation_name]['original_relations'] = len(relations)
 
         # Clean relations and remove invalid ones
-        relations = clean_relations(relations, relation_info, entity_stats_path)
+        relations = clean_relations(relations, relation_info)
         stats_dict[materialized_relation_name]['cleaned_relations'] = len(relations)
 
         # Merge duplicate relations
@@ -402,7 +402,7 @@ def get_relation_prompts(
     Args:
         relation_name: The name of the relation type to process.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
-        docs_dir: The path to the directory containing the input documents.
+        docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
 
@@ -427,89 +427,108 @@ def get_relation_prompts(
     relation_results_dir = partial_results_dir / 'relations' / relation_name
     relation_results_dir.mkdir(parents=True, exist_ok=True)
 
-    # Prepare prompt data for each document
-    prompts_data = []
-    document_paths = [doc_path for doc_path in docs_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt']
-    for document_path in document_paths:
-        # Path to partial results for this document
-        document_name = document_path.stem
-        results_file_path = relation_results_dir / f'{document_name}.json'
+    # Prepare prompt data for each document, gathering documents from all sets
+    document_paths = []
+    prompt_data = []
+    data_model = DataModel()
+    origin_sets = data_model.get_entity_sets(relation_info['origin'])
+    target_sets = data_model.get_entity_sets(relation_info['target'])
+    for document_set in sorted(origin_sets & target_sets):
+        set_dir = docs_dir / document_set
 
-        # Load potential origin entities (if the origin is not a core entity)
-        origin_entities = []
-        if not relation_info.get('core_origin', False):
-            # Only load partial entities if their processed version is available
-            final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
-            if not final_origin_entities_path.exists():
-                logger.error(
-                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
-                )
-                continue
+        # If the document set directory does not exist, abort the process
+        if not set_dir.exists():
+            raise FileNotFoundError(
+                f'Entity extraction failed. The directory for the document set "{document_set}" does not exist at path "{set_dir}".',
+            )
 
-            # Load partial origin entities for this document
-            origin_entities_path = partial_entities_dir / relation_info['origin'] / f'{document_name}.json'
-            origin_entities = load_json_data(origin_entities_path)
-            if not origin_entities:
-                save_json_data([], results_file_path)
-                continue
-
-        # Load potential target entities (if the target is not a core entity)
-        target_entities = []
-        if not relation_info.get('core_target', False):
-            # Only load partial entities if their processed version is available
-            final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
-            if not final_target_entities_path.exists():
-                logger.error(
-                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
-                )
-                continue
-
-            # Load partial target entities for this document
-            target_entities_path = partial_entities_dir / relation_info['target'] / f'{document_name}.json'
-            target_entities = load_json_data(target_entities_path)
-            if not target_entities:
-                save_json_data([], results_file_path)
-                continue
-
-        # Remove ReferenceIds since they are not needed for the prompt
-        for entity in origin_entities + target_entities:
-            del entity['_ReferenceIds']
-
-        # Document to analyze
-        document = load_text_data(document_path)
-
-        ### LLM Prompt Information ###
-
-        # Relation between different entity types, none of which are core entities (default)
-        user_role = (
-            f'\n\n==LIST 1 START==\n{json.dumps({relation_info["origin"]: origin_entities})}\n==LIST 1 END=='
-            f'\n\n==LIST 2 START==\n{json.dumps({relation_info["target"]: target_entities})}\n==LIST 2 END=='
-            f'\n\n==DOCUMENT START==\n{document}\n==DOCUMENT END=='
+        # Gather plain text files for this set
+        document_paths = sorted(
+            [doc_path for doc_path in set_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt'],
         )
 
-        # Relation with core entities, or between the same entity type
-        entity_name = relation_info['origin']
-        entities = origin_entities
-        if not origin_entities:
-            entity_name = relation_info['target']
-            entities = target_entities
-        if (relation_info['origin'] == relation_info['target']) or (not origin_entities) or (not target_entities):
+        # Prepare prompt data for each document
+        for document_path in document_paths:
+            # Path to partial results for this document
+            document_name = document_path.stem
+            results_file_path = relation_results_dir / f'{document_name}.json'
+
+            # Load potential origin entities (if the origin is not a core entity)
+            origin_entities = []
+            if not relation_info.get('core_origin', False):
+                # Only load partial entities if their processed version is available
+                final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
+                if not final_origin_entities_path.exists():
+                    logger.error(
+                        f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
+                    )
+                    continue
+
+                # Load partial origin entities for this document
+                origin_entities_path = partial_entities_dir / relation_info['origin'] / f'{document_name}.json'
+                origin_entities = load_json_data(origin_entities_path)
+                if not origin_entities:
+                    save_json_data([], results_file_path)
+                    continue
+
+            # Load potential target entities (if the target is not a core entity)
+            target_entities = []
+            if not relation_info.get('core_target', False):
+                # Only load partial entities if their processed version is available
+                final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
+                if not final_target_entities_path.exists():
+                    logger.error(
+                        f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
+                    )
+                    continue
+
+                # Load partial target entities for this document
+                target_entities_path = partial_entities_dir / relation_info['target'] / f'{document_name}.json'
+                target_entities = load_json_data(target_entities_path)
+                if not target_entities:
+                    save_json_data([], results_file_path)
+                    continue
+
+            # Remove ReferenceIds since they are not needed for the prompt
+            for entity in origin_entities + target_entities:
+                del entity['_ReferenceIds']
+
+            # Document to analyze
+            document = load_text_data(document_path)
+
+            ### LLM Prompt Information ###
+
+            # Relation between different entity types, none of which are core entities (default)
             user_role = (
-                f'\n\n==LIST START==\n{json.dumps({entity_name: entities})}\n==LIST END=='
+                f'\n\n==LIST 1 START==\n{json.dumps({relation_info["origin"]: origin_entities})}\n==LIST 1 END=='
+                f'\n\n==LIST 2 START==\n{json.dumps({relation_info["target"]: target_entities})}\n==LIST 2 END=='
                 f'\n\n==DOCUMENT START==\n{document}\n==DOCUMENT END=='
             )
 
-        # Append the prompt data
-        prompts_data.append(
-            {
-                'document_name': document_name,
-                'object_name': relation_name,
-                'user_role': user_role,
-                'system_role': prompt,
-            },
-        )
+            # Relation with core entities, or between the same entity type
+            entity_name = relation_info['origin']
+            entities = origin_entities
+            if not origin_entities:
+                entity_name = relation_info['target']
+                entities = target_entities
+            if (relation_info['origin'] == relation_info['target']) or (not origin_entities) or (not target_entities):
+                user_role = (
+                    f'\n\n==LIST START==\n{json.dumps({entity_name: entities})}\n==LIST END=='
+                    f'\n\n==DOCUMENT START==\n{document}\n==DOCUMENT END=='
+                )
 
-    return prompts_data
+            # Append the prompt data
+            prompt_data.append(
+                {
+                    'document_name': document_name,
+                    'document_set': document_set,
+                    'object_name': relation_name,
+                    'user_role': user_role,
+                    'system_role': prompt,
+                },
+            )
+
+    return prompt_data
 
 
 def bypass_ai_processing(
@@ -527,7 +546,7 @@ def bypass_ai_processing(
     Args:
         relation_name: The name of the relation type to process.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
-        docs_dir: The path to the directory containing the input documents.
+        docs_dir: The path to the directory containing the document sets.
         results_dir: The path to the directory where the results are stored.
 
     Yields:
@@ -546,62 +565,86 @@ def bypass_ai_processing(
     relation_results_dir = partial_results_dir / 'relations' / relation_name
     relation_results_dir.mkdir(parents=True, exist_ok=True)
 
-    # Prepare results for each document (assuming that the relation is always valid)
-    document_paths = [doc_path for doc_path in docs_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt']
-    for document_path in document_paths:
-        # Path to partial results for this document
-        document_name = document_path.stem
-        results_file_path = relation_results_dir / f'{document_name}.json'
+    # Prepare results for each document, gathering documents from all sets
+    document_paths = []
+    data_model = DataModel()
+    origin_sets = data_model.get_entity_sets(relation_info['origin'])
+    target_sets = data_model.get_entity_sets(relation_info['target'])
+    for document_set in sorted(origin_sets & target_sets):
+        set_dir = docs_dir / document_set
 
-        # Load origin entities (if the core entity is the target)
-        origin_entities = []
-        if relation_info.get('core_target', False):
-            # Only load partial entities if their processed version is available
-            final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
-            if not final_origin_entities_path.exists():
-                logger.error(
-                    f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
-                )
-                continue
+        # If the document set directory does not exist, abort the process
+        if not set_dir.exists():
+            raise FileNotFoundError(
+                f'Entity extraction failed. The directory for the document set "{document_set}" does not exist at path "{set_dir}".',
+            )
 
-            # Load partial origin entities for this document
-            origin_entities_path = partial_entities_dir / relation_info['origin'] / f'{document_name}.json'
-            origin_entities = load_json_data(origin_entities_path)
-            if not origin_entities:
-                save_json_data([], results_file_path)
-                continue
+        # Gather plain text files for this set
+        document_paths = sorted(
+            [doc_path for doc_path in set_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt'],
+        )
 
-            # Only keep the ObjectId of the origin entity, since the bypass relation is supposed to have no properties
-            origin_entities = [{'_OriginId': entity['_ObjectId']} for entity in origin_entities]
+        # Prepare results for each document
+        for document_path in document_paths:
+            # Path to partial results for this document
+            document_name = document_path.stem
+            results_file_path = relation_results_dir / f'{document_name}.json'
 
-        # Load target entities (if the core entity is the origin)
-        target_entities = []
-        if relation_info.get('core_origin', False):
-            # Only load partial entities if their processed version is available
-            final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
-            if not final_target_entities_path.exists():
-                logger.error(
-                    f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
-                )
-                continue
+            # Load origin entities (if the core entity is the target)
+            origin_entities = []
+            if relation_info.get('core_target', False):
+                # Only load partial entities if their processed version is available
+                final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
+                if not final_origin_entities_path.exists():
+                    logger.error(
+                        f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
+                    )
+                    continue
 
-            # Load partial target entities for this document
-            target_entities_path = partial_entities_dir / relation_info['target'] / f'{document_name}.json'
-            target_entities = load_json_data(target_entities_path)
-            if not target_entities:
-                save_json_data([], results_file_path)
-                continue
+                # Load partial origin entities for this document
+                origin_entities_path = partial_entities_dir / relation_info['origin'] / f'{document_name}.json'
+                origin_entities = load_json_data(origin_entities_path)
+                if not origin_entities:
+                    save_json_data([], results_file_path)
+                    continue
 
-            # Only keep the ObjectId of the target entity, since the bypass relation is supposed to have no properties
-            target_entities = [{'_TargetId': entity['_ObjectId']} for entity in target_entities]
+                # Only keep the ObjectId of the origin entity, since the bypass relation is supposed to have no properties
+                origin_entities = [{'_OriginId': entity['_ObjectId']} for entity in origin_entities]
 
-        # Generate results for this document
-        logger.info(f'Processing type "{relation_name}" and document "{document_name}" without using the LLM')
-        results = {'document_name': document_name, 'object_name': relation_name, 'response': []}
-        results['response'] = {
-            'results': origin_entities + target_entities,  # Either origin or target will be empty here
-        }
-        yield results
+            # Load target entities (if the core entity is the origin)
+            target_entities = []
+            if relation_info.get('core_origin', False):
+                # Only load partial entities if their processed version is available
+                final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
+                if not final_target_entities_path.exists():
+                    logger.error(
+                        f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
+                    )
+                    continue
+
+                # Load partial target entities for this document
+                target_entities_path = partial_entities_dir / relation_info['target'] / f'{document_name}.json'
+                target_entities = load_json_data(target_entities_path)
+                if not target_entities:
+                    save_json_data([], results_file_path)
+                    continue
+
+                # Only keep the ObjectId of the target entity, since the bypass relation is supposed to have no properties
+                target_entities = [{'_TargetId': entity['_ObjectId']} for entity in target_entities]
+
+            # Generate results for this document
+            full_document_name = f'{document_set}/{document_name}'
+            logger.info(f'Processing type "{relation_name}" and document "{full_document_name}" without using the LLM')
+            results = {
+                'document_name': document_name,
+                'document_set': document_set,
+                'object_name': relation_name,
+                'response': [],
+            }
+            results['response'] = {
+                'results': origin_entities + target_entities,  # Either origin or target will be empty here
+            }
+            yield results
 
 
 def process_partial_relations(
@@ -622,7 +665,7 @@ def process_partial_relations(
     partial_relations = results['response']['results']
 
     # Make unique ID that references the document, chunk and object
-    _, document_id, chunk_id = document_info
+    *_, document_id, chunk_id = document_info
     for idx, relation in enumerate(partial_relations, start=1):
         relation['_ReferenceIds'] = [f'{document_id}_{chunk_id}_{idx}']
 

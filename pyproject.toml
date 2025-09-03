@@ -68,6 +68,10 @@ max-complexity = 15
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.ruff.lint.pylint]
+max-branches = 15
+max-statements = 75
+
 [tool.ruff.format]
 quote-style = "single"
 indent-style = "space"

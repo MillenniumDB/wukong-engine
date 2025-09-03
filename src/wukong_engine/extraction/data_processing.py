@@ -5,13 +5,11 @@ and deduplicate data that represents entities and relations.
 """
 
 import logging
-from pathlib import Path
 from typing import Any
 
 from datasketch import MinHash, MinHashLSH
 from fuzzywuzzy import fuzz, process
 
-from wukong_engine.utils.file_utils import load_json_data
 from wukong_engine.utils.text_utils import normalize_text
 
 # Logging
@@ -335,11 +333,7 @@ def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) 
     return cleaned_entities
 
 
-def clean_relations(
-    relations: list[dict[str, Any]],
-    relation_info: dict[str, Any],
-    entity_stats_path: Path,
-) -> list[dict[str, Any]]:
+def clean_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
     """Clean relations and remove invalid ones.
 
     Cleans relations by checking their origin/target entities as well as their properties,
@@ -374,7 +368,7 @@ def clean_relations(
                     break
 
         # Only keep valid relations that contain valid required properties
-        if valid_required_properties and is_valid_relation(relation, relation_info, entity_stats_path):
+        if valid_required_properties and is_valid_relation(relation, relation_info):
             cleaned_relations.append(relation)
 
     # Return the list of cleaned relations
@@ -572,7 +566,7 @@ def is_valid_value(property_value: str, property_info: dict[str, Any]) -> bool:
     return True
 
 
-def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], entity_stats_path: Path) -> bool:
+def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any]) -> bool:
     """Check whether a relation is valid, according to the data model specifications and available entities.
 
     Args:
@@ -599,16 +593,7 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any], e
     rel_target_name, rel_target_number = target_id_split
     if rel_origin_name != relation_info['origin'] or rel_target_name != relation_info['target']:
         return False  # Entity name is not correct
-    if not rel_origin_number.isdigit() or not rel_target_number.isdigit():
-        return False  # Entity number is not a valid integer
-
-    # Check if OriginId and TargetId are in the range of valid entities
-    entity_stats = load_json_data(entity_stats_path)
-    n_origin_entities = entity_stats[relation_info['origin']]['final_entities']
-    n_target_entities = entity_stats[relation_info['target']]['final_entities']
-    valid_origin_range = 1 <= int(rel_origin_number) <= n_origin_entities
-    valid_target_range = 1 <= int(rel_target_number) <= n_target_entities
-    return valid_origin_range and valid_target_range
+    return rel_origin_number.isdigit() and rel_target_number.isdigit()  # Entity number is a valid integer
 
 
 def choose_property_value(current_value: Any, new_value: Any, property_info: dict[str, Any]) -> Any:
