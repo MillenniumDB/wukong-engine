@@ -214,6 +214,11 @@ class DataModel(Singleton):
         return self._parameters
 
     @property
+    def document_sets(self) -> list[str]:
+        """A list of all document sets present in the data model."""
+        return self._parameters.get('included_documents', [])
+
+    @property
     def entities(self) -> dict[str, Any]:
         """A dictionary containing all regular entity types in the data model (core/special entities are excluded)."""
         return {
