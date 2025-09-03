@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from wukong_engine.config.config import Config
+from wukong_engine.core.data_model import DataModel
 from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
@@ -36,7 +37,7 @@ def find_entities(
 
     Args:
         entity_model: A dictionary containing entity types from the data model and their relevant information.
-        docs_dir: The path to the directory containing the input documents.
+        docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
         clear_results: Whether to clear the partial results directory before starting the procedure.
@@ -50,14 +51,14 @@ def find_entities(
     partial_entities_dir.mkdir(parents=True, exist_ok=True)
 
     # Gather prompt data for each entity type
-    prompts_data = []
+    prompt_data = []
     for entity_name in entity_model:
-        entity_prompts_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
-        prompts_data.extend(entity_prompts_data)
+        entity_prompt_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
+        prompt_data.extend(entity_prompt_data)
 
     # Execute the LLM prompt processing in parallel, since API calls are slow
     with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
-        futures = [executor.submit(process_prompt, prompt_data) for prompt_data in prompts_data]
+        futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
         for future in as_completed(futures):
             try:
                 results = future.result()  # Wait for the API call to complete
@@ -93,7 +94,7 @@ def find_relations(
         delete_dir_contents(partial_relations_dir)
 
     # Gather prompt data for each relation type
-    prompts_data = []
+    prompt_data = []
     for relation_name, relation_info in relation_model.items():
         # Process relation without the LLM (only available when one of the entities is a core entity)
         core_entity_relation = relation_info.get('core_origin', False) or relation_info.get('core_target', False)
@@ -103,12 +104,12 @@ def find_relations(
             continue
 
         # Process relation with the LLM
-        relation_prompts_data = get_relation_prompts(relation_name, relation_info, docs_dir, prompts_dir, results_dir)
-        prompts_data.extend(relation_prompts_data)
+        relation_prompt_data = get_relation_prompts(relation_name, relation_info, docs_dir, prompts_dir, results_dir)
+        prompt_data.extend(relation_prompt_data)
 
     # Execute the LLM prompt processing in parallel, since API calls are slow
     with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
-        futures = [executor.submit(process_prompt, prompt_data) for prompt_data in prompts_data]
+        futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
         for future in as_completed(futures):
             try:
                 results = future.result()  # Wait for the API call to complete
@@ -298,7 +299,7 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
 
     Args:
         entity_name: The name of the entity type to process.
-        docs_dir: The path to the directory containing the input documents.
+        docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
 
     Returns:
@@ -314,20 +315,41 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
         logger.error(f'Entity extraction failed. No prompt or documents found for entity type "{entity_name}".')
         return []
 
-    # Prepare prompt data for each document
-    prompts_data = []
-    document_paths = [doc_path for doc_path in docs_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt']
-    for document_path in document_paths:
-        # Document to analyze
-        document_name = document_path.stem
-        document = load_text_data(document_path)
+    # Prepare prompt data for each document, gathering documents from all sets
+    document_paths = []
+    prompt_data = []
+    for document_set in sorted(DataModel().get_entity_sets(entity_name)):
+        set_dir = docs_dir / document_set
 
-        # LLM Prompt Information
-        prompts_data.append(
-            {'document_name': document_name, 'object_name': entity_name, 'user_role': document, 'system_role': prompt},
+        # If the document set directory does not exist, abort the process
+        if not set_dir.exists():
+            raise FileNotFoundError(
+                f'Entity extraction failed. The directory for the document set "{document_set}" does not exist at path "{set_dir}".',
+            )
+
+        # Gather plain text files for this set
+        document_paths = sorted(
+            [doc_path for doc_path in set_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt'],
         )
 
-    return prompts_data
+        # Prepare prompt data for each document
+        for document_path in document_paths:
+            # Document to analyze
+            document_name = document_path.stem
+            document = load_text_data(document_path)
+
+            # LLM Prompt Information
+            prompt_data.append(
+                {
+                    'document_name': document_name,
+                    'document_set': document_set,
+                    'object_name': entity_name,
+                    'user_role': document,
+                    'system_role': prompt,
+                },
+            )
+
+    return prompt_data
 
 
 def process_partial_entities(results: dict[str, Any], entity_model: dict[str, Any], partial_entities_dir: Path) -> None:
@@ -347,14 +369,15 @@ def process_partial_entities(results: dict[str, Any], entity_model: dict[str, An
         core_entity = results['response']
 
         # Add ObjectId and single reference to document
-        core_entity['_ObjectId'] = f'{entity_name}_{document_info[1]}'
-        core_entity['_ReferenceIds'] = [f'{document_info[1]}']
+        *_, document_id = document_info
+        core_entity['_ObjectId'] = f'{entity_name}_{document_id}'
+        core_entity['_ReferenceIds'] = [f'{document_id}']
         partial_entities = [core_entity]  # Convert to list for consistency
     else:  # Regular Entity: List of objects
         partial_entities = results['response']['results']
 
         # Make unique ID that references the document, chunk and object
-        _, document_id, chunk_id = document_info
+        *_, document_id, chunk_id = document_info
         for idx, entity in enumerate(partial_entities, start=1):
             entity['_ReferenceIds'] = [f'{document_id}_{chunk_id}_{idx}']
 

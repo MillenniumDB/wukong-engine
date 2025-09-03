@@ -66,6 +66,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         prompt_data: A dictionary containing the prompt data, which includes:
             - 'object_name': The name of the entity/relation type for which the prompt is being processed.
             - 'document_name': The name of the document associated with the prompt.
+            - 'document_set': The name of the document dataset that contains the document.
             - 'system_role': The system role message for the LLM, setting the context and instructions.
             - 'user_role': The user role message for the LLM, containing the information to be processed.
 
@@ -83,8 +84,9 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
     exponential_base = 2  # Base for exponential backoff
 
     # Process prompt with the LLM API, with a maximum number of retries
+    full_document_name = f'{prompt_data["document_set"]}/{prompt_data["document_name"]}'
     logger.info(
-        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{prompt_data["document_name"]}"',
+        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{full_document_name}"',
     )
     result = prompt_data
     response = None

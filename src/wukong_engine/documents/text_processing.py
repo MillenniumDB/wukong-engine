@@ -43,12 +43,9 @@ def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Pat
             f'Document Processing failed. The text documents directory "{text_dir}" does not exist.',
         )
 
-    # Get data model
-    data_model = DataModel()
-
     # Process each document set separately
     document_paths = {}
-    for document_set in data_model.document_sets:
+    for document_set in DataModel().document_sets:
         set_dir = text_dir / document_set
 
         # If the document set directory does not exist, abort the process
@@ -114,12 +111,9 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
     relations_dir.mkdir(parents=True, exist_ok=True)
     delete_dir_contents(relations_dir)
 
-    # Get data model
-    data_model = DataModel()
-
     # Process each document set separately
     document_paths = {}
-    for document_set in data_model.document_sets:
+    for document_set in DataModel().document_sets:
         set_dir = docs_dir / document_set
 
         # Gather all documents for the set

@@ -48,6 +48,7 @@ class DataModel(Singleton):
         self._entities = {}
         self._relations = {}
         self._materialized_relations = {}
+        self._entity_sets = {}
 
         # Initialize the data model
         self._load_model(data_dir / DATA_MODEL_PATH)
@@ -155,6 +156,14 @@ class DataModel(Singleton):
         included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
         self._relations = {key: value for key, value in self._relations.items() if key in included_relations}
 
+        # Add all document sets to entities that do not specify them
+        for entity_info in self._entities.values():
+            if 'documents' not in entity_info:
+                entity_info['documents'] = self._parameters.get('included_documents', [])
+
+        # Store document sets for each entity
+        self._entity_sets = {entity: set(info['documents']) for entity, info in self._entities.items()}
+
         # Materialize relations
         self._materialize_relation_model()
 
@@ -251,3 +260,14 @@ class DataModel(Singleton):
     def materialized_relations(self) -> dict[str, Any]:
         """A dictionary containing all materialized relation types between entity type pairs."""
         return self._materialized_relations
+
+    def get_entity_sets(self, entity_name: str) -> set[str]:
+        """Get the document datasets associated with a specific entity type.
+
+        Args:
+            entity_name: The name of the entity type.
+
+        Returns:
+            A set of document dataset names associated with the entity type.
+        """
+        return self._entity_sets.get(entity_name, set())
