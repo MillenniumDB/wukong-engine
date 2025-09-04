@@ -16,6 +16,7 @@ Example:
 import json
 import logging
 import re
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -160,6 +161,30 @@ class DataModel(Singleton):
         for entity_info in self._entities.values():
             if 'documents' not in entity_info:
                 entity_info['documents'] = self._parameters.get('included_documents', [])
+            if 'documents_hybrid' not in entity_info:
+                entity_info['documents_hybrid'] = self._parameters.get('included_documents', [])
+
+        # Materialize hybrid entities
+        hybrid_entities = {}
+        for entity, info in self._entities.items():
+            if info.get('hybrid_entity', False):
+                # Mark the original entity as a core entity
+                self._entities[entity]['core_entity'] = True
+
+                # Create the hybrid version of the entity
+                hybrid_info = deepcopy(info)
+                hybrid_info['documents'] = info['documents_hybrid']
+                del hybrid_info['core_entity']
+                del hybrid_info['hybrid_entity']
+                del hybrid_info['documents_hybrid']
+                hybrid_entities[f'_{entity}'] = hybrid_info
+
+                # Handle property descriptions for hybrid entities
+                for prop_info in hybrid_info.get('properties', {}).values():
+                    if 'description_hybrid' in prop_info:
+                        prop_info['description'] = prop_info['description_hybrid']
+                        del prop_info['description_hybrid']
+        self._entities.update(hybrid_entities)
 
         # Store document sets for each entity
         self._entity_sets = {entity: set(info['documents']) for entity, info in self._entities.items()}
