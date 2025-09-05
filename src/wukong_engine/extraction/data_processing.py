@@ -433,6 +433,61 @@ def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[s
     return unique_entities
 
 
+def merge_hybrid_entities(
+    core_entities: list[dict[str, Any]],
+    entities: list[dict[str, Any]],
+    entity_info: dict[str, Any],
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Merge the core and regular versions of hybrid entities, deduplicating them where necessary.
+
+    Deduplication is performed over the primary key, by making use of a string similarity index.
+    The specific behavior of this process is managed through the data model specifications.
+
+    Args:
+        core_entities: A list of dictionaries representing core entities of a specific hybrid type.
+        entities: A list of dictionaries representing regular entities of a specific hybrid type.
+        entity_info: A dictionary containing information about the hybrid entity type, following the data model specifications.
+
+    Returns:
+        A tuple containing two elements
+            - A list of dictionaries representing all the unique regular entities remaining after the merging process.
+            - A mapping from old to new ObjectIds for the regular entities that were duplicated with a core entity.
+    """
+    # Special Case: Duplicate detection is disabled
+    if not entity_info.get('detect_duplicates', True):
+        return entities, {}
+
+    # Choose duplicate matcher based on data model option
+    duplicate_matcher = BasicStringMatcher()
+    duplicates_to_find = entity_info.get('duplicates', 'all').lower().strip()
+    if duplicates_to_find in ('all', 'near', 'similar'):
+        duplicate_matcher = FuzzyStringMatcher()
+
+    # Insert all core entities into the duplicate matcher
+    for idx, entity in enumerate(core_entities):
+        pk_value = entity[entity_info['primary_key']]
+        duplicate_matcher.insert(str(idx), pk_value)
+
+    # Iterate over all regular entities and look for duplicates with the core entities
+    unique_entities = []  # List to store unique regular entities
+    hybrid_mapping = {}  # Mapping from old to new ObjectIds for regular entities
+    for entity in entities:
+        # Query the duplicate matcher to find duplicates for the primary key
+        pk_value = entity[entity_info['primary_key']]
+        match_idx = duplicate_matcher.query(pk_value)
+
+        # No duplicates found, consider the regular entity unique
+        if match_idx is None:
+            unique_entities.append(entity)
+            continue  # Next entity
+
+        # Duplicate found, add mapping to the ObjectId from the original core entity
+        hybrid_mapping[entity['_ObjectId']] = core_entities[int(match_idx)]['_ObjectId']
+
+    # Return the list of unique regular entities and the hybrid mapping
+    return unique_entities, hybrid_mapping
+
+
 def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
     """Detect duplicate relations and merge them together.
 
@@ -582,8 +637,8 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any]) -
         return False
 
     # Check if OriginId and TargetId are properly formatted
-    origin_id_split = relation['_OriginId'].split('_')
-    target_id_split = relation['_TargetId'].split('_')
+    origin_id_split = relation['_OriginId'].removesuffix('A').split('_')
+    target_id_split = relation['_TargetId'].removesuffix('A').split('_')
     n_components = 2
     if len(origin_id_split) != n_components or len(target_id_split) != n_components:
         return False

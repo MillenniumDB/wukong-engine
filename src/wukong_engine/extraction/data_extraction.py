@@ -16,7 +16,13 @@ from wukong_engine.core.data_model import DataModel
 from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
-from .data_processing import clean_entities, clean_relations, merge_duplicate_entities, merge_duplicate_relations
+from .data_processing import (
+    clean_entities,
+    clean_relations,
+    merge_duplicate_entities,
+    merge_duplicate_relations,
+    merge_hybrid_entities,
+)
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -186,8 +192,9 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             core_entity=entity_info.get('core_entity', False),
         )
 
-        # Create relations between final entities and their source documents
-        build_entity_references(entities, references_path, core_entity=entity_info.get('core_entity', False))
+        # Create relations between final entities and their source documents (skip hybrid regular entities)
+        if not entity_name.startswith('@'):
+            build_entity_references(entities, references_path, core_entity=entity_info.get('core_entity', False))
 
         # Save all final entities into a single file
         entities_path = entities_dir / f'{entity_name}.json'
@@ -208,6 +215,42 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             results.sort(key=lambda result: result['_ObjectId'])
             update_partial_entities(results, entities, object_mapping)  # Update with values from the final entities
             save_json_data(results, entity_results_path)
+
+    # Merge hybrid entities
+    for entity_name, entity_info in entity_model.items():
+        if entity_info.get('hybrid_entity', False):
+            core_path = entities_dir / f'{entity_name}.json'
+            regular_path = entities_dir / f'@{entity_name}.json'
+            partial_results_dir = partial_entities_dir / f'@{entity_name}'
+
+            # Merge regular and core versions of the hybrid entity
+            core_entities = load_json_data(core_path)
+            regular_entities = load_json_data(regular_path)
+            unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, regular_entities, entity_info)
+            stats_dict[entity_name]['hybrid_entities'] = len(core_entities) + len(unique_entities)
+            del stats_dict[f'@{entity_name}']
+
+            # Create relations between hybrid regular entities and their source documents
+            build_entity_references(unique_entities, references_path)
+
+            # Save all final hybrid entities into a single file
+            save_json_data(core_entities + unique_entities, core_path)
+            regular_path.unlink(missing_ok=True)
+
+            # Update partial regular entities with final ObjectIds after merging
+            partial_results_paths = [
+                results_path
+                for results_path in partial_results_dir.iterdir()
+                if results_path.is_file() and results_path.suffix == '.json'
+            ]
+            for partial_results_path in partial_results_paths:
+                results = load_json_data(partial_results_path)
+                for result in results:
+                    current_id = result['_ObjectId']
+                    result['_ObjectId'] = hybrid_mapping.get(current_id, current_id)  # Apply mapping to final ObjectId
+                results = list({result['_ObjectId']: result for result in results}.values())  # Remove duplicates
+                results.sort(key=lambda result: result['_ObjectId'])
+                save_json_data(results, partial_results_path)
 
     # Save stats for all entities
     stats_path = entities_dir / '_stats.json'
@@ -716,8 +759,12 @@ def build_global_entity_mapping(
     for idx, entity in enumerate(entities):
         # Global ObjectId for each entity in the graph
         if not core_entity:  # Core entities are already assigned an ObjectId
-            global_id = f'{entity_name}_{entity_id}'
+            global_id = f'{entity_name.removeprefix("@")}_{entity_id}'
             entity['_ObjectId'] = global_id
+
+        # Special ID to differentiate the regular component of hybrid entities
+        if entity_name.startswith('@'):
+            entity['_ObjectId'] += 'A'
 
         # Assign mapping from ReferenceIds to ObjectIds
         for temp_id in entity['_ReferenceIds']:

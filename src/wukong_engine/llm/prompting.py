@@ -219,9 +219,8 @@ def build_entity_prompt(
         general_info: A dictionary containing general information about the data model parameters.
         entity_prompts_dir: The path to the directory where the generated entity type prompt will be saved.
     """
-    # General entity info
-    core_entity = entity_info.get('core_entity', False)  # If True, the entity is represented by an entire document
-    primary_key = entity_info['primary_key'] if not core_entity else ''  # Primary key: only for non-core entities
+    # Check if the entity is a Core Entity
+    core_entity = entity_info.get('core_entity', False)
 
     # Gather property info
     properties = []
@@ -258,7 +257,7 @@ def build_entity_prompt(
         CONTEXT=general_info['context'],
         NAME=f"'{entity_name}'",
         DESCRIPTION=entity_info['description'].removesuffix('.'),
-        PRIMARY_KEY=primary_key,
+        PRIMARY_KEY=entity_info['primary_key'],
         PROPERTIES=prop_object_str,
         LANGUAGE=general_info['language'],
     )

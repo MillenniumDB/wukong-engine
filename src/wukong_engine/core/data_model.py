@@ -107,18 +107,45 @@ class DataModel(Singleton):
             seen.add(key)
         return dict(pairs)
 
-    @staticmethod
-    def _validate_model(data_model: dict[str, Any]) -> None:
-        """Validate the data model to ensure it follows the required naming conventions.
+    def _validate_model(self, data_model: dict[str, Any]) -> None:
+        """Validate the data model to ensure it meets all requirements.
 
         Args:
             data_model: The data model to validate, containing definitions for entity/relation types and their properties.
 
         Raises:
-            ValueError: If any entity/relation type or property name does not follow the naming conventions.
+            ValueError: If any entity/relation type or property does not meet all requirements.
+            TypeError: If any fields have invalid types.
+        """
+        # Validate top-level structure
+        if 'parameters' not in data_model or not isinstance(data_model['parameters'], dict):
+            raise ValueError('Data model must have a valid "parameters" section')
+        if 'entities' not in data_model or not isinstance(data_model['entities'], dict):
+            raise ValueError('Data model must have a valid "entities" section')
+        if 'relations' not in data_model or not isinstance(data_model['relations'], dict):
+            raise ValueError('Data model must have a valid "relations" section')
+
+        # Validate entities
+        self._validate_entities(data_model['entities'])
+
+        # Validate relations
+        self._validate_relations(data_model['relations'], data_model['entities'])
+
+        # Validate properties
+        self._validate_properties(data_model['entities'] | data_model['relations'])
+
+    @staticmethod
+    def _validate_entities(entities: dict[str, Any]) -> None:
+        """Validate data model entities to ensure they meet all requirements.
+
+        Args:
+            entities: The data model entities to validate.
+
+        Raises:
+            ValueError: If any entity type does not meet all requirements.
         """
         # Validate entity naming conventions
-        for entity_name in data_model['entities']:
+        for entity_name in entities:
             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', entity_name):
                 raise ValueError(
                     f'Invalid entity name "{entity_name}". Entity names must start with a letter and contain only alphanumeric characters.',
@@ -126,8 +153,35 @@ class DataModel(Singleton):
             if entity_name.lower() in ('document', 'chunk'):
                 raise ValueError(f'Entity name "{entity_name}" is reserved for special entities and cannot be used')
 
+        # Validate entity definitions
+        for entity_name, entity_info in entities.items():
+            if 'description' not in entity_info:
+                raise ValueError(f'Entity type "{entity_name}" must have a valid "description" field')
+            if 'primary_key' not in entity_info:
+                raise ValueError(f'Entity type "{entity_name}" must have a valid "primary_key" field')
+            if entity_info['primary_key'] not in entity_info.get('properties', {}):
+                raise ValueError(
+                    f'The specified primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" does not exist.',
+                )
+            if not entity_info['properties'][entity_info['primary_key']].get('required', False):
+                raise ValueError(
+                    f'The primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" must have a valid "required" field set to true.',
+                )
+
+    @staticmethod
+    def _validate_relations(relations: dict[str, Any], entities: dict[str, Any]) -> None:
+        """Validate data model relations to ensure they meet all requirements.
+
+        Args:
+            relations: The data model relations to validate.
+            entities: The data model entities to consider for origin/target validation.
+
+        Raises:
+            ValueError: If any relation type does not meet all requirements.
+            TypeError: If any relation type has an invalid type for the origin/target fields.
+        """
         # Validate relation naming conventions
-        for relation_name in data_model['relations']:
+        for relation_name in relations:
             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', relation_name):
                 raise ValueError(
                     f'Invalid relation name "{relation_name}". Relation names must start with a letter and contain only alphanumeric characters.',
@@ -137,8 +191,42 @@ class DataModel(Singleton):
                     f'Relation name "{relation_name}" is reserved for special relations and cannot be used',
                 )
 
+        # Validate relation definitions
+        for relation_name, relation_info in relations.items():
+            if 'origin' not in relation_info or 'target' not in relation_info:
+                raise ValueError(f'Relation type "{relation_name}" must have valid "origin" and "target" fields')
+            if 'description' not in relation_info:
+                raise ValueError(f'Relation type "{relation_name}" must have a valid "description" field')
+
+        # Validate origin/target entity types
+        for relation_name, relation_info in relations.items():
+            if not isinstance(relation_info['origin'], list) or not isinstance(relation_info['target'], list):
+                raise TypeError(
+                    f'Relation type "{relation_name}" must have valid "origin" and "target" fields in array format',
+                )
+            for origin in relation_info['origin']:
+                if origin not in entities:
+                    raise ValueError(
+                        f'Relation type "{relation_name}" has an invalid "origin" field. The specified origin entity type "{origin}" does not exist.',
+                    )
+            for target in relation_info['target']:
+                if target not in entities:
+                    raise ValueError(
+                        f'Relation type "{relation_name}" has an invalid "target" field. The specified target entity type "{target}" does not exist.',
+                    )
+
+    @staticmethod
+    def _validate_properties(objects: dict[str, Any]) -> None:
+        """Validate data model properties to ensure they meet all requirements.
+
+        Args:
+            objects: The data model entities and relations to validate properties from.
+
+        Raises:
+            ValueError: If any property does not meet all requirements.
+        """
         # Validate property naming conventions
-        for object_name, object_info in (data_model['entities'] | data_model['relations']).items():
+        for object_name, object_info in objects.items():
             for prop_name in object_info.get('properties', {}):
                 if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]*', prop_name):
                     raise ValueError(
@@ -147,6 +235,14 @@ class DataModel(Singleton):
                 if prop_name.lower() == 'extracted_from':
                     raise ValueError(
                         f'Property name "{prop_name}" from "{object_name}" is reserved for special properties and cannot be used',
+                    )
+
+        # Validate property definitions
+        for object_name, object_info in objects.items():
+            for prop_name, prop_info in object_info.get('properties', {}).items():
+                if 'description' not in prop_info:
+                    raise ValueError(
+                        f'Property "{prop_name}" from "{object_name}" must have a valid "description" field',
                     )
 
     def _process_model(self) -> None:
@@ -177,7 +273,7 @@ class DataModel(Singleton):
                 del hybrid_info['core_entity']
                 del hybrid_info['hybrid_entity']
                 del hybrid_info['documents_hybrid']
-                hybrid_entities[f'_{entity}'] = hybrid_info
+                hybrid_entities[f'@{entity}'] = hybrid_info
 
                 # Handle property descriptions for hybrid entities
                 for prop_info in hybrid_info.get('properties', {}).values():

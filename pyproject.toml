@@ -57,6 +57,7 @@ ignore = [
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
 ]
+unfixable = ["F401"] # Do not auto-fix unused imports
 
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = "single"

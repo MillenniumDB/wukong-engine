@@ -15,12 +15,7 @@ from nltk import download as nltk_download
 
 from wukong_engine.config.config import Config
 from wukong_engine.documents.text_processing import generate_chunks, process_text_documents
-from wukong_engine.extraction.data_extraction import (
-    find_entities,
-    find_relations,
-    process_entities,
-    process_relations,
-)
+from wukong_engine.extraction.data_extraction import find_entities, find_relations, process_entities, process_relations
 from wukong_engine.graph.export import export_to_json, export_to_mdb, export_to_neo4j
 from wukong_engine.llm.prompting import generate_prompts
 
@@ -58,6 +53,7 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
     Raises:
         FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
         ValueError: If the configuration or data model is invalid, or environment variables are missing.
+        TypeError: If the data model has invalid types for certain fields.
     """
     # Define relevant paths
     text_docs_dir = data_dir / TEXT_DOCS_DIR

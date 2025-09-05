@@ -86,7 +86,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
     # Process prompt with the LLM API, with a maximum number of retries
     full_document_name = f'{prompt_data["document_set"]}/{prompt_data["document_name"]}'
     logger.info(
-        f'Processing prompt for type "{prompt_data["object_name"].replace("_", "")}" and document "{full_document_name}"',
+        f'Processing prompt for type "{prompt_data["object_name"].removeprefix("@")}" and document "{full_document_name}"',
     )
     result = prompt_data
     response = None

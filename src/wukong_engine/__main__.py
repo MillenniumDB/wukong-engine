@@ -52,7 +52,7 @@ def main() -> None:
     # Execute the pipeline
     try:
         execute_pipeline(args.data_dir, args.config)
-    except (FileNotFoundError, ValueError) as error:
+    except (FileNotFoundError, ValueError, TypeError) as error:
         logger.critical(f'{str(error).removesuffix(".")}.')
         sys.exit(1)
     except Exception:
