@@ -103,22 +103,22 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
         logger.info('Extracting Core Entities...')
         find_entities(data_model.core_entities, docs_dir, prompts_dir, results_dir, clear_results=True)
         logger.info('Extracting Entities...')
-        find_entities(data_model.entities, chunks_dir, prompts_dir, results_dir)
+        find_entities(data_model.hybrid_entities | data_model.entities, chunks_dir, prompts_dir, results_dir)
 
     # Process extracted entities
     if entity_processing:
         logger.info('Processing Entities...')
-        process_entities(data_model.core_entities | data_model.entities, results_dir)
+        process_entities(data_model.core_entities | data_model.hybrid_entities | data_model.entities, results_dir)
 
     # Extract relations from the documents
     if relation_extraction:
         logger.info('Extracting Relations...')
         find_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
 
-    # Process extracted relations
+    # TODO: Process extracted relations
     if relation_processing:
         logger.info('Processing Relations...')
-        process_relations(data_model.materialized_relations, results_dir)
+        # process_relations(data_model.materialized_relations, results_dir)
 
     # Export Knowledge Graph to various formats
     if export_graph:

@@ -59,6 +59,8 @@ def find_entities(
     # Gather prompt data for each entity type
     prompt_data = []
     for entity_name in entity_model:
+        partial_entity_dir = partial_entities_dir / entity_name
+        partial_entity_dir.mkdir(parents=True, exist_ok=True)
         entity_prompt_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
         prompt_data.extend(entity_prompt_data)
 
@@ -102,6 +104,9 @@ def find_relations(
     # Gather prompt data for each relation type
     prompt_data = []
     for relation_name, relation_info in relation_model.items():
+        partial_relation_dir = partial_relations_dir / relation_name
+        partial_relation_dir.mkdir(parents=True, exist_ok=True)
+
         # Process relation without the LLM (only available when one of the entities is a core entity)
         core_entity_relation = relation_info.get('core_origin', False) or relation_info.get('core_target', False)
         if core_entity_relation and relation_info.get('bypass_LLM', False):
@@ -217,40 +222,40 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             save_json_data(results, entity_results_path)
 
     # Merge hybrid entities
-    for entity_name, entity_info in entity_model.items():
-        if entity_info.get('hybrid_entity', False):
-            core_path = entities_dir / f'{entity_name}.json'
-            regular_path = entities_dir / f'@{entity_name}.json'
-            partial_results_dir = partial_entities_dir / f'@{entity_name}'
+    for entity, entity_info in DataModel().hybrid_entities.items():
+        entity_name = entity.removeprefix('@')
+        core_path = entities_dir / f'{entity_name}.json'
+        regular_path = entities_dir / f'@{entity_name}.json'
+        partial_results_dir = partial_entities_dir / f'@{entity_name}'
 
-            # Merge regular and core versions of the hybrid entity
-            core_entities = load_json_data(core_path)
-            regular_entities = load_json_data(regular_path)
-            unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, regular_entities, entity_info)
-            stats_dict[entity_name]['hybrid_entities'] = len(core_entities) + len(unique_entities)
-            del stats_dict[f'@{entity_name}']
+        # Merge regular and core versions of the hybrid entity
+        core_entities = load_json_data(core_path)
+        regular_entities = load_json_data(regular_path)
+        unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, regular_entities, entity_info)
+        stats_dict[entity_name]['hybrid_entities'] = len(core_entities) + len(unique_entities)
+        del stats_dict[f'@{entity_name}']
 
-            # Create relations between hybrid regular entities and their source documents
-            build_entity_references(unique_entities, references_path)
+        # Create relations between hybrid regular entities and their source documents
+        build_entity_references(unique_entities, references_path)
 
-            # Save all final hybrid entities into a single file
-            save_json_data(core_entities + unique_entities, core_path)
-            regular_path.unlink(missing_ok=True)
+        # Save all final hybrid entities into a single file
+        save_json_data(core_entities + unique_entities, core_path)
+        regular_path.unlink(missing_ok=True)
 
-            # Update partial regular entities with final ObjectIds after merging
-            partial_results_paths = [
-                results_path
-                for results_path in partial_results_dir.iterdir()
-                if results_path.is_file() and results_path.suffix == '.json'
-            ]
-            for partial_results_path in partial_results_paths:
-                results = load_json_data(partial_results_path)
-                for result in results:
-                    current_id = result['_ObjectId']
-                    result['_ObjectId'] = hybrid_mapping.get(current_id, current_id)  # Apply mapping to final ObjectId
-                results = list({result['_ObjectId']: result for result in results}.values())  # Remove duplicates
-                results.sort(key=lambda result: result['_ObjectId'])
-                save_json_data(results, partial_results_path)
+        # Update partial regular entities with final ObjectIds after merging
+        partial_results_paths = [
+            results_path
+            for results_path in partial_results_dir.iterdir()
+            if results_path.is_file() and results_path.suffix == '.json'
+        ]
+        for partial_results_path in partial_results_paths:
+            results = load_json_data(partial_results_path)
+            for result in results:
+                current_id = result['_ObjectId']
+                result['_ObjectId'] = hybrid_mapping.get(current_id, current_id)  # Apply mapping to final ObjectId
+            results = list({result['_ObjectId']: result for result in results}.values())  # Remove duplicates
+            results.sort(key=lambda result: result['_ObjectId'])
+            save_json_data(results, partial_results_path)
 
     # Save stats for all entities
     stats_path = entities_dir / '_stats.json'
@@ -275,10 +280,9 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     partial_relations_dir = results_dir / 'partials/relations/'
     relations_dir = results_dir / 'relations/'
     delete_dir_contents(relations_dir, items_to_keep=['ChunkOf.json', 'ExtractedFrom.json'])
-    entity_stats_path = results_dir / 'entities/_stats.json'
 
     # If the result directories do not exist, abort the process
-    required_paths = (partial_relations_dir, relations_dir, entity_stats_path)
+    required_paths = (partial_relations_dir, relations_dir)
     if not all(required_path.exists() for required_path in required_paths):
         raise FileNotFoundError(
             'Relation Processing failed. Some necessary files are missing. Please run the program again including the previous steps.',
@@ -500,7 +504,8 @@ def get_relation_prompts(
             origin_entities = []
             if not relation_info.get('core_origin', False):
                 # Only load partial entities if their processed version is available
-                final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
+                origin_entity_name = relation_info['origin'].removeprefix('@')
+                final_origin_entities_path = results_dir / 'entities' / f'{origin_entity_name}.json'
                 if not final_origin_entities_path.exists():
                     logger.error(
                         f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
@@ -518,7 +523,8 @@ def get_relation_prompts(
             target_entities = []
             if not relation_info.get('core_target', False):
                 # Only load partial entities if their processed version is available
-                final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
+                target_entity_name = relation_info['target'].removeprefix('@')
+                final_target_entities_path = results_dir / 'entities' / f'{target_entity_name}.json'
                 if not final_target_entities_path.exists():
                     logger.error(
                         f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',

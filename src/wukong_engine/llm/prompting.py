@@ -195,12 +195,12 @@ def generate_prompts(prompts_dir: Path) -> None:
     }
 
     # Build entity prompts
-    entity_model = data_model.entities | data_model.core_entities
+    entity_model = data_model.core_entities | data_model.hybrid_entities | data_model.entities
     for entity_name, entity_info in entity_model.items():
         build_entity_prompt(entity_name, entity_info, model_config, entity_prompts_dir)
 
     # Build relation prompts
-    relation_model = data_model.relations
+    relation_model = data_model.materialized_relations
     for relation_name, relation_info in relation_model.items():
         build_relation_prompt(relation_name, relation_info, entity_model, model_config, relation_prompts_dir)
 
@@ -273,10 +273,10 @@ def build_relation_prompt(
     general_info: dict[str, str],
     relation_prompts_dir: Path,
 ) -> None:
-    """Build a prompt to be used for extracting a specific relation type.
+    """Build a prompt to be used for extracting a specific materialized relation type.
 
     Args:
-        relation_name: The name of the relation type to extract.
+        relation_name: The name of the materialized relation type to extract.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
         entity_model: A dictionary containing all entity types from the data model and their relevant information.
         general_info: A dictionary containing general information about the data model parameters.
@@ -308,49 +308,43 @@ def build_relation_prompt(
         )
         prop_object_str += f'\n{spaces * " "}"{prop["name"]}": Value of type \'{prop["type"]}\'. // {prop["description"]}. {values_str}{not_found_str}'
 
-    # Create a relation prompt for each combination of origin and target
-    origin_entities = relation_info['origin']
-    target_entities = relation_info['target']
-    for origin in origin_entities:
-        for target in target_entities:
-            # Check if the origin/target are Core Entities
-            origin_core_entity = entity_model[origin].get('core_entity', False)
-            target_core_entity = entity_model[target].get('core_entity', False)
+    # Get the origin and target entity types
+    origin = relation_info['origin']
+    target = relation_info['target']
 
-            # No relations between Core Entities
-            if origin_core_entity and target_core_entity:
-                continue
+    # Check if the origin/target are Core Entities
+    origin_core_entity = origin in DataModel().core_entities
+    target_core_entity = target in DataModel().core_entities
 
-            # No prompt required if the relation is marked to bypass the LLM
-            core_entity_relation = origin_core_entity or target_core_entity
-            if core_entity_relation and relation_info.get('bypass_LLM', False):
-                continue
+    # No prompt required if the relation is marked to bypass the LLM
+    core_entity_relation = origin_core_entity or target_core_entity
+    if core_entity_relation and relation_info.get('bypass_LLM', False):
+        return
 
-            # Select prompt template
-            prompt_template = RELATION_PROMPT if origin != target else SINGLE_ENTITY_RELATION_PROMPT
+    # Select prompt template
+    prompt_template = RELATION_PROMPT if origin != target else SINGLE_ENTITY_RELATION_PROMPT
 
-            # Special Case: Relations with Core Entities
-            core_entity_description = ''
-            if origin_core_entity:
-                core_entity_description = entity_model[origin]['description'].removesuffix('.')
-                prompt_template = CORE_ENTITY_ORIGIN_RELATION_PROMPT
-            elif target_core_entity:
-                core_entity_description = entity_model[target]['description'].removesuffix('.')
-                prompt_template = CORE_ENTITY_TARGET_RELATION_PROMPT
+    # Special Case: Relations with Core Entities
+    core_entity_description = ''
+    if origin_core_entity:
+        core_entity_description = entity_model[origin]['description'].removesuffix('.')
+        prompt_template = CORE_ENTITY_ORIGIN_RELATION_PROMPT
+    elif target_core_entity:
+        core_entity_description = entity_model[target]['description'].removesuffix('.')
+        prompt_template = CORE_ENTITY_TARGET_RELATION_PROMPT
 
-            # Build LLM prompt for the relation
-            prompt = prompt_template.format(
-                ROLE=general_info['role'],
-                CONTEXT=general_info['context'],
-                ORIGIN=f"'{origin}'",
-                TARGET=f"'{target}'",
-                NAME=f"'{relation_name}'",
-                DESCRIPTION=relation_info['description'].removesuffix('.'),
-                CORE_ENTITY_DESCRIPTION=core_entity_description,
-                PROPERTIES=prop_object_str,
-                LANGUAGE=general_info['language'],
-            )
+    # Build LLM prompt for the relation
+    prompt = prompt_template.format(
+        ROLE=general_info['role'],
+        CONTEXT=general_info['context'],
+        ORIGIN=f"'{origin}'",
+        TARGET=f"'{target}'",
+        NAME=f"'{relation_info['relation_name']}'",
+        DESCRIPTION=relation_info['description'].removesuffix('.'),
+        CORE_ENTITY_DESCRIPTION=core_entity_description,
+        PROPERTIES=prop_object_str,
+        LANGUAGE=general_info['language'],
+    )
 
-            # Save prompt
-            materialized_relation_name = f'{origin}_{relation_name}_{target}'
-            save_text_data(prompt, relation_prompts_dir / f'{materialized_relation_name}.txt')
+    # Save prompt
+    save_text_data(prompt, relation_prompts_dir / f'{relation_name}.txt')

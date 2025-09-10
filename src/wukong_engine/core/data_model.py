@@ -247,18 +247,17 @@ class DataModel(Singleton):
 
     def _process_model(self) -> None:
         """Process the data model to prepare entity and relation types for use in the engine."""
-        # Keep only the included entities and relations
+        # Keep only the included entities
         included_entities = self._parameters.get('included_entities', list(self._entities.keys()))
         self._entities = {key: value for key, value in self._entities.items() if key in included_entities}
-        included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
-        self._relations = {key: value for key, value in self._relations.items() if key in included_relations}
 
-        # Add all document sets to entities that do not specify them
+        # Add all included document sets to entities that do not specify them
+        included_documents = self._parameters.get('included_documents', [])
         for entity_info in self._entities.values():
             if 'documents' not in entity_info:
-                entity_info['documents'] = self._parameters.get('included_documents', [])
+                entity_info['documents'] = included_documents
             if 'documents_hybrid' not in entity_info:
-                entity_info['documents_hybrid'] = self._parameters.get('included_documents', [])
+                entity_info['documents_hybrid'] = included_documents
 
         # Materialize hybrid entities
         hybrid_entities = {}
@@ -283,7 +282,18 @@ class DataModel(Singleton):
         self._entities.update(hybrid_entities)
 
         # Store document sets for each entity
-        self._entity_sets = {entity: set(info['documents']) for entity, info in self._entities.items()}
+        self._entity_sets = {
+            entity: set(info['documents']) & set(included_documents) for entity, info in self._entities.items()
+        }
+
+        # Keep only the included relations
+        included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
+        self._relations = {key: value for key, value in self._relations.items() if key in included_relations}
+
+        # Remove non-included entities from relations
+        for relation_info in self._relations.values():
+            relation_info['origin'] = list(set(relation_info['origin']) & set(self._entities))
+            relation_info['target'] = list(set(relation_info['target']) & set(self._entities))
 
         # Materialize relations
         self._materialize_relation_model()
@@ -305,11 +315,17 @@ class DataModel(Singleton):
     def _materialize_relation_model(self) -> None:
         """Materialize the relation model to create specific relation types between entity type pairs."""
         # Iterate over the relation model and build materialized relations
-        core_entities = list(self.core_entities.keys())
         for relation_name, relation_info in self._relations.items():
-            origin_entities = relation_info['origin']
-            target_entities = relation_info['target']
+            origin_entities = list(relation_info['origin'])
+            target_entities = list(relation_info['target'])
             relation_info['properties'] = relation_info.get('properties', {})
+
+            # Add hybrid entities to origin/target lists
+            for entity in self.hybrid_entities:
+                if entity.removeprefix('@') in origin_entities:
+                    origin_entities.append(entity)
+                if entity.removeprefix('@') in target_entities:
+                    target_entities.append(entity)
 
             # Create a materialized relation for each combination of origin and target
             for origin in origin_entities:
@@ -322,8 +338,8 @@ class DataModel(Singleton):
                     materialized_relation_name = f'{origin}_{relation_name}_{target}'
 
                     # Check if the origin/target are Core Entities
-                    origin_core_entity = origin in core_entities
-                    target_core_entity = target in core_entities
+                    origin_core_entity = origin in self.core_entities
+                    target_core_entity = target in self.core_entities
 
                     # Special Case: No relations allowed between Core Entities
                     if origin_core_entity and target_core_entity:
@@ -345,17 +361,24 @@ class DataModel(Singleton):
 
     @property
     def entities(self) -> dict[str, Any]:
-        """A dictionary containing all regular entity types in the data model (core/special entities are excluded)."""
+        """A dictionary containing all regular entity types in the data model (core/hybrid/special entities are excluded)."""
         return {
             key: value
             for key, value in self._entities.items()
-            if not value.get('core_entity', False) and not value.get('special_entity', False)
+            if not value.get('core_entity', False)
+            and not value.get('special_entity', False)
+            and not key.startswith('@')
         }
 
     @property
     def core_entities(self) -> dict[str, Any]:
         """A dictionary containing all core entity types in the data model."""
         return {key: value for key, value in self._entities.items() if value.get('core_entity', False)}
+
+    @property
+    def hybrid_entities(self) -> dict[str, Any]:
+        """A dictionary containing all hybrid entity types in the data model."""
+        return {key: value for key, value in self._entities.items() if key.startswith('@')}
 
     @property
     def special_entities(self) -> dict[str, Any]:
