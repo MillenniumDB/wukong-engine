@@ -342,7 +342,6 @@ def clean_relations(relations: list[dict[str, Any]], relation_info: dict[str, An
     Args:
         relations: A list of dictionaries representing relations of a specific type between entities.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
-        entity_stats_path: The path to the entity statistics file, which contains information about the number of entities for each type.
 
     Returns:
         A list of dictionaries representing all the valid relations remaining after the cleaning process.
@@ -438,20 +437,20 @@ def merge_hybrid_entities(
     entities: list[dict[str, Any]],
     entity_info: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    """Merge the core and regular versions of hybrid entities, deduplicating them where necessary.
+    """Merge hybrid entities with their corresponding core entity, deduplicating them where necessary.
 
     Deduplication is performed over the primary key, by making use of a string similarity index.
     The specific behavior of this process is managed through the data model specifications.
 
     Args:
         core_entities: A list of dictionaries representing core entities of a specific hybrid type.
-        entities: A list of dictionaries representing regular entities of a specific hybrid type.
+        entities: A list of dictionaries representing entities of a specific hybrid type.
         entity_info: A dictionary containing information about the hybrid entity type, following the data model specifications.
 
     Returns:
         A tuple containing two elements
-            - A list of dictionaries representing all the unique regular entities remaining after the merging process.
-            - A mapping from old to new ObjectIds for the regular entities that were duplicated with a core entity.
+            - A list of dictionaries representing all the unique hybrid entities remaining after the merging process.
+            - A mapping from old to new ObjectIds for the hybrid entities that were duplicated with a core entity.
     """
     # Special Case: Duplicate detection is disabled
     if not entity_info.get('detect_duplicates', True):
@@ -468,15 +467,15 @@ def merge_hybrid_entities(
         pk_value = entity[entity_info['primary_key']]
         duplicate_matcher.insert(str(idx), pk_value)
 
-    # Iterate over all regular entities and look for duplicates with the core entities
-    unique_entities = []  # List to store unique regular entities
-    hybrid_mapping = {}  # Mapping from old to new ObjectIds for regular entities
+    # Iterate over all hybrid entities and look for duplicates with the core entities
+    unique_entities = []  # List to store unique hybrid entities
+    hybrid_mapping = {}  # Mapping from old to new ObjectIds for hybrid entities
     for entity in entities:
         # Query the duplicate matcher to find duplicates for the primary key
         pk_value = entity[entity_info['primary_key']]
         match_idx = duplicate_matcher.query(pk_value)
 
-        # No duplicates found, consider the regular entity unique
+        # No duplicates found, consider the hybrid entity unique
         if match_idx is None:
             unique_entities.append(entity)
             continue  # Next entity
@@ -484,7 +483,7 @@ def merge_hybrid_entities(
         # Duplicate found, add mapping to the ObjectId from the original core entity
         hybrid_mapping[entity['_ObjectId']] = core_entities[int(match_idx)]['_ObjectId']
 
-    # Return the list of unique regular entities and the hybrid mapping
+    # Return the list of unique hybrid entities and the hybrid mapping
     return unique_entities, hybrid_mapping
 
 
@@ -627,7 +626,6 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any]) -
     Args:
         relation: A dictionary representing a relation of a specific type between a pair of entities.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
-        entity_stats_path: The path to the entity statistics file, which contains information about the number of entities for each type.
 
     Returns:
         True if the relation is valid, False otherwise.
@@ -646,7 +644,9 @@ def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any]) -
     # Check if OriginId and TargetId contain valid components
     rel_origin_name, rel_origin_number = origin_id_split
     rel_target_name, rel_target_number = target_id_split
-    if rel_origin_name != relation_info['origin'] or rel_target_name != relation_info['target']:
+    origin_entity_name = relation_info['origin'].removeprefix('@')
+    target_entity_name = relation_info['target'].removeprefix('@')
+    if rel_origin_name != origin_entity_name or rel_target_name != target_entity_name:
         return False  # Entity name is not correct
     return rel_origin_number.isdigit() and rel_target_number.isdigit()  # Entity number is a valid integer
 

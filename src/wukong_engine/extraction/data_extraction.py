@@ -197,7 +197,7 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             core_entity=entity_info.get('core_entity', False),
         )
 
-        # Create relations between final entities and their source documents (skip hybrid regular entities)
+        # Create relations between final entities and their source documents (skip hybrid entities)
         if not entity_name.startswith('@'):
             build_entity_references(entities, references_path, core_entity=entity_info.get('core_entity', False))
 
@@ -225,24 +225,24 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
     for entity, entity_info in DataModel().hybrid_entities.items():
         entity_name = entity.removeprefix('@')
         core_path = entities_dir / f'{entity_name}.json'
-        regular_path = entities_dir / f'@{entity_name}.json'
+        hybrid_path = entities_dir / f'@{entity_name}.json'
         partial_results_dir = partial_entities_dir / f'@{entity_name}'
 
-        # Merge regular and core versions of the hybrid entity
+        # Merge the hybrid entity with the corresponding core entity
         core_entities = load_json_data(core_path)
-        regular_entities = load_json_data(regular_path)
-        unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, regular_entities, entity_info)
+        hybrid_entities = load_json_data(hybrid_path)
+        unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, hybrid_entities, entity_info)
         stats_dict[entity_name]['hybrid_entities'] = len(core_entities) + len(unique_entities)
         del stats_dict[f'@{entity_name}']
 
-        # Create relations between hybrid regular entities and their source documents
+        # Create relations between hybrid entities and their source documents
         build_entity_references(unique_entities, references_path)
 
         # Save all final hybrid entities into a single file
         save_json_data(core_entities + unique_entities, core_path)
-        regular_path.unlink(missing_ok=True)
+        hybrid_path.unlink(missing_ok=True)
 
-        # Update partial regular entities with final ObjectIds after merging
+        # Update partial hybrid entities with final ObjectIds after merging
         partial_results_paths = [
             results_path
             for results_path in partial_results_dir.iterdir()
@@ -340,6 +340,16 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     stats_path = relations_dir / '_stats.json'
     save_json_data(stats_dict, stats_path)
 
+    # TODO: Deduplicate relations that contain hybrid entities
+    # 1) Iterate over all relation types that contain hybrid entities (use data_model.relations and check origin/target)
+    # 2) Load the final relations JSON file for the relation type
+    # 3) For each relation, check if the origin OR target is a hybrid entity (use split and check entity type)
+    # 4) If so, add to a dict that maps origin/target pairs to relation objects that contain them
+    # 5) If not, add to a list of unique relations that do not contain hybrid entities
+    # 6) For each origin/target pair in the dict, deduplicate the relation list using merge_duplicate_relations()
+    # 7) Append the deduplicated relations to the list of unique relations
+    # 8) Save the final list of unique relations back to the relations JSON file
+
 
 def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> list[dict[str, Any]]:
     """Generate a list of dictionaries containing the prompt data for the given entity type and documents.
@@ -428,11 +438,8 @@ def process_partial_entities(results: dict[str, Any], entity_model: dict[str, An
         for idx, entity in enumerate(partial_entities, start=1):
             entity['_ReferenceIds'] = [f'{document_id}_{chunk_id}_{idx}']
 
-    # Path to partial results for this entity type
-    entity_results_dir = partial_entities_dir / entity_name
-    entity_results_dir.mkdir(parents=True, exist_ok=True)
-
     # Save entities to partial results file
+    entity_results_dir = partial_entities_dir / entity_name
     results_file_path = entity_results_dir / f'{results["document_name"]}.json'
     save_json_data(partial_entities, results_file_path)
 
@@ -472,7 +479,6 @@ def get_relation_prompts(
 
     # Path to partial results for this relation type
     relation_results_dir = partial_results_dir / 'relations' / relation_name
-    relation_results_dir.mkdir(parents=True, exist_ok=True)
 
     # Prepare prompt data for each document, gathering documents from all sets
     document_paths = []
@@ -508,7 +514,7 @@ def get_relation_prompts(
                 final_origin_entities_path = results_dir / 'entities' / f'{origin_entity_name}.json'
                 if not final_origin_entities_path.exists():
                     logger.error(
-                        f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
+                        f'Relation extraction failed. No processed entities found for origin type "{origin_entity_name}".',
                     )
                     continue
 
@@ -527,7 +533,7 @@ def get_relation_prompts(
                 final_target_entities_path = results_dir / 'entities' / f'{target_entity_name}.json'
                 if not final_target_entities_path.exists():
                     logger.error(
-                        f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
+                        f'Relation extraction failed. No processed entities found for target type "{target_entity_name}".',
                     )
                     continue
 
@@ -612,7 +618,6 @@ def bypass_ai_processing(
 
     # Path to partial results for this relation type
     relation_results_dir = partial_results_dir / 'relations' / relation_name
-    relation_results_dir.mkdir(parents=True, exist_ok=True)
 
     # Prepare results for each document, gathering documents from all sets
     document_paths = []
@@ -643,10 +648,11 @@ def bypass_ai_processing(
             origin_entities = []
             if relation_info.get('core_target', False):
                 # Only load partial entities if their processed version is available
-                final_origin_entities_path = results_dir / 'entities' / f'{relation_info["origin"]}.json'
+                origin_entity_name = relation_info['origin'].removeprefix('@')
+                final_origin_entities_path = results_dir / 'entities' / f'{origin_entity_name}.json'
                 if not final_origin_entities_path.exists():
                     logger.error(
-                        f'Relation extraction failed. No processed entities found for origin type "{relation_info["origin"]}".',
+                        f'Relation extraction failed. No processed entities found for origin type "{origin_entity_name}".',
                     )
                     continue
 
@@ -664,10 +670,11 @@ def bypass_ai_processing(
             target_entities = []
             if relation_info.get('core_origin', False):
                 # Only load partial entities if their processed version is available
-                final_target_entities_path = results_dir / 'entities' / f'{relation_info["target"]}.json'
+                target_entity_name = relation_info['target'].removeprefix('@')
+                final_target_entities_path = results_dir / 'entities' / f'{target_entity_name}.json'
                 if not final_target_entities_path.exists():
                     logger.error(
-                        f'Relation extraction failed. No processed entities found for target type "{relation_info["target"]}".',
+                        f'Relation extraction failed. No processed entities found for target type "{target_entity_name}".',
                     )
                     continue
 
@@ -768,7 +775,7 @@ def build_global_entity_mapping(
             global_id = f'{entity_name.removeprefix("@")}_{entity_id}'
             entity['_ObjectId'] = global_id
 
-        # Special ID to differentiate the regular component of hybrid entities
+        # Special ID to differentiate hybrid entities
         if entity_name.startswith('@'):
             entity['_ObjectId'] += 'A'
 

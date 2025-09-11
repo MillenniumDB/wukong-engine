@@ -110,15 +110,15 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
         logger.info('Processing Entities...')
         process_entities(data_model.core_entities | data_model.hybrid_entities | data_model.entities, results_dir)
 
-    # Extract relations from the documents
+    # TODO: Extract relations from the documents
     if relation_extraction:
         logger.info('Extracting Relations...')
-        find_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
+        # find_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
 
     # TODO: Process extracted relations
     if relation_processing:
         logger.info('Processing Relations...')
-        # process_relations(data_model.materialized_relations, results_dir)
+        process_relations(data_model.materialized_relations, results_dir)
 
     # Export Knowledge Graph to various formats
     if export_graph:

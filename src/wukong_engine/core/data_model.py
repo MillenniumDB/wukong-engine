@@ -264,7 +264,7 @@ class DataModel(Singleton):
         for entity, info in self._entities.items():
             if info.get('hybrid_entity', False):
                 # Mark the original entity as a core entity
-                self._entities[entity]['core_entity'] = True
+                info['core_entity'] = True
 
                 # Create the hybrid version of the entity
                 hybrid_info = deepcopy(info)
@@ -331,7 +331,7 @@ class DataModel(Singleton):
             for origin in origin_entities:
                 for target in target_entities:
                     # Materialize relation info
-                    materialized_relation_info = dict(relation_info.items())
+                    materialized_relation_info = dict(relation_info)
                     materialized_relation_info['origin'] = origin
                     materialized_relation_info['target'] = target
                     materialized_relation_info['relation_name'] = relation_name
