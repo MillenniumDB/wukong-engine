@@ -340,24 +340,43 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     stats_path = relations_dir / '_stats.json'
     save_json_data(stats_dict, stats_path)
 
-    # TODO: Deduplicate relations that contain hybrid entities
-    # 1) Iterate over all relation types that contain hybrid entities (use data_model.relations and check origin/target)
-    for relation, info in DataModel().relations.items():
-        print(relation, info)
-        """
-        if not (info['origin'].startswith('@') or relation['target'].startswith('@')):
+    # Deduplicate relations that contain hybrid entities
+    data_model = DataModel()
+    hybrid_names = {entity.removeprefix('@') for entity in data_model.hybrid_entities}
+    for relation, rel_info in data_model.relations.items():
+        # Skip relation types that do not involve hybrid entities
+        if not (hybrid_names & set(rel_info['origin'] + rel_info['target'])):
             continue
-        relation_path = relations_dir / f'{relation["relation_name"]}.json'
-        if not relation_path.exists():
-            continue
-        """
-    # 2) Load the final relations JSON file for the relation type
-    # 3) For each relation, check if the origin OR target is a hybrid entity (use split and check entity type)
-    # 4) If so, add to a dict that maps origin/target pairs to relation objects that contain them
-    # 5) If not, add to a list of unique relations that do not contain hybrid entities
-    # 6) For each origin/target pair in the dict, deduplicate the relation list using merge_duplicate_relations()
-    # 7) Append the deduplicated relations to the list of unique relations
-    # 8) Save the final list of unique relations back to the relations JSON file
+
+        # Load the full set of processed relations from this type
+        hybrid_relation_path = relations_dir / f'{relation}.json'
+        processed_relations = load_json_data(hybrid_relation_path)
+
+        # Gather all relations that contain hybrid entities
+        unique_relations = []
+        hybrid_groups = {}
+        for rel in processed_relations:
+            rel_origin = rel['_OriginId'].split('_')[0]
+            rel_target = rel['_TargetId'].split('_')[0]
+            rel_components = f'{rel_origin}_{rel_target}'
+
+            # Group relations that contain hybrid entities
+            if rel_origin in hybrid_names or rel_target in hybrid_names:
+                if rel_components not in hybrid_groups:
+                    hybrid_groups[rel_components] = []
+                hybrid_groups[rel_components].append(rel)
+                continue
+
+            # Relation does not contain hybrid entities, add directly to the unique list
+            unique_relations.append(rel)
+
+        # Deduplicate relation groups that contain hybrid entities
+        for rel_group in hybrid_groups.values():
+            deduplicated_group = merge_duplicate_relations(rel_group, rel_info)
+            unique_relations.extend(deduplicated_group)
+
+        # Save the final list of unique relations back to the relations JSON file
+        save_json_data(unique_relations, hybrid_relation_path)
 
 
 def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> list[dict[str, Any]]:

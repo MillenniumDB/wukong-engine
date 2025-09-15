@@ -578,7 +578,7 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
 
             # Gather all references to partial relations
             # (Skip if there are no properties, as no new information is provided by the duplicates)
-            if len(relation_info.get('properties', {})) > 0:
+            if len(relation_info.get('properties', {})) > 0 and '_ReferenceIds' in relation:
                 original_relation['_ReferenceIds'].extend(relation['_ReferenceIds'])
 
     # Return the list of unique relations
