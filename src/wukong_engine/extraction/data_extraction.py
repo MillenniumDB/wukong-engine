@@ -342,6 +342,15 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
 
     # TODO: Deduplicate relations that contain hybrid entities
     # 1) Iterate over all relation types that contain hybrid entities (use data_model.relations and check origin/target)
+    for relation, info in DataModel().relations.items():
+        print(relation, info)
+        """
+        if not (info['origin'].startswith('@') or relation['target'].startswith('@')):
+            continue
+        relation_path = relations_dir / f'{relation["relation_name"]}.json'
+        if not relation_path.exists():
+            continue
+        """
     # 2) Load the final relations JSON file for the relation type
     # 3) For each relation, check if the origin OR target is a hybrid entity (use split and check entity type)
     # 4) If so, add to a dict that maps origin/target pairs to relation objects that contain them

@@ -163,9 +163,9 @@ class DataModel(Singleton):
                 raise ValueError(
                     f'The specified primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" does not exist.',
                 )
-            if not entity_info['properties'][entity_info['primary_key']].get('required', False):
+            if not entity_info['properties'][entity_info['primary_key']].get('required', True):
                 raise ValueError(
-                    f'The primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" must have a valid "required" field set to true.',
+                    f'The primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" must have the "required" field set to true.',
                 )
 
     @staticmethod
@@ -193,16 +193,50 @@ class DataModel(Singleton):
 
         # Validate relation definitions
         for relation_name, relation_info in relations.items():
-            if 'origin' not in relation_info or 'target' not in relation_info:
-                raise ValueError(f'Relation type "{relation_name}" must have valid "origin" and "target" fields')
+            if 'origin_target' not in relation_info and not ('origin' in relation_info and 'target' in relation_info):
+                raise ValueError(
+                    f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
+                )
             if 'description' not in relation_info:
                 raise ValueError(f'Relation type "{relation_name}" must have a valid "description" field')
+            if 'primary_key' in relation_info:
+                if relation_info['primary_key'] not in relation_info.get('properties', {}):
+                    raise ValueError(
+                        f'The specified primary key property "{relation_info["primary_key"]}" for relation type "{relation_name}" does not exist.',
+                    )
+                if not relation_info['properties'][relation_info['primary_key']].get('required', True):
+                    raise ValueError(
+                        f'The primary key property "{relation_info["primary_key"]}" for relation type "{relation_name}" must have the "required" field set to true.',
+                    )
 
         # Validate origin/target entity types
         for relation_name, relation_info in relations.items():
-            if not isinstance(relation_info['origin'], list) or not isinstance(relation_info['target'], list):
+            # Validate origin/target fields from dictionary format
+            if 'origin_target' in relation_info:
+                if not isinstance(relation_info['origin_target'], dict):
+                    raise TypeError(
+                        f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
+                    )
+                for origin, targets in relation_info['origin_target'].items():
+                    if origin not in entities:
+                        raise ValueError(
+                            f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified origin entity type "{origin}" does not exist.',
+                        )
+                    if not isinstance(targets, list):
+                        raise TypeError(
+                            f'Relation type "{relation_name}" must have a valid "origin_target" field where the dictionary values are lists of target entity types',
+                        )
+                    for target in targets:
+                        if target not in entities:
+                            raise ValueError(
+                                f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified target entity type "{target}" does not exist.',
+                            )
+                continue
+
+            # Validate origin/target fields from lists format
+            if not (isinstance(relation_info['origin'], list) and isinstance(relation_info['target'], list)):
                 raise TypeError(
-                    f'Relation type "{relation_name}" must have valid "origin" and "target" fields in array format',
+                    f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
                 )
             for origin in relation_info['origin']:
                 if origin not in entities:
@@ -290,10 +324,8 @@ class DataModel(Singleton):
         included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
         self._relations = {key: value for key, value in self._relations.items() if key in included_relations}
 
-        # Remove non-included entities from relations
-        for relation_info in self._relations.values():
-            relation_info['origin'] = list(set(relation_info['origin']) & set(self._entities))
-            relation_info['target'] = list(set(relation_info['target']) & set(self._entities))
+        # Process origin/target schemas
+        self._build_relation_schemas()
 
         # Materialize relations
         self._materialize_relation_model()
@@ -312,24 +344,53 @@ class DataModel(Singleton):
         }
         self._relations.update(special_relations)
 
+    def _build_relation_schemas(self) -> None:
+        """Build schemas that represent all combinations for each relation type in the data model."""
+        # Iterate over the relation model and build the schemas
+        for relation_info in self._relations.values():
+            # Skip if schema is already present
+            if 'origin_target' not in relation_info:
+                # Build schema from origin/target lists
+                relation_info['origin_target'] = {
+                    origin: list(relation_info['target']) for origin in relation_info['origin']
+                }
+
+            # Filter out any origin/target entities that are not included in the data model
+            final_schema = {}
+            for origin, targets in relation_info['origin_target'].items():
+                valid_targets = list(set(targets) & set(self._entities))
+                if origin not in self._entities or not valid_targets:
+                    continue
+                final_schema[origin] = valid_targets
+
+            # Add final schema to relation info
+            relation_info['origin_target'] = final_schema
+            relation_info['origin'] = list(final_schema.keys())
+            relation_info['target'] = list({t for targets in final_schema.values() for t in targets})
+
+        # Only keep relations that have valid origin/target pairs
+        self._relations = {key: value for key, value in self._relations.items() if value['origin_target']}
+
     def _materialize_relation_model(self) -> None:
         """Materialize the relation model to create specific relation types between entity type pairs."""
+        # Add hybrid entities to the origin/target schemas
+        final_schemas = {relation: {} for relation in self._relations}
+        for relation, info in self._relations.items():
+            for origin, targets in info['origin_target'].items():
+                final_schemas[relation][origin] = list(targets)
+                if f'@{origin}' in self.hybrid_entities:
+                    final_schemas[relation][f'@{origin}'] = list(targets)
+            for targets in final_schemas[relation].values():
+                for target in list(targets):
+                    if f'@{target}' in self.hybrid_entities:
+                        targets.append(f'@{target}')
+
         # Iterate over the relation model and build materialized relations
         for relation_name, relation_info in self._relations.items():
-            origin_entities = list(relation_info['origin'])
-            target_entities = list(relation_info['target'])
             relation_info['properties'] = relation_info.get('properties', {})
-
-            # Add hybrid entities to origin/target lists
-            for entity in self.hybrid_entities:
-                if entity.removeprefix('@') in origin_entities:
-                    origin_entities.append(entity)
-                if entity.removeprefix('@') in target_entities:
-                    target_entities.append(entity)
-
-            # Create a materialized relation for each combination of origin and target
-            for origin in origin_entities:
-                for target in target_entities:
+            for origin, targets in final_schemas[relation_name].items():
+                # Create a materialized relation for each combination of origin and target
+                for target in targets:
                     # Materialize relation info
                     materialized_relation_info = dict(relation_info)
                     materialized_relation_info['origin'] = origin
@@ -352,6 +413,7 @@ class DataModel(Singleton):
                         materialized_relation_info['core_target'] = True
 
                     # Store materialized relation info
+                    del materialized_relation_info['origin_target']
                     self._materialized_relations[materialized_relation_name] = materialized_relation_info
 
     @property
