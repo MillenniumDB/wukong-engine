@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from wukong_engine.core.data_model import DataModel
-from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, save_json_data
+from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, save_json_data, save_text_data
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -222,6 +222,77 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
         relations = load_json_data(relation_path)
         relation_info = relation_model[relation_name]
         object_to_json(relations, relation_name, relation_info, 'relation', relations_export_dir)
+
+
+def export_stats(results_dir: Path, export_dir: Path) -> None:
+    """Export final graph statistics.
+
+    Args:
+        results_dir: The path to the directory containing the entities and relations.
+        export_dir: The path to the directory where the knowledge graph files will be exported.
+    """
+    # Prepare directories
+    export_dir.mkdir(parents=True, exist_ok=True)
+    entities_dir = results_dir / 'entities/'
+    relations_dir = results_dir / 'relations/'
+
+    # Get data model
+    data_model = DataModel()
+
+    # Entity model (including core & special entities)
+    entity_model = data_model.core_entities | data_model.entities | data_model.special_entities
+
+    # Gather all entity stats
+    entity_stats = {}
+    entity_names = list(entity_model.keys())
+    for entity_name in entity_names:
+        entity_path = entities_dir / f'{entity_name}.json'
+
+        # If entity file does not exist, skip it
+        if not entity_path.exists():
+            logger.error(
+                f'Statistics export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.',
+            )
+            continue
+
+        # Load entity data and gather stats
+        entities = load_json_data(entity_path)
+        entity_stats[entity_name] = len(entities)
+
+    # Relation model (including special relations)
+    relation_model = data_model.relations | data_model.special_relations
+
+    # Gather all relation stats
+    relation_stats = {}
+    relation_names = list(relation_model.keys())
+    for relation_name in relation_names:
+        relation_path = relations_dir / f'{relation_name}.json'
+
+        # If relation file does not exist, skip it
+        if not relation_path.exists():
+            logger.error(
+                f'Statistics export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.',
+            )
+            continue
+
+        # Load relation data and gather stats
+        relations = load_json_data(relation_path)
+        relation_stats[relation_name] = len(relations)
+
+    # Calculate total stats
+    total_entities = sum(entity_stats.values())
+    total_relations = sum(relation_stats.values())
+    stats_text = '***Statistics***\n\n'
+    stats_text += f'Total Entities: {total_entities}\n'
+    for entity_name, count in entity_stats.items():
+        stats_text += f'  - {entity_name}: {count}\n'
+    stats_text += f'\nTotal Relations: {total_relations}\n'
+    for relation_name, count in relation_stats.items():
+        stats_text += f'  - {relation_name}: {count}\n'
+
+    # Export stats to a text file
+    stats_path = export_dir / 'stats.txt'
+    save_text_data(stats_text, stats_path)
 
 
 def object_to_mdb(

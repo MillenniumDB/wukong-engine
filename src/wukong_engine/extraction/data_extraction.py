@@ -162,7 +162,6 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
     save_json_data([], references_path)
 
     # Iterate over all entity types and consolidate their results
-    stats_dict = {entity: {} for entity in entity_model}  # Entity statistics
     for entity_name, entity_info in entity_model.items():
         # If the partial entity results directory does not exist, skip this entity type
         entity_results_dir = partial_entities_dir / entity_name
@@ -180,15 +179,12 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
         for entity_results_path in entity_results_paths:
             results = load_json_data(entity_results_path)
             entities.extend(results)
-        stats_dict[entity_name]['original_entities'] = len(entities)
 
         # Clean entities and remove invalid ones
         entities = clean_entities(entities, entity_info)
-        stats_dict[entity_name]['cleaned_entities'] = len(entities)
 
         # Merge duplicate entities
         entities = merge_duplicate_entities(entities, entity_info)
-        stats_dict[entity_name]['final_entities'] = len(entities)
 
         # Create global ID mapping for entities
         entity_mapping, object_mapping = build_global_entity_mapping(
@@ -221,45 +217,8 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             update_partial_entities(results, entities, object_mapping)  # Update with values from the final entities
             save_json_data(results, entity_results_path)
 
-    # Merge hybrid entities
-    for entity, entity_info in DataModel().hybrid_entities.items():
-        entity_name = entity.removeprefix('@')
-        core_path = entities_dir / f'{entity_name}.json'
-        hybrid_path = entities_dir / f'@{entity_name}.json'
-        partial_results_dir = partial_entities_dir / f'@{entity_name}'
-
-        # Merge the hybrid entity with the corresponding core entity
-        core_entities = load_json_data(core_path)
-        hybrid_entities = load_json_data(hybrid_path)
-        unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, hybrid_entities, entity_info)
-        stats_dict[entity_name]['hybrid_entities'] = len(core_entities) + len(unique_entities)
-        del stats_dict[f'@{entity_name}']
-
-        # Create relations between hybrid entities and their source documents
-        build_entity_references(unique_entities, references_path)
-
-        # Save all final hybrid entities into a single file
-        save_json_data(core_entities + unique_entities, core_path)
-        hybrid_path.unlink(missing_ok=True)
-
-        # Update partial hybrid entities with final ObjectIds after merging
-        partial_results_paths = [
-            results_path
-            for results_path in partial_results_dir.iterdir()
-            if results_path.is_file() and results_path.suffix == '.json'
-        ]
-        for partial_results_path in partial_results_paths:
-            results = load_json_data(partial_results_path)
-            for result in results:
-                current_id = result['_ObjectId']
-                result['_ObjectId'] = hybrid_mapping.get(current_id, current_id)  # Apply mapping to final ObjectId
-            results = list({result['_ObjectId']: result for result in results}.values())  # Remove duplicates
-            results.sort(key=lambda result: result['_ObjectId'])
-            save_json_data(results, partial_results_path)
-
-    # Save stats for all entities
-    stats_path = entities_dir / '_stats.json'
-    save_json_data(stats_dict, stats_path)
+    # Process hybrid entities
+    process_hybrid_entities(results_dir)
 
 
 def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None:
@@ -295,7 +254,6 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         save_json_data([], relations_path)
 
     # Iterate over all relation types and consolidate their results
-    stats_dict = {materialized_relation: {} for materialized_relation in relation_model}  # Relation statistics
     for materialized_relation_name, relation_info in relation_model.items():
         # If the partial relation results directory does not exist, skip this relation type
         relation_results_dir = partial_relations_dir / materialized_relation_name
@@ -315,15 +273,12 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         for relation_results_path in relation_results_paths:
             results = load_json_data(relation_results_path)
             relations.extend(results)
-        stats_dict[materialized_relation_name]['original_relations'] = len(relations)
 
         # Clean relations and remove invalid ones
         relations = clean_relations(relations, relation_info)
-        stats_dict[materialized_relation_name]['cleaned_relations'] = len(relations)
 
         # Merge duplicate relations
         relations = merge_duplicate_relations(relations, relation_info)
-        stats_dict[materialized_relation_name]['final_relations'] = len(relations)
 
         # Store reference between final relations and their source documents
         build_relation_references(relations)
@@ -336,47 +291,8 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
         general_relations.extend(relations)
         save_json_data(general_relations, relations_path)
 
-    # Save stats for all relations
-    stats_path = relations_dir / '_stats.json'
-    save_json_data(stats_dict, stats_path)
-
-    # Deduplicate relations that contain hybrid entities
-    data_model = DataModel()
-    hybrid_names = {entity.removeprefix('@') for entity in data_model.hybrid_entities}
-    for relation, rel_info in data_model.relations.items():
-        # Skip relation types that do not involve hybrid entities
-        if not (hybrid_names & set(rel_info['origin'] + rel_info['target'])):
-            continue
-
-        # Load the full set of processed relations from this type
-        hybrid_relation_path = relations_dir / f'{relation}.json'
-        processed_relations = load_json_data(hybrid_relation_path)
-
-        # Gather all relations that contain hybrid entities
-        unique_relations = []
-        hybrid_groups = {}
-        for rel in processed_relations:
-            rel_origin = rel['_OriginId'].split('_')[0]
-            rel_target = rel['_TargetId'].split('_')[0]
-            rel_components = f'{rel_origin}_{rel_target}'
-
-            # Group relations that contain hybrid entities
-            if rel_origin in hybrid_names or rel_target in hybrid_names:
-                if rel_components not in hybrid_groups:
-                    hybrid_groups[rel_components] = []
-                hybrid_groups[rel_components].append(rel)
-                continue
-
-            # Relation does not contain hybrid entities, add directly to the unique list
-            unique_relations.append(rel)
-
-        # Deduplicate relation groups that contain hybrid entities
-        for rel_group in hybrid_groups.values():
-            deduplicated_group = merge_duplicate_relations(rel_group, rel_info)
-            unique_relations.extend(deduplicated_group)
-
-        # Save the final list of unique relations back to the relations JSON file
-        save_json_data(unique_relations, hybrid_relation_path)
+    # Process relations that contain hybrid entities
+    process_hybrid_relations(results_dir)
 
 
 def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> list[dict[str, Any]]:
@@ -883,6 +799,51 @@ def update_partial_entities(
                 partial_entity[key] = source_entity[key]
 
 
+def process_hybrid_entities(results_dir: Path) -> None:
+    """Process hybrid entities by merging them with their corresponding core entities and updating references."""
+    # Paths to partial and final results
+    partial_entities_dir = results_dir / 'partials/entities/'
+    entities_dir = results_dir / 'entities/'
+
+    # Path to reference relations
+    relations_dir = results_dir / 'relations/'
+    references_path = relations_dir / 'ExtractedFrom.json'
+
+    # Merge hybrid entities
+    for entity, entity_info in DataModel().hybrid_entities.items():
+        entity_name = entity.removeprefix('@')
+        core_path = entities_dir / f'{entity_name}.json'
+        hybrid_path = entities_dir / f'@{entity_name}.json'
+        partial_results_dir = partial_entities_dir / f'@{entity_name}'
+
+        # Merge the hybrid entity with the corresponding core entity
+        core_entities = load_json_data(core_path)
+        hybrid_entities = load_json_data(hybrid_path)
+        unique_entities, hybrid_mapping = merge_hybrid_entities(core_entities, hybrid_entities, entity_info)
+
+        # Create relations between hybrid entities and their source documents
+        build_entity_references(unique_entities, references_path)
+
+        # Save all final hybrid entities into a single file
+        save_json_data(core_entities + unique_entities, core_path)
+        hybrid_path.unlink(missing_ok=True)
+
+        # Update partial hybrid entities with final ObjectIds after merging
+        partial_results_paths = [
+            results_path
+            for results_path in partial_results_dir.iterdir()
+            if results_path.is_file() and results_path.suffix == '.json'
+        ]
+        for partial_results_path in partial_results_paths:
+            results = load_json_data(partial_results_path)
+            for result in results:
+                current_id = result['_ObjectId']
+                result['_ObjectId'] = hybrid_mapping.get(current_id, current_id)  # Apply mapping to final ObjectId
+            results = list({result['_ObjectId']: result for result in results}.values())  # Remove duplicates
+            results.sort(key=lambda result: result['_ObjectId'])
+            save_json_data(results, partial_results_path)
+
+
 def build_relation_references(relations: list[dict[str, Any]]) -> None:
     """Create references between relations and their source documents using a special property.
 
@@ -900,3 +861,48 @@ def build_relation_references(relations: list[dict[str, Any]]) -> None:
         # Gather all references for the relation and remove ReferenceIds
         relation['extracted_from'] = relation_references
         del relation['_ReferenceIds']
+
+
+def process_hybrid_relations(results_dir: Path) -> None:
+    """Process hybrid relations by deduplicating those that contain hybrid entities."""
+    # Path to final results
+    relations_dir = results_dir / 'relations/'
+
+    # Deduplicate relations that contain hybrid entities
+    data_model = DataModel()
+    hybrid_names = {entity.removeprefix('@') for entity in data_model.hybrid_entities}
+    for relation, rel_info in data_model.relations.items():
+        # Skip relation types that do not involve hybrid entities
+        if not (hybrid_names & set(rel_info['origin'] + rel_info['target'])):
+            continue
+
+        # Load the full set of processed relations from this type
+        relations_dir = results_dir / 'relations/'
+        hybrid_relation_path = relations_dir / f'{relation}.json'
+        processed_relations = load_json_data(hybrid_relation_path)
+
+        # Gather all relations that contain hybrid entities
+        unique_relations = []
+        hybrid_groups = {}
+        for rel in processed_relations:
+            rel_origin = rel['_OriginId'].split('_')[0]
+            rel_target = rel['_TargetId'].split('_')[0]
+            rel_components = f'{rel_origin}_{rel_target}'
+
+            # Group relations that contain hybrid entities
+            if rel_origin in hybrid_names or rel_target in hybrid_names:
+                if rel_components not in hybrid_groups:
+                    hybrid_groups[rel_components] = []
+                hybrid_groups[rel_components].append(rel)
+                continue
+
+            # Relation does not contain hybrid entities, add directly to the unique list
+            unique_relations.append(rel)
+
+        # Deduplicate relation groups that contain hybrid entities
+        for rel_group in hybrid_groups.values():
+            deduplicated_group = merge_duplicate_relations(rel_group, rel_info)
+            unique_relations.extend(deduplicated_group)
+
+        # Save the final list of unique relations back to the relations JSON file
+        save_json_data(unique_relations, hybrid_relation_path)

@@ -16,7 +16,7 @@ from nltk import download as nltk_download
 from wukong_engine.config.config import Config
 from wukong_engine.documents.text_processing import generate_chunks, process_text_documents
 from wukong_engine.extraction.data_extraction import find_entities, find_relations, process_entities, process_relations
-from wukong_engine.graph.export import export_to_json, export_to_mdb, export_to_neo4j
+from wukong_engine.graph.export import export_stats, export_to_json, export_to_mdb, export_to_neo4j
 from wukong_engine.llm.prompting import generate_prompts
 
 from .data_model import DataModel
@@ -132,6 +132,7 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
         if 'json' in export_formats:
             logger.info('Exporting Knowledge Graph to JSON...')
             export_to_json(results_dir, exports_dir / 'json')
+        export_stats(results_dir, exports_dir)
 
     # Final message
     logger.info('WUKONG Engine Pipeline Execution Completed!')
