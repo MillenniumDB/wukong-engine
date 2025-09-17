@@ -477,3 +477,65 @@ class DataModel(Singleton):
             A set of document dataset names associated with the entity type.
         """
         return self._entity_sets.get(entity_name, set())
+
+    def get_entity_properties(self, entity_name: str) -> dict[str, Any]:
+        """Get the regular properties of a specific entity type.
+
+        Args:
+            entity_name: The name of the entity type.
+
+        Returns:
+            A dictionary containing all the regular properties of the entity type.
+        """
+        entity_info = self._entities.get(entity_name, {})
+        return {
+            key: value
+            for key, value in entity_info.get('properties', {}).items()
+            if key not in self.get_entity_metadata(entity_name)
+        }
+
+    def get_entity_metadata(self, entity_name: str) -> dict[str, Any]:
+        """Get the metadata properties of a specific entity type.
+
+        Args:
+            entity_name: The name of the entity type.
+
+        Returns:
+            A dictionary containing all the metadata properties of the entity type.
+        """
+        entity_info = self.core_entities.get(entity_name, {})  # Only core entities have metadata
+        return {key: value for key, value in entity_info.get('properties', {}).items() if value.get('metadata', False)}
+
+    def get_entity_data(self, entity_name: str) -> dict[str, Any]:
+        """Get the full properties of a specific entity type.
+
+        Args:
+            entity_name: The name of the entity type.
+
+        Returns:
+            A dictionary containing all the properties of the entity type.
+        """
+        return self.get_entity_metadata(entity_name) | self.get_entity_properties(entity_name)
+
+    def get_relation_properties(self, relation_name: str) -> dict[str, Any]:
+        """Get the regular properties of a specific relation type.
+
+        Args:
+            relation_name: The name of the relation type.
+
+        Returns:
+            A dictionary containing all regular properties of the relation type.
+        """
+        relation_info = self._relations.get(relation_name, {})
+        return {key: value for key, value in relation_info.get('properties', {}).items() if key not in []}
+
+    def get_relation_data(self, relation_name: str) -> dict[str, Any]:
+        """Get the full properties of a specific relation type.
+
+        Args:
+            relation_name: The name of the relation type.
+
+        Returns:
+            A dictionary containing all the properties of the relation type.
+        """
+        return self.get_relation_properties(relation_name)

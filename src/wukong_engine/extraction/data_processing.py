@@ -10,6 +10,7 @@ from typing import Any
 from datasketch import MinHash, MinHashLSH
 from fuzzywuzzy import fuzz, process
 
+from wukong_engine.core.data_model import DataModel
 from wukong_engine.utils.text_utils import normalize_text
 
 # Logging
@@ -290,13 +291,18 @@ class FuzzyStringMatcher:
         self._element_mapping.clear()
 
 
-def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Clean entities and remove invalid ones.
+def clean_entities(
+    entities: list[dict[str, Any]],
+    entity_name: str,
+    entity_info: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Clean entities of a given type, removing invalid ones.
 
     Cleans entities by checking their properties and validating them against the data model specifications.
 
     Args:
         entities: A list of dictionaries representing entities of a specific type.
+        entity_name: The name of the entity type.
         entity_info: A dictionary containing information about the entity type, following the data model specifications.
 
     Returns:
@@ -304,9 +310,10 @@ def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) 
     """
     # Iterate over all entities and their properties
     cleaned_entities = []  # List to store cleaned entities
+    entity_properties = DataModel().get_entity_data(entity_name)
     for entity in entities:
         valid_entity = True
-        for property_name, property_data in entity_info.get('properties', {}).items():
+        for property_name, property_data in entity_properties.items():
             # Get the property value and convert it to a string
             property_value = str(entity.get(property_name, 'NULL'))  # Get the property value
             if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
@@ -333,14 +340,19 @@ def clean_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) 
     return cleaned_entities
 
 
-def clean_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Clean relations and remove invalid ones.
+def clean_relations(
+    relations: list[dict[str, Any]],
+    relation_name: str,
+    relation_info: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Clean relations of a given type, removing invalid ones.
 
     Cleans relations by checking their origin/target entities as well as their properties,
     validating them against the data model specifications.
 
     Args:
         relations: A list of dictionaries representing relations of a specific type between entities.
+        relation_name: The name of the relation type.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
 
     Returns:
@@ -348,9 +360,10 @@ def clean_relations(relations: list[dict[str, Any]], relation_info: dict[str, An
     """
     # Iterate over all relations and their properties
     cleaned_relations = []  # List to store cleaned relations
+    relation_properties = DataModel().get_relation_data(relation_name)
     for relation in relations:
         valid_required_properties = True
-        for property_name, property_data in relation_info.get('properties', {}).items():
+        for property_name, property_data in relation_properties.items():
             # Get the property value and convert it to a string
             property_value = str(relation.get(property_name, 'NULL'))  # Get the property value
             if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
@@ -374,14 +387,19 @@ def clean_relations(relations: list[dict[str, Any]], relation_info: dict[str, An
     return cleaned_relations
 
 
-def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Detect duplicate entities and merge them together.
+def merge_duplicate_entities(
+    entities: list[dict[str, Any]],
+    entity_name: str,
+    entity_info: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Detect duplicate entities of a given type and merge them together.
 
     Deduplicates entities based on their primary key, by making use of a string similarity index.
     The specific behavior of this process is managed through the data model specifications.
 
     Args:
         entities: A list of dictionaries representing entities of a specific type.
+        entity_name: The name of the entity type.
         entity_info: A dictionary containing information about the entity type, following the data model specifications.
 
     Returns:
@@ -403,6 +421,7 @@ def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[s
 
     # Iterate over all entities and look for duplicates
     unique_entities = []  # List to store unique entities
+    entity_properties = DataModel().get_entity_data(entity_name)
     for idx, entity in enumerate(entities):
         # Query the duplicate matcher to find duplicates for the primary key
         pk_value = entity[entity_info['primary_key']]
@@ -418,11 +437,11 @@ def merge_duplicate_entities(entities: list[dict[str, Any]], entity_info: dict[s
         original_entity = entities[int(match_idx)]  # Original entity that is a duplicate match
 
         # Merge the new entity with the original one
-        for key in entity_info.get('properties', {}):
+        for key, prop_info in entity_properties.items():
             original_entity[key] = choose_property_value(
                 original_entity[key],
                 entity[key],
-                entity_info.get('properties', {})[key],
+                prop_info,
             )
 
         # Gather all references to partial entities
@@ -487,8 +506,12 @@ def merge_hybrid_entities(
     return unique_entities, hybrid_mapping
 
 
-def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: dict[str, Any]) -> list[dict[str, Any]]:
-    """Detect duplicate relations and merge them together.
+def merge_duplicate_relations(
+    relations: list[dict[str, Any]],
+    relation_name: str,
+    relation_info: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Detect duplicate relations of a given type and merge them together.
 
     Deduplicates relations with the same pair of origin/target entities,
     by making use of a string similarity index applied over their primary keys (if present).
@@ -496,6 +519,7 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
 
     Args:
         relations: A list of dictionaries representing relations of a specific type between entities.
+        relation_name: The name of the relation type.
         relation_info: A dictionary containing information about the relation type, following the data model specifications.
 
     Returns:
@@ -524,6 +548,7 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
 
     # Iterate over all relation groups and look for duplicates
     unique_relations = []  # List to store unique relations
+    relation_properties = DataModel().get_relation_data(relation_name)
     for group_keys in grouped_relations.values():
         # Initial relation for the group
         initial_idx = group_keys[0]
@@ -550,7 +575,7 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
                 # Primary key is not defined: do not deduplicate
                 if not primary_key:
                     # Consider the relation unique if at least one property is not NULL
-                    if any(relation[prop] != 'NULL' for prop in relation_info.get('properties', {})):
+                    if any(relation[prop] != 'NULL' for prop in relation_properties):
                         unique_relations.append(relation)
                     continue  # Next relation
 
@@ -569,16 +594,16 @@ def merge_duplicate_relations(relations: list[dict[str, Any]], relation_info: di
             original_relation = relations[int(match_idx)]  # Original relation that is a duplicate match
 
             # Merge the new relation with the original one
-            for key in relation_info.get('properties', {}):
+            for key, prop_info in relation_properties.items():
                 original_relation[key] = choose_property_value(
                     original_relation[key],
                     relation[key],
-                    relation_info.get('properties', {})[key],
+                    prop_info,
                 )
 
             # Gather all references to partial relations
             # (Skip if there are no properties, as no new information is provided by the duplicates)
-            if len(relation_info.get('properties', {})) > 0 and '_ReferenceIds' in relation:
+            if len(relation_properties) > 0 and '_ReferenceIds' in relation:
                 original_relation['_ReferenceIds'].extend(relation['_ReferenceIds'])
 
     # Return the list of unique relations

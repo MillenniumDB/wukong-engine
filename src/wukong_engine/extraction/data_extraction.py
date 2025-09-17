@@ -34,6 +34,7 @@ def find_entities(
     prompts_dir: Path,
     results_dir: Path,
     *,
+    metadata_dir: Path | None = None,
     clear_results: bool = False,
 ) -> None:
     """Find all entities contained in the input documents, in accordance with the given entity model.
@@ -46,6 +47,7 @@ def find_entities(
         docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
+        metadata_dir: The path to the directory containing metadata files for the documents, if available.
         clear_results: Whether to clear the partial results directory before starting the procedure.
     """
     # Path to partial entity results
@@ -56,23 +58,35 @@ def find_entities(
     partial_entities_dir = partial_results_dir / 'entities/'
     partial_entities_dir.mkdir(parents=True, exist_ok=True)
 
-    # Gather prompt data for each entity type
-    prompt_data = []
+    # Get the data model
+    data_model = DataModel()
+
+    # Extract info for each entity type
     for entity_name in entity_model:
         partial_entity_dir = partial_entities_dir / entity_name
         partial_entity_dir.mkdir(parents=True, exist_ok=True)
-        entity_prompt_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
-        prompt_data.extend(entity_prompt_data)
 
-    # Execute the LLM prompt processing in parallel, since API calls are slow
-    with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
-        futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
-        for future in as_completed(futures):
-            try:
-                results = future.result()  # Wait for the API call to complete
-                process_partial_entities(results, entity_model, partial_entities_dir)  # Process the partial results
-            except Exception:
-                logger.exception('An unexpected error occurred during entity extraction.')
+        # Get prompts and process them with the LLM
+        if data_model.get_entity_properties(entity_name):
+            prompt_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
+
+            # Execute the LLM prompt processing in parallel, since API calls are slow
+            with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
+                futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
+                for future in as_completed(futures):
+                    try:
+                        results = future.result()  # Wait for the API call to complete
+                        process_extracted_entities(
+                            results,
+                            entity_model,
+                            partial_entities_dir,
+                        )  # Process the partial results
+                    except Exception:
+                        logger.exception('An unexpected error occurred during entity extraction.')
+
+        # Load metadata if available
+        if data_model.get_entity_metadata(entity_name) and metadata_dir:
+            load_entity_metadata(entity_name, metadata_dir, docs_dir, partial_entities_dir)
 
 
 def find_relations(
@@ -101,8 +115,7 @@ def find_relations(
     if clear_results:
         delete_dir_contents(partial_relations_dir)
 
-    # Gather prompt data for each relation type
-    prompt_data = []
+    # Extract info for each relation type
     for relation_name, relation_info in relation_model.items():
         partial_relation_dir = partial_relations_dir / relation_name
         partial_relation_dir.mkdir(parents=True, exist_ok=True)
@@ -111,22 +124,25 @@ def find_relations(
         core_entity_relation = relation_info.get('core_origin', False) or relation_info.get('core_target', False)
         if core_entity_relation and relation_info.get('bypass_LLM', False):
             for results in bypass_ai_processing(relation_name, relation_info, docs_dir, results_dir):
-                process_partial_relations(results, relation_model, partial_relations_dir)
+                process_extracted_relations(results, relation_model, partial_relations_dir)
             continue
 
         # Process relation with the LLM
-        relation_prompt_data = get_relation_prompts(relation_name, relation_info, docs_dir, prompts_dir, results_dir)
-        prompt_data.extend(relation_prompt_data)
+        prompt_data = get_relation_prompts(relation_name, relation_info, docs_dir, prompts_dir, results_dir)
 
-    # Execute the LLM prompt processing in parallel, since API calls are slow
-    with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
-        futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
-        for future in as_completed(futures):
-            try:
-                results = future.result()  # Wait for the API call to complete
-                process_partial_relations(results, relation_model, partial_relations_dir)  # Process the partial results
-            except Exception:
-                logger.exception('An unexpected error occurred during relation extraction.')
+        # Execute the LLM prompt processing in parallel, since API calls are slow
+        with ThreadPoolExecutor(max_workers=Config().get('max_worker_threads', None)) as executor:
+            futures = [executor.submit(process_prompt, prompt_info) for prompt_info in prompt_data]
+            for future in as_completed(futures):
+                try:
+                    results = future.result()  # Wait for the API call to complete
+                    process_extracted_relations(
+                        results,
+                        relation_model,
+                        partial_relations_dir,
+                    )  # Process the partial results
+                except Exception:
+                    logger.exception('An unexpected error occurred during relation extraction.')
 
 
 def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
@@ -181,10 +197,10 @@ def process_entities(entity_model: dict[str, Any], results_dir: Path) -> None:
             entities.extend(results)
 
         # Clean entities and remove invalid ones
-        entities = clean_entities(entities, entity_info)
+        entities = clean_entities(entities, entity_name, entity_info)
 
         # Merge duplicate entities
-        entities = merge_duplicate_entities(entities, entity_info)
+        entities = merge_duplicate_entities(entities, entity_name, entity_info)
 
         # Create global ID mapping for entities
         entity_mapping, object_mapping = build_global_entity_mapping(
@@ -275,10 +291,10 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
             relations.extend(results)
 
         # Clean relations and remove invalid ones
-        relations = clean_relations(relations, relation_info)
+        relations = clean_relations(relations, relation_info['relation_name'], relation_info)
 
         # Merge duplicate relations
-        relations = merge_duplicate_relations(relations, relation_info)
+        relations = merge_duplicate_relations(relations, relation_info['relation_name'], relation_info)
 
         # Store reference between final relations and their source documents
         build_relation_references(relations)
@@ -353,7 +369,11 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
     return prompt_data
 
 
-def process_partial_entities(results: dict[str, Any], entity_model: dict[str, Any], partial_entities_dir: Path) -> None:
+def process_extracted_entities(
+    results: dict[str, Any],
+    entity_model: dict[str, Any],
+    partial_entities_dir: Path,
+) -> None:
     """Process partial entities extracted by the LLM and save them to a partial results directory.
 
     Args:
@@ -386,6 +406,72 @@ def process_partial_entities(results: dict[str, Any], entity_model: dict[str, An
     entity_results_dir = partial_entities_dir / entity_name
     results_file_path = entity_results_dir / f'{results["document_name"]}.json'
     save_json_data(partial_entities, results_file_path)
+
+
+def load_entity_metadata(entity_name: str, metadata_dir: Path, docs_dir: Path, partial_entities_dir: Path) -> None:
+    """Load metadata for a given entity type and save it to the partial results.
+
+    Args:
+        entity_name: The name of the entity type to load metadata for.
+        metadata_dir: The path to the directory containing metadata files for the documents.
+        docs_dir: The path to the directory containing the document sets.
+        partial_entities_dir: The path to the directory where the partial entities are stored.
+
+    Raises:
+        FileNotFoundError: If the necessary document set directories do not exist.
+    """
+    # Gather documents from all sets
+    data_model = DataModel()
+    for document_set in sorted(data_model.get_entity_sets(entity_name)):
+        set_dir = docs_dir / document_set
+
+        # If the document set directory does not exist, abort the process
+        if not set_dir.exists():
+            raise FileNotFoundError(
+                f'Entity extraction failed. The directory for the document set "{document_set}" does not exist at path "{set_dir}".',
+            )
+
+        # Gather plain text files for this set
+        document_paths = sorted(
+            [doc_path for doc_path in set_dir.iterdir() if doc_path.is_file() and doc_path.suffix == '.txt'],
+        )
+
+        # Extract metadata for each document
+        for document_path in document_paths:
+            document_name = document_path.stem
+            full_document_name = f'{document_set}/{document_name}'
+            logger.info(
+                f'Processing metadata for type "{entity_name}" and document "{full_document_name}"',
+            )
+
+            # Load metadata file if it exists
+            metadata_path = metadata_dir / document_set / f'{document_name}.json'
+            if metadata_path.exists():
+                metadata = load_json_data(metadata_path)
+                if metadata is None or not isinstance(metadata, dict):
+                    metadata = {}
+                    logger.warning(f'Invalid metadata file at path "{metadata_path}". Filling with NULL values.')
+            else:
+                metadata = {}
+                logger.warning(f'No metadata file found at path "{metadata_path}". Filling with NULL values.')
+
+            # Add metadata values
+            entity_data: dict[str, Any] = dict.fromkeys(data_model.get_entity_metadata(entity_name), 'NULL')
+            entity_data.update({k: v for k, v in metadata.items() if k in entity_data})
+
+            # Add ObjectId and single reference to document (core entity)
+            *_, document_id = document_name.split('_')
+            entity_data['_ObjectId'] = f'{entity_name}_{document_id}'
+            entity_data['_ReferenceIds'] = [f'{document_id}']
+
+            # Save entities to partial results file for the core entity
+            entity_results_dir = partial_entities_dir / entity_name
+            results_file_path = entity_results_dir / f'{document_name}.json'
+            if results_file_path.exists():
+                stored_data = load_json_data(results_file_path)[0]
+                entity_data.update(stored_data)
+            entity_result = [entity_data]  # Convert to list for consistency
+            save_json_data(entity_result, results_file_path)
 
 
 def get_relation_prompts(
@@ -647,7 +733,7 @@ def bypass_ai_processing(
             yield results
 
 
-def process_partial_relations(
+def process_extracted_relations(
     results: dict[str, Any],
     relation_model: dict[str, Any],
     partial_relations_dir: Path,
@@ -901,7 +987,7 @@ def process_hybrid_relations(results_dir: Path) -> None:
 
         # Deduplicate relation groups that contain hybrid entities
         for rel_group in hybrid_groups.values():
-            deduplicated_group = merge_duplicate_relations(rel_group, rel_info)
+            deduplicated_group = merge_duplicate_relations(rel_group, relation, rel_info)
             unique_relations.extend(deduplicated_group)
 
         # Save the final list of unique relations back to the relations JSON file

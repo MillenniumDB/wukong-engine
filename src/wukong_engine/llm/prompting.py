@@ -224,7 +224,7 @@ def build_entity_prompt(
 
     # Gather property info
     properties = []
-    for property_name, property_info in entity_info.get('properties', {}).items():
+    for property_name, property_info in DataModel().get_entity_properties(entity_name).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),
@@ -233,6 +233,10 @@ def build_entity_prompt(
             'options': property_info.get('options', []),
         }
         properties.append(prop_dict)
+
+    # Special case: All properties are obtained without LLM assistance, no prompt required
+    if not properties:
+        return
 
     # Properties object string
     prop_object_str = ''
@@ -284,7 +288,7 @@ def build_relation_prompt(
     """
     # Gather property info
     properties = []
-    for property_name, property_info in relation_info.get('properties', {}).items():
+    for property_name, property_info in DataModel().get_relation_properties(relation_info['relation_name']).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),

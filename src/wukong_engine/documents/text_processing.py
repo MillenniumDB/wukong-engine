@@ -9,7 +9,13 @@ from semantic_text_splitter import TextSplitter
 
 from wukong_engine.config.config import Config
 from wukong_engine.core.data_model import DataModel
-from wukong_engine.utils.file_utils import delete_dir_contents, load_text_data, save_json_data, save_text_data
+from wukong_engine.utils.file_utils import (
+    delete_dir_contents,
+    load_json_data,
+    load_text_data,
+    save_json_data,
+    save_text_data,
+)
 
 # Configuration
 TIKTOKEN_MODEL = 'gpt-4'  # Tokenizer model to use for splitting text
@@ -172,3 +178,70 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
     # Save all chunk relations into a single file
     chunk_relations_path = relations_dir / 'ChunkOf.json'
     save_json_data(chunk_relations, chunk_relations_path)
+
+
+def process_metadata_documents(metadata_dir: Path, processed_dir: Path, results_dir: Path) -> None:
+    """Process metadata documents to prepare them for data extraction, if available.
+
+    Loads JSON metadata documents and saves them in new files with standardized filenames.
+
+    Args:
+        metadata_dir: The path to the directory that contains all document sets holding the JSON documents to be processed.
+        processed_dir: The path to the directory where processed metadata documents will be saved.
+        results_dir: The path to the directory where entities/relations will be stored.
+
+    Raises:
+        FileNotFoundError: If the metadata documents directory or any document set directory does not exist.
+    """
+    # Prepare target directories
+    processed_dir.mkdir(parents=True, exist_ok=True)
+    delete_dir_contents(processed_dir)
+
+    # If the metadata directory does not exist, abort the process
+    if not metadata_dir.exists():
+        raise FileNotFoundError(
+            f'Document Processing failed. The metadata JSON documents directory "{metadata_dir}" does not exist.',
+        )
+
+    # Process each document set separately
+    metadata_paths = {}
+    for document_set in DataModel().document_sets:
+        set_dir = metadata_dir / document_set
+
+        # If the document set directory does not exist, abort the process
+        if not set_dir.exists():
+            raise FileNotFoundError(
+                f'Document Processing failed. The directory for the metadata document set "{document_set}" does not exist at path "{set_dir}".',
+            )
+
+        # Gather all JSON files for the set
+        metadata_paths[document_set] = sorted(
+            [meta_path for meta_path in set_dir.iterdir() if meta_path.is_file() and meta_path.suffix == '.json'],
+        )
+
+        # Create directory for the document set
+        processed_set_dir = processed_dir / document_set
+        processed_set_dir.mkdir(parents=True, exist_ok=True)
+
+    # Build mapping from document name to standardized name
+    document_name_mapping = {}
+    document_entities_path = results_dir / 'entities/Document.json'
+    document_entities = load_json_data(document_entities_path)
+    for entity in document_entities:
+        document_name_mapping[entity['name']] = entity['_ObjectId'].lower()
+
+    # Iterate over each metadata file and process it
+    for document_set, meta_paths in metadata_paths.items():
+        for meta_path in meta_paths:
+            # Load contents from the document
+            document_name = meta_path.stem
+            document_content = load_json_data(meta_path)
+
+            # Skip metadata files without a corresponding document
+            if document_name not in document_name_mapping:
+                continue
+
+            # Save the metadata contents as a new JSON file with a standardized name
+            processed_document_name = document_name_mapping[document_name]
+            processed_document_path = processed_dir / document_set / f'{processed_document_name}.json'
+            save_json_data(document_content, processed_document_path)
