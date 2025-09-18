@@ -67,7 +67,7 @@ def find_entities(
         partial_entity_dir.mkdir(parents=True, exist_ok=True)
 
         # Get prompts and process them with the LLM
-        if data_model.get_entity_properties(entity_name):
+        if data_model.get_entity_data(entity_name):
             prompt_data = get_entity_prompts(entity_name, docs_dir, prompts_dir)
 
             # Execute the LLM prompt processing in parallel, since API calls are slow

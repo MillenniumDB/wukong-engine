@@ -224,7 +224,7 @@ def build_entity_prompt(
 
     # Gather property info
     properties = []
-    for property_name, property_info in DataModel().get_entity_properties(entity_name).items():
+    for property_name, property_info in DataModel().get_entity_data(entity_name).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),
@@ -288,7 +288,7 @@ def build_relation_prompt(
     """
     # Gather property info
     properties = []
-    for property_name, property_info in DataModel().get_relation_properties(relation_info['relation_name']).items():
+    for property_name, property_info in DataModel().get_relation_data(relation_info['relation_name']).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),

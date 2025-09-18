@@ -55,6 +55,32 @@ class DataModel(Singleton):
         self._load_model(data_dir / DATA_MODEL_PATH)
         self._process_model()
 
+    def __repr__(self) -> str:
+        """Return a string representation of the data model manager."""
+        entity_model = self.core_entities | self.entities | self.special_entities
+        simplified_entities = {entity: {} for entity in entity_model}
+        for entity, entity_info in entity_model.items():
+            simplified_entities[entity] = {
+                'description': entity_info['description'],
+                'properties': {k: v['description'] for k, v in entity_info.get('properties', {}).items()},
+            }
+            for k, v in entity_info.get('properties', {}).items():
+                if 'options' in v:
+                    simplified_entities[entity]['properties'][k] += f' Possible Values: {v["options"]}.'
+        relation_model = self.relations | self.special_relations
+        simplified_relations = {relation: {} for relation in relation_model}
+        for relation, relation_info in relation_model.items():
+            simplified_relations[relation] = {
+                'source_target': relation_info['origin_target'],
+                'description': relation_info['description'],
+                'properties': {k: v['description'] for k, v in relation_info.get('properties', {}).items()},
+            }
+        simplified_model = {
+            'entities': simplified_entities,
+            'relations': simplified_relations,
+        }
+        return f'```json\n{json.dumps(simplified_model, indent=2, ensure_ascii=False)}\n```'
+
     def _load_model(self, data_model_path: Path) -> None:
         """Load the data model from a JSON file, making sure it has a valid format.
 
@@ -283,7 +309,7 @@ class DataModel(Singleton):
         """Process the data model to prepare entity and relation types for use in the engine."""
         # Keep only the included entities
         included_entities = self._parameters.get('included_entities', list(self._entities.keys()))
-        self._entities = {key: value for key, value in self._entities.items() if key in included_entities}
+        self._entities = {k: v for k, v in self._entities.items() if k in included_entities}
 
         # Add all included document sets to entities that do not specify them
         included_documents = self._parameters.get('included_documents', [])
@@ -322,7 +348,7 @@ class DataModel(Singleton):
 
         # Keep only the included relations
         included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
-        self._relations = {key: value for key, value in self._relations.items() if key in included_relations}
+        self._relations = {k: v for k, v in self._relations.items() if k in included_relations}
 
         # Process origin/target schemas
         self._build_relation_schemas()
@@ -332,15 +358,51 @@ class DataModel(Singleton):
 
         # Add special entities
         special_entities = {
-            'Document': {'special_entity': True, 'properties': {'name': {'type': 'string'}}},
-            'Chunk': {'special_entity': True, 'properties': {'text': {'type': 'string'}}},
+            'Document': {
+                'special_entity': True,
+                'description': 'Represents a document that was used for the construction of the knowledge graph.',
+                'properties': {
+                    'name': {
+                        'type': 'string',
+                        'description': 'The name of the original document.',
+                    },
+                    'document_set': {
+                        'type': 'string',
+                        'description': 'The name of the document set where the original document is contained.',
+                    },
+                },
+            },
+            'Chunk': {
+                'special_entity': True,
+                'description': 'Represents a fragment of a document used for the construction of the knowledge graph.',
+                'properties': {
+                    'text': {
+                        'type': 'string',
+                        'description': 'The text contained in the document chunk.',
+                    },
+                },
+            },
         }
         self._entities.update(special_entities)
 
         # Add special relations
         special_relations = {
-            'ChunkOf': {'special_relation': True, 'properties': {'chunk_number': {'type': 'integer'}}},
-            'ExtractedFrom': {'special_relation': True},
+            'ChunkOf': {
+                'special_relation': True,
+                'origin_target': {'Chunk': ['Document']},
+                'description': 'Connects each chunk to the respective document from which it was extracted.',
+                'properties': {
+                    'chunk_number': {
+                        'type': 'integer',
+                        'description': 'The number of the chunk within the document (ordered from beginning to end).',
+                    },
+                },
+            },
+            'ExtractedFrom': {
+                'special_relation': True,
+                'origin_target': {'ALL': ['Chunk', 'Document']},
+                'description': 'Connects each entity to the respective chunk from which it was extracted.',
+            },
         }
         self._relations.update(special_relations)
 
@@ -369,7 +431,7 @@ class DataModel(Singleton):
             relation_info['target'] = list({t for targets in final_schema.values() for t in targets})
 
         # Only keep relations that have valid origin/target pairs
-        self._relations = {key: value for key, value in self._relations.items() if value['origin_target']}
+        self._relations = {k: v for k, v in self._relations.items() if v['origin_target']}
 
     def _materialize_relation_model(self) -> None:
         """Materialize the relation model to create specific relation types between entity type pairs."""
@@ -425,37 +487,35 @@ class DataModel(Singleton):
     def entities(self) -> dict[str, Any]:
         """A dictionary containing all regular entity types in the data model (core/hybrid/special entities are excluded)."""
         return {
-            key: value
-            for key, value in self._entities.items()
-            if not value.get('core_entity', False)
-            and not value.get('special_entity', False)
-            and not key.startswith('@')
+            k: v
+            for k, v in self._entities.items()
+            if not v.get('core_entity', False) and not v.get('special_entity', False) and not k.startswith('@')
         }
 
     @property
     def core_entities(self) -> dict[str, Any]:
         """A dictionary containing all core entity types in the data model."""
-        return {key: value for key, value in self._entities.items() if value.get('core_entity', False)}
+        return {k: v for k, v in self._entities.items() if v.get('core_entity', False)}
 
     @property
     def hybrid_entities(self) -> dict[str, Any]:
         """A dictionary containing all hybrid entity types in the data model."""
-        return {key: value for key, value in self._entities.items() if key.startswith('@')}
+        return {k: v for k, v in self._entities.items() if k.startswith('@')}
 
     @property
     def special_entities(self) -> dict[str, Any]:
         """A dictionary containing all special entity types in the data model."""
-        return {key: value for key, value in self._entities.items() if value.get('special_entity', False)}
+        return {k: v for k, v in self._entities.items() if v.get('special_entity', False)}
 
     @property
     def relations(self) -> dict[str, Any]:
         """A dictionary containing all regular relation types in the data model (special relations are excluded)."""
-        return {key: value for key, value in self._relations.items() if not value.get('special_relation', False)}
+        return {k: v for k, v in self._relations.items() if not v.get('special_relation', False)}
 
     @property
     def special_relations(self) -> dict[str, Any]:
         """A dictionary containing all special relation types in the data model."""
-        return {key: value for key, value in self._relations.items() if value.get('special_relation', False)}
+        return {k: v for k, v in self._relations.items() if v.get('special_relation', False)}
 
     @property
     def materialized_relations(self) -> dict[str, Any]:
@@ -478,21 +538,27 @@ class DataModel(Singleton):
         """
         return self._entity_sets.get(entity_name, set())
 
-    def get_entity_properties(self, entity_name: str) -> dict[str, Any]:
-        """Get the regular properties of a specific entity type.
+    def get_entity_data(self, entity_name: str) -> dict[str, Any]:
+        """Get the data properties of a specific entity type.
+
+        Data properties are those meant to be extracted from the documents.
 
         Args:
             entity_name: The name of the entity type.
 
         Returns:
-            A dictionary containing all the regular properties of the entity type.
+            A dictionary containing all data properties of the entity type.
         """
         entity_info = self._entities.get(entity_name, {})
-        return {
-            key: value
-            for key, value in entity_info.get('properties', {}).items()
-            if key not in self.get_entity_metadata(entity_name)
-        }
+        entity_pk = entity_info.get('primary_key', '')
+        entity_props = entity_info.get('properties', {})
+
+        # Hybrid entities keep the primary key and any property marked as hybrid
+        if entity_name in self.hybrid_entities:
+            return {k: v for k, v in entity_props.items() if k == entity_pk or v.get('hybrid', False)}
+
+        # Other entities keep all properties meant for the LLM
+        return {k: v for k, v in entity_props.items() if k not in self.get_entity_metadata(entity_name)}
 
     def get_entity_metadata(self, entity_name: str) -> dict[str, Any]:
         """Get the metadata properties of a specific entity type.
@@ -501,41 +567,43 @@ class DataModel(Singleton):
             entity_name: The name of the entity type.
 
         Returns:
-            A dictionary containing all the metadata properties of the entity type.
+            A dictionary containing all metadata properties of the entity type.
         """
         entity_info = self.core_entities.get(entity_name, {})  # Only core entities have metadata
-        return {key: value for key, value in entity_info.get('properties', {}).items() if value.get('metadata', False)}
+        return {k: v for k, v in entity_info.get('properties', {}).items() if v.get('metadata', False)}
 
-    def get_entity_data(self, entity_name: str) -> dict[str, Any]:
+    def get_entity_properties(self, entity_name: str) -> dict[str, Any]:
         """Get the full properties of a specific entity type.
 
         Args:
             entity_name: The name of the entity type.
 
         Returns:
-            A dictionary containing all the properties of the entity type.
+            A dictionary containing all properties of the entity type.
         """
-        return self.get_entity_metadata(entity_name) | self.get_entity_properties(entity_name)
+        return self._entities.get(entity_name, {}).get('properties', {})
 
-    def get_relation_properties(self, relation_name: str) -> dict[str, Any]:
-        """Get the regular properties of a specific relation type.
+    def get_relation_data(self, relation_name: str) -> dict[str, Any]:
+        """Get the data properties of a specific relation type.
+
+        Data properties are those meant to be extracted from the documents.
 
         Args:
             relation_name: The name of the relation type.
 
         Returns:
-            A dictionary containing all regular properties of the relation type.
+            A dictionary containing all data properties of the relation type.
         """
         relation_info = self._relations.get(relation_name, {})
-        return {key: value for key, value in relation_info.get('properties', {}).items() if key not in []}
+        return {k: v for k, v in relation_info.get('properties', {}).items() if k not in []}
 
-    def get_relation_data(self, relation_name: str) -> dict[str, Any]:
+    def get_relation_properties(self, relation_name: str) -> dict[str, Any]:
         """Get the full properties of a specific relation type.
 
         Args:
             relation_name: The name of the relation type.
 
         Returns:
-            A dictionary containing all the properties of the relation type.
+            A dictionary containing all properties of the relation type.
         """
-        return self.get_relation_properties(relation_name)
+        return self._relations.get(relation_name, {}).get('properties', {})

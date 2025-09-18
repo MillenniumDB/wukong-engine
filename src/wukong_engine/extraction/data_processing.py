@@ -310,7 +310,7 @@ def clean_entities(
     """
     # Iterate over all entities and their properties
     cleaned_entities = []  # List to store cleaned entities
-    entity_properties = DataModel().get_entity_data(entity_name)
+    entity_properties = DataModel().get_entity_properties(entity_name)
     for entity in entities:
         valid_entity = True
         for property_name, property_data in entity_properties.items():
@@ -360,7 +360,7 @@ def clean_relations(
     """
     # Iterate over all relations and their properties
     cleaned_relations = []  # List to store cleaned relations
-    relation_properties = DataModel().get_relation_data(relation_name)
+    relation_properties = DataModel().get_relation_properties(relation_name)
     for relation in relations:
         valid_required_properties = True
         for property_name, property_data in relation_properties.items():
@@ -421,7 +421,7 @@ def merge_duplicate_entities(
 
     # Iterate over all entities and look for duplicates
     unique_entities = []  # List to store unique entities
-    entity_properties = DataModel().get_entity_data(entity_name)
+    entity_properties = DataModel().get_entity_properties(entity_name)
     for idx, entity in enumerate(entities):
         # Query the duplicate matcher to find duplicates for the primary key
         pk_value = entity[entity_info['primary_key']]
@@ -548,7 +548,7 @@ def merge_duplicate_relations(
 
     # Iterate over all relation groups and look for duplicates
     unique_relations = []  # List to store unique relations
-    relation_properties = DataModel().get_relation_data(relation_name)
+    relation_properties = DataModel().get_relation_properties(relation_name)
     for group_keys in grouped_relations.values():
         # Initial relation for the group
         initial_idx = group_keys[0]

@@ -54,7 +54,7 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to the MillenniumDB format
         entities = load_json_data(entity_path)
-        entity_data = data_model.get_entity_data(entity_name)
+        entity_data = data_model.get_entity_properties(entity_name)
         object_to_mdb(entities, entity_name, entity_data, 'entity', export_dir)
 
     # Relation model (including special relations)
@@ -74,7 +74,7 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to the MillenniumDB format
         relations = load_json_data(relation_path)
-        relation_data = dict(data_model.get_relation_data(relation_name))
+        relation_data = dict(data_model.get_relation_properties(relation_name))
         if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
             relation_data['extracted_from'] = {'type': 'string'}
         object_to_mdb(relations, relation_name, relation_data, 'relation', export_dir)
@@ -117,7 +117,7 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to the Neo4j format
         entities = load_json_data(entity_path)
-        entity_data = data_model.get_entity_data(entity_name)
+        entity_data = data_model.get_entity_properties(entity_name)
         object_to_neo4j(entities, entity_name, entity_data, 'entity', entities_export_dir)
 
     # Relation model (including special relations)
@@ -137,7 +137,7 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to the Neo4j format
         relations = load_json_data(relation_path)
-        relation_data = dict(data_model.get_relation_data(relation_name))
+        relation_data = dict(data_model.get_relation_properties(relation_name))
         if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
             relation_data['extracted_from'] = {'type': 'string'}
         object_to_neo4j(relations, relation_name, relation_data, 'relation', relations_export_dir)
@@ -180,7 +180,7 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to JSON
         entities = load_json_data(entity_path)
-        entity_data = data_model.get_entity_data(entity_name)
+        entity_data = data_model.get_entity_properties(entity_name)
         object_to_json(entities, entity_name, entity_data, 'entity', entities_export_dir)
 
     # Relation model (including special relations)
@@ -200,7 +200,7 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to JSON
         relations = load_json_data(relation_path)
-        relation_data = dict(data_model.get_relation_data(relation_name))
+        relation_data = dict(data_model.get_relation_properties(relation_name))
         if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
             relation_data['extracted_from'] = {'type': 'string'}
         object_to_json(relations, relation_name, relation_data, 'relation', relations_export_dir)
