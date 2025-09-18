@@ -5,6 +5,7 @@ and deduplicate data that represents entities and relations.
 """
 
 import logging
+import re
 from typing import Any
 
 from datasketch import MinHash, MinHashLSH
@@ -330,6 +331,12 @@ def clean_entities(
                 property_value = str(property_data.get('default', 'NULL'))  # Set default values if defined
                 entity[property_name] = property_value
 
+            # Validate property with regex if defined
+            if 'regex' in property_data:
+                pattern = property_data['regex']
+                if not re.fullmatch(pattern, property_value):
+                    property_value = 'NULL'
+
             # Check if the final property value is valid
             if not is_valid_value(property_value, property_data):
                 # Core entities are always valid, no matter the property values
@@ -388,6 +395,12 @@ def clean_relations(
             if not is_valid_value(property_value, property_data):
                 property_value = str(property_data.get('default', 'NULL'))  # Set default values if defined
                 relation[property_name] = property_value
+
+            # Validate property with regex if defined
+            if 'regex' in property_data:
+                pattern = property_data['regex']
+                if not re.fullmatch(pattern, property_value):
+                    property_value = 'NULL'
 
             # Check if the final property value is valid
             if not is_valid_value(property_value, property_data):
