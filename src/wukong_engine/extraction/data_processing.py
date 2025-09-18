@@ -311,6 +311,7 @@ def clean_entities(
     # Iterate over all entities and their properties
     cleaned_entities = []  # List to store cleaned entities
     entity_properties = DataModel().get_entity_properties(entity_name)
+    entity_placeholders = DataModel().get_entity_placeholders(entity_name)
     for entity in entities:
         valid_entity = True
         for property_name, property_data in entity_properties.items():
@@ -319,10 +320,18 @@ def clean_entities(
             if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
                 property_value = str(property_value)
 
+            # Set placeholder values
+            if property_name in entity_placeholders:
+                property_value = str(property_data.get('placeholder', 'NULL'))
+                entity[property_name] = property_value
+
             # Make sure all null/invalid values are detected
             if not is_valid_value(property_value, property_data):
-                entity[property_name] = 'NULL'
+                property_value = str(property_data.get('default', 'NULL'))  # Set default values if defined
+                entity[property_name] = property_value
 
+            # Check if the final property value is valid
+            if not is_valid_value(property_value, property_data):
                 # Core entities are always valid, no matter the property values
                 if entity_info.get('core_entity', False):
                     continue
@@ -361,6 +370,7 @@ def clean_relations(
     # Iterate over all relations and their properties
     cleaned_relations = []  # List to store cleaned relations
     relation_properties = DataModel().get_relation_properties(relation_name)
+    relation_placeholders = DataModel().get_relation_placeholders(relation_name)
     for relation in relations:
         valid_required_properties = True
         for property_name, property_data in relation_properties.items():
@@ -369,10 +379,18 @@ def clean_relations(
             if property_data.get('type', 'string') in ('integer', 'float', 'bool'):
                 property_value = str(property_value)
 
+            # Set placeholder values
+            if property_name in relation_placeholders:
+                property_value = str(property_data.get('placeholder', 'NULL'))
+                relation[property_name] = property_value
+
             # Make sure all null/invalid values are detected
             if not is_valid_value(property_value, property_data):
-                relation[property_name] = 'NULL'
+                property_value = str(property_data.get('default', 'NULL'))  # Set default values if defined
+                relation[property_name] = property_value
 
+            # Check if the final property value is valid
+            if not is_valid_value(property_value, property_data):
                 # If a required property is invalid, the entire relation is not valid
                 primary_key = relation_info.get('primary_key', '')
                 if property_name == primary_key or property_data.get('required', False):

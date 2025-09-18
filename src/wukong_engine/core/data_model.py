@@ -75,6 +75,9 @@ class DataModel(Singleton):
                 'description': relation_info['description'],
                 'properties': {k: v['description'] for k, v in relation_info.get('properties', {}).items()},
             }
+            for k, v in relation_info.get('properties', {}).items():
+                if 'options' in v:
+                    simplified_relations[relation]['properties'][k] += f' Possible Values: {v["options"]}.'
         simplified_model = {
             'entities': simplified_entities,
             'relations': simplified_relations,
@@ -558,7 +561,11 @@ class DataModel(Singleton):
             return {k: v for k, v in entity_props.items() if k == entity_pk or v.get('hybrid', False)}
 
         # Other entities keep all properties meant for the LLM
-        return {k: v for k, v in entity_props.items() if k not in self.get_entity_metadata(entity_name)}
+        return {
+            k: v
+            for k, v in entity_props.items()
+            if k not in self.get_entity_metadata(entity_name) | self.get_entity_placeholders(entity_name)
+        }
 
     def get_entity_metadata(self, entity_name: str) -> dict[str, Any]:
         """Get the metadata properties of a specific entity type.
@@ -571,6 +578,34 @@ class DataModel(Singleton):
         """
         entity_info = self.core_entities.get(entity_name, {})  # Only core entities have metadata
         return {k: v for k, v in entity_info.get('properties', {}).items() if v.get('metadata', False)}
+
+    def get_entity_placeholders(self, entity_name: str) -> dict[str, Any]:
+        """Get the placeholder properties of a specific entity type.
+
+        Args:
+            entity_name: The name of the entity type.
+
+        Returns:
+            A dictionary containing all placeholder properties of the entity type.
+        """
+        entity_info = self._entities.get(entity_name, {})
+        entity_pk = entity_info.get('primary_key', '')
+        entity_props = entity_info.get('properties', {})
+
+        # Hybrid entities prioritize hybrid properties over placeholders
+        if entity_name in self.hybrid_entities:
+            return {
+                k: v
+                for k, v in entity_props.items()
+                if 'placeholder' in v and k != entity_pk and not v.get('hybrid', False)
+            }
+
+        # Other entities prioritize metadata over placeholders
+        return {
+            k: v
+            for k, v in entity_props.items()
+            if 'placeholder' in v and k != entity_pk and k not in self.get_entity_metadata(entity_name)
+        }
 
     def get_entity_properties(self, entity_name: str) -> dict[str, Any]:
         """Get the full properties of a specific entity type.
@@ -595,7 +630,25 @@ class DataModel(Singleton):
             A dictionary containing all data properties of the relation type.
         """
         relation_info = self._relations.get(relation_name, {})
-        return {k: v for k, v in relation_info.get('properties', {}).items() if k not in []}
+        return {
+            k: v
+            for k, v in relation_info.get('properties', {}).items()
+            if k not in self.get_relation_placeholders(relation_name)
+        }
+
+    def get_relation_placeholders(self, relation_name: str) -> dict[str, Any]:
+        """Get the placeholder properties of a specific relation type.
+
+        Args:
+            relation_name: The name of the relation type.
+
+        Returns:
+            A dictionary containing all placeholder properties of the relation type.
+        """
+        relation_info = self._relations.get(relation_name, {})
+        relation_pk = relation_info.get('primary_key', '')
+        relation_props = relation_info.get('properties', {})
+        return {k: v for k, v in relation_props.items() if 'placeholder' in v and k != relation_pk}
 
     def get_relation_properties(self, relation_name: str) -> dict[str, Any]:
         """Get the full properties of a specific relation type.
