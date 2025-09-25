@@ -25,7 +25,7 @@ LLM_MODEL = 'gpt-4.1-mini'  # Best model for price/performance ratio
 TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic output)
 MAX_RETRIES = 10  # Maximum number of retries for LLM API calls
 MAX_RETRY_DELAY = 120  # Maximum delay between retries (in seconds)
-API_CALL_TIMEOUT = 30  # Timeout for the LLM API call (in seconds)
+API_CALL_TIMEOUT = 120  # Timeout for the LLM API call (in seconds)
 
 
 class OpenAIClientProvider:
@@ -112,7 +112,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
                 break
             logger.error('LLM API call returned "None".')
         except OpenAIError as error:  # Catch specific OpenAI API errors
-            logger.error(f'LLM API call failed. Reason: {error}.')
+            logger.error(f'LLM API call failed. Reason: {error}')
         except Exception:  # Catch unknown errors
             logger.exception('An unexpected error occurred during the LLM API call.')
 
@@ -127,7 +127,9 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         time.sleep(delay)
         delay *= exponential_base * (1 + random.random())  # noqa: S311
         delay = min(delay, MAX_RETRY_DELAY)
-        logger.info('Retrying LLM API call...')
+        logger.info(
+            f'Retrying LLM API call for type "{prompt_data["object_name"]}" and document "{full_document_name}" ({retries}/{MAX_RETRIES})',
+        )
 
     # Load and return response
     try:

@@ -246,3 +246,36 @@ def process_metadata_documents(metadata_dir: Path, processed_dir: Path, results_
             processed_document_name = document_name_mapping[document_name]
             processed_document_path = processed_dir / document_set / f'{processed_document_name}.json'
             save_json_data(document_content, processed_document_path)
+
+
+def trim_large_documents(full_docs_dir: Path, max_chars: int = 360000) -> None:
+    """Trim documents that exceed the maximum character limit.
+
+    Args:
+        full_docs_dir: The path to the directory that contains all document sets holding the documents to be trimmed.
+        max_chars: The maximum number of characters allowed per document.
+    """
+    # Process each document set separately
+    document_paths = {}
+    for document_set in DataModel().document_sets:
+        set_dir = full_docs_dir / document_set
+
+        # Gather all documents for the set
+        document_paths[document_set] = sorted(
+            [
+                doc_path
+                for doc_path in set_dir.iterdir()
+                if doc_path.is_file() and doc_path.suffix == '.txt' and doc_path.name.startswith('document_')
+            ],
+        )
+
+    # Iterate over each file and trim it if necessary
+    for doc_paths in document_paths.values():
+        for document_path in doc_paths:
+            # Load contents from the document
+            document_content = load_text_data(document_path)
+
+            # If the document exceeds the maximum character limit, trim it
+            if len(document_content) > max_chars:
+                trimmed_content = document_content[:max_chars]
+                save_text_data(trimmed_content, document_path)

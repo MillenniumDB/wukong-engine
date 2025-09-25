@@ -14,7 +14,12 @@ from pathlib import Path
 from nltk import download as nltk_download
 
 from wukong_engine.config.config import Config
-from wukong_engine.documents.text_processing import generate_chunks, process_metadata_documents, process_text_documents
+from wukong_engine.documents.text_processing import (
+    generate_chunks,
+    process_metadata_documents,
+    process_text_documents,
+    trim_large_documents,
+)
 from wukong_engine.extraction.data_extraction import find_entities, find_relations, process_entities, process_relations
 from wukong_engine.graph.export import export_stats, export_to_json, export_to_mdb, export_to_neo4j
 from wukong_engine.llm.prompting import generate_prompts
@@ -96,6 +101,7 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
         logger.info('Processing Input Documents...')
         process_text_documents(original_docs_dir, docs_dir, results_dir)
         generate_chunks(docs_dir, chunks_dir, results_dir)
+        trim_large_documents(docs_dir)
         if original_metadata_dir.exists():
             process_metadata_documents(original_metadata_dir, metadata_dir, results_dir)
 
