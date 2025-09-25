@@ -4,6 +4,10 @@
         "context": "Civil judgments from the Chilean Supreme Court.",
         "input_language": "spanish",
         "output_language": "spanish",
+        "included_documents": [
+            "2024",
+            "2016"
+        ],
         "included_entities": [
             "Sentencia",
             "Persona"
@@ -112,7 +116,10 @@
                     "example": "Juan Andrés Pérez González",
                     "required": true
                 }
-            }
+            },
+            "documents": [
+                "2016"
+            ]
         }
     },
     "relations": {

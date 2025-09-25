@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from wukong_engine.core.data_model import DataModel
-from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, save_json_data
+from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, save_json_data, save_text_data
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -54,19 +54,11 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to the MillenniumDB format
         entities = load_json_data(entity_path)
-        entity_info = entity_model[entity_name]
-        object_to_mdb(entities, entity_name, entity_info, 'entity', export_dir)
+        entity_data = data_model.get_entity_properties(entity_name)
+        object_to_mdb(entities, entity_name, entity_data, 'entity', export_dir)
 
-    # Relation model
-    relation_model = data_model.relations
-
-    # Add extracted_from property to relations
-    for relation_info in relation_model.values():
-        property_info = relation_info.get('properties', {})
-        property_info['extracted_from'] = {'type': 'string'}
-
-    # Add special relations to relation model
-    relation_model |= data_model.special_relations
+    # Relation model (including special relations)
+    relation_model = data_model.relations | data_model.special_relations
 
     # Convert relations to the MillenniumDB format
     relation_names = list(relation_model.keys())
@@ -82,8 +74,10 @@ def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to the MillenniumDB format
         relations = load_json_data(relation_path)
-        relation_info = relation_model[relation_name]
-        object_to_mdb(relations, relation_name, relation_info, 'relation', export_dir)
+        relation_data = dict(data_model.get_relation_properties(relation_name))
+        if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
+            relation_data['extracted_from'] = {'type': 'string'}
+        object_to_mdb(relations, relation_name, relation_data, 'relation', export_dir)
 
 
 def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
@@ -123,19 +117,11 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to the Neo4j format
         entities = load_json_data(entity_path)
-        entity_info = entity_model[entity_name]
-        object_to_neo4j(entities, entity_name, entity_info, 'entity', entities_export_dir)
+        entity_data = data_model.get_entity_properties(entity_name)
+        object_to_neo4j(entities, entity_name, entity_data, 'entity', entities_export_dir)
 
-    # Relation model
-    relation_model = data_model.relations
-
-    # Add extracted_from property to relations
-    for relation_info in relation_model.values():
-        property_info = relation_info.get('properties', {})
-        property_info['extracted_from'] = {'type': 'string'}
-
-    # Add special relations to relation model
-    relation_model |= data_model.special_relations
+    # Relation model (including special relations)
+    relation_model = data_model.relations | data_model.special_relations
 
     # Convert relations to the Neo4j format
     relation_names = list(relation_model.keys())
@@ -151,8 +137,10 @@ def export_to_neo4j(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to the Neo4j format
         relations = load_json_data(relation_path)
-        relation_info = relation_model[relation_name]
-        object_to_neo4j(relations, relation_name, relation_info, 'relation', relations_export_dir)
+        relation_data = dict(data_model.get_relation_properties(relation_name))
+        if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
+            relation_data['extracted_from'] = {'type': 'string'}
+        object_to_neo4j(relations, relation_name, relation_data, 'relation', relations_export_dir)
 
 
 def export_to_json(results_dir: Path, export_dir: Path) -> None:
@@ -192,19 +180,11 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
 
         # Load entity data and export to JSON
         entities = load_json_data(entity_path)
-        entity_info = entity_model[entity_name]
-        object_to_json(entities, entity_name, entity_info, 'entity', entities_export_dir)
+        entity_data = data_model.get_entity_properties(entity_name)
+        object_to_json(entities, entity_name, entity_data, 'entity', entities_export_dir)
 
-    # Relation model
-    relation_model = data_model.relations
-
-    # Add extracted_from property to relations
-    for relation_info in relation_model.values():
-        property_info = relation_info.get('properties', {})
-        property_info['extracted_from'] = {'type': 'string'}
-
-    # Add special relations to relation model
-    relation_model |= data_model.special_relations
+    # Relation model (including special relations)
+    relation_model = data_model.relations | data_model.special_relations
 
     # Export relations to JSON
     relation_names = list(relation_model.keys())
@@ -220,14 +200,87 @@ def export_to_json(results_dir: Path, export_dir: Path) -> None:
 
         # Load relation data and export to JSON
         relations = load_json_data(relation_path)
-        relation_info = relation_model[relation_name]
-        object_to_json(relations, relation_name, relation_info, 'relation', relations_export_dir)
+        relation_data = dict(data_model.get_relation_properties(relation_name))
+        if relation_name not in data_model.special_relations:  # Add extracted_from property to relations
+            relation_data['extracted_from'] = {'type': 'string'}
+        object_to_json(relations, relation_name, relation_data, 'relation', relations_export_dir)
+
+
+def export_stats(results_dir: Path, export_dir: Path) -> None:
+    """Export final graph statistics.
+
+    Args:
+        results_dir: The path to the directory containing the entities and relations.
+        export_dir: The path to the directory where the knowledge graph files will be exported.
+    """
+    # Prepare directories
+    export_dir.mkdir(parents=True, exist_ok=True)
+    entities_dir = results_dir / 'entities/'
+    relations_dir = results_dir / 'relations/'
+
+    # Get data model
+    data_model = DataModel()
+
+    # Entity model (including core & special entities)
+    entity_model = data_model.core_entities | data_model.entities | data_model.special_entities
+
+    # Gather all entity stats
+    entity_stats = {}
+    entity_names = list(entity_model.keys())
+    for entity_name in entity_names:
+        entity_path = entities_dir / f'{entity_name}.json'
+
+        # If entity file does not exist, skip it
+        if not entity_path.exists():
+            logger.error(
+                f'Statistics export failed. Results file for "{entity_name}" entity does not exist. Skipping this entity.',
+            )
+            continue
+
+        # Load entity data and gather stats
+        entities = load_json_data(entity_path)
+        entity_stats[entity_name] = len(entities)
+
+    # Relation model (including special relations)
+    relation_model = data_model.relations | data_model.special_relations
+
+    # Gather all relation stats
+    relation_stats = {}
+    relation_names = list(relation_model.keys())
+    for relation_name in relation_names:
+        relation_path = relations_dir / f'{relation_name}.json'
+
+        # If relation file does not exist, skip it
+        if not relation_path.exists():
+            logger.error(
+                f'Statistics export failed. Results file for "{relation_name}" relation does not exist. Skipping this relation.',
+            )
+            continue
+
+        # Load relation data and gather stats
+        relations = load_json_data(relation_path)
+        relation_stats[relation_name] = len(relations)
+
+    # Calculate total stats
+    total_entities = sum(entity_stats.values())
+    total_relations = sum(relation_stats.values())
+    stats_text = '***Statistics***\n\n'
+    stats_text += f'Total Entities: {total_entities}\n'
+    for entity_name, count in entity_stats.items():
+        stats_text += f'  - {entity_name}: {count}\n'
+    stats_text += f'\nTotal Relations: {total_relations}\n'
+    for relation_name, count in relation_stats.items():
+        stats_text += f'  - {relation_name}: {count}\n'
+
+    # Export stats to a text file
+    stats_path = export_dir / 'stats.txt'
+    save_text_data(stats_text, stats_path)
 
 
 def object_to_mdb(
     data: list[dict[str, Any]],
     object_label: str,
-    object_info: dict[str, Any],
+    object_data: dict[str, Any],
     object_type: str,
     object_export_dir: Path,
 ) -> None:
@@ -236,13 +289,12 @@ def object_to_mdb(
     Args:
         data: A list of dictionaries representing instances of the entity/relation type.
         object_label: The name of the entity/relation type.
-        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_data: A dictionary containing information about all properties from the entity/relation type, following the data model specifications.
         object_type: The type of each object inside `data`, either 'entity' or 'relation'.
         object_export_dir: The path to the directory where the MillenniumDB Quad Model file will be exported.
     """
     # Properties for entities and relations
-    property_info = object_info.get('properties', {})
-    property_names = list(property_info)
+    property_names = list(object_data)
 
     # Create data type mapping
     data_type_mapping = build_data_type_mapping()
@@ -260,7 +312,7 @@ def object_to_mdb(
 
             # Add property fields
             for field in property_names:
-                property_type = property_info[field].get('type', 'string').lower()
+                property_type = object_data[field].get('type', 'string').lower()
                 property_type = data_type_mapping.get(property_type, property_type)
                 match property_type:
                     case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string
@@ -287,7 +339,7 @@ def object_to_mdb(
 def object_to_neo4j(
     data: list[dict[str, Any]],
     object_label: str,
-    object_info: dict[str, Any],
+    object_data: dict[str, Any],
     object_type: str,
     object_export_dir: Path,
 ) -> None:
@@ -296,7 +348,7 @@ def object_to_neo4j(
     Args:
         data: A list of dictionaries representing instances of the entity/relation type.
         object_label: The name of the entity/relation type.
-        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_data: A dictionary containing information about all properties from the entity/relation type, following the data model specifications.
         object_type: The type of each object inside `data`, either 'entity' or 'relation'.
         object_export_dir: The path to the directory where the Neo4j CSV file will be exported.
     """
@@ -304,8 +356,7 @@ def object_to_neo4j(
     headers = ['ObjectId:ID']
     if object_type == 'relation':
         headers = [':START_ID', ':END_ID']
-    property_info = object_info.get('properties', {})
-    headers.extend(list(property_info))
+    headers.extend(list(object_data))
     label_field_name = ':LABEL'
     if object_type == 'relation':
         label_field_name = ':TYPE'
@@ -334,7 +385,7 @@ def object_to_neo4j(
             if object_type == 'relation':
                 property_headers = headers[2:-1]
             for field in property_headers:
-                property_type = property_info[field].get('type', 'string').lower()
+                property_type = object_data[field].get('type', 'string').lower()
                 property_type = data_type_mapping.get(property_type, property_type)
                 match property_type:
                     case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string
@@ -362,7 +413,7 @@ def object_to_neo4j(
 def object_to_json(
     data: list[dict[str, Any]],
     object_label: str,
-    object_info: dict[str, Any],
+    object_data: dict[str, Any],
     object_type: str,
     object_export_dir: Path,
 ) -> None:
@@ -371,13 +422,12 @@ def object_to_json(
     Args:
         data: A list of dictionaries representing instances of the entity/relation type.
         object_label: The name of the entity/relation type.
-        object_info: A dictionary containing relevant information about the entity/relation type, following the data model specifications.
+        object_data: A dictionary containing information about all properties from the entity/relation type, following the data model specifications.
         object_type: The type of each object inside `data`, either 'entity' or 'relation'.
         object_export_dir: The path to the directory where the JSON file will be exported.
     """
     # Properties for entities and relations
-    property_info = object_info.get('properties', {})
-    property_names = list(property_info)
+    property_names = list(object_data)
 
     # Create data type mapping
     data_type_mapping = build_data_type_mapping()
@@ -396,7 +446,7 @@ def object_to_json(
 
         # Process property fields
         for field in property_names:
-            property_type = property_info[field].get('type', 'string').lower()
+            property_type = object_data[field].get('type', 'string').lower()
             property_type = data_type_mapping.get(property_type, property_type)
             match property_type:
                 case 'string':  # Remove line breaks and replace double quotes, add quotes to represent the string

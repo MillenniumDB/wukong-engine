@@ -57,16 +57,22 @@ ignore = [
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
 ]
+unfixable = ["F401"] # Do not auto-fix unused imports
 
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = "single"
 multiline-quotes = "double"
 
 [tool.ruff.lint.mccabe]
-max-complexity = 15
+max-complexity = 30
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[tool.ruff.lint.pylint]
+max-branches = 30
+max-statements = 75
+max-args = 10
 
 [tool.ruff.format]
 quote-style = "single"

@@ -22,8 +22,10 @@ logger = logging.getLogger(__name__)
 
 # Configuration
 LLM_MODEL = 'gpt-4.1-mini'  # Best model for price/performance ratio
-MAX_RETRIES = 5  # Maximum number of retries for LLM API calls
 TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic output)
+MAX_RETRIES = 10  # Maximum number of retries for LLM API calls
+MAX_RETRY_DELAY = 120  # Maximum delay between retries (in seconds)
+API_CALL_TIMEOUT = 120  # Timeout for the LLM API call (in seconds)
 
 
 class OpenAIClientProvider:
@@ -66,6 +68,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         prompt_data: A dictionary containing the prompt data, which includes:
             - 'object_name': The name of the entity/relation type for which the prompt is being processed.
             - 'document_name': The name of the document associated with the prompt.
+            - 'document_set': The name of the document dataset that contains the document.
             - 'system_role': The system role message for the LLM, setting the context and instructions.
             - 'user_role': The user role message for the LLM, containing the information to be processed.
 
@@ -83,8 +86,9 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
     exponential_base = 2  # Base for exponential backoff
 
     # Process prompt with the LLM API, with a maximum number of retries
+    full_document_name = f'{prompt_data["document_set"]}/{prompt_data["document_name"]}'
     logger.info(
-        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{prompt_data["document_name"]}"',
+        f'Processing prompt for type "{prompt_data["object_name"]}" and document "{full_document_name}"',
     )
     result = prompt_data
     response = None
@@ -99,6 +103,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
                     {'role': 'system', 'content': prompt_data['system_role']},
                     {'role': 'user', 'content': prompt_data['user_role']},
                 ],
+                timeout=API_CALL_TIMEOUT,
             )
 
             # Response from the LLM API
@@ -107,7 +112,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
                 break
             logger.error('LLM API call returned "None".')
         except OpenAIError as error:  # Catch specific OpenAI API errors
-            logger.error(f'LLM API call failed. Reason: {error}.')
+            logger.error(f'LLM API call failed. Reason: {error}')
         except Exception:  # Catch unknown errors
             logger.exception('An unexpected error occurred during the LLM API call.')
 
@@ -121,12 +126,18 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         # Retry using exponential backoff
         time.sleep(delay)
         delay *= exponential_base * (1 + random.random())  # noqa: S311
-        logger.info('Retrying LLM API call...')
+        delay = min(delay, MAX_RETRY_DELAY)
+        logger.info(
+            f'Retrying LLM API call for type "{prompt_data["object_name"]}" and document "{full_document_name}" ({retries}/{MAX_RETRIES})',
+        )
 
     # Load and return response
     try:
         result['response'] = json.loads(response)
     except json.JSONDecodeError as error:  # Return empty response if decoding fails
         logger.error(f'LLM API response decoding failed. Reason: {error}. Returning empty response.')
+        result['response'] = []
+    except Exception:  # Catch unknown errors
+        logger.exception('An unexpected error occurred during the LLM API response decoding. Returning empty response.')
         result['response'] = []
     return result
