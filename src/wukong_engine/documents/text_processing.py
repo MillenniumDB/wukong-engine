@@ -138,6 +138,8 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
     # Iterate over each document and process it into chunks
     chunk_entities = []
     chunk_relations = []
+    chunk_capacity = Config().get('max_tokens', 2000) * 3  # In chars (assuming 1 token ~ 3 chars)
+    splitter = TextSplitter(chunk_capacity)
     for document_set, doc_paths in document_paths.items():
         for document_path in doc_paths:
             # Load contents from the document
@@ -145,7 +147,6 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
             document_content = load_text_data(document_path)
 
             # Split the document content into smaller chunks
-            splitter = TextSplitter.from_tiktoken_model(TIKTOKEN_MODEL, Config().get('max_tokens', 2000))
             chunks = splitter.chunks(document_content)
 
             # Get the unique identifier for the document
