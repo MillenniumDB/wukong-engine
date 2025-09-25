@@ -22,8 +22,10 @@ logger = logging.getLogger(__name__)
 
 # Configuration
 LLM_MODEL = 'gpt-4.1-mini'  # Best model for price/performance ratio
-MAX_RETRIES = 5  # Maximum number of retries for LLM API calls
 TEMPERATURE = 0.0  # Temperature for the LLM (0.0 for a more deterministic output)
+MAX_RETRIES = 10  # Maximum number of retries for LLM API calls
+MAX_RETRY_DELAY = 120  # Maximum delay between retries (in seconds)
+API_CALL_TIMEOUT = 30  # Timeout for the LLM API call (in seconds)
 
 
 class OpenAIClientProvider:
@@ -101,6 +103,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
                     {'role': 'system', 'content': prompt_data['system_role']},
                     {'role': 'user', 'content': prompt_data['user_role']},
                 ],
+                timeout=API_CALL_TIMEOUT,
             )
 
             # Response from the LLM API
@@ -123,6 +126,7 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         # Retry using exponential backoff
         time.sleep(delay)
         delay *= exponential_base * (1 + random.random())  # noqa: S311
+        delay = min(delay, MAX_RETRY_DELAY)
         logger.info('Retrying LLM API call...')
 
     # Load and return response
@@ -130,5 +134,8 @@ def process_prompt(prompt_data: dict[str, Any]) -> dict[str, Any]:
         result['response'] = json.loads(response)
     except json.JSONDecodeError as error:  # Return empty response if decoding fails
         logger.error(f'LLM API response decoding failed. Reason: {error}. Returning empty response.')
+        result['response'] = []
+    except Exception:  # Catch unknown errors
+        logger.exception('An unexpected error occurred during the LLM API response decoding. Returning empty response.')
         result['response'] = []
     return result
