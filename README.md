@@ -112,17 +112,23 @@ The expected structure is as follows:
 your-data-dir/
 ├── docs/
 │   ├── text/
-│   │   ├── document_1.txt
-│   │   ├── document_2.txt
+│   │   ├── your-doc-subset-name-a/
+│   │   │   ├── document_1.txt
+│   │   │   ├── document_2.txt
+│   │   │   └── ...
+│   │   ├── your-doc-subset-name-b/
+│   │   │   ├── document_1.txt
+│   │   │   ├── document_2.txt
+│   │   │   └── ...
 │   │   └── ...
 │   └── ...
-├── data_model.json
-└── ...
+└── data_model.json
 ```
 
 The `docs/text/` directory should contain the **plain text** files to be processed, saved with the `.txt` extension (the filenames themselves are not restricted).
+These files **must** be organized in user-defined sub-directories (e.g. `your-doc-subset-name-a/`, `your-doc-subset-name-b/`).
 
-The `data_model.json` file should define the desired **entity/relation schema** for the knowledge graph, in **JSON** format.
+The `data_model.json` file should define the desired **parameters** and **entity/relation schema** for the knowledge graph, in **JSON** format.
 
 > 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
 

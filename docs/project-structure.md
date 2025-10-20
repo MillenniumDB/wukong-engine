@@ -69,16 +69,20 @@ For testing purposes, an **example** data directory is provided inside the `data
 data/example/
 ├── docs/
 │   ├── original/
-│   │   ├── document_1.pdf
-│   │   └── document_2.pdf
+│   │   ├── 2024/
+│   │   │   └── document_1.pdf
+│   │   └── 2016/
+│   │       └── document_2.pdf
 │   └── text/
-│       ├── document_1.txt
-│       └── document_2.txt
+│       ├── 2024/
+│       │   └── document_1.txt
+│       └── 2016/
+│           └── document_2.txt
 └── data_model.json
 ```
 
 - The `docs/original/` directory contains the original documents in their native **PDF** formats (these are only for the user, the engine never uses them).
-- The `docs/text/` directory contains the **plain text** versions of the documents, to be used by the engine.
+- The `docs/text/` directory contains the **plain text** versions of the documents, to be used by the engine. The documents must be organized in user-defined sub-directories (in the example we use `2024/` and `2016/`).
 - The `data_model.json` file contains the example data model in **JSON** format.
 
 To make use of the engine, the user must first create and set up their own data directory with the same structure as the example above.
