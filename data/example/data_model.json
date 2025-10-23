@@ -5,8 +5,8 @@
         "input_language": "spanish",
         "output_language": "spanish",
         "included_documents": [
-            "2024",
-            "2016"
+            "sentencias-2016",
+            "sentencias-2024"
         ],
         "included_entities": [
             "Sentencia",
@@ -26,6 +26,7 @@
                     "type": "string",
                     "description": "A unique numerical identifier used to represent the current judgment at the Supreme Court. It is never mentioned in the beginning. Explicitly mentioned at the end, after the paragraph that starts with 'Registrese...' and before the paragraph that starts with 'Pronunciado por...'. May be located at the end of the line that talks about 'Redacción a cargo de...'. Must be in the format: <N>-<M>, where both <N> and <M> are valid integers. It is sometimes ended with symbols ('.', '.-'), or preceded by ('No', 'Nro', 'N°'), but only consider the numbers.",
                     "example": "13.500-2025, or 13-2025, or 1300-25",
+                    "metadata": true,
                     "required": true
                 },
                 "fecha": {
@@ -100,15 +101,14 @@
                 },
                 "descripcion": {
                     "type": "string",
-                    "description": "A textual description of the legal provision represented by 'nombre', summarizing it's official definition in the Chilean law. Should be concise.",
-                    "required": true
+                    "description": "A textual description of the legal provision represented by 'nombre', summarizing it's official definition in the Chilean law. Should be concise."
                 }
             }
         },
         "Persona": {
             "description": "A natural person who participates or is mentioned in a judgment.",
             "primary_key": "nombre",
-            "duplicates": "all",
+            "duplicates": "similar",
             "properties": {
                 "nombre": {
                     "type": "string",
@@ -118,7 +118,7 @@
                 }
             },
             "documents": [
-                "2016"
+                "sentencias-2024"
             ]
         }
     },
@@ -135,15 +135,14 @@
             "force_unique": true
         },
         "AplicadaEn": {
-            "origin": [
-                "DisposicionLegal"
-            ],
-            "target": [
-                "Sentencia"
-            ],
+            "origin_target": {
+                "DisposicionLegal": [
+                    "Sentencia"
+                ]
+            },
             "description": "Application of a legal provision for the purpose of legal reasoning in a judgment, interpreting it as a legal norm.",
             "primary_key": "norma",
-            "duplicates": "all",
+            "duplicates": "similar",
             "properties": {
                 "norma": {
                     "type": "string",
@@ -160,12 +159,11 @@
             }
         },
         "VotaEn": {
-            "origin": [
-                "Persona"
-            ],
-            "target": [
-                "Sentencia"
-            ],
+            "origin_target": {
+                "Persona": [
+                    "Sentencia"
+                ]
+            },
             "description": "A judicial officer that participates in the voting to decide the final resolution of a judgment. This is mentioned at the end of the judgment, where the voting is recorded.",
             "force_unique": true,
             "properties": {
@@ -176,6 +174,7 @@
                         "A Favor",
                         "En Contra"
                     ],
+                    "default": "A Favor",
                     "required": true
                 },
                 "explicacion": {
