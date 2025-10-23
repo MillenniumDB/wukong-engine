@@ -446,7 +446,7 @@ def merge_duplicate_entities(
 
     # Choose duplicate matcher based on data model option
     duplicate_matcher = BasicStringMatcher()
-    duplicates_to_find = entity_info.get('duplicates', 'all').lower().strip()
+    duplicates_to_find = entity_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
         duplicate_matcher = FuzzyStringMatcher()
 
@@ -508,7 +508,7 @@ def merge_hybrid_entities(
 
     # Choose duplicate matcher based on data model option
     duplicate_matcher = BasicStringMatcher()
-    duplicates_to_find = entity_info.get('duplicates', 'all').lower().strip()
+    duplicates_to_find = entity_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
         duplicate_matcher = FuzzyStringMatcher()
 
@@ -570,7 +570,7 @@ def merge_duplicate_relations(
 
     # Choose duplicate matcher based on data model option
     duplicate_matcher = BasicStringMatcher()
-    duplicates_to_find = relation_info.get('duplicates', 'all').lower().strip()
+    duplicates_to_find = relation_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
         duplicate_matcher = FuzzyStringMatcher()
 

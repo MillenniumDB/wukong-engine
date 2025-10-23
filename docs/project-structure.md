@@ -69,16 +69,26 @@ For testing purposes, an **example** data directory is provided inside the `data
 data/example/
 ├── docs/
 │   ├── original/
-│   │   ├── document_1.pdf
-│   │   └── document_2.pdf
-│   └── text/
-│       ├── document_1.txt
-│       └── document_2.txt
+│   │   ├── sentencias-2024/
+│   │   │   └── document_1.pdf
+│   │   └── sentencias-2016/
+│   │       └── document_2.pdf
+│   ├── text/
+│   │   ├── sentencias-2024/
+│   │   │   └── document_1.txt
+│   │   └── sentencias-2016/
+│   │       └── document_2.txt
+│   └── metadata/
+│       ├── sentencias-2024/
+│       │   └── document_1.json
+│       └── sentencias-2016/
+│           └── document_2.json
 └── data_model.json
 ```
 
 - The `docs/original/` directory contains the original documents in their native **PDF** formats (these are only for the user, the engine never uses them).
-- The `docs/text/` directory contains the **plain text** versions of the documents, to be used by the engine.
+- The `docs/text/` directory contains the **plain text** versions of the documents, to be used by the engine. The documents must be organized in user-defined sub-directories (in the example we use `sentencias-2024/` and `sentencias-2016/`).
+- The `docs/metadata/` directory is optional and contains the **JSON** metadata for each of the documents, to make use of the metadata extraction feature. The files here must be organized in the same way as in the `docs/text/` directory.
 - The `data_model.json` file contains the example data model in **JSON** format.
 
 To make use of the engine, the user must first create and set up their own data directory with the same structure as the example above.
