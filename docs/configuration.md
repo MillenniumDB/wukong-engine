@@ -74,6 +74,6 @@ The `parameters` section contains various parameters that control the behavior o
 
 ## 💡 Configuration File Example
 
-A full example of a properly formatted configuration file is contained in the [Default Configuration File](../config/default.toml), located in `config/default.toml`.
+A full example of a properly formatted configuration file is contained in the [Default Configuration File](/config/default.toml), located in `config/default.toml`.
 
 [📚 Back to Table of Contents](#-table-of-contents)

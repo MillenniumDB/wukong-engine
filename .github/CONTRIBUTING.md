@@ -28,7 +28,7 @@ Now create a new feature branch for your changes:
 git checkout -b my-feature-branch
 ```
 
-Take a look at the [Development Guide](../docs/development.md) and follow the setup instructions and development practices for the project.
+Take a look at the [Development Guide](/docs/development.md) and follow the setup instructions and development practices for the project.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -48,17 +48,17 @@ This helps us track ideas, avoid duplicates, and prioritize development.
 
 Before submitting a contribution, please make sure to:
 
-- ✅ **Follow the code style/documentation guidelines** outlined in the [Development Guide](../docs/development.md)
+- ✅ **Follow the code style/documentation guidelines** outlined in the [Development Guide](/docs/development.md)
 - ✅ **Add or update tests** for new features or bug fixes
 - ✅ **Ensure all tests pass**
 - ✅ **Run the program locally** to confirm it works as expected
-- ✅ **Include clear and descriptive commit messages**, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
+- ✅ **Include clear and descriptive commit messages**, matching the naming conventions mentioned in the [Development Guide](/docs/development.md)
 - ✅ **Do not commit secrets or credentials** (e.g. from `.env`, config files)
 - ✅ **Rebase your branch** onto the original/upstream `main` branch and resolve all conflicts
 
 Once ready, open a **Pull Request** from **your branch** to the original/upstream `main` branch with:
 
-- A clear title and summary of the changes, matching the naming conventions mentioned in the [Development Guide](../docs/development.md)
+- A clear title and summary of the changes, matching the naming conventions mentioned in the [Development Guide](/docs/development.md)
 - Reference to any **relevant issue numbers** (e.g. Closes #77)
 - Screenshots or output if useful for understanding the change
 - Use the available **PR template** provided in **GitHub** to help structure your submission
@@ -71,12 +71,12 @@ Your **PR** will be reviewed by a maintainer. Please be patient and open to feed
 
 This project follows specific development practices to ensure code quality, maintainability, and consistency.
 
-For a detailed overview of these development practices, please refer to the [Development Guidelines](../docs/development.md).
+For a detailed overview of these development practices, please refer to the [Development Guidelines](/docs/development.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## 📜 Code of Conduct
 
-All contributors are expected to adhere to the project's [Code of Conduct](./CODE_OF_CONDUCT.md). This includes treating others with respect, being inclusive, and fostering a positive environment for collaboration.
+All contributors are expected to adhere to the project's [Code of Conduct](/.github/CODE_OF_CONDUCT.md). This includes treating others with respect, being inclusive, and fostering a positive environment for collaboration.
 
 [📚 Back to Table of Contents](#-table-of-contents)

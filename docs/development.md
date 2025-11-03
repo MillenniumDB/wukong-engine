@@ -28,7 +28,7 @@ This document outlines the development practices and setup for the project.
 
 ## 🚀 Getting Started
 
-Perform the general set up for the project outlined in the [README](../README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations** provided there.
+Perform the general set up for the project outlined in the [README](/README.md) **(Setup & Usage sections)**. For the sake of consistency in project development, make sure to **adhere to all the recommendations** provided there.
 
 After that, create a new feature branch from `main`:
 
@@ -44,7 +44,7 @@ Now you can start development inside your branch. Make sure to follow the develo
 
 The project is organized into several directories and files, each serving a specific purpose.
 
-For a detailed description of the entire project structure and its components, refer to the [Project Structure](./project-structure.md) documentation.
+For a detailed description of the entire project structure and its components, refer to the [Project Structure](/docs/project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -110,7 +110,7 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 The project uses a variant of the **GitHub Flow** branching model to manage development and releases. This model is designed to be simple and effective for continuous delivery, allowing for quick iterations and deployments.
 
-> 🤝 For an overview of the expected workflow for external contributors, refer to our [Contribution Guide](../.github/CONTRIBUTING.md).
+> 🤝 For an overview of the expected workflow for external contributors, refer to our [Contribution Guide](/.github/CONTRIBUTING.md).
 
 ### Core Branch
 
@@ -258,7 +258,7 @@ We follow [Semantic Versioning](https://semver.org/) **(MAJOR.MINOR.PATCH)** to 
 
 > 🌿 The expected use of release/hotfix branches is shown in the [Branching Strategy](#-branching-strategy) section.
 >
-> 📝 All releases are documented in the [CHANGELOG](../CHANGELOG.md) file.
+> 📝 All releases are documented in the [CHANGELOG](/CHANGELOG.md) file.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

@@ -96,7 +96,7 @@ python -m pip install -e .
 
 The project requires certain **environment variables** to be set for proper operation. Refer to the `.env.example` file located in the root directory of the project, which serves as a template with placeholder values for the available environment variables. Make sure to set these variables in your own environment **before running the engine**.
 
-> 🌍 For more information on these environment variables, see the dedicated section inside the [Configuration](docs/configuration.md) documentation.
+> 🌍 For more information on these environment variables, see the dedicated section inside the [Configuration](/docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -130,7 +130,7 @@ These files **must** be organized in user-defined sub-directories (e.g. `your-do
 
 The `data_model.json` file should define the desired **parameters** and **entity/relation schema** for the knowledge graph, in **JSON** format.
 
-> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](docs/data-model.md) documentation.
+> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](/docs/data-model.md) documentation.
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
@@ -198,7 +198,7 @@ hypothetically located in `config/test.toml`:
 poetry run python -m wukong_engine data/example/ --config config/test.toml
 ```
 
-> ⚙️ For more information on the configuration file format and available options, refer to the [Configuration](docs/configuration.md) documentation.
+> ⚙️ For more information on the configuration file format and available options, refer to the [Configuration](/docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -301,7 +301,7 @@ src/wukong_engine/
 └── utils/       # Utility functions and shared components
 ```
 
-> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](docs/project-structure.md) documentation.
+> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](/docs/project-structure.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -310,9 +310,9 @@ src/wukong_engine/
 Contributions are welcome!
 Please review the following resources:
 
-- 📜 [Code of Conduct](.github/CODE_OF_CONDUCT.md)
-- 🤝 [Contribution Guide](.github/CONTRIBUTING.md)
-- 🛠️ [Development Guidelines](./docs/development.md)
+- 📜 [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
+- 🤝 [Contribution Guide](/.github/CONTRIBUTING.md)
+- 🛠️ [Development Guidelines](/docs/development.md)
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -325,6 +325,6 @@ Here are some planned features and improvements for future releases of the proje
 - [ ] Data validation for LLM responses
 - [ ] Improved wrapper for LLM interaction
 
-> 📝 For a detailed list of past updates, see the [Changelog](./CHANGELOG.md).
+> 📝 For a detailed list of past updates, see the [Changelog](/CHANGELOG.md).
 
 [📚 Back to Table of Contents](#-table-of-contents)

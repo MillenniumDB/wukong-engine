@@ -250,6 +250,6 @@ Example of the `relations` section in a data model:
 
 ## 💡 Data Model Example
 
-A full example of a properly formatted data model is contained in the provided [Data Model Example File](../data/example/data_model.json), located in `data/example/data_model.json`.
+A full example of a properly formatted data model is contained in the provided [Data Model Example File](/data/example/data_model.json), located in `data/example/data_model.json`.
 
 [📚 Back to Table of Contents](#-table-of-contents)

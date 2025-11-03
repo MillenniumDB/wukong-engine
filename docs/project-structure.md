@@ -54,7 +54,7 @@ This configuration is currently defined in a single file:
 
 - `default.toml`: Specifies the default behavior of the tool, executing the entire engine pipeline and using the default values for all parameters.
 
-The details for the engine configuration can be found in the [Configuration](./configuration.md) documentation.
+The details for the engine configuration can be found in the [Configuration](/docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -92,7 +92,7 @@ data/example/
 - The `data_model.json` file contains the example data model in **JSON** format.
 
 To make use of the engine, the user must first create and set up their own data directory with the same structure as the example above.
-The details for building your own data model schema can be found in the [Data Model](./data-model.md) documentation.
+The details for building your own data model schema can be found in the [Data Model](/docs/data-model.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
