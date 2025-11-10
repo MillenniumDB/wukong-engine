@@ -70,8 +70,16 @@ class DataModel(Singleton):
         relation_model = self.relations | self.special_relations
         simplified_relations = {relation: {} for relation in relation_model}
         for relation, relation_info in relation_model.items():
+            simplified_origin_target = {}
+            for origin, targets in relation_info['origin_target'].items():
+                simplified_origin = origin.replace('@', '')
+                simplified_targets = list({target.replace('@', '') for target in targets})
+                if simplified_origin not in simplified_origin_target:
+                    simplified_origin_target[simplified_origin] = simplified_targets
+                current_targets = simplified_origin_target[simplified_origin]
+                simplified_origin_target[simplified_origin] = list(set(current_targets + simplified_targets))
             simplified_relations[relation] = {
-                'source_target': relation_info['origin_target'],
+                'source_target': simplified_origin_target,
                 'description': relation_info['description'],
                 'properties': {k: v['description'] for k, v in relation_info.get('properties', {}).items()},
             }
