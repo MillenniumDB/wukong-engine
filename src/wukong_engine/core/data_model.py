@@ -239,6 +239,8 @@ class DataModel(Singleton):
                     )
 
         # Validate origin/target entity types
+        hybrid_entities = [f'@{entity}' for entity, data in entities.items() if data.get('hybrid_entity', False)]
+        full_entities = list(entities.keys()) + hybrid_entities
         for relation_name, relation_info in relations.items():
             # Validate origin/target fields from dictionary format
             if 'origin_target' in relation_info:
@@ -247,7 +249,7 @@ class DataModel(Singleton):
                         f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
                     )
                 for origin, targets in relation_info['origin_target'].items():
-                    if origin not in entities:
+                    if origin not in full_entities:
                         raise ValueError(
                             f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified origin entity type "{origin}" does not exist.',
                         )
@@ -256,7 +258,7 @@ class DataModel(Singleton):
                             f'Relation type "{relation_name}" must have a valid "origin_target" field where the dictionary values are lists of target entity types',
                         )
                     for target in targets:
-                        if target not in entities:
+                        if target not in full_entities:
                             raise ValueError(
                                 f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified target entity type "{target}" does not exist.',
                             )
@@ -268,12 +270,12 @@ class DataModel(Singleton):
                     f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
                 )
             for origin in relation_info['origin']:
-                if origin not in entities:
+                if origin not in full_entities:
                     raise ValueError(
                         f'Relation type "{relation_name}" has an invalid "origin" field. The specified origin entity type "{origin}" does not exist.',
                     )
             for target in relation_info['target']:
-                if target not in entities:
+                if target not in full_entities:
                     raise ValueError(
                         f'Relation type "{relation_name}" has an invalid "target" field. The specified target entity type "{target}" does not exist.',
                     )
@@ -438,22 +440,10 @@ class DataModel(Singleton):
 
     def _materialize_relation_model(self) -> None:
         """Materialize the relation model to create specific relation types between entity type pairs."""
-        # Add hybrid entities to the origin/target schemas
-        final_schemas = {relation: {} for relation in self._relations}
-        for relation, info in self._relations.items():
-            for origin, targets in info['origin_target'].items():
-                final_schemas[relation][origin] = list(targets)
-                if f'@{origin}' in self.hybrid_entities:
-                    final_schemas[relation][f'@{origin}'] = list(targets)
-            for targets in final_schemas[relation].values():
-                for target in list(targets):
-                    if f'@{target}' in self.hybrid_entities:
-                        targets.append(f'@{target}')
-
         # Iterate over the relation model and build materialized relations
         for relation_name, relation_info in self._relations.items():
             relation_info['properties'] = relation_info.get('properties', {})
-            for origin, targets in final_schemas[relation_name].items():
+            for origin, targets in relation_info['origin_target'].items():
                 # Create a materialized relation for each combination of origin and target
                 for target in targets:
                     # Materialize relation info
