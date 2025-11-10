@@ -9,20 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added)
+- [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
+  - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
-  - [✨ Added](#-added-1)
+  - [✨ Added](#-added-2)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation-1)
 
 ## [Unreleased]
 
-- No changes yet.
+### ✨ Added
+
+- Simplified way for defining source and target entities in relations.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
