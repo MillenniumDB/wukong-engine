@@ -68,26 +68,24 @@ For testing purposes, an **example** data directory is provided inside the `data
 ```sh
 data/example/
 ├── docs/
-│   ├── original/
-│   │   ├── sentencias-2024/
-│   │   │   └── document_1.pdf
-│   │   └── sentencias-2016/
-│   │       └── document_2.pdf
 │   ├── text/
-│   │   ├── sentencias-2024/
-│   │   │   └── document_1.txt
-│   │   └── sentencias-2016/
-│   │       └── document_2.txt
+│   │   ├── DDU/
+│   │   │   └── ddu_grl_230.txt
+│   │   ├── LGUC/
+│   │   │   └── lguc_articulo_4.txt
+│   │   └── OGUC/
+│   │       └── oguc_articulo_2.1.18.txt
 │   └── metadata/
-│       ├── sentencias-2024/
-│       │   └── document_1.json
-│       └── sentencias-2016/
-│           └── document_2.json
+│       ├── DDU/
+│       │   └── ddu_grl_230.json
+│       ├── LGUC/
+│       │   └── lguc_articulo_4.json
+│       └── OGUC/
+│           └── oguc_articulo_2.1.18.json
 └── data_model.json
 ```
 
-- The `docs/original/` directory contains the original documents in their native **PDF** formats (these are only for the user, the engine never uses them).
-- The `docs/text/` directory contains the **plain text** versions of the documents, to be used by the engine. The documents must be organized in user-defined sub-directories (in the example we use `sentencias-2024/` and `sentencias-2016/`).
+- The `docs/text/` directory contains the **plain text** documents to be used by the engine. The documents must be organized in user-defined sub-directories (in the example we use `DDU/`, `LGUC/` and `OGUC/`).
 - The `docs/metadata/` directory is optional and contains the **JSON** metadata for each of the documents, to make use of the metadata extraction feature. The files here must be organized in the same way as in the `docs/text/` directory.
 - The `data_model.json` file contains the example data model in **JSON** format.
 

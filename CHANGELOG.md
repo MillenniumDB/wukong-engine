@@ -10,9 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
   - [✨ Added](#-added)
+  - [♻️ Changed](#️-changed)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-1)
-  - [♻️ Changed](#️-changed)
+  - [♻️ Changed](#️-changed-1)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
@@ -26,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### ✨ Added
 
 - Simplified way for defining source and target entities in relations.
+
+### ♻️ Changed
+
+- Example data directory to use real estate legal data.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
