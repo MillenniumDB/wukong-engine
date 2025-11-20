@@ -22,13 +22,13 @@ document_processing = true
 # Default: true
 entity_extraction = true
 
-# This step is responsible for extracting relations between entities from the processed documents
+# This step is responsible for extracting relationships between entities from the processed documents
 # Note: This step requires the extracted entities to be available
 # Default: true
 relation_extraction = true
 
 # This step is responsible for exporting the knowledge graph to various formats
-# Note: This step requires the extracted entities and relations to be available
+# Note: This step requires the extracted entities and relationships to be available
 # Default: true
 export_graph = true
 

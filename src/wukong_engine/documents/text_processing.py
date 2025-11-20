@@ -17,9 +17,6 @@ from wukong_engine.utils.file_utils import (
     save_text_data,
 )
 
-# Configuration
-TIKTOKEN_MODEL = 'gpt-4'  # Tokenizer model to use for splitting text
-
 
 def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Path) -> None:
     """Process input documents to prepare them for data extraction.

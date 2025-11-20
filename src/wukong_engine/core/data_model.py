@@ -17,6 +17,8 @@ import json
 import logging
 import re
 from copy import deepcopy
+from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
@@ -29,11 +31,313 @@ logger = logging.getLogger(__name__)
 DATA_MODEL_PATH = Path('./data_model.json')
 
 
+# TODO: Enum for field data types
+class DataType(Enum):
+    """Data types available in the data model.
+
+    Attributes:
+        STRING: String data type for plain text.
+    """
+
+    STRING = 'string'
+
+
+# TODO: Enum for source types
+class SourceType(Enum):
+    """Source types available in the data model.
+
+    Attributes:
+        CHUNK: Text chunks.
+        DOCUMENT: Complete text documents.
+    """
+
+    CHUNK = 'chunk'
+    DOCUMENT = 'document'
+
+
+# TODO: Enum for field modes
+class FieldMode(Enum):
+    """Retrieval modes available when extracting field data from sources.
+
+    Attributes:
+        EXTRACTION: Extract from text using LLM.
+        EXTERNAL: Load from external source.
+        DEFAULT: Use predefined default value.
+        SKIP: Skip field retrieval.
+    """
+
+    EXTRACTION = 'extraction'
+    EXTERNAL = 'external'
+    DEFAULT = 'default'
+    SKIP = 'skip'
+
+
+# Default Value: Empty (assume NULL), String (apply to all),
+# Dict (apply each, if not present assume NULL + warning)
+
+# Field Modes ('mode'): Extraction ('extraction', 'extract', 'llm'), External ('external', 'load', 'json'), Default ('default', 'constant', 'placeholder'), Skip ('skip', 'ignore', 'none', 'null', 'omit')
+# Field Mode: Empty (assume 'extraction' for all + warning), String (apply to all unless not compatible),
+# Dict (apply each, if not present assume 'extraction' + warning)
+
+
+# TODO: Class for fields
+class Field:
+    """A field that represents data for entities/relationships."""
+
+    def __init__(self, name: str, field_data: dict[str, Any]) -> None:
+        self.name = name
+        self.type = field_data.get('type', 'string')
+        self.description = field_data.get('description', '')
+        self.example = field_data.get('example')
+        self._default_value = field_data.get('default_value', '')
+        self._mode = field_data.get('field_mode', FieldMode.EXTRACTION)
+
+    def default_value(self, source_type: SourceType) -> Any:
+        """Get the default value for a specific source type.
+
+        Args:
+            source_type: The source type to get the default value for.
+
+        Returns:
+            The default value for the specified source type.
+        """
+        return self._default_value[source_type]
+
+    def mode(self, source_type: SourceType) -> FieldMode:
+        """Get the field mode for a specific source type.
+
+        Args:
+            source_type: The source type to get the field mode for.
+
+        Returns:
+            The field mode for the specified source type.
+        """
+        return self._mode[source_type]
+
+
+# TODO: Complete
+class EntityType:
+    """An entity type from the data model.
+
+    Attributes:
+        name: The name of the entity type.
+        parameters: The parameters section from the entity type definition.
+        sources: The sources section from the entity type definition.
+        fields: The fields section from the entity type definition.
+    """
+
+    def __init__(self, name: str, entity_data: dict[str, Any]) -> None:
+        """Initialize an EntityType instance.
+
+        Args:
+            name: The name of the entity type.
+            entity_data: The entity data from the data model JSON.
+        """
+        self.name = name
+        self.parameters = entity_data.get('parameters', {})
+        self.sources = entity_data.get('sources', {})
+        self._fields = [Field(f_name, f_data) for f_name, f_data in entity_data.get('fields', {}).items()]
+        self._validate_data(entity_data)
+
+    def __repr__(self) -> str:
+        """Return a string representation of the entity type."""
+        return f'EntityType(name={self.name!r}, parameters={self.parameters!r}, sources={self.sources!r}, fields={self._fields!r})'
+
+    def __str__(self) -> str:
+        """Return a human-readable string representation of the entity type."""
+        return f'EntityType: {self.name}'
+
+    def _validate_data(self, entity_data: dict[str, Any]) -> None:
+        """Validate the entity type to ensure it meets all requirements.
+
+        Args:
+            entity_data: The entity type data to validate.
+
+        Raises:
+            ValueError: If the entity type does not meet all requirements.
+        """
+        # Skip validation for special entities
+        if self.parameters.get('special_entity', False):
+            return
+
+        # Naming conventions
+        if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', self.name):
+            raise ValueError(
+                f'Invalid entity name "{self.name}". Entity names must start with a letter and contain only alphanumeric characters.',
+            )
+        if self.name.lower() in ('document', 'chunk'):
+            raise ValueError(f'Entity name "{self.name}" is reserved for special entities and cannot be used')
+
+        # Top-level sections
+        sections = ['parameters', 'sources', 'fields']
+        for section in sections:
+            if section not in entity_data or not isinstance(entity_data[section], dict):
+                raise ValueError(f'Entity type "{self.name}" must have a valid "{section}" section')
+
+        # Specific sections
+        self._validate_parameters()
+        self._validate_sources()
+        self._validate_fields()
+
+    def _validate_parameters(self) -> None:
+        """Validate entity type parameters to ensure they meet all requirements.
+
+        Raises:
+            ValueError: If any parameter does not meet all requirements.
+        """
+        # Mandatory parameters
+        mandatory_parameters = ['description', 'primary_key']
+        for parameter in mandatory_parameters:
+            if parameter not in self.parameters:
+                raise ValueError(
+                    f'Entity type "{self.name}" must have a valid "{parameter}" field in the parameters section',
+                )
+
+        # Primary key
+        if self.parameters['primary_key'] not in self.fields:
+            raise ValueError(
+                f'The specified primary key field "{self.parameters["primary_key"]}" for entity type "{self.name}" does not exist',
+            )
+
+    def _validate_sources(self) -> None:
+        """Validate entity type sources to ensure they meet all requirements.
+
+        Raises:
+            ValueError: If any source does not meet all requirements.
+        """
+        # Source types
+        for source, doc_sets in self.sources.items():
+            if source not in ('chunks', 'documents', 'external'):
+                raise ValueError(
+                    f'Invalid source "{source}" for entity type "{self.name}". Sources must be among: "chunks", "documents", "external".',
+                )
+            if not isinstance(doc_sets, list):
+                raise TypeError(f'Source "{source}" for entity type "{self.name}" must be a list of document sets')
+
+        # TODO: Source modes for each field
+        for field_name, field_data in self.fields.items():
+            if 'description' not in field_data:
+                raise ValueError(
+                    f'Field "{field_name}" for entity type "{self.name}" must have a valid "description" attribute',
+                )
+
+    def _validate_fields(self) -> None:
+        """Validate entity type fields to ensure they meet all requirements.
+
+        Raises:
+            ValueError: If any field does not meet all requirements.
+        """
+        # Naming conventions
+        for field_name in self.fields:
+            if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]*', field_name):
+                raise ValueError(
+                    f'Invalid field name "{field_name}" for entity type "{self.name}". Field names must start with a letter and contain only alphanumeric characters and underscores.',
+                )
+            if field_name.lower() == 'extracted_from':
+                raise ValueError(
+                    f'Field name "{field_name}" for entity type "{self.name}" is reserved for special fields and cannot be used',
+                )
+
+        # Mandatory fields
+        for field_name, field_data in self.fields.items():
+            if 'description' not in field_data:
+                raise ValueError(
+                    f'Field "{field_name}" for entity type "{self.name}" must have a valid "description" attribute',
+                )
+
+        # Primary key is required
+        if not self.fields[self.parameters['primary_key']].get('required', True):
+            raise ValueError(
+                f'The primary key field "{self.parameters["primary_key"]}" for entity type "{self.name}" must have the "required" attribute set to true.',
+            )
+
+    def is_special_entity(self) -> bool:
+        """Check if the entity type is a special entity.
+
+        Returns:
+            True if the entity type is a special entity, False otherwise.
+        """
+        return self.parameters.get('special_entity', False)
+
+    def has_source(self, source_type: SourceType) -> bool:
+        """Check if the entity type has a specific source type.
+
+        Args:
+            source_type: The source type to check.
+
+        Returns:
+            True if the entity type has the specified source type, False otherwise.
+        """
+        return source_type.value in self.sources
+
+    def source_documents(self, source_type: str) -> set[str]:
+        """Get the document sets associated with a specific source type.
+
+        Args:
+            source_type: The source type to get document sets for.
+
+        Returns:
+            A set of document dataset names associated with the specified source type.
+        """
+        return set(self.sources.get(source_type, []))
+
+    def fields(self, source_type: SourceType | None = None, field_mode: FieldMode | None = None) -> list[Field]:
+        """Get the fields for a specific source type and field mode.
+
+        Args:
+            source_type: The source type to get fields for. If None, all source types are considered.
+            field_mode: The field mode to filter fields by. If None, all field modes are considered.
+
+        Returns:
+            A list of Field objects for the specified source type and field mode.
+        """
+        result = []
+        for field in self._fields:
+            pass
+
+        return result
+
+    # TODO: Complete
+    @property
+    def extraction_fields(self, source_type: str) -> list[Field]:
+        """A dictionary containing the extraction fields for each source of the entity type."""
+        return self.fields(source_type, FieldMode.EXTRACTION)
+
+    # TODO: Complete
+    @property
+    def external_fields(self, source_type: str) -> dict[str, Any]:
+        """A dictionary containing the external fields of the entity type."""
+        return {k: v for k, v in self.fields.items() if v.get('external', False)}
+
+    # TODO: Complete
+    @property
+    def default_fields(self, source_type: str) -> dict[str, Any]:
+        """A dictionary containing the default fields of the entity type."""
+        entity_pk = self.parameters.get('primary_key', '')
+
+        # Hybrid entities prioritize hybrid fields over placeholders
+        if self.has_source('chunks') and self.has_source('documents'):
+            return {
+                k: v
+                for k, v in self.fields.items()
+                if 'constant' in v and k != entity_pk and not v.get('hybrid', False)
+            }
+
+        # Other entities prioritize metadata over placeholders
+        return {
+            k: v for k, v in self.fields.items() if 'constant' in v and k != entity_pk and k not in self.external_fields
+        }
+
+
+# TODO: RelationshipType class
+
+
+# TODO: Refactor
 class DataModel(Singleton):
     """The data model manager for the WUKONG engine.
 
-    Loads and validates the data model, providing access to its components as properties.
-    The data model is loaded once and is assumed to be immutable for the duration of the program.
+    Loads and validates the data model, providing easy access to its components.
+    The data model is loaded once and assumed to be immutable for the duration of the program.
     """
 
     def __init__(self, data_dir: Path = Path()) -> None:
@@ -46,25 +350,24 @@ class DataModel(Singleton):
         """
         # Components of the data model
         self._parameters = {}
-        self._entities = {}
-        self._relations = {}
-        self._materialized_relations = {}
-        self._entity_sets = {}
+        self._entities = []
+        self._relations = {}  # TODO: Change to list
+        self._materialized_relations = {}  # TODO: Refactor
 
         # Initialize the data model
         self._load_model(data_dir / DATA_MODEL_PATH)
-        self._process_model()
 
+    # TODO: Refactor
     def __repr__(self) -> str:
         """Return a string representation of the data model manager."""
-        entity_model = self.core_entities | self.entities | self.special_entities
-        simplified_entities = {entity: {} for entity in entity_model}
-        for entity, entity_info in entity_model.items():
+        entities = self.core_entities + self.entities + self.special_entities
+        simplified_entities = {entity: {} for entity in entities}
+        for entity in entities:
             simplified_entities[entity] = {
-                'description': entity_info['description'],
-                'properties': {k: v['description'] for k, v in entity_info.get('properties', {}).items()},
+                'description': entity.parameters['description'],
+                'properties': {k: v['description'] for k, v in entity.fields.items()},
             }
-            for k, v in entity_info.get('properties', {}).items():
+            for k, v in entity.fields.items():
                 if 'options' in v:
                     simplified_entities[entity]['properties'][k] += f' Possible Values: {v["options"]}.'
         relation_model = self.relations | self.special_relations
@@ -81,9 +384,9 @@ class DataModel(Singleton):
             simplified_relations[relation] = {
                 'source_target': simplified_origin_target,
                 'description': relation_info['description'],
-                'properties': {k: v['description'] for k, v in relation_info.get('properties', {}).items()},
+                'properties': {k: v['description'] for k, v in relation_info.get('fields', {}).items()},
             }
-            for k, v in relation_info.get('properties', {}).items():
+            for k, v in relation_info.get('fields', {}).items():
                 if 'options' in v:
                     simplified_relations[relation]['properties'][k] += f' Possible Values: {v["options"]}.'
         simplified_model = {
@@ -93,7 +396,7 @@ class DataModel(Singleton):
         return f'```json\n{json.dumps(simplified_model, indent=2, ensure_ascii=False)}\n```'
 
     def _load_model(self, data_model_path: Path) -> None:
-        """Load the data model from a JSON file, making sure it has a valid format.
+        """Load the data model from a JSON file, making sure it has a valid format and satisfies all requirements.
 
         Args:
             data_model_path: The path to the JSON data model file.
@@ -115,13 +418,18 @@ class DataModel(Singleton):
         except json.JSONDecodeError as error:
             raise ValueError(f'Invalid structure for the data model in "{data_model_path}"') from error
 
-        # Validate the data model
-        self._validate_model(data_model)
+        # Validate the general data model structure
+        self._validate_structure(data_model)
 
-        # Store the valid data model
+        # Store the general parameters
         self._parameters = data_model['parameters']
-        self._entities = data_model['entities']
-        self._relations = data_model['relations']
+
+        # Load and validate entity types
+        self._load_entity_types(data_model['entities'])
+
+        # Load and validate relation types
+        self._load_relation_types(data_model['relations'])
+
         logger.info(f'Data model loaded successfully from: "{data_model_path}"')
 
     @staticmethod
@@ -144,67 +452,147 @@ class DataModel(Singleton):
             seen.add(key)
         return dict(pairs)
 
-    def _validate_model(self, data_model: dict[str, Any]) -> None:
-        """Validate the data model to ensure it meets all requirements.
+    @staticmethod
+    def _validate_structure(data_model: dict[str, Any]) -> None:
+        """Validate the general data model structure to ensure it contains all required fields.
 
         Args:
-            data_model: The data model to validate, containing definitions for entity/relation types and their properties.
+            data_model: The data model to validate.
 
         Raises:
-            ValueError: If any entity/relation type or property does not meet all requirements.
-            TypeError: If any fields have invalid types.
+            ValueError: If the general data model structure is invalid.
         """
         # Validate top-level structure
-        if 'parameters' not in data_model or not isinstance(data_model['parameters'], dict):
-            raise ValueError('Data model must have a valid "parameters" section')
-        if 'entities' not in data_model or not isinstance(data_model['entities'], dict):
-            raise ValueError('Data model must have a valid "entities" section')
-        if 'relations' not in data_model or not isinstance(data_model['relations'], dict):
-            raise ValueError('Data model must have a valid "relations" section')
+        general_fields = ['parameters', 'entities', 'relations']
+        for field in general_fields:
+            if field not in data_model or not isinstance(data_model[field], dict):
+                raise ValueError(f'Data model must have a valid "{field}" section')
 
-        # Validate entities
-        self._validate_entities(data_model['entities'])
-
-        # Validate relations
-        self._validate_relations(data_model['relations'], data_model['entities'])
-
-        # Validate properties
-        self._validate_properties(data_model['entities'] | data_model['relations'])
-
-    @staticmethod
-    def _validate_entities(entities: dict[str, Any]) -> None:
-        """Validate data model entities to ensure they meet all requirements.
+    # TODO: Complete
+    def _load_entity_types(self, entity_types: dict[str, Any]) -> None:
+        """Load and validate data model entity types.
 
         Args:
-            entities: The data model entities to validate.
+            entity_types: The data model entity types to load.
 
         Raises:
             ValueError: If any entity type does not meet all requirements.
         """
-        # Validate entity naming conventions
-        for entity_name in entities:
-            if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', entity_name):
-                raise ValueError(
-                    f'Invalid entity name "{entity_name}". Entity names must start with a letter and contain only alphanumeric characters.',
-                )
-            if entity_name.lower() in ('document', 'chunk'):
-                raise ValueError(f'Entity name "{entity_name}" is reserved for special entities and cannot be used')
+        # Keep only the included entities
+        included_entity_types = self._parameters.get('included_entities', list(entity_types.keys()))
 
-        # Validate entity definitions
-        for entity_name, entity_info in entities.items():
-            if 'description' not in entity_info:
-                raise ValueError(f'Entity type "{entity_name}" must have a valid "description" field')
-            if 'primary_key' not in entity_info:
-                raise ValueError(f'Entity type "{entity_name}" must have a valid "primary_key" field')
-            if entity_info['primary_key'] not in entity_info.get('properties', {}):
-                raise ValueError(
-                    f'The specified primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" does not exist.',
-                )
-            if not entity_info['properties'][entity_info['primary_key']].get('required', True):
-                raise ValueError(
-                    f'The primary key property "{entity_info["primary_key"]}" for entity type "{entity_name}" must have the "required" field set to true.',
-                )
+        # Instantiate objects for each entity type
+        self._entities = [
+            EntityType(entity_name, entity_data)
+            for entity_name, entity_data in entity_types.items()
+            if entity_name in included_entity_types
+        ]
 
+        # TODO: Replace with the code above
+        # Materialize hybrid entities
+        """
+        hybrid_entities = {}
+        for entity, info in self._entities.items():
+            if info.get('hybrid_entity', False):
+                # Mark the original entity as a core entity
+                info['core_entity'] = True
+
+                # Create the hybrid version of the entity
+                hybrid_info = deepcopy(info)
+                hybrid_info['documents'] = info['documents_hybrid']
+                del hybrid_info['core_entity']
+                del hybrid_info['hybrid_entity']
+                del hybrid_info['documents_hybrid']
+                hybrid_entities[f'@{entity}'] = hybrid_info
+
+                # Handle property descriptions for hybrid entities
+                for prop_info in hybrid_info.get('fields', {}).values():
+                    if 'description_hybrid' in prop_info:
+                        prop_info['description'] = prop_info['description_hybrid']
+                        del prop_info['description_hybrid']
+        self._entities.update(hybrid_entities)
+        """
+
+        # Add special entities
+        special_entities = {
+            'Document': {
+                'parameters': {
+                    'special_entity': True,
+                    'description': 'Represents a document that was used for the construction of the knowledge graph.',
+                },
+                'fields': {
+                    'name': {
+                        'type': 'string',
+                        'description': 'The name of the original document.',
+                    },
+                    'document_set': {
+                        'type': 'string',
+                        'description': 'The name of the document set where the original document is contained.',
+                    },
+                },
+            },
+            'Chunk': {
+                'parameters': {
+                    'special_entity': True,
+                    'description': 'Represents a fragment of a document used for the construction of the knowledge graph.',
+                },
+                'fields': {
+                    'text': {
+                        'type': 'string',
+                        'description': 'The text contained in the document chunk.',
+                    },
+                },
+            },
+        }
+        for entity_name, entity_data in special_entities.items():
+            special_entity_type = EntityType(entity_name, entity_data)
+            self._entities.append(special_entity_type)
+
+        # TODO: Remove
+        for entity in self._entities:
+            print(entity)
+
+    # TODO: Refactor
+    def _load_relation_types(self, relation_types: dict[str, Any]) -> None:
+        """Load and validate data model relations."""
+        # Validate relations
+        # self._validate_relations(data_model['relations'], data_model['entities'])
+
+        # Validate fields
+        # self._validate_fields(data_model['entities'] | data_model['relations'])
+
+        # Keep only the included relations
+        included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
+        self._relations = {k: v for k, v in self._relations.items() if k in included_relations}
+
+        # Process origin/target schemas
+        self._build_relation_schemas()
+
+        # Materialize relations
+        self._materialize_relation_model()
+
+        # Add special relations
+        special_relations = {
+            'ChunkOf': {
+                'special_relation': True,
+                'origin_target': {'Chunk': ['Document']},
+                'description': 'Connects each chunk to the respective document from which it was extracted.',
+                'fields': {
+                    'chunk_number': {
+                        'type': 'integer',
+                        'description': 'The number of the chunk within the document (ordered from beginning to end).',
+                    },
+                },
+            },
+            'ExtractedFrom': {
+                'special_relation': True,
+                'origin_target': {'ALL': ['Chunk', 'Document']},
+                'description': 'Connects each entity to the respective chunk from which it was extracted.',
+            },
+        }
+        self._relations.update(special_relations)
+
+    # TODO: Move to RelationType class
     @staticmethod
     def _validate_relations(relations: dict[str, Any], entities: dict[str, Any]) -> None:
         """Validate data model relations to ensure they meet all requirements.
@@ -215,7 +603,7 @@ class DataModel(Singleton):
 
         Raises:
             ValueError: If any relation type does not meet all requirements.
-            TypeError: If any relation type has an invalid type for the origin/target fields.
+            TypeError: If any relation type has an invalid type for the origin/target attributes.
         """
         # Validate relation naming conventions
         for relation_name in relations:
@@ -232,18 +620,18 @@ class DataModel(Singleton):
         for relation_name, relation_info in relations.items():
             if 'origin_target' not in relation_info and not ('origin' in relation_info and 'target' in relation_info):
                 raise ValueError(
-                    f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
+                    f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
                 )
             if 'description' not in relation_info:
-                raise ValueError(f'Relation type "{relation_name}" must have a valid "description" field')
+                raise ValueError(f'Relation type "{relation_name}" must have a valid "description" attribute')
             if 'primary_key' in relation_info:
-                if relation_info['primary_key'] not in relation_info.get('properties', {}):
+                if relation_info['primary_key'] not in relation_info.get('fields', {}):
                     raise ValueError(
-                        f'The specified primary key property "{relation_info["primary_key"]}" for relation type "{relation_name}" does not exist.',
+                        f'The specified primary key field "{relation_info["primary_key"]}" for relation type "{relation_name}" does not exist.',
                     )
-                if not relation_info['properties'][relation_info['primary_key']].get('required', True):
+                if not relation_info['fields'][relation_info['primary_key']].get('required', True):
                     raise ValueError(
-                        f'The primary key property "{relation_info["primary_key"]}" for relation type "{relation_name}" must have the "required" field set to true.',
+                        f'The primary key field "{relation_info["primary_key"]}" for relation type "{relation_name}" must have the "required" attribute set to true.',
                     )
 
         # Validate origin/target entity types
@@ -254,171 +642,41 @@ class DataModel(Singleton):
             if 'origin_target' in relation_info:
                 if not isinstance(relation_info['origin_target'], dict):
                     raise TypeError(
-                        f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
+                        f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
                     )
                 for origin, targets in relation_info['origin_target'].items():
                     if origin not in full_entities:
                         raise ValueError(
-                            f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified origin entity type "{origin}" does not exist.',
+                            f'Relation type "{relation_name}" has an invalid "origin_target" attribute. The specified origin entity type "{origin}" does not exist.',
                         )
                     if not isinstance(targets, list):
                         raise TypeError(
-                            f'Relation type "{relation_name}" must have a valid "origin_target" field where the dictionary values are lists of target entity types',
+                            f'Relation type "{relation_name}" must have a valid "origin_target" attribute where the dictionary values are lists of target entity types',
                         )
                     for target in targets:
                         if target not in full_entities:
                             raise ValueError(
-                                f'Relation type "{relation_name}" has an invalid "origin_target" field. The specified target entity type "{target}" does not exist.',
+                                f'Relation type "{relation_name}" has an invalid "origin_target" attribute. The specified target entity type "{target}" does not exist.',
                             )
                 continue
 
             # Validate origin/target fields from lists format
             if not (isinstance(relation_info['origin'], list) and isinstance(relation_info['target'], list)):
                 raise TypeError(
-                    f'Relation type "{relation_name}" must have valid "origin" and "target" array fields or an "origin_target" dictionary field',
+                    f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
                 )
             for origin in relation_info['origin']:
                 if origin not in full_entities:
                     raise ValueError(
-                        f'Relation type "{relation_name}" has an invalid "origin" field. The specified origin entity type "{origin}" does not exist.',
+                        f'Relation type "{relation_name}" has an invalid "origin" attribute. The specified origin entity type "{origin}" does not exist.',
                     )
             for target in relation_info['target']:
                 if target not in full_entities:
                     raise ValueError(
-                        f'Relation type "{relation_name}" has an invalid "target" field. The specified target entity type "{target}" does not exist.',
+                        f'Relation type "{relation_name}" has an invalid "target" attribute. The specified target entity type "{target}" does not exist.',
                     )
 
-    @staticmethod
-    def _validate_properties(objects: dict[str, Any]) -> None:
-        """Validate data model properties to ensure they meet all requirements.
-
-        Args:
-            objects: The data model entities and relations to validate properties from.
-
-        Raises:
-            ValueError: If any property does not meet all requirements.
-        """
-        # Validate property naming conventions
-        for object_name, object_info in objects.items():
-            for prop_name in object_info.get('properties', {}):
-                if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]*', prop_name):
-                    raise ValueError(
-                        f'Invalid property name "{prop_name}" from "{object_name}". Property names must start with a letter and contain only alphanumeric characters and underscores.',
-                    )
-                if prop_name.lower() == 'extracted_from':
-                    raise ValueError(
-                        f'Property name "{prop_name}" from "{object_name}" is reserved for special properties and cannot be used',
-                    )
-
-        # Validate property definitions
-        for object_name, object_info in objects.items():
-            for prop_name, prop_info in object_info.get('properties', {}).items():
-                if 'description' not in prop_info:
-                    raise ValueError(
-                        f'Property "{prop_name}" from "{object_name}" must have a valid "description" field',
-                    )
-
-    def _process_model(self) -> None:
-        """Process the data model to prepare entity and relation types for use in the engine."""
-        # Keep only the included entities
-        included_entities = self._parameters.get('included_entities', list(self._entities.keys()))
-        self._entities = {k: v for k, v in self._entities.items() if k in included_entities}
-
-        # Add all included document sets to entities that do not specify them
-        included_documents = self._parameters.get('included_documents', [])
-        for entity_info in self._entities.values():
-            if 'documents' not in entity_info:
-                entity_info['documents'] = included_documents
-            if 'documents_hybrid' not in entity_info:
-                entity_info['documents_hybrid'] = included_documents
-
-        # Materialize hybrid entities
-        hybrid_entities = {}
-        for entity, info in self._entities.items():
-            if info.get('hybrid_entity', False):
-                # Mark the original entity as a core entity
-                info['core_entity'] = True
-
-                # Create the hybrid version of the entity
-                hybrid_info = deepcopy(info)
-                hybrid_info['documents'] = info['documents_hybrid']
-                del hybrid_info['core_entity']
-                del hybrid_info['hybrid_entity']
-                del hybrid_info['documents_hybrid']
-                hybrid_entities[f'@{entity}'] = hybrid_info
-
-                # Handle property descriptions for hybrid entities
-                for prop_info in hybrid_info.get('properties', {}).values():
-                    if 'description_hybrid' in prop_info:
-                        prop_info['description'] = prop_info['description_hybrid']
-                        del prop_info['description_hybrid']
-        self._entities.update(hybrid_entities)
-
-        # Store document sets for each entity
-        self._entity_sets = {
-            entity: set(info['documents']) & set(included_documents) for entity, info in self._entities.items()
-        }
-
-        # Keep only the included relations
-        included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
-        self._relations = {k: v for k, v in self._relations.items() if k in included_relations}
-
-        # Process origin/target schemas
-        self._build_relation_schemas()
-
-        # Materialize relations
-        self._materialize_relation_model()
-
-        # Add special entities
-        special_entities = {
-            'Document': {
-                'special_entity': True,
-                'description': 'Represents a document that was used for the construction of the knowledge graph.',
-                'properties': {
-                    'name': {
-                        'type': 'string',
-                        'description': 'The name of the original document.',
-                    },
-                    'document_set': {
-                        'type': 'string',
-                        'description': 'The name of the document set where the original document is contained.',
-                    },
-                },
-            },
-            'Chunk': {
-                'special_entity': True,
-                'description': 'Represents a fragment of a document used for the construction of the knowledge graph.',
-                'properties': {
-                    'text': {
-                        'type': 'string',
-                        'description': 'The text contained in the document chunk.',
-                    },
-                },
-            },
-        }
-        self._entities.update(special_entities)
-
-        # Add special relations
-        special_relations = {
-            'ChunkOf': {
-                'special_relation': True,
-                'origin_target': {'Chunk': ['Document']},
-                'description': 'Connects each chunk to the respective document from which it was extracted.',
-                'properties': {
-                    'chunk_number': {
-                        'type': 'integer',
-                        'description': 'The number of the chunk within the document (ordered from beginning to end).',
-                    },
-                },
-            },
-            'ExtractedFrom': {
-                'special_relation': True,
-                'origin_target': {'ALL': ['Chunk', 'Document']},
-                'description': 'Connects each entity to the respective chunk from which it was extracted.',
-            },
-        }
-        self._relations.update(special_relations)
-
+    # TODO: Move to RelationType class
     def _build_relation_schemas(self) -> None:
         """Build schemas that represent all combinations for each relation type in the data model."""
         # Iterate over the relation model and build the schemas
@@ -446,11 +704,12 @@ class DataModel(Singleton):
         # Only keep relations that have valid origin/target pairs
         self._relations = {k: v for k, v in self._relations.items() if v['origin_target']}
 
+    # TODO: Move to RelationType class
     def _materialize_relation_model(self) -> None:
         """Materialize the relation model to create specific relation types between entity type pairs."""
         # Iterate over the relation model and build materialized relations
         for relation_name, relation_info in self._relations.items():
-            relation_info['properties'] = relation_info.get('properties', {})
+            relation_info['fields'] = relation_info.get('fields', {})
             for origin, targets in relation_info['origin_target'].items():
                 # Create a materialized relation for each combination of origin and target
                 for target in targets:
@@ -484,177 +743,94 @@ class DataModel(Singleton):
         """A dictionary containing the parameters of the data model."""
         return self._parameters
 
+    # TODO: Refactor
     @property
-    def entities(self) -> dict[str, Any]:
-        """A dictionary containing all regular entity types in the data model (core/hybrid/special entities are excluded)."""
-        return {
-            k: v
-            for k, v in self._entities.items()
-            if not v.get('core_entity', False) and not v.get('special_entity', False) and not k.startswith('@')
-        }
+    def entities(self) -> list[EntityType]:
+        """A list of all regular entity types in the data model (core/hybrid/special entities are excluded)."""
+        return [
+            entity
+            for entity in self._entities
+            if not entity.has_source('documents') and not entity.is_special_entity() and not entity.name.startswith('@')
+        ]
 
+    # TODO: Refactor
     @property
-    def core_entities(self) -> dict[str, Any]:
-        """A dictionary containing all core entity types in the data model."""
-        return {k: v for k, v in self._entities.items() if v.get('core_entity', False)}
+    def core_entities(self) -> list[EntityType]:
+        """A list of all core entity types in the data model."""
+        return [entity for entity in self._entities if entity.has_source('documents')]
 
+    # TODO: Refactor
     @property
-    def hybrid_entities(self) -> dict[str, Any]:
-        """A dictionary containing all hybrid entity types in the data model."""
-        return {k: v for k, v in self._entities.items() if k.startswith('@')}
+    def hybrid_entities(self) -> list[EntityType]:
+        """A list of all hybrid entity types in the data model."""
+        return [entity for entity in self._entities if entity.has_source('chunks') and entity.has_source('documents')]
 
+    # TODO: Refactor
     @property
-    def special_entities(self) -> dict[str, Any]:
-        """A dictionary containing all special entity types in the data model."""
-        return {k: v for k, v in self._entities.items() if v.get('special_entity', False)}
+    def special_entities(self) -> list[EntityType]:
+        """A list of all special entity types in the data model."""
+        return [entity for entity in self._entities if entity.is_special_entity()]
 
+    # TODO: Refactor
     @property
     def relations(self) -> dict[str, Any]:
         """A dictionary containing all regular relation types in the data model (special relations are excluded)."""
         return {k: v for k, v in self._relations.items() if not v.get('special_relation', False)}
 
+    # TODO: Refactor
     @property
     def special_relations(self) -> dict[str, Any]:
         """A dictionary containing all special relation types in the data model."""
         return {k: v for k, v in self._relations.items() if v.get('special_relation', False)}
 
+    # TODO: Refactor
     @property
     def materialized_relations(self) -> dict[str, Any]:
         """A dictionary containing all materialized relation types between entity type pairs."""
         return self._materialized_relations
 
-    @property
-    def document_sets(self) -> list[str]:
-        """A list of all document sets present in the data model."""
-        return self._parameters.get('included_documents', [])
-
-    def get_entity_sets(self, entity_name: str) -> set[str]:
-        """Get the document datasets associated with a specific entity type.
-
-        Args:
-            entity_name: The name of the entity type.
-
-        Returns:
-            A set of document dataset names associated with the entity type.
-        """
-        return self._entity_sets.get(entity_name, set())
-
-    def get_entity_data(self, entity_name: str) -> dict[str, Any]:
-        """Get the data properties of a specific entity type.
-
-        Data properties are those meant to be extracted from the documents.
-
-        Args:
-            entity_name: The name of the entity type.
-
-        Returns:
-            A dictionary containing all data properties of the entity type.
-        """
-        entity_info = self._entities.get(entity_name, {})
-        entity_pk = entity_info.get('primary_key', '')
-        entity_props = entity_info.get('properties', {})
-
-        # Hybrid entities keep the primary key and any property marked as hybrid
-        if entity_name in self.hybrid_entities:
-            return {k: v for k, v in entity_props.items() if k == entity_pk or v.get('hybrid', False)}
-
-        # Other entities keep all properties meant for the LLM
-        return {
-            k: v
-            for k, v in entity_props.items()
-            if k not in self.get_entity_metadata(entity_name) | self.get_entity_placeholders(entity_name)
-        }
-
-    def get_entity_metadata(self, entity_name: str) -> dict[str, Any]:
-        """Get the metadata properties of a specific entity type.
-
-        Args:
-            entity_name: The name of the entity type.
-
-        Returns:
-            A dictionary containing all metadata properties of the entity type.
-        """
-        entity_info = self.core_entities.get(entity_name, {})  # Only core entities have metadata
-        return {k: v for k, v in entity_info.get('properties', {}).items() if v.get('metadata', False)}
-
-    def get_entity_placeholders(self, entity_name: str) -> dict[str, Any]:
-        """Get the placeholder properties of a specific entity type.
-
-        Args:
-            entity_name: The name of the entity type.
-
-        Returns:
-            A dictionary containing all placeholder properties of the entity type.
-        """
-        entity_info = self._entities.get(entity_name, {})
-        entity_pk = entity_info.get('primary_key', '')
-        entity_props = entity_info.get('properties', {})
-
-        # Hybrid entities prioritize hybrid properties over placeholders
-        if entity_name in self.hybrid_entities:
-            return {
-                k: v
-                for k, v in entity_props.items()
-                if 'placeholder' in v and k != entity_pk and not v.get('hybrid', False)
-            }
-
-        # Other entities prioritize metadata over placeholders
-        return {
-            k: v
-            for k, v in entity_props.items()
-            if 'placeholder' in v and k != entity_pk and k not in self.get_entity_metadata(entity_name)
-        }
-
-    def get_entity_properties(self, entity_name: str) -> dict[str, Any]:
-        """Get the full properties of a specific entity type.
-
-        Args:
-            entity_name: The name of the entity type.
-
-        Returns:
-            A dictionary containing all properties of the entity type.
-        """
-        return self._entities.get(entity_name, {}).get('properties', {})
-
+    # TODO: Refactor
     def get_relation_data(self, relation_name: str) -> dict[str, Any]:
-        """Get the data properties of a specific relation type.
+        """Get the data fields of a specific relation type.
 
-        Data properties are those meant to be extracted from the documents.
+        Data fields are those meant to be extracted from the documents.
 
         Args:
             relation_name: The name of the relation type.
 
         Returns:
-            A dictionary containing all data properties of the relation type.
+            A dictionary containing all data fields of the relation type.
         """
         relation_info = self._relations.get(relation_name, {})
         return {
             k: v
-            for k, v in relation_info.get('properties', {}).items()
+            for k, v in relation_info.get('fields', {}).items()
             if k not in self.get_relation_placeholders(relation_name)
         }
 
+    # TODO: Refactor
     def get_relation_placeholders(self, relation_name: str) -> dict[str, Any]:
-        """Get the placeholder properties of a specific relation type.
+        """Get the placeholder fields of a specific relation type.
 
         Args:
             relation_name: The name of the relation type.
 
         Returns:
-            A dictionary containing all placeholder properties of the relation type.
+            A dictionary containing all placeholder fields of the relation type.
         """
         relation_info = self._relations.get(relation_name, {})
         relation_pk = relation_info.get('primary_key', '')
-        relation_props = relation_info.get('properties', {})
+        relation_props = relation_info.get('fields', {})
         return {k: v for k, v in relation_props.items() if 'placeholder' in v and k != relation_pk}
 
-    def get_relation_properties(self, relation_name: str) -> dict[str, Any]:
-        """Get the full properties of a specific relation type.
+    # TODO: Refactor
+    def get_relation_fields(self, relation_name: str) -> dict[str, Any]:
+        """Get the full fields of a specific relation type.
 
         Args:
             relation_name: The name of the relation type.
 
         Returns:
-            A dictionary containing all properties of the relation type.
+            A dictionary containing all fields of the relation type.
         """
-        return self._relations.get(relation_name, {}).get('properties', {})
+        return self._relations.get(relation_name, {}).get('fields', {})

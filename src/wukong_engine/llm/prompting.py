@@ -234,7 +234,7 @@ def build_entity_prompt(
         }
         properties.append(prop_dict)
 
-    # Special case: All properties are obtained without LLM assistance, no prompt required
+    # Special case: All properties are obtained without LLM assistance, no prompt is required
     if not properties:
         return
 

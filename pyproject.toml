@@ -63,16 +63,8 @@ unfixable = ["F401"] # Do not auto-fix unused imports
 inline-quotes = "single"
 multiline-quotes = "double"
 
-[tool.ruff.lint.mccabe]
-max-complexity = 30
-
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[tool.ruff.lint.pylint]
-max-branches = 30
-max-statements = 75
-max-args = 10
 
 [tool.ruff.format]
 quote-style = "single"

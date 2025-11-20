@@ -20,7 +20,8 @@ from wukong_engine.documents.text_processing import (
     process_text_documents,
     trim_large_documents,
 )
-from wukong_engine.extraction.data_extraction import find_entities, find_relations, process_entities, process_relations
+from wukong_engine.extraction.entities import extract_entities, process_entities
+from wukong_engine.extraction.relations import extract_relations, process_relations
 from wukong_engine.graph.export import export_stats, export_to_json, export_to_mdb, export_to_neo4j
 from wukong_engine.llm.prompting import generate_prompts
 
@@ -113,7 +114,7 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
     # Extract entities from the documents
     if entity_extraction:
         logger.info('Extracting Core Entities...')
-        find_entities(
+        extract_entities(
             data_model.core_entities,
             docs_dir,
             prompts_dir,
@@ -122,17 +123,17 @@ def execute_pipeline(data_dir: Path, config_path: Path) -> None:
             clear_results=True,
         )
         logger.info('Extracting Entities...')
-        find_entities(data_model.hybrid_entities | data_model.entities, chunks_dir, prompts_dir, results_dir)
+        extract_entities(data_model.hybrid_entities + data_model.entities, chunks_dir, prompts_dir, results_dir)
 
     # Process extracted entities
     if entity_processing:
         logger.info('Processing Entities...')
-        process_entities(data_model.core_entities | data_model.hybrid_entities | data_model.entities, results_dir)
+        process_entities(data_model.core_entities + data_model.hybrid_entities + data_model.entities, results_dir)
 
     # Extract relations from the documents
     if relation_extraction:
         logger.info('Extracting Relations...')
-        find_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
+        extract_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
 
     # Process extracted relations
     if relation_processing:
