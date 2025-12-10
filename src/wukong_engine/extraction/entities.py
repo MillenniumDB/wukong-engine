@@ -10,6 +10,7 @@ from typing import Any
 
 from wukong_engine.config.config import Config
 from wukong_engine.core.data_model import DataModel, EntityType
+from wukong_engine.core.enums import Source
 from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
@@ -55,7 +56,7 @@ def extract_entities(
 
     # Extract info for each entity type and source
     for entity in entity_types:
-        for source in ('chunks', 'documents'):
+        for source in Source:  # TODO: Iterate over Source enum
             partial_entity_dir = partial_entities_dir / entity.name / source
             partial_entity_dir.mkdir(parents=True, exist_ok=True)
 

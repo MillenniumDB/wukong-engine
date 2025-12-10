@@ -22,21 +22,21 @@
                 "duplicates": "exact"
             },
             "sources": {
-                "chunks": [
+                "chunk": [
                     "LGUC",
                     "OGUC",
                     "DDU"
                 ],
-                "documents": [
+                "document": [
                     "LGUC"
                 ]
             },
             "fields": {
                 "node_name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The unique identifier of the LGUC article.",
                     "instructions": {
-                        "chunks": "Must be in the format: lguc_articulo_<A>_<NUM>_<LETTER>, where <A> is a valid integer without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <A> <NUM> <LETTER>."
+                        "chunk": "Must be in the format: lguc_articulo_<A>_<NUM>_<LETTER>, where <A> is a valid integer without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <A> <NUM> <LETTER>."
                     },
                     "regex": "^lguc[ _.-]articulo[ _.-]\\d+(?:[ _.-][A-Za-z]+(?:[ _.-][A-Za-z])?)?$",
                     "examples": [
@@ -45,105 +45,105 @@
                         "lguc_articulo_10_ter_b"
                     ],
                     "mode": {
-                        "chunks": "extraction",
-                        "documents": "external"
+                        "chunk": "extraction",
+                        "document": "external"
                     }
                 },
                 "filename": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the internally associated text file.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the parent document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source_type": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The type of the parent document.",
                     "default_value": "lguc",
                     "mode": "default"
                 },
                 "url": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The url of the original document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_norm": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_part": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the LGUC article.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "date": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The date of the LGUC article.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "scope": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The scope of the LGUC article.",
                     "default_value": "nacional",
                     "mode": "default"
                 },
                 "title": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The title of the LGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'TITULO' and 'CAPITULO': TITULO N <TITLE> CAPITULO M. Should be textual, exactly as it appears in the document.",
                     "examples": "Disposiciones Generales",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "chapter": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The chapter of the LGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'CAPITULO' and 'Artículo': CAPITULO M <CHAPTER> Artículo X. Should be textual, exactly as it appears in the document.",
                     "examples": "Normas de Competencia",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "summary": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A summarized explanation of the contents of the LGUC article.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 }
             }
@@ -155,20 +155,20 @@
                 "duplicates": "exact"
             },
             "sources": {
-                "chunks": [
+                "chunk": [
                     "OGUC",
                     "DDU"
                 ],
-                "documents": [
+                "document": [
                     "OGUC"
                 ]
             },
             "fields": {
                 "node_name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The unique identifier of the OGUC article.",
                     "instructions": {
-                        "chunks": "Must be in the format: oguc_articulo_<T>.<C>.<A>_<NUM>_<LETTER>, where <T>, <C>, <A> are valid integers without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <T>.<C>.<A> <NUM> <LETTER>."
+                        "chunk": "Must be in the format: oguc_articulo_<T>.<C>.<A>_<NUM>_<LETTER>, where <T>, <C>, <A> are valid integers without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <T>.<C>.<A> <NUM> <LETTER>."
                     },
                     "regex": "^oguc[ _.-]articulo[ _.-]\\d+\\.\\d+\\.\\d+(?:[ _.-][A-Za-z]+(?:[ _.-][A-Za-z])?)?$",
                     "examples": [
@@ -177,105 +177,105 @@
                         "oguc_articulo_10.5.12_ter_b"
                     ],
                     "mode": {
-                        "chunks": "extraction",
-                        "documents": "external"
+                        "chunk": "extraction",
+                        "document": "external"
                     }
                 },
                 "filename": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the internally associated text file.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the parent document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source_type": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The type of the parent document.",
                     "default_value": "oguc",
                     "mode": "default"
                 },
                 "url": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The url of the original document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_norm": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_part": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the OGUC article.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "date": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The date of the OGUC article.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "scope": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The scope of the OGUC article.",
                     "default_value": "nacional",
                     "mode": "default"
                 },
                 "title": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The title of the OGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'TITULO' and 'CAPITULO': TITULO N <TITLE> CAPITULO M. Should be textual, exactly as it appears in the document.",
                     "examples": "DE LA PLANIFICACIÓN Y DE LOS PLANES DE INVERSIONES EN INFRAESTRUCTURA DE MOVILIDAD Y ESPACIO PÚBLICO",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "chapter": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The chapter of the OGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'CAPITULO' and 'Artículo': CAPITULO M <CHAPTER> Artículo X.Y.Z. Should be textual, exactly as it appears in the document.",
                     "examples": "DE LAS NORMAS DE URBANIZACIÓN Y DE LOS APORTES AL ESPACIO PÚBLICO",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "summary": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A summarized explanation of the contents of the OGUC article.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 }
             }
@@ -287,19 +287,19 @@
                 "duplicates": "exact"
             },
             "sources": {
-                "chunks": [
+                "chunk": [
                     "DDU"
                 ],
-                "documents": [
+                "document": [
                     "DDU"
                 ]
             },
             "fields": {
                 "node_name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The unique identifier of the DDU circular.",
                     "instructions": {
-                        "chunks": "If the circular is General, then this identifier must be in the format: ddu_grl_<N>, where <N> is a valid integer assigned to the circular, without any leading '0's. If the circular is Specific, then this identifier must be in the format: ddu_esp_<N>_<YYYY>, where <N> is the same as in the General case, and <YYYY> is the year. Do not confuse <N> with the order number, which is a different integer. Assume that all circulars are General unless explicitly stated as Specific. All of this is mentioned in the text as: DDU <N> or DDU-ESPECÍFICA N° <N>/<YYYY>."
+                        "chunk": "If the circular is General, then this identifier must be in the format: ddu_grl_<N>, where <N> is a valid integer assigned to the circular, without any leading '0's. If the circular is Specific, then this identifier must be in the format: ddu_esp_<N>_<YYYY>, where <N> is the same as in the General case, and <YYYY> is the year. Do not confuse <N> with the order number, which is a different integer. Assume that all circulars are General unless explicitly stated as Specific. All of this is mentioned in the text as: DDU <N> or DDU-ESPECÍFICA N° <N>/<YYYY>."
                     },
                     "regex": "^ddu[ _.-](?:grl[ _.-]\\d+|esp[ _.-]\\d+[ _.-]\\d{4})$",
                     "examples": [
@@ -307,28 +307,28 @@
                         "ddu_esp_123_2012"
                     ],
                     "mode": {
-                        "chunks": "extraction",
-                        "documents": "external"
+                        "chunk": "extraction",
+                        "document": "external"
                     }
                 },
                 "filename": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the internally associated text file.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the parent document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "source_type": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The type of the parent document.",
                     "instructions": "Can either be a General DDU Circular ('ddu') or a Specific DDU Circular ('ddu-esp'). Assume that all circulars are General unless explicitly stated as Specific.",
                     "options": [
@@ -337,64 +337,64 @@
                     ],
                     "default_value": "ddu",
                     "mode": {
-                        "chunks": "extraction",
-                        "documents": "external"
+                        "chunk": "extraction",
+                        "document": "external"
                     }
                 },
                 "url": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The url of the original document.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_norm": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "bcn_id_part": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the DDU circular.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "external"
+                        "chunk": "skip",
+                        "document": "external"
                     }
                 },
                 "date": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The date of the DDU circular.",
                     "instructions": "Must be in the format: <YYYY>-<MM>-<DD>, where <YYYY> is the year, <MM> is the month, and <DD> is the day. If <MM> is not available, consider it as 01. If <DD> is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
                     "examples": "2015-07-01",
                     "mode": {
-                        "chunks": "extraction",
-                        "documents": "external"
+                        "chunk": "extraction",
+                        "document": "external"
                     }
                 },
                 "scope": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The scope of the DDU circular.",
                     "default_value": "nacional",
                     "mode": "default"
                 },
                 "circular_order_number": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The circular order number.",
                     "instructions": {
-                        "chunks": "If present, it is mentioned in the text as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. Must be a different number from the one in 'node_name'. If not present, the value should be: NULL.",
-                        "documents": "Mentioned near the beginning of the document as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. If not present, the value should be: NULL."
+                        "chunk": "If present, it is mentioned in the text as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. Must be a different number from the one in 'node_name'. If not present, the value should be: NULL.",
+                        "document": "Mentioned near the beginning of the document as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. If not present, the value should be: NULL."
                     },
                     "examples": [
                         "2",
@@ -403,32 +403,32 @@
                     "mode": "extraction"
                 },
                 "subject": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The subject matter of the DDU circular.",
                     "instructions": "Mentioned near the beginning as: MAT.: <SUBJECT>. Should be textual, exactly as it appears in the document.",
                     "examples": "Vigencia de artículo 2.3.4 de OGUC.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "keywords": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A list of keywords associated with the DDU circular.",
                     "instructions": "Mentioned right after the 'subject', all in uppercase. Should be textual, exactly as it appears in the document.",
                     "examples": "PERMISOS; APROBACIONES Y RECEPCIONES, MODIFICACIONES DE PROYECTOS.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 },
                 "summary": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A summarized explanation of the contents of the DDU circular.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
                     "mode": {
-                        "chunks": "skip",
-                        "documents": "extraction"
+                        "chunk": "skip",
+                        "document": "extraction"
                     }
                 }
             }
@@ -440,7 +440,7 @@
                 "duplicates": "exact"
             },
             "sources": {
-                "chunks": [
+                "chunk": [
                     "LGUC",
                     "OGUC",
                     "DDU"
@@ -448,7 +448,7 @@
             },
             "fields": {
                 "source": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The name of the legal body that contains the legal provision.",
                     "instructions": "Cannot be among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano). Must be in the format: <TYPE> N° <N>, where <TYPE> is the type of legal body (e.g. Ley, Decreto, Constitución, Decreto con Fuerza de Ley, Código Civil, Código Penal, etc...), and <N> is a valid integer without any dot ('.') characters. Do not consider Artículo or Numeral as <TYPE> or numbers used for them as <N>. If <N> is not mentioned, the format must be: <TYPE>. If <TYPE> is not mentioned, the entire value must be: NULL.",
                     "examples": [
@@ -460,14 +460,14 @@
                     "required": true
                 },
                 "article": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The number of the specific article from 'source' that is being considered, if specified.",
                     "instructions": "Must be a valid integer without any dot ('.') characters. Do not consider Numeral as the article number.",
                     "examples": "20",
                     "mode": "extraction"
                 },
                 "name": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The full name of the legal provision.",
                     "instructions": "Corresponds to: <SOURCE> Art <ART>, where <SOURCE> is the value of 'source' and <ART> is the value of 'article'. If 'article' is not present, the format must be: <SOURCE>. The entire value must be NULL if <SOURCE> is among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
                     "examples": [
@@ -478,7 +478,7 @@
                     "mode": "extraction"
                 },
                 "summary": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "A textual description of the legal provision, summarizing it's official definition in the Chilean law.",
                     "instructions": "Should be concise.",
                     "mode": "extraction"
@@ -509,7 +509,7 @@
             "primary_key": "ref_type",
             "fields": {
                 "ref_type": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "The type of reference that the source/origin imposes over the target: SOURCE -[<REF_TYPE>]-> TARGET, where <REF_TYPE> can be one of: refiere, interpreta, condiciona, complementa, fundamenta, modifica, deroga, instruye. 'refiere': the source refers to the target. 'interpreta': the source interprets the target. 'condiciona': the source conditions the application of the target. 'complementa': the source complements the target. 'fundamenta': the source provides a basis for the target. 'modifica': the source modifies/updates the target. 'deroga': the source supersedes/abolishes the target. 'instruye': the source instructs/directs actions related to the target.",
                     "options": [
                         "refiere",
@@ -523,7 +523,7 @@
                     ]
                 },
                 "description": {
-                    "type": "string",
+                    "data_type": "string",
                     "description": "An explanation of how the source/origin references the target. Should be concise.",
                     "examples": "Se refiere al punto 7.1 de la Circular DDU 279 para justificar un argumento relativo a la copropiedad inmobiliaria."
                 }

@@ -15,10 +15,10 @@ from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, 
 logger = logging.getLogger(__name__)
 
 # Data Type Names
-STR_NAMES = ('str', 'char', 'varchar', 'character', 'text', 'byte', 'bytes')
-INT_NAMES = ('int', 'int8', 'int16', 'int32', 'int64', 'short int', 'long int', 'short', 'long')
-FLOAT_NAMES = ('float32', 'float64', 'double', 'long double', 'decimal')
-BOOL_NAMES = ('boolean',)
+STR_NAMES = ('str', 'char', 'text')
+INT_NAMES = ('int', 'number', 'numeric')
+FLOAT_NAMES = ('double', 'real', 'decimal')
+BOOLEAN_NAMES = ('bool', 'flag')
 
 
 def export_to_mdb(results_dir: Path, export_dir: Path) -> None:
@@ -322,7 +322,7 @@ def object_to_mdb(
                         field_value = int(obj.get(field, 0))
                     case 'float':  # Convert to float
                         field_value = float(obj.get(field, 0.0))
-                    case 'bool':  # Convert to bool in general format
+                    case 'boolean':  # Convert to bool in general format
                         field_value = str(obj.get(field, False)).lower()
                     case _:  # Unknown type, print a warning and convert to string
                         logger.warning(
@@ -395,7 +395,7 @@ def object_to_neo4j(
                         field_value = int(obj.get(field, 0))
                     case 'float':  # Convert to float
                         field_value = float(obj.get(field, 0.0))
-                    case 'bool':  # Convert to bool in general format
+                    case 'boolean':  # Convert to bool in general format
                         field_value = str(obj.get(field, False)).lower()
                     case _:  # Unknown type, print a warning and convert to string
                         logger.warning(
@@ -456,7 +456,7 @@ def object_to_json(
                     field_value = int(obj.get(field, 0))
                 case 'float':  # Convert to float
                     field_value = float(obj.get(field, 0.0))
-                case 'bool':  # Convert to bool in general format
+                case 'boolean':  # Convert to bool in general format
                     field_value = str(obj.get(field, False)).lower()
                 case _:  # Unknown type, print a warning and convert to string
                     logger.warning(
@@ -478,10 +478,10 @@ def build_data_type_mapping() -> dict[str, str]:
 
     Returns:
         A dictionary mapping potential data type names to their corresponding supported type name.
-        The supported type names are: `string`, `integer`, `float`, and `bool`.
+        The supported type names are: `string`, `integer`, `float`, and `boolean`.
     """
-    data_type_groups = (STR_NAMES, INT_NAMES, FLOAT_NAMES, BOOL_NAMES)
-    final_data_types = ('string', 'integer', 'float', 'bool')
+    data_type_groups = (STR_NAMES, INT_NAMES, FLOAT_NAMES, BOOLEAN_NAMES)
+    final_data_types = ('string', 'integer', 'float', 'boolean')
     data_type_mapping = {}
     for idx, data_type_group in enumerate(data_type_groups):
         for data_type in data_type_group:
