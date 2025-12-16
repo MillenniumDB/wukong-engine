@@ -1,7 +1,7 @@
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Self
 
 from wukong_engine.core.enums import DataType, FieldMode, Source
 from wukong_engine.schema.data_model import FieldSchema
@@ -11,12 +11,6 @@ logger = logging.getLogger(__name__)
 
 # Paths
 DATA_MODEL_PATH = Path('./data_model.json')
-
-# Default Value: Empty (assume NULL), String (apply to all),
-# Dict (apply each, if not present assume NULL + warning)
-
-# Field Mode: Empty (assume 'extraction' for all + warning), String (apply to all unless not compatible),
-# Dict (apply each, if not present assume 'extraction' + warning)
 
 
 # TODO: Complete
@@ -36,7 +30,7 @@ class Field:
     _mode: dict[Source, FieldMode] | None = None
 
     @classmethod
-    def from_schema(cls, schema: FieldSchema) -> 'Field':
+    def from_schema(cls, schema: FieldSchema) -> Self:
         """Instantiate from a validated Pydantic FieldSchema."""
         return cls(
             name=schema.name,
