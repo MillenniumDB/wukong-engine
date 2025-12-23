@@ -11,8 +11,8 @@
 # Enable or disable each step in the pipeline (true/false)
 [pipeline]
 
-# This step is responsible for processing the plain text files
-# Note: This step requires the original plain text documents to be available
+# This step is responsible for loading and processing the original plain text files
+# Note: This step requires the plain text documents to be available as specified in the "documents.json" file
 # Note: Only skip this step if you have already completed it at least once
 # Default: true
 document_processing = true

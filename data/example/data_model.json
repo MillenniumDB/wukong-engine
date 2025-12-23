@@ -21,7 +21,7 @@
                 "primary_key": "node_name",
                 "duplicates": "exact"
             },
-            "sources": {
+            "input_document_groups": {
                 "chunk": [
                     "LGUC",
                     "OGUC",
@@ -154,7 +154,7 @@
                 "primary_key": "node_name",
                 "duplicates": "exact"
             },
-            "sources": {
+            "input_document_groups": {
                 "chunk": [
                     "OGUC",
                     "DDU"
@@ -286,7 +286,7 @@
                 "primary_key": "node_name",
                 "duplicates": "exact"
             },
-            "sources": {
+            "input_document_groups": {
                 "chunk": [
                     "DDU"
                 ],
@@ -439,7 +439,7 @@
                 "primary_key": "name",
                 "duplicates": "exact"
             },
-            "sources": {
+            "input_document_groups": {
                 "chunk": [
                     "LGUC",
                     "OGUC",

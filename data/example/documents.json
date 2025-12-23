@@ -1,0 +1,13 @@
+{
+    "groups": [
+        {
+            "name": "LGUC",
+            "sources": [
+                {
+                    "path": "./docs/text/LGUC",
+                    "mode": "directory"
+                }
+            ]
+        }
+    ]
+}
