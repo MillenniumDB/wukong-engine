@@ -4,7 +4,7 @@
 This document defines the architectural practices for the project.
 It is intended as a **living reference** for developers as the system evolves.
 
-The architecture follows **Clean Architecture principles**, adapted pragmatically for **Python**.
+The architecture follows **Clean Architecture Principles**, adapted pragmatically for **Python**.
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
@@ -26,30 +26,22 @@ The architecture follows **Clean Architecture principles**, adapted pragmaticall
   - [Purpose](#purpose-1)
   - [Dependencies](#dependencies-1)
   - [Typical Structure](#typical-structure-1)
-  - [Best practices](#best-practices-1)
+  - [Best Practices](#best-practices-1)
   - [Evolution](#evolution-1)
 - [🛠️ Infrastructure Layer](#️-infrastructure-layer)
   - [Recommended Names](#recommended-names-2)
   - [Purpose](#purpose-2)
   - [Dependencies](#dependencies-2)
-  - [Initial recommended structure](#initial-recommended-structure)
-  - [Best practices](#best-practices-2)
-  - [Inbound vs Outbound](#inbound-vs-outbound)
-  - [Inbound](#inbound)
-  - [Outbound](#outbound)
-  - [Adapters Namespace (Optional, Mature Systems)](#adapters-namespace-optional-mature-systems)
-    - [Purpose](#purpose-3)
-    - [Mature structure example](#mature-structure-example)
+  - [Typical Structure](#typical-structure-2)
+  - [Best Practices](#best-practices-2)
+  - [Evolution](#evolution-2)
 - [🖥️ Presentation Layer](#️-presentation-layer)
   - [Recommended Names](#recommended-names-3)
-  - [Purpose](#purpose-4)
+  - [Purpose](#purpose-3)
   - [Dependencies](#dependencies-3)
-  - [Structure](#structure)
-  - [Promotion rule](#promotion-rule)
-- [📌 Architecture Summary](#-architecture-summary)
-  - [Import Rules](#import-rules)
-  - [Evolution Summary](#evolution-summary)
-  - [One-Sentence Mental Model](#one-sentence-mental-model)
+  - [Typical Structure](#typical-structure-3)
+  - [Best Practices](#best-practices-3)
+  - [Evolution](#evolution-3)
 
 ## 🧭 General Overview
 
@@ -74,7 +66,7 @@ infrastructure/
 presentation/
 ```
 
-As the system grows, new layers may appear, but **only as justified** by emerging policy.
+As the system grows, new layers may appear, but **only as justified** by emerging policy (very rare).
 
 ### Dependency Rules
 
@@ -94,7 +86,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure`
+- `presentation` must not import `infrastructure` (except for technical concerns like logging)
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
@@ -107,7 +99,6 @@ Here, the right arrow (`→`) means "may depend on".
 
 - `domain`
 - `core`
-- `model`
 
 ### Purpose
 
@@ -121,7 +112,7 @@ It defines:
 
 It answers:
 
-> **“What exists in this problem space?”**
+> **“What exists in this system?”**
 
 ### Dependencies
 
@@ -134,7 +125,7 @@ It answers:
 - Application
 - Infrastructure
 - Presentation
-- Frameworks, SDKs, databases, HTTP, LLM clients
+- External frameworks
 
 ### Typical Structure
 
@@ -142,17 +133,17 @@ The initial structure could look like:
 
 ```
 domain/
-├── model.py
-├── enums.py
-├── rules.py
-└── exceptions.py
+├── model.py  # Core domain model
+├── enums.py  # Domain enums
+├── rules.py  # Business rules
+└── exceptions.py  # Domain-specific exceptions
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 domain/
-├── graph/
+├── graph/  # Domain model for graph concepts
 │   ├── graph.py
 │   ├── entity.py
 │   ├── relationship.py
@@ -162,7 +153,6 @@ domain/
 ...
 ├── <concept>/  # e.g. schema, document
 ...
-├── value_objects.py  # e.g. ConfidenceScore, Identifier
 ├── enums.py
 ├── rules.py
 └── exceptions.py
@@ -170,10 +160,15 @@ domain/
 
 ### Best Practices
 
-- Rich domain models over anemic data
-- No persistence or transport concerns
-- Avoid generic `utils/`
-- Fully testable without mocks
+- Contains the core business concepts, rules, and invariants
+- Models express meaning, not persistence or transport concerns
+- Entities and value objects enforce consistency and validity
+- Domain services exist only for cross-entity rules
+- Prefer explicit types over primitives (value objects instead of native **Python** types)
+- Domain exceptions express business failures
+- Avoid frameworks, libraries, and side effects
+- No orchestration, workflows, or use-case sequencing
+- Stable over time; changes reflect business change only
 
 ### Evolution
 
@@ -189,7 +184,6 @@ domain/
 
 - `application`
 - `app`
-- `services`
 
 ### Purpose
 
@@ -204,7 +198,7 @@ It:
 
 It answers:
 
-> **“What should the system do?”**
+> **“What does the system do?”**
 
 ### Dependencies
 
@@ -224,14 +218,16 @@ The initial structure could look like:
 
 ```
 application/
-├── graph/
-│   ├── use_cases.py
-│   └── ports.py
+├── graph/  # Application logic for graph-related use cases
+│   ├── use_cases/
+│   |   └── build_graph.py
+│   └── ports/
+│       └── storage.py
 ...
 ├── <capability>/  # e.g. document_processing, extraction
 ...
-├── workflow.py
-└── exceptions.py
+├── workflow.py  # Orchestrates application workflows
+└── exceptions.py  # Application-specific exceptions
 ```
 
 As the system grows, the structure may evolve to:
@@ -239,18 +235,17 @@ As the system grows, the structure may evolve to:
 ```
 application/
 ├── graph/
-│   ├── use_cases/
+│   ├── use_cases/  # Use cases
 │   │   ├── build_graph.py
 │   │   └── export_graph.py
-│   ├── ports/
+│   ├── services/  # Supporting services
+│   │   └── deduplication.py
+│   ├── ports/  # Interfaces for infrastructure
 │   │   ├── storage.py
 │   │   └── export.py
-│   ├── policies/
+│   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── dto/
-│   │   ├── build.py
-│   │   └── export.py
 │   └── exceptions.py
 ...
 ├── <capability>/  # e.g. document_processing, extraction
@@ -259,18 +254,22 @@ application/
 └── exceptions.py
 ```
 
-### Best practices
+### Best Practices
 
-- Use verbs for use cases (`process_document`, `build_graph`)
-- Keep use cases small and explicit
-- Move outbound strategy logic here when it appears
-- Use `Protocol` or **ABCs** for ports
-- No IO, SDKs, HTTP, DB, or filesystem code
+- Orchestrates use cases and application workflows
+- Defines ports (interfaces) for required external behavior (`Protocol` or **ABCs**)
+- Coordinates multiple domain operations in a single intent
+- Contains no persistence, transport, or framework code
+- Use cases are explicit, named after user intent (`process_document`, `build_graph`)
+- Policy and strategy selection lives here
+- Application DTOs express use-case intent
+- Application exceptions express workflow failures
+- Thin, readable, and highly testable
 
 ### Evolution
 
 - This is the **main growth layer**
-- Outbound policy migrates here from `infrastructure`
+- Outbound/Inbound policy migrates here from `infrastructure`/`presentation`
 - In very large systems, a dedicated top-level `policy` layer may be extracted from here (rare)
 
 [📚 Back to Table of Contents](#-table-of-contents)
@@ -284,96 +283,120 @@ application/
 
 ### Purpose
 
-Infrastructure contains **mechanisms, not policy**.
+Contains **technical implementations** that interact with the external world.
 
 It:
-- Implements Application ports
-- Handles IO (databases, APIs, FS, LLM SDKs)
-- Hosts entry points initially
-- Wires dependencies
 
-The Infrastructure answers:
+- Implements application ports (adapters)
+- Handles communication with external tools and services
+- Loads configuration
 
-> **“How is this executed?”**
+It manages:
+
+- File system access
+- Database repositories
+- External API / SDK clients
+- LLM providers
+- Serialization / Deserialization
+- Framework or vendor-specific code
+
+It answers:
+
+> **“How does the system interact with the external world?”**
 
 ### Dependencies
 
-**May import**
+**May Import**
+
 - Application
 - Domain
 - External libraries and frameworks
 
-**Must NOT import**
+**Must NOT Import**
+
 - Presentation
 
-### Initial recommended structure
+### Typical Structure
+
+The initial structure could look like:
 
 ```
 infrastructure/
-├── inbound/
-│   ├── api/
-│   ├── cli/
-│   └── batch/
-├── outbound/
+├── adapters/  # Technical adapters
 │   ├── persistence/
+│   │   └── graph_repository.py
 │   ├── llm/
-│   └── filesystem/
-└── wiring/
+│   │   └── openai_client.py
+|   ...
+│   └── <technical_concern>/  # e.g. external_api, telemetry, messaging
+│       └── <adapter>.py  # e.g. logging
+├── config/  # Configuration management
+│   └── env.py
+└── serialization/  # Data serialization/deserialization
+    └── json.py
 ```
 
-### Best practices
-
-- Adapters must be thin
-- No business or decision logic
-- Translate infra data into domain/application models
-- Centralize dependency wiring
-
-### Inbound vs Outbound
-
-### Inbound
-
-- Entry into the system
-- API, CLI, batch jobs, consumers
-- Initially thin adapters
-- Promoted when policy appears
-
-### Outbound
-
-- External dependencies
-- Databases, APIs, LLMs, queues
-- Strategy logic moves to Application
-- Infrastructure remains mechanical
-
-Separating inbound/outbound **from the start**:
-- Makes direction explicit
-- Prevents erosion
-- Enables clean promotion later
-
-### Adapters Namespace (Optional, Mature Systems)
-
-#### Purpose
-
-`adapters/` is introduced when Infrastructure becomes mixed.
-
-It separates:
-- Boundary-crossing code (adapters)
-- Plumbing (wiring, config, telemetry)
-
-#### Mature structure example
+As the system grows, the structure may evolve to:
 
 ```
 infrastructure/
 ├── adapters/
-│   └── outbound/
-│       ├── persistence/
-│       ├── llm/
-│       └── messaging/
-├── wiring/
+│   ├── persistence/  # Databases
+│   │   ├── mdb_repository.py
+│   │   ├── document_store.py
+|   |   ...
+│   │   ├── <persistence_adapter>.py  # e.g. neo4j_repository
+|   |   ...
+|   |   └── exceptions.py
+│   ├── filesystem/  # File I/O
+│   │   ├── json_loader.py
+|   |   ...
+│   │   ├── <filesystem_adapter>.py  # e.g. parquet_loader
+|   |   ...
+|   |   └── exceptions.py
+│   ├── llm/  # LLM Providers
+│   │   ├── openai_client.py
+│   │   ├── local_llm_client.py
+|   |   ...
+│   │   ├── <llm_adapter>.py  # e.g. anthropic_client
+|   |   ...
+|   |   └── exceptions.py
+|   ...
+│   └── <technical_concern>/  # e.g. external_api, telemetry, messaging
+│       ├── <adapter>.py  # e.g. logging
+|       ...
+|       └── exceptions.py
 ├── config/
-└── telemetry/
+│   ├── env.py
+│   ...
+│   ├── <config_module>.py  # e.g. defaults
+│   ...
+|   └── exceptions.py
+└── serialization/
+    ├── json.py
+    ...
+    ├── <serializer>.py  # e.g. parquet
+    ...
+    └── exceptions.py
 ```
 
-It is **normal and desirable** for `adapters/` to contain **only outbound adapters**.
+### Best Practices
+
+- No business or decision logic
+- Contains all technical details and integrations
+- Adapters must be thin, replaceable and implementation-focused
+- Implements application-defined ports
+- Translates infra data into domain/application models
+- Prefer role-based names for adapters (`graph_repository.py`) (vendor/framework names are acceptable here)
+- Outbound strategy logic moves to `application`
+- Cross-cutting concerns (config, logging, serialization) live here
+- Infrastructure exceptions represent technical failures
+
+### Evolution
+
+- New adapters are added
+- Old adapters may be replaced
+- General structure remains stable
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -386,71 +409,102 @@ It is **normal and desirable** for `adapters/` to contain **only outbound adapte
 
 ### Purpose
 
-Presentation contains **inbound policy**.
+Contains **inbound interaction** with the system.
 
-It exists **only when inbound logic becomes decision-heavy**.
+It:
 
-It handles:
-- Authentication / authorization mapping
-- Tenant and plan enforcement
-- API versioning
-- Request orchestration
-- Response shaping
+- Accepts input from external actors
+- Invokes application use cases
+- Translates results for external consumption
 
-The Presentation answers:
+It manages:
 
-> **“How is system behavior exposed and controlled?”**
+- CLI commands
+- API handlers / routes
+- Request parsing
+- Response formatting
+- Error translation
+- Input schemas / validation (without business logic)
+
+It answers:
+
+> **“How do external actors interact with the system?”**
 
 ### Dependencies
 
-**May import**
+**May Import**
+
 - Application
-- Domain (value objects, enums, exceptions)
+- Domain
+- External libraries and frameworks
 
-**Must NOT import**
-- Infrastructure
+**Must NOT Import**
 
-### Structure
+- Infrastructure (except for technical concerns like logging)
+
+### Typical Structure
+
+The initial structure could look like:
 
 ```
 presentation/
-├── api/
 ├── cli/
-└── batch/
+│   └── main.py
+...
+├── <inbound_channel>/  # e.g. api
+...
+├── mappers.py  # Translation to internal app models
+├── logging.py  # User-facing logging
+└── errors.py  # User-facing error mapping
 ```
 
-### Promotion rule
+As the system grows, the structure may evolve to:
 
-Inbound code moves **directly** from Infrastructure → Presentation
-(it does *not* pass through Application).
+```
+presentation/
+├── cli/  # Command Line Interface
+│   ├── app.py
+│   ├── logging.py
+│   ├── errors.py
+│   ├── commands/
+│   ├── handlers/
+│   ...
+│   └── <cli_package>/  # e.g. output
+├── api/  # HTTP API
+│   ├── app.py
+│   ├── dependencies.py
+│   ├── errors.py
+│   ├── routers/
+│   ├── handlers/
+│   ...
+│   └── <api_package>/  # e.g. schemas, middleware
+...
+├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
+...
+├── mappers/
+│   ├── graph.py
+│   ...
+│   └── <mapper>.py  # e.g. documents
+├── logging.py
+└── errors.py
+```
 
-[📚 Back to Table of Contents](#-table-of-contents)
+### Best Practices
 
-## 📌 Architecture Summary
+- No business or decision logic
+- Handlers must be thin and procedural
+- Translates input into application commands / DTOs
+- Translates application results and errors into channel-specific responses
+- Prefer intent-based names (`run_engine_handler.py`)
+- Validation is syntactic and structural, not semantic
+- Error mapping belongs here, exception definitions belong in `application` and `domain`
+- Logging is request-scoped and boundary-focused
+- Strategy and orchestration logic moves to `application`
 
-### Import Rules
+### Evolution
 
-| Layer          | May Import                | Must NOT Import              |
-| -------------- | ------------------------- | ---------------------------- |
-| Domain         | stdlib                    | anything else                |
-| Application    | Domain                    | Infrastructure, Presentation |
-| Presentation   | Application, Domain       | Infrastructure               |
-| Infrastructure | Application, Domain, libs | Presentation                 |
-
-### Evolution Summary
-
-| Concern         | Promotion Path                |
-| --------------- | ----------------------------- |
-| Inbound policy  | Infrastructure → Presentation |
-| Outbound policy | Infrastructure → Application  |
-| Domain logic    | Never promoted                |
-| New layers      | Only when policy demands it   |
-
-### One-Sentence Mental Model
-
-> **Domain defines truth.
-Application defines behavior.
-Infrastructure executes.
-Presentation exposes.**
+- New inbound channels appear
+- Old channels may be deprecated
+- General structure remains stable
 
 [📚 Back to Table of Contents](#-table-of-contents)
