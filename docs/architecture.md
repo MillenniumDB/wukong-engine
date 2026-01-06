@@ -65,8 +65,9 @@ application/
 infrastructure/
 presentation/
 ```
-
 As the system grows, new layers may appear, but **only as justified** by emerging policy (very rare).
+
+During program execution, all relevant components from these layers are wired through a **composition root** entry point (e.g. `__main__.py`).
 
 ### Dependency Rules
 
@@ -86,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure` (except for technical concerns like logging)
+- `presentation` must not import `infrastructure`
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
@@ -125,7 +126,7 @@ It answers:
 - Application
 - Infrastructure
 - Presentation
-- External frameworks
+- External libraries and frameworks
 
 ### Typical Structure
 
@@ -166,7 +167,7 @@ domain/
 - Domain services exist only for cross-entity rules
 - Prefer explicit types over primitives (value objects instead of native **Python** types)
 - Domain exceptions express business failures
-- Avoid frameworks, libraries, and side effects
+- Avoid frameworks, external libraries, and side effects
 - No orchestration, workflows, or use-case sequencing
 - Stable over time; changes reflect business change only
 
@@ -194,7 +195,8 @@ It:
 - Orchestrates domain logic
 - Defines system behavior (use cases)
 - Encodes decision logic and strategies
-- Defines **ports (interfaces)** for infrastructure
+- Defines **ports** for infrastructure
+- Defines **DTOs** for outer layers
 
 It answers:
 
@@ -210,7 +212,7 @@ It answers:
 
 - Infrastructure
 - Presentation
-- Frameworks or concrete adapters
+- External libraries and frameworks
 
 ### Typical Structure
 
@@ -240,12 +242,16 @@ application/
 │   │   └── export_graph.py
 │   ├── services/  # Supporting services
 │   │   └── deduplication.py
-│   ├── ports/  # Interfaces for infrastructure
+│   ├── ports/  # External interfaces
 │   │   ├── storage.py
 │   │   └── export.py
 │   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
+│   ├── dto/  # Data transfer objects
+│   │   └── graph_spec.py
+│   ├── mappers/  # Complex App <-> Domain conversions
+│   │   └── create_graph.py
 │   └── exceptions.py
 ...
 ├── <capability>/  # e.g. document_processing, extraction
@@ -257,14 +263,14 @@ application/
 ### Best Practices
 
 - Orchestrates use cases and application workflows
-- Defines ports (interfaces) for required external behavior (`Protocol` or **ABCs**)
+- Defines ports (interfaces using `Protocol`) for required external behavior (`infrastructure`)
+- Defines DTOs (static data classes) for data exchange with outer layers (`presentation`/`infrastructure`)
 - Coordinates multiple domain operations in a single intent
-- Contains no persistence, transport, or framework code
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
-- Policy and strategy selection lives here
-- Application DTOs express use-case intent
+- Use cases depend on ports and consume/produce DTOs
+- If needed, use cases can convert DTOs to/from domain models, using `domain` constructors/factories or `application` mappers
 - Application exceptions express workflow failures
-- Thin, readable, and highly testable
+- Policy and strategy selection lives here
 
 ### Evolution
 
@@ -322,7 +328,7 @@ The initial structure could look like:
 
 ```
 infrastructure/
-├── adapters/  # Technical adapters
+├── adapters/  # Outbound adapters
 │   ├── persistence/
 │   │   └── graph_repository.py
 │   ├── llm/
@@ -341,12 +347,14 @@ As the system grows, the structure may evolve to:
 ```
 infrastructure/
 ├── adapters/
-│   ├── persistence/  # Databases
+│   ├── persistence/  # Database Operations
 │   │   ├── mdb_repository.py
 │   │   ├── document_store.py
 |   |   ...
 │   │   ├── <persistence_adapter>.py  # e.g. neo4j_repository
 |   |   ...
+|   |   ├── mappers/  # Shared Domain/App <-> Framework conversions (for persistence)
+|   |   |   └── graph_mapper.py
 |   |   └── exceptions.py
 │   ├── filesystem/  # File I/O
 │   │   ├── json_loader.py
@@ -384,10 +392,10 @@ infrastructure/
 
 - No business or decision logic
 - Contains all technical details and integrations
+- Implements application-defined ports using adapters
 - Adapters must be thin, replaceable and implementation-focused
-- Implements application-defined ports
-- Translates infra data into domain/application models
-- Prefer role-based names for adapters (`graph_repository.py`) (vendor/framework names are acceptable here)
+- Prefer role-based names for adapters (`graph_repository.py`)
+- Vendor/framework based names are acceptable for adapters
 - Outbound strategy logic moves to `application`
 - Cross-cutting concerns (config, logging, serialization) live here
 - Infrastructure exceptions represent technical failures
@@ -405,7 +413,6 @@ infrastructure/
 ### Recommended Names
 
 - `presentation`
-- `interfaces`
 
 ### Purpose
 
@@ -415,7 +422,7 @@ It:
 
 - Accepts input from external actors
 - Invokes application use cases
-- Translates results for external consumption
+- Translates application results for external consumption
 
 It manages:
 
@@ -424,7 +431,7 @@ It manages:
 - Request parsing
 - Response formatting
 - Error translation
-- Input schemas / validation (without business logic)
+- Input schemas / structural validation
 
 It answers:
 
@@ -436,11 +443,12 @@ It answers:
 
 - Application
 - Domain
+- Infrastructure (only for cross-cutting and non-changing concerns like logging)
 - External libraries and frameworks
 
 **Must NOT Import**
 
-- Infrastructure (except for technical concerns like logging)
+- Infrastructure (replaceable technical implementations)
 
 ### Typical Structure
 
@@ -449,13 +457,13 @@ The initial structure could look like:
 ```
 presentation/
 ├── cli/
-│   └── main.py
+│   └── app.py
 ...
 ├── <inbound_channel>/  # e.g. api
 ...
-├── mappers.py  # Translation to internal app models
-├── logging.py  # User-facing logging
-└── errors.py  # User-facing error mapping
+└── shared/  # Shared utilities across channels
+    ├── logging.py  # User-facing logging
+    └── errors.py  # User-facing error mapping
 ```
 
 As the system grows, the structure may evolve to:
@@ -466,36 +474,40 @@ presentation/
 │   ├── app.py
 │   ├── logging.py
 │   ├── errors.py
-│   ├── commands/
-│   ├── handlers/
+│   ├── commands.py  # Maps CLI commands to handlers (if too large group channel into sub-dirs)
+│   ├── handlers/  # Handlers for CLI commands
+│   │   └── create_graph.py
+│   ├── mappers/  # Shared Domain/App <-> Framework conversions (for CLI)
 │   ...
 │   └── <cli_package>/  # e.g. output
 ├── api/  # HTTP API
 │   ├── app.py
-│   ├── dependencies.py
 │   ├── errors.py
-│   ├── routers/
-│   ├── handlers/
+│   ├── router.py  # Maps routes to handlers (if too large group channel into sub-dirs)
+│   ├── handlers/  # Handlers for API endpoints
+│   │   └── create_graph.py
+│   ├── mappers/  # Shared Domain/App <-> Framework conversions (for API)
 │   ...
-│   └── <api_package>/  # e.g. schemas, middleware
+│   └── <api_package>/  # e.g. middleware
 ...
 ├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
 ...
-├── mappers/
-│   ├── graph.py
-│   ...
-│   └── <mapper>.py  # e.g. documents
-├── logging.py
-└── errors.py
+└── shared/
+    ├── mappers/  # Shared Domain/App <-> Presentation conversions
+    │   └── graph.py
+    ├── schemas/  # Shared validation schemas
+    │   └── graph_model.py
+    ├── logging.py
+    └── errors.py
 ```
 
 ### Best Practices
 
 - No business or decision logic
-- Handlers must be thin and procedural
-- Translates input into application commands / DTOs
-- Translates application results and errors into channel-specific responses
-- Prefer intent-based names (`run_engine_handler.py`)
+- Translates external input into application commands / DTOs using handlers (calls use cases directly)
+- Translates application results, DTOs and errors into channel-specific responses using handlers (receives them directly)
+- If needed, implements application-defined ports using adapters (e.g. user schema validation from filesystem)
+- Handlers must be thin and procedural, prefer intent-based names (`create_graph.py`)
 - Validation is syntactic and structural, not semantic
 - Error mapping belongs here, exception definitions belong in `application` and `domain`
 - Logging is request-scoped and boundary-focused
