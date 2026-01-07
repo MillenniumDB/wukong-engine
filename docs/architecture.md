@@ -10,10 +10,11 @@ The architecture follows **Clean Architecture Principles**, adapted pragmaticall
 ## 📚 Table of Contents
 - [🧭 General Overview](#-general-overview)
   - [Core Principles](#core-principles)
-  - [Initial Architecture](#initial-architecture)
+  - [Main Architecture](#main-architecture)
   - [Dependency Rules](#dependency-rules)
     - [Allowed Dependencies](#allowed-dependencies)
     - [Forbidden Dependencies](#forbidden-dependencies)
+  - [Program Execution](#program-execution)
 - [🧠 Domain Layer](#-domain-layer)
   - [Recommended Names](#recommended-names)
   - [Purpose](#purpose)
@@ -55,7 +56,7 @@ The architecture is based on the following core principles:
 4. **Clarity beats symmetry**
 5. **Evolution is reactive, not speculative**
 
-### Initial Architecture
+### Main Architecture
 
 When the project starts, the initial architectural layers should be:
 
@@ -65,9 +66,8 @@ application/
 infrastructure/
 presentation/
 ```
-As the system grows, new layers may appear, but **only as justified** by emerging policy (very rare).
 
-During program execution, all relevant components from these layers are wired through a **composition root** entry point (e.g. `__main__.py`).
+As the system grows, new layers may appear, but **only as justified** by emerging policy (very rare).
 
 ### Dependency Rules
 
@@ -91,6 +91,12 @@ Here, the right arrow (`→`) means "may depend on".
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
+
+### Program Execution
+
+When executing the program, the entry point lives in one of the **inbound channels** from the `presentation` layer (e.g. `presentation/api/main.py`), and should be called directly or through a custom console script.
+
+All relevant components from all layers are then instantiated and wired together inside the `bootstrap` package, which lives alongside the other layers at the top level. This package must contain modules that have access to all layers and act as **composition roots** for different execution contexts (e.g. **CLI, API**). These modules expose set-up functions that are imported in the `presentation` entry points to instantiate their respective compositions.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -137,26 +143,27 @@ domain/
 ├── model.py  # Core domain model
 ├── enums.py  # Domain enums
 ├── rules.py  # Business rules
-└── exceptions.py  # Domain-specific exceptions
+└── exceptions.py  # Domain exceptions
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 domain/
-├── graph/  # Domain model for graph concepts
+├── graph/  # Domain definitions for a graph
 │   ├── graph.py
 │   ├── entity.py
 │   ├── relationship.py
-│   ├── enums.py
-│   ├── rules.py
-│   └── exceptions.py
+│   ├── enums.py  # Graph-related enums
+│   ├── rules.py  # Graph-related business rules
+│   └── exceptions.py  # Graph-related exceptions
 ...
-├── <concept>/  # e.g. schema, document
+├── <concept>/  # e.g. schema
 ...
-├── enums.py
-├── rules.py
-└── exceptions.py
+└── shared/  # Shared across domain concepts
+    ├── enums.py
+    ├── rules.py
+    └── exceptions.py
 ```
 
 ### Best Practices
@@ -220,61 +227,63 @@ The initial structure could look like:
 
 ```
 application/
-├── graph/  # Application logic for graph-related use cases
-│   ├── use_cases/
-│   |   └── build_graph.py
-│   └── ports/
-│       └── storage.py
-...
-├── <capability>/  # e.g. document_processing, extraction
-...
-├── workflow.py  # Orchestrates application workflows
-└── exceptions.py  # Application-specific exceptions
+└── graph/  # Application logic for graph-related use cases
+    ├── use_cases/  # Specific use cases
+    |   └── build_graph.py
+    └── ports/  # External interfaces
+        └── storage.py
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 application/
-├── graph/
-│   ├── use_cases/  # Use cases
-│   │   ├── build_graph.py
-│   │   └── export_graph.py
+├── graph/  # Application logic for graph-related use cases
+│   ├── use_cases/  # Specific use cases
+│   │   ├── build_graph/  # Complex use case
+│   │   |   ├── use_case.py
+│   │   |   ├── validators.py
+│   │   |   └── steps.py
+│   │   └── export_graph.py  # Simple use case
 │   ├── services/  # Supporting services
 │   │   └── deduplication.py
 │   ├── ports/  # External interfaces
 │   │   ├── storage.py
 │   │   └── export.py
-│   ├── policies/  # Decision logic
+│   ├── policies/  # Shared decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── dto/  # Data transfer objects
+│   ├── dto/  # Shared data transfer objects
 │   │   └── graph_spec.py
-│   ├── mappers/  # Complex App <-> Domain conversions
+│   ├── mappers/  # Shared App <-> Domain conversions
 │   │   └── create_graph.py
-│   └── exceptions.py
+│   └── exceptions.py  # Graph-related exceptions
 ...
-├── <capability>/  # e.g. document_processing, extraction
+├── <sub_domain>/  # e.g. extraction
 ...
-├── workflow.py
-└── exceptions.py
+├── workflows/  # Workflows that orchestrate multiple use cases
+│   └── generate_graph.py  # Build and export a graph
+└── shared/  # Shared across sub-domains
+    ├── ports/
+    │   └── file_loader.py
+    └── exceptions.py
 ```
 
 ### Best Practices
 
 - Orchestrates use cases and application workflows
-- Defines ports (interfaces using `Protocol`) for required external behavior (`infrastructure`)
-- Defines DTOs (static data classes) for data exchange with outer layers (`presentation`/`infrastructure`)
+- Defines **ports** (interfaces using `Protocol`) for required external behavior (`infrastructure`)
+- Defines **DTOs** (static data classes) for data exchange with outer layers (`presentation`/`infrastructure`)
 - Coordinates multiple domain operations in a single intent
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
-- Use cases depend on ports and consume/produce DTOs
+- Use cases depend on ports and may consume/produce DTOs
 - If needed, use cases can convert DTOs to/from domain models, using `domain` constructors/factories or `application` mappers
 - Application exceptions express workflow failures
 - Policy and strategy selection lives here
 
 ### Evolution
 
-- This is the **main growth layer**
+- This is the **main growth layer**, where new business capabilities appear
 - Outbound/Inbound policy migrates here from `infrastructure`/`presentation`
 - In very large systems, a dedicated top-level `policy` layer may be extracted from here (rare)
 
@@ -329,31 +338,26 @@ The initial structure could look like:
 ```
 infrastructure/
 ├── adapters/  # Outbound adapters
-│   ├── persistence/
+│   ├── persistence/  # Databases/Stores
 │   │   └── graph_repository.py
-│   ├── llm/
-│   │   └── openai_client.py
-|   ...
-│   └── <technical_concern>/  # e.g. external_api, telemetry, messaging
-│       └── <adapter>.py  # e.g. logging
-├── config/  # Configuration management
-│   └── env.py
-└── serialization/  # Data serialization/deserialization
-    └── json.py
+│   └── llm/  # LLM Providers
+│       └── openai_client.py
+└── config/  # Configuration management
+    └── env.py
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 infrastructure/
-├── adapters/
-│   ├── persistence/  # Database Operations
+├── adapters/  # Outbound adapters
+│   ├── persistence/  # Databases/Stores
 │   │   ├── mdb_repository.py
 │   │   ├── document_store.py
 |   |   ...
 │   │   ├── <persistence_adapter>.py  # e.g. neo4j_repository
 |   |   ...
-|   |   ├── mappers/  # Shared Domain/App <-> Framework conversions (for persistence)
+|   |   ├── mappers/  # Domain/App <-> Framework conversions
 |   |   |   └── graph_mapper.py
 |   |   └── exceptions.py
 │   ├── filesystem/  # File I/O
@@ -364,28 +368,21 @@ infrastructure/
 |   |   └── exceptions.py
 │   ├── llm/  # LLM Providers
 │   │   ├── openai_client.py
-│   │   ├── local_llm_client.py
+│   │   ├── local_client.py
 |   |   ...
 │   │   ├── <llm_adapter>.py  # e.g. anthropic_client
 |   |   ...
 |   |   └── exceptions.py
 |   ...
-│   └── <technical_concern>/  # e.g. external_api, telemetry, messaging
-│       ├── <adapter>.py  # e.g. logging
-|       ...
-|       └── exceptions.py
-├── config/
+│   └── <application_concern>/  # e.g. api_clients, messaging
+├── config/  # Configuration management
 │   ├── env.py
 │   ...
 │   ├── <config_module>.py  # e.g. defaults
 │   ...
 |   └── exceptions.py
-└── serialization/
-    ├── json.py
-    ...
-    ├── <serializer>.py  # e.g. parquet
-    ...
-    └── exceptions.py
+...
+└── <infrastructure_concern>/  # e.g. logging, serialization, security, telemetry
 ```
 
 ### Best Practices
@@ -443,12 +440,12 @@ It answers:
 
 - Application
 - Domain
-- Infrastructure (only for cross-cutting and non-changing concerns like logging)
 - External libraries and frameworks
+- Composition root modules from `bootstrap`
 
 **Must NOT Import**
 
-- Infrastructure (replaceable technical implementations)
+- Infrastructure
 
 ### Typical Structure
 
@@ -456,61 +453,57 @@ The initial structure could look like:
 
 ```
 presentation/
-├── cli/
-│   └── app.py
-...
-├── <inbound_channel>/  # e.g. api
-...
-└── shared/  # Shared utilities across channels
-    ├── logging.py  # User-facing logging
-    └── errors.py  # User-facing error mapping
+└── api/  # HTTP API
+    ├── main.py  # Entry point
+    ├── router.py  # Maps endpoints to handlers
+    └── handlers.py  # Handlers for API endpoints
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 presentation/
-├── cli/  # Command Line Interface
-│   ├── app.py
-│   ├── logging.py
-│   ├── errors.py
-│   ├── commands.py  # Maps CLI commands to handlers (if too large group channel into sub-dirs)
-│   ├── handlers/  # Handlers for CLI commands
-│   │   └── create_graph.py
-│   ├── mappers/  # Shared Domain/App <-> Framework conversions (for CLI)
-│   ...
-│   └── <cli_package>/  # e.g. output
 ├── api/  # HTTP API
-│   ├── app.py
-│   ├── errors.py
-│   ├── router.py  # Maps routes to handlers (if too large group channel into sub-dirs)
-│   ├── handlers/  # Handlers for API endpoints
-│   │   └── create_graph.py
-│   ├── mappers/  # Shared Domain/App <-> Framework conversions (for API)
+│   ├── main.py
+│   ├── graph/  # Graph-related component
+│   │   ├── router.py
+│   │   ├── handlers.py
+│   │   ├── errors.py  # User-facing error mapping
+│   │   └── mappers/  # Domain/App <-> Framework conversions
+│   │       └── graph.py
 │   ...
-│   └── <api_package>/  # e.g. middleware
+│   ├── <api_component>/  # e.g. documents
+│   ...
+│   └── shared/  # Shared across API components
+│       └── errors.py
+├── cli/  # Command Line Interface
+│   ├── main.py
+│   ├── errors.py
+│   ├── commands.py  # Maps CLI commands to handlers
+│   ├── handlers.py  # Handlers for CLI commands
+│   ...
+│   └── <cli_component>/  # e.g. output
 ...
 ├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
 ...
-└── shared/
-    ├── mappers/  # Shared Domain/App <-> Presentation conversions
-    │   └── graph.py
+└── shared/  # Shared across inbound channels
     ├── schemas/  # Shared validation schemas
-    │   └── graph_model.py
-    ├── logging.py
-    └── errors.py
+    │   ├── graph.py
+    │   ├── entity.py
+    │   └── relationship.py
+    └── errors.py  # Shared user-facing error mapping
 ```
 
 ### Best Practices
 
 - No business or decision logic
+- Hosts entry points for inbound channels, which import composition roots from `bootstrap`
 - Translates external input into application commands / DTOs using handlers (calls use cases directly)
 - Translates application results, DTOs and errors into channel-specific responses using handlers (receives them directly)
 - If needed, implements application-defined ports using adapters (e.g. user schema validation from filesystem)
-- Handlers must be thin and procedural, prefer intent-based names (`create_graph.py`)
+- Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
 - Error mapping belongs here, exception definitions belong in `application` and `domain`
-- Logging is request-scoped and boundary-focused
 - Strategy and orchestration logic moves to `application`
 
 ### Evolution
