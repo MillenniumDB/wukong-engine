@@ -12,7 +12,6 @@ import logging
 from pathlib import Path
 
 from nltk import download as nltk_download
-
 from wukong_engine.config.config import Config
 from wukong_engine.documents.text_processing import (
     generate_chunks,

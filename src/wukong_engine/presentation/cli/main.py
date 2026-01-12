@@ -1,13 +1,12 @@
-"""The main entry point for executing the WUKONG engine.
+"""The main entry point for executing the WUKONG CLI.
 
 This module is executed as a script and handles:
     - Parsing command-line arguments
-    - Initializing the logging configuration
-    - Validating the input data directory
+    - Initializing the engine
     - Running the engine pipeline
 
 Example:
-    python -m wukong_engine data/example --config config/default.toml
+    python -m wukong_engine/presentation/cli/main.py data/example --config config/default.toml
 """
 
 import logging
@@ -15,18 +14,18 @@ import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
-from .core.pipeline import execute_pipeline
-from .utils.logging_utils import setup_logging
+# from wukong_engine.app.workflows.build_graph import execute_pipeline
+# from wukong_engine.bootstrap.cli import create_cli_app
 
 # Logging
 logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    """Initialize the engine and execute the main pipeline."""
+    """Initialize the WUKONG CLI."""
     # Define command line arguments
     parser = ArgumentParser(
-        prog='wukong_engine',
+        prog='wukong',
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
     parser.add_argument(
@@ -42,24 +41,25 @@ def main() -> None:
         metavar='CONFIG_FILE',
     )
 
+    # TODO: Verbose flag for operators
+
     # Parse command line arguments
     args = parser.parse_args()
 
-    # Set up global logging
-    setup_logging(level=logging.INFO)
-    logger.info('Starting WUKONG Engine...')
-
     # Execute the pipeline
+    print('Starting WUKONG Engine...')
     try:
-        execute_pipeline(args.data_dir, args.config)
+        # execute_pipeline(args.data_dir, args.config)
+        print('PIPELINE')
     except (FileNotFoundError, ValueError, TypeError) as error:
-        logger.critical(f'{str(error).removesuffix(".")}.')
+        print(f'{str(error).removesuffix(".")}.', file=sys.stderr)
         sys.exit(1)
     except Exception:
-        logger.exception('An unexpected error occurred during pipeline execution.')
+        print('An unexpected error occurred.', file=sys.stderr)
+        logger.exception('Unhandled exception')
         sys.exit(1)
 
 
-# Execute the WUKONG engine
+# Execute the WUKONG engine CLI
 if __name__ == '__main__':
     main()

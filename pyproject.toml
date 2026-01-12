@@ -1,5 +1,4 @@
 ### Project ###
-
 [project]
 name = "wukong-engine"
 version = "0.2.0"
@@ -22,8 +21,11 @@ dependencies = [
 [project.urls]
 repository = "https://github.com/MillenniumDB/wukong-engine"
 
-### Packaging ###
+### Scripts ###
+[project.scripts]
+wukong = "wukong_engine.presentation.cli.main:main"
 
+### Packaging ###
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
@@ -36,7 +38,6 @@ where = ["src"]
 include = ["wukong_engine"]
 
 ### Development ###
-
 [tool.ruff]
 line-length = 120
 indent-width = 4
@@ -56,6 +57,7 @@ ignore = [
     "TRY003", # Allow long custom exception messages
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
+    "T201",   # Allow print statements (intended for CLI output)
 ]
 unfixable = ["F401"] # Do not auto-fix unused imports
 

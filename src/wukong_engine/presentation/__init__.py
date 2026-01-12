@@ -1,4 +1,4 @@
-"""The interfaces package.
+"""The presentation package.
 
-This package contains the application interfaces.
+This package contains the presentation inbound channels.
 """
