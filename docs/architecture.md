@@ -87,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure`
+- `presentation` must not import `infrastructure` (except for technical concerns like logging)
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
@@ -441,11 +441,12 @@ It answers:
 - Application
 - Domain
 - External libraries and frameworks
+- Infrastructure (only for user-dependent technical concerns like logging)
 - Composition root modules from `bootstrap`
 
 **Must NOT Import**
 
-- Infrastructure
+- Infrastructure (in general)
 
 ### Typical Structure
 

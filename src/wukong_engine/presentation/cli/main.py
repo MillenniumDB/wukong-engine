@@ -40,8 +40,12 @@ def main() -> None:
         help='Path to the engine configuration file (e.g. config/default.toml)',
         metavar='CONFIG_FILE',
     )
-
-    # TODO: Verbose flag for operators
+    parser.add_argument(
+        '-v',
+        '--verbose',
+        action='count',
+        default=0,
+    )
 
     # Parse command line arguments
     args = parser.parse_args()
