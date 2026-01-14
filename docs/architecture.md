@@ -87,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure` (except for technical concerns like logging)
+- `presentation` must not import `infrastructure` (except for user-dependent technical concerns like logging)
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
@@ -441,8 +441,8 @@ It answers:
 - Application
 - Domain
 - External libraries and frameworks
-- Infrastructure (only for user-dependent technical concerns like logging)
 - Composition root modules from `bootstrap`
+- Infrastructure (only for user-dependent technical concerns like logging)
 
 **Must NOT Import**
 
@@ -501,9 +501,9 @@ presentation/
 - Hosts entry points for inbound channels, which import composition roots from `bootstrap`
 - Translates external input into application commands / DTOs using handlers (calls use cases directly)
 - Translates application results, DTOs and errors into channel-specific responses using handlers (receives them directly)
-- If needed, implements application-defined ports using adapters (e.g. user schema validation from filesystem)
 - Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
+- Uses printing for user-facing output in CLI, logging for technical concerns
 - Error mapping belongs here, exception definitions belong in `application` and `domain`
 - Strategy and orchestration logic moves to `application`
 

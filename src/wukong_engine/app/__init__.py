@@ -1,4 +1,4 @@
-"""The data extraction package.
+"""The application layer package.
 
-This package handles data extraction from documents and post-processing.
+This package manages the app logic.
 """

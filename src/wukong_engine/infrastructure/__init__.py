@@ -1,4 +1,4 @@
-"""The interfaces package.
+"""The infrastructure package.
 
-This package contains the application interfaces.
+This package contains the technical implementations.
 """
