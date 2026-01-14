@@ -6,13 +6,15 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    python -m wukong_engine/presentation/cli/main.py data/example --config config/default.toml
+    poetry run wukong data/example --config config/default.toml
 """
 
+import argparse
 import logging
 import sys
-from argparse import ArgumentParser
 from pathlib import Path
+
+from wukong_engine.infrastructure.logging import configure_logging
 
 # from wukong_engine.app.workflows.build_graph import execute_pipeline
 # from wukong_engine.bootstrap.cli import create_cli_app
@@ -21,10 +23,25 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
-def main() -> None:
-    """Initialize the WUKONG CLI."""
-    # Define command line arguments
-    parser = ArgumentParser(
+def print_error(message: str) -> None:
+    """Print a formatted error message to stderr.
+
+    Args:
+        message: The error message to print.
+    """
+    message = message.rstrip()
+    if message and message[-1] not in '.!?':
+        message += '.'
+    print(f'Error: {message}', file=sys.stderr)
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command line arguments for the WUKONG CLI.
+
+    Returns:
+        A Namespace object containing the parsed arguments.
+    """
+    parser = argparse.ArgumentParser(
         prog='wukong',
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
@@ -46,9 +63,17 @@ def main() -> None:
         action='count',
         default=0,
     )
+    return parser.parse_args()
 
+
+def main() -> None:
+    """Run the WUKONG CLI."""
     # Parse command line arguments
-    args = parser.parse_args()
+    args = parse_args()
+
+    # Configure logging
+    log_level = logging.WARNING if args.verbose == 0 else logging.INFO if args.verbose == 1 else logging.DEBUG
+    configure_logging(level=log_level)
 
     # Execute the pipeline
     print('Starting WUKONG Engine...')
@@ -56,11 +81,12 @@ def main() -> None:
         # execute_pipeline(args.data_dir, args.config)
         print('PIPELINE')
     except (FileNotFoundError, ValueError, TypeError) as error:
-        print(f'{str(error).removesuffix(".")}.', file=sys.stderr)
+        logger.exception('Failed to process input.')
+        print_error(str(error))
         sys.exit(1)
     except Exception:
-        print('An unexpected error occurred.', file=sys.stderr)
-        logger.exception('Unhandled exception')
+        logger.exception('Unhandled exception.')
+        print('Error: An unexpected error occurred.', file=sys.stderr)
         sys.exit(1)
 
 
