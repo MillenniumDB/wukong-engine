@@ -87,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure` (except for user-dependent technical concerns like logging)
+- `presentation` must not import `infrastructure` (except for user-defined technical concerns like logging)
 
 > **Rule of Thumb**:
 > Outer layers may depend on inner layers — never the reverse.
@@ -160,7 +160,7 @@ domain/
 ...
 ├── <concept>/  # e.g. schema
 ...
-└── shared/  # Shared across domain concepts
+└── shared/  # Shared across all domain concepts
     ├── enums.py
     ├── rules.py
     └── exceptions.py
@@ -170,8 +170,8 @@ domain/
 
 - Contains the core business concepts, rules, and invariants
 - Models express meaning, not persistence or transport concerns
-- Entities and value objects enforce consistency and validity
-- Domain services exist only for cross-entity rules
+- Entities (mutable) and value objects (immutable) enforce consistency and validity
+- Domain services (stateless operations) exist only for cross-entity rules
 - Prefer explicit types over primitives (value objects instead of native **Python** types)
 - Domain exceptions express business failures
 - Avoid frameworks, external libraries, and side effects
@@ -199,11 +199,11 @@ Contains **application-specific policy**.
 
 It:
 
-- Orchestrates domain logic
+- Orchestrates `domain` logic
 - Defines system behavior (use cases)
 - Encodes decision logic and strategies
-- Defines **ports** for infrastructure
-- Defines **DTOs** for outer layers
+- Defines abstract **ports** for `infrastructure`
+- Defines **DTOs** for data exchange with `presentation`
 
 It answers:
 
@@ -250,19 +250,17 @@ application/
 │   ├── ports/  # External interfaces
 │   │   ├── storage.py
 │   │   └── export.py
-│   ├── policies/  # Shared decision logic
+│   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── dto/  # Shared data transfer objects
-│   │   └── graph_spec.py
-│   ├── mappers/  # Shared App <-> Domain conversions
+│   ├── commands/  # Command DTOs
 │   │   └── create_graph.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
 ├── <sub_domain>/  # e.g. extraction
 ...
 ├── workflows/  # Workflows that orchestrate multiple use cases
-│   └── generate_graph.py  # Build and export a graph
+│   └── graph_construction.py  # Build and export a graph
 └── shared/  # Shared across sub-domains
     ├── ports/
     │   └── file_loader.py
@@ -273,7 +271,7 @@ application/
 
 - Orchestrates use cases and application workflows
 - Defines **ports** (interfaces using `Protocol`) for required external behavior (`infrastructure`)
-- Defines **DTOs** (static data classes) for data exchange with outer layers (`presentation`/`infrastructure`)
+- Defines **DTOs** (static data classes) for data exchange with `presentation` (commands, queries, results)
 - Coordinates multiple domain operations in a single intent
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
 - Use cases depend on ports and may consume/produce DTOs
@@ -304,7 +302,7 @@ It:
 
 - Implements application ports (adapters)
 - Handles communication with external tools and services
-- Loads configuration
+- Manages configuration
 
 It manages:
 
@@ -391,10 +389,10 @@ infrastructure/
 - Contains all technical details and integrations
 - Implements application-defined ports using adapters
 - Adapters must be thin, replaceable and implementation-focused
-- Prefer role-based names for adapters (`graph_repository.py`)
-- Vendor/framework based names are acceptable for adapters
-- Outbound strategy logic moves to `application`
+- Prefer role-based names for adapters (`mdb_repository.py`) (vendor/framework based names are acceptable here)
+- May implement validation that enforces syntactic/structural correctness (not semantic)
 - Cross-cutting concerns (config, logging, serialization) live here
+- Outbound strategy logic moves to `application`
 - Infrastructure exceptions represent technical failures
 
 ### Evolution
@@ -439,14 +437,12 @@ It answers:
 **May Import**
 
 - Application
-- Domain
 - External libraries and frameworks
 - Composition root modules from `bootstrap`
-- Infrastructure (only for user-dependent technical concerns like logging)
 
 **Must NOT Import**
 
-- Infrastructure (in general)
+- Infrastructure (except for user-defined technical concerns like logging)
 
 ### Typical Structure
 
@@ -470,7 +466,7 @@ presentation/
 │   │   ├── router.py
 │   │   ├── handlers.py
 │   │   ├── errors.py  # User-facing error mapping
-│   │   └── mappers/  # Domain/App <-> Framework conversions
+│   │   └── mappers/  # App DTOs <-> Framework conversions
 │   │       └── graph.py
 │   ...
 │   ├── <api_component>/  # e.g. documents
@@ -487,8 +483,8 @@ presentation/
 ...
 ├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
 ...
-└── shared/  # Shared across inbound channels
-    ├── schemas/  # Shared validation schemas
+└── shared/  # Shared across all inbound channels
+    ├── schemas/  # Shared input validation schemas
     │   ├── graph.py
     │   ├── entity.py
     │   └── relationship.py
@@ -499,12 +495,12 @@ presentation/
 
 - No business or decision logic
 - Hosts entry points for inbound channels, which import composition roots from `bootstrap`
-- Translates external input into application commands / DTOs using handlers (calls use cases directly)
+- Translates external input into application DTOs using handlers (calls use cases directly)
 - Translates application results, DTOs and errors into channel-specific responses using handlers (receives them directly)
 - Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
 - Uses printing for user-facing output in CLI, logging for technical concerns
-- Error mapping belongs here, exception definitions belong in `application` and `domain`
+- Error mapping/handling belongs here (except for recoverable errors), exception definitions/raising belong in `application`/`domain`
 - Strategy and orchestration logic moves to `application`
 
 ### Evolution

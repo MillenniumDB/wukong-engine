@@ -36,7 +36,7 @@ class DataModel:
 
 
 # TODO: Refactor
-class DataModel(Singleton):
+class DataModelX(Singleton):
     """The data model manager for the WUKONG engine.
 
     Loads and validates the data model, providing easy access to its components.

@@ -3,8 +3,8 @@
 This package contains the main workflows for the engine, such as building the knowledge graph from unstructured documents.
 """
 
-from .build_graph import BuildGraph
+from .graph_construction import GraphConstruction
 
 __all__ = [
-    'BuildGraph',
+    'GraphConstruction',
 ]

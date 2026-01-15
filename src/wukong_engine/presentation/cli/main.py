@@ -79,7 +79,7 @@ def main() -> None:
     # Execute the pipeline
     print('Starting WUKONG...')
     try:
-        app.build_graph.execute(data_dir=args.data_dir, config_path=args.config)
+        app.graph_construction.execute(data_dir=args.data_dir, config_path=args.config)
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')

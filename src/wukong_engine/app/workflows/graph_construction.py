@@ -13,6 +13,8 @@ from pathlib import Path
 
 from nltk import download as nltk_download
 
+from wukong_engine.app.configuration import LoadDataModel
+
 # from wukong_engine.config.config import Config
 """
 from wukong_engine.documents.text_processing import (
@@ -26,7 +28,6 @@ from wukong_engine.documents.text_processing import (
 # from wukong_engine.extraction.relations import extract_relations, process_relations
 # from wukong_engine.graph.export import export_stats, export_to_json, export_to_mdb, export_to_neo4j
 # from wukong_engine.llm.prompting import generate_prompts
-from wukong_engine.app.configuration import LoadDataModel
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -45,7 +46,7 @@ RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
 
 
-class BuildGraph:
+class GraphConstruction:
     """Workflow to build a knowledge graph from unstructured documents."""
 
     def __init__(
@@ -55,7 +56,7 @@ class BuildGraph:
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
-        """Initialize the BuildGraph workflow with its use cases."""
+        """Initialize the graph construction workflow with its use cases."""
         self.load_data_model = load_data_model
         # self.extract_entities = extract_entities
         # self.extract_relationships = extract_relationships
@@ -89,12 +90,13 @@ class BuildGraph:
         prompts_dir = data_dir / PROMPTS_DIR
         results_dir = data_dir / RESULTS_DIR
         exports_dir = data_dir / EXPORTS_DIR
+        data_model_path = data_dir / 'data_model.json'
 
         # TODO: Get configuration
         # config = Config(config_path)
 
-        # TODO: Get data model
-        # data_model = self.load_data_model.execute(data_dir=data_dir)
+        # TODO: Load data model
+        data_model = self.load_data_model.execute(data_model_path)
 
         # TODO: Pipeline configuration
 

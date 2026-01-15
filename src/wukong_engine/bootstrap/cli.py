@@ -1,5 +1,5 @@
 from wukong_engine.app.configuration import LoadDataModel
-from wukong_engine.app.workflows import BuildGraph
+from wukong_engine.app.workflows import GraphConstruction
 
 # from wukong_engine.app.extraction import ExtractEntities, ExtractRelationships
 # from wukong_engine.app.graph import ExportGraph
@@ -25,7 +25,7 @@ class CLIApplication:
         # self.export_graph = ExportGraph(graph_exporter)
 
         # Workflows
-        self.build_graph = BuildGraph(
+        self.graph_construction = GraphConstruction(
             load_data_model=self.load_data_model,
             # export_graph=self.export_graph,
         )
