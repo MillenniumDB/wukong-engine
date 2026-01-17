@@ -14,7 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wukong_engine.bootstrap.cli import CLIApplication
+from wukong_engine.bootstrap.cli import CliApplication
 from wukong_engine.infrastructure.logging import configure_logging
 
 # Logging
@@ -74,7 +74,7 @@ def main() -> None:
     configure_logging(level=log_level)
 
     # Create CLI app
-    app = CLIApplication()
+    app = CliApplication()
 
     # Execute the pipeline
     print('Starting WUKONG...')

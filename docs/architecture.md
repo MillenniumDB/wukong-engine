@@ -230,8 +230,8 @@ application/
 └── graph/  # Application logic for graph-related use cases
     ├── use_cases/  # Specific use cases
     |   └── build_graph.py
-    └── ports/  # External interfaces
-        └── storage.py
+    └── ports/  # External interfaces specific to graphs
+        └── persistence.py  # GraphRepository
 ```
 
 As the system grows, the structure may evolve to:
@@ -240,42 +240,40 @@ As the system grows, the structure may evolve to:
 application/
 ├── graph/  # Application logic for graph-related use cases
 │   ├── use_cases/  # Specific use cases
-│   │   ├── build_graph/  # Complex use case
-│   │   |   ├── use_case.py
-│   │   |   ├── validators.py
-│   │   |   └── steps.py
-│   │   └── export_graph.py  # Simple use case
+│   │   ├── build_graph.py
+│   │   └── export_graph.py
 │   ├── services/  # Supporting services
 │   │   └── deduplication.py
-│   ├── ports/  # External interfaces
-│   │   ├── storage.py
+│   ├── ports/  # External interfaces specific to graphs
+│   │   ├── persistence.py  # GraphRepository
 │   │   └── export.py
 │   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── commands/  # Command DTOs
-│   │   └── create_graph.py
+│   ├── contracts/  # DTOs
+│   │   ├── create_graph.py  # CreateGraphCommand, CreateGraphResult
+│   │   └── update_graph.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
 ├── <sub_domain>/  # e.g. extraction
 ...
 ├── workflows/  # Workflows that orchestrate multiple use cases
 │   └── graph_construction.py  # Build and export a graph
-└── shared/  # Shared across sub-domains
-    ├── ports/
-    │   └── file_loader.py
-    └── exceptions.py
+├── ports/  # General external interfaces
+│   ├── persistence.py  # UserRepository
+│   └── auth.py
+└── exceptions.py  # Application-wide exceptions
 ```
 
 ### Best Practices
 
-- Orchestrates use cases and application workflows
+- Orchestrates use cases and `application` workflows
 - Defines **ports** (interfaces using `Protocol`) for required external behavior (`infrastructure`)
 - Defines **DTOs** (static data classes) for data exchange with `presentation` (commands, queries, results)
-- Coordinates multiple domain operations in a single intent
+- Coordinates multiple `domain` operations in a single intent
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
 - Use cases depend on ports and may consume/produce DTOs
-- If needed, use cases can convert DTOs to/from domain models, using `domain` constructors/factories or `application` mappers
+- If needed, use cases can convert DTOs to/from `domain` models, using `domain` constructors/factories or `application` mappers
 - Application exceptions express workflow failures
 - Policy and strategy selection lives here
 
@@ -300,7 +298,7 @@ Contains **technical implementations** that interact with the external world.
 
 It:
 
-- Implements application ports (adapters)
+- Implements `application` ports (adapters)
 - Handles communication with external tools and services
 - Manages configuration
 
@@ -335,50 +333,38 @@ The initial structure could look like:
 
 ```
 infrastructure/
-├── adapters/  # Outbound adapters
-│   ├── persistence/  # Databases/Stores
-│   │   └── graph_repository.py
-│   └── llm/  # LLM Providers
-│       └── openai_client.py
+├── persistence/  # Databases/Stores
+│   └── graph_repository.py
+├── llm/  # LLM Providers
+│   └── llm_client.py
 └── config/  # Configuration management
-    └── env.py
+    └── settings.py
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 infrastructure/
-├── adapters/  # Outbound adapters
-│   ├── persistence/  # Databases/Stores
-│   │   ├── mdb_repository.py
-│   │   ├── document_store.py
-|   |   ...
-│   │   ├── <persistence_adapter>.py  # e.g. neo4j_repository
-|   |   ...
-|   |   ├── mappers/  # Domain/App <-> Framework conversions
-|   |   |   └── graph_mapper.py
-|   |   └── exceptions.py
-│   ├── filesystem/  # File I/O
-│   │   ├── json_loader.py
-|   |   ...
-│   │   ├── <filesystem_adapter>.py  # e.g. parquet_loader
-|   |   ...
-|   |   └── exceptions.py
-│   ├── llm/  # LLM Providers
-│   │   ├── openai_client.py
-│   │   ├── local_client.py
-|   |   ...
-│   │   ├── <llm_adapter>.py  # e.g. anthropic_client
-|   |   ...
-|   |   └── exceptions.py
-|   ...
-│   └── <application_concern>/  # e.g. api_clients, messaging
-├── config/  # Configuration management
-│   ├── env.py
-│   ...
-│   ├── <config_module>.py  # e.g. defaults
-│   ...
+├── persistence/  # Databases/Stores
+│   ├── mdb/
+│   │   ├── graph_repository.py
+│   │   └── graph_query_executor.py
+│   ├── neo4j/
+│   │   ├── graph_repository.py
+│   │   └── graph_query_executor.py
 |   └── exceptions.py
+├── llm/  # LLM Providers
+│   ├── openai/
+│   │   └── llm_client.py
+│   ├── local/
+│   │   └── llm_client.py
+|   └── exceptions.py
+...
+├── <application_concern>/  # e.g. storage, messaging
+...
+├── config/  # Configuration management
+│   ├── settings.py
+|   └── environments.py
 ...
 └── <infrastructure_concern>/  # e.g. logging, serialization, security, telemetry
 ```
@@ -387,9 +373,9 @@ infrastructure/
 
 - No business or decision logic
 - Contains all technical details and integrations
-- Implements application-defined ports using adapters
+- Implements `application` ports using adapters
 - Adapters must be thin, replaceable and implementation-focused
-- Prefer role-based names for adapters (`mdb_repository.py`) (vendor/framework based names are acceptable here)
+- Prefer role-based names for adapters (`graph_repository.py`)
 - May implement validation that enforces syntactic/structural correctness (not semantic)
 - Cross-cutting concerns (config, logging, serialization) live here
 - Outbound strategy logic moves to `application`
@@ -416,8 +402,8 @@ Contains **inbound interaction** with the system.
 It:
 
 - Accepts input from external actors
-- Invokes application use cases
-- Translates application results for external consumption
+- Invokes `application` use cases
+- Translates `application` results for external consumption
 
 It manages:
 
@@ -465,38 +451,29 @@ presentation/
 │   ├── graph/  # Graph-related component
 │   │   ├── router.py
 │   │   ├── handlers.py
-│   │   ├── errors.py  # User-facing error mapping
-│   │   └── mappers/  # App DTOs <-> Framework conversions
-│   │       └── graph.py
-│   ...
-│   ├── <api_component>/  # e.g. documents
-│   ...
-│   └── shared/  # Shared across API components
-│       └── errors.py
+│   │   └── errors.py
+│   └── errors.py  # General API error mapping
 ├── cli/  # Command Line Interface
 │   ├── main.py
-│   ├── errors.py
 │   ├── commands.py  # Maps CLI commands to handlers
 │   ├── handlers.py  # Handlers for CLI commands
-│   ...
-│   └── <cli_component>/  # e.g. output
+│   └── errors.py
 ...
 ├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
 ...
-└── shared/  # Shared across all inbound channels
-    ├── schemas/  # Shared input validation schemas
-    │   ├── graph.py
-    │   ├── entity.py
-    │   └── relationship.py
-    └── errors.py  # Shared user-facing error mapping
+├── schemas/  # Shared schemas for input/output
+│   ├── graph.py
+│   ├── entity.py
+│   └── relationship.py
+└── errors.py  # Shared user-facing error mapping
 ```
 
 ### Best Practices
 
 - No business or decision logic
 - Hosts entry points for inbound channels, which import composition roots from `bootstrap`
-- Translates external input into application DTOs using handlers (calls use cases directly)
-- Translates application results, DTOs and errors into channel-specific responses using handlers (receives them directly)
+- Translates external input into `application` DTOs using handlers (calls use cases directly)
+- Translates `application` results, DTOs and errors into channel-specific responses using handlers (receives them directly)
 - Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
 - Uses printing for user-facing output in CLI, logging for technical concerns

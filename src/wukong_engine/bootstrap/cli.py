@@ -9,7 +9,7 @@ from wukong_engine.app.workflows import GraphConstruction
 # from wukong_engine.infrastructure.config import config
 
 
-class CLIApplication:
+class CliApplication:
     """Composition root for the CLI.
 
     Owns infrastructure and exposes ready-to-use workflows and use cases.

@@ -44,6 +44,7 @@ METADATA_DIR = Path('./docs/processed/metadata/')
 PROMPTS_DIR = Path('./prompts/')
 RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
+DATA_MODEL_FILE = 'data_model.json'
 
 
 class GraphConstruction:
@@ -57,10 +58,10 @@ class GraphConstruction:
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
-        self.load_data_model = load_data_model
-        # self.extract_entities = extract_entities
-        # self.extract_relationships = extract_relationships
-        # self.export_graph = export_graph
+        self._load_data_model = load_data_model
+        # self._extract_entities = extract_entities
+        # self._extract_relationships = extract_relationships
+        # self._export_graph = export_graph
 
     def execute(self, data_dir: Path, config_path: Path) -> None:
         """Execute the WUKONG engine pipeline.
@@ -90,13 +91,14 @@ class GraphConstruction:
         prompts_dir = data_dir / PROMPTS_DIR
         results_dir = data_dir / RESULTS_DIR
         exports_dir = data_dir / EXPORTS_DIR
-        data_model_path = data_dir / 'data_model.json'
+        data_model_path = data_dir / DATA_MODEL_FILE
 
         # TODO: Get configuration
         # config = Config(config_path)
 
         # TODO: Load data model
-        data_model = self.load_data_model.execute(data_model_path)
+        data_model = self._load_data_model.execute(data_model_path)
+        print(data_model)
 
         # TODO: Pipeline configuration
 
