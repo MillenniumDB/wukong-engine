@@ -140,10 +140,10 @@ The initial structure could look like:
 
 ```
 domain/
-├── model.py  # Core domain model
-├── enums.py  # Domain enums
-├── rules.py  # Business rules
-└── exceptions.py  # Domain exceptions
+├── graph.py  # Domain entity
+├── node.py  # Domain entity
+├── edge.py  # Domain entity
+└── values.py  # e.g. GraphID, NodeID, EdgeID
 ```
 
 As the system grows, the structure may evolve to:
@@ -151,19 +151,20 @@ As the system grows, the structure may evolve to:
 ```
 domain/
 ├── graph/  # Domain definitions for a graph
-│   ├── graph.py
-│   ├── entity.py
-│   ├── relationship.py
-│   ├── enums.py  # Graph-related enums
-│   ├── rules.py  # Graph-related business rules
+│   ├── graph.py  # Domain entity
+│   ├── node.py  # Domain entity
+│   ├── edge.py  # Domain entity
+│   ├── values/  # IDs, types, enums and other immutables
+│   │   ├── graph_id.py
+│   │   ├── node_id.py
+│   │   └── edge_id.py
+│   ├── services/  # Stateless operations
+│   │   └── graph_merge.py
+│   ├── events/  # Facts that happened
+│   │   └── node_added.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
-├── <concept>/  # e.g. schema
-...
-└── shared/  # Shared across all domain concepts
-    ├── enums.py
-    ├── rules.py
-    └── exceptions.py
+└── <concept>/  # e.g. schema
 ```
 
 ### Best Practices
@@ -171,7 +172,7 @@ domain/
 - Contains the core business concepts, rules, and invariants
 - Models express meaning, not persistence or transport concerns
 - Entities (mutable) and value objects (immutable) enforce consistency and validity
-- Domain services (stateless operations) exist only for cross-entity rules
+- Domain services (stateless operations) exist for complex behavior between entities/values
 - Prefer explicit types over primitives (value objects instead of native **Python** types)
 - Domain exceptions express business failures
 - Avoid frameworks, external libraries, and side effects
@@ -250,25 +251,25 @@ application/
 │   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── contracts/  # DTOs
+│   ├── schemas/  # DTOs
 │   │   ├── create_graph.py  # CreateGraphCommand, CreateGraphResult
 │   │   └── update_graph.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
 ├── <sub_domain>/  # e.g. extraction
 ...
-├── workflows/  # Workflows that orchestrate multiple use cases
-│   └── graph_construction.py  # Build and export a graph
 ├── ports/  # General external interfaces
 │   ├── persistence.py  # UserRepository
 │   └── auth.py
+├── workflows/  # Workflows that orchestrate multiple use cases
+│   └── graph_construction.py  # Build and export a graph
 └── exceptions.py  # Application-wide exceptions
 ```
 
 ### Best Practices
 
 - Orchestrates use cases and `application` workflows
-- Defines **ports** (interfaces using `Protocol`) for required external behavior (`infrastructure`)
+- Defines **ports** (abstract interfaces) for required external behavior to be implemented in `infrastructure`
 - Defines **DTOs** (static data classes) for data exchange with `presentation` (commands, queries, results)
 - Coordinates multiple `domain` operations in a single intent
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
@@ -300,7 +301,7 @@ It:
 
 - Implements `application` ports (adapters)
 - Handles communication with external tools and services
-- Manages configuration
+- Manages configuration and cross-cutting concerns
 
 It manages:
 
@@ -360,7 +361,7 @@ infrastructure/
 │   │   └── llm_client.py
 |   └── exceptions.py
 ...
-├── <application_concern>/  # e.g. storage, messaging
+├── <application_concern>/  # e.g. cache, messaging, search
 ...
 ├── config/  # Configuration management
 │   ├── settings.py
@@ -451,6 +452,7 @@ presentation/
 │   ├── graph/  # Graph-related component
 │   │   ├── router.py
 │   │   ├── handlers.py
+│   │   ├── mappers.py  # Maps app DTOs to/from API schemas
 │   │   └── errors.py
 │   └── errors.py  # General API error mapping
 ├── cli/  # Command Line Interface
@@ -472,12 +474,12 @@ presentation/
 
 - No business or decision logic
 - Hosts entry points for inbound channels, which import composition roots from `bootstrap`
-- Translates external input into `application` DTOs using handlers (calls use cases directly)
-- Translates `application` results, DTOs and errors into channel-specific responses using handlers (receives them directly)
+- Translates external input into `application` use cases using handlers (converts input schemas into DTOs)
+- Translates `application` results, DTOs and errors into channel-specific responses using handlers (converts DTOs into output schemas)
 - Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
 - Uses printing for user-facing output in CLI, logging for technical concerns
-- Error mapping/handling belongs here (except for recoverable errors), exception definitions/raising belong in `application`/`domain`
+- Error mapping/handling belongs here (except for recoverable internal errors), exception definitions/raising belong in `application`/`domain`
 - Strategy and orchestration logic moves to `application`
 
 ### Evolution
