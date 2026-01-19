@@ -1,5 +1,6 @@
-from wukong_engine.app.configuration import LoadDataModel
+from wukong_engine.app.blueprints import GetDataModel
 from wukong_engine.app.workflows import GraphConstruction
+from wukong_engine.infrastructure.blueprints.data_model import LocalDataModelProvider
 
 # from wukong_engine.app.extraction import ExtractEntities, ExtractRelationships
 # from wukong_engine.app.graph import ExportGraph
@@ -17,15 +18,10 @@ class CliApplication:
 
     def __init__(self):
         # Infrastructure
-        # schema_repo = FileSystemSchemaRepository()
-        # graph_exporter = FileSystemGraphExporter()
+        data_model_provider = LocalDataModelProvider()
 
         # Use cases
-        self.load_data_model = LoadDataModel()
-        # self.export_graph = ExportGraph(graph_exporter)
+        self.get_data_model = GetDataModel(data_model_provider)
 
         # Workflows
-        self.graph_construction = GraphConstruction(
-            load_data_model=self.load_data_model,
-            # export_graph=self.export_graph,
-        )
+        self.graph_construction = GraphConstruction(get_data_model=self.get_data_model)

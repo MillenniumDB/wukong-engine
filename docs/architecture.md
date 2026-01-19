@@ -174,10 +174,10 @@ domain/
 - Entities (mutable) and value objects (immutable) enforce consistency and validity
 - Domain services (stateless operations) exist for complex behavior between entities/values
 - Prefer explicit types over primitives (value objects instead of native **Python** types)
-- Domain exceptions express business failures
 - Avoid frameworks, external libraries, and side effects
 - No orchestration, workflows, or use-case sequencing
 - Stable over time; changes reflect business change only
+- Domain exceptions express business failures and propagate to `application`
 
 ### Evolution
 
@@ -268,15 +268,15 @@ application/
 
 ### Best Practices
 
-- Orchestrates use cases and `application` workflows
+- Orchestrates `domain` operations, use cases and workflows
 - Defines **ports** (abstract interfaces) for required external behavior to be implemented in `infrastructure`
 - Defines **DTOs** (static data classes) for data exchange with `presentation` (commands, queries, results)
-- Coordinates multiple `domain` operations in a single intent
+- Policy and strategy selection lives here
 - Use cases are explicit, named after user intent (`process_document`, `build_graph`)
 - Use cases depend on ports and may consume/produce DTOs
 - If needed, use cases can convert DTOs to/from `domain` models, using `domain` constructors/factories or `application` mappers
-- Application exceptions express workflow failures
-- Policy and strategy selection lives here
+- May catch `domain` and `application` exceptions, handling them or translating to `application` exceptions
+- Application exceptions express workflow failures and propagate to `presentation`
 
 ### Evolution
 
@@ -372,7 +372,6 @@ infrastructure/
 
 ### Best Practices
 
-- No business or decision logic
 - Contains all technical details and integrations
 - Implements `application` ports using adapters
 - Adapters must be thin, replaceable and implementation-focused
@@ -380,7 +379,8 @@ infrastructure/
 - May implement validation that enforces syntactic/structural correctness (not semantic)
 - Cross-cutting concerns (config, logging, serialization) live here
 - Outbound strategy logic moves to `application`
-- Infrastructure exceptions represent technical failures
+- May catch external framework exceptions, handling them or translating to `application` or `infrastructure` exceptions
+- Infrastructure exceptions represent generalized technical failures and are converted to `application` exceptions before propagation
 
 ### Evolution
 
@@ -472,15 +472,15 @@ presentation/
 
 ### Best Practices
 
-- No business or decision logic
 - Hosts entry points for inbound channels, which import composition roots from `bootstrap`
 - Translates external input into `application` use cases using handlers (converts input schemas into DTOs)
 - Translates `application` results, DTOs and errors into channel-specific responses using handlers (converts DTOs into output schemas)
 - Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
 - Validation is syntactic and structural, not semantic
 - Uses printing for user-facing output in CLI, logging for technical concerns
-- Error mapping/handling belongs here (except for recoverable internal errors), exception definitions/raising belong in `application`/`domain`
 - Strategy and orchestration logic moves to `application`
+- May catch `application` exceptions, handling them and exiting the program (or raising a framework-required exception)
+- Presentation does not define or raise exceptions, it only maps them to user-facing error behavior (except for framework-required exceptions)
 
 ### Evolution
 

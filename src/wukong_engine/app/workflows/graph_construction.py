@@ -13,7 +13,7 @@ from pathlib import Path
 
 from nltk import download as nltk_download
 
-from wukong_engine.app.configuration import LoadDataModel
+from wukong_engine.app.blueprints import GetDataModel
 
 # from wukong_engine.config.config import Config
 """
@@ -52,13 +52,13 @@ class GraphConstruction:
 
     def __init__(
         self,
-        load_data_model: LoadDataModel,
+        get_data_model: GetDataModel,
         # extract_entities: ExtractEntities,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
-        self._load_data_model = load_data_model
+        self._get_data_model = get_data_model
         # self._extract_entities = extract_entities
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
@@ -97,7 +97,7 @@ class GraphConstruction:
         # config = Config(config_path)
 
         # TODO: Load data model
-        data_model = self._load_data_model.execute(data_model_path)
+        data_model = self._get_data_model.execute(data_model_path)
         print(data_model)
 
         # TODO: Pipeline configuration
