@@ -10,7 +10,7 @@ The architecture follows **Clean Architecture Principles**, adapted pragmaticall
 ## 📚 Table of Contents
 - [🧭 General Overview](#-general-overview)
   - [Core Principles](#core-principles)
-  - [Main Architecture](#main-architecture)
+  - [Layered Architecture](#layered-architecture)
   - [Dependency Rules](#dependency-rules)
     - [Allowed Dependencies](#allowed-dependencies)
     - [Forbidden Dependencies](#forbidden-dependencies)
@@ -56,7 +56,7 @@ The architecture is based on the following core principles:
 4. **Clarity beats symmetry**
 5. **Evolution is reactive, not speculative**
 
-### Main Architecture
+### Layered Architecture
 
 When the project starts, the initial architectural layers should be:
 
@@ -67,7 +67,7 @@ infrastructure/
 presentation/
 ```
 
-As the system grows, new layers may appear, but **only as justified** by emerging policy (very rare).
+As the system grows, new layers may appear, but **only as justified** by emerging policy (extremely rare).
 
 ### Dependency Rules
 
@@ -77,7 +77,7 @@ Each layer has specific rules about what it may and must not depend on.
 
 ```
 infrastructure → application → domain
-presentation → application → domain
+presentation → application
 ```
 
 Here, the right arrow (`→`) means "may depend on".
@@ -87,16 +87,13 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure` (except for user-defined technical concerns like logging)
-
-> **Rule of Thumb**:
-> Outer layers may depend on inner layers — never the reverse.
+- `presentation` must not import `domain` or `infrastructure` (except for user-defined infra concerns like `logging`)
 
 ### Program Execution
 
 When executing the program, the entry point lives in one of the **inbound channels** from the `presentation` layer (e.g. `presentation/api/main.py`), and should be called directly or through a custom console script.
 
-All relevant components from all layers are then instantiated and wired together inside the `bootstrap` package, which lives alongside the other layers at the top level. This package must contain modules that have access to all layers and act as **composition roots** for different execution contexts (e.g. **CLI, API**). These modules expose set-up functions that are imported in the `presentation` entry points to instantiate their respective compositions.
+All *long-lived and stateless components* from all layers are then instantiated and wired together inside the `bootstrap` package, which lives alongside the other layers at the top level. This package must contain modules that have access to all layers and act as **composition roots** for different execution contexts (e.g. **CLI, API**). These modules expose context objects that are imported in the `presentation` entry points to provide access to the required `application` **use cases, services, and workflows.**
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -140,10 +137,9 @@ The initial structure could look like:
 
 ```
 domain/
-├── graph.py  # Domain entity
-├── node.py  # Domain entity
-├── edge.py  # Domain entity
-└── values.py  # e.g. GraphID, NodeID, EdgeID
+└── graph/  # Domain definitions for a graph
+    ├── entities.py  # Mutable objects with a unique identity (e.g. Graph, Node, Edge)
+    └── values.py  # IDs, types, enums and other immutable objects (e.g. GraphID, NodeID, EdgeID)
 ```
 
 As the system grows, the structure may evolve to:
@@ -151,33 +147,35 @@ As the system grows, the structure may evolve to:
 ```
 domain/
 ├── graph/  # Domain definitions for a graph
-│   ├── graph.py  # Domain entity
-│   ├── node.py  # Domain entity
-│   ├── edge.py  # Domain entity
-│   ├── values/  # IDs, types, enums and other immutables
+│   ├── entities/  # Mutable objects with a unique identity
+│   │   ├── graph.py
+│   │   ├── node.py
+│   │   └── edge.py
+│   ├── values/  # IDs, types, enums and other immutable objects
 │   │   ├── graph_id.py
 │   │   ├── node_id.py
 │   │   └── edge_id.py
-│   ├── services/  # Stateless operations
-│   │   └── graph_merge.py
-│   ├── events/  # Facts that happened
+│   ├── services/  # Complex stateless operations
+│   │   └── graph_merger.py
+│   ├── events/  # Specific domain occurrences
 │   │   └── node_added.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
-└── <concept>/  # e.g. schema
+└── <concept>/  # e.g. user, project
 ```
 
 ### Best Practices
 
 - Contains the core business concepts, rules, and invariants
-- Models express meaning, not persistence or transport concerns
-- Entities (mutable) and value objects (immutable) enforce consistency and validity
-- Domain services (stateless operations) exist for complex behavior between entities/values
+- Models express meaning and are grouped by concept/subdomain (e.g. `graph`, `user`)
+- **Entities** are mutable objects with a unique identity (e.g. `User`, `Graph`), which can be aggregated if needed (e.g. `Graph` contains `Node` and `Edge`)
+- **Value objects** are immutable objects defined by their attributes (e.g. `Email`, `GraphID`)
+- Domain **services** are stateless operations that model complex behavior between multiple entities/values (e.g. `GraphMerger`)
+- Domain **events** represent significant occurrences in the domain (e.g. `NodeAdded`)
 - Prefer explicit types over primitives (value objects instead of native **Python** types)
-- Avoid frameworks, external libraries, and side effects
-- No orchestration, workflows, or use-case sequencing
-- Stable over time; changes reflect business change only
 - Domain exceptions express business failures and propagate to `application`
+- Avoid frameworks, external libraries, and side effects
+- Stable over time; changes reflect business change only
 
 ### Evolution
 
@@ -201,7 +199,7 @@ Contains **application-specific policy**.
 It:
 
 - Orchestrates `domain` logic
-- Defines system behavior (use cases)
+- Defines system capabilities (use cases, services, workflows)
 - Encodes decision logic and strategies
 - Defines abstract **ports** for `infrastructure`
 - Defines **DTOs** for data exchange with `presentation`
@@ -228,61 +226,59 @@ The initial structure could look like:
 
 ```
 application/
-└── graph/  # Application logic for graph-related use cases
-    ├── use_cases/  # Specific use cases
-    |   └── build_graph.py
-    └── ports/  # External interfaces specific to graphs
-        └── persistence.py  # GraphRepository
+└── graph_building/  # Application logic for building graphs
+    ├── use_cases/  # Application use cases (atomic actions)
+    │   └── build_graph.py
+    └── ports/  # External abstract interfaces
+        └── graph_repository.py
 ```
 
 As the system grows, the structure may evolve to:
 
 ```
 application/
-├── graph/  # Application logic for graph-related use cases
-│   ├── use_cases/  # Specific use cases
+├── graph_building/  # Application logic for building graphs
+│   ├── use_cases/  # Application use cases (atomic actions)
 │   │   ├── build_graph.py
 │   │   └── export_graph.py
-│   ├── services/  # Supporting services
-│   │   └── deduplication.py
-│   ├── ports/  # External interfaces specific to graphs
-│   │   ├── persistence.py  # GraphRepository
-│   │   └── export.py
+│   ├── services/  # Application services (coordinators/helpers)
+│   │   └── graph_manager.py
+│   ├── workflows/  # Application workflows (orchestrators)
+│   │   └── graph_construction.py
+│   ├── ports/  # External abstract interfaces
+│   │   ├── graph_repository.py
+│   │   └── graph_exporter.py
+│   ├── dtos/  # Data Transfer Objects (DTOs)
+│   │   ├── build_graph.py
+│   │   └── export_graph.py
 │   ├── policies/  # Decision logic
 │   │   ├── build_strategy.py
 │   │   └── export_format.py
-│   ├── schemas/  # DTOs
-│   │   ├── create_graph.py  # CreateGraphCommand, CreateGraphResult
-│   │   └── update_graph.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
-├── <sub_domain>/  # e.g. extraction
+├── <sub_domain>/  # e.g. project_execution, document_processing
 ...
-├── ports/  # General external interfaces
-│   ├── persistence.py  # UserRepository
-│   └── auth.py
-├── workflows/  # Workflows that orchestrate multiple use cases
-│   └── graph_construction.py  # Build and export a graph
 └── exceptions.py  # Application-wide exceptions
 ```
 
 ### Best Practices
 
-- Orchestrates `domain` operations, use cases and workflows
-- Defines **ports** (abstract interfaces) for required external behavior to be implemented in `infrastructure`
-- Defines **DTOs** (static data classes) for data exchange with `presentation` (commands, queries, results)
-- Policy and strategy selection lives here
-- Use cases are explicit, named after user intent (`process_document`, `build_graph`)
-- Use cases depend on ports and may consume/produce DTOs
-- If needed, use cases can convert DTOs to/from `domain` models, using `domain` constructors/factories or `application` mappers
+- Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `graph_building`)
+- Defines **ports** *(abstract protocols)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
+- Defines **DTOs** *(static data classes)* for data exchange with `presentation` *(commands, queries, results)* (e.g. `ExportGraphCommand`)
+- Use cases are atomic, explicit and user-facing, named after user intent (e.g. `ExportGraph`, `BuildGraph`)
+- Use cases depend on ports and should consume/produce DTOs to interact with `presentation`
+- Services encapsulate supporting application logic and are named after their role (e.g. `GraphManager`)
+- Workflows orchestrate multiple use cases/services and are named in a process-oriented manner (e.g. `GraphConstruction`)
+- Business-driven policy and strategy selection lives here, making use of factory ports implemented in `infrastructure` when needed (e.g. `LLMProvider` port used to obtain an `LLMClient` adapter)
 - May catch `domain` and `application` exceptions, handling them or translating to `application` exceptions
 - Application exceptions express workflow failures and propagate to `presentation`
 
 ### Evolution
 
 - This is the **main growth layer**, where new business capabilities appear
+- New subdomains, use cases, services, workflows, ports, and DTOs are added
 - Outbound/Inbound policy migrates here from `infrastructure`/`presentation`
-- In very large systems, a dedicated top-level `policy` layer may be extracted from here (rare)
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -309,7 +305,6 @@ It manages:
 - Database repositories
 - External API / SDK clients
 - LLM providers
-- Serialization / Deserialization
 - Framework or vendor-specific code
 
 It answers:
@@ -337,9 +332,11 @@ infrastructure/
 ├── persistence/  # Databases/Stores
 │   └── graph_repository.py
 ├── llm/  # LLM Providers
-│   └── llm_client.py
-└── config/  # Configuration management
-    └── settings.py
+│   └── client.py
+├── config/  # Configuration management
+│   └── settings.py
+└── logging/  # Logging configuration
+    └── config.py
 ```
 
 As the system grows, the structure may evolve to:
@@ -347,38 +344,41 @@ As the system grows, the structure may evolve to:
 ```
 infrastructure/
 ├── persistence/  # Databases/Stores
-│   ├── mdb/
-│   │   ├── graph_repository.py
-│   │   └── graph_query_executor.py
 │   ├── neo4j/
-│   │   ├── graph_repository.py
-│   │   └── graph_query_executor.py
-|   └── exceptions.py
+│   │   ├── graph_repository.py  # Adapter
+│   │   ├── models.py  # Neo4j models
+│   │   └── mappers.py  # Map domain objects to/from Neo4j models
+│   ├── sqlalchemy/
+│   │   ├── user_repository.py
+│   │   ├── models.py
+│   │   └── mappers.py
+│   └── exceptions.py
 ├── llm/  # LLM Providers
-│   ├── openai/
-│   │   └── llm_client.py
-│   ├── local/
-│   │   └── llm_client.py
-|   └── exceptions.py
+│   ├── openai_client.py
+│   ├── anthropic_client.py
+│   └── exceptions.py
 ...
-├── <application_concern>/  # e.g. cache, messaging, search
+├── <application_concern>/  # e.g. filesystem, external_services, messaging, search
 ...
 ├── config/  # Configuration management
 │   ├── settings.py
-|   └── environments.py
+│   └── environments.py
+├── logging/  # Logging configuration
+│   └── config.py
 ...
-└── <infrastructure_concern>/  # e.g. logging, serialization, security, telemetry
+└── <infrastructure_concern>/  # e.g. security, telemetry
 ```
 
 ### Best Practices
 
 - Contains all technical details and integrations
-- Implements `application` ports using adapters
+- Implements `application` ports using adapters, which work with `domain`/`application` objects and basic types
 - Adapters must be thin, replaceable and implementation-focused
-- Prefer role-based names for adapters (`graph_repository.py`)
-- May implement validation that enforces syntactic/structural correctness (not semantic)
-- Cross-cutting concerns (config, logging, serialization) live here
-- Outbound strategy logic moves to `application`
+- Adapters may apply syntactic and structural validation (not semantic) if needed
+- Prefer role-based names for adapters (e.g. `neo4j/graph_repository.py` implements `Neo4jGraphRepository`)
+- Cross-cutting infrastructure concerns (e.g. `config`, `logging`, `security`, `telemetry`) live here
+- Business-driven strategy logic moves to `application`, which can then obtain the concrete adapter through a factory port (e.g. `LLMProvider` returns `OpenAILLMClient`)
+- Technical strategy logic is managed here, including dynamic selection of adapters based on *configuration/environment/availability*
 - May catch external framework exceptions, handling them or translating to `application` or `infrastructure` exceptions
 - Infrastructure exceptions represent generalized technical failures and are converted to `application` exceptions before propagation
 
@@ -413,7 +413,6 @@ It manages:
 - Request parsing
 - Response formatting
 - Error translation
-- Input schemas / structural validation
 
 It answers:
 
@@ -429,7 +428,8 @@ It answers:
 
 **Must NOT Import**
 
-- Infrastructure (except for user-defined technical concerns like logging)
+- Domain
+- Infrastructure (except for user-defined infra concerns like `logging`)
 
 ### Typical Structure
 
@@ -449,7 +449,9 @@ As the system grows, the structure may evolve to:
 presentation/
 ├── api/  # HTTP API
 │   ├── main.py
-│   ├── graph/  # Graph-related component
+│   ├── graph/  # Graph-related API component
+│   │   ├── schemas/  # API schemas for input/output
+│   │   │   └── graph.py
 │   │   ├── router.py
 │   │   ├── handlers.py
 │   │   ├── mappers.py  # Maps app DTOs to/from API schemas
@@ -463,22 +465,18 @@ presentation/
 ...
 ├── <inbound_channel>/  # e.g. webhooks, jobs, messaging, gui
 ...
-├── schemas/  # Shared schemas for input/output
-│   ├── graph.py
-│   ├── entity.py
-│   └── relationship.py
 └── errors.py  # Shared user-facing error mapping
 ```
 
 ### Best Practices
 
-- Hosts entry points for inbound channels, which import composition roots from `bootstrap`
-- Translates external input into `application` use cases using handlers (converts input schemas into DTOs)
-- Translates `application` results, DTOs and errors into channel-specific responses using handlers (converts DTOs into output schemas)
-- Handlers must be thin and procedural, prefer intent-based names (`create_graph`)
-- Validation is syntactic and structural, not semantic
+- Hosts entry points for inbound channels, which import composition roots from `bootstrap` to instantiate presentation context
+- Translates external input into `application` use cases, services and workflows using handlers (converts input schemas into `application` DTOs)
+- Translates `application` results, DTOs and errors into channel-specific responses using handlers (converts them into output schemas/errors)
+- Handlers must be thin and procedural, prefer intent-based names (e.g. `build_graph`)
+- Handlers may apply syntactic and structural validation (not semantic) if needed
+- Strategy logic moves to `application`/`infrastructure`, including dynamic management of technical concerns based on user input
 - Uses printing for user-facing output in CLI, logging for technical concerns
-- Strategy and orchestration logic moves to `application`
 - May catch `application` exceptions, handling them and exiting the program (or raising a framework-required exception)
 - Presentation does not define or raise exceptions, it only maps them to user-facing error behavior (except for framework-required exceptions)
 
