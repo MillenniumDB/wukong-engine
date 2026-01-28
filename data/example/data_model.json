@@ -44,87 +44,87 @@
                         "lguc_articulo_4_bis",
                         "lguc_articulo_10_ter_b"
                     ],
-                    "mode": {
-                        "chunk": "extraction",
-                        "document": "external"
+                    "retrieval_mode": {
+                        "chunk": "extract",
+                        "document": "load"
                     }
                 },
                 "filename": {
                     "data_type": "string",
                     "description": "The name of the internally associated text file.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source": {
                     "data_type": "string",
                     "description": "The name of the parent document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source_type": {
                     "data_type": "string",
                     "description": "The type of the parent document.",
                     "default_value": "lguc",
-                    "mode": "default"
+                    "retrieval_mode": "default"
                 },
                 "url": {
                     "data_type": "string",
                     "description": "The url of the original document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_norm": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_part": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "name": {
                     "data_type": "string",
                     "description": "The name of the LGUC article.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "date": {
                     "data_type": "string",
                     "description": "The date of the LGUC article.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "scope": {
                     "data_type": "string",
                     "description": "The scope of the LGUC article.",
                     "default_value": "nacional",
-                    "mode": "default"
+                    "retrieval_mode": "default"
                 },
                 "title": {
                     "data_type": "string",
                     "description": "The title of the LGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'TITULO' and 'CAPITULO': TITULO N <TITLE> CAPITULO M. Should be textual, exactly as it appears in the document.",
                     "examples": "Disposiciones Generales",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "chapter": {
@@ -132,18 +132,18 @@
                     "description": "The chapter of the LGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'CAPITULO' and 'Artículo': CAPITULO M <CHAPTER> Artículo X. Should be textual, exactly as it appears in the document.",
                     "examples": "Normas de Competencia",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "summary": {
                     "data_type": "string",
                     "description": "A summarized explanation of the contents of the LGUC article.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 }
             }
@@ -176,87 +176,87 @@
                         "oguc_articulo_4.5.1_bis",
                         "oguc_articulo_10.5.12_ter_b"
                     ],
-                    "mode": {
-                        "chunk": "extraction",
-                        "document": "external"
+                    "retrieval_mode": {
+                        "chunk": "extract",
+                        "document": "load"
                     }
                 },
                 "filename": {
                     "data_type": "string",
                     "description": "The name of the internally associated text file.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source": {
                     "data_type": "string",
                     "description": "The name of the parent document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source_type": {
                     "data_type": "string",
                     "description": "The type of the parent document.",
                     "default_value": "oguc",
-                    "mode": "default"
+                    "retrieval_mode": "default"
                 },
                 "url": {
                     "data_type": "string",
                     "description": "The url of the original document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_norm": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_part": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "name": {
                     "data_type": "string",
                     "description": "The name of the OGUC article.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "date": {
                     "data_type": "string",
                     "description": "The date of the OGUC article.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "scope": {
                     "data_type": "string",
                     "description": "The scope of the OGUC article.",
                     "default_value": "nacional",
-                    "mode": "default"
+                    "retrieval_mode": "default"
                 },
                 "title": {
                     "data_type": "string",
                     "description": "The title of the OGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'TITULO' and 'CAPITULO': TITULO N <TITLE> CAPITULO M. Should be textual, exactly as it appears in the document.",
                     "examples": "DE LA PLANIFICACIÓN Y DE LOS PLANES DE INVERSIONES EN INFRAESTRUCTURA DE MOVILIDAD Y ESPACIO PÚBLICO",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "chapter": {
@@ -264,18 +264,18 @@
                     "description": "The chapter of the OGUC article.",
                     "instructions": "Mentioned in the beginning, right in between 'CAPITULO' and 'Artículo': CAPITULO M <CHAPTER> Artículo X.Y.Z. Should be textual, exactly as it appears in the document.",
                     "examples": "DE LAS NORMAS DE URBANIZACIÓN Y DE LOS APORTES AL ESPACIO PÚBLICO",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "summary": {
                     "data_type": "string",
                     "description": "A summarized explanation of the contents of the OGUC article.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 }
             }
@@ -306,25 +306,25 @@
                         "ddu_grl_2",
                         "ddu_esp_123_2012"
                     ],
-                    "mode": {
-                        "chunk": "extraction",
-                        "document": "external"
+                    "retrieval_mode": {
+                        "chunk": "extract",
+                        "document": "load"
                     }
                 },
                 "filename": {
                     "data_type": "string",
                     "description": "The name of the internally associated text file.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source": {
                     "data_type": "string",
                     "description": "The name of the parent document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "source_type": {
@@ -336,41 +336,41 @@
                         "ddu-esp"
                     ],
                     "default_value": "ddu",
-                    "mode": {
-                        "chunk": "extraction",
-                        "document": "external"
+                    "retrieval_mode": {
+                        "chunk": "extract",
+                        "document": "load"
                     }
                 },
                 "url": {
                     "data_type": "string",
                     "description": "The url of the original document.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_norm": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "bcn_id_part": {
                     "data_type": "string",
                     "description": "A unique identifier within the platform of the BCN (Biblioteca del Congreso Nacional de Chile).",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "name": {
                     "data_type": "string",
                     "description": "The name of the DDU circular.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "external"
+                        "document": "load"
                     }
                 },
                 "date": {
@@ -378,16 +378,16 @@
                     "description": "The date of the DDU circular.",
                     "instructions": "Must be in the format: <YYYY>-<MM>-<DD>, where <YYYY> is the year, <MM> is the month, and <DD> is the day. If <MM> is not available, consider it as 01. If <DD> is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
                     "examples": "2015-07-01",
-                    "mode": {
-                        "chunk": "extraction",
-                        "document": "external"
+                    "retrieval_mode": {
+                        "chunk": "extract",
+                        "document": "load"
                     }
                 },
                 "scope": {
                     "data_type": "string",
                     "description": "The scope of the DDU circular.",
                     "default_value": "nacional",
-                    "mode": "default"
+                    "retrieval_mode": "default"
                 },
                 "circular_order_number": {
                     "data_type": "string",
@@ -400,16 +400,16 @@
                         "2",
                         "123"
                     ],
-                    "mode": "extraction"
+                    "retrieval_mode": "extract"
                 },
                 "subject": {
                     "data_type": "string",
                     "description": "The subject matter of the DDU circular.",
                     "instructions": "Mentioned near the beginning as: MAT.: <SUBJECT>. Should be textual, exactly as it appears in the document.",
                     "examples": "Vigencia de artículo 2.3.4 de OGUC.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "keywords": {
@@ -417,18 +417,18 @@
                     "description": "A list of keywords associated with the DDU circular.",
                     "instructions": "Mentioned right after the 'subject', all in uppercase. Should be textual, exactly as it appears in the document.",
                     "examples": "PERMISOS; APROBACIONES Y RECEPCIONES, MODIFICACIONES DE PROYECTOS.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 },
                 "summary": {
                     "data_type": "string",
                     "description": "A summarized explanation of the contents of the DDU circular.",
                     "instructions": "Should be concise and mention all the relevant components and details.",
-                    "mode": {
+                    "retrieval_mode": {
                         "chunk": "skip",
-                        "document": "extraction"
+                        "document": "extract"
                     }
                 }
             }
@@ -456,7 +456,7 @@
                         "Decreto con Fuerza de Ley N° 707",
                         "Código Civil"
                     ],
-                    "mode": "extraction",
+                    "retrieval_mode": "extract",
                     "required": true
                 },
                 "article": {
@@ -464,7 +464,7 @@
                     "description": "The number of the specific article from 'source' that is being considered, if specified.",
                     "instructions": "Must be a valid integer without any dot ('.') characters. Do not consider Numeral as the article number.",
                     "examples": "20",
-                    "mode": "extraction"
+                    "retrieval_mode": "extract"
                 },
                 "name": {
                     "data_type": "string",
@@ -475,13 +475,13 @@
                         "Decreto con Fuerza de Ley N° 707 Art 10",
                         "Código Civil Art 200"
                     ],
-                    "mode": "extraction"
+                    "retrieval_mode": "extract"
                 },
                 "summary": {
                     "data_type": "string",
                     "description": "A textual description of the legal provision, summarizing it's official definition in the Chilean law.",
                     "instructions": "Should be concise.",
-                    "mode": "extraction"
+                    "retrieval_mode": "extract"
                 }
             }
         }

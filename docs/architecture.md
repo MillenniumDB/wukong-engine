@@ -202,7 +202,7 @@ It:
 - Defines system capabilities (use cases, services, workflows)
 - Encodes decision logic and strategies
 - Defines abstract **ports** for `infrastructure`
-- Defines **DTOs** for data exchange with `presentation`
+- Defines **DTOs** for data exchange with `presentation`/`infrastructure`
 
 It answers:
 
@@ -265,7 +265,8 @@ application/
 
 - Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `graph_building`)
 - Defines **ports** *(abstract protocols)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
-- Defines **DTOs** *(static data classes)* for data exchange with `presentation` *(commands, queries, results)* (e.g. `ExportGraphCommand`)
+- Defines **DTOs** *(static data classes)* for data exchange with `presentation`/`infrastructure`
+- DTOs usually follow the *CQRS* pattern *(commands, queries, results)* (e.g. `ExportGraphCommand`)
 - Use cases are atomic, explicit and user-facing, named after user intent (e.g. `ExportGraph`, `BuildGraph`)
 - Use cases depend on ports and should consume/produce DTOs to interact with `presentation`
 - Services encapsulate supporting application logic and are named after their role (e.g. `GraphManager`)
@@ -372,7 +373,7 @@ infrastructure/
 ### Best Practices
 
 - Contains all technical details and integrations
-- Implements `application` ports using adapters, which work with `domain`/`application` objects and basic types
+- Implements `application` ports using adapters, which receive/return `domain`/`application` objects *(domain objects, ports, DTOs)* and basic types
 - Adapters must be thin, replaceable and implementation-focused
 - Adapters may apply syntactic and structural validation (not semantic) if needed
 - Prefer role-based names for adapters (e.g. `neo4j/graph_repository.py` implements `Neo4jGraphRepository`)

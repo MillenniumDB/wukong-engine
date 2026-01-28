@@ -1,6 +1,6 @@
-from wukong_engine.app.blueprints import GetDataModel
-from wukong_engine.app.workflows import GraphConstruction
-from wukong_engine.infrastructure.blueprints.data_model import LocalDataModelProvider
+from wukong_engine.app.model_ingestion import GetDataModel
+from wukong_engine.app.workflows import GraphConstructionPipeline
+from wukong_engine.infrastructure.model_providers.data_model import LocalDataModelProvider
 
 # from wukong_engine.app.extraction import ExtractEntities, ExtractRelationships
 # from wukong_engine.app.graph import ExportGraph
@@ -10,10 +10,10 @@ from wukong_engine.infrastructure.blueprints.data_model import LocalDataModelPro
 # from wukong_engine.infrastructure.config import config
 
 
-class CliApplication:
+class CLIApplication:
     """Composition root for the CLI.
 
-    Owns infrastructure and exposes ready-to-use workflows and use cases.
+    Owns infrastructure and exposes ready-to-use workflows, services and use cases.
     """
 
     def __init__(self):
@@ -21,7 +21,7 @@ class CliApplication:
         data_model_provider = LocalDataModelProvider()
 
         # Use cases
-        self.get_data_model = GetDataModel(data_model_provider)
+        get_data_model = GetDataModel(data_model_provider)
 
         # Workflows
-        self.graph_construction = GraphConstruction(get_data_model=self.get_data_model)
+        self.graph_construction = GraphConstructionPipeline(get_data_model=get_data_model)

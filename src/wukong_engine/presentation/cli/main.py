@@ -6,7 +6,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    poetry run wukong data/example --config config/default.toml
+    wukong data/example --config config/default.toml
 """
 
 import argparse
@@ -14,7 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wukong_engine.bootstrap.cli import CliApplication
+from wukong_engine.bootstrap.cli import CLIApplication
 from wukong_engine.infrastructure.logging import configure_logging
 
 # Logging
@@ -74,7 +74,7 @@ def main() -> None:
     configure_logging(level=log_level)
 
     # Create CLI app
-    app = CliApplication()
+    app = CLIApplication()
 
     # Execute the pipeline
     print('Starting WUKONG...')
