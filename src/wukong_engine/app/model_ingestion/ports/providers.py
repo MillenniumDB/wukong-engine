@@ -1,14 +1,14 @@
 from pathlib import Path
 from typing import Protocol
 
-from wukong_engine.app.model_ingestion.dtos import CreateGraphModelCommand
+from wukong_engine.core.graph import GraphModel
 
 
-class GraphModelSchemaProvider(Protocol):
-    """Provides access to a user-defined schema that can be used to create a GraphModel."""
+class GraphModelProvider(Protocol):
+    """Provides access to a GraphModel."""
 
-    def get(self, path: Path) -> CreateGraphModelCommand:
-        """Get a fully validated GraphModel schema from the given path.
+    def get(self, path: Path) -> GraphModel:
+        """Get a fully validated GraphModel from the given path.
 
         Raises:
             GraphModelLoadError (or a domain-level error) if the model

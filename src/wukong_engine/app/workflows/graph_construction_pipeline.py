@@ -13,7 +13,7 @@ from pathlib import Path
 
 from nltk import download as nltk_download
 
-from wukong_engine.app.model_ingestion import GetDataModel
+from wukong_engine.app.model_ingestion import GetGraphModel
 
 # from wukong_engine.config.config import Config
 """
@@ -44,7 +44,7 @@ METADATA_DIR = Path('./docs/processed/metadata/')
 PROMPTS_DIR = Path('./prompts/')
 RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
-DATA_MODEL_FILE = 'data_model.json'
+GRAPH_MODEL_FILE = 'graph_model.json'
 
 
 class GraphConstructionPipeline:
@@ -52,13 +52,13 @@ class GraphConstructionPipeline:
 
     def __init__(
         self,
-        get_data_model: GetDataModel,
+        get_graph_model: GetGraphModel,
         # extract_entities: ExtractEntities,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
-        self._get_data_model = get_data_model
+        self._get_graph_model = get_graph_model
         # self._extract_entities = extract_entities
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
@@ -74,13 +74,13 @@ class GraphConstructionPipeline:
         4. Knowledge graph export
 
         Args:
-            data_dir: The path to the data directory containing the documents and data model.
+            data_dir: The path to the data directory containing the documents and graph model.
             config_path: The path to the engine configuration file.
 
         Raises:
             FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
-            ValueError: If the configuration or data model is invalid, or environment variables are missing.
-            TypeError: If the data model has invalid types for certain fields.
+            ValueError: If the configuration or graph model is invalid, or environment variables are missing.
+            TypeError: If the graph model has invalid types for certain fields.
         """
         # Define relevant paths
         original_docs_dir = data_dir / ORIGINAL_DOCS_DIR
@@ -91,14 +91,13 @@ class GraphConstructionPipeline:
         prompts_dir = data_dir / PROMPTS_DIR
         results_dir = data_dir / RESULTS_DIR
         exports_dir = data_dir / EXPORTS_DIR
-        data_model_path = data_dir / DATA_MODEL_FILE
+        graph_model_path = data_dir / GRAPH_MODEL_FILE
 
         # TODO: Get configuration
         # config = Config(config_path)
 
         # TODO: Load data model
-        data_model = self._get_data_model.execute(data_model_path)
-        print(data_model)
+        graph_model = self._get_graph_model.execute(graph_model_path)
 
         # TODO: Pipeline configuration
 
@@ -137,7 +136,7 @@ class GraphConstructionPipeline:
         if entity_extraction:
             logger.info('Extracting Core Entities...')
             extract_entities(
-                data_model.core_entities,
+                graph_model.core_entities,
                 docs_dir,
                 prompts_dir,
                 results_dir,
@@ -145,22 +144,22 @@ class GraphConstructionPipeline:
                 clear_results=True,
             )
             logger.info('Extracting Entities...')
-            extract_entities(data_model.hybrid_entities + data_model.entities, chunks_dir, prompts_dir, results_dir)
+            extract_entities(graph_model.hybrid_entities + graph_model.entities, chunks_dir, prompts_dir, results_dir)
 
         # Process extracted entities
         if entity_processing:
             logger.info('Processing Entities...')
-            process_entities(data_model.core_entities + data_model.hybrid_entities + data_model.entities, results_dir)
+            process_entities(graph_model.core_entities + graph_model.hybrid_entities + graph_model.entities, results_dir)
 
         # Extract relations from the documents
         if relation_extraction:
             logger.info('Extracting Relations...')
-            extract_relations(data_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
+            extract_relations(graph_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
 
         # Process extracted relations
         if relation_processing:
             logger.info('Processing Relations...')
-            process_relations(data_model.materialized_relations, results_dir)
+            process_relations(graph_model.materialized_relations, results_dir)
 
         # Export Knowledge Graph to various formats
         if export_graph:

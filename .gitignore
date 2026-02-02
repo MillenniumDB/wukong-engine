@@ -214,7 +214,7 @@ __marimo__/
 data/*
 !data/example/
 data/example/*
-!data/example/data_model.json
+!data/example/graph_model.json
 !data/example/documents.json
 !data/example/docs/
 data/example/docs/*

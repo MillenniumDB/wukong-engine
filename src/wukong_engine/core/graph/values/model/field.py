@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Any, Self
 
 from wukong_engine.core.graph.values import ContextLevel, DataType, RetrievalMode
 
@@ -8,21 +7,15 @@ from wukong_engine.core.graph.values import ContextLevel, DataType, RetrievalMod
 class Field:
     """A field from an entity/relationship type."""
 
-    name: str  # TODO: Value object for name str, validates naming conventions
-    data_type: DataType  # TODO: Validate data type
+    name: str  # TODO: Value object for name str, validates naming conventions?
+    data_type: DataType
     description: str
-    instructions: dict[ContextLevel, str]  # TODO: Adapt str -> dict (DTO)  # TODO: Validate Context level keys
-    options: set[str]  # TODO: Adapt str -> list (DTO)
-    examples: list[str]  # TODO: Adapt str -> list (DTO)
-    regex: dict[
-        ContextLevel,
-        str,
-    ]  # TODO: Adapt str -> dict (DTO) # TODO: Validate Context level keys # TODO: Value object for regex str
-    default_value: dict[ContextLevel, str]  # TODO: Adapt str -> dict (DTO) # TODO: Validate Context level keys
-    retrieval_mode: dict[
-        ContextLevel,
-        RetrievalMode,
-    ]  # TODO: Adapt str -> dict (DTO)  # TODO: Validate context level + retrieval mode compatibility
+    instructions: dict[ContextLevel, str]
+    options: set[str]
+    examples: list[str]
+    regex: dict[ContextLevel, str]  # TODO: Value object for regex str
+    default_value: dict[ContextLevel, str]
+    retrieval_mode: dict[ContextLevel, RetrievalMode]  # TODO: Validate context level + retrieval mode compatibility
     required: bool
 
     # @classmethod
@@ -52,15 +45,6 @@ class Field:
     #     if v.lower() == 'extracted_from':
     #         raise ValueError(f'Field name "{v}" is reserved for special fields and cannot be used')
     #     return v
-
-    # @field_validator('data_type', mode='before')
-    # @classmethod
-    # def parse_data_type(cls, v: Any) -> DataType:
-    #     """Parse data type string."""
-    #     # String representation
-    #     if isinstance(v, str):
-    #         return DataType.from_string(v)
-    #     raise TypeError('Expected a string representing a data type')
 
     # TODO: Callers for usefulness
     # def default_value(self, source: Source) -> Any:

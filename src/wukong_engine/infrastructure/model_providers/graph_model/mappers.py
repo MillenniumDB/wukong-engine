@@ -7,7 +7,7 @@ from .schemas import EntityTypeSchema, FieldSchema, GraphModelSchema
 def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
     """Convert a DataModelSchema to a DataModel domain model."""
     return GraphModel(
-        entities=tuple(_schema_to_entity_type(entity_type) for entity_type in schema.entities),
+        entities=tuple(_schema_to_entity_type(entity_type) for entity_type in schema.entity_types),
     )
 
 

@@ -77,7 +77,7 @@ Each layer has specific rules about what it may and must not depend on.
 
 ```
 infrastructure → application → domain
-presentation → application
+presentation → application → domain
 ```
 
 Here, the right arrow (`→`) means "may depend on".
@@ -87,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `domain` or `infrastructure` (except for user-defined infra concerns like `logging`)
+- `presentation` must not import `infrastructure` (except for user-defined infra concerns like `logging`)
 
 ### Program Execution
 
@@ -155,6 +155,8 @@ domain/
 │   │   ├── graph_id.py
 │   │   ├── node_id.py
 │   │   └── edge_id.py
+│   ├── rules/  # Business rules and invariants
+│   │   └── edge_constraints.py
 │   ├── services/  # Complex stateless operations
 │   │   └── graph_merger.py
 │   ├── events/  # Specific domain occurrences
@@ -202,7 +204,7 @@ It:
 - Defines system capabilities (use cases, services, workflows)
 - Encodes decision logic and strategies
 - Defines abstract **ports** for `infrastructure`
-- Defines **DTOs** for data exchange with `presentation`/`infrastructure`
+- Defines **DTOs** for data exchange with outer layers
 
 It answers:
 
@@ -263,7 +265,7 @@ application/
 
 ### Best Practices
 
-- Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `graph_building`)
+- Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `graph_building` subdomain)
 - Defines **ports** *(abstract protocols)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
 - Defines **DTOs** *(static data classes)* for data exchange with `presentation`/`infrastructure`
 - DTOs usually follow the *CQRS* pattern *(commands, queries, results)* (e.g. `ExportGraphCommand`)
@@ -424,12 +426,12 @@ It answers:
 **May Import**
 
 - Application
+- Domain
 - External libraries and frameworks
 - Composition root modules from `bootstrap`
 
 **Must NOT Import**
 
-- Domain
 - Infrastructure (except for user-defined infra concerns like `logging`)
 
 ### Typical Structure

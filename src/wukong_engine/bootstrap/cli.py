@@ -1,6 +1,6 @@
-from wukong_engine.app.model_ingestion import GetDataModel
+from wukong_engine.app.model_ingestion import GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
-from wukong_engine.infrastructure.model_providers.data_model import LocalDataModelProvider
+from wukong_engine.infrastructure.model_providers.graph_model import LocalGraphModelProvider
 
 # from wukong_engine.app.extraction import ExtractEntities, ExtractRelationships
 # from wukong_engine.app.graph import ExportGraph
@@ -18,10 +18,10 @@ class CLIApplication:
 
     def __init__(self):
         # Infrastructure
-        data_model_provider = LocalDataModelProvider()
+        graph_model_provider = LocalGraphModelProvider()
 
         # Use cases
-        get_data_model = GetDataModel(data_model_provider)
+        get_graph_model = GetGraphModel(graph_model_provider)
 
         # Workflows
-        self.graph_construction = GraphConstructionPipeline(get_data_model=get_data_model)
+        self.graph_construction = GraphConstructionPipeline(get_graph_model=get_graph_model)

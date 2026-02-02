@@ -14,7 +14,7 @@
             "References"
         ]
     },
-    "entities": {
+    "entity_types": {
         "LGUC": {
             "parameters": {
                 "description": "A specific article from the LGUC (Ley General de Urbanismo y Construcciones). Must explicitly mention or refer to the LGUC, ignore articles from other legal bodies such as OGUC/DDU.",
@@ -486,7 +486,7 @@
             }
         }
     },
-    "relationships": {
+    "relationship_types": {
         "References": {
             "origin_target": {
                 "LGUC": [

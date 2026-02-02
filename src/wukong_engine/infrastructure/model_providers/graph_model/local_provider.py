@@ -15,7 +15,7 @@ class LocalGraphModelProvider(GraphModelProvider):
         raw = json.load(path.open())
         # TODO: Validate with pydantic
         # TODO: Catch pydantic errors and raise DataModelLoadError or similar
-        # validated = DataModelSchema.model_validate(raw)
+        validated = GraphModelSchema.model_validate(raw)
         # TODO: Convert to domain model (DataModel) (do not handle any errors here, instead on app)
         # return to_data_model(validated)
         return None
