@@ -138,8 +138,8 @@ The initial structure could look like:
 ```
 domain/
 └── graph/  # Domain definitions for a graph
-    ├── entities.py  # Mutable objects with a unique identity (e.g. Graph, Node, Edge)
-    └── values.py  # IDs, types, enums and other immutable objects (e.g. GraphID, NodeID, EdgeID)
+    ├── graph.py  # Graph components (e.g. Graph, Node, Edge)
+    └── values.py  # IDs, types, enums and other immutable objects
 ```
 
 As the system grows, the structure may evolve to:
@@ -147,16 +147,15 @@ As the system grows, the structure may evolve to:
 ```
 domain/
 ├── graph/  # Domain definitions for a graph
-│   ├── entities/  # Mutable objects with a unique identity
-│   │   ├── graph.py
-│   │   ├── node.py
-│   │   └── edge.py
+│   ├── graph.py  # Graph component
+│   ├── node.py
+│   ├── edge.py
 │   ├── values/  # IDs, types, enums and other immutable objects
 │   │   ├── graph_id.py
 │   │   ├── node_id.py
 │   │   └── edge_id.py
 │   ├── rules/  # Business rules and invariants
-│   │   └── edge_constraints.py
+│   │   └── constraints.py
 │   ├── services/  # Complex stateless operations
 │   │   └── graph_merger.py
 │   ├── events/  # Specific domain occurrences
@@ -174,7 +173,7 @@ domain/
 - **Value objects** are immutable objects defined by their attributes (e.g. `Email`, `GraphID`)
 - Domain **services** are stateless operations that model complex behavior between multiple entities/values (e.g. `GraphMerger`)
 - Domain **events** represent significant occurrences in the domain (e.g. `NodeAdded`)
-- Prefer explicit types over primitives (value objects instead of native **Python** types)
+- Prefer explicit types over native **Python** types
 - Domain exceptions express business failures and propagate to `application`
 - Avoid frameworks, external libraries, and side effects
 - Stable over time; changes reflect business change only
@@ -454,7 +453,7 @@ presentation/
 │   ├── main.py
 │   ├── graph/  # Graph-related API component
 │   │   ├── schemas/  # API schemas for input/output
-│   │   │   └── graph.py
+│   │   │   └── graph_model.py
 │   │   ├── router.py
 │   │   ├── handlers.py
 │   │   ├── mappers.py  # Maps app DTOs to/from API schemas

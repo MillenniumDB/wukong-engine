@@ -1,6 +1,6 @@
-"""The graph enums package.
+"""The graph model values package.
 
-This package contains enums for different types present in the graph model.
+This package contains value objects for different types present in the graph model.
 """
 
 from .context_level import ContextLevel

@@ -5,9 +5,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from wukong_engine.core.graph.values import ContextLevel, RetrievalMode
-
 from .field import Field
+from .values import ContextLevel, RetrievalMode
 
 # TODO: Required: Primary key restriction over required field attribute
 # TODO: Validate existence of specified document groups in the document_model

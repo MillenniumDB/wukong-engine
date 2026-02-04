@@ -3,8 +3,8 @@
 This package contains the graph components.
 """
 
-from .entities import Entity, Graph, Relationship
-from .values import ContextLevel, DataType, EntityType, Field, GraphModel, RelationshipType, RetrievalMode
+from .instance import Entity, Graph, Relationship
+from .model import ContextLevel, DataType, EntityType, Field, GraphModel, RelationshipType, RetrievalMode
 
 __all__ = [
     'ContextLevel',

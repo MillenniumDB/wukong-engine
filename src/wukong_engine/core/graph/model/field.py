@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from wukong_engine.core.graph.values import ContextLevel, DataType, RetrievalMode
+from .values import ContextLevel, DataType, RetrievalMode
 
 
 @dataclass(frozen=True)
