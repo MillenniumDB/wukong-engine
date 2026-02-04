@@ -18,6 +18,6 @@ class DataType(Enum):
     """
 
     STRING = 'string'
-    INTEGER = 'integer'
-    FLOAT = 'float'
-    BOOLEAN = 'boolean'
+    # INTEGER = 'integer'
+    # FLOAT = 'float'
+    # BOOLEAN = 'boolean'

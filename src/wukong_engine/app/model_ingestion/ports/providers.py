@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Protocol
 
-from wukong_engine.core.graph import GraphModel
+from wukong_engine.core.graph.model import GraphModel
 
 
 class GraphModelProvider(Protocol):

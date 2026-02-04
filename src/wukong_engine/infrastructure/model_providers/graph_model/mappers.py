@@ -1,40 +1,50 @@
-from wukong_engine.core.graph import ContextLevel, DataType, EntityType, Field, GraphModel, RetrievalMode
+from types import MappingProxyType
+from typing import Any
+
+from wukong_engine.core.graph.model import EntityType, Field, GraphModel
+from wukong_engine.core.graph.model.values import EntityTypeName, FieldName, RegexPattern
 
 from .schemas import EntityTypeSchema, FieldSchema, GraphModelSchema
 
 
-# TODO:
 def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
-    """Convert a DataModelSchema to a DataModel domain model."""
+    """Convert a GraphModelSchema to a GraphModel domain model."""
     return GraphModel(
-        entities=tuple(_schema_to_entity_type(entity_type) for entity_type in schema.entity_types),
+        entity_types=tuple(_schema_to_entity_type(name, schema) for name, schema in schema.entity_types.items()),
     )
 
 
-# TODO:
-def _schema_to_entity_type(schema: EntityTypeSchema) -> EntityType:
+def _schema_to_entity_type(name: str, schema: EntityTypeSchema) -> EntityType:
     """Convert an EntityTypeSchema to an EntityType domain model."""
-    fields = [_schema_to_field(field_schema) for field_schema in schema.fields]
-
     return EntityType(
-        name=schema.name,
-        parameters=schema.parameters,
-        input_document_groups=schema.input_document_groups,
-        fields=fields,
+        name=EntityTypeName(name),
+        fields=tuple(_schema_to_field(name, schema) for name, schema in schema.fields.items()),
     )
 
 
-def _schema_to_field(schema: FieldSchema) -> Field:
+def _schema_to_field(name: str, schema: FieldSchema) -> Field:
     """Convert a FieldSchema to a Field domain model."""
     return Field(
-        name=schema.name,
-        data_type=DataType(schema.data_type),
+        name=FieldName(name),
+        data_type=schema.data_type,
         description=schema.description,
-        instructions={ContextLevel(k): v for k, v in schema.instructions.items()},
-        options=schema.options,
-        examples=schema.examples,
-        regex={ContextLevel(k): v for k, v in schema.regex.items()},
-        default_value={ContextLevel(k): v for k, v in schema.default_value.items()},
-        mode={ContextLevel(k): RetrievalMode(v) for k, v in schema.mode.items()},
+        instructions=MappingProxyType(dict(_as_dict(schema.instructions).items())),
+        options=frozenset(_as_list(schema.options)),
+        examples=tuple(_as_list(schema.examples)),
+        regex=MappingProxyType({k: RegexPattern(v) for k, v in _as_dict(schema.regex).items()}),
+        default_value=MappingProxyType(dict(_as_dict(schema.default_value).items())),
+        retrieval_mode=MappingProxyType(dict(_as_dict(schema.retrieval_mode).items())),
         required=schema.required,
     )
+
+
+def _as_dict(value: Any) -> dict[Any, Any]:
+    if not isinstance(value, dict):
+        raise TypeError(f'Mapping Error: expected a dictionary, got {type(value)} instead')
+    return value
+
+
+def _as_list(value: Any) -> list[Any]:
+    if not isinstance(value, list):
+        raise TypeError(f'Mapping Error: expected a list, got {type(value)} instead')
+    return value

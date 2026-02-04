@@ -1,12 +1,7 @@
-import json
-import re
-from copy import deepcopy
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Any
 
 from .field import Field
-from .values import ContextLevel, RetrievalMode
+from .values import EntityTypeName
 
 # TODO: Required: Primary key restriction over required field attribute
 # TODO: Validate existence of specified document groups in the document_model
@@ -14,8 +9,10 @@ from .values import ContextLevel, RetrievalMode
 
 @dataclass(frozen=True)
 class EntityType:
-    name: str  # TODO: Value object for name str, validates naming conventions
-    fields: list[Field]
+    """An entity type from the graph model."""
+
+    name: EntityTypeName
+    fields: tuple[Field, ...]
 
 
 # TODO: Complete

@@ -7,7 +7,6 @@ class GraphModelSchema(BaseModel):
     """Schema-level representation of a graph model definition."""
 
     # parameters: dict = {}
-    entity_types: dict[StrictStr, EntityTypeSchema] = Field(
-        default_factory=dict,
-    )  # TODO: Validate naming here or in domain?
+    # TODO: Validate naming here or in domain?
+    entity_types: dict[StrictStr, EntityTypeSchema] = Field(default_factory=dict)
     # relationship_types: dict[StrictStr, RelationshipTypeSchema]

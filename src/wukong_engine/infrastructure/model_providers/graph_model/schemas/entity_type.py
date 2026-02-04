@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field, StrictStr
 from .field import FieldSchema
 
 
+# TODO: field names validation?
 # TODO: Better class docstring that explains attributes
 class EntityTypeSchema(BaseModel):
     """Schema-level representation of an entity type definition."""

@@ -13,7 +13,7 @@ from pathlib import Path
 
 from nltk import download as nltk_download
 
-from wukong_engine.app.model_ingestion import GetGraphModel
+from wukong_engine.app.model_ingestion.use_cases import GetGraphModel
 
 # from wukong_engine.config.config import Config
 """

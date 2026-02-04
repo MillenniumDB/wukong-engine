@@ -1,4 +1,4 @@
-from wukong_engine.app.model_ingestion import GetGraphModel
+from wukong_engine.app.model_ingestion.use_cases import GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.infrastructure.model_providers.graph_model import LocalGraphModelProvider
 

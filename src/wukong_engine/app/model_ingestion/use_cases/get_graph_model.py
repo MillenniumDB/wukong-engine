@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from wukong_engine.app.model_ingestion.ports import GraphModelProvider
-from wukong_engine.core.graph import GraphModel
+from wukong_engine.core.graph.model import GraphModel
 
 
 class GetGraphModel:

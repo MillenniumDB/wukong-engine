@@ -1,12 +1,19 @@
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    Field,
+    StrictBool,
+    StrictStr,
+    field_validator,
+)
 
-from wukong_engine.core.graph import ContextLevel, DataType, RetrievalMode
+from wukong_engine.core.graph.model.values import ContextLevel, DataType, RegexPattern, RetrievalMode
 
 
+# TODO: Complete regex
+# TODO: retrieval_mode logic here or only domain?
 # TODO: Better class docstring that explains attributes
-# TODO: Strict enum in case pydantic changes behavior
 # TODO: Error handling and UX displaying
 class FieldSchema(BaseModel):
     """Schema-level representation of a field definition."""
@@ -16,7 +23,11 @@ class FieldSchema(BaseModel):
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     options: list[StrictStr] | StrictStr = Field(default_factory=list)
     examples: list[StrictStr] | StrictStr = Field(default_factory=list)
-    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(
+        default_factory=dict,
+        description='Each value must be a valid regular expression',
+        examples=['^[a-z]+$'],
+    )
     default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, RetrievalMode] | RetrievalMode = Field(default_factory=dict)
     required: StrictBool = False
@@ -26,13 +37,13 @@ class FieldSchema(BaseModel):
         'str': DataType.STRING,
         'string': DataType.STRING,
         'text': DataType.STRING,
-        'int': DataType.INTEGER,
-        'integer': DataType.INTEGER,
-        'number': DataType.INTEGER,
-        'float': DataType.FLOAT,
-        'double': DataType.FLOAT,
-        'bool': DataType.BOOLEAN,
-        'boolean': DataType.BOOLEAN,
+        # 'int': DataType.INTEGER,
+        # 'integer': DataType.INTEGER,
+        # 'number': DataType.INTEGER,
+        # 'float': DataType.FLOAT,
+        # 'double': DataType.FLOAT,
+        # 'bool': DataType.BOOLEAN,
+        # 'boolean': DataType.BOOLEAN,
     }
 
     @field_validator('data_type', mode='before')
@@ -57,4 +68,12 @@ class FieldSchema(BaseModel):
         """Parse lists containing string values."""
         if isinstance(value, str):  # Single string value gets converted to single-item list
             return [value]
+        return value
+
+    # TODO: finish
+    @field_validator('pattern')
+    @classmethod
+    def validate_regex(cls, value: str) -> str:
+        """Validate that the regex pattern is valid."""
+        RegexPattern(value)
         return value

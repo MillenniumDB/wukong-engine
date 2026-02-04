@@ -1,3 +1,5 @@
+from types import MappingProxyType
+
 from wukong_engine.core.graph.model.values import ContextLevel, RetrievalMode
 
 # Supported field retrieval modes for each context level
@@ -12,6 +14,10 @@ CONTEXT_MODES: dict[ContextLevel, set[RetrievalMode]] = {
 }
 
 
-def is_compatible_retrieval_mode(retrieval_mode: RetrievalMode, context_level: ContextLevel) -> bool:
-    """Check if a retrieval mode is compatible with a context level."""
-    return retrieval_mode in CONTEXT_MODES.get(context_level, set())
+def ensure_compatible_retrieval_modes(retrieval_mode_map: MappingProxyType[ContextLevel, RetrievalMode]) -> None:
+    """Ensure that all retrieval modes are compatible with their context levels."""
+    for context_level, retrieval_mode in retrieval_mode_map.items():
+        if retrieval_mode not in CONTEXT_MODES.get(context_level, set()):
+            raise ValueError(
+                f'Retrieval mode "{retrieval_mode}" is not compatible with context level "{context_level}"',
+            )
