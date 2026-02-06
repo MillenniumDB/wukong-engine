@@ -1,10 +1,11 @@
 from dataclasses import dataclass
+from types import MappingProxyType
 
 from .field import Field
-from .values import EntityTypeName
+from .values import ContextLevel, EntityTypeName
 
 # TODO: Required: Primary key restriction over required field attribute
-# TODO: Validate existence of specified document groups in the document_model
+# TODO: Complete
 
 
 @dataclass(frozen=True)
@@ -12,6 +13,7 @@ class EntityType:
     """An entity type from the graph model."""
 
     name: EntityTypeName
+    document_groups: MappingProxyType[ContextLevel, tuple[str, ...]]
     fields: tuple[Field, ...]
 
 

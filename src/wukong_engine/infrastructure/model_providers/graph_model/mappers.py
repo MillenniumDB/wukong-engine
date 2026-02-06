@@ -18,6 +18,7 @@ def _schema_to_entity_type(name: str, schema: EntityTypeSchema) -> EntityType:
     """Convert an EntityTypeSchema to an EntityType domain model."""
     return EntityType(
         name=EntityTypeName(name),
+        document_groups=MappingProxyType({k: tuple(_as_list(v)) for k, v in schema.document_groups.items()}),
         fields=tuple(_schema_to_field(name, schema) for name, schema in schema.fields.items()),
     )
 
@@ -28,23 +29,23 @@ def _schema_to_field(name: str, schema: FieldSchema) -> Field:
         name=FieldName(name),
         data_type=schema.data_type,
         description=schema.description,
-        instructions=MappingProxyType(dict(_as_dict(schema.instructions).items())),
+        instructions=MappingProxyType(_as_dict(schema.instructions)),
         options=frozenset(_as_list(schema.options)),
         examples=tuple(_as_list(schema.examples)),
         regex=MappingProxyType({k: RegexPattern(v) for k, v in _as_dict(schema.regex).items()}),
-        default_value=MappingProxyType(dict(_as_dict(schema.default_value).items())),
-        retrieval_mode=MappingProxyType(dict(_as_dict(schema.retrieval_mode).items())),
+        default_value=MappingProxyType(_as_dict(schema.default_value)),
+        retrieval_mode=MappingProxyType(_as_dict(schema.retrieval_mode)),
         required=schema.required,
     )
 
 
-def _as_dict(value: Any) -> dict[Any, Any]:
+def _as_dict(value: Any) -> dict:
     if not isinstance(value, dict):
         raise TypeError(f'Mapping Error: expected a dictionary, got {type(value)} instead')
     return value
 
 
-def _as_list(value: Any) -> list[Any]:
+def _as_list(value: Any) -> list:
     if not isinstance(value, list):
         raise TypeError(f'Mapping Error: expected a list, got {type(value)} instead')
     return value

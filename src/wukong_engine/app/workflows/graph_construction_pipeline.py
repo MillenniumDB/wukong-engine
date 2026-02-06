@@ -11,8 +11,7 @@ Functions:
 import logging
 from pathlib import Path
 
-from nltk import download as nltk_download
-
+# from nltk import download as nltk_download
 from wukong_engine.app.model_ingestion.use_cases import GetGraphModel
 
 # from wukong_engine.config.config import Config
@@ -33,7 +32,7 @@ from wukong_engine.documents.text_processing import (
 logger = logging.getLogger(__name__)
 
 # Load NLTK data for NLP
-nltk_download('stopwords', quiet=True)
+# nltk_download('stopwords', quiet=True)
 
 # Paths
 ORIGINAL_DOCS_DIR = Path('./docs/text/')

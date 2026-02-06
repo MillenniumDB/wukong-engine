@@ -5,7 +5,6 @@ from .rules.compatibility import ensure_compatible_retrieval_modes
 from .values import ContextLevel, DataType, FieldName, RegexPattern, RetrievalMode
 
 
-# TODO: Better class docstring that explains attributes
 @dataclass(frozen=True)
 class Field:
     """A field from an entity/relationship type."""

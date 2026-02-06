@@ -1,20 +1,11 @@
+import re
 from typing import Any, ClassVar
 
-from pydantic import (
-    BaseModel,
-    Field,
-    StrictBool,
-    StrictStr,
-    field_validator,
-)
+from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values import ContextLevel, DataType, RegexPattern, RetrievalMode
+from wukong_engine.core.graph.model.values import ContextLevel, DataType, RetrievalMode
 
 
-# TODO: Complete regex
-# TODO: retrieval_mode logic here or only domain?
-# TODO: Better class docstring that explains attributes
-# TODO: Error handling and UX displaying
 class FieldSchema(BaseModel):
     """Schema-level representation of a field definition."""
 
@@ -23,11 +14,7 @@ class FieldSchema(BaseModel):
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     options: list[StrictStr] | StrictStr = Field(default_factory=list)
     examples: list[StrictStr] | StrictStr = Field(default_factory=list)
-    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(
-        default_factory=dict,
-        description='Each value must be a valid regular expression',
-        examples=['^[a-z]+$'],
-    )
+    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, RetrievalMode] | RetrievalMode = Field(default_factory=dict)
     required: StrictBool = False
@@ -70,10 +57,15 @@ class FieldSchema(BaseModel):
             return [value]
         return value
 
-    # TODO: finish
-    @field_validator('pattern')
+    @field_validator('regex')
     @classmethod
-    def validate_regex(cls, value: str) -> str:
-        """Validate that the regex pattern is valid."""
-        RegexPattern(value)
+    def validate_regex(cls, value: dict[ContextLevel, str]) -> dict[ContextLevel, str]:
+        """Validate the provided regex patterns."""
+        for context_level, pattern in value.items():
+            try:
+                re.compile(pattern)
+            except re.error as error:
+                raise ValueError(
+                    f'Invalid regex pattern "{pattern}" for context level "{context_level}": {error}',
+                ) from error
         return value
