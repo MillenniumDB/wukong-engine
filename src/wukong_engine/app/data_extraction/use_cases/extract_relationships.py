@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from wukong_engine.config.config import Config
-from wukong_engine.core.data_model import DataModel
+from wukong_engine.core.graph_model import GraphModel
 from wukong_engine.llm.llm_client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
 
@@ -35,7 +35,7 @@ def extract_relations(
     and saves the results in a structured manner.
 
     Args:
-        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        relation_model: A dictionary containing relation types from the graph model and their relevant information.
         docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
@@ -84,7 +84,7 @@ def process_relations(relation_model: dict[str, Any], results_dir: Path) -> None
     and saves the final relations into a single file for each relation type.
 
     Args:
-        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        relation_model: A dictionary containing relation types from the graph model and their relevant information.
         results_dir: The path to the directory where the results are stored.
 
     Raises:
@@ -162,7 +162,7 @@ def get_relation_prompts(
 
     Args:
         relation_name: The name of the relation type to process.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
         docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
@@ -190,9 +190,9 @@ def get_relation_prompts(
     # Prepare prompt data for each document, gathering documents from all sets
     document_paths = []
     prompt_data = []
-    data_model = DataModel()
-    origin_sets = data_model.get_entity_sets(relation_info['origin'])
-    target_sets = data_model.get_entity_sets(relation_info['target'])
+    graph_model = GraphModel()
+    origin_sets = graph_model.get_entity_sets(relation_info['origin'])
+    target_sets = graph_model.get_entity_sets(relation_info['target'])
     for document_set in sorted(origin_sets & target_sets):
         set_dir = docs_dir / document_set
 
@@ -307,7 +307,7 @@ def bypass_ai_processing(
 
     Args:
         relation_name: The name of the relation type to process.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
         docs_dir: The path to the directory containing the document sets.
         results_dir: The path to the directory where the results are stored.
 
@@ -328,9 +328,9 @@ def bypass_ai_processing(
 
     # Prepare results for each document, gathering documents from all sets
     document_paths = []
-    data_model = DataModel()
-    origin_sets = data_model.get_entity_sets(relation_info['origin'])
-    target_sets = data_model.get_entity_sets(relation_info['target'])
+    graph_model = GraphModel()
+    origin_sets = graph_model.get_entity_sets(relation_info['origin'])
+    target_sets = graph_model.get_entity_sets(relation_info['target'])
     for document_set in sorted(origin_sets & target_sets):
         set_dir = docs_dir / document_set
 
@@ -419,7 +419,7 @@ def process_extracted_relations(
 
     Args:
         results: A dictionary containing the results of the LLM relation extraction process.
-        relation_model: A dictionary containing relation types from the data model and their relevant information.
+        relation_model: A dictionary containing relation types from the graph model and their relevant information.
         partial_relations_dir: The path to the directory where the partial relations are stored.
     """
     # Get relation and document names
@@ -477,9 +477,9 @@ def process_hybrid_relations(results_dir: Path) -> None:
     relations_dir = results_dir / 'relations/'
 
     # Deduplicate relations that contain hybrid entities
-    data_model = DataModel()
-    hybrid_names = {entity.removeprefix('@') for entity in data_model.hybrid_entities}
-    for relation, rel_info in data_model.relations.items():
+    graph_model = GraphModel()
+    hybrid_names = {entity.removeprefix('@') for entity in graph_model.hybrid_entities}
+    for relation, rel_info in graph_model.relations.items():
         # Skip relation types that do not involve hybrid entities
         if not (hybrid_names & set(rel_info['origin'] + rel_info['target'])):
             continue

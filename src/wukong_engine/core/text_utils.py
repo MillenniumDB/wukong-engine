@@ -12,7 +12,7 @@ import re
 from nltk.corpus import stopwords
 from unidecode import unidecode
 
-from wukong_engine.core.data_model import DataModel
+from wukong_engine.core.graph_model import GraphModel
 
 
 def normalize_text(text: str) -> str:
@@ -26,7 +26,7 @@ def normalize_text(text: str) -> str:
     Returns:
         The normalized text.
     """
-    language = DataModel().parameters.get('output_language', 'english').lower()  # Get language
+    language = GraphModel().parameters.get('output_language', 'english').lower()  # Get language
     stop_words = stopwords.words(language)  # Remove language-specific stop words
     relevant_text = ' '.join([word for word in text.lower().split() if word not in stop_words])
     simple_text = unidecode(relevant_text.replace('¬', '').replace('°', ''))  # Remove non-ascii characters

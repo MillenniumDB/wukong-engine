@@ -10,7 +10,7 @@ from .field import FieldSchema
 class RelationshipTypeSchema(BaseModel):
     """Schema-level representation of an entity type definition."""
 
-    name: StrictStr  # TODO: Pass from data model schema
+    name: StrictStr  # TODO: Pass from graph model schema
     parameters: dict[str, Any]  # TODO: Validate, decide if flatten or dict
     sources: dict[Source, list[str] | None]  # TODO: Validate existence of document sets
     fields: list[FieldSchema]  # TODO: Required: Primary key restriction over required field attribute

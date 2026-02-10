@@ -6,9 +6,8 @@ This module provides functions to prepare text documents for data extraction.
 from pathlib import Path
 
 from semantic_text_splitter import TextSplitter
-
 from wukong_engine.config.config import Config
-from wukong_engine.core.data_model import DataModel
+from wukong_engine.core.graph_model import GraphModel
 from wukong_engine.utils.file_utils import (
     delete_dir_contents,
     load_json_data,
@@ -48,7 +47,7 @@ def process_text_documents(text_dir: Path, processed_dir: Path, results_dir: Pat
 
     # Process each document set separately
     document_paths = {}
-    for document_set in DataModel().document_sets:
+    for document_set in GraphModel().document_sets:
         set_dir = text_dir / document_set
 
         # If the document set directory does not exist, abort the process
@@ -116,7 +115,7 @@ def generate_chunks(docs_dir: Path, chunks_dir: Path, results_dir: Path) -> None
 
     # Process each document set separately
     document_paths = {}
-    for document_set in DataModel().document_sets:
+    for document_set in GraphModel().document_sets:
         set_dir = docs_dir / document_set
 
         # Gather all documents for the set
@@ -203,7 +202,7 @@ def process_metadata_documents(metadata_dir: Path, processed_dir: Path, results_
 
     # Process each document set separately
     metadata_paths = {}
-    for document_set in DataModel().document_sets:
+    for document_set in GraphModel().document_sets:
         set_dir = metadata_dir / document_set
 
         # If the document set directory does not exist, abort the process
@@ -254,7 +253,7 @@ def trim_large_documents(full_docs_dir: Path, max_chars: int = 360000) -> None:
     """
     # Process each document set separately
     document_paths = {}
-    for document_set in DataModel().document_sets:
+    for document_set in GraphModel().document_sets:
         set_dir = full_docs_dir / document_set
 
         # Gather all documents for the set

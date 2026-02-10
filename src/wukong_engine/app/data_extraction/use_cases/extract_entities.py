@@ -8,8 +8,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
-from wukong_engine.core.data_model import DataModel, EntityType
 from wukong_engine.core.enums import ContentLevel
+from wukong_engine.core.graph_model import EntityType, GraphModel
 from wukong_engine.infra.config.config import Config
 from wukong_engine.infra.llm.client import process_prompt
 from wukong_engine.utils.file_utils import delete_dir_contents, load_json_data, load_text_data, save_json_data
@@ -36,7 +36,7 @@ def extract_entities(
     and saves the results in a structured manner.
 
     Args:
-        entity_types: A list of all entity types from the data model.
+        entity_types: A list of all entity types from the graph model.
         docs_dir: The path to the directory containing the document sets.
         prompts_dir: The path to the directory containing the prompts for the LLM.
         results_dir: The path to the directory where the results are stored.
@@ -51,8 +51,8 @@ def extract_entities(
     partial_entities_dir = partial_results_dir / 'entities/'
     partial_entities_dir.mkdir(parents=True, exist_ok=True)
 
-    # Get the data model
-    data_model = DataModel()
+    # Get the graph model
+    graph_model = GraphModel()
 
     # Extract info for each entity type and source
     for entity in entity_types:
@@ -81,7 +81,7 @@ def extract_entities(
 
             # TODO: Change to external_properties
             # Load metadata if available
-            if data_model.get_entity_metadata(entity_name) and metadata_dir:
+            if graph_model.get_entity_metadata(entity_name) and metadata_dir:
                 load_entity_metadata(entity_name, metadata_dir, docs_dir, partial_entities_dir)
 
 
@@ -92,7 +92,7 @@ def process_entities(entity_types: list[EntityType], results_dir: Path) -> None:
     and saves the final entities into a single file for each entity type.
 
     Args:
-        entity_model: A dictionary containing entity types from the data model and their relevant information.
+        entity_model: A dictionary containing entity types from the graph model and their relevant information.
         results_dir: The path to the directory where the results are stored.
 
     Raises:
@@ -201,7 +201,7 @@ def get_entity_prompts(entity_name: str, docs_dir: Path, prompts_dir: Path) -> l
     # Prepare prompt data for each document, gathering documents from all sets
     document_paths = []
     prompt_data = []
-    for document_set in sorted(DataModel().get_entity_sets(entity_name)):
+    for document_set in sorted(GraphModel().get_entity_sets(entity_name)):
         set_dir = docs_dir / document_set
 
         # If the document set directory does not exist, abort the process
@@ -244,7 +244,7 @@ def process_extracted_entities(
 
     Args:
         results: A dictionary containing the results of the LLM entity extraction process.
-        entity_model: A dictionary containing entity types from the data model and their relevant information.
+        entity_model: A dictionary containing entity types from the graph model and their relevant information.
         partial_entities_dir: The path to the directory where the partial entities are stored.
     """
     # Get entity and document names
@@ -287,8 +287,8 @@ def load_entity_metadata(entity_name: str, metadata_dir: Path, docs_dir: Path, p
         FileNotFoundError: If the necessary document set directories do not exist.
     """
     # Gather documents from all sets
-    data_model = DataModel()
-    for document_set in sorted(data_model.get_entity_sets(entity_name)):
+    graph_model = GraphModel()
+    for document_set in sorted(graph_model.get_entity_sets(entity_name)):
         set_dir = docs_dir / document_set
 
         # If the document set directory does not exist, abort the process
@@ -322,7 +322,7 @@ def load_entity_metadata(entity_name: str, metadata_dir: Path, docs_dir: Path, p
                 logger.warning(f'No metadata file found at path "{metadata_path}". Filling with NULL values.')
 
             # Add metadata values
-            entity_data: dict[str, Any] = dict.fromkeys(data_model.get_entity_metadata(entity_name), 'NULL')
+            entity_data: dict[str, Any] = dict.fromkeys(graph_model.get_entity_metadata(entity_name), 'NULL')
             entity_data.update({k: v for k, v in metadata.items() if k in entity_data})
 
             # Add ObjectId and single reference to document (core entity)
@@ -461,7 +461,7 @@ def process_hybrid_entities(results_dir: Path) -> None:
     references_path = relations_dir / 'ExtractedFrom.json'
 
     # Merge hybrid entities
-    for entity, entity_info in DataModel().hybrid_entities.items():
+    for entity, entity_info in GraphModel().hybrid_entities.items():
         entity_name = entity.removeprefix('@')
         core_path = entities_dir / f'{entity_name}.json'
         hybrid_path = entities_dir / f'@{entity_name}.json'

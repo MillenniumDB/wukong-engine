@@ -11,7 +11,7 @@ from typing import Any
 from datasketch import MinHash, MinHashLSH
 from fuzzywuzzy import fuzz, process
 
-from wukong_engine.core.data_model import DataModel
+from wukong_engine.core.graph_model import GraphModel
 from wukong_engine.utils.text_utils import normalize_text
 
 # Logging
@@ -299,20 +299,20 @@ def clean_entities(
 ) -> list[dict[str, Any]]:
     """Clean entities of a given type, removing invalid ones.
 
-    Cleans entities by checking their properties and validating them against the data model specifications.
+    Cleans entities by checking their properties and validating them against the graph model specifications.
 
     Args:
         entities: A list of dictionaries representing entities of a specific type.
         entity_name: The name of the entity type.
-        entity_info: A dictionary containing information about the entity type, following the data model specifications.
+        entity_info: A dictionary containing information about the entity type, following the graph model specifications.
 
     Returns:
         A list of dictionaries representing all the valid entities remaining after the cleaning process.
     """
     # Iterate over all entities and their properties
     cleaned_entities = []  # List to store cleaned entities
-    entity_properties = DataModel().get_entity_properties(entity_name)
-    entity_placeholders = DataModel().get_entity_placeholders(entity_name)
+    entity_properties = GraphModel().get_entity_properties(entity_name)
+    entity_placeholders = GraphModel().get_entity_placeholders(entity_name)
     for entity in entities:
         valid_entity = True
         for property_name, property_data in entity_properties.items():
@@ -364,20 +364,20 @@ def clean_relations(
     """Clean relations of a given type, removing invalid ones.
 
     Cleans relations by checking their origin/target entities as well as their properties,
-    validating them against the data model specifications.
+    validating them against the graph model specifications.
 
     Args:
         relations: A list of dictionaries representing relations of a specific type between entities.
         relation_name: The name of the relation type.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
 
     Returns:
         A list of dictionaries representing all the valid relations remaining after the cleaning process.
     """
     # Iterate over all relations and their properties
     cleaned_relations = []  # List to store cleaned relations
-    relation_properties = DataModel().get_relation_properties(relation_name)
-    relation_placeholders = DataModel().get_relation_placeholders(relation_name)
+    relation_properties = GraphModel().get_relation_properties(relation_name)
+    relation_placeholders = GraphModel().get_relation_placeholders(relation_name)
     for relation in relations:
         valid_required_properties = True
         for property_name, property_data in relation_properties.items():
@@ -426,12 +426,12 @@ def merge_duplicate_entities(
     """Detect duplicate entities of a given type and merge them together.
 
     Deduplicates entities based on their primary key, by making use of a string similarity index.
-    The specific behavior of this process is managed through the data model specifications.
+    The specific behavior of this process is managed through the graph model specifications.
 
     Args:
         entities: A list of dictionaries representing entities of a specific type.
         entity_name: The name of the entity type.
-        entity_info: A dictionary containing information about the entity type, following the data model specifications.
+        entity_info: A dictionary containing information about the entity type, following the graph model specifications.
 
     Returns:
         A list of dictionaries representing all the unique entities remaining after the deduplication process.
@@ -444,7 +444,7 @@ def merge_duplicate_entities(
     if not entity_info.get('detect_duplicates', True):
         return entities
 
-    # Choose duplicate matcher based on data model option
+    # Choose duplicate matcher based on graph model option
     duplicate_matcher = BasicStringMatcher()
     duplicates_to_find = entity_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
@@ -452,7 +452,7 @@ def merge_duplicate_entities(
 
     # Iterate over all entities and look for duplicates
     unique_entities = []  # List to store unique entities
-    entity_properties = DataModel().get_entity_properties(entity_name)
+    entity_properties = GraphModel().get_entity_properties(entity_name)
     for idx, entity in enumerate(entities):
         # Query the duplicate matcher to find duplicates for the primary key
         pk_value = entity[entity_info['primary_key']]
@@ -490,12 +490,12 @@ def merge_hybrid_entities(
     """Merge hybrid entities with their corresponding core entity, deduplicating them where necessary.
 
     Deduplication is performed over the primary key, by making use of a string similarity index.
-    The specific behavior of this process is managed through the data model specifications.
+    The specific behavior of this process is managed through the graph model specifications.
 
     Args:
         core_entities: A list of dictionaries representing core entities of a specific hybrid type.
         entities: A list of dictionaries representing entities of a specific hybrid type.
-        entity_info: A dictionary containing information about the hybrid entity type, following the data model specifications.
+        entity_info: A dictionary containing information about the hybrid entity type, following the graph model specifications.
 
     Returns:
         A tuple containing two elements
@@ -506,7 +506,7 @@ def merge_hybrid_entities(
     if not entity_info.get('detect_duplicates', True):
         return entities, {}
 
-    # Choose duplicate matcher based on data model option
+    # Choose duplicate matcher based on graph model option
     duplicate_matcher = BasicStringMatcher()
     duplicates_to_find = entity_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
@@ -546,12 +546,12 @@ def merge_duplicate_relations(
 
     Deduplicates relations with the same pair of origin/target entities,
     by making use of a string similarity index applied over their primary keys (if present).
-    The specific behavior of this process is managed through the data model specifications.
+    The specific behavior of this process is managed through the graph model specifications.
 
     Args:
         relations: A list of dictionaries representing relations of a specific type between entities.
         relation_name: The name of the relation type.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
 
     Returns:
         A list of dictionaries representing all the unique relations remaining after the deduplication process.
@@ -568,7 +568,7 @@ def merge_duplicate_relations(
     if not relation_info.get('detect_duplicates', True) and not force_unique:
         return relations
 
-    # Choose duplicate matcher based on data model option
+    # Choose duplicate matcher based on graph model option
     duplicate_matcher = BasicStringMatcher()
     duplicates_to_find = relation_info.get('duplicates', 'exact').lower().strip()
     if duplicates_to_find in ('all', 'near', 'similar'):
@@ -579,7 +579,7 @@ def merge_duplicate_relations(
 
     # Iterate over all relation groups and look for duplicates
     unique_relations = []  # List to store unique relations
-    relation_properties = DataModel().get_relation_properties(relation_name)
+    relation_properties = GraphModel().get_relation_properties(relation_name)
     for group_keys in grouped_relations.values():
         # Initial relation for the group
         initial_idx = group_keys[0]
@@ -654,11 +654,11 @@ def is_null_value(property_value: str) -> bool:
 
 
 def is_valid_value(property_value: str, property_info: dict[str, Any]) -> bool:
-    """Check whether a property value is valid, according to the data model specifications.
+    """Check whether a property value is valid, according to the graph model specifications.
 
     Args:
         property_value: The property value to check.
-        property_info: A dictionary containing information about the property, following the data model specifications.
+        property_info: A dictionary containing information about the property, following the graph model specifications.
 
     Returns:
         True if the property value is valid, False otherwise.
@@ -677,11 +677,11 @@ def is_valid_value(property_value: str, property_info: dict[str, Any]) -> bool:
 
 
 def is_valid_relation(relation: dict[str, Any], relation_info: dict[str, Any]) -> bool:
-    """Check whether a relation is valid, according to the data model specifications and available entities.
+    """Check whether a relation is valid, according to the graph model specifications and available entities.
 
     Args:
         relation: A dictionary representing a relation of a specific type between a pair of entities.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
 
     Returns:
         True if the relation is valid, False otherwise.
@@ -713,10 +713,10 @@ def choose_property_value(current_value: Any, new_value: Any, property_info: dic
     Args:
         current_value: The current value of the property.
         new_value: The new value to consider for the property.
-        property_info: A dictionary containing information about the property, following the data model specifications.
+        property_info: A dictionary containing information about the property, following the graph model specifications.
 
     Returns:
-        The best fitting property value between the current one and the new value, according to the data model specifications.
+        The best fitting property value between the current one and the new value, according to the graph model specifications.
     """
     property_value = str(current_value)
     candidate_value = str(new_value)

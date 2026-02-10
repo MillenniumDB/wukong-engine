@@ -30,7 +30,7 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
 
 ## 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
 
-The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **data model**. It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI agents**.
+The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **graph model**. It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI agents**.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -104,7 +104,7 @@ The project requires certain **environment variables** to be set for proper oper
 
 ### Data Directory
 
-To run the engine, a data directory containing the **data model** and the **documents** to be processed is required.
+To run the engine, a data directory containing the **graph model** and the **documents** to be processed is required.
 This data directory must follow a specific structure to be recognized as valid by the engine.
 The expected structure is as follows:
 
@@ -122,15 +122,15 @@ your-data-dir/
 │   │   │   └── ...
 │   │   └── ...
 │   └── ...
-└── data_model.json
+└── graph_model.json
 ```
 
 The `docs/text/` directory should contain the **plain text** files to be processed, saved with the `.txt` extension (the filenames themselves are not restricted).
 These files **must** be organized in user-defined sub-directories (e.g. `your-doc-subset-name-a/`, `your-doc-subset-name-b/`).
 
-The `data_model.json` file should define the desired **parameters** and **entity/relation schema** for the knowledge graph, in **JSON** format.
+The `graph_model.json` file should define the desired **parameters** and **entity/relation schema** for the knowledge graph, in **JSON** format.
 
-> 🧬 For a detailed description of the data model schema and available options, refer to the [Data Model](/docs/data-model.md) documentation.
+> 🧬 For a detailed description of the graph model schema and available options, refer to the [Graph Model](/docs/graph-model.md) documentation.
 
 An **example** data directory is provided for testing purposes, located in `data/example/`.
 
@@ -161,7 +161,7 @@ As an example, if you want to run the engine on the provided **example data dire
 poetry run python -m wukong_engine data/example/
 ```
 
-After executing the command, the engine will process the **documents** in the specified data directory and generate a **knowledge graph** based on the provided **data model**. This process may take some time depending on the size/number of documents and the complexity of the data model (from a few seconds to multiple hours or longer).
+After executing the command, the engine will process the **documents** in the specified data directory and generate a **knowledge graph** based on the provided **graph model**. This process may take some time depending on the size/number of documents and the complexity of the graph model (from a few seconds to multiple hours or longer).
 
 > ⚙️ For details on how to provide a custom configuration for the engine, refer to the [Engine Configuration](#engine-configuration) section.
 >
@@ -169,7 +169,7 @@ After executing the command, the engine will process the **documents** in the sp
 
 ### Output Knowledge Graph
 
-The resulting **knowledge graph** will contain all the extracted entities and relations specified in the **data model**, as well as the following **special entities**:
+The resulting **knowledge graph** will contain all the extracted entities and relations specified in the **graph model**, as well as the following **special entities**:
 
 - `Document`: Represents the original documents.
 - `Chunk`: Represents the text chunks obtained from the original documents, which are used for extracting the user-defined entities and relations.
@@ -177,7 +177,7 @@ The resulting **knowledge graph** will contain all the extracted entities and re
 Additionally, the graph will contain the following **special relations**:
 
 - `ChunkOf`: Links the `Chunk` entities to their corresponding `Document` entities.
-- `ExtractedFrom`: Links user-defined entities from the data model to the respective `Chunk` or `Document` entities from where they got extracted.
+- `ExtractedFrom`: Links user-defined entities from the graph model to the respective `Chunk` or `Document` entities from where they got extracted.
 
 The output files for the **knowledge graph** will be exported to the `<path/to/data_dir>/exports/` directory.
 
@@ -320,8 +320,8 @@ Please review the following resources:
 
 Here are some planned features and improvements for future releases of the project:
 
-- [ ] Support for more data types in the data model (e.g. `integer`, `float`, `bool`)
-- [ ] Data validation for data model and configuration files
+- [ ] Support for more data types in the graph model (e.g. `integer`, `float`, `bool`)
+- [ ] Data validation for graph model and configuration files
 - [ ] Data validation for LLM responses
 - [ ] Improved wrapper for LLM interaction
 

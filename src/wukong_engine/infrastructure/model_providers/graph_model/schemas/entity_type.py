@@ -11,10 +11,19 @@ class EntityTypeSchema(BaseModel):
     """Schema-level representation of an entity type definition."""
 
     description: StrictStr
-    primary_key: StrictStr  # TODO: Validate that it exists at fields?
+    instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    primary_key: StrictStr
     fields: dict[StrictStr, FieldSchema] = Field(default_factory=dict)
     document_groups: dict[ContextLevel, list[StrictStr] | StrictStr] = Field(default_factory=dict)
     # duplicates: StrictStr | None = None  # TODO: design
+
+    @field_validator('instructions', mode='before')
+    @classmethod
+    def parse_instructions(cls, value: Any) -> Any:
+        """Parse context level -> instructions mapping."""
+        if isinstance(value, str):  # Apply same value to all context levels
+            return dict.fromkeys(ContextLevel, value)
+        return value
 
     @field_validator('document_groups', mode='before')
     @classmethod

@@ -16,9 +16,9 @@ class LocalGraphModelProvider(GraphModelProvider):
         # TODO: Errors from file reading
         raw = json.load(path.open())
         # TODO: Validate with pydantic
-        # TODO: Catch pydantic errors and raise DataModelLoadError or similar
+        # TODO: Catch pydantic errors and raise GraphModelLoadError or similar
         schema = GraphModelSchema.model_validate(raw)
-        # TODO: Convert to domain model (DataModel) (do not handle any errors here, instead on app)
+        # TODO: Convert to domain model (GraphModel) (do not handle any errors here, instead on app)
         graph_model = schema_to_graph_model(schema)
         # print(graph_model)
         return None

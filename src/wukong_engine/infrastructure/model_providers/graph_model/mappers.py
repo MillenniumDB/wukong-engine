@@ -10,23 +10,26 @@ from .schemas import EntityTypeSchema, FieldSchema, GraphModelSchema
 def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
     """Convert a GraphModelSchema to a GraphModel domain model."""
     return GraphModel(
-        entity_types=tuple(_schema_to_entity_type(name, schema) for name, schema in schema.entity_types.items()),
+        entity_types=MappingProxyType(
+            {EntityTypeName(name): _schema_to_entity_type(schema) for name, schema in schema.entity_types.items()},
+        ),
     )
 
 
-def _schema_to_entity_type(name: str, schema: EntityTypeSchema) -> EntityType:
+def _schema_to_entity_type(schema: EntityTypeSchema) -> EntityType:
     """Convert an EntityTypeSchema to an EntityType domain model."""
     return EntityType(
-        name=EntityTypeName(name),
+        description=schema.description,
+        instructions=MappingProxyType(_as_dict(schema.instructions)),
+        primary_key=FieldName(schema.primary_key),
+        fields=MappingProxyType({FieldName(name): _schema_to_field(schema) for name, schema in schema.fields.items()}),
         document_groups=MappingProxyType({k: tuple(_as_list(v)) for k, v in schema.document_groups.items()}),
-        fields=tuple(_schema_to_field(name, schema) for name, schema in schema.fields.items()),
     )
 
 
-def _schema_to_field(name: str, schema: FieldSchema) -> Field:
+def _schema_to_field(schema: FieldSchema) -> Field:
     """Convert a FieldSchema to a Field domain model."""
     return Field(
-        name=FieldName(name),
         data_type=schema.data_type,
         description=schema.description,
         instructions=MappingProxyType(_as_dict(schema.instructions)),

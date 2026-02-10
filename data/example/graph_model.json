@@ -16,7 +16,8 @@
     },
     "entity_types": {
         "LGUC": {
-            "description": "A specific article from the LGUC (Ley General de Urbanismo y Construcciones). Must explicitly mention or refer to the LGUC, ignore articles from other legal bodies such as OGUC/DDU.",
+            "description": "A specific article from the LGUC (Ley General de Urbanismo y Construcciones).",
+            "instructions": "Must explicitly mention or refer to the LGUC, ignore articles from other legal bodies such as OGUC/DDU.",
             "primary_key": "node_name",
             "fields": {
                 "node_name": {
@@ -145,7 +146,8 @@
             "duplicates": "exact"
         },
         "OGUC": {
-            "description": "A specific article from the OGUC (Ordenanza General de Urbanismo y Construcciones). Must explicitly mention or refer to the OGUC, ignore articles from other legal bodies such as LGUC/DDU.",
+            "description": "A specific article from the OGUC (Ordenanza General de Urbanismo y Construcciones).",
+            "instructions": "Must explicitly mention or refer to the OGUC, ignore articles from other legal bodies such as LGUC/DDU.",
             "primary_key": "node_name",
             "fields": {
                 "node_name": {
@@ -273,7 +275,8 @@
             "duplicates": "exact"
         },
         "DDU": {
-            "description": "A specific circular from the DDU (División de Desarrollo Urbano). Must explicitly mention or refer to the DDU, ignore other legal bodies such as LGUC/OGUC.",
+            "description": "A specific circular from the DDU (División de Desarrollo Urbano).",
+            "instructions": "Must explicitly mention or refer to the DDU, ignore other legal bodies such as LGUC/OGUC.",
             "primary_key": "node_name",
             "fields": {
                 "node_name": {
@@ -420,7 +423,8 @@
             "duplicates": "exact"
         },
         "LegalProvision": {
-            "description": "A specific legal provision that is referenced in a legal document. Exclude all legal provisions from: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
+            "description": "A specific legal provision that is referenced in a legal document.",
+            "instructions": "Exclude all legal provisions from: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
             "primary_key": "name",
             "fields": {
                 "source": {

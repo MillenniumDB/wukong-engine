@@ -1,19 +1,19 @@
 <!-- omit from toc -->
-# 🧬 Data Model
+# 🧬 Graph Model
 
-This document describes the expected data model format for a `data_model.json` file, which is required by the engine. The data model defines the structure of the knowledge graph that will be generated from the provided documents.
+This document describes the expected graph model format for a `graph_model.json` file, which is required by the engine. The graph model defines the structure of the knowledge graph that will be generated from the provided documents.
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
-- [🧾 Data Model Schema](#-data-model-schema)
+- [🧾 Graph Model Schema](#-graph-model-schema)
 - [⚙️ Parameters](#️-parameters)
 - [🧩 Entities](#-entities)
 - [🔗 Relations](#-relations)
-- [💡 Data Model Example](#-data-model-example)
+- [💡 Graph Model Example](#-graph-model-example)
 
-## 🧾 Data Model Schema
+## 🧾 Graph Model Schema
 
-For a given set of documents to process, the engine expects a data model file in valid **JSON** format. The file must follow a specific structure:
+For a given set of documents to process, the engine expects a graph model file in valid **JSON** format. The file must follow a specific structure:
 
 ```json
 {
@@ -29,7 +29,7 @@ For a given set of documents to process, the engine expects a data model file in
 }
 ```
 
-The data model itself is a **JSON** object with three main sections: `parameters`, `entities`, and `relations`. Each section has its own specific structure and requirements, which are detailed below.
+The graph model itself is a **JSON** object with three main sections: `parameters`, `entities`, and `relations`. Each section has its own specific structure and requirements, which are detailed below.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -49,7 +49,7 @@ The `parameters` section defines the **general context and settings** for the do
 
 All of these parameters are technically **optional**, but it's highly recommended to provide them to ensure the **LLM** has a clear understanding of the context and requirements for processing the documents.
 
-Example of the `parameters` section in a data model:
+Example of the `parameters` section in a graph model:
 
 ```json
 "parameters": {
@@ -115,7 +115,7 @@ For each property that the user defines, the following fields are available:
 | `regex`              |    🟡     | A regex pattern that this property's value must match to be considered valid. If not defined, the property will be extracted from the documents normally.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |    `string`    | `None`                                  |
 | `required`           |    🟡     | A boolean indicating whether this property is mandatory for this entity type. If set to `true`, the property must be present in every instance of the entity type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |     `bool`     | `false`                                 |
 
-Example of the `entities` section in a data model:
+Example of the `entities` section in a graph model:
 
 ```json
 "entities": {
@@ -203,7 +203,7 @@ For each relation type that the user defines, the following fields are available
 | `bypass_LLM`        |    🟡     | A boolean indicating whether this relation type should be extracted without using the LLM. This option is only available for relation types where either the origin or target entity type is a **core entity**. If this relation type is defined between two non-core entities, this field will be ignored and the relations will be extracted using the LLM. When using this option, the engine **skips the LLM processing** and assumes that, for every instance of the non-core entity type found in a document, said instance has a relation with the respective core entity that represents that document. This field is useful for cases where an entity being found in a document implicitly means that there is a relation with the core entity that represents said document (e.g. for documents that represent **fragments of a book**, any **character entities** mentioned in a document would be implicitly connected to the associated **book fragment core entity** by a relation type such as **"MentionedIn"**). |     `bool`     | `false`   |
 | `properties`        |    🟡     | An object defining the specific **properties** of this relation type. This object follows the same rules and structure as with the entities.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    `object`    | `{}`      |
 
-Example of the `relations` section in a data model:
+Example of the `relations` section in a graph model:
 
 ```json
 "relations": {
@@ -248,8 +248,8 @@ Example of the `relations` section in a data model:
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 💡 Data Model Example
+## 💡 Graph Model Example
 
-A full example of a properly formatted data model is contained in the provided [Data Model Example File](/data/example/data_model.json), located in `data/example/data_model.json`.
+A full example of a properly formatted graph model is contained in the provided [Graph Model Example File](/data/example/graph_model.json), located in `data/example/graph_model.json`.
 
 [📚 Back to Table of Contents](#-table-of-contents)

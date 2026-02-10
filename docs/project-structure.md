@@ -38,7 +38,7 @@ The `__main__.py` file enables the package to be run as a script. It handles arg
 The sub-packages contain modules that serve the following purposes:
 
 - `config`: Loading and validating engine configuration.
-- `core`: Main orchestration, including the engine pipeline execution and data model loading/validation.
+- `core`: Main orchestration, including the engine pipeline execution and graph model loading/validation.
 - `documents`: Document preparation and pre-processing.
 - `extraction`: Data extraction from documents and post-processing (cleaning and deduplication).
 - `graph`: Graph-related utilities such as exporting data to a knowledge graph format.
@@ -60,8 +60,8 @@ The details for the engine configuration can be found in the [Configuration](/do
 
 ## 🗂️ Data
 
-The engine processes documents and generates a knowledge graph based on a data model defined by the user.
-To achieve this, the user must provide a data directory with a specific structure, containing the **documents** and the **data model**.
+The engine processes documents and generates a knowledge graph based on a graph model defined by the user.
+To achieve this, the user must provide a data directory with a specific structure, containing the **documents** and the **graph model**.
 
 For testing purposes, an **example** data directory is provided inside the `data/` directory, containing the following:
 
@@ -82,15 +82,15 @@ data/example/
 │       │   └── lguc_articulo_4.json
 │       └── OGUC/
 │           └── oguc_articulo_2.1.18.json
-└── data_model.json
+└── graph_model.json
 ```
 
 - The `docs/text/` directory contains the **plain text** documents to be used by the engine. The documents must be organized in user-defined sub-directories (in the example we use `DDU/`, `LGUC/` and `OGUC/`).
 - The `docs/metadata/` directory is optional and contains the **JSON** metadata for each of the documents, to make use of the metadata extraction feature. The files here must be organized in the same way as in the `docs/text/` directory.
-- The `data_model.json` file contains the example data model in **JSON** format.
+- The `graph_model.json` file contains the example graph model in **JSON** format.
 
 To make use of the engine, the user must first create and set up their own data directory with the same structure as the example above.
-The details for building your own data model schema can be found in the [Data Model](/docs/data-model.md) documentation.
+The details for building your own graph model schema can be found in the [Graph Model](/docs/graph-model.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -116,7 +116,7 @@ The `README.md` file located in the root of the project contains an overview of 
 The extended documentation for the central aspects of the project is organized in the `docs/` directory, which includes:
 
 - `configuration.md`: Configuration file format and available options for engine configuration.
-- `data-model.md`: Data model format and available options for specifying entity and relation types.
+- `graph-model.md`: Graph model format and available options for specifying entity and relation types.
 - `development.md`: Development guidelines, including code style/testing practices, and branching/naming conventions.
 - `project-structure.md`: Project structure and organization of the source code.
 

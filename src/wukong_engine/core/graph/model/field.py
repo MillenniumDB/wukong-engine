@@ -2,14 +2,13 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from .rules.compatibility import ensure_compatible_retrieval_modes
-from .values import ContextLevel, DataType, FieldName, RegexPattern, RetrievalMode
+from .values import ContextLevel, DataType, RegexPattern, RetrievalMode
 
 
 @dataclass(frozen=True)
 class Field:
     """A field from an entity/relationship type."""
 
-    name: FieldName
     data_type: DataType
     description: str
     instructions: MappingProxyType[ContextLevel, str]

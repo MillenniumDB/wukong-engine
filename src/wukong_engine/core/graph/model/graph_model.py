@@ -5,44 +5,46 @@ Classes:
 """
 
 from dataclasses import dataclass
+from types import MappingProxyType
 
 from .entity_type import EntityType
+from .values import EntityTypeName
 
 
 @dataclass(frozen=True)
 class GraphModel:
     """The graph model containing all entity types."""
 
-    entity_types: tuple[EntityType, ...]
+    entity_types: MappingProxyType[EntityTypeName, EntityType]
 
 
-# class DataModelX:
-#     """The data model manager for the WUKONG engine.
+# class GraphModelX:
+#     """The graph model manager for the WUKONG engine.
 
-#     Loads and validates the data model, providing easy access to its components.
-#     The data model is loaded once and assumed to be immutable for the duration of the program.
+#     Loads and validates the graph model, providing easy access to its components.
+#     The graph model is loaded once and assumed to be immutable for the duration of the program.
 #     """
 
 #     def __init__(self, data_dir: Path = Path()) -> None:
-#         """Initialize the data model manager.
+#         """Initialize the graph model manager.
 
-#         Loads the data model and processes it to store each relevant component.
+#         Loads the graph model and processes it to store each relevant component.
 
 #         Args:
-#             data_dir: The path to the data directory where the data model file is located.
+#             data_dir: The path to the data directory where the graph model file is located.
 #         """
-#         # Components of the data model
+#         # Components of the graph model
 #         self._parameters = {}
 #         self._entities = []
 #         self._relations = {}  # TODO: Change to list
 #         self._materialized_relations = {}  # TODO: Refactor
 
-#         # Initialize the data model
-#         self._load_model(data_dir / DATA_MODEL_PATH)
+#         # Initialize the graph model
+#         self._load_model(data_dir / GRAPH_MODEL_PATH)
 
 #     # TODO: Refactor
 #     def __repr__(self) -> str:
-#         """Return a string representation of the data model manager."""
+#         """Return a string representation of the graph model manager."""
 #         entities = self.core_entities + self.entities + self.special_entities
 #         simplified_entities = {entity: {} for entity in entities}
 #         for entity in entities:
@@ -78,42 +80,42 @@ class GraphModel:
 #         }
 #         return f'```json\n{json.dumps(simplified_model, indent=2, ensure_ascii=False)}\n```'
 
-#     def _load_model(self, data_model_path: Path) -> None:
-#         """Load the data model from a JSON file, making sure it has a valid format and satisfies all requirements.
+#     def _load_model(self, graph_model_path: Path) -> None:
+#         """Load the graph model from a JSON file, making sure it has a valid format and satisfies all requirements.
 
 #         Args:
-#             data_model_path: The path to the JSON data model file.
+#             graph_model_path: The path to the JSON graph model file.
 
 #         Raises:
-#             FileNotFoundError: If the data model file does not exist.
-#             ValueError: If the data model file has an invalid structure or contents.
+#             FileNotFoundError: If the graph model file does not exist.
+#             ValueError: If the graph model file has an invalid structure or contents.
 #         """
-#         # Check if the data model file exists
-#         if not data_model_path.exists():
-#             raise FileNotFoundError(f'Data model file "{data_model_path}" not found')
+#         # Check if the graph model file exists
+#         if not graph_model_path.exists():
+#             raise FileNotFoundError(f'Graph model file "{graph_model_path}" not found')
 
-#         # Load the data model
+#         # Load the graph model
 #         try:
-#             data_model = json.loads(
-#                 data_model_path.read_text(encoding='utf-8'),
+#             graph_model = json.loads(
+#                 graph_model_path.read_text(encoding='utf-8'),
 #                 object_pairs_hook=self._no_duplicate_keys_hook,
 #             )
 #         except json.JSONDecodeError as error:
-#             raise ValueError(f'Invalid structure for the data model in "{data_model_path}"') from error
+#             raise ValueError(f'Invalid structure for the graph model in "{graph_model_path}"') from error
 
-#         # Validate the general data model structure
-#         self._validate_structure(data_model)
+#         # Validate the general graph model structure
+#         self._validate_structure(graph_model)
 
 #         # Store the general parameters
-#         self._parameters = data_model['parameters']
+#         self._parameters = graph_model['parameters']
 
 #         # Load and validate entity types
-#         self._load_entity_types(data_model['entities'])
+#         self._load_entity_types(graph_model['entities'])
 
 #         # Load and validate relation types
-#         self._load_relation_types(data_model['relations'])
+#         self._load_relation_types(graph_model['relations'])
 
-#         logger.info(f'Data model loaded successfully from: "{data_model_path}"')
+#         logger.info(f'Graph model loaded successfully from: "{graph_model_path}"')
 
 #     @staticmethod
 #     def _no_duplicate_keys_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -131,32 +133,32 @@ class GraphModel:
 #         seen = set()
 #         for key, _ in pairs:
 #             if key in seen:
-#                 raise ValueError(f'Data model contains duplicate key "{key}"')
+#                 raise ValueError(f'Graph model contains duplicate key "{key}"')
 #             seen.add(key)
 #         return dict(pairs)
 
 #     @staticmethod
-#     def _validate_structure(data_model: dict[str, Any]) -> None:
-#         """Validate the general data model structure to ensure it contains all required fields.
+#     def _validate_structure(graph_model: dict[str, Any]) -> None:
+#         """Validate the general graph model structure to ensure it contains all required fields.
 
 #         Args:
-#             data_model: The data model to validate.
+#             graph_model: The graph model to validate.
 
 #         Raises:
-#             ValueError: If the general data model structure is invalid.
+#             ValueError: If the general graph model structure is invalid.
 #         """
 #         # Validate top-level structure
 #         general_fields = ['parameters', 'entities', 'relations']
 #         for field in general_fields:
-#             if field not in data_model or not isinstance(data_model[field], dict):
-#                 raise ValueError(f'Data model must have a valid "{field}" section')
+#             if field not in graph_model or not isinstance(graph_model[field], dict):
+#                 raise ValueError(f'Graph model must have a valid "{field}" section')
 
 #     # TODO: Complete
 #     def _load_entity_types(self, entity_types: dict[str, Any]) -> None:
-#         """Load and validate data model entity types.
+#         """Load and validate graph model entity types.
 
 #         Args:
-#             entity_types: The data model entity types to load.
+#             entity_types: The graph model entity types to load.
 
 #         Raises:
 #             ValueError: If any entity type does not meet all requirements.
@@ -240,12 +242,12 @@ class GraphModel:
 
 #     # TODO: Refactor
 #     def _load_relation_types(self, relation_types: dict[str, Any]) -> None:
-#         """Load and validate data model relations."""
+#         """Load and validate graph model relations."""
 #         # Validate relations
-#         # self._validate_relations(data_model['relations'], data_model['entities'])
+#         # self._validate_relations(graph_model['relations'], graph_model['entities'])
 
 #         # Validate fields
-#         # self._validate_fields(data_model['entities'] | data_model['relations'])
+#         # self._validate_fields(graph_model['entities'] | graph_model['relations'])
 
 #         # Keep only the included relations
 #         included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
@@ -281,11 +283,11 @@ class GraphModel:
 #     # TODO: Move to RelationType class
 #     @staticmethod
 #     def _validate_relations(relations: dict[str, Any], entities: dict[str, Any]) -> None:
-#         """Validate data model relations to ensure they meet all requirements.
+#         """Validate graph model relations to ensure they meet all requirements.
 
 #         Args:
-#             relations: The data model relations to validate.
-#             entities: The data model entities to consider for origin/target validation.
+#             relations: The graph model relations to validate.
+#             entities: The graph model entities to consider for origin/target validation.
 
 #         Raises:
 #             ValueError: If any relation type does not meet all requirements.
@@ -364,7 +366,7 @@ class GraphModel:
 
 #     # TODO: Move to RelationType class
 #     def _build_relation_schemas(self) -> None:
-#         """Build schemas that represent all combinations for each relation type in the data model."""
+#         """Build schemas that represent all combinations for each relation type in the graph model."""
 #         # Iterate over the relation model and build the schemas
 #         for relation_info in self._relations.values():
 #             # Skip if schema is already present
@@ -374,7 +376,7 @@ class GraphModel:
 #                     origin: list(relation_info['target']) for origin in relation_info['origin']
 #                 }
 
-#             # Filter out any origin/target entities that are not included in the data model
+#             # Filter out any origin/target entities that are not included in the graph model
 #             final_schema = {}
 #             for origin, targets in relation_info['origin_target'].items():
 #                 valid_targets = list(set(targets) & set(self._entities))
@@ -426,13 +428,13 @@ class GraphModel:
 
 #     @property
 #     def parameters(self) -> dict[str, Any]:
-#         """A dictionary containing the parameters of the data model."""
+#         """A dictionary containing the parameters of the graph model."""
 #         return self._parameters
 
 #     # TODO: Refactor
 #     @property
 #     def entities(self) -> list[EntityType]:
-#         """A list of all regular entity types in the data model (core/hybrid/special entities are excluded)."""
+#         """A list of all regular entity types in the graph model (core/hybrid/special entities are excluded)."""
 #         return [
 #             entity
 #             for entity in self._entities
@@ -442,31 +444,31 @@ class GraphModel:
 #     # TODO: Refactor
 #     @property
 #     def core_entities(self) -> list[EntityType]:
-#         """A list of all core entity types in the data model."""
+#         """A list of all core entity types in the graph model."""
 #         return [entity for entity in self._entities if entity.has_source('document')]
 
 #     # TODO: Refactor
 #     @property
 #     def hybrid_entities(self) -> list[EntityType]:
-#         """A list of all hybrid entity types in the data model."""
+#         """A list of all hybrid entity types in the graph model."""
 #         return [entity for entity in self._entities if entity.has_source('chunk') and entity.has_source('document')]
 
 #     # TODO: Refactor
 #     @property
 #     def special_entities(self) -> list[EntityType]:
-#         """A list of all special entity types in the data model."""
+#         """A list of all special entity types in the graph model."""
 #         return [entity for entity in self._entities if entity.is_special_entity()]
 
 #     # TODO: Refactor
 #     @property
 #     def relations(self) -> dict[str, Any]:
-#         """A dictionary containing all regular relation types in the data model (special relations are excluded)."""
+#         """A dictionary containing all regular relation types in the graph model (special relations are excluded)."""
 #         return {k: v for k, v in self._relations.items() if not v.get('special_relation', False)}
 
 #     # TODO: Refactor
 #     @property
 #     def special_relations(self) -> dict[str, Any]:
-#         """A dictionary containing all special relation types in the data model."""
+#         """A dictionary containing all special relation types in the graph model."""
 #         return {k: v for k, v in self._relations.items() if v.get('special_relation', False)}
 
 #     # TODO: Refactor

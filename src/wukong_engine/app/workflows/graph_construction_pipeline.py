@@ -95,7 +95,7 @@ class GraphConstructionPipeline:
         # TODO: Get configuration
         # config = Config(config_path)
 
-        # TODO: Load data model
+        # TODO: Load graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
 
         # TODO: Pipeline configuration
@@ -126,7 +126,7 @@ class GraphConstructionPipeline:
             if original_metadata_dir.exists():
                 process_metadata_documents(original_metadata_dir, metadata_dir, results_dir)
 
-        # Generate prompts from data model
+        # Generate prompts from graph model
         if prompt_generation:
             logger.info('Generating Prompts...')
             generate_prompts(prompts_dir)

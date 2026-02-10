@@ -6,7 +6,7 @@ This module provides functions to generate prompts for extracting entities/relat
 from pathlib import Path
 from typing import Any
 
-from wukong_engine.core.data_model import DataModel
+from wukong_engine.core.graph_model import GraphModel
 from wukong_engine.utils.file_utils import delete_dir_contents, save_text_data
 
 # Prompt templates for entity and relation extraction
@@ -161,9 +161,9 @@ Use the {LANGUAGE} language."""
 
 
 def generate_prompts(prompts_dir: Path) -> None:
-    """Generate prompts for extracting entities and relations based on the data model.
+    """Generate prompts for extracting entities and relations based on the graph model.
 
-    Builds extraction prompts for each entity and relation type included in the data model.
+    Builds extraction prompts for each entity and relation type included in the graph model.
 
     Args:
         prompts_dir: The path to the directory where the generated prompts will be saved.
@@ -176,31 +176,31 @@ def generate_prompts(prompts_dir: Path) -> None:
     relation_prompts_dir = prompts_dir / 'relations/'
     relation_prompts_dir.mkdir(parents=True, exist_ok=True)
 
-    # Get data model
-    data_model = DataModel()
+    # Get graph model
+    graph_model = GraphModel()
 
     # Get role (if none provided, the LLM is a knowledge graph expert)
     default_role = 'An AI expert specialized in knowledge graph extraction'
-    role = data_model.parameters.get('role', default_role).removesuffix('.')
+    role = graph_model.parameters.get('role', default_role).removesuffix('.')
 
     # Get context and input language (if none provided, the LLM must figure out the context)
-    context = data_model.parameters.get('context', 'A context you must identify').removesuffix('.')
-    context += f'. The text is written in {data_model.parameters.get("input_language", "english").lower()}'
+    context = graph_model.parameters.get('context', 'A context you must identify').removesuffix('.')
+    context += f'. The text is written in {graph_model.parameters.get("input_language", "english").lower()}'
 
-    # Store general information about the data model
+    # Store general information about the graph model
     model_config = {
         'role': role,
         'context': context,
-        'language': data_model.parameters.get('output_language', 'english').lower(),
+        'language': graph_model.parameters.get('output_language', 'english').lower(),
     }
 
     # Build entity prompts
-    entity_model = data_model.core_entities | data_model.hybrid_entities | data_model.entities
+    entity_model = graph_model.core_entities | graph_model.hybrid_entities | graph_model.entities
     for entity_name, entity_info in entity_model.items():
         build_entity_prompt(entity_name, entity_info, model_config, entity_prompts_dir)
 
     # Build relation prompts
-    relation_model = data_model.materialized_relations
+    relation_model = graph_model.materialized_relations
     for relation_name, relation_info in relation_model.items():
         build_relation_prompt(relation_name, relation_info, entity_model, model_config, relation_prompts_dir)
 
@@ -215,8 +215,8 @@ def build_entity_prompt(
 
     Args:
         entity_name: The name of the entity type to extract.
-        entity_info: A dictionary containing information about the entity type, following the data model specifications.
-        general_info: A dictionary containing general information about the data model parameters.
+        entity_info: A dictionary containing information about the entity type, following the graph model specifications.
+        general_info: A dictionary containing general information about the graph model parameters.
         entity_prompts_dir: The path to the directory where the generated entity type prompt will be saved.
     """
     # Check if the entity is a Core Entity
@@ -224,7 +224,7 @@ def build_entity_prompt(
 
     # Gather property info
     properties = []
-    for property_name, property_info in DataModel().get_entity_data(entity_name).items():
+    for property_name, property_info in GraphModel().get_entity_data(entity_name).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),
@@ -281,14 +281,14 @@ def build_relation_prompt(
 
     Args:
         relation_name: The name of the materialized relation type to extract.
-        relation_info: A dictionary containing information about the relation type, following the data model specifications.
-        entity_model: A dictionary containing all entity types from the data model and their relevant information.
-        general_info: A dictionary containing general information about the data model parameters.
+        relation_info: A dictionary containing information about the relation type, following the graph model specifications.
+        entity_model: A dictionary containing all entity types from the graph model and their relevant information.
+        general_info: A dictionary containing general information about the graph model parameters.
         relation_prompts_dir: The path to the directory where the generated relation type prompt will be saved.
     """
     # Gather property info
     properties = []
-    for property_name, property_info in DataModel().get_relation_data(relation_info['relation_name']).items():
+    for property_name, property_info in GraphModel().get_relation_data(relation_info['relation_name']).items():
         prop_dict = {
             'name': property_name,
             'type': property_info.get('type', 'string'),
@@ -317,8 +317,8 @@ def build_relation_prompt(
     target = relation_info['target']
 
     # Check if the origin/target are Core Entities
-    origin_core_entity = origin in DataModel().core_entities
-    target_core_entity = target in DataModel().core_entities
+    origin_core_entity = origin in GraphModel().core_entities
+    target_core_entity = target in GraphModel().core_entities
 
     # No prompt required if the relation is marked to bypass the LLM
     core_entity_relation = origin_core_entity or target_core_entity
