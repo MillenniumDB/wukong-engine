@@ -8,17 +8,40 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from .entity_type import EntityType
-from .values import EntityTypeName
+from .extraction_config import ExtractionConfig
+from .relationship_type import RelationshipType
+from .values import EntityTypeName, RelationshipTypeName
 
 
 @dataclass(frozen=True)
 class GraphModel:
     """The graph model containing all entity types."""
 
+    extraction_config: ExtractionConfig
     entity_types: MappingProxyType[EntityTypeName, EntityType]
+    relationship_types: MappingProxyType[RelationshipTypeName, RelationshipType]
+
+    def __post_init__(self) -> None:
+        """Validate graph model invariants."""
+        self._validate_projections()
+
+    def _validate_projections(self) -> None:
+        """Validate that the entity and relationship projections in the extraction config are valid."""
+        if self.extraction_config.entity_projection is not None:
+            invalid_entities = self.extraction_config.entity_projection - set(self.entity_types.keys())
+            if invalid_entities:
+                raise ValueError(
+                    f'Unknown entity types in projection: {list(invalid_entities)}. The projection must be a subset of the defined entity types.',
+                )
+        if self.extraction_config.relationship_projection is not None:
+            invalid_relationships = self.extraction_config.relationship_projection - set(self.relationship_types.keys())
+            if invalid_relationships:
+                raise ValueError(
+                    f'Unknown relationship types in projection: {list(invalid_relationships)}. The projection must be a subset of the defined relationship types.',
+                )
 
 
-# class GraphModelX:
+# class GraphModelOld:
 #     """The graph model manager for the WUKONG engine.
 
 #     Loads and validates the graph model, providing easy access to its components.

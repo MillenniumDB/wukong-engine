@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from .field import Field
-from .values import ContextLevel, FieldName
+from .values import ContextLevel, DeduplicationMode, FieldName
 
 
 @dataclass(frozen=True)
@@ -13,8 +13,8 @@ class EntityType:
     instructions: MappingProxyType[ContextLevel, str]
     primary_key: FieldName
     fields: MappingProxyType[FieldName, Field]
-    document_groups: MappingProxyType[ContextLevel, tuple[str, ...]]
-    # TODO: Duplicates
+    document_groups: MappingProxyType[ContextLevel, frozenset[str]]
+    deduplication_mode: DeduplicationMode
 
     def __post_init__(self) -> None:
         """Validate entity type invariants."""

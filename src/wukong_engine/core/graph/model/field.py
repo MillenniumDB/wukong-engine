@@ -12,7 +12,7 @@ class Field:
     data_type: DataType
     description: str
     instructions: MappingProxyType[ContextLevel, str]
-    options: frozenset[str]
+    options: tuple[str, ...]
     examples: tuple[str, ...]
     regex: MappingProxyType[ContextLevel, RegexPattern]
     default_value: MappingProxyType[ContextLevel, str]

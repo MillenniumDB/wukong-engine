@@ -22,8 +22,11 @@ class _ModelName:
         if self.value.lower() in self._RESERVED:
             raise ValueError(f'Reserved name not allowed for {self.__class__.__name__}: "{self.value}"')
 
+    def __repr__(self) -> str:
+        return self.value
 
-@dataclass(frozen=True)
+
+@dataclass(frozen=True, repr=False)
 class EntityTypeName(_ModelName):
     """Entity type name."""
 
@@ -31,7 +34,7 @@ class EntityTypeName(_ModelName):
     _RESERVED = frozenset({'document', 'chunk'})
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class RelationshipTypeName(_ModelName):
     """Relationship type name."""
 
@@ -39,7 +42,7 @@ class RelationshipTypeName(_ModelName):
     _RESERVED = frozenset({'chunkof', 'extractedfrom'})
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class FieldName(_ModelName):
     """Field name."""
 

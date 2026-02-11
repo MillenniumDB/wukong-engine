@@ -1,18 +1,24 @@
 {
-    "parameters": {
-        "role": "An expert legal analyst specializing in Chilean law, with extensive experience in identifying connections between legal articles.",
-        "context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile.",
-        "input_language": "spanish",
-        "output_language": "spanish",
-        "included_entities": [
-            "LGUC",
-            "OGUC",
-            "DDU",
-            "LegalProvision"
-        ],
-        "included_relationships": [
-            "References"
-        ]
+    "extraction": {
+        "llm": {
+            "persona": "An expert legal analyst specializing in Chilean law, with extensive experience in identifying connections between legal articles.",
+            "document_context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
+        },
+        "language": {
+            "input": "es",
+            "output": "es"
+        },
+        "projection": {
+            "enabled_entities": [
+                "LGUC",
+                "OGUC",
+                "DDU",
+                "LegalProvision"
+            ],
+            "enabled_relationships": [
+                "References"
+            ]
+        }
     },
     "entity_types": {
         "LGUC": {
@@ -143,7 +149,7 @@
                 ],
                 "document": "LGUC"
             },
-            "duplicates": "exact"
+            "deduplication": "exact"
         },
         "OGUC": {
             "description": "A specific article from the OGUC (Ordenanza General de Urbanismo y Construcciones).",
@@ -272,7 +278,7 @@
                 ],
                 "document": "OGUC"
             },
-            "duplicates": "exact"
+            "deduplication": "exact"
         },
         "DDU": {
             "description": "A specific circular from the DDU (División de Desarrollo Urbano).",
@@ -420,7 +426,7 @@
                 "chunk": "DDU",
                 "document": "DDU"
             },
-            "duplicates": "exact"
+            "deduplication": "exact"
         },
         "LegalProvision": {
             "description": "A specific legal provision that is referenced in a legal document.",
@@ -471,7 +477,7 @@
                     "DDU"
                 ]
             },
-            "duplicates": "exact"
+            "deduplication": "exact"
         }
     },
     "relationship_types": {
