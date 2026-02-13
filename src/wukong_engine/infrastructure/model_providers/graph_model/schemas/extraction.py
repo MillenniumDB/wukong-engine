@@ -41,11 +41,11 @@ class LanguageSchema(BaseModel):
 class ProjectionSchema(BaseModel):
     """Schema-level representation of projection parameters.
 
-    Note: None means that all entity/relationship types are enabled for extraction, while an empty set means that none are enabled.
+    Note: None means that all entity/relationship types are enabled for extraction, while an empty list means that none are enabled.
     """
 
-    enabled_entities: set[StrictStr] | None = None
-    enabled_relationships: set[StrictStr] | None = None
+    enabled_entities: list[StrictStr] | None = None
+    enabled_relationships: list[StrictStr] | None = None
 
 
 class ExtractionSchema(BaseModel):

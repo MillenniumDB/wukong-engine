@@ -2,9 +2,22 @@ from types import MappingProxyType
 from typing import Any
 
 from wukong_engine.core.graph.model import EntityType, ExtractionConfig, Field, GraphModel, RelationshipType
-from wukong_engine.core.graph.model.values import EntityTypeName, FieldName, RegexPattern, RelationshipTypeName
+from wukong_engine.core.graph.model.values import (
+    ContextLevel,
+    EntityTypeName,
+    FieldName,
+    RegexPattern,
+    RelationshipTypeName,
+)
 
-from .schemas import EntityTypeSchema, ExtractionSchema, FieldSchema, GraphModelSchema, RelationshipTypeSchema
+from .schemas import (
+    EndpointContextRule,
+    EntityTypeSchema,
+    ExtractionSchema,
+    FieldSchema,
+    GraphModelSchema,
+    RelationshipTypeSchema,
+)
 
 
 def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
@@ -47,9 +60,11 @@ def _schema_to_entity_type(schema: EntityTypeSchema) -> EntityType:
         description=schema.description,
         instructions=MappingProxyType(_as_dict(schema.instructions)),
         primary_key=FieldName(schema.primary_key),
+        deduplication_mode=schema.deduplication_mode,
         fields=MappingProxyType({FieldName(name): _schema_to_field(schema) for name, schema in schema.fields.items()}),
-        document_groups=MappingProxyType({k: frozenset(_as_set(v)) for k, v in schema.document_groups.items()}),
-        deduplication_mode=schema.deduplication,
+        document_collections=MappingProxyType(
+            {k: frozenset(_as_list(v)) for k, v in schema.document_collections.items()},
+        ),
     )
 
 
@@ -57,10 +72,11 @@ def _schema_to_relationship_type(schema: RelationshipTypeSchema) -> Relationship
     """Convert a RelationshipTypeSchema to a RelationshipType domain model."""
     return RelationshipType(
         description=schema.description,
-        instructions=MappingProxyType(_as_dict(schema.instructions)),
-        primary_key=FieldName(schema.primary_key),
+        instructions=schema.instructions,
+        endpoints=_materialize_endpoints(schema.endpoints),
+        primary_key=FieldName(schema.primary_key) if schema.primary_key is not None else None,
+        deduplication_mode=schema.deduplication_mode,
         fields=MappingProxyType({FieldName(name): _schema_to_field(schema) for name, schema in schema.fields.items()}),
-        deduplication_mode=schema.deduplication,
     )
 
 
@@ -79,6 +95,27 @@ def _schema_to_field(schema: FieldSchema) -> Field:
     )
 
 
+def _materialize_endpoints(
+    endpoints: dict[str, dict[str, list[EndpointContextRule] | EndpointContextRule]],
+) -> MappingProxyType[tuple[EntityTypeName, EntityTypeName], frozenset[tuple[ContextLevel, ContextLevel]]]:
+    """Materialize the relationship endpoints from the schema into the domain model format."""
+    result = {}
+    for source, targets in endpoints.items():
+        for target, rules in targets.items():
+            # Collect all context level pairs for this entity type pair
+            context_pairs = set()
+            for rule in _as_list(rules):  # Generate all combinations of source and target context levels
+                for source_level in rule.source_context_levels:
+                    for target_level in rule.target_context_levels:
+                        context_pairs.add((source_level, target_level))
+
+            # Add materialized combinations to the resulting mapping
+            key = (EntityTypeName(source), EntityTypeName(target))
+            result[key] = frozenset(context_pairs)
+
+    return MappingProxyType(result)
+
+
 def _as_dict(value: Any) -> dict:
     if not isinstance(value, dict):
         raise TypeError(f'Mapping Error: expected a dictionary, got {type(value)} instead')
@@ -88,10 +125,4 @@ def _as_dict(value: Any) -> dict:
 def _as_list(value: Any) -> list:
     if not isinstance(value, list):
         raise TypeError(f'Mapping Error: expected a list, got {type(value)} instead')
-    return value
-
-
-def _as_set(value: Any) -> set:
-    if not isinstance(value, set):
-        raise TypeError(f'Mapping Error: expected a set, got {type(value)} instead')
     return value

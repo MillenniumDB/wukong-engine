@@ -24,6 +24,7 @@ class GraphModel:
     def __post_init__(self) -> None:
         """Validate graph model invariants."""
         self._validate_projections()
+        self._validate_relationship_endpoints()
 
     def _validate_projections(self) -> None:
         """Validate that the entity and relationship projections in the extraction config are valid."""
@@ -39,6 +40,20 @@ class GraphModel:
                 raise ValueError(
                     f'Unknown relationship types in projection: {list(invalid_relationships)}. The projection must be a subset of the defined relationship types.',
                 )
+
+    def _validate_relationship_endpoints(self) -> None:
+        """Validate that all relationship endpoints reference valid entity types."""
+        valid_entity_types = set(self.entity_types.keys())
+        for relationship_name, relationship_type in self.relationship_types.items():
+            for source_entity, target_entity in relationship_type.endpoints:
+                if source_entity not in valid_entity_types:
+                    raise ValueError(
+                        f'Relationship type "{relationship_name}" has invalid source entity type "{source_entity}" in its endpoints.',
+                    )
+                if target_entity not in valid_entity_types:
+                    raise ValueError(
+                        f'Relationship type "{relationship_name}" has invalid target entity type "{target_entity}" in its endpoints.',
+                    )
 
 
 # class GraphModelOld:

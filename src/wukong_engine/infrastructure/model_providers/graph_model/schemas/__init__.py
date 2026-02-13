@@ -7,9 +7,10 @@ from .entity_type import EntityTypeSchema
 from .extraction import ExtractionSchema
 from .field import FieldSchema
 from .graph_model import GraphModelSchema
-from .relationship_type import RelationshipTypeSchema
+from .relationship_type import EndpointContextRule, RelationshipTypeSchema
 
 __all__ = [
+    'EndpointContextRule',
     'EntityTypeSchema',
     'ExtractionSchema',
     'FieldSchema',

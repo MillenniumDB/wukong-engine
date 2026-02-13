@@ -2,44 +2,74 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values import ContextLevel, DeduplicationMode
+from wukong_engine.core.graph.model.values import ContextLevel, RelationshipDeduplicationMode
 
 from .field import FieldSchema
 
 
+class EndpointContextRule(BaseModel):
+    """Rules for matching relationship endpoints based on context levels."""
+
+    source_context_levels: list[ContextLevel] | ContextLevel
+    target_context_levels: list[ContextLevel] | ContextLevel
+
+    @field_validator('source_context_levels', 'target_context_levels')
+    @classmethod
+    def normalize_context_levels(cls, value: list[ContextLevel] | ContextLevel) -> list[ContextLevel]:
+        """Normalize single ContextLevel values to lists."""
+        if isinstance(value, ContextLevel):
+            return [value]
+        return value
+
+
+# TODO: Add: bypass LLM
 class RelationshipTypeSchema(BaseModel):
     """Schema-level representation of a relationship type definition."""
 
     description: StrictStr
-    instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    primary_key: StrictStr
+    instructions: StrictStr | None = None
+    endpoints: dict[StrictStr, dict[StrictStr, list[EndpointContextRule] | EndpointContextRule]] = Field(
+        default_factory=dict,
+    )
+    primary_key: StrictStr | None = None
+    deduplication_mode: RelationshipDeduplicationMode = RelationshipDeduplicationMode.NONE
     fields: dict[StrictStr, FieldSchema] = Field(default_factory=dict)
-    deduplication: DeduplicationMode = DeduplicationMode.NONE
 
-    # Mapping of various string representations to DeduplicationMode members
-    _DEDUPLICATION_ALIASES: ClassVar[dict[str, DeduplicationMode]] = {
-        'none': DeduplicationMode.NONE,
-        'disabled': DeduplicationMode.NONE,
-        'off': DeduplicationMode.NONE,
-        'exact': DeduplicationMode.EXACT,
-        'strict': DeduplicationMode.EXACT,
-        'approximate': DeduplicationMode.APPROXIMATE,
-        'similar': DeduplicationMode.APPROXIMATE,
-        'fuzzy': DeduplicationMode.APPROXIMATE,
+    # Mapping of various string representations to RelationshipDeduplicationMode members
+    _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipDeduplicationMode]] = {
+        'none': RelationshipDeduplicationMode.NONE,
+        'disabled': RelationshipDeduplicationMode.NONE,
+        'off': RelationshipDeduplicationMode.NONE,
+        'exact': RelationshipDeduplicationMode.EXACT,
+        'strict': RelationshipDeduplicationMode.EXACT,
+        'approximate': RelationshipDeduplicationMode.APPROXIMATE,
+        'similar': RelationshipDeduplicationMode.APPROXIMATE,
+        'fuzzy': RelationshipDeduplicationMode.APPROXIMATE,
+        'endpoints': RelationshipDeduplicationMode.ENDPOINTS,
+        'nodes': RelationshipDeduplicationMode.ENDPOINTS,
     }
 
-    @field_validator('instructions', mode='before')
+    @field_validator('deduplication_mode', mode='before')
     @classmethod
-    def parse_instructions(cls, value: Any) -> Any:
-        """Parse context level -> instructions mapping."""
-        if isinstance(value, str):  # Apply same value to all context levels
-            return dict.fromkeys(ContextLevel, value)
-        return value
-
-    @field_validator('deduplication', mode='before')
-    @classmethod
-    def normalize_deduplication(cls, value: Any) -> Any:
-        """Normalize deduplication strings to DeduplicationMode members."""
+    def normalize_deduplication_mode(cls, value: Any) -> Any:
+        """Normalize deduplication mode strings to RelationshipDeduplicationMode members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
         return value
+
+    @field_validator('endpoints')
+    @classmethod
+    def normalize_endpoint_rules(
+        cls,
+        value: dict[str, dict[str, list[EndpointContextRule] | EndpointContextRule]],
+    ) -> dict[str, dict[str, list[EndpointContextRule]]]:
+        """Normalize single EndpointContextRule instances to lists."""
+        normalized = {}
+        for source_entity, targets in value.items():
+            normalized[source_entity] = {}
+            for target_entity, rules in targets.items():
+                if isinstance(rules, EndpointContextRule):
+                    normalized[source_entity][target_entity] = [rules]
+                else:
+                    normalized[source_entity][target_entity] = rules
+        return normalized

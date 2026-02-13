@@ -41,26 +41,28 @@ class FieldSchema(BaseModel):
             return cls._DATA_TYPE_ALIASES.get(value, value)
         return value
 
-    @field_validator('instructions', 'regex', 'default_value', 'retrieval_mode', mode='before')
+    @field_validator('instructions', 'default_value')
     @classmethod
-    def parse_context_level_mappings(cls, value: Any) -> Any:
-        """Parse context level -> string mappings."""
-        if isinstance(value, str):  # Apply same value to all context levels
+    def normalize_context_level_mappings(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
+        """Normalize context level -> string mappings."""
+        if isinstance(value, str):
             return dict.fromkeys(ContextLevel, value)
         return value
 
-    @field_validator('options', 'examples', mode='before')
+    @field_validator('options', 'examples')
     @classmethod
-    def parse_value_lists(cls, value: Any) -> Any:
-        """Parse lists containing string values."""
-        if isinstance(value, str):  # Single string value gets converted to single-item list
+    def normalize_value_lists(cls, value: list[str] | str) -> list[str]:
+        """Normalize lists containing string values."""
+        if isinstance(value, str):
             return [value]
         return value
 
     @field_validator('regex')
     @classmethod
-    def validate_regex(cls, value: dict[ContextLevel, str]) -> dict[ContextLevel, str]:
-        """Validate the provided regex patterns."""
+    def normalize_and_validate_regex(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
+        """Normalize and validate the provided regex patterns."""
+        if isinstance(value, str):
+            value = dict.fromkeys(ContextLevel, value)
         for context_level, pattern in value.items():
             try:
                 re.compile(pattern)
@@ -68,4 +70,15 @@ class FieldSchema(BaseModel):
                 raise ValueError(
                     f'Invalid regex pattern "{pattern}" for context level "{context_level}": {error}',
                 ) from error
+        return value
+
+    @field_validator('retrieval_mode')
+    @classmethod
+    def normalize_retrieval_mode(
+        cls,
+        value: dict[ContextLevel, RetrievalMode] | RetrievalMode,
+    ) -> dict[ContextLevel, RetrievalMode]:
+        """Normalize retrieval mode mapping."""
+        if isinstance(value, RetrievalMode):
+            return dict.fromkeys(ContextLevel, value)
         return value
