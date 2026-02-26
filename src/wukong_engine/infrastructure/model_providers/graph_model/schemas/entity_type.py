@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field, StrictStr, field_validator
 
 from wukong_engine.core.graph.model.values import ContextLevel, EntityDeduplicationMode
 
-from .field import FieldSchema
+from .field import EntityFieldSchema
 
 
 class EntityTypeSchema(BaseModel):
@@ -14,7 +14,7 @@ class EntityTypeSchema(BaseModel):
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     primary_key: StrictStr
     deduplication_mode: EntityDeduplicationMode = EntityDeduplicationMode.NONE
-    fields: dict[StrictStr, FieldSchema] = Field(default_factory=dict)
+    fields: dict[StrictStr, EntityFieldSchema] = Field(default_factory=dict)
     document_collections: dict[ContextLevel, list[StrictStr] | StrictStr] = Field(default_factory=dict)
 
     # Mapping of various string representations to EntityDeduplicationMode members

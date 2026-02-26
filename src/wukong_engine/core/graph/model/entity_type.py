@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from types import MappingProxyType
 
-from .field import Field
+from .field import EntityField
 from .values import ContextLevel, EntityDeduplicationMode, FieldName
 
 
@@ -13,7 +13,7 @@ class EntityType:
     instructions: MappingProxyType[ContextLevel, str]
     primary_key: FieldName
     deduplication_mode: EntityDeduplicationMode
-    fields: MappingProxyType[FieldName, Field]
+    fields: MappingProxyType[FieldName, EntityField]
     document_collections: MappingProxyType[ContextLevel, frozenset[str]]
 
     def __post_init__(self) -> None:

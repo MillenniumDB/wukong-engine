@@ -9,17 +9,18 @@ from .deduplication_mode import EntityDeduplicationMode, RelationshipDeduplicati
 from .language import Language
 from .names import EntityTypeName, FieldName, RelationshipTypeName
 from .regex_pattern import RegexPattern
-from .retrieval_mode import RetrievalMode
+from .retrieval_mode import EntityRetrievalMode, RelationshipRetrievalMode
 
 __all__ = [
     'ContextLevel',
     'DataType',
     'EntityDeduplicationMode',
+    'EntityRetrievalMode',
     'EntityTypeName',
     'FieldName',
     'Language',
     'RegexPattern',
     'RelationshipDeduplicationMode',
+    'RelationshipRetrievalMode',
     'RelationshipTypeName',
-    'RetrievalMode',
 ]

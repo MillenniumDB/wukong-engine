@@ -1,7 +1,14 @@
 from types import MappingProxyType
 from typing import Any
 
-from wukong_engine.core.graph.model import EntityType, ExtractionConfig, Field, GraphModel, RelationshipType
+from wukong_engine.core.graph.model import (
+    EntityField,
+    EntityType,
+    ExtractionConfig,
+    GraphModel,
+    RelationshipField,
+    RelationshipType,
+)
 from wukong_engine.core.graph.model.values import (
     ContextLevel,
     EntityTypeName,
@@ -12,10 +19,11 @@ from wukong_engine.core.graph.model.values import (
 
 from .schemas import (
     EndpointContextRule,
+    EntityFieldSchema,
     EntityTypeSchema,
     ExtractionSchema,
-    FieldSchema,
     GraphModelSchema,
+    RelationshipFieldSchema,
     RelationshipTypeSchema,
 )
 
@@ -61,7 +69,9 @@ def _schema_to_entity_type(schema: EntityTypeSchema) -> EntityType:
         instructions=MappingProxyType(_as_dict(schema.instructions)),
         primary_key=FieldName(schema.primary_key),
         deduplication_mode=schema.deduplication_mode,
-        fields=MappingProxyType({FieldName(name): _schema_to_field(schema) for name, schema in schema.fields.items()}),
+        fields=MappingProxyType(
+            {FieldName(name): _schema_to_entity_field(schema) for name, schema in schema.fields.items()},
+        ),
         document_collections=MappingProxyType(
             {k: frozenset(_as_list(v)) for k, v in schema.document_collections.items()},
         ),
@@ -76,13 +86,15 @@ def _schema_to_relationship_type(schema: RelationshipTypeSchema) -> Relationship
         endpoints=_materialize_endpoints(schema.endpoints),
         primary_key=FieldName(schema.primary_key) if schema.primary_key is not None else None,
         deduplication_mode=schema.deduplication_mode,
-        fields=MappingProxyType({FieldName(name): _schema_to_field(schema) for name, schema in schema.fields.items()}),
+        fields=MappingProxyType(
+            {FieldName(name): _schema_to_relationship_field(schema) for name, schema in schema.fields.items()},
+        ),
     )
 
 
-def _schema_to_field(schema: FieldSchema) -> Field:
-    """Convert a FieldSchema to a Field domain model."""
-    return Field(
+def _schema_to_entity_field(schema: EntityFieldSchema) -> EntityField:
+    """Convert an EntityFieldSchema to an EntityField domain model."""
+    return EntityField(
         data_type=schema.data_type,
         description=schema.description,
         instructions=MappingProxyType(_as_dict(schema.instructions)),
@@ -91,6 +103,21 @@ def _schema_to_field(schema: FieldSchema) -> Field:
         regex=MappingProxyType({k: RegexPattern(v) for k, v in _as_dict(schema.regex).items()}),
         default_value=MappingProxyType(_as_dict(schema.default_value)),
         retrieval_mode=MappingProxyType(_as_dict(schema.retrieval_mode)),
+        required=schema.required,
+    )
+
+
+def _schema_to_relationship_field(schema: RelationshipFieldSchema) -> RelationshipField:
+    """Convert a RelationshipFieldSchema to a RelationshipField domain model."""
+    return RelationshipField(
+        data_type=schema.data_type,
+        description=schema.description,
+        instructions=schema.instructions,
+        options=tuple(_as_list(schema.options)),
+        examples=tuple(_as_list(schema.examples)),
+        regex=RegexPattern(schema.regex) if schema.regex is not None else None,
+        default_value=schema.default_value,
+        retrieval_mode=schema.retrieval_mode,
         required=schema.required,
     )
 

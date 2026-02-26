@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field, StrictStr, field_validator
 
 from wukong_engine.core.graph.model.values import ContextLevel, RelationshipDeduplicationMode
 
-from .field import FieldSchema
+from .field import RelationshipFieldSchema
 
 
 class EndpointContextRule(BaseModel):
@@ -22,7 +22,6 @@ class EndpointContextRule(BaseModel):
         return value
 
 
-# TODO: Add: bypass LLM
 class RelationshipTypeSchema(BaseModel):
     """Schema-level representation of a relationship type definition."""
 
@@ -33,7 +32,7 @@ class RelationshipTypeSchema(BaseModel):
     )
     primary_key: StrictStr | None = None
     deduplication_mode: RelationshipDeduplicationMode = RelationshipDeduplicationMode.NONE
-    fields: dict[StrictStr, FieldSchema] = Field(default_factory=dict)
+    fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
 
     # Mapping of various string representations to RelationshipDeduplicationMode members
     _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipDeduplicationMode]] = {

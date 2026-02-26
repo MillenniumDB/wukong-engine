@@ -1,14 +1,15 @@
 """Provides field retrieval modes.
 
 Classes:
-    RetrievalMode: Enum representing field retrieval modes.
+    EntityRetrievalMode: Supported retrieval modes for entity fields.
+    RelationshipRetrievalMode: Supported retrieval modes for relationship fields.
 """
 
 from enum import Enum
 
 
-class RetrievalMode(Enum):
-    """Retrieval modes available when extracting field data from sources.
+class EntityRetrievalMode(Enum):
+    """Retrieval modes available when extracting entity field data from sources.
 
     Attributes:
         EXTRACT: Extract from text using LLM.
@@ -21,3 +22,15 @@ class RetrievalMode(Enum):
     LOAD = 'load'
     DEFAULT = 'default'
     SKIP = 'skip'
+
+
+class RelationshipRetrievalMode(Enum):
+    """Retrieval modes available when extracting relationship field data from sources.
+
+    Attributes:
+        EXTRACT: Extract from text using LLM.
+        DEFAULT: Use predefined default value.
+    """
+
+    EXTRACT = 'extract'
+    DEFAULT = 'default'

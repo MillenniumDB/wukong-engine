@@ -3,20 +3,21 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values import ContextLevel, DataType, RetrievalMode
+from wukong_engine.core.graph.model.values import (
+    ContextLevel,
+    DataType,
+    EntityRetrievalMode,
+    RelationshipRetrievalMode,
+)
 
 
-class FieldSchema(BaseModel):
-    """Schema-level representation of a field definition."""
+class _FieldSchema(BaseModel):
+    """Base schema for field definitions."""
 
     data_type: DataType
     description: StrictStr
-    instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     options: list[StrictStr] | StrictStr = Field(default_factory=list)
     examples: list[StrictStr] | StrictStr = Field(default_factory=list)
-    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    retrieval_mode: dict[ContextLevel, RetrievalMode] | RetrievalMode = Field(default_factory=dict)
     required: StrictBool = False
 
     # Mapping of various string representations to DataType members
@@ -41,20 +42,29 @@ class FieldSchema(BaseModel):
             return cls._DATA_TYPE_ALIASES.get(value, value)
         return value
 
-    @field_validator('instructions', 'default_value')
-    @classmethod
-    def normalize_context_level_mappings(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
-        """Normalize context level -> string mappings."""
-        if isinstance(value, str):
-            return dict.fromkeys(ContextLevel, value)
-        return value
-
     @field_validator('options', 'examples')
     @classmethod
     def normalize_value_lists(cls, value: list[str] | str) -> list[str]:
         """Normalize lists containing string values."""
         if isinstance(value, str):
             return [value]
+        return value
+
+
+class EntityFieldSchema(_FieldSchema):
+    """Schema-level representation of an entity field definition."""
+
+    instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    retrieval_mode: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode = Field(default_factory=dict)
+
+    @field_validator('instructions', 'default_value')
+    @classmethod
+    def normalize_context_level_mappings(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
+        """Normalize context level -> string mappings."""
+        if isinstance(value, str):
+            return dict.fromkeys(ContextLevel, value)
         return value
 
     @field_validator('regex')
@@ -76,9 +86,29 @@ class FieldSchema(BaseModel):
     @classmethod
     def normalize_retrieval_mode(
         cls,
-        value: dict[ContextLevel, RetrievalMode] | RetrievalMode,
-    ) -> dict[ContextLevel, RetrievalMode]:
+        value: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode,
+    ) -> dict[ContextLevel, EntityRetrievalMode]:
         """Normalize retrieval mode mapping."""
-        if isinstance(value, RetrievalMode):
+        if isinstance(value, EntityRetrievalMode):
             return dict.fromkeys(ContextLevel, value)
+        return value
+
+
+class RelationshipFieldSchema(_FieldSchema):
+    """Schema-level representation of a relationship field definition."""
+
+    instructions: StrictStr | None = None
+    regex: StrictStr | None = None
+    default_value: StrictStr | None = None
+    retrieval_mode: RelationshipRetrievalMode = RelationshipRetrievalMode.EXTRACT
+
+    @field_validator('regex')
+    @classmethod
+    def validate_regex(cls, value: str | None) -> str | None:
+        """Validate the provided regex pattern."""
+        if value is not None:
+            try:
+                re.compile(value)
+            except re.error as error:
+                raise ValueError(f'Invalid regex pattern "{value}": {error}') from error
         return value

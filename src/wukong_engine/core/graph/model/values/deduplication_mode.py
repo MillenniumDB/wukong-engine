@@ -36,3 +36,11 @@ class RelationshipDeduplicationMode(Enum):
     EXACT = 'exact'
     APPROXIMATE = 'approximate'
     ENDPOINTS = 'endpoints'
+
+    @property
+    def requires_primary_key(self) -> bool:
+        """Whether this deduplication mode requires a primary key field."""
+        return self in {
+            RelationshipDeduplicationMode.EXACT,
+            RelationshipDeduplicationMode.APPROXIMATE,
+        }
