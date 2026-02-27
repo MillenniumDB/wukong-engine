@@ -4,6 +4,7 @@ Classes:
     GraphModel: The graph model containing all entity types.
 """
 
+import json
 from dataclasses import dataclass
 from types import MappingProxyType
 
@@ -20,6 +21,56 @@ class GraphModel:
     extraction_config: ExtractionConfig
     entity_types: MappingProxyType[EntityTypeName, EntityType]
     relationship_types: MappingProxyType[RelationshipTypeName, RelationshipType]
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the graph model."""
+        lines = []
+        lines.append('=' * 80)
+        lines.append('GRAPH MODEL')
+        lines.append('=' * 80)
+
+        # Extraction Config
+        lines.append('\n[EXTRACTION CONFIG]')
+        config_str = str(self.extraction_config)
+        lines.extend(f'  {line}' for line in config_str.split('\n'))
+
+        # Entity Types
+        lines.append(f'\n[ENTITY TYPES] ({len(self.active_entity_types)} total)')
+        for entity_name, entity_type in self.active_entity_types.items():
+            lines.append(f'\n  {entity_name}')
+            entity_str = str(entity_type)
+            lines.extend(f'    {line}' for line in entity_str.split('\n'))
+
+        # Relationship Types
+        lines.append(f'\n[RELATIONSHIP TYPES] ({len(self.active_relationship_types)} total)')
+        for rel_name, rel_type in self.active_relationship_types.items():
+            lines.append(f'\n  {rel_name}')
+            rel_str = str(rel_type)
+            lines.extend(f'    {line}' for line in rel_str.split('\n'))
+
+        lines.append('\n' + '=' * 80)
+        return '\n'.join(lines)
+
+    def __repr__(self) -> str:
+        """JSON representation of the graph model."""
+        # Build entity types
+        entities = {}
+        for entity_name, entity_type in self.active_entity_types.items():
+            entities[str(entity_name)] = json.loads(repr(entity_type))
+
+        # Build relationship types
+        relationships = {}
+        for rel_name, rel_type in self.active_relationship_types.items():
+            relationships[str(rel_name)] = json.loads(repr(rel_type))
+
+        # Build complete model
+        model = {
+            'extraction_config': json.loads(repr(self.extraction_config)),
+            'entity_types': entities,
+            'relationship_types': relationships,
+        }
+
+        return json.dumps(model, indent=2, ensure_ascii=False)
 
     def __post_init__(self) -> None:
         """Validate graph model invariants."""
@@ -55,6 +106,24 @@ class GraphModel:
                         f'Relationship type "{relationship_name}" has invalid target entity type "{target_entity}" in its endpoints.',
                     )
 
+    @property
+    def active_entity_types(self) -> MappingProxyType[EntityTypeName, EntityType]:
+        """Active entity types in the graph model projection."""
+        if self.extraction_config.entity_projection is None:
+            return self.entity_types
+        return MappingProxyType(
+            {k: v for k, v in self.entity_types.items() if k in self.extraction_config.entity_projection},
+        )
+
+    @property
+    def active_relationship_types(self) -> MappingProxyType[RelationshipTypeName, RelationshipType]:
+        """Active relationship types in the graph model projection."""
+        if self.extraction_config.relationship_projection is None:
+            return self.relationship_types
+        return MappingProxyType(
+            {k: v for k, v in self.relationship_types.items() if k in self.extraction_config.relationship_projection},
+        )
+
 
 # class GraphModelOld:
 #     """The graph model manager for the WUKONG engine.
@@ -62,61 +131,6 @@ class GraphModel:
 #     Loads and validates the graph model, providing easy access to its components.
 #     The graph model is loaded once and assumed to be immutable for the duration of the program.
 #     """
-
-#     def __init__(self, data_dir: Path = Path()) -> None:
-#         """Initialize the graph model manager.
-
-#         Loads the graph model and processes it to store each relevant component.
-
-#         Args:
-#             data_dir: The path to the data directory where the graph model file is located.
-#         """
-#         # Components of the graph model
-#         self._parameters = {}
-#         self._entities = []
-#         self._relations = {}  # TODO: Change to list
-#         self._materialized_relations = {}  # TODO: Refactor
-
-#         # Initialize the graph model
-#         self._load_model(data_dir / GRAPH_MODEL_PATH)
-
-#     # TODO: Refactor
-#     def __repr__(self) -> str:
-#         """Return a string representation of the graph model manager."""
-#         entities = self.core_entities + self.entities + self.special_entities
-#         simplified_entities = {entity: {} for entity in entities}
-#         for entity in entities:
-#             simplified_entities[entity] = {
-#                 'description': entity.parameters['description'],
-#                 'properties': {k: v['description'] for k, v in entity.fields.items()},
-#             }
-#             for k, v in entity.fields.items():
-#                 if 'options' in v:
-#                     simplified_entities[entity]['properties'][k] += f' Possible Values: {v["options"]}.'
-#         relation_model = self.relations | self.special_relations
-#         simplified_relations = {relation: {} for relation in relation_model}
-#         for relation, relation_info in relation_model.items():
-#             simplified_origin_target = {}
-#             for origin, targets in relation_info['origin_target'].items():
-#                 simplified_origin = origin.replace('@', '')
-#                 simplified_targets = list({target.replace('@', '') for target in targets})
-#                 if simplified_origin not in simplified_origin_target:
-#                     simplified_origin_target[simplified_origin] = simplified_targets
-#                 current_targets = simplified_origin_target[simplified_origin]
-#                 simplified_origin_target[simplified_origin] = list(set(current_targets + simplified_targets))
-#             simplified_relations[relation] = {
-#                 'source_target': simplified_origin_target,
-#                 'description': relation_info['description'],
-#                 'properties': {k: v['description'] for k, v in relation_info.get('fields', {}).items()},
-#             }
-#             for k, v in relation_info.get('fields', {}).items():
-#                 if 'options' in v:
-#                     simplified_relations[relation]['properties'][k] += f' Possible Values: {v["options"]}.'
-#         simplified_model = {
-#             'entities': simplified_entities,
-#             'relations': simplified_relations,
-#         }
-#         return f'```json\n{json.dumps(simplified_model, indent=2, ensure_ascii=False)}\n```'
 
 #     def _load_model(self, graph_model_path: Path) -> None:
 #         """Load the graph model from a JSON file, making sure it has a valid format and satisfies all requirements.
@@ -141,20 +155,6 @@ class GraphModel:
 #         except json.JSONDecodeError as error:
 #             raise ValueError(f'Invalid structure for the graph model in "{graph_model_path}"') from error
 
-#         # Validate the general graph model structure
-#         self._validate_structure(graph_model)
-
-#         # Store the general parameters
-#         self._parameters = graph_model['parameters']
-
-#         # Load and validate entity types
-#         self._load_entity_types(graph_model['entities'])
-
-#         # Load and validate relation types
-#         self._load_relation_types(graph_model['relations'])
-
-#         logger.info(f'Graph model loaded successfully from: "{graph_model_path}"')
-
 #     @staticmethod
 #     def _no_duplicate_keys_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 #         """Validate that the provided key/value pairs do not contain duplicate keys.
@@ -175,70 +175,7 @@ class GraphModel:
 #             seen.add(key)
 #         return dict(pairs)
 
-#     @staticmethod
-#     def _validate_structure(graph_model: dict[str, Any]) -> None:
-#         """Validate the general graph model structure to ensure it contains all required fields.
-
-#         Args:
-#             graph_model: The graph model to validate.
-
-#         Raises:
-#             ValueError: If the general graph model structure is invalid.
-#         """
-#         # Validate top-level structure
-#         general_fields = ['parameters', 'entities', 'relations']
-#         for field in general_fields:
-#             if field not in graph_model or not isinstance(graph_model[field], dict):
-#                 raise ValueError(f'Graph model must have a valid "{field}" section')
-
-#     # TODO: Complete
-#     def _load_entity_types(self, entity_types: dict[str, Any]) -> None:
-#         """Load and validate graph model entity types.
-
-#         Args:
-#             entity_types: The graph model entity types to load.
-
-#         Raises:
-#             ValueError: If any entity type does not meet all requirements.
-#         """
-#         # Keep only the included entities
-#         included_entity_types = self._parameters.get('included_entities', list(entity_types.keys()))
-
-#         # Instantiate objects for each entity type
-#         """
-#         self._entities = [
-#             EntityType(entity_name, entity_data)
-#             for entity_name, entity_data in entity_types.items()
-#             if entity_name in included_entity_types
-#         ]
-#         """
-
-#         # TODO: Replace with the code above
-#         # Materialize hybrid entities
-#         """
-#         hybrid_entities = {}
-#         for entity, info in self._entities.items():
-#             if info.get('hybrid_entity', False):
-#                 # Mark the original entity as a core entity
-#                 info['core_entity'] = True
-
-#                 # Create the hybrid version of the entity
-#                 hybrid_info = deepcopy(info)
-#                 hybrid_info['documents'] = info['documents_hybrid']
-#                 del hybrid_info['core_entity']
-#                 del hybrid_info['hybrid_entity']
-#                 del hybrid_info['documents_hybrid']
-#                 hybrid_entities[f'@{entity}'] = hybrid_info
-
-#                 # Handle property descriptions for hybrid entities
-#                 for prop_info in hybrid_info.get('fields', {}).values():
-#                     if 'description_hybrid' in prop_info:
-#                         prop_info['description'] = prop_info['description_hybrid']
-#                         del prop_info['description_hybrid']
-#         self._entities.update(hybrid_entities)
-#         """
-
-#         # Add special entities
+#         # TODO: Add special entities
 #         special_entities = {
 #             'Document': {
 #                 'parameters': {
@@ -274,30 +211,7 @@ class GraphModel:
 #             # self._entities.append(special_entity_type)
 #             pass
 
-#         # TODO: Remove
-#         for entity in self._entities:
-#             print(entity)
-
-#     # TODO: Refactor
-#     def _load_relation_types(self, relation_types: dict[str, Any]) -> None:
-#         """Load and validate graph model relations."""
-#         # Validate relations
-#         # self._validate_relations(graph_model['relations'], graph_model['entities'])
-
-#         # Validate fields
-#         # self._validate_fields(graph_model['entities'] | graph_model['relations'])
-
-#         # Keep only the included relations
-#         included_relations = self._parameters.get('included_relations', list(self._relations.keys()))
-#         self._relations = {k: v for k, v in self._relations.items() if k in included_relations}
-
-#         # Process origin/target schemas
-#         self._build_relation_schemas()
-
-#         # Materialize relations
-#         self._materialize_relation_model()
-
-#         # Add special relations
+#         # TODO: Add special relations
 #         special_relations = {
 #             'ChunkOf': {
 #                 'special_relation': True,
@@ -317,152 +231,6 @@ class GraphModel:
 #             },
 #         }
 #         self._relations.update(special_relations)
-
-#     # TODO: Move to RelationType class
-#     @staticmethod
-#     def _validate_relations(relations: dict[str, Any], entities: dict[str, Any]) -> None:
-#         """Validate graph model relations to ensure they meet all requirements.
-
-#         Args:
-#             relations: The graph model relations to validate.
-#             entities: The graph model entities to consider for origin/target validation.
-
-#         Raises:
-#             ValueError: If any relation type does not meet all requirements.
-#             TypeError: If any relation type has an invalid type for the origin/target attributes.
-#         """
-#         # Validate relation naming conventions
-#         for relation_name in relations:
-#             if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9]*', relation_name):
-#                 raise ValueError(
-#                     f'Invalid relation name "{relation_name}". Relation names must start with a letter and contain only alphanumeric characters.',
-#                 )
-#             if relation_name.lower() in ('chunkof', 'extractedfrom'):
-#                 raise ValueError(
-#                     f'Relation name "{relation_name}" is reserved for special relations and cannot be used',
-#                 )
-
-#         # Validate relation definitions
-#         for relation_name, relation_info in relations.items():
-#             if 'origin_target' not in relation_info and not ('origin' in relation_info and 'target' in relation_info):
-#                 raise ValueError(
-#                     f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
-#                 )
-#             if 'description' not in relation_info:
-#                 raise ValueError(f'Relation type "{relation_name}" must have a valid "description" attribute')
-#             if 'primary_key' in relation_info:
-#                 if relation_info['primary_key'] not in relation_info.get('fields', {}):
-#                     raise ValueError(
-#                         f'The specified primary key field "{relation_info["primary_key"]}" for relation type "{relation_name}" does not exist.',
-#                     )
-#                 if not relation_info['fields'][relation_info['primary_key']].get('required', True):
-#                     raise ValueError(
-#                         f'The primary key field "{relation_info["primary_key"]}" for relation type "{relation_name}" must have the "required" attribute set to true.',
-#                     )
-
-#         # Validate origin/target entity types
-#         hybrid_entities = [f'@{entity}' for entity, data in entities.items() if data.get('hybrid_entity', False)]
-#         full_entities = list(entities.keys()) + hybrid_entities
-#         for relation_name, relation_info in relations.items():
-#             # Validate origin/target fields from dictionary format
-#             if 'origin_target' in relation_info:
-#                 if not isinstance(relation_info['origin_target'], dict):
-#                     raise TypeError(
-#                         f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
-#                     )
-#                 for origin, targets in relation_info['origin_target'].items():
-#                     if origin not in full_entities:
-#                         raise ValueError(
-#                             f'Relation type "{relation_name}" has an invalid "origin_target" attribute. The specified origin entity type "{origin}" does not exist.',
-#                         )
-#                     if not isinstance(targets, list):
-#                         raise TypeError(
-#                             f'Relation type "{relation_name}" must have a valid "origin_target" attribute where the dictionary values are lists of target entity types',
-#                         )
-#                     for target in targets:
-#                         if target not in full_entities:
-#                             raise ValueError(
-#                                 f'Relation type "{relation_name}" has an invalid "origin_target" attribute. The specified target entity type "{target}" does not exist.',
-#                             )
-#                 continue
-
-#             # Validate origin/target fields from lists format
-#             if not (isinstance(relation_info['origin'], list) and isinstance(relation_info['target'], list)):
-#                 raise TypeError(
-#                     f'Relation type "{relation_name}" must have valid "origin" and "target" array attributes or an "origin_target" dictionary attribute',
-#                 )
-#             for origin in relation_info['origin']:
-#                 if origin not in full_entities:
-#                     raise ValueError(
-#                         f'Relation type "{relation_name}" has an invalid "origin" attribute. The specified origin entity type "{origin}" does not exist.',
-#                     )
-#             for target in relation_info['target']:
-#                 if target not in full_entities:
-#                     raise ValueError(
-#                         f'Relation type "{relation_name}" has an invalid "target" attribute. The specified target entity type "{target}" does not exist.',
-#                     )
-
-#     # TODO: Move to RelationType class
-#     def _build_relation_schemas(self) -> None:
-#         """Build schemas that represent all combinations for each relation type in the graph model."""
-#         # Iterate over the relation model and build the schemas
-#         for relation_info in self._relations.values():
-#             # Skip if schema is already present
-#             if 'origin_target' not in relation_info:
-#                 # Build schema from origin/target lists
-#                 relation_info['origin_target'] = {
-#                     origin: list(relation_info['target']) for origin in relation_info['origin']
-#                 }
-
-#             # Filter out any origin/target entities that are not included in the graph model
-#             final_schema = {}
-#             for origin, targets in relation_info['origin_target'].items():
-#                 valid_targets = list(set(targets) & set(self._entities))
-#                 if origin not in self._entities or not valid_targets:
-#                     continue
-#                 final_schema[origin] = valid_targets
-
-#             # Add final schema to relation info
-#             relation_info['origin_target'] = final_schema
-#             relation_info['origin'] = list(final_schema.keys())
-#             relation_info['target'] = list({t for targets in final_schema.values() for t in targets})
-
-#         # Only keep relations that have valid origin/target pairs
-#         self._relations = {k: v for k, v in self._relations.items() if v['origin_target']}
-
-#     # TODO: Move to RelationType class
-#     def _materialize_relation_model(self) -> None:
-#         """Materialize the relation model to create specific relation types between entity type pairs."""
-#         # Iterate over the relation model and build materialized relations
-#         for relation_name, relation_info in self._relations.items():
-#             relation_info['fields'] = relation_info.get('fields', {})
-#             for origin, targets in relation_info['origin_target'].items():
-#                 # Create a materialized relation for each combination of origin and target
-#                 for target in targets:
-#                     # Materialize relation info
-#                     materialized_relation_info = dict(relation_info)
-#                     materialized_relation_info['origin'] = origin
-#                     materialized_relation_info['target'] = target
-#                     materialized_relation_info['relation_name'] = relation_name
-#                     materialized_relation_name = f'{origin}_{relation_name}_{target}'
-
-#                     # Check if the origin/target are Core Entities
-#                     origin_core_entity = origin in self.core_entities
-#                     target_core_entity = target in self.core_entities
-
-#                     # Special Case: No relations allowed between Core Entities
-#                     if origin_core_entity and target_core_entity:
-#                         continue
-
-#                     # Special Case: Relations with Core Entities
-#                     if origin_core_entity:
-#                         materialized_relation_info['core_origin'] = True
-#                     elif target_core_entity:
-#                         materialized_relation_info['core_target'] = True
-
-#                     # Store materialized relation info
-#                     del materialized_relation_info['origin_target']
-#                     self._materialized_relations[materialized_relation_name] = materialized_relation_info
 
 #     @property
 #     def parameters(self) -> dict[str, Any]:

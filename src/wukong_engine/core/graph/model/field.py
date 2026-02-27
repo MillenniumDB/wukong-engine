@@ -1,5 +1,7 @@
+import json
 from dataclasses import dataclass
 from types import MappingProxyType
+from typing import Any
 
 from .rules.compatibility import ensure_compatible_retrieval_modes
 from .values import ContextLevel, DataType, EntityRetrievalMode, RegexPattern, RelationshipRetrievalMode
@@ -15,8 +17,24 @@ class _Field:
     examples: tuple[str, ...]
     required: bool
 
+    def __str__(self) -> str:
+        """User-friendly string representation of the field."""
+        return f'{self.description} [{self.data_type.value}]'
 
-@dataclass(frozen=True)
+    def __repr__(self) -> str:
+        """JSON representation of the field."""
+        field_info: dict[str, Any] = {
+            'data_type': self.data_type.value,
+            'description': self.description,
+        }
+        if self.options:
+            field_info['options'] = list(self.options)
+        if self.examples:
+            field_info['examples'] = list(self.examples)
+        return json.dumps(field_info)
+
+
+@dataclass(frozen=True, repr=False)
 class EntityField(_Field):
     """A field from an entity type."""
 
@@ -30,7 +48,7 @@ class EntityField(_Field):
         ensure_compatible_retrieval_modes(self.retrieval_mode)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class RelationshipField(_Field):
     """A field from a relationship type."""
 

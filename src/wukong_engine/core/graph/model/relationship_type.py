@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from types import MappingProxyType
 
@@ -16,6 +17,48 @@ class RelationshipType:
     primary_key: FieldName | None
     deduplication_mode: RelationshipDeduplicationMode
     fields: MappingProxyType[FieldName, RelationshipField]
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the relationship type."""
+        lines = []
+        lines.append(f'Description: {self.description}')
+
+        # Endpoints
+        endpoints_str = []
+        for (src, tgt), context_pairs in self.endpoints.items():
+            context_info = ', '.join(f'{src_ctx.value} → {tgt_ctx.value}' for src_ctx, tgt_ctx in context_pairs)
+            endpoints_str.append(f'\n  {src} → {tgt} [{context_info}]')
+        lines.append(f'Endpoints: {"".join(endpoints_str)}')
+
+        if self.primary_key:
+            lines.append(f'Primary Key: {self.primary_key}')
+        lines.append(f'Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'Fields: {len(self.fields)}')
+        lines.append(f'  {"\n  ".join(f"{field_name}: {field}" for field_name, field in self.fields.items())}')
+
+        return '\n'.join(lines)
+
+    def __repr__(self) -> str:
+        """JSON representation of the relationship type."""
+        # Format endpoints
+        endpoints = []
+        for src, tgt in self.endpoints:
+            endpoints.append([str(src), str(tgt)])
+
+        # Format fields
+        fields = {}
+        for field_name, field in self.fields.items():
+            fields[str(field_name)] = json.loads(repr(field))
+
+        rel_info = {
+            'description': self.description,
+            'endpoints': endpoints,
+            'fields': fields,
+        }
+        if self.primary_key:
+            rel_info['primary_key'] = str(self.primary_key)
+
+        return json.dumps(rel_info)
 
     def __post_init__(self) -> None:
         """Validate relationship type invariants."""

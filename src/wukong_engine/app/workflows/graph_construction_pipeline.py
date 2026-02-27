@@ -95,12 +95,11 @@ class GraphConstructionPipeline:
         # TODO: Get configuration
         # config = Config(config_path)
 
-        # TODO: Load graph model
+        # Get graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
+        logger.info(f'Graph Model loaded successfully from: "{graph_model_path}"\n\n{graph_model}')
 
-        # TODO: Pipeline configuration
-
-        # Document processing
+        # TODO: Configuration
         """
         document_processing = config.is_enabled('document_processing')
 
@@ -113,7 +112,10 @@ class GraphConstructionPipeline:
 
         # Knowledge graph export
         export_graph = config.is_enabled('export_graph')
+        """
 
+        # TODO: Pipeline
+        """
         # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
 

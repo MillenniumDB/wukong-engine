@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from types import MappingProxyType
 
@@ -15,6 +16,40 @@ class EntityType:
     deduplication_mode: EntityDeduplicationMode
     fields: MappingProxyType[FieldName, EntityField]
     document_collections: MappingProxyType[ContextLevel, frozenset[str]]
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the entity type."""
+        lines = []
+        lines.append(f'Description: {self.description}')
+        lines.append(f'Primary Key: {self.primary_key}')
+        lines.append(f'Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'Fields: {len(self.fields)}')
+        lines.append(f'  {"\n  ".join(f"{field_name}: {field}" for field_name, field in self.fields.items())}')
+
+        # Document collections per context level
+        doc_collections = []
+        for context_level, collections in self.document_collections.items():
+            if collections:
+                doc_collections.append(f'{context_level.value} [{", ".join(sorted(collections))}]')
+        if doc_collections:
+            lines.append(f'Document Collections: {", ".join(doc_collections)}')
+        else:
+            lines.append('Document Collections: None')
+
+        return '\n'.join(lines)
+
+    def __repr__(self) -> str:
+        """JSON representation of the entity type."""
+        fields = {}
+        for field_name, field in self.fields.items():
+            fields[str(field_name)] = json.loads(repr(field))
+
+        entity_info = {
+            'description': self.description,
+            'primary_key': str(self.primary_key),
+            'fields': fields,
+        }
+        return json.dumps(entity_info)
 
     def __post_init__(self) -> None:
         """Validate entity type invariants."""

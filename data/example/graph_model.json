@@ -551,8 +551,8 @@
             "fields": {
                 "ref_type": {
                     "data_type": "string",
-                    "description": "The type of reference that the source imposes over the target: SOURCE -[<REF_TYPE>]-> TARGET, where <REF_TYPE> can be one of: refiere, interpreta, condiciona, complementa, fundamenta, modifica, deroga, instruye.",
-                    "instructions": "'refiere': the source refers to the target. 'interpreta': the source interprets the target. 'condiciona': the source conditions the application of the target. 'complementa': the source complements the target. 'fundamenta': the source provides a basis for the target. 'modifica': the source modifies/updates the target. 'deroga': the source supersedes/abolishes the target. 'instruye': the source instructs/directs actions related to the target.",
+                    "description": "The type of reference that the source imposes over the target.",
+                    "instructions": "Must be in the format: SOURCE -[<REF_TYPE>]-> TARGET, where <REF_TYPE> can be one of: refiere, interpreta, condiciona, complementa, fundamenta, modifica, deroga, instruye. 'refiere': the source refers to the target. 'interpreta': the source interprets the target. 'condiciona': the source conditions the application of the target. 'complementa': the source complements the target. 'fundamenta': the source provides a basis for the target. 'modifica': the source modifies/updates the target. 'deroga': the source supersedes/abolishes the target. 'instruye': the source instructs/directs actions related to the target.",
                     "options": [
                         "refiere",
                         "interpreta",
@@ -566,7 +566,8 @@
                 },
                 "description": {
                     "data_type": "string",
-                    "description": "An explanation of how the source references the target. Should be concise.",
+                    "description": "An explanation of how the source references the target.",
+                    "instructions": "Should be concise.",
                     "examples": "Se refiere al punto 7.1 de la Circular DDU 279 para justificar un argumento relativo a la copropiedad inmobiliaria."
                 }
             }
