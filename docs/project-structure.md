@@ -17,33 +17,9 @@ This document provides a detailed overview of the project structure.
 
 ## 💻 Source Code
 
-The engine is implemented in **Python** and follows a modular architecture to facilitate maintainability and extensibility.
+The project is implemented in **Python** and follows a layered architecture based on the **clean architecture** principles, which can be reviewed in the [Architecture Guidelines](/docs/architecture.md).
+
 The source code is contained inside the `src/` directory and organized into a package named `wukong_engine`, which contains all the necessary modules and sub-packages to run the engine.
-The package structure is as follows:
-
-```sh
-src/wukong_engine/
-├── __main__.py
-├── config/
-├── core/
-├── documents/
-├── extraction/
-├── graph/
-├── llm/
-└── utils/
-```
-
-The `__main__.py` file enables the package to be run as a script. It handles argument parsing, initializes logging, and executes the main pipeline.
-
-The sub-packages contain modules that serve the following purposes:
-
-- `config`: Loading and validating engine configuration.
-- `core`: Main orchestration, including the engine pipeline execution and graph model loading/validation.
-- `documents`: Document preparation and pre-processing.
-- `extraction`: Data extraction from documents and post-processing (cleaning and deduplication).
-- `graph`: Graph-related utilities such as exporting data to a knowledge graph format.
-- `llm`: Communication with LLM APIs and prompting.
-- `utils`: Shared utilities like logging, file/text helpers, and reusable design patterns.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -115,9 +91,10 @@ The `README.md` file located in the root of the project contains an overview of 
 
 The extended documentation for the central aspects of the project is organized in the `docs/` directory, which includes:
 
+- `graph-model.md`: Graph model format and available options for specifying entity and relationship types.
 - `configuration.md`: Configuration file format and available options for engine configuration.
-- `graph-model.md`: Graph model format and available options for specifying entity and relation types.
 - `development.md`: Development guidelines, including code style/testing practices, and branching/naming conventions.
+- `architecture.md`: Architecture guidelines, including the design principles and patterns followed in the implementation of the engine.
 - `project-structure.md`: Project structure and organization of the source code.
 
 [📚 Back to Table of Contents](#-table-of-contents)

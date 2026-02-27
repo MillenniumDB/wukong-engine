@@ -6,173 +6,96 @@ This document describes the expected graph model format for a `graph_model.json`
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🧾 Graph Model Schema](#-graph-model-schema)
-- [⚙️ Parameters](#️-parameters)
-- [🧩 Entities](#-entities)
-- [🔗 Relations](#-relations)
+- [⚙️ Extraction Configuration](#️-extraction-configuration)
+  - [LLM Settings](#llm-settings)
+  - [Language Settings](#language-settings)
+  - [Projection Settings](#projection-settings)
+- [🧩 Entity Types](#-entity-types)
+  - [General Definition](#general-definition)
+  - [Fields](#fields)
+  - [Example](#example)
+- [🔗 Relationship Types](#-relationship-types)
+  - [General Definition](#general-definition-1)
+  - [Endpoints](#endpoints)
+  - [Fields](#fields-1)
+  - [Example](#example-1)
 - [💡 Graph Model Example](#-graph-model-example)
 
 ## 🧾 Graph Model Schema
 
-For a given set of documents to process, the engine expects a graph model file in valid **JSON** format. The file must follow a specific structure:
+To construct a knowledge graph, the engine expects a graph model file in valid **JSON** format. The file must follow a specific structure:
 
 ```json
 {
-    "parameters": {
+    "extraction": {
         ...
     },
-    "entities": {
+    "entity_types": {
         ...
     },
-    "relations": {
+    "relationship_types": {
         ...
     }
 }
 ```
 
-The graph model itself is a **JSON** object with three main sections: `parameters`, `entities`, and `relations`. Each section has its own specific structure and requirements, which are detailed below.
+The graph model itself is a **JSON** object with three main sections: `extraction`, `entity_types`, and `relationship_types`. Each section has its own specific structure and requirements, which are detailed below.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## ⚙️ Parameters
+## ⚙️ Extraction Configuration
 
-The `parameters` section defines the **general context and settings** for the document data extraction. It includes the following optional fields:
+The `extraction` section defines the **general context and settings** for the document data extraction. It is structured into three sub-sections: `llm`, `language`, and `projection`.
 
-| Field                | Required | Description                                                                                                                                                                                                                                                                   |      Type      | Default                                                                  |
-| -------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------: | ------------------------------------------------------------------------ |
-| `role`               |    🟡     | The contextual role to be taken by the LLM when processing the documents.                                                                                                                                                                                                     |    `string`    | `"An AI expert specialized in knowledge graph extraction"`               |
-| `context`            |    🟡     | The context or domain of the input documents.                                                                                                                                                                                                                                 |    `string`    | `"A context you must identify"`                                          |
-| `input_language`     |    🟡     | The language of the input documents.                                                                                                                                                                                                                                          |    `string`    | `"english"`                                                              |
-| `output_language`    |    🟡     | The language of the output knowledge graph.                                                                                                                                                                                                                                   |    `string`    | `"english"`                                                              |
-| `included_documents` |    🟡     | An array with all document sets to consider while extracting the knowledge graph information. These document sets must correspond to names of sub-directories present inside the `<path/to/data_dir>/docs/text/` directory, where each set contains the plain text documents. | `string array` | `[]`                                                                     |
-| `included_entities`  |    🟡     | An array with all entity types to include in the output knowledge graph. These entity types must be defined in the `entities` section.                                                                                                                                        | `string array` | `[List of ALL user-defined entity types from the "entities" section]`    |
-| `included_relations` |    🟡     | An array with all relation types to include in the output knowledge graph. These relation types must be defined in the `relations` section.                                                                                                                                   | `string array` | `[List of ALL user-defined relation types from the "relations" section]` |
+### LLM Settings
 
-All of these parameters are technically **optional**, but it's highly recommended to provide them to ensure the **LLM** has a clear understanding of the context and requirements for processing the documents.
+The `llm` sub-section specifies contextual information to guide the extraction process:
 
-Example of the `parameters` section in a graph model:
+| Parameter          | Required | Description                                                                       |   Type   | Default                                                    |
+| ------------------ | :------: | --------------------------------------------------------------------------------- | :------: | ---------------------------------------------------------- |
+| `persona`          |    🟡     | The contextual role/persona to be taken by the LLM when processing the documents. | `string` | `"An AI expert specialized in knowledge graph extraction"` |
+| `document_context` |    🟡     | The context or domain of the input documents.                                     | `string` | `None`                                                     |
 
-```json
-"parameters": {
-    "role": "An expert legal analyst specializing in Chilean civil law, operating exclusively within the Chilean continental law system and with extensive experience in identifying legal issues and structuring civil disputes.",
-    "context": "Civil judgments from the Chilean Supreme Court.",
-    "input_language": "spanish",
-    "output_language": "spanish",
-    "included_documents": [
-        "sentencias-2016",
-        "sentencias-2024"
-    ],
-    "included_entities": [
-        "Sentencia",
-        "Persona"
-    ],
-    "included_relations": [
-        "VotaEn"
-    ]
-}
-```
+### Language Settings
 
-[📚 Back to Table of Contents](#-table-of-contents)
+The `language` sub-section specifies relevant languages:
 
-## 🧩 Entities
+| Parameter | Required | Description                               |   Type   | Default |
+| --------- | :------: | ----------------------------------------- | :------: | ------- |
+| `input`   |    🟡     | The language code of the input documents. | `string` | `"en"`  |
+| `output`  |    🟡     | The language code of the output graph.    | `string` | `"en"`  |
 
-Entities are the fundamental building blocks of a knowledge graph. In this context, they represent **objects or concepts** that can be extracted from the documents and modeled as nodes in the final graph (e.g. people, organizations, locations).
+### Projection Settings
 
-The `entities` section defines the **types of entities** that can be extracted from the documents. Each entity type is represented as a key inside the `entities` object, with its value being another object that describes the entity's properties, among other settings.
+The `projection` sub-section controls which of the defined entity and relationship types are included in the output knowledge graph:
 
-The name of each entity type must be **unique** and should be a valid string that **starts with a letter** and contains only **alphanumeric characters**. Additionally, the names `Document` and `Chunk` are reserved for **special entities** and cannot be used for user-defined entities.
+| Parameter               | Required | Description                                                                                 |      Type      | Default                                                                        |
+| ----------------------- | :------: | ------------------------------------------------------------------------------------------- | :------------: | ------------------------------------------------------------------------------ |
+| `enabled_entities`      |    🟡     | An array with the names of all entity types to include in the output knowledge graph.       | `string array` | `[List of ALL entity types defined in the "entity_types" section]`             |
+| `enabled_relationships` |    🟡     | An array with the names of all relationship types to include in the output knowledge graph. | `string array` | `[List of ALL relationship types defined in the "relationship_types" section]` |
 
-For each entity type that the user defines, the following fields are available:
+All parameters in these sections are technically **optional**, but it's highly recommended to provide them to ensure the **LLM** has a clear understanding of the context and requirements for processing the documents.
 
-| Field               | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |      Type      | Default                                                                       |
-| ------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------: | ----------------------------------------------------------------------------- |
-| `description`       |    ✅     | A brief description of this entity type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |    `string`    | `None`                                                                        |
-| `primary_key`       |    ✅     | The name of the property that serves as the primary key for this entity type. This property must be defined in the `properties` object for this entity type, and it should represent the best method for **uniquely identifying** entities of this type. This field is used both for entity validation and deduplication.                                                                                                                                                                                                                                                                       |    `string`    | `None`                                                                        |
-| `core_entity`       |    🟡     | A boolean indicating whether this entity type models a core entity. A core entity is defined as an entity that represents an abstraction of an entire document, rather than being locally present somewhere in said document. For example, if the input documents correspond to lawsuits, then a **"Lawsuit"** entity type could model a core entity, since each document represents a single instance of this entity type.                                                                                                                                                                     |     `bool`     | `false`                                                                       |
-| `hybrid_entity`     |    🟡     | A boolean indicating whether this entity type models a hybrid entity. A hybrid entity is defined as an entity that acts as both a core entity and a locally defined one, meaning that it should be extracted in both ways. For example, if the input documents correspond to lawsuits, where each lawsuit references other lawsuits in its corresponding document, then a **"Lawsuit"** entity type could model a hybrid entity, since lawsuits are not only represented by each document, but also referenced locally in the text paragraphs.                                                  |     `bool`     | `false`                                                                       |
-| `detect_duplicates` |    🟡     | A boolean indicating whether to detect and merge duplicates for this entity type. If activated, the duplicated entities are detected by using the property indicated by the `primary_key` field, and considering the method defined in the `duplicates` field. Detected duplicates are then merged into a single entity, trying to conserve as much information as possible from the originally extracted entities.                                                                                                                                                                             |     `bool`     | `true`                                                                        |
-| `duplicates`        |    🟡     | An indicator on how to handle duplicate detection for this entity type. If set to `"similar"`, entities that have a highly similar value for their primary key will be considered duplicates. If set to `"exact"`, only those entities that share the same exact value for their primary key will be detected as duplicates. For primary key values that are name-like and should not be very similar between different entities, the best setting is `"similar"`. For primary key values that act like identifiers/codes and could potentially be very similar, the best setting is `"exact"`. |    `string`    | `"exact"`                                                                     |
-| `documents`         |    🟡     | An array with all document sets to consider while extracting this entity type. These document sets must correspond to names of sub-directories present inside the `<path/to/data_dir>/docs/text/` directory. If this entity type models a hybrid entity, these document sets will only be considered when extracting the core entity instances.                                                                                                                                                                                                                                                 | `string array` | `[The value of the "included_documents" field from the "parameters" section]` |
-| `documents_hybrid`  |    🟡     | An array with all document sets to consider while extracting this entity type as a locally defined entity. These document sets must correspond to names of sub-directories present inside the `<path/to/data_dir>/docs/text/` directory. This field is only valid for entity types that model hybrid entities.                                                                                                                                                                                                                                                                                  | `string array` | `[The value of the "included_documents" field from the "parameters" section]` |
-| `properties`        |    🟡     | An object defining the specific **properties** of this entity type. Read below for more information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |    `object`    | `{}`                                                                          |
-
-The value of the `properties` field is an object that defines **properties**, which are attributes of the entity type that contain relevant information. Each property is represented as a key inside the `properties` object, with its value being another object that describes the property's parameters and necessary information.
-
-The name of each property must be **unique** inside this entity type, and should be a valid string that **starts with a letter** and contains only **alphanumeric characters and underscores**. Additionally, the name `extracted_from` is reserved for a **special property** and cannot be used for user-defined properties.
-
-For each property that the user defines, the following fields are available:
-
-| Field                | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |      Type      | Default                                 |
-| -------------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------: | --------------------------------------- |
-| `description`        |    ✅     | A brief description of the property.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |    `string`    | `None`                                  |
-| `description_hybrid` |    🟡     | A brief description of the property, to be used when extracting this entity type as a locally defined entity. This field is only valid for properties where the parent entity type models hybrid entities.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    `string`    | `Same value as the "description" field` |
-| `type`               |    🟡     | The data type of the property. Currently only `"string"` is supported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |    `string`    | `"string"`                              |
-| `example`            |    🟡     | An example value for the property, illustrating its expected format and content.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |    `string`    | `None`                                  |
-| `metadata`           |    🟡     | A boolean indicating whether this property should be extracted from available metadata files instead of the plain text documents for this entity type. This field is only valid for properties where the parent entity type models core/hybrid entities. For the metadata extraction to work properly, the same document set sub-directories present at `<path/to/data_dir>/docs/text/` must be also present inside a `<path/to/data_dir>/docs/metadata/` directory, containing each of the metadata files in **JSON** object format. These metadata files must have the exact same filenames as their plain text document counterparts, but with the `.json` extension instead of `.txt`. |     `bool`     | `false`                                 |
-| `hybrid`             |    🟡     | A boolean indicating whether this property should be considered when extracting this entity type as a locally defined entity. This field is only valid for properties where the parent entity type models hybrid entities. If set to `true`, the property value will be normally extracted, otherwise it will be set to `NULL`.                                                                                                                                                                                                                                                                                                                                                            |     `bool`     | `false`                                 |
-| `placeholder`        |    🟡     | A predefined value that acts as a placeholder for this property. If not defined, the property will be extracted from the documents normally.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |    `string`    | `None`                                  |
-| `options`            |    🟡     | An array with all the possible values that this property can take. If this field is present with a non-empty list, it effectively restricts the potential values of this property to a specific subset. For example, you could use this field to force the property's value to be either **"Yes"** or **"No"**.                                                                                                                                                                                                                                                                                                                                                                            | `string array` | `[]`                                    |
-| `default`            |    🟡     | The default value for this property, in case it cannot be properly extracted from the documents/metadata. If not defined, the property value will be set to `NULL` when a valid value cannot be obtained through the extraction process.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |    `string`    | `None`                                  |
-| `regex`              |    🟡     | A regex pattern that this property's value must match to be considered valid. If not defined, the property will be extracted from the documents normally.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |    `string`    | `None`                                  |
-| `required`           |    🟡     | A boolean indicating whether this property is mandatory for this entity type. If set to `true`, the property must be present in every instance of the entity type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |     `bool`     | `false`                                 |
-
-Example of the `entities` section in a graph model:
+Example of the `extraction` section in a graph model:
 
 ```json
-"entities": {
-    "Sentencia": {
-        "core_entity": true,
-        "description": "A civil judgment from the Chilean Supreme Court. The final determination of a civil lawsuit, declaring the rights and duties of the parties involved.",
-        "primary_key": "rol",
-        "properties": {
-            "rol": {
-                "type": "string",
-                "description": "A unique numerical identifier used to represent the current judgment at the Supreme Court. It is never mentioned in the beginning. Explicitly mentioned at the end, after the paragraph that starts with 'Registrese...' and before the paragraph that starts with 'Pronunciado por...'. May be located at the end of the line that talks about 'Redacción a cargo de...'. Must be in the format: <N>-<M>, where both <N> and <M> are valid integers. It is sometimes ended with symbols ('.', '.-'), or preceded by ('No', 'Nro', 'N°'), but only consider the numbers.",
-                "example": "13.500-2025, or 13-2025, or 1300-25",
-                "metadata": true,
-                "required": true
-            },
-            "fecha": {
-                "type": "string",
-                "description": "The date of the current judgment at the Supreme Court. Explicitly mentioned either at the very beginning, or at the very end. It appears written in words, do not infer it from the 'rol'. Must be in the format: TYYYYMMDD, where YYYY is the year, MM is the month, and DD is the day. If MM is not available, consider it as 01. If DD is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
-                "example": "T20240115",
-                "required": true
-            },
-            "problema": {
-                "type": "string",
-                "description": "The central problem that gives rise to the legal dispute present in the judgment. Concise and written as a legal concept.",
-                "example": "Incumplimiento de Promesa de Compraventa",
-                "required": true
-            },
-            "decision_CA": {
-                "type": "string",
-                "description": "The specific decision taken by the Court of Appeals relative to the decision of the Court of First Instance. Usually explained near the beginning, when talking about the Court of Appeals and the First Instance.",
-                "options": [
-                    "Confirma",
-                    "Revoca",
-                    "Modifica"
-                ]
-            },
-            "efecto_final": {
-                "type": "string",
-                "description": "An explanation of the final legal consequence obtained from the entire chain of court decisions in the judgment. Should be concise.",
-                "required": true
-            }
-        }
+"extraction": {
+    "llm": {
+        "persona": "An expert legal analyst specializing in Chilean law, with extensive experience in identifying connections between legal articles.",
+        "document_context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
     },
-    "Persona": {
-        "description": "A natural person who participates or is mentioned in a judgment.",
-        "primary_key": "nombre",
-        "duplicates": "similar",
-        "properties": {
-            "nombre": {
-                "type": "string",
-                "description": "The person's name.",
-                "example": "Juan Andrés Pérez González",
-                "required": true
-            }
-        },
-        "documents": [
-            "sentencias-2024"
+    "language": {
+        "input": "es",
+        "output": "es"
+    },
+    "projection": {
+        "enabled_entities": [
+            "LGUC",
+            "OGUC",
+            "DDU"
+        ],
+        "enabled_relationships": [
+            "References"
         ]
     }
 }
@@ -180,67 +103,233 @@ Example of the `entities` section in a graph model:
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🔗 Relations
+## 🧩 Entity Types
 
-Relations are the connections between entities in a knowledge graph. In this context, relations are represented as **links between two entities** that can be extracted from the documents and modeled as edges in the final graph (e.g. a person living in a city).
+Entities are the fundamental building blocks of a knowledge graph. They represent **objects or concepts** that can be extracted from the documents and modeled as nodes in the final graph (e.g. people, organizations, legal articles).
 
-The `relations` section defines the **types of relations** that can be extracted from the documents. Each relation type is represented as a key inside the `relations` object, with its value being another object that describes the relation's properties, among other settings.
+### General Definition
 
-The name of each relation type must be **unique** and should be a valid string that **starts with a letter** and contains only **alphanumeric characters**. Additionally, the names `ChunkOf` and `ExtractedFrom` are reserved for **special relations** and cannot be used for user-defined relations.
+The `entity_types` section defines the **types of entities** that can be extracted from the documents. Each entity type is represented as a key inside the `entity_types` object (using the **entity type's name**), with its value being another object that describes the entity type's parameters and extraction-related settings.
 
-For each relation type that the user defines, the following fields are available:
+The name of each entity type must be a valid string that starts with an **uppercase letter**, and contains only **alphanumeric characters**. The names `Document` and `Chunk` are reserved for **special entity types** and cannot be used.
 
-| Field               | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |      Type      | Default   |
-| ------------------- | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------: | --------- |
-| `origin_target`     |    ✅     | An object that models all origin/target combinations for this relation type. Each **key** corresponds to an origin entity type, with the **value** being an array that contains the associated target entity types. All of these entity types must be defined in the `entities` section. In the case of **hybrid** entities, their **locally defined component** must be referred to with a `@` prefix before the entity name (e.g. `@<ENTITY_NAME>`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |    `object`    | `None`    |
-| `description`       |    ✅     | A brief description of this relation type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |    `string`    | `None`    |
-| `origin`            |    🟡     | An array with all entity types that can be the origin of this relation type. These entity types must be defined in the `entities` section. This can be used together with the `target` field to replace the `origin_target` field when modeling simple origin/target combinations (**ALL origins** connecting with **ALL targets**).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `string array` | `None`    |
-| `target`            |    🟡     | An array with all entity types that can be the target of this relation type. These entity types must be defined in the `entities` section. This can be used together with the `origin` field to replace the `origin_target` field when modeling simple origin/target combinations (**ALL origins** connecting with **ALL targets**).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `string array` | `None`    |
-| `primary_key`       |    🟡     | The name of the property that serves as the primary key for this relation type. This property must be defined in the `properties` object for this relation type. This field is used when duplicate detection is active, in which case the property specified as primary key here is used for deduplication in a similar way as with the entities, but with the additional condition that the **origin** and **target** entities for a relation pair must be identical to consider it a duplicate. If this field is empty or not defined, then no deduplication will be performed for this relation type, regardless of the deduplication settings.                                                                                                                                                                                                                                                                                                                                                                                |    `string`    | `None`    |
-| `detect_duplicates` |    🟡     | A boolean indicating whether to detect and merge duplicates for this relation type. If activated, the duplicated relations are detected by first finding relations with the same exact **origin** and **target** entities, and then comparing the value of the property indicated by the `primary_key` field, while considering the method defined in the `duplicates` field. Detected duplicates are then merged into a single relation, trying to conserve as much information as possible from the originally extracted relations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |     `bool`     | `true`    |
-| `duplicates`        |    🟡     | An indicator on how to handle duplicate detection for this relation type. If set to `"similar"`, relations that have the same **origin** and **target** entities and also have a highly similar value for their primary key will be considered duplicates. If set to `"exact"`, only those relations with the same **origin** and **target** that additionally share the same exact value for their primary key will be detected as duplicates. The recommended value follows the same rules as with the entities.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |    `string`    | `"exact"` |
-| `force_unique`      |    🟡     | A boolean indicating whether this relation type should be forced to be unique. If set to `true`, the engine will ensure that at most one instance of this relation type exists between any given **origin** and **target** entities. This is useful for relation types that should not have multiple instances between the same pair of entities (e.g. a **VotaEn** relation type where a person can only vote once in an election). Setting this to `true` implicitly ignores deduplication settings for this relation type, since it considers any pair of relations with the same **origin** and **target** entities as duplicates.                                                                                                                                                                                                                                                                                                                                                                                            |     `bool`     | `false`   |
-| `bypass_LLM`        |    🟡     | A boolean indicating whether this relation type should be extracted without using the LLM. This option is only available for relation types where either the origin or target entity type is a **core entity**. If this relation type is defined between two non-core entities, this field will be ignored and the relations will be extracted using the LLM. When using this option, the engine **skips the LLM processing** and assumes that, for every instance of the non-core entity type found in a document, said instance has a relation with the respective core entity that represents that document. This field is useful for cases where an entity being found in a document implicitly means that there is a relation with the core entity that represents said document (e.g. for documents that represent **fragments of a book**, any **character entities** mentioned in a document would be implicitly connected to the associated **book fragment core entity** by a relation type such as **"MentionedIn"**). |     `bool`     | `false`   |
-| `properties`        |    🟡     | An object defining the specific **properties** of this relation type. This object follows the same rules and structure as with the entities.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    `object`    | `{}`      |
+Each entity type can be extracted at different **context levels** (e.g. from text chunks or at the document level), and the graph model allows users to specify different extraction settings for each context level if desired. The currently supported context levels are `"chunk"` and `"document"`.
 
-Example of the `relations` section in a graph model:
+For each entity type that the user defines, the following parameters are available:
+
+| Parameter              | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                 Type                 | Default  |
+| ---------------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------: | -------- |
+| `description`          |    ✅     | A brief description of this entity type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |               `string`               | `None`   |
+| `instructions`         |    🟡     | Additional technical instructions for extracting this entity type. Can be specified using an object that maps each context level (`"chunk"`, `"document"`) to a string representing their respective instructions, or with a single string that is applied to *all* context levels.                                                                                                                                                                                                                                             | `object[string, string]` or `string` | `None`   |
+| `primary_key`          |    ✅     | The name of the field that serves as the primary key for this entity type. This field must be defined in the `fields` object and should uniquely identify entities of this type. Used for both validation and deduplication.                                                                                                                                                                                                                                                                                                    |               `string`               | `None`   |
+| `deduplication_mode`   |    🟡     | Controls how duplicates are detected for this entity type. Options: `"exact"` (only detect exact matches on primary key), `"approximate"` (near duplicates on primary key using fuzzy matching and hashing), or `"none"` (no deduplication). The recommendation is to use `"approximate"` for name-like values and `"exact"` for identifier/code-like values that are more strict.                                                                                                                                              |               `string`               | `"none"` |
+| `fields`               |    🟡     | An object defining the specific **fields** of this entity type. See the **Fields** section for more information on these definitions.                                                                                                                                                                                                                                                                                                                                                                                           |       `object[string, Field]`        | `{}`     |
+| `document_collections` |    🟡     | Specifies which document collections to use when extracting the entities, considering the different context levels. Must be an object where the keys are context levels (`"chunk"`, `"document"`), and the values are arrays of **document collections**. Document collections must correspond to **subdirectory names** inside the `<path/to/data_dir>/docs/text/` directory, where these subdirectories contain the input documents in `.txt` format. Any non-specified context levels are ignored in the extraction process. |    `object[string, string array]`    | `{}`     |
+
+### Fields
+
+The `fields` object inside each entity type defines **fields** that contain relevant information about that entity type. Each field is represented as a key (using the **field's name**) inside the `fields` object, with its value being another object describing the **field's parameters**.
+
+The name of each field must start with a **lowercase letter**, and contain only **lowercase alphanumeric characters and underscores**. The name `extracted_from` is reserved for a special field and cannot be used.
+
+Each field can have different extraction settings for different context levels (e.g. extract from text chunks but load from document-level external files), and the graph model allows users to specify these settings accordingly. The currently supported context levels are `"chunk"` and `"document"`. The currently supported field retrieval modes for entity types are `"extract"` (extract from text), `"load"` (load from external files), `"default"` (use the default value), and `"skip"` (don't retrieve the field, assume `NULL`).
+
+For each field that the user defines, the following parameters are available:
+
+| Parameter        | Required | Description                                                                                                                                                                                                                                                                                                                                                                                      |                 Type                 | Default     |
+| ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------: | ----------- |
+| `data_type`      |    ✅     | The data type of the field. Currently only `"string"` is supported.                                                                                                                                                                                                                                                                                                                              |               `string`               | `None`      |
+| `description`    |    ✅     | A brief description of what this field represents.                                                                                                                                                                                                                                                                                                                                               |               `string`               | `None`      |
+| `instructions`   |    🟡     | Detailed technical instructions for extracting this field. Can be specified using an object that maps each context level (`"chunk"`, `"document"`) to a string representing their respective instructions, or with a single string that is applied to *all* context levels.                                                                                                                      | `object[string, string]` or `string` | `None`      |
+| `options`        |    🟡     | An array of all possible values this field can take. Restricts the field to a specific set of values. If not specified, the field may take any value without restrictions (equivalent to an empty array).                                                                                                                                                                                        |            `string array`            | `[]`        |
+| `examples`       |    🟡     | Example value(s) for the field, illustrating its expected format and content. Can be a single string or an array of strings for multiple examples.                                                                                                                                                                                                                                               |      `string` or `string array`      | `[]`        |
+| `regex`          |    🟡     | A regex pattern that this field's value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`). Can be specified using an object that maps each context level (`"chunk"`, `"document"`) to a string representing their respective regex patterns, or with a single regex pattern string that is applied to *all* context levels.                                                         | `object[string, string]` or `string` | `None`      |
+| `default_value`  |    🟡     | The default value for this field if it cannot be obtained, or if the `"default"` retrieval mode is chosen. Can be specified using an object that maps each context level (`"chunk"`, `"document"`) to a string representing their respective default values, or with a single default value string that is applied to *all* context levels. If not specified, the default value will be `NULL`.  | `object[string, string]` or `string` | `None`      |
+| `retrieval_mode` |    🟡     | Controls how this field should be retrieved. Can be specified using an object that maps each context level (`"chunk"`, `"document"`) to a string representing their respective retrieval modes (`"extract"`, `"load"`, `"default"`, `"skip"`), or with a single retrieval mode string that is applied to *all* context levels. If not specified, the default retrieval mode will be `"extract"`. | `object[string, string]` or `string` | `"extract"` |
+| `required`       |    🟡     | A boolean indicating whether this field is mandatory for this entity type. If set to `true`, the field must be present with a valid value in every instance of the entity type. This parameter is ignored by fields chosen as primary keys, since those must always be required.                                                                                                                 |                `bool`                | `false`     |
+
+### Example
+
+Example of an entity type object contained in the `entity_types` section of a graph model:
 
 ```json
-"relations": {
-    "Contiene": {
-        "origin": [
-            "Sentencia"
-        ],
-        "target": [
-            "Hecho"
-        ],
-        "description": "A judgment that contains a factual and established event.",
-        "bypass_LLM": true,
-        "force_unique": true
+"LGUC": {
+    "description": "A specific article from the LGUC (Ley General de Urbanismo y Construcciones).",
+    "instructions": "Must explicitly mention or refer to the LGUC, ignore articles from other legal bodies such as OGUC/DDU.",
+    "primary_key": "node_name",
+    "deduplication_mode": "exact",
+    "fields": {
+        "node_name": {
+            "data_type": "string",
+            "description": "The unique identifier of the LGUC article.",
+            "instructions": {
+                "chunk": "Must be in the format: lguc_articulo_<A>_<NUM>_<LETTER>, where <A> is a valid integer without leading '0's..."
+            },
+            "regex": "^lguc[ _.-]articulo[ _.-]\\d+(?:[ _.-][A-Za-z]+(?:[ _.-][A-Za-z])?)?$",
+            "examples": [
+                "lguc_articulo_1",
+                "lguc_articulo_4_bis"
+            ],
+            "retrieval_mode": {
+                "chunk": "extract",
+                "document": "load"
+            }
+        },
+        "source_type": {
+            "data_type": "string",
+            "description": "The type of the parent document.",
+            "default_value": "lguc",
+            "retrieval_mode": "default"
+        },
+        "title": {
+            "data_type": "string",
+            "description": "The title of the LGUC article.",
+            "instructions": "Mentioned in the beginning, right in between 'TITULO' and 'CAPITULO'.",
+            "retrieval_mode": {
+                "chunk": "skip",
+                "document": "extract"
+            }
+        }
     },
-    "VotaEn": {
-        "origin_target": {
-            "Persona": [
-                "Sentencia"
+    "document_collections": {
+        "chunk": ["LGUC", "OGUC", "DDU"],
+        "document": ["LGUC"]
+    }
+}
+```
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🔗 Relationship Types
+
+Relationships are the connections between entities in a knowledge graph. They represent **links between two entities** that can be extracted from the documents and modeled as edges in the final graph (e.g. a legal article referencing another article).
+
+### General Definition
+
+The `relationship_types` section defines the **types of relationships** that can be extracted from the documents. Each relationship type is represented as a key inside the `relationship_types` object (using the **relationship type's name**), with its value being another object that describes the relationship type's parameters and extraction-related settings.
+
+The name of each relationship type must be a valid string that starts with an **uppercase letter**, and contains only **alphanumeric characters**. The names `ChunkOf` and `ExtractedFrom` are reserved for **special relationship types** and cannot be used.
+
+For each relationship type that the user defines, the following parameters are available:
+
+| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                         Type                         | Default  |
+| -------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------: | -------- |
+| `description`        |    ✅     | A brief description of this relationship type.                                                                                                                                                                                                                                                                                                                                                                                                                    |                       `string`                       | `None`   |
+| `instructions`       |    🟡     | Additional technical instructions for extracting this relationship type.                                                                                                                                                                                                                                                                                                                                                                                          |                       `string`                       | `None`   |
+| `endpoints`          |    🟡     | An object defining all valid source-target entity type combinations and their context level pairings for this relationship type. Each key is a **source entity type name**, with its value being an object that maps **target entity type names** to **arrays of context level pairing rules**. See the **Endpoints** section for more information on these definitions.                                                                                          | `object[string, object[string, EndpointRule array]]` | `{}`     |
+| `primary_key`        |    🟡     | The name of the field that serves as the primary key for this relationship type. This field must be defined in the `fields` object and should uniquely identify relationships of this type between the same source/target pairs. Used for both validation and deduplication, if defined. If no primary key is specified, the `"exact"` and `"approximate"` deduplication modes cannot be used.                                                                    |                       `string`                       | `None`   |
+| `deduplication_mode` |    🟡     | Controls how duplicates are detected for this relationship type, when looking at relationships with identical source/target entity pairs. Options: `"exact"` (only detect exact matches on primary key), `"approximate"` (near duplicates on primary key using fuzzy matching and hashing), `"endpoints"` (any two relationships with identical source and target entities are considered duplicates, regardless of primary key), or `"none"` (no deduplication). |                       `string`                       | `"none"` |
+| `fields`             |    🟡     | An object defining the specific **fields** of this relationship type. See the **Field** section below for more information on these definitions.                                                                                                                                                                                                                                                                                                                  |               `object[string, Field]`                | `{}`     |
+
+### Endpoints
+
+The `endpoints` object defines valid source-target entity type combinations and their context level pairing rules. Each endpoint rule is represented as an object with the `source_context_levels` and `target_context_levels` parameters, specifying the context levels at which the source and target entities can be connected. Each of these parameters can be specified as a single context level string or as an array of context level strings, where all combinations between them will be generated.
+
+The currently supported context levels for entity types are `"chunk"` (entity extracted from a text chunk) and `"document"` (entity extracted at the document level). The currently valid context level pairings for relationship endpoints are:
+
+| Source Context Level | Target Context Level |
+| :------------------: | :------------------: |
+|       `chunk`        |       `chunk`        |
+|       `chunk`        |      `document`      |
+|      `document`      |       `chunk`        |
+
+An example of the endpoints definition for a relationship type connecting the `LGUC` and `OGUC` entity types could look like this:
+
+```json
+"endpoints": {
+    "LGUC": {
+        "OGUC": [
+            {
+                "source_context_levels": "chunk",
+                "target_context_levels": ["document", "chunk"]
+            },
+            {
+                "source_context_levels": "document",
+                "target_context_levels": "chunk"
+            }
+        ]
+    }
+}
+```
+
+In the example, the relationship type can connect `LGUC` entities extracted from text chunks to `OGUC` entities extracted at either the chunk or document level, as well as `LGUC` entities extracted at the document level to `OGUC` entities extracted from text chunks. It avoids the invalid pairing of `document` to `document`, which would raise an error since its not supported by the engine.
+
+### Fields
+
+The `fields` object inside each relationship type defines **fields** that contain relevant information about that relationship type. Each field is represented as a key (using the **field's name**) inside the `fields` object, with its value being another object describing the **field's parameters**.
+
+The name of each field must start with a **lowercase letter**, and contain only **lowercase alphanumeric characters and underscores**. The name `extracted_from` is reserved for a special field and cannot be used.
+
+Each field can specify a mode for retrieving the information. The currently supported field retrieval modes for relationship types are `"extract"` (extract from text), and `"default"` (use the default value).
+
+For each field that the user defines, the following parameters are available:
+
+| Parameter        | Required | Description                                                                                                                                                                                                                                                                                  |            Type            | Default     |
+| ---------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------: | ----------- |
+| `data_type`      |    ✅     | The data type of the field. Currently only `"string"` is supported.                                                                                                                                                                                                                          |          `string`          | `None`      |
+| `description`    |    ✅     | A brief description of what this field represents.                                                                                                                                                                                                                                           |          `string`          | `None`      |
+| `instructions`   |    🟡     | Detailed technical instructions for extracting this field.                                                                                                                                                                                                                                   |          `string`          | `None`      |
+| `options`        |    🟡     | An array of all possible values this field can take. Restricts the field to a specific set of values. If not specified, the field may take any value without restrictions (equivalent to an empty array).                                                                                    |       `string array`       | `[]`        |
+| `examples`       |    🟡     | Example value(s) for the field, illustrating its expected format and content. Can be a single string or an array of strings for multiple examples.                                                                                                                                           | `string` or `string array` | `[]`        |
+| `regex`          |    🟡     | A regex pattern that this field's value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`).                                                                                                                                                                                      |          `string`          | `None`      |
+| `default_value`  |    🟡     | The default value for this field if it cannot be obtained, or if the `"default"` retrieval mode is chosen. If not specified, the default value will be `NULL`.                                                                                                                               |          `string`          | `None`      |
+| `retrieval_mode` |    🟡     | Controls how this field should be retrieved. Must be specified using a string representing one of the supported relationship retrieval modes (`"extract"`, `"default"`). If not specified, the default retrieval mode will be `"extract"`.                                                   |          `string`          | `"extract"` |
+| `required`       |    🟡     | A boolean indicating whether this field is mandatory for this relationship type. If set to `true`, the field must be present with a valid value in every instance of the relationship type. This parameter is ignored by fields chosen as primary keys, since those must always be required. |           `bool`           | `false`     |
+
+### Example
+
+Example of a relationship type object contained in the `relationship_types` section of a graph model:
+
+```json
+"References": {
+    "description": "A source legal provision explicitly referencing a target legal provision.",
+    "instructions": "The source and target legal provisions must be different.",
+    "endpoints": {
+        "LGUC": {
+            "LGUC": [
+                {
+                    "source_context_levels": "document",
+                    "target_context_levels": "chunk"
+                }
+            ],
+        },
+        "OGUC": {
+            "LGUC": [
+                {
+                    "source_context_levels": ["document", "chunk"],
+                    "target_context_levels": "chunk"
+                }
+            ],
+            "OGUC": [
+                {
+                    "source_context_levels": "document",
+                    "target_context_levels": "chunk"
+                }
+            ]
+        }
+    },
+    "primary_key": "ref_type",
+    "deduplication_mode": "exact",
+    "fields": {
+        "ref_type": {
+            "data_type": "string",
+            "description": "The type of reference that the source imposes over the target.",
+            "options": [
+                "refiere",
+                "interpreta",
+                "condiciona",
+                "complementa",
+                "fundamenta",
+                "modifica",
+                "deroga",
+                "instruye"
             ]
         },
-        "description": "A judicial officer that participates in the voting to decide the final resolution of a judgment. This is mentioned at the end of the judgment, where the voting is recorded.",
-        "force_unique": true,
-        "properties": {
-            "decision": {
-                "type": "string",
-                "description": "Whether the judicial officer is in favor or against the final resolution of the judgment.",
-                "options": [
-                    "A Favor",
-                    "En Contra"
-                ],
-                "default": "A Favor",
-                "required": true
-            },
-            "explicacion": {
-                "type": "string",
-                "description": "The reasoning behind the vote given by the judicial officer. Should be concise."
-            }
+        "description": {
+            "data_type": "string",
+            "description": "An explanation of how the source references the target.",
+            "instructions": "Should be concise.",
+            "examples": "Se refiere al punto 7.1 de la Circular DDU 279..."
         }
     }
 }
@@ -250,6 +339,6 @@ Example of the `relations` section in a graph model:
 
 ## 💡 Graph Model Example
 
-A full example of a properly formatted graph model is contained in the provided [Graph Model Example File](/data/example/graph_model.json), located in `data/example/graph_model.json`.
+A full example of a properly formatted graph model is contained in the provided [Graph Model Example File](/data/example/graph_model.json). This example includes multiple entity and relationship types with various configurations, demonstrating the flexibility and structure of the graph model format.
 
 [📚 Back to Table of Contents](#-table-of-contents)

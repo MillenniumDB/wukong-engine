@@ -24,7 +24,6 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
   - [Building the Image](#building-the-image)
   - [Running the Engine with Docker](#running-the-engine-with-docker)
   - [Important Considerations](#important-considerations)
-- [📦 Package Structure](#-package-structure)
 - [🤝 Contributing](#-contributing)
 - [🗺️ Roadmap](#️-roadmap)
 
@@ -112,11 +111,11 @@ The expected structure is as follows:
 your-data-dir/
 ├── docs/
 │   ├── text/
-│   │   ├── your-doc-subset-name-a/
+│   │   ├── your-doc-collection-name-a/
 │   │   │   ├── document_1.txt
 │   │   │   ├── document_2.txt
 │   │   │   └── ...
-│   │   ├── your-doc-subset-name-b/
+│   │   ├── your-doc-collection-name-b/
 │   │   │   ├── document_1.txt
 │   │   │   ├── document_2.txt
 │   │   │   └── ...
@@ -126,9 +125,9 @@ your-data-dir/
 ```
 
 The `docs/text/` directory should contain the **plain text** files to be processed, saved with the `.txt` extension (the filenames themselves are not restricted).
-These files **must** be organized in user-defined sub-directories (e.g. `your-doc-subset-name-a/`, `your-doc-subset-name-b/`).
+These files **must** be organized in user-defined sub-directories (e.g. `your-doc-collection-name-a/`, `your-doc-collection-name-b/`).
 
-The `graph_model.json` file should define the desired **parameters** and **entity/relation schema** for the knowledge graph, in **JSON** format.
+The `graph_model.json` file should define the desired **parameters** and **entity/relation type schema** for the knowledge graph, in **JSON** format.
 
 > 🧬 For a detailed description of the graph model schema and available options, refer to the [Graph Model](/docs/graph-model.md) documentation.
 
@@ -145,20 +144,20 @@ Before running the engine, ensure that **all environment variables** are properl
 You can run the engine with the **default configuration** using the following command (from the root of the project):
 
 ```sh
-poetry run python -m wukong_engine <path/to/data_dir>
+poetry run wukong <path/to/data_dir>
 ```
 
 If you are not using **Poetry**, you can run the engine directly inside your own virtual environment:
 
 ```sh
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-python -m wukong_engine <path/to/data_dir>
+wukong <path/to/data_dir>
 ```
 
 As an example, if you want to run the engine on the provided **example data directory** (with **Poetry**), you can use the following command:
 
 ```sh
-poetry run python -m wukong_engine data/example/
+poetry run wukong data/example/
 ```
 
 After executing the command, the engine will process the **documents** in the specified data directory and generate a **knowledge graph** based on the provided **graph model**. This process may take some time depending on the size/number of documents and the complexity of the graph model (from a few seconds to multiple hours or longer).
@@ -188,14 +187,14 @@ The engine configuration is managed through a **TOML** file, which can be **opti
 You can run the engine with a custom configuration like this:
 
 ```sh
-poetry run python -m wukong_engine <path/to/data_dir> --config <path/to/config.toml>
+poetry run wukong <path/to/data_dir> --config <path/to/config.toml>
 ```
 
 To illustrate, the following command shows how to run the engine over the **example data** using a **custom configuration**
 hypothetically located in `config/test.toml`:
 
 ```sh
-poetry run python -m wukong_engine data/example/ --config config/test.toml
+poetry run wukong data/example/ --config config/test.toml
 ```
 
 > ⚙️ For more information on the configuration file format and available options, refer to the [Configuration](/docs/configuration.md) documentation.
@@ -285,26 +284,6 @@ Make sure to take the following into consideration when setting up and running t
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 📦 Package Structure
-
-The engine is organized into several components, each serving a specific purpose in the overall architecture. The package structure is as follows:
-
-```sh
-src/wukong_engine/
-├── __main__.py  # Entry point
-├── config/      # Configuration and environment
-├── core/        # Core logic for the engine pipeline
-├── documents/   # Document pre-processing
-├── extraction/  # Data extraction logic
-├── graph/       # Graph database interaction
-├── llm/         # LLM interaction
-└── utils/       # Utility functions and shared components
-```
-
-> 🧱 For a detailed description of the entire project structure and its components, refer to the [Project Structure](/docs/project-structure.md) documentation.
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
 ## 🤝 Contributing
 
 Contributions are welcome!
@@ -313,6 +292,8 @@ Please review the following resources:
 - 📜 [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
 - 🤝 [Contribution Guide](/.github/CONTRIBUTING.md)
 - 🛠️ [Development Guidelines](/docs/development.md)
+- 🏗️ [Architecture Guidelines](/docs/architecture.md)
+- 🧱 [Project Structure](/docs/project-structure.md)
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
