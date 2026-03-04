@@ -48,7 +48,7 @@ class ProjectionSchema(BaseModel):
     enabled_relationships: list[StrictStr] | None = None
 
 
-class ExtractionSchema(BaseModel):
+class ExtractionConfigSchema(BaseModel):
     """Schema-level representation of extraction parameters."""
 
     llm: LLMSchema = Field(default_factory=LLMSchema)

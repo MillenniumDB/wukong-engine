@@ -1,0 +1,21 @@
+from dataclasses import dataclass
+from pathlib import PurePath
+
+from .values import DocumentSourceMode
+
+
+@dataclass(frozen=True)
+class DocumentSource:
+    """A document source."""
+
+    path: PurePath
+    mode: DocumentSourceMode
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the document source."""
+        return f'[{self.mode.value}] {self.path}'
+
+    def __post_init__(self) -> None:
+        """Validate document source invariants."""
+        if not str(self.path).strip():
+            raise ValueError('Path must not be empty or whitespace-only.')

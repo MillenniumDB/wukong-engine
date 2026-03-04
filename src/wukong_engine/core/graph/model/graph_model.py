@@ -26,7 +26,7 @@ class GraphModel:
         """User-friendly string representation of the graph model."""
         lines = []
         lines.append('=' * 80)
-        lines.append('GRAPH MODEL')
+        lines.append(' GRAPH MODEL')
         lines.append('=' * 80)
 
         # Extraction Config
@@ -48,7 +48,7 @@ class GraphModel:
             rel_str = str(rel_type)
             lines.extend(f'    {line}' for line in rel_str.split('\n'))
 
-        lines.append('\n' + '=' * 80)
+        lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)
 
     def __repr__(self) -> str:

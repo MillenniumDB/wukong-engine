@@ -12,7 +12,7 @@ import logging
 from pathlib import Path
 
 # from nltk import download as nltk_download
-from wukong_engine.app.model_ingestion.use_cases import GetGraphModel
+from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 
 # from wukong_engine.config.config import Config
 """
@@ -43,6 +43,7 @@ METADATA_DIR = Path('./docs/processed/metadata/')
 PROMPTS_DIR = Path('./prompts/')
 RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
+DOCUMENT_REGISTRY_FILE = 'document_collections.json'
 GRAPH_MODEL_FILE = 'graph_model.json'
 
 
@@ -51,12 +52,14 @@ class GraphConstructionPipeline:
 
     def __init__(
         self,
+        get_document_registry: GetDocumentRegistry,
         get_graph_model: GetGraphModel,
         # extract_entities: ExtractEntities,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
+        self._get_document_registry = get_document_registry
         self._get_graph_model = get_graph_model
         # self._extract_entities = extract_entities
         # self._extract_relationships = extract_relationships
@@ -91,13 +94,20 @@ class GraphConstructionPipeline:
         results_dir = data_dir / RESULTS_DIR
         exports_dir = data_dir / EXPORTS_DIR
         graph_model_path = data_dir / GRAPH_MODEL_FILE
+        document_registry_path = data_dir / DOCUMENT_REGISTRY_FILE
 
         # TODO: Get configuration
         # config = Config(config_path)
 
+        # Get document registry
+        document_registry = self._get_document_registry.execute(document_registry_path)
+        logger.info(f'Document Registry loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
+
         # Get graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
         logger.info(f'Graph Model loaded successfully from: "{graph_model_path}"\n\n{graph_model}')
+
+        # TODO: Validate document collections in graph model using the document registry
 
         # TODO: Configuration
         """

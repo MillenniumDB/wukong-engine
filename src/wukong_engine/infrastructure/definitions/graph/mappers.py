@@ -21,7 +21,7 @@ from .schemas import (
     EndpointContextRule,
     EntityFieldSchema,
     EntityTypeSchema,
-    ExtractionSchema,
+    ExtractionConfigSchema,
     GraphModelSchema,
     RelationshipFieldSchema,
     RelationshipTypeSchema,
@@ -31,7 +31,7 @@ from .schemas import (
 def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
     """Convert a GraphModelSchema to a GraphModel domain model."""
     return GraphModel(
-        extraction_config=_schema_to_extraction_config(schema.extraction),
+        extraction_config=_schema_to_extraction_config(schema.extraction_config),
         entity_types=MappingProxyType(
             {EntityTypeName(name): _schema_to_entity_type(schema) for name, schema in schema.entity_types.items()},
         ),
@@ -44,8 +44,8 @@ def schema_to_graph_model(schema: GraphModelSchema) -> GraphModel:
     )
 
 
-def _schema_to_extraction_config(schema: ExtractionSchema) -> ExtractionConfig:
-    """Convert an ExtractionSchema to an ExtractionConfig domain model."""
+def _schema_to_extraction_config(schema: ExtractionConfigSchema) -> ExtractionConfig:
+    """Convert an ExtractionConfigSchema to an ExtractionConfig domain model."""
     return ExtractionConfig(
         llm_persona=schema.llm.persona,
         document_context=schema.llm.document_context,

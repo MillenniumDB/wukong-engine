@@ -1,7 +1,6 @@
 {
-    "groups": [
-        {
-            "name": "LGUC",
+    "collections": {
+        "LGUC": {
             "sources": [
                 {
                     "path": "./docs/text/LGUC",
@@ -9,5 +8,5 @@
                 }
             ]
         }
-    ]
+    }
 }

@@ -13,13 +13,7 @@ Example:
     entities = graph_model.entities
 """
 
-import json
-import logging
-import re
-from copy import deepcopy
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Any
 
 from .entity import Entity
 
