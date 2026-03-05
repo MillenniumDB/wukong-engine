@@ -7,6 +7,22 @@
                     "mode": "directory"
                 }
             ]
+        },
+        "OGUC": {
+            "sources": [
+                {
+                    "path": "./docs/text/OGUC",
+                    "mode": "directory"
+                }
+            ]
+        },
+        "DDU": {
+            "sources": [
+                {
+                    "path": "./docs/text/DDU",
+                    "mode": "directory"
+                }
+            ]
         }
     }
 }
