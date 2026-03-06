@@ -1,6 +1,7 @@
 from types import MappingProxyType
 from typing import Any
 
+from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.graph.model import (
     EntityField,
     EntityType,
@@ -73,7 +74,7 @@ def _schema_to_entity_type(schema: EntityTypeSchema) -> EntityType:
             {FieldName(name): _schema_to_entity_field(schema) for name, schema in schema.fields.items()},
         ),
         document_collections=MappingProxyType(
-            {k: frozenset(_as_list(v)) for k, v in schema.document_collections.items()},
+            {k: tuple(DocumentCollectionName(c) for c in _as_list(v)) for k, v in schema.document_collections.items()},
         ),
     )
 
@@ -124,7 +125,7 @@ def _schema_to_relationship_field(schema: RelationshipFieldSchema) -> Relationsh
 
 def _materialize_endpoints(
     endpoints: dict[str, dict[str, list[EndpointContextRule] | EndpointContextRule]],
-) -> MappingProxyType[tuple[EntityTypeName, EntityTypeName], frozenset[tuple[ContextLevel, ContextLevel]]]:
+) -> MappingProxyType[tuple[EntityTypeName, EntityTypeName], tuple[tuple[ContextLevel, ContextLevel], ...]]:
     """Materialize the relationship endpoints from the schema into the domain model format."""
     result = {}
     for source, targets in endpoints.items():
@@ -138,7 +139,7 @@ def _materialize_endpoints(
 
             # Add materialized combinations to the resulting mapping
             key = (EntityTypeName(source), EntityTypeName(target))
-            result[key] = frozenset(context_pairs)
+            result[key] = tuple(sorted(context_pairs, key=lambda pair: (pair[0].value, pair[1].value)))
 
     return MappingProxyType(result)
 

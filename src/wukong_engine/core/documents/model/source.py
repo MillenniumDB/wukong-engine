@@ -17,5 +17,9 @@ class DocumentSource:
 
     def __post_init__(self) -> None:
         """Validate document source invariants."""
+        self._validate_path()
+
+    def _validate_path(self) -> None:
+        """Validate that the path is well-formed."""
         if not str(self.path).strip():
-            raise ValueError('Path must not be empty or whitespace-only.')
+            raise ValueError('Path must not be empty.')

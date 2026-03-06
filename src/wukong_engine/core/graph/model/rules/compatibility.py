@@ -30,7 +30,7 @@ def ensure_compatible_retrieval_modes(retrieval_mode_map: MappingProxyType[Conte
 
 
 def ensure_compatible_context_pairings(
-    endpoints: MappingProxyType[tuple[EntityTypeName, EntityTypeName], frozenset[tuple[ContextLevel, ContextLevel]]],
+    endpoints: MappingProxyType[tuple[EntityTypeName, EntityTypeName], tuple[tuple[ContextLevel, ContextLevel], ...]],
 ) -> None:
     """Ensure that all context level pairings in relationship endpoints are compatible."""
     for (src, tgt), context_pairs in endpoints.items():

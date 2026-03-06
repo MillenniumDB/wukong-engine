@@ -3,9 +3,6 @@ from dataclasses import dataclass
 from typing import ClassVar
 
 
-# TODO: Better errors
-# f'Invalid field name "{v}". Field names must start with a letter and contain only alphanumeric characters and underscores.'
-# f'Field name "{v}" is reserved for special fields and cannot be used'
 @dataclass(frozen=True)
 class _ModelName:
     """Private base for model names."""
@@ -18,7 +15,9 @@ class _ModelName:
 
     def __post_init__(self) -> None:
         if not re.match(self._PATTERN, self.value):
-            raise ValueError(f'Invalid {self.__class__.__name__}: "{self.value}"')
+            raise ValueError(
+                f'Invalid {self.__class__.__name__}: "{self.value}". Must match regex pattern: {self._PATTERN}',
+            )
         if self.value.lower() in self._RESERVED:
             raise ValueError(f'Reserved name not allowed for {self.__class__.__name__}: "{self.value}"')
 

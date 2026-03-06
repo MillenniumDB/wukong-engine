@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from typing import ClassVar
 
 
-# TODO: Better errors
 @dataclass(frozen=True)
 class DocumentCollectionName:
     """Document collection name."""
@@ -14,8 +13,12 @@ class DocumentCollectionName:
     _PATTERN: ClassVar[str] = r'^[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}$'
 
     def __post_init__(self) -> None:
+        """Validate document collection name invariants."""
         if not re.match(self._PATTERN, self.value):
-            raise ValueError(f'Invalid {self.__class__.__name__}: "{self.value}"')
+            raise ValueError(
+                f'Invalid {self.__class__.__name__}: "{self.value}". Must match regex pattern: {self._PATTERN}',
+            )
 
     def __repr__(self) -> str:
+        """Representation of the document collection name."""
         return self.value

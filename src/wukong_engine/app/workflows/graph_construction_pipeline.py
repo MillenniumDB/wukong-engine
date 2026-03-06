@@ -43,8 +43,8 @@ METADATA_DIR = Path('./docs/processed/metadata/')
 PROMPTS_DIR = Path('./prompts/')
 RESULTS_DIR = Path('./results/')
 EXPORTS_DIR = Path('./exports/')
-DOCUMENT_REGISTRY_FILE = 'document_collections.json'
 GRAPH_MODEL_FILE = 'graph_model.json'
+DOCUMENT_REGISTRY_FILE = 'document_collections.json'
 
 
 class GraphConstructionPipeline:
@@ -52,15 +52,15 @@ class GraphConstructionPipeline:
 
     def __init__(
         self,
-        get_document_registry: GetDocumentRegistry,
         get_graph_model: GetGraphModel,
+        get_document_registry: GetDocumentRegistry,
         # extract_entities: ExtractEntities,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
-        self._get_document_registry = get_document_registry
         self._get_graph_model = get_graph_model
+        self._get_document_registry = get_document_registry
         # self._extract_entities = extract_entities
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
@@ -99,15 +99,14 @@ class GraphConstructionPipeline:
         # TODO: Get configuration
         # config = Config(config_path)
 
-        # Get document registry
-        document_registry = self._get_document_registry.execute(document_registry_path)
-        logger.info(f'Document Registry loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
-
         # Get graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
         logger.info(f'Graph Model loaded successfully from: "{graph_model_path}"\n\n{graph_model}')
 
-        # TODO: Validate document collections in graph model using the document registry
+        # Get document registry and validate document collections
+        document_registry = self._get_document_registry.execute(document_registry_path)
+        logger.info(f'Document Collections loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
+        document_registry.validate_graph_model_collections(graph_model)
 
         # TODO: Configuration
         """

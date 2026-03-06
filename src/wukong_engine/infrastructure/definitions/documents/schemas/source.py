@@ -35,7 +35,7 @@ class DocumentSourceSchema(BaseModel):
     @field_validator('path')
     @classmethod
     def validate_path(cls, value: str) -> str:
-        """Validate that the path is not empty or whitespace-only."""
+        """Validate that the path is well-formed."""
         if not value.strip():
-            raise ValueError('Path must not be empty or whitespace-only.')
+            raise ValueError('Path must not be empty.')
         return value

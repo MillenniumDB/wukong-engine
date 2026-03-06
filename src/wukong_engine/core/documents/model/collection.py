@@ -15,8 +15,10 @@ class DocumentCollection:
 
     def __post_init__(self) -> None:
         """Validate document collection invariants."""
-        seen = set()
-        for source in self.sources:
-            if source in seen:
-                raise ValueError(f'Duplicated source in document collections: {source}')
-            seen.add(source)
+        self._validate_sources()
+
+    def _validate_sources(self) -> None:
+        """Validate that sources contain no duplicates."""
+        if len(self.sources) != len(set(self.sources)):
+            duplicates = {str(s) for s in self.sources if self.sources.count(s) > 1}
+            raise ValueError(f'Duplicate sources found in document collection: {duplicates}')

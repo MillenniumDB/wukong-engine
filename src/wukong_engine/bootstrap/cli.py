@@ -19,15 +19,15 @@ class CLIApplication:
 
     def __init__(self):
         # Infrastructure
-        document_registry_provider = LocalDocumentRegistryProvider()
         graph_model_provider = LocalGraphModelProvider()
+        document_registry_provider = LocalDocumentRegistryProvider()
 
         # Use cases
-        get_document_registry = GetDocumentRegistry(document_registry_provider)
         get_graph_model = GetGraphModel(graph_model_provider)
+        get_document_registry = GetDocumentRegistry(document_registry_provider)
 
         # Workflows
         self.graph_construction = GraphConstructionPipeline(
-            get_document_registry=get_document_registry,
             get_graph_model=get_graph_model,
+            get_document_registry=get_document_registry,
         )

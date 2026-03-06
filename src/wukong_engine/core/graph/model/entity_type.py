@@ -2,6 +2,8 @@ import json
 from dataclasses import dataclass
 from types import MappingProxyType
 
+from wukong_engine.core.documents.model.values import DocumentCollectionName
+
 from .field import EntityField
 from .values import ContextLevel, EntityDeduplicationMode, FieldName
 
@@ -15,7 +17,7 @@ class EntityType:
     primary_key: FieldName
     deduplication_mode: EntityDeduplicationMode
     fields: MappingProxyType[FieldName, EntityField]
-    document_collections: MappingProxyType[ContextLevel, frozenset[str]]
+    document_collections: MappingProxyType[ContextLevel, tuple[DocumentCollectionName, ...]]
 
     def __str__(self) -> str:
         """User-friendly string representation of the entity type."""
@@ -30,7 +32,7 @@ class EntityType:
         doc_collections = []
         for context_level, collections in self.document_collections.items():
             if collections:
-                doc_collections.append(f'{context_level.value} [{", ".join(sorted(collections))}]')
+                doc_collections.append(f'{context_level.value} [{", ".join(str(c) for c in collections)}]')
         if doc_collections:
             lines.append(f'Document Collections: {", ".join(doc_collections)}')
         else:
@@ -54,11 +56,22 @@ class EntityType:
     def __post_init__(self) -> None:
         """Validate entity type invariants."""
         self._validate_primary_key()
+        self._validate_document_collections()
 
     def _validate_primary_key(self) -> None:
         """Validate that the primary key is defined in the fields."""
         if self.primary_key not in self.fields:
             raise ValueError(f'Invalid EntityType: primary key "{self.primary_key}" not found in fields')
+
+    def _validate_document_collections(self) -> None:
+        """Validate that there are no duplicated document collection names."""
+        for context_level, collections in self.document_collections.items():
+            if len(collections) != len(set(collections)):
+                duplicates = {c for c in collections if collections.count(c) > 1}
+                raise ValueError(
+                    f'Invalid EntityType: duplicate document collection names found '
+                    f'for context level "{context_level.value}": {duplicates}',
+                )
 
 
 # TODO: Check later when extracting

@@ -13,7 +13,7 @@ class RelationshipType:
 
     description: str
     instructions: str | None
-    endpoints: MappingProxyType[tuple[EntityTypeName, EntityTypeName], frozenset[tuple[ContextLevel, ContextLevel]]]
+    endpoints: MappingProxyType[tuple[EntityTypeName, EntityTypeName], tuple[tuple[ContextLevel, ContextLevel], ...]]
     primary_key: FieldName | None
     deduplication_mode: RelationshipDeduplicationMode
     fields: MappingProxyType[FieldName, RelationshipField]
