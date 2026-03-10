@@ -105,8 +105,8 @@ class GraphConstructionPipeline:
 
         # Get document registry and validate document collections
         document_registry = self._get_document_registry.execute(document_registry_path)
-        logger.info(f'Document Collections loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
         document_registry.validate_graph_model_collections(graph_model)
+        logger.info(f'Document Collections loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
 
         # TODO: Configuration
         """

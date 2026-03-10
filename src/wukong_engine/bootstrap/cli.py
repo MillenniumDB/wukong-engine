@@ -17,7 +17,8 @@ class CLIApplication:
     Owns infrastructure and exposes ready-to-use workflows, services and use cases.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize the CLI application, composing all dependencies."""
         # Infrastructure
         graph_model_provider = LocalGraphModelProvider()
         document_registry_provider = LocalDocumentRegistryProvider()

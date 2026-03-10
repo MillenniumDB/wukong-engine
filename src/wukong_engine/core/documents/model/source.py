@@ -8,12 +8,12 @@ from .values import DocumentSourceMode
 class DocumentSource:
     """A document source."""
 
-    path: PurePath
+    source_path: PurePath
     mode: DocumentSourceMode
 
     def __str__(self) -> str:
         """User-friendly string representation of the document source."""
-        return f'[{self.mode.value}] {self.path}'
+        return f'[{self.mode.value}] {self.source_path}'
 
     def __post_init__(self) -> None:
         """Validate document source invariants."""
@@ -21,5 +21,5 @@ class DocumentSource:
 
     def _validate_path(self) -> None:
         """Validate that the path is well-formed."""
-        if not str(self.path).strip():
+        if not str(self.source_path).strip():
             raise ValueError('Path must not be empty.')

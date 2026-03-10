@@ -1,4 +1,4 @@
-"""The documents values package.
+"""The document model values package.
 
 This package contains value objects for different types related to documents.
 """

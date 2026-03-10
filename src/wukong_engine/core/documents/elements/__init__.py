@@ -3,8 +3,8 @@
 This package contains the objects that make up the real document instances.
 """
 
-# from .entity import Entity
-# from .graph import Graph
-# from .relationship import Relationship
+from .document import Document
 
-__all__ = []
+__all__ = [
+    'Document',
+]

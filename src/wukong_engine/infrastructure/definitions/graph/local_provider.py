@@ -4,7 +4,7 @@ from pathlib import Path
 from wukong_engine.app.model_ingestion.ports import GraphModelProvider
 from wukong_engine.core.graph.model import GraphModel
 
-from .mappers import schema_to_graph_model
+from .mappers import GraphModelMapper
 from .schemas import GraphModelSchema
 
 
@@ -18,4 +18,4 @@ class LocalGraphModelProvider(GraphModelProvider):
         """Load a graph model from a local JSON file."""
         raw = json.load(path.open())
         schema = GraphModelSchema.model_validate(raw)
-        return schema_to_graph_model(schema)
+        return GraphModelMapper().map_graph_model(schema)

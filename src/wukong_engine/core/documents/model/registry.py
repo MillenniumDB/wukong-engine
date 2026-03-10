@@ -7,9 +7,11 @@ Classes:
 from dataclasses import dataclass
 from types import MappingProxyType
 
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.graph.model import EntityType, GraphModel
+from wukong_engine.core.graph.model.values import ContextLevel
 
 from .collection import DocumentCollection
+from .source import DocumentSource
 from .values import DocumentCollectionName
 
 
@@ -53,3 +55,28 @@ class DocumentRegistry:
         if unknown:
             details = '; '.join(f'{e}: {c}' for e, c in unknown.items())
             raise ValueError(f'Unknown document collection names found in graph model: {details}')
+
+    def get_entity_sources(self, entity_type: EntityType, context_level: ContextLevel) -> tuple[DocumentSource, ...]:
+        """Return the respective DocumentSources for a given EntityType and ContextLevel.
+
+        Args:
+            entity_type: The entity type whose document collections to resolve.
+            context_level: The context level to look up within the entity type.
+
+        Returns:
+            A tuple of unique DocumentSources corresponding to the EntityType/ContextLevel pair.
+            Returns an empty tuple if the pair has no associated collections or the collections
+            are not present in this registry.
+        """
+        collection_names = entity_type.document_collections.get(context_level, ())
+        seen: set[DocumentSource] = set()
+        sources: list[DocumentSource] = []
+        for name in collection_names:
+            collection = self.collections.get(name)
+            if collection is None:
+                continue
+            for source in collection.sources:
+                if source not in seen:
+                    seen.add(source)
+                    sources.append(source)
+        return tuple(sources)
