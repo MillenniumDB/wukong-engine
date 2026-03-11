@@ -1,7 +1,7 @@
 """The local filesystem storage package."""
 
-from .document_collection_loader import LocalDocumentCollectionLoader
+from .stream_provider import LocalDocumentStreamProvider
 
 __all__ = [
-    'LocalDocumentCollectionLoader',
+    'LocalDocumentStreamProvider',
 ]

@@ -14,6 +14,8 @@ from wukong_engine.core.documents.model.values import DocumentSourceMode
 logger = logging.getLogger(__name__)
 
 
+# TODO: Content hash deduplication?
+# TODO: Optimize expand sources
 class LocalDocumentStreamProvider(DocumentStreamProvider):
     """Streams documents from a list of sources stored on the local filesystem."""
 
@@ -25,7 +27,7 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         """
         seen: set[Path] = set()
         for source in sources:
-            for path in self._expand_source(Path(source.source_path), source.mode):
+            for path in self._expand_source(source):
                 canonical_path = path.resolve()
                 if canonical_path in seen:
                     continue
@@ -34,10 +36,10 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
                 if document is not None:
                     yield document
 
-    # TODO: Optimize
-    def _expand_source(self, path: Path, mode: DocumentSourceMode) -> Iterator[Path]:
+    def _expand_source(self, source: DocumentSource) -> Iterator[Path]:
         """Expand a source path into an iterator of concrete file paths."""
-        match mode:
+        path = Path(source.source_path)
+        match source.mode:
             case DocumentSourceMode.FILE:
                 yield path
             case DocumentSourceMode.DIRECTORY:
