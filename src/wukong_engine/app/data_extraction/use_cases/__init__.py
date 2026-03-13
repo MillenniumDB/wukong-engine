@@ -3,4 +3,8 @@
 This package handles data extraction from documents and post-processing.
 """
 
-# from .extract_entities import A
+from .extract_entity_type import ExtractEntityType
+
+__all__ = [
+    'ExtractEntityType',
+]

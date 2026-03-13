@@ -5,28 +5,34 @@ from typing import ClassVar, Self
 
 @dataclass(frozen=True)
 class DocumentId:
-    """The unique identifier for documents.
+    """The unique identifier for documents."""
 
-    The recommended ID has the format: Document_<hash>, where <hash> is the first 16 hex
-    characters of the SHA-256 hash of the document's raw bytes.
-    """
-
-    value: str
+    hash: bytes
 
     # Parameters for generating the document ID from content
-    _PREFIX: ClassVar[str] = 'Document'
-    _HASH_LENGTH: ClassVar[int] = 16
+    _HASH_SIZE: ClassVar[int] = 16  # 16 bytes → 128 bits → 32 hex chars
+
+    def __post_init__(self) -> None:
+        """Validate document id invariants."""
+        self._validate_hash()
 
     def __str__(self) -> str:
         """User-friendly string representation of the document ID."""
-        return self.value
+        return f'Document_{self.hash.hex()}'
 
     def __repr__(self) -> str:
-        """Representation of the document ID."""
-        return self.value
+        """Developer-friendly string representation of the document ID."""
+        return f'DocumentID({self.hash.hex()})'
+
+    def _validate_hash(self) -> None:
+        """Validate that the hash has the correct length."""
+        if len(self.hash) != self._HASH_SIZE:
+            raise ValueError(
+                f'Invalid hash length: expected {self._HASH_SIZE} bytes, got {len(self.hash)}',
+            )
 
     @classmethod
-    def from_bytes(cls, content: bytes) -> Self:
+    def from_content(cls, content: bytes) -> Self:
         """Create a DocumentId from the raw bytes of a document.
 
         Args:
@@ -35,5 +41,4 @@ class DocumentId:
         Returns:
             A DocumentId computed from the SHA-256 hash of the content.
         """
-        full_hash = hashlib.sha256(content).hexdigest()
-        return cls(value=f'{cls._PREFIX}_{full_hash[: cls._HASH_LENGTH]}')
+        return cls(hash=hashlib.sha256(content).digest()[: cls._HASH_SIZE])

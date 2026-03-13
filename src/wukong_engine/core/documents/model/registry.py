@@ -56,6 +56,17 @@ class DocumentRegistry:
             details = '; '.join(f'{e}: {c}' for e, c in unknown.items())
             raise ValueError(f'Unknown document collection names found in graph model: {details}')
 
+    def get_all_sources(self) -> tuple[DocumentSource, ...]:
+        """Return all unique DocumentSources contained in all collections."""
+        seen: set[DocumentSource] = set()
+        sources: list[DocumentSource] = []
+        for collection in self.collections.values():
+            for source in collection.sources:
+                if source not in seen:
+                    seen.add(source)
+                    sources.append(source)
+        return tuple(sources)
+
     def get_entity_sources(self, entity_type: EntityType, context_level: ContextLevel) -> tuple[DocumentSource, ...]:
         """Return the respective DocumentSources for a given EntityType and ContextLevel.
 

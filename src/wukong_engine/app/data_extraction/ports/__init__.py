@@ -1,4 +1,1 @@
-"""The data extraction package.
-
-This package handles data extraction from documents and post-processing.
-"""
+"""The ports package for data extraction."""

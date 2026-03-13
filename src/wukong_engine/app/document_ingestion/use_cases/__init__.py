@@ -1,12 +1,7 @@
-"""The document ingestion use cases package.
+"""The document ingestion use cases package."""
 
-This package contains use cases for loading and validating documents.
-"""
+from .validate_document_sources import ValidateDocumentSources
 
-# from .get_document_registry import GetDocumentRegistry
-# from .get_graph_model import GetGraphModel
-
-# __all__ = [
-#     'GetDocumentRegistry',
-#     'GetGraphModel',
-# ]
+__all__ = [
+    'ValidateDocumentSources',
+]

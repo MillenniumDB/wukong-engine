@@ -11,10 +11,12 @@ Functions:
 import logging
 from pathlib import Path
 
-# from nltk import download as nltk_download
+from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
+from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 
 # from wukong_engine.config.config import Config
+# from nltk import download as nltk_download
 """
 from wukong_engine.documents.text_processing import (
     generate_chunks,
@@ -54,14 +56,16 @@ class GraphConstructionPipeline:
         self,
         get_graph_model: GetGraphModel,
         get_document_registry: GetDocumentRegistry,
-        # extract_entities: ExtractEntities,
+        validate_document_sources: ValidateDocumentSources,
+        extract_entity_type: ExtractEntityType,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
         self._get_graph_model = get_graph_model
         self._get_document_registry = get_document_registry
-        # self._extract_entities = extract_entities
+        self._validate_document_sources = validate_document_sources
+        self._extract_entity_type = extract_entity_type
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
@@ -96,17 +100,27 @@ class GraphConstructionPipeline:
         graph_model_path = data_dir / GRAPH_MODEL_FILE
         document_registry_path = data_dir / DOCUMENT_REGISTRY_FILE
 
+        # Pipeline execution
+        logger.info('Executing WUKONG Engine Pipeline...')
+
         # TODO: Get configuration
         # config = Config(config_path)
 
         # Get graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
-        logger.info(f'Graph Model loaded successfully from: "{graph_model_path}"\n\n{graph_model}')
+        logger.info(f'Graph Model loaded successfully from "{graph_model_path}"\n\n{graph_model}')
 
         # Get document registry and validate document collections
         document_registry = self._get_document_registry.execute(document_registry_path)
+        self._validate_document_sources.execute(document_registry)
         document_registry.validate_graph_model_collections(graph_model)
-        logger.info(f'Document Collections loaded successfully from: "{document_registry_path}"\n\n{document_registry}')
+        logger.info(f'Document Collections loaded successfully from "{document_registry_path}"\n\n{document_registry}')
+
+        # TODO: Entity extraction
+        for name, entity_type in graph_model.active_entity_types.items():
+            logger.info(f'Extracting entities for EntityType "{name}"')
+            self._extract_entity_type.execute(entity_type, document_registry)
+            break
 
         # TODO: Configuration
         """
@@ -125,9 +139,6 @@ class GraphConstructionPipeline:
 
         # TODO: Pipeline
         """
-        # Pipeline execution
-        logger.info('Executing WUKONG Engine Pipeline...')
-
         # Process input documents
         if document_processing:
             logger.info('Processing Input Documents...')

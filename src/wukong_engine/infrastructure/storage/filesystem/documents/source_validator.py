@@ -1,0 +1,77 @@
+"""Provides the LocalDocumentSourceValidator class."""
+
+from pathlib import Path
+
+from wukong_engine.app.document_ingestion.ports import DocumentSourceValidator
+from wukong_engine.core.documents.model import DocumentSource
+from wukong_engine.core.documents.model.values import DocumentSourceMode
+
+
+class LocalDocumentSourceValidator(DocumentSourceValidator):
+    """Validates document sources against the local filesystem."""
+
+    def validate(self, sources: tuple[DocumentSource, ...]) -> None:
+        """Validate all given sources.
+
+        Checks for each source that:
+        1) The path exists.
+        2) The path type matches the source mode.
+        3) The path can be accessed/read.
+        """
+        errors: list[str] = []
+        for source in sources:
+            source_path = Path(source.source_path)
+            source_label = str(source)
+
+            if not source_path.exists():
+                errors.append(f'{source_label}: path does not exist')
+                continue
+
+            if source.mode is DocumentSourceMode.FILE:
+                file_error = self._validate_file_source(source_path, source_label)
+                if file_error is not None:
+                    errors.append(file_error)
+                    continue
+
+            if source.mode in (DocumentSourceMode.DIRECTORY, DocumentSourceMode.RECURSIVE):
+                directory_error = self._validate_directory_source(source_path, source_label)
+                if directory_error is not None:
+                    errors.append(directory_error)
+
+        if errors:
+            raise ValueError('Invalid document source(s):\n' + '\n'.join(errors))
+
+    def _validate_file_source(self, path: Path, source_label: str) -> str | None:
+        """Validate FILE mode path constraints and return an error message when invalid."""
+        if not path.is_file():
+            return f'{source_label}: expected a file path, but found a non-file path'
+        if path.suffix != '.txt':
+            return f'{source_label}: expected a ".txt" file'
+        if not self._is_readable_file(path):
+            return f'{source_label}: file is not readable due to permission/access issues'
+        return None
+
+    def _validate_directory_source(self, path: Path, source_label: str) -> str | None:
+        """Validate DIRECTORY/RECURSIVE mode path constraints and return an error when invalid."""
+        if not path.is_dir():
+            return f'{source_label}: expected a directory path, but found a non-directory path'
+        if not self._is_accessible_directory(path):
+            return f'{source_label}: directory is not accessible due to permission/access issues'
+        return None
+
+    def _is_readable_file(self, path: Path) -> bool:
+        """Return True if the file can be opened for reading."""
+        try:
+            with path.open('rb'):
+                pass
+        except OSError:
+            return False
+        return True
+
+    def _is_accessible_directory(self, path: Path) -> bool:
+        """Return True if the directory can be traversed/listed."""
+        try:
+            next(path.iterdir(), None)
+        except OSError:
+            return False
+        return True

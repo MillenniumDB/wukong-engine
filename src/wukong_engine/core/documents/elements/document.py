@@ -20,4 +20,4 @@ class Document:
 
     def __str__(self) -> str:
         """User-friendly string representation of a document."""
-        return f'{self.id} from {self.source_path}:\n{self.text[:20]}...'
+        return f'{self.id} from {self.source_path}'
