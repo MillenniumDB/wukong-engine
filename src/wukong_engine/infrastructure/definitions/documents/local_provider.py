@@ -8,9 +8,6 @@ from .mappers import DocumentRegistryMapper
 from .schemas import DocumentRegistrySchema
 
 
-# TODO: Catch pydantic errors and raise DocumentRegistryLoadError or similar
-# TODO: See if file_utils is used as a helper in infra
-# TODO: Errors from file reading
 class LocalDocumentRegistryProvider(DocumentRegistryProvider):
     """Loads document registry from a local JSON file."""
 

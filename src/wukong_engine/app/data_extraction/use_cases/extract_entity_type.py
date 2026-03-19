@@ -1,5 +1,6 @@
 from wukong_engine.app.document_ingestion.ports import DocumentStreamProvider
 from wukong_engine.app.document_ingestion.services import DocumentSourceNormalizer
+from wukong_engine.app.llm import LLMClient
 from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.extraction.elements import EntityExtractionRequest
 from wukong_engine.core.extraction.model import EntityExtractionTask
@@ -8,9 +9,10 @@ from wukong_engine.core.graph.model import EntityType
 
 
 class ExtractEntityType:
-    def __init__(self, stream_provider: DocumentStreamProvider) -> None:
+    def __init__(self, stream_provider: DocumentStreamProvider, llm_client: LLMClient) -> None:
         self._source_normalizer = DocumentSourceNormalizer()
         self._stream_provider = stream_provider
+        self._llm_client = llm_client
 
     def execute(self, entity_type: EntityType, document_registry: DocumentRegistry) -> None:
         # TODO: Params: change later

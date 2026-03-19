@@ -4,6 +4,7 @@ from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, Get
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
+from wukong_engine.infrastructure.llm.openai import OpenAIClient
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
@@ -30,12 +31,13 @@ class CLIApplication:
         document_registry_provider = LocalDocumentRegistryProvider()
         document_source_validator = LocalDocumentSourceValidator()
         document_stream_provider = LocalDocumentStreamProvider()
+        llm_client = OpenAIClient()
 
         # Use cases
-        get_graph_model = GetGraphModel(graph_model_provider)
-        get_document_registry = GetDocumentRegistry(document_registry_provider)
-        validate_document_sources = ValidateDocumentSources(document_source_validator)
-        extract_entity_type = ExtractEntityType(document_stream_provider)
+        get_graph_model = GetGraphModel(provider=graph_model_provider)
+        get_document_registry = GetDocumentRegistry(provider=document_registry_provider)
+        validate_document_sources = ValidateDocumentSources(validator=document_source_validator)
+        extract_entity_type = ExtractEntityType(stream_provider=document_stream_provider, llm_client=llm_client)
 
         # Workflows
         self.graph_construction = GraphConstructionPipeline(

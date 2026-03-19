@@ -7,7 +7,7 @@ from .task import EntityExtractionTask
 class EntityExtractionPromptSpec:
     """Required prompt specification for entity extraction."""
 
-    task: EntityExtractionTask
-    template: str
-    required_fields: tuple[str, ...]
-    output_instructions: str
+    # task: EntityExtractionTask
+    # template: str
+    # required_fields: tuple[str, ...]
+    # output_instructions: str
