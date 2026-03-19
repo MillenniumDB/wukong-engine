@@ -3,8 +3,15 @@ from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any
 
-from .rules.compatibility import ensure_compatible_retrieval_modes
-from .values import ContextLevel, DataType, EntityRetrievalMode, RegexPattern, RelationshipRetrievalMode
+from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_retrieval_modes
+from wukong_engine.core.extraction.model.values import (
+    ContextLevel,
+    EntityRetrievalMode,
+    RegexPattern,
+    RelationshipRetrievalMode,
+)
+
+from .values import DataType
 
 
 @dataclass(frozen=True)

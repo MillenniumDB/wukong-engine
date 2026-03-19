@@ -2,6 +2,7 @@ from types import MappingProxyType
 from typing import Any
 
 from wukong_engine.core.documents.model.values import DocumentCollectionName
+from wukong_engine.core.extraction.model.values import ContextLevel, RegexPattern
 from wukong_engine.core.graph.model import (
     EntityField,
     EntityType,
@@ -11,10 +12,8 @@ from wukong_engine.core.graph.model import (
     RelationshipType,
 )
 from wukong_engine.core.graph.model.values import (
-    ContextLevel,
     EntityTypeName,
     FieldName,
-    RegexPattern,
     RelationshipTypeName,
 )
 

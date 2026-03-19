@@ -2,7 +2,7 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values import ContextLevel, RelationshipDeduplicationMode
+from wukong_engine.core.extraction.model.values import ContextLevel, RelationshipDeduplicationMode
 
 from .field import RelationshipFieldSchema
 

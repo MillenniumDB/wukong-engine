@@ -2,7 +2,7 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values.language import Language
+from wukong_engine.core.extraction.model.values import Language
 
 
 class LLMSchema(BaseModel):

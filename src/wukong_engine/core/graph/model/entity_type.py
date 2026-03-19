@@ -3,9 +3,10 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from wukong_engine.core.documents.model.values import DocumentCollectionName
+from wukong_engine.core.extraction.model.values import ContextLevel, EntityDeduplicationMode
 
 from .field import EntityField
-from .values import ContextLevel, EntityDeduplicationMode, FieldName
+from .values import FieldName
 
 
 @dataclass(frozen=True)

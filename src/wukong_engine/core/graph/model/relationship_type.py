@@ -2,9 +2,11 @@ import json
 from dataclasses import dataclass
 from types import MappingProxyType
 
+from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
+from wukong_engine.core.extraction.model.values import ContextLevel, RelationshipDeduplicationMode
+
 from .field import RelationshipField
-from .rules.compatibility import ensure_compatible_context_pairings
-from .values import ContextLevel, EntityTypeName, FieldName, RelationshipDeduplicationMode
+from .values import EntityTypeName, FieldName
 
 
 @dataclass(frozen=True)

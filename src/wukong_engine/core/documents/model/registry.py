@@ -7,8 +7,8 @@ Classes:
 from dataclasses import dataclass
 from types import MappingProxyType
 
+from wukong_engine.core.extraction.model.values import ContextLevel
 from wukong_engine.core.graph.model import EntityType, GraphModel
-from wukong_engine.core.graph.model.values import ContextLevel
 
 from .collection import DocumentCollection
 from .source import DocumentSource

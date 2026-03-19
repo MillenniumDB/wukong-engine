@@ -3,12 +3,8 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
 
-from wukong_engine.core.graph.model.values import (
-    ContextLevel,
-    DataType,
-    EntityRetrievalMode,
-    RelationshipRetrievalMode,
-)
+from wukong_engine.core.extraction.model.values import ContextLevel, EntityRetrievalMode, RelationshipRetrievalMode
+from wukong_engine.core.graph.model.values import DataType
 
 
 class _FieldSchema(BaseModel):

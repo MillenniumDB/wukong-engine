@@ -1,7 +1,9 @@
 import json
 from dataclasses import dataclass
 
-from .values import EntityTypeName, Language, RelationshipTypeName
+from wukong_engine.core.extraction.model.values import Language
+
+from .values import EntityTypeName, RelationshipTypeName
 
 
 @dataclass(frozen=True)
