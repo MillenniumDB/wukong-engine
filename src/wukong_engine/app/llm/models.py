@@ -13,7 +13,7 @@ class LLMRequest:
 
     prompt: str
     system_prompt: str | None = None
-    temperature: float = 0  # Default: Most deterministic
+    temperature: float = 0.0  # Default: Most deterministic
     max_output_tokens: int = 32768  # Default: Output limit for GPT-4.1 mini
     response_format: ResponseFormat = field(default_factory=ResponseFormat)  # Default: Free-form text response
     retry_policy: RetryPolicy | None = None  # Default: Use the provider's default retry policy

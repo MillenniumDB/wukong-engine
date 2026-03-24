@@ -11,24 +11,17 @@
 # Enable or disable each step in the pipeline (true/false)
 [pipeline]
 
-# This step is responsible for loading and processing the original plain text files
-# Note: This step requires the plain text documents to be available as specified in the "documents.json" file
-# Note: Only skip this step if you have already completed it at least once
+# This step is responsible for extracting entities from the documents
 # Default: true
-document_processing = true
+extract_entities = true
 
-# This step is responsible for extracting entities from the processed documents
-# Note: This step requires the processed documents to be available
+# This step is responsible for extracting relationships between entities from the documents
+# Note: This step expects previously extracted entities to be available
 # Default: true
-entity_extraction = true
-
-# This step is responsible for extracting relationships between entities from the processed documents
-# Note: This step requires the extracted entities to be available
-# Default: true
-relation_extraction = true
+extract_relationships = true
 
 # This step is responsible for exporting the knowledge graph to various formats
-# Note: This step requires the extracted entities and relationships to be available
+# Note: This step expects previously extracted entities and relationships to be available
 # Default: true
 export_graph = true
 
@@ -57,3 +50,20 @@ max_tokens = 2000
 # Adjust this value based on your system's capabilities and the LLM's rate limits
 # Default: 10
 max_worker_threads = 10
+
+##############
+#    LLM     #
+##############
+# Configuration for the Large Language Model (LLM) used in the pipeline
+[llm]
+
+# The LLM model to use for processing
+# Note: Currently only OpenAI models are supported
+# Default: "gpt-4.1-mini"
+model = "gpt-4.1-mini"
+
+# Whether to accept only strictly supported models or to allow any model
+# Note: Setting this to true will raise an error if an unsupported model is specified
+# Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
+# Default: true
+strict = true

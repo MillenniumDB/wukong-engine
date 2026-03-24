@@ -4,7 +4,7 @@ from pathlib import Path
 from wukong_engine.app.model_ingestion.ports import GraphModelProvider
 from wukong_engine.core.graph.model import GraphModel
 
-from .mappers import GraphModelMapper
+from .mapper import GraphModelMapper
 from .schemas import GraphModelSchema
 
 

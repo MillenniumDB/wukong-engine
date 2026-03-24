@@ -11,6 +11,7 @@ Functions:
 import logging
 from pathlib import Path
 
+from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
@@ -54,6 +55,7 @@ class GraphConstructionPipeline:
 
     def __init__(
         self,
+        app_config: ApplicationConfig,
         get_graph_model: GetGraphModel,
         get_document_registry: GetDocumentRegistry,
         validate_document_sources: ValidateDocumentSources,
@@ -62,6 +64,7 @@ class GraphConstructionPipeline:
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
+        self._app_config = app_config
         self._get_graph_model = get_graph_model
         self._get_document_registry = get_document_registry
         self._validate_document_sources = validate_document_sources
@@ -69,7 +72,7 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    def execute(self, data_dir: Path, config_path: Path) -> None:
+    def execute(self, data_dir: Path) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
@@ -89,22 +92,35 @@ class GraphConstructionPipeline:
             TypeError: If the graph model has invalid types for certain fields.
         """
         # Define relevant paths
-        original_docs_dir = data_dir / ORIGINAL_DOCS_DIR
-        original_metadata_dir = data_dir / ORIGINAL_METADATA_DIR
-        docs_dir = data_dir / DOCS_DIR
-        chunks_dir = data_dir / CHUNKS_DIR
-        metadata_dir = data_dir / METADATA_DIR
-        prompts_dir = data_dir / PROMPTS_DIR
-        results_dir = data_dir / RESULTS_DIR
-        exports_dir = data_dir / EXPORTS_DIR
+        # original_docs_dir = data_dir / ORIGINAL_DOCS_DIR
+        # original_metadata_dir = data_dir / ORIGINAL_METADATA_DIR
+        # docs_dir = data_dir / DOCS_DIR
+        # chunks_dir = data_dir / CHUNKS_DIR
+        # metadata_dir = data_dir / METADATA_DIR
+        # prompts_dir = data_dir / PROMPTS_DIR
+        # results_dir = data_dir / RESULTS_DIR
+        # exports_dir = data_dir / EXPORTS_DIR
         graph_model_path = data_dir / GRAPH_MODEL_FILE
         document_registry_path = data_dir / DOCUMENT_REGISTRY_FILE
 
+        # TODO: Use configuration
+        """
+        document_processing = config.is_enabled('document_processing')
+
+        # Data extraction
+        entity_extraction = config.is_enabled('entity_extraction')
+        entity_processing = config.is_enabled('entity_extraction')
+        relation_extraction = config.is_enabled('relation_extraction')
+        relation_processing = config.is_enabled('relation_extraction')
+        prompt_generation = entity_extraction or relation_extraction
+
+        # Knowledge graph export
+        export_graph = config.is_enabled('export_graph')
+        """
+        return
+
         # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
-
-        # TODO: Get configuration
-        # config = Config(config_path)
 
         # Get graph model
         graph_model = self._get_graph_model.execute(graph_model_path)
@@ -121,21 +137,6 @@ class GraphConstructionPipeline:
             logger.info(f'Extracting entities for EntityType "{name}"')
             self._extract_entity_type.execute(entity_type, document_registry)
             break
-
-        # TODO: Configuration
-        """
-        document_processing = config.is_enabled('document_processing')
-
-        # Data extraction
-        entity_extraction = config.is_enabled('entity_extraction')
-        entity_processing = config.is_enabled('entity_extraction')
-        relation_extraction = config.is_enabled('relation_extraction')
-        relation_processing = config.is_enabled('relation_extraction')
-        prompt_generation = entity_extraction or relation_extraction
-
-        # Knowledge graph export
-        export_graph = config.is_enabled('export_graph')
-        """
 
         # TODO: Pipeline
         """

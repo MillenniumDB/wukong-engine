@@ -4,7 +4,7 @@ from pathlib import Path
 from wukong_engine.app.model_ingestion.ports import DocumentRegistryProvider
 from wukong_engine.core.documents.model import DocumentRegistry
 
-from .mappers import DocumentRegistryMapper
+from .mapper import DocumentRegistryMapper
 from .schemas import DocumentRegistrySchema
 
 

@@ -30,23 +30,20 @@ class GraphModel:
         lines.append('=' * 80)
 
         # Extraction Config
-        lines.append('\n[EXTRACTION CONFIG]')
-        config_str = str(self.extraction_config)
-        lines.extend(f'  {line}' for line in config_str.split('\n'))
+        lines.append('\n[EXTRACTION CONFIG]\n')
+        lines.extend(f'  {line}' for line in str(self.extraction_config).split('\n'))
 
         # Entity Types
         lines.append(f'\n[ENTITY TYPES] ({len(self.active_entity_types)} total)')
         for entity_name, entity_type in self.active_entity_types.items():
             lines.append(f'\n  {entity_name}')
-            entity_str = str(entity_type)
-            lines.extend(f'    {line}' for line in entity_str.split('\n'))
+            lines.extend(f'    {line}' for line in str(entity_type).split('\n'))
 
         # Relationship Types
         lines.append(f'\n[RELATIONSHIP TYPES] ({len(self.active_relationship_types)} total)')
         for rel_name, rel_type in self.active_relationship_types.items():
             lines.append(f'\n  {rel_name}')
-            rel_str = str(rel_type)
-            lines.extend(f'    {line}' for line in rel_str.split('\n'))
+            lines.extend(f'    {line}' for line in str(rel_type).split('\n'))
 
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)

@@ -87,7 +87,7 @@ Here, the right arrow (`→`) means "may depend on".
 - `domain` must not import anything else
 - `application` must not import `infrastructure` or `presentation`
 - `infrastructure` must not import `presentation`
-- `presentation` must not import `infrastructure` (except for user-defined infra concerns like `logging`)
+- `presentation` must not import `infrastructure`
 
 ### Program Execution
 
@@ -173,7 +173,7 @@ domain/
 - **Value objects** are immutable objects defined by their attributes (e.g. `Email`, `GraphID`)
 - Domain **services** are stateless operations that model complex behavior between multiple entities/values (e.g. `GraphMerger`)
 - Domain **events** represent significant occurrences in the domain (e.g. `NodeAdded`)
-- Prefer explicit types over native **Python** types
+- Prefer explicit custom types over native **Python** types
 - Domain exceptions express business failures and propagate to `application`
 - Avoid frameworks, external libraries, and side effects
 - Stable over time; changes reflect business change only
@@ -203,7 +203,7 @@ It:
 - Defines system capabilities (use cases, services, workflows)
 - Encodes decision logic and strategies
 - Defines abstract **ports** for `infrastructure`
-- Defines **DTOs** for data exchange with outer layers
+- Defines **DTOs** for data exchange with `presentation`
 
 It answers:
 
@@ -264,9 +264,9 @@ application/
 
 ### Best Practices
 
-- Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `graph_building` subdomain)
+- Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `data_extraction` subdomain)
 - Defines **ports** *(abstract protocols)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
-- Defines **DTOs** *(static data classes)* for data exchange with `presentation`/`infrastructure`
+- Defines **DTOs** *(static data classes)* for data exchange with `presentation`
 - DTOs usually follow the *CQRS* pattern *(commands, queries, results)* (e.g. `ExportGraphCommand`)
 - Use cases are atomic, explicit and user-facing, named after user intent (e.g. `ExportGraph`, `BuildGraph`)
 - Use cases depend on ports and should consume/produce DTOs to interact with `presentation`
@@ -299,7 +299,7 @@ It:
 
 - Implements `application` ports (adapters)
 - Handles communication with external tools and services
-- Manages configuration and cross-cutting concerns
+- Exposes configuration and cross-cutting concerns
 
 It manages:
 
@@ -374,12 +374,12 @@ infrastructure/
 ### Best Practices
 
 - Contains all technical details and integrations
-- Implements `application` ports using adapters, which receive/return `domain`/`application` objects *(domain objects, ports, DTOs)* and basic types
+- Implements `application` ports using adapters, which receive/return `domain`/`application` objects *(domain objects, ports)* and basic types
 - Adapters must be thin, replaceable and implementation-focused
 - Adapters may apply syntactic and structural validation (not semantic) if needed
 - Prefer role-based names for adapters (e.g. `neo4j/graph_repository.py` implements `Neo4jGraphRepository`)
 - Cross-cutting infrastructure concerns (e.g. `config`, `logging`, `security`, `telemetry`) live here
-- Business-driven strategy logic moves to `application`, which can then obtain the concrete adapter through a factory port (e.g. `LLMProvider` returns `OpenAILLMClient`)
+- Business-driven strategy logic moves to `application`, which can then obtain the concrete adapter through a factory port (e.g. `LLMProvider` returns `OpenAIClient`)
 - Technical strategy logic is managed here, including dynamic selection of adapters based on *configuration/environment/availability*
 - May catch external framework exceptions, handling them or translating to `application` or `infrastructure` exceptions
 - Infrastructure exceptions represent generalized technical failures and are converted to `application` exceptions before propagation
@@ -431,7 +431,7 @@ It answers:
 
 **Must NOT Import**
 
-- Infrastructure (except for user-defined infra concerns like `logging`)
+- Infrastructure
 
 ### Typical Structure
 

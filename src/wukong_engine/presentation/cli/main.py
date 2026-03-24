@@ -14,8 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wukong_engine.bootstrap.cli import CLIApplication
-from wukong_engine.infrastructure.logging import configure_logging
+from wukong_engine.bootstrap.cli import build_application
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -69,17 +68,11 @@ def main() -> None:
     # Parse command line arguments
     args = parse_args()
 
-    # Configure logging
-    log_level = logging.WARNING if args.verbose == 0 else logging.INFO if args.verbose == 1 else logging.DEBUG
-    configure_logging(level=log_level)
-
-    # Create CLI app
-    app = CLIApplication()
-
     # Execute the pipeline
     print('Starting WUKONG...')
     try:
-        app.graph_construction.execute(data_dir=args.data_dir, config_path=args.config)
+        app = build_application(config_path=args.config, verbosity=args.verbose)
+        app.graph_construction.execute(data_dir=args.data_dir)
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')

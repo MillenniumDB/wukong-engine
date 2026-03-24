@@ -30,9 +30,8 @@ class DocumentRegistry:
 
         # Collections
         for collection_name, collection in self.collections.items():
-            lines.append(f'\n{collection_name.value}')
-            collection_str = str(collection)
-            lines.extend(f'  {line}' for line in collection_str.split('\n'))
+            lines.append(f'\n  {collection_name.value}')
+            lines.extend(f'    {line}' for line in str(collection).split('\n'))
 
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)

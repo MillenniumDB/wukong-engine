@@ -32,9 +32,9 @@ class RetryPolicy:
     """Controls retry behavior at the transport level for LLM calls."""
 
     max_attempts: int = 10
-    initial_delay: float = 1  # Seconds
-    delay_multiplier: float = 2  # Seconds
-    max_delay: float = 120  # Seconds
+    initial_delay: float = 1.0  # Seconds
+    delay_multiplier: float = 2.0  # Seconds
+    max_delay: float = 120.0  # Seconds
 
     def __post_init__(self) -> None:
         """Validate retry policy values at construction time."""
