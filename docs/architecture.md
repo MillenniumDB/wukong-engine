@@ -257,7 +257,7 @@ application/
 │   │   └── export_format.py
 │   └── exceptions.py  # Graph-related exceptions
 ...
-├── <sub_domain>/  # e.g. project_execution, document_processing
+├── <sub_domain>/  # e.g. config, project_execution, document_processing
 ...
 └── exceptions.py  # Application-wide exceptions
 ```
@@ -299,7 +299,7 @@ It:
 
 - Implements `application` ports (adapters)
 - Handles communication with external tools and services
-- Exposes configuration and cross-cutting concerns
+- Loads configuration and cross-cutting concerns
 
 It manages:
 
@@ -336,7 +336,7 @@ infrastructure/
 ├── llm/  # LLM Providers
 │   └── client.py
 ├── config/  # Configuration management
-│   └── settings.py
+│   └── env.py
 └── logging/  # Logging configuration
     └── config.py
 ```
@@ -363,8 +363,9 @@ infrastructure/
 ├── <application_concern>/  # e.g. filesystem, external_services, messaging, search
 ...
 ├── config/  # Configuration management
-│   ├── settings.py
-│   └── environments.py
+│   ├── env.py
+│   ├── loader.py
+│   └── provider.py
 ├── logging/  # Logging configuration
 │   └── config.py
 ...

@@ -1,11 +1,10 @@
-import logging
 from pathlib import Path
 
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
-from wukong_engine.infrastructure.config.provider import ConfigProvider
+from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
@@ -14,9 +13,6 @@ from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
 )
-
-# Logging
-logger = logging.getLogger(__name__)
 
 
 class CLIApplication:
@@ -34,6 +30,7 @@ def build_application(config_path: Path, verbosity: int) -> CLIApplication:
     """Build the CLI application."""
     # Configuration
     configure_logging(verbosity)
+    env_config = load_env_config()
     app_config = ConfigProvider().get(config_path)
 
     # Infrastructure
@@ -41,8 +38,9 @@ def build_application(config_path: Path, verbosity: int) -> CLIApplication:
     document_registry_provider = LocalDocumentRegistryProvider()
     document_source_validator = LocalDocumentSourceValidator()
     document_stream_provider = LocalDocumentStreamProvider()
-    # TODO: Pass LLM configuration from app_config
-    llm_client = OpenAIClient(OpenAIConfig(api_key='your-openai-api-key'))
+    llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model.name)
+    llm_client = OpenAIClient(config=llm_config)
+
     # Use cases
     get_graph_model = GetGraphModel(provider=graph_model_provider)
     get_document_registry = GetDocumentRegistry(provider=document_registry_provider)

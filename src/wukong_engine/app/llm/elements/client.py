@@ -1,6 +1,7 @@
 from typing import Protocol
 
-from .models import LLMRequest, LLMResponse
+from .request import LLMRequest
+from .response import LLMResponse
 
 
 class LLMClient(Protocol):

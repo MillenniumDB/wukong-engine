@@ -1,30 +1,7 @@
-"""Value objects and enums used by the LLM layer."""
+"""LLM RetryPolicy."""
 
 from dataclasses import dataclass
-from enum import Enum
 from math import isfinite
-from typing import Any
-
-
-# Request/Response Values
-class ResponseFormatType(Enum):
-    """Response format types for LLM outputs.
-
-    Attributes:
-        JSON: Structured output.
-        TEXT: Free-form text.
-    """
-
-    JSON = 'json'
-    TEXT = 'text'
-
-
-@dataclass(frozen=True)
-class ResponseFormat:
-    """Defines the expected format of the LLM response."""
-
-    type: ResponseFormatType = ResponseFormatType.TEXT
-    schema: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -54,22 +31,3 @@ class RetryPolicy:
         ):
             if not isfinite(value):
                 raise ValueError(f'{field_name} must be a finite number')
-
-
-# Errors
-class LLMError(Enum):
-    """Common error types for LLM interactions.
-
-    Attributes:
-        TIMEOUT: The request to the LLM timed out.
-        RATE_LIMIT: The LLM provider's rate limit was exceeded.
-        NETWORK: A network error occurred during the request.
-        PROVIDER_ERROR: The LLM provider returned an error response.
-        INVALID_RESPONSE: The LLM returned a response that could not be parsed or was in an unexpected format.
-    """
-
-    TIMEOUT = 'timeout'
-    RATE_LIMIT = 'rate_limit'
-    NETWORK = 'network'
-    PROVIDER_ERROR = 'provider_error'
-    INVALID_RESPONSE = 'invalid_response'

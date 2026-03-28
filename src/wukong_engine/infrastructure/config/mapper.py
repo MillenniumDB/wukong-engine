@@ -4,7 +4,8 @@ from typing import ClassVar
 
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.config.llm import LLM, LLMConfig
-from wukong_engine.app.config.pipeline import PipelineConfig, PipelineStep
+from wukong_engine.app.config.pipeline import PipelineConfig
+from wukong_engine.core.pipeline.model.values import PipelineStep
 
 from .schemas import ApplicationConfigSchema, LLMConfigSchema, PipelineConfigSchema
 
@@ -33,6 +34,6 @@ class ApplicationConfigMapper:
     def _map_llm(self, schema: LLMConfigSchema) -> LLMConfig:
         """Map llm configuration schema to llm configuration model."""
         return LLMConfig(
-            model=LLM(schema.model),
+            model=LLM(name=schema.model),
             strict=schema.strict,
         )

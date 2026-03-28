@@ -1,5 +1,6 @@
 from types import MappingProxyType
 
+from .llm import LLM
 from .provider import LLMProvider
 
 
@@ -22,9 +23,9 @@ class LLMRegistry:
     )
 
     @classmethod
-    def is_supported_model(cls, provider: LLMProvider, model: str) -> bool:
+    def is_supported_model(cls, model: LLM) -> bool:
         """Check if the given provider and model are supported."""
-        return model in cls._SUPPORTED.get(provider, frozenset())
+        return model.name in cls._SUPPORTED.get(model.provider, frozenset())
 
     @classmethod
     def get_supported_models(cls, provider: LLMProvider) -> list[str]:

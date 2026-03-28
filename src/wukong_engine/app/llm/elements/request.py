@@ -2,9 +2,8 @@
 
 from dataclasses import dataclass, field
 from math import isfinite
-from typing import Any
 
-from .values import LLMError, ResponseFormat, RetryPolicy
+from .values import ResponseFormat, RetryPolicy
 
 
 @dataclass(frozen=True)
@@ -26,13 +25,3 @@ class LLMRequest:
             raise ValueError('temperature must be greater than or equal to 0')
         if self.max_output_tokens <= 0:
             raise ValueError('max_output_tokens must be greater than 0')
-
-
-@dataclass(frozen=True)
-class LLMResponse:
-    """Response envelope returned by an LLM client."""
-
-    success: bool
-    content: str
-    structured: dict[str, Any] | None = None
-    error: LLMError | None = None

@@ -23,7 +23,7 @@ repository = "https://github.com/MillenniumDB/wukong-engine"
 
 ### Scripts ###
 [project.scripts]
-wukong = "wukong_engine.presentation.cli.main:main"
+wukong = "wukong_engine.presentation.cli:main"
 
 ### Packaging ###
 [build-system]

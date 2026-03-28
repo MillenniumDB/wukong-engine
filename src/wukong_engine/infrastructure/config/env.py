@@ -1,18 +1,24 @@
 import os
-from typing import Any
+from dataclasses import dataclass
+
+from dotenv import load_dotenv
 
 
-def load_env() -> dict[str, Any]:
-    """Load environment variables and return them as a dictionary.
+@dataclass(frozen=True)
+class EnvConfig:
+    """Configuration for environment variables."""
 
-    Returns:
-        A dictionary containing the loaded environment variables.
+    openai_api_key: str
 
-    Raises:
-        ValueError: If required environment variables are missing.
-    """
-    return {
-        'llm': {
-            'api_key': os.getenv('OPENAI_API_KEY'),
-        },
-    }
+
+def load_env_config() -> EnvConfig:
+    """Load environment variables."""
+    load_dotenv('.env', override=False)
+    return EnvConfig(openai_api_key=_require('OPENAI_API_KEY'))
+
+
+def _require(key: str) -> str:
+    value = os.getenv(key)
+    if value is None or value.strip() == '':
+        raise RuntimeError(f'Missing required environment variable: {key}')
+    return value

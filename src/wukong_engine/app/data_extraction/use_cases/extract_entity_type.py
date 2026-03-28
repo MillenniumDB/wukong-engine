@@ -1,6 +1,6 @@
 from wukong_engine.app.document_ingestion.ports import DocumentStreamProvider
 from wukong_engine.app.document_ingestion.services import DocumentSourceNormalizer
-from wukong_engine.app.llm import LLMClient
+from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.extraction.elements import EntityExtractionRequest
 from wukong_engine.core.extraction.model import EntityExtractionTask

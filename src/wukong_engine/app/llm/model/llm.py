@@ -1,15 +1,18 @@
 from dataclasses import dataclass
 
+from .provider import LLMProvider
+
 
 @dataclass(frozen=True)
 class LLM:
     """LLM model."""
 
     name: str
+    provider: LLMProvider = LLMProvider.OPENAI
 
     def __str__(self) -> str:
         """User-friendly string representation of the model."""
-        return self.name
+        return f'Model: {self.name} ({self.provider.value})'
 
     def __post_init__(self) -> None:
         """Validate LLM invariants."""

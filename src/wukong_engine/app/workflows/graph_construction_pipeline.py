@@ -15,6 +15,7 @@ from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
+from wukong_engine.core.pipeline.model.values import PipelineStep
 
 # from wukong_engine.config.config import Config
 # from nltk import download as nltk_download
@@ -103,22 +104,6 @@ class GraphConstructionPipeline:
         graph_model_path = data_dir / GRAPH_MODEL_FILE
         document_registry_path = data_dir / DOCUMENT_REGISTRY_FILE
 
-        # TODO: Use configuration
-        """
-        document_processing = config.is_enabled('document_processing')
-
-        # Data extraction
-        entity_extraction = config.is_enabled('entity_extraction')
-        entity_processing = config.is_enabled('entity_extraction')
-        relation_extraction = config.is_enabled('relation_extraction')
-        relation_processing = config.is_enabled('relation_extraction')
-        prompt_generation = entity_extraction or relation_extraction
-
-        # Knowledge graph export
-        export_graph = config.is_enabled('export_graph')
-        """
-        return
-
         # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
 
@@ -133,10 +118,11 @@ class GraphConstructionPipeline:
         logger.info(f'Document Collections loaded successfully from "{document_registry_path}"\n\n{document_registry}')
 
         # TODO: Entity extraction
-        for name, entity_type in graph_model.active_entity_types.items():
-            logger.info(f'Extracting entities for EntityType "{name}"')
-            self._extract_entity_type.execute(entity_type, document_registry)
-            break
+        if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
+            for name, entity_type in graph_model.active_entity_types.items():
+                logger.info(f'Extracting entities for EntityType "{name}"')
+                self._extract_entity_type.execute(entity_type, document_registry)
+                break
 
         # TODO: Pipeline
         """

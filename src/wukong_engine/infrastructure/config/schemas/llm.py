@@ -6,4 +6,3 @@ class LLMConfigSchema(BaseModel):
 
     model: StrictStr
     strict: StrictBool = True
-    # api_key: str | None = None
