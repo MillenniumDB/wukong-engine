@@ -15,6 +15,7 @@ from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
+from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 # from wukong_engine.config.config import Config

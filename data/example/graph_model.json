@@ -1,8 +1,8 @@
 {
-    "extraction": {
+    "extraction_config": {
         "llm": {
             "persona": "An expert legal analyst specializing in Chilean law, with extensive experience in identifying connections between legal articles.",
-            "document_context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
+            "context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
         },
         "language": {
             "input": "es",

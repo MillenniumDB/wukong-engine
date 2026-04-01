@@ -11,13 +11,14 @@ from wukong_engine.core.extraction.model.values import (
     RelationshipRetrievalMode,
 )
 
-from .values import DataType
+from .values import DataType, FieldName
 
 
 @dataclass(frozen=True)
 class _Field:
     """Base field class for entity and relationship types."""
 
+    name: FieldName
     data_type: DataType
     description: str
     options: tuple[str, ...]
@@ -26,11 +27,12 @@ class _Field:
 
     def __str__(self) -> str:
         """User-friendly string representation of the field."""
-        return f'{self.description} [{self.data_type.value}]'
+        return f'{self.name}: {self.description} [{self.data_type.value}]'
 
     def __repr__(self) -> str:
         """JSON representation of the field."""
         field_info: dict[str, Any] = {
+            'name': str(self.name),
             'data_type': self.data_type.value,
             'description': self.description,
         }
@@ -52,7 +54,14 @@ class EntityField(_Field):
 
     def __post_init__(self) -> None:
         """Validate entity field invariants."""
-        ensure_compatible_retrieval_modes(self.retrieval_mode)
+        self._validate_retrieval_mode()
+
+    def _validate_retrieval_mode(self) -> None:
+        """Validate that the retrieval mode is properly defined."""
+        try:
+            ensure_compatible_retrieval_modes(self.retrieval_mode)
+        except ValueError as error:
+            raise ValueError(f'Invalid EntityField "{self.name}": {error}') from error
 
 
 @dataclass(frozen=True, repr=False)

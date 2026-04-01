@@ -29,9 +29,9 @@ class DocumentRegistry:
         lines.append('=' * 80)
 
         # Collections
-        for collection_name, collection in self.collections.items():
-            lines.append(f'\n  {collection_name.value}')
-            lines.extend(f'    {line}' for line in str(collection).split('\n'))
+        for collection in self.collections.values():
+            lines.append('')
+            lines.extend(f'  {line}' for line in str(collection).split('\n'))
 
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)
@@ -46,11 +46,11 @@ class DocumentRegistry:
             ValueError: If any entity type references a document collection name not present in this registry.
         """
         unknown: dict[str, list[str]] = {}
-        for entity_name, entity_type in graph_model.entity_types.items():
+        for entity_type in graph_model.entity_types.values():
             for collections in entity_type.document_collections.values():
                 for collection_name in collections:
                     if collection_name not in self.collections:
-                        unknown.setdefault(str(entity_name), []).append(str(collection_name))
+                        unknown.setdefault(str(entity_type.name), []).append(str(collection_name))
         if unknown:
             details = '; '.join(f'{e}: {c}' for e, c in unknown.items())
             raise ValueError(f'Unknown document collection names found in graph model: {details}')

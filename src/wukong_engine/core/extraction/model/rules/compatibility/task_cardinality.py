@@ -13,5 +13,5 @@ def ensure_compatible_entity_task_cardinality(context_level: ContextLevel, cardi
     """Ensure that the cardinality used for an entity extraction task is compatible with its context level."""
     if cardinality not in COMPATIBLE_ENTITY_TASK_CARDINALITIES.get(context_level, set()):
         raise ValueError(
-            f'Cardinality "{cardinality}" is not compatible with context level "{context_level}" in entity extraction tasks',
+            f'Cardinality "{cardinality.value}" is not compatible with context level "{context_level.value}" in entity extraction tasks',
         )

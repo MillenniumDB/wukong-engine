@@ -6,13 +6,14 @@ from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.extraction.model.values import ContextLevel, EntityDeduplicationMode
 
 from .field import EntityField
-from .values import FieldName
+from .values import EntityTypeName, FieldName
 
 
 @dataclass(frozen=True)
 class EntityType:
     """An entity type from the graph model."""
 
+    name: EntityTypeName
     description: str
     instructions: MappingProxyType[ContextLevel, str]
     primary_key: FieldName
@@ -23,11 +24,12 @@ class EntityType:
     def __str__(self) -> str:
         """User-friendly string representation of the entity type."""
         lines = []
-        lines.append(f'Description: {self.description}')
-        lines.append(f'Primary Key: {self.primary_key}')
-        lines.append(f'Deduplication: {self.deduplication_mode.value}')
-        lines.append(f'Fields: {len(self.fields)}')
-        lines.append(f'  {"\n  ".join(f"{field_name}: {field}" for field_name, field in self.fields.items())}')
+        lines.append(str(self.name))
+        lines.append(f'  • Description: {self.description}')
+        lines.append(f'  • Primary Key: {self.primary_key}')
+        lines.append(f'  • Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'  • Fields: {len(self.fields)}')
+        lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
 
         # Document collections per context level
         doc_collections = []
@@ -35,22 +37,19 @@ class EntityType:
             if collections:
                 doc_collections.append(f'{context_level.value} [{", ".join(str(c) for c in collections)}]')
         if doc_collections:
-            lines.append(f'Document Collections: {", ".join(doc_collections)}')
+            lines.append(f'  • Document Collections: {", ".join(doc_collections)}')
         else:
-            lines.append('Document Collections: None')
+            lines.append('  • Document Collections: None')
 
         return '\n'.join(lines)
 
     def __repr__(self) -> str:
         """JSON representation of the entity type."""
-        fields = {}
-        for field_name, field in self.fields.items():
-            fields[str(field_name)] = json.loads(repr(field))
-
         entity_info = {
+            'name': str(self.name),
             'description': self.description,
             'primary_key': str(self.primary_key),
-            'fields': fields,
+            'fields': [json.loads(repr(field)) for field in self.fields.values()],
         }
         return json.dumps(entity_info)
 
@@ -62,7 +61,7 @@ class EntityType:
     def _validate_primary_key(self) -> None:
         """Validate that the primary key is defined in the fields."""
         if self.primary_key not in self.fields:
-            raise ValueError(f'Invalid EntityType: primary key "{self.primary_key}" not found in fields')
+            raise ValueError(f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" not found in fields')
 
     def _validate_document_collections(self) -> None:
         """Validate that there are no duplicated document collection names."""
@@ -70,7 +69,7 @@ class EntityType:
             if len(collections) != len(set(collections)):
                 duplicates = {c for c in collections if collections.count(c) > 1}
                 raise ValueError(
-                    f'Invalid EntityType: duplicate document collection names found '
+                    f'Invalid EntityType "{self.name}": duplicate document collection names found '
                     f'for context level "{context_level.value}": {duplicates}',
                 )
 

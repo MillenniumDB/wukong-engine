@@ -19,15 +19,16 @@ class DocumentRegistryMapper:
         return DocumentRegistry(
             collections=MappingProxyType(
                 {
-                    DocumentCollectionName(name): self._map_collection(collection_schema)
+                    DocumentCollectionName(name): self._map_collection(name, collection_schema)
                     for name, collection_schema in schema.collections.items()
                 },
             ),
         )
 
-    def _map_collection(self, schema: DocumentCollectionSchema) -> DocumentCollection:
+    def _map_collection(self, name: str, schema: DocumentCollectionSchema) -> DocumentCollection:
         """Convert a DocumentCollectionSchema to a DocumentCollection domain model."""
         return DocumentCollection(
+            name=DocumentCollectionName(name),
             sources=tuple(self._map_source(source_schema) for source_schema in schema.sources),
         )
 

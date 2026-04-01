@@ -21,5 +21,5 @@ def ensure_compatible_retrieval_modes(retrieval_mode_map: MappingProxyType[Conte
     for context_level, retrieval_mode in retrieval_mode_map.items():
         if retrieval_mode not in COMPATIBLE_ENTITY_RETRIEVAL_MODES.get(context_level, set()):
             raise ValueError(
-                f'Entity field retrieval mode "{retrieval_mode}" is not compatible with context level "{context_level}"',
+                f'Entity field retrieval mode "{retrieval_mode.value}" is not compatible with context level "{context_level.value}"',
             )

@@ -12,7 +12,7 @@ class LLMSchema(BaseModel):
     """
 
     persona: StrictStr = 'An AI expert specialized in knowledge graph extraction'
-    document_context: StrictStr | None = None
+    context: StrictStr | None = None
 
 
 class LanguageSchema(BaseModel):

@@ -3,19 +3,21 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
-from wukong_engine.core.extraction.model.values import ContextLevel, RelationshipDeduplicationMode
+from wukong_engine.core.extraction.model.values import RelationshipDeduplicationMode
 
+from .endpoint import Endpoint
 from .field import RelationshipField
-from .values import EntityTypeName, FieldName
+from .values import FieldName, RelationshipTypeName
 
 
 @dataclass(frozen=True)
 class RelationshipType:
     """A relationship type from the graph model."""
 
+    name: RelationshipTypeName
     description: str
     instructions: str | None
-    endpoints: MappingProxyType[tuple[EntityTypeName, EntityTypeName], tuple[tuple[ContextLevel, ContextLevel], ...]]
+    endpoints: tuple[Endpoint, ...]
     primary_key: FieldName | None
     deduplication_mode: RelationshipDeduplicationMode
     fields: MappingProxyType[FieldName, RelationshipField]
@@ -23,43 +25,22 @@ class RelationshipType:
     def __str__(self) -> str:
         """User-friendly string representation of the relationship type."""
         lines = []
-        lines.append(f'Description: {self.description}')
-
-        # Endpoints
-        endpoints_str = []
-        for (src, tgt), context_pairs in self.endpoints.items():
-            context_info = ', '.join(f'{src_ctx.value} → {tgt_ctx.value}' for src_ctx, tgt_ctx in context_pairs)
-            endpoints_str.append(f'\n  {src} → {tgt} [{context_info}]')
-        lines.append(f'Endpoints: {"".join(endpoints_str)}')
-
-        if self.primary_key:
-            lines.append(f'Primary Key: {self.primary_key}')
-        lines.append(f'Deduplication: {self.deduplication_mode.value}')
-        lines.append(f'Fields: {len(self.fields)}')
-        lines.append(f'  {"\n  ".join(f"{field_name}: {field}" for field_name, field in self.fields.items())}')
-
+        lines.append(str(self.name))
+        lines.append(f'  • Description: {self.description}')
+        lines.append(f'  • Primary Key: {self.primary_key}')
+        lines.append(f'  • Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'  • Fields: {len(self.fields)}')
+        lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
         return '\n'.join(lines)
 
     def __repr__(self) -> str:
         """JSON representation of the relationship type."""
-        # Format endpoints
-        endpoints = []
-        for src, tgt in self.endpoints:
-            endpoints.append([str(src), str(tgt)])
-
-        # Format fields
-        fields = {}
-        for field_name, field in self.fields.items():
-            fields[str(field_name)] = json.loads(repr(field))
-
         rel_info = {
+            'name': str(self.name),
             'description': self.description,
-            'endpoints': endpoints,
-            'fields': fields,
+            'primary_key': str(self.primary_key) if self.primary_key else None,
+            'fields': [json.loads(repr(field)) for field in self.fields.values()],
         }
-        if self.primary_key:
-            rel_info['primary_key'] = str(self.primary_key)
-
         return json.dumps(rel_info)
 
     def __post_init__(self) -> None:
@@ -69,15 +50,23 @@ class RelationshipType:
 
     def _validate_endpoints(self) -> None:
         """Validate that all context level pairings in endpoints are compatible."""
-        ensure_compatible_context_pairings(self.endpoints)
+        for endpoint in self.endpoints:
+            try:
+                ensure_compatible_context_pairings(endpoint.context_pairs)
+            except ValueError as error:
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": endpoint {endpoint} has incompatible context level pairings',
+                ) from error
 
     def _validate_primary_key(self) -> None:
         """Validate that the primary key is present when required, and properly defined in the fields."""
         if self.primary_key is not None and self.primary_key not in self.fields:
-            raise ValueError(f'Invalid RelationshipType: primary key "{self.primary_key}" not found in fields')
+            raise ValueError(
+                f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" not found in fields',
+            )
 
         if self.deduplication_mode.requires_primary_key and self.primary_key is None:
             raise ValueError(
-                f'Invalid RelationshipType: deduplication mode "{self.deduplication_mode.value}" '
+                f'Invalid RelationshipType "{self.name}": deduplication mode "{self.deduplication_mode.value}" '
                 f'requires a primary key, but none was provided',
             )

@@ -4,6 +4,7 @@ Classes:
     ContextLevel: Enum representing context levels for data extraction.
 """
 
+from dataclasses import dataclass
 from enum import Enum
 
 
@@ -17,3 +18,11 @@ class ContextLevel(Enum):
 
     CHUNK = 'chunk'
     DOCUMENT = 'document'
+
+
+@dataclass(frozen=True)
+class EndpointContext:
+    """Context level pair for a relationship type endpoint."""
+
+    source_level: ContextLevel
+    target_level: ContextLevel
