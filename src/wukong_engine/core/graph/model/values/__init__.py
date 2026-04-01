@@ -4,7 +4,7 @@ This package contains value objects for different types present in the graph mod
 """
 
 from .data_type import DataType
-from .names import EntityTypeName, FieldName, RelationshipTypeName
+from .name import EntityTypeName, FieldName, RelationshipTypeName
 
 __all__ = [
     'DataType',

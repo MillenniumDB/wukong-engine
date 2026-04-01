@@ -1,6 +1,17 @@
 from dataclasses import dataclass
-from typing import Any, Self
+from typing import Any
+
+from wukong_engine.core.graph.model import RelationshipType
+
+from .values import EntityId, RelationshipId
 
 
 @dataclass
-class Relationship: ...
+class Relationship:
+    """Relationship instance in the graph."""
+
+    id: RelationshipId
+    type: RelationshipType
+    source: EntityId
+    target: EntityId
+    fields: dict[str, Any]

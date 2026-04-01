@@ -27,7 +27,7 @@ class RelationshipType:
         lines = []
         lines.append(str(self.name))
         lines.append(f'  • Description: {self.description}')
-        lines.append(f'  • Primary Key: {self.primary_key}')
+        lines.append(f'  • Primary Key: {self.primary_key or "NULL"}')
         lines.append(f'  • Deduplication: {self.deduplication_mode.value}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
@@ -68,5 +68,5 @@ class RelationshipType:
         if self.deduplication_mode.requires_primary_key and self.primary_key is None:
             raise ValueError(
                 f'Invalid RelationshipType "{self.name}": deduplication mode "{self.deduplication_mode.value}" '
-                f'requires a primary key, but none was provided',
+                f'requires a primary key, but none was provided. Either define a primary key field or specify a different deduplication mode.',
             )

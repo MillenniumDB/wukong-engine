@@ -9,7 +9,7 @@ class DocumentId:
 
     hash: bytes
 
-    # Parameters for generating the document ID from content
+    # Parameters for hashing
     _HASH_SIZE: ClassVar[int] = 16  # 16 bytes → 128 bits → 32 hex chars
 
     def __post_init__(self) -> None:

@@ -39,7 +39,7 @@ class EntityType:
         if doc_collections:
             lines.append(f'  • Document Collections: {", ".join(doc_collections)}')
         else:
-            lines.append('  • Document Collections: None')
+            lines.append('  • Document Collections: NONE')
 
         return '\n'.join(lines)
 

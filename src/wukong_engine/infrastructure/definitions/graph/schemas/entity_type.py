@@ -13,7 +13,7 @@ class EntityTypeSchema(BaseModel):
     description: StrictStr
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     primary_key: StrictStr
-    deduplication_mode: EntityDeduplicationMode = EntityDeduplicationMode.NONE
+    deduplication_mode: EntityDeduplicationMode = EntityDeduplicationMode.PRIMARY_KEY
     fields: dict[StrictStr, EntityFieldSchema] = Field(default_factory=dict)
     document_collections: dict[ContextLevel, list[StrictStr] | StrictStr] = Field(default_factory=dict)
 
@@ -22,11 +22,9 @@ class EntityTypeSchema(BaseModel):
         'none': EntityDeduplicationMode.NONE,
         'disabled': EntityDeduplicationMode.NONE,
         'off': EntityDeduplicationMode.NONE,
-        'exact': EntityDeduplicationMode.EXACT,
-        'strict': EntityDeduplicationMode.EXACT,
-        'approximate': EntityDeduplicationMode.APPROXIMATE,
-        'similar': EntityDeduplicationMode.APPROXIMATE,
-        'fuzzy': EntityDeduplicationMode.APPROXIMATE,
+        'primary_key': EntityDeduplicationMode.PRIMARY_KEY,
+        'pk': EntityDeduplicationMode.PRIMARY_KEY,
+        'identity': EntityDeduplicationMode.PRIMARY_KEY,
     }
 
     @field_validator('deduplication_mode', mode='before')

@@ -31,7 +31,7 @@ class RelationshipTypeSchema(BaseModel):
         default_factory=dict,
     )
     primary_key: StrictStr | None = None
-    deduplication_mode: RelationshipDeduplicationMode = RelationshipDeduplicationMode.NONE
+    deduplication_mode: RelationshipDeduplicationMode = RelationshipDeduplicationMode.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
 
     # Mapping of various string representations to RelationshipDeduplicationMode members
@@ -39,13 +39,12 @@ class RelationshipTypeSchema(BaseModel):
         'none': RelationshipDeduplicationMode.NONE,
         'disabled': RelationshipDeduplicationMode.NONE,
         'off': RelationshipDeduplicationMode.NONE,
-        'exact': RelationshipDeduplicationMode.EXACT,
-        'strict': RelationshipDeduplicationMode.EXACT,
-        'approximate': RelationshipDeduplicationMode.APPROXIMATE,
-        'similar': RelationshipDeduplicationMode.APPROXIMATE,
-        'fuzzy': RelationshipDeduplicationMode.APPROXIMATE,
         'endpoints': RelationshipDeduplicationMode.ENDPOINTS,
-        'nodes': RelationshipDeduplicationMode.ENDPOINTS,
+        'structural': RelationshipDeduplicationMode.ENDPOINTS,
+        'edge': RelationshipDeduplicationMode.ENDPOINTS,
+        'primary_key': RelationshipDeduplicationMode.PRIMARY_KEY,
+        'pk': RelationshipDeduplicationMode.PRIMARY_KEY,
+        'identity': RelationshipDeduplicationMode.PRIMARY_KEY,
     }
 
     @field_validator('deduplication_mode', mode='before')

@@ -25,5 +25,5 @@ class ExtractEntityType:
         normalized_sources = self._source_normalizer.normalize(sources)
         for document in self._stream_provider.stream(normalized_sources):
             print(f'Extracting entities for: {document.id}')
-            request = EntityExtractionRequest(task=task, document=document)
-            print(request)
+            # request = EntityExtractionRequest(task=task, document=document)
+            # print(request)

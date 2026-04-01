@@ -13,13 +13,11 @@ class EntityDeduplicationMode(Enum):
 
     Attributes:
         NONE: No deduplication.
-        EXACT: Exact match deduplication with primary key field.
-        APPROXIMATE: Approximate match deduplication with primary key field.
+        PRIMARY_KEY: Exact match deduplication with normalized primary key.
     """
 
     NONE = 'none'
-    EXACT = 'exact'
-    APPROXIMATE = 'approximate'
+    PRIMARY_KEY = 'primary_key'
 
 
 class RelationshipDeduplicationMode(Enum):
@@ -27,20 +25,15 @@ class RelationshipDeduplicationMode(Enum):
 
     Attributes:
         NONE: No deduplication.
-        EXACT: Exact match deduplication with primary key field and same source/target.
-        APPROXIMATE: Approximate match deduplication with primary key field and same source/target.
-        ENDPOINTS: Deduplicate relationships with same source/target, regardless of primary key field.
+        ENDPOINTS: Deduplicate relationships with same source/target, regardless of primary key.
+        PRIMARY_KEY: Exact match deduplication with normalized primary key and same source/target.
     """
 
     NONE = 'none'
-    EXACT = 'exact'
-    APPROXIMATE = 'approximate'
     ENDPOINTS = 'endpoints'
+    PRIMARY_KEY = 'primary_key'
 
     @property
     def requires_primary_key(self) -> bool:
-        """Whether this deduplication mode requires a primary key field."""
-        return self in {
-            RelationshipDeduplicationMode.EXACT,
-            RelationshipDeduplicationMode.APPROXIMATE,
-        }
+        """Whether this deduplication mode requires a primary key."""
+        return self == RelationshipDeduplicationMode.PRIMARY_KEY
