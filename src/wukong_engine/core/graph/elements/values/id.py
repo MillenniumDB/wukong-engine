@@ -4,9 +4,10 @@ from typing import Self
 from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.primitives.identity import ContentHash, InstanceId
 
+from .primary_key import NormalizedPK
 
-# TODO: Model normalized primary key as a separate class, with its own validation and normalization logic
-# TODO: Store a content ID version string (e.g. "v1") both here and in the final graph
+
+# TODO: Store a content ID version string (e.g. "v1"), apply to these and DocumentId, see if normalized PK too or not
 @dataclass(frozen=True)
 class EntityId:
     """The unique identifier for entities.
@@ -28,7 +29,7 @@ class EntityId:
         return f'EntityID(instance={self.instance}, content={self.content})'
 
     @classmethod
-    def from_identity(cls, entity_type: EntityTypeName, normalized_pk: str) -> Self:
+    def from_identity(cls, entity_type: EntityTypeName, normalized_pk: NormalizedPK) -> Self:
         """Create an EntityId from the entity type and normalized primary key.
 
         Args:
@@ -38,7 +39,7 @@ class EntityId:
         Returns:
             A valid EntityId that contains instance and content components.
         """
-        identity = f'{entity_type}|{normalized_pk}'  # TODO:
+        identity = f'{entity_type}|{normalized_pk}'
         return cls(instance=InstanceId.generate(), content=ContentHash.from_string(identity))
 
     @classmethod
@@ -61,6 +62,7 @@ class EntityId:
 # Main (<UUIDv7>) -> for final graph ID
 # Content ID (sha-256-hash(<RelationshipType>|<SRC ID>|<TGT ID>|<normalized primary key>) [first 128 bits]) -> for fast exact deduplication
 # Above, <SRC ID> and <TGT ID> refer to the respective ID for src/tgt, depending on the dedup mode chosen for it (e.g. if src is dedup "PK" then use content ID, else use unique ID)
+# Maybe make DeduplicationMode part of graph domain instead of extraction
 # Store all IDs in the relationship instance (SQLite) and graph, consider Main as the unique graph ID
 # Store a content ID version string (e.g. "v1") both here and in the final graph
 @dataclass(frozen=True)

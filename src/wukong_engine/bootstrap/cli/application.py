@@ -9,6 +9,7 @@ from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegi
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import configure_logging
+from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
@@ -40,12 +41,17 @@ def build_application(config_path: Path, verbosity: int) -> CLIApplication:
     document_stream_provider = LocalDocumentStreamProvider()
     llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model.name)
     llm_client = OpenAIClient(config=llm_config)
+    pk_normalizer = DefaultPKNormalizer()
 
     # Use cases
     get_graph_model = GetGraphModel(provider=graph_model_provider)
     get_document_registry = GetDocumentRegistry(provider=document_registry_provider)
     validate_document_sources = ValidateDocumentSources(validator=document_source_validator)
-    extract_entity_type = ExtractEntityType(stream_provider=document_stream_provider, llm_client=llm_client)
+    extract_entity_type = ExtractEntityType(
+        stream_provider=document_stream_provider,
+        llm_client=llm_client,
+        pk_normalizer=pk_normalizer,
+    )
 
     # Workflows
     graph_construction = GraphConstructionPipeline(

@@ -2,17 +2,15 @@
 
 from dataclasses import dataclass
 
-from wukong_engine.core.graph.model import EntityType
-
 from .rules.compatibility import ensure_compatible_entity_task_cardinality
 from .values import Cardinality, ContextLevel
 
 
+# TODO: Refactor to be more abstract and not depend on graph domain
 @dataclass(frozen=True)
 class EntityExtractionTask:
     """A task describing what entity type to extract and at which context level and cardinality."""
 
-    entity_type: EntityType
     context_level: ContextLevel
     cardinality: Cardinality
 

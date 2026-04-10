@@ -7,9 +7,6 @@ Classes:
 from dataclasses import dataclass
 from types import MappingProxyType
 
-from wukong_engine.core.extraction.model.values import ContextLevel
-from wukong_engine.core.graph.model import EntityType, GraphModel
-
 from .collection import DocumentCollection
 from .source import DocumentSource
 from .values import DocumentCollectionName
@@ -36,24 +33,19 @@ class DocumentRegistry:
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)
 
-    def validate_graph_model_collections(self, graph_model: GraphModel) -> None:
-        """Validate that all entity type document collections reference known collection names.
+    def validate_collections(self, collection_names: frozenset[DocumentCollectionName]) -> None:
+        """Validate that all document collections in a set reference known collections.
 
         Args:
-            graph_model: The graph model to validate against this registry.
+            collection_names: A set of document collection names to validate.
 
         Raises:
-            ValueError: If any entity type references a document collection name not present in this registry.
+            ValueError: If any collection name in the input set is not found in the registry.
         """
-        unknown: dict[str, list[str]] = {}
-        for entity_type in graph_model.entity_types.values():
-            for collections in entity_type.document_collections.values():
-                for collection_name in collections:
-                    if collection_name not in self.collections:
-                        unknown.setdefault(str(entity_type.name), []).append(str(collection_name))
-        if unknown:
-            details = '; '.join(f'{e}: {c}' for e, c in unknown.items())
-            raise ValueError(f'Unknown document collection names found in graph model: {details}')
+        unknown_collections = sorted(f'"{name}"' for name in collection_names if name not in self.collections)
+        if unknown_collections:
+            details = ', '.join(unknown_collections)
+            raise ValueError(f'Unknown document collection names found: {details}')
 
     def get_all_sources(self) -> tuple[DocumentSource, ...]:
         """Return all unique DocumentSources contained in all collections."""
@@ -66,19 +58,18 @@ class DocumentRegistry:
                     sources.append(source)
         return tuple(sources)
 
-    def get_entity_sources(self, entity_type: EntityType, context_level: ContextLevel) -> tuple[DocumentSource, ...]:
-        """Return the respective DocumentSources for a given EntityType and ContextLevel.
+    def get_collection_sources(
+        self,
+        collection_names: tuple[DocumentCollectionName, ...],
+    ) -> tuple[DocumentSource, ...]:
+        """Get all respective DocumentSources for a given list of collections.
 
         Args:
-            entity_type: The entity type whose document collections to resolve.
-            context_level: The context level to look up within the entity type.
+            collection_names: A tuple of document collection names to retrieve sources for.
 
         Returns:
-            A tuple of unique DocumentSources corresponding to the EntityType/ContextLevel pair.
-            Returns an empty tuple if the pair has no associated collections or the collections
-            are not present in this registry.
+            A tuple of unique DocumentSources corresponding to the input collection names.
         """
-        collection_names = entity_type.document_collections.get(context_level, ())
         seen: set[DocumentSource] = set()
         sources: list[DocumentSource] = []
         for name in collection_names:

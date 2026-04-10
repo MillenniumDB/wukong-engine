@@ -15,11 +15,8 @@ from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
-from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
-# from wukong_engine.config.config import Config
-# from nltk import download as nltk_download
 """
 from wukong_engine.documents.text_processing import (
     generate_chunks,
@@ -35,9 +32,6 @@ from wukong_engine.documents.text_processing import (
 
 # Logging
 logger = logging.getLogger(__name__)
-
-# Load NLTK data for NLP
-# nltk_download('stopwords', quiet=True)
 
 # Paths
 ORIGINAL_DOCS_DIR = Path('./docs/text/')
@@ -108,20 +102,24 @@ class GraphConstructionPipeline:
         # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
 
-        # Get graph model
-        graph_model = self._get_graph_model.execute(graph_model_path)
-        logger.info(f'Graph Model loaded successfully from "{graph_model_path}"\n\n{graph_model}')
-
-        # Get document registry and validate document collections
+        # Get document registry and validate document sources
         document_registry = self._get_document_registry.execute(document_registry_path)
         self._validate_document_sources.execute(document_registry)
-        document_registry.validate_graph_model_collections(graph_model)
         logger.info(f'Document Collections loaded successfully from "{document_registry_path}"\n\n{document_registry}')
+
+        # Get graph model and validate selected document collections
+        graph_model = self._get_graph_model.execute(graph_model_path)
+        unique_collections = set()
+        for entity_type in graph_model.entity_types.values():
+            for collections in entity_type.document_collections.values():
+                unique_collections.update(collections)
+        document_registry.validate_collections(frozenset(unique_collections))
+        logger.info(f'Graph Model loaded successfully from "{graph_model_path}"\n\n{graph_model}')
 
         # TODO: Entity extraction
         if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
-            for name, entity_type in graph_model.active_entity_types.items():
-                logger.info(f'Extracting entities for EntityType "{name}"')
+            for entity_type in graph_model.active_entity_types.values():
+                logger.info(f'Extracting entities for EntityType "{entity_type.name}"')
                 self._extract_entity_type.execute(entity_type, document_registry)
                 break
 

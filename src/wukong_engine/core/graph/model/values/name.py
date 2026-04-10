@@ -21,6 +21,9 @@ class _ModelName:
         if self.value.lower() in self._RESERVED:
             raise ValueError(f'Reserved name not allowed for {self.__class__.__name__}: "{self.value}"')
 
+    def __str__(self) -> str:
+        return self.value
+
     def __repr__(self) -> str:
         return self.value
 
