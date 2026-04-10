@@ -4,7 +4,7 @@ name = "wukong-engine"
 version = "0.2.0"
 description = "Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 license = "Proprietary"
 authors = [{ name = "BFFV" }]
 dependencies = [
@@ -58,6 +58,9 @@ ignore = [
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
     "T201",   # Allow print statements (intended for CLI output)
+    "TC001",  # Allow imports that are only used in type annotations
+    "TC002",  # Allow imports that are only used in type annotations
+    "TC003",  # Allow imports that are only used in type annotations
 ]
 unfixable = ["F401"] # Do not auto-fix unused imports
 

@@ -1,18 +1,12 @@
-import hashlib
-import uuid
 from dataclasses import dataclass
-from typing import ClassVar, Self
+from typing import Self
 
 from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.primitives.identity import ContentHash, InstanceId
 
 
-# TODO: ID
-# TODO: Model content hash and unique ID as separate classes?
-# TODO: Store a content ID version string (e.g. "v1") both here and in the final graph
-# TODO: Update python to use UUIDv7 natively
-# TODO: From components?
 # TODO: Model normalized primary key as a separate class, with its own validation and normalization logic
-# Store both IDs in the entity instance (SQLite) and graph, consider Main as the unique graph ID
+# TODO: Store a content ID version string (e.g. "v1") both here and in the final graph
 @dataclass(frozen=True)
 class EntityId:
     """The unique identifier for entities.
@@ -22,49 +16,43 @@ class EntityId:
         2. content: A content-based id, used for efficient deduplication.
     """
 
-    instance: bytes  # Unique instance identifier (UUIDv7)
-    content: bytes  # Content identifier (truncated SHA-256 hash of normalized primary key)
-
-    # Parameters for hashing
-    _HASH_SIZE: ClassVar[int] = 16  # 16 bytes → 128 bits → 32 hex chars
-
-    def __post_init__(self) -> None:
-        """Validate entity id invariants."""
-        self._validate_hash()
+    instance: InstanceId
+    content: ContentHash
 
     def __str__(self) -> str:
         """User-friendly string representation of the entity ID."""
-        return f'{self.instance.hex()} (Instance), {self.content.hex()} (Content)'
+        return f'{self.instance} (Instance), {self.content} (Content)'
 
     def __repr__(self) -> str:
         """Developer-friendly string representation of the entity ID."""
-        return f'EntityID(instance={self.instance.hex()}, content={self.content.hex()})'
-
-    def _validate_hash(self) -> None:
-        """Validate that the hash has the correct length."""
-        for hash_value in (self.instance, self.content):
-            if len(hash_value) != self._HASH_SIZE:
-                raise ValueError(
-                    f'Invalid hash length: expected {self._HASH_SIZE} bytes, got {len(hash_value)}',
-                )
+        return f'EntityID(instance={self.instance}, content={self.content})'
 
     @classmethod
-    def from_identity(cls, entity_type: EntityTypeName, normalized_primary_key: str) -> Self:
+    def from_identity(cls, entity_type: EntityTypeName, normalized_pk: str) -> Self:
         """Create an EntityId from the entity type and normalized primary key.
 
         Args:
             entity_type: The type of the entity (e.g. Person, Organization).
-            normalized_primary_key: The normalized primary key value of the entity.
+            normalized_pk: The normalized primary key value of the entity.
 
         Returns:
             A valid EntityId that contains instance and content components.
         """
-        instance_id = uuid.uuid4().bytes[: cls._HASH_SIZE]
-        content_id = hashlib.sha256(f'{entity_type.value}|{normalized_primary_key}'.encode()).digest()[: cls._HASH_SIZE]
-        return cls(instance=instance_id, content=content_id)
+        identity = f'{entity_type}|{normalized_pk}'  # TODO:
+        return cls(instance=InstanceId.generate(), content=ContentHash.from_string(identity))
 
-    # @classmethod
-    # def from_components(cls, instance: InstanceId, content: ContentHash) -> Self: ...
+    @classmethod
+    def from_components(cls, instance: InstanceId, content: ContentHash) -> Self:
+        """Create an EntityId from already existing instance and content components.
+
+        Args:
+            instance: The unique id for the runtime instance.
+            content: The content-based id for efficient deduplication.
+
+        Returns:
+            A valid EntityId that contains instance and content components.
+        """
+        return cls(instance=instance, content=content)
 
 
 # TODO: ID

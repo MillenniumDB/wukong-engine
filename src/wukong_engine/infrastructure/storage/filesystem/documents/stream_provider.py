@@ -71,13 +71,13 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             raw = path.read_bytes()
             doc_id = DocumentId.from_content(raw)
 
-            if doc_id.hash in seen_content:
+            if doc_id.content.to_bytes() in seen_content:
                 logger.warning(
-                    f'Found duplicated document content: "{doc_id}" from "{path}" (skipped).',
+                    f'Found duplicated document content: "{doc_id.content}" from "{path}" (skipped).',
                 )
                 return None
 
-            seen_content.add(doc_id.hash)
+            seen_content.add(doc_id.content.to_bytes())
             return Document(
                 id=doc_id,
                 text=raw.decode('utf-8'),
