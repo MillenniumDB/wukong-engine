@@ -3,11 +3,10 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
-from wukong_engine.core.extraction.model.values import RelationshipDeduplicationMode
 
 from .endpoint import Endpoint
 from .field import RelationshipField
-from .values import FieldName, RelationshipTypeName
+from .values import FieldName, RelationshipIdentityPolicy, RelationshipTypeName
 
 
 @dataclass(frozen=True)
@@ -19,7 +18,7 @@ class RelationshipType:
     instructions: str | None
     endpoints: tuple[Endpoint, ...]
     primary_key: FieldName | None
-    deduplication_mode: RelationshipDeduplicationMode
+    identity_policy: RelationshipIdentityPolicy
     fields: MappingProxyType[FieldName, RelationshipField]
 
     def __str__(self) -> str:
@@ -28,7 +27,7 @@ class RelationshipType:
         lines.append(str(self.name))
         lines.append(f'  • Description: {self.description}')
         lines.append(f'  • Primary Key: {self.primary_key or "NULL"}')
-        lines.append(f'  • Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'  • Identity Policy (Deduplication): {self.identity_policy.value}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
         return '\n'.join(lines)
@@ -65,8 +64,8 @@ class RelationshipType:
                 f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" not found in fields',
             )
 
-        if self.deduplication_mode.requires_primary_key and self.primary_key is None:
+        if self.identity_policy.requires_primary_key and self.primary_key is None:
             raise ValueError(
-                f'Invalid RelationshipType "{self.name}": deduplication mode "{self.deduplication_mode.value}" '
+                f'Invalid RelationshipType "{self.name}": identity policy (deduplication mode) "{self.identity_policy.value}" '
                 f'requires a primary key, but none was provided. Either define a primary key field or specify a different deduplication mode.',
             )

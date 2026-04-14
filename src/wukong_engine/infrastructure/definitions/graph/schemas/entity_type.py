@@ -2,7 +2,8 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
-from wukong_engine.core.extraction.model.values import ContextLevel, EntityDeduplicationMode
+from wukong_engine.core.extraction.model.values import ContextLevel
+from wukong_engine.core.graph.model.values import EntityIdentityPolicy
 
 from .field import EntityFieldSchema
 
@@ -13,24 +14,24 @@ class EntityTypeSchema(BaseModel):
     description: StrictStr
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     primary_key: StrictStr
-    deduplication_mode: EntityDeduplicationMode = EntityDeduplicationMode.PRIMARY_KEY
+    deduplication_mode: EntityIdentityPolicy = EntityIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, EntityFieldSchema] = Field(default_factory=dict)
     document_collections: dict[ContextLevel, list[StrictStr] | StrictStr] = Field(default_factory=dict)
 
-    # Mapping of various string representations to EntityDeduplicationMode members
-    _DEDUPLICATION_ALIASES: ClassVar[dict[str, EntityDeduplicationMode]] = {
-        'none': EntityDeduplicationMode.NONE,
-        'disabled': EntityDeduplicationMode.NONE,
-        'off': EntityDeduplicationMode.NONE,
-        'primary_key': EntityDeduplicationMode.PRIMARY_KEY,
-        'pk': EntityDeduplicationMode.PRIMARY_KEY,
-        'identity': EntityDeduplicationMode.PRIMARY_KEY,
+    # Mapping of various string representations to EntityIdentityPolicy members
+    _DEDUPLICATION_ALIASES: ClassVar[dict[str, EntityIdentityPolicy]] = {
+        'none': EntityIdentityPolicy.NONE,
+        'disabled': EntityIdentityPolicy.NONE,
+        'off': EntityIdentityPolicy.NONE,
+        'primary_key': EntityIdentityPolicy.PRIMARY_KEY,
+        'pk': EntityIdentityPolicy.PRIMARY_KEY,
+        'identity': EntityIdentityPolicy.PRIMARY_KEY,
     }
 
     @field_validator('deduplication_mode', mode='before')
     @classmethod
     def normalize_deduplication_mode(cls, value: Any) -> Any:
-        """Normalize deduplication mode strings to EntityDeduplicationMode members."""
+        """Normalize deduplication mode strings to EntityIdentityPolicy members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
         return value

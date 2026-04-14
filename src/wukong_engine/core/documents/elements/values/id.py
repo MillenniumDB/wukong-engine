@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Self
 
-from wukong_engine.core.primitives.identity import ContentHash, InstanceId
+from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
 @dataclass(frozen=True)

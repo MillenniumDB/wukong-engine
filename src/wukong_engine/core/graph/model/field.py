@@ -4,12 +4,8 @@ from types import MappingProxyType
 from typing import Any
 
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_retrieval_modes
-from wukong_engine.core.extraction.model.values import (
-    ContextLevel,
-    EntityRetrievalMode,
-    RegexPattern,
-    RelationshipRetrievalMode,
-)
+from wukong_engine.core.extraction.model.values import ContextLevel, EntityRetrievalMode, RelationshipRetrievalMode
+from wukong_engine.core.shared import RegexPattern
 
 from .values import DataType, FieldName
 

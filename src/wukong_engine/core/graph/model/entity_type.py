@@ -3,10 +3,10 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from wukong_engine.core.documents.model.values import DocumentCollectionName
-from wukong_engine.core.extraction.model.values import ContextLevel, EntityDeduplicationMode
+from wukong_engine.core.extraction.model.values import ContextLevel
 
 from .field import EntityField
-from .values import EntityTypeName, FieldName
+from .values import EntityIdentityPolicy, EntityTypeName, FieldName
 
 
 @dataclass(frozen=True)
@@ -17,7 +17,7 @@ class EntityType:
     description: str
     instructions: MappingProxyType[ContextLevel, str]
     primary_key: FieldName
-    deduplication_mode: EntityDeduplicationMode
+    identity_policy: EntityIdentityPolicy
     fields: MappingProxyType[FieldName, EntityField]
     document_collections: MappingProxyType[ContextLevel, tuple[DocumentCollectionName, ...]]
 
@@ -27,7 +27,7 @@ class EntityType:
         lines.append(str(self.name))
         lines.append(f'  • Description: {self.description}')
         lines.append(f'  • Primary Key: {self.primary_key}')
-        lines.append(f'  • Deduplication: {self.deduplication_mode.value}')
+        lines.append(f'  • Identity Policy (Deduplication): {self.identity_policy.value}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
 

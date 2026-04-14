@@ -1,15 +1,15 @@
-"""Provides deduplication modes.
+"""Provides identity policies.
 
 Classes:
-    EntityDeduplicationMode: Supported deduplication modes for entity types.
-    RelationshipDeduplicationMode: Supported deduplication modes for relationship types.
+    EntityIdentityPolicy: Supported identity policies for entities.
+    RelationshipIdentityPolicy: Supported identity policies for relationships.
 """
 
 from enum import Enum
 
 
-class EntityDeduplicationMode(Enum):
-    """Supported deduplication modes for entities.
+class EntityIdentityPolicy(Enum):
+    """Supported identity policies for entities.
 
     Attributes:
         NONE: No deduplication.
@@ -20,8 +20,8 @@ class EntityDeduplicationMode(Enum):
     PRIMARY_KEY = 'primary_key'
 
 
-class RelationshipDeduplicationMode(Enum):
-    """Supported deduplication modes for relationships.
+class RelationshipIdentityPolicy(Enum):
+    """Supported identity policies for relationships.
 
     Attributes:
         NONE: No deduplication.
@@ -35,5 +35,5 @@ class RelationshipDeduplicationMode(Enum):
 
     @property
     def requires_primary_key(self) -> bool:
-        """Whether this deduplication mode requires a primary key."""
-        return self == RelationshipDeduplicationMode.PRIMARY_KEY
+        """Whether this identity policy requires a primary key."""
+        return self == RelationshipIdentityPolicy.PRIMARY_KEY

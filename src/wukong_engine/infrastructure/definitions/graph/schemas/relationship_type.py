@@ -2,7 +2,8 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
-from wukong_engine.core.extraction.model.values import ContextLevel, RelationshipDeduplicationMode
+from wukong_engine.core.extraction.model.values import ContextLevel
+from wukong_engine.core.graph.model.values import RelationshipIdentityPolicy
 
 from .field import RelationshipFieldSchema
 
@@ -31,26 +32,26 @@ class RelationshipTypeSchema(BaseModel):
         default_factory=dict,
     )
     primary_key: StrictStr | None = None
-    deduplication_mode: RelationshipDeduplicationMode = RelationshipDeduplicationMode.PRIMARY_KEY
+    deduplication_mode: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
 
-    # Mapping of various string representations to RelationshipDeduplicationMode members
-    _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipDeduplicationMode]] = {
-        'none': RelationshipDeduplicationMode.NONE,
-        'disabled': RelationshipDeduplicationMode.NONE,
-        'off': RelationshipDeduplicationMode.NONE,
-        'endpoints': RelationshipDeduplicationMode.ENDPOINTS,
-        'structural': RelationshipDeduplicationMode.ENDPOINTS,
-        'edge': RelationshipDeduplicationMode.ENDPOINTS,
-        'primary_key': RelationshipDeduplicationMode.PRIMARY_KEY,
-        'pk': RelationshipDeduplicationMode.PRIMARY_KEY,
-        'identity': RelationshipDeduplicationMode.PRIMARY_KEY,
+    # Mapping of various string representations to RelationshipIdentityPolicy members
+    _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipIdentityPolicy]] = {
+        'none': RelationshipIdentityPolicy.NONE,
+        'disabled': RelationshipIdentityPolicy.NONE,
+        'off': RelationshipIdentityPolicy.NONE,
+        'endpoints': RelationshipIdentityPolicy.ENDPOINTS,
+        'structural': RelationshipIdentityPolicy.ENDPOINTS,
+        'edge': RelationshipIdentityPolicy.ENDPOINTS,
+        'primary_key': RelationshipIdentityPolicy.PRIMARY_KEY,
+        'pk': RelationshipIdentityPolicy.PRIMARY_KEY,
+        'identity': RelationshipIdentityPolicy.PRIMARY_KEY,
     }
 
     @field_validator('deduplication_mode', mode='before')
     @classmethod
     def normalize_deduplication_mode(cls, value: Any) -> Any:
-        """Normalize deduplication mode strings to RelationshipDeduplicationMode members."""
+        """Normalize deduplication mode strings to RelationshipIdentityPolicy members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
         return value

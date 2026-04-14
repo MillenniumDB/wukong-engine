@@ -2,7 +2,7 @@ from types import MappingProxyType
 from typing import Any
 
 from wukong_engine.core.documents.model.values import DocumentCollectionName
-from wukong_engine.core.extraction.model.values import ContextLevel, EndpointContext, RegexPattern
+from wukong_engine.core.extraction.model.values import ContextLevel, EndpointContext
 from wukong_engine.core.graph.model import (
     Endpoint,
     EntityField,
@@ -17,6 +17,7 @@ from wukong_engine.core.graph.model.values import (
     FieldName,
     RelationshipTypeName,
 )
+from wukong_engine.core.shared import RegexPattern
 
 from .schemas import (
     EndpointContextRule,
@@ -74,7 +75,7 @@ class GraphModelMapper:
             description=schema.description,
             instructions=MappingProxyType(_as_dict(schema.instructions)),
             primary_key=FieldName(schema.primary_key),
-            deduplication_mode=schema.deduplication_mode,
+            identity_policy=schema.deduplication_mode,
             fields=MappingProxyType(
                 {FieldName(name): self._map_entity_field(name, schema) for name, schema in schema.fields.items()},
             ),
@@ -94,7 +95,7 @@ class GraphModelMapper:
             instructions=schema.instructions,
             endpoints=self._materialize_endpoints(schema.endpoints),
             primary_key=FieldName(schema.primary_key) if schema.primary_key is not None else None,
-            deduplication_mode=schema.deduplication_mode,
+            identity_policy=schema.deduplication_mode,
             fields=MappingProxyType(
                 {FieldName(name): self._map_relationship_field(name, schema) for name, schema in schema.fields.items()},
             ),

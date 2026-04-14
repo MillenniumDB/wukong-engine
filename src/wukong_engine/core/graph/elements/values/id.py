@@ -2,9 +2,9 @@ from dataclasses import dataclass
 from typing import Self
 
 from wukong_engine.core.graph.model.values import EntityTypeName
-from wukong_engine.core.primitives.identity import ContentHash, InstanceId
+from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
-from .primary_key import NormalizedPK
+from .normalized_pk import NormalizedPK
 
 
 # TODO: Store a content ID version string (e.g. "v1"), apply to these and DocumentId, see if normalized PK too or not
@@ -62,7 +62,6 @@ class EntityId:
 # Main (<UUIDv7>) -> for final graph ID
 # Content ID (sha-256-hash(<RelationshipType>|<SRC ID>|<TGT ID>|<normalized primary key>) [first 128 bits]) -> for fast exact deduplication
 # Above, <SRC ID> and <TGT ID> refer to the respective ID for src/tgt, depending on the dedup mode chosen for it (e.g. if src is dedup "PK" then use content ID, else use unique ID)
-# Maybe make DeduplicationMode part of graph domain instead of extraction
 # Store all IDs in the relationship instance (SQLite) and graph, consider Main as the unique graph ID
 # Store a content ID version string (e.g. "v1") both here and in the final graph
 @dataclass(frozen=True)
