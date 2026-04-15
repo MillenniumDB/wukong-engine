@@ -12,11 +12,9 @@ class EntityIdentityPolicy(Enum):
     """Supported identity policies for entities.
 
     Attributes:
-        NONE: No deduplication.
         PRIMARY_KEY: Exact match deduplication with normalized primary key.
     """
 
-    NONE = 'none'
     PRIMARY_KEY = 'primary_key'
 
 

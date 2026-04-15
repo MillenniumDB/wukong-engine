@@ -6,8 +6,9 @@ from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.extraction.elements import EntityExtractionRequest
 from wukong_engine.core.extraction.model import EntityExtractionTask
 from wukong_engine.core.extraction.model.values import Cardinality, ContextLevel
-from wukong_engine.core.graph.elements.values import EntityId
+from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
 from wukong_engine.core.graph.model import EntityType
+from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipIdentityPolicy, RelationshipTypeName
 
 
 class ExtractEntityType:

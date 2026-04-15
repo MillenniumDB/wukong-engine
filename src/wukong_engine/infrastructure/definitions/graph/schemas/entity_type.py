@@ -20,9 +20,6 @@ class EntityTypeSchema(BaseModel):
 
     # Mapping of various string representations to EntityIdentityPolicy members
     _DEDUPLICATION_ALIASES: ClassVar[dict[str, EntityIdentityPolicy]] = {
-        'none': EntityIdentityPolicy.NONE,
-        'disabled': EntityIdentityPolicy.NONE,
-        'off': EntityIdentityPolicy.NONE,
         'primary_key': EntityIdentityPolicy.PRIMARY_KEY,
         'pk': EntityIdentityPolicy.PRIMARY_KEY,
         'identity': EntityIdentityPolicy.PRIMARY_KEY,

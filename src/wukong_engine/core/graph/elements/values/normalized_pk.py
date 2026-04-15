@@ -7,7 +7,15 @@ from typing import ClassVar
 
 @dataclass(frozen=True)
 class NormalizedPK:
-    """A normalized primary key (PK) value for entity and relationship deduplication."""
+    """A normalized primary key (PK) value for entity and relationship deduplication.
+
+    Current Version: v1
+    Enforced Rules:
+        1. Non-empty: The normalized PK cannot be an empty string.
+        2. Allowed Characters: Only lowercase letters, numbers, spaces, and specific special characters are allowed.
+        3. Normalized Whitespace: No leading/trailing whitespace and no consecutive spaces are allowed.
+        4. Edge Characters: Cannot start or end with certain special characters.
+    """
 
     value: str
 
