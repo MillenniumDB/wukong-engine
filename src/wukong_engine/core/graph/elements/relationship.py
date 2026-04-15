@@ -6,7 +6,7 @@ from wukong_engine.core.graph.model import RelationshipType
 from .values import EntityId, RelationshipId
 
 
-@dataclass
+@dataclass(frozen=True)
 class Relationship:
     """Relationship instance in the graph."""
 
@@ -14,4 +14,4 @@ class Relationship:
     type: RelationshipType
     source: EntityId
     target: EntityId
-    fields: dict[str, Any]
+    properties: dict[str, Any]

@@ -11,12 +11,9 @@ class LLMRegistry:
         {
             LLMProvider.OPENAI: frozenset(
                 {
-                    'gpt-4.1-mini',
-                    'gpt-4.1-nano',
-                    'gpt-5-mini',
-                    'gpt-5-nano',
-                    'gpt-5.4-mini',
-                    'gpt-5.4-nano',
+                    'gpt-4.1-mini',  # Best non-reasoning, cheapest
+                    'gpt-5-mini',  # Most balanced, default
+                    'gpt-5.4-mini',  # Best reasoning, expensive
                 },
             ),
         },

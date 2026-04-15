@@ -59,8 +59,12 @@ max_worker_threads = 10
 
 # The LLM model to use for processing
 # Note: Currently only OpenAI models are supported
-# Default: "gpt-4.1-mini"
-model = "gpt-4.1-mini"
+# Strictly supported models:
+# "gpt-4.1-mini": Best non-reasoning, cheapest
+# "gpt-5-mini": Most balanced, default
+# "gpt-5.4-mini": Best reasoning, expensive
+# Default: "gpt-5-mini"
+model = "gpt-5-mini"
 
 # Whether to accept only strictly supported models or to allow any model
 # Note: Setting this to true will raise an error if an unsupported model is specified

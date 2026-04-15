@@ -16,8 +16,8 @@ class Document:
 
     id: DocumentId
     text: str
-    source_path: PurePath
+    source_uri: PurePath
 
     def __str__(self) -> str:
         """User-friendly string representation of a document."""
-        return f'{self.id} from {self.source_path}'
+        return f'{self.id} from {self.source_uri}'

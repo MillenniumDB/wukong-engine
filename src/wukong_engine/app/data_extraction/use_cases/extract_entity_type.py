@@ -34,8 +34,9 @@ class ExtractEntityType:
         task = EntityExtractionTask(context_level=context_level, cardinality=cardinality)
 
         # TODO: Execution
+        # TODO: LLM Concurrency using async instead of threads
         # collections = entity_type.document_collections.get(context_level, ())
-        # sources = document_registry.get_collection_sources(collections)
+        # sources = document_registry.get_collection_sources(collections)  # Replace with streaming when using UOW
         # normalized_sources = self._source_normalizer.normalize(sources)
         # for document in self._stream_provider.stream(normalized_sources):
         #     print(f'Extracting entities from Document: {document.id}')

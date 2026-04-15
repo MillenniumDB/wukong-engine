@@ -17,14 +17,14 @@ class EntityId:
 
     Current Version: v1
     Instance: UUIDv7
-    Content: sha-256 hash of "<Version>|<EntityType>|<Normalized_PK>" (first 128 bits)
+    Content: sha-256 hash of "Version|EntityType|NormalizedPK" (first 128 bits)
     """
 
     instance: InstanceId
     content: ContentHash
 
     # Versioning (evolves together with the identity structure)
-    _VERSION: ClassVar[str] = 'v1'
+    VERSION: ClassVar[str] = 'v1'
 
     def __str__(self) -> str:
         """User-friendly string representation of the entity ID."""
@@ -32,7 +32,7 @@ class EntityId:
 
     def __repr__(self) -> str:
         """Developer-friendly string representation of the entity ID."""
-        return f'EntityID(instance={self.instance}, content={self.content}, version={self._VERSION})'
+        return f'EntityID(instance={self.instance}, content={self.content}, version={self.VERSION})'
 
     @classmethod
     def from_identity(cls, entity_type: EntityTypeName, normalized_pk: NormalizedPK) -> Self:
@@ -45,7 +45,7 @@ class EntityId:
         Returns:
             An EntityId that contains instance and content components.
         """
-        identity = f'{cls._VERSION}|{entity_type}|{normalized_pk}'
+        identity = f'{cls.VERSION}|{entity_type}|{normalized_pk}'
         return cls(instance=InstanceId.generate(), content=ContentHash.from_string(identity))
 
     @classmethod
@@ -72,14 +72,17 @@ class RelationshipId:
 
     Current Version: v1
     Instance: UUIDv7
-    Content: sha-256 hash of "<Version>|<RelationshipType>|<IdentityPolicy>|<SRC_ID>|<TGT_ID>|<Normalized_PK>?" (first 128 bits)
+    Content (by policy):
+        NONE: Instance ID (UUIDv7)
+        ENDPOINTS: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID" (first 128 bits)
+        PRIMARY_KEY: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID|NormalizedPK" (first 128 bits)
     """
 
     instance: InstanceId
     content: ContentHash
 
     # Versioning (evolves together with the identity structure)
-    _VERSION: ClassVar[str] = 'v1'
+    VERSION: ClassVar[str] = 'v1'
 
     def __str__(self) -> str:
         """User-friendly string representation of the relationship ID."""
@@ -87,7 +90,7 @@ class RelationshipId:
 
     def __repr__(self) -> str:
         """Developer-friendly string representation of the relationship ID."""
-        return f'RelationshipID(instance={self.instance}, content={self.content}, version={self._VERSION})'
+        return f'RelationshipID(instance={self.instance}, content={self.content}, version={self.VERSION})'
 
     @classmethod
     def from_identity(
@@ -119,10 +122,10 @@ class RelationshipId:
         if identity_policy == RelationshipIdentityPolicy.PRIMARY_KEY:
             if normalized_pk is None:
                 raise ValueError('A Normalized PK is required when relationship identity policy is: "primary_key"')
-            identity = f'{cls._VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}|{normalized_pk}'
+            identity = f'{cls.VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}|{normalized_pk}'
             content_id = ContentHash.from_string(identity)
         elif identity_policy == RelationshipIdentityPolicy.ENDPOINTS:
-            identity = f'{cls._VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}'
+            identity = f'{cls.VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}'
             content_id = ContentHash.from_string(identity)
         else:  # If policy is NONE, we fall back to instance-based identity (no deduplication)
             identity = instance_id.to_bytes()

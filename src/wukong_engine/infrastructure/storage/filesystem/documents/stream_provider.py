@@ -81,7 +81,7 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             return Document(
                 id=doc_id,
                 text=raw.decode('utf-8'),
-                source_path=PurePath(path),
+                source_uri=PurePath(path),
             )
         except OSError:
             logger.warning(f'Failed to load document from "{path}" (skipped).')
