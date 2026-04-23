@@ -1,7 +1,7 @@
 """SQLite persistence adapters."""
 
-from .entity_staging_store import SQLiteEntityStagingStore
+from .unit_of_work import SQLiteUnitOfWork
 
 __all__ = [
-    'SQLiteEntityStagingStore',
+    'SQLiteUnitOfWork',
 ]

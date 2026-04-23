@@ -19,6 +19,10 @@ class DocumentCollectionName:
                 f'Invalid {self.__class__.__name__}: "{self.value}". Must match regex pattern: {self._PATTERN}',
             )
 
+    def __str__(self) -> str:
+        """User-friendly representation of the document collection name."""
+        return self.value
+
     def __repr__(self) -> str:
-        """Representation of the document collection name."""
+        """Developer-friendly representation of the document collection name."""
         return self.value

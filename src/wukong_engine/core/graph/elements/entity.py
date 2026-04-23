@@ -15,18 +15,18 @@ from .values import EntityId
 
 
 # CREATE TABLE documents (
-#     document_id TEXT PRIMARY KEY,
-#     document_content_id TEXT NOT NULL UNIQUE,
+#     document_content_id TEXT PRIMARY KEY,
+#     document_id TEXT NOT NULL UNIQUE,
 #     source_uri TEXT NOT NULL UNIQUE
 # );
 # CREATE TABLE collections (
 #     collection_name TEXT PRIMARY KEY,
 # );
 # CREATE TABLE document_collections (
-#     document_id TEXT NOT NULL,
+#     document_content_id TEXT NOT NULL,
 #     collection_name TEXT NOT NULL,
-#     PRIMARY KEY (document_id, collection_name),
-#     FOREIGN KEY (document_id) REFERENCES documents(document_id),
+#     PRIMARY KEY (document_content_id, collection_name),
+#     FOREIGN KEY (document_content_id) REFERENCES documents(document_content_id),
 #     FOREIGN KEY (collection_name) REFERENCES collections(collection_name)
 # );
 # CREATE TABLE entity_types (
@@ -40,10 +40,10 @@ from .values import EntityId
 #     FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name)
 # );
 # CREATE TABLE extracted_entity_types (
-#     document_id TEXT NOT NULL,
+#     document_content_id TEXT NOT NULL,
 #     entity_type_name TEXT NOT NULL,
-#     PRIMARY KEY (document_id, entity_type)
-#     FOREIGN KEY (document_id) REFERENCES documents(document_id)
+#     PRIMARY KEY (document_content_id, entity_type)
+#     FOREIGN KEY (document_content_id) REFERENCES documents(document_content_id)
 #     FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name)
 # );
 # CREATE TABLE entities (
@@ -54,10 +54,10 @@ from .values import EntityId
 # );
 # CREATE TABLE extracted_entities (
 #     entity_id TEXT NOT NULL,
-#     document_id TEXT NOT NULL,
-#     PRIMARY KEY (entity_id, document_id)
+#     document_content_id TEXT NOT NULL,
+#     PRIMARY KEY (entity_id, document_content_id)
 #     FOREIGN KEY (entity_id) REFERENCES entities(entity_id),
-#     FOREIGN KEY (document_id) REFERENCES documents(document_id)
+#     FOREIGN KEY (document_content_id) REFERENCES documents(document_content_id)
 # );
 
 

@@ -8,13 +8,13 @@ from wukong_engine.core.graph.elements.values import EntityId
 
 # TODO: Implement
 class SQLiteEntityStore(EntityStore):
-    """SQLite-based implementation of the EntityStagingStore interface."""
+    """SQLite implementation of the EntityStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
         """Initialize the staging store with a SQLite connection."""
         self._conn = conn
 
-    def upsert_entity(self, entity: Entity, document_id: str) -> EntityId:
+    def upsert(self, entity: Entity, document_id: str) -> EntityId:
         """Insert or update an entity in the staging store, linking it to the source document."""
         cursor = self._conn.cursor()
 

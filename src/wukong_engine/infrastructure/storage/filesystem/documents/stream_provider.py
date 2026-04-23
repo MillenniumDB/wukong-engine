@@ -18,20 +18,14 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
     """Streams documents from a list of sources stored on the local filesystem."""
 
     def stream(self, sources: tuple[DocumentSource, ...]) -> Iterator[Document]:
-        """Find, deduplicate and stream documents from the given list of sources.
+        """Find and stream documents from the given list of sources.
 
-        Resolves each source to a set of file paths according to its mode,
-        deduplicates across sources, then yields a Document for each unique path and ID.
+        Resolves each source to a set of file paths according to its mode, then yields all Documents found.
         """
-        seen_paths: set[Path] = set()
-        seen_content: set[bytes] = set()
         for source in sources:
             for path in self._expand_source(source):
                 canonical_path = path.resolve()
-                if canonical_path in seen_paths:
-                    continue
-                seen_paths.add(canonical_path)
-                document = self._load_document(canonical_path, seen_content)
+                document = self._load_document(canonical_path)
                 if document is not None:
                     yield document
 
@@ -61,26 +55,11 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             case DocumentSourceMode.RECURSIVE:
                 yield from path.rglob('*.txt')
 
-    def _load_document(self, path: Path, seen_content: set[bytes]) -> Document | None:
-        """Load a Document from a file path, returning None on error or if the ID is duplicate.
-
-        First loads the bytes, computes the document ID, checks for duplicates,
-        and only creates the Document object if the content is new.
-        """
+    def _load_document(self, path: Path) -> Document | None:
+        """Load a Document from a file path."""
         try:
-            raw = path.read_bytes()
-            doc_id = DocumentId.from_content(raw)
-
-            if doc_id.content.to_bytes() in seen_content:
-                logger.warning(
-                    f'Found duplicated document content: "{doc_id.content}" from "{path}" (skipped).',
-                )
-                return None
-
-            seen_content.add(doc_id.content.to_bytes())
             return Document(
-                id=doc_id,
-                text=raw.decode('utf-8'),
+                id=DocumentId.from_content(path.read_bytes()),
                 source_uri=PurePath(path),
             )
         except OSError:

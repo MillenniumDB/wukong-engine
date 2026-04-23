@@ -9,5 +9,5 @@ class DocumentStreamProvider(Protocol):
     """Streams documents from a given list of sources."""
 
     def stream(self, sources: tuple[DocumentSource, ...]) -> Iterator[Document]:
-        """Find, deduplicate and stream documents from the given list of sources."""
+        """Find and stream documents from the given list of sources."""
         ...
