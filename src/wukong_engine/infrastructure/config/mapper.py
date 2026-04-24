@@ -29,7 +29,7 @@ class ApplicationConfigMapper:
     def _map_pipeline(self, schema: PipelineConfigSchema) -> PipelineConfig:
         """Map pipeline configuration schema to pipeline configuration model."""
         enabled = {step for field, step in self._FIELD_TO_STEP.items() if getattr(schema, field)}
-        return PipelineConfig(steps=frozenset(enabled))
+        return PipelineConfig(run_mode=schema.run_mode, steps=frozenset(enabled))
 
     def _map_llm(self, schema: LLMConfigSchema) -> LLMConfig:
         """Map llm configuration schema to llm configuration model."""

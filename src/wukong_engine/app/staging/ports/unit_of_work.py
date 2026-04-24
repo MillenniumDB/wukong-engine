@@ -6,16 +6,7 @@ from .entity_store import EntityStore
 from .extraction_store import ExtractionStore
 
 
-# TODO: Test with DocumentStore
-# def ingest_documents(stream, uow: UnitOfWork):
-#     with uow as tx:
-#         for batch in batched(stream, 1000):
-#             tx.documents.upsert_documents(batch)
-#             tx.documents.link_documents_to_collection(
-#                 [doc_id for doc_id, *_ in batch],
-#                 collection_name,
-#             )
-# TODO: Clear
+# TODO: Clear method or elsewhere?
 class UnitOfWork(Protocol):
     """Unit of Work for managing operations across multiple staging stores."""
 

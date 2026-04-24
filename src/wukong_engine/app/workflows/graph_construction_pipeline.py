@@ -116,6 +116,19 @@ class GraphConstructionPipeline:
         document_registry.validate_collections(frozenset(unique_collections))
         logger.info(f'Graph Model loaded successfully from "{graph_model_path}"\n\n{graph_model}')
 
+        # TODO: Run mode and DB startup
+        # TODO: Test with DocumentStore
+        # def ingest_documents(stream, uow: UnitOfWork):
+        #     with uow as tx:
+        #         for batch in batched(stream, 1000):
+        #             tx.documents.upsert_documents(batch)
+        #             tx.documents.link_documents_to_collection(
+        #                 [doc_id for doc_id, *_ in batch],
+        #                 collection_name,
+        #             )
+
+        return
+
         # TODO: Entity extraction
         if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
             for entity_type in graph_model.active_entity_types.values():

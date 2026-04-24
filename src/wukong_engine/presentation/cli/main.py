@@ -71,7 +71,7 @@ def main() -> None:
     # Execute the pipeline
     print('Starting WUKONG...')
     try:
-        app = build_application(config_path=args.config, verbosity=args.verbose)
+        app = build_application(data_dir=args.data_dir, config_path=args.config, verbosity=args.verbose)
         app.graph_construction.execute(data_dir=args.data_dir)
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:

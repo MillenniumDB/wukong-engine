@@ -5,11 +5,17 @@
 # You can modify the values below to customize the execution of the tool.
 # For more information, see: https://github.com/MillenniumDB/wukong-engine/blob/main/docs/configuration.md
 
-##################
-# PIPELINE STEPS #
-##################
-# Enable or disable each step in the pipeline (true/false)
+##############
+#  PIPELINE  #
+##############
 [pipeline]
+
+# The execution mode of the pipeline
+# Supported modes:
+# "experimental": accepts any graph model and document collections, the data is cleared at the start of each run (for testing)
+# "production": assumes a fixed graph model and document collections, the data is kept across runs (for full extraction)
+# Default: "experimental"
+run_mode = "experimental"
 
 # This step is responsible for extracting entities from the documents
 # Default: true
@@ -18,17 +24,36 @@ extract_entities = true
 # This step is responsible for extracting relationships between entities from the documents
 # Note: This step expects previously extracted entities to be available
 # Default: true
-extract_relationships = true
+extract_relationships = false
 
 # This step is responsible for exporting the knowledge graph to various formats
 # Note: This step expects previously extracted entities and relationships to be available
 # Default: true
-export_graph = true
+export_graph = false
+
+##############
+#    LLM     #
+##############
+[llm]
+
+# The LLM model to use for extraction
+# Note: Currently only OpenAI models are supported
+# Strictly supported models:
+# "gpt-4.1-mini": Best non-reasoning, cheapest
+# "gpt-5-mini": Most balanced, default
+# "gpt-5.4-mini": Best reasoning, expensive
+# Default: "gpt-5-mini"
+model = "gpt-5-mini"
+
+# Whether to accept only strictly supported models or to allow any model
+# Note: Setting this to true will raise an error if an unsupported model is specified
+# Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
+# Default: true
+strict = true
 
 ##############
 # PARAMETERS #
 ##############
-# Customize different parameters
 [parameters]
 
 ### List of formats for exporting the results ###
@@ -50,24 +75,3 @@ max_tokens = 2000
 # Adjust this value based on your system's capabilities and the LLM's rate limits
 # Default: 10
 max_worker_threads = 10
-
-##############
-#    LLM     #
-##############
-# Configuration for the Large Language Model (LLM) used in the pipeline
-[llm]
-
-# The LLM model to use for processing
-# Note: Currently only OpenAI models are supported
-# Strictly supported models:
-# "gpt-4.1-mini": Best non-reasoning, cheapest
-# "gpt-5-mini": Most balanced, default
-# "gpt-5.4-mini": Best reasoning, expensive
-# Default: "gpt-5-mini"
-model = "gpt-5-mini"
-
-# Whether to accept only strictly supported models or to allow any model
-# Note: Setting this to true will raise an error if an unsupported model is specified
-# Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
-# Default: true
-strict = true

@@ -1,32 +1,43 @@
 import sqlite3
+from collections.abc import Callable
 from types import TracebackType
 from typing import Self
 
 from wukong_engine.app.staging.ports import UnitOfWork
 
-from .document_store import SQLiteDocumentStore
-from .entity_store import SQLiteEntityStore
-from .extraction_store import SQLiteExtractionStore
+from .stores import SQLiteDocumentStore, SQLiteEntityStore, SQLiteExtractionStore
 
 
 class SQLiteUnitOfWork(UnitOfWork):
     """SQLite implementation of the UnitOfWork."""
 
-    def __init__(self, conn: sqlite3.Connection) -> None:
+    def __init__(self, connection_factory: Callable[[], sqlite3.Connection]) -> None:
         """Initialize the UnitOfWork with a SQLite connection."""
-        self._conn = conn
+        # Connection management
+        self._connection_factory = connection_factory
+        self._conn: sqlite3.Connection | None = None
+        self._active = False  # To prevent nested transactions
 
-        # Stores will be initialized in __enter__
+        # Staging stores
         self.documents: SQLiteDocumentStore
         self.entities: SQLiteEntityStore
         self.extraction: SQLiteExtractionStore
 
     def __enter__(self) -> Self:
         """Enter the runtime context related to an SQLite transaction."""
+        if self._active:
+            raise RuntimeError('Nested transaction contexts are not supported.')
+
+        # Open connection and begin transaction
+        self._conn = self._connection_factory()
         self._conn.execute('BEGIN')
+
+        # Bind stores to the connection
         self.documents = SQLiteDocumentStore(self._conn)
         self.entities = SQLiteEntityStore(self._conn)
         self.extraction = SQLiteExtractionStore(self._conn)
+
+        self._active = True
         return self
 
     def __exit__(
@@ -36,15 +47,31 @@ class SQLiteUnitOfWork(UnitOfWork):
         traceback: TracebackType | None,
     ) -> None:
         """Exit the runtime context and handle commit or rollback."""
-        if exc:
-            self.rollback()
-        else:
-            self.commit()
+        try:
+            if exc_type is not None:
+                self.rollback()
+            else:
+                self.commit()
+        finally:
+            self._cleanup()
 
     def commit(self) -> None:
         """Commit the staged changes to the underlying stores."""
+        if not self._active or self._conn is None:
+            raise RuntimeError('Cannot commit: UnitOfWork is not active')
         self._conn.commit()
 
     def rollback(self) -> None:
         """Rollback any staged changes in case of an error."""
+        if not self._active or self._conn is None:
+            raise RuntimeError('Cannot rollback: UnitOfWork is not active')
         self._conn.rollback()
+
+    def _cleanup(self) -> None:
+        """Cleanup used resources."""
+        if self._conn is not None:
+            try:
+                self._conn.close()
+            finally:
+                self._conn = None
+                self._active = False

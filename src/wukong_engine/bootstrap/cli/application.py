@@ -10,6 +10,12 @@ from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvid
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import configure_logging
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
+from wukong_engine.infrastructure.persistence.sqlite import (
+    SQLITE_STAGING_DB_PATH,
+    SQLiteSessionFactory,
+    SQLiteUnitOfWork,
+    initialize_sqlite_database,
+)
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
@@ -27,18 +33,26 @@ class CLIApplication:
         self.graph_construction = graph_construction_pipeline
 
 
-def build_application(config_path: Path, verbosity: int) -> CLIApplication:
+def build_application(data_dir: Path, config_path: Path, verbosity: int) -> CLIApplication:
     """Build the CLI application."""
     # Configuration
     configure_logging(verbosity)
     env_config = load_env_config()
     app_config = ConfigProvider().get(config_path)
 
+    # TODO: Include data dir in app config
+
+    # Database Initialization
+    staging_db_path = data_dir / SQLITE_STAGING_DB_PATH
+    session_factory = SQLiteSessionFactory(db_path=staging_db_path)
+    initialize_sqlite_database(db_path=staging_db_path, connection_factory=session_factory)
+
     # Infrastructure
     graph_model_provider = LocalGraphModelProvider()
     document_registry_provider = LocalDocumentRegistryProvider()
     document_source_validator = LocalDocumentSourceValidator()
     document_stream_provider = LocalDocumentStreamProvider()
+    staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
     llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model.name)
     llm_client = OpenAIClient(config=llm_config)
     pk_normalizer = DefaultPKNormalizer()
