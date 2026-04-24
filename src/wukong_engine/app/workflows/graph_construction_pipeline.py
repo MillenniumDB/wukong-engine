@@ -9,12 +9,12 @@ Functions:
 """
 
 import logging
-from pathlib import Path
 
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
+from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 """
@@ -32,18 +32,6 @@ from wukong_engine.documents.text_processing import (
 
 # Logging
 logger = logging.getLogger(__name__)
-
-# Paths
-ORIGINAL_DOCS_DIR = Path('./docs/text/')
-ORIGINAL_METADATA_DIR = Path('./docs/metadata/')
-DOCS_DIR = Path('./docs/processed/full/')
-CHUNKS_DIR = Path('./docs/processed/chunks/')
-METADATA_DIR = Path('./docs/processed/metadata/')
-PROMPTS_DIR = Path('./prompts/')
-RESULTS_DIR = Path('./results/')
-EXPORTS_DIR = Path('./exports/')
-GRAPH_MODEL_FILE = 'graph_model.json'
-DOCUMENT_REGISTRY_FILE = 'document_collections.json'
 
 
 class GraphConstructionPipeline:
@@ -68,55 +56,45 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    def execute(self, data_dir: Path) -> None:
+    def execute(self, workspace: Workspace) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
 
-        1. Document processing
-        2. Entity extraction
-        3. Relation extraction
-        4. Knowledge graph export
+        1. Ingest documents
+        2. Extract entities
+        3. Extract relationships
+        4. Export knowledge graph
 
         Args:
-            data_dir: The path to the data directory containing the documents and graph model.
-            config_path: The path to the engine configuration file.
+            workspace: The user workspace containing paths to key files and directories for the pipeline execution.
 
         Raises:
             FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
             ValueError: If the configuration or graph model is invalid, or environment variables are missing.
             TypeError: If the graph model has invalid types for certain fields.
         """
-        # Define relevant paths
-        # original_docs_dir = data_dir / ORIGINAL_DOCS_DIR
-        # original_metadata_dir = data_dir / ORIGINAL_METADATA_DIR
-        # docs_dir = data_dir / DOCS_DIR
-        # chunks_dir = data_dir / CHUNKS_DIR
-        # metadata_dir = data_dir / METADATA_DIR
-        # prompts_dir = data_dir / PROMPTS_DIR
-        # results_dir = data_dir / RESULTS_DIR
-        # exports_dir = data_dir / EXPORTS_DIR
-        graph_model_path = data_dir / GRAPH_MODEL_FILE
-        document_registry_path = data_dir / DOCUMENT_REGISTRY_FILE
-
         # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
 
         # Get document registry and validate document sources
-        document_registry = self._get_document_registry.execute(document_registry_path)
+        document_registry = self._get_document_registry.execute(workspace.paths.document_registry)
         self._validate_document_sources.execute(document_registry)
-        logger.info(f'Document Collections loaded successfully from "{document_registry_path}"\n\n{document_registry}')
+        logger.info(
+            f'Document Collections loaded successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
+        )
 
         # Get graph model and validate selected document collections
-        graph_model = self._get_graph_model.execute(graph_model_path)
+        graph_model = self._get_graph_model.execute(workspace.paths.graph_model)
         unique_collections = set()
         for entity_type in graph_model.entity_types.values():
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         document_registry.validate_collections(frozenset(unique_collections))
-        logger.info(f'Graph Model loaded successfully from "{graph_model_path}"\n\n{graph_model}')
+        logger.info(f'Graph Model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
         # TODO: Run mode and DB startup
+
         # TODO: Test with DocumentStore
         # def ingest_documents(stream, uow: UnitOfWork):
         #     with uow as tx:

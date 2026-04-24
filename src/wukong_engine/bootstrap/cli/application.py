@@ -4,6 +4,7 @@ from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
 from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
+from wukong_engine.app.workspace import Workspace
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
@@ -11,7 +12,6 @@ from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import configure_logging
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 from wukong_engine.infrastructure.persistence.sqlite import (
-    SQLITE_STAGING_DB_PATH,
     SQLiteSessionFactory,
     SQLiteUnitOfWork,
     initialize_sqlite_database,
@@ -33,19 +33,16 @@ class CLIApplication:
         self.graph_construction = graph_construction_pipeline
 
 
-def build_application(data_dir: Path, config_path: Path, verbosity: int) -> CLIApplication:
+def build_application(workspace: Workspace, config_path: Path, verbosity: int) -> CLIApplication:
     """Build the CLI application."""
     # Configuration
     configure_logging(verbosity)
     env_config = load_env_config()
     app_config = ConfigProvider().get(config_path)
 
-    # TODO: Include data dir in app config
-
     # Database Initialization
-    staging_db_path = data_dir / SQLITE_STAGING_DB_PATH
-    session_factory = SQLiteSessionFactory(db_path=staging_db_path)
-    initialize_sqlite_database(db_path=staging_db_path, connection_factory=session_factory)
+    session_factory = SQLiteSessionFactory(db_path=workspace.paths.staging_db)
+    initialize_sqlite_database(db_path=workspace.paths.staging_db, connection_factory=session_factory)
 
     # Infrastructure
     graph_model_provider = LocalGraphModelProvider()

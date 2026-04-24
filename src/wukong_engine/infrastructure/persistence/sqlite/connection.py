@@ -1,9 +1,6 @@
 import sqlite3
 from pathlib import Path
 
-# TODO: Remove
-SQLITE_STAGING_DB_PATH = Path('staging') / 'extraction.db'
-
 
 class SQLiteSessionFactory:
     """Factory for creating SQLite connections."""

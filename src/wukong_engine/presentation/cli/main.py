@@ -6,7 +6,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    wukong data/example --config config/default.toml
+    wukong workspaces/example --config config/default.toml
 """
 
 import argparse
@@ -14,6 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
+from wukong_engine.app.workspace import Workspace
 from wukong_engine.bootstrap.cli import build_application
 
 # Logging
@@ -43,9 +44,9 @@ def parse_args() -> argparse.Namespace:
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
     )
     parser.add_argument(
-        'data_dir',
+        'workspace',
         type=Path,
-        help='Path to the directory containing the data (e.g. data/example)',
+        help='Path to the workspace directory (e.g. workspaces/example)',
     )
     parser.add_argument(
         '--config',
@@ -69,10 +70,11 @@ def main() -> None:
     args = parse_args()
 
     # Execute the pipeline
-    print('Starting WUKONG...')
     try:
-        app = build_application(data_dir=args.data_dir, config_path=args.config, verbosity=args.verbose)
-        app.graph_construction.execute(data_dir=args.data_dir)
+        print('Starting WUKONG...')
+        workspace = Workspace(root=args.workspace)
+        app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
+        app.graph_construction.execute(workspace=workspace)
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')

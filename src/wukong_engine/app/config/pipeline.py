@@ -18,6 +18,7 @@ class RunMode(Enum):
     PRODUCTION = 'production'
 
 
+# TODO: Move RunMode to run context
 @dataclass(frozen=True)
 class PipelineConfig:
     """Pipeline configuration."""

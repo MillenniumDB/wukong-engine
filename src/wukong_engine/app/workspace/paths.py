@@ -1,0 +1,32 @@
+from pathlib import Path
+
+from .layout import WorkspaceLayout
+
+
+class WorkspacePaths:
+    """Group of paths to key files and directories in a workspace."""
+
+    def __init__(self, root: Path, layout: WorkspaceLayout) -> None:
+        """Initialize with the root directory and layout."""
+        self._root = root
+        self._layout = layout
+
+    @property
+    def document_registry(self) -> Path:
+        """Path to the document registry file."""
+        return self._root / self._layout.DOCUMENT_REGISTRY
+
+    @property
+    def graph_model(self) -> Path:
+        """Path to the graph model file."""
+        return self._root / self._layout.GRAPH_MODEL
+
+    @property
+    def staging_db(self) -> Path:
+        """Path to the staging database file."""
+        return self._root / self._layout.STAGING_DB
+
+    @property
+    def exports_dir(self) -> Path:
+        """Path to the exports directory."""
+        return self._root / self._layout.EXPORTS_DIR

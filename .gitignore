@@ -214,12 +214,15 @@ __marimo__/
 data/*
 !data/example/
 data/example/*
-!data/example/graph_model.json
-!data/example/document_collections.json
 !data/example/docs/
-data/example/docs/*
-!data/example/docs/text/
-!data/example/docs/metadata/
+!data/example/metadata/
+
+# Example workspace
+workspaces/*
+!workspaces/example/
+workspaces/example/*
+!workspaces/example/graph_model.json
+!workspaces/example/document_collections.json
 
 # Custom configuration
 config/*.toml
