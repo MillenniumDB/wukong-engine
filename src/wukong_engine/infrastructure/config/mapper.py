@@ -14,6 +14,7 @@ class ApplicationConfigMapper:
     """Mapper from configuration schemas to application configuration models."""
 
     _FIELD_TO_STEP: ClassVar[dict[str, PipelineStep]] = {
+        'ingest_documents': PipelineStep.INGEST_DOCUMENTS,
         'extract_entities': PipelineStep.EXTRACT_ENTITIES,
         'extract_relationships': PipelineStep.EXTRACT_RELATIONSHIPS,
         'export_graph': PipelineStep.EXPORT_GRAPH,
@@ -29,7 +30,7 @@ class ApplicationConfigMapper:
     def _map_pipeline(self, schema: PipelineConfigSchema) -> PipelineConfig:
         """Map pipeline configuration schema to pipeline configuration model."""
         enabled = {step for field, step in self._FIELD_TO_STEP.items() if getattr(schema, field)}
-        return PipelineConfig(run_mode=schema.run_mode, steps=frozenset(enabled))
+        return PipelineConfig(steps=frozenset(enabled))
 
     def _map_llm(self, schema: LLMConfigSchema) -> LLMConfig:
         """Map llm configuration schema to llm configuration model."""

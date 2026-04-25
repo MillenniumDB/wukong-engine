@@ -10,26 +10,24 @@
 ##############
 [pipeline]
 
-# The execution mode of the pipeline
-# Supported modes:
-# "experimental": accepts any graph model and document collections, the data is cleared at the start of each run (for testing)
-# "production": assumes a fixed graph model and document collections, the data is kept across runs (for full extraction)
-# Default: "experimental"
-run_mode = "experimental"
+# This step is responsible for ingesting documents into the system
+# Note: Expects input documents to be available as specified in the workspace document collections
+# Default: true
+ingest_documents = true
 
 # This step is responsible for extracting entities from the documents
 # Default: true
 extract_entities = true
 
 # This step is responsible for extracting relationships between entities from the documents
-# Note: This step expects previously extracted entities to be available
+# Note: Expects previously extracted entities to be available
 # Default: true
-extract_relationships = false
+extract_relationships = true
 
 # This step is responsible for exporting the knowledge graph to various formats
-# Note: This step expects previously extracted entities and relationships to be available
+# Note: Expects previously extracted entities and relationships to be available
 # Default: true
-export_graph = false
+export_graph = true
 
 ##############
 #    LLM     #

@@ -56,7 +56,7 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    def execute(self, workspace: Workspace, run_mode: str) -> None:
+    def execute(self, workspace: Workspace, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
@@ -67,15 +67,14 @@ class GraphConstructionPipeline:
         4. Export knowledge graph
 
         Args:
-            workspace: The user workspace containing paths to key files and directories for the pipeline execution.
-            run_mode: The mode in which to run the pipeline, controlling execution behavior and assumptions about the environment.
+            workspace: The user workspace containing key files and directories for the pipeline execution.
+            should_reset: If True, clears existing data on each pipeline step. If False, keeps existing data and appends any new results.
 
         Raises:
             FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
             ValueError: If the configuration or graph model is invalid, or environment variables are missing.
             TypeError: If the graph model has invalid types for certain fields.
         """
-        # Pipeline execution
         logger.info('Executing WUKONG Engine Pipeline...')
 
         # Get document registry and validate document sources
@@ -94,11 +93,10 @@ class GraphConstructionPipeline:
         document_registry.validate_collections(frozenset(unique_collections))
         logger.info(f'Graph Model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
-        # TODO: Run mode and clearing of DB per step
-        print(run_mode)
-        return
-
-        # TODO: Test with DocumentStore
+        # TODO: Document ingestion
+        # TODO: If should_reset is True, clear all existing documents before this step
+        if self._app_config.pipeline.is_active(PipelineStep.INGEST_DOCUMENTS):
+            logger.info('Ingesting documents into the system...')
         # def ingest_documents(stream, uow: UnitOfWork):
         #     with uow as tx:
         #         for batch in batched(stream, 1000):
@@ -108,7 +106,10 @@ class GraphConstructionPipeline:
         #                 collection_name,
         #             )
 
+        return
+
         # TODO: Entity extraction
+        # TODO: If should_reset is True, clear all existing entities before this step
         if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
             for entity_type in graph_model.active_entity_types.values():
                 logger.info(f'Extracting entities for EntityType "{entity_type.name}"')
@@ -116,6 +117,8 @@ class GraphConstructionPipeline:
                 break
 
         # TODO: Pipeline
+        # TODO: Relationship extraction
+        # TODO: If should_reset is True, clear all existing relationships before this step
         """
         # Process input documents
         if document_processing:

@@ -33,49 +33,88 @@ def print_error(message: str) -> None:
     print(f'Error: {message}', file=sys.stderr)
 
 
-def parse_args() -> argparse.Namespace:
+def build_parser() -> argparse.ArgumentParser:
     """Parse command line arguments for the WUKONG CLI.
 
     Returns:
-        A Namespace object containing the parsed arguments.
+        A configured ArgumentParser instance.
     """
+    # Main parser
     parser = argparse.ArgumentParser(
         prog='wukong',
         description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
+        allow_abbrev=False,
     )
-    parser.add_argument(
+    subparsers = parser.add_subparsers(dest='command', required=True)
+
+    # Run command
+    run_parser = subparsers.add_parser(
+        'run',
+        help='Execute the WUKONG Engine pipeline over a workspace',
+    )
+    run_parser.add_argument(
         'workspace',
         type=Path,
         help='Path to the workspace directory (e.g. workspaces/example)',
     )
-    parser.add_argument(
+    run_parser.add_argument(
         '--config',
         type=Path,
         default=Path('./config/default.toml'),
         help='Path to the engine configuration file (e.g. config/default.toml)',
         metavar='CONFIG_FILE',
     )
-    parser.add_argument(
+    run_parser.add_argument(
+        '--incremental',
+        action='store_true',
+        help='Reuse existing state instead of resetting active steps',
+    )
+    run_parser.add_argument(
         '-v',
         '--verbose',
         action='count',
         default=0,
+        help='Select output verbosity (default: only show warning/error logs, -v: add info logs, -vv: add debug logs)',
     )
-    return parser.parse_args()
+    run_parser.set_defaults(func=handle_run)
+
+    # Reset command
+    reset_parser = subparsers.add_parser(
+        'reset',
+        help='Reset stored state for a workspace',
+    )
+    scope_group = reset_parser.add_mutually_exclusive_group(required=True)
+    scope_group.add_argument(
+        '--all',
+        action='store_true',
+        help='Reset everything',
+    )
+    scope_group.add_argument(
+        '--entities',
+        action='store_true',
+        help='Reset extracted entities and relationships (keep documents)',
+    )
+    scope_group.add_argument(
+        '--relationships',
+        action='store_true',
+        help='Reset extracted relationships (keep documents and entities)',
+    )
+    reset_parser.set_defaults(func=handle_reset)
+
+    return parser
 
 
-# TODO: Flag for run mode (experimental vs production)
-def main() -> None:
-    """Run the WUKONG CLI."""
-    # Parse command line arguments
-    args = parse_args()
+def handle_run(args: argparse.Namespace) -> None:
+    """Run command execution.
 
-    # Execute the pipeline
+    Args:
+        args: Parsed command-line arguments.
+    """
     try:
         print('Starting WUKONG...')
         workspace = Workspace(root=args.workspace)
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
-        app.graph_construction.execute(workspace=workspace, run_mode='experimental')
+        app.graph_construction.execute(workspace=workspace, should_reset=not args.incremental)
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')
@@ -85,6 +124,29 @@ def main() -> None:
         logger.exception('Unhandled exception.')
         print('Error: An unexpected error occurred.', file=sys.stderr)
         sys.exit(1)
+
+
+# TODO: New command for 'wukong reset <workspace>' with flags for --all, --entities, --relationships
+def handle_reset(args: argparse.Namespace) -> None:
+    """Reset command execution.
+
+    Args:
+        args: Parsed command-line arguments.
+    """
+    if args.all:
+        scope = 'all'
+    elif args.entities:
+        scope = 'entities'
+    else:
+        scope = 'relationships'
+    # reset_state(scope=scope, confirm=args.yes)
+
+
+def main() -> None:
+    """Run the WUKONG CLI."""
+    parser = build_parser()
+    args = parser.parse_args()
+    args.func(args)
 
 
 # Execute the WUKONG engine CLI
