@@ -4,8 +4,7 @@ from .layout import WorkspaceLayout
 from .paths import WorkspacePaths
 
 
-# TODO: Path vs PurePath vs str usage across engine
-# TODO: Validate
+# TODO: Validate root
 class Workspace:
     """A user-centered workspace for the engine."""
 

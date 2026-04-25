@@ -20,21 +20,21 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
         """
         errors: list[str] = []
         for source in sources:
-            source_path = Path(source.source_path)
+            root_path = Path(source.root)
             source_label = str(source)
 
-            if not source_path.exists():
+            if not root_path.exists():
                 errors.append(f'{source_label}: path does not exist')
                 continue
 
             if source.mode is DocumentSourceMode.FILE:
-                file_error = self._validate_file_source(source_path, source_label)
+                file_error = self._validate_file_source(root_path, source_label)
                 if file_error is not None:
                     errors.append(file_error)
                     continue
 
             if source.mode in (DocumentSourceMode.DIRECTORY, DocumentSourceMode.RECURSIVE):
-                directory_error = self._validate_directory_source(source_path, source_label)
+                directory_error = self._validate_directory_source(root_path, source_label)
                 if directory_error is not None:
                     errors.append(directory_error)
 

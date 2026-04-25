@@ -6,7 +6,7 @@ from wukong_engine.core.documents.elements import Document
 from wukong_engine.core.documents.model import DocumentCollection
 
 
-# TODO: Clear
+# TODO: Clear method, testing
 class SQLiteDocumentStore(DocumentStore):
     """SQLite implementation of the DocumentStore."""
 

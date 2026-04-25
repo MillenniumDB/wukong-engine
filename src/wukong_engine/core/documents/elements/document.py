@@ -5,7 +5,6 @@ Classes:
 """
 
 from dataclasses import dataclass
-from pathlib import PurePath
 
 from .values import DocumentId
 
@@ -15,7 +14,7 @@ class Document:
     """A loaded document."""
 
     id: DocumentId
-    source_uri: PurePath
+    source_uri: str
 
     def __str__(self) -> str:
         """User-friendly string representation of a document."""

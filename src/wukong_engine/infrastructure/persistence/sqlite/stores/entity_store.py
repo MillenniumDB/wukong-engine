@@ -7,6 +7,7 @@ from wukong_engine.core.graph.elements.values import EntityId
 
 
 # TODO: Implement
+# TODO: Clear method, testing
 class SQLiteEntityStore(EntityStore):
     """SQLite implementation of the EntityStore."""
 

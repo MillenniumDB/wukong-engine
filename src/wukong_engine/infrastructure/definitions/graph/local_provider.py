@@ -11,8 +11,9 @@ from .schemas import GraphModelSchema
 class LocalGraphModelProvider(GraphModelProvider):
     """Loads graph models from local JSON files."""
 
-    def get(self, path: Path) -> GraphModel:
+    def get(self, source_uri: str) -> GraphModel:
         """Load a graph model from a local JSON file."""
+        path = Path(source_uri)
         raw = json.load(path.open())
         schema = GraphModelSchema.model_validate(raw)
         return GraphModelMapper().map_graph_model(schema)

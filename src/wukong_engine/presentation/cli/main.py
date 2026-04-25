@@ -64,6 +64,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+# TODO: Flag for run mode (experimental vs production)
 def main() -> None:
     """Run the WUKONG CLI."""
     # Parse command line arguments
@@ -74,7 +75,7 @@ def main() -> None:
         print('Starting WUKONG...')
         workspace = Workspace(root=args.workspace)
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
-        app.graph_construction.execute(workspace=workspace)
+        app.graph_construction.execute(workspace=workspace, run_mode='experimental')
         print('WUKONG pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')

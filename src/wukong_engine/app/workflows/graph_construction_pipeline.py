@@ -56,7 +56,7 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    def execute(self, workspace: Workspace) -> None:
+    def execute(self, workspace: Workspace, run_mode: str) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
@@ -68,6 +68,7 @@ class GraphConstructionPipeline:
 
         Args:
             workspace: The user workspace containing paths to key files and directories for the pipeline execution.
+            run_mode: The mode in which to run the pipeline, controlling execution behavior and assumptions about the environment.
 
         Raises:
             FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
@@ -78,14 +79,14 @@ class GraphConstructionPipeline:
         logger.info('Executing WUKONG Engine Pipeline...')
 
         # Get document registry and validate document sources
-        document_registry = self._get_document_registry.execute(workspace.paths.document_registry)
+        document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
         self._validate_document_sources.execute(document_registry)
         logger.info(
             f'Document Collections loaded successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )
 
         # Get graph model and validate selected document collections
-        graph_model = self._get_graph_model.execute(workspace.paths.graph_model)
+        graph_model = self._get_graph_model.execute(str(workspace.paths.graph_model))
         unique_collections = set()
         for entity_type in graph_model.entity_types.values():
             for collections in entity_type.document_collections.values():
@@ -93,7 +94,9 @@ class GraphConstructionPipeline:
         document_registry.validate_collections(frozenset(unique_collections))
         logger.info(f'Graph Model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
-        # TODO: Run mode and DB startup
+        # TODO: Run mode and clearing of DB per step
+        print(run_mode)
+        return
 
         # TODO: Test with DocumentStore
         # def ingest_documents(stream, uow: UnitOfWork):
@@ -104,8 +107,6 @@ class GraphConstructionPipeline:
         #                 [doc_id for doc_id, *_ in batch],
         #                 collection_name,
         #             )
-
-        return
 
         # TODO: Entity extraction
         if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):

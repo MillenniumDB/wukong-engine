@@ -2,7 +2,7 @@
 
 import logging
 from collections.abc import Iterator
-from pathlib import Path, PurePath
+from pathlib import Path
 
 from wukong_engine.app.document_ingestion.ports import DocumentStreamProvider
 from wukong_engine.core.documents.elements import Document
@@ -30,23 +30,23 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
                     yield document
 
     def _validate_source(self, source: DocumentSource) -> None:
-        """Validate a source to make sure its valid."""
-        path = Path(source.source_path)
+        """Validate a document source."""
+        path = Path(source.root)
         if not path.exists():
-            raise FileNotFoundError(f'Source path does not exist: "{path}"')
+            raise FileNotFoundError(f'Root path does not exist: "{path}"')
 
         match source.mode:
             case DocumentSourceMode.FILE:
                 if not path.is_file() or path.suffix != '.txt':
-                    raise ValueError(f'Source path is not a valid ".txt" file: "{path}"')
+                    raise ValueError(f'Root path is not a valid ".txt" file: "{path}"')
             case DocumentSourceMode.DIRECTORY | DocumentSourceMode.RECURSIVE:
                 if not path.is_dir():
-                    raise ValueError(f'Source path is not a valid directory: "{path}"')
+                    raise ValueError(f'Root path is not a valid directory: "{path}"')
 
     def _expand_source(self, source: DocumentSource) -> Iterator[Path]:
-        """Expand a source path into an iterator of concrete file paths."""
+        """Expand a source root uri into an iterator of concrete file paths."""
         self._validate_source(source)
-        path = Path(source.source_path)
+        path = Path(source.root)
         match source.mode:
             case DocumentSourceMode.FILE:
                 yield path
@@ -60,7 +60,7 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         try:
             return Document(
                 id=DocumentId.from_content(path.read_bytes()),
-                source_uri=PurePath(path),
+                source_uri=str(path),
             )
         except OSError:
             logger.warning(f'Failed to load document from "{path}" (skipped).')

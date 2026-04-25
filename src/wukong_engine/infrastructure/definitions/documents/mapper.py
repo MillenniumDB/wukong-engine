@@ -1,4 +1,4 @@
-from pathlib import Path, PurePath
+from pathlib import Path
 from types import MappingProxyType
 
 from wukong_engine.core.documents.model import DocumentCollection, DocumentRegistry, DocumentSource
@@ -35,7 +35,7 @@ class DocumentRegistryMapper:
     def _map_source(self, schema: DocumentSourceSchema) -> DocumentSource:
         """Convert a DocumentSourceSchema to a DocumentSource domain model."""
         return DocumentSource(
-            source_path=PurePath(self._resolve_path(schema.path)),
+            root=str(self._resolve_path(schema.root)),
             mode=schema.mode,
         )
 

@@ -8,7 +8,7 @@ from wukong_engine.core.documents.model.values import DocumentSourceMode
 class DocumentSourceSchema(BaseModel):
     """Schema-level representation of a document source."""
 
-    path: StrictStr
+    root: StrictStr
     mode: DocumentSourceMode
 
     # Mapping of various string representations to DocumentSourceMode members
@@ -32,10 +32,10 @@ class DocumentSourceSchema(BaseModel):
             return cls._SOURCE_MODE_ALIASES.get(value, value)
         return value
 
-    @field_validator('path')
+    @field_validator('root')
     @classmethod
-    def validate_path(cls, value: str) -> str:
-        """Validate that the path is well-formed."""
+    def validate_root(cls, value: str) -> str:
+        """Validate that the root is well-formed."""
         if not value.strip():
-            raise ValueError('Path must not be empty.')
+            raise ValueError('Root must not be empty.')
         return value

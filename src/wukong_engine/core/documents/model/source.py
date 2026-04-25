@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from pathlib import PurePath
 
 from .values import DocumentSourceMode
 
@@ -8,18 +7,18 @@ from .values import DocumentSourceMode
 class DocumentSource:
     """A document source."""
 
-    source_path: PurePath
+    root: str
     mode: DocumentSourceMode
 
     def __str__(self) -> str:
         """User-friendly string representation of the document source."""
-        return f'[{self.mode.value}] {self.source_path}'
+        return f'[{self.mode.value}] {self.root}'
 
     def __post_init__(self) -> None:
         """Validate document source invariants."""
-        self._validate_path()
+        self._validate_root()
 
-    def _validate_path(self) -> None:
-        """Validate that the path is well-formed."""
-        if not str(self.source_path).strip():
-            raise ValueError('Path must not be empty.')
+    def _validate_root(self) -> None:
+        """Validate that the root is well-formed."""
+        if not self.root.strip():
+            raise ValueError('Root must not be empty.')

@@ -18,7 +18,7 @@ class RunMode(Enum):
     PRODUCTION = 'production'
 
 
-# TODO: Move RunMode to run context
+# TODO: Move RunMode passing to presentation and as an arg to graph pipeline
 @dataclass(frozen=True)
 class PipelineConfig:
     """Pipeline configuration."""

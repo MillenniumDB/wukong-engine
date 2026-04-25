@@ -4,6 +4,7 @@ from wukong_engine.app.staging.ports import ExtractionStore
 
 
 # TODO: Implement
+# TODO: Clear method, testing
 class SQLiteExtractionStore(ExtractionStore):
     """SQLite implementation of the ExtractionStore."""
 
