@@ -12,6 +12,11 @@ class WorkspacePaths:
         self._layout = layout
 
     @property
+    def root(self) -> Path:
+        """Path to the root directory of the workspace."""
+        return self._root
+
+    @property
     def document_registry(self) -> Path:
         """Path to the document registry file."""
         return self._root / self._layout.DOCUMENT_REGISTRY

@@ -14,7 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wukong_engine.app.workspace import Workspace
+from wukong_engine.app.workspace import Workspace, WorkspaceValidator
 from wukong_engine.bootstrap.cli import build_application
 
 # Logging
@@ -113,6 +113,7 @@ def handle_run(args: argparse.Namespace) -> None:
     try:
         print('Starting WUKONG...')
         workspace = Workspace(root=args.workspace)
+        WorkspaceValidator().validate(workspace=workspace)
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
         app.graph_construction.execute(workspace=workspace, should_reset=not args.incremental)
         print('WUKONG pipeline execution completed!')

@@ -4,7 +4,6 @@ from .layout import WorkspaceLayout
 from .paths import WorkspacePaths
 
 
-# TODO: Validate root
 class Workspace:
     """A user-centered workspace for the engine."""
 
