@@ -18,6 +18,11 @@ class InstanceId:
         """Generate a new InstanceId."""
         return cls(uuid.uuid7().bytes[: cls._UUID_SIZE])
 
+    @classmethod
+    def from_hex(cls, hex_str: str) -> Self:
+        """Import an InstanceId from a hexadecimal string."""
+        return cls(bytes.fromhex(hex_str))
+
     def __post_init__(self) -> None:
         """Validate instance id invariants."""
         self._validate_uuid()
@@ -29,17 +34,19 @@ class InstanceId:
                 f'Invalid UUID length: expected {self._UUID_SIZE} bytes, got {len(self._value)}',
             )
 
-    def to_bytes(self) -> bytes:
+    @property
+    def bytes(self) -> bytes:
         """Raw bytes representation of the instance ID."""
         return self._value
 
-    def to_hex(self) -> str:
+    @property
+    def hex(self) -> str:
         """Hexadecimal string representation of the instance ID."""
         return self._value.hex()
 
     def __str__(self) -> str:
         """User-friendly string representation of the instance ID."""
-        return self.to_hex()
+        return self.hex
 
 
 @dataclass(frozen=True, slots=True)
@@ -61,6 +68,11 @@ class ContentHash:
         """Generate a content hash from string data."""
         return cls(hashlib.sha256(content.encode(encoding=encoding)).digest()[: cls._HASH_SIZE])
 
+    @classmethod
+    def from_hex(cls, hex_str: str) -> Self:
+        """Import a content hash from a hexadecimal string."""
+        return cls(bytes.fromhex(hex_str))
+
     def __post_init__(self) -> None:
         """Validate content hash invariants."""
         self._validate_hash()
@@ -72,14 +84,16 @@ class ContentHash:
                 f'Invalid hash length: expected {self._HASH_SIZE} bytes, got {len(self._value)}',
             )
 
-    def to_bytes(self) -> bytes:
+    @property
+    def bytes(self) -> bytes:
         """Raw bytes representation of the content hash."""
         return self._value
 
-    def to_hex(self) -> str:
+    @property
+    def hex(self) -> str:
         """Hexadecimal string representation of the content hash."""
         return self._value.hex()
 
     def __str__(self) -> str:
         """User-friendly string representation of the content hash."""
-        return self.to_hex()
+        return self.hex

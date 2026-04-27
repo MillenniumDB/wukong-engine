@@ -128,7 +128,7 @@ class RelationshipId:
             identity = f'{cls.VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}'
             content_id = ContentHash.from_string(identity)
         else:  # If policy is NONE, we fall back to instance-based identity (no deduplication)
-            identity = instance_id.to_bytes()
+            identity = instance_id.bytes
             content_id = ContentHash(identity)
 
         return cls(instance=instance_id, content=content_id)

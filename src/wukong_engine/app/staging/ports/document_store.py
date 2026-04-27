@@ -16,12 +16,20 @@ class DocumentStore(Protocol):
         """Insert or update a batch of documents based on their content, ensuring deduplication."""
         ...
 
+    def add_collections(self, collections: Iterable[DocumentCollection]) -> None:
+        """Add document collections."""
+        ...
+
     def link_to_collection(self, document: Document, collection: DocumentCollection) -> None:
         """Link a document to a collection."""
         ...
 
     def link_batch_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
         """Link a batch of documents to a collection."""
+        ...
+
+    def count(self) -> int:
+        """Get the total number of documents."""
         ...
 
     def stream_all(self) -> Iterator[Document]:

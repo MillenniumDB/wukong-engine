@@ -12,8 +12,9 @@ import logging
 
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
-from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
+from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
+from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
@@ -40,18 +41,20 @@ class GraphConstructionPipeline:
     def __init__(
         self,
         app_config: ApplicationConfig,
-        get_graph_model: GetGraphModel,
+        uow: UnitOfWork,
         get_document_registry: GetDocumentRegistry,
-        validate_document_sources: ValidateDocumentSources,
+        get_graph_model: GetGraphModel,
+        ingest_documents: IngestDocuments,
         extract_entity_type: ExtractEntityType,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
         self._app_config = app_config
-        self._get_graph_model = get_graph_model
+        self._uow = uow
         self._get_document_registry = get_document_registry
-        self._validate_document_sources = validate_document_sources
+        self._get_graph_model = get_graph_model
+        self._ingest_documents = ingest_documents
         self._extract_entity_type = extract_entity_type
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
@@ -75,13 +78,10 @@ class GraphConstructionPipeline:
             ValueError: If the configuration or graph model is invalid, or environment variables are missing.
             TypeError: If the graph model has invalid types for certain fields.
         """
-        logger.info('Executing WUKONG Engine Pipeline...')
-
         # Get document registry and validate document sources
         document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
-        self._validate_document_sources.execute(document_registry)
         logger.info(
-            f'Document Collections loaded successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
+            f'Document collections loaded successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )
 
         # Get graph model and validate selected document collections
@@ -91,21 +91,17 @@ class GraphConstructionPipeline:
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         document_registry.validate_collections(frozenset(unique_collections))
-        logger.info(f'Graph Model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
+        logger.info(f'Graph model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
-        # TODO: Document ingestion
-        # TODO: If should_reset is True, clear all existing documents before this step
+        # Document ingestion
         if self._app_config.pipeline.is_active(PipelineStep.INGEST_DOCUMENTS):
-            logger.info('Ingesting documents into the system...')
-        # def ingest_documents(stream, uow: UnitOfWork):
-        #     with uow as tx:
-        #         for batch in batched(stream, 1000):
-        #             tx.documents.upsert_documents(batch)
-        #             tx.documents.link_documents_to_collection(
-        #                 [doc_id for doc_id, *_ in batch],
-        #                 collection_name,
-        #             )
-
+            if should_reset:
+                with self._uow as tx:
+                    tx.documents.clear()
+                logger.warning('Removing existing documents...')
+            logger.info('Starting document ingestion...')
+            self._ingest_documents.execute(document_registry)
+            logger.info('Document ingestion completed successfully!')
         return
 
         # TODO: Entity extraction

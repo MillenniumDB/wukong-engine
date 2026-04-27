@@ -1,7 +1,7 @@
 """The document ingestion use cases package."""
 
-from .validate_sources import ValidateDocumentSources
+from .ingest_documents import IngestDocuments
 
 __all__ = [
-    'ValidateDocumentSources',
+    'IngestDocuments',
 ]

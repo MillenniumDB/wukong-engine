@@ -6,7 +6,6 @@ from .entity_store import EntityStore
 from .extraction_store import ExtractionStore
 
 
-# TODO: Clear method or elsewhere?
 class UnitOfWork(Protocol):
     """Unit of Work for managing operations across multiple staging stores."""
 

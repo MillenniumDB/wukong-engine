@@ -1,6 +1,4 @@
 from wukong_engine.app.data_extraction.ports import PKNormalizer
-from wukong_engine.app.document_ingestion.ports import DocumentStreamProvider
-from wukong_engine.app.document_ingestion.services import DocumentSourceNormalizer
 from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.extraction.elements import EntityExtractionRequest
@@ -16,13 +14,10 @@ class ExtractEntityType:
 
     def __init__(
         self,
-        stream_provider: DocumentStreamProvider,
         llm_client: LLMClient,
         pk_normalizer: PKNormalizer,
     ) -> None:
         """Initialize the use case with necessary dependencies."""
-        self._source_normalizer = DocumentSourceNormalizer()
-        self._stream_provider = stream_provider
         self._llm_client = llm_client
         self._pk_normalizer = pk_normalizer
 
@@ -33,15 +28,8 @@ class ExtractEntityType:
         cardinality = Cardinality.SINGLE
         task = EntityExtractionTask(context_level=context_level, cardinality=cardinality)
 
-        # TODO: Execution
+        # TODO: Execution - refactor to use collections instead of entity type
         # TODO: LLM Concurrency using async instead of threads
-        # collections = entity_type.document_collections.get(context_level, ())
-        # sources = document_registry.get_collection_sources(collections)  # Replace with streaming when using UOW
-        # normalized_sources = self._source_normalizer.normalize(sources)
-        # for document in self._stream_provider.stream(normalized_sources):
-        #     print(f'Extracting entities from Document: {document.id}')
-        #     request = EntityExtractionRequest(task=task, document=document)
-        #     print(request)
 
         # TODO: Test runtime entities
         normalized_pk = self._pk_normalizer.normalize(' .( #123- 1|teA& Søren  Noël  key %válue  .)m')

@@ -38,3 +38,16 @@ class DocumentId:
             A DocumentId that contains instance and content components.
         """
         return cls(instance=InstanceId.generate(), content=ContentHash.from_bytes(content))
+
+    @classmethod
+    def from_components(cls, instance: InstanceId, content: ContentHash) -> Self:
+        """Create a DocumentId from already existing instance and content components.
+
+        Args:
+            instance: The unique id for the runtime instance.
+            content: The content-based id for efficient deduplication.
+
+        Returns:
+            A DocumentId that contains instance and content components.
+        """
+        return cls(instance=instance, content=content)

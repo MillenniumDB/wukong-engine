@@ -67,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument(
         '--incremental',
         action='store_true',
-        help='Reuse existing state instead of resetting active steps',
+        help='Reuse existing state instead of clearing all data at the start of each step',
     )
     run_parser.add_argument(
         '-v',
@@ -111,12 +111,12 @@ def handle_run(args: argparse.Namespace) -> None:
         args: Parsed command-line arguments.
     """
     try:
-        print('Starting WUKONG...')
+        print('Running WUKONG engine pipeline...')
         workspace = Workspace(root=args.workspace)
         WorkspaceValidator().validate(workspace=workspace)
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
         app.graph_construction.execute(workspace=workspace, should_reset=not args.incremental)
-        print('WUKONG pipeline execution completed!')
+        print('WUKONG engine pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')
         print_error(str(error))

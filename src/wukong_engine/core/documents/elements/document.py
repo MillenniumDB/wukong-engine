@@ -18,4 +18,4 @@ class Document:
 
     def __str__(self) -> str:
         """User-friendly string representation of a document."""
-        return f'{self.id} ({self.source_uri})'
+        return f'{self.id.content} ({self.source_uri})'

@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
-from wukong_engine.app.document_ingestion.use_cases import ValidateDocumentSources
+from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.app.workspace import Workspace
@@ -55,11 +55,13 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     pk_normalizer = DefaultPKNormalizer()
 
     # Use cases
+    get_document_registry = GetDocumentRegistry(
+        provider=document_registry_provider,
+        validator=document_source_validator,
+    )
     get_graph_model = GetGraphModel(provider=graph_model_provider)
-    get_document_registry = GetDocumentRegistry(provider=document_registry_provider)
-    validate_document_sources = ValidateDocumentSources(validator=document_source_validator)
+    ingest_documents = IngestDocuments(stream_provider=document_stream_provider, uow=staging_uow)
     extract_entity_type = ExtractEntityType(
-        stream_provider=document_stream_provider,
         llm_client=llm_client,
         pk_normalizer=pk_normalizer,
     )
@@ -67,9 +69,10 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     # Workflows
     graph_construction = GraphConstructionPipeline(
         app_config=app_config,
-        get_graph_model=get_graph_model,
+        uow=staging_uow,
         get_document_registry=get_document_registry,
-        validate_document_sources=validate_document_sources,
+        get_graph_model=get_graph_model,
+        ingest_documents=ingest_documents,
         extract_entity_type=extract_entity_type,
     )
     return CLIApplication(graph_construction_pipeline=graph_construction)

@@ -9,6 +9,5 @@ def batched[T](iterable: Iterable[T], size: int) -> Iterator[list[T]]:
         if len(batch) == size:
             yield batch
             batch = []
-
     if batch:
         yield batch
