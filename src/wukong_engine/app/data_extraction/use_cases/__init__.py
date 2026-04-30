@@ -3,6 +3,7 @@
 This package handles data extraction from documents and post-processing.
 """
 
+# TODO: Refactor
 from .extract_entity_type import ExtractEntityType
 
 __all__ = [

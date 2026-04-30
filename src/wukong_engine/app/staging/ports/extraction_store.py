@@ -50,9 +50,12 @@ from typing import Protocol
 
 
 # TODO: Complete protocol
-class ExtractionStore(Protocol):
-    """Store for managing extraction results."""
+# TODO: Design one for Relationships and contain both in a general ExtractionStore
+# TODO: Implement and test
+# TODO: Look into indexes
+class EntityExtractionStore(Protocol):
+    """Store for managing entity extraction."""
 
     def clear(self) -> None:
-        """Reset extraction store."""
+        """Reset the entity extraction store."""
         ...

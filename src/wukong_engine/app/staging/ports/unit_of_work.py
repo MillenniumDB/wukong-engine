@@ -3,7 +3,7 @@ from typing import Protocol, Self
 
 from .document_store import DocumentStore
 from .entity_store import EntityStore
-from .extraction_store import ExtractionStore
+from .extraction_store import EntityExtractionStore
 
 
 class UnitOfWork(Protocol):
@@ -11,7 +11,7 @@ class UnitOfWork(Protocol):
 
     documents: DocumentStore
     entities: EntityStore
-    extraction: ExtractionStore
+    extraction: EntityExtractionStore
 
     def __enter__(self) -> Self:
         """Enter the runtime context related to this object."""

@@ -19,5 +19,5 @@ class ConfigProvider:
         config = load_toml(path)
         schema = ApplicationConfigSchema.model_validate(config)
         app_config = ApplicationConfigMapper().map_configuration(schema)
-        logger.info(f'Configuration loaded successfully from "{path}"\n\n{app_config}')
+        logger.info(f'Configuration obtained successfully from "{path}"\n\n{app_config}')
         return app_config

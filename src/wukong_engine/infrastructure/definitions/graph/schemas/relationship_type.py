@@ -32,7 +32,7 @@ class RelationshipTypeSchema(BaseModel):
         default_factory=dict,
     )
     primary_key: StrictStr | None = None
-    deduplication_mode: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
+    deduplication: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
 
     # Mapping of various string representations to RelationshipIdentityPolicy members
@@ -48,10 +48,10 @@ class RelationshipTypeSchema(BaseModel):
         'identity': RelationshipIdentityPolicy.PRIMARY_KEY,
     }
 
-    @field_validator('deduplication_mode', mode='before')
+    @field_validator('deduplication', mode='before')
     @classmethod
-    def normalize_deduplication_mode(cls, value: Any) -> Any:
-        """Normalize deduplication mode strings to RelationshipIdentityPolicy members."""
+    def normalize_deduplication(cls, value: Any) -> Any:
+        """Normalize deduplication strings to RelationshipIdentityPolicy members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
         return value

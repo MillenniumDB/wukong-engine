@@ -81,7 +81,7 @@ class GraphConstructionPipeline:
         # Get document registry and validate document sources
         document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
         logger.info(
-            f'Document collections loaded successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
+            f'Document collections obtained successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )
 
         # Get graph model and validate selected document collections
@@ -91,13 +91,17 @@ class GraphConstructionPipeline:
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         document_registry.validate_collections(frozenset(unique_collections))
-        logger.info(f'Graph model loaded successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
+        logger.info(f'Graph model obtained successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
         # Document ingestion
         if self._app_config.pipeline.is_active(PipelineStep.INGEST_DOCUMENTS):
             if should_reset:
                 with self._uow as tx:
                     tx.documents.clear()
+                    # TODO: Clear downstream steps
+                    # tx.entities.clear()
+                    # tx.relationships.clear()
+                    # tx.extraction.clear()
                 logger.warning('Removing existing documents...')
             logger.info('Starting document ingestion...')
             self._ingest_documents.execute(document_registry)

@@ -25,7 +25,7 @@
             "description": "A specific article from the LGUC (Ley General de Urbanismo y Construcciones).",
             "instructions": "Must explicitly mention or refer to the LGUC, ignore articles from other legal bodies such as OGUC/DDU.",
             "primary_key": "node_name",
-            "deduplication_mode": "primary_key",
+            "deduplication": "primary_key",
             "fields": {
                 "node_name": {
                     "data_type": "string",
@@ -155,7 +155,7 @@
             "description": "A specific article from the OGUC (Ordenanza General de Urbanismo y Construcciones).",
             "instructions": "Must explicitly mention or refer to the OGUC, ignore articles from other legal bodies such as LGUC/DDU.",
             "primary_key": "node_name",
-            "deduplication_mode": "primary_key",
+            "deduplication": "primary_key",
             "fields": {
                 "node_name": {
                     "data_type": "string",
@@ -284,7 +284,7 @@
             "description": "A specific circular from the DDU (División de Desarrollo Urbano).",
             "instructions": "Must explicitly mention or refer to the DDU, ignore other legal bodies such as LGUC/OGUC.",
             "primary_key": "node_name",
-            "deduplication_mode": "primary_key",
+            "deduplication": "primary_key",
             "fields": {
                 "node_name": {
                     "data_type": "string",
@@ -432,7 +432,7 @@
             "description": "A specific legal provision that is referenced in a legal document.",
             "instructions": "Exclude all legal provisions from: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
             "primary_key": "name",
-            "deduplication_mode": "primary_key",
+            "deduplication": "primary_key",
             "fields": {
                 "source": {
                     "data_type": "string",
@@ -547,7 +547,7 @@
                 }
             },
             "primary_key": "ref_type",
-            "deduplication_mode": "primary_key",
+            "deduplication": "primary_key",
             "fields": {
                 "ref_type": {
                     "data_type": "string",

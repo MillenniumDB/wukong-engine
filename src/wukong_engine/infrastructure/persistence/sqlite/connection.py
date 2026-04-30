@@ -20,6 +20,7 @@ class SQLiteSessionFactory:
             isolation_level=None,  # Required to control transactions manually
             check_same_thread=True,  # Keep default safety (single-threaded)
         )
+        conn.row_factory = sqlite3.Row  # Enable named column access
         self._apply_pragmas(conn)
         return conn
 

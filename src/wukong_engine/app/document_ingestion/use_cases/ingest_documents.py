@@ -35,5 +35,5 @@ class IngestDocuments:
         normalized_sources = self._source_normalizer.normalize(collection.sources)
         for batch in batched(self._stream_provider.stream(normalized_sources), size=500):
             with self._uow as tx:
-                tx.documents.upsert_batch(batch)
-                tx.documents.link_batch_to_collection(batch, collection)
+                tx.documents.bulk_upsert(batch)
+                tx.documents.bulk_link_to_collection(batch, collection)

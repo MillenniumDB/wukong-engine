@@ -2,12 +2,12 @@
 
 from .document_store import DocumentStore
 from .entity_store import EntityStore
-from .extraction_store import ExtractionStore
+from .extraction_store import EntityExtractionStore
 from .unit_of_work import UnitOfWork
 
 __all__ = [
     'DocumentStore',
+    'EntityExtractionStore',
     'EntityStore',
-    'ExtractionStore',
     'UnitOfWork',
 ]

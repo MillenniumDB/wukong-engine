@@ -19,8 +19,13 @@ class InstanceId:
         return cls(uuid.uuid7().bytes[: cls._UUID_SIZE])
 
     @classmethod
+    def from_bytes(cls, data: bytes) -> Self:
+        """Import an existing InstanceId from raw bytes."""
+        return cls(data)
+
+    @classmethod
     def from_hex(cls, hex_str: str) -> Self:
-        """Import an InstanceId from a hexadecimal string."""
+        """Import an existing InstanceId from a hexadecimal string."""
         return cls(bytes.fromhex(hex_str))
 
     def __post_init__(self) -> None:
@@ -59,18 +64,23 @@ class ContentHash:
     _HASH_SIZE: ClassVar[int] = 16  # 16 bytes → 128 bits → 32 hex chars
 
     @classmethod
-    def from_bytes(cls, content: bytes) -> Self:
-        """Generate a content hash from bytes data."""
+    def from_content_bytes(cls, content: bytes) -> Self:
+        """Generate a ContentHash from bytes data."""
         return cls(hashlib.sha256(content).digest()[: cls._HASH_SIZE])
 
     @classmethod
-    def from_string(cls, content: str, encoding: str = 'utf-8') -> Self:
-        """Generate a content hash from string data."""
+    def from_content_string(cls, content: str, encoding: str = 'utf-8') -> Self:
+        """Generate a ContentHash from string data."""
         return cls(hashlib.sha256(content.encode(encoding=encoding)).digest()[: cls._HASH_SIZE])
 
     @classmethod
+    def from_bytes(cls, data: bytes) -> Self:
+        """Import an existing ContentHash from raw bytes."""
+        return cls(data)
+
+    @classmethod
     def from_hex(cls, hex_str: str) -> Self:
-        """Import a content hash from a hexadecimal string."""
+        """Import an existing ContentHash from a hexadecimal string."""
         return cls(bytes.fromhex(hex_str))
 
     def __post_init__(self) -> None:

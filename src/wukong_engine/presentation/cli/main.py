@@ -6,7 +6,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    wukong workspaces/example --config config/default.toml
+    wukong run workspaces/example --config config/default.toml
 """
 
 import argparse
@@ -127,20 +127,14 @@ def handle_run(args: argparse.Namespace) -> None:
         sys.exit(1)
 
 
-# TODO: New command for 'wukong reset <workspace>' with flags for --all, --entities, --relationships
+# TODO: New command for 'wukong reset <workspace>' that resets everything
 def handle_reset(args: argparse.Namespace) -> None:
     """Reset command execution.
 
     Args:
         args: Parsed command-line arguments.
     """
-    if args.all:
-        scope = 'all'
-    elif args.entities:
-        scope = 'entities'
-    else:
-        scope = 'relationships'
-    # reset_state(scope=scope, confirm=args.yes)
+    # reset_state(workspace=args.workspace)
 
 
 def main() -> None:

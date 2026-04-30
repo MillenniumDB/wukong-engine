@@ -14,7 +14,7 @@ class EntityTypeSchema(BaseModel):
     description: StrictStr
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     primary_key: StrictStr
-    deduplication_mode: EntityIdentityPolicy = EntityIdentityPolicy.PRIMARY_KEY
+    deduplication: EntityIdentityPolicy = EntityIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, EntityFieldSchema] = Field(default_factory=dict)
     document_collections: dict[ContextLevel, list[StrictStr] | StrictStr] = Field(default_factory=dict)
 
@@ -25,10 +25,10 @@ class EntityTypeSchema(BaseModel):
         'identity': EntityIdentityPolicy.PRIMARY_KEY,
     }
 
-    @field_validator('deduplication_mode', mode='before')
+    @field_validator('deduplication', mode='before')
     @classmethod
-    def normalize_deduplication_mode(cls, value: Any) -> Any:
-        """Normalize deduplication mode strings to EntityIdentityPolicy members."""
+    def normalize_deduplication(cls, value: Any) -> Any:
+        """Normalize deduplication strings to EntityIdentityPolicy members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
         return value

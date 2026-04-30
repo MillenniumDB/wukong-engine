@@ -9,6 +9,7 @@ from wukong_engine.core.graph.model import EntityType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipIdentityPolicy, RelationshipTypeName
 
 
+# TODO: Refactor
 class ExtractEntityType:
     """Extract entities of a given type."""
 
@@ -35,3 +36,9 @@ class ExtractEntityType:
         normalized_pk = self._pk_normalizer.normalize(' .( #123- 1|teA& Søren  Noël  key %válue  .)m')
         entity_id = EntityId.from_identity(entity_type.name, normalized_pk)
         print(f'Generated EntityId: {entity_id}')
+
+        # TODO: Insertion
+        # with uow as tx:
+        #     entity_ids = tx.entities.bulk_upsert(result.entities)
+        #     tx.extractions.link_entities(result.document_id, entity_ids)
+        #     tx.extractions.mark_types_extracted(result.document_id, result.entity_types)

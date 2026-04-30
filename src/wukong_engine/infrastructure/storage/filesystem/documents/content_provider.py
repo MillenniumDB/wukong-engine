@@ -18,7 +18,7 @@ class LocalDocumentContentProvider(DocumentContentProvider):
         """Retrieve the text content of a document from the local filesystem."""
         try:
             content = Path(document.source_uri).read_bytes()
-            content_hash = ContentHash.from_bytes(content)
+            content_hash = ContentHash.from_content_bytes(content)
             if content_hash != document.id.content:
                 raise ValueError(f'Content hash mismatch for document: {document}')
             return content.decode(encoding=encoding)

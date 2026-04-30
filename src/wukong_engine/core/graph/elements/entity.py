@@ -6,6 +6,8 @@ from wukong_engine.core.graph.model import EntityType
 from .values import EntityId
 
 
+# TODO: Consider version when exporting
+# TODO: Access methods for structured properties (EntityType should define access methods for fields)
 @dataclass(frozen=True)
 class Entity:
     """Entity instance in the graph."""

@@ -8,11 +8,7 @@ from wukong_engine.core.documents.model import DocumentCollection
 class DocumentStore(Protocol):
     """Store for managing documents and collections."""
 
-    def upsert(self, document: Document) -> None:
-        """Insert or update a document based on its content, ensuring deduplication."""
-        ...
-
-    def upsert_batch(self, documents: Iterable[Document]) -> None:
+    def bulk_upsert(self, documents: Iterable[Document]) -> None:
         """Insert or update a batch of documents based on their content, ensuring deduplication."""
         ...
 
@@ -20,11 +16,7 @@ class DocumentStore(Protocol):
         """Add document collections."""
         ...
 
-    def link_to_collection(self, document: Document, collection: DocumentCollection) -> None:
-        """Link a document to a collection."""
-        ...
-
-    def link_batch_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
+    def bulk_link_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
         """Link a batch of documents to a collection."""
         ...
 

@@ -2,10 +2,10 @@
 
 from .document_store import SQLiteDocumentStore
 from .entity_store import SQLiteEntityStore
-from .extraction_store import SQLiteExtractionStore
+from .extraction_store import SQLiteEntityExtractionStore
 
 __all__ = [
     'SQLiteDocumentStore',
+    'SQLiteEntityExtractionStore',
     'SQLiteEntityStore',
-    'SQLiteExtractionStore',
 ]

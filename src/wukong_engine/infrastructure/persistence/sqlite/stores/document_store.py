@@ -15,24 +15,24 @@ class SQLiteDocumentStore(DocumentStore):
         """Initialize the staging store with a SQLite connection."""
         self._conn = conn
 
-    def upsert(self, document: Document) -> None:
-        """Insert or update a document based on its content, ensuring deduplication and provenance tracking."""
-        self._conn.execute(
-            """
-            INSERT OR IGNORE INTO documents (document_content_id, document_id, source_uri)
-            VALUES (?, ?, ?)
-            """,
-            (document.id.content.hex, document.id.instance.hex, document.source_uri),
+    def _row_to_document(self, row: sqlite3.Row) -> Document:
+        """Map a database row to a Document object."""
+        return Document(
+            id=DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['instance_id']),
+                content=ContentHash.from_bytes(row['content_id']),
+            ),
+            source_uri=row['source_uri'],
         )
 
-    def upsert_batch(self, documents: Iterable[Document]) -> None:
-        """Insert or update a batch of documents based on their content, ensuring deduplication and provenance tracking."""
+    def bulk_upsert(self, documents: Iterable[Document]) -> None:
+        """Insert or update a batch of documents based on their content, ensuring deduplication."""
         self._conn.executemany(
             """
-            INSERT OR IGNORE INTO documents (document_content_id, document_id, source_uri)
+            INSERT OR IGNORE INTO documents (content_id, instance_id, source_uri)
             VALUES (?, ?, ?)
             """,
-            [(doc.id.content.hex, doc.id.instance.hex, doc.source_uri) for doc in documents],
+            [(doc.id.content.bytes, doc.id.instance.bytes, doc.source_uri) for doc in documents],
         )
 
     def add_collections(self, collections: Iterable[DocumentCollection]) -> None:
@@ -42,27 +42,17 @@ class SQLiteDocumentStore(DocumentStore):
             INSERT OR IGNORE INTO collections (collection_name)
             VALUES (?)
             """,
-            [(str(collection.name),) for collection in collections],
+            [(collection.name.value,) for collection in collections],
         )
 
-    def link_to_collection(self, document: Document, collection: DocumentCollection) -> None:
-        """Link a document to a collection."""
-        self._conn.execute(
-            """
-            INSERT OR IGNORE INTO document_collections (document_content_id, collection_name)
-            VALUES (?, ?)
-            """,
-            (document.id.content.hex, str(collection.name)),
-        )
-
-    def link_batch_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
+    def bulk_link_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
         """Link a batch of documents to a collection."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO document_collections (document_content_id, collection_name)
             VALUES (?, ?)
             """,
-            [(doc.id.content.hex, str(collection.name)) for doc in documents],
+            [(doc.id.content.bytes, collection.name.value) for doc in documents],
         )
 
     def count(self) -> int:
@@ -71,21 +61,15 @@ class SQLiteDocumentStore(DocumentStore):
         return cursor.fetchone()[0]
 
     def stream_all(self) -> Iterator[Document]:
-        """Stream all documents in the store."""
+        """Stream all documents present in the store."""
         cursor = self._conn.execute(
-            'SELECT document_content_id, document_id, source_uri FROM documents',
+            'SELECT content_id, instance_id, source_uri FROM documents ORDER BY content_id',
         )
-        for content_id, document_id, source_uri in cursor:
-            yield Document(
-                id=DocumentId.from_components(
-                    instance=InstanceId.from_hex(document_id),
-                    content=ContentHash.from_hex(content_id),
-                ),
-                source_uri=source_uri,
-            )
+        for row in cursor:
+            yield self._row_to_document(row)
 
     def clear(self) -> None:
         """Reset the document store."""
+        self._conn.execute('DELETE FROM document_collections')
         self._conn.execute('DELETE FROM documents')
         self._conn.execute('DELETE FROM collections')
-        self._conn.execute('DELETE FROM document_collections')
