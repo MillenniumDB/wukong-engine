@@ -120,7 +120,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "chapter": {
                     "data_type": "string",
@@ -130,7 +131,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "summary": {
                     "data_type": "string",
@@ -139,7 +141,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 }
             },
             "document_collections": {
@@ -250,7 +253,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "chapter": {
                     "data_type": "string",
@@ -260,7 +264,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "summary": {
                     "data_type": "string",
@@ -269,7 +274,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 }
             },
             "document_collections": {
@@ -401,7 +407,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "keywords": {
                     "data_type": "string",
@@ -411,7 +418,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 },
                 "summary": {
                     "data_type": "string",
@@ -420,7 +428,8 @@
                     "retrieval_mode": {
                         "chunk": "skip",
                         "document": "extract"
-                    }
+                    },
+                    "merge_strategy": "longest"
                 }
             },
             "document_collections": {
@@ -444,6 +453,7 @@
                         "Código Civil"
                     ],
                     "retrieval_mode": "extract",
+                    "merge_strategy": "longest",
                     "required": true
                 },
                 "article": {
@@ -462,13 +472,15 @@
                         "Decreto con Fuerza de Ley N° 707 Art 10",
                         "Código Civil Art 200"
                     ],
-                    "retrieval_mode": "extract"
+                    "retrieval_mode": "extract",
+                    "merge_strategy": "longest"
                 },
                 "summary": {
                     "data_type": "string",
                     "description": "A textual description of the legal provision, summarizing it's official definition in the Chilean law.",
                     "instructions": "Should be concise.",
-                    "retrieval_mode": "extract"
+                    "retrieval_mode": "extract",
+                    "merge_strategy": "longest"
                 }
             },
             "document_collections": {
@@ -568,7 +580,8 @@
                     "data_type": "string",
                     "description": "An explanation of how the source references the target.",
                     "instructions": "Should be concise.",
-                    "examples": "Se refiere al punto 7.1 de la Circular DDU 279 para justificar un argumento relativo a la copropiedad inmobiliaria."
+                    "examples": "Se refiere al punto 7.1 de la Circular DDU 279 para justificar un argumento relativo a la copropiedad inmobiliaria.",
+                    "merge_strategy": "longest"
                 }
             }
         }

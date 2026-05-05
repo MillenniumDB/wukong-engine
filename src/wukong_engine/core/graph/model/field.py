@@ -7,7 +7,7 @@ from wukong_engine.core.extraction.model.rules.compatibility import ensure_compa
 from wukong_engine.core.extraction.model.values import ContextLevel, EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.shared import RegexPattern
 
-from .values import DataType, FieldName
+from .values import DataType, FieldName, MergeStrategy
 
 
 @dataclass(frozen=True)
@@ -20,6 +20,7 @@ class _Field:
     options: tuple[str, ...]
     examples: tuple[str, ...]
     required: bool
+    merge_strategy: MergeStrategy | None
 
     def __str__(self) -> str:
         """User-friendly string representation of the field."""

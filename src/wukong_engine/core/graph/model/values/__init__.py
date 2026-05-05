@@ -5,6 +5,7 @@ This package contains value objects for different types present in the graph mod
 
 from .data_type import DataType
 from .identity_policy import EntityIdentityPolicy, RelationshipIdentityPolicy
+from .merge_strategy import MergeStrategy
 from .name import EntityTypeName, FieldName, RelationshipTypeName
 
 __all__ = [
@@ -12,6 +13,7 @@ __all__ = [
     'EntityIdentityPolicy',
     'EntityTypeName',
     'FieldName',
+    'MergeStrategy',
     'RelationshipIdentityPolicy',
     'RelationshipTypeName',
 ]

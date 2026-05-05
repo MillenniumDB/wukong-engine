@@ -6,7 +6,7 @@ from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.extraction.model.values import ContextLevel
 
 from .field import EntityField
-from .values import EntityIdentityPolicy, EntityTypeName, FieldName
+from .values import EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
 
 
 @dataclass(frozen=True)
@@ -20,6 +20,7 @@ class EntityType:
     identity_policy: EntityIdentityPolicy
     fields: MappingProxyType[FieldName, EntityField]
     document_collections: MappingProxyType[ContextLevel, tuple[DocumentCollectionName, ...]]
+    default_merge_strategy: MergeStrategy
 
     def __str__(self) -> str:
         """User-friendly string representation of the entity type."""

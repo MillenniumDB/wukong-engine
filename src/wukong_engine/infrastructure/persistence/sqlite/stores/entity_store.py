@@ -10,20 +10,17 @@ from wukong_engine.core.extraction.model.values import ContextLevel
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model.entity_type import EntityType
+from wukong_engine.core.graph.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
-# TODO: Move and define _merge in Entity class from domain?
 class SQLiteEntityStore(EntityStore):
     """SQLite implementation of the EntityStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
         """Initialize the staging store with a SQLite connection."""
         self._conn = conn
-
-    # TODO:
-    def _merge(self, existing: Entity, incoming: Entity) -> Entity:
-        return incoming
+        self._merger = EntityMerger()
 
     def _row_to_entity(self, row: sqlite3.Row, entity_type: EntityType) -> Entity:
         """Map a database row to an Entity object."""
@@ -100,7 +97,7 @@ class SQLiteEntityStore(EntityStore):
         for group in grouped_entities.values():
             merged = group[0]
             for other in group[1:]:
-                merged = self._merge(merged, other)
+                merged = self._merger.merge(merged, other)
             unique_entities.append(merged)
 
         # Find duplicates in the database and determine which new entities to insert vs update
@@ -111,7 +108,7 @@ class SQLiteEntityStore(EntityStore):
             entity_id = entity.id.content.bytes
             if entity_id in existing_entities_by_id:
                 existing = existing_entities_by_id[entity_id]
-                merged = self._merge(existing, entity)
+                merged = self._merger.merge(existing, entity)
                 if merged.properties != existing.properties:
                     to_update.append(merged)
             else:

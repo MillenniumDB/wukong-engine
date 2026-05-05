@@ -45,7 +45,8 @@ class ExtractEntityType:
             type=entity_type,
             properties={
                 'name': 'LGUC_A',
-                'Desc': 'Define la ley de la gravitación universal y explica su importancia en la física.',
+                'summary': 'Define la ley de la gravitación universal y explica su importancia en la física.',
+                'other': 'Other value',
             },
         )
         entity_b = Entity(
@@ -53,7 +54,7 @@ class ExtractEntityType:
             type=entity_type,
             properties={
                 'name': 'LGUC_B',
-                'Desc': 'Define la ley de inercia y explica su importancia en la física.',
+                'summary': 'Define la ley de inercia y explica su importancia en la física.',
             },
         )
         with self._uow as tx:
@@ -66,7 +67,7 @@ class ExtractEntityType:
             tx.entities.bulk_upsert([entity_a, entity_b])
         with self._uow as tx:
             for e in tx.entities.stream_by_type(entity_type):
-                print(e.id, e.properties)
+                print(e.properties)
 
         # TODO: Insertion
         # with uow as tx:

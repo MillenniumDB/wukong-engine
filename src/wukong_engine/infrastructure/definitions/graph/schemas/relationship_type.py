@@ -3,7 +3,7 @@ from typing import Any, ClassVar
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
 from wukong_engine.core.extraction.model.values import ContextLevel
-from wukong_engine.core.graph.model.values import RelationshipIdentityPolicy
+from wukong_engine.core.graph.model.values import MergeStrategy, RelationshipIdentityPolicy
 
 from .field import RelationshipFieldSchema
 
@@ -34,6 +34,7 @@ class RelationshipTypeSchema(BaseModel):
     primary_key: StrictStr | None = None
     deduplication: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
+    default_merge_strategy: MergeStrategy = MergeStrategy.KEEP
 
     # Mapping of various string representations to RelationshipIdentityPolicy members
     _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipIdentityPolicy]] = {
@@ -48,12 +49,40 @@ class RelationshipTypeSchema(BaseModel):
         'identity': RelationshipIdentityPolicy.PRIMARY_KEY,
     }
 
+    # Mapping of various string representations to MergeStrategy members
+    _MERGE_STRATEGY_ALIASES: ClassVar[dict[str, MergeStrategy]] = {
+        'keep': MergeStrategy.KEEP,
+        'existing': MergeStrategy.KEEP,
+        'preserve': MergeStrategy.KEEP,
+        'retain': MergeStrategy.KEEP,
+        'first': MergeStrategy.KEEP,
+        'replace': MergeStrategy.REPLACE,
+        'incoming': MergeStrategy.REPLACE,
+        'overwrite': MergeStrategy.REPLACE,
+        'update': MergeStrategy.REPLACE,
+        'last': MergeStrategy.REPLACE,
+        'longest': MergeStrategy.LONGEST,
+        'verbose': MergeStrategy.LONGEST,
+        'complete': MergeStrategy.LONGEST,
+        'shortest': MergeStrategy.SHORTEST,
+        'concise': MergeStrategy.SHORTEST,
+        'minimal': MergeStrategy.SHORTEST,
+    }
+
     @field_validator('deduplication', mode='before')
     @classmethod
     def normalize_deduplication(cls, value: Any) -> Any:
         """Normalize deduplication strings to RelationshipIdentityPolicy members."""
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value, value)
+        return value
+
+    @field_validator('default_merge_strategy', mode='before')
+    @classmethod
+    def normalize_merge_strategy(cls, value: Any) -> Any:
+        """Normalize default merge strategy strings to MergeStrategy members."""
+        if isinstance(value, str):
+            return cls._MERGE_STRATEGY_ALIASES.get(value, value)
         return value
 
     @field_validator('endpoints')

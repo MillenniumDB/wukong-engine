@@ -6,7 +6,7 @@ from wukong_engine.core.extraction.model.rules.compatibility import ensure_compa
 
 from .endpoint import Endpoint
 from .field import RelationshipField
-from .values import FieldName, RelationshipIdentityPolicy, RelationshipTypeName
+from .values import FieldName, MergeStrategy, RelationshipIdentityPolicy, RelationshipTypeName
 
 
 @dataclass(frozen=True)
@@ -20,6 +20,7 @@ class RelationshipType:
     primary_key: FieldName | None
     identity_policy: RelationshipIdentityPolicy
     fields: MappingProxyType[FieldName, RelationshipField]
+    default_merge_strategy: MergeStrategy
 
     def __str__(self) -> str:
         """User-friendly string representation of the relationship type."""

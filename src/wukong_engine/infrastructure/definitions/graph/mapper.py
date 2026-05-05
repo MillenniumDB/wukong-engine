@@ -85,6 +85,7 @@ class GraphModelMapper:
                     for k, v in schema.document_collections.items()
                 },
             ),
+            default_merge_strategy=schema.default_merge_strategy,
         )
 
     def _map_relationship_type(self, name: str, schema: RelationshipTypeSchema) -> RelationshipType:
@@ -99,6 +100,7 @@ class GraphModelMapper:
             fields=MappingProxyType(
                 {FieldName(name): self._map_relationship_field(name, schema) for name, schema in schema.fields.items()},
             ),
+            default_merge_strategy=schema.default_merge_strategy,
         )
 
     def _map_entity_field(self, name: str, schema: EntityFieldSchema) -> EntityField:
@@ -114,6 +116,7 @@ class GraphModelMapper:
             default_value=MappingProxyType(_as_dict(schema.default_value)),
             retrieval_mode=MappingProxyType(_as_dict(schema.retrieval_mode)),
             required=schema.required,
+            merge_strategy=schema.merge_strategy,
         )
 
     def _map_relationship_field(self, name: str, schema: RelationshipFieldSchema) -> RelationshipField:
@@ -129,6 +132,7 @@ class GraphModelMapper:
             default_value=schema.default_value,
             retrieval_mode=schema.retrieval_mode,
             required=schema.required,
+            merge_strategy=schema.merge_strategy,
         )
 
     def _materialize_endpoints(
