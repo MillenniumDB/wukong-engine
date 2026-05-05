@@ -1,5 +1,7 @@
 """Document source normalization utilities."""
 
+from pathlib import Path
+
 from wukong_engine.core.documents.model.source import DocumentSource
 from wukong_engine.core.documents.model.values import DocumentSourceMode
 
@@ -49,7 +51,7 @@ class DocumentSourceNormalizer:
     @staticmethod
     def _detect_equal_source(a: DocumentSource, b: DocumentSource) -> DocumentSource | None:
         """Return a redundant source when both entries have the same mode and path."""
-        if a.mode == b.mode and a.source_path == b.source_path:
+        if a == b:
             return b
         return None
 
@@ -61,7 +63,7 @@ class DocumentSourceNormalizer:
 
         dir_src = a if a.mode == DocumentSourceMode.DIRECTORY else b
         file_src = b if dir_src is a else a
-        if file_src.source_path.parent == dir_src.source_path:
+        if Path(file_src.root).parent == Path(dir_src.root):
             return file_src
         return None
 
@@ -72,14 +74,14 @@ class DocumentSourceNormalizer:
             return None
 
         if a.mode == b.mode == DocumentSourceMode.RECURSIVE:
-            recursive_src = min((a, b), key=lambda source: len(source.source_path.parts))
+            recursive_src = min((a, b), key=lambda source: len(Path(source.root).parts))
         else:
             recursive_src = a if a.mode == DocumentSourceMode.RECURSIVE else b
 
         other_src = b if recursive_src is a else a
-        container_paths = set(other_src.source_path.parents)
+        container_paths = set(Path(other_src.root).parents)
         if other_src.mode != DocumentSourceMode.FILE:
-            container_paths.add(other_src.source_path)
-        if recursive_src.source_path in container_paths:
+            container_paths.add(Path(other_src.root))
+        if Path(recursive_src.root) in container_paths:
             return other_src
         return None

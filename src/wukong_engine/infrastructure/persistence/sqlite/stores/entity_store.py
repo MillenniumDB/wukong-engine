@@ -14,8 +14,6 @@ from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
 # TODO: Move and define _merge in Entity class from domain?
-# TODO: Indexes
-# TODO: Test
 class SQLiteEntityStore(EntityStore):
     """SQLite implementation of the EntityStore."""
 
@@ -23,13 +21,9 @@ class SQLiteEntityStore(EntityStore):
         """Initialize the staging store with a SQLite connection."""
         self._conn = conn
 
-    # TODO: Refactor
+    # TODO:
     def _merge(self, existing: Entity, incoming: Entity) -> Entity:
-        # Define policy:
-        # - overwrite?
-        # - keep first?
-        # - union lists?
-        return {**existing, **incoming}
+        return incoming
 
     def _row_to_entity(self, row: sqlite3.Row, entity_type: EntityType) -> Entity:
         """Map a database row to an Entity object."""

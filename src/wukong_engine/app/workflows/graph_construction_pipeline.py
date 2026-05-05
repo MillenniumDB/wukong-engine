@@ -106,7 +106,6 @@ class GraphConstructionPipeline:
             logger.info('Starting document ingestion...')
             self._ingest_documents.execute(document_registry)
             logger.info('Document ingestion completed successfully!')
-        return
 
         # TODO: Entity extraction
         # TODO: If should_reset is True, clear all existing entities before this step

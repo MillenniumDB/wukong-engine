@@ -62,6 +62,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     get_graph_model = GetGraphModel(provider=graph_model_provider)
     ingest_documents = IngestDocuments(stream_provider=document_stream_provider, uow=staging_uow)
     extract_entity_type = ExtractEntityType(
+        uow=staging_uow,
         llm_client=llm_client,
         pk_normalizer=pk_normalizer,
     )
