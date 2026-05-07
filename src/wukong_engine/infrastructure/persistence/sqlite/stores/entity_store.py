@@ -155,5 +155,5 @@ class SQLiteEntityStore(EntityStore):
     def clear(self) -> None:
         """Reset the entity store."""
         self._conn.execute('DELETE FROM entity_type_collections')
-        self._conn.execute('DELETE FROM entity_types')
         self._conn.execute('DELETE FROM entities')
+        self._conn.execute('DELETE FROM entity_types')

@@ -6,6 +6,7 @@ Classes:
 
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any, Self
 
 
 class ContextLevel(Enum):
@@ -16,8 +17,17 @@ class ContextLevel(Enum):
         DOCUMENT: Full text documents.
     """
 
-    CHUNK = 'chunk'
-    DOCUMENT = 'document'
+    CHUNK = 'CHUNK'
+    DOCUMENT = 'DOCUMENT'
+
+    @classmethod
+    def _missing_(cls, value: Any) -> Self | None:
+        if isinstance(value, str):
+            normalized = value.upper()
+            for member in cls:
+                if member.value == normalized:
+                    return member
+        return None
 
 
 @dataclass(frozen=True)

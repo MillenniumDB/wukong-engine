@@ -26,16 +26,29 @@ CREATE TABLE IF NOT EXISTS entity_type_collections (
     entity_type_name TEXT NOT NULL,
     collection_name TEXT NOT NULL,
     context_level TEXT NOT NULL,
-    PRIMARY KEY (entity_type_name, collection_name, context_level),
+    PRIMARY KEY (collection_name, entity_type_name, context_level),
     FOREIGN KEY (collection_name) REFERENCES collections(collection_name) ON DELETE CASCADE,
-    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE
+    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
+    CHECK (
+        context_level IN (
+            'DOCUMENT',
+            'CHUNK'
+        )
+    )
 );
-CREATE TABLE IF NOT EXISTS extracted_entity_types (
+CREATE TABLE IF NOT EXISTS entity_type_extractions (
     document_content_id BLOB NOT NULL,
     entity_type_name TEXT NOT NULL,
+    extraction_status TEXT NOT NULL,
     PRIMARY KEY (document_content_id, entity_type_name),
     FOREIGN KEY (document_content_id) REFERENCES documents(content_id) ON DELETE CASCADE,
-    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE
+    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
+    CHECK (
+        extraction_status IN (
+            'PENDING',
+            'COMPLETED'
+        )
+    )
 );
 -- =========================================================
 -- Entities
@@ -58,14 +71,9 @@ CREATE TABLE IF NOT EXISTS extracted_entities (
 -- Indexes
 -- =========================================================
 -- Documents & Collections
-CREATE INDEX IF NOT EXISTS idx_document_collections ON document_collections(document_content_id);
--- check if needed (above)
+CREATE INDEX IF NOT EXISTS idx_dc_collection ON document_collections(collection_name);
 -- Entities & Entity Types
-CREATE INDEX IF NOT EXISTS idx_entity_type_entities ON entities(entity_type_name, content_id);
-CREATE INDEX IF NOT EXISTS idx_collection_entity_types ON entity_type_collections(collection_name);
--- check if needed (above)
+CREATE INDEX IF NOT EXISTS idx_entities_type_entity ON entities(entity_type_name, content_id);
 -- Entity Extraction
-CREATE INDEX IF NOT EXISTS idx_extracted_documents_entity_types ON extracted_entity_types(document_content_id, entity_type_name);
--- check if needed (above)
-CREATE INDEX IF NOT EXISTS idx_extracted_entity_types_documents ON extracted_entity_types(entity_type_name, document_content_id);
--- check if needed (above)
+CREATE INDEX IF NOT EXISTS idx_ete_status_document ON entity_type_extractions(extraction_status, document_content_id);
+CREATE INDEX IF NOT EXISTS idx_ee_entity ON extracted_entities(entity_content_id);

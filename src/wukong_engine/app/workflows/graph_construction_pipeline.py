@@ -95,14 +95,13 @@ class GraphConstructionPipeline:
 
         # Document ingestion
         if self._app_config.pipeline.is_active(PipelineStep.INGEST_DOCUMENTS):
-            if should_reset:
+            if should_reset:  # Reset everything downstream
                 with self._uow as tx:
+                    tx.extraction.clear()
+                    tx.relationships.clear()
+                    tx.entities.clear()
                     tx.documents.clear()
-                    # TODO: Clear downstream steps
-                    # tx.entities.clear()
-                    # tx.relationships.clear()
-                    # tx.extraction.clear()
-                logger.warning('Removing existing documents...')
+                logger.warning('Removing existing documents and extracted data...')
             logger.info('Starting document ingestion...')
             self._ingest_documents.execute(document_registry)
             logger.info('Document ingestion completed successfully!')

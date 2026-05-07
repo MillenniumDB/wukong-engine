@@ -1,6 +1,8 @@
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.app.staging.ports import UnitOfWork
+from wukong_engine.core.documents.elements import Document
+from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.extraction.elements import EntityExtractionRequest
 from wukong_engine.core.extraction.model import EntityExtractionTask
@@ -9,6 +11,7 @@ from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
 from wukong_engine.core.graph.model import EntityType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipIdentityPolicy, RelationshipTypeName
+from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
 # TODO: Refactor
@@ -57,6 +60,8 @@ class ExtractEntityType:
                 'summary': 'Define la ley de inercia y explica su importancia en la física.',
             },
         )
+
+        # Setup extraction
         with self._uow as tx:
             tx.entities.add_types([entity_type])
             tx.entities.link_collections_to_type(
@@ -64,13 +69,24 @@ class ExtractEntityType:
                 entity_type=entity_type,
                 context_level=context_level,
             )
-            tx.entities.bulk_upsert([entity_a, entity_b])
-        with self._uow as tx:
-            for e in tx.entities.stream_by_type(entity_type):
-                print(e.properties)
+            tx.extraction.entities.materialize_pending_extractions()
+            for pending in tx.extraction.entities.stream_pending_extractions():
+                print(pending)
 
-        # TODO: Insertion
-        # with uow as tx:
-        #     entity_ids = tx.entities.bulk_upsert(result.entities)
-        #     tx.extractions.link_entities(result.document_id, entity_ids)
-        #     tx.extractions.mark_types_extracted(result.document_id, result.entity_types)
+        # Perform extraction
+        test_document = Document(
+            id=DocumentId(
+                instance=InstanceId.from_hex('019e04730eb67057aaed440ccafbb781'),
+                content=ContentHash.from_hex('5ad98f6cf287e51d9d4063fc954672dd'),
+            ),
+            source_uri='/home/imfd/Desktop/knowledge-graphs/wukong-engine/data/example/docs/LGUC/fake_lguc.txt',
+        )
+        with self._uow as tx:
+            tx.entities.bulk_upsert([entity_a, entity_b])
+            tx.extraction.entities.link_extracted_entities_to_document([entity_a, entity_b], test_document)
+            tx.extraction.entities.mark_completed_extractions_from_document([entity_type.name], test_document)
+
+        # Verify results
+        with self._uow as tx:
+            for link in tx.extraction.entities.stream_entity_document_links():
+                print(link)

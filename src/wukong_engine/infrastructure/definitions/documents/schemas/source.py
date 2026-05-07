@@ -29,7 +29,7 @@ class DocumentSourceSchema(BaseModel):
     def normalize_mode(cls, value: Any) -> Any:
         """Normalize source mode strings to DocumentSourceMode members."""
         if isinstance(value, str):
-            return cls._SOURCE_MODE_ALIASES.get(value, value)
+            return cls._SOURCE_MODE_ALIASES.get(value.strip().lower(), value)
         return value
 
     @field_validator('root')

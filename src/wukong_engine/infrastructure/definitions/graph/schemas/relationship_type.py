@@ -74,7 +74,7 @@ class RelationshipTypeSchema(BaseModel):
     def normalize_deduplication(cls, value: Any) -> Any:
         """Normalize deduplication strings to RelationshipIdentityPolicy members."""
         if isinstance(value, str):
-            return cls._DEDUPLICATION_ALIASES.get(value, value)
+            return cls._DEDUPLICATION_ALIASES.get(value.strip().lower(), value)
         return value
 
     @field_validator('default_merge_strategy', mode='before')
@@ -82,7 +82,7 @@ class RelationshipTypeSchema(BaseModel):
     def normalize_merge_strategy(cls, value: Any) -> Any:
         """Normalize default merge strategy strings to MergeStrategy members."""
         if isinstance(value, str):
-            return cls._MERGE_STRATEGY_ALIASES.get(value, value)
+            return cls._MERGE_STRATEGY_ALIASES.get(value.strip().lower(), value)
         return value
 
     @field_validator('endpoints')

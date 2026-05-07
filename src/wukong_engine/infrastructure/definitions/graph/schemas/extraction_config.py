@@ -34,7 +34,7 @@ class LanguageSchema(BaseModel):
     def normalize_language(cls, value: Any) -> Any:
         """Normalize language strings to Language members."""
         if isinstance(value, str):
-            return cls._LANGUAGE_ALIASES.get(value, value)
+            return cls._LANGUAGE_ALIASES.get(value.strip().lower(), value)
         return value
 
 

@@ -56,7 +56,7 @@ class _FieldSchema(BaseModel):
     def normalize_data_type(cls, value: Any) -> Any:
         """Normalize data type strings to DataType members."""
         if isinstance(value, str):
-            return cls._DATA_TYPE_ALIASES.get(value, value)
+            return cls._DATA_TYPE_ALIASES.get(value.strip().lower(), value)
         return value
 
     @field_validator('merge_strategy', mode='before')
@@ -64,7 +64,7 @@ class _FieldSchema(BaseModel):
     def normalize_merge_strategy(cls, value: Any) -> Any:
         """Normalize merge strategy strings to MergeStrategy members."""
         if isinstance(value, str):
-            return cls._MERGE_STRATEGY_ALIASES.get(value, value)
+            return cls._MERGE_STRATEGY_ALIASES.get(value.strip().lower(), value)
         return value
 
     @field_validator('options', 'examples')
