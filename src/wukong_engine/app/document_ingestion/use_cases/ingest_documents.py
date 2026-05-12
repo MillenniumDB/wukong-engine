@@ -21,9 +21,9 @@ class IngestDocuments:
 
     def execute(self, registry: DocumentRegistry) -> None:
         """Ingest all document collections into the system."""
-        collections = list(registry.collections.values())
+        collections = tuple(registry.collections.values())
         with self._uow as tx:
-            tx.documents.add_collections(collections)
+            tx.documents.add_collections(collection.name for collection in collections)
         for collection in collections:
             self.ingest_collection(collection)
         with self._uow as tx:
@@ -36,4 +36,4 @@ class IngestDocuments:
         for batch in batched(self._stream_provider.stream(normalized_sources), size=500):
             with self._uow as tx:
                 tx.documents.bulk_upsert(batch)
-                tx.documents.bulk_link_to_collection(batch, collection)
+                tx.documents.bulk_link_to_collection(batch, collection.name)

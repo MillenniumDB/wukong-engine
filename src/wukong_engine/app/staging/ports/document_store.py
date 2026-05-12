@@ -2,7 +2,7 @@ from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.core.documents.elements import Document
-from wukong_engine.core.documents.model import DocumentCollection
+from wukong_engine.core.documents.model.values import DocumentCollectionName
 
 
 class DocumentStore(Protocol):
@@ -12,11 +12,11 @@ class DocumentStore(Protocol):
         """Insert or update a batch of documents based on their content, ensuring deduplication."""
         ...
 
-    def add_collections(self, collections: Iterable[DocumentCollection]) -> None:
+    def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
         """Add document collections."""
         ...
 
-    def bulk_link_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
+    def bulk_link_to_collection(self, documents: Iterable[Document], collection_name: DocumentCollectionName) -> None:
         """Link a batch of documents to a collection."""
         ...
 

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
+from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
@@ -61,7 +61,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
     get_graph_model = GetGraphModel(provider=graph_model_provider)
     ingest_documents = IngestDocuments(stream_provider=document_stream_provider, uow=staging_uow)
-    extract_entity_type = ExtractEntityType(
+    extract_entities = ExtractEntities(
         uow=staging_uow,
         llm_client=llm_client,
         pk_normalizer=pk_normalizer,
@@ -74,6 +74,6 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         get_document_registry=get_document_registry,
         get_graph_model=get_graph_model,
         ingest_documents=ingest_documents,
-        extract_entity_type=extract_entity_type,
+        extract_entities=extract_entities,
     )
     return CLIApplication(graph_construction_pipeline=graph_construction)

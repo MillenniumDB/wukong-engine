@@ -1,35 +1,14 @@
-"""Implements the engine pipeline.
-
-This module provides functions to execute the complete engine pipeline,
-extracting data from unstructured text documents, processing it,
-and then exporting the results to various knowledge graph formats.
-
-Functions:
-    execute_pipeline: Runs the full engine pipeline over a given data directory.
-"""
+"""Implements the engine pipeline."""
 
 import logging
 
 from wukong_engine.app.config import ApplicationConfig
-from wukong_engine.app.data_extraction.use_cases import ExtractEntityType
+from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.pipeline.model.values import PipelineStep
-
-"""
-from wukong_engine.documents.text_processing import (
-    generate_chunks,
-    process_metadata_documents,
-    process_text_documents,
-    trim_large_documents,
-)
-"""
-# from wukong_engine.extraction.entities import extract_entities, process_entities
-# from wukong_engine.extraction.relations import extract_relations, process_relations
-# from wukong_engine.graph.export import export_stats, export_to_json, export_to_mdb, export_to_neo4j
-# from wukong_engine.llm.prompting import generate_prompts
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -45,7 +24,7 @@ class GraphConstructionPipeline:
         get_document_registry: GetDocumentRegistry,
         get_graph_model: GetGraphModel,
         ingest_documents: IngestDocuments,
-        extract_entity_type: ExtractEntityType,
+        extract_entities: ExtractEntities,
         # extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
@@ -55,7 +34,7 @@ class GraphConstructionPipeline:
         self._get_document_registry = get_document_registry
         self._get_graph_model = get_graph_model
         self._ingest_documents = ingest_documents
-        self._extract_entity_type = extract_entity_type
+        self._extract_entities = extract_entities
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
@@ -72,11 +51,6 @@ class GraphConstructionPipeline:
         Args:
             workspace: The user workspace containing key files and directories for the pipeline execution.
             should_reset: If True, clears existing data on each pipeline step. If False, keeps existing data and appends any new results.
-
-        Raises:
-            FileNotFoundError: If any paths to necessary information (configuration/data/documents/results) do not exist.
-            ValueError: If the configuration or graph model is invalid, or environment variables are missing.
-            TypeError: If the graph model has invalid types for certain fields.
         """
         # Get document registry and validate document sources
         document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
@@ -101,22 +75,26 @@ class GraphConstructionPipeline:
                     tx.relationships.clear()
                     tx.entities.clear()
                     tx.documents.clear()
-                logger.warning('Removing existing documents and extracted data...')
+                logger.warning('Removing existing documents and data...')
             logger.info('Starting document ingestion...')
             self._ingest_documents.execute(document_registry)
             logger.info('Document ingestion completed successfully!')
 
-        # TODO: Entity extraction
-        # TODO: If should_reset is True, clear all existing entities before this step
+        # Entity extraction
         if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
-            for entity_type in graph_model.active_entity_types.values():
-                logger.info(f'Extracting entities for EntityType "{entity_type.name}"')
-                self._extract_entity_type.execute(entity_type, document_registry)
-                break
+            if should_reset:  # Reset everything downstream
+                with self._uow as tx:
+                    tx.extraction.clear()
+                    tx.relationships.clear()
+                    tx.entities.clear()
+                logger.warning('Removing existing data...')
+            logger.info('Starting entity extraction...')
+            self._extract_entities.execute(graph_model)
+            logger.info('Entity extraction completed successfully!')
 
-        # TODO: Pipeline
         # TODO: Relationship extraction
         # TODO: If should_reset is True, clear all existing relationships before this step
+        # TODO: Export graph
         """
         # Process input documents
         if document_processing:

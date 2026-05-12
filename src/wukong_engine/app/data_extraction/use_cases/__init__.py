@@ -1,11 +1,10 @@
 """The data extraction package.
 
-This package handles data extraction from documents and post-processing.
+This package handles data extraction from documents.
 """
 
-# TODO: Refactor
-from .extract_entity_type import ExtractEntityType
+from .extract_entities import ExtractEntities
 
 __all__ = [
-    'ExtractEntityType',
+    'ExtractEntities',
 ]

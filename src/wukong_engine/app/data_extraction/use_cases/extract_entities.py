@@ -3,46 +3,57 @@ from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Document
 from wukong_engine.core.documents.elements.values import DocumentId
-from wukong_engine.core.documents.model import DocumentRegistry
-from wukong_engine.core.extraction.elements import EntityExtractionRequest
 from wukong_engine.core.extraction.model import EntityExtractionTask
 from wukong_engine.core.extraction.model.values import Cardinality, ContextLevel
 from wukong_engine.core.graph.elements import Entity
-from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
-from wukong_engine.core.graph.model import EntityType
-from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipIdentityPolicy, RelationshipTypeName
+from wukong_engine.core.graph.elements.values import EntityId
+from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
-# TODO: Refactor
-class ExtractEntityType:
-    """Extract entities of a given type."""
+class ExtractEntities:
+    """Extract entities from documents."""
 
-    def __init__(
-        self,
-        uow: UnitOfWork,
-        llm_client: LLMClient,
-        pk_normalizer: PKNormalizer,
-    ) -> None:
+    def __init__(self, uow: UnitOfWork, llm_client: LLMClient, pk_normalizer: PKNormalizer) -> None:
         """Initialize the use case with necessary dependencies."""
         self._uow = uow
         self._llm_client = llm_client
         self._pk_normalizer = pk_normalizer
 
-    def execute(self, entity_type: EntityType, document_registry: DocumentRegistry) -> None:
-        """Execute the entity extraction process for the given entity type."""
-        # TODO: Params: change later
+    def execute(self, graph_model: GraphModel) -> None:
+        """Execute the entity extraction process."""
+        # Setup entity types and associated document collections
+        with self._uow as tx:
+            entity_types = tuple(graph_model.entity_types.values())
+            tx.entities.add_types(et.name for et in entity_types)
+            for entity_type in entity_types:
+                tx.entities.link_collections_to_type(
+                    entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
+                    entity_type.name,
+                    ContextLevel.DOCUMENT,
+                )
+                tx.entities.link_collections_to_type(
+                    entity_type.document_collections.get(ContextLevel.CHUNK, []),
+                    entity_type.name,
+                    ContextLevel.CHUNK,
+                )
+
+        # Materialize pending extractions for all entity types
+        with self._uow as tx:
+            tx.extraction.entities.materialize_pending_extractions()
+
+        # TODO: Context Level + Tasks
         context_level = ContextLevel.DOCUMENT
         cardinality = Cardinality.SINGLE
         task = EntityExtractionTask(context_level=context_level, cardinality=cardinality)
-        collections = document_registry.collections.values()
 
-        # TODO: Execution - refactor to use collections instead of entity type
         # TODO: LLM Concurrency using async instead of threads
 
-        # TODO: Test runtime entities
+        # TODO: Test stores
         normalized_pk_a = self._pk_normalizer.normalize(' .( #123- 1|teA& Søren  Noël  key %válue  .)m')
         normalized_pk_b = self._pk_normalizer.normalize('Test')
+        entity_type = graph_model.entity_types[EntityTypeName('LGUC')]
         entity_a = Entity(
             id=EntityId.from_identity(entity_type.name, normalized_pk_a),
             type=entity_type,
@@ -60,18 +71,6 @@ class ExtractEntityType:
                 'summary': 'Define la ley de inercia y explica su importancia en la física.',
             },
         )
-
-        # Setup extraction
-        with self._uow as tx:
-            tx.entities.add_types([entity_type])
-            tx.entities.link_collections_to_type(
-                collections=collections,
-                entity_type=entity_type,
-                context_level=context_level,
-            )
-            tx.extraction.entities.materialize_pending_extractions()
-            for pending in tx.extraction.entities.stream_pending_extractions():
-                print(pending)
 
         # Perform extraction
         test_document = Document(

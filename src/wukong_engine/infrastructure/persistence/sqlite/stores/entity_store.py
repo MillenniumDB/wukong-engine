@@ -5,11 +5,12 @@ from collections.abc import Iterable, Iterator
 
 from wukong_engine.app.shared import batched
 from wukong_engine.app.staging.ports import EntityStore
-from wukong_engine.core.documents.model import DocumentCollection
+from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.extraction.model.values import ContextLevel
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model.entity_type import EntityType
+from wukong_engine.core.graph.model import EntityType
+from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.graph.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
@@ -118,20 +119,20 @@ class SQLiteEntityStore(EntityStore):
         self._bulk_insert(to_insert)
         self._bulk_update_properties(to_update)
 
-    def add_types(self, entity_types: Iterable[EntityType]) -> None:
+    def add_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
         """Add entity types."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO entity_types (entity_type_name)
             VALUES (?)
             """,
-            [(entity_type.name.value,) for entity_type in entity_types],
+            [(et_name.value,) for et_name in entity_type_names],
         )
 
     def link_collections_to_type(
         self,
-        collections: Iterable[DocumentCollection],
-        entity_type: EntityType,
+        collection_names: Iterable[DocumentCollectionName],
+        entity_type_name: EntityTypeName,
         context_level: ContextLevel,
     ) -> None:
         """Link a set of document collections to an entity type under a specific context level."""
@@ -140,7 +141,7 @@ class SQLiteEntityStore(EntityStore):
             INSERT OR IGNORE INTO entity_type_collections (entity_type_name, collection_name, context_level)
             VALUES (?, ?, ?)
             """,
-            [(entity_type.name.value, collection.name.value, context_level.value) for collection in collections],
+            [(entity_type_name.value, c_name.value, context_level.value) for c_name in collection_names],
         )
 
     def stream_by_type(self, entity_type: EntityType) -> Iterator[Entity]:

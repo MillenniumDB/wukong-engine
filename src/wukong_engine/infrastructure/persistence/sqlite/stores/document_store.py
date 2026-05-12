@@ -4,7 +4,7 @@ from collections.abc import Iterable, Iterator
 from wukong_engine.app.staging.ports import DocumentStore
 from wukong_engine.core.documents.elements import Document
 from wukong_engine.core.documents.elements.values import DocumentId
-from wukong_engine.core.documents.model import DocumentCollection
+from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
@@ -35,24 +35,24 @@ class SQLiteDocumentStore(DocumentStore):
             [(doc.id.content.bytes, doc.id.instance.bytes, doc.source_uri) for doc in documents],
         )
 
-    def add_collections(self, collections: Iterable[DocumentCollection]) -> None:
+    def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
         """Add document collections."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO collections (collection_name)
             VALUES (?)
             """,
-            [(collection.name.value,) for collection in collections],
+            [(c_name.value,) for c_name in collection_names],
         )
 
-    def bulk_link_to_collection(self, documents: Iterable[Document], collection: DocumentCollection) -> None:
+    def bulk_link_to_collection(self, documents: Iterable[Document], collection_name: DocumentCollectionName) -> None:
         """Link a batch of documents to a collection."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO document_collections (document_content_id, collection_name)
             VALUES (?, ?)
             """,
-            [(doc.id.content.bytes, collection.name.value) for doc in documents],
+            [(doc.id.content.bytes, collection_name.value) for doc in documents],
         )
 
     def count(self) -> int:

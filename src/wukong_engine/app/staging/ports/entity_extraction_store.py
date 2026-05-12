@@ -19,7 +19,7 @@ class EntityExtractionStore(Protocol):
 
     def mark_completed_extractions_from_document(
         self,
-        entity_types: Iterable[EntityTypeName],
+        entity_type_names: Iterable[EntityTypeName],
         document: Document,
     ) -> None:
         """Mark completed entity type extractions from a source document."""

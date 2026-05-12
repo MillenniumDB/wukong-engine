@@ -62,7 +62,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     def mark_completed_extractions_from_document(
         self,
-        entity_types: Iterable[EntityTypeName],
+        entity_type_names: Iterable[EntityTypeName],
         document: Document,
     ) -> None:
         """Mark completed entity type extractions from a source document."""
@@ -77,8 +77,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 AND extraction_status = {ExtractionStatus.PENDING.value!r}
             """,  # noqa: S608
             [
-                (ExtractionStatus.COMPLETED.value, document.id.content.bytes, entity_type.value)
-                for entity_type in entity_types
+                (ExtractionStatus.COMPLETED.value, document.id.content.bytes, et_name.value)
+                for et_name in entity_type_names
             ],
         )
 
