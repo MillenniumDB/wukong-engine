@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Self
+from typing import ClassVar, Self
 
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
@@ -49,5 +49,60 @@ class DocumentId:
 
         Returns:
             A DocumentId that contains instance and content components.
+        """
+        return cls(instance=instance, content=content)
+
+
+@dataclass(frozen=True)
+class ChunkId:
+    """The unique identifier for document chunks.
+
+    The identifier consists of two components:
+        1. instance: A unique id for the runtime instance, used as the id for the final graph.
+        2. content: A content-based id, used for efficient deduplication and provenance tracking.
+
+    Current Version: v1
+    Instance: UUIDv7
+    Content: sha-256 hash of "Version|DocumentContentId|ChunkIndex" (first 128 bits)
+    """
+
+    instance: InstanceId
+    content: ContentHash
+
+    # Versioning (evolves together with the identity structure)
+    VERSION: ClassVar[str] = 'v1'
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the chunk ID."""
+        return f'Instance → {self.instance}, Content → {self.content}'
+
+    def __repr__(self) -> str:
+        """Developer-friendly string representation of the chunk ID."""
+        return f'ChunkId(instance={self.instance}, content={self.content}, version={self.VERSION})'
+
+    @classmethod
+    def from_identity(cls, document_id: DocumentId, chunk_index: int) -> Self:
+        """Create a ChunkId from the identity-defining components of a chunk.
+
+        Args:
+            document_id: The parent document id.
+            chunk_index: The positional index of the chunk within the parent document.
+
+        Returns:
+            A ChunkId that contains instance and content components.
+        """
+        identity = f'{cls.VERSION}|{document_id.content.hex}|{chunk_index}'
+        return cls(instance=InstanceId.generate(), content=ContentHash.from_content_string(identity))
+
+    @classmethod
+    def from_components(cls, instance: InstanceId, content: ContentHash) -> Self:
+        """Create a ChunkId from already existing instance and content components.
+
+        Args:
+            instance: The unique id for the runtime instance.
+            content: The content-based id for efficient deduplication.
+
+        Returns:
+            A ChunkId that contains instance and content components.
         """
         return cls(instance=instance, content=content)

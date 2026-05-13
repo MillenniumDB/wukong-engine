@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass
 
-from wukong_engine.core.extraction.model.values import EndpointContext
+from wukong_engine.core.documents.model.values import EndpointContext
 from wukong_engine.core.graph.model.values import EntityTypeName
 
 

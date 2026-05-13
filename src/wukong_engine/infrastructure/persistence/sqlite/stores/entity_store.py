@@ -5,8 +5,7 @@ from collections.abc import Iterable, Iterator
 
 from wukong_engine.app.shared import batched
 from wukong_engine.app.staging.ports import EntityStore
-from wukong_engine.core.documents.model.values import DocumentCollectionName
-from wukong_engine.core.extraction.model.values import ContextLevel
+from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import EntityType
@@ -56,7 +55,7 @@ class SQLiteEntityStore(EntityStore):
 
         return result
 
-    def _bulk_insert(self, entities: Iterable[Entity]) -> None:
+    def _bulk_insert_entities(self, entities: Iterable[Entity]) -> None:
         """Insert a batch of new unique entities."""
         self._conn.executemany(
             """
@@ -88,8 +87,8 @@ class SQLiteEntityStore(EntityStore):
             ],
         )
 
-    def bulk_upsert(self, entities: Iterable[Entity]) -> None:
-        """Insert or update a batch of entities based on their content, ensuring deduplication."""
+    def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
+        """Insert or update a batch of entities, ensuring deduplication."""
         # Deduplicate batch of entities locally first
         grouped_entities: dict[bytes, list[Entity]] = defaultdict(list)
         for entity in entities:
@@ -116,10 +115,10 @@ class SQLiteEntityStore(EntityStore):
                 to_insert.append(entity)
 
         # Perform bulk insert and update
-        self._bulk_insert(to_insert)
+        self._bulk_insert_entities(to_insert)
         self._bulk_update_properties(to_update)
 
-    def add_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
+    def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
         """Add entity types."""
         self._conn.executemany(
             """
@@ -129,7 +128,7 @@ class SQLiteEntityStore(EntityStore):
             [(et_name.value,) for et_name in entity_type_names],
         )
 
-    def link_collections_to_type(
+    def link_collections_to_entity_type(
         self,
         collection_names: Iterable[DocumentCollectionName],
         entity_type_name: EntityTypeName,
@@ -138,13 +137,13 @@ class SQLiteEntityStore(EntityStore):
         """Link a set of document collections to an entity type under a specific context level."""
         self._conn.executemany(
             """
-            INSERT OR IGNORE INTO entity_type_collections (entity_type_name, collection_name, context_level)
+            INSERT OR IGNORE INTO entity_type_collections (context_level, entity_type_name, collection_name)
             VALUES (?, ?, ?)
             """,
-            [(entity_type_name.value, c_name.value, context_level.value) for c_name in collection_names],
+            [(context_level.value, entity_type_name.value, c_name.value) for c_name in collection_names],
         )
 
-    def stream_by_type(self, entity_type: EntityType) -> Iterator[Entity]:
+    def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""
         cursor = self._conn.execute(
             'SELECT content_id, instance_id, properties FROM entities WHERE entity_type_name = ? ORDER BY content_id',

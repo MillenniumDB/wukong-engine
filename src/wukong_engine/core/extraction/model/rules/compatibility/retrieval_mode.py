@@ -2,7 +2,8 @@
 
 from types import MappingProxyType
 
-from wukong_engine.core.extraction.model.values import ContextLevel, EntityRetrievalMode
+from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.extraction.model.values import EntityRetrievalMode
 
 # Supported entity type field retrieval modes for each context level
 COMPATIBLE_ENTITY_RETRIEVAL_MODES: dict[ContextLevel, set[EntityRetrievalMode]] = {

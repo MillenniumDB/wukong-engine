@@ -45,7 +45,7 @@ class EntityId:
         Returns:
             An EntityId that contains instance and content components.
         """
-        identity = f'{cls.VERSION}|{entity_type}|{normalized_pk}'
+        identity = f'{cls.VERSION}|{entity_type.value}|{normalized_pk.value}'
         return cls(instance=InstanceId.generate(), content=ContentHash.from_content_string(identity))
 
     @classmethod
@@ -122,14 +122,14 @@ class RelationshipId:
         if identity_policy == RelationshipIdentityPolicy.PRIMARY_KEY:
             if normalized_pk is None:
                 raise ValueError('A Normalized PK is required when relationship identity policy is: "primary_key"')
-            identity = f'{cls.VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}|{normalized_pk}'
+            identity = f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{source.content.hex}|{target.content.hex}|{normalized_pk.value}'
             content_id = ContentHash.from_content_string(identity)
         elif identity_policy == RelationshipIdentityPolicy.ENDPOINTS:
-            identity = f'{cls.VERSION}|{relationship_type}|{identity_policy.value}|{source.content}|{target.content}'
+            identity = f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{source.content.hex}|{target.content.hex}'
             content_id = ContentHash.from_content_string(identity)
         else:  # If policy is NONE, we fall back to instance-based identity (no deduplication)
             identity = instance_id.bytes
-            content_id = ContentHash(identity)
+            content_id = ContentHash.from_bytes(identity)
 
         return cls(instance=instance_id, content=content_id)
 

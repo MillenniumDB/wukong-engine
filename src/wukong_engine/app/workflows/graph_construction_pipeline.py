@@ -75,7 +75,7 @@ class GraphConstructionPipeline:
                     tx.relationships.clear()
                     tx.entities.clear()
                     tx.documents.clear()
-                logger.warning('Removing existing documents and data...')
+                logger.warning('Removing existing sources and data...')
             logger.info('Starting document ingestion...')
             self._ingest_documents.execute(document_registry)
             logger.info('Document ingestion completed successfully!')

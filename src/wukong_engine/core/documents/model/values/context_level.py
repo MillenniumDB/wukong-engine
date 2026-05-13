@@ -1,7 +1,7 @@
-"""Provides context levels for data extraction.
+"""Provides context levels for documents.
 
 Classes:
-    ContextLevel: Enum representing context levels for data extraction.
+    ContextLevel: Enum representing context levels for documents.
 """
 
 from dataclasses import dataclass
@@ -10,7 +10,7 @@ from typing import Any, Self
 
 
 class ContextLevel(Enum):
-    """Context levels available for data extraction.
+    """Context levels available for documents.
 
     Attributes:
         CHUNK: Text chunks.

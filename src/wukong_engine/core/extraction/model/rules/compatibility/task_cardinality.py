@@ -1,6 +1,7 @@
 """Compatibility rule for entity extraction task cardinality by context level."""
 
-from wukong_engine.core.extraction.model.values import Cardinality, ContextLevel
+from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.extraction.model.values import Cardinality
 
 # Supported cardinality modes for each context level in entity extraction tasks
 COMPATIBLE_ENTITY_TASK_CARDINALITIES: dict[ContextLevel, set[Cardinality]] = {

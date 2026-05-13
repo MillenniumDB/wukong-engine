@@ -2,8 +2,10 @@
 
 from dataclasses import dataclass
 
+from wukong_engine.core.documents.model.values import ContextLevel
+
 from .rules.compatibility import ensure_compatible_entity_task_cardinality
-from .values import Cardinality, ContextLevel
+from .values import Cardinality
 
 
 # TODO: Refactor to be more abstract and not depend on graph domain

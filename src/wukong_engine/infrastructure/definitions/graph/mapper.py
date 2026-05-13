@@ -1,8 +1,7 @@
 from types import MappingProxyType
 from typing import Any
 
-from wukong_engine.core.documents.model.values import DocumentCollectionName
-from wukong_engine.core.extraction.model.values import ContextLevel, EndpointContext
+from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName, EndpointContext
 from wukong_engine.core.graph.model import (
     Endpoint,
     EntityField,

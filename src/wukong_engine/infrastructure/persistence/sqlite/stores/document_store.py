@@ -2,8 +2,8 @@ import sqlite3
 from collections.abc import Iterable, Iterator
 
 from wukong_engine.app.staging.ports import DocumentStore
-from wukong_engine.core.documents.elements import Document
-from wukong_engine.core.documents.elements.values import DocumentId
+from wukong_engine.core.documents.elements import Chunk, Document
+from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
@@ -25,14 +25,52 @@ class SQLiteDocumentStore(DocumentStore):
             source_uri=row['source_uri'],
         )
 
-    def bulk_upsert(self, documents: Iterable[Document]) -> None:
-        """Insert or update a batch of documents based on their content, ensuring deduplication."""
+    def _row_to_chunk(self, row: sqlite3.Row) -> Chunk:
+        """Map a database row to a Chunk object."""
+        return Chunk(
+            id=ChunkId.from_components(
+                instance=InstanceId.from_bytes(row['chunk_instance_id']),
+                content=ContentHash.from_bytes(row['chunk_content_id']),
+            ),
+            document_id=DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['document_instance_id']),
+                content=ContentHash.from_bytes(row['document_content_id']),
+            ),
+            chunk_index=row['chunk_index'],
+            start_offset=row['start_offset'],
+            end_offset=row['end_offset'],
+            content=row['content'],
+        )
+
+    def bulk_upsert_documents(self, documents: Iterable[Document]) -> None:
+        """Insert or update a batch of documents."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO documents (content_id, instance_id, source_uri)
             VALUES (?, ?, ?)
             """,
             [(doc.id.content.bytes, doc.id.instance.bytes, doc.source_uri) for doc in documents],
+        )
+
+    def bulk_upsert_chunks(self, chunks: Iterable[Chunk]) -> None:
+        """Insert or update a batch of document chunks."""
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO chunks (content_id, instance_id, document_content_id, chunk_index, start_offset, end_offset, content)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                (
+                    chunk.id.content.bytes,
+                    chunk.id.instance.bytes,
+                    chunk.document_id.content.bytes,
+                    chunk.chunk_index,
+                    chunk.start_offset,
+                    chunk.end_offset,
+                    chunk.content,
+                )
+                for chunk in chunks
+            ],
         )
 
     def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
@@ -45,7 +83,11 @@ class SQLiteDocumentStore(DocumentStore):
             [(c_name.value,) for c_name in collection_names],
         )
 
-    def bulk_link_to_collection(self, documents: Iterable[Document], collection_name: DocumentCollectionName) -> None:
+    def link_documents_to_collection(
+        self,
+        documents: Iterable[Document],
+        collection_name: DocumentCollectionName,
+    ) -> None:
         """Link a batch of documents to a collection."""
         self._conn.executemany(
             """
@@ -55,12 +97,17 @@ class SQLiteDocumentStore(DocumentStore):
             [(doc.id.content.bytes, collection_name.value) for doc in documents],
         )
 
-    def count(self) -> int:
+    def count_documents(self) -> int:
         """Get the total number of documents."""
         cursor = self._conn.execute('SELECT COUNT(*) FROM documents')
         return cursor.fetchone()[0]
 
-    def stream_all(self) -> Iterator[Document]:
+    def count_chunks(self) -> int:
+        """Get the total number of chunks."""
+        cursor = self._conn.execute('SELECT COUNT(*) FROM chunks')
+        return cursor.fetchone()[0]
+
+    def stream_all_documents(self) -> Iterator[Document]:
         """Stream all documents present in the store."""
         cursor = self._conn.execute(
             'SELECT content_id, instance_id, source_uri FROM documents ORDER BY content_id',
@@ -68,8 +115,30 @@ class SQLiteDocumentStore(DocumentStore):
         for row in cursor:
             yield self._row_to_document(row)
 
+    def stream_all_chunks(self) -> Iterator[Chunk]:
+        """Stream all chunks present in the store."""
+        cursor = self._conn.execute(
+            """
+            SELECT
+                c.content_id AS chunk_content_id,
+                c.instance_id AS chunk_instance_id,
+                c.chunk_index,
+                c.start_offset,
+                c.end_offset,
+                c.content,
+                d.content_id AS document_content_id,
+                d.instance_id AS document_instance_id
+            FROM chunks c
+            JOIN documents d ON d.content_id = c.document_content_id
+            ORDER BY c.document_content_id, c.chunk_index
+            """,
+        )
+        for row in cursor:
+            yield self._row_to_chunk(row)
+
     def clear(self) -> None:
         """Reset the document store."""
+        self._conn.execute('DELETE FROM chunks')
         self._conn.execute('DELETE FROM document_collections')
         self._conn.execute('DELETE FROM documents')
         self._conn.execute('DELETE FROM collections')

@@ -1,8 +1,7 @@
 from collections.abc import Iterable, Iterator
 from typing import Protocol
 
-from wukong_engine.core.documents.model.values import DocumentCollectionName
-from wukong_engine.core.extraction.model.values import ContextLevel
+from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.model import EntityType
 from wukong_engine.core.graph.model.values import EntityTypeName
@@ -11,15 +10,15 @@ from wukong_engine.core.graph.model.values import EntityTypeName
 class EntityStore(Protocol):
     """Store for managing entities and entity types."""
 
-    def bulk_upsert(self, entities: Iterable[Entity]) -> None:
-        """Insert or update a batch of entities based on their content, ensuring deduplication."""
+    def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
+        """Insert or update a batch of entities, ensuring deduplication."""
         ...
 
-    def add_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
+    def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
         """Add entity types."""
         ...
 
-    def link_collections_to_type(
+    def link_collections_to_entity_type(
         self,
         collection_names: Iterable[DocumentCollectionName],
         entity_type_name: EntityTypeName,
@@ -28,7 +27,7 @@ class EntityStore(Protocol):
         """Link a set of document collections to an entity type under a specific context level."""
         ...
 
-    def stream_by_type(self, entity_type: EntityType) -> Iterator[Entity]:
+    def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""
         ...
 

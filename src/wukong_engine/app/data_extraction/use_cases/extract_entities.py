@@ -3,8 +3,9 @@ from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Document
 from wukong_engine.core.documents.elements.values import DocumentId
+from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model import EntityExtractionTask
-from wukong_engine.core.extraction.model.values import Cardinality, ContextLevel
+from wukong_engine.core.extraction.model.values import Cardinality
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import GraphModel
@@ -26,29 +27,41 @@ class ExtractEntities:
         # Setup entity types and associated document collections
         with self._uow as tx:
             entity_types = tuple(graph_model.entity_types.values())
-            tx.entities.add_types(et.name for et in entity_types)
+            tx.entities.add_entity_types(et.name for et in entity_types)
             for entity_type in entity_types:
-                tx.entities.link_collections_to_type(
+                tx.entities.link_collections_to_entity_type(
                     entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
                     entity_type.name,
                     ContextLevel.DOCUMENT,
                 )
-                tx.entities.link_collections_to_type(
+                tx.entities.link_collections_to_entity_type(
                     entity_type.document_collections.get(ContextLevel.CHUNK, []),
                     entity_type.name,
                     ContextLevel.CHUNK,
                 )
 
-        # Materialize pending extractions for all entity types
-        with self._uow as tx:
-            tx.extraction.entities.materialize_pending_extractions()
+        # Run document-level extractions
+        self._run_document_extractions(graph_model)
 
-        # TODO: Context Level + Tasks
+        # Run chunk-level extractions
+        self._run_chunk_extractions(graph_model)
+
+    # TODO: Remove Graph Model param after testing
+    # TODO: Implement
+    def _run_document_extractions(self, graph_model: GraphModel) -> None:
+        """Run entity extractions."""
+        # Materialize pending document extractions for all entity types
+        with self._uow as tx:
+            tx.extraction.entities.materialize_pending_extractions(ContextLevel.DOCUMENT)
+
+        # TODO: Task
         context_level = ContextLevel.DOCUMENT
         cardinality = Cardinality.SINGLE
         task = EntityExtractionTask(context_level=context_level, cardinality=cardinality)
 
-        # TODO: LLM Concurrency using async instead of threads
+        # TODO: LLM
+
+        # TODO: LLM concurrency using async instead of threads
 
         # TODO: Test stores
         normalized_pk_a = self._pk_normalizer.normalize(' .( #123- 1|teA& Søren  Noël  key %válue  .)m')
@@ -73,19 +86,66 @@ class ExtractEntities:
         )
 
         # Perform extraction
-        test_document = Document(
-            id=DocumentId(
-                instance=InstanceId.from_hex('019e04730eb67057aaed440ccafbb781'),
-                content=ContentHash.from_hex('5ad98f6cf287e51d9d4063fc954672dd'),
-            ),
-            source_uri='/home/imfd/Desktop/knowledge-graphs/wukong-engine/data/example/docs/LGUC/fake_lguc.txt',
-        )
         with self._uow as tx:
-            tx.entities.bulk_upsert([entity_a, entity_b])
-            tx.extraction.entities.link_extracted_entities_to_document([entity_a, entity_b], test_document)
-            tx.extraction.entities.mark_completed_extractions_from_document([entity_type.name], test_document)
+            for extraction in tx.extraction.entities.stream_pending_document_extractions():
+                context = extraction.document.context_ref
+                tx.entities.bulk_upsert_entities([entity_a, entity_b])
+                tx.extraction.entities.link_extracted_entities_to_context([entity_a, entity_b], context)
+                tx.extraction.entities.mark_completed_extractions_from_context([entity_type.name], context)
 
         # Verify results
         with self._uow as tx:
-            for link in tx.extraction.entities.stream_entity_document_links():
+            for link in tx.extraction.entities.stream_entity_document_provenance():
+                print(link)
+
+    # TODO: Remove Graph Model param after testing
+    # TODO: Implement
+    def _run_chunk_extractions(self, graph_model: GraphModel) -> None:
+        """Run entity extractions on chunks."""
+        # Materialize pending chunk extractions for all entity types
+        with self._uow as tx:
+            tx.extraction.entities.materialize_pending_extractions(ContextLevel.CHUNK)
+
+        # TODO: Task
+        context_level = ContextLevel.CHUNK
+        cardinality = Cardinality.MULTIPLE
+        task = EntityExtractionTask(context_level=context_level, cardinality=cardinality)
+
+        # TODO: LLM
+
+        # TODO: LLM concurrency using async instead of threads
+
+        # TODO: Test stores
+        normalized_pk_a = self._pk_normalizer.normalize(' .( #123- 1|teA& Søren  Noël  key %válue  .)m')
+        normalized_pk_b = self._pk_normalizer.normalize('Test')
+        entity_type = graph_model.entity_types[EntityTypeName('LGUC')]
+        entity_a = Entity(
+            id=EntityId.from_identity(entity_type.name, normalized_pk_a),
+            type=entity_type,
+            properties={
+                'name': 'LGUC_A',
+                'summary': 'Define la ley de la gravitación universal y explica su importancia en la física.',
+                'other': 'Other value',
+            },
+        )
+        entity_b = Entity(
+            id=EntityId.from_identity(entity_type.name, normalized_pk_b),
+            type=entity_type,
+            properties={
+                'name': 'LGUC_B',
+                'summary': 'Define la ley de inercia y explica su importancia en la física.',
+            },
+        )
+
+        # Perform extraction
+        with self._uow as tx:
+            for extraction in tx.extraction.entities.stream_pending_chunk_extractions():
+                context = extraction.chunk.context_ref
+                tx.entities.bulk_upsert_entities([entity_a, entity_b])
+                tx.extraction.entities.link_extracted_entities_to_context([entity_a, entity_b], context)
+                tx.extraction.entities.mark_completed_extractions_from_context([entity_type.name], context)
+
+        # Verify results
+        with self._uow as tx:
+            for link in tx.extraction.entities.stream_entity_chunk_provenance():
                 print(link)

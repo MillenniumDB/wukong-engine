@@ -1,6 +1,6 @@
 """Compatibility rule for relationship endpoint context level pairings."""
 
-from wukong_engine.core.extraction.model.values import ContextLevel, EndpointContext
+from wukong_engine.core.documents.model.values import ContextLevel, EndpointContext
 
 # Supported context level pairings for relationship endpoints (source -> target)
 COMPATIBLE_RELATIONSHIP_CONTEXT_PAIRINGS: dict[ContextLevel, set[ContextLevel]] = {
