@@ -1,6 +1,6 @@
 """The local filesystem documents storage package."""
 
-from .content_provider import LocalDocumentContentProvider
+from .loader import LocalDocumentLoader
 from .source_validator import LocalDocumentSourceValidator
 from .stream_provider import LocalDocumentStreamProvider
 

@@ -5,10 +5,11 @@ This package contains the objects that make up the real document instances.
 
 from .chunk import Chunk
 from .context_ref import ContextRef
-from .document import Document
+from .document import Document, LoadedDocument
 
 __all__ = [
     'Chunk',
     'ContextRef',
     'Document',
+    'LoadedDocument',
 ]

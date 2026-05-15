@@ -5,6 +5,7 @@ from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.app.workspace import Workspace
+from wukong_engine.infrastructure.chunking import ChunkingConfig, RecursiveDocumentChunker
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
@@ -17,6 +18,7 @@ from wukong_engine.infrastructure.persistence.sqlite import (
     initialize_sqlite_database,
 )
 from wukong_engine.infrastructure.storage.filesystem.documents import (
+    LocalDocumentLoader,
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
 )
@@ -60,7 +62,12 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         validator=document_source_validator,
     )
     get_graph_model = GetGraphModel(provider=graph_model_provider)
-    ingest_documents = IngestDocuments(stream_provider=document_stream_provider, uow=staging_uow)
+    ingest_documents = IngestDocuments(
+        stream_provider=document_stream_provider,
+        loader=LocalDocumentLoader(),
+        chunker=RecursiveDocumentChunker(config=ChunkingConfig()),
+        uow=staging_uow,
+    )
     extract_entities = ExtractEntities(
         uow=staging_uow,
         llm_client=llm_client,

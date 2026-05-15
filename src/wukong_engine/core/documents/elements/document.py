@@ -30,3 +30,11 @@ class Document:
             level=ContextLevel.DOCUMENT,
             content_id=self.id.content,
         )
+
+
+@dataclass(frozen=True)
+class LoadedDocument:
+    """A source document that has been loaded into memory, including its content."""
+
+    metadata: Document
+    content: str

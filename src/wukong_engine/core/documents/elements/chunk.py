@@ -20,8 +20,8 @@ class Chunk:
     id: ChunkId
     document_id: DocumentId
     chunk_index: int
-    start_offset: int
-    end_offset: int
+    start_offset: int  # [start, end) interval
+    end_offset: int  # [start, end) interval
     content: str
 
     def __str__(self) -> str:

@@ -265,7 +265,7 @@ application/
 ### Best Practices
 
 - Orchestrates `domain` operations and implements `application` use cases, services, and workflows inside subdomains (e.g. `data_extraction` subdomain)
-- Defines **ports** *(abstract protocols)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
+- Defines **ports** *(abstract protocols/classes)* for required external behavior to be implemented in `infrastructure` (e.g. `GraphRepository`)
 - Defines **DTOs** *(static data classes)* for data exchange with `presentation`
 - DTOs usually follow the *CQRS* pattern *(commands, queries, results)* (e.g. `ExportGraphCommand`)
 - Use cases are atomic, explicit and user-facing, named after user intent (e.g. `ExportGraph`, `BuildGraph`)

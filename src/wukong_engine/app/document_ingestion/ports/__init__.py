@@ -1,11 +1,13 @@
 """The ports package for document preparation."""
 
-from .content_provider import DocumentContentProvider
+from .chunker import DocumentChunker
+from .loader import DocumentLoader
 from .source_validator import DocumentSourceValidator
 from .stream_provider import DocumentStreamProvider
 
 __all__ = [
-    'DocumentContentProvider',
+    'DocumentChunker',
+    'DocumentLoader',
     'DocumentSourceValidator',
     'DocumentStreamProvider',
 ]
