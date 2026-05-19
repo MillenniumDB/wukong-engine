@@ -8,23 +8,24 @@
 ##############
 #  PIPELINE  #
 ##############
+# This section controls which steps of the engine pipeline are executed
 [pipeline]
 
-# This step is responsible for ingesting documents into the system
+# Ingest documents into the system
 # Note: Expects input documents to be available as specified in the workspace document collections
 # Default: true
 ingest_documents = true
 
-# This step is responsible for extracting entities from the documents
+# Extract entities from the documents
 # Default: true
 extract_entities = true
 
-# This step is responsible for extracting relationships between entities from the documents
+# Extract relationships between entities from the documents
 # Note: Expects previously extracted entities to be available
 # Default: true
 extract_relationships = true
 
-# This step is responsible for exporting the knowledge graph to various formats
+# Export the knowledge graph
 # Note: Expects previously extracted entities and relationships to be available
 # Default: true
 export_graph = true
@@ -32,6 +33,7 @@ export_graph = true
 ##############
 #    LLM     #
 ##############
+# This section controls the configuration of the LLM used for entity and relationship extraction
 [llm]
 
 # The LLM model to use for extraction
@@ -47,12 +49,41 @@ model = "gpt-5-mini"
 # Note: Setting this to true will raise an error if an unsupported model is specified
 # Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
 # Default: true
-strict = true
+strict_support = true
+
+### Maximum number of worker threads to use for API calls ### (REMOVE LATER)
+# This controls the concurrency of API requests to the LLM
+# Adjust this value based on your system's capabilities and the LLM's rate limits
+# Default: 10
+_max_worker_threads = 10
 
 ##############
-# PARAMETERS #
+#  CHUNKING  #
 ##############
-[parameters]
+# This section controls the configuration of the document chunking process
+# Note: Adjust these settings based on desired granularity vs cost trade-off, the LLM's context window, API request/response size limits
+[chunking]
+
+### Ideal number of tokens for each chunk ###
+# Note: This value should be in the range [1, 4096], with the recommended range being [100, 2000]
+# Default: 800
+target_tokens = 800
+
+### Maximum number of tokens for each chunk ###
+# Note: This value should be in the range [target_tokens, 8192]
+# Default: 1200
+max_tokens = 1200
+
+### Number of overlapping tokens between consecutive chunks ###
+# Note: This value should be in the range [0, target_tokens - 1]
+# Default: 120
+overlap_tokens = 120
+
+##############
+#   EXPORT   #
+##############
+# This section controls the configuration of the export process for the extracted knowledge graph
+[export]
 
 ### List of formats for exporting the results ###
 # You can choose from the following formats:
@@ -60,16 +91,4 @@ strict = true
 # "neo4j": Neo4j CSV files
 # "json": JSON files
 # Default: ["mdb", "neo4j", "json"]
-export_formats = ["mdb", "neo4j", "json"]
-
-### Maximum number of tokens for each document chunk ###
-# This is used to control the size of the text processed by each LLM call
-# Adjust this value based on the LLM's context window, API request/response size and your needs
-# Default: 2000
-max_tokens = 2000
-
-### Maximum number of worker threads to use for API calls ###
-# This controls the concurrency of API requests to the LLM
-# Adjust this value based on your system's capabilities and the LLM's rate limits
-# Default: 10
-max_worker_threads = 10
+formats = ["mdb", "neo4j", "json"]

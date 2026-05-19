@@ -7,4 +7,4 @@ class TiktokenTokenCounter(TokenCounter):
 
     def count(self, text: str) -> int:
         """Count the number of tokens in a given text."""
-        return len(text)
+        return 0

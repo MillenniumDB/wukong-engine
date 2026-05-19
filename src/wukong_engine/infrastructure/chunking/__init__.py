@@ -1,9 +1,9 @@
 """The document chunking package."""
 
-from .config import ChunkingConfig
+from .plan import ChunkingPlan
 from .recursive_chunker import RecursiveDocumentChunker
 
 __all__ = [
-    'ChunkingConfig',
+    'ChunkingPlan',
     'RecursiveDocumentChunker',
 ]

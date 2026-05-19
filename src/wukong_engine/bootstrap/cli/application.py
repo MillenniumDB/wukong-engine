@@ -5,7 +5,7 @@ from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.app.workspace import Workspace
-from wukong_engine.infrastructure.chunking import ChunkingConfig, RecursiveDocumentChunker
+from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
@@ -65,7 +65,15 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     ingest_documents = IngestDocuments(
         stream_provider=document_stream_provider,
         loader=LocalDocumentLoader(),
-        chunker=RecursiveDocumentChunker(config=ChunkingConfig()),
+        chunker=RecursiveDocumentChunker(
+            plan=ChunkingPlan(
+                target_size=app_config.chunking.target_tokens,
+                max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
+                overlap_size=app_config.chunking.overlap_tokens
+                if app_config.chunking.overlap_tokens is not None
+                else 0,
+            ),
+        ),
         uow=staging_uow,
     )
     extract_entities = ExtractEntities(

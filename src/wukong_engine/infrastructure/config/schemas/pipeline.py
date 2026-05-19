@@ -4,7 +4,7 @@ from pydantic import BaseModel, StrictBool
 class PipelineConfigSchema(BaseModel):
     """Pipeline configuration schema."""
 
-    ingest_documents: StrictBool = True
-    extract_entities: StrictBool = True
-    extract_relationships: StrictBool = True
-    export_graph: StrictBool = True
+    ingest_documents: StrictBool | None = None
+    extract_entities: StrictBool | None = None
+    extract_relationships: StrictBool | None = None
+    export_graph: StrictBool | None = None

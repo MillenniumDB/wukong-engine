@@ -6,18 +6,15 @@ from wukong_engine.app.document_ingestion.ports import DocumentChunker
 from wukong_engine.core.documents.elements import Chunk, LoadedDocument
 from wukong_engine.core.documents.elements.values import ChunkId
 
-from .config import ChunkingConfig
 from .models import Segment
+from .plan import ChunkingPlan
 
 
-# TODO: Overlap should it appear inside recursive split or only later?
-# TODO: List vs Streaming
 # TODO: Improve to avoid cutting words in half
 # TODO: Other improvements mentioned by GPT
 # TODO: Improvements for Merge Small Segments: Novel min size vs min size
-# TODO: Tiktoken for tokenizing for GPT, add Tokenizer abstraction
-# TODO: Best defaults for Config params
-# TODO: Config Params from TOML config?
+# TODO: Tiktoken for tokenizing
+# TODO: Efficient tokenization
 class RecursiveDocumentChunker(DocumentChunker):
     """Structure-aware recursive document chunker.
 
@@ -36,16 +33,17 @@ class RecursiveDocumentChunker(DocumentChunker):
         - Uses soft target chunk sizing
     """
 
-    def __init__(self, config: ChunkingConfig) -> None:
+    def __init__(self, plan: ChunkingPlan) -> None:
         """Initialize the chunker with its configuration."""
-        self._config = config
+        self._plan = plan
 
     def chunk(self, document: LoadedDocument) -> Iterator[Chunk]:
         """Chunk a document into smaller pieces."""
         text = self._normalize_text(document.content)
         root_segment = Segment(0, len(text))
         candidate_segments = self._split_recursive(text, root_segment, 0)
-        final_segments = self._merge_small_segments(text, candidate_segments)
+        # final_segments = self._merge_small_segments(text, candidate_segments) # TODO:
+        final_segments = candidate_segments
         for chunk_index, segment in enumerate(final_segments):
             yield Chunk(
                 id=ChunkId.from_identity(document.metadata.id, chunk_index),
@@ -72,19 +70,18 @@ class RecursiveDocumentChunker(DocumentChunker):
             .replace('\x00', '')
         )
 
-    # TODO: Check
     def _split_recursive(self, text: str, segment: Segment, level_index: int) -> list[Segment]:
         """Recursively split a segment using the separator hierarchy."""
         # Base case: segment already fits target size
-        if self._measure(text, segment) <= self._config.target_chunk_size:
+        if self._measure(text, segment) <= self._plan.target_size:
             return [segment]
 
         # Terminal fallback
-        if level_index >= len(self._config.separators):
+        if level_index >= len(self._plan.boundary_separators):
             return self._hard_split(text, segment)
 
         # Recursive case: split by current separator level and recurse on oversized segments
-        separator = self._config.separators[level_index]
+        separator = self._plan.boundary_separators[level_index]
         atomic_segments = list(separator.split(text, segment.start, segment.end))
 
         # Ineffective split -> next separator level
@@ -99,7 +96,7 @@ class RecursiveDocumentChunker(DocumentChunker):
             atomic_size = self._measure(text, atomic)
 
             # Oversized atomic segment -> recurse deeper
-            if atomic_size > self._config.target_chunk_size:
+            if atomic_size > self._plan.target_size:
                 if current_start is not None and current_end is not None:
                     output.append(Segment(current_start, current_end))
                     current_start = None
@@ -118,7 +115,7 @@ class RecursiveDocumentChunker(DocumentChunker):
             candidate_size = self._measure(text, candidate_segment)
 
             # Fits target size -> keep packing
-            if candidate_size <= self._config.target_chunk_size:
+            if candidate_size <= self._plan.target_size:
                 current_end = atomic.end
                 continue
 
@@ -126,7 +123,7 @@ class RecursiveDocumentChunker(DocumentChunker):
             output.append(Segment(current_start, current_end))
 
             # Start new chunk with overlap
-            overlap_start = self._compute_overlap_start(current_start=current_start, current_end=current_end)
+            overlap_start = self._compute_overlap_start(current_start, current_end)
             current_start = overlap_start
             current_end = atomic.end
 
@@ -136,7 +133,7 @@ class RecursiveDocumentChunker(DocumentChunker):
 
         return output
 
-    # TODO: Check
+    # TODO: Check later
     def _merge_small_segments(self, text: str, segments: list[Segment]) -> list[Segment]:
         """Merge pathological small chunks into neighboring chunks when possible."""
         if not segments:
@@ -148,7 +145,7 @@ class RecursiveDocumentChunker(DocumentChunker):
             current_size = self._measure(text, current)
 
             # Already large enough
-            if current_size >= self._config.min_chunk_size:
+            if current_size >= self._plan.min_size:
                 merged.append(current)
                 continue
 
@@ -158,7 +155,7 @@ class RecursiveDocumentChunker(DocumentChunker):
             merged_size = self._measure(text, merged_candidate)
 
             # Safe soft-overflow merge
-            if merged_size <= self._config.max_chunk_size:
+            if merged_size <= self._plan.max_size:
                 merged[-1] = merged_candidate
                 continue
 
@@ -166,13 +163,22 @@ class RecursiveDocumentChunker(DocumentChunker):
 
         return merged
 
-    # TODO: Check
+    def _measure(self, text: str, segment: Segment) -> int:
+        """Measure a segment using the token counter."""
+        return self._plan.token_counter.count(text[segment.start : segment.end])
+
+    # TODO: Check, adapt to token-based offsets if needed
+    def _compute_overlap_start(self, current_start: int, current_end: int) -> int:
+        """Compute overlap start offset for next chunk."""
+        return max(current_end - self._plan.overlap_size, current_start)
+
+    # TODO: Check, adapt to token-based offsets if needed
     def _hard_split(self, text: str, segment: Segment) -> list[Segment]:
         """Terminal fallback split ignoring structure."""
         output: list[Segment] = []
         start = segment.start
         end = segment.end
-        step = self._config.target_chunk_size - self._config.overlap_size
+        step = self._plan.target_size - self._plan.overlap_size
 
         # Split into fixed-size chunks
         while start < end:
@@ -183,7 +189,7 @@ class RecursiveDocumentChunker(DocumentChunker):
                 candidate_end = chunk_end + 1
                 candidate_segment = Segment(start, candidate_end)
                 candidate_size = self._measure(text, candidate_segment)
-                if candidate_size > self._config.target_chunk_size:
+                if candidate_size > self._plan.target_size:
                     break
                 chunk_end = candidate_end
 
@@ -198,11 +204,3 @@ class RecursiveDocumentChunker(DocumentChunker):
             start += step
 
         return output
-
-    def _compute_overlap_start(self, current_start: int, current_end: int) -> int:
-        """Compute overlap start offset for next chunk."""
-        return max(current_end - self._config.overlap_size, current_start)
-
-    def _measure(self, text: str, segment: Segment) -> int:
-        """Measure a segment using the token counter."""
-        return self._config.token_counter.count(text[segment.start : segment.end])

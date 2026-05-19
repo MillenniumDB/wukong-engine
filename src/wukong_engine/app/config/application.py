@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from .chunking import ChunkingConfig
+from .export import ExportConfig
 from .llm import LLMConfig
 from .pipeline import PipelineConfig
 
@@ -10,6 +12,8 @@ class ApplicationConfig:
 
     pipeline: PipelineConfig
     llm: LLMConfig
+    chunking: ChunkingConfig
+    export: ExportConfig
 
     def __str__(self) -> str:
         """User-friendly string representation of the application configuration."""
@@ -25,6 +29,14 @@ class ApplicationConfig:
         # LLM Config
         lines.append('\n[LLM]\n')
         lines.extend(f'  {line}' for line in str(self.llm).split('\n'))
+
+        # Chunking Config
+        lines.append('\n[CHUNKING]\n')
+        lines.extend(f'  {line}' for line in str(self.chunking).split('\n'))
+
+        # Export Config
+        lines.append('\n[EXPORT]\n')
+        lines.extend(f'  {line}' for line in str(self.export).split('\n)'))
 
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)
