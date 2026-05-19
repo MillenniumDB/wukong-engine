@@ -68,10 +68,10 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         chunker=RecursiveDocumentChunker(
             plan=ChunkingPlan(
                 target_size=app_config.chunking.target_tokens,
-                max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
                 overlap_size=app_config.chunking.overlap_tokens
                 if app_config.chunking.overlap_tokens is not None
                 else 0,
+                max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
             ),
         ),
         uow=staging_uow,

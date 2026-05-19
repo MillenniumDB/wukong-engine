@@ -6,11 +6,11 @@ from blingfire import text_to_sentences_and_offsets
 
 from wukong_engine.infrastructure.chunking.models import Segment
 
-from .separator import Separator
+from .boundary import Boundary
 
 
-class RegexSentenceSeparator(Separator):
-    """Separator that splits text into sentences using regular expressions."""
+class RegexSentenceBoundary(Boundary):
+    """Boundary rule capable of partitioning text into sentences using regular expressions."""
 
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'(?<=[.!?])(?:["\')\]]+)?\s+')
 
@@ -28,8 +28,8 @@ class RegexSentenceSeparator(Separator):
             yield Segment(sentence_start, end)
 
 
-class BlingfireSentenceSeparator(Separator):
-    """Separator that splits text into sentences using the specialized Blingfire library."""
+class BlingfireSentenceBoundary(Boundary):
+    """Boundary rule capable of partitioning text into sentences using the specialized Blingfire library."""
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
         """Split the given text into segments."""

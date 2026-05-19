@@ -4,11 +4,11 @@ from typing import ClassVar
 
 from wukong_engine.infrastructure.chunking.models import Segment
 
-from .separator import Separator
+from .boundary import Boundary
 
 
-class MarkdownHeadingSeparator(Separator):
-    """Separator that splits text into relevant segments based on Markdown headings."""
+class MarkdownHeadingBoundary(Boundary):
+    """Boundary rule capable of partitioning text into relevant segments based on Markdown headings."""
 
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'(?m)^#{1,6}[ \t]+')
 

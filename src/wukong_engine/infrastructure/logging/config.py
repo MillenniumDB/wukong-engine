@@ -15,11 +15,15 @@ def configure_logging(verbosity: int) -> None:
     Args:
         verbosity: The verbosity level (0 for WARNING, 1 for INFO, 2 or more for DEBUG).
     """
-    # Root Logger
+    # Root
     level = _map_verbosity_to_level(verbosity)
     logging.basicConfig(level=level, format='[%(levelname)s] %(name)s: %(message)s')
 
-    # Third Party Loggers
+    # Hugging Face
+    logging.getLogger('huggingface_hub').setLevel(logging.ERROR)
+    logging.getLogger('transformers').setLevel(logging.ERROR)
+
+    # OpenAI
     logging.getLogger('openai').setLevel(logging.WARNING)
     logging.getLogger('httpx').setLevel(logging.WARNING)
 

@@ -16,14 +16,12 @@ class ChunkingConfig:
     """Chunking configuration."""
 
     target_tokens: int = 800
-    max_tokens: int | None = None
     overlap_tokens: int | None = None
+    max_tokens: int | None = None
 
     def __str__(self) -> str:
         """User-friendly string representation of the chunking configuration."""
-        return (
-            f'Target Tokens: {self.target_tokens}\nMax Tokens: {self.max_tokens}\nOverlap Tokens: {self.overlap_tokens}'
-        )
+        return f'Target Tokens: {self.target_tokens}\nOverlap Tokens: {self.overlap_tokens}'
 
     def __post_init__(self) -> None:
         """Validate chunking configuration invariants."""
@@ -31,17 +29,17 @@ class ChunkingConfig:
         self._validate_base_params()
 
         # Assign derived parameters
-        derived_max = min(int(self.target_tokens * 1.5), MAX_ALLOWED_MAX_TOKENS)
         derived_overlap = min(
             max(20, int(self.target_tokens * 0.15)),
             self.target_tokens // 3,
             200,
             MAX_ALLOWED_TARGET_TOKENS // 3,
         )
-        max_tokens = self.max_tokens if self.max_tokens is not None else derived_max
+        derived_max = min(int(self.target_tokens * 1.3), MAX_ALLOWED_MAX_TOKENS)
         overlap_tokens = self.overlap_tokens if self.overlap_tokens is not None else derived_overlap
-        object.__setattr__(self, 'max_tokens', max_tokens)
+        max_tokens = self.max_tokens if self.max_tokens is not None else derived_max
         object.__setattr__(self, 'overlap_tokens', overlap_tokens)
+        object.__setattr__(self, 'max_tokens', max_tokens)
 
         # Validate derived parameters
         self._validate_derived_params()

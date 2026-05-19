@@ -13,6 +13,7 @@ dependencies = [
     "unidecode (>=1.4.0,<2.0.0)",
     "blingfire (>=0.1.8,<0.2.0)",
     "numpy (>=2.4.5,<3.0.0)",
+    "transformers (>=5.8.1,<6.0.0)",
 ]
 
 [project.urls]
@@ -73,6 +74,12 @@ quote-style = "single"
 indent-style = "space"
 skip-magic-trailing-comma = false
 docstring-code-format = false
+
+[tool.ruff.lint.pylint]
+max-branches = 15
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
 
 [tool.pyright]
 typeCheckingMode = "basic"

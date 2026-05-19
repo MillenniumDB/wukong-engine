@@ -4,11 +4,11 @@ from typing import ClassVar
 
 from wukong_engine.infrastructure.chunking.models import Segment
 
-from .separator import Separator
+from .boundary import Boundary
 
 
-class ParagraphSeparator(Separator):
-    """Separator that splits text into paragraphs based on newline characters."""
+class ParagraphBoundary(Boundary):
+    """Boundary rule capable of partitioning text into paragraphs based on newline characters."""
 
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'\n\s*\n+')
 

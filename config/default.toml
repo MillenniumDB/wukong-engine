@@ -69,13 +69,8 @@ _max_worker_threads = 10
 # Default: 800
 target_tokens = 800
 
-### Maximum number of tokens for each chunk ###
-# Note: This value should be in the range [target_tokens, 8192]
-# Default: 1200
-max_tokens = 1200
-
 ### Number of overlapping tokens between consecutive chunks ###
-# Note: This value should be in the range [0, target_tokens - 1]
+# Note: This value should be in the range [0, target_tokens - 1] (a good default is 0.15 * target_tokens)
 # Default: 120
 overlap_tokens = 120
 

@@ -1,5 +1,6 @@
 """Provides the RecursiveDocumentChunker class."""
 
+import itertools
 from collections.abc import Iterator
 
 from wukong_engine.app.document_ingestion.ports import DocumentChunker
@@ -8,28 +9,24 @@ from wukong_engine.core.documents.elements.values import ChunkId
 
 from .models import Segment
 from .plan import ChunkingPlan
+from .tokenization import TokenizedText
 
 
-# TODO: Improve to avoid cutting words in half
-# TODO: Other improvements mentioned by GPT
-# TODO: Improvements for Merge Small Segments: Novel min size vs min size
-# TODO: Tiktoken for tokenizing
-# TODO: Efficient tokenization
 class RecursiveDocumentChunker(DocumentChunker):
     """Structure-aware recursive document chunker.
 
     Strategy:
-        1. Split using configured separator hierarchy
+        1. Split using configured boundary hierarchy
         2. Pack segments toward target size
         3. Recursively refine oversized segments
         4. Hard split as terminal fallback
-        5. Merge pathological small chunks
+        5. Apply overlap in post-processing
 
     Notes:
         - Offset-first architecture
         - Preserves contiguous source coverage
-        - Supports arbitrary separator hierarchies
-        - Token/character agnostic via token counter abstraction
+        - Supports arbitrary boundary hierarchies
+        - Token agnostic via tokenized text abstraction
         - Uses soft target chunk sizing
     """
 
@@ -41,9 +38,9 @@ class RecursiveDocumentChunker(DocumentChunker):
         """Chunk a document into smaller pieces."""
         text = self._normalize_text(document.content)
         root_segment = Segment(0, len(text))
-        candidate_segments = self._split_recursive(text, root_segment, 0)
-        # final_segments = self._merge_small_segments(text, candidate_segments) # TODO:
-        final_segments = candidate_segments
+        tokenized_text = self._plan.tokenizer.tokenize(text)
+        segments = self._split_recursive(tokenized_text, root_segment, 0)
+        final_segments = self._apply_overlap(tokenized_text, segments)
         for chunk_index, segment in enumerate(final_segments):
             yield Chunk(
                 id=ChunkId.from_identity(document.metadata.id, chunk_index),
@@ -70,62 +67,72 @@ class RecursiveDocumentChunker(DocumentChunker):
             .replace('\x00', '')
         )
 
-    def _split_recursive(self, text: str, segment: Segment, level_index: int) -> list[Segment]:
-        """Recursively split a segment using the separator hierarchy."""
-        # Base case: segment already fits target size
-        if self._measure(text, segment) <= self._plan.target_size:
+    def _split_recursive(self, tokenized_text: TokenizedText, segment: Segment, level_index: int) -> list[Segment]:
+        """Recursively split a segment using the boundary hierarchy."""
+        # Base case: segment is acceptable, no further splitting needed
+        if self._measure(tokenized_text, segment) <= self._plan.max_size:
             return [segment]
 
-        # Terminal fallback
-        if level_index >= len(self._plan.boundary_separators):
-            return self._hard_split(text, segment)
+        # Terminal fallback to hard split when boundaries are exhausted
+        if level_index >= len(self._plan.boundaries):
+            return self._hard_split(tokenized_text, segment)
 
-        # Recursive case: split by current separator level and recurse on oversized segments
-        separator = self._plan.boundary_separators[level_index]
-        atomic_segments = list(separator.split(text, segment.start, segment.end))
+        # Recursive case: split by current boundary level
+        boundary = self._plan.boundaries[level_index]
+        atomic_segments = list(boundary.split(tokenized_text.text, segment.start, segment.end))
 
-        # Ineffective split -> next separator level
+        # Ineffective split -> next boundary level
         if len(atomic_segments) <= 1:
-            return self._split_recursive(text, segment, level_index + 1)
+            return self._split_recursive(tokenized_text, segment, level_index + 1)
 
         # Pack segments toward target size with recursive refinement of oversized segments
         output: list[Segment] = []
         current_start: int | None = None
         current_end: int | None = None
         for atomic in atomic_segments:
-            atomic_size = self._measure(text, atomic)
+            atomic_size = self._measure(tokenized_text, atomic)
 
-            # Oversized atomic segment -> recurse deeper
-            if atomic_size > self._plan.target_size:
-                if current_start is not None and current_end is not None:
-                    output.append(Segment(current_start, current_end))
-                    current_start = None
-                    current_end = None
-                output.extend(self._split_recursive(text, atomic, level_index + 1))
-                continue
+            # Recursively refine segments that exceed max size
+            if atomic_size > self._plan.max_size:
+                refined_segments = self._split_recursive(tokenized_text, atomic, level_index + 1)
+            else:
+                refined_segments = [atomic]
 
-            # Initialize current packed chunk
-            if current_start is None or current_end is None:
-                current_start = atomic.start
-                current_end = atomic.end
-                continue
+            # Feed refined segments into the local packer
+            for refined in refined_segments:
+                # Initialize current packed chunk
+                if current_start is None or current_end is None:
+                    current_start = refined.start
+                    current_end = refined.end
+                    continue
 
-            # Check if adding the atomic segment would fit within target size
-            candidate_segment = Segment(current_start, atomic.end)
-            candidate_size = self._measure(text, candidate_segment)
+                # Check the candidate chunk if we add the refined segment
+                current = Segment(current_start, current_end)
+                candidate = Segment(current_start, refined.end)
+                current_size = self._measure(tokenized_text, current)
+                candidate_size = self._measure(tokenized_text, candidate)
 
-            # Fits target size -> keep packing
-            if candidate_size <= self._plan.target_size:
-                current_end = atomic.end
-                continue
+                # Fits target size -> keep packing
+                if candidate_size <= self._plan.target_size:
+                    current_end = refined.end
+                    continue
 
-            # Finalize current chunk
-            output.append(Segment(current_start, current_end))
+                # Exceeds max size -> finalize current chunk and start next one
+                if candidate_size > self._plan.max_size:
+                    output.append(current)
+                    current_start = refined.start
+                    current_end = refined.end
+                    continue
 
-            # Start new chunk with overlap
-            overlap_start = self._compute_overlap_start(current_start, current_end)
-            current_start = overlap_start
-            current_end = atomic.end
+                # Soft size breach -> decide based on proximity to target size
+                current_distance = abs(self._plan.target_size - current_size)
+                candidate_distance = abs(self._plan.target_size - candidate_size)
+                if candidate_distance <= current_distance:
+                    current_end = refined.end
+                else:
+                    output.append(current)
+                    current_start = refined.start
+                    current_end = refined.end
 
         # Tail
         if current_start is not None and current_end is not None:
@@ -133,74 +140,88 @@ class RecursiveDocumentChunker(DocumentChunker):
 
         return output
 
-    # TODO: Check later
-    def _merge_small_segments(self, text: str, segments: list[Segment]) -> list[Segment]:
-        """Merge pathological small chunks into neighboring chunks when possible."""
-        if not segments:
+    def _apply_overlap(self, tokenized_text: TokenizedText, segments: list[Segment]) -> list[Segment]:
+        """Apply token-based overlap between adjacent chunks."""
+        if self._plan.overlap_size <= 0 or len(segments) <= 1:
             return segments
 
-        merged: list[Segment] = [segments[0]]
-
-        for current in segments[1:]:
-            current_size = self._measure(text, current)
-
-            # Already large enough
-            if current_size >= self._plan.min_size:
-                merged.append(current)
-                continue
-
-            previous = merged[-1]
-
-            merged_candidate = Segment(previous.start, current.end)
-            merged_size = self._measure(text, merged_candidate)
-
-            # Safe soft-overflow merge
-            if merged_size <= self._plan.max_size:
-                merged[-1] = merged_candidate
-                continue
-
-            merged.append(current)
-
-        return merged
-
-    def _measure(self, text: str, segment: Segment) -> int:
-        """Measure a segment using the token counter."""
-        return self._plan.token_counter.count(text[segment.start : segment.end])
-
-    # TODO: Check, adapt to token-based offsets if needed
-    def _compute_overlap_start(self, current_start: int, current_end: int) -> int:
-        """Compute overlap start offset for next chunk."""
-        return max(current_end - self._plan.overlap_size, current_start)
-
-    # TODO: Check, adapt to token-based offsets if needed
-    def _hard_split(self, text: str, segment: Segment) -> list[Segment]:
-        """Terminal fallback split ignoring structure."""
-        output: list[Segment] = []
-        start = segment.start
-        end = segment.end
-        step = self._plan.target_size - self._plan.overlap_size
-
-        # Split into fixed-size chunks
-        while start < end:
-            chunk_end = start
-
-            # Expand until target size reached
-            while chunk_end < end:
-                candidate_end = chunk_end + 1
-                candidate_segment = Segment(start, candidate_end)
-                candidate_size = self._measure(text, candidate_segment)
-                if candidate_size > self._plan.target_size:
-                    break
-                chunk_end = candidate_end
-
-            # Ensure forward progress
-            if chunk_end <= start:
-                chunk_end = min(start + 1, end)
-
-            output.append(Segment(start, chunk_end))
-            if chunk_end >= end:
-                break
-
-            start += step
+        # Compute overlap start for each segment except the first one
+        output: list[Segment] = [segments[0]]
+        for previous, current in itertools.pairwise(segments):
+            overlap_start = self._compute_overlap_start(tokenized_text, previous)
+            output.append(Segment(overlap_start, current.end))
 
         return output
+
+    def _measure(self, tokenized_text: TokenizedText, segment: Segment) -> int:
+        """Measure a segment in tokens."""
+        return tokenized_text.count(segment.start, segment.end)
+
+    def _hard_split(self, tokenized_text: TokenizedText, segment: Segment) -> list[Segment]:
+        """Terminal fallback split using token boundaries."""
+        segment_token_start, segment_token_end = tokenized_text.token_span(segment.start, segment.end)
+        output: list[Segment] = []
+        start_token = segment_token_start
+
+        # Iterate through token spans of target size
+        while start_token < segment_token_end:
+            end_token = min(start_token + self._plan.max_size, segment_token_end)
+            char_start, char_end = tokenized_text.char_span(start_token, end_token)
+            char_start = max(char_start, segment.start)
+            char_end = min(char_end, segment.end)
+
+            # Snap artificial split boundaries
+            if end_token < segment_token_end:
+                snapped_end = self._snap_backward_to_whitespace(tokenized_text.text, char_end, min_offset=char_start)
+
+                # Avoid creating an empty chunk
+                if snapped_end > char_start:
+                    char_end = snapped_end
+                    _, end_token = tokenized_text.token_span(char_start, char_end)
+
+            # Finalize current chunk and start the next one
+            output.append(Segment(char_start, char_end))
+            start_token = end_token
+
+        return output
+
+    def _compute_overlap_start(self, tokenized_text: TokenizedText, segment: Segment) -> int:
+        """Compute chunk overlap start using token counts."""
+        token_start, token_end = tokenized_text.token_span(segment.start, segment.end)
+        overlap_token_start = max(token_end - self._plan.overlap_size, token_start)
+        overlap_start, _ = tokenized_text.char_span(overlap_token_start, overlap_token_start)
+        return self._snap_forward_to_whitespace(tokenized_text.text, overlap_start, max_offset=segment.end)
+
+    @staticmethod
+    def _is_inside_word(text: str, offset: int) -> bool:
+        """Check if the offset is in the middle of a word."""
+        if offset <= 0 or offset >= len(text):
+            return False
+        return not text[offset - 1].isspace() and not text[offset].isspace()
+
+    def _snap_forward_to_whitespace(self, text: str, offset: int, *, max_offset: int, max_adjustment: int = 30) -> int:
+        """Move forward until reaching whitespace."""
+        # Avoid snapping if not inside a word
+        if not self._is_inside_word(text, offset):
+            return offset
+
+        limit = min(offset + max_adjustment, max_offset + 1, len(text))
+        for i in range(offset, limit):
+            if text[i].isspace():
+                return i
+        if limit == len(text):
+            return len(text)
+
+        return offset
+
+    def _snap_backward_to_whitespace(self, text: str, offset: int, *, min_offset: int, max_adjustment: int = 30) -> int:
+        """Move backward until reaching whitespace."""
+        # Avoid snapping if not inside a word
+        if not self._is_inside_word(text, offset):
+            return offset
+
+        limit = max(offset - max_adjustment, min_offset, 0)
+        for i in range(offset, limit, -1):
+            if text[i - 1].isspace():
+                return i
+        return offset

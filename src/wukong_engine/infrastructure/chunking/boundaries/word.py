@@ -2,21 +2,25 @@ from collections.abc import Iterator
 
 from wukong_engine.infrastructure.chunking.models import Segment
 
-from .separator import Separator
+from .boundary import Boundary
 
 
-class WhitespaceSeparator(Separator):
-    """Separator that splits text into words based on whitespace."""
+class WordBoundary(Boundary):
+    """Boundary rule capable of partitioning text into words based on whitespace."""
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
         """Split the given text into segments."""
         # Detect segments for each contiguous sequence of non-whitespace characters
         segment_start = start
+        has_content = False
         for i in range(start, end):
-            if text[i].isspace():
-                segment_end = i + 1
-                yield Segment(segment_start, segment_end)
-                segment_start = segment_end
+            if not text[i].isspace():
+                has_content = True
+                continue
+            if has_content:
+                yield Segment(segment_start, i + 1)
+                segment_start = i + 1
+                has_content = False
 
         # Add final segment if text does not end with whitespace
         if segment_start < end:
