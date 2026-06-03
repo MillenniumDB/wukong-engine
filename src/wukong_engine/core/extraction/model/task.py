@@ -8,7 +8,8 @@ from .rules.compatibility import ensure_compatible_entity_task_cardinality
 from .values import Cardinality
 
 
-# TODO: Refactor to be more abstract and not depend on graph domain
+# TODO: Complete, then go into prompt rendering
+# TODO: Complete extraction related domain
 @dataclass(frozen=True)
 class EntityExtractionTask:
     """A task describing what entity type to extract and at which context level and cardinality."""

@@ -1,16 +1,26 @@
 """Response model for LLM interactions."""
 
 from dataclasses import dataclass
-from typing import Any
-
-from .values import LLMError
 
 
+# TODO: Validator and conversion to domain
 @dataclass(frozen=True)
 class LLMResponse:
     """Response envelope returned by an LLM client."""
 
-    success: bool
     content: str
-    structured: dict[str, Any] | None = None
-    error: LLMError | None = None
+    model: str
+    input_tokens: int
+    output_tokens: int
+
+
+# TODO: Validator takes LLMResponse content and validates against the response schema, then converts to these DTOs
+# TODO: Later, the DTOs are mapped to actual Entity instances
+# @dataclass(frozen=True)
+# class ExtractedEntityDto:
+#     type: str
+#     properties: Mapping[str, str]
+
+# @dataclass(frozen=True)
+# class ExtractionResultDto:
+#     entities: Sequence[ExtractedEntityDto]
