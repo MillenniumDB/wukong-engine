@@ -3,14 +3,14 @@
 from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpenAI, AuthenticationError, RateLimitError
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMTransientError
+from wukong_engine.app.llm.model import LLMRegistry
 
 from .config import OpenAIConfig
 
 
-# TODO: Test happy path with no structured response
 # TODO: Test all errors
-# TODO: Test structured response
-# TODO: Move on to Extraction Executor
+# TODO: Support minimal vs none in reasoning effort
+# TODO: Test reasoning effort NONE vs MINIMAL vs LOW vs MEDIUM (for both entity and relationship extraction)
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
@@ -22,17 +22,25 @@ class OpenAIClient(LLMClient):
     async def generate(self, request: LLMRequest) -> LLMResponse:
         """Generate a response from the LLM based on the given request."""
         # Base parameters for the API call
+        model = request.model if request.model is not None else self._config.model
         kwargs = {
-            'model': request.model or self._config.model,
+            'model': model.name,
             'instructions': request.system_prompt,
             'input': request.user_prompt,
         }
+
+        # Set reasoning effort if supported by the model
+        # 5.4 mini supports 'none', 'low'
+        # 5 mini supports 'minimal', 'low'
+        if LLMRegistry.is_reasoning_model(model):
+            kwargs['reasoning'] = {'effort': 'low'}
 
         # Include structured response schema if provided
         if request.response_schema is not None:
             kwargs['text'] = {
                 'format': {
                     'type': 'json_schema',
+                    'name': 'schema',
                     'strict': True,
                     'schema': request.response_schema,
                 },

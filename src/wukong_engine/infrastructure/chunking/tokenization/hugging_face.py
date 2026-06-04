@@ -38,3 +38,11 @@ class HuggingFaceTokenizer(TextTokenizer):
                 starts.append(start)
                 ends.append(end)
         return TokenizedText(text=text, token_starts=tuple(starts), token_ends=tuple(ends))
+
+    def truncate(self, text: str, max_tokens: int) -> str:
+        """Truncate a given text to fit within the max token limit."""
+        encoded = self._tokenizer(text, add_special_tokens=False, truncation=True, max_length=max_tokens)
+        decoded = self._tokenizer.decode(encoded['input_ids'], skip_special_tokens=True)
+        if isinstance(decoded, str):
+            return decoded
+        raise ValueError('Decoded truncated text is not a string.')

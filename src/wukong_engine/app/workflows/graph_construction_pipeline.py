@@ -38,7 +38,7 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    def execute(self, workspace: Workspace, *, should_reset: bool = True) -> None:
+    async def execute(self, workspace: Workspace, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
@@ -89,7 +89,7 @@ class GraphConstructionPipeline:
                     tx.entities.clear()
                 logger.warning('Removing existing data...')
             logger.info('Starting entity extraction...')
-            self._extract_entities.execute(graph_model)
+            await self._extract_entities.execute(graph_model)
             logger.info('Entity extraction completed successfully!')
 
         # TODO: Relationship extraction

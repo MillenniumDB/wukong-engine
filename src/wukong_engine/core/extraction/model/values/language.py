@@ -15,5 +15,5 @@ class Language(Enum):
         ES: Spanish.
     """
 
-    EN = 'en'
-    ES = 'es'
+    EN = 'English'
+    ES = 'Spanish'

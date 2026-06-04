@@ -19,6 +19,16 @@ class LLMRegistry:
             ),
         },
     )
+    _REASONING: MappingProxyType[LLMProvider, frozenset[str]] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: frozenset(
+                {
+                    'gpt-5-mini',
+                    'gpt-5.4-mini',
+                },
+            ),
+        },
+    )
 
     @classmethod
     def is_supported_model(cls, model: LLM) -> bool:
@@ -34,3 +44,8 @@ class LLMRegistry:
     def default_model(cls) -> LLM:
         """Default LLM model."""
         return cls._DEFAULT_MODEL
+
+    @classmethod
+    def is_reasoning_model(cls, model: LLM) -> bool:
+        """Check if the given provider and model support reasoning tokens."""
+        return model.name in cls._REASONING.get(model.provider, frozenset())

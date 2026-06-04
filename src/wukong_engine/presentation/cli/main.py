@@ -10,6 +10,7 @@ Example:
 """
 
 import argparse
+import asyncio
 import logging
 import sys
 from pathlib import Path
@@ -65,9 +66,9 @@ def build_parser() -> argparse.ArgumentParser:
         metavar='CONFIG_FILE',
     )
     run_parser.add_argument(
-        '--incremental',
+        '--reset',
         action='store_true',
-        help='Reuse existing state instead of clearing all data at the start of each step',
+        help='Clear all data at the start of each active pipeline step',
     )
     run_parser.add_argument(
         '-v',
@@ -115,7 +116,7 @@ def handle_run(args: argparse.Namespace) -> None:
         workspace = Workspace(root=args.workspace)
         WorkspaceValidator().validate(workspace=workspace)
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
-        app.graph_construction.execute(workspace=workspace, should_reset=not args.incremental)
+        asyncio.run(app.graph_construction.execute(workspace=workspace, should_reset=args.reset))
         print('WUKONG engine pipeline execution completed!')
     except (FileNotFoundError, ValueError, TypeError) as error:
         logger.exception('Failed to process input.')

@@ -1,9 +1,9 @@
 from collections.abc import Iterable, Iterator
 from typing import Protocol
 
+from wukong_engine.app.data_extraction.dtos import EntityExtractionJob
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements import PendingChunkExtraction, PendingDocumentExtraction
 from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
 from wukong_engine.core.graph.model.values import EntityTypeName
 
@@ -27,11 +27,11 @@ class EntityExtractionStore(Protocol):
         """Mark completed entity type extractions from a source context."""
         ...
 
-    def stream_pending_document_extractions(self) -> Iterator[PendingDocumentExtraction]:
+    def stream_pending_document_extractions(self) -> Iterator[EntityExtractionJob]:
         """Stream source documents with their pending entity types for extraction."""
         ...
 
-    def stream_pending_chunk_extractions(self) -> Iterator[PendingChunkExtraction]:
+    def stream_pending_chunk_extractions(self) -> Iterator[EntityExtractionJob]:
         """Stream source chunks with their pending entity types for extraction."""
         ...
 

@@ -1,4 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+from wukong_engine.app.llm.model import LLM, LLMRegistry
 
 # Constants
 MIN_ALLOWED_TIMEOUT = 30  # Minimum allowed timeout in seconds
@@ -11,7 +13,7 @@ class OpenAIConfig:
     """Configuration parameters for the OpenAI client."""
 
     api_key: str
-    model: str = 'gpt-5-mini'
+    model: LLM = field(default_factory=LLMRegistry.default_model)
     timeout: float = 120  # Default: 2 minutes, more than reasonable for extraction tasks
     max_retries: int = 2  # Default: 2 retries, enough for transient network issues
 

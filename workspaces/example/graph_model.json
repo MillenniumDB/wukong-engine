@@ -1,12 +1,7 @@
 {
     "extraction_config": {
         "llm": {
-            "persona": "An expert legal analyst specializing in Chilean law, with extensive experience in identifying connections between legal articles.",
-            "context": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
-        },
-        "language": {
-            "input": "es",
-            "output": "es"
+            "domain": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
         },
         "projection": {
             "enabled_entities": [
@@ -30,9 +25,7 @@
                 "node_name": {
                     "data_type": "string",
                     "description": "The unique identifier of the LGUC article.",
-                    "instructions": {
-                        "chunk": "Must be in the format: lguc_articulo_<A>_<NUM>_<LETTER>, where <A> is a valid integer without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <A> <NUM> <LETTER>."
-                    },
+                    "instructions": "Must be in the format: lguc_articulo_<A>_<NUM>_<LETTER>, where <A> is a valid integer without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <A> <NUM> <LETTER>.",
                     "regex": "^lguc[ _.-]articulo[ _.-]\\d+(?:[ _.-][A-Za-z]+(?:[ _.-][A-Za-z])?)?$",
                     "examples": [
                         "lguc_articulo_1",
@@ -41,8 +34,9 @@
                     ],
                     "retrieval_mode": {
                         "chunk": "extract",
-                        "document": "load"
-                    }
+                        "document": "extract"
+                    },
+                    "required": true
                 },
                 "filename": {
                     "data_type": "string",
@@ -163,9 +157,7 @@
                 "node_name": {
                     "data_type": "string",
                     "description": "The unique identifier of the OGUC article.",
-                    "instructions": {
-                        "chunk": "Must be in the format: oguc_articulo_<T>.<C>.<A>_<NUM>_<LETTER>, where <T>, <C>, <A> are valid integers without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <T>.<C>.<A> <NUM> <LETTER>."
-                    },
+                    "instructions": "Must be in the format: oguc_articulo_<T>.<C>.<A>_<NUM>_<LETTER>, where <T>, <C>, <A> are valid integers without any leading '0's, <NUM> is optional and must be a latin adverb of iterative value (bis, ter, quater, quinquies, sexies, septies, octies, nonies, decies, undecies...), and <LETTER> is an optional letter that may only appear if <NUM> is also present. All of this is usually mentioned in the text as: artículo <T>.<C>.<A> <NUM> <LETTER>.",
                     "regex": "^oguc[ _.-]articulo[ _.-]\\d+\\.\\d+\\.\\d+(?:[ _.-][A-Za-z]+(?:[ _.-][A-Za-z])?)?$",
                     "examples": [
                         "oguc_articulo_1.2.3",
@@ -174,8 +166,9 @@
                     ],
                     "retrieval_mode": {
                         "chunk": "extract",
-                        "document": "load"
-                    }
+                        "document": "extract"
+                    },
+                    "required": true
                 },
                 "filename": {
                     "data_type": "string",
@@ -295,9 +288,7 @@
                 "node_name": {
                     "data_type": "string",
                     "description": "The unique identifier of the DDU circular.",
-                    "instructions": {
-                        "chunk": "If the circular is General, then this identifier must be in the format: ddu_grl_<N>, where <N> is a valid integer assigned to the circular, without any leading '0's. If the circular is Specific, then this identifier must be in the format: ddu_esp_<N>_<YYYY>, where <N> is the same as in the General case, and <YYYY> is the year. Do not confuse <N> with the order number, which is a different integer. Assume that all circulars are General unless explicitly stated as Specific. All of this is mentioned in the text as: DDU <N> or DDU-ESPECÍFICA N° <N>/<YYYY>."
-                    },
+                    "instructions": "If the circular is General, then this identifier must be in the format: ddu_grl_<N>, where <N> is a valid integer assigned to the circular, without any leading '0's. If the circular is Specific, then this identifier must be in the format: ddu_esp_<N>_<YYYY>, where <N> is the same as in the General case, and <YYYY> is the year. Do not confuse <N> with the order number, which is a different integer. Assume that all circulars are General unless explicitly stated as Specific. All of this is mentioned in the text as: DDU <N> or DDU-ESPECÍFICA N° <N>/<YYYY>.",
                     "regex": "^ddu[ _.-](?:grl[ _.-]\\d+|esp[ _.-]\\d+[ _.-]\\d{4})$",
                     "examples": [
                         "ddu_grl_2",
@@ -305,8 +296,9 @@
                     ],
                     "retrieval_mode": {
                         "chunk": "extract",
-                        "document": "load"
-                    }
+                        "document": "extract"
+                    },
+                    "required": true
                 },
                 "filename": {
                     "data_type": "string",
@@ -373,8 +365,7 @@
                 "date": {
                     "data_type": "string",
                     "description": "The date of the DDU circular.",
-                    "instructions": "Must be in the format: <YYYY>-<MM>-<DD>, where <YYYY> is the year, <MM> is the month, and <DD> is the day. If <MM> is not available, consider it as 01. If <DD> is not available, consider it as 01. If the year is not available, the entire date value should be: NULL.",
-                    "examples": "2015-07-01",
+                    "instructions": "Must be in the format: <YYYY>-<MM>-<DD>, where <YYYY> is the year, <MM> is the month, and <DD> is the day. If <MM> is not available, consider it as 01. If <DD> is not available, consider it as 01. If the year is not available, do not extract this field.",
                     "retrieval_mode": {
                         "chunk": "extract",
                         "document": "load"
@@ -390,13 +381,9 @@
                     "data_type": "string",
                     "description": "The circular order number.",
                     "instructions": {
-                        "chunk": "If present, it is mentioned in the text as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. Must be a different number from the one in 'node_name'. If not present, the value should be: NULL.",
-                        "document": "Mentioned near the beginning of the document as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. If not present, the value should be: NULL."
+                        "chunk": "If present, it is mentioned in the text as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's. Must be a different number from the one in 'node_name'.",
+                        "document": "Mentioned near the beginning of the document as: Ord. N° <CIRCULAR_ORDER_NUMBER>. Must be in the format: <N>, where <N> is a valid integer without any leading '0's."
                     },
-                    "examples": [
-                        "2",
-                        "123"
-                    ],
                     "retrieval_mode": "extract"
                 },
                 "subject": {
@@ -446,7 +433,7 @@
                 "source": {
                     "data_type": "string",
                     "description": "The name of the legal body that contains the legal provision.",
-                    "instructions": "Cannot be among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano). Must be in the format: <TYPE> N° <N>, where <TYPE> is the type of legal body (e.g. Ley, Decreto, Constitución, Decreto con Fuerza de Ley, Código Civil, Código Penal, etc...), and <N> is a valid integer without any dot ('.') characters. Do not consider Artículo or Numeral as <TYPE> or numbers used for them as <N>. If <N> is not mentioned, the format must be: <TYPE>. If <TYPE> is not mentioned, the entire value must be: NULL.",
+                    "instructions": "Cannot be among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano). Must be in the format: <TYPE> N° <N>, where <TYPE> is the type of legal body (e.g. Ley, Decreto, Constitución, Decreto con Fuerza de Ley, Código Civil, Código Penal, etc...), and <N> is a valid integer without any dot ('.') characters. Do not consider Artículo or Numeral as <TYPE> or numbers used for them as <N>. If <N> is not mentioned, the format must be: <TYPE>. If <TYPE> is not mentioned, do not extract this field.",
                     "examples": [
                         "Ley N° 20600",
                         "Decreto con Fuerza de Ley N° 707",
@@ -460,20 +447,20 @@
                     "data_type": "string",
                     "description": "The number of the specific article from 'source' that is being considered, if specified.",
                     "instructions": "Must be a valid integer without any dot ('.') characters. Do not consider Numeral as the article number.",
-                    "examples": "20",
                     "retrieval_mode": "extract"
                 },
                 "name": {
                     "data_type": "string",
                     "description": "The full name of the legal provision.",
-                    "instructions": "Corresponds to: <SOURCE> Art <ART>, where <SOURCE> is the value of 'source' and <ART> is the value of 'article'. If 'article' is not present, the format must be: <SOURCE>. The entire value must be NULL if <SOURCE> is among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
+                    "instructions": "Corresponds to: <SOURCE> Art <ART>, where <SOURCE> is the value of 'source' and <ART> is the value of 'article'. If 'article' is not present, the format must be: <SOURCE>. Do not extract this field if <SOURCE> is among: LGUC (Ley General de Urbanismo y Construcciones), OGUC (Ordenanza General de Urbanismo y Construcciones), DDU (División de Desarrollo Urbano).",
                     "examples": [
                         "Ley N° 20600 Art 20",
                         "Decreto con Fuerza de Ley N° 707 Art 10",
                         "Código Civil Art 200"
                     ],
                     "retrieval_mode": "extract",
-                    "merge_strategy": "longest"
+                    "merge_strategy": "longest",
+                    "required": true
                 },
                 "summary": {
                     "data_type": "string",
@@ -574,7 +561,8 @@
                         "modifica",
                         "deroga",
                         "instruye"
-                    ]
+                    ],
+                    "required": true
                 },
                 "description": {
                     "data_type": "string",

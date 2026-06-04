@@ -1,12 +1,14 @@
 import sqlite3
 from collections.abc import Iterable, Iterator
 
+from wukong_engine.app.data_extraction.dtos import EntityExtractionJob
 from wukong_engine.app.staging.ports import EntityExtractionStore
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements import PendingChunkExtraction, PendingDocumentExtraction
 from wukong_engine.core.extraction.elements.values import ExtractionStatus
+from wukong_engine.core.extraction.model import EntityExtractionTask
+from wukong_engine.core.extraction.model.values import Cardinality
 from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model.values import EntityTypeName
@@ -129,7 +131,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
-    def stream_pending_document_extractions(self) -> Iterator[PendingDocumentExtraction]:
+    def stream_pending_document_extractions(self) -> Iterator[EntityExtractionJob]:
         """Stream source documents with their pending entity types for extraction."""
         cursor = self._conn.execute(
             """
@@ -154,8 +156,12 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             document_content_id = row['document_content_id']
 
             if current_document is not None and document_content_id != current_content_id:
-                yield PendingDocumentExtraction(
-                    document=current_document,
+                yield EntityExtractionJob(
+                    source=current_document,
+                    task=EntityExtractionTask(
+                        context_level=ContextLevel.DOCUMENT,
+                        cardinality=Cardinality.SINGLE,
+                    ),
                     entity_types=tuple(current_entity_types),
                 )
                 current_entity_types = []
@@ -173,12 +179,16 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             current_entity_types.append(EntityTypeName(row['entity_type_name']))
 
         if current_document is not None:
-            yield PendingDocumentExtraction(
-                document=current_document,
+            yield EntityExtractionJob(
+                source=current_document,
+                task=EntityExtractionTask(
+                    context_level=ContextLevel.DOCUMENT,
+                    cardinality=Cardinality.SINGLE,
+                ),
                 entity_types=tuple(current_entity_types),
             )
 
-    def stream_pending_chunk_extractions(self) -> Iterator[PendingChunkExtraction]:
+    def stream_pending_chunk_extractions(self) -> Iterator[EntityExtractionJob]:
         """Stream source chunks with their pending entity types for extraction."""
         cursor = self._conn.execute(
             """
@@ -209,8 +219,12 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             chunk_content_id = row['chunk_content_id']
 
             if current_chunk is not None and chunk_content_id != current_content_id:
-                yield PendingChunkExtraction(
-                    chunk=current_chunk,
+                yield EntityExtractionJob(
+                    source=current_chunk,
+                    task=EntityExtractionTask(
+                        context_level=ContextLevel.CHUNK,
+                        cardinality=Cardinality.MULTIPLE,
+                    ),
                     entity_types=tuple(current_entity_types),
                 )
                 current_entity_types = []
@@ -235,8 +249,12 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             current_entity_types.append(EntityTypeName(row['entity_type_name']))
 
         if current_chunk is not None:
-            yield PendingChunkExtraction(
-                chunk=current_chunk,
+            yield EntityExtractionJob(
+                source=current_chunk,
+                task=EntityExtractionTask(
+                    context_level=ContextLevel.CHUNK,
+                    cardinality=Cardinality.MULTIPLE,
+                ),
                 entity_types=tuple(current_entity_types),
             )
 

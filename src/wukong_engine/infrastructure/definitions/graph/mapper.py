@@ -53,10 +53,8 @@ class GraphModelMapper:
     def _map_extraction_config(self, schema: ExtractionConfigSchema) -> ExtractionConfig:
         """Convert an ExtractionConfigSchema to an ExtractionConfig domain model."""
         return ExtractionConfig(
-            llm_persona=schema.llm.persona,
-            domain_context=schema.llm.context,
-            input_language=schema.language.input,
-            output_language=schema.language.output,
+            domain=schema.llm.domain,
+            language=schema.llm.language,
             entity_projection=frozenset(EntityTypeName(name) for name in schema.projection.enabled_entities)
             if schema.projection.enabled_entities is not None
             else None,

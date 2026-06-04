@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from types import MappingProxyType
 
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
+from wukong_engine.core.extraction.model.values import RelationshipRetrievalMode
 
 from .endpoint import Endpoint
 from .field import RelationshipField
@@ -59,14 +60,29 @@ class RelationshipType:
                 ) from error
 
     def _validate_primary_key(self) -> None:
-        """Validate that the primary key is present when required, and properly defined in the fields."""
+        """Validate primary key invariants."""
+        # PK existence when specified
         if self.primary_key is not None and self.primary_key not in self.fields:
             raise ValueError(
                 f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" not found in fields',
             )
 
+        # PK is required for certain identity policies
         if self.identity_policy.requires_primary_key and self.primary_key is None:
             raise ValueError(
                 f'Invalid RelationshipType "{self.name}": identity policy (deduplication mode) "{self.identity_policy.value}" '
                 f'requires a primary key, but none was provided. Either define a primary key field or specify a different deduplication mode.',
             )
+
+        # PK retrieval mode must be EXTRACT and the field must be required (if PK is specified)
+        if self.primary_key is not None:
+            pk_field = self.fields[self.primary_key]
+            if pk_field.retrieval_mode != RelationshipRetrievalMode.EXTRACT:
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" has retrieval mode '
+                    f'"{pk_field.retrieval_mode.value}", expected "extract"',
+                )
+            if not pk_field.required:
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
+                )

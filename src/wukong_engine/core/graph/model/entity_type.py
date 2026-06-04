@@ -1,8 +1,9 @@
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from types import MappingProxyType
 
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
+from wukong_engine.core.extraction.model.values import EntityRetrievalMode
 
 from .field import EntityField
 from .values import EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
@@ -20,6 +21,11 @@ class EntityType:
     fields: MappingProxyType[FieldName, EntityField]
     document_collections: MappingProxyType[ContextLevel, tuple[DocumentCollectionName, ...]]
     default_merge_strategy: MergeStrategy
+
+    # Private index for fast retrieval of fields by context level and retrieval mode
+    _fields_index: MappingProxyType[ContextLevel, MappingProxyType[EntityRetrievalMode, tuple[EntityField, ...]]] = (
+        field(init=False, repr=False)
+    )
 
     def __str__(self) -> str:
         """User-friendly string representation of the entity type."""
@@ -54,14 +60,31 @@ class EntityType:
         return json.dumps(entity_info)
 
     def __post_init__(self) -> None:
-        """Validate entity type invariants."""
+        """Validate entity type invariants and build fields index."""
         self._validate_primary_key()
         self._validate_document_collections()
+        object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_primary_key(self) -> None:
-        """Validate that the primary key is defined in the fields."""
+        """Validate primary key invariants."""
+        # PK existence
         if self.primary_key not in self.fields:
             raise ValueError(f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" not found in fields')
+
+        # PK field must be required
+        primary_key_field = self.fields[self.primary_key]
+        if not primary_key_field.required:
+            raise ValueError(
+                f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
+            )
+
+        # PK retrieval mode must be either EXTRACT or LOAD
+        for context_level, retrieval_mode in primary_key_field.retrieval_mode.items():
+            if retrieval_mode not in {EntityRetrievalMode.EXTRACT, EntityRetrievalMode.LOAD}:
+                raise ValueError(
+                    f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" has retrieval mode '
+                    f'"{retrieval_mode.value}" for context level "{context_level.value}", expected "extract" or "load"',
+                )
 
     def _validate_document_collections(self) -> None:
         """Validate that there are no duplicated document collection names."""
@@ -73,78 +96,25 @@ class EntityType:
                     f'for context level "{context_level.value}": {duplicates}',
                 )
 
+    def _build_fields_index(
+        self,
+    ) -> MappingProxyType[ContextLevel, MappingProxyType[EntityRetrievalMode, tuple[EntityField, ...]]]:
+        """Precompute fields by context level and retrieval mode for fast lookups."""
+        index: dict[ContextLevel, dict[EntityRetrievalMode, list[EntityField]]] = {}
+        for entity_field in self.fields.values():
+            for context_level in ContextLevel:
+                retrieval_mode = entity_field.retrieval_mode.get(context_level, EntityRetrievalMode.EXTRACT)
+                by_mode = index.setdefault(context_level, {})
+                by_mode.setdefault(retrieval_mode, []).append(entity_field)
+        return MappingProxyType(
+            {
+                context_level: MappingProxyType(
+                    {retrieval_mode: tuple(entity_fields) for retrieval_mode, entity_fields in by_mode.items()},
+                )
+                for context_level, by_mode in index.items()
+            },
+        )
 
-# TODO: Check later when extracting
-#     def is_special_entity(self) -> bool:
-#         """Check if the entity type is a special entity.
-
-#         Returns:
-#             True if the entity type is a special entity, False otherwise.
-#         """
-#         return self.parameters.get('special_entity', False)
-
-#     def has_content_level(self, level: ContentLevel) -> bool:
-#         """Check if the entity type has a specific source.
-
-#         Args:
-#             level: The source to check.
-
-#         Returns:
-#             True if the entity type has the specified source, False otherwise.
-#         """
-#         return level.value in self.sources
-
-#     def source_documents(self, source: str) -> set[str]:
-#         """Get the document sets associated with a specific source.
-
-#         Args:
-#             source: The source to get document sets for.
-
-#         Returns:
-#             A set of document dataset names associated with the specified source.
-#         """
-#         return set(self.sources.get(source, []))
-
-#     def fields(self, source: ContentLevel | None = None, field_mode: FieldMode | None = None) -> list[Field]:
-#         """Get the fields for a specific source and field mode.
-
-#         Args:
-#             source: The source to get fields for. If None, all sources are considered.
-#             field_mode: The field mode to filter fields by. If None, all field modes are considered.
-
-#         Returns:
-#             A list of Field objects for the specified source and field mode.
-#         """
-#         result = []
-#         for field in self._fields:
-#             pass
-
-#         return result
-
-#     @property
-#     def extraction_fields(self, source: str) -> list[Field]:
-#         """A dictionary containing the extraction fields for each source of the entity type."""
-#         return self.fields(source, FieldMode.EXTRACTION)
-
-#     @property
-#     def external_fields(self, source: str) -> dict[str, Any]:
-#         """A dictionary containing the external fields of the entity type."""
-#         return {k: v for k, v in self.fields.items() if v.get('external', False)}
-
-#     @property
-#     def default_fields(self, source: str) -> dict[str, Any]:
-#         """A dictionary containing the default fields of the entity type."""
-#         entity_pk = self.parameters.get('primary_key', '')
-
-#         # Hybrid entities prioritize hybrid fields over placeholders
-#         if self.has_source(Source.CHUNK) and self.has_source(Source.DOCUMENT):
-#             return {
-#                 k: v
-#                 for k, v in self.fields.items()
-#                 if 'constant' in v and k != entity_pk and not v.get('hybrid', False)
-#             }
-
-#         # Other entities prioritize metadata over placeholders
-#         return {
-#             k: v for k, v in self.fields.items() if 'constant' in v and k != entity_pk and k not in self.external_fields
-#         }
+    def fields_for(self, context_level: ContextLevel, retrieval_mode: EntityRetrievalMode) -> tuple[EntityField, ...]:
+        """Get the relevant fields for a specific retrieval mode and context level."""
+        return self._fields_index.get(context_level, {}).get(retrieval_mode, ())

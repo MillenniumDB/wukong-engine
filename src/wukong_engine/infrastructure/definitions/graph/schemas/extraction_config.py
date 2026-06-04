@@ -6,20 +6,10 @@ from wukong_engine.core.extraction.model.values import Language
 
 
 class LLMSchema(BaseModel):
-    """Schema-level representation of LLM parameters.
+    """Schema-level representation of LLM parameters."""
 
-    Note: If context is None, the LLM should be prompted with no additional context.
-    """
-
-    persona: StrictStr = 'An AI expert specialized in knowledge graph extraction'
-    context: StrictStr | None = None
-
-
-class LanguageSchema(BaseModel):
-    """Schema-level representation of language parameters."""
-
-    input: Language = Language.EN
-    output: Language = Language.EN
+    domain: StrictStr = 'General documents.'
+    language: Language | None = None
 
     # Mapping of various string representations to Language members
     _LANGUAGE_ALIASES: ClassVar[dict[str, Language]] = {
@@ -29,7 +19,7 @@ class LanguageSchema(BaseModel):
         'spanish': Language.ES,
     }
 
-    @field_validator('input', 'output', mode='before')
+    @field_validator('language', mode='before')
     @classmethod
     def normalize_language(cls, value: Any) -> Any:
         """Normalize language strings to Language members."""
@@ -52,5 +42,4 @@ class ExtractionConfigSchema(BaseModel):
     """Schema-level representation of extraction parameters."""
 
     llm: LLMSchema = Field(default_factory=LLMSchema)
-    language: LanguageSchema = Field(default_factory=LanguageSchema)
     projection: ProjectionSchema = Field(default_factory=ProjectionSchema)

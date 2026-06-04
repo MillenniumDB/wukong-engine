@@ -3,10 +3,9 @@
 This package contains schematic components for extraction.
 """
 
-from .prompt_spec import EntityExtractionPromptSpec
-from .task import EntityExtractionTask
+from .task import EntityExtractionTask, RelationshipExtractionTask
 
 __all__ = [
-    'EntityExtractionPromptSpec',
     'EntityExtractionTask',
+    'RelationshipExtractionTask',
 ]
