@@ -7,7 +7,9 @@ class ExtractionStatus(Enum):
     Attributes:
         PENDING: Work exists but has not started.
         COMPLETED: Successfully finished.
+        FAILED: Attempted but failed to complete.
     """
 
     PENDING = 'PENDING'
     COMPLETED = 'COMPLETED'
+    FAILED = 'FAILED'

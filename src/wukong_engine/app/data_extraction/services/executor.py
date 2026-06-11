@@ -1,42 +1,41 @@
 """Extraction Executor."""
 
+import json
 from collections.abc import AsyncIterator, Iterable
 
 from wukong_engine.app.data_extraction.dtos import ExtractionRequest, ExtractionResult
-from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.app.llm.elements import LLMClient
+from wukong_engine.app.llm.elements.values.errors import LLMTransientError
+from wukong_engine.core.extraction.elements.values import ExtractionStatus
 
 from .prompt_renderer import PromptRenderer
 
 
-# TODO: Handle extraction errors for LLMClient
-# TODO: Parse LLMResponse -> If bad JSON, maybe retry 1 or 2 times max before giving up
-# TODO: Return ExtractionResults
+# TODO: Use actual LLM response instead of dummy content
+# TODO: Add response metrics to result
+# TODO: Remove None from execute_many return type once implemented
 # TODO: Async semaphores for concurrency
 class ExtractionExecutor:
     """Asynchronous executor for data extraction jobs."""
 
-    def __init__(self, llm_client: LLMClient, pk_normalizer: PKNormalizer) -> None:
+    def __init__(self, llm_client: LLMClient) -> None:
         """Initialize the executor with necessary dependencies."""
         self._prompt_renderer = PromptRenderer()
         self._llm_client = llm_client
-        self._pk_normalizer = pk_normalizer
 
     async def execute(self, extraction: ExtractionRequest) -> ExtractionResult:
         """Execute an extraction request."""
         request = self._prompt_renderer.render(extraction.context)
-        print(f'PROMPT: {request.user_prompt}')
-        print(f'SCHEMA: {request.response_schema}')
-        # response = await self._llm_client.generate(request)
-        # print(f'CONTENT: {response.content}')
-        # print(f'MODEL: {response.model}')
-        # print(f'INPUT TOKENS: {response.input_tokens}')
-        # print(f'OUTPUT TOKENS: {response.output_tokens}')
-        return ExtractionResult(extraction.job, {})
+        try:
+            # response = await self._llm_client.generate(request)
+            content = '{"entities":[{"_entity_type":"DDU","circular_order_number":"166","date":"2010-02-24","node_name":"ddu_grl_230","source_type":"ddu"},{"_entity_type":"DDU","circular_order_number":"935","date":"2009-12-01","node_name":"ddu_grl_227","source_type":"ddu"}]}'
+            data = json.loads(content)
+            return ExtractionResult(extraction.job, data, ExtractionStatus.COMPLETED, metrics=None)
+        except (LLMTransientError, json.JSONDecodeError) as exc:
+            return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=str(exc))
 
-    async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
+    async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult] | None:
         """Execute multiple extraction jobs."""
         # async with semaphore:
         #     response = await self._llm_client.generate(...)
-        for request in requests:
-            yield ExtractionResult(request.job, {})
+        return None

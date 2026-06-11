@@ -52,6 +52,8 @@ CREATE TABLE IF NOT EXISTS entity_type_extractions (
     context_content_id BLOB NOT NULL,
     entity_type_name TEXT NOT NULL,
     extraction_status TEXT NOT NULL,
+    attempt_count INTEGER NOT NULL DEFAULT 0,
+    last_error TEXT,
     PRIMARY KEY (
         context_level,
         context_content_id,
@@ -67,7 +69,8 @@ CREATE TABLE IF NOT EXISTS entity_type_extractions (
     CHECK (
         extraction_status IN (
             'PENDING',
-            'COMPLETED'
+            'COMPLETED',
+            'FAILED'
         )
     )
 );
@@ -106,7 +109,7 @@ CREATE INDEX IF NOT EXISTS idx_dc_collection ON document_collections(collection_
 -- Entities & Entity Types
 CREATE INDEX IF NOT EXISTS idx_entities_type_entity ON entities(entity_type_name, content_id);
 -- Entity Extraction
-CREATE INDEX IF NOT EXISTS idx_ete_pending ON entity_type_extractions(
+CREATE INDEX IF NOT EXISTS idx_ete_lvl_status_ctx_et ON entity_type_extractions(
     context_level,
     extraction_status,
     context_content_id,

@@ -1,14 +1,16 @@
 """OpenAI adapter implementing the LLM client port."""
 
 from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpenAI, AuthenticationError, RateLimitError
+from openai.types.responses import Response as OpenAIResponse
+from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
+from wukong_engine.app.llm.elements.values import ResponseMetrics
 from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMTransientError
 from wukong_engine.app.llm.model import LLMRegistry
 
 from .config import OpenAIConfig
 
 
-# TODO: Test all errors
 # TODO: Support minimal vs none in reasoning effort
 # TODO: Test reasoning effort NONE vs MINIMAL vs LOW vs MEDIUM (for both entity and relationship extraction)
 class OpenAIClient(LLMClient):
@@ -29,7 +31,7 @@ class OpenAIClient(LLMClient):
             'input': request.user_prompt,
         }
 
-        # Set reasoning effort if supported by the model
+        # TODO: Set reasoning effort if supported by the model
         # 5.4 mini supports 'none', 'low'
         # 5 mini supports 'minimal', 'low'
         if LLMRegistry.is_reasoning_model(model):
@@ -48,7 +50,8 @@ class OpenAIClient(LLMClient):
 
         # Await response, handling errors
         try:
-            response = await self._client.responses.create(**kwargs)
+            response: OpenAIResponse = await self._client.responses.create(**kwargs)
+            self._ensure_successful_response(response)
         except AuthenticationError as exc:
             raise LLMConfigurationError('Authentication with the LLM provider failed.') from exc
         except RateLimitError as exc:
@@ -64,6 +67,19 @@ class OpenAIClient(LLMClient):
         return LLMResponse(
             content=response.output_text,
             model=response.model,
-            input_tokens=response.usage.input_tokens if response.usage else 0,
-            output_tokens=response.usage.output_tokens if response.usage else 0,
+            metrics=ResponseMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
         )
+
+    def _ensure_successful_response(self, response: OpenAIResponse) -> None:
+        """Ensure the LLM response indicates a successful generation."""
+        # Incomplete response
+        if response.status != 'completed':
+            raise LLMTransientError(f'The LLM response status was {response.status}, indicating a generation failure.')
+
+        # Refusal (if the model refused to generate a response, e.g. due to content moderation)
+        refusal_item: ResponseOutputRefusal | None = next(
+            (item for item in response.output if isinstance(item, ResponseOutputRefusal)),
+            None,
+        )
+        if refusal_item is not None:
+            raise LLMTransientError('The LLM refused to generate a response.')

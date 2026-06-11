@@ -1,6 +1,10 @@
 from pathlib import Path
 
-from wukong_engine.app.data_extraction.services import EntityExtractionRequestBuilder, ExtractionExecutor
+from wukong_engine.app.data_extraction.services import (
+    EntityExtractionRequestBuilder,
+    EntityMaterializer,
+    ExtractionExecutor,
+)
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
@@ -53,6 +57,13 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     document_source_validator = LocalDocumentSourceValidator()
     document_stream_provider = LocalDocumentStreamProvider()
     document_loader = LocalDocumentLoader()
+    document_chunker = RecursiveDocumentChunker(
+        plan=ChunkingPlan(
+            target_size=app_config.chunking.target_tokens,
+            overlap_size=app_config.chunking.overlap_tokens if app_config.chunking.overlap_tokens is not None else 0,
+            max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
+        ),
+    )
     staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
     llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model)
     llm_client = OpenAIClient(config=llm_config)
@@ -60,7 +71,8 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
 
     # Services
     entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
-    extraction_executor = ExtractionExecutor(llm_client=llm_client, pk_normalizer=pk_normalizer)
+    extraction_executor = ExtractionExecutor(llm_client=llm_client)
+    entity_materializer = EntityMaterializer(pk_normalizer=pk_normalizer)
 
     # Use cases
     get_document_registry = GetDocumentRegistry(
@@ -71,21 +83,14 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     ingest_documents = IngestDocuments(
         stream_provider=document_stream_provider,
         loader=document_loader,
-        chunker=RecursiveDocumentChunker(
-            plan=ChunkingPlan(
-                target_size=app_config.chunking.target_tokens,
-                overlap_size=app_config.chunking.overlap_tokens
-                if app_config.chunking.overlap_tokens is not None
-                else 0,
-                max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
-            ),
-        ),
+        chunker=document_chunker,
         uow=staging_uow,
     )
     extract_entities = ExtractEntities(
         uow=staging_uow,
         request_builder=entity_request_builder,
         executor=extraction_executor,
+        materializer=entity_materializer,
     )
 
     # Workflows

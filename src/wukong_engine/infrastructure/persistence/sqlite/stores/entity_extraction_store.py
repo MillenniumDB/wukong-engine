@@ -102,30 +102,33 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             [(context.level.value, context.content_id.bytes, entity.id.content.bytes) for entity in entities],
         )
 
-    def mark_completed_extractions_from_context(
+    def update_extraction_status(
         self,
         entity_type_names: Iterable[EntityTypeName],
         context: ContextRef,
+        status: ExtractionStatus,
+        error_message: str | None = None,
     ) -> None:
-        """Mark completed entity type extractions from a source context."""
+        """Update the extraction status for a source context and entity types."""
         self._conn.executemany(
             """
             UPDATE entity_type_extractions
             SET
-                extraction_status = ?
+                extraction_status = ?,
+                attempt_count = attempt_count + 1,
+                last_error = ?
             WHERE
                 context_level = ?
                 AND context_content_id = ?
                 AND entity_type_name = ?
-                AND extraction_status = ?
             """,
             [
                 (
-                    ExtractionStatus.COMPLETED.value,
+                    status.value,
+                    error_message,
                     context.level.value,
                     context.content_id.bytes,
                     et_name.value,
-                    ExtractionStatus.PENDING.value,
                 )
                 for et_name in entity_type_names
             ],
@@ -142,10 +145,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 ete.entity_type_name AS entity_type_name
             FROM entity_type_extractions ete
             JOIN documents d ON d.content_id = ete.context_content_id
-            WHERE ete.context_level = ? AND ete.extraction_status = ?
+            WHERE ete.context_level = ? AND ete.extraction_status IN (?, ?)
             ORDER BY ete.context_content_id, ete.entity_type_name
             """,
-            (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value),
+            (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value, ExtractionStatus.FAILED.value),
         )
 
         current_document: Document | None = None
@@ -205,10 +208,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             FROM entity_type_extractions ete
             JOIN chunks c ON c.content_id = ete.context_content_id
             JOIN documents d ON d.content_id = c.document_content_id
-            WHERE ete.context_level = ? AND ete.extraction_status = ?
+            WHERE ete.context_level = ? AND ete.extraction_status IN (?, ?)
             ORDER BY ete.context_content_id, ete.entity_type_name
             """,
-            (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value),
+            (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, ExtractionStatus.FAILED.value),
         )
 
         current_chunk: Chunk | None = None

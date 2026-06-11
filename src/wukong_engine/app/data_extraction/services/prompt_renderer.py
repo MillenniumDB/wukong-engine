@@ -39,8 +39,8 @@ class PromptRenderer:
         """Render the prompt and build an LLM request."""
         system_prompt = KG_EXTRACTION_SYSTEM_PROMPT
         user_prompt = KG_EXTRACTION_BASE_USER_PROMPT.format(
-            TASK=context.task,
             DOCUMENT_CONTEXT=context.document_context,
+            TASK=context.task,
             DEFINITIONS=context.definitions,
             SOURCE_TEXT=context.source_text,
         )

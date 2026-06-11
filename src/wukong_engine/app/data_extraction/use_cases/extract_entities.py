@@ -1,10 +1,15 @@
 import logging
 
-from wukong_engine.app.data_extraction.services import EntityExtractionRequestBuilder, ExtractionExecutor
+from wukong_engine.app.data_extraction.services import (
+    EntityExtractionRequestBuilder,
+    EntityMaterializer,
+    ExtractionExecutor,
+)
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Document
 from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.extraction.elements.values import ExtractionStatus
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import GraphModel
@@ -25,11 +30,13 @@ class ExtractEntities:
         uow: UnitOfWork,
         request_builder: EntityExtractionRequestBuilder,
         executor: ExtractionExecutor,
+        materializer: EntityMaterializer,
     ) -> None:
         """Initialize the use case with necessary dependencies."""
         self._uow = uow
         self._request_builder = request_builder
         self._executor = executor
+        self._materializer = materializer
 
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
@@ -77,18 +84,35 @@ class ExtractEntities:
             return
 
         # TODO: Extraction executor
-        result = await self._executor.execute(request)
         # async for result in self._executor.execute_many(jobs):
         #     # if isinstance(result, ExtractionSuccess):
         #     #     ...
         #     # else:
         #     #     ...
         #     pass
+        result = await self._executor.execute(request)
+        if result.status == ExtractionStatus.FAILED:
+            with self._uow as tx:
+                tx.extraction.entities.update_extraction_status(
+                    job.entity_types,
+                    job.source.context_ref,
+                    ExtractionStatus.FAILED,
+                    error_message=result.error,
+                )
+            return
 
         # TODO: Validation of data -> Discard invalid ones, keep the rest
         # TODO: Normalization/Mapping to domain instances, assign defaults, apply graph model parameters
+        self._materializer.materialize(result)
 
         # TODO: Persist results (use the Test stores commented code below as reference)
+        with self._uow as tx:
+            tx.extraction.entities.update_extraction_status(
+                job.entity_types,
+                job.source.context_ref,
+                ExtractionStatus.COMPLETED,
+            )
+
         # TODO: Each result should be processed individually and stored in the DB
         # async for result in executor.execute_many(extractions):
         #     entity_repository.save(result.entities)
