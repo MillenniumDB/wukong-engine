@@ -107,13 +107,9 @@ class GraphModel:
             {k: v for k, v in self.entity_types.items() if k in self.extraction_config.entity_projection},
         )
 
-    def entity_type(self, name: EntityTypeName) -> EntityType:
+    def entity_type(self, name: EntityTypeName) -> EntityType | None:
         """Get an active entity type by name."""
-        entity_type = self.active_entity_types.get(name)
-        if entity_type is not None:
-            return entity_type
-        active_names = list(self.active_entity_types.keys())
-        raise ValueError(f'Entity type "{name}" is not active or defined. Active entity types: {active_names}.')
+        return self.active_entity_types.get(name)
 
     def active_endpoints(self, relationship_type: RelationshipType) -> tuple[Endpoint, ...]:
         """Active endpoints for a given relationship type, based on the active entity types in the graph model projection."""
@@ -133,15 +129,9 @@ class GraphModel:
             }
         return MappingProxyType({k: v for k, v in projected_relationship_types.items() if self.active_endpoints(v)})
 
-    def relationship_type(self, name: RelationshipTypeName) -> RelationshipType:
+    def relationship_type(self, name: RelationshipTypeName) -> RelationshipType | None:
         """Get an active relationship type by name."""
-        relationship_type = self.active_relationship_types.get(name)
-        if relationship_type is not None:
-            return relationship_type
-        active_names = list(self.active_relationship_types.keys())
-        raise ValueError(
-            f'Relationship type "{name}" is not active or defined. Active relationship types: {active_names}.',
-        )
+        return self.active_relationship_types.get(name)
 
 
 # class GraphModelOld:

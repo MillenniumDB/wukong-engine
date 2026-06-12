@@ -1,13 +1,16 @@
 """Request builders for extraction tasks."""
 
 import logging
+from collections.abc import Iterable, Iterator
 from types import MappingProxyType
 from typing import Any, ClassVar
 
 from wukong_engine.app.data_extraction.dtos import EntityExtractionJob, ExtractionContext, ExtractionRequest
 from wukong_engine.app.document_ingestion.ports import DocumentLoader
+from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.extraction.elements.values import ExtractionStatus
 from wukong_engine.core.extraction.model.values import Cardinality, EntityRetrievalMode
 from wukong_engine.core.graph.model import EntityField, EntityType, ExtractionConfig, GraphModel
 from wukong_engine.core.graph.model.values import DataType
@@ -59,22 +62,33 @@ class EntityExtractionRequestBuilder:
         },
     )
 
-    def __init__(self, document_loader: DocumentLoader, max_document_tokens: int = 8000) -> None:
+    def __init__(self, uow: UnitOfWork, document_loader: DocumentLoader, max_document_tokens: int = 8000) -> None:
         """Initialize the request builder."""
+        self._uow = uow
         self._document_loader = document_loader
         self.max_document_tokens = max_document_tokens  # To avoid hitting LLM context window limits
 
     def build(self, job: EntityExtractionJob, model: GraphModel) -> ExtractionRequest | None:
-        """Build relevant context for an entity extraction task."""
+        """Build extraction request for a single job."""
         # Handle potential errors like missing documents
         try:
             source_text = self._get_source_text(job.source)
         except ValueError as error:
-            logger.error(f'Failed to build extraction request for job {job}: {error}')
+            self._log_failed_extraction(job, f'Failed to build extraction request: {error}')
             return None
 
         # Build extraction request
-        entity_types = tuple(model.entity_type(name) for name in job.entity_types)
+        entity_types = []
+        for name in job.entity_types:
+            entity_type = model.entity_type(name)
+            if entity_type is None:
+                self._log_failed_extraction(
+                    job,
+                    f'Failed to build extraction request: entity type "{name}" not found in graph model',
+                )
+                return None
+            entity_types.append(entity_type)
+        entity_types = tuple(entity_types)
         context = ExtractionContext(
             document_context=self._render_document_context(model.extraction_config),
             task=self._render_task(job),
@@ -83,6 +97,13 @@ class EntityExtractionRequestBuilder:
             response_schema=self._generate_response_schema(entity_types, job.task.context_level),
         )
         return ExtractionRequest(job, context)
+
+    def build_many(self, jobs: Iterable[EntityExtractionJob], model: GraphModel) -> Iterator[ExtractionRequest]:
+        """Build extraction requests for multiple jobs."""
+        for job in jobs:
+            request = self.build(job, model)
+            if request is not None:
+                yield request
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section."""
@@ -220,6 +241,17 @@ class EntityExtractionRequestBuilder:
             'required': list(properties.keys()),
             'additionalProperties': False,
         }
+
+    def _log_failed_extraction(self, job: EntityExtractionJob, error: str | None) -> None:
+        """Log failed extraction job."""
+        with self._uow as tx:
+            tx.extraction.entities.update_extraction_status(
+                job.entity_types,
+                job.source.context_ref,
+                ExtractionStatus.FAILED,
+                error_message=error,
+            )
+        logger.error(f'Failed to complete extraction job ({error})\n<Failed Extraction Job>\n{job}')
 
 
 # TODO: Complete

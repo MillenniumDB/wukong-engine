@@ -1,5 +1,7 @@
 """Extraction Executor."""
 
+import asyncio
+import itertools
 import json
 from collections.abc import AsyncIterator, Iterable
 
@@ -11,31 +13,37 @@ from wukong_engine.core.extraction.elements.values import ExtractionStatus
 from .prompt_renderer import PromptRenderer
 
 
-# TODO: Use actual LLM response instead of dummy content
-# TODO: Add response metrics to result
-# TODO: Remove None from execute_many return type once implemented
-# TODO: Async semaphores for concurrency
 class ExtractionExecutor:
     """Asynchronous executor for data extraction jobs."""
 
-    def __init__(self, llm_client: LLMClient) -> None:
+    def __init__(self, llm_client: LLMClient, max_concurrency: int = 10) -> None:
         """Initialize the executor with necessary dependencies."""
         self._prompt_renderer = PromptRenderer()
         self._llm_client = llm_client
+        self._max_concurrency = max_concurrency
 
     async def execute(self, extraction: ExtractionRequest) -> ExtractionResult:
         """Execute an extraction request."""
         request = self._prompt_renderer.render(extraction.context)
         try:
-            # response = await self._llm_client.generate(request)
-            content = '{"entities":[{"_entity_type":"DDU","circular_order_number":"166","date":"2010-02-24","node_name":"ddu_grl_230","source_type":"ddu"},{"_entity_type":"DDU","circular_order_number":"935","date":"2009-12-01","node_name":"ddu_grl_227","source_type":"ddu"}]}'
-            data = json.loads(content)
-            return ExtractionResult(extraction.job, data, ExtractionStatus.COMPLETED, metrics=None)
+            response = await self._llm_client.generate(request)
+            data = json.loads(response.content)
+            return ExtractionResult(extraction.job, data, ExtractionStatus.COMPLETED, metrics=response.metrics)
         except (LLMTransientError, json.JSONDecodeError) as exc:
             return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=str(exc))
 
-    async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult] | None:
-        """Execute multiple extraction jobs."""
-        # async with semaphore:
-        #     response = await self._llm_client.generate(...)
-        return None
+    async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
+        """Execute multiple extraction requests."""
+        iterator = iter(requests)
+        active = {
+            asyncio.create_task(self.execute(request)) for request in itertools.islice(iterator, self._max_concurrency)
+        }
+        while active:
+            done, active = await asyncio.wait(active, return_when=asyncio.FIRST_COMPLETED)
+            for task in done:
+                yield task.result()
+                try:
+                    request = next(iterator)
+                except StopIteration:
+                    continue
+                active.add(asyncio.create_task(self.execute(request)))

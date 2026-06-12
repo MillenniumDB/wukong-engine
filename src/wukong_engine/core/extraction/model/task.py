@@ -15,6 +15,10 @@ class EntityExtractionTask:
     context_level: ContextLevel
     cardinality: Cardinality
 
+    def __str__(self) -> str:
+        """User-friendly string representation of the entity extraction task."""
+        return f'Extract {self.cardinality.value.upper()} entities at {self.context_level.value} level from source'
+
     def __post_init__(self) -> None:
         """Validate entity extraction task invariants."""
         self._validate_cardinality()

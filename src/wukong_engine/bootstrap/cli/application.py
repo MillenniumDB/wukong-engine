@@ -70,7 +70,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     pk_normalizer = DefaultPKNormalizer()
 
     # Services
-    entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
+    entity_request_builder = EntityExtractionRequestBuilder(uow=staging_uow, document_loader=document_loader)
     extraction_executor = ExtractionExecutor(llm_client=llm_client)
     entity_materializer = EntityMaterializer(pk_normalizer=pk_normalizer)
 

@@ -11,21 +11,21 @@
 # This section controls which steps of the engine pipeline are executed
 [pipeline]
 
-# Ingest documents into the system
+### Ingest documents into the system ###
 # Note: Expects input documents to be available as specified in the workspace document collections
 # Default: true
 ingest_documents = true
 
-# Extract entities from the documents
+### Extract entities from the documents ###
 # Default: true
 extract_entities = true
 
-# Extract relationships between entities from the documents
+### Extract relationships between entities from the documents ###
 # Note: Expects previously extracted entities to be available
 # Default: true
 extract_relationships = true
 
-# Export the knowledge graph
+### Export the knowledge graph ###
 # Note: Expects previously extracted entities and relationships to be available
 # Default: true
 export_graph = true
@@ -36,26 +36,25 @@ export_graph = true
 # This section controls the configuration of the LLM used for entity and relationship extraction
 [llm]
 
-# The LLM model to use for extraction
+### The LLM model to use for extraction ###
 # Note: Currently only OpenAI models are supported
 # Strictly supported models:
 # "gpt-4.1-mini": Best non-reasoning, cheapest
 # "gpt-5-mini": Most balanced, default
 # "gpt-5.4-mini": Best reasoning, expensive
 # Default: "gpt-5-mini"
-model = "gpt-4.1-mini"
+model = "gpt-5-mini"
 
-# Whether to accept only strictly supported models or to allow any model
+### Whether to accept only strictly supported models or to allow any model ###
 # Note: Setting this to true will raise an error if an unsupported model is specified
 # Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
 # Default: true
 strict_support = true
 
-### Maximum number of worker threads to use for API calls ### (REMOVE LATER)
-# This controls the concurrency of API requests to the LLM
-# Adjust this value based on your system's capabilities and the LLM's rate limits
+### Maximum concurrency for LLM API calls ###
+# Note: Adjust this value based on the LLM provider rate limits
 # Default: 10
-_max_worker_threads = 10
+max_concurrency = 10
 
 ##############
 #  CHUNKING  #
@@ -80,10 +79,10 @@ overlap_tokens = 120
 # This section controls the configuration of the export process for the extracted knowledge graph
 [export]
 
-### List of formats for exporting the results ###
+### Format for exporting the results ###
 # You can choose from the following formats:
 # "mdb": MillenniumDB Quad Model file
 # "neo4j": Neo4j CSV files
 # "json": JSON files
-# Default: ["mdb", "neo4j", "json"]
-formats = ["mdb", "neo4j", "json"]
+# Default: "mdb"
+export_format = "mdb"

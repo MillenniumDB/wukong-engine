@@ -12,7 +12,7 @@ from wukong_engine.core.graph.elements.values import NormalizedPK
 class DefaultPKNormalizer(PKNormalizer):
     """Normalizes raw primary key values into a consistent format using standard string manipulation and unicode transliteration."""
 
-    def normalize(self, raw_pk: str) -> NormalizedPK:
+    def normalize(self, raw_pk: str) -> NormalizedPK | None:
         """Normalize a raw primary key value."""
         # Unicode normalization
         value = unicodedata.normalize('NFKC', raw_pk)
@@ -42,4 +42,8 @@ class DefaultPKNormalizer(PKNormalizer):
         # Normalize whitespace
         value = re.sub(r'\s+', ' ', value)
 
-        return NormalizedPK(value)
+        # Final validation and return
+        try:
+            return NormalizedPK(value)
+        except ValueError:  # Invalid raw PK -> Invalid normalized PK
+            return None

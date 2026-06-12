@@ -16,6 +16,9 @@ class EntityExtractionStore(Protocol):
         """Generate pending entity type extractions for source contexts."""
         ...
 
+    def reset_failed_extractions(self) -> None:
+        """Reset all failed extractions back to pending."""
+
     def link_extracted_entities_to_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         ...
@@ -30,12 +33,12 @@ class EntityExtractionStore(Protocol):
         """Update the extraction status for a source context and entity types."""
         ...
 
-    def stream_pending_document_extractions(self) -> Iterator[EntityExtractionJob]:
-        """Stream source documents with their pending entity types for extraction."""
+    def get_pending_document_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source documents with their pending entity types for extraction."""
         ...
 
-    def stream_pending_chunk_extractions(self) -> Iterator[EntityExtractionJob]:
-        """Stream source chunks with their pending entity types for extraction."""
+    def get_pending_chunk_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source chunks with their pending entity types for extraction."""
         ...
 
     def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:

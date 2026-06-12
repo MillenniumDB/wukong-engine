@@ -18,6 +18,13 @@ class EntityExtractionJob:
     task: EntityExtractionTask
     entity_types: tuple[EntityTypeName, ...]
 
+    def __str__(self) -> str:
+        """User-friendly string representation of the extraction job."""
+        job = f'Task: {self.task}\n'
+        job += f'Entity Types: {", ".join(et.value for et in self.entity_types)}\n'
+        job += f'Source: {self.source}'
+        return job
+
 
 @dataclass(frozen=True)
 class ExtractionContext:
@@ -47,15 +54,3 @@ class ExtractionResult:
     status: ExtractionStatus
     metrics: ResponseMetrics | None = None
     error: str | None = None
-
-
-# TODO: Validator takes LLMResponse content and validates against the response schema, then converts to these DTOs
-# TODO: Later, the DTOs are mapped to actual Entity instances
-# @dataclass(frozen=True)
-# class ExtractedEntityDto:
-#     type: str
-#     properties: Mapping[str, str]
-
-# @dataclass(frozen=True)
-# class ExtractionResultDto:
-#     entities: Sequence[ExtractedEntityDto]

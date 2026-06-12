@@ -11,7 +11,9 @@ from wukong_engine.app.llm.model import LLMRegistry
 from .config import OpenAIConfig
 
 
-# TODO: Support minimal vs none in reasoning effort
+# TODO: Rate limiting control?
+# TODO: Support minimal vs none in reasoning effort + temperature 0 for non-reasoning
+# TODO: LLMRequest can override reasoning effort and temperature if desired
 # TODO: Test reasoning effort NONE vs MINIMAL vs LOW vs MEDIUM (for both entity and relationship extraction)
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""

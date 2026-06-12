@@ -92,6 +92,17 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, ContextLevel.CHUNK.value),
             )
 
+    def reset_failed_extractions(self) -> None:
+        """Reset all failed extractions back to pending."""
+        self._conn.execute(
+            """
+            UPDATE entity_type_extractions
+            SET extraction_status = ?
+            WHERE extraction_status = ?
+            """,
+            (ExtractionStatus.PENDING.value, ExtractionStatus.FAILED.value),
+        )
+
     def link_extracted_entities_to_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         self._conn.executemany(
@@ -134,8 +145,13 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
-    def stream_pending_document_extractions(self) -> Iterator[EntityExtractionJob]:
-        """Stream source documents with their pending entity types for extraction."""
+    def get_pending_document_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source documents with their pending entity types for extraction."""
+        # Avoid invalid batch sizes
+        if limit <= 0:
+            return ()
+
+        # Retrieve batch
         cursor = self._conn.execute(
             """
             SELECT
@@ -145,12 +161,20 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 ete.entity_type_name AS entity_type_name
             FROM entity_type_extractions ete
             JOIN documents d ON d.content_id = ete.context_content_id
-            WHERE ete.context_level = ? AND ete.extraction_status IN (?, ?)
+            WHERE ete.context_content_id IN (
+                SELECT DISTINCT context_content_id
+                FROM entity_type_extractions
+                WHERE context_level = ?
+                AND extraction_status = ?
+                ORDER BY context_content_id
+                LIMIT ?
+            )
             ORDER BY ete.context_content_id, ete.entity_type_name
             """,
-            (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value, ExtractionStatus.FAILED.value),
+            (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value, limit),
         )
 
+        jobs: list[EntityExtractionJob] = []
         current_document: Document | None = None
         current_content_id: bytes | None = None
         current_entity_types: list[EntityTypeName] = []
@@ -159,13 +183,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             document_content_id = row['document_content_id']
 
             if current_document is not None and document_content_id != current_content_id:
-                yield EntityExtractionJob(
-                    source=current_document,
-                    task=EntityExtractionTask(
-                        context_level=ContextLevel.DOCUMENT,
-                        cardinality=Cardinality.SINGLE,
+                jobs.append(
+                    EntityExtractionJob(
+                        source=current_document,
+                        task=EntityExtractionTask(
+                            context_level=ContextLevel.DOCUMENT,
+                            cardinality=Cardinality.SINGLE,
+                        ),
+                        entity_types=tuple(current_entity_types),
                     ),
-                    entity_types=tuple(current_entity_types),
                 )
                 current_entity_types = []
 
@@ -182,17 +208,26 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             current_entity_types.append(EntityTypeName(row['entity_type_name']))
 
         if current_document is not None:
-            yield EntityExtractionJob(
-                source=current_document,
-                task=EntityExtractionTask(
-                    context_level=ContextLevel.DOCUMENT,
-                    cardinality=Cardinality.SINGLE,
+            jobs.append(
+                EntityExtractionJob(
+                    source=current_document,
+                    task=EntityExtractionTask(
+                        context_level=ContextLevel.DOCUMENT,
+                        cardinality=Cardinality.SINGLE,
+                    ),
+                    entity_types=tuple(current_entity_types),
                 ),
-                entity_types=tuple(current_entity_types),
             )
 
-    def stream_pending_chunk_extractions(self) -> Iterator[EntityExtractionJob]:
-        """Stream source chunks with their pending entity types for extraction."""
+        return tuple(jobs)
+
+    def get_pending_chunk_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source chunks with their pending entity types for extraction."""
+        # Avoid invalid batch sizes
+        if limit <= 0:
+            return ()
+
+        # Retrieve batch
         cursor = self._conn.execute(
             """
             SELECT
@@ -208,12 +243,20 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             FROM entity_type_extractions ete
             JOIN chunks c ON c.content_id = ete.context_content_id
             JOIN documents d ON d.content_id = c.document_content_id
-            WHERE ete.context_level = ? AND ete.extraction_status IN (?, ?)
+            WHERE ete.context_content_id IN (
+                SELECT DISTINCT context_content_id
+                FROM entity_type_extractions
+                WHERE context_level = ?
+                AND extraction_status = ?
+                ORDER BY context_content_id
+                LIMIT ?
+            )
             ORDER BY ete.context_content_id, ete.entity_type_name
             """,
-            (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, ExtractionStatus.FAILED.value),
+            (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, limit),
         )
 
+        jobs: list[EntityExtractionJob] = []
         current_chunk: Chunk | None = None
         current_content_id: bytes | None = None
         current_entity_types: list[EntityTypeName] = []
@@ -222,13 +265,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             chunk_content_id = row['chunk_content_id']
 
             if current_chunk is not None and chunk_content_id != current_content_id:
-                yield EntityExtractionJob(
-                    source=current_chunk,
-                    task=EntityExtractionTask(
-                        context_level=ContextLevel.CHUNK,
-                        cardinality=Cardinality.MULTIPLE,
+                jobs.append(
+                    EntityExtractionJob(
+                        source=current_chunk,
+                        task=EntityExtractionTask(
+                            context_level=ContextLevel.CHUNK,
+                            cardinality=Cardinality.MULTIPLE,
+                        ),
+                        entity_types=tuple(current_entity_types),
                     ),
-                    entity_types=tuple(current_entity_types),
                 )
                 current_entity_types = []
 
@@ -252,14 +297,18 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             current_entity_types.append(EntityTypeName(row['entity_type_name']))
 
         if current_chunk is not None:
-            yield EntityExtractionJob(
-                source=current_chunk,
-                task=EntityExtractionTask(
-                    context_level=ContextLevel.CHUNK,
-                    cardinality=Cardinality.MULTIPLE,
+            jobs.append(
+                EntityExtractionJob(
+                    source=current_chunk,
+                    task=EntityExtractionTask(
+                        context_level=ContextLevel.CHUNK,
+                        cardinality=Cardinality.MULTIPLE,
+                    ),
+                    entity_types=tuple(current_entity_types),
                 ),
-                entity_types=tuple(current_entity_types),
             )
+
+        return tuple(jobs)
 
     def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
         """Stream all links of extracted entities and their source documents."""
