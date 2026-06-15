@@ -7,6 +7,7 @@ from typing import Any, ClassVar
 
 from wukong_engine.app.data_extraction.dtos import EntityExtractionJob, ExtractionContext, ExtractionRequest
 from wukong_engine.app.document_ingestion.ports import DocumentLoader
+from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
@@ -46,6 +47,7 @@ def _data_type_to_json(data_type: DataType) -> str:
         #     return 'boolean'
 
 
+# TODO: Test and set reasoning effort to None or a specific value best for extracting entities
 class EntityExtractionRequestBuilder:
     """Request builder for entity extraction tasks."""
 

@@ -1,4 +1,4 @@
-"""The LLM utility package."""
+"""The LLM elements package."""
 
 from .client import LLMClient
 from .request import LLMRequest

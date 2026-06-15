@@ -26,6 +26,8 @@ class PipelineConfig:
     def __str__(self) -> str:
         """User-friendly string representation of the pipeline configuration."""
         steps_str = ' → '.join(step.name for step in self.steps)
+        if not steps_str:
+            steps_str = 'None'
         return f'Steps: {steps_str}'
 
     @property

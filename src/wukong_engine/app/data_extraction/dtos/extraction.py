@@ -3,7 +3,8 @@
 from dataclasses import dataclass
 from typing import Any
 
-from wukong_engine.app.llm.elements.values import ResponseMetrics
+from wukong_engine.app.llm.elements.values import LLMResponseMetrics, ReasoningEffort
+from wukong_engine.app.llm.model import LLM
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.extraction.elements.values import ExtractionStatus
 from wukong_engine.core.extraction.model import EntityExtractionTask
@@ -39,10 +40,13 @@ class ExtractionContext:
 
 @dataclass(frozen=True)
 class ExtractionRequest:
-    """Extraction request containing an extraction job and its derived context."""
+    """Extraction request containing an extraction job and its derived context and override parameters."""
 
     job: EntityExtractionJob
     context: ExtractionContext
+    model: LLM | None = None
+    reasoning_effort: ReasoningEffort | None = None
+    temperature: float | None = None
 
 
 @dataclass(frozen=True)
@@ -52,5 +56,5 @@ class ExtractionResult:
     job: EntityExtractionJob
     data: dict[str, Any]
     status: ExtractionStatus
-    metrics: ResponseMetrics | None = None
+    metrics: LLMResponseMetrics | None = None
     error: str | None = None

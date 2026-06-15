@@ -48,11 +48,12 @@ model = "gpt-5-mini"
 ### Whether to accept only strictly supported models or to allow any model ###
 # Note: Setting this to true will raise an error if an unsupported model is specified
 # Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
+# Note: Unsupported models may lead to suboptimal extraction results/costs and are not guaranteed to work correctly
 # Default: true
 strict_support = true
 
 ### Maximum concurrency for LLM API calls ###
-# Note: Adjust this value based on the LLM provider rate limits
+# Note: Adjust this value based on the LLM provider's rate limits
 # Default: 10
 max_concurrency = 10
 

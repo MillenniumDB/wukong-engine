@@ -32,14 +32,11 @@ class ApplicationConfigMapper:
         return PipelineConfig(**schema.model_dump(exclude_none=True))
 
     def _map_llm(self, schema: LLMConfigSchema) -> LLMConfig:
-        """Map llm configuration schema to llm configuration model."""
-        default_config = LLMConfig()
-        return LLMConfig(
-            model=LLM(name=schema.model) if schema.model is not None else default_config.model,
-            strict_support=schema.strict_support
-            if schema.strict_support is not None
-            else default_config.strict_support,
-        )
+        """Map LLM configuration schema to LLM configuration model."""
+        kwargs = schema.model_dump(exclude_none=True)
+        if kwargs.get('model'):
+            kwargs['model'] = LLM(name=kwargs['model'])
+        return LLMConfig(**kwargs)
 
     def _map_chunking(self, schema: ChunkingConfigSchema) -> ChunkingConfig:
         """Map chunking configuration schema to chunking configuration model."""

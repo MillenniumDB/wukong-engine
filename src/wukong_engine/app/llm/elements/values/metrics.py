@@ -1,11 +1,11 @@
-"""Metrics for LLM interactions."""
+"""Metrics from LLM interactions."""
 
 from dataclasses import dataclass
 from typing import Any
 
 
 @dataclass(frozen=True)
-class ResponseMetrics:
+class LLMResponseMetrics:
     """Response metrics returned by an LLM client."""
 
     input_tokens: int | None = None  # Total input tokens, including cached tokens if applicable
@@ -14,9 +14,9 @@ class ResponseMetrics:
     reasoning_tokens: int | None = None  # Output tokens attributed to reasoning effort, if supported by the model
 
     @classmethod
-    def from_usage(cls, usage: dict[str, Any]) -> ResponseMetrics:
-        """Create ResponseMetrics from a usage dictionary returned by the LLM provider."""
-        return ResponseMetrics(
+    def from_usage(cls, usage: dict[str, Any]) -> LLMResponseMetrics:
+        """Create LLMResponseMetrics from a usage dictionary returned by the LLM provider."""
+        return LLMResponseMetrics(
             input_tokens=usage.get('input_tokens'),
             output_tokens=usage.get('output_tokens'),
             cached_tokens=usage.get('input_tokens_details', {}).get('cached_tokens'),

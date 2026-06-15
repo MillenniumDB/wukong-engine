@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from .values import ResponseMetrics
+from .values import LLMResponseMetrics
 
 
 @dataclass(frozen=True)
@@ -11,4 +11,4 @@ class LLMResponse:
 
     content: str
     model: str
-    metrics: ResponseMetrics
+    metrics: LLMResponseMetrics

@@ -71,7 +71,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
 
     # Services
     entity_request_builder = EntityExtractionRequestBuilder(uow=staging_uow, document_loader=document_loader)
-    extraction_executor = ExtractionExecutor(llm_client=llm_client)
+    extraction_executor = ExtractionExecutor(llm_client=llm_client, max_concurrency=app_config.llm.max_concurrency)
     entity_materializer = EntityMaterializer(pk_normalizer=pk_normalizer)
 
     # Use cases

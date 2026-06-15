@@ -6,3 +6,4 @@ class LLMConfigSchema(BaseModel):
 
     model: StrictStr | None = None
     strict_support: StrictBool | None = None
+    max_concurrency: int | None = None

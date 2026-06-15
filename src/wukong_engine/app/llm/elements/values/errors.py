@@ -11,7 +11,3 @@ class LLMConfigurationError(LLMError):
 
 class LLMTransientError(LLMError):
     """Transient errors that may succeed on retry."""
-
-
-class LLMResponseError(LLMError):
-    """Errors from the LLM response."""

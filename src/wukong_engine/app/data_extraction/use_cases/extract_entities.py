@@ -15,11 +15,10 @@ from wukong_engine.core.graph.model import GraphModel
 # Logging
 logger = logging.getLogger(__name__)
 
+# Constants
+BATCH_SIZE = 1000  # Number of extraction jobs to process in each batch
 
-# TODO: Max Concurrency parameter (load from config) and best TOML and code default, Rate limiting in LLM client?
-# TODO: Check if any failed jobs remain, if so log and raise alert for manual review and stop the pipeline until resolved
-# TODO: Models Test
-# TODO: Logs + Test
+
 class ExtractEntities:
     """Extract entities from documents."""
 
@@ -64,8 +63,6 @@ class ExtractEntities:
         # Run chunk-level extractions
         await self._run_extractions(ContextLevel.CHUNK, graph_model)
 
-        # TODO: Check if any failed jobs remain, if so log and raise alert for manual review and stop the pipeline until resolved
-
     async def _run_extractions(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run entity extractions."""
         # Materialize pending extractions for all entity types
@@ -78,9 +75,9 @@ class ExtractEntities:
             # Prepare extraction job batch
             with self._uow as tx:
                 if context_level == ContextLevel.DOCUMENT:
-                    jobs = tx.extraction.entities.get_pending_document_extractions(limit=1000)
+                    jobs = tx.extraction.entities.get_pending_document_extractions(limit=BATCH_SIZE)
                 elif context_level == ContextLevel.CHUNK:
-                    jobs = tx.extraction.entities.get_pending_chunk_extractions(limit=1000)
+                    jobs = tx.extraction.entities.get_pending_chunk_extractions(limit=BATCH_SIZE)
 
             # If no pending extraction jobs, break loop
             if not jobs:

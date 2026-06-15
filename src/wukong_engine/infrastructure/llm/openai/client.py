@@ -3,18 +3,14 @@
 from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpenAI, AuthenticationError, RateLimitError
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
+from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
-from wukong_engine.app.llm.elements.values import ResponseMetrics
-from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMTransientError
-from wukong_engine.app.llm.model import LLMRegistry
+from wukong_engine.app.llm.elements.values import LLMResponseMetrics
+from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMError, LLMTransientError
 
 from .config import OpenAIConfig
 
 
-# TODO: Rate limiting control?
-# TODO: Support minimal vs none in reasoning effort + temperature 0 for non-reasoning
-# TODO: LLMRequest can override reasoning effort and temperature if desired
-# TODO: Test reasoning effort NONE vs MINIMAL vs LOW vs MEDIUM (for both entity and relationship extraction)
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
@@ -29,29 +25,40 @@ class OpenAIClient(LLMClient):
         model = request.model if request.model is not None else self._config.model
         kwargs = {
             'model': model.name,
-            'instructions': request.system_prompt,
-            'input': request.user_prompt,
+            'instructions': request.prompt.instructions,
+            'input': request.prompt.content,
         }
 
-        # TODO: Set reasoning effort if supported by the model
-        # 5.4 mini supports 'none', 'low'
-        # 5 mini supports 'minimal', 'low'
-        if LLMRegistry.is_reasoning_model(model):
-            kwargs['reasoning'] = {'effort': 'low'}
+        # Set reasoning effort if supported by the model
+        reasoning_effort = (
+            request.reasoning_effort
+            if request.reasoning_effort is not None
+            else LLMRegistry.get_reasoning_effort(model)
+        )
+        if LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
+            kwargs['reasoning'] = {'effort': reasoning_effort.value}
+
+        # Set temperature if supported by the model
+        temperature = request.temperature if request.temperature is not None else 0.0
+        if LLMRegistry.is_supported_model(model) and not LLMRegistry.is_reasoning_model(model):
+            kwargs['temperature'] = temperature
 
         # Include structured response schema if provided
-        if request.response_schema is not None:
+        schema = request.prompt.schema
+        if schema is not None:
             kwargs['text'] = {
                 'format': {
                     'type': 'json_schema',
                     'name': 'schema',
                     'strict': True,
-                    'schema': request.response_schema,
+                    'schema': schema,
                 },
             }
 
         # Await response, handling errors
         try:
+            # TODO: Remove after testing
+            return LLMResponse(content='', model='', metrics=LLMResponseMetrics())  # Placeholder response for testing
             response: OpenAIResponse = await self._client.responses.create(**kwargs)
             self._ensure_successful_response(response)
         except AuthenticationError as exc:
@@ -64,12 +71,14 @@ class OpenAIClient(LLMClient):
             raise LLMTransientError('Failed to connect to the LLM provider.') from exc
         except APIStatusError as exc:
             raise LLMTransientError('The LLM provider returned an error.') from exc
+        except Exception as exc:
+            raise LLMError('An unexpected error occurred while interacting with the LLM provider.') from exc
 
         # Return the response in the expected format
         return LLMResponse(
             content=response.output_text,
             model=response.model,
-            metrics=ResponseMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
+            metrics=LLMResponseMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
         )
 
     def _ensure_successful_response(self, response: OpenAIResponse) -> None:

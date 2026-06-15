@@ -6,8 +6,8 @@ import json
 from collections.abc import AsyncIterator, Iterable
 
 from wukong_engine.app.data_extraction.dtos import ExtractionRequest, ExtractionResult
-from wukong_engine.app.llm.elements import LLMClient
-from wukong_engine.app.llm.elements.values.errors import LLMTransientError
+from wukong_engine.app.llm.elements import LLMClient, LLMRequest
+from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMError, LLMTransientError
 from wukong_engine.core.extraction.elements.values import ExtractionStatus
 
 from .prompt_renderer import PromptRenderer
@@ -23,17 +23,25 @@ class ExtractionExecutor:
         self._max_concurrency = max_concurrency
 
     async def execute(self, extraction: ExtractionRequest) -> ExtractionResult:
-        """Execute an extraction request."""
-        request = self._prompt_renderer.render(extraction.context)
+        """Execute a single extraction request."""
+        prompt = self._prompt_renderer.render(extraction.context)
+        request = LLMRequest(
+            prompt=prompt,
+            model=extraction.model,
+            reasoning_effort=extraction.reasoning_effort,
+            temperature=extraction.temperature,
+        )
         try:
             response = await self._llm_client.generate(request)
             data = json.loads(response.content)
             return ExtractionResult(extraction.job, data, ExtractionStatus.COMPLETED, metrics=response.metrics)
-        except (LLMTransientError, json.JSONDecodeError) as exc:
+        except (LLMConfigurationError, LLMTransientError, LLMError) as exc:
             return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=str(exc))
+        except (json.JSONDecodeError, TypeError, ValueError) as exc:
+            return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=f'[JSON Error] {exc}')
 
     async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
-        """Execute multiple extraction requests."""
+        """Execute multiple extraction requests using async tasks."""
         iterator = iter(requests)
         active = {
             asyncio.create_task(self.execute(request)) for request in itertools.islice(iterator, self._max_concurrency)
