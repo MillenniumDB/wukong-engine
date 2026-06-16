@@ -33,12 +33,8 @@ class EntityExtractionStore(Protocol):
         """Update the extraction status for a source context and entity types."""
         ...
 
-    def get_pending_document_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source documents with their pending entity types for extraction."""
-        ...
-
-    def get_pending_chunk_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source chunks with their pending entity types for extraction."""
+    def get_pending_extraction_jobs(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source contexts with their relevant entity types for extraction."""
         ...
 
     def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:

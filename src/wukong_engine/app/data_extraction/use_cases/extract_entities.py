@@ -65,7 +65,7 @@ class ExtractEntities:
 
     async def _run_extractions(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run entity extractions."""
-        # Materialize pending extractions for all entity types
+        # Materialize pending extractions for the given context level
         with self._uow as tx:
             tx.extraction.entities.materialize_pending_extractions(context_level)
 
@@ -74,10 +74,8 @@ class ExtractEntities:
         while True:
             # Prepare extraction job batch
             with self._uow as tx:
-                if context_level == ContextLevel.DOCUMENT:
-                    jobs = tx.extraction.entities.get_pending_document_extractions(limit=BATCH_SIZE)
-                elif context_level == ContextLevel.CHUNK:
-                    jobs = tx.extraction.entities.get_pending_chunk_extractions(limit=BATCH_SIZE)
+                jobs = tx.extraction.entities.get_pending_extraction_jobs(context_level, limit=BATCH_SIZE)
+                # TODO: Create jobs and link them to extractions in DB
 
             # If no pending extraction jobs, break loop
             if not jobs:

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS document_collections (
     FOREIGN KEY (collection_name) REFERENCES collections(collection_name) ON DELETE CASCADE
 );
 -- =========================================================
--- Entity Types
+-- Entities
 -- =========================================================
 CREATE TABLE IF NOT EXISTS entity_types (entity_type_name TEXT PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS entity_type_collections (
@@ -47,7 +47,83 @@ CREATE TABLE IF NOT EXISTS entity_type_collections (
         )
     )
 );
-CREATE TABLE IF NOT EXISTS entity_type_extractions (
+CREATE TABLE IF NOT EXISTS entities (
+    content_id BLOB PRIMARY KEY,
+    instance_id BLOB NOT NULL UNIQUE,
+    entity_type_name TEXT NOT NULL,
+    properties TEXT NOT NULL,
+    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS entity_provenance (
+    context_level TEXT NOT NULL,
+    context_content_id BLOB NOT NULL,
+    entity_content_id BLOB NOT NULL,
+    PRIMARY KEY (
+        context_level,
+        context_content_id,
+        entity_content_id
+    ),
+    FOREIGN KEY (entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE,
+    CHECK (
+        context_level IN (
+            'DOCUMENT',
+            'CHUNK'
+        )
+    )
+);
+-- =========================================================
+-- Relationships
+-- =========================================================
+CREATE TABLE IF NOT EXISTS relationship_types (relationship_type_name TEXT PRIMARY KEY);
+CREATE TABLE IF NOT EXISTS relationship_type_endpoints (
+    relationship_type_name TEXT NOT NULL,
+    source_entity_type_name TEXT NOT NULL,
+    target_entity_type_name TEXT NOT NULL,
+    source_context_level TEXT NOT NULL,
+    target_context_level TEXT NOT NULL,
+    PRIMARY KEY (
+        relationship_type_name,
+        source_entity_type_name,
+        target_entity_type_name,
+        source_context_level,
+        target_context_level
+    ),
+    FOREIGN KEY (relationship_type_name) REFERENCES relationship_types(relationship_type_name) ON DELETE CASCADE,
+    FOREIGN KEY (source_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
+    FOREIGN KEY (target_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
+    CHECK (
+        (source_context_level, target_context_level) IN (
+            ('CHUNK', 'CHUNK'),
+            ('DOCUMENT', 'CHUNK'),
+            ('CHUNK', 'DOCUMENT')
+        )
+    )
+);
+CREATE TABLE IF NOT EXISTS relationships (
+    content_id BLOB PRIMARY KEY,
+    instance_id BLOB NOT NULL UNIQUE,
+    relationship_type_name TEXT NOT NULL,
+    source_entity_content_id BLOB NOT NULL,
+    target_entity_content_id BLOB NOT NULL,
+    properties TEXT NOT NULL,
+    FOREIGN KEY (relationship_type_name) REFERENCES relationship_types(relationship_type_name) ON DELETE CASCADE,
+    FOREIGN KEY (source_entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE,
+    FOREIGN KEY (target_entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS relationship_provenance (
+    chunk_content_id BLOB NOT NULL,
+    relationship_content_id BLOB NOT NULL,
+    PRIMARY KEY (
+        chunk_content_id,
+        relationship_content_id
+    ),
+    FOREIGN KEY (relationship_content_id) REFERENCES relationships(content_id) ON DELETE CASCADE,
+    FOREIGN KEY (chunk_content_id) REFERENCES chunks(content_id) ON DELETE CASCADE
+);
+-- =========================================================
+-- Extraction
+-- =========================================================
+CREATE TABLE IF NOT EXISTS entity_extractions (
     context_level TEXT NOT NULL,
     context_content_id BLOB NOT NULL,
     entity_type_name TEXT NOT NULL,
@@ -74,30 +150,40 @@ CREATE TABLE IF NOT EXISTS entity_type_extractions (
         )
     )
 );
--- =========================================================
--- Entities
--- =========================================================
-CREATE TABLE IF NOT EXISTS entities (
-    content_id BLOB PRIMARY KEY,
-    instance_id BLOB NOT NULL UNIQUE,
-    entity_type_name TEXT NOT NULL,
-    properties TEXT NOT NULL,
-    FOREIGN KEY (entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE
-);
-CREATE TABLE IF NOT EXISTS entity_provenance (
-    context_level TEXT NOT NULL,
-    context_content_id BLOB NOT NULL,
-    entity_content_id BLOB NOT NULL,
+CREATE TABLE IF NOT EXISTS relationship_extractions (
+    chunk_content_id BLOB NOT NULL,
+    relationship_type_name TEXT NOT NULL,
+    extraction_status TEXT NOT NULL,
+    attempt_count INTEGER NOT NULL DEFAULT 0,
+    last_error TEXT,
     PRIMARY KEY (
-        context_level,
-        context_content_id,
-        entity_content_id
+        chunk_content_id,
+        relationship_type_name
     ),
-    FOREIGN KEY (entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE,
+    FOREIGN KEY (chunk_content_id) REFERENCES chunks(content_id) ON DELETE CASCADE,
+    FOREIGN KEY (relationship_type_name) REFERENCES relationship_types(relationship_type_name) ON DELETE CASCADE,
     CHECK (
-        context_level IN (
-            'DOCUMENT',
-            'CHUNK'
+        extraction_status IN (
+            'PENDING',
+            'COMPLETED',
+            'FAILED'
+        )
+    )
+);
+CREATE TABLE extraction_jobs (
+    job_id BLOB PRIMARY KEY,
+    job_status TEXT NOT NULL,
+    started_at INTEGER,
+    completed_at INTEGER,
+    input_tokens INTEGER,
+    cached_tokens INTEGER,
+    output_tokens INTEGER,
+    reasoning_tokens INTEGER,
+    CHECK (
+        job_status IN (
+            'PENDING',
+            'COMPLETED',
+            'FAILED'
         )
     )
 );
@@ -109,7 +195,7 @@ CREATE INDEX IF NOT EXISTS idx_dc_collection ON document_collections(collection_
 -- Entities & Entity Types
 CREATE INDEX IF NOT EXISTS idx_entities_type_entity ON entities(entity_type_name, content_id);
 -- Entity Extraction
-CREATE INDEX IF NOT EXISTS idx_ete_lvl_status_ctx_et ON entity_type_extractions(
+CREATE INDEX IF NOT EXISTS idx_ee_lvl_status_ctx_et ON entity_extractions(
     context_level,
     extraction_status,
     context_content_id,

@@ -53,7 +53,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         if context_level == ContextLevel.DOCUMENT:
             self._conn.execute(
                 """
-                INSERT OR IGNORE INTO entity_type_extractions (
+                INSERT OR IGNORE INTO entity_extractions (
                     context_level,
                     context_content_id,
                     entity_type_name,
@@ -73,7 +73,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         elif context_level == ContextLevel.CHUNK:
             self._conn.execute(
                 """
-                INSERT OR IGNORE INTO entity_type_extractions (
+                INSERT OR IGNORE INTO entity_extractions (
                     context_level,
                     context_content_id,
                     entity_type_name,
@@ -96,7 +96,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         """Reset all failed extractions back to pending."""
         self._conn.execute(
             """
-            UPDATE entity_type_extractions
+            UPDATE entity_extractions
             SET extraction_status = ?
             WHERE extraction_status = ?
             """,
@@ -123,7 +123,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         """Update the extraction status for a source context and entity types."""
         self._conn.executemany(
             """
-            UPDATE entity_type_extractions
+            UPDATE entity_extractions
             SET
                 extraction_status = ?,
                 attempt_count = attempt_count + 1,
@@ -145,8 +145,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
-    def get_pending_document_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source documents with their pending entity types for extraction."""
+    def get_pending_document_extraction_jobs(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source documents with their relevant entity types for extraction."""
         # Avoid invalid batch sizes
         if limit <= 0:
             return ()
@@ -158,18 +158,18 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 d.content_id AS document_content_id,
                 d.instance_id AS document_instance_id,
                 d.source_uri AS source_uri,
-                ete.entity_type_name AS entity_type_name
-            FROM entity_type_extractions ete
-            JOIN documents d ON d.content_id = ete.context_content_id
-            WHERE ete.context_content_id IN (
+                ee.entity_type_name AS entity_type_name
+            FROM entity_extractions ee
+            JOIN documents d ON d.content_id = ee.context_content_id
+            WHERE ee.context_content_id IN (
                 SELECT DISTINCT context_content_id
-                FROM entity_type_extractions
+                FROM entity_extractions
                 WHERE context_level = ?
                 AND extraction_status = ?
                 ORDER BY context_content_id
                 LIMIT ?
             )
-            ORDER BY ete.context_content_id, ete.entity_type_name
+            ORDER BY ee.context_content_id, ee.entity_type_name
             """,
             (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value, limit),
         )
@@ -221,8 +221,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         return tuple(jobs)
 
-    def get_pending_chunk_extractions(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source chunks with their pending entity types for extraction."""
+    def get_pending_chunk_extraction_jobs(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source chunks with their relevant entity types for extraction."""
         # Avoid invalid batch sizes
         if limit <= 0:
             return ()
@@ -239,19 +239,19 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 c.start_offset AS start_offset,
                 c.end_offset AS end_offset,
                 c.content AS content,
-                ete.entity_type_name AS entity_type_name
-            FROM entity_type_extractions ete
-            JOIN chunks c ON c.content_id = ete.context_content_id
+                ee.entity_type_name AS entity_type_name
+            FROM entity_extractions ee
+            JOIN chunks c ON c.content_id = ee.context_content_id
             JOIN documents d ON d.content_id = c.document_content_id
-            WHERE ete.context_content_id IN (
+            WHERE ee.context_content_id IN (
                 SELECT DISTINCT context_content_id
-                FROM entity_type_extractions
+                FROM entity_extractions
                 WHERE context_level = ?
                 AND extraction_status = ?
                 ORDER BY context_content_id
                 LIMIT ?
             )
-            ORDER BY ete.context_content_id, ete.entity_type_name
+            ORDER BY ee.context_content_id, ee.entity_type_name
             """,
             (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, limit),
         )
@@ -310,17 +310,25 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         return tuple(jobs)
 
+    def get_pending_extraction_jobs(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source contexts with their relevant entity types for extraction."""
+        if context_level == ContextLevel.DOCUMENT:
+            return self.get_pending_document_extraction_jobs(limit)
+        if context_level == ContextLevel.CHUNK:
+            return self.get_pending_chunk_extraction_jobs(limit)
+        return ()
+
     def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
         """Stream all links of extracted entities and their source documents."""
         cursor = self._conn.execute(
             """
             SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
                    d.content_id AS document_content_id, d.instance_id AS document_instance_id
-            FROM entity_provenance ee
-            JOIN entities e ON e.content_id = ee.entity_content_id
-            JOIN documents d ON d.content_id = ee.context_content_id
-            WHERE ee.context_level = ?
-            ORDER BY ee.context_content_id, ee.entity_content_id
+            FROM entity_provenance ep
+            JOIN entities e ON e.content_id = ep.entity_content_id
+            JOIN documents d ON d.content_id = ep.context_content_id
+            WHERE ep.context_level = ?
+            ORDER BY ep.context_content_id, ep.entity_content_id
             """,
             (ContextLevel.DOCUMENT.value,),
         )
@@ -333,11 +341,11 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             """
             SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
                    c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id
-            FROM entity_provenance ee
-            JOIN entities e ON e.content_id = ee.entity_content_id
-            JOIN chunks c ON c.content_id = ee.context_content_id
-            WHERE ee.context_level = ?
-            ORDER BY ee.context_content_id, ee.entity_content_id
+            FROM entity_provenance ep
+            JOIN entities e ON e.content_id = ep.entity_content_id
+            JOIN chunks c ON c.content_id = ep.context_content_id
+            WHERE ep.context_level = ?
+            ORDER BY ep.context_content_id, ep.entity_content_id
             """,
             (ContextLevel.CHUNK.value,),
         )
@@ -347,4 +355,4 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     def clear(self) -> None:
         """Reset the entity extraction store."""
         self._conn.execute('DELETE FROM entity_provenance')
-        self._conn.execute('DELETE FROM entity_type_extractions')
+        self._conn.execute('DELETE FROM entity_extractions')
