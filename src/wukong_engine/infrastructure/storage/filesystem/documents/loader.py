@@ -32,7 +32,7 @@ class LocalDocumentLoader(DocumentLoader):
                 decoded_content = self._tokenizer.truncate(decoded_content, max_tokens)
             return LoadedDocument(metadata=document, content=decoded_content)
         except LookupError, OSError, UnicodeDecodeError:
-            logger.error(f'Failed to read content for document {document}.')
+            logger.error(f'Failed to read content for document {document}')
             return None
 
     def load_many(

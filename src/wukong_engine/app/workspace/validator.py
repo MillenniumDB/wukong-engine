@@ -1,4 +1,10 @@
+import logging
+
+from .exceptions import InvalidWorkspaceError
 from .workspace import Workspace
+
+# Logging
+logger = logging.getLogger(__name__)
 
 
 class WorkspaceValidator:
@@ -13,10 +19,18 @@ class WorkspaceValidator:
         root = workspace.paths.root
         paths = workspace.paths
         if not root.exists():
-            raise FileNotFoundError(f'Workspace directory does not exist: {root}')
+            error = f'Workspace directory "{root}" does not exist'
+            logger.error(error)
+            raise InvalidWorkspaceError(error)
         if not root.is_dir():
-            raise ValueError(f'Workspace path is not a directory: {root}')
+            error = f'Workspace path "{root}" is not a directory'
+            logger.error(error)
+            raise InvalidWorkspaceError(error)
         if not paths.document_registry.exists():
-            raise FileNotFoundError(f'Missing document collections JSON file: {paths.document_registry}')
+            error = f'Missing document collections JSON file at "{paths.document_registry}"'
+            logger.error(error)
+            raise InvalidWorkspaceError(error)
         if not paths.graph_model.exists():
-            raise FileNotFoundError(f'Missing graph model JSON file: {paths.graph_model}')
+            error = f'Missing graph model JSON file at "{paths.graph_model}"'
+            logger.error(error)
+            raise InvalidWorkspaceError(error)

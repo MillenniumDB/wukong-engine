@@ -38,12 +38,12 @@ class IngestDocuments:
             tx.documents.add_collections(collection.name for collection in collections)
         for collection in collections:
             self.ingest_collection(collection)
-            logger.info(f'Ingested Document Collection → {collection.name}')
+            logger.info(f'Ingested Document Collection: {collection.name}')
         with self._uow as tx:
             total_docs = tx.documents.count_documents()
             total_chunks = tx.documents.count_chunks()
-            logger.info(f'Total Documents → {total_docs}')
-            logger.info(f'Total Chunks → {total_chunks}')
+            logger.info(f'Total Documents: {total_docs}')
+            logger.info(f'Total Chunks: {total_chunks}')
 
     def ingest_collection(self, collection: DocumentCollection) -> None:
         """Ingest a specific collection of documents into the system."""

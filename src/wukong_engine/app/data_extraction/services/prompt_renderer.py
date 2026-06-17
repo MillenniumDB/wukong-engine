@@ -1,6 +1,6 @@
 """Prompt renderer for extraction requests."""
 
-from wukong_engine.app.data_extraction.dtos import ExtractionContext
+from wukong_engine.app.data_extraction.models import ExtractionContext
 from wukong_engine.app.llm.elements.values import LLMPrompt
 
 # Constants

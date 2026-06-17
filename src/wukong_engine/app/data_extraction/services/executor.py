@@ -5,10 +5,15 @@ import itertools
 import json
 from collections.abc import AsyncIterator, Iterable
 
-from wukong_engine.app.data_extraction.dtos import ExtractionRequest, ExtractionResult
+from wukong_engine.app.data_extraction.models import ExtractionRequest, ExtractionResult
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest
-from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMError, LLMTransientError
-from wukong_engine.core.extraction.elements.values import ExtractionStatus
+from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
+    LLMInternalError,
+    LLMResponseError,
+    LLMTransientError,
+)
+from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 
 from .prompt_renderer import PromptRenderer
 
@@ -34,11 +39,40 @@ class ExtractionExecutor:
         try:
             response = await self._llm_client.generate(request)
             data = json.loads(response.content)
-            return ExtractionResult(extraction.job, data, ExtractionStatus.COMPLETED, metrics=response.metrics)
-        except (LLMConfigurationError, LLMTransientError, LLMError) as exc:
-            return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=str(exc))
+            return ExtractionResult(job=extraction.job, status=JobStatus.COMPLETED, data=data, metrics=response.metrics)
+        except LLMTransientError as exc:
+            return ExtractionResult(
+                job=extraction.job,
+                status=JobStatus.FAILED,
+                error=str(exc),
+                error_level=JobErrorLevel.RECOVERABLE,
+                retry_policy=JobRetryPolicy.DEFERRED,
+            )
+        except LLMResponseError as exc:
+            return ExtractionResult(
+                job=extraction.job,
+                status=JobStatus.FAILED,
+                error=str(exc),
+                error_level=JobErrorLevel.RECOVERABLE,
+                retry_policy=JobRetryPolicy.IMMEDIATE,
+            )
         except (json.JSONDecodeError, TypeError, ValueError) as exc:
-            return ExtractionResult(extraction.job, {}, ExtractionStatus.FAILED, error=f'[JSON Error] {exc}')
+            return ExtractionResult(
+                job=extraction.job,
+                status=JobStatus.FAILED,
+                metrics=response.metrics if response else None,
+                error=f'Failed LLM response decoding ({exc})',
+                error_level=JobErrorLevel.RECOVERABLE,
+                retry_policy=JobRetryPolicy.IMMEDIATE,
+            )
+        except (LLMConfigurationError, LLMInternalError) as exc:
+            return ExtractionResult(
+                job=extraction.job,
+                status=JobStatus.FAILED,
+                error=str(exc),
+                error_level=JobErrorLevel.CRITICAL,
+                retry_policy=JobRetryPolicy.DEFERRED,
+            )
 
     async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
         """Execute multiple extraction requests using async tasks."""

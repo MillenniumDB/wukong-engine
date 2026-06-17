@@ -6,7 +6,12 @@ from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMResponseMetrics
-from wukong_engine.app.llm.elements.values.errors import LLMConfigurationError, LLMError, LLMTransientError
+from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
+    LLMInternalError,
+    LLMResponseError,
+    LLMTransientError,
+)
 
 from .config import OpenAIConfig
 
@@ -57,22 +62,27 @@ class OpenAIClient(LLMClient):
 
         # Await response, handling errors
         try:
-            # TODO: Remove after testing
-            return LLMResponse(content='', model='', metrics=LLMResponseMetrics())  # Placeholder response for testing
             response: OpenAIResponse = await self._client.responses.create(**kwargs)
             self._ensure_successful_response(response)
         except AuthenticationError as exc:
-            raise LLMConfigurationError('Authentication with the LLM provider failed.') from exc
+            raise LLMConfigurationError(f'Authentication with the LLM provider failed ({exc})') from exc
         except RateLimitError as exc:
-            raise LLMTransientError('The LLM provider rate limit was exceeded.') from exc
+            raise LLMTransientError(f'The LLM provider rate limit was exceeded ({exc})') from exc
         except APITimeoutError as exc:
-            raise LLMTransientError('The LLM request timed out.') from exc
+            raise LLMTransientError(f'The LLM request timed out ({exc})') from exc
         except APIConnectionError as exc:
-            raise LLMTransientError('Failed to connect to the LLM provider.') from exc
+            raise LLMTransientError(f'Failed to connect to the LLM provider ({exc})') from exc
         except APIStatusError as exc:
-            raise LLMTransientError('The LLM provider returned an error.') from exc
+            if exc.status_code in {400, 401, 403, 404, 422}:
+                raise LLMConfigurationError(f'Invalid request for the LLM provider ({exc})') from exc
+            if exc.status_code >= 500:  # noqa: PLR2004
+                raise LLMTransientError(f'The LLM provider returned a server-side error ({exc})') from exc
+        except LLMResponseError:
+            raise
         except Exception as exc:
-            raise LLMError('An unexpected error occurred while interacting with the LLM provider.') from exc
+            raise LLMInternalError(
+                f'An unexpected error occurred while interacting with the LLM provider ({exc})',
+            ) from exc
 
         # Return the response in the expected format
         return LLMResponse(
@@ -85,7 +95,7 @@ class OpenAIClient(LLMClient):
         """Ensure the LLM response indicates a successful generation."""
         # Incomplete response
         if response.status != 'completed':
-            raise LLMTransientError(f'The LLM response status was {response.status}, indicating a generation failure.')
+            raise LLMResponseError(f'The LLM response status was {response.status}, indicating a generation failure')
 
         # Refusal (if the model refused to generate a response, e.g. due to content moderation)
         refusal_item: ResponseOutputRefusal | None = next(
@@ -93,4 +103,4 @@ class OpenAIClient(LLMClient):
             None,
         )
         if refusal_item is not None:
-            raise LLMTransientError('The LLM refused to generate a response.')
+            raise LLMResponseError('The LLM refused to generate a response')

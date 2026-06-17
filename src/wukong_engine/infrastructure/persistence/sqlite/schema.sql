@@ -92,10 +92,15 @@ CREATE TABLE IF NOT EXISTS relationship_type_endpoints (
     FOREIGN KEY (source_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
     FOREIGN KEY (target_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
     CHECK (
-        (source_context_level, target_context_level) IN (
-            ('CHUNK', 'CHUNK'),
-            ('DOCUMENT', 'CHUNK'),
-            ('CHUNK', 'DOCUMENT')
+        source_context_level IN (
+            'DOCUMENT',
+            'CHUNK'
+        )
+    ),
+    CHECK (
+        target_context_level IN (
+            'DOCUMENT',
+            'CHUNK'
         )
     )
 );
@@ -129,6 +134,7 @@ CREATE TABLE IF NOT EXISTS entity_extractions (
     entity_type_name TEXT NOT NULL,
     extraction_status TEXT NOT NULL,
     attempt_count INTEGER NOT NULL DEFAULT 0,
+    failed_attempts INTEGER NOT NULL DEFAULT 0,
     last_error TEXT,
     PRIMARY KEY (
         context_level,
@@ -145,6 +151,8 @@ CREATE TABLE IF NOT EXISTS entity_extractions (
     CHECK (
         extraction_status IN (
             'PENDING',
+            'IN_PROGRESS',
+            'RETRY',
             'COMPLETED',
             'FAILED'
         )
@@ -155,6 +163,7 @@ CREATE TABLE IF NOT EXISTS relationship_extractions (
     relationship_type_name TEXT NOT NULL,
     extraction_status TEXT NOT NULL,
     attempt_count INTEGER NOT NULL DEFAULT 0,
+    failed_attempts INTEGER NOT NULL DEFAULT 0,
     last_error TEXT,
     PRIMARY KEY (
         chunk_content_id,
@@ -165,23 +174,60 @@ CREATE TABLE IF NOT EXISTS relationship_extractions (
     CHECK (
         extraction_status IN (
             'PENDING',
+            'IN_PROGRESS',
+            'RETRY',
             'COMPLETED',
             'FAILED'
         )
     )
 );
-CREATE TABLE extraction_jobs (
+CREATE TABLE IF NOT EXISTS extraction_jobs (
     job_id BLOB PRIMARY KEY,
+    job_type TEXT NOT NULL,
     job_status TEXT NOT NULL,
-    started_at INTEGER,
+    context_level TEXT NOT NULL,
+    context_content_id BLOB NOT NULL,
+    created_at INTEGER NOT NULL,
     completed_at INTEGER,
     input_tokens INTEGER,
     cached_tokens INTEGER,
     output_tokens INTEGER,
     reasoning_tokens INTEGER,
+    batch_id BLOB,
+    error TEXT,
+    CHECK (
+        job_type IN (
+            'ENTITY_EXTRACTION',
+            'RELATIONSHIP_EXTRACTION'
+        )
+    ),
     CHECK (
         job_status IN (
-            'PENDING',
+            'IN_PROGRESS',
+            'COMPLETED',
+            'FAILED'
+        )
+    ),
+    CHECK (
+        context_level IN (
+            'DOCUMENT',
+            'CHUNK'
+        )
+    ),
+    FOREIGN KEY (batch_id) REFERENCES extraction_batches(batch_id) ON DELETE
+    SET NULL
+);
+CREATE TABLE IF NOT EXISTS extraction_batches (
+    batch_id BLOB PRIMARY KEY,
+    provider_batch_id TEXT NOT NULL UNIQUE,
+    batch_status TEXT NOT NULL,
+    provider_status TEXT,
+    created_at INTEGER NOT NULL,
+    completed_at INTEGER,
+    error TEXT,
+    CHECK (
+        batch_status IN (
+            'SUBMITTED',
             'COMPLETED',
             'FAILED'
         )
@@ -192,9 +238,10 @@ CREATE TABLE extraction_jobs (
 -- =========================================================
 -- Documents, Chunks & Collections
 CREATE INDEX IF NOT EXISTS idx_dc_collection ON document_collections(collection_name);
--- Entities & Entity Types
+-- Entities
 CREATE INDEX IF NOT EXISTS idx_entities_type_entity ON entities(entity_type_name, content_id);
--- Entity Extraction
+-- Relationships
+-- Extraction
 CREATE INDEX IF NOT EXISTS idx_ee_lvl_status_ctx_et ON entity_extractions(
     context_level,
     extraction_status,

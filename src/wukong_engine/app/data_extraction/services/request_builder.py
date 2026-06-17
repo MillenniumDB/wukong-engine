@@ -1,17 +1,15 @@
 """Request builders for extraction tasks."""
 
 import logging
-from collections.abc import Iterable, Iterator
 from types import MappingProxyType
 from typing import Any, ClassVar
 
-from wukong_engine.app.data_extraction.dtos import EntityExtractionJob, ExtractionContext, ExtractionRequest
+from wukong_engine.app.data_extraction.exceptions import ExtractionRequestBuildError
+from wukong_engine.app.data_extraction.models import EntityExtractionJob, ExtractionContext, ExtractionRequest
 from wukong_engine.app.document_ingestion.ports import DocumentLoader
 from wukong_engine.app.llm.elements.values import ReasoningEffort
-from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus
 from wukong_engine.core.extraction.model.values import Cardinality, EntityRetrievalMode
 from wukong_engine.core.graph.model import EntityField, EntityType, ExtractionConfig, GraphModel
 from wukong_engine.core.graph.model.values import DataType
@@ -48,6 +46,10 @@ def _data_type_to_json(data_type: DataType) -> str:
 
 
 # TODO: Test and set reasoning effort to None or a specific value best for extracting entities
+EFFORT = None
+
+
+# TODO: Test and set reasoning effort to None or a specific value best for extracting entities
 class EntityExtractionRequestBuilder:
     """Request builder for entity extraction tasks."""
 
@@ -64,31 +66,29 @@ class EntityExtractionRequestBuilder:
         },
     )
 
-    def __init__(self, uow: UnitOfWork, document_loader: DocumentLoader, max_document_tokens: int = 8000) -> None:
+    def __init__(self, document_loader: DocumentLoader, max_document_tokens: int = 8000) -> None:
         """Initialize the request builder."""
-        self._uow = uow
         self._document_loader = document_loader
         self.max_document_tokens = max_document_tokens  # To avoid hitting LLM context window limits
 
-    def build(self, job: EntityExtractionJob, model: GraphModel) -> ExtractionRequest | None:
+    def build(self, job: EntityExtractionJob, model: GraphModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
         # Handle potential errors like missing documents
         try:
             source_text = self._get_source_text(job.source)
-        except ValueError as error:
-            self._log_failed_extraction(job, f'Failed to build extraction request: {error}')
-            return None
+        except FileNotFoundError as exc:
+            error = f'Failed to build extraction request: {exc}'
+            logger.error(error)
+            raise ExtractionRequestBuildError(error) from exc
 
         # Build extraction request
         entity_types = []
         for name in job.entity_types:
             entity_type = model.entity_type(name)
             if entity_type is None:
-                self._log_failed_extraction(
-                    job,
-                    f'Failed to build extraction request: entity type "{name}" not found in graph model',
-                )
-                return None
+                error = f'Failed to build extraction request: EntityType "{name}" not found in graph model'
+                logger.error(error)
+                raise ExtractionRequestBuildError(error)
             entity_types.append(entity_type)
         entity_types = tuple(entity_types)
         context = ExtractionContext(
@@ -98,14 +98,7 @@ class EntityExtractionRequestBuilder:
             source_text=source_text,
             response_schema=self._generate_response_schema(entity_types, job.task.context_level),
         )
-        return ExtractionRequest(job, context)
-
-    def build_many(self, jobs: Iterable[EntityExtractionJob], model: GraphModel) -> Iterator[ExtractionRequest]:
-        """Build extraction requests for multiple jobs."""
-        for job in jobs:
-            request = self.build(job, model)
-            if request is not None:
-                yield request
+        return ExtractionRequest(job, context, reasoning_effort=EFFORT)
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section."""
@@ -186,7 +179,7 @@ class EntityExtractionRequestBuilder:
         if isinstance(source, Document):
             loaded_doc = self._document_loader.load(source, max_tokens=self.max_document_tokens)
             if loaded_doc is None:
-                raise ValueError(f'Failed to load document {source}')
+                raise FileNotFoundError('Could not load document content')
             text = loaded_doc.content
         else:
             text = source.content
@@ -243,17 +236,6 @@ class EntityExtractionRequestBuilder:
             'required': list(properties.keys()),
             'additionalProperties': False,
         }
-
-    def _log_failed_extraction(self, job: EntityExtractionJob, error: str | None) -> None:
-        """Log failed extraction job."""
-        with self._uow as tx:
-            tx.extraction.entities.update_extraction_status(
-                job.entity_types,
-                job.source.context_ref,
-                ExtractionStatus.FAILED,
-                error_message=error,
-            )
-        logger.error(f'Failed to complete extraction job ({error})\n<Failed Extraction Job>\n{job}')
 
 
 # TODO: Complete

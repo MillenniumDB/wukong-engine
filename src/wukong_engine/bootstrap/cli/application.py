@@ -1,5 +1,7 @@
+import logging
 from pathlib import Path
 
+from wukong_engine.app.config.exceptions import ConfigurationError
 from wukong_engine.app.data_extraction.services import (
     EntityExtractionRequestBuilder,
     EntityMaterializer,
@@ -15,7 +17,7 @@ from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
-from wukong_engine.infrastructure.logging import configure_logging
+from wukong_engine.infrastructure.logging import set_logger_verbosity
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteSessionFactory,
@@ -27,6 +29,9 @@ from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentSourceValidator,
     LocalDocumentStreamProvider,
 )
+
+# Logging
+logger = logging.getLogger(__name__)
 
 
 class CLIApplication:
@@ -43,9 +48,14 @@ class CLIApplication:
 def build_application(workspace: Workspace, config_path: Path, verbosity: int) -> CLIApplication:
     """Build the CLI application."""
     # Configuration
-    configure_logging(verbosity)
-    env_config = load_env_config()
-    app_config = ConfigProvider().get(config_path)
+    try:
+        set_logger_verbosity(verbosity)
+        env_config = load_env_config()
+        app_config = ConfigProvider().get(config_path)
+    except Exception as exc:
+        error = f'Failed to load configuration: {exc}'
+        logger.error(error)
+        raise ConfigurationError(error) from exc
 
     # Database Initialization
     session_factory = SQLiteSessionFactory(db_path=workspace.paths.staging_db)
@@ -70,7 +80,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     pk_normalizer = DefaultPKNormalizer()
 
     # Services
-    entity_request_builder = EntityExtractionRequestBuilder(uow=staging_uow, document_loader=document_loader)
+    entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
     extraction_executor = ExtractionExecutor(llm_client=llm_client, max_concurrency=app_config.llm.max_concurrency)
     entity_materializer = EntityMaterializer(pk_normalizer=pk_normalizer)
 

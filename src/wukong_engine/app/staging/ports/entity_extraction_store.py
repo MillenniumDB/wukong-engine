@@ -1,12 +1,12 @@
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.dtos import EntityExtractionJob
+from wukong_engine.app.data_extraction.models import EntityExtractionJob
+from wukong_engine.app.llm.elements.values import LLMResponseMetrics
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus
-from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
-from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.extraction.elements.values import JobRetryPolicy, JobStatus
+from wukong_engine.core.graph.elements import Entity
 
 
 class EntityExtractionStore(Protocol):
@@ -16,33 +16,35 @@ class EntityExtractionStore(Protocol):
         """Generate pending entity type extractions for source contexts."""
         ...
 
-    def reset_failed_extractions(self) -> None:
-        """Reset all failed extractions back to pending."""
+    def get_pending_extraction_jobs(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Get a batch of source contexts with their relevant entity types for extraction."""
+        ...
+
+    def schedule_extraction_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
+        """Schedule entity extraction jobs for processing."""
+        ...
 
     def link_extracted_entities_to_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         ...
 
-    def update_extraction_status(
+    def update_extraction_job_status(
         self,
-        entity_type_names: Iterable[EntityTypeName],
-        context: ContextRef,
-        status: ExtractionStatus,
-        error_message: str | None = None,
+        job: EntityExtractionJob,
+        status: JobStatus,
+        metrics: LLMResponseMetrics | None = None,
+        error: str | None = None,
+        retry_policy: JobRetryPolicy | None = None,
     ) -> None:
-        """Update the extraction status for a source context and entity types."""
+        """Update the status of a job and its associated extractions upon termination."""
         ...
 
-    def get_pending_extraction_jobs(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source contexts with their relevant entity types for extraction."""
+    def terminate_stalled_jobs(self) -> int:
+        """Terminate stalled jobs that were never resolved to completion."""
         ...
 
-    def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
-        """Stream all links of extracted entities and their source documents."""
-        ...
-
-    def stream_entity_chunk_provenance(self) -> Iterator[EntityChunkProvenance]:
-        """Stream all links of extracted entities and their source chunks."""
+    def reset_retryable_extractions(self) -> int:
+        """Reset retryable extractions back to PENDING."""
         ...
 
     def clear(self) -> None:

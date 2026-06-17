@@ -6,7 +6,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    wukong run workspaces/example --config config/default.toml
+    wukong run workspaces/example --config config/default.toml -v
 """
 
 import argparse
@@ -15,23 +15,12 @@ import logging
 import sys
 from pathlib import Path
 
+from wukong_engine.app.shared.exceptions import ApplicationError
 from wukong_engine.app.workspace import Workspace, WorkspaceValidator
 from wukong_engine.bootstrap.cli import build_application
 
 # Logging
 logger = logging.getLogger(__name__)
-
-
-def print_error(message: str) -> None:
-    """Print a formatted error message to stderr.
-
-    Args:
-        message: The error message to print.
-    """
-    message = message.rstrip()
-    if message and message[-1] not in '.!?':
-        message += '.'
-    print(f'Error: {message}', file=sys.stderr)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -118,14 +107,16 @@ def handle_run(args: argparse.Namespace) -> None:
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
         asyncio.run(app.graph_construction.execute(workspace=workspace, should_reset=args.reset))
         print('WUKONG engine pipeline execution completed!')
-    except (FileNotFoundError, ValueError, TypeError) as error:
-        logger.exception('Failed to process input.')
-        print_error(str(error))
+    except ApplicationError as exc:
+        logger.critical(f'Application Error: {type(exc).__name__}')
         sys.exit(1)
     except Exception:
-        logger.exception('Unhandled exception.')
-        print('Error: An unexpected error occurred.', file=sys.stderr)
+        logger.exception('Unhandled Exception')
+        logger.critical('Unhandled Exception occurred during pipeline execution')
         sys.exit(1)
+    except KeyboardInterrupt:
+        logger.info('Program interrupted by user. Exiting.')
+        sys.exit(130)  # SIGINT exit code
 
 
 # TODO: New command for 'wukong reset <workspace>' that resets everything

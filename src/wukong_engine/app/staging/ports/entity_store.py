@@ -2,7 +2,7 @@ from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
-from wukong_engine.core.graph.elements import Entity
+from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
 from wukong_engine.core.graph.model import EntityType
 from wukong_engine.core.graph.model.values import EntityTypeName
 
@@ -29,6 +29,14 @@ class EntityStore(Protocol):
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""
+        ...
+
+    def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
+        """Stream all links of extracted entities and their source documents."""
+        ...
+
+    def stream_entity_chunk_provenance(self) -> Iterator[EntityChunkProvenance]:
+        """Stream all links of extracted entities and their source chunks."""
         ...
 
     def clear(self) -> None:

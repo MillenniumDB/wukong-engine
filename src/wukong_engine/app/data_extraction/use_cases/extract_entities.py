@@ -1,7 +1,12 @@
 import logging
 from collections.abc import Iterable
 
-from wukong_engine.app.data_extraction.dtos import EntityExtractionJob
+from wukong_engine.app.data_extraction.exceptions import (
+    DataExtractionError,
+    ExtractionExecutionError,
+    ExtractionRequestBuildError,
+)
+from wukong_engine.app.data_extraction.models import EntityExtractionJob, ExtractionResult
 from wukong_engine.app.data_extraction.services import (
     EntityExtractionRequestBuilder,
     EntityMaterializer,
@@ -9,7 +14,7 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus
+from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 from wukong_engine.core.graph.model import GraphModel
 
 # Logging
@@ -37,6 +42,8 @@ class ExtractEntities:
 
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
+        # TODO: Materialization (single time, restrict later)
+
         # Setup entity types and associated document collections
         with self._uow as tx:
             entity_types = tuple(graph_model.active_entity_types.values())
@@ -53,42 +60,78 @@ class ExtractEntities:
                     ContextLevel.CHUNK,
                 )
 
-        # Reset failed extractions back to pending for retry
+        # Materialize pending extractions for all context levels
         with self._uow as tx:
-            tx.extraction.entities.reset_failed_extractions()
+            tx.extraction.entities.materialize_pending_extractions(ContextLevel.DOCUMENT)
+            tx.extraction.entities.materialize_pending_extractions(ContextLevel.CHUNK)
 
-        # Run document-level extractions
-        await self._run_extractions(ContextLevel.DOCUMENT, graph_model)
+        # TODO: Materialization (single time, restrict later)
 
-        # Run chunk-level extractions
-        await self._run_extractions(ContextLevel.CHUNK, graph_model)
+        # TODO: Consider pending batches
+        # Recovery for stalled jobs and retryable extractions
+        with self._uow as tx:
+            # Terminate stalled extraction jobs and recover their extractions
+            terminated = tx.extraction.entities.terminate_stalled_jobs()
+            if terminated > 0:
+                logger.warning(
+                    f'Terminated and recovered {terminated} stalled extraction jobs (stalled due to system failure/interruption/crash)',
+                )
+
+            # Reset retryable extractions back to pending for re-processing
+            reset = tx.extraction.entities.reset_retryable_extractions()
+            if reset > 0:
+                logger.info(f'Reset {reset} extractions back to pending for re-processing')
+
+        # TODO: Batch processing
+        # Run extractions for all context levels
+        try:
+            await self._run_extractions(ContextLevel.DOCUMENT, graph_model)
+            await self._run_extractions(ContextLevel.CHUNK, graph_model)
+        except DataExtractionError as exc:
+            error = 'Entity Extraction failed due to an unrecoverable error'
+            logger.error(error)
+            raise DataExtractionError(error) from exc
 
     async def _run_extractions(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run entity extractions."""
-        # Materialize pending extractions for the given context level
-        with self._uow as tx:
-            tx.extraction.entities.materialize_pending_extractions(context_level)
-
         # Execute extractions in batches until all pending extractions are completed
         jobs: Iterable[EntityExtractionJob] = []
         while True:
             # Prepare extraction job batch
             with self._uow as tx:
                 jobs = tx.extraction.entities.get_pending_extraction_jobs(context_level, limit=BATCH_SIZE)
-                # TODO: Create jobs and link them to extractions in DB
+                tx.extraction.entities.schedule_extraction_jobs(jobs)
 
             # If no pending extraction jobs, break loop
             if not jobs:
                 break
 
             # Build extraction requests for each job
-            requests = self._request_builder.build_many(jobs, graph_model)
+            requests = []
+            for job in jobs:
+                try:
+                    requests.append(self._request_builder.build(job, graph_model))
+                except ExtractionRequestBuildError as exc:
+                    self._log_failed_extraction(
+                        ExtractionResult(
+                            job=job,
+                            status=JobStatus.FAILED,
+                            error=str(exc),
+                            error_level=JobErrorLevel.CRITICAL,
+                            retry_policy=JobRetryPolicy.DEFERRED,
+                        ),
+                    )
+                    raise
 
             # Execute extraction requests and process results
             async for result in self._executor.execute_many(requests):
                 # Handle failed extraction
-                if result.status == ExtractionStatus.FAILED:
-                    self._log_failed_extraction(result.job, result.error)
+                if result.status == JobStatus.FAILED:
+                    self._log_failed_extraction(result)
+                    error = f'Failed to complete extraction job {result.job.id}: {result.error}'
+                    logger.error(error)
+                    if result.error_level == JobErrorLevel.CRITICAL:
+                        raise ExtractionExecutionError(error)
                     continue
 
                 # Materialization of results into entity instances
@@ -98,19 +141,19 @@ class ExtractEntities:
                 with self._uow as tx:
                     tx.entities.bulk_upsert_entities(entities)
                     tx.extraction.entities.link_extracted_entities_to_context(entities, result.job.source.context_ref)
-                    tx.extraction.entities.update_extraction_status(
-                        result.job.entity_types,
-                        result.job.source.context_ref,
-                        ExtractionStatus.COMPLETED,
+                    tx.extraction.entities.update_extraction_job_status(
+                        result.job,
+                        JobStatus.COMPLETED,
+                        metrics=result.metrics,
                     )
 
-    def _log_failed_extraction(self, job: EntityExtractionJob, error: str | None) -> None:
+    def _log_failed_extraction(self, result: ExtractionResult) -> None:
         """Log failed extraction job."""
         with self._uow as tx:
-            tx.extraction.entities.update_extraction_status(
-                job.entity_types,
-                job.source.context_ref,
-                ExtractionStatus.FAILED,
-                error_message=error,
+            tx.extraction.entities.update_extraction_job_status(
+                job=result.job,
+                status=JobStatus.FAILED,
+                metrics=result.metrics,
+                error=result.error,
+                retry_policy=result.retry_policy,
             )
-        logger.error(f'Failed to complete extraction job ({error})\n<Failed Extraction Job>\n{job}')

@@ -3,8 +3,8 @@
 This package contains the logging components for the engine.
 """
 
-from .config import configure_logging
+from .config import set_logger_verbosity
 
 __all__ = [
-    'configure_logging',
+    'set_logger_verbosity',
 ]

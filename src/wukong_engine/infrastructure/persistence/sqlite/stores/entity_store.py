@@ -5,8 +5,9 @@ from collections.abc import Iterable, Iterator
 
 from wukong_engine.app.shared import batched
 from wukong_engine.app.staging.ports import EntityStore
+from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
-from wukong_engine.core.graph.elements import Entity
+from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import EntityType
 from wukong_engine.core.graph.model.values import EntityTypeName
@@ -31,6 +32,32 @@ class SQLiteEntityStore(EntityStore):
             ),
             type=entity_type,
             properties=json.loads(row['properties']),
+        )
+
+    def _row_to_entity_document_provenance(self, row: sqlite3.Row) -> EntityDocumentProvenance:
+        """Map a database row to an EntityDocumentProvenance object."""
+        return EntityDocumentProvenance(
+            entity_id=EntityId.from_components(
+                instance=InstanceId.from_bytes(row['entity_instance_id']),
+                content=ContentHash.from_bytes(row['entity_content_id']),
+            ),
+            document_id=DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['document_instance_id']),
+                content=ContentHash.from_bytes(row['document_content_id']),
+            ),
+        )
+
+    def _row_to_entity_chunk_provenance(self, row: sqlite3.Row) -> EntityChunkProvenance:
+        """Map a database row to an EntityChunkProvenance object."""
+        return EntityChunkProvenance(
+            entity_id=EntityId.from_components(
+                instance=InstanceId.from_bytes(row['entity_instance_id']),
+                content=ContentHash.from_bytes(row['entity_content_id']),
+            ),
+            chunk_id=ChunkId.from_components(
+                instance=InstanceId.from_bytes(row['chunk_instance_id']),
+                content=ContentHash.from_bytes(row['chunk_content_id']),
+            ),
         )
 
     def _find_duplicates(self, entities: Iterable[Entity]) -> dict[bytes, Entity]:
@@ -152,8 +179,43 @@ class SQLiteEntityStore(EntityStore):
         for row in cursor:
             yield self._row_to_entity(row, entity_type)
 
+    def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
+        """Stream all links of extracted entities and their source documents."""
+        cursor = self._conn.execute(
+            """
+            SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
+                   d.content_id AS document_content_id, d.instance_id AS document_instance_id
+            FROM entity_provenance ep
+            JOIN entities e ON e.content_id = ep.entity_content_id
+            JOIN documents d ON d.content_id = ep.context_content_id
+            WHERE ep.context_level = ?
+            ORDER BY ep.context_content_id, ep.entity_content_id
+            """,
+            (ContextLevel.DOCUMENT.value,),
+        )
+        for row in cursor:
+            yield self._row_to_entity_document_provenance(row)
+
+    def stream_entity_chunk_provenance(self) -> Iterator[EntityChunkProvenance]:
+        """Stream all links of extracted entities and their source chunks."""
+        cursor = self._conn.execute(
+            """
+            SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
+                   c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id
+            FROM entity_provenance ep
+            JOIN entities e ON e.content_id = ep.entity_content_id
+            JOIN chunks c ON c.content_id = ep.context_content_id
+            WHERE ep.context_level = ?
+            ORDER BY ep.context_content_id, ep.entity_content_id
+            """,
+            (ContextLevel.CHUNK.value,),
+        )
+        for row in cursor:
+            yield self._row_to_entity_chunk_provenance(row)
+
     def clear(self) -> None:
         """Reset the entity store."""
-        self._conn.execute('DELETE FROM entity_type_collections')
+        self._conn.execute('DELETE FROM entity_provenance')
         self._conn.execute('DELETE FROM entities')
+        self._conn.execute('DELETE FROM entity_type_collections')
         self._conn.execute('DELETE FROM entity_types')
