@@ -25,9 +25,7 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         for source in sources:
             for path in self._expand_source(source):
                 canonical_path = path.resolve()
-                document = self._load_document(canonical_path)
-                if document is not None:
-                    yield document
+                yield self._load_document(canonical_path)
 
     def _validate_source(self, source: DocumentSource) -> None:
         """Validate a document source."""
@@ -45,7 +43,12 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
 
     def _expand_source(self, source: DocumentSource) -> Iterator[Path]:
         """Expand a source root uri into an iterator of concrete file paths."""
-        self._validate_source(source)
+        try:
+            self._validate_source(source)
+        except Exception as exc:
+            error = f'Invalid document source. {exc}'
+            logger.error(error)
+            raise ValueError(error) from exc
         path = Path(source.root)
         match source.mode:
             case DocumentSourceMode.FILE:
@@ -55,7 +58,7 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             case DocumentSourceMode.RECURSIVE:
                 yield from path.rglob('*.txt')
 
-    def _load_document(self, path: Path) -> Document | None:
+    def _load_document(self, path: Path) -> Document:
         """Load a Document from a file path."""
         try:
             return Document(
@@ -63,5 +66,5 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
                 source_uri=str(path),
             )
         except OSError:
-            logger.warning(f'Failed to load document from "{path}" (skipped).')
-            return None
+            logger.error(f'Failed to load document from "{path}"')
+            raise

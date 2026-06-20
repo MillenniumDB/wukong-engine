@@ -455,6 +455,24 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
         return cursor.rowcount
 
+    def get_extraction_status_counts(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
+        """Get extraction counts grouped by status for a given context level."""
+        status_counts: dict[ExtractionStatus, int] = dict.fromkeys(ExtractionStatus, 0)
+        groups = self._conn.execute(
+            """
+            SELECT extraction_status, COUNT(*) AS extraction_count
+            FROM entity_extractions
+            WHERE context_level = ?
+            GROUP BY extraction_status
+            """,
+            (context_level.value,),
+        )
+        for group in groups:
+            status = ExtractionStatus(group['extraction_status'])
+            count = group['extraction_count']
+            status_counts[status] = count
+        return status_counts
+
     def clear(self) -> None:
         """Reset the entity extraction store."""
         self._conn.execute(

@@ -4,6 +4,7 @@ from typing import Protocol, Self
 from .document_store import DocumentStore
 from .entity_store import EntityStore
 from .extraction_store import ExtractionStore
+from .pipeline_store import PipelineStore
 from .relationship_store import RelationshipStore
 
 
@@ -14,6 +15,7 @@ class UnitOfWork(Protocol):
     entities: EntityStore
     relationships: RelationshipStore
     extraction: ExtractionStore
+    pipeline: PipelineStore
 
     def __enter__(self) -> Self:
         """Enter the runtime context related to this object."""

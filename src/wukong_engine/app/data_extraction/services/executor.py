@@ -21,7 +21,7 @@ from .prompt_renderer import PromptRenderer
 class ExtractionExecutor:
     """Asynchronous executor for data extraction jobs."""
 
-    def __init__(self, llm_client: LLMClient, max_concurrency: int = 10) -> None:
+    def __init__(self, llm_client: LLMClient, max_concurrency: int = 5) -> None:
         """Initialize the executor with necessary dependencies."""
         self._prompt_renderer = PromptRenderer()
         self._llm_client = llm_client

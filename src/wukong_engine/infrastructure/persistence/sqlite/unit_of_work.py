@@ -5,7 +5,13 @@ from typing import Self
 
 from wukong_engine.app.staging.ports import UnitOfWork
 
-from .stores import SQLiteDocumentStore, SQLiteEntityStore, SQLiteExtractionStore, SQLiteRelationshipStore
+from .stores import (
+    SQLiteDocumentStore,
+    SQLiteEntityStore,
+    SQLiteExtractionStore,
+    SQLitePipelineStore,
+    SQLiteRelationshipStore,
+)
 
 
 class SQLiteUnitOfWork(UnitOfWork):
@@ -23,6 +29,7 @@ class SQLiteUnitOfWork(UnitOfWork):
         self.entities: SQLiteEntityStore
         self.relationships: SQLiteRelationshipStore
         self.extraction: SQLiteExtractionStore
+        self.pipeline: SQLitePipelineStore
 
     def __enter__(self) -> Self:
         """Enter the runtime context related to an SQLite transaction."""
@@ -38,6 +45,7 @@ class SQLiteUnitOfWork(UnitOfWork):
         self.entities = SQLiteEntityStore(self._conn)
         self.relationships = SQLiteRelationshipStore(self._conn)
         self.extraction = SQLiteExtractionStore(self._conn)
+        self.pipeline = SQLitePipelineStore(self._conn)
 
         self._active = True
         return self

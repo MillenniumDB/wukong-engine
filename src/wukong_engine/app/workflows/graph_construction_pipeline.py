@@ -6,6 +6,7 @@ from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
+from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.pipeline.model.values import PipelineStep
@@ -52,10 +53,14 @@ class GraphConstructionPipeline:
             workspace: The user workspace containing key files and directories for the pipeline execution.
             should_reset: If True, clears existing data on each pipeline step. If False, keeps existing data and appends any new results.
         """
+        # Initialize the pipeline checkpoints
+        with self._uow as tx:
+            tx.pipeline.initialize_all_steps()
+
         # Get document registry and validate document sources
         document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
         logger.info(
-            f'Document collections obtained successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
+            f'Document Collections obtained successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )
 
         # Get graph model and validate selected document collections
@@ -65,91 +70,49 @@ class GraphConstructionPipeline:
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         document_registry.validate_collections(frozenset(unique_collections))
-        logger.info(f'Graph model obtained successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
-
-        # Document ingestion
-        if self._app_config.pipeline.is_active(PipelineStep.INGEST_DOCUMENTS):
-            if should_reset:  # Reset everything downstream
-                with self._uow as tx:
-                    tx.extraction.clear()
-                    tx.relationships.clear()
-                    tx.entities.clear()
-                    tx.documents.clear()
-                logger.warning('Removing existing sources and data...')
-            logger.info('Starting document ingestion...')
-            self._ingest_documents.execute(document_registry)
-            logger.info('Document ingestion completed successfully!')
-
-        # Entity extraction
-        if self._app_config.pipeline.is_active(PipelineStep.EXTRACT_ENTITIES):
-            if should_reset:  # Reset everything downstream
-                with self._uow as tx:
-                    tx.extraction.clear()
-                    tx.relationships.clear()
-                    tx.entities.clear()
-                logger.warning('Removing existing data...')
-            logger.info('Starting entity extraction...')
-            await self._extract_entities.execute(graph_model)
-            logger.info('Entity extraction completed successfully!')
+        logger.info(f'Graph Model obtained successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
         # TODO: Relationship extraction
-        # TODO: If should_reset is True, clear all existing relationships before this step
         # TODO: Export graph
-        """
-        # Process input documents
-        if document_processing:
-            logger.info('Processing Input Documents...')
-            process_text_documents(original_docs_dir, docs_dir, results_dir)
-            generate_chunks(docs_dir, chunks_dir, results_dir)
-            trim_large_documents(docs_dir)
-            if original_metadata_dir.exists():
-                process_metadata_documents(original_metadata_dir, metadata_dir, results_dir)
+        # Run pipeline steps
+        for step in self._app_config.pipeline.steps:
+            # Stop if dependencies have not been completed
+            with self._uow as tx:
+                if not tx.pipeline.are_dependencies_completed(step):
+                    error = f'Cannot execute {step.value} step because the previous steps have not been completed'
+                    logger.error(error)
+                    raise PipelineExecutionError(error)
 
-        # Generate prompts from graph model
-        if prompt_generation:
-            logger.info('Generating Prompts...')
-            generate_prompts(prompts_dir)
+            # Reset everything downstream
+            if should_reset:
+                with self._uow as tx:
+                    match step:
+                        case PipelineStep.INGEST_DOCUMENTS:
+                            tx.extraction.clear()
+                            tx.relationships.clear()
+                            tx.entities.clear()
+                            tx.documents.clear()
+                            logger.warning('Removing existing sources and data...')
+                        case PipelineStep.EXTRACT_ENTITIES:
+                            tx.extraction.clear()
+                            tx.relationships.clear()
+                            tx.entities.clear()
+                            logger.warning('Removing existing data...')
+                    tx.pipeline.reset_dependent_checkpoints(step)
 
-        # Extract entities from the documents
-        if entity_extraction:
-            logger.info('Extracting Core Entities...')
-            extract_entities(
-                graph_model.core_entities,
-                docs_dir,
-                prompts_dir,
-                results_dir,
-                metadata_dir=metadata_dir,
-                clear_results=True,
-            )
-            logger.info('Extracting Entities...')
-            extract_entities(graph_model.hybrid_entities + graph_model.entities, chunks_dir, prompts_dir, results_dir)
+            # Check if step has already been completed
+            completed = False
+            with self._uow as tx:
+                completed = tx.pipeline.is_step_completed(step)
 
-        # Process extracted entities
-        if entity_processing:
-            logger.info('Processing Entities...')
-            process_entities(graph_model.core_entities + graph_model.hybrid_entities + graph_model.entities, results_dir)
-
-        # Extract relations from the documents
-        if relation_extraction:
-            logger.info('Extracting Relations...')
-            extract_relations(graph_model.materialized_relations, chunks_dir, prompts_dir, results_dir, clear_results=True)
-
-        # Process extracted relations
-        if relation_processing:
-            logger.info('Processing Relations...')
-            process_relations(graph_model.materialized_relations, results_dir)
-
-        # Export Knowledge Graph to various formats
-        if export_graph:
-            export_formats = config.get('export_formats', ['mdb'])
-            if 'mdb' in export_formats:
-                logger.info('Exporting Knowledge Graph to MillenniumDB...')
-                export_to_mdb(results_dir, exports_dir / 'mdb')
-            if 'neo4j' in export_formats:
-                logger.info('Exporting Knowledge Graph to Neo4j...')
-                export_to_neo4j(results_dir, exports_dir / 'neo4j')
-            if 'json' in export_formats:
-                logger.info('Exporting Knowledge Graph to JSON...')
-                export_to_json(results_dir, exports_dir / 'json')
-            export_stats(results_dir, exports_dir)
-        """
+            # If not completed, execute the step
+            if not completed:
+                logger.info(f'Starting {step.value} step...')
+                match step:
+                    case PipelineStep.INGEST_DOCUMENTS:
+                        self._ingest_documents.execute(document_registry)
+                    case PipelineStep.EXTRACT_ENTITIES:
+                        await self._extract_entities.execute(graph_model)
+                logger.info(f'{step.value} step completed successfully!')
+            else:
+                logger.info(f'Skipping {step.value} step because it has already been completed...')

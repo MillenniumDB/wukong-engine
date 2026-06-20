@@ -5,7 +5,7 @@ from wukong_engine.app.data_extraction.models import EntityExtractionJob
 from wukong_engine.app.llm.elements.values import LLMResponseMetrics
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import JobRetryPolicy, JobStatus
+from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobRetryPolicy, JobStatus
 from wukong_engine.core.graph.elements import Entity
 
 
@@ -45,6 +45,10 @@ class EntityExtractionStore(Protocol):
 
     def reset_retryable_extractions(self) -> int:
         """Reset retryable extractions back to PENDING."""
+        ...
+
+    def get_extraction_status_counts(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
+        """Get extraction counts grouped by status for a given context level."""
         ...
 
     def clear(self) -> None:

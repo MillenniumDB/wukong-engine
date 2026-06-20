@@ -11,7 +11,7 @@ class PipelineStep(Enum):
         EXPORT_GRAPH: Export the knowledge graph.
     """
 
-    INGEST_DOCUMENTS = 'ingest_documents'
-    EXTRACT_ENTITIES = 'extract_entities'
-    EXTRACT_RELATIONSHIPS = 'extract_relationships'
-    EXPORT_GRAPH = 'export_graph'
+    INGEST_DOCUMENTS = 'INGEST_DOCUMENTS'
+    EXTRACT_ENTITIES = 'EXTRACT_ENTITIES'
+    EXTRACT_RELATIONSHIPS = 'EXTRACT_RELATIONSHIPS'
+    EXPORT_GRAPH = 'EXPORT_GRAPH'

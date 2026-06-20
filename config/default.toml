@@ -17,11 +17,12 @@
 ingest_documents = true
 
 ### Extract entities from the documents ###
+# Note: Expects input documents to be available in the system
 # Default: true
 extract_entities = true
 
 ### Extract relationships between entities from the documents ###
-# Note: Expects previously extracted entities to be available
+# Note: Expects input documents and previously extracted entities to be available
 # Default: true
 extract_relationships = true
 
@@ -54,8 +55,13 @@ strict_support = true
 
 ### Maximum concurrency for LLM API calls ###
 # Note: Adjust this value based on the LLM provider's rate limits
-# Default: 10
-max_concurrency = 10
+# Reference values to consider based on typical LLM provider usage tiers:
+# - Low Tier: 5
+# - Mid Tier: 10
+# - High Tier: 20 (default)
+# - Very High Tier: 40
+# Default: 20
+max_concurrency = 20
 
 ##############
 #  CHUNKING  #

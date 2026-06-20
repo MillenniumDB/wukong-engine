@@ -46,7 +46,7 @@ def _data_type_to_json(data_type: DataType) -> str:
 
 
 # TODO: Test and set reasoning effort to None or a specific value best for extracting entities
-EFFORT = None
+EFFORT = ReasoningEffort.LOW
 
 
 # TODO: Test and set reasoning effort to None or a specific value best for extracting entities
@@ -76,8 +76,8 @@ class EntityExtractionRequestBuilder:
         # Handle potential errors like missing documents
         try:
             source_text = self._get_source_text(job.source)
-        except FileNotFoundError as exc:
-            error = f'Failed to build extraction request: {exc}'
+        except Exception as exc:
+            error = 'Failed to build extraction request: Could not load source document content'
             logger.error(error)
             raise ExtractionRequestBuildError(error) from exc
 
@@ -178,8 +178,6 @@ class EntityExtractionRequestBuilder:
         """Get the relevant text from the source."""
         if isinstance(source, Document):
             loaded_doc = self._document_loader.load(source, max_tokens=self.max_document_tokens)
-            if loaded_doc is None:
-                raise FileNotFoundError('Could not load document content')
             text = loaded_doc.content
         else:
             text = source.content

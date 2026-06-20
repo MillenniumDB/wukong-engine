@@ -15,7 +15,7 @@ class OpenAIConfig:
     api_key: str
     model: LLM = field(default_factory=LLMRegistry.default_model)
     timeout: float = 120  # Default: 2 minutes, more than reasonable for extraction tasks
-    max_retries: int = 2  # Default: 2 retries, enough for transient network issues
+    max_retries: int = 2  # Default: 2 retries, enough for transient provider issues
 
     def __post_init__(self) -> None:
         """Validate the configuration invariants."""

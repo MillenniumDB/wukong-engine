@@ -233,6 +233,17 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
         )
     )
 );
+CREATE TABLE IF NOT EXISTS pipeline_checkpoints (
+    checkpoint_name TEXT PRIMARY KEY,
+    checkpoint_status TEXT NOT NULL,
+    updated_at INTEGER NOT NULL,
+    CHECK (
+        checkpoint_status IN (
+            'PENDING',
+            'COMPLETED'
+        )
+    )
+);
 -- =========================================================
 -- Indexes
 -- =========================================================

@@ -20,27 +20,29 @@ class LocalDocumentLoader(DocumentLoader):
         """Initialize the document loader."""
         self._tokenizer = HuggingFaceTokenizer()
 
-    def load(self, document: Document, encoding: str = 'utf-8', max_tokens: int | None = None) -> LoadedDocument | None:
+    def load(self, document: Document, encoding: str = 'utf-8', max_tokens: int | None = None) -> LoadedDocument:
         """Load the text contents of a document from the local filesystem."""
         try:
             content = Path(document.source_uri).read_bytes()
             content_hash = ContentHash.from_content_bytes(content)
             if content_hash != document.id.content:
-                raise ValueError(f'Content hash mismatch for document: {document}')
+                error = f'Content hash mismatch for document {document} (expected: {document.id.content}, got: {content_hash})'
+                logger.error(error)
+                raise ValueError(error)
             decoded_content = content.decode(encoding=encoding)
             if max_tokens is not None:
                 decoded_content = self._tokenizer.truncate(decoded_content, max_tokens)
             return LoadedDocument(metadata=document, content=decoded_content)
         except LookupError, OSError, UnicodeDecodeError:
             logger.error(f'Failed to read content for document {document}')
-            return None
+            raise
 
     def load_many(
         self,
         documents: Iterable[Document],
         encoding: str = 'utf-8',
         max_tokens: int | None = None,
-    ) -> Iterator[LoadedDocument | None]:
+    ) -> Iterator[LoadedDocument]:
         """Load the text contents of multiple documents from the local filesystem."""
         for document in documents:
             yield self.load(document=document, encoding=encoding, max_tokens=max_tokens)

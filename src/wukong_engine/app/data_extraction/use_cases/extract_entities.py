@@ -14,8 +14,9 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
+from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobErrorLevel, JobRetryPolicy, JobStatus
 from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -42,30 +43,34 @@ class ExtractEntities:
 
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
-        # TODO: Materialization (single time, restrict later)
-
-        # Setup entity types and associated document collections
+        # Materialize pending extractions for all context levels if not already done
         with self._uow as tx:
-            entity_types = tuple(graph_model.active_entity_types.values())
-            tx.entities.add_entity_types(et.name for et in entity_types)
-            for entity_type in entity_types:
-                tx.entities.link_collections_to_entity_type(
-                    entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
-                    entity_type.name,
-                    ContextLevel.DOCUMENT,
-                )
-                tx.entities.link_collections_to_entity_type(
-                    entity_type.document_collections.get(ContextLevel.CHUNK, []),
-                    entity_type.name,
-                    ContextLevel.CHUNK,
-                )
+            if not tx.pipeline.is_checkpoint_completed(PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED):
+                # Setup entity types and associated document collections
+                entity_types = tuple(graph_model.active_entity_types.values())
+                tx.entities.add_entity_types(et.name for et in entity_types)
+                for entity_type in entity_types:
+                    tx.entities.link_collections_to_entity_type(
+                        entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
+                        entity_type.name,
+                        ContextLevel.DOCUMENT,
+                    )
+                    tx.entities.link_collections_to_entity_type(
+                        entity_type.document_collections.get(ContextLevel.CHUNK, []),
+                        entity_type.name,
+                        ContextLevel.CHUNK,
+                    )
 
-        # Materialize pending extractions for all context levels
-        with self._uow as tx:
-            tx.extraction.entities.materialize_pending_extractions(ContextLevel.DOCUMENT)
-            tx.extraction.entities.materialize_pending_extractions(ContextLevel.CHUNK)
+                # Materialize pending extractions for all context levels
+                tx.extraction.entities.materialize_pending_extractions(ContextLevel.DOCUMENT)
+                tx.extraction.entities.materialize_pending_extractions(ContextLevel.CHUNK)
 
-        # TODO: Materialization (single time, restrict later)
+                # Set checkpoint to indicate pending extractions have been materialized
+                tx.pipeline.set_checkpoint_status(
+                    PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
+                    PipelineCheckpointStatus.COMPLETED,
+                )
+                logger.info('Materialized all pending entity extractions')
 
         # TODO: Consider pending batches
         # Recovery for stalled jobs and retryable extractions
@@ -87,6 +92,31 @@ class ExtractEntities:
         try:
             await self._run_extractions(ContextLevel.DOCUMENT, graph_model)
             await self._run_extractions(ContextLevel.CHUNK, graph_model)
+
+            # If all extractions are finished, mark the ENTITIES_EXTRACTED checkpoint as completed
+            with self._uow as tx:
+                document_extraction_counts = tx.extraction.entities.get_extraction_status_counts(ContextLevel.DOCUMENT)
+                chunk_extraction_counts = tx.extraction.entities.get_extraction_status_counts(ContextLevel.CHUNK)
+                total_extraction_counts = {
+                    status: document_extraction_counts[status] + chunk_extraction_counts[status]
+                    for status in document_extraction_counts.keys() & chunk_extraction_counts.keys()
+                }
+                unfinished_extractions = (
+                    total_extraction_counts.get(ExtractionStatus.PENDING, 0)
+                    + total_extraction_counts.get(ExtractionStatus.IN_PROGRESS, 0)
+                    + total_extraction_counts.get(ExtractionStatus.RETRY, 0)
+                )
+                if not unfinished_extractions:
+                    tx.pipeline.set_checkpoint_status(
+                        PipelineCheckpoint.ENTITIES_EXTRACTED,
+                        PipelineCheckpointStatus.COMPLETED,
+                    )
+                    logger.info('Finished processing all entity extractions!')
+                else:
+                    logger.warning(
+                        f'Finished processing entity extractions with {unfinished_extractions} unfinished extractions left '
+                        '(remaining extractions must be completed in subsequent runs)',
+                    )
         except DataExtractionError as exc:
             error = 'Entity Extraction failed due to an unrecoverable error'
             logger.error(error)

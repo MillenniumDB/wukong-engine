@@ -13,7 +13,7 @@ class LLMConfig:
 
     model: LLM = field(default_factory=LLMRegistry.default_model)
     strict_support: bool = True
-    max_concurrency: int = 10
+    max_concurrency: int = 5
 
     def __str__(self) -> str:
         """User-friendly string representation of the LLM configuration."""
