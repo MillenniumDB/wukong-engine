@@ -40,7 +40,5 @@ class DocumentRegistryMapper:
         )
 
     def _resolve_path(self, path: str) -> Path:
-        real_path = Path(path)
-        if not real_path.is_absolute():
-            real_path = self._base_dir / real_path
-        return real_path.expanduser().resolve()
+        real_path = self._base_dir / path
+        return real_path.resolve()

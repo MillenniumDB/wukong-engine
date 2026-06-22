@@ -6,7 +6,7 @@ This module is executed as a script and handles:
     - Running the engine pipeline
 
 Example:
-    wukong run workspaces/example --config config/default.toml -v
+    wukong run workspaces/example data/example --config config/default.toml -v
 """
 
 import argparse
@@ -40,12 +40,17 @@ def build_parser() -> argparse.ArgumentParser:
     # Run command
     run_parser = subparsers.add_parser(
         'run',
-        help='Execute the WUKONG Engine pipeline over a workspace',
+        help='Execute the WUKONG Engine pipeline over a workspace and data directory',
     )
     run_parser.add_argument(
-        'workspace',
+        'workspace_dir',
         type=Path,
         help='Path to the workspace directory (e.g. workspaces/example)',
+    )
+    run_parser.add_argument(
+        'data_dir',
+        type=Path,
+        help='Path to the data directory (e.g. data/example)',
     )
     run_parser.add_argument(
         '--config',
@@ -55,16 +60,16 @@ def build_parser() -> argparse.ArgumentParser:
         metavar='CONFIG_FILE',
     )
     run_parser.add_argument(
-        '--reset',
-        action='store_true',
-        help='Clear all data at the start of each active pipeline step',
-    )
-    run_parser.add_argument(
         '-v',
         '--verbose',
         action='count',
         default=0,
         help='Select output verbosity (default: only show warning/error logs, -v: add info logs, -vv: add debug logs)',
+    )
+    run_parser.add_argument(
+        '--reset',
+        action='store_true',
+        help='Clear all data at the start of each active pipeline step',
     )
     run_parser.set_defaults(func=handle_run)
 
@@ -102,10 +107,20 @@ def handle_run(args: argparse.Namespace) -> None:
     """
     try:
         print('Running WUKONG engine pipeline...')
-        workspace = Workspace(root=args.workspace)
+
+        # Initialize workspace and validate along with data directory
+        workspace = Workspace(root=args.workspace_dir)
         WorkspaceValidator().validate(workspace=workspace)
+        if not args.data_dir.exists() or not args.data_dir.is_dir():
+            logger.error(f'Data directory "{args.data_dir}" does not exist or is not a directory')
+            logger.critical('Application Error: InvalidDataDirectoryError')
+            sys.exit(1)
+
+        # Build and run the pipeline
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
-        asyncio.run(app.graph_construction.execute(workspace=workspace, should_reset=args.reset))
+        asyncio.run(
+            app.graph_construction.execute(workspace=workspace, data_uri=args.data_dir, should_reset=args.reset),
+        )
         print('WUKONG engine pipeline execution completed!')
     except ApplicationError as exc:
         logger.critical(f'Application Error: {type(exc).__name__}')

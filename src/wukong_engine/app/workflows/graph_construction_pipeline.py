@@ -39,7 +39,7 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    async def execute(self, workspace: Workspace, *, should_reset: bool = True) -> None:
+    async def execute(self, workspace: Workspace, data_uri: str, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
         Orchestrates the entire pipeline, which includes:
@@ -51,6 +51,7 @@ class GraphConstructionPipeline:
 
         Args:
             workspace: The user workspace containing key files and directories for the pipeline execution.
+            data_uri: The base URI pointing to the data to be ingested (e.g. a local directory).
             should_reset: If True, clears existing data on each pipeline step. If False, keeps existing data and appends any new results.
         """
         # Initialize the pipeline checkpoints
@@ -58,7 +59,7 @@ class GraphConstructionPipeline:
             tx.pipeline.initialize_all_steps()
 
         # Get document registry and validate document sources
-        document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry))
+        document_registry = self._get_document_registry.execute(str(workspace.paths.document_registry), data_uri)
         logger.info(
             f'Document Collections obtained successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )

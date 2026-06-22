@@ -10,18 +10,23 @@ from wukong_engine.core.documents.model.values import DocumentSourceMode
 class LocalDocumentSourceValidator(DocumentSourceValidator):
     """Validates document sources against the local filesystem."""
 
-    def validate(self, sources: tuple[DocumentSource, ...]) -> None:
+    def validate(self, sources: tuple[DocumentSource, ...], data_uri: str) -> None:
         """Validate all given sources.
 
         Checks for each source that:
-        1) The path exists.
+        1) The path exists and is contained inside data_uri.
         2) The path type matches the source mode.
         3) The path can be accessed/read.
         """
         errors: list[str] = []
         for source in sources:
-            root_path = Path(source.root)
+            root_path = Path(source.root).resolve()
+            base_data_path = Path(data_uri).resolve()
             source_label = str(source)
+
+            if root_path != base_data_path and not root_path.is_relative_to(base_data_path):
+                errors.append(f'{source_label}: path is outside of the allowed data root "{base_data_path}"')
+                continue
 
             if not root_path.exists():
                 errors.append(f'{source_label}: path does not exist')

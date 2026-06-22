@@ -11,8 +11,8 @@ class GetDocumentRegistry:
         self._provider = provider
         self._validator = validator
 
-    def execute(self, document_registry_uri: str) -> DocumentRegistry:
+    def execute(self, document_registry_uri: str, data_uri: str) -> DocumentRegistry:
         """Retrieve the document registry from the specified URI."""
-        document_registry = self._provider.get(document_registry_uri)
-        self._validator.validate(document_registry.get_all_sources())
+        document_registry = self._provider.get(source_uri=document_registry_uri, data_uri=data_uri)
+        self._validator.validate(sources=document_registry.get_all_sources(), data_uri=data_uri)
         return document_registry
