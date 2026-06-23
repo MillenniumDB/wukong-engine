@@ -93,16 +93,17 @@ class GraphConstructionPipeline:
                             tx.relationships.clear()
                             tx.entities.clear()
                             tx.documents.clear()
+                            self._extract_entities.reset_metrics_state()
                             logger.warning('Removing existing sources and data...')
                         case PipelineStep.EXTRACT_ENTITIES:
                             tx.extraction.clear()
                             tx.relationships.clear()
                             tx.entities.clear()
+                            self._extract_entities.reset_metrics_state()
                             logger.warning('Removing existing data...')
                     tx.pipeline.reset_dependent_checkpoints(step)
 
             # Check if step has already been completed
-            completed = False
             with self._uow as tx:
                 completed = tx.pipeline.is_step_completed(step)
 
@@ -114,6 +115,14 @@ class GraphConstructionPipeline:
                         self._ingest_documents.execute(document_registry)
                     case PipelineStep.EXTRACT_ENTITIES:
                         await self._extract_entities.execute(graph_model)
+
+                # Stop the pipeline if the step did not fully complete
+                completed = False
+                with self._uow as tx:
+                    completed = tx.pipeline.is_step_completed(step)
+                if not completed:
+                    logger.info(f'{step.value} step is not fully completed. Stopping the pipeline...')
+                    return
                 logger.info(f'{step.value} step completed successfully!')
             else:
                 logger.info(f'Skipping {step.value} step because it has already been completed...')

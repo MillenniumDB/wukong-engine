@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     context_level TEXT NOT NULL,
     context_content_id BLOB NOT NULL,
     created_at INTEGER NOT NULL,
-    completed_at INTEGER,
+    finished_at INTEGER,
     input_tokens INTEGER,
     cached_tokens INTEGER,
     output_tokens INTEGER,
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
     batch_status TEXT NOT NULL,
     provider_status TEXT,
     created_at INTEGER NOT NULL,
-    completed_at INTEGER,
+    finished_at INTEGER,
     error TEXT,
     CHECK (
         batch_status IN (

@@ -4,8 +4,8 @@ from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpe
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
+from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
-from wukong_engine.app.llm.elements.values import LLMResponseMetrics
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
     LLMInternalError,
@@ -88,7 +88,7 @@ class OpenAIClient(LLMClient):
         return LLMResponse(
             content=response.output_text,
             model=response.model,
-            metrics=LLMResponseMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
+            metrics=TokenUsageMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
         )
 
     def _ensure_successful_response(self, response: OpenAIResponse) -> None:

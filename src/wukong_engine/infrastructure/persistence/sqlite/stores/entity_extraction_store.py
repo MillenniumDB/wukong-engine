@@ -3,7 +3,7 @@ import time
 from collections.abc import Iterable
 
 from wukong_engine.app.data_extraction.models import MAX_FAILED_ATTEMPTS, EntityExtractionJob
-from wukong_engine.app.llm.elements.values import LLMResponseMetrics
+from wukong_engine.app.data_extraction.models.values import JobDurationMetrics, TokenUsageMetrics
 from wukong_engine.app.staging.ports import EntityExtractionStore
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
@@ -23,8 +23,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         """Initialize the entity extraction store with a SQLite connection."""
         self._conn = conn
 
-    def _get_pending_document_extraction_jobs(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source documents with their relevant entity types for extraction."""
+    def _create_document_job_batch(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Create a batch of active jobs to process pending document extractions."""
         # Avoid invalid batch sizes
         if limit <= 0:
             return ()
@@ -99,8 +99,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         return tuple(jobs)
 
-    def _get_pending_chunk_extraction_jobs(self, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source chunks with their relevant entity types for extraction."""
+    def _create_chunk_job_batch(self, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Create a batch of active jobs to process pending chunk extractions."""
         # Avoid invalid batch sizes
         if limit <= 0:
             return ()
@@ -188,8 +188,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         return tuple(jobs)
 
-    def materialize_pending_extractions(self, context_level: ContextLevel) -> None:
-        """Generate pending entity type extractions for source contexts."""
+    def materialize_extractions(self, context_level: ContextLevel) -> None:
+        """Materialize all entity type extractions for a given context level."""
         if context_level == ContextLevel.DOCUMENT:
             self._conn.execute(
                 """
@@ -232,15 +232,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, ContextLevel.CHUNK.value),
             )
 
-    def get_pending_extraction_jobs(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Get a batch of source contexts with their relevant entity types for extraction."""
+    def create_job_batch(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
+        """Create a batch of active jobs to process pending extractions for a given context level."""
         if context_level == ContextLevel.DOCUMENT:
-            return self._get_pending_document_extraction_jobs(limit)
+            return self._create_document_job_batch(limit)
         if context_level == ContextLevel.CHUNK:
-            return self._get_pending_chunk_extraction_jobs(limit)
+            return self._create_chunk_job_batch(limit)
         return ()
 
-    def schedule_extraction_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
+    def schedule_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
         """Schedule entity extraction jobs for processing."""
         # Update extractions relevant to the jobs
         self._conn.executemany(
@@ -286,7 +286,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
-    def link_extracted_entities_to_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
+    def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         self._conn.executemany(
             """
@@ -296,15 +296,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             [(context.level.value, context.content_id.bytes, entity.id.content.bytes) for entity in entities],
         )
 
-    def update_extraction_job_status(
+    def update_job_status(
         self,
         job: EntityExtractionJob,
         status: JobStatus,
-        metrics: LLMResponseMetrics | None = None,
+        metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
     ) -> None:
-        """Update the status of a job and its associated extractions upon termination."""
+        """Update the status of a job and its associated extractions upon completion/termination."""
         # Status must be either COMPLETED or FAILED
         if status not in {JobStatus.COMPLETED, JobStatus.FAILED}:
             raise ValueError(f'Invalid job status for update: {status.value}. Must be COMPLETED or FAILED.')
@@ -315,7 +315,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             UPDATE extraction_jobs
             SET
                 job_status = ?,
-                completed_at = ?,
+                finished_at = ?,
                 input_tokens = ?,
                 cached_tokens = ?,
                 output_tokens = ?,
@@ -409,7 +409,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             UPDATE extraction_jobs
             SET
                 job_status = ?,
-                completed_at = ?,
+                finished_at = ?,
                 error = 'Job was stalled (due to system failure/interruption/crash)'
             WHERE job_type = ? AND job_status = ?
             RETURNING
@@ -443,8 +443,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         return len(stalled_jobs)
 
-    def reset_retryable_extractions(self) -> int:
-        """Reset retryable extractions back to PENDING."""
+    def reset_deferred_extractions(self) -> int:
+        """Reset deferred extractions back to PENDING."""
         cursor = self._conn.execute(
             """
             UPDATE entity_extractions
@@ -455,12 +455,12 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
         return cursor.rowcount
 
-    def get_extraction_status_counts(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
-        """Get extraction counts grouped by status for a given context level."""
+    def count_sources_by_status(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
+        """Count sources by status for a given context level."""
         status_counts: dict[ExtractionStatus, int] = dict.fromkeys(ExtractionStatus, 0)
         groups = self._conn.execute(
             """
-            SELECT extraction_status, COUNT(*) AS extraction_count
+            SELECT extraction_status, COUNT(DISTINCT context_content_id) AS source_count
             FROM entity_extractions
             WHERE context_level = ?
             GROUP BY extraction_status
@@ -469,9 +469,81 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
         for group in groups:
             status = ExtractionStatus(group['extraction_status'])
-            count = group['extraction_count']
+            count = int(group['source_count'])
             status_counts[status] = count
         return status_counts
+
+    def count_jobs_by_status(self, context_level: ContextLevel) -> dict[JobStatus, int]:
+        """Count jobs by status for a given context level."""
+        job_counts: dict[JobStatus, int] = dict.fromkeys(JobStatus, 0)
+        groups = self._conn.execute(
+            """
+            SELECT job_status, COUNT(*) AS job_count
+            FROM extraction_jobs
+            WHERE job_type = ? AND context_level = ?
+            GROUP BY job_status
+            """,
+            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+        )
+        for group in groups:
+            status = JobStatus(group['job_status'])
+            count = int(group['job_count'])
+            job_counts[status] = count
+        return job_counts
+
+    def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, JobDurationMetrics]:
+        """Get job duration metrics grouped by job status for a given context level."""
+        job_durations: dict[JobStatus, JobDurationMetrics] = dict.fromkeys(JobStatus, JobDurationMetrics(0, 0, 0))
+        groups = self._conn.execute(
+            """
+            SELECT
+                job_status,
+                AVG(finished_at - created_at) AS avg_duration,
+                MIN(finished_at - created_at) AS min_duration,
+                MAX(finished_at - created_at) AS max_duration
+            FROM extraction_jobs
+            WHERE job_type = ? AND context_level = ? AND finished_at IS NOT NULL
+            GROUP BY job_status
+            """,
+            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+        )
+        for group in groups:
+            status = JobStatus(group['job_status'])
+            metrics = JobDurationMetrics(
+                avg=int(group['avg_duration'] or 0),
+                min=int(group['min_duration'] or 0),
+                max=int(group['max_duration'] or 0),
+            )
+            job_durations[status] = metrics
+        return job_durations
+
+    def get_job_token_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, TokenUsageMetrics]:
+        """Get job token metrics grouped by job status for a given context level."""
+        job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0))
+        groups = self._conn.execute(
+            """
+            SELECT
+                job_status,
+                SUM(input_tokens) AS total_input_tokens,
+                SUM(cached_tokens) AS total_cached_tokens,
+                SUM(output_tokens) AS total_output_tokens,
+                SUM(reasoning_tokens) AS total_reasoning_tokens
+            FROM extraction_jobs
+            WHERE job_type = ? AND context_level = ?
+            GROUP BY job_status
+            """,
+            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+        )
+        for group in groups:
+            status = JobStatus(group['job_status'])
+            metrics = TokenUsageMetrics(
+                input_tokens=int(group['total_input_tokens'] or 0),
+                cached_tokens=int(group['total_cached_tokens'] or 0),
+                output_tokens=int(group['total_output_tokens'] or 0),
+                reasoning_tokens=int(group['total_reasoning_tokens'] or 0),
+            )
+            job_tokens[status] = metrics
+        return job_tokens
 
     def clear(self) -> None:
         """Reset the entity extraction store."""

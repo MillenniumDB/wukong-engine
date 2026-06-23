@@ -114,6 +114,31 @@ class SQLiteEntityStore(EntityStore):
             ],
         )
 
+    def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
+        """Add entity types."""
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO entity_types (entity_type_name)
+            VALUES (?)
+            """,
+            [(et_name.value,) for et_name in entity_type_names],
+        )
+
+    def link_collections_to_entity_type(
+        self,
+        collection_names: Iterable[DocumentCollectionName],
+        entity_type_name: EntityTypeName,
+        context_level: ContextLevel,
+    ) -> None:
+        """Link a set of document collections to an entity type under a specific context level."""
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO entity_type_collections (context_level, entity_type_name, collection_name)
+            VALUES (?, ?, ?)
+            """,
+            [(context_level.value, entity_type_name.value, c_name.value) for c_name in collection_names],
+        )
+
     def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
         """Insert or update a batch of entities, ensuring deduplication."""
         # Deduplicate batch of entities locally first
@@ -144,31 +169,6 @@ class SQLiteEntityStore(EntityStore):
         # Perform bulk insert and update
         self._bulk_insert_entities(to_insert)
         self._bulk_update_properties(to_update)
-
-    def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
-        """Add entity types."""
-        self._conn.executemany(
-            """
-            INSERT OR IGNORE INTO entity_types (entity_type_name)
-            VALUES (?)
-            """,
-            [(et_name.value,) for et_name in entity_type_names],
-        )
-
-    def link_collections_to_entity_type(
-        self,
-        collection_names: Iterable[DocumentCollectionName],
-        entity_type_name: EntityTypeName,
-        context_level: ContextLevel,
-    ) -> None:
-        """Link a set of document collections to an entity type under a specific context level."""
-        self._conn.executemany(
-            """
-            INSERT OR IGNORE INTO entity_type_collections (context_level, entity_type_name, collection_name)
-            VALUES (?, ?, ?)
-            """,
-            [(context_level.value, entity_type_name.value, c_name.value) for c_name in collection_names],
-        )
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""
@@ -212,6 +212,30 @@ class SQLiteEntityStore(EntityStore):
         )
         for row in cursor:
             yield self._row_to_entity_chunk_provenance(row)
+
+    def count_entities(self, context_level: ContextLevel) -> int:
+        """Count the number of unique entities for a given context level."""
+        row = self._conn.execute(
+            """
+            SELECT COUNT(DISTINCT entity_content_id) AS count
+            FROM entity_provenance
+            WHERE context_level = ?
+            """,
+            (context_level.value,),
+        ).fetchone()
+        return int(row['count']) if row else 0
+
+    def count_entity_mentions(self, context_level: ContextLevel) -> int:
+        """Count the number of entity mentions for a given context level."""
+        row = self._conn.execute(
+            """
+            SELECT COUNT(*) AS count
+            FROM entity_provenance
+            WHERE context_level = ?
+            """,
+            (context_level.value,),
+        ).fetchone()
+        return int(row['count']) if row else 0
 
     def clear(self) -> None:
         """Reset the entity store."""

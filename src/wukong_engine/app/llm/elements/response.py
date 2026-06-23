@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from .values import LLMResponseMetrics
+from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
 
 
 @dataclass(frozen=True)
@@ -11,4 +11,4 @@ class LLMResponse:
 
     content: str
     model: str
-    metrics: LLMResponseMetrics
+    metrics: TokenUsageMetrics

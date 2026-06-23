@@ -42,6 +42,16 @@ class SQLiteDocumentStore(DocumentStore):
             content=row['content'],
         )
 
+    def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
+        """Add document collections."""
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO collections (collection_name)
+            VALUES (?)
+            """,
+            [(c_name.value,) for c_name in collection_names],
+        )
+
     def bulk_upsert_documents(self, documents: Iterable[Document]) -> None:
         """Insert or update a batch of documents."""
         self._conn.executemany(
@@ -73,16 +83,6 @@ class SQLiteDocumentStore(DocumentStore):
             ],
         )
 
-    def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
-        """Add document collections."""
-        self._conn.executemany(
-            """
-            INSERT OR IGNORE INTO collections (collection_name)
-            VALUES (?)
-            """,
-            [(c_name.value,) for c_name in collection_names],
-        )
-
     def link_documents_to_collection(
         self,
         documents: Iterable[Document],
@@ -98,14 +98,14 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def count_documents(self) -> int:
-        """Get the total number of documents."""
-        cursor = self._conn.execute('SELECT COUNT(*) FROM documents')
-        return cursor.fetchone()[0]
+        """Count the total number of documents."""
+        row = self._conn.execute('SELECT COUNT(*) AS count FROM documents').fetchone()
+        return int(row['count']) if row else 0
 
     def count_chunks(self) -> int:
-        """Get the total number of chunks."""
-        cursor = self._conn.execute('SELECT COUNT(*) FROM chunks')
-        return cursor.fetchone()[0]
+        """Count the total number of chunks."""
+        row = self._conn.execute('SELECT COUNT(*) AS count FROM chunks').fetchone()
+        return int(row['count']) if row else 0
 
     def stream_all_documents(self) -> Iterator[Document]:
         """Stream all documents present in the store."""

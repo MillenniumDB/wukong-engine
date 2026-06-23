@@ -3,7 +3,8 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from wukong_engine.app.llm.elements.values import LLMResponseMetrics, ReasoningEffort
+from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
+from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM
 from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 
@@ -39,7 +40,7 @@ class ExtractionResult:
     job: EntityExtractionJob
     status: JobStatus
     data: dict[str, Any] = field(default_factory=dict)
-    metrics: LLMResponseMetrics | None = None
+    metrics: TokenUsageMetrics | None = None
     error: str | None = None
     error_level: JobErrorLevel | None = None
     retry_policy: JobRetryPolicy | None = None
