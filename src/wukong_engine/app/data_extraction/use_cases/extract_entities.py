@@ -33,6 +33,7 @@ logger = logging.getLogger(__name__)
 BATCH_SIZE = 1000  # Number of jobs to process in each batch
 
 
+# TODO: Batch API Mode
 class ExtractEntities:
     """Extract entities from documents."""
 

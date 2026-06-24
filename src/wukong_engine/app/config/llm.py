@@ -1,25 +1,26 @@
 import logging
 from dataclasses import dataclass, field
 
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model import LLM, LLMRegistry
 
 # Logging
 logger = logging.getLogger(__name__)
 
 
-# TODO: Validate no strict support
-# TODO: Processing Mode
 @dataclass(frozen=True)
 class LLMConfig:
     """LLM configuration."""
 
     model: LLM = field(default_factory=LLMRegistry.default_model)
-    processing_mode: str = 'default'
+    execution_mode: ExecutionMode = ExecutionMode.REALTIME
     max_concurrency: int = 5
 
     def __str__(self) -> str:
         """User-friendly string representation of the LLM configuration."""
-        return f'Model: {self.model}\nProcessing Mode: {self.processing_mode}\nMax Concurrency: {self.max_concurrency}'
+        return (
+            f'Model: {self.model}\nExecution Mode: {self.execution_mode.value}\nMax Concurrency: {self.max_concurrency}'
+        )
 
     def __post_init__(self) -> None:
         """Validate LLM configuration invariants."""

@@ -1,7 +1,8 @@
 {
     "extraction_config": {
         "llm": {
-            "domain": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile."
+            "domain": "Legal regulations and rules relating to the Ley General de Urbanismo y Construcciones (LGUC) and the Ministerio de Vivienda y Urbanismo (MINVU) of Chile.",
+            "language": "es"
         },
         "projection": {
             "enabled_entities": [

@@ -39,19 +39,19 @@ export_graph = true
 
 ### The LLM model to use for extraction ###
 # Note: Currently only OpenAI models are supported
-# Strictly supported models:
+# Supported models:
 # "gpt-4.1-mini": Best non-reasoning, cheapest
-# "gpt-5-mini": Most balanced, default
-# "gpt-5.4-mini": Best reasoning, expensive
-# Default: "gpt-5-mini"
-model = "gpt-5-mini"
+# "gpt-5-mini": Most balanced
+# "gpt-5.4-mini": Best reasoning, more expensive
+# Default: "gpt-4.1-mini"
+model = "gpt-4.1-mini"
 
-### Whether to accept only strictly supported models or to allow any model ###
-# Note: Setting this to true will raise an error if an unsupported model is specified
-# Note: Setting this to false will allow any model but will log a warning if it's not in the supported list
-# Note: Unsupported models may lead to suboptimal extraction results/costs and are not guaranteed to work correctly
-# Default: true
-strict_support = true
+### Execution mode for LLM interactions ###
+# You can choose from the following modes:
+# "real_time": Real-time execution using concurrent API calls (faster, but more expensive)
+# "batch": Asynchronous execution using external batch API processing (slower, but more cost-effective)
+# Default: "real_time"
+execution_mode = "real_time"
 
 ### Maximum concurrency for LLM API calls ###
 # Note: Adjust this value based on the LLM provider's rate limits
