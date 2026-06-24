@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobStatus
+from .status import ExtractionStatus, JobStatus
 
 
 # Helpers

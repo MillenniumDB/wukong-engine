@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from wukong_engine.app.data_extraction.models import ExtractionResult
+from wukong_engine.app.data_extraction.elements import ExtractionResult
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode

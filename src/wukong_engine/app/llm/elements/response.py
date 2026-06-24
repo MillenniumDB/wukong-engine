@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
+from wukong_engine.app.data_extraction.elements.values import TokenUsageMetrics
 
 
 @dataclass(frozen=True)

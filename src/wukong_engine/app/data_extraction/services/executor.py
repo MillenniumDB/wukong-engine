@@ -5,7 +5,8 @@ import itertools
 import json
 from collections.abc import AsyncIterator, Iterable
 
-from wukong_engine.app.data_extraction.models import ExtractionRequest, ExtractionResult
+from wukong_engine.app.data_extraction.elements import ExtractionRequest, ExtractionResult
+from wukong_engine.app.data_extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
@@ -13,7 +14,6 @@ from wukong_engine.app.llm.exceptions import (
     LLMResponseError,
     LLMTransientError,
 )
-from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 
 from .prompt_renderer import PromptRenderer
 

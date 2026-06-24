@@ -3,10 +3,14 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
+from wukong_engine.app.data_extraction.elements.values import (
+    JobErrorLevel,
+    JobRetryPolicy,
+    JobStatus,
+    TokenUsageMetrics,
+)
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM
-from wukong_engine.core.extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
 
 from .job import EntityExtractionJob
 

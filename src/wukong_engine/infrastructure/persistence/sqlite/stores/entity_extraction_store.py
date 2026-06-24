@@ -2,13 +2,18 @@ import sqlite3
 import time
 from collections.abc import Iterable
 
-from wukong_engine.app.data_extraction.models import MAX_FAILED_ATTEMPTS, EntityExtractionJob
-from wukong_engine.app.data_extraction.models.values import JobDurationMetrics, TokenUsageMetrics
+from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, EntityExtractionJob
+from wukong_engine.app.data_extraction.elements.values import (
+    ExtractionStatus,
+    JobDurationMetrics,
+    JobRetryPolicy,
+    JobStatus,
+    TokenUsageMetrics,
+)
 from wukong_engine.app.staging.ports import EntityExtractionStore
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobRetryPolicy, JobStatus
 from wukong_engine.core.extraction.model import EntityExtractionTask
 from wukong_engine.core.extraction.model.values import Cardinality, TaskType
 from wukong_engine.core.graph.elements import Entity

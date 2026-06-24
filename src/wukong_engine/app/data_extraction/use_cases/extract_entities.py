@@ -2,13 +2,20 @@ import logging
 import time
 from collections.abc import Iterable
 
+from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionRequest, ExtractionResult
+from wukong_engine.app.data_extraction.elements.values import (
+    EntityExtractionMetrics,
+    ExtractionMetricsState,
+    ExtractionStatus,
+    JobErrorLevel,
+    JobRetryPolicy,
+    JobStatus,
+)
 from wukong_engine.app.data_extraction.exceptions import (
     DataExtractionError,
     ExtractionExecutionError,
     ExtractionRequestBuildError,
 )
-from wukong_engine.app.data_extraction.models import EntityExtractionJob, ExtractionRequest, ExtractionResult
-from wukong_engine.app.data_extraction.models.values import EntityExtractionMetrics, ExtractionMetricsState
 from wukong_engine.app.data_extraction.services import (
     EntityExtractionRequestBuilder,
     EntityMaterializer,
@@ -16,7 +23,6 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobErrorLevel, JobRetryPolicy, JobStatus
 from wukong_engine.core.graph.model import GraphModel
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
 
@@ -25,9 +31,6 @@ logger = logging.getLogger(__name__)
 
 # Constants
 BATCH_SIZE = 1000  # Number of jobs to process in each batch
-
-# TODO: Remove after testing metrics logging
-BATCH_SIZE = 2
 
 
 class ExtractEntities:

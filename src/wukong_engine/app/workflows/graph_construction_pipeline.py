@@ -123,6 +123,7 @@ class GraphConstructionPipeline:
                 if not completed:
                     logger.info(f'{step.value} step is not fully completed. Stopping the pipeline...')
                     return
+
                 logger.info(f'{step.value} step completed successfully!')
             else:
                 logger.info(f'Skipping {step.value} step because it has already been completed...')

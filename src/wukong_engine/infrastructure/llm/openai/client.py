@@ -4,7 +4,7 @@ from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpe
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
-from wukong_engine.app.data_extraction.models.values import TokenUsageMetrics
+from wukong_engine.app.data_extraction.elements.values import TokenUsageMetrics
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,

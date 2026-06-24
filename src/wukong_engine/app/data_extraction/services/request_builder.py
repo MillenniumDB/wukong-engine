@@ -4,8 +4,8 @@ import logging
 from types import MappingProxyType
 from typing import Any, ClassVar
 
+from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionContext, ExtractionRequest
 from wukong_engine.app.data_extraction.exceptions import ExtractionRequestBuildError
-from wukong_engine.app.data_extraction.models import EntityExtractionJob, ExtractionContext, ExtractionRequest
 from wukong_engine.app.document_ingestion.ports import DocumentLoader
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.core.documents.elements import Chunk, Document

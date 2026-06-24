@@ -1,11 +1,16 @@
 from collections.abc import Iterable
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.models import EntityExtractionJob
-from wukong_engine.app.data_extraction.models.values import JobDurationMetrics, TokenUsageMetrics
+from wukong_engine.app.data_extraction.elements import EntityExtractionJob
+from wukong_engine.app.data_extraction.elements.values import (
+    ExtractionStatus,
+    JobDurationMetrics,
+    JobRetryPolicy,
+    JobStatus,
+    TokenUsageMetrics,
+)
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.elements.values import ExtractionStatus, JobRetryPolicy, JobStatus
 from wukong_engine.core.graph.elements import Entity
 
 

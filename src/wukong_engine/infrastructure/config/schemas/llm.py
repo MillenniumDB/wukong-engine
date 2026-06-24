@@ -1,9 +1,10 @@
-from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import BaseModel, StrictStr
 
 
+# TODO: Processing Mode
 class LLMConfigSchema(BaseModel):
     """LLM configuration schema."""
 
     model: StrictStr | None = None
-    strict_support: StrictBool | None = None
+    processing_mode: StrictStr | None = None
     max_concurrency: int | None = None

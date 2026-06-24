@@ -1,4 +1,4 @@
-"""The models package for data extraction."""
+"""The elements package for data extraction."""
 
 from .extraction import ExtractionContext, ExtractionRequest, ExtractionResult
 from .job import MAX_FAILED_ATTEMPTS, EntityExtractionJob
