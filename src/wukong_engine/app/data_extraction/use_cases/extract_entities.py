@@ -33,7 +33,6 @@ logger = logging.getLogger(__name__)
 BATCH_SIZE = 1000  # Number of jobs to process in each batch
 
 
-# TODO: Batch API Mode
 class ExtractEntities:
     """Extract entities from documents."""
 
@@ -51,61 +50,21 @@ class ExtractEntities:
         self._materializer = materializer
         self._metrics_state = ExtractionMetricsState()
 
-    def set_metrics_state(self, state: ExtractionMetricsState) -> None:
-        """Set the current metrics state."""
-        self._metrics_state = state
-
-    def reset_metrics_state(self) -> None:
-        """Reset the metrics state to its initial values."""
-        self._metrics_state = ExtractionMetricsState()
-
+    # TODO: Clean-up
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
-        # Materialize extractions for all context levels if not already done
+        # Materialize extractions (if not already done)
         with self._uow as tx:
-            if not tx.pipeline.is_checkpoint_completed(PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED):
-                # Setup entity types and associated document collections
-                entity_types = tuple(graph_model.active_entity_types.values())
-                tx.entities.add_entity_types(et.name for et in entity_types)
-                for entity_type in entity_types:
-                    tx.entities.link_collections_to_entity_type(
-                        entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
-                        entity_type.name,
-                        ContextLevel.DOCUMENT,
-                    )
-                    tx.entities.link_collections_to_entity_type(
-                        entity_type.document_collections.get(ContextLevel.CHUNK, []),
-                        entity_type.name,
-                        ContextLevel.CHUNK,
-                    )
+            is_materialized = tx.pipeline.is_checkpoint_completed(
+                PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
+            )
+        if not is_materialized:
+            self._materialize_all_extractions(graph_model)
 
-                # Materialize extractions for all context levels
-                tx.extraction.entities.materialize_extractions(ContextLevel.DOCUMENT)
-                tx.extraction.entities.materialize_extractions(ContextLevel.CHUNK)
+        # Perform recovery
+        self._recover_extractions()
 
-                # Set checkpoint to indicate extractions have been materialized
-                tx.pipeline.set_checkpoint_status(
-                    PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
-                    PipelineCheckpointStatus.COMPLETED,
-                )
-                logger.info('Materialized all pending entity extractions')
-
-        # TODO: Consider pending batches
-        # Recovery for stalled jobs and deferred extractions
-        with self._uow as tx:
-            # Terminate stalled jobs and recover their extractions
-            terminated = tx.extraction.entities.terminate_stalled_jobs()
-            if terminated > 0:
-                logger.warning(
-                    f'Terminated and recovered {terminated} stalled extraction jobs (stalled due to system failure/interruption/crash)',
-                )
-
-            # Reset deferred extractions for re-processing
-            reset = tx.extraction.entities.reset_deferred_extractions()
-            if reset > 0:
-                logger.info(f'Reset {reset} deferred extractions for re-processing')
-
-        # TODO: Batch processing
+        # TODO: Clean-up
         # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
         try:
@@ -140,6 +99,53 @@ class ExtractEntities:
             error = 'Entity Extraction failed due to an unrecoverable error'
             logger.error(error)
             raise DataExtractionError(error) from exc
+
+    def _materialize_all_extractions(self, graph_model: GraphModel) -> None:
+        """Materialize extractions for all context levels."""
+        # Setup entity types and associated document collections
+        with self._uow as tx:
+            entity_types = tuple(graph_model.active_entity_types.values())
+            tx.entities.add_entity_types(et.name for et in entity_types)
+            for entity_type in entity_types:
+                tx.entities.link_collections_to_entity_type(
+                    entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
+                    entity_type.name,
+                    ContextLevel.DOCUMENT,
+                )
+                tx.entities.link_collections_to_entity_type(
+                    entity_type.document_collections.get(ContextLevel.CHUNK, []),
+                    entity_type.name,
+                    ContextLevel.CHUNK,
+                )
+
+        # Materialize extractions for each context level
+        for context_level in (ContextLevel.DOCUMENT, ContextLevel.CHUNK):
+            with self._uow as tx:
+                tx.extraction.entities.materialize_extractions(context_level)
+
+        # Set checkpoint to indicate all extractions have been materialized
+        with self._uow as tx:
+            tx.pipeline.set_checkpoint_status(
+                PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
+                PipelineCheckpointStatus.COMPLETED,
+            )
+            logger.info('Materialized all pending entity extractions')
+
+    def _recover_extractions(self) -> None:
+        """Recover extractions that are in an incomplete/inconsistent state."""
+        # Terminate stalled jobs and recover their extractions
+        with self._uow as tx:
+            terminated = tx.extraction.entities.terminate_stalled_jobs()
+        if terminated > 0:
+            logger.warning(f'Terminated and recovered extractions from {terminated} stalled jobs')
+
+        # Reset deferred extractions for re-processing
+        with self._uow as tx:
+            reset = tx.extraction.entities.reset_deferred_extractions()
+        if reset > 0:
+            logger.info(f'Reset {reset} deferred extractions for re-processing')
+
+    # TODO: Move extraction logic to a separate service class for better separation of concerns
 
     async def _run_extractions(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run entity extractions."""
@@ -295,3 +301,11 @@ class ExtractEntities:
             smoothed_resolution_rate=metrics.smoothed_job_resolution_rate,
         )
         self.set_metrics_state(new_metrics_state)
+
+    def set_metrics_state(self, state: ExtractionMetricsState) -> None:
+        """Set the current metrics state."""
+        self._metrics_state = state
+
+    def reset_metrics_state(self) -> None:
+        """Reset the metrics state to its initial values."""
+        self._metrics_state = ExtractionMetricsState()

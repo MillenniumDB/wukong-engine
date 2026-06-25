@@ -49,7 +49,7 @@ class EntityExtractionStore(Protocol):
         ...
 
     def reset_deferred_extractions(self) -> int:
-        """Reset deferred extractions back to PENDING."""
+        """Reset deferred extractions for re-processing."""
         ...
 
     def count_sources_by_status(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:

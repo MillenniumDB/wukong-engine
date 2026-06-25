@@ -449,7 +449,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return len(stalled_jobs)
 
     def reset_deferred_extractions(self) -> int:
-        """Reset deferred extractions back to PENDING."""
+        """Reset deferred extractions for re-processing."""
         cursor = self._conn.execute(
             """
             UPDATE entity_extractions
