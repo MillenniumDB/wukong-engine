@@ -37,11 +37,13 @@ class BatchStatus(Enum):
     """Status of a batch of extraction jobs.
 
     Attributes:
-        SUBMITTED: Batch has been submitted to the provider.
+        SUBMITTED: Submitted to the external provider.
+        IN_PROGRESS: Currently being executed.
         COMPLETED: Successfully finished.
         FAILED: Attempted but failed to complete.
     """
 
     SUBMITTED = 'SUBMITTED'
+    IN_PROGRESS = 'IN_PROGRESS'
     COMPLETED = 'COMPLETED'
     FAILED = 'FAILED'

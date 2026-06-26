@@ -48,20 +48,21 @@ model = "gpt-4.1-mini"
 
 ### Execution mode for LLM interactions ###
 # You can choose from the following modes:
-# "real_time": Real-time execution using concurrent API calls (faster, but more expensive)
+# "real-time": Real-time execution using concurrent API calls (faster, but more expensive)
 # "batch": Asynchronous execution using external batch API processing (slower, but more cost-effective)
-# Default: "real_time"
-execution_mode = "real_time"
+# Default: "real-time"
+execution_mode = "real-time"
 
 ### Maximum concurrency for LLM API calls ###
 # Note: Adjust this value based on the LLM provider's rate limits
-# Reference values to consider based on typical LLM provider usage tiers:
-# - Low Tier: 5
-# - Mid Tier: 10
-# - High Tier: 20 (default)
-# - Very High Tier: 40
-# Default: 20
-max_concurrency = 20
+# Reference values to consider based on OpenAI usage tiers (for mini models):
+# - Tier 1: 1
+# - Tier 2: 8
+# - Tier 3: 15 (default)
+# - Tier 4: 35
+# - Tier 5: 500
+# Default: 15
+max_concurrency = 15
 
 ##############
 #  CHUNKING  #
@@ -71,7 +72,7 @@ max_concurrency = 20
 [chunking]
 
 ### Ideal number of tokens for each chunk ###
-# Note: This value should be in the range [1, 4096], with the recommended range being [100, 2000]
+# Note: This value should be in the range [1, 5000], with the recommended range being [100, 2000]
 # Default: 800
 target_tokens = 800
 

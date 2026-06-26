@@ -116,5 +116,5 @@ class EntityType:
         )
 
     def fields_for(self, context_level: ContextLevel, retrieval_mode: EntityRetrievalMode) -> tuple[EntityField, ...]:
-        """Get the relevant fields for a specific retrieval mode and context level."""
+        """Get the relevant fields for a specific context level and retrieval mode."""
         return self._fields_index.get(context_level, {}).get(retrieval_mode, ())

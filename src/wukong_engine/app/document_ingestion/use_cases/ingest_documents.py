@@ -3,7 +3,7 @@ import logging
 from wukong_engine.app.document_ingestion.exceptions import DocumentIngestionError
 from wukong_engine.app.document_ingestion.ports import DocumentChunker, DocumentLoader, DocumentStreamProvider
 from wukong_engine.app.document_ingestion.services import DocumentSourceNormalizer
-from wukong_engine.app.shared import batched
+from wukong_engine.app.shared.iterables import batched
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model import DocumentCollection, DocumentRegistry
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
@@ -11,7 +11,7 @@ from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, Pipelin
 # Logging
 logger = logging.getLogger(__name__)
 
-# Batching
+# Constants
 DOCUMENT_BATCH_SIZE = 500
 CHUNK_BATCH_SIZE = 2000
 
@@ -57,6 +57,12 @@ class IngestDocuments:
             logger.info(f'Total Documents: {total_docs}')
             logger.info(f'Total Chunks: {total_chunks}')
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
+
+    def reset(self) -> None:
+        """Reset the document ingestion state."""
+        logger.warning('Resetting document ingestion state. This will clear ALL ingested documents and chunks...')
+        with self._uow as tx:
+            tx.documents.clear()
 
     def _ingest_collection(self, collection: DocumentCollection) -> None:
         """Ingest a specific collection of documents into the system."""

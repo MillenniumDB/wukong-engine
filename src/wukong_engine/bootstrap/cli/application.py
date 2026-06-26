@@ -3,9 +3,12 @@ from pathlib import Path
 
 from wukong_engine.app.config.exceptions import ConfigurationError
 from wukong_engine.app.data_extraction.services import (
+    EntityExtractionMetricsTracker,
+    EntityExtractionRepository,
     EntityExtractionRequestBuilder,
-    EntityMaterializer,
-    ExtractionExecutor,
+    EntityExtractionResultMaterializer,
+    RealtimeExtractionEngine,
+    RealtimeExtractionExecutor,
 )
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
@@ -80,9 +83,24 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     pk_normalizer = DefaultPKNormalizer()
 
     # Services
+    extraction_executor = RealtimeExtractionExecutor(
+        llm_client=llm_client,
+        max_concurrency=app_config.llm.max_concurrency,
+    )
+    entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
     entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
-    extraction_executor = ExtractionExecutor(llm_client=llm_client, max_concurrency=app_config.llm.max_concurrency)
-    entity_materializer = EntityMaterializer(pk_normalizer=pk_normalizer)
+    entity_result_materializer = EntityExtractionResultMaterializer(pk_normalizer=pk_normalizer)
+    entity_metrics_tracker = EntityExtractionMetricsTracker(
+        uow=staging_uow,
+        execution_mode=app_config.llm.execution_mode,
+    )
+    entity_extraction_engine = RealtimeExtractionEngine(
+        repository=entity_extraction_repository,
+        request_builder=entity_request_builder,
+        executor=extraction_executor,
+        result_materializer=entity_result_materializer,
+        metrics_tracker=entity_metrics_tracker,
+    )
 
     # Use cases
     get_document_registry = GetDocumentRegistry(
@@ -98,9 +116,8 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
     extract_entities = ExtractEntities(
         uow=staging_uow,
-        request_builder=entity_request_builder,
-        executor=extraction_executor,
-        materializer=entity_materializer,
+        extraction_engine=entity_extraction_engine,
+        metrics_tracker=entity_metrics_tracker,
     )
 
     # Workflows

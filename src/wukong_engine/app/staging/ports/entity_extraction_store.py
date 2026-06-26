@@ -22,7 +22,7 @@ class EntityExtractionStore(Protocol):
         ...
 
     def create_job_batch(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Create a batch of active jobs to process pending extractions for a given context level."""
+        """Create a batch of jobs to process pending extractions for a given context level."""
         ...
 
     def schedule_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
@@ -61,7 +61,7 @@ class EntityExtractionStore(Protocol):
         ...
 
     def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, JobDurationMetrics]:
-        """Get job duration metrics grouped by job status for a given context level."""
+        """Get job duration metrics grouped by job status for a given context level (in milliseconds)."""
         ...
 
     def get_job_token_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, TokenUsageMetrics]:

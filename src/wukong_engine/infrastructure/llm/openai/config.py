@@ -14,6 +14,7 @@ class OpenAIConfig:
 
     api_key: str
     model: LLM = field(default_factory=LLMRegistry.default_model)
+    max_output_tokens: int = 32768  # Default: 32768 tokens, the limit for gpt-4.1-mini
     timeout: float = 120  # Default: 2 minutes, more than reasonable for extraction tasks
     max_retries: int = 2  # Default: 2 retries, enough for transient provider issues
 

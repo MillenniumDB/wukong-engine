@@ -4,7 +4,6 @@ import sqlite3
 import time
 
 from wukong_engine.app.staging.ports import PipelineStore
-from wukong_engine.core.pipeline.model.rules import STEP_CHECKPOINTS, STEP_DEPENDENCIES
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus, PipelineStep
 
 
@@ -19,7 +18,7 @@ class SQLitePipelineStore(PipelineStore):
         """Initialize all steps and their associated checkpoints."""
         checkpoints: set[PipelineCheckpoint] = set()
         for step in PipelineStep:
-            checkpoints |= STEP_CHECKPOINTS.get(step, set())
+            checkpoints |= step.checkpoints
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO pipeline_checkpoints (
@@ -74,26 +73,22 @@ class SQLitePipelineStore(PipelineStore):
 
     def reset_step_checkpoints(self, step: PipelineStep) -> None:
         """Reset all checkpoints associated with a specific pipeline step."""
-        checkpoints_to_reset = STEP_CHECKPOINTS.get(step, set())
-        for checkpoint in checkpoints_to_reset:
+        for checkpoint in step.checkpoints:
             self.set_checkpoint_status(checkpoint, PipelineCheckpointStatus.PENDING)
 
     def reset_dependent_checkpoints(self, step: PipelineStep) -> None:
         """Reset all checkpoints dependent on a specific pipeline step."""
         self.reset_step_checkpoints(step)
-        for dependent_step, dependencies in STEP_DEPENDENCIES.items():
-            if step in dependencies:
-                self.reset_step_checkpoints(dependent_step)
+        for dependent_step in step.is_required_by:
+            self.reset_step_checkpoints(dependent_step)
 
     def is_step_completed(self, step: PipelineStep) -> bool:
         """Whether all checkpoints for a specific pipeline step are completed."""
-        checkpoints = STEP_CHECKPOINTS.get(step, set())
-        return all(self.is_checkpoint_completed(checkpoint) for checkpoint in checkpoints)
+        return all(self.is_checkpoint_completed(checkpoint) for checkpoint in step.checkpoints)
 
     def are_dependencies_completed(self, step: PipelineStep) -> bool:
         """Whether all step dependencies for a specific pipeline step are completed."""
-        dependencies = STEP_DEPENDENCIES.get(step, set())
-        return all(self.is_step_completed(dependency) for dependency in dependencies)
+        return all(self.is_step_completed(dependency) for dependency in step.depends_on)
 
     def clear(self) -> None:
         """Reset the pipeline store."""

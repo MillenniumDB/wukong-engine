@@ -3,7 +3,7 @@ import sqlite3
 from collections import defaultdict
 from collections.abc import Iterable, Iterator
 
-from wukong_engine.app.shared import batched
+from wukong_engine.app.shared.iterables import batched
 from wukong_engine.app.staging.ports import EntityStore
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName

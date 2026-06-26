@@ -67,7 +67,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
             if current_document is not None and document_content_id != current_content_id:
                 jobs.append(
-                    EntityExtractionJob.from_components(
+                    EntityExtractionJob.from_context(
                         source=current_document,
                         task=EntityExtractionTask(
                             context_level=ContextLevel.DOCUMENT,
@@ -92,7 +92,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         if current_document is not None:
             jobs.append(
-                EntityExtractionJob.from_components(
+                EntityExtractionJob.from_context(
                     source=current_document,
                     task=EntityExtractionTask(
                         context_level=ContextLevel.DOCUMENT,
@@ -149,7 +149,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
             if current_chunk is not None and chunk_content_id != current_content_id:
                 jobs.append(
-                    EntityExtractionJob.from_components(
+                    EntityExtractionJob.from_context(
                         source=current_chunk,
                         task=EntityExtractionTask(
                             context_level=ContextLevel.CHUNK,
@@ -181,7 +181,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
         if current_chunk is not None:
             jobs.append(
-                EntityExtractionJob.from_components(
+                EntityExtractionJob.from_context(
                     source=current_chunk,
                     task=EntityExtractionTask(
                         context_level=ContextLevel.CHUNK,
@@ -238,7 +238,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
 
     def create_job_batch(self, context_level: ContextLevel, limit: int) -> tuple[EntityExtractionJob, ...]:
-        """Create a batch of active jobs to process pending extractions for a given context level."""
+        """Create a batch of jobs to process pending extractions for a given context level."""
         if context_level == ContextLevel.DOCUMENT:
             return self._create_document_job_batch(limit)
         if context_level == ContextLevel.CHUNK:
@@ -497,7 +497,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return job_counts
 
     def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, JobDurationMetrics]:
-        """Get job duration metrics grouped by job status for a given context level."""
+        """Get job duration metrics grouped by job status for a given context level (in milliseconds)."""
         job_durations: dict[JobStatus, JobDurationMetrics] = dict.fromkeys(JobStatus, JobDurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """

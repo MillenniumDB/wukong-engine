@@ -1,6 +1,6 @@
 """Result materializers for extraction tasks."""
 
-from typing import Any
+from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionResult
 from wukong_engine.app.data_extraction.ports import PKNormalizer
@@ -11,7 +11,15 @@ from wukong_engine.core.graph.model import EntityType, GraphModel
 from wukong_engine.core.graph.model.values import EntityTypeName
 
 
-class EntityMaterializer:
+class ExtractionResultMaterializer(Protocol):
+    """Materializer that converts raw extraction results into graph object instances."""
+
+    def materialize(self, result: ExtractionResult, model: GraphModel) -> tuple[object, ...]:
+        """Materialize the extraction result into graph object instances."""
+        ...
+
+
+class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
     """Materializer that converts raw extraction results into entity instances."""
 
     def __init__(self, pk_normalizer: PKNormalizer) -> None:

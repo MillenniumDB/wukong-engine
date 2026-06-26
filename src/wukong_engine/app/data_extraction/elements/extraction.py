@@ -12,7 +12,7 @@ from wukong_engine.app.data_extraction.elements.values import (
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM
 
-from .job import EntityExtractionJob
+from .job import ExtractionJob
 
 
 @dataclass(frozen=True)
@@ -30,7 +30,7 @@ class ExtractionContext:
 class ExtractionRequest:
     """Extraction request containing an extraction job and its derived context and override parameters."""
 
-    job: EntityExtractionJob
+    job: ExtractionJob
     context: ExtractionContext
     model: LLM | None = None
     reasoning_effort: ReasoningEffort | None = None
@@ -41,7 +41,7 @@ class ExtractionRequest:
 class ExtractionResult:
     """Extraction result containing the job and the extracted data."""
 
-    job: EntityExtractionJob
+    job: ExtractionJob
     status: JobStatus
     data: dict[str, Any] = field(default_factory=dict)
     metrics: TokenUsageMetrics | None = None

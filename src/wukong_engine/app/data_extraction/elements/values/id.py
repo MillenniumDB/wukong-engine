@@ -44,3 +44,45 @@ class ExtractionJobId:
             An ExtractionJobId with the provided instance component.
         """
         return cls(instance=instance)
+
+
+@dataclass(frozen=True)
+class ExtractionBatchId:
+    """The unique identifier for extraction batches.
+
+    The identifier consists of a single component:
+        instance: A unique id for the runtime instance.
+
+    Instance: UUIDv7
+    """
+
+    instance: InstanceId
+
+    def __str__(self) -> str:
+        """User-friendly string representation of the extraction batch ID."""
+        return str(self.instance)
+
+    def __repr__(self) -> str:
+        """Developer-friendly string representation of the extraction batch ID."""
+        return f'ExtractionBatchId(instance={self.instance})'
+
+    @classmethod
+    def generate_new(cls) -> Self:
+        """Create a new ExtractionBatchId with a generated instance component.
+
+        Returns:
+            A new ExtractionBatchId with a unique instance component.
+        """
+        return cls(instance=InstanceId.generate())
+
+    @classmethod
+    def from_instance(cls, instance: InstanceId) -> Self:
+        """Create an ExtractionBatchId from an already existing instance component.
+
+        Args:
+            instance: The unique id for the runtime instance.
+
+        Returns:
+            An ExtractionBatchId with the provided instance component.
+        """
+        return cls(instance=instance)

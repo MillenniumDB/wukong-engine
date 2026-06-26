@@ -14,7 +14,7 @@ from .values import DataType, FieldName, MergeStrategy
 
 
 @dataclass(frozen=True)
-class _Field:
+class Field:
     """Base field class for entity and relationship types."""
 
     name: FieldName
@@ -44,7 +44,7 @@ class _Field:
 
 
 @dataclass(frozen=True, repr=False)
-class EntityField(_Field):
+class EntityField(Field):
     """A field from an entity type."""
 
     instructions: MappingProxyType[ContextLevel, str] = field(compare=False, hash=False)
@@ -119,7 +119,7 @@ class EntityField(_Field):
 
 
 @dataclass(frozen=True, repr=False)
-class RelationshipField(_Field):
+class RelationshipField(Field):
     """A field from a relationship type."""
 
     instructions: str | None

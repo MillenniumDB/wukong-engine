@@ -1,5 +1,6 @@
 """Metrics for data extraction."""
 
+import time
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -19,9 +20,9 @@ def _safe_int(value: Any) -> int | None:
 class JobDurationMetrics:
     """Relevant job duration metrics, in milliseconds."""
 
-    avg: int
-    min: int
-    max: int
+    avg: int  # In milliseconds
+    min: int  # In milliseconds
+    max: int  # In milliseconds
 
 
 @dataclass(frozen=True)
@@ -53,18 +54,25 @@ class TokenUsageMetrics:
 
 
 @dataclass(frozen=True)
-class EntityExtractionMetrics:
-    """Relevant entity extraction metrics."""
+class PerformanceMetricsState:
+    """State of performance metrics at a given point during execution."""
+
+    timestamp: float | None = None  # Timestamp of the state (seconds), None means no state has been recorded yet
+    job_status_counts: dict[JobStatus, int] = field(default_factory=dict)  # Number of jobs grouped by status
+    smoothed_job_resolution_rate: float | None = None  # Smoothed rate of job resolution (jobs per minute)
+
+
+@dataclass(frozen=True)
+class ExtractionMetrics:
+    """Relevant extraction metrics."""
 
     source_status_counts: dict[ExtractionStatus, int]
     job_status_counts: dict[JobStatus, int]
-    last_job_status_counts: dict[JobStatus, int]
-    job_status_duration: dict[JobStatus, JobDurationMetrics]
-    entity_count: int
-    entity_mentions: int
+    job_status_duration: dict[JobStatus, JobDurationMetrics]  # In milliseconds
+    object_count: int
+    object_mentions: int
     token_usage: dict[JobStatus, TokenUsageMetrics]
-    elapsed_time: float | None = None  # Elapsed time since the last metrics logging tick, in seconds
-    last_smoothed_job_resolution_rate: float | None = None
+    performance_state: PerformanceMetricsState
 
     # Progress
 
@@ -138,27 +146,37 @@ class EntityExtractionMetrics:
         }
 
     @property
+    def elapsed_time(self) -> float | None:
+        """Elapsed time since the last performance state update, in seconds.
+
+        Returns None if no previous state exists.
+        """
+        if self.performance_state.timestamp is None:
+            return None
+        return time.time() - self.performance_state.timestamp
+
+    @property
     def job_resolution_rate(self) -> float:
         """Job resolution rate, in jobs per minute."""
         if self.elapsed_time is None or self.elapsed_time <= 0:
             return 0.0
         resolved_jobs = self.job_counts['completed'] + self.job_counts['failed']
-        last_resolved_jobs = self.last_job_status_counts.get(JobStatus.COMPLETED, 0) + self.last_job_status_counts.get(
-            JobStatus.FAILED,
-            0,
-        )
+        last_completed_jobs = self.performance_state.job_status_counts.get(JobStatus.COMPLETED, 0)
+        last_failed_jobs = self.performance_state.job_status_counts.get(JobStatus.FAILED, 0)
+        last_resolved_jobs = last_completed_jobs + last_failed_jobs
         resolution_delta = resolved_jobs - last_resolved_jobs
         return (resolution_delta / self.elapsed_time) * 60  # Convert to jobs per minute
 
     @property
     def smoothed_job_resolution_rate(self) -> float:
         """Smoothed job resolution rate, in jobs per minute."""
-        if self.last_smoothed_job_resolution_rate is None:
+        last_smoothed_rate = self.performance_state.smoothed_job_resolution_rate
+        if last_smoothed_rate is None:
             return self.job_resolution_rate
 
         # Apply exponential smoothing with an alpha factor
         alpha = 0.3
-        return alpha * self.job_resolution_rate + (1 - alpha) * self.last_smoothed_job_resolution_rate
+        return alpha * self.job_resolution_rate + (1 - alpha) * last_smoothed_rate
 
     @property
     def job_completion_rate(self) -> float:
@@ -166,7 +184,7 @@ class EntityExtractionMetrics:
         if self.elapsed_time is None or self.elapsed_time <= 0:
             return 0.0
         completed_jobs = self.job_counts['completed']
-        last_completed_jobs = self.last_job_status_counts.get(JobStatus.COMPLETED, 0)
+        last_completed_jobs = self.performance_state.job_status_counts.get(JobStatus.COMPLETED, 0)
         completion_delta = completed_jobs - last_completed_jobs
         return (completion_delta / self.elapsed_time) * 60  # Convert to jobs per minute
 
@@ -206,21 +224,21 @@ class EntityExtractionMetrics:
     # Output
 
     @property
-    def mentions_per_entity(self) -> float:
-        """Average number of mentions per unique entity."""
-        return self.entity_mentions / self.entity_count if self.entity_count > 0 else 0.0
+    def mentions_per_object(self) -> float:
+        """Average number of mentions per unique object."""
+        return self.object_mentions / self.object_count if self.object_count > 0 else 0.0
 
     @property
-    def entities_per_source(self) -> float:
-        """Average number of unique entities per completed source."""
+    def objects_per_source(self) -> float:
+        """Average number of unique objects per completed source."""
         completed_sources = self.source_counts['completed']
-        return self.entity_count / completed_sources if completed_sources > 0 else 0.0
+        return self.object_count / completed_sources if completed_sources > 0 else 0.0
 
     @property
     def mentions_per_source(self) -> float:
-        """Average number of entity mentions per completed source."""
+        """Average number of object mentions per completed source."""
         completed_sources = self.source_counts['completed']
-        return self.entity_mentions / completed_sources if completed_sources > 0 else 0.0
+        return self.object_mentions / completed_sources if completed_sources > 0 else 0.0
 
     # Tokens
 
@@ -247,17 +265,3 @@ class EntityExtractionMetrics:
             if completed_jobs > 0
             else 0,
         }
-
-
-@dataclass(frozen=True)
-class ExtractionMetricsState:
-    """State of the extraction metrics at a given point during execution."""
-
-    # Timestamp for the last metrics emission
-    last_metrics_at: float | None = None
-
-    # Number of jobs at the last metrics emission, grouped by status
-    last_job_status_counts: dict[JobStatus, int] = field(default_factory=dict)
-
-    # Smoothed rate of job resolution (jobs per minute)
-    smoothed_resolution_rate: float | None = None

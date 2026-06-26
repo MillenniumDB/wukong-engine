@@ -1,11 +1,23 @@
 """The services package for data extraction."""
 
-from .executor import ExtractionExecutor
-from .materializer import EntityMaterializer
-from .request_builder import EntityExtractionRequestBuilder
+from .engine import ExtractionEngine, RealtimeExtractionEngine
+from .executor import ExtractionExecutor, RealtimeExtractionExecutor
+from .metrics_tracker import EntityExtractionMetricsTracker, ExtractionMetricsTracker
+from .repository import EntityExtractionRepository, ExtractionRepository
+from .request_builder import EntityExtractionRequestBuilder, ExtractionRequestBuilder
+from .result_materializer import EntityExtractionResultMaterializer, ExtractionResultMaterializer
 
 __all__ = [
+    'EntityExtractionMetricsTracker',
+    'EntityExtractionRepository',
     'EntityExtractionRequestBuilder',
-    'EntityMaterializer',
+    'EntityExtractionResultMaterializer',
+    'ExtractionEngine',
     'ExtractionExecutor',
+    'ExtractionMetricsTracker',
+    'ExtractionRepository',
+    'ExtractionRequestBuilder',
+    'ExtractionResultMaterializer',
+    'RealtimeExtractionEngine',
+    'RealtimeExtractionExecutor',
 ]

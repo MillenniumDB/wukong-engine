@@ -219,6 +219,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
 );
 CREATE TABLE IF NOT EXISTS extraction_batches (
     batch_id BLOB PRIMARY KEY,
+    provider_name TEXT NOT NULL,
     provider_batch_id TEXT NOT NULL UNIQUE,
     batch_status TEXT NOT NULL,
     provider_status TEXT,
@@ -228,6 +229,7 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
     CHECK (
         batch_status IN (
             'SUBMITTED',
+            'IN_PROGRESS',
             'COMPLETED',
             'FAILED'
         )

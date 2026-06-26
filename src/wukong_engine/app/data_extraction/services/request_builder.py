@@ -2,24 +2,33 @@
 
 import logging
 from types import MappingProxyType
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Protocol
 
-from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionContext, ExtractionRequest
+from wukong_engine.app.data_extraction.elements import (
+    EntityExtractionJob,
+    ExtractionContext,
+    ExtractionJob,
+    ExtractionRequest,
+)
 from wukong_engine.app.data_extraction.exceptions import ExtractionRequestBuildError
 from wukong_engine.app.document_ingestion.ports import DocumentLoader
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import Cardinality, EntityRetrievalMode
-from wukong_engine.core.graph.model import EntityField, EntityType, ExtractionConfig, GraphModel
+from wukong_engine.core.graph.model import EntityField, EntityType, ExtractionConfig, Field, GraphModel
 from wukong_engine.core.graph.model.values import DataType
 
 # Logging
 logger = logging.getLogger(__name__)
 
+# Constants
+# TODO: Test and set reasoning effort to None or a specific value best for extracting entities
+ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
+MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits
 
-# Shared helpers for Entity and Relationship extraction request builders
-def _generate_field_schema(field: EntityField) -> dict[str, Any]:
+
+def _generate_field_schema(field: Field) -> dict[str, Any]:
     """Generate a JSON schema for a single field."""
     # Data type
     schema: dict[str, Any] = {}
@@ -45,12 +54,15 @@ def _data_type_to_json(data_type: DataType) -> str:
         #     return 'boolean'
 
 
-# TODO: Test and set reasoning effort to None or a specific value best for extracting entities
-EFFORT = ReasoningEffort.LOW
+class ExtractionRequestBuilder(Protocol):
+    """Request builder for data extraction tasks."""
+
+    def build(self, job: ExtractionJob, model: GraphModel) -> ExtractionRequest:
+        """Build extraction request for a single job."""
+        ...
 
 
-# TODO: Test and set reasoning effort to None or a specific value best for extracting entities
-class EntityExtractionRequestBuilder:
+class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
     """Request builder for entity extraction tasks."""
 
     TASK_INSTRUCTIONS: ClassVar[MappingProxyType[tuple[ContextLevel, Cardinality], str]] = MappingProxyType(
@@ -58,7 +70,7 @@ class EntityExtractionRequestBuilder:
             (
                 ContextLevel.DOCUMENT,
                 Cardinality.SINGLE,
-            ): 'For each of the following entity types, identify a single primary entity described by the source text and extract its properties using all relevant information found throughout the text.',
+            ): 'For each of the following entity types, identify the single primary entity described by the source text and extract its properties using all relevant information found throughout the text.',
             (
                 ContextLevel.CHUNK,
                 Cardinality.MULTIPLE,
@@ -66,10 +78,10 @@ class EntityExtractionRequestBuilder:
         },
     )
 
-    def __init__(self, document_loader: DocumentLoader, max_document_tokens: int = 8000) -> None:
+    def __init__(self, document_loader: DocumentLoader) -> None:
         """Initialize the request builder."""
         self._document_loader = document_loader
-        self.max_document_tokens = max_document_tokens  # To avoid hitting LLM context window limits
+        self.max_document_tokens = MAX_DOCUMENT_TOKENS
 
     def build(self, job: EntityExtractionJob, model: GraphModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
@@ -81,7 +93,7 @@ class EntityExtractionRequestBuilder:
             logger.error(error)
             raise ExtractionRequestBuildError(error) from exc
 
-        # Build extraction request
+        # Gather entity types for the job, ensuring they exist in the graph model
         entity_types = []
         for name in job.entity_types:
             entity_type = model.entity_type(name)
@@ -91,6 +103,8 @@ class EntityExtractionRequestBuilder:
                 raise ExtractionRequestBuildError(error)
             entity_types.append(entity_type)
         entity_types = tuple(entity_types)
+
+        # Build extraction context
         context = ExtractionContext(
             document_context=self._render_document_context(model.extraction_config),
             task=self._render_task(job),
@@ -98,7 +112,7 @@ class EntityExtractionRequestBuilder:
             source_text=source_text,
             response_schema=self._generate_response_schema(entity_types, job.task.context_level),
         )
-        return ExtractionRequest(job, context, reasoning_effort=EFFORT)
+        return ExtractionRequest(job, context, reasoning_effort=ENTITY_EXTRACTION_EFFORT)
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section."""
@@ -237,5 +251,5 @@ class EntityExtractionRequestBuilder:
 
 
 # TODO: Complete
-class RelationshipExtractionRequestBuilder:
+class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
     """Request builder for relationship extraction tasks."""

@@ -39,6 +39,25 @@ class GraphConstructionPipeline:
         # self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
+    # TODO: Add | ExtractRelationships | ExportGraph, then remove the None and raise an error if a step is not found
+    # TODO: When all steps are here, remove the check for if use case is not None in all places that call this function
+    def _step_to_use_case(self, step: PipelineStep) -> IngestDocuments | ExtractEntities | None:
+        """Map a pipeline step to its corresponding use case."""
+        match step:
+            case PipelineStep.INGEST_DOCUMENTS:
+                return self._ingest_documents
+            case PipelineStep.EXTRACT_ENTITIES:
+                return self._extract_entities
+            # case PipelineStep.EXTRACT_RELATIONSHIPS:
+            #     return self._extract_relationships
+            # case PipelineStep.EXPORT_GRAPH:
+            #     return self._export_graph
+            case _:
+                # error = f'No use case found for pipeline step: {step.value}'
+                # logger.error(error)
+                # raise PipelineExecutionError(error)
+                return None
+
     async def execute(self, workspace: Workspace, data_uri: str, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
@@ -77,30 +96,30 @@ class GraphConstructionPipeline:
         # TODO: Export graph
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
+            # Map the step to its corresponding use case
+            use_case = self._step_to_use_case(step)
+            if use_case is None:
+                error = f'No use case found for pipeline step: {step.value}'
+                logger.error(error)
+                raise PipelineExecutionError(error)
+
             # Stop if dependencies have not been completed
             with self._uow as tx:
                 if not tx.pipeline.are_dependencies_completed(step):
-                    error = f'Cannot execute {step.value} step because the previous steps have not been completed'
+                    error = (
+                        f'Cannot execute {step.value} step because the previous required steps have not been completed'
+                    )
                     logger.error(error)
                     raise PipelineExecutionError(error)
 
-            # Reset everything downstream
+            # Reset all steps downstream if the reset flag is present
             if should_reset:
+                for dependent_step in step.is_required_by:
+                    dependent_use_case = self._step_to_use_case(dependent_step)
+                    if dependent_use_case is not None:
+                        dependent_use_case.reset()
+                use_case.reset()
                 with self._uow as tx:
-                    match step:
-                        case PipelineStep.INGEST_DOCUMENTS:
-                            tx.extraction.clear()
-                            tx.relationships.clear()
-                            tx.entities.clear()
-                            tx.documents.clear()
-                            self._extract_entities.reset_metrics_state()
-                            logger.warning('Removing existing sources and data...')
-                        case PipelineStep.EXTRACT_ENTITIES:
-                            tx.extraction.clear()
-                            tx.relationships.clear()
-                            tx.entities.clear()
-                            self._extract_entities.reset_metrics_state()
-                            logger.warning('Removing existing data...')
                     tx.pipeline.reset_dependent_checkpoints(step)
 
             # Check if step has already been completed
@@ -123,7 +142,15 @@ class GraphConstructionPipeline:
                 if not completed:
                     logger.info(f'{step.value} step is not fully completed. Stopping the pipeline...')
                     return
-
                 logger.info(f'{step.value} step completed successfully!')
             else:
                 logger.info(f'Skipping {step.value} step because it has already been completed...')
+
+    def reset(self) -> None:
+        """Reset the pipeline back to its initial state."""
+        for step in PipelineStep:
+            use_case = self._step_to_use_case(step)
+            if use_case is not None:
+                use_case.reset()
+        with self._uow as tx:
+            tx.pipeline.clear()

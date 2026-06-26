@@ -1,20 +1,21 @@
 """The data extraction models values package."""
 
 from .error_level import JobErrorLevel
-from .id import ExtractionJobId
-from .metrics import EntityExtractionMetrics, ExtractionMetricsState, JobDurationMetrics, TokenUsageMetrics
+from .id import ExtractionBatchId, ExtractionJobId
+from .metrics import ExtractionMetrics, JobDurationMetrics, PerformanceMetricsState, TokenUsageMetrics
 from .retry_policy import JobRetryPolicy
 from .status import BatchStatus, ExtractionStatus, JobStatus
 
 __all__ = [
     'BatchStatus',
-    'EntityExtractionMetrics',
+    'ExtractionBatchId',
     'ExtractionJobId',
-    'ExtractionMetricsState',
+    'ExtractionMetrics',
     'ExtractionStatus',
     'JobDurationMetrics',
     'JobErrorLevel',
     'JobRetryPolicy',
     'JobStatus',
+    'PerformanceMetricsState',
     'TokenUsageMetrics',
 ]

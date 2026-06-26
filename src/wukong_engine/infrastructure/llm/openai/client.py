@@ -1,5 +1,8 @@
 """OpenAI adapter implementing the LLM client port."""
 
+import json
+from typing import Any
+
 from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpenAI, AuthenticationError, RateLimitError
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
@@ -16,6 +19,7 @@ from wukong_engine.app.llm.exceptions import (
 from .config import OpenAIConfig
 
 
+# TODO: Complete Batch implementation, including status mapping and result handling
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
@@ -24,14 +28,14 @@ class OpenAIClient(LLMClient):
         self._config = config
         self._client = AsyncOpenAI(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
 
-    async def generate(self, request: LLMRequest) -> LLMResponse:
-        """Generate a response from the LLM based on the given request."""
+    def _build_request_payload(self, request: LLMRequest) -> dict[str, Any]:
         # Base parameters for the API call
         model = request.model if request.model is not None else self._config.model
-        kwargs = {
+        payload = {
             'model': model.name,
             'instructions': request.prompt.instructions,
             'input': request.prompt.content,
+            'max_output_tokens': self._config.max_output_tokens,
         }
 
         # Set reasoning effort if supported by the model
@@ -41,17 +45,17 @@ class OpenAIClient(LLMClient):
             else LLMRegistry.get_reasoning_effort(model)
         )
         if LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
-            kwargs['reasoning'] = {'effort': reasoning_effort.value}
+            payload['reasoning'] = {'effort': reasoning_effort.value}
 
         # Set temperature if supported by the model
         temperature = request.temperature if request.temperature is not None else 0.0
         if LLMRegistry.is_supported_model(model) and not LLMRegistry.is_reasoning_model(model):
-            kwargs['temperature'] = temperature
+            payload['temperature'] = temperature
 
         # Include structured response schema if provided
         schema = request.prompt.schema
         if schema is not None:
-            kwargs['text'] = {
+            payload['text'] = {
                 'format': {
                     'type': 'json_schema',
                     'name': 'schema',
@@ -60,9 +64,30 @@ class OpenAIClient(LLMClient):
                 },
             }
 
+        return payload
+
+    def _ensure_successful_response(self, response: OpenAIResponse) -> None:
+        """Ensure the LLM response indicates a successful generation."""
+        # Incomplete response
+        if response.status != 'completed':
+            raise LLMResponseError(f'The LLM response status was {response.status}, indicating a generation failure')
+
+        # Refusal (if the model refused to generate a response, e.g. due to content moderation)
+        refusal_item: ResponseOutputRefusal | None = next(
+            (item for item in response.output if isinstance(item, ResponseOutputRefusal)),
+            None,
+        )
+        if refusal_item is not None:
+            raise LLMResponseError('The LLM refused to generate a response')
+
+    async def generate(self, request: LLMRequest) -> LLMResponse:
+        """Generate a response from the LLM based on the given request."""
+        # Build the request payload for the OpenAI API
+        payload = self._build_request_payload(request)
+
         # Await response, handling errors
         try:
-            response: OpenAIResponse = await self._client.responses.create(**kwargs)
+            response: OpenAIResponse = await self._client.responses.create(**payload)
             self._ensure_successful_response(response)
         except AuthenticationError as exc:
             raise LLMConfigurationError(f'Authentication with the LLM provider failed ({exc})') from exc
@@ -91,16 +116,33 @@ class OpenAIClient(LLMClient):
             metrics=TokenUsageMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
         )
 
-    def _ensure_successful_response(self, response: OpenAIResponse) -> None:
-        """Ensure the LLM response indicates a successful generation."""
-        # Incomplete response
-        if response.status != 'completed':
-            raise LLMResponseError(f'The LLM response status was {response.status}, indicating a generation failure')
+    async def create_batch(self, requests: list[LLMRequest]) -> None:
+        """Create a batch of LLM requests for asynchronous processing."""
+        lines = []
+        for index, request in enumerate(requests):
+            payload = self._build_request_payload(request)
 
-        # Refusal (if the model refused to generate a response, e.g. due to content moderation)
-        refusal_item: ResponseOutputRefusal | None = next(
-            (item for item in response.output if isinstance(item, ResponseOutputRefusal)),
-            None,
+            lines.append(
+                json.dumps(
+                    {
+                        'custom_id': str(index),
+                        'method': 'POST',
+                        'url': '/v1/responses',
+                        'body': payload,
+                    },
+                ),
+            )
+
+        jsonl = '\n'.join(lines)
+        file = await self._client.files.create(file=('batch.jsonl', jsonl.encode()), purpose='batch')
+        batch = await self._client.batches.create(
+            input_file_id=file.id,
+            endpoint='/v1/responses',
+            completion_window='24h',
         )
-        if refusal_item is not None:
-            raise LLMResponseError('The LLM refused to generate a response')
+        print(f'Batch created with ID: <{batch.id}>')
+
+        # return LLMBatch(
+        #     id=batch.id,
+        #     status=self._map_batch_status(batch.status),
+        # )
