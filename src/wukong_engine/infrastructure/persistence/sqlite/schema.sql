@@ -222,7 +222,6 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
     provider_name TEXT NOT NULL,
     provider_batch_id TEXT NOT NULL UNIQUE,
     batch_status TEXT NOT NULL,
-    provider_status TEXT,
     created_at INTEGER NOT NULL,
     finished_at INTEGER,
     error TEXT,
@@ -231,7 +230,8 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
             'SUBMITTED',
             'IN_PROGRESS',
             'COMPLETED',
-            'FAILED'
+            'FAILED',
+            'CANCELLED'
         )
     )
 );

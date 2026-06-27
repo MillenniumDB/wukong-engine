@@ -33,8 +33,8 @@ class ExtractionExecutor(Protocol):
         ...
 
 
-class RealtimeExtractionExecutor(ExtractionExecutor):
-    """Real-time executor for extraction requests, with asynchronous processing."""
+class ConcurrentExtractionExecutor(ExtractionExecutor):
+    """Concurrent executor for extraction requests, with real-time asynchronous processing."""
 
     def __init__(self, llm_client: LLMClient, max_concurrency: int = DEFAULT_MAX_CONCURRENCY) -> None:
         """Initialize the executor with necessary dependencies."""
@@ -44,13 +44,15 @@ class RealtimeExtractionExecutor(ExtractionExecutor):
 
     async def execute(self, request: ExtractionRequest) -> ExtractionResult:
         """Execute a single extraction request."""
+        # Build the LLM request from the extraction request
         prompt = self._prompt_renderer.render(request.context)
         llm_request = LLMRequest(
             prompt=prompt,
-            model=request.model,
             reasoning_effort=request.reasoning_effort,
             temperature=request.temperature,
         )
+
+        # Execute the LLM request and handle the response
         try:
             response = await self._llm_client.generate(llm_request)
             data = json.loads(response.content)
@@ -71,7 +73,7 @@ class RealtimeExtractionExecutor(ExtractionExecutor):
                 error_level=JobErrorLevel.RECOVERABLE,
                 retry_policy=JobRetryPolicy.IMMEDIATE,
             )
-        except (json.JSONDecodeError, TypeError, ValueError) as exc:
+        except (json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError) as exc:
             return ExtractionResult(
                 job=request.job,
                 status=JobStatus.FAILED,

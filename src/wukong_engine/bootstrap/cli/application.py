@@ -2,13 +2,16 @@ import logging
 from pathlib import Path
 
 from wukong_engine.app.config.exceptions import ConfigurationError
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
+    BatchExtractionEngine,
+    ConcurrentExtractionBatchSubmitter,
+    ConcurrentExtractionExecutor,
     EntityExtractionMetricsTracker,
     EntityExtractionRepository,
     EntityExtractionRequestBuilder,
     EntityExtractionResultMaterializer,
     RealtimeExtractionEngine,
-    RealtimeExtractionExecutor,
 )
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
@@ -82,11 +85,17 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     llm_client = OpenAIClient(config=llm_config)
     pk_normalizer = DefaultPKNormalizer()
 
-    # Services
-    extraction_executor = RealtimeExtractionExecutor(
+    # Common services
+    extraction_executor = ConcurrentExtractionExecutor(
         llm_client=llm_client,
         max_concurrency=app_config.llm.max_concurrency,
     )
+    batch_submitter = ConcurrentExtractionBatchSubmitter(
+        llm_client=llm_client,
+        max_concurrency=app_config.llm.max_concurrency,
+    )
+
+    # Entity extraction services
     entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
     entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
     entity_result_materializer = EntityExtractionResultMaterializer(pk_normalizer=pk_normalizer)
@@ -94,13 +103,25 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         uow=staging_uow,
         execution_mode=app_config.llm.execution_mode,
     )
-    entity_extraction_engine = RealtimeExtractionEngine(
-        repository=entity_extraction_repository,
-        request_builder=entity_request_builder,
-        executor=extraction_executor,
-        result_materializer=entity_result_materializer,
-        metrics_tracker=entity_metrics_tracker,
-    )
+
+    # Assign the appropriate extraction engine based on the execution mode
+    if app_config.llm.execution_mode == ExecutionMode.BATCH:
+        entity_extraction_engine = BatchExtractionEngine(
+            repository=entity_extraction_repository,
+            request_builder=entity_request_builder,
+            submitter=batch_submitter,
+            metrics_tracker=entity_metrics_tracker,
+        )
+    else:
+        entity_extraction_engine = RealtimeExtractionEngine(
+            repository=entity_extraction_repository,
+            request_builder=entity_request_builder,
+            executor=extraction_executor,
+            result_materializer=entity_result_materializer,
+            metrics_tracker=entity_metrics_tracker,
+        )
+
+    # TODO: Relationship extraction services
 
     # Use cases
     get_document_registry = GetDocumentRegistry(

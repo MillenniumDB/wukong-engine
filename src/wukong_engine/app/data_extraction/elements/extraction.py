@@ -1,5 +1,6 @@
 """State objects for data extraction."""
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -12,6 +13,7 @@ from wukong_engine.app.data_extraction.elements.values import (
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM
 
+from .batch import ExtractionBatch
 from .job import ExtractionJob
 
 
@@ -28,7 +30,7 @@ class ExtractionContext:
 
 @dataclass(frozen=True)
 class ExtractionRequest:
-    """Extraction request containing an extraction job and its derived context and override parameters."""
+    """Request containing an extraction job and its derived context and override parameters."""
 
     job: ExtractionJob
     context: ExtractionContext
@@ -48,3 +50,18 @@ class ExtractionResult:
     error: str | None = None
     error_level: JobErrorLevel | None = None
     retry_policy: JobRetryPolicy | None = None
+
+
+@dataclass(frozen=True)
+class BatchSubmissionRequest:
+    """Request to submit a batch of extraction requests."""
+
+    batch: Iterable[ExtractionRequest]
+
+
+@dataclass(frozen=True)
+class BatchSubmissionResult:
+    """Submission result for a batch of extraction requests."""
+
+    batch: ExtractionBatch
+    jobs: tuple[ExtractionJob, ...]

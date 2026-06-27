@@ -1,8 +1,9 @@
 """Extraction Repositories."""
 
+from collections.abc import Iterable
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionJob
+from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionBatch, ExtractionJob
 from wukong_engine.app.data_extraction.elements.values import JobRetryPolicy, JobStatus, TokenUsageMetrics
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
@@ -14,6 +15,10 @@ class ExtractionRepository(Protocol):
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
         """Claim the next batch of extraction jobs for processing, under a given context level."""
+        ...
+
+    def register_batch_submission(self, batch: ExtractionBatch, jobs: Iterable[ExtractionJob]) -> None:
+        """Persist a submitted extraction batch and associate its jobs."""
         ...
 
     def complete_extraction(
@@ -49,6 +54,12 @@ class EntityExtractionRepository(ExtractionRepository):
             jobs = tx.extraction.entities.create_job_batch(context_level, limit=batch_size)
             tx.extraction.entities.schedule_jobs(jobs)
         return jobs
+
+    def register_batch_submission(self, batch: ExtractionBatch, jobs: Iterable[EntityExtractionJob]) -> None:
+        """Persist a submitted extraction batch and associate its jobs."""
+        with self._uow as tx:
+            tx.extraction.entities.register_batch(batch)
+            tx.extraction.entities.link_jobs_to_batch(jobs, batch)
 
     def complete_extraction(
         self,

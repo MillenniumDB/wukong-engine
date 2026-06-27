@@ -1,7 +1,11 @@
+from collections.abc import Iterable
 from typing import Protocol
 
+from wukong_engine.app.data_extraction.elements import ExtractionBatch
+from wukong_engine.app.data_extraction.elements.values import BatchStatus
+
 from .request import LLMRequest
-from .response import LLMResponse
+from .response import LLMBatchCreationResponse, LLMBatchResult, LLMResponse
 
 
 class LLMClient(Protocol):
@@ -11,6 +15,14 @@ class LLMClient(Protocol):
         """Generate a response from the LLM based on the given request."""
         ...
 
-    async def create_batch(self, requests: list[LLMRequest]) -> None:
-        """Create a batch of LLM requests for asynchronous processing."""
+    async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:
+        """Create a batch for asynchronous request processing."""
+        ...
+
+    async def get_batch_status(self, batch: ExtractionBatch) -> BatchStatus:
+        """Get the current status of a batch."""
+        ...
+
+    async def get_batch_results(self, batch: ExtractionBatch) -> tuple[LLMBatchResult, ...]:
+        """Get the results of a completed batch."""
         ...

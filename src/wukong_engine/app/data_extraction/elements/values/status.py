@@ -41,9 +41,11 @@ class BatchStatus(Enum):
         IN_PROGRESS: Currently being executed.
         COMPLETED: Successfully finished.
         FAILED: Attempted but failed to complete.
+        CANCELLED: Cancelled by the user or provider.
     """
 
     SUBMITTED = 'SUBMITTED'
     IN_PROGRESS = 'IN_PROGRESS'
     COMPLETED = 'COMPLETED'
     FAILED = 'FAILED'
+    CANCELLED = 'CANCELLED'

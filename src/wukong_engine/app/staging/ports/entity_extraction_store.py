@@ -1,7 +1,7 @@
 from collections.abc import Iterable
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import EntityExtractionJob
+from wukong_engine.app.data_extraction.elements import EntityExtractionJob, ExtractionBatch
 from wukong_engine.app.data_extraction.elements.values import (
     ExtractionStatus,
     JobDurationMetrics,
@@ -29,6 +29,14 @@ class EntityExtractionStore(Protocol):
         """Schedule entity extraction jobs for processing."""
         ...
 
+    def register_batch(self, batch: ExtractionBatch) -> None:
+        """Persist a submitted extraction batch."""
+        ...
+
+    def link_jobs_to_batch(self, jobs: Iterable[EntityExtractionJob], batch: ExtractionBatch) -> None:
+        """Link extraction jobs to a submitted batch."""
+        ...
+
     def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         ...
@@ -51,6 +59,8 @@ class EntityExtractionStore(Protocol):
     def reset_deferred_extractions(self) -> int:
         """Reset deferred extractions for re-processing."""
         ...
+
+    # Metrics
 
     def count_sources_by_status(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
         """Count sources by status for a given context level."""

@@ -180,7 +180,7 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
         # Set the new context level and collect metrics
         self._context_level = context_level
         self._collect_metrics(should_update_performance=should_update)
-        logger.info(f'Now tracking extraction metrics for {context_level.value}S...')
+        logger.info(f'Now tracking {self._execution_mode.value} extraction metrics for {context_level.value}S...')
 
     def reset(self) -> None:
         """Reset the metrics tracker back to its initial state."""

@@ -2,8 +2,9 @@ import sqlite3
 import time
 from collections.abc import Iterable
 
-from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, EntityExtractionJob
+from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, EntityExtractionJob, ExtractionBatch
 from wukong_engine.app.data_extraction.elements.values import (
+    BatchStatus,
     ExtractionStatus,
     JobDurationMetrics,
     JobRetryPolicy,
@@ -291,6 +292,51 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
+    def register_batch(self, batch: ExtractionBatch) -> None:
+        """Persist a submitted extraction batch."""
+        self._conn.execute(
+            """
+            INSERT INTO extraction_batches (
+                batch_id,
+                provider_name,
+                provider_batch_id,
+                batch_status,
+                created_at
+            )
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            (
+                batch.id.instance.bytes,
+                batch.provider.value,
+                batch.provider_id,
+                BatchStatus.SUBMITTED.value,
+                int(time.time() * 1000),
+            ),
+        )
+
+    def link_jobs_to_batch(self, jobs: Iterable[EntityExtractionJob], batch: ExtractionBatch) -> None:
+        """Link extraction jobs to a submitted batch."""
+        self._conn.executemany(
+            """
+            UPDATE extraction_jobs
+            SET batch_id = ?
+            WHERE
+                job_id = ? AND
+                job_type = ? AND
+                job_status = ? AND
+                batch_id IS NULL
+            """,
+            [
+                (
+                    batch.id.instance.bytes,
+                    job.id.instance.bytes,
+                    TaskType.ENTITY_EXTRACTION.value,
+                    JobStatus.IN_PROGRESS.value,
+                )
+                for job in jobs
+            ],
+        )
+
     def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
         """Link extracted entities to their source context."""
         self._conn.executemany(
@@ -310,7 +356,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         retry_policy: JobRetryPolicy | None = None,
     ) -> None:
         """Update the status of a job and its associated extractions upon completion/termination."""
-        # Status must be either COMPLETED or FAILED
+        # New status must be either completed or failed
         if status not in {JobStatus.COMPLETED, JobStatus.FAILED}:
             raise ValueError(f'Invalid job status for update: {status.value}. Must be COMPLETED or FAILED.')
 
@@ -326,7 +372,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 output_tokens = ?,
                 reasoning_tokens = ?,
                 error = ?
-            WHERE job_id = ?
+            WHERE
+                job_id = ? AND
+                job_type = ? AND
+                job_status = ?
             """,
             (
                 status.value,
@@ -337,6 +386,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 metrics.reasoning_tokens if metrics else None,
                 error,
                 job.id.instance.bytes,
+                TaskType.ENTITY_EXTRACTION.value,
+                JobStatus.IN_PROGRESS.value,
             ),
         )
 
@@ -370,7 +421,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             elif retry_policy == JobRetryPolicy.DEFERRED:
                 fallback_status = ExtractionStatus.RETRY
 
-            # If retry policy is immediate, increment failed attempts and reset extractions to PENDING for immediate retry
+            # If retry policy is immediate, increment failed attempts and reset extractions to pending for immediate retry
             elif retry_policy == JobRetryPolicy.IMMEDIATE:
                 fallback_status = ExtractionStatus.PENDING
                 self._conn.execute(
@@ -433,7 +484,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         if not stalled_jobs:
             return 0
 
-        # Reset associated extractions back to PENDING for retry
+        # Reset associated extractions back to pending for retry
         self._conn.executemany(
             """
             UPDATE entity_extractions
@@ -459,6 +510,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             (ExtractionStatus.PENDING.value, ExtractionStatus.RETRY.value),
         )
         return cursor.rowcount
+
+    # Metrics
 
     def count_sources_by_status(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
         """Count sources by status for a given context level."""

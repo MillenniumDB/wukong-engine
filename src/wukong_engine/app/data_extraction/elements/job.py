@@ -46,8 +46,7 @@ class EntityExtractionJob(ExtractionJob):
         entity_types: tuple[EntityTypeName, ...],
     ) -> Self:
         """Create a new job from its extraction context components, generating a new ID automatically."""
-        job_id = ExtractionJobId.generate_new()
-        return cls(id=job_id, source=source, task=task, entity_types=entity_types)
+        return cls(id=ExtractionJobId.generate_new(), source=source, task=task, entity_types=entity_types)
 
 
 # TODO: Complete
@@ -75,5 +74,4 @@ class RelationshipExtractionJob(ExtractionJob):
         relationship_types: tuple[RelationshipTypeName, ...],
     ) -> Self:
         """Create a new job from its extraction context components, generating a new ID automatically."""
-        job_id = ExtractionJobId.generate_new()
-        return cls(id=job_id, source=source, task=task, relationship_types=relationship_types)
+        return cls(id=ExtractionJobId.generate_new(), source=source, task=task, relationship_types=relationship_types)
