@@ -90,10 +90,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         llm_client=llm_client,
         max_concurrency=app_config.llm.max_concurrency,
     )
-    batch_submitter = ConcurrentExtractionBatchSubmitter(
-        llm_client=llm_client,
-        max_concurrency=app_config.llm.max_concurrency,
-    )
+    batch_submitter = ConcurrentExtractionBatchSubmitter(llm_client=llm_client)
 
     # Entity extraction services
     entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)

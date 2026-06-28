@@ -5,7 +5,7 @@ from collections.abc import AsyncIterator, Iterable
 from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionRequest, ExtractionResult
-from wukong_engine.app.data_extraction.elements.values import JobErrorLevel, JobRetryPolicy, JobStatus
+from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, JobRetryPolicy, JobStatus
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
@@ -13,7 +13,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMResponseError,
     LLMTransientError,
 )
-from wukong_engine.app.shared.concurrency import async_map_concurrent
+from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 
 # Constants
 DEFAULT_MAX_CONCURRENCY = 5  # Default maximum number of concurrent LLM requests

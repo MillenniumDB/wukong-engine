@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from wukong_engine.app.data_extraction.elements.values import (
-    JobErrorLevel,
+    ErrorSeverity,
     JobRetryPolicy,
     JobStatus,
     TokenUsageMetrics,
@@ -30,7 +30,7 @@ class ExtractionContext:
 
 @dataclass(frozen=True)
 class ExtractionRequest:
-    """Request containing an extraction job and its derived context and override parameters."""
+    """Request to process an extraction job, containing the job and its context."""
 
     job: ExtractionJob
     context: ExtractionContext
@@ -41,14 +41,17 @@ class ExtractionRequest:
 
 @dataclass(frozen=True)
 class ExtractionResult:
-    """Extraction result containing the job and the extracted data."""
+    """Extraction result for a single extraction job.
+
+    Contains the job, its status, the extracted data (if successful), and any errors encountered during processing.
+    """
 
     job: ExtractionJob
     status: JobStatus
     data: dict[str, Any] = field(default_factory=dict)
     metrics: TokenUsageMetrics | None = None
     error: str | None = None
-    error_level: JobErrorLevel | None = None
+    error_severity: ErrorSeverity | None = None
     retry_policy: JobRetryPolicy | None = None
 
 
@@ -61,7 +64,13 @@ class BatchSubmissionRequest:
 
 @dataclass(frozen=True)
 class BatchSubmissionResult:
-    """Submission result for a batch of extraction requests."""
+    """Submission result for a batch of extraction requests.
 
-    batch: ExtractionBatch
+    Contains the batch and its associated jobs.
+    If the submission failed, the batch will be None and the error details will be provided.
+    """
+
+    batch: ExtractionBatch | None
     jobs: tuple[ExtractionJob, ...]
+    error: str | None = None
+    error_severity: ErrorSeverity | None = None

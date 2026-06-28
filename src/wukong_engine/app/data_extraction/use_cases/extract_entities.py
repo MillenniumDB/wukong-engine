@@ -12,6 +12,7 @@ from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, Pipelin
 logger = logging.getLogger(__name__)
 
 
+# TODO: Remove line to process all context levels
 class ExtractEntities:
     """Extract entities from sources."""
 
@@ -91,13 +92,14 @@ class ExtractEntities:
         if not is_materialized:
             self._materialize_all_extractions(graph_model)
 
-        # Perform recovery
-        self._recover_extractions()
-
         # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
+        context_levels = (ContextLevel.CHUNK,)  # TODO: Remove this line to process all context levels
         try:
             for context_level in context_levels:
+                # TODO: Perform recovery
+                self._recover_extractions()
+
                 # Process extractions for the current context level if there are remaining sources
                 if self._remaining_sources(context_level) > 0:
                     # Set the context level in the metrics tracker, to setup metrics tracking for this context level

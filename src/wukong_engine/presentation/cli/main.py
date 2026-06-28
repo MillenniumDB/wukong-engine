@@ -122,6 +122,11 @@ def handle_run(args: argparse.Namespace) -> None:
             app.graph_construction.execute(workspace=workspace, data_uri=args.data_dir, should_reset=args.reset),
         )
         print('WUKONG engine pipeline execution completed!')
+
+    # Handle exceptions and exit
+    except KeyboardInterrupt:
+        logger.info('Program interrupted by user. Exiting.')
+        sys.exit(130)  # SIGINT exit code
     except ApplicationError as exc:
         logger.critical(f'Application Error: {type(exc).__name__}')
         sys.exit(1)
@@ -129,9 +134,6 @@ def handle_run(args: argparse.Namespace) -> None:
         logger.exception('Unhandled Exception')
         logger.critical('Unhandled Exception occurred during pipeline execution')
         sys.exit(1)
-    except KeyboardInterrupt:
-        logger.info('Program interrupted by user. Exiting.')
-        sys.exit(130)  # SIGINT exit code
 
 
 # TODO: New command for 'wukong reset <workspace>' that resets everything

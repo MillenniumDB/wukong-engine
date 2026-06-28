@@ -1,8 +1,8 @@
 from enum import Enum
 
 
-class JobErrorLevel(Enum):
-    """Error level of an extraction job.
+class ErrorSeverity(Enum):
+    """Severity levels for errors encountered during data extraction.
 
     Attributes:
         RECOVERABLE: Does not affect execution.

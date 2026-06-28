@@ -28,9 +28,9 @@ from .decorators import translate_openai_errors
 
 # TODO: Remove this later together with the test code from create_batch
 TEST_BATCH_IDS = [
-    'batch_6a3e546f64a08190b9d7988f3340d831',
-    'batch_6a3fa6e01d6481908400fb92bd136f44',
-    'batch_6a3fa6e01f7c81908c920d02f22d2281',
+    'batch_6a40febffb748190bbcc5b5674628b00',
+    'batch_6a40febffc588190956095ee4473013a',
+    'batch_6a40fec1f6bc8190b0da3c55bcbe99ce',
 ]
 
 
@@ -87,7 +87,7 @@ class OpenAIClient(LLMClient):
         """Ensure the LLM response indicates a successful generation."""
         # Incomplete response
         if response.status != 'completed':
-            raise LLMResponseError(f'The LLM response status was {response.status}, indicating a generation failure')
+            raise LLMResponseError(f'The LLM response status was "{response.status}", indicating a generation failure')
 
         # Refusal (if the model refused to generate a response, e.g. due to content moderation)
         refusal_item: ResponseOutputRefusal | None = next(
@@ -122,7 +122,7 @@ class OpenAIClient(LLMClient):
         try:
             return status_mapping[provider_status]
         except KeyError as exc:
-            raise LLMInternalError(f'Unknown batch status returned by provider: {provider_status}') from exc
+            raise LLMInternalError(f'Unknown batch status "{provider_status}" returned by provider') from exc
 
     def _parse_batch_result(self, line: str) -> LLMBatchResult | None:
         """Parse a single line of the batch result file."""
@@ -138,8 +138,14 @@ class OpenAIClient(LLMClient):
 
             # Parse the successful response
             provider_response = OpenAIResponse.model_validate(item['response']['body'])
+            self._ensure_successful_response(provider_response)
             return LLMBatchResult(job_id=custom_id, response=self._build_llm_response(provider_response))
 
+        except LLMResponseError as exc:
+            # If the response indicates a refusal or is incomplete, return an error result instead
+            if custom_id is not None:
+                return LLMBatchResult(job_id=custom_id, response=None, error=str(exc))
+            return None
         except ValidationError, json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError:
             # If parsing fails, return an error result (if job ID is available)
             if custom_id is not None:
@@ -256,7 +262,7 @@ class OpenAIClient(LLMClient):
         # Ensure the batch is completed before attempting to retrieve results
         if provider_batch.status != 'completed':
             raise LLMResponseError(
-                f'Cannot retrieve results for batch {batch.id}. Current status: {provider_batch.status}',
+                f'Cannot retrieve results for batch {batch.id} with current status "{provider_batch.status}"',
             )
 
         # Ensure the batch has an output file before attempting to retrieve results
