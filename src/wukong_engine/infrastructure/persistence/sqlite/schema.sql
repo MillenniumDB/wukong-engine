@@ -220,11 +220,12 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
 CREATE TABLE IF NOT EXISTS extraction_batches (
     batch_id BLOB PRIMARY KEY,
     provider_name TEXT NOT NULL,
-    provider_batch_id TEXT NOT NULL UNIQUE,
+    provider_batch_id TEXT NOT NULL,
     batch_status TEXT NOT NULL,
     created_at INTEGER NOT NULL,
     finished_at INTEGER,
     error TEXT,
+    UNIQUE(provider_name, provider_batch_id),
     CHECK (
         batch_status IN (
             'SUBMITTED',

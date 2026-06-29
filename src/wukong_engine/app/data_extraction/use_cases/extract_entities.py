@@ -61,12 +61,14 @@ class ExtractEntities:
     def _recover_extractions(self) -> None:
         """Recover extractions that are in an incomplete/inconsistent state."""
         # Terminate stalled jobs and recover their extractions
+        # Stalled jobs are those that are in status IN_PROGRESS before extraction happens and are not tied to any batch
         with self._uow as tx:
             terminated = tx.extraction.entities.terminate_stalled_jobs()
         if terminated > 0:
             logger.warning(f'Terminated and recovered extractions from {terminated} stalled jobs')
 
         # Reset deferred extractions for re-processing
+        # Deferred extractions are those that are in status RETRY before extraction happens
         with self._uow as tx:
             reset = tx.extraction.entities.reset_deferred_extractions()
         if reset > 0:
@@ -84,56 +86,64 @@ class ExtractEntities:
 
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
-        # Materialize extractions (if not already done)
-        with self._uow as tx:
-            is_materialized = tx.pipeline.is_checkpoint_completed(
-                PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
-            )
-        if not is_materialized:
-            self._materialize_all_extractions(graph_model)
-
-        # Run extractions for all context levels
-        context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
-        context_levels = (ContextLevel.CHUNK,)  # TODO: Remove this line to process all context levels
-        try:
-            for context_level in context_levels:
-                # TODO: Perform recovery
-                self._recover_extractions()
-
-                # Process extractions for the current context level if there are remaining sources
-                if self._remaining_sources(context_level) > 0:
-                    # Set the context level in the metrics tracker, to setup metrics tracking for this context level
-                    self._metrics_tracker.set_context_level(context_level)
-
-                    # Run extractions for the current context level
-                    logger.info(f'Extracting entities from {context_level.value}S...')
-                    await self._extraction_engine.run(context_level, graph_model)
-
-                    # Stop execution if there are still remaining sources for the current context level
-                    # Subsequent runs have to complete the remaining extractions before moving on to the next context level
-                    remaining_sources = self._remaining_sources(context_level)
-                    if remaining_sources > 0:
-                        logger.warning(
-                            f'Finished entity extractions from {context_level.value}S with {remaining_sources} remaining sources left, '
-                            'which must be completed in subsequent runs...',
-                        )
-                        return
-
-                    # Log completion of extractions for the current context level
-                    logger.info(f'Finished ALL entity extractions from {context_level.value}S!')
-
-            # All context levels have been processed, mark the ENTITIES_EXTRACTED checkpoint as completed
+        # TODO: Remove this for loop after development
+        for i in range(2):
+            # Materialize extractions (if not already done)
             with self._uow as tx:
-                tx.pipeline.set_checkpoint_status(
-                    PipelineCheckpoint.ENTITIES_EXTRACTED,
-                    PipelineCheckpointStatus.COMPLETED,
+                is_materialized = tx.pipeline.is_checkpoint_completed(
+                    PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
                 )
-            logger.info('Finished processing ALL entity extractions!')
+            if not is_materialized:
+                self._materialize_all_extractions(graph_model)
 
-        except DataExtractionError as exc:
-            error = 'Entity Extraction failed due to an unrecoverable error'
-            logger.error(error)
-            raise DataExtractionError(error) from exc
+            # TODO: Batch resolution here (test using for loop above)
+
+            # TODO: Remove this after development
+            if i == 1:
+                return
+
+            # Perform recovery before starting the extraction process
+            self._recover_extractions()
+
+            # Run extractions for all context levels
+            context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
+            context_levels = (ContextLevel.CHUNK,)  # TODO: Remove this line to process all context levels
+            try:
+                for context_level in context_levels:
+                    # Process extractions for the current context level if there are remaining sources
+                    if self._remaining_sources(context_level) > 0:
+                        # Set the context level in the metrics tracker, to setup metrics tracking for this context level
+                        self._metrics_tracker.set_context_level(context_level)
+
+                        # Run extractions for the current context level
+                        logger.info(f'Extracting entities from {context_level.value}S...')
+                        await self._extraction_engine.run(context_level, graph_model)
+
+                        # Stop execution if there are still remaining sources for the current context level
+                        # Subsequent runs have to complete the remaining extractions before moving on to the next context level
+                        remaining_sources = self._remaining_sources(context_level)
+                        if remaining_sources > 0:
+                            logger.warning(
+                                f'Finished entity extractions from {context_level.value}S with {remaining_sources} remaining sources left, '
+                                'which must be completed in subsequent runs...',
+                            )
+                            return
+
+                        # Log completion of extractions for the current context level
+                        logger.info(f'Finished ALL entity extractions from {context_level.value}S!')
+
+                # All context levels have been processed, mark the ENTITIES_EXTRACTED checkpoint as completed
+                with self._uow as tx:
+                    tx.pipeline.set_checkpoint_status(
+                        PipelineCheckpoint.ENTITIES_EXTRACTED,
+                        PipelineCheckpointStatus.COMPLETED,
+                    )
+                logger.info('Finished processing ALL entity extractions!')
+
+            except DataExtractionError as exc:
+                error = 'Entity Extraction failed due to an unrecoverable error'
+                logger.error(error)
+                raise DataExtractionError(error) from exc
 
     def reset(self) -> None:
         """Reset the entity extraction state."""

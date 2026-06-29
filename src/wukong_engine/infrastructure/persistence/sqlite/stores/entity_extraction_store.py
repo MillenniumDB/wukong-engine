@@ -459,7 +459,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     def terminate_stalled_jobs(self) -> int:
         """Terminate stalled jobs that were never resolved to completion."""
-        # Gather stalled jobs and terminate them
+        # Gather stalled jobs: jobs that are still in progress but are not tied to any batch
         stalled_jobs = self._conn.execute(
             """
             UPDATE extraction_jobs
@@ -467,7 +467,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 job_status = ?,
                 finished_at = ?,
                 error = 'Job was stalled (due to system failure/interruption/crash)'
-            WHERE job_type = ? AND job_status = ?
+            WHERE job_type = ? AND job_status = ? AND batch_id IS NULL
             RETURNING
                 context_level,
                 context_content_id
