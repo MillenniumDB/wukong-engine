@@ -5,7 +5,12 @@ from collections.abc import AsyncIterator, Iterable
 from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionRequest, ExtractionResult
-from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, JobRetryPolicy, JobStatus
+from wukong_engine.app.data_extraction.elements.values import (
+    ErrorSeverity,
+    JobRetryPolicy,
+    JobStatus,
+    TokenUsageMetrics,
+)
 from wukong_engine.app.llm.elements import LLMClient, LLMRequest
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
@@ -32,7 +37,10 @@ class ExtractionExecutor(Protocol):
         """Execute a single extraction request."""
         ...
 
-    def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
+    def execute_many(
+        self,
+        requests: Iterable[ExtractionRequest],
+    ) -> AsyncIterator[tuple[ExtractionRequest, ExtractionResult]]:
         """Execute multiple extraction requests concurrently."""
         ...
 
@@ -66,10 +74,13 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         try:
             response = await self._llm_client.generate(llm_request)
             data = json.loads(response.content)
-            return ExtractionResult(job=request.job, status=JobStatus.COMPLETED, data=data, metrics=response.metrics)
+            return ExtractionResult(
+                status=JobStatus.COMPLETED,
+                data=data,
+                metrics=TokenUsageMetrics.from_usage(response.metrics),
+            )
         except LLMTransientError as exc:
             return ExtractionResult(
-                job=request.job,
                 status=JobStatus.FAILED,
                 error=str(exc),
                 error_severity=ErrorSeverity.RECOVERABLE,
@@ -77,7 +88,6 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
             )
         except LLMResponseError as exc:
             return ExtractionResult(
-                job=request.job,
                 status=JobStatus.FAILED,
                 error=str(exc),
                 error_severity=ErrorSeverity.RECOVERABLE,
@@ -85,25 +95,26 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
             )
         except (json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError) as exc:
             return ExtractionResult(
-                job=request.job,
                 status=JobStatus.FAILED,
-                metrics=response.metrics if response else None,
+                metrics=TokenUsageMetrics.from_usage(response.metrics) if response else None,
                 error=f'Failed LLM response decoding ({exc})',
                 error_severity=ErrorSeverity.RECOVERABLE,
                 retry_policy=JobRetryPolicy.IMMEDIATE,
             )
         except (LLMConfigurationError, LLMInternalError) as exc:
             return ExtractionResult(
-                job=request.job,
                 status=JobStatus.FAILED,
                 error=str(exc),
                 error_severity=ErrorSeverity.CRITICAL,
                 retry_policy=JobRetryPolicy.DEFERRED,
             )
 
-    async def execute_many(self, requests: Iterable[ExtractionRequest]) -> AsyncIterator[ExtractionResult]:
+    async def execute_many(
+        self,
+        requests: Iterable[ExtractionRequest],
+    ) -> AsyncIterator[tuple[ExtractionRequest, ExtractionResult]]:
         """Execute multiple extraction requests concurrently."""
         runner = AsyncConcurrentRunner(fn=self.execute, max_concurrency=self._max_concurrency)
         self._active_runner = runner
-        async for result in runner.run(requests):
-            yield result
+        async for request, result in runner.run(requests):
+            yield request, result

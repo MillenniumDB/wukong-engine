@@ -16,6 +16,7 @@ class ExtractionBatch:
     provider: LLMProvider
     provider_id: str
     status: BatchStatus
+    created_at: int | None = None
 
     def __str__(self) -> str:
         """User-friendly string representation of the extraction batch."""
@@ -38,3 +39,11 @@ class ExtractionBatch:
             provider_id=provider_id,
             status=BatchStatus.SUBMITTED,
         )
+
+
+@dataclass(frozen=True)
+class BatchCursor:
+    """Cursor for keyset pagination of extraction batches."""
+
+    created_at: int
+    batch_id: bytes

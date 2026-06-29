@@ -35,13 +35,13 @@ class ExecutionController:
 
 
 class AsyncConcurrentRunner[T, R]:
-    """Executes async operations concurrently while supporting graceful draining.
+    """Executes async operations over items concurrently while supporting graceful draining.
 
-    There is at most `max_concurrency` tasks running concurrently. The runner yields results as they complete.
+    There is at most `max_concurrency` tasks running concurrently. The runner yields tuples (item, result) as they complete.
     If any task raises an exception, the runner will fail fast and propagate the exception immediately.
 
     Once termination is requested:
-    - no new items are scheduled
+    - no new tasks are scheduled
     - already running tasks are allowed to finish normally
     - the termination error is raised after draining, if requested
     """
@@ -66,18 +66,18 @@ class AsyncConcurrentRunner[T, R]:
             raise RuntimeError(error)
         return self._controller
 
-    async def run(self, items: Iterable[T]) -> AsyncIterator[R]:
+    async def run(self, items: Iterable[T]) -> AsyncIterator[tuple[T, R]]:
         """Run the async function concurrently over the provided items, yielding results as they complete."""
         # Initialize the execution controller for this run
         self._controller = ExecutionController()
 
         # fn: Execute the async callable for a given item
-        async def execute(item: T) -> R:
-            return await self._fn(item)
+        async def execute(item: T) -> tuple[T, R]:
+            return item, await self._fn(item)
 
         # Create an iterator over the items and a set of active async tasks
         iterator = iter(items)
-        active: set[asyncio.Task[R]] = set()
+        active: set[asyncio.Task[tuple[T, R]]] = set()
 
         # fn: Start a new task for the given item and add it to the active set
         def start_task(item: T) -> None:

@@ -11,15 +11,7 @@ from openai import AsyncOpenAI
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
-from wukong_engine.app.data_extraction.elements import ExtractionBatch
-from wukong_engine.app.data_extraction.elements.values import BatchStatus, TokenUsageMetrics
-from wukong_engine.app.llm.elements import (
-    LLMBatchCreationResponse,
-    LLMBatchResult,
-    LLMClient,
-    LLMRequest,
-    LLMResponse,
-)
+from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.exceptions import LLMInternalError, LLMResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 
@@ -34,7 +26,7 @@ TEST_BATCH_IDS = [
 ]
 
 
-# TODO: Remove test code from create_batch
+# TODO: Remove test code from create_batch and get_batch_status, and get_batch_results, and remove TEST_BATCH_IDS
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
@@ -103,26 +95,8 @@ class OpenAIClient(LLMClient):
         return LLMResponse(
             content=response.output_text,
             model=response.model,
-            metrics=TokenUsageMetrics.from_usage(response.usage.model_dump() if response.usage else {}),
+            metrics=response.usage.model_dump() if response.usage else {},
         )
-
-    @staticmethod
-    def _map_batch_status(provider_status: str) -> BatchStatus:
-        """Map the provider-specific batch status to a BatchStatus state."""
-        status_mapping = {
-            'validating': BatchStatus.SUBMITTED,
-            'in_progress': BatchStatus.IN_PROGRESS,
-            'finalizing': BatchStatus.IN_PROGRESS,
-            'cancelling': BatchStatus.IN_PROGRESS,
-            'completed': BatchStatus.COMPLETED,
-            'failed': BatchStatus.FAILED,
-            'expired': BatchStatus.FAILED,
-            'cancelled': BatchStatus.CANCELLED,
-        }
-        try:
-            return status_mapping[provider_status]
-        except KeyError as exc:
-            raise LLMInternalError(f'Unknown batch status "{provider_status}" returned by provider') from exc
 
     def _parse_batch_result(self, line: str) -> LLMBatchResult | None:
         """Parse a single line of the batch result file."""
@@ -248,26 +222,26 @@ class OpenAIClient(LLMClient):
             raise
 
     @translate_openai_errors
-    async def get_batch_status(self, batch: ExtractionBatch) -> BatchStatus:
+    async def get_batch_status(self, batch_id: str) -> str:
         """Get the current status of a batch."""
-        provider_batch = await self._client.batches.retrieve(batch.provider_id)
-        return self._map_batch_status(provider_batch.status)
+        provider_batch = await self._client.batches.retrieve(batch_id)
+        return provider_batch.status
 
     @translate_openai_errors
-    async def get_batch_results(self, batch: ExtractionBatch) -> tuple[LLMBatchResult, ...]:
+    async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
         """Get the results of a completed batch."""
         # Retrieve the batch from the provider
-        provider_batch = await self._client.batches.retrieve(batch.provider_id)
+        provider_batch = await self._client.batches.retrieve(batch_id)
 
         # Ensure the batch is completed before attempting to retrieve results
         if provider_batch.status != 'completed':
             raise LLMResponseError(
-                f'Cannot retrieve results for batch {batch.id} with current status "{provider_batch.status}"',
+                f'Cannot retrieve results for batch {batch_id} with current status "{provider_batch.status}"',
             )
 
         # Ensure the batch has an output file before attempting to retrieve results
         if provider_batch.output_file_id is None:
-            raise LLMInternalError(f'Completed batch {batch.id} has no output file!')
+            raise LLMInternalError(f'Completed batch {batch_id} has no output file!')
 
         # Retrieve the output file and parse successful results
         results: list[LLMBatchResult] = []

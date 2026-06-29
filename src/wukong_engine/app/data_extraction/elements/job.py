@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from typing import Self
 
-from wukong_engine.core.documents.elements import Chunk, Document
+from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.extraction.model import EntityExtractionTask, RelationshipExtractionTask
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 
@@ -11,6 +11,15 @@ from .values import ExtractionJobId
 
 # Constants
 MAX_FAILED_ATTEMPTS = 3  # Maximum number of failed attempts before marking as failed
+
+
+# TODO: Refactor some of the classes since this is closer to what we need except for the prompt building
+@dataclass(frozen=True)
+class SimpleExtractionJob:
+    """Simplified representation of an extraction job."""
+
+    id: ExtractionJobId
+    context_ref: ContextRef
 
 
 @dataclass(frozen=True)

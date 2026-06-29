@@ -14,7 +14,12 @@ from wukong_engine.core.graph.model.values import EntityTypeName
 class ExtractionResultMaterializer(Protocol):
     """Materializer that converts raw extraction results into graph object instances."""
 
-    def materialize(self, result: ExtractionResult, model: GraphModel) -> tuple[object, ...]:
+    def materialize(
+        self,
+        result: ExtractionResult,
+        model: GraphModel,
+        context_level: ContextLevel,
+    ) -> tuple[object, ...]:
         """Materialize the extraction result into graph object instances."""
         ...
 
@@ -26,9 +31,13 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         """Initialize the materializer with necessary dependencies."""
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, model: GraphModel) -> tuple[Entity, ...]:
+    def materialize(
+        self,
+        result: ExtractionResult,
+        model: GraphModel,
+        context_level: ContextLevel,
+    ) -> tuple[Entity, ...]:
         """Materialize the extraction result into entity instances."""
-        context_level = result.job.task.context_level
         extracted_entities = result.data.get('entities', [])
         materialized_entities: list[Entity] = []
         for extracted in extracted_entities:

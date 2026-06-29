@@ -92,5 +92,5 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
         """Submit multiple batches of requests concurrently."""
         runner = AsyncConcurrentRunner(fn=self.submit, max_concurrency=self._max_concurrency)
         self._active_runner = runner
-        async for result in runner.run(submission_requests):
+        async for _, result in runner.run(submission_requests):
             yield result

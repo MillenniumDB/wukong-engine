@@ -6,6 +6,7 @@ from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
     BatchExtractionEngine,
     ConcurrentExtractionBatchSubmitter,
+    ConcurrentExtractionBatchSynchronizer,
     ConcurrentExtractionExecutor,
     EntityExtractionMetricsTracker,
     EntityExtractionRepository,
@@ -96,6 +97,11 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
     entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
     entity_result_materializer = EntityExtractionResultMaterializer(pk_normalizer=pk_normalizer)
+    entity_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
+        repository=entity_extraction_repository,
+        llm_client=llm_client,
+        result_materializer=entity_result_materializer,
+    )
     entity_metrics_tracker = EntityExtractionMetricsTracker(
         uow=staging_uow,
         execution_mode=app_config.llm.execution_mode,
@@ -135,6 +141,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     extract_entities = ExtractEntities(
         uow=staging_uow,
         extraction_engine=entity_extraction_engine,
+        batch_synchronizer=entity_batch_synchronizer,
         metrics_tracker=entity_metrics_tracker,
     )
 

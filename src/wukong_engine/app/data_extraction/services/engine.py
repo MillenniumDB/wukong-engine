@@ -2,7 +2,7 @@ import logging
 from collections.abc import Iterator
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import BatchSubmissionRequest, ExtractionRequest
+from wukong_engine.app.data_extraction.elements import BatchSubmissionRequest, ExtractionRequest, SimpleExtractionJob
 from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, JobRetryPolicy, JobStatus
 from wukong_engine.app.data_extraction.exceptions import ExtractionExecutionError, ExtractionRequestBuildError
 from wukong_engine.app.shared.iterables import batched
@@ -19,8 +19,8 @@ from .result_materializer import ExtractionResultMaterializer
 # Logging
 logger = logging.getLogger(__name__)
 
-# Constants
-BATCH_SIZE = 1000  # Number of jobs to process in each batch (default: 1000)
+# TODO: Constants
+BATCH_SIZE = 1  # Number of jobs to process in each batch (default: 1000)
 
 
 class ExtractionEngine(Protocol):
@@ -71,7 +71,11 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     requests.append(self._request_builder.build(job, graph_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
-                    self._repository.fail_extraction(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
+                    self._repository.fail_extraction(
+                        SimpleExtractionJob(job.id, job.source.context_ref),
+                        retry_policy=JobRetryPolicy.DEFERRED,
+                        error=str(exc),
+                    )
 
             # Yield each request in the batch
             yield from requests
@@ -81,14 +85,14 @@ class RealtimeExtractionEngine(ExtractionEngine):
         # Execute all jobs and process results
         extraction_requests = self._stream_extraction_requests(context_level, graph_model)
         try:
-            async for result in self._executor.execute_many(extraction_requests):
+            async for request, result in self._executor.execute_many(extraction_requests):
                 # Log metrics
                 self._metrics_tracker.log_metrics()
 
                 # Handle failed job
                 if result.status == JobStatus.FAILED:
                     self._repository.fail_extraction(
-                        result.job,
+                        SimpleExtractionJob(request.job.id, request.job.source.context_ref),
                         retry_policy=result.retry_policy,
                         error=result.error,
                         metrics=result.metrics,
@@ -97,17 +101,21 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     # Handle critical error by requesting termination of the run
                     if result.error_severity == ErrorSeverity.CRITICAL:
                         logger.warning(
-                            f'Critical error while processing job {result.job.id}, finishing active tasks and terminating gracefully...',
+                            f'Critical error while processing job {request.job.id}, finishing active tasks and terminating gracefully...',
                         )
                         self._executor.request_termination(ExtractionExecutionError(result.error))
 
                     continue
 
                 # Materialization of results into graph objects
-                graph_objects = self._result_materializer.materialize(result, graph_model)
+                graph_objects = self._result_materializer.materialize(result, graph_model, context_level)
 
                 # Persist graph objects and provenance, update job status to completed
-                self._repository.complete_extraction(result.job, graph_objects, usage_metrics=result.metrics)
+                self._repository.complete_extraction(
+                    SimpleExtractionJob(request.job.id, request.job.source.context_ref),
+                    graph_objects,
+                    usage_metrics=result.metrics,
+                )
 
         # Graceful termination on critical error
         except ExtractionExecutionError as exc:
@@ -154,7 +162,11 @@ class BatchExtractionEngine(ExtractionEngine):
                     requests.append(self._request_builder.build(job, graph_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
-                    self._repository.fail_extraction(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
+                    self._repository.fail_extraction(
+                        SimpleExtractionJob(job.id, job.source.context_ref),
+                        retry_policy=JobRetryPolicy.DEFERRED,
+                        error=str(exc),
+                    )
 
             # Yield each request in the batch
             yield from requests
@@ -182,7 +194,11 @@ class BatchExtractionEngine(ExtractionEngine):
                 # Handle failed submission
                 if result.batch is None:
                     for job in result.jobs:
-                        self._repository.fail_extraction(job, retry_policy=JobRetryPolicy.DEFERRED, error=result.error)
+                        self._repository.fail_extraction(
+                            SimpleExtractionJob(job.id, job.source.context_ref),
+                            retry_policy=JobRetryPolicy.DEFERRED,
+                            error=result.error,
+                        )
 
                     # Handle critical error by requesting termination of the run
                     if result.error_severity == ErrorSeverity.CRITICAL:

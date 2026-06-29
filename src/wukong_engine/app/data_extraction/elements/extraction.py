@@ -5,11 +5,13 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from wukong_engine.app.data_extraction.elements.values import (
+    BatchStatus,
     ErrorSeverity,
     JobRetryPolicy,
     JobStatus,
     TokenUsageMetrics,
 )
+from wukong_engine.app.llm.elements import LLMBatchResult
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM
 
@@ -46,7 +48,6 @@ class ExtractionResult:
     Contains the job, its status, the extracted data (if successful), and any errors encountered during processing.
     """
 
-    job: ExtractionJob
     status: JobStatus
     data: dict[str, Any] = field(default_factory=dict)
     metrics: TokenUsageMetrics | None = None
@@ -74,3 +75,19 @@ class BatchSubmissionResult:
     jobs: tuple[ExtractionJob, ...]
     error: str | None = None
     error_severity: ErrorSeverity | None = None
+
+
+@dataclass(frozen=True)
+class BatchStatusResult:
+    """Result of checking the status of a batch with the external provider."""
+
+    status: BatchStatus
+    error: str | None = None
+
+
+@dataclass(frozen=True)
+class CompletedBatchResult:
+    """Results for a completed batch retrieved from the external provider."""
+
+    results: tuple[LLMBatchResult, ...] | None
+    error: str | None = None

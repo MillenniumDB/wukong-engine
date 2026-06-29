@@ -1,8 +1,8 @@
 """Response model for LLM interactions."""
 
 from dataclasses import dataclass
+from typing import Any
 
-from wukong_engine.app.data_extraction.elements.values import TokenUsageMetrics
 from wukong_engine.app.llm.model.values import LLMProvider
 
 
@@ -12,7 +12,7 @@ class LLMResponse:
 
     content: str
     model: str
-    metrics: TokenUsageMetrics
+    metrics: dict[str, Any]
 
 
 @dataclass(frozen=True)
