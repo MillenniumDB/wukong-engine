@@ -12,7 +12,7 @@ from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from .prompt_renderer import PromptRenderer
 
 # Constants
-MAX_CONCURRENCY = 2  # Maximum number of concurrent batch submissions (default: 2)
+MAX_SUBMISSION_CONCURRENCY = 2  # Maximum number of concurrent batch submissions (default: 2)
 
 
 class ExtractionBatchSubmitter(Protocol):
@@ -41,7 +41,7 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
         """Initialize the submitter with necessary dependencies."""
         self._prompt_renderer = PromptRenderer()
         self._llm_client = llm_client
-        self._max_concurrency = MAX_CONCURRENCY
+        self._max_concurrency = MAX_SUBMISSION_CONCURRENCY
         self._active_runner: AsyncConcurrentRunner | None = None
 
     def request_termination(self, error: Exception | None = None) -> None:

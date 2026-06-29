@@ -12,8 +12,11 @@ from wukong_engine.core.documents.model.values import ContextLevel
 # Logging
 logger = logging.getLogger(__name__)
 
-# Constants
-# TODO: Minimum elapsed time to update performance state (not for logging), use should update param and a new method to look at time elapsed since last update
+# Intervals for logging and performance updates, in seconds
+REALTIME_LOG_METRICS_INTERVAL = 30  # Displaying metrics when in real-time mode (default: 30 seconds)
+BATCH_LOG_METRICS_INTERVAL = 30  # Displaying metrics when in batch mode (default: 30 seconds)
+REALTIME_PERFORMANCE_INTERVAL = 10  # Updating performance when in real-time mode (default: 10 seconds)
+BATCH_PERFORMANCE_INTERVAL = 60  # Updating performance when in batch mode (default: 60 seconds)
 
 
 class ExtractionMetricsTracker(Protocol):
@@ -32,7 +35,7 @@ class ExtractionMetricsTracker(Protocol):
         ...
 
 
-# TODO: Log metrics in extraction every X results (real-time) or every batch submission phase (batch), use decorator for the real-time version
+# TODO: Fix metrics bugs
 # TODO: Separate job counts and duration metrics for real-time and batch processing (group by execution mode and then by status),
 # these affect the rates and ETA, we choose the one corresponding to the current execution mode
 # TODO: Add batch metrics (similar to job counts + duration)
@@ -46,6 +49,12 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
         """Initialize the tracker with necessary dependencies."""
         self._uow = uow
         self._execution_mode = execution_mode
+        self._log_interval = (
+            REALTIME_LOG_METRICS_INTERVAL if execution_mode == ExecutionMode.REALTIME else BATCH_LOG_METRICS_INTERVAL
+        )
+        self._performance_interval = (
+            REALTIME_PERFORMANCE_INTERVAL if execution_mode == ExecutionMode.REALTIME else BATCH_PERFORMANCE_INTERVAL
+        )
         self._context_level: ContextLevel | None = None
         self._performance_state = PerformanceMetricsState()
 
@@ -151,8 +160,19 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
 
     def log_metrics(self) -> None:
         """Collect and log extraction metrics for the current context level."""
+        # Determine whether to update performance state and log metrics based on elapsed time since last update
+        should_update = True
+        should_log = True
+        # TODO: Fix metrics bugs
+        # if self._performance_state.timestamp is not None:
+        #     elapsed_time = time.time() - self._performance_state.timestamp
+        #     if elapsed_time < self._performance_interval:
+        #         should_update = False
+        #     if elapsed_time < self._log_interval:
+        #         should_log = False
+
         # Collect metrics
-        metrics = self._collect_metrics()
+        metrics = self._collect_metrics(should_update_performance=should_update)
 
         # If metrics collection failed, log a warning and skip logging
         context_level = self._context_level
@@ -161,7 +181,10 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
             return
 
         # Log the formatted metrics
-        logger.info(f'Current entity extraction metrics for {context_level.value}S\n\n{self._format_metrics(metrics)}')
+        if should_log:
+            logger.info(
+                f'Current entity extraction metrics for {context_level.value}S\n\n{self._format_metrics(metrics)}',
+            )
 
     def set_context_level(self, context_level: ContextLevel) -> None:
         """Set the context level for metrics tracking."""

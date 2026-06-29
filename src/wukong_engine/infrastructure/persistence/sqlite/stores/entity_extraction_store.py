@@ -647,10 +647,17 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         batch_counts: dict[BatchStatus, int] = dict.fromkeys(BatchStatus, 0)
         groups = self._conn.execute(
             """
-            SELECT b.batch_status, COUNT(*) AS batch_count
+            SELECT
+                b.batch_status,
+                COUNT(*) AS batch_count
             FROM extraction_batches b
-            JOIN extraction_jobs j ON j.batch_id = b.batch_id
-            WHERE j.job_type = ? AND j.context_level = ?
+            WHERE EXISTS (
+                SELECT 1
+                FROM extraction_jobs j
+                WHERE j.batch_id = b.batch_id
+                AND j.job_type = ?
+                AND j.context_level = ?
+            )
             GROUP BY b.batch_status
             """,
             (TaskType.ENTITY_EXTRACTION.value, context_level.value),

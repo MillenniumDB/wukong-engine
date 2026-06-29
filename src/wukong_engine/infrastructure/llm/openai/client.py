@@ -18,15 +18,7 @@ from wukong_engine.app.llm.model.values import LLMProvider
 from .config import OpenAIConfig
 from .decorators import translate_openai_errors
 
-# TODO: Remove this later together with the test code from create_batch
-TEST_BATCH_IDS = [
-    'batch_6a40febffb748190bbcc5b5674628b00',
-    'batch_6a40febffc588190956095ee4473013a',
-    'batch_6a40fec1f6bc8190b0da3c55bcbe99ce',
-]
 
-
-# TODO: Remove test code from create_batch and get_batch_status, and get_batch_results, and remove TEST_BATCH_IDS
 class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
@@ -179,14 +171,6 @@ class OpenAIClient(LLMClient):
     @translate_openai_errors
     async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:
         """Create a batch for asynchronous request processing."""
-        # TODO: Test code
-        import uuid
-
-        fake_id = f'fake_batch_id_{uuid.uuid7().hex}'
-        if TEST_BATCH_IDS:
-            fake_id = TEST_BATCH_IDS.pop()
-        return LLMBatchCreationResponse(batch_id=fake_id, provider=self._provider)
-
         # Build the JSONL payload for the batch
         lines = []
         for request, job_id in zip(requests, job_ids, strict=True):

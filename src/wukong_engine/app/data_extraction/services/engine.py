@@ -19,8 +19,8 @@ from .result_materializer import ExtractionResultMaterializer
 # Logging
 logger = logging.getLogger(__name__)
 
-# TODO: Constants
-BATCH_SIZE = 1  # Number of jobs to process in each batch (default: 1000)
+# Constants
+BATCH_SIZE = 1000  # Number of jobs to process in each batch (default: 1000)
 
 
 class ExtractionEngine(Protocol):
@@ -86,9 +86,6 @@ class RealtimeExtractionEngine(ExtractionEngine):
         extraction_requests = self._stream_extraction_requests(context_level, graph_model)
         try:
             async for request, result in self._executor.execute_many(extraction_requests):
-                # Log metrics
-                self._metrics_tracker.log_metrics()
-
                 # Handle failed job
                 if result.status == JobStatus.FAILED:
                     self._repository.fail_extraction(
@@ -116,6 +113,9 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     graph_objects,
                     usage_metrics=result.metrics,
                 )
+
+                # Request a metrics log after each job execution
+                self._metrics_tracker.log_metrics()
 
         # Graceful termination on critical error
         except ExtractionExecutionError as exc:
@@ -184,7 +184,7 @@ class BatchExtractionEngine(ExtractionEngine):
 
     async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run extractions for a given context level, using the provided graph model."""
-        # Log metrics
+        # Request a metrics log before starting the batch submission process, to capture the initial state of the system
         self._metrics_tracker.log_metrics()
 
         # Stream all batches and submit them
@@ -211,6 +211,9 @@ class BatchExtractionEngine(ExtractionEngine):
 
                 # Persist the batch submission result and associate the jobs with the batch
                 self._repository.register_batch_submission(result.batch, result.jobs)
+
+            # Request a metrics log after each batch submission
+            self._metrics_tracker.log_metrics()
 
         # Graceful termination on critical error
         except ExtractionExecutionError as exc:

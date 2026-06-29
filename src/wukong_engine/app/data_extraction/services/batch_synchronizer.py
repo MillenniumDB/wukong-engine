@@ -1,6 +1,5 @@
 """Extraction Batch Synchronizers."""
 
-import asyncio
 import json
 from typing import Protocol
 
@@ -28,11 +27,13 @@ from wukong_engine.app.llm.exceptions import (
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from wukong_engine.core.graph.model import GraphModel
 
+from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
 from .result_materializer import ExtractionResultMaterializer
 
-# TODO: Constants
-MAX_CONCURRENCY = 10  # Maximum number of concurrent batch synchronizations (default: 10)
+# Constants
+MAX_STATUS_CONCURRENCY = 50  # Maximum number of concurrent batch status requests (default: 50)
+MAX_RESULTS_CONCURRENCY = 10  # Maximum number of concurrent batch result retrievals (default: 10)
 
 
 class ExtractionBatchSynchronizer(Protocol):
@@ -43,9 +44,6 @@ class ExtractionBatchSynchronizer(Protocol):
         ...
 
 
-# TODO: List of completed? Endless stream?
-# TODO: Max concurrency
-# TODO: Remove TODO: below of [0]
 class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
     """Synchronizer that manages the lifecycle of submitted extraction batches concurrently."""
 
@@ -54,29 +52,32 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         repository: ExtractionRepository,
         llm_client: LLMClient,
         result_materializer: ExtractionResultMaterializer,
+        metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
         """Initialize the synchronizer with necessary dependencies."""
         self._repository = repository
         self._llm_client = llm_client
         self._result_materializer = result_materializer
-        self._max_concurrency = MAX_CONCURRENCY
+        self._metrics_tracker = metrics_tracker
         self._completed_batches: list[ExtractionBatch] = []
 
     async def synchronize(self, graph_model: GraphModel) -> None:
         """Synchronize all submitted extraction batches."""
         # Initialize the async runners and reset completed batches
         self._completed_batches = []
-        status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=self._max_concurrency)
-        results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=self._max_concurrency)
+        status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
+        results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=MAX_RESULTS_CONCURRENCY)
 
         # Stream active batches and retrieve their provider statuses concurrently, resolving them locally
         batches = self._repository.stream_active_batches()
         async for batch, status_result in status_runner.run(batches):
             self._resolve_batch_status(batch, status_result)
+        self._metrics_tracker.log_metrics()  # Request a metrics log after the phase of batch status retrieval
 
         # Process completed batches concurrently for result retrieval, then resolve them locally
         async for batch, completed_result in results_runner.run(self._completed_batches):
             self._resolve_batch_results(batch, completed_result, graph_model)
+        self._metrics_tracker.log_metrics()  # Request a metrics log after the phase of batch result retrieval
 
     @staticmethod
     def _map_batch_status(provider_status: str) -> BatchStatus:
@@ -166,7 +167,6 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         for job in jobs:
             result: ExtractionResult | None = None
             provider_result = results_by_job_id.get(job.id.instance.hex)
-            provider_result = completed_result.results[0]  # TODO:
 
             # Job result found and it succeeded
             if provider_result is not None and provider_result.response is not None:

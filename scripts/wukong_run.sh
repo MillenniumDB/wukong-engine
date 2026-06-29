@@ -57,9 +57,18 @@ WORKSPACE_DIR="$(abs_path "$WORKSPACE_PATH")"
 DATA_DIR="$(abs_path "$DATA_PATH")"
 CONFIG_FILE="$(abs_path "$CONFIG_PATH")"
 
+# Cache directory
+CACHE_DIR="$HOME/.cache/wukong-engine"
+mkdir -p "$CACHE_DIR"
+
 # Run the Docker container
 IMAGE_NAME="wukong-engine:latest"
 docker run --rm \
+    --user "$(id -u):$(id -g)" \
+    -e HOME=/home/app \
+    -e XDG_CACHE_HOME=/home/app/.cache \
+    -v "$CACHE_DIR:/home/app/.cache" \
+    -v "$HOME/.cache/wukong-engine:/home/app/.cache" \
     --env-file .env \
     -v "$WORKSPACE_DIR:/workspace" \
     -v "$DATA_DIR:/data" \
