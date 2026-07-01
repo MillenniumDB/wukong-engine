@@ -13,6 +13,9 @@ from wukong_engine.core.documents.model.values import DocumentSourceMode
 # Logging
 logger = logging.getLogger(__name__)
 
+# Constants
+IGNORE_PREFIXES = ('.', '~', '~$')  # Ignore hidden and temporary files
+
 
 class LocalDocumentStreamProvider(DocumentStreamProvider):
     """Streams documents from a list of sources stored on the local filesystem."""
@@ -54,9 +57,14 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             case DocumentSourceMode.FILE:
                 yield path
             case DocumentSourceMode.DIRECTORY:
-                yield from path.glob('*.txt')
+                yield from (p for p in path.glob('*.txt') if self._is_valid_document(p))
             case DocumentSourceMode.RECURSIVE:
-                yield from path.rglob('*.txt')
+                yield from (p for p in path.rglob('*.txt') if self._is_valid_document(p))
+
+    @staticmethod
+    def _is_valid_document(path: Path) -> bool:
+        """Whether the given path is a valid text file, excluding common system/hidden files."""
+        return path.is_file() and not path.name.startswith(IGNORE_PREFIXES)
 
     def _load_document(self, path: Path) -> Document:
         """Load a Document from a file path."""
