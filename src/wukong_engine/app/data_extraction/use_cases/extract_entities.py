@@ -3,9 +3,9 @@ import logging
 from wukong_engine.app.data_extraction.elements.values import BatchStatus, ExtractionStatus
 from wukong_engine.app.data_extraction.exceptions import DataExtractionError
 from wukong_engine.app.data_extraction.services import (
-    EntityExtractionMetricsTracker,
     ExtractionBatchSynchronizer,
     ExtractionEngine,
+    ExtractionMetricsTracker,
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
@@ -24,7 +24,7 @@ class ExtractEntities:
         uow: UnitOfWork,
         extraction_engine: ExtractionEngine,
         batch_synchronizer: ExtractionBatchSynchronizer,
-        metrics_tracker: EntityExtractionMetricsTracker,
+        metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
         """Initialize the use case with necessary dependencies."""
         self._uow = uow
@@ -35,6 +35,7 @@ class ExtractEntities:
     def _materialize_all_extractions(self, graph_model: GraphModel) -> None:
         """Materialize extractions for all context levels."""
         # Setup entity types and associated document collections
+        logger.info('Materializing ALL pending entity extractions...')
         with self._uow as tx:
             entity_types = tuple(graph_model.active_entity_types.values())
             tx.entities.add_entity_types(et.name for et in entity_types)
@@ -61,7 +62,7 @@ class ExtractEntities:
                 PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
                 PipelineCheckpointStatus.COMPLETED,
             )
-            logger.info('Materialized all pending entity extractions')
+        logger.info('Materialized ALL pending entity extractions!')
 
     def _recover_extractions(self) -> None:
         """Recover extractions that are in an incomplete/inconsistent state."""
@@ -105,22 +106,24 @@ class ExtractEntities:
         if not is_materialized:
             self._materialize_all_extractions(graph_model)
 
-        # Batch synchronization: Manages lifecycle for submitted batches
-        # TODO: Refactor metrics tracking to be more granular and context-aware
-        self._metrics_tracker.set_context_level(ContextLevel.CHUNK)
-        await self._batch_synchronizer.synchronize(graph_model)
-
-        # Perform recovery before starting the extraction process
-        self._recover_extractions()
-
         # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
         try:
             for context_level in context_levels:
                 # Process extractions for the current context level if there are remaining sources
                 if self._remaining_sources(context_level) > 0 or self._remaining_batches(context_level) > 0:
-                    # Set the context level in the metrics tracker, to setup metrics tracking for this context level
+                    # Set the context level in the metrics tracker
                     self._metrics_tracker.set_context_level(context_level)
+
+                    # Batch Synchronization: Manage lifecycle for submitted batches
+                    logger.info(f'Synchronizing batches for {context_level.value}S...')
+                    await self._batch_synchronizer.synchronize(graph_model)
+                    logger.info(f'Finished batch synchronization for {context_level.value}S!')
+
+                    # Recovery: Handle extractions that are in an incomplete/inconsistent state
+                    logger.info(f'Recovering extractions for {context_level.value}S...')
+                    self._recover_extractions()
+                    logger.info(f'Finished recovering extractions for {context_level.value}S!')
 
                     # Run extractions for the current context level
                     logger.info(f'Extracting entities from {context_level.value}S...')

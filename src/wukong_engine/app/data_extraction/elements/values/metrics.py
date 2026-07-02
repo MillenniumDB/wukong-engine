@@ -111,13 +111,32 @@ class ExtractionMetrics:
 
     @property
     def estimated_completion_time(self) -> float:
-        """Estimated time to complete remaining sources, in hours."""
+        """Estimated time to complete remaining sources, in seconds."""
         throughput = self.smoothed_job_resolution_rate  # Jobs resolved per minute
         remaining_jobs = self.remaining_sources  # Ideal number of jobs remaining to process all sources
         if throughput > 0:
-            estimated_minutes = remaining_jobs / throughput
-            return estimated_minutes / 60  # Convert minutes to hours
+            return (remaining_jobs / throughput) * 60  # Get ETA in seconds
         return float('inf')  # Infinite time if throughput is zero or undefined
+
+    @property
+    def estimated_completion_time_str(self) -> str:
+        """Estimated completion time as a human-readable string."""
+        # If the estimated time is infinite, return a special string
+        if self.estimated_completion_time == float('inf'):
+            return '∞'
+
+        # Convert total seconds to a human-readable format (days, hours, minutes, seconds)
+        total_seconds = round(self.estimated_completion_time)
+        days, remainder = divmod(total_seconds, 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        if days:
+            return f'{days}d {hours}h'
+        if hours:
+            return f'{hours}h {minutes}m'
+        if minutes:
+            return f'{minutes}m {seconds}s'
+        return f'{seconds}s'
 
     # Execution
 
@@ -153,7 +172,7 @@ class ExtractionMetrics:
         """
         if self.performance_state.timestamp is None:
             return None
-        return time.time() - self.performance_state.timestamp
+        return time.monotonic() - self.performance_state.timestamp
 
     @property
     def job_resolution_rate(self) -> float:

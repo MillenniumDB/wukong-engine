@@ -4,7 +4,7 @@ from .batch_submitter import ConcurrentExtractionBatchSubmitter, ExtractionBatch
 from .batch_synchronizer import ConcurrentExtractionBatchSynchronizer, ExtractionBatchSynchronizer
 from .engine import BatchExtractionEngine, ExtractionEngine, RealtimeExtractionEngine
 from .executor import ConcurrentExtractionExecutor, ExtractionExecutor
-from .metrics_tracker import EntityExtractionMetricsTracker, ExtractionMetricsTracker
+from .metrics_tracker import ExtractionMetricsTracker
 from .repository import EntityExtractionRepository, ExtractionRepository
 from .request_builder import EntityExtractionRequestBuilder, ExtractionRequestBuilder
 from .result_materializer import EntityExtractionResultMaterializer, ExtractionResultMaterializer
@@ -14,7 +14,6 @@ __all__ = [
     'ConcurrentExtractionBatchSubmitter',
     'ConcurrentExtractionBatchSynchronizer',
     'ConcurrentExtractionExecutor',
-    'EntityExtractionMetricsTracker',
     'EntityExtractionRepository',
     'EntityExtractionRequestBuilder',
     'EntityExtractionResultMaterializer',

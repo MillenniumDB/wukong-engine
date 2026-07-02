@@ -82,6 +82,9 @@ class RealtimeExtractionEngine(ExtractionEngine):
 
     async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run extractions for a given context level, using the provided graph model."""
+        # Initial metrics log
+        self._metrics_tracker.request_metrics(force_log=True, force_update=True)
+
         # Execute all jobs and process results
         extraction_requests = self._stream_extraction_requests(context_level, graph_model)
         try:
@@ -94,6 +97,9 @@ class RealtimeExtractionEngine(ExtractionEngine):
                         error=result.error,
                         metrics=result.metrics,
                     )
+
+                    # Request a metrics log after each job failure
+                    self._metrics_tracker.request_metrics()
 
                     # Handle critical error by requesting termination of the run
                     if result.error_severity == ErrorSeverity.CRITICAL:
@@ -114,8 +120,11 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     usage_metrics=result.metrics,
                 )
 
-                # Request a metrics log after each job execution
-                self._metrics_tracker.log_metrics()
+                # Request a metrics log after each job completion
+                self._metrics_tracker.request_metrics()
+
+            # Final metrics log
+            self._metrics_tracker.request_metrics(force_log=True, force_update=True)
 
         # Graceful termination on critical error
         except ExtractionExecutionError as exc:
@@ -184,8 +193,8 @@ class BatchExtractionEngine(ExtractionEngine):
 
     async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
         """Run extractions for a given context level, using the provided graph model."""
-        # Request a metrics log before starting the batch submission process, to capture the initial state of the system
-        self._metrics_tracker.log_metrics()
+        # Initial metrics log (do not force update since batching performance is long-lived)
+        self._metrics_tracker.request_metrics(force_log=True)
 
         # Stream all batches and submit them
         batch_submissions = self._stream_batch_submissions(context_level, graph_model)
@@ -200,6 +209,9 @@ class BatchExtractionEngine(ExtractionEngine):
                             error=result.error,
                         )
 
+                    # Request a metrics log after each batch submission failure
+                    self._metrics_tracker.request_metrics()
+
                     # Handle critical error by requesting termination of the run
                     if result.error_severity == ErrorSeverity.CRITICAL:
                         logger.warning(
@@ -212,8 +224,11 @@ class BatchExtractionEngine(ExtractionEngine):
                 # Persist the batch submission result and associate the jobs with the batch
                 self._repository.register_batch_submission(result.batch, result.jobs)
 
-            # Request a metrics log after each batch submission
-            self._metrics_tracker.log_metrics()
+                # Request a metrics log after each batch submission
+                self._metrics_tracker.request_metrics()
+
+            # Final metrics log (do not force update since batching performance is long-lived)
+            self._metrics_tracker.request_metrics(force_log=True)
 
         # Graceful termination on critical error
         except ExtractionExecutionError as exc:

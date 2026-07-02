@@ -1,8 +1,7 @@
-"""Extraction Metrics Trackers."""
+"""Extraction Metrics Tracker."""
 
 import logging
 import time
-from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements.values import ExtractionMetrics, PerformanceMetricsState
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
@@ -13,55 +12,41 @@ from wukong_engine.core.documents.model.values import ContextLevel
 logger = logging.getLogger(__name__)
 
 # Intervals for logging and performance updates, in seconds
-REALTIME_LOG_METRICS_INTERVAL = 30  # Displaying metrics when in real-time mode (default: 30 seconds)
-BATCH_LOG_METRICS_INTERVAL = 30  # Displaying metrics when in batch mode (default: 30 seconds)
-REALTIME_PERFORMANCE_INTERVAL = 10  # Updating performance when in real-time mode (default: 10 seconds)
-BATCH_PERFORMANCE_INTERVAL = 60  # Updating performance when in batch mode (default: 60 seconds)
+
+# Real-time mode intervals
+REALTIME_LOG_INTERVAL = 30  # Display metrics (default: 30 seconds)
+REALTIME_PERFORMANCE_INTERVAL = 10  # Update performance state (default: 10 seconds)
+
+# Batch mode intervals
+BATCH_LOG_INTERVAL = 300  # Display metrics (default: 300 seconds / 5 minutes)
+BATCH_PERFORMANCE_INTERVAL = 300  # Update performance state (default: 300 seconds / 5 minutes)
 
 
-class ExtractionMetricsTracker(Protocol):
-    """Manages and tracks metrics related to data extraction."""
-
-    def log_metrics(self) -> None:
-        """Collect and log extraction metrics for the current context level."""
-        ...
-
-    def set_context_level(self, context_level: ContextLevel) -> None:
-        """Set the context level for metrics tracking."""
-        ...
-
-    def reset(self) -> None:
-        """Reset the metrics tracker back to its initial state."""
-        ...
-
-
-# TODO: Fix metrics bugs
 # TODO: Separate job counts and duration metrics for real-time and batch processing (group by execution mode and then by status),
 # these affect the rates and ETA, we choose the one corresponding to the current execution mode
 # TODO: Add batch metrics (similar to job counts + duration)
 # TODO: Include batch counts and smoothed rate in the performance state, track them the same way
 # TODO: Add batch metrics to the calculated metrics, display them when in batch mode
 # TODO: Batch smoothing should be different or not even use smoothing due to longer time intervals
-class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
+class ExtractionMetricsTracker:
     """Manages and tracks metrics related to entity extraction."""
 
     def __init__(self, uow: UnitOfWork, execution_mode: ExecutionMode) -> None:
         """Initialize the tracker with necessary dependencies."""
         self._uow = uow
         self._execution_mode = execution_mode
-        self._log_interval = (
-            REALTIME_LOG_METRICS_INTERVAL if execution_mode == ExecutionMode.REALTIME else BATCH_LOG_METRICS_INTERVAL
-        )
+        self._log_interval = BATCH_LOG_INTERVAL if execution_mode == ExecutionMode.BATCH else REALTIME_LOG_INTERVAL
         self._performance_interval = (
-            REALTIME_PERFORMANCE_INTERVAL if execution_mode == ExecutionMode.REALTIME else BATCH_PERFORMANCE_INTERVAL
+            BATCH_PERFORMANCE_INTERVAL if execution_mode == ExecutionMode.BATCH else REALTIME_PERFORMANCE_INTERVAL
         )
         self._context_level: ContextLevel | None = None
         self._performance_state = PerformanceMetricsState()
+        self._log_timestamp = time.monotonic()
 
     def _update_performance_state(self, metrics: ExtractionMetrics) -> None:
         """Update the performance state with new metrics."""
         self._performance_state = PerformanceMetricsState(
-            timestamp=time.time(),
+            timestamp=time.monotonic(),
             job_status_counts=dict(metrics.job_status_counts),
             smoothed_job_resolution_rate=metrics.smoothed_job_resolution_rate,
         )
@@ -92,8 +77,12 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
 
         return metrics
 
-    def _format_metrics(self, metrics: ExtractionMetrics) -> str:
+    def _format_metrics(self, metrics: ExtractionMetrics, context_level: ContextLevel) -> str:
         """Format extraction metrics for logging and display."""
+        # Title
+        name = f' Extraction Metrics ({context_level.value}S) '
+        title = '=' * 24 + name + '=' * 24 + '\n\n'
+
         # Progress
         progress = (
             'Progress:\n\n'
@@ -106,7 +95,7 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
             f'  {"Failed:":<18} {metrics.source_counts["failed"]:>15,}  {metrics.source_percentages["failed"]:>5.1f}%\n'
             '\n'
             f'  {"Remaining:":<18} {metrics.remaining_sources:>15,}\n'
-            f'  {"ETA:":<18} {metrics.estimated_completion_time:>15.2f} hours\n'
+            f'  {"ETA:":<18} {metrics.estimated_completion_time_str:>15}\n'
             '\n'
         )
 
@@ -156,25 +145,31 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
             f'    {"Reasoning:":<16} {metrics.average_token_counts["reasoning"]:>15,}\n'
         )
 
-        return f'{progress}{execution}{output}{usage}'
+        # Ending
+        ending = '\n' + '=' * (48 + len(name))
 
-    def log_metrics(self) -> None:
-        """Collect and log extraction metrics for the current context level."""
-        # Determine whether to update performance state and log metrics based on elapsed time since last update
+        return f'{title}{progress}{execution}{output}{usage}{ending}'
+
+    def request_metrics(self, *, force_log: bool = False, force_update: bool = False) -> None:
+        """Collect and log extraction metrics for the current context level, depending on the elapsed time."""
+        # Determine whether to update performance state and log metrics based on elapsed time since last update/log
         should_update = True
         should_log = True
-        # TODO: Fix metrics bugs
-        # if self._performance_state.timestamp is not None:
-        #     elapsed_time = time.time() - self._performance_state.timestamp
-        #     if elapsed_time < self._performance_interval:
-        #         should_update = False
-        #     if elapsed_time < self._log_interval:
-        #         should_log = False
+        if self._performance_state.timestamp is not None:
+            elapsed_time_since_update = time.monotonic() - self._performance_state.timestamp
+            elapsed_time_since_log = time.monotonic() - self._log_timestamp
+            if not force_update and elapsed_time_since_update < self._performance_interval:
+                should_update = False
+            if not force_log and elapsed_time_since_log < self._log_interval:
+                should_log = False
 
-        # Collect metrics
-        metrics = self._collect_metrics(should_update_performance=should_update)
+        # Collect metrics if either performance update or logging is needed
+        metrics: ExtractionMetrics | None = None
+        if not (should_log or should_update):
+            return
 
         # If metrics collection failed, log a warning and skip logging
+        metrics = self._collect_metrics(should_update_performance=should_update)
         context_level = self._context_level
         if metrics is None or context_level is None:
             logger.warning('Metrics collection failed. Skipping metrics logging.')
@@ -182,9 +177,9 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
 
         # Log the formatted metrics
         if should_log:
-            logger.info(
-                f'Current entity extraction metrics for {context_level.value}S\n\n{self._format_metrics(metrics)}',
-            )
+            formatted_metrics = self._format_metrics(metrics, context_level)
+            logger.info(f'Current entity extraction metrics for {context_level.value}S\n\n{formatted_metrics}')
+            self._log_timestamp = time.monotonic()
 
     def set_context_level(self, context_level: ContextLevel) -> None:
         """Set the context level for metrics tracking."""
@@ -209,3 +204,4 @@ class EntityExtractionMetricsTracker(ExtractionMetricsTracker):
         """Reset the metrics tracker back to its initial state."""
         self._context_level = None
         self._performance_state = PerformanceMetricsState()
+        self._log_timestamp = time.monotonic()

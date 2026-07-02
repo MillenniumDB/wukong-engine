@@ -8,10 +8,10 @@ from wukong_engine.app.data_extraction.services import (
     ConcurrentExtractionBatchSubmitter,
     ConcurrentExtractionBatchSynchronizer,
     ConcurrentExtractionExecutor,
-    EntityExtractionMetricsTracker,
     EntityExtractionRepository,
     EntityExtractionRequestBuilder,
     EntityExtractionResultMaterializer,
+    ExtractionMetricsTracker,
     RealtimeExtractionEngine,
 )
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities
@@ -94,7 +94,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     batch_submitter = ConcurrentExtractionBatchSubmitter(llm_client=llm_client)
 
     # Entity extraction services
-    entity_metrics_tracker = EntityExtractionMetricsTracker(
+    entity_metrics_tracker = ExtractionMetricsTracker(
         uow=staging_uow,
         execution_mode=app_config.llm.execution_mode,
     )

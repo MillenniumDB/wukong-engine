@@ -68,16 +68,22 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
         results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=MAX_RESULTS_CONCURRENCY)
 
+        # Initial metrics log (do not force update since batching performance is long-lived)
+        self._metrics_tracker.request_metrics(force_log=True)
+
         # Stream active batches and retrieve their provider statuses concurrently, resolving them locally
         batches = self._repository.stream_active_batches()
         async for batch, status_result in status_runner.run(batches):
             self._resolve_batch_status(batch, status_result)
-        self._metrics_tracker.log_metrics()  # Request a metrics log after the phase of batch status retrieval
+            self._metrics_tracker.request_metrics()  # Request a metrics log after each batch status resolution
 
         # Process completed batches concurrently for result retrieval, then resolve them locally
         async for batch, completed_result in results_runner.run(self._completed_batches):
             self._resolve_batch_results(batch, completed_result, graph_model)
-        self._metrics_tracker.log_metrics()  # Request a metrics log after the phase of batch result retrieval
+            self._metrics_tracker.request_metrics()  # Request a metrics log after each completed batch
+
+        # Final metrics log (do not force update since batching performance is long-lived)
+        self._metrics_tracker.request_metrics(force_log=True)
 
     @staticmethod
     def _map_batch_status(provider_status: str) -> BatchStatus:
