@@ -49,4 +49,3 @@ class FieldName(_ModelName):
     """Field name."""
 
     _PATTERN = r'^[a-z][a-z0-9_]{0,63}$'
-    _RESERVED = frozenset({'extracted_from'})

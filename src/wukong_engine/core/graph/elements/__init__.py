@@ -4,7 +4,7 @@ This package contains the objects that make up the real graph instance.
 """
 
 from .entity import Entity
-from .provenance import EntityChunkProvenance, EntityDocumentProvenance
+from .provenance import EntityChunkProvenance, EntityDocumentProvenance, RelationshipChunkProvenance
 from .relationship import Relationship
 
 __all__ = [
@@ -12,4 +12,5 @@ __all__ = [
     'EntityChunkProvenance',
     'EntityDocumentProvenance',
     'Relationship',
+    'RelationshipChunkProvenance',
 ]

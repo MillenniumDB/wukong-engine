@@ -1,5 +1,5 @@
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from types import MappingProxyType
 
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
@@ -22,6 +22,12 @@ class RelationshipType:
     identity_policy: RelationshipIdentityPolicy
     fields: MappingProxyType[FieldName, RelationshipField]
     default_merge_strategy: MergeStrategy
+
+    # Private index for fast retrieval of fields by retrieval mode
+    _fields_index: MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]] = field(
+        init=False,
+        repr=False,
+    )
 
     def __str__(self) -> str:
         """User-friendly string representation of the relationship type."""
@@ -48,6 +54,7 @@ class RelationshipType:
         """Validate relationship type invariants."""
         self._validate_endpoints()
         self._validate_primary_key()
+        object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_endpoints(self) -> None:
         """Validate that all context level pairings in endpoints are compatible."""
@@ -86,3 +93,18 @@ class RelationshipType:
                 raise ValueError(
                     f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
                 )
+
+    def _build_fields_index(self) -> MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]]:
+        """Precompute fields by retrieval mode for fast lookups."""
+        index: dict[RelationshipRetrievalMode, list[RelationshipField]] = {
+            mode: [] for mode in RelationshipRetrievalMode
+        }
+        for relationship_field in self.fields.values():
+            index[relationship_field.retrieval_mode].append(relationship_field)
+        return MappingProxyType(
+            {retrieval_mode: tuple(relationship_fields) for retrieval_mode, relationship_fields in index.items()},
+        )
+
+    def fields_for(self, retrieval_mode: RelationshipRetrievalMode) -> tuple[RelationshipField, ...]:
+        """Get the relevant fields for a specific retrieval mode."""
+        return self._fields_index.get(retrieval_mode, ())

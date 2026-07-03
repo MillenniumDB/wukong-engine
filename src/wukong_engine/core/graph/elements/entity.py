@@ -7,7 +7,6 @@ from wukong_engine.core.graph.model import EntityField, EntityType
 from .values import EntityId
 
 
-# TODO: Consider version when exporting
 @dataclass(frozen=True)
 class Entity:
     """Entity instance in the graph."""
