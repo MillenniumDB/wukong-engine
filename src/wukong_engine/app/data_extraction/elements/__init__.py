@@ -6,11 +6,11 @@ from .extraction import (
     BatchSubmissionRequest,
     BatchSubmissionResult,
     CompletedBatchResult,
-    ExtractionContext,
     ExtractionRequest,
     ExtractionResult,
+    ExtractionSpec,
 )
-from .job import MAX_FAILED_ATTEMPTS, EntityExtractionJob, ExtractionJob, SimpleExtractionJob
+from .job import MAX_FAILED_ATTEMPTS, ExtractionJob
 
 __all__ = [
     'MAX_FAILED_ATTEMPTS',
@@ -19,11 +19,9 @@ __all__ = [
     'BatchSubmissionRequest',
     'BatchSubmissionResult',
     'CompletedBatchResult',
-    'EntityExtractionJob',
     'ExtractionBatch',
-    'ExtractionContext',
     'ExtractionJob',
     'ExtractionRequest',
     'ExtractionResult',
-    'SimpleExtractionJob',
+    'ExtractionSpec',
 ]

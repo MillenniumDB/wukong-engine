@@ -13,15 +13,14 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.app.llm.elements import LLMBatchResult
 from wukong_engine.app.llm.elements.values import ReasoningEffort
-from wukong_engine.app.llm.model import LLM
 
 from .batch import ExtractionBatch
 from .job import ExtractionJob
 
 
 @dataclass(frozen=True)
-class ExtractionContext:
-    """Generic structured context for an extraction job."""
+class ExtractionSpec:
+    """Structured specification for an extraction job."""
 
     document_context: str
     task: str
@@ -32,11 +31,10 @@ class ExtractionContext:
 
 @dataclass(frozen=True)
 class ExtractionRequest:
-    """Request to process an extraction job, containing the job and its context."""
+    """Request to process an extraction job, containing the job and its specification."""
 
     job: ExtractionJob
-    context: ExtractionContext
-    model: LLM | None = None
+    spec: ExtractionSpec
     reasoning_effort: ReasoningEffort | None = None
     temperature: float | None = None
 
@@ -45,7 +43,7 @@ class ExtractionRequest:
 class ExtractionResult:
     """Extraction result for a single extraction job.
 
-    Contains the job, its status, the extracted data (if successful), and any errors encountered during processing.
+    Contains the final job status, the extracted data (if successful), and any errors encountered during processing.
     """
 
     status: JobStatus
@@ -58,7 +56,10 @@ class ExtractionResult:
 
 @dataclass(frozen=True)
 class BatchSubmissionRequest:
-    """Request to submit a batch of extraction requests."""
+    """Request to submit a batch of extraction requests.
+
+    Each request contains the extraction job and its associated specification.
+    """
 
     batch: Iterable[ExtractionRequest]
 
@@ -67,12 +68,11 @@ class BatchSubmissionRequest:
 class BatchSubmissionResult:
     """Submission result for a batch of extraction requests.
 
-    Contains the batch and its associated jobs.
+    Contains the submitted batch.
     If the submission failed, the batch will be None and the error details will be provided.
     """
 
     batch: ExtractionBatch | None
-    jobs: tuple[ExtractionJob, ...]
     error: str | None = None
     error_severity: ErrorSeverity | None = None
 

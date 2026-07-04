@@ -7,8 +7,8 @@ from wukong_engine.app.data_extraction.elements import (
     BatchStatusResult,
     CompletedBatchResult,
     ExtractionBatch,
+    ExtractionJob,
     ExtractionResult,
-    SimpleExtractionJob,
 )
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
@@ -220,20 +220,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         # Mark batch as completed
         self._repository.complete_batch(batch)
 
-    def _process_extraction_result(self, result: ExtractionResult, job: SimpleExtractionJob, model: GraphModel) -> None:
+    def _process_extraction_result(self, result: ExtractionResult, job: ExtractionJob, model: GraphModel) -> None:
         """Process an individual extraction result, materializing and persisting it."""
         # Handle failed job
         if result.status == JobStatus.FAILED:
-            self._repository.fail_extraction(
-                job,
-                retry_policy=result.retry_policy,
-                error=result.error,
-                metrics=result.metrics,
-            )
+            self._repository.fail_job(job, retry_policy=result.retry_policy, error=result.error, metrics=result.metrics)
             return
 
         # Materialization of results into graph objects
-        graph_objects = self._result_materializer.materialize(result, model, job.context_ref.level)
+        graph_objects = self._result_materializer.materialize(result, job, model)
 
         # Persist graph objects and provenance, update job status to completed
-        self._repository.complete_extraction(job, graph_objects, usage_metrics=result.metrics)
+        self._repository.complete_job(job, graph_objects, usage_metrics=result.metrics)

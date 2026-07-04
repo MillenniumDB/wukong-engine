@@ -51,15 +51,14 @@ class SQLitePipelineStore(PipelineStore):
 
     def get_checkpoint_status(self, checkpoint: PipelineCheckpoint) -> PipelineCheckpointStatus:
         """Get the status of a specific checkpoint."""
-        cursor = self._conn.execute(
+        row = self._conn.execute(
             """
             SELECT checkpoint_status
             FROM pipeline_checkpoints
             WHERE checkpoint_name = ?
             """,
             (checkpoint.value,),
-        )
-        row = cursor.fetchone()
+        ).fetchone()
 
         # If no row is found, treat it as PENDING
         if row is None:

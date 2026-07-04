@@ -109,15 +109,15 @@ class SQLiteDocumentStore(DocumentStore):
 
     def stream_all_documents(self) -> Iterator[Document]:
         """Stream all documents present in the store."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             'SELECT content_id, instance_id, source_uri FROM documents ORDER BY content_id',
         )
-        for row in cursor:
+        for row in rows:
             yield self._row_to_document(row)
 
     def stream_all_chunks(self) -> Iterator[Chunk]:
         """Stream all chunks present in the store."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             """
             SELECT
                 c.content_id AS chunk_content_id,
@@ -133,7 +133,7 @@ class SQLiteDocumentStore(DocumentStore):
             ORDER BY c.document_content_id, c.chunk_index
             """,
         )
-        for row in cursor:
+        for row in rows:
             yield self._row_to_chunk(row)
 
     def clear(self) -> None:

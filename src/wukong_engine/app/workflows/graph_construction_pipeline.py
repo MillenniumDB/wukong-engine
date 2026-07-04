@@ -3,7 +3,7 @@
 import logging
 
 from wukong_engine.app.config import ApplicationConfig
-from wukong_engine.app.data_extraction.use_cases import ExtractEntities
+from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
@@ -26,7 +26,7 @@ class GraphConstructionPipeline:
         get_graph_model: GetGraphModel,
         ingest_documents: IngestDocuments,
         extract_entities: ExtractEntities,
-        # extract_relationships: ExtractRelationships,
+        extract_relationships: ExtractRelationships,
         # export_graph: ExportGraph,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
@@ -36,20 +36,20 @@ class GraphConstructionPipeline:
         self._get_graph_model = get_graph_model
         self._ingest_documents = ingest_documents
         self._extract_entities = extract_entities
-        # self._extract_relationships = extract_relationships
+        self._extract_relationships = extract_relationships
         # self._export_graph = export_graph
 
-    # TODO: Add | ExtractRelationships | ExportGraph, then remove the None and raise an error if a step is not found
+    # TODO: Add | ExportGraph, then remove the None and raise an error if a step is not found
     # TODO: When all steps are here, remove the check for if use case is not None in all places that call this function
-    def _step_to_use_case(self, step: PipelineStep) -> IngestDocuments | ExtractEntities | None:
+    def _step_to_use_case(self, step: PipelineStep) -> IngestDocuments | ExtractEntities | ExtractRelationships | None:
         """Map a pipeline step to its corresponding use case."""
         match step:
             case PipelineStep.INGEST_DOCUMENTS:
                 return self._ingest_documents
             case PipelineStep.EXTRACT_ENTITIES:
                 return self._extract_entities
-            # case PipelineStep.EXTRACT_RELATIONSHIPS:
-            #     return self._extract_relationships
+            case PipelineStep.EXTRACT_RELATIONSHIPS:
+                return self._extract_relationships
             # case PipelineStep.EXPORT_GRAPH:
             #     return self._export_graph
             case _:
@@ -92,7 +92,6 @@ class GraphConstructionPipeline:
         document_registry.validate_collections(frozenset(unique_collections))
         logger.info(f'Graph Model obtained successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
-        # TODO: Relationship extraction
         # TODO: Export graph
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
@@ -134,6 +133,8 @@ class GraphConstructionPipeline:
                         self._ingest_documents.execute(document_registry)
                     case PipelineStep.EXTRACT_ENTITIES:
                         await self._extract_entities.execute(graph_model)
+                    case PipelineStep.EXTRACT_RELATIONSHIPS:
+                        await self._extract_relationships.execute(graph_model)
 
                 # Stop the pipeline if the step did not fully complete
                 completed = False

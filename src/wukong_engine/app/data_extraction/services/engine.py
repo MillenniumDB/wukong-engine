@@ -2,7 +2,7 @@ import logging
 from collections.abc import Iterator
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import BatchSubmissionRequest, ExtractionRequest, SimpleExtractionJob
+from wukong_engine.app.data_extraction.elements import BatchSubmissionRequest, ExtractionRequest
 from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, JobRetryPolicy, JobStatus
 from wukong_engine.app.data_extraction.exceptions import ExtractionExecutionError, ExtractionRequestBuildError
 from wukong_engine.app.shared.iterables import batched
@@ -71,11 +71,7 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     requests.append(self._request_builder.build(job, graph_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
-                    self._repository.fail_extraction(
-                        SimpleExtractionJob(job.id, job.source.context_ref),
-                        retry_policy=JobRetryPolicy.DEFERRED,
-                        error=str(exc),
-                    )
+                    self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
 
             # Yield each request in the batch
             yield from requests
@@ -91,8 +87,8 @@ class RealtimeExtractionEngine(ExtractionEngine):
             async for request, result in self._executor.execute_many(extraction_requests):
                 # Handle failed job
                 if result.status == JobStatus.FAILED:
-                    self._repository.fail_extraction(
-                        SimpleExtractionJob(request.job.id, request.job.source.context_ref),
+                    self._repository.fail_job(
+                        request.job,
                         retry_policy=result.retry_policy,
                         error=result.error,
                         metrics=result.metrics,
@@ -111,14 +107,10 @@ class RealtimeExtractionEngine(ExtractionEngine):
                     continue
 
                 # Materialization of results into graph objects
-                graph_objects = self._result_materializer.materialize(result, graph_model, context_level)
+                graph_objects = self._result_materializer.materialize(result, request.job, graph_model)
 
                 # Persist graph objects and provenance, update job status to completed
-                self._repository.complete_extraction(
-                    SimpleExtractionJob(request.job.id, request.job.source.context_ref),
-                    graph_objects,
-                    usage_metrics=result.metrics,
-                )
+                self._repository.complete_job(request.job, graph_objects, usage_metrics=result.metrics)
 
                 # Request a metrics log after each job completion
                 self._metrics_tracker.request_metrics()
@@ -171,11 +163,7 @@ class BatchExtractionEngine(ExtractionEngine):
                     requests.append(self._request_builder.build(job, graph_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
-                    self._repository.fail_extraction(
-                        SimpleExtractionJob(job.id, job.source.context_ref),
-                        retry_policy=JobRetryPolicy.DEFERRED,
-                        error=str(exc),
-                    )
+                    self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
 
             # Yield each request in the batch
             yield from requests
@@ -199,15 +187,14 @@ class BatchExtractionEngine(ExtractionEngine):
         # Stream all batches and submit them
         batch_submissions = self._stream_batch_submissions(context_level, graph_model)
         try:
-            async for result in self._submitter.submit_many(batch_submissions):
+            async for submission, result in self._submitter.submit_many(batch_submissions):
+                # Get jobs from the batch
+                jobs = tuple(request.job for request in submission.batch)
+
                 # Handle failed submission
                 if result.batch is None:
-                    for job in result.jobs:
-                        self._repository.fail_extraction(
-                            SimpleExtractionJob(job.id, job.source.context_ref),
-                            retry_policy=JobRetryPolicy.DEFERRED,
-                            error=result.error,
-                        )
+                    for job in jobs:
+                        self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=result.error)
 
                     # Request a metrics log after each batch submission failure
                     self._metrics_tracker.request_metrics()
@@ -222,7 +209,7 @@ class BatchExtractionEngine(ExtractionEngine):
                     continue
 
                 # Persist the batch submission result and associate the jobs with the batch
-                self._repository.register_batch_submission(result.batch, result.jobs)
+                self._repository.register_batch_submission(result.batch, jobs)
 
                 # Request a metrics log after each batch submission
                 self._metrics_tracker.request_metrics()

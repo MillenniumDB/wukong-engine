@@ -5,8 +5,9 @@ import time
 
 from wukong_engine.app.data_extraction.elements.values import ExtractionMetrics, PerformanceMetricsState
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
-from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
+
+from .repository import ExtractionRepository
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -29,11 +30,11 @@ BATCH_PERFORMANCE_INTERVAL = 300  # Update performance state (default: 300 secon
 # TODO: Add batch metrics to the calculated metrics, display them when in batch mode
 # TODO: Batch smoothing should be different or not even use smoothing due to longer time intervals
 class ExtractionMetricsTracker:
-    """Manages and tracks metrics related to entity extraction."""
+    """Manages and tracks data extraction metrics."""
 
-    def __init__(self, uow: UnitOfWork, execution_mode: ExecutionMode) -> None:
+    def __init__(self, repository: ExtractionRepository, execution_mode: ExecutionMode) -> None:
         """Initialize the tracker with necessary dependencies."""
-        self._uow = uow
+        self._repository = repository
         self._execution_mode = execution_mode
         self._log_interval = BATCH_LOG_INTERVAL if execution_mode == ExecutionMode.BATCH else REALTIME_LOG_INTERVAL
         self._performance_interval = (
@@ -60,16 +61,7 @@ class ExtractionMetricsTracker:
             return None
 
         # Collect metrics from the database
-        with self._uow as tx:
-            metrics = ExtractionMetrics(
-                source_status_counts=tx.extraction.entities.count_sources_by_status(context_level),
-                job_status_counts=tx.extraction.entities.count_jobs_by_status(context_level),
-                job_status_duration=tx.extraction.entities.get_job_duration_metrics_by_status(context_level),
-                object_count=tx.entities.count_entities(context_level),
-                object_mentions=tx.entities.count_entity_mentions(context_level),
-                token_usage=tx.extraction.entities.get_job_token_metrics_by_status(context_level),
-                performance_state=self._performance_state,
-            )
+        metrics = self._repository.get_extraction_metrics(context_level, self._performance_state)
 
         # Update the performance state with the newly collected metrics, if requested
         if should_update_performance:
@@ -121,10 +113,10 @@ class ExtractionMetricsTracker:
         # Output
         output = (
             'Output:\n\n'
-            f'  {"Unique Entities:":<18} {metrics.object_count:>15,}\n'
-            f'  {"Entity Mentions:":<18} {metrics.object_mentions:>15,}\n'
-            f'  {"Mentions / Entity:":<18} {metrics.mentions_per_object:>15.1f}\n'
-            f'  {"Entities / Source:":<18} {metrics.objects_per_source:>15.1f}\n'
+            f'  {"Unique Objects:":<18} {metrics.object_count:>15,}\n'
+            f'  {"Object Mentions:":<18} {metrics.object_mentions:>15,}\n'
+            f'  {"Mentions / Object:":<18} {metrics.mentions_per_object:>15.1f}\n'
+            f'  {"Objects / Source:":<18} {metrics.objects_per_source:>15.1f}\n'
             f'  {"Mentions / Source:":<18} {metrics.mentions_per_source:>15.1f}\n'
             '\n'
         )
@@ -178,7 +170,7 @@ class ExtractionMetricsTracker:
         # Log the formatted metrics
         if should_log:
             formatted_metrics = self._format_metrics(metrics, context_level)
-            logger.info(f'Current entity extraction metrics for {context_level.value}S\n\n{formatted_metrics}')
+            logger.info(f'Current extraction metrics for {context_level.value}S\n\n{formatted_metrics}')
             self._log_timestamp = time.monotonic()
 
     def set_context_level(self, context_level: ContextLevel) -> None:

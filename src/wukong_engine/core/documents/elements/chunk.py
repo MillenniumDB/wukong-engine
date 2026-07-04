@@ -12,7 +12,6 @@ from .context_ref import ContextRef
 from .values import ChunkId, DocumentId
 
 
-# TODO: Include version in graph export
 @dataclass(frozen=True)
 class Chunk:
     """A chunk from a source document."""

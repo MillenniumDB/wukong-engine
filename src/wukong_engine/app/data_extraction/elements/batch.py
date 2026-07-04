@@ -43,7 +43,7 @@ class ExtractionBatch:
 
 @dataclass(frozen=True)
 class BatchCursor:
-    """Cursor for keyset pagination of extraction batches."""
+    """Cursor for keyset pagination of extraction batches inside the staging DB."""
 
     created_at: int
     batch_id: bytes

@@ -1,12 +1,7 @@
 from collections.abc import Iterable
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import (
-    BatchCursor,
-    EntityExtractionJob,
-    ExtractionBatch,
-    SimpleExtractionJob,
-)
+from wukong_engine.app.data_extraction.elements import BatchCursor, ExtractionBatch, ExtractionJob
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
     ExtractionStatus,
@@ -15,9 +10,10 @@ from wukong_engine.app.data_extraction.elements.values import (
     JobStatus,
     TokenUsageMetrics,
 )
-from wukong_engine.core.documents.elements import ContextRef
+from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.graph.elements import Entity
+from wukong_engine.core.graph.model.values import EntityTypeName
 
 
 class EntityExtractionStore(Protocol):
@@ -29,17 +25,17 @@ class EntityExtractionStore(Protocol):
         """Materialize all entity type extractions for a given context level."""
         ...
 
-    def create_job_batch(self, context_level: ContextLevel, size: int) -> tuple[EntityExtractionJob, ...]:
+    def create_job_batch(self, context_level: ContextLevel, size: int) -> tuple[ExtractionJob, ...]:
         """Create a batch of jobs to process pending extractions for a given context level."""
         ...
 
-    def schedule_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
+    def schedule_jobs(self, jobs: Iterable[ExtractionJob]) -> None:
         """Schedule entity extraction jobs for processing."""
         ...
 
     def update_job_status(
         self,
-        job: SimpleExtractionJob,
+        job: ExtractionJob,
         status: JobStatus,
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
@@ -48,13 +44,21 @@ class EntityExtractionStore(Protocol):
         """Update the status of a job and its associated extractions upon completion/termination."""
         ...
 
+    def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
+        """Retrieve the source context for a given extraction job."""
+        ...
+
+    def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
+        """Retrieve the entity types associated with a given extraction job."""
+        ...
+
     # Extraction Batches
 
     def register_batch(self, batch: ExtractionBatch) -> None:
         """Persist a submitted extraction batch."""
         ...
 
-    def link_jobs_to_batch(self, jobs: Iterable[EntityExtractionJob], batch: ExtractionBatch) -> None:
+    def link_jobs_to_batch(self, jobs: Iterable[ExtractionJob], batch: ExtractionBatch) -> None:
         """Link extraction jobs to a submitted batch."""
         ...
 
@@ -70,7 +74,7 @@ class EntityExtractionStore(Protocol):
         """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry."""
         ...
 
-    def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[SimpleExtractionJob, ...]:
+    def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[ExtractionJob, ...]:
         """Retrieve all active jobs linked to a given batch."""
         ...
 
@@ -102,7 +106,7 @@ class EntityExtractionStore(Protocol):
         """Get job token usage metrics grouped by job status for a given context level."""
         ...
 
-    #  Recovery
+    # Recovery
 
     def terminate_stalled_jobs(self) -> int:
         """Terminate stalled jobs that were never resolved to completion."""

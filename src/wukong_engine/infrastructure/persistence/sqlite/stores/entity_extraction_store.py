@@ -2,13 +2,7 @@ import sqlite3
 import time
 from collections.abc import Iterable
 
-from wukong_engine.app.data_extraction.elements import (
-    MAX_FAILED_ATTEMPTS,
-    BatchCursor,
-    EntityExtractionJob,
-    ExtractionBatch,
-    SimpleExtractionJob,
-)
+from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, BatchCursor, ExtractionBatch, ExtractionJob
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
     ExtractionBatchId,
@@ -24,11 +18,13 @@ from wukong_engine.app.staging.ports import EntityExtractionStore
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.extraction.model import EntityExtractionTask
-from wukong_engine.core.extraction.model.values import Cardinality, TaskType
+from wukong_engine.core.extraction.model.values import ExtractionTask
 from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
+
+# Constants
+EXTRACTION_JOB_TYPE = ExtractionTask.ENTITY_EXTRACTION.value
 
 
 class SQLiteEntityExtractionStore(EntityExtractionStore):
@@ -39,171 +35,6 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         self._conn = conn
 
     # Extraction Jobs
-
-    def _create_document_job_batch(self, size: int) -> tuple[EntityExtractionJob, ...]:
-        """Create a batch of active jobs to process pending document extractions."""
-        # Avoid invalid batch sizes
-        if size <= 0:
-            return ()
-
-        # Retrieve batch
-        cursor = self._conn.execute(
-            """
-            SELECT
-                d.content_id AS document_content_id,
-                d.instance_id AS document_instance_id,
-                d.source_uri AS source_uri,
-                ee.entity_type_name AS entity_type_name
-            FROM entity_extractions ee
-            JOIN documents d ON d.content_id = ee.context_content_id
-            WHERE ee.context_content_id IN (
-                SELECT DISTINCT context_content_id
-                FROM entity_extractions
-                WHERE context_level = ?
-                AND extraction_status = ?
-                ORDER BY context_content_id
-                LIMIT ?
-            )
-            ORDER BY ee.context_content_id, ee.entity_type_name
-            """,
-            (ContextLevel.DOCUMENT.value, ExtractionStatus.PENDING.value, size),
-        )
-
-        jobs: list[EntityExtractionJob] = []
-        current_document: Document | None = None
-        current_content_id: bytes | None = None
-        current_entity_types: list[EntityTypeName] = []
-
-        for row in cursor:
-            document_content_id = row['document_content_id']
-
-            if current_document is not None and document_content_id != current_content_id:
-                jobs.append(
-                    EntityExtractionJob.from_context(
-                        source=current_document,
-                        task=EntityExtractionTask(
-                            context_level=ContextLevel.DOCUMENT,
-                            cardinality=Cardinality.SINGLE,
-                        ),
-                        entity_types=tuple(current_entity_types),
-                    ),
-                )
-                current_entity_types = []
-
-            if current_document is None or document_content_id != current_content_id:
-                current_document = Document(
-                    id=DocumentId.from_components(
-                        instance=InstanceId.from_bytes(row['document_instance_id']),
-                        content=ContentHash.from_bytes(row['document_content_id']),
-                    ),
-                    source_uri=row['source_uri'],
-                )
-                current_content_id = document_content_id
-
-            current_entity_types.append(EntityTypeName(row['entity_type_name']))
-
-        if current_document is not None:
-            jobs.append(
-                EntityExtractionJob.from_context(
-                    source=current_document,
-                    task=EntityExtractionTask(
-                        context_level=ContextLevel.DOCUMENT,
-                        cardinality=Cardinality.SINGLE,
-                    ),
-                    entity_types=tuple(current_entity_types),
-                ),
-            )
-
-        return tuple(jobs)
-
-    def _create_chunk_job_batch(self, size: int) -> tuple[EntityExtractionJob, ...]:
-        """Create a batch of active jobs to process pending chunk extractions."""
-        # Avoid invalid batch sizes
-        if size <= 0:
-            return ()
-
-        # Retrieve batch
-        cursor = self._conn.execute(
-            """
-            SELECT
-                c.content_id AS chunk_content_id,
-                c.instance_id AS chunk_instance_id,
-                d.content_id AS document_content_id,
-                d.instance_id AS document_instance_id,
-                c.chunk_index AS chunk_index,
-                c.start_offset AS start_offset,
-                c.end_offset AS end_offset,
-                c.content AS content,
-                ee.entity_type_name AS entity_type_name
-            FROM entity_extractions ee
-            JOIN chunks c ON c.content_id = ee.context_content_id
-            JOIN documents d ON d.content_id = c.document_content_id
-            WHERE ee.context_content_id IN (
-                SELECT DISTINCT context_content_id
-                FROM entity_extractions
-                WHERE context_level = ?
-                AND extraction_status = ?
-                ORDER BY context_content_id
-                LIMIT ?
-            )
-            ORDER BY ee.context_content_id, ee.entity_type_name
-            """,
-            (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, size),
-        )
-
-        jobs: list[EntityExtractionJob] = []
-        current_chunk: Chunk | None = None
-        current_content_id: bytes | None = None
-        current_entity_types: list[EntityTypeName] = []
-
-        for row in cursor:
-            chunk_content_id = row['chunk_content_id']
-
-            if current_chunk is not None and chunk_content_id != current_content_id:
-                jobs.append(
-                    EntityExtractionJob.from_context(
-                        source=current_chunk,
-                        task=EntityExtractionTask(
-                            context_level=ContextLevel.CHUNK,
-                            cardinality=Cardinality.MULTIPLE,
-                        ),
-                        entity_types=tuple(current_entity_types),
-                    ),
-                )
-                current_entity_types = []
-
-            if current_chunk is None or chunk_content_id != current_content_id:
-                current_chunk = Chunk(
-                    id=ChunkId.from_components(
-                        instance=InstanceId.from_bytes(row['chunk_instance_id']),
-                        content=ContentHash.from_bytes(row['chunk_content_id']),
-                    ),
-                    document_id=DocumentId.from_components(
-                        instance=InstanceId.from_bytes(row['document_instance_id']),
-                        content=ContentHash.from_bytes(row['document_content_id']),
-                    ),
-                    chunk_index=row['chunk_index'],
-                    start_offset=row['start_offset'],
-                    end_offset=row['end_offset'],
-                    content=row['content'],
-                )
-                current_content_id = chunk_content_id
-
-            current_entity_types.append(EntityTypeName(row['entity_type_name']))
-
-        if current_chunk is not None:
-            jobs.append(
-                EntityExtractionJob.from_context(
-                    source=current_chunk,
-                    task=EntityExtractionTask(
-                        context_level=ContextLevel.CHUNK,
-                        cardinality=Cardinality.MULTIPLE,
-                    ),
-                    entity_types=tuple(current_entity_types),
-                ),
-            )
-
-        return tuple(jobs)
 
     def materialize_extractions(self, context_level: ContextLevel) -> None:
         """Materialize all entity type extractions for a given context level."""
@@ -249,15 +80,32 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 (ContextLevel.CHUNK.value, ExtractionStatus.PENDING.value, ContextLevel.CHUNK.value),
             )
 
-    def create_job_batch(self, context_level: ContextLevel, size: int) -> tuple[EntityExtractionJob, ...]:
+    def create_job_batch(self, context_level: ContextLevel, size: int) -> tuple[ExtractionJob, ...]:
         """Create a batch of jobs to process pending extractions for a given context level."""
-        if context_level == ContextLevel.DOCUMENT:
-            return self._create_document_job_batch(size)
-        if context_level == ContextLevel.CHUNK:
-            return self._create_chunk_job_batch(size)
-        return ()
+        # Avoid invalid batch sizes
+        if size <= 0:
+            return ()
 
-    def schedule_jobs(self, jobs: Iterable[EntityExtractionJob]) -> None:
+        # Retrieve batch
+        rows = self._conn.execute(
+            """
+            SELECT DISTINCT context_content_id
+            FROM entity_extractions
+            WHERE context_level = ? AND extraction_status = ?
+            ORDER BY context_content_id
+            LIMIT ?
+            """,
+            (context_level.value, ExtractionStatus.PENDING.value, size),
+        )
+        return tuple(
+            ExtractionJob.from_context(
+                level=context_level,
+                content_id=ContentHash.from_bytes(row['context_content_id']),
+            )
+            for row in rows
+        )
+
+    def schedule_jobs(self, jobs: Iterable[ExtractionJob]) -> None:
         """Schedule entity extraction jobs for processing."""
         # Update extractions relevant to the jobs
         self._conn.executemany(
@@ -269,8 +117,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             [
                 (
                     ExtractionStatus.IN_PROGRESS.value,
-                    job.task.context_level.value,
-                    job.source.id.content.bytes,
+                    job.context_ref.level.value,
+                    job.context_ref.content_id.bytes,
                     ExtractionStatus.PENDING.value,
                 )
                 for job in jobs
@@ -293,10 +141,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             [
                 (
                     job.id.instance.bytes,
-                    TaskType.ENTITY_EXTRACTION.value,
+                    EXTRACTION_JOB_TYPE,
                     JobStatus.IN_PROGRESS.value,
-                    job.task.context_level.value,
-                    job.source.id.content.bytes,
+                    job.context_ref.level.value,
+                    job.context_ref.content_id.bytes,
                     int(time.time() * 1000),
                 )
                 for job in jobs
@@ -305,7 +153,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     def update_job_status(
         self,
-        job: SimpleExtractionJob,
+        job: ExtractionJob,
         status: JobStatus,
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
@@ -342,7 +190,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 metrics.reasoning_tokens if metrics else None,
                 error,
                 job.id.instance.bytes,
-                TaskType.ENTITY_EXTRACTION.value,
+                EXTRACTION_JOB_TYPE,
                 JobStatus.IN_PROGRESS.value,
             ),
         )
@@ -413,6 +261,85 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 ),
             )
 
+    def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
+        """Retrieve the source context for a given extraction job."""
+        # Document source context
+        if job.context_ref.level == ContextLevel.DOCUMENT:
+            row = self._conn.execute(
+                """
+                SELECT
+                    content_id AS document_content_id,
+                    instance_id AS document_instance_id,
+                    source_uri
+                FROM documents
+                WHERE content_id = ?
+                """,
+                (job.context_ref.content_id.bytes,),
+            ).fetchone()
+
+            # If the document is not found, raise an error
+            if row is None:
+                raise ValueError(f'Document not found for content ID: {job.context_ref.content_id}')
+
+            return Document(
+                id=DocumentId.from_components(
+                    instance=InstanceId.from_bytes(row['document_instance_id']),
+                    content=ContentHash.from_bytes(row['document_content_id']),
+                ),
+                source_uri=row['source_uri'],
+            )
+
+        # Chunk source context
+        row = self._conn.execute(
+            """
+            SELECT
+                c.content_id AS chunk_content_id,
+                c.instance_id AS chunk_instance_id,
+                d.content_id AS document_content_id,
+                d.instance_id AS document_instance_id,
+                c.chunk_index AS chunk_index,
+                c.start_offset AS start_offset,
+                c.end_offset AS end_offset,
+                c.content AS content
+            FROM chunks c
+            JOIN documents d ON d.content_id = c.document_content_id
+            WHERE c.content_id = ?
+            """,
+            (job.context_ref.content_id.bytes,),
+        ).fetchone()
+
+        # If the chunk is not found, raise an error
+        if row is None:
+            raise ValueError(f'Chunk not found for content ID: {job.context_ref.content_id}')
+
+        return Chunk(
+            id=ChunkId.from_components(
+                instance=InstanceId.from_bytes(row['chunk_instance_id']),
+                content=ContentHash.from_bytes(row['chunk_content_id']),
+            ),
+            document_id=DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['document_instance_id']),
+                content=ContentHash.from_bytes(row['document_content_id']),
+            ),
+            chunk_index=row['chunk_index'],
+            start_offset=row['start_offset'],
+            end_offset=row['end_offset'],
+            content=row['content'],
+        )
+
+    def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
+        """Retrieve the entity types associated with a given extraction job."""
+        rows = self._conn.execute(
+            """
+            SELECT DISTINCT entity_type_name
+            FROM entity_extractions
+            WHERE context_level = ? AND context_content_id = ?
+            ORDER BY entity_type_name
+            """,
+            (job.context_ref.level.value, job.context_ref.content_id.bytes),
+        )
+        return tuple(EntityTypeName(row['entity_type_name']) for row in rows)
+
     # Extraction Batches
 
     def register_batch(self, batch: ExtractionBatch) -> None:
@@ -437,7 +364,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ),
         )
 
-    def link_jobs_to_batch(self, jobs: Iterable[EntityExtractionJob], batch: ExtractionBatch) -> None:
+    def link_jobs_to_batch(self, jobs: Iterable[ExtractionJob], batch: ExtractionBatch) -> None:
         """Link extraction jobs to a submitted batch."""
         self._conn.executemany(
             """
@@ -453,7 +380,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 (
                     batch.id.instance.bytes,
                     job.id.instance.bytes,
-                    TaskType.ENTITY_EXTRACTION.value,
+                    EXTRACTION_JOB_TYPE,
                     JobStatus.IN_PROGRESS.value,
                 )
                 for job in jobs
@@ -495,9 +422,9 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         """
         params.append(size)
 
-        # Execute the query and fetch results
-        rows = self._conn.execute(query, params).fetchall()
-        batches = [
+        # Execute the query and retrieve batches
+        rows = self._conn.execute(query, params)
+        return tuple(
             ExtractionBatch(
                 id=ExtractionBatchId.from_instance(InstanceId.from_bytes(row['batch_id'])),
                 provider=LLMProvider(row['provider_name']),
@@ -506,8 +433,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 created_at=row['created_at'],
             )
             for row in rows
-        ]
-        return tuple(batches)
+        )
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
         """Update the status of a batch."""
@@ -544,10 +470,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 JobStatus.FAILED.value,
                 int(time.time() * 1000),
                 f'Batch failed with status "{status.value}"',
-                TaskType.ENTITY_EXTRACTION.value,
+                EXTRACTION_JOB_TYPE,
                 batch.id.instance.bytes,
             ),
-        ).fetchall()
+        )
 
         # Reset associated extractions back to pending for retry
         self._conn.executemany(
@@ -567,7 +493,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ],
         )
 
-    def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[SimpleExtractionJob, ...]:
+    def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[ExtractionJob, ...]:
         """Retrieve all active jobs linked to a given batch."""
         rows = self._conn.execute(
             """
@@ -578,11 +504,10 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             FROM extraction_jobs
             WHERE job_type = ? AND batch_id = ? AND job_status = ?
             """,
-            (TaskType.ENTITY_EXTRACTION.value, batch.id.instance.bytes, JobStatus.IN_PROGRESS.value),
-        ).fetchall()
-
+            (EXTRACTION_JOB_TYPE, batch.id.instance.bytes, JobStatus.IN_PROGRESS.value),
+        )
         return tuple(
-            SimpleExtractionJob(
+            ExtractionJob(
                 id=ExtractionJobId.from_instance(InstanceId.from_bytes(row['job_id'])),
                 context_ref=ContextRef(
                     level=ContextLevel(row['context_level']),
@@ -634,7 +559,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             WHERE job_type = ? AND context_level = ?
             GROUP BY job_status
             """,
-            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+            (EXTRACTION_JOB_TYPE, context_level.value),
         )
         for group in groups:
             status = JobStatus(group['job_status'])
@@ -660,7 +585,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
             GROUP BY b.batch_status
             """,
-            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+            (EXTRACTION_JOB_TYPE, context_level.value),
         )
         for group in groups:
             status = BatchStatus(group['batch_status'])
@@ -682,7 +607,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             WHERE job_type = ? AND context_level = ? AND finished_at IS NOT NULL
             GROUP BY job_status
             """,
-            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+            (EXTRACTION_JOB_TYPE, context_level.value),
         )
         for group in groups:
             status = JobStatus(group['job_status'])
@@ -709,7 +634,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             WHERE job_type = ? AND context_level = ?
             GROUP BY job_status
             """,
-            (TaskType.ENTITY_EXTRACTION.value, context_level.value),
+            (EXTRACTION_JOB_TYPE, context_level.value),
         )
         for group in groups:
             status = JobStatus(group['job_status'])
@@ -742,7 +667,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             (
                 JobStatus.FAILED.value,
                 int(time.time() * 1000),
-                TaskType.ENTITY_EXTRACTION.value,
+                EXTRACTION_JOB_TYPE,
                 JobStatus.IN_PROGRESS.value,
             ),
         ).fetchall()
@@ -768,7 +693,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     def reset_deferred_extractions(self) -> int:
         """Reset deferred extractions for re-processing."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             """
             UPDATE entity_extractions
             SET extraction_status = ?
@@ -776,7 +701,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             """,
             (ExtractionStatus.PENDING.value, ExtractionStatus.RETRY.value),
         )
-        return cursor.rowcount
+        return rows.rowcount
 
     def clear(self) -> None:
         """Reset the entity extraction store."""
@@ -789,7 +714,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 WHERE job_type = ?
             )
             """,
-            (TaskType.ENTITY_EXTRACTION.value,),
+            (EXTRACTION_JOB_TYPE,),
         )
-        self._conn.execute('DELETE FROM extraction_jobs WHERE job_type = ?', (TaskType.ENTITY_EXTRACTION.value,))
+        self._conn.execute('DELETE FROM extraction_jobs WHERE job_type = ?', (EXTRACTION_JOB_TYPE,))
         self._conn.execute('DELETE FROM entity_extractions')

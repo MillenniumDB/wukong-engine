@@ -13,8 +13,11 @@ from wukong_engine.app.data_extraction.services import (
     EntityExtractionResultMaterializer,
     ExtractionMetricsTracker,
     RealtimeExtractionEngine,
+    RelationshipExtractionRepository,
+    RelationshipExtractionRequestBuilder,
+    RelationshipExtractionResultMaterializer,
 )
-from wukong_engine.app.data_extraction.use_cases import ExtractEntities
+from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
@@ -94,13 +97,19 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     batch_submitter = ConcurrentExtractionBatchSubmitter(llm_client=llm_client)
 
     # Entity extraction services
+    entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
     entity_metrics_tracker = ExtractionMetricsTracker(
-        uow=staging_uow,
+        repository=entity_extraction_repository,
         execution_mode=app_config.llm.execution_mode,
     )
-    entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
-    entity_request_builder = EntityExtractionRequestBuilder(document_loader=document_loader)
-    entity_result_materializer = EntityExtractionResultMaterializer(pk_normalizer=pk_normalizer)
+    entity_request_builder = EntityExtractionRequestBuilder(
+        repository=entity_extraction_repository,
+        document_loader=document_loader,
+    )
+    entity_result_materializer = EntityExtractionResultMaterializer(
+        repository=entity_extraction_repository,
+        pk_normalizer=pk_normalizer,
+    )
     entity_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
         repository=entity_extraction_repository,
         llm_client=llm_client,
@@ -125,7 +134,40 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
             metrics_tracker=entity_metrics_tracker,
         )
 
-    # TODO: Relationship extraction services
+    # Relationship extraction services
+    relationship_extraction_repository = RelationshipExtractionRepository(uow=staging_uow)
+    relationship_metrics_tracker = ExtractionMetricsTracker(
+        repository=relationship_extraction_repository,
+        execution_mode=app_config.llm.execution_mode,
+    )
+    relationship_request_builder = RelationshipExtractionRequestBuilder(repository=relationship_extraction_repository)
+    relationship_result_materializer = RelationshipExtractionResultMaterializer(
+        repository=relationship_extraction_repository,
+        pk_normalizer=pk_normalizer,
+    )
+    relationship_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
+        repository=relationship_extraction_repository,
+        llm_client=llm_client,
+        result_materializer=relationship_result_materializer,
+        metrics_tracker=relationship_metrics_tracker,
+    )
+
+    # Assign the appropriate extraction engine based on the execution mode
+    if app_config.llm.execution_mode == ExecutionMode.BATCH:
+        relationship_extraction_engine = BatchExtractionEngine(
+            repository=relationship_extraction_repository,
+            request_builder=relationship_request_builder,
+            submitter=batch_submitter,
+            metrics_tracker=relationship_metrics_tracker,
+        )
+    else:
+        relationship_extraction_engine = RealtimeExtractionEngine(
+            repository=relationship_extraction_repository,
+            request_builder=relationship_request_builder,
+            executor=extraction_executor,
+            result_materializer=relationship_result_materializer,
+            metrics_tracker=relationship_metrics_tracker,
+        )
 
     # Use cases
     get_document_registry = GetDocumentRegistry(
@@ -141,9 +183,17 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
     extract_entities = ExtractEntities(
         uow=staging_uow,
+        repository=entity_extraction_repository,
         extraction_engine=entity_extraction_engine,
         batch_synchronizer=entity_batch_synchronizer,
         metrics_tracker=entity_metrics_tracker,
+    )
+    extract_relationships = ExtractRelationships(
+        uow=staging_uow,
+        repository=relationship_extraction_repository,
+        extraction_engine=relationship_extraction_engine,
+        batch_synchronizer=relationship_batch_synchronizer,
+        metrics_tracker=relationship_metrics_tracker,
     )
 
     # Workflows
@@ -154,5 +204,6 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         get_graph_model=get_graph_model,
         ingest_documents=ingest_documents,
         extract_entities=extract_entities,
+        extract_relationships=extract_relationships,
     )
     return CLIApplication(graph_construction_pipeline=graph_construction)

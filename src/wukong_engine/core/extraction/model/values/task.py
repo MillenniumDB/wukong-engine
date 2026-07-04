@@ -1,14 +1,14 @@
-"""Provides definitions for task types used in the extraction process.
+"""Provides definitions for extraction tasks.
 
 Classes:
-    TaskType: Types of extraction tasks.
+    ExtractionTask: Available extraction tasks.
 """
 
 from enum import Enum
 
 
-class TaskType(Enum):
-    """Types of extraction tasks that can be performed.
+class ExtractionTask(Enum):
+    """Available extraction tasks.
 
     Attributes:
         ENTITY_EXTRACTION: Extract entities from source contexts.

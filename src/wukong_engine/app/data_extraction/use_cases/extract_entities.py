@@ -1,8 +1,8 @@
 import logging
 
-from wukong_engine.app.data_extraction.elements.values import BatchStatus, ExtractionStatus
 from wukong_engine.app.data_extraction.exceptions import DataExtractionError
 from wukong_engine.app.data_extraction.services import (
+    EntityExtractionRepository,
     ExtractionBatchSynchronizer,
     ExtractionEngine,
     ExtractionMetricsTracker,
@@ -22,79 +22,25 @@ class ExtractEntities:
     def __init__(
         self,
         uow: UnitOfWork,
+        repository: EntityExtractionRepository,
         extraction_engine: ExtractionEngine,
         batch_synchronizer: ExtractionBatchSynchronizer,
         metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
         """Initialize the use case with necessary dependencies."""
         self._uow = uow
+        self._repository = repository
         self._extraction_engine = extraction_engine
         self._batch_synchronizer = batch_synchronizer
         self._metrics_tracker = metrics_tracker
 
-    def _materialize_all_extractions(self, graph_model: GraphModel) -> None:
-        """Materialize extractions for all context levels."""
-        # Setup entity types and associated document collections
-        logger.info('Materializing ALL pending entity extractions...')
-        with self._uow as tx:
-            entity_types = tuple(graph_model.active_entity_types.values())
-            tx.entities.add_entity_types(et.name for et in entity_types)
-            for entity_type in entity_types:
-                tx.entities.link_collections_to_entity_type(
-                    entity_type.document_collections.get(ContextLevel.DOCUMENT, []),
-                    entity_type.name,
-                    ContextLevel.DOCUMENT,
-                )
-                tx.entities.link_collections_to_entity_type(
-                    entity_type.document_collections.get(ContextLevel.CHUNK, []),
-                    entity_type.name,
-                    ContextLevel.CHUNK,
-                )
-
-        # Materialize extractions for each context level
-        for context_level in (ContextLevel.DOCUMENT, ContextLevel.CHUNK):
-            with self._uow as tx:
-                tx.extraction.entities.materialize_extractions(context_level)
-
-        # Set checkpoint to indicate all extractions have been materialized
-        with self._uow as tx:
-            tx.pipeline.set_checkpoint_status(
-                PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
-                PipelineCheckpointStatus.COMPLETED,
-            )
-        logger.info('Materialized ALL pending entity extractions!')
-
     def _recover_extractions(self) -> None:
         """Recover extractions that are in an incomplete/inconsistent state."""
-        # Terminate stalled jobs and recover their extractions
-        # Stalled jobs are those that are in status IN_PROGRESS before extraction happens and are not tied to any batch
-        with self._uow as tx:
-            terminated = tx.extraction.entities.terminate_stalled_jobs()
+        terminated, reset = self._repository.recover_extractions()
         if terminated > 0:
             logger.warning(f'Terminated and recovered extractions from {terminated} stalled jobs')
-
-        # Reset deferred extractions for re-processing
-        # Deferred extractions are those that are in status RETRY before extraction happens
-        with self._uow as tx:
-            reset = tx.extraction.entities.reset_deferred_extractions()
         if reset > 0:
             logger.info(f'Reset {reset} deferred extractions for re-processing')
-
-    def _remaining_sources(self, context_level: ContextLevel) -> int:
-        """Amount of remaining sources to process for a given context level."""
-        with self._uow as tx:
-            source_counts = tx.extraction.entities.count_sources_by_status(context_level)
-            return (
-                source_counts.get(ExtractionStatus.PENDING, 0)
-                + source_counts.get(ExtractionStatus.IN_PROGRESS, 0)
-                + source_counts.get(ExtractionStatus.RETRY, 0)
-            )
-
-    def _remaining_batches(self, context_level: ContextLevel) -> int:
-        """Amount of remaining batches to process for a given context level."""
-        with self._uow as tx:
-            batch_counts = tx.extraction.entities.count_batches_by_status(context_level)
-            return batch_counts.get(BatchStatus.SUBMITTED, 0) + batch_counts.get(BatchStatus.IN_PROGRESS, 0)
 
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the entity extraction process."""
@@ -104,14 +50,25 @@ class ExtractEntities:
                 PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
             )
         if not is_materialized:
-            self._materialize_all_extractions(graph_model)
+            logger.info('Materializing ALL pending entity extractions...')
+            self._repository.materialize_all_extractions(graph_model)
+
+            # Set checkpoint to indicate all extractions have been materialized
+            with self._uow as tx:
+                tx.pipeline.set_checkpoint_status(
+                    PipelineCheckpoint.PENDING_ENTITY_EXTRACTIONS_MATERIALIZED,
+                    PipelineCheckpointStatus.COMPLETED,
+                )
+            logger.info('Materialized ALL pending entity extractions!')
 
         # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.DOCUMENT, ContextLevel.CHUNK)
         try:
             for context_level in context_levels:
-                # Process extractions for the current context level if there are remaining sources
-                if self._remaining_sources(context_level) > 0 or self._remaining_batches(context_level) > 0:
+                # Process extractions for the current context level if there are remaining sources/batches
+                remaining_sources = self._repository.remaining_sources(context_level)
+                remaining_batches = self._repository.remaining_batches(context_level)
+                if remaining_sources > 0 or remaining_batches > 0:
                     # Set the context level in the metrics tracker
                     self._metrics_tracker.set_context_level(context_level)
 
@@ -129,10 +86,10 @@ class ExtractEntities:
                     logger.info(f'Extracting entities from {context_level.value}S...')
                     await self._extraction_engine.run(context_level, graph_model)
 
-                    # Stop execution if there are still remaining sources for the current context level
+                    # Stop execution if there are still remaining sources/batches for the current context level
                     # Subsequent runs have to complete the remaining extractions before moving on to the next context level
-                    remaining_sources = self._remaining_sources(context_level)
-                    remaining_batches = self._remaining_batches(context_level)
+                    remaining_sources = self._repository.remaining_sources(context_level)
+                    remaining_batches = self._repository.remaining_batches(context_level)
                     if remaining_sources > 0 or remaining_batches > 0:
                         logger.warning(
                             f'Finished entity extractions from {context_level.value}S with {remaining_sources} remaining sources and '
@@ -159,7 +116,5 @@ class ExtractEntities:
     def reset(self) -> None:
         """Reset the entity extraction state."""
         logger.warning('Resetting entity extraction state. This will clear ALL extracted entities...')
-        with self._uow as tx:
-            tx.extraction.entities.clear()
-            tx.entities.clear()
+        self._repository.reset()
         self._metrics_tracker.reset()

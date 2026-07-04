@@ -62,9 +62,11 @@ class SQLiteEntityStore(EntityStore):
 
     def _find_duplicates(self, entities: Iterable[Entity]) -> dict[bytes, Entity]:
         """Find existing entities that match the content of the given entities."""
+        # If no entities are provided, no duplicates can exist
         if not entities:
             return {}
 
+        # Build a mapping of content_id bytes to Entity for quick lookup
         entities_by_id = {entity.id.content.bytes: entity for entity in entities}
         result: dict[bytes, Entity] = {}
         for batch in batched(entities_by_id.keys(), 500):
@@ -74,8 +76,8 @@ class SQLiteEntityStore(EntityStore):
                 FROM entities
                 WHERE content_id IN ({placeholders})
             """  # noqa: S608
-            cursor = self._conn.execute(query, batch)
-            for row in cursor:
+            rows = self._conn.execute(query, batch)
+            for row in rows:
                 row_type = entities_by_id[row['content_id']].type
                 entity = self._row_to_entity(row, entity_type=row_type)
                 result[entity.id.content.bytes] = entity
@@ -172,16 +174,16 @@ class SQLiteEntityStore(EntityStore):
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             'SELECT content_id, instance_id, properties FROM entities WHERE entity_type_name = ? ORDER BY content_id',
             (entity_type.name.value,),
         )
-        for row in cursor:
+        for row in rows:
             yield self._row_to_entity(row, entity_type)
 
     def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
         """Stream all links of extracted entities and their source documents."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             """
             SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
                    d.content_id AS document_content_id, d.instance_id AS document_instance_id
@@ -193,12 +195,12 @@ class SQLiteEntityStore(EntityStore):
             """,
             (ContextLevel.DOCUMENT.value,),
         )
-        for row in cursor:
+        for row in rows:
             yield self._row_to_entity_document_provenance(row)
 
     def stream_entity_chunk_provenance(self) -> Iterator[EntityChunkProvenance]:
         """Stream all links of extracted entities and their source chunks."""
-        cursor = self._conn.execute(
+        rows = self._conn.execute(
             """
             SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
                    c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id
@@ -210,7 +212,7 @@ class SQLiteEntityStore(EntityStore):
             """,
             (ContextLevel.CHUNK.value,),
         )
-        for row in cursor:
+        for row in rows:
             yield self._row_to_entity_chunk_provenance(row)
 
     def count_entities(self, context_level: ContextLevel) -> int:

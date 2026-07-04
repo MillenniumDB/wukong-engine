@@ -1,6 +1,6 @@
 """Prompt renderer for extraction requests."""
 
-from wukong_engine.app.data_extraction.elements import ExtractionContext
+from wukong_engine.app.data_extraction.elements import ExtractionSpec
 from wukong_engine.app.llm.elements.values import LLMPrompt
 
 # Constants
@@ -35,13 +35,13 @@ Source Text
 class PromptRenderer:
     """Prompt renderer for extraction requests."""
 
-    def render(self, context: ExtractionContext) -> LLMPrompt:
-        """Render the prompt from the extraction context."""
+    def render(self, spec: ExtractionSpec) -> LLMPrompt:
+        """Render the prompt from the extraction specification."""
         prompt_instructions = KG_EXTRACTION_INSTRUCTIONS
         prompt_content = KG_EXTRACTION_CONTENT.format(
-            DOCUMENT_CONTEXT=context.document_context,
-            TASK=context.task,
-            DEFINITIONS=context.definitions,
-            SOURCE_TEXT=context.source_text,
+            DOCUMENT_CONTEXT=spec.document_context,
+            TASK=spec.task,
+            DEFINITIONS=spec.definitions,
+            SOURCE_TEXT=spec.source_text,
         )
-        return LLMPrompt(content=prompt_content, instructions=prompt_instructions, schema=context.response_schema)
+        return LLMPrompt(content=prompt_content, instructions=prompt_instructions, schema=spec.response_schema)

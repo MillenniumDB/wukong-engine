@@ -29,7 +29,7 @@ class ExtractionBatchSubmitter(Protocol):
     def submit_many(
         self,
         submission_requests: Iterable[BatchSubmissionRequest],
-    ) -> AsyncIterator[BatchSubmissionResult]:
+    ) -> AsyncIterator[tuple[BatchSubmissionRequest, BatchSubmissionResult]]:
         """Submit multiple batches of requests concurrently."""
         ...
 
@@ -55,7 +55,7 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
         llm_requests: list[LLMRequest] = []
         job_ids: list[str] = []
         for request in submission_request.batch:
-            prompt = self._prompt_renderer.render(request.context)
+            prompt = self._prompt_renderer.render(request.spec)
             llm_request = LLMRequest(
                 prompt=prompt,
                 reasoning_effort=request.reasoning_effort,
@@ -68,19 +68,16 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
         try:
             response = await self._llm_client.create_batch(llm_requests, job_ids)
             batch = ExtractionBatch.from_provider(provider=response.provider, provider_id=response.batch_id)
-            jobs = tuple(request.job for request in submission_request.batch)
-            return BatchSubmissionResult(batch, jobs)
+            return BatchSubmissionResult(batch)
         except LLMTransientError as exc:
             return BatchSubmissionResult(
                 batch=None,
-                jobs=tuple(request.job for request in submission_request.batch),
                 error=str(exc),
                 error_severity=ErrorSeverity.RECOVERABLE,
             )
         except (LLMConfigurationError, LLMInternalError) as exc:
             return BatchSubmissionResult(
                 batch=None,
-                jobs=tuple(request.job for request in submission_request.batch),
                 error=str(exc),
                 error_severity=ErrorSeverity.CRITICAL,
             )
@@ -88,9 +85,9 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
     async def submit_many(
         self,
         submission_requests: Iterable[BatchSubmissionRequest],
-    ) -> AsyncIterator[BatchSubmissionResult]:
+    ) -> AsyncIterator[tuple[BatchSubmissionRequest, BatchSubmissionResult]]:
         """Submit multiple batches of requests concurrently."""
         runner = AsyncConcurrentRunner(fn=self.submit, max_concurrency=self._max_concurrency)
         self._active_runner = runner
-        async for _, result in runner.run(submission_requests):
-            yield result
+        async for request, result in runner.run(submission_requests):
+            yield request, result

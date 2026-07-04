@@ -63,7 +63,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
     async def execute(self, request: ExtractionRequest) -> ExtractionResult:
         """Execute a single extraction request."""
         # Build the LLM request from the extraction request
-        prompt = self._prompt_renderer.render(request.context)
+        prompt = self._prompt_renderer.render(request.spec)
         llm_request = LLMRequest(
             prompt=prompt,
             reasoning_effort=request.reasoning_effort,
