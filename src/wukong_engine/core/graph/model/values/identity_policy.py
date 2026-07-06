@@ -15,7 +15,7 @@ class EntityIdentityPolicy(Enum):
         PRIMARY_KEY: Exact match deduplication with normalized primary key.
     """
 
-    PRIMARY_KEY = 'primary_key'
+    PRIMARY_KEY = 'PRIMARY_KEY'
 
 
 class RelationshipIdentityPolicy(Enum):
@@ -27,9 +27,9 @@ class RelationshipIdentityPolicy(Enum):
         PRIMARY_KEY: Exact match deduplication with normalized primary key and same source/target.
     """
 
-    NONE = 'none'
-    ENDPOINTS = 'endpoints'
-    PRIMARY_KEY = 'primary_key'
+    NONE = 'NONE'
+    ENDPOINTS = 'ENDPOINTS'
+    PRIMARY_KEY = 'PRIMARY_KEY'
 
     @property
     def requires_primary_key(self) -> bool:

@@ -1,6 +1,7 @@
 from collections.abc import Iterable, Iterator
 from typing import Protocol
 
+from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
 from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
 from wukong_engine.core.graph.model import EntityType
@@ -25,6 +26,10 @@ class EntityStore(Protocol):
 
     def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
         """Insert or update a batch of entities, ensuring deduplication."""
+        ...
+
+    def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
+        """Link a batch of entities to their source context."""
         ...
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:

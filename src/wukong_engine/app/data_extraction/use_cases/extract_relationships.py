@@ -35,10 +35,9 @@ class ExtractRelationships:
         self._batch_synchronizer = batch_synchronizer
         self._metrics_tracker = metrics_tracker
 
-    # TODO: Implement
+    # TODO: Test
     def _recover_extractions(self) -> None:
         """Recover extractions that are in an incomplete/inconsistent state."""
-        return
         terminated, reset = self._repository.recover_extractions()
         if terminated > 0:
             logger.warning(f'Terminated and recovered extractions from {terminated} stalled jobs')
@@ -48,7 +47,7 @@ class ExtractRelationships:
     # TODO: Implement
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the relationship extraction process."""
-        # Materialize extractions (if not already done)
+        # TODO: Materialize extractions (if not already done)
         with self._uow as tx:
             is_materialized = tx.pipeline.is_checkpoint_completed(
                 PipelineCheckpoint.PENDING_RELATIONSHIP_EXTRACTIONS_MATERIALIZED,
@@ -65,6 +64,7 @@ class ExtractRelationships:
                 )
             logger.info('Materialized ALL pending relationship extractions!')
 
+        return
         # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.CHUNK,)
         try:

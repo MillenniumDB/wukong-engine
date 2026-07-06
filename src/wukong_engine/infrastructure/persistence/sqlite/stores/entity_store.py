@@ -5,6 +5,7 @@ from collections.abc import Iterable, Iterator
 
 from wukong_engine.app.shared.iterables import batched
 from wukong_engine.app.staging.ports import EntityStore
+from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
 from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
@@ -156,8 +157,8 @@ class SQLiteEntityStore(EntityStore):
 
         # Find duplicates in the database and determine which new entities to insert vs update
         existing_entities_by_id = self._find_duplicates(unique_entities)
-        to_insert = []
-        to_update = []
+        to_insert: list[Entity] = []
+        to_update: list[Entity] = []
         for entity in unique_entities:
             entity_id = entity.id.content.bytes
             if entity_id in existing_entities_by_id:
@@ -171,6 +172,16 @@ class SQLiteEntityStore(EntityStore):
         # Perform bulk insert and update
         self._bulk_insert_entities(to_insert)
         self._bulk_update_properties(to_update)
+
+    def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
+        """Link a batch of entities to their source context."""
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO entity_provenance (context_level, context_content_id, entity_content_id)
+            VALUES (?, ?, ?)
+            """,
+            [(context.level.value, context.content_id.bytes, entity.id.content.bytes) for entity in entities],
+        )
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
         """Stream all entities of a given type."""

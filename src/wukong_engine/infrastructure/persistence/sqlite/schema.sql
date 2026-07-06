@@ -108,12 +108,12 @@ CREATE TABLE IF NOT EXISTS relationships (
     content_id BLOB PRIMARY KEY,
     instance_id BLOB NOT NULL UNIQUE,
     relationship_type_name TEXT NOT NULL,
-    source_entity_content_id BLOB NOT NULL,
-    target_entity_content_id BLOB NOT NULL,
+    source_content_id BLOB NOT NULL,
+    target_content_id BLOB NOT NULL,
     properties TEXT NOT NULL,
     FOREIGN KEY (relationship_type_name) REFERENCES relationship_types(relationship_type_name) ON DELETE CASCADE,
-    FOREIGN KEY (source_entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE,
-    FOREIGN KEY (target_entity_content_id) REFERENCES entities(content_id) ON DELETE CASCADE
+    FOREIGN KEY (source_content_id) REFERENCES entities(content_id) ON DELETE CASCADE,
+    FOREIGN KEY (target_content_id) REFERENCES entities(content_id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS relationship_provenance (
     chunk_content_id BLOB NOT NULL,

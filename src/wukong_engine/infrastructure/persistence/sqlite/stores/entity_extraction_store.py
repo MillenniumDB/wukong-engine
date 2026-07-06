@@ -19,7 +19,6 @@ from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import ExtractionTask
-from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
@@ -515,18 +514,6 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 ),
             )
             for row in rows
-        )
-
-    # Provenance
-
-    def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
-        """Link extracted entities to their source context."""
-        self._conn.executemany(
-            """
-            INSERT OR IGNORE INTO entity_provenance (context_level, context_content_id, entity_content_id)
-            VALUES (?, ?, ?)
-            """,
-            [(context.level.value, context.content_id.bytes, entity.id.content.bytes) for entity in entities],
         )
 
     # Metrics

@@ -10,9 +10,8 @@ from wukong_engine.app.data_extraction.elements.values import (
     JobStatus,
     TokenUsageMetrics,
 )
-from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
+from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.model.values import EntityTypeName
 
 
@@ -76,12 +75,6 @@ class EntityExtractionStore(Protocol):
 
     def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[ExtractionJob, ...]:
         """Retrieve all active jobs linked to a given batch."""
-        ...
-
-    # Provenance
-
-    def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
-        """Link extracted entities to their source context."""
         ...
 
     # Metrics

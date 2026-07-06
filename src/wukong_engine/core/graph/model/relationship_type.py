@@ -34,7 +34,7 @@ class RelationshipType:
         lines = []
         lines.append(str(self.name))
         lines.append(f'  • Description: {self.description}')
-        lines.append(f'  • Primary Key: {self.primary_key or "NULL"}')
+        lines.append(f'  • Primary Key: {self.primary_key or "NONE"}')
         lines.append(f'  • Identity Policy (Deduplication): {self.identity_policy.value}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
