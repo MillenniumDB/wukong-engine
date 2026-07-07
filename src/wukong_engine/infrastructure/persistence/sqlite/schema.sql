@@ -236,6 +236,9 @@ CREATE TABLE IF NOT EXISTS extraction_batches (
         )
     )
 );
+-- =========================================================
+-- Pipeline
+-- =========================================================
 CREATE TABLE IF NOT EXISTS pipeline_checkpoints (
     checkpoint_name TEXT PRIMARY KEY,
     checkpoint_status TEXT NOT NULL,

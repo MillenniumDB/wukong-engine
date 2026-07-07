@@ -3,7 +3,12 @@
 from collections.abc import Iterable, Iterator
 from typing import Protocol
 
-from wukong_engine.app.data_extraction.elements import BatchCursor, ExtractionBatch, ExtractionJob
+from wukong_engine.app.data_extraction.elements import (
+    BatchCursor,
+    ExtractionBatch,
+    ExtractionJob,
+    RelationshipExtractionRequestContext,
+)
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
     ExtractionMetrics,
@@ -16,13 +21,17 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
+from wukong_engine.core.documents.elements.values import ChunkId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.graph.model import GraphModel, RelationshipType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 
 # Constants
 BATCH_GROUP_SIZE = 1000  # Number of active batches to retrieve from the DB at once (default: 1000)
+RELATIONSHIP_EXTRACTION_MATERIALIZATION_BATCH_SIZE = (
+    1000  # Maximum number of chunks to materialize relationship extractions for in a single DB call (default: 1000)
+)
 
 
 class ExtractionRepository(Protocol):
@@ -150,7 +159,7 @@ class EntityExtractionRepository(ExtractionRepository):
         # Materialize extractions for each context level
         for context_level in (ContextLevel.DOCUMENT, ContextLevel.CHUNK):
             with self._uow as tx:
-                tx.extraction.entities.materialize_extractions(context_level)
+                tx.extraction.entities.materialize_all_extractions(context_level)
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
         """Claim the next batch of extraction jobs for processing, under a given context level."""
@@ -315,7 +324,6 @@ class EntityExtractionRepository(ExtractionRepository):
             return tx.extraction.entities.get_job_entity_types(job)
 
 
-# TODO: Complete
 class RelationshipExtractionRepository(ExtractionRepository):
     """Repository for managing relationship extraction DB interactions."""
 
@@ -325,10 +333,66 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
     # Extraction Jobs
 
-    # TODO: Implement
     def materialize_all_extractions(self, graph_model: GraphModel) -> None:
         """Materialize all extractions for later processing."""
-        return
+        # Setup relationship types and their endpoints
+        relationship_types = tuple(graph_model.active_relationship_types.values())
+        with self._uow as tx:
+            tx.relationships.add_relationship_types(relationship_types)
+
+        # Materialize relationship extractions
+        with self._uow as tx:
+            # Set up iterators for document and chunk provenances
+            document_provenances = iter(tx.entities.stream_document_provenance())
+            chunk_provenances = iter(tx.entities.stream_chunk_provenance())
+            current_document = next(document_provenances, None)
+            current_document_id = current_document.document_id.content.bytes if current_document else None
+            chunks_to_materialize: list[ChunkId] = []
+            rel_type_groups_to_materialize: list[tuple[RelationshipTypeName, ...]] = []
+
+            # Helper function to materialize the current batch of chunks and their associated relationship types
+            def flush_chunks() -> None:
+                if not chunks_to_materialize:
+                    return
+                tx.extraction.relationships.materialize_extractions_for_chunks(
+                    chunks=tuple(chunks_to_materialize),
+                    relationship_type_groups=tuple(rel_type_groups_to_materialize),
+                )
+                chunks_to_materialize.clear()
+                rel_type_groups_to_materialize.clear()
+
+            # Iterate over each chunk provenance to materialize relationship extractions
+            for current_chunk in chunk_provenances:
+                # Advance the document provenance to match the current chunk's parent document, if possible
+                chunk_parent_document_id = current_chunk.parent_document_id.content.bytes
+                while current_document_id is not None and current_document_id < chunk_parent_document_id:
+                    current_document = next(document_provenances, None)
+                    current_document_id = current_document.document_id.content.bytes if current_document else None
+
+                # Gather entity types present in the current document and chunk
+                chunk_entity_types: tuple[EntityTypeName, ...] = current_chunk.entity_types
+                document_entity_types: tuple[EntityTypeName, ...] = ()
+                if current_document is not None and current_document_id == chunk_parent_document_id:
+                    document_entity_types = current_document.entity_types
+
+                # Add valid chunks and their associated relationship types to the materialization batch
+                chunk_extraction_context = self.get_extraction_context_for_chunk(
+                    relationship_types=tuple(graph_model.active_relationship_types.values()),
+                    chunk_entity_type_names=chunk_entity_types,
+                    parent_document_entity_type_names=document_entity_types,
+                )
+                relevant_relationship_type_names = tuple(rt.name for rt in chunk_extraction_context.relationship_types)
+                if relevant_relationship_type_names:
+                    chunks_to_materialize.append(current_chunk.chunk_id)
+                    rel_type_groups_to_materialize.append(relevant_relationship_type_names)
+
+                # Materialize extractions for the current batch of chunks
+                if len(chunks_to_materialize) >= RELATIONSHIP_EXTRACTION_MATERIALIZATION_BATCH_SIZE:
+                    flush_chunks()
+
+            # Materialize any remaining extractions for chunks after the loop
+            if chunks_to_materialize:
+                flush_chunks()
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
         """Claim the next batch of extraction jobs for processing, under a given context level."""
@@ -507,3 +571,63 @@ class RelationshipExtractionRepository(ExtractionRepository):
         """Retrieve the relationship types associated with a given extraction job."""
         with self._uow as tx:
             return tx.extraction.relationships.get_job_relationship_types(job)
+
+    def get_extraction_context_for_chunk(
+        self,
+        relationship_types: Iterable[RelationshipType],
+        chunk_entity_type_names: Iterable[EntityTypeName],
+        parent_document_entity_type_names: Iterable[EntityTypeName],
+    ) -> RelationshipExtractionRequestContext:
+        """Filter valid relationship types and chunk/document entity types for extraction from a given chunk and its parent document."""
+        # Sets of available relationship types and entity type names found in the chunk and its parent document
+        relationship_types = tuple({rt.name.value: rt for rt in relationship_types}.values())
+        chunk_entity_type_names = set(chunk_entity_type_names)
+        parent_document_entity_type_names = set(parent_document_entity_type_names)
+
+        # Sets to hold compatible relationship types and entity type names for extraction
+        compatible_relationship_type_names: set[RelationshipTypeName] = set()
+        compatible_chunk_entity_type_names: set[EntityTypeName] = set()
+        compatible_document_entity_type_names: set[EntityTypeName] = set()
+
+        # Iterate through each relationship type and its endpoints to determine compatibility
+        for rel_type in relationship_types:
+            for endpoint in rel_type.endpoints:
+                for endpoint_context in endpoint.context_pairs:
+                    # Determine the available source and target entity types based on the context level (chunk or document)
+                    source_entity_types = (
+                        chunk_entity_type_names
+                        if endpoint_context.source_level == ContextLevel.CHUNK
+                        else parent_document_entity_type_names
+                    )
+                    target_entity_types = (
+                        chunk_entity_type_names
+                        if endpoint_context.target_level == ContextLevel.CHUNK
+                        else parent_document_entity_type_names
+                    )
+
+                    # Consider an endpoint compatible if its source AND target entity types are contained in the available entity types
+                    if endpoint.source in source_entity_types and endpoint.target in target_entity_types:
+                        # The relationship type is compatible if any of its endpoints are compatible
+                        compatible_relationship_type_names.add(rel_type.name)
+
+                        # Add the compatible source and target entity types to the appropriate sets based on their context levels
+                        if endpoint_context.source_level == ContextLevel.CHUNK:
+                            compatible_chunk_entity_type_names.add(endpoint.source)
+                        else:
+                            compatible_document_entity_type_names.add(endpoint.source)
+                        if endpoint_context.target_level == ContextLevel.CHUNK:
+                            compatible_chunk_entity_type_names.add(endpoint.target)
+                        else:
+                            compatible_document_entity_type_names.add(endpoint.target)
+
+        # Return the filtered relationship extraction request context
+        compatible_relationship_types = tuple(
+            rt for rt in relationship_types if rt.name in compatible_relationship_type_names
+        )
+        return RelationshipExtractionRequestContext(
+            relationship_types=tuple(sorted(compatible_relationship_types, key=lambda rt: rt.name.value)),
+            chunk_entity_type_names=tuple(sorted(compatible_chunk_entity_type_names, key=lambda et: et.value)),
+            parent_document_entity_type_names=tuple(
+                sorted(compatible_document_entity_type_names, key=lambda et: et.value),
+            ),
+        )

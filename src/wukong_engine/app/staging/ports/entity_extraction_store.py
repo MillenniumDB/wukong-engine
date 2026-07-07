@@ -20,7 +20,7 @@ class EntityExtractionStore(Protocol):
 
     # Extraction Jobs
 
-    def materialize_extractions(self, context_level: ContextLevel) -> None:
+    def materialize_all_extractions(self, context_level: ContextLevel) -> None:
         """Materialize all entity type extractions for a given context level."""
         ...
 

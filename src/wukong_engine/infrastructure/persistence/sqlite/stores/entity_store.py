@@ -1,3 +1,5 @@
+"""SQLite-backed entity store implementation."""
+
 import json
 import sqlite3
 from collections import defaultdict
@@ -8,9 +10,9 @@ from wukong_engine.app.staging.ports import EntityStore
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
-from wukong_engine.core.graph.elements import Entity, EntityChunkProvenance, EntityDocumentProvenance
+from wukong_engine.core.graph.elements import ChunkEntityProvenance, DocumentEntityProvenance, Entity
 from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import EntityType
+from wukong_engine.core.graph.model import EntityType, GraphModel
 from wukong_engine.core.graph.model.values import EntityTypeName
 from wukong_engine.core.graph.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
@@ -33,32 +35,6 @@ class SQLiteEntityStore(EntityStore):
             ),
             type=entity_type,
             properties=json.loads(row['properties']),
-        )
-
-    def _row_to_entity_document_provenance(self, row: sqlite3.Row) -> EntityDocumentProvenance:
-        """Map a database row to an EntityDocumentProvenance object."""
-        return EntityDocumentProvenance(
-            entity_id=EntityId.from_components(
-                instance=InstanceId.from_bytes(row['entity_instance_id']),
-                content=ContentHash.from_bytes(row['entity_content_id']),
-            ),
-            document_id=DocumentId.from_components(
-                instance=InstanceId.from_bytes(row['document_instance_id']),
-                content=ContentHash.from_bytes(row['document_content_id']),
-            ),
-        )
-
-    def _row_to_entity_chunk_provenance(self, row: sqlite3.Row) -> EntityChunkProvenance:
-        """Map a database row to an EntityChunkProvenance object."""
-        return EntityChunkProvenance(
-            entity_id=EntityId.from_components(
-                instance=InstanceId.from_bytes(row['entity_instance_id']),
-                content=ContentHash.from_bytes(row['entity_content_id']),
-            ),
-            chunk_id=ChunkId.from_components(
-                instance=InstanceId.from_bytes(row['chunk_instance_id']),
-                content=ContentHash.from_bytes(row['chunk_content_id']),
-            ),
         )
 
     def _find_duplicates(self, entities: Iterable[Entity]) -> dict[bytes, Entity]:
@@ -192,39 +168,153 @@ class SQLiteEntityStore(EntityStore):
         for row in rows:
             yield self._row_to_entity(row, entity_type)
 
-    def stream_entity_document_provenance(self) -> Iterator[EntityDocumentProvenance]:
-        """Stream all links of extracted entities and their source documents."""
+    def stream_by_source_context(self, context: ContextRef, model: GraphModel) -> Iterator[Entity]:
+        """Stream all entities linked to a specific source context."""
         rows = self._conn.execute(
             """
-            SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
-                   d.content_id AS document_content_id, d.instance_id AS document_instance_id
+            SELECT e.content_id, e.instance_id, e.entity_type_name, e.properties
             FROM entity_provenance ep
             JOIN entities e ON e.content_id = ep.entity_content_id
+            WHERE ep.context_level = ? AND ep.context_content_id = ?
+            ORDER BY e.content_id
+            """,
+            (context.level.value, context.content_id.bytes),
+        )
+        for row in rows:
+            entity_type_name = EntityTypeName(row['entity_type_name'])
+            entity_type = model.entity_type(entity_type_name)
+            if entity_type is None:
+                raise ValueError(f'Entity type "{entity_type_name.value}" not found in the provided graph model.')
+            yield self._row_to_entity(row, entity_type)
+
+    def stream_document_provenance(self) -> Iterator[DocumentEntityProvenance]:
+        """Stream all links of extracted entities and their source documents, grouped by document."""
+        rows = self._conn.execute(
+            """
+            SELECT d.content_id AS document_content_id, d.instance_id AS document_instance_id,
+                   e.content_id AS entity_content_id, e.instance_id AS entity_instance_id, e.entity_type_name AS entity_type_name
+            FROM entity_provenance ep
             JOIN documents d ON d.content_id = ep.context_content_id
+            JOIN entities e ON e.content_id = ep.entity_content_id
             WHERE ep.context_level = ?
             ORDER BY ep.context_content_id, ep.entity_content_id
             """,
             (ContextLevel.DOCUMENT.value,),
         )
-        for row in rows:
-            yield self._row_to_entity_document_provenance(row)
 
-    def stream_entity_chunk_provenance(self) -> Iterator[EntityChunkProvenance]:
-        """Stream all links of extracted entities and their source chunks."""
+        # Track the current document and its associated entity info to group them together
+        current_document_id: DocumentId | None = None
+        current_entity_ids: list[EntityId] = []
+        current_entity_types: list[EntityTypeName] = []
+
+        # Iterate through the rows and yield provenance objects when the document changes
+        for row in rows:
+            document_id = DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['document_instance_id']),
+                content=ContentHash.from_bytes(row['document_content_id']),
+            )
+            entity_id = EntityId.from_components(
+                instance=InstanceId.from_bytes(row['entity_instance_id']),
+                content=ContentHash.from_bytes(row['entity_content_id']),
+            )
+            entity_type_name = EntityTypeName(row['entity_type_name'])
+
+            # If this is the first row, initialize the current document ID
+            if current_document_id is None:
+                current_document_id = document_id
+
+            # If the document ID has changed, yield the current provenance and reset for the new document
+            if document_id != current_document_id:
+                yield DocumentEntityProvenance(
+                    document_id=current_document_id,
+                    entity_ids=tuple(current_entity_ids),
+                    entity_types=tuple(current_entity_types),
+                )
+                current_document_id = document_id
+                current_entity_ids = []
+                current_entity_types = []
+
+            # Accumulate entity info for the current document
+            current_entity_ids.append(entity_id)
+            current_entity_types.append(entity_type_name)
+
+        # After the loop, yield any remaining provenance for the last document
+        if current_document_id is not None:
+            yield DocumentEntityProvenance(
+                document_id=current_document_id,
+                entity_ids=tuple(current_entity_ids),
+                entity_types=tuple(current_entity_types),
+            )
+
+    def stream_chunk_provenance(self) -> Iterator[ChunkEntityProvenance]:
+        """Stream all links of extracted entities and their source chunks, grouped by chunk."""
         rows = self._conn.execute(
             """
-            SELECT e.content_id AS entity_content_id, e.instance_id AS entity_instance_id,
-                   c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id
+            SELECT c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id,
+                   d.content_id AS document_content_id, d.instance_id AS document_instance_id,
+                   e.content_id AS entity_content_id, e.instance_id AS entity_instance_id, e.entity_type_name AS entity_type_name
             FROM entity_provenance ep
-            JOIN entities e ON e.content_id = ep.entity_content_id
             JOIN chunks c ON c.content_id = ep.context_content_id
+            JOIN documents d ON d.content_id = c.document_content_id
+            JOIN entities e ON e.content_id = ep.entity_content_id
             WHERE ep.context_level = ?
-            ORDER BY ep.context_content_id, ep.entity_content_id
+            ORDER BY c.document_content_id, c.chunk_index, ep.entity_content_id
             """,
             (ContextLevel.CHUNK.value,),
         )
+
+        # Track the current chunk and its associated entity info to group them together
+        current_chunk_id: ChunkId | None = None
+        current_document_id: DocumentId | None = None
+        current_entity_ids: list[EntityId] = []
+        current_entity_types: list[EntityTypeName] = []
+
+        # Iterate through the rows and yield provenance objects when the chunk changes
         for row in rows:
-            yield self._row_to_entity_chunk_provenance(row)
+            chunk_id = ChunkId.from_components(
+                instance=InstanceId.from_bytes(row['chunk_instance_id']),
+                content=ContentHash.from_bytes(row['chunk_content_id']),
+            )
+            document_id = DocumentId.from_components(
+                instance=InstanceId.from_bytes(row['document_instance_id']),
+                content=ContentHash.from_bytes(row['document_content_id']),
+            )
+            entity_id = EntityId.from_components(
+                instance=InstanceId.from_bytes(row['entity_instance_id']),
+                content=ContentHash.from_bytes(row['entity_content_id']),
+            )
+            entity_type_name = EntityTypeName(row['entity_type_name'])
+
+            # If this is the first row, initialize the current chunk
+            if current_chunk_id is None or current_document_id is None:
+                current_chunk_id = chunk_id
+                current_document_id = document_id
+
+            # If the chunk has changed, yield the current provenance and reset for the new chunk
+            if chunk_id != current_chunk_id:
+                yield ChunkEntityProvenance(
+                    chunk_id=current_chunk_id,
+                    parent_document_id=current_document_id,
+                    entity_ids=tuple(current_entity_ids),
+                    entity_types=tuple(current_entity_types),
+                )
+                current_chunk_id = chunk_id
+                current_document_id = document_id
+                current_entity_ids = []
+                current_entity_types = []
+
+            # Accumulate entity info for the current chunk
+            current_entity_ids.append(entity_id)
+            current_entity_types.append(entity_type_name)
+
+        # After the loop, yield any remaining provenance for the last chunk
+        if current_chunk_id is not None and current_document_id is not None:
+            yield ChunkEntityProvenance(
+                chunk_id=current_chunk_id,
+                parent_document_id=current_document_id,
+                entity_ids=tuple(current_entity_ids),
+                entity_types=tuple(current_entity_types),
+            )
 
     def count_entities(self, context_level: ContextLevel) -> int:
         """Count the number of unique entities for a given context level."""

@@ -26,7 +26,7 @@ from wukong_engine.core.shared.identity import ContentHash, InstanceId
 EXTRACTION_JOB_TYPE = ExtractionTask.RELATIONSHIP_EXTRACTION.value
 
 
-# TODO: Implement and test
+# TODO: Complete testing
 class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     """SQLite implementation of the RelationshipExtractionStore."""
 
@@ -36,11 +36,30 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
 
     # Extraction Jobs
 
-    # TODO: Implement
-    # TODO: Test
-    def materialize_extraction(self) -> None:
-        """Materialize a single relationship type extraction from a single source."""
-        return
+    def materialize_extractions_for_chunks(
+        self,
+        chunks: Iterable[ChunkId],
+        relationship_type_groups: Iterable[Iterable[RelationshipTypeName]],
+    ) -> None:
+        """Materialize extractions for a batch of chunks and their associated relationship types."""
+        # Prepare data for materialization
+        to_materialize: list[tuple[bytes, str, str]] = []
+        for chunk_id, rel_type_names in zip(chunks, relationship_type_groups, strict=True):
+            to_materialize.extend(
+                [
+                    (chunk_id.content.bytes, rel_type_name.value, ExtractionStatus.PENDING.value)
+                    for rel_type_name in rel_type_names
+                ],
+            )
+
+        # Materialize data
+        self._conn.executemany(
+            """
+            INSERT OR IGNORE INTO relationship_extractions (chunk_content_id, relationship_type_name, extraction_status)
+            VALUES (?, ?, ?)
+            """,
+            to_materialize,
+        )
 
     # TODO: Test
     def create_job_batch(self, size: int) -> tuple[ExtractionJob, ...]:

@@ -47,7 +47,7 @@ class ExtractRelationships:
     # TODO: Implement
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the relationship extraction process."""
-        # TODO: Materialize extractions (if not already done)
+        # Materialize extractions (if not already done)
         with self._uow as tx:
             is_materialized = tx.pipeline.is_checkpoint_completed(
                 PipelineCheckpoint.PENDING_RELATIONSHIP_EXTRACTIONS_MATERIALIZED,
@@ -65,7 +65,7 @@ class ExtractRelationships:
             logger.info('Materialized ALL pending relationship extractions!')
 
         return
-        # Run extractions for all context levels
+        # TODO: Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.CHUNK,)
         try:
             for context_level in context_levels:

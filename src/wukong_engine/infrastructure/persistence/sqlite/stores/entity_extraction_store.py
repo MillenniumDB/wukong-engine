@@ -35,7 +35,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     # Extraction Jobs
 
-    def materialize_extractions(self, context_level: ContextLevel) -> None:
+    def materialize_all_extractions(self, context_level: ContextLevel) -> None:
         """Materialize all entity type extractions for a given context level."""
         if context_level == ContextLevel.DOCUMENT:
             self._conn.execute(

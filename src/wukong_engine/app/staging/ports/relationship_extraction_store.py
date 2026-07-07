@@ -11,6 +11,7 @@ from wukong_engine.app.data_extraction.elements.values import (
     TokenUsageMetrics,
 )
 from wukong_engine.core.documents.elements import Chunk
+from wukong_engine.core.documents.elements.values import ChunkId
 from wukong_engine.core.graph.model.values import RelationshipTypeName
 
 
@@ -19,9 +20,12 @@ class RelationshipExtractionStore(Protocol):
 
     # Extraction Jobs
 
-    # TODO: Implement
-    def materialize_extraction(self) -> None:
-        """Materialize a single relationship type extraction from a single source."""
+    def materialize_extractions_for_chunks(
+        self,
+        chunks: Iterable[ChunkId],
+        relationship_type_groups: Iterable[Iterable[RelationshipTypeName]],
+    ) -> None:
+        """Materialize extractions for a batch of chunks and their associated relationship types."""
         ...
 
     def create_job_batch(self, size: int) -> tuple[ExtractionJob, ...]:
