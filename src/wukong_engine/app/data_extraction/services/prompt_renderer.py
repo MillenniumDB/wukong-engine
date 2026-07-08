@@ -13,18 +13,22 @@ Produce output that conforms exactly to the provided response schema.
 """.strip()
 KG_EXTRACTION_CONTENT = """
 Document Context
+================
 
 {DOCUMENT_CONTEXT}
 
 Task
+====
 
 {TASK}
 
 Definitions
+===========
 
 {DEFINITIONS}
 
 Source Text
+===========
 
 <text>
 {SOURCE_TEXT}

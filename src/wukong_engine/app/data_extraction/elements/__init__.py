@@ -10,6 +10,7 @@ from .extraction import (
     ExtractionResult,
     ExtractionSpec,
     RelationshipExtractionRequestContext,
+    RelationshipExtractionRequestObjects,
 )
 from .job import MAX_FAILED_ATTEMPTS, ExtractionJob
 
@@ -26,4 +27,5 @@ __all__ = [
     'ExtractionResult',
     'ExtractionSpec',
     'RelationshipExtractionRequestContext',
+    'RelationshipExtractionRequestObjects',
 ]

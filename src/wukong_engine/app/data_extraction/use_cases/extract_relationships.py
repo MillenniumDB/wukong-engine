@@ -16,7 +16,6 @@ from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, Pipelin
 logger = logging.getLogger(__name__)
 
 
-# TODO: Implement
 class ExtractRelationships:
     """Extract relationships from sources."""
 
@@ -35,7 +34,6 @@ class ExtractRelationships:
         self._batch_synchronizer = batch_synchronizer
         self._metrics_tracker = metrics_tracker
 
-    # TODO: Test
     def _recover_extractions(self) -> None:
         """Recover extractions that are in an incomplete/inconsistent state."""
         terminated, reset = self._repository.recover_extractions()
@@ -44,7 +42,6 @@ class ExtractRelationships:
         if reset > 0:
             logger.info(f'Reset {reset} deferred extractions for re-processing')
 
-    # TODO: Implement
     async def execute(self, graph_model: GraphModel) -> None:
         """Execute the relationship extraction process."""
         # Materialize extractions (if not already done)
@@ -64,8 +61,7 @@ class ExtractRelationships:
                 )
             logger.info('Materialized ALL pending relationship extractions!')
 
-        return
-        # TODO: Run extractions for all context levels
+        # Run extractions for all context levels
         context_levels: tuple[ContextLevel, ...] = (ContextLevel.CHUNK,)
         try:
             for context_level in context_levels:

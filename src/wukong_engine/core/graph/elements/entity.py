@@ -91,8 +91,35 @@ class Entity:
         return cls(id=entity_id, type=entity_type, properties=valid_properties)
 
     @property
+    def primary_key_property(self) -> tuple[EntityField, Any]:
+        """The primary key property."""
+        primary_key_field = self.type.fields[self.type.primary_key]
+        primary_key_value = self.full_properties[primary_key_field]
+        return primary_key_field, primary_key_value
+
+    @property
+    def required_properties(self) -> dict[EntityField, Any]:
+        """Required properties."""
+        required_props: dict[EntityField, Any] = {}
+        for field in self.type.fields.values():
+            if field.required:
+                required_props[field] = self.properties[field.name.value]
+        return dict(sorted(required_props.items(), key=lambda item: item[0].name.value))
+
+    @property
+    def optional_properties(self) -> dict[EntityField, Any]:
+        """Optional properties, ignoring those with null values."""
+        optional_props: dict[EntityField, Any] = {}
+        for field in self.type.fields.values():
+            if not field.required:
+                field_value = self.properties.get(field.name.value)
+                if field_value is not None:
+                    optional_props[field] = field_value
+        return dict(sorted(optional_props.items(), key=lambda item: item[0].name.value))
+
+    @property
     def full_properties(self) -> dict[EntityField, Any]:
-        """Get the full set of properties for the entity, as entity fields and their values."""
+        """Full set of properties, including those with null values."""
         full_props: dict[EntityField, Any] = {}
         for field in self.type.fields.values():
             full_props[field] = self.properties.get(field.name.value)

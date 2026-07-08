@@ -13,6 +13,7 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.app.llm.elements import LLMBatchResult
 from wukong_engine.app.llm.elements.values import ReasoningEffort
+from wukong_engine.core.graph.elements import Entity
 from wukong_engine.core.graph.model import RelationshipType
 from wukong_engine.core.graph.model.values import EntityTypeName
 
@@ -102,3 +103,12 @@ class RelationshipExtractionRequestContext:
     relationship_types: tuple[RelationshipType, ...]
     chunk_entity_type_names: tuple[EntityTypeName, ...]
     parent_document_entity_type_names: tuple[EntityTypeName, ...]
+
+
+@dataclass(frozen=True)
+class RelationshipExtractionRequestObjects:
+    """Required objects to build a relationship extraction request for a given chunk."""
+
+    relationship_types: tuple[RelationshipType, ...]
+    chunk_entities: tuple[Entity, ...]
+    parent_document_entities: tuple[Entity, ...]

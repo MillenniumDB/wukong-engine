@@ -75,35 +75,6 @@ CREATE TABLE IF NOT EXISTS entity_provenance (
 -- Relationships
 -- =========================================================
 CREATE TABLE IF NOT EXISTS relationship_types (relationship_type_name TEXT PRIMARY KEY);
-CREATE TABLE IF NOT EXISTS relationship_type_endpoints (
-    relationship_type_name TEXT NOT NULL,
-    source_entity_type_name TEXT NOT NULL,
-    target_entity_type_name TEXT NOT NULL,
-    source_context_level TEXT NOT NULL,
-    target_context_level TEXT NOT NULL,
-    PRIMARY KEY (
-        relationship_type_name,
-        source_entity_type_name,
-        target_entity_type_name,
-        source_context_level,
-        target_context_level
-    ),
-    FOREIGN KEY (relationship_type_name) REFERENCES relationship_types(relationship_type_name) ON DELETE CASCADE,
-    FOREIGN KEY (source_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
-    FOREIGN KEY (target_entity_type_name) REFERENCES entity_types(entity_type_name) ON DELETE CASCADE,
-    CHECK (
-        source_context_level IN (
-            'DOCUMENT',
-            'CHUNK'
-        )
-    ),
-    CHECK (
-        target_context_level IN (
-            'DOCUMENT',
-            'CHUNK'
-        )
-    )
-);
 CREATE TABLE IF NOT EXISTS relationships (
     content_id BLOB PRIMARY KEY,
     instance_id BLOB NOT NULL UNIQUE,
@@ -195,6 +166,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     reasoning_tokens INTEGER,
     batch_id BLOB,
     error TEXT,
+    entity_id_mapping TEXT,
     CHECK (
         job_type IN (
             'ENTITY_EXTRACTION',

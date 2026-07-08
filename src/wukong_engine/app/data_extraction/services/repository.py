@@ -8,6 +8,7 @@ from wukong_engine.app.data_extraction.elements import (
     ExtractionBatch,
     ExtractionJob,
     RelationshipExtractionRequestContext,
+    RelationshipExtractionRequestObjects,
 )
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
@@ -20,10 +21,11 @@ from wukong_engine.app.data_extraction.elements.values import (
     TokenUsageMetrics,
 )
 from wukong_engine.app.staging.ports import UnitOfWork
-from wukong_engine.core.documents.elements import Chunk, Document
+from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.graph.elements import Entity, Relationship
+from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import GraphModel, RelationshipType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 
@@ -335,7 +337,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
     def materialize_all_extractions(self, graph_model: GraphModel) -> None:
         """Materialize all extractions for later processing."""
-        # Setup relationship types and their endpoints
+        # Setup relationship types
         relationship_types = tuple(graph_model.active_relationship_types.values())
         with self._uow as tx:
             tx.relationships.add_relationship_types(relationship_types)
@@ -377,7 +379,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
                 # Add valid chunks and their associated relationship types to the materialization batch
                 chunk_extraction_context = self.get_extraction_context_for_chunk(
-                    relationship_types=tuple(graph_model.active_relationship_types.values()),
+                    relationship_types=relationship_types,
                     chunk_entity_type_names=chunk_entity_types,
                     parent_document_entity_type_names=document_entity_types,
                 )
@@ -567,11 +569,6 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
     # Relationship Extraction
 
-    def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
-        """Retrieve the relationship types associated with a given extraction job."""
-        with self._uow as tx:
-            return tx.extraction.relationships.get_job_relationship_types(job)
-
     def get_extraction_context_for_chunk(
         self,
         relationship_types: Iterable[RelationshipType],
@@ -631,3 +628,63 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 sorted(compatible_document_entity_type_names, key=lambda et: et.value),
             ),
         )
+
+    def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
+        """Retrieve the relationship types associated with a given extraction job."""
+        with self._uow as tx:
+            return tx.extraction.relationships.get_job_relationship_types(job)
+
+    def get_job_chunk_entities(self, job: ExtractionJob, model: GraphModel) -> tuple[Entity, ...]:
+        """Retrieve the entities associated with a given extraction job's source chunk."""
+        with self._uow as tx:
+            return tuple(tx.entities.stream_by_source_context(job.context_ref, model))
+
+    def get_job_parent_document_entities(self, job: ExtractionJob, model: GraphModel) -> tuple[Entity, ...]:
+        """Retrieve the entities associated with the parent document of a given extraction job's source chunk."""
+        source_chunk = self.get_job_source_context(job)
+        parent_document_ref = ContextRef(level=ContextLevel.DOCUMENT, content_id=source_chunk.document_id.content)
+        with self._uow as tx:
+            return tuple(tx.entities.stream_by_source_context(parent_document_ref, model))
+
+    def get_job_extraction_elements(
+        self,
+        job: ExtractionJob,
+        model: GraphModel,
+    ) -> RelationshipExtractionRequestObjects:
+        """Retrieve necessary elements for building a relationship extraction request for a given job, including relationship types and associated entities."""
+        relationship_types = [model.relationship_type(name) for name in self.get_job_relationship_types(job)]
+        relationship_types = tuple(rt for rt in relationship_types if rt is not None)
+        chunk_entities = self.get_job_chunk_entities(job, model)
+        parent_document_entities = self.get_job_parent_document_entities(job, model)
+
+        # Filter relationship types and entities based on the extraction context for the job's source chunk
+        extraction_context = self.get_extraction_context_for_chunk(
+            relationship_types=relationship_types,
+            chunk_entity_type_names=tuple(entity.type.name for entity in chunk_entities),
+            parent_document_entity_type_names=tuple(entity.type.name for entity in parent_document_entities),
+        )
+        filtered_chunk_entities = tuple(
+            entity for entity in chunk_entities if entity.type.name in set(extraction_context.chunk_entity_type_names)
+        )
+        filtered_parent_document_entities = tuple(
+            entity
+            for entity in parent_document_entities
+            if entity.type.name in set(extraction_context.parent_document_entity_type_names)
+        )
+
+        return RelationshipExtractionRequestObjects(
+            relationship_types=extraction_context.relationship_types,
+            chunk_entities=filtered_chunk_entities,
+            parent_document_entities=filtered_parent_document_entities,
+        )
+
+    def set_job_entity_id_mapping(self, job: ExtractionJob, mapping: dict[str, EntityId]) -> None:
+        """Set the entity ID mapping for a given extraction job."""
+        with self._uow as tx:
+            tx.extraction.relationships.store_job_entity_id_mapping(job, mapping)
+
+    def get_true_entity_id_for_job(self, job: ExtractionJob, temp_entity_id: str) -> EntityId | None:
+        """Retrieve the true EntityId for a given temporary entity ID in the context of a specific extraction job."""
+        with self._uow as tx:
+            mapping = tx.extraction.relationships.get_job_entity_id_mapping(job)
+            return mapping.get(temp_entity_id)

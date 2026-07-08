@@ -113,40 +113,13 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def add_relationship_types(self, relationship_types: Iterable[RelationshipType]) -> None:
-        """Add relationship types and their endpoints."""
-        # Add relationship types
+        """Add relationship types."""
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO relationship_types (relationship_type_name)
             VALUES (?)
             """,
             [(rt.name.value,) for rt in relationship_types],
-        )
-
-        # Add relationship type endpoints
-        self._conn.executemany(
-            """
-            INSERT OR IGNORE INTO relationship_type_endpoints (
-                relationship_type_name,
-                source_entity_type_name,
-                target_entity_type_name,
-                source_context_level,
-                target_context_level
-            )
-            VALUES (?, ?, ?, ?, ?)
-            """,
-            [
-                (
-                    rt.name.value,
-                    endpoint.source.value,
-                    endpoint.target.value,
-                    pair.source_level.value,
-                    pair.target_level.value,
-                )
-                for rt in relationship_types
-                for endpoint in rt.endpoints
-                for pair in endpoint.context_pairs
-            ],
         )
 
     def bulk_upsert_relationships(self, relationships: Iterable[Relationship]) -> None:
@@ -296,5 +269,4 @@ class SQLiteRelationshipStore(RelationshipStore):
         """Reset the relationship store."""
         self._conn.execute('DELETE FROM relationship_provenance')
         self._conn.execute('DELETE FROM relationships')
-        self._conn.execute('DELETE FROM relationship_type_endpoints')
         self._conn.execute('DELETE FROM relationship_types')

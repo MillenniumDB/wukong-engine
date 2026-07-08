@@ -10,7 +10,7 @@ class RelationshipStore(Protocol):
     """Store for managing relationships and relationship types."""
 
     def add_relationship_types(self, relationship_types: Iterable[RelationshipType]) -> None:
-        """Add relationship types and their endpoints."""
+        """Add relationship types."""
         ...
 
     def bulk_upsert_relationships(self, relationships: Iterable[Relationship]) -> None:

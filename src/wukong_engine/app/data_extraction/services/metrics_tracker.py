@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # Intervals for logging and performance updates, in seconds
 
 # Real-time mode intervals
-REALTIME_LOG_INTERVAL = 30  # Display metrics (default: 30 seconds)
+REALTIME_LOG_INTERVAL = 20  # Display metrics (default: 20 seconds)
 REALTIME_PERFORMANCE_INTERVAL = 10  # Update performance state (default: 10 seconds)
 
 # Batch mode intervals

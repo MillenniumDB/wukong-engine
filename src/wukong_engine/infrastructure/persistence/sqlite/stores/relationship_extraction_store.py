@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import time
 from collections.abc import Iterable
@@ -19,6 +20,7 @@ from wukong_engine.core.documents.elements import Chunk, ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import ExtractionTask
+from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model.values import RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
@@ -242,7 +244,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 ),
             )
 
-    # TODO: Test
     def get_job_source_context(self, job: ExtractionJob) -> Chunk:
         """Retrieve the source context for a given extraction job."""
         row = self._conn.execute(
@@ -282,7 +283,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             content=row['content'],
         )
 
-    # TODO: Test
     def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
         """Retrieve the relationship types associated with a given extraction job."""
         rows = self._conn.execute(
@@ -295,6 +295,56 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             (job.context_ref.content_id.bytes,),
         )
         return tuple(RelationshipTypeName(row['relationship_type_name']) for row in rows)
+
+    def store_job_entity_id_mapping(self, job: ExtractionJob, mapping: dict[str, EntityId]) -> None:
+        """Store the entity ID mapping associated with a given extraction job."""
+        # Convert EntityId instances to a serializable format
+        serializable_mapping = {
+            key: {
+                'instance': value.instance.hex,
+                'content': value.content.hex,
+            }
+            for key, value in mapping.items()
+        }
+
+        # Store the mapping as JSON in the database
+        self._conn.execute(
+            """
+            UPDATE extraction_jobs
+            SET entity_id_mapping = ?
+            WHERE job_id = ? AND job_type = ?
+            """,
+            (
+                json.dumps(serializable_mapping, sort_keys=True, separators=(',', ':')),
+                job.id.instance.bytes,
+                EXTRACTION_JOB_TYPE,
+            ),
+        )
+
+    def get_job_entity_id_mapping(self, job: ExtractionJob) -> dict[str, EntityId]:
+        """Retrieve the entity ID mapping associated with a given extraction job."""
+        row = self._conn.execute(
+            """
+            SELECT entity_id_mapping
+            FROM extraction_jobs
+            WHERE job_id = ? AND job_type = ?
+            """,
+            (job.id.instance.bytes, EXTRACTION_JOB_TYPE),
+        ).fetchone()
+
+        # If the job is not found, raise an error
+        if row is None:
+            raise ValueError(f'Job not found for ID: {job.id}')
+
+        # Load JSON mapping and convert values to EntityId instances
+        mapping: dict[str, dict[str, str]] = json.loads(row['entity_id_mapping'])
+        return {
+            key: EntityId.from_components(
+                instance=InstanceId.from_hex(value['instance']),
+                content=ContentHash.from_hex(value['content']),
+            )
+            for key, value in mapping.items()
+        }
 
     # Extraction Batches
 
@@ -475,7 +525,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
 
     # Metrics
 
-    # TODO: Test
     def count_sources_by_status(self) -> dict[ExtractionStatus, int]:
         """Count sources by status."""
         status_counts: dict[ExtractionStatus, int] = dict.fromkeys(ExtractionStatus, 0)
@@ -492,7 +541,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             status_counts[status] = count
         return status_counts
 
-    # TODO: Test
     def count_jobs_by_status(self) -> dict[JobStatus, int]:
         """Count jobs by status."""
         job_counts: dict[JobStatus, int] = dict.fromkeys(JobStatus, 0)
@@ -511,7 +559,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             job_counts[status] = count
         return job_counts
 
-    # TODO: Test
     def count_batches_by_status(self) -> dict[BatchStatus, int]:
         """Count batches by status."""
         batch_counts: dict[BatchStatus, int] = dict.fromkeys(BatchStatus, 0)
@@ -596,7 +643,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
 
     # Recovery
 
-    # TODO: Test
     def terminate_stalled_jobs(self) -> int:
         """Terminate stalled jobs that were never resolved to completion."""
         # Gather stalled jobs: jobs that are still in progress but are not tied to any batch
@@ -638,7 +684,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
 
         return len(stalled_jobs)
 
-    # TODO: Test
     def reset_deferred_extractions(self) -> int:
         """Reset deferred extractions for re-processing."""
         rows = self._conn.execute(

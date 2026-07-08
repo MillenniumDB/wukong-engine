@@ -12,7 +12,7 @@ from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from .prompt_renderer import PromptRenderer
 
 # Constants
-MAX_SUBMISSION_CONCURRENCY = 2  # Maximum number of concurrent batch submissions (default: 2)
+MAX_SUBMISSION_CONCURRENCY = 10  # Maximum number of concurrent batch submissions (default: 10)
 
 
 class ExtractionBatchSubmitter(Protocol):
