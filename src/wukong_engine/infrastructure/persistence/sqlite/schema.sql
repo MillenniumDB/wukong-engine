@@ -229,13 +229,8 @@ CREATE TABLE IF NOT EXISTS pipeline_checkpoints (
 CREATE INDEX IF NOT EXISTS idx_dc_collection_document ON document_collections(collection_name, document_content_id);
 -- Entities
 CREATE INDEX IF NOT EXISTS idx_entities_type_id ON entities(entity_type_name, content_id);
-CREATE INDEX IF NOT EXISTS idx_ep_entity_level_ctx ON entity_provenance(
-    entity_content_id,
-    context_level,
-    context_content_id
-);
-CREATE INDEX IF NOT EXISTS idx_etc_type_level_name ON entity_type_collections(entity_type_name, context_level, collection_name);
 -- Relationships
+CREATE INDEX IF NOT EXISTS idx_relationships_type_id ON relationships(relationship_type_name, content_id);
 -- Extraction
 CREATE INDEX IF NOT EXISTS idx_ee_level_status_ctx_type ON entity_extractions(
     context_level,
@@ -243,12 +238,8 @@ CREATE INDEX IF NOT EXISTS idx_ee_level_status_ctx_type ON entity_extractions(
     context_content_id,
     entity_type_name
 );
-CREATE INDEX IF NOT EXISTS idx_ee_level_ctx_status ON entity_extractions(
-    context_level,
-    context_content_id,
-    extraction_status
-);
-CREATE INDEX IF NOT EXISTS idx_jobs_batch_status_type ON extraction_jobs(batch_id, job_status, job_type);
+CREATE INDEX IF NOT EXISTS idx_re_status_chunk ON relationship_extractions(extraction_status, chunk_content_id);
+CREATE INDEX IF NOT EXISTS idx_jobs_batch_type_status ON extraction_jobs(batch_id, job_type, job_status);
 CREATE INDEX IF NOT EXISTS idx_jobs_type_status_batch ON extraction_jobs(job_type, job_status, batch_id);
 CREATE INDEX IF NOT EXISTS idx_jobs_type_level_status ON extraction_jobs(
     job_type,
