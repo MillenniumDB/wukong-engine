@@ -1,13 +1,15 @@
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from types import MappingProxyType
 
+from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.rules.compatibility import ensure_compatible_context_pairings
 from wukong_engine.core.extraction.model.values import RelationshipRetrievalMode
 
 from .endpoint import Endpoint
 from .field import RelationshipField
-from .values import FieldName, MergeStrategy, RelationshipIdentityPolicy, RelationshipTypeName
+from .values import EntityTypeName, FieldName, MergeStrategy, RelationshipIdentityPolicy, RelationshipTypeName
 
 
 @dataclass(frozen=True)
@@ -108,3 +110,20 @@ class RelationshipType:
     def fields_for(self, retrieval_mode: RelationshipRetrievalMode) -> tuple[RelationshipField, ...]:
         """Get the relevant fields for a specific retrieval mode."""
         return self._fields_index.get(retrieval_mode, ())
+
+    def is_valid_endpoint(
+        self,
+        source_type: EntityTypeName,
+        source_ctx: ContextLevel | Iterable[ContextLevel],
+        target_type: EntityTypeName,
+        target_ctx: ContextLevel | Iterable[ContextLevel],
+    ) -> bool:
+        """Whether the given source and target entity types and contexts match a valid endpoint definition for this relationship type."""
+        source_ctx_levels = {source_ctx} if isinstance(source_ctx, ContextLevel) else set(source_ctx)
+        target_ctx_levels = {target_ctx} if isinstance(target_ctx, ContextLevel) else set(target_ctx)
+        for endpoint in self.endpoints:
+            if endpoint.source == source_type and endpoint.target == target_type:
+                for pair in endpoint.context_pairs:
+                    if pair.source_level in source_ctx_levels and pair.target_level in target_ctx_levels:
+                        return True
+        return False

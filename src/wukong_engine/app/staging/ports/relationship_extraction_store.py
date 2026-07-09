@@ -12,7 +12,7 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.core.documents.elements import Chunk
 from wukong_engine.core.documents.elements.values import ChunkId
-from wukong_engine.core.graph.elements.values import EntityId
+from wukong_engine.core.graph.elements import EntityRef
 from wukong_engine.core.graph.model.values import RelationshipTypeName
 
 
@@ -56,12 +56,12 @@ class RelationshipExtractionStore(Protocol):
         """Retrieve the relationship types associated with a given extraction job."""
         ...
 
-    def store_job_entity_id_mapping(self, job: ExtractionJob, mapping: dict[str, EntityId]) -> None:
-        """Store the entity ID mapping associated with a given extraction job."""
+    def store_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:
+        """Store the EntityRef mapping associated with a given extraction job."""
         ...
 
-    def get_job_entity_id_mapping(self, job: ExtractionJob) -> dict[str, EntityId]:
-        """Retrieve the entity ID mapping associated with a given extraction job."""
+    def get_job_entity_ref_mapping(self, job: ExtractionJob) -> dict[str, EntityRef]:
+        """Retrieve the EntityRef mapping associated with a given extraction job."""
         ...
 
     # Extraction Batches

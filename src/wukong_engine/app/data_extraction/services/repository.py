@@ -24,8 +24,7 @@ from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.elements.values import EntityId
+from wukong_engine.core.graph.elements import Entity, EntityRef, Relationship
 from wukong_engine.core.graph.model import GraphModel, RelationshipType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 
@@ -678,13 +677,30 @@ class RelationshipExtractionRepository(ExtractionRepository):
             parent_document_entities=filtered_parent_document_entities,
         )
 
-    def set_job_entity_id_mapping(self, job: ExtractionJob, mapping: dict[str, EntityId]) -> None:
-        """Set the entity ID mapping for a given extraction job."""
+    def set_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:
+        """Set the EntityRef mapping for a given extraction job."""
         with self._uow as tx:
-            tx.extraction.relationships.store_job_entity_id_mapping(job, mapping)
+            tx.extraction.relationships.store_job_entity_ref_mapping(job, mapping)
 
-    def get_true_entity_id_for_job(self, job: ExtractionJob, temp_entity_id: str) -> EntityId | None:
-        """Retrieve the true EntityId for a given temporary entity ID in the context of a specific extraction job."""
+    def get_entity_ref_for_job(self, job: ExtractionJob, temp_entity_id: str) -> EntityRef | None:
+        """Retrieve the EntityRef for a given temporary entity ID in the context of a specific extraction job."""
         with self._uow as tx:
-            mapping = tx.extraction.relationships.get_job_entity_id_mapping(job)
+            mapping = tx.extraction.relationships.get_job_entity_ref_mapping(job)
             return mapping.get(temp_entity_id)
+
+    def get_job_entity_ref_context_levels(
+        self,
+        job: ExtractionJob,
+        entity_ref: EntityRef,
+        model: GraphModel,
+    ) -> set[ContextLevel]:
+        """Retrieve the context levels for a given EntityRef in a specific extraction job."""
+        elements = self.get_job_extraction_elements(job, model)
+        chunk_entity_ids = {entity.id for entity in elements.chunk_entities}
+        document_entity_ids = {entity.id for entity in elements.parent_document_entities}
+        context_levels: set[ContextLevel] = set()
+        if entity_ref.entity_id in chunk_entity_ids:
+            context_levels.add(ContextLevel.CHUNK)
+        if entity_ref.entity_id in document_entity_ids:
+            context_levels.add(ContextLevel.DOCUMENT)
+        return context_levels

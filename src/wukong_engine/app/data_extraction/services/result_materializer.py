@@ -7,6 +7,7 @@ from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.graph.elements import Entity, Relationship
+from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import EntityType, GraphModel, RelationshipType
 from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 
@@ -70,7 +71,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             # Normalize PK value and skip materialization if invalid
             normalized_pk = self._pk_normalizer.normalize(properties[entity_type.primary_key.value])
             if normalized_pk is None:
-                continue
+                continue  # Invalid primary key value
 
             # Materialize full entity instance
             entity = Entity.from_extraction(entity_type, properties, normalized_pk)
@@ -158,7 +159,6 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         return True
 
 
-# TODO: Complete
 class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
     """Materializer that converts raw extraction results into relationship instances."""
 
@@ -177,6 +177,12 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             relationship_type = self._materialize_relationship_type(extracted, job_types, model)
             if relationship_type is None:
                 continue
+
+            # Get source and target entity IDs
+            endpoint = self._materialize_endpoint(extracted, relationship_type, job, model)
+            if endpoint is None:
+                continue
+            source, target = endpoint
 
             # Assemble properties
             properties: dict[str, Any] = {}
@@ -203,14 +209,19 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             if not self._are_valid_properties(properties, relationship_type):
                 continue
 
-            # Normalize PK value and skip materialization if invalid
-            # normalized_pk = self._pk_normalizer.normalize(properties[relationship_type.primary_key.value])
-            # if normalized_pk is None:
-            #     continue
+            # If the identity policy uses a Primary Key, normalize the PK value and skip materialization if invalid
+            normalized_pk = None
+            if relationship_type.identity_policy.requires_primary_key:
+                pk_field = relationship_type.primary_key
+                if pk_field is None or pk_field.value not in properties:
+                    continue  # No valid primary key field
+                normalized_pk = self._pk_normalizer.normalize(properties[pk_field.value])
+                if normalized_pk is None:
+                    continue  # Invalid primary key value
 
             # Materialize full relationship instance
-            # relationship = Relationship.from_extraction(relationship_type, source, target, properties, normalized_pk)
-            # materialized_relationships.append(relationship)
+            relationship = Relationship.from_extraction(relationship_type, source, target, properties, normalized_pk)
+            materialized_relationships.append(relationship)
 
         return tuple(materialized_relationships)
 
@@ -238,6 +249,50 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         except ValueError:
             return None  # Invalid relationship type name in extracted data
 
+    def _materialize_endpoint(
+        self,
+        data: dict[str, Any],
+        relationship_type: RelationshipType,
+        job: ExtractionJob,
+        model: GraphModel,
+    ) -> tuple[EntityId, EntityId] | None:
+        """Materialize the source and target entity IDs."""
+        # Get source and target temporary entity IDs from extracted data
+        source_id = data.get('_source_entity_id')
+        target_id = data.get('_target_entity_id')
+
+        # Missing temporary entity IDs in extracted data
+        if source_id is None or target_id is None:
+            return None
+
+        # Normalize temporary entity IDs
+        source_id = str(source_id).capitalize()
+        target_id = str(target_id).capitalize()
+
+        # Map the temporary IDs back to EntityRef instances
+        source_ref = self._repository.get_entity_ref_for_job(job, source_id)
+        target_ref = self._repository.get_entity_ref_for_job(job, target_id)
+
+        # Invalid EntityRef instances
+        if source_ref is None or target_ref is None:
+            return None
+
+        # Get context levels for source and target refs
+        source_ctx = self._repository.get_job_entity_ref_context_levels(job, source_ref, model)
+        target_ctx = self._repository.get_job_entity_ref_context_levels(job, target_ref, model)
+
+        # Endpoint references do not match any endpoint defined in the relationship type
+        if not relationship_type.is_valid_endpoint(
+            source_ref.entity_type_name,
+            source_ctx,
+            target_ref.entity_type_name,
+            target_ctx,
+        ):
+            return None
+
+        # Return valid endpoint
+        return source_ref.entity_id, target_ref.entity_id
+
     def _materialize_properties(
         self,
         data: dict[str, Any],
@@ -251,7 +306,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             value = None
 
             # For extracted fields, assign the extracted value when it exists in the data
-            if retrieval_mode == EntityRetrievalMode.EXTRACT:
+            if retrieval_mode == RelationshipRetrievalMode.EXTRACT:
                 value = data.get(field.name.value)
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null

@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 from typing import Any
 
-from wukong_engine.core.graph.elements.values import NormalizedPK
 from wukong_engine.core.graph.model import RelationshipField, RelationshipType
 
-from .values import EntityId, RelationshipId
+from .values import EntityId, NormalizedPK, RelationshipId
 
 
 @dataclass(frozen=True)
@@ -109,8 +108,37 @@ class Relationship:
         )
 
     @property
+    def primary_key_property(self) -> tuple[RelationshipField, Any] | None:
+        """The primary key property."""
+        if self.type.primary_key is None:
+            return None
+        primary_key_field = self.type.fields[self.type.primary_key]
+        primary_key_value = self.full_properties[primary_key_field]
+        return primary_key_field, primary_key_value
+
+    @property
+    def required_properties(self) -> dict[RelationshipField, Any]:
+        """Required properties."""
+        required_props: dict[RelationshipField, Any] = {}
+        for field in self.type.fields.values():
+            if field.required:
+                required_props[field] = self.properties[field.name.value]
+        return dict(sorted(required_props.items(), key=lambda item: item[0].name.value))
+
+    @property
+    def optional_properties(self) -> dict[RelationshipField, Any]:
+        """Optional properties, ignoring those with null values."""
+        optional_props: dict[RelationshipField, Any] = {}
+        for field in self.type.fields.values():
+            if not field.required:
+                field_value = self.properties.get(field.name.value)
+                if field_value is not None:
+                    optional_props[field] = field_value
+        return dict(sorted(optional_props.items(), key=lambda item: item[0].name.value))
+
+    @property
     def full_properties(self) -> dict[RelationshipField, Any]:
-        """Get the full set of properties for the relationship, as relationship fields and their values."""
+        """Full set of properties, including those with null values."""
         full_props: dict[RelationshipField, Any] = {}
         for field in self.type.fields.values():
             full_props[field] = self.properties.get(field.name.value)

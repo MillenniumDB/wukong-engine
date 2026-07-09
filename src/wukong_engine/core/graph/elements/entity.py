@@ -1,10 +1,18 @@
 from dataclasses import dataclass
 from typing import Any
 
-from wukong_engine.core.graph.elements.values import NormalizedPK
 from wukong_engine.core.graph.model import EntityField, EntityType
+from wukong_engine.core.graph.model.values import EntityTypeName
 
-from .values import EntityId
+from .values import EntityId, NormalizedPK
+
+
+@dataclass(frozen=True)
+class EntityRef:
+    """Simplified representation of an Entity instance."""
+
+    entity_id: EntityId
+    entity_type_name: EntityTypeName
 
 
 @dataclass(frozen=True)
@@ -89,6 +97,11 @@ class Entity:
             if value is not None:
                 valid_properties[field.name.value] = value
         return cls(id=entity_id, type=entity_type, properties=valid_properties)
+
+    @property
+    def reference(self) -> EntityRef:
+        """Simplified reference of the entity instance."""
+        return EntityRef(entity_id=self.id, entity_type_name=self.type.name)
 
     @property
     def primary_key_property(self) -> tuple[EntityField, Any]:

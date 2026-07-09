@@ -17,7 +17,7 @@ from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
-from wukong_engine.core.graph.elements import Entity
+from wukong_engine.core.graph.elements import Entity, EntityRef
 from wukong_engine.core.graph.elements.values import EntityId
 from wukong_engine.core.graph.model import (
     Endpoint,
@@ -297,14 +297,14 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         """Initialize the request builder."""
         self._repository = repository
         self._current_entity_count: int = 0  # Track the number of extracted entities for the current job (for temp IDs)
-        self._entity_temp_to_true_id: dict[str, EntityId] = {}  # Mapping of temporary entity IDs to true EntityIds
+        self._entity_temp_to_ref: dict[str, EntityRef] = {}  # Mapping of temporary entity IDs to EntityRefs
         self._entity_true_to_temp_id: dict[EntityId, str] = {}  # Mapping of true EntityIds to temporary entity IDs
 
     def build(self, job: ExtractionJob, model: GraphModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
         # Reset entity count and ID mappings for the current job
         self._current_entity_count = 0
-        self._entity_temp_to_true_id.clear()
+        self._entity_temp_to_ref.clear()
         self._entity_true_to_temp_id.clear()
 
         # Ensure that all relationship types for the job exist in the graph model
@@ -324,7 +324,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         self._build_entity_id_mappings(
             extraction_elements.parent_document_entities + extraction_elements.chunk_entities,
         )
-        self._repository.set_job_entity_id_mapping(job, self._entity_temp_to_true_id)
+        self._repository.set_job_entity_ref_mapping(job, self._entity_temp_to_ref)
 
         # Build extraction specification
         spec = ExtractionSpec(
@@ -345,7 +345,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
                 continue  # Skip if the entity has already been assigned a temporary ID
             self._current_entity_count += 1
             temp_id = f'E{self._current_entity_count}'
-            self._entity_temp_to_true_id[temp_id] = entity.id
+            self._entity_temp_to_ref[temp_id] = entity.reference
             self._entity_true_to_temp_id[entity.id] = temp_id
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:

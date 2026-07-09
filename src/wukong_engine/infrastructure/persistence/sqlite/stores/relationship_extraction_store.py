@@ -20,15 +20,15 @@ from wukong_engine.core.documents.elements import Chunk, ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import ExtractionTask
+from wukong_engine.core.graph.elements import EntityRef
 from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model.values import RelationshipTypeName
+from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 # Constants
 EXTRACTION_JOB_TYPE = ExtractionTask.RELATIONSHIP_EXTRACTION.value
 
 
-# TODO: Complete testing
 class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     """SQLite implementation of the RelationshipExtractionStore."""
 
@@ -63,7 +63,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             to_materialize,
         )
 
-    # TODO: Test
     def create_job_batch(self, size: int) -> tuple[ExtractionJob, ...]:
         """Create a batch of jobs to process pending extractions."""
         # Avoid invalid batch sizes
@@ -89,7 +88,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             for row in rows
         )
 
-    # TODO: Test
     def schedule_jobs(self, jobs: Iterable[ExtractionJob]) -> None:
         """Schedule relationship extraction jobs for processing."""
         # Update extractions relevant to the jobs
@@ -135,7 +133,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             ],
         )
 
-    # TODO: Test
     def update_job_status(
         self,
         job: ExtractionJob,
@@ -296,13 +293,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
         return tuple(RelationshipTypeName(row['relationship_type_name']) for row in rows)
 
-    def store_job_entity_id_mapping(self, job: ExtractionJob, mapping: dict[str, EntityId]) -> None:
-        """Store the entity ID mapping associated with a given extraction job."""
-        # Convert EntityId instances to a serializable format
+    def store_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:
+        """Store the EntityRef mapping associated with a given extraction job."""
+        # Convert EntityRef instances to a serializable format
         serializable_mapping = {
             key: {
-                'instance': value.instance.hex,
-                'content': value.content.hex,
+                'instance': value.entity_id.instance.hex,
+                'content': value.entity_id.content.hex,
+                'type': value.entity_type_name.value,
             }
             for key, value in mapping.items()
         }
@@ -321,8 +319,8 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             ),
         )
 
-    def get_job_entity_id_mapping(self, job: ExtractionJob) -> dict[str, EntityId]:
-        """Retrieve the entity ID mapping associated with a given extraction job."""
+    def get_job_entity_ref_mapping(self, job: ExtractionJob) -> dict[str, EntityRef]:
+        """Retrieve the EntityRef mapping associated with a given extraction job."""
         row = self._conn.execute(
             """
             SELECT entity_id_mapping
@@ -336,12 +334,15 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         if row is None:
             raise ValueError(f'Job not found for ID: {job.id}')
 
-        # Load JSON mapping and convert values to EntityId instances
+        # Load JSON mapping and convert values to EntityRef instances
         mapping: dict[str, dict[str, str]] = json.loads(row['entity_id_mapping'])
         return {
-            key: EntityId.from_components(
-                instance=InstanceId.from_hex(value['instance']),
-                content=ContentHash.from_hex(value['content']),
+            key: EntityRef(
+                entity_id=EntityId.from_components(
+                    instance=InstanceId.from_hex(value['instance']),
+                    content=ContentHash.from_hex(value['content']),
+                ),
+                entity_type_name=EntityTypeName(value['type']),
             )
             for key, value in mapping.items()
         }
@@ -462,7 +463,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 (status.value, error, batch.id.instance.bytes),
             )
 
-    # TODO: Test
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
         """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry."""
         # Fail all jobs linked to the batch
@@ -585,7 +585,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             batch_counts[status] = count
         return batch_counts
 
-    # TODO: Test
     def get_job_duration_metrics_by_status(self) -> dict[JobStatus, JobDurationMetrics]:
         """Get job duration metrics grouped by job status (in milliseconds)."""
         job_durations: dict[JobStatus, JobDurationMetrics] = dict.fromkeys(JobStatus, JobDurationMetrics(0, 0, 0))
@@ -612,7 +611,6 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             job_durations[status] = metrics
         return job_durations
 
-    # TODO: Test
     def get_job_token_metrics_by_status(self) -> dict[JobStatus, TokenUsageMetrics]:
         """Get job token usage metrics grouped by job status."""
         job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0))
