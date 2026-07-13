@@ -5,7 +5,7 @@ from .source_validator import LocalDocumentSourceValidator
 from .stream_provider import LocalDocumentStreamProvider
 
 __all__ = [
-    'LocalDocumentContentProvider',
+    'LocalDocumentLoader',
     'LocalDocumentSourceValidator',
     'LocalDocumentStreamProvider',
 ]

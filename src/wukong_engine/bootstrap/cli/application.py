@@ -19,6 +19,9 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
+from wukong_engine.app.knowledge_export.model.values import KnowledgeExportFormat
+from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
+from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
 from wukong_engine.app.workspace import Workspace
@@ -26,6 +29,11 @@ from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumen
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
+from wukong_engine.infrastructure.export.graph import (
+    JSONKnowledgeExporter,
+    MillenniumDBKnowledgeExporter,
+    Neo4jKnowledgeExporter,
+)
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import set_logger_verbosity
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
@@ -53,6 +61,19 @@ class CLIApplication:
     def __init__(self, graph_construction_pipeline: GraphConstructionPipeline) -> None:
         """Initialize the CLI application, composing all dependencies."""
         self.graph_construction = graph_construction_pipeline
+
+
+def _format_to_exporter(export_format: KnowledgeExportFormat) -> KnowledgeExporter:
+    """Map an export format to its corresponding KnowledgeExporter implementation."""
+    match export_format:
+        case KnowledgeExportFormat.JSON:
+            return JSONKnowledgeExporter()
+        case KnowledgeExportFormat.MDB:
+            return MillenniumDBKnowledgeExporter()
+        case KnowledgeExportFormat.NEO4J:
+            return Neo4jKnowledgeExporter()
+        case _:
+            raise ValueError(f'Unsupported export format: {export_format}')
 
 
 def build_application(workspace: Workspace, config_path: Path, verbosity: int) -> CLIApplication:
@@ -88,6 +109,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model)
     llm_client = OpenAIClient(config=llm_config)
     pk_normalizer = DefaultPKNormalizer()
+    knowledge_exporter = _format_to_exporter(app_config.export.format)
 
     # Common services
     extraction_executor = ConcurrentExtractionExecutor(
@@ -117,7 +139,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         metrics_tracker=entity_metrics_tracker,
     )
 
-    # Assign the appropriate extraction engine based on the execution mode
+    # Assign the appropriate entity extraction engine based on the execution mode
     if app_config.llm.execution_mode == ExecutionMode.BATCH:
         entity_extraction_engine = BatchExtractionEngine(
             repository=entity_extraction_repository,
@@ -152,7 +174,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         metrics_tracker=relationship_metrics_tracker,
     )
 
-    # Assign the appropriate extraction engine based on the execution mode
+    # Assign the appropriate relationship extraction engine based on the execution mode
     if app_config.llm.execution_mode == ExecutionMode.BATCH:
         relationship_extraction_engine = BatchExtractionEngine(
             repository=relationship_extraction_repository,
@@ -195,6 +217,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         batch_synchronizer=relationship_batch_synchronizer,
         metrics_tracker=relationship_metrics_tracker,
     )
+    export_knowledge = ExportKnowledge(uow=staging_uow, exporter=knowledge_exporter)
 
     # Workflows
     graph_construction = GraphConstructionPipeline(
@@ -205,5 +228,6 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         ingest_documents=ingest_documents,
         extract_entities=extract_entities,
         extract_relationships=extract_relationships,
+        export_knowledge=export_knowledge,
     )
     return CLIApplication(graph_construction_pipeline=graph_construction)

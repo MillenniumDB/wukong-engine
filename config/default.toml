@@ -17,24 +17,24 @@
 ingest_documents = true
 
 ### Extract entities from the documents ###
-# Note: Expects input documents to be available in the system
+# Note: Expects input documents to be already ingested into the system
 # Default: true
 extract_entities = true
 
 ### Extract relationships between entities from the documents ###
-# Note: Expects input documents and previously extracted entities to be available
+# Note: Expects input documents to be already ingested and previously extracted entities to be available
 # Default: true
 extract_relationships = true
 
-### Export the knowledge graph ###
+### Export the extracted knowledge ###
 # Note: Expects previously extracted entities and relationships to be available
 # Default: true
-export_graph = true
+export_knowledge = true
 
 ##############
 #    LLM     #
 ##############
-# This section controls the configuration of the LLM used for entity and relationship extraction
+# This section controls the configuration of the LLM used for knowledge extraction
 [llm]
 
 ### The LLM model to use for extraction ###
@@ -84,13 +84,13 @@ overlap_tokens = 120
 ##############
 #   EXPORT   #
 ##############
-# This section controls the configuration of the export process for the extracted knowledge graph
+# This section controls the configuration of the export process for the extracted knowledge
 [export]
 
 ### Format for exporting the results ###
 # You can choose from the following formats:
-# "mdb": MillenniumDB Quad Model file
-# "neo4j": Neo4j CSV files
-# "json": JSON files
-# Default: "mdb"
-export_format = "mdb"
+# "json": Generic graph-formatted JSON files
+# "mdb": MillenniumDB graph database QM (Quad Model) file
+# "neo4j": Neo4j graph database CSV files
+# Default: "json"
+format = "json"

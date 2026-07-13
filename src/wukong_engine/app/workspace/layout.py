@@ -8,4 +8,4 @@ class WorkspaceLayout:
     DOCUMENT_REGISTRY: str = 'document_collections.json'
     GRAPH_MODEL: str = 'graph_model.json'
     STAGING_DB: str = 'staging/extraction.db'
-    EXPORTS_DIR: str = 'exports/'
+    EXPORTS: str = 'exports/'

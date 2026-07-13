@@ -5,6 +5,7 @@ import logging
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
+from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.staging.ports import UnitOfWork
@@ -27,7 +28,7 @@ class GraphConstructionPipeline:
         ingest_documents: IngestDocuments,
         extract_entities: ExtractEntities,
         extract_relationships: ExtractRelationships,
-        # export_graph: ExportGraph,
+        export_knowledge: ExportKnowledge,
     ) -> None:
         """Initialize the graph construction workflow with its use cases."""
         self._app_config = app_config
@@ -37,11 +38,12 @@ class GraphConstructionPipeline:
         self._ingest_documents = ingest_documents
         self._extract_entities = extract_entities
         self._extract_relationships = extract_relationships
-        # self._export_graph = export_graph
+        self._export_knowledge = export_knowledge
 
-    # TODO: Add | ExportGraph, then remove the None and raise an error if a step is not found
-    # TODO: When all steps are here, remove the check for if use case is not None in all places that call this function
-    def _step_to_use_case(self, step: PipelineStep) -> IngestDocuments | ExtractEntities | ExtractRelationships | None:
+    def _step_to_use_case(
+        self,
+        step: PipelineStep,
+    ) -> IngestDocuments | ExtractEntities | ExtractRelationships | ExportKnowledge:
         """Map a pipeline step to its corresponding use case."""
         match step:
             case PipelineStep.INGEST_DOCUMENTS:
@@ -50,13 +52,12 @@ class GraphConstructionPipeline:
                 return self._extract_entities
             case PipelineStep.EXTRACT_RELATIONSHIPS:
                 return self._extract_relationships
-            # case PipelineStep.EXPORT_GRAPH:
-            #     return self._export_graph
+            case PipelineStep.EXPORT_KNOWLEDGE:
+                return self._export_knowledge
             case _:
-                # error = f'No use case found for pipeline step: {step.value}'
-                # logger.error(error)
-                # raise PipelineExecutionError(error)
-                return None
+                error = f'No use case found for pipeline step: {step.value}'
+                logger.error(error)
+                raise PipelineExecutionError(error)
 
     async def execute(self, workspace: Workspace, data_uri: str, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
@@ -66,7 +67,7 @@ class GraphConstructionPipeline:
         1. Ingest documents
         2. Extract entities
         3. Extract relationships
-        4. Export knowledge graph
+        4. Export knowledge
 
         Args:
             workspace: The user workspace containing key files and directories for the pipeline execution.
@@ -92,15 +93,10 @@ class GraphConstructionPipeline:
         document_registry.validate_collections(frozenset(unique_collections))
         logger.info(f'Graph Model obtained successfully from "{workspace.paths.graph_model}"\n\n{graph_model}')
 
-        # TODO: Export graph
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
             # Map the step to its corresponding use case
             use_case = self._step_to_use_case(step)
-            if use_case is None:
-                error = f'No use case found for pipeline step: {step.value}'
-                logger.error(error)
-                raise PipelineExecutionError(error)
 
             # Stop if dependencies have not been completed
             with self._uow as tx:
@@ -115,8 +111,7 @@ class GraphConstructionPipeline:
             if should_reset:
                 for dependent_step in step.is_required_by:
                     dependent_use_case = self._step_to_use_case(dependent_step)
-                    if dependent_use_case is not None:
-                        dependent_use_case.reset()
+                    dependent_use_case.reset()
                 use_case.reset()
                 with self._uow as tx:
                     tx.pipeline.reset_dependent_checkpoints(step)
@@ -135,6 +130,8 @@ class GraphConstructionPipeline:
                         await self._extract_entities.execute(graph_model)
                     case PipelineStep.EXTRACT_RELATIONSHIPS:
                         await self._extract_relationships.execute(graph_model)
+                    case PipelineStep.EXPORT_KNOWLEDGE:
+                        self._export_knowledge.execute(str(workspace.paths.exports))
 
                 # Stop the pipeline if the step did not fully complete
                 completed = False
@@ -151,7 +148,6 @@ class GraphConstructionPipeline:
         """Reset the pipeline back to its initial state."""
         for step in PipelineStep:
             use_case = self._step_to_use_case(step)
-            if use_case is not None:
-                use_case.reset()
+            use_case.reset()
         with self._uow as tx:
             tx.pipeline.clear()

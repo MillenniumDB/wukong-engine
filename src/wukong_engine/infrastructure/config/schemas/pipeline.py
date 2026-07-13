@@ -7,4 +7,4 @@ class PipelineConfigSchema(BaseModel):
     ingest_documents: StrictBool | None = None
     extract_entities: StrictBool | None = None
     extract_relationships: StrictBool | None = None
-    export_graph: StrictBool | None = None
+    export_knowledge: StrictBool | None = None

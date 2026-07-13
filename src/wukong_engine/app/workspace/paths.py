@@ -32,6 +32,6 @@ class WorkspacePaths:
         return self._root / self._layout.STAGING_DB
 
     @property
-    def exports_dir(self) -> Path:
+    def exports(self) -> Path:
         """Path to the exports directory."""
-        return self._root / self._layout.EXPORTS_DIR
+        return self._root / self._layout.EXPORTS

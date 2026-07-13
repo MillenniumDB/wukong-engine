@@ -44,4 +44,4 @@ class ApplicationConfigMapper:
 
     def _map_export(self, schema: ExportConfigSchema) -> ExportConfig:
         """Map export configuration schema to export configuration model."""
-        return ExportConfig()
+        return ExportConfig(**schema.model_dump(exclude_none=True))

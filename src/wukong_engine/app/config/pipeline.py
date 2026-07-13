@@ -13,14 +13,14 @@ class PipelineConfig:
     ingest_documents: bool = True
     extract_entities: bool = True
     extract_relationships: bool = True
-    export_graph: bool = True
+    export_knowledge: bool = True
 
     # Mapping from pipeline steps to configuration fields
     _STEP_TO_FIELD: ClassVar[dict[PipelineStep, str]] = {
         PipelineStep.INGEST_DOCUMENTS: 'ingest_documents',
         PipelineStep.EXTRACT_ENTITIES: 'extract_entities',
         PipelineStep.EXTRACT_RELATIONSHIPS: 'extract_relationships',
-        PipelineStep.EXPORT_GRAPH: 'export_graph',
+        PipelineStep.EXPORT_KNOWLEDGE: 'export_knowledge',
     }
 
     def __str__(self) -> str:

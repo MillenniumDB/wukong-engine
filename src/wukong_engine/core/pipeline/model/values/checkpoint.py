@@ -10,6 +10,7 @@ class PipelineCheckpoint(Enum):
         ENTITIES_EXTRACTED: All entities have been extracted.
         PENDING_RELATIONSHIP_EXTRACTIONS_MATERIALIZED: Pending relationship extractions have been materialized.
         RELATIONSHIPS_EXTRACTED: All relationships have been extracted.
+        KNOWLEDGE_EXPORTED: The extracted knowledge has been exported.
     """
 
     DOCUMENTS_INGESTED = 'DOCUMENTS_INGESTED'
@@ -17,3 +18,4 @@ class PipelineCheckpoint(Enum):
     ENTITIES_EXTRACTED = 'ENTITIES_EXTRACTED'
     PENDING_RELATIONSHIP_EXTRACTIONS_MATERIALIZED = 'PENDING_RELATIONSHIP_EXTRACTIONS_MATERIALIZED'
     RELATIONSHIPS_EXTRACTED = 'RELATIONSHIPS_EXTRACTED'
+    KNOWLEDGE_EXPORTED = 'KNOWLEDGE_EXPORTED'
