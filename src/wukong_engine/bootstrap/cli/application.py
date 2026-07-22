@@ -21,6 +21,7 @@ from wukong_engine.app.data_extraction.use_cases import ExtractEntities, Extract
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.knowledge_export.model.values import KnowledgeExportFormat
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
+from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
 from wukong_engine.app.workflows import GraphConstructionPipeline
@@ -63,15 +64,15 @@ class CLIApplication:
         self.graph_construction = graph_construction_pipeline
 
 
-def _format_to_exporter(export_format: KnowledgeExportFormat) -> KnowledgeExporter:
+def _format_to_exporter(export_format: KnowledgeExportFormat, repository: KnowledgeRepository) -> KnowledgeExporter:
     """Map an export format to its corresponding KnowledgeExporter implementation."""
     match export_format:
         case KnowledgeExportFormat.JSON:
-            return JSONKnowledgeExporter()
+            return JSONKnowledgeExporter(repository)
         case KnowledgeExportFormat.MDB:
-            return MillenniumDBKnowledgeExporter()
+            return MillenniumDBKnowledgeExporter(repository)
         case KnowledgeExportFormat.NEO4J:
-            return Neo4jKnowledgeExporter()
+            return Neo4jKnowledgeExporter(repository)
         case _:
             raise ValueError(f'Unsupported export format: {export_format}')
 
@@ -109,7 +110,8 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model)
     llm_client = OpenAIClient(config=llm_config)
     pk_normalizer = DefaultPKNormalizer()
-    knowledge_exporter = _format_to_exporter(app_config.export.format)
+    knowledge_repository = KnowledgeRepository(uow=staging_uow)
+    knowledge_exporter = _format_to_exporter(app_config.export.format, knowledge_repository)
 
     # Common services
     extraction_executor = ConcurrentExtractionExecutor(

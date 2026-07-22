@@ -59,6 +59,7 @@ ignore = [
     "TC001",  # Allow imports that are only used in type annotations
     "TC002",  # Allow imports that are only used in type annotations
     "TC003",  # Allow imports that are only used in type annotations
+    "CPY001", # Ignore copyright header checks
 ]
 unfixable = ["F401"] # Do not auto-fix unused imports
 

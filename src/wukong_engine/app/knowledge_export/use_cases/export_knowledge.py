@@ -1,5 +1,6 @@
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.staging.ports import UnitOfWork
+from wukong_engine.core.graph.model import GraphModel
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
 
 
@@ -14,9 +15,9 @@ class ExportKnowledge:
         self._uow = uow
         self._exporter = exporter
 
-    def execute(self, exports_uri: str) -> None:
+    def execute(self, model: GraphModel, export_uri: str) -> None:
         """Export the extracted knowledge to output files using a specified format."""
-        self._exporter.export(exports_uri)
+        self._exporter.export(model, export_uri)
         with self._uow as tx:
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.KNOWLEDGE_EXPORTED, PipelineCheckpointStatus.COMPLETED)
 

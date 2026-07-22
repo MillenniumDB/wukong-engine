@@ -131,7 +131,7 @@ class GraphConstructionPipeline:
                     case PipelineStep.EXTRACT_RELATIONSHIPS:
                         await self._extract_relationships.execute(graph_model)
                     case PipelineStep.EXPORT_KNOWLEDGE:
-                        self._export_knowledge.execute(str(workspace.paths.exports))
+                        self._export_knowledge.execute(graph_model, str(workspace.paths.exports))
 
                 # Stop the pipeline if the step did not fully complete
                 completed = False
