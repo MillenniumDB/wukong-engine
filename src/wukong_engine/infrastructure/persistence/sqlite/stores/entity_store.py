@@ -187,7 +187,7 @@ class SQLiteEntityStore(EntityStore):
                 raise ValueError(f'Entity type "{entity_type_name.value}" not found in the provided graph model.')
             yield self._row_to_entity(row, entity_type)
 
-    def stream_document_provenance(self) -> Iterator[DocumentEntityProvenance]:
+    def stream_provenance_by_document(self) -> Iterator[DocumentEntityProvenance]:
         """Stream all links of extracted entities and their source documents, grouped by document."""
         rows = self._conn.execute(
             """
@@ -246,7 +246,7 @@ class SQLiteEntityStore(EntityStore):
                 entity_types=tuple(current_entity_types),
             )
 
-    def stream_chunk_provenance(self) -> Iterator[ChunkEntityProvenance]:
+    def stream_provenance_by_chunk(self) -> Iterator[ChunkEntityProvenance]:
         """Stream all links of extracted entities and their source chunks, grouped by chunk."""
         rows = self._conn.execute(
             """

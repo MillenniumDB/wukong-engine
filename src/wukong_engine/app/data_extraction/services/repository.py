@@ -344,8 +344,8 @@ class RelationshipExtractionRepository(ExtractionRepository):
         # Materialize relationship extractions
         with self._uow as tx:
             # Set up iterators for document and chunk provenances
-            document_provenances = iter(tx.entities.stream_document_provenance())
-            chunk_provenances = iter(tx.entities.stream_chunk_provenance())
+            document_provenances = iter(tx.entities.stream_provenance_by_document())
+            chunk_provenances = iter(tx.entities.stream_provenance_by_chunk())
             current_document = next(document_provenances, None)
             current_document_id = current_document.document_id.content.bytes if current_document else None
             chunks_to_materialize: list[ChunkId] = []

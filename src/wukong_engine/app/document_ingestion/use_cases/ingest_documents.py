@@ -58,12 +58,6 @@ class IngestDocuments:
             logger.info(f'Total Chunks: {total_chunks}')
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
 
-    def reset(self) -> None:
-        """Reset the document ingestion state."""
-        logger.warning('Resetting document ingestion state. This will clear ALL ingested documents and chunks...')
-        with self._uow as tx:
-            tx.documents.clear()
-
     def _ingest_collection(self, collection: DocumentCollection) -> None:
         """Ingest a specific collection of documents into the system."""
         try:
@@ -82,3 +76,9 @@ class IngestDocuments:
             error = f'Failed to ingest Document Collection "{collection.name}"'
             logger.error(error)
             raise DocumentIngestionError(error) from exc
+
+    def reset(self) -> None:
+        """Reset the document ingestion state."""
+        logger.warning('Resetting document ingestion state. This will clear ALL ingested documents and chunks...')
+        with self._uow as tx:
+            tx.documents.clear()

@@ -7,7 +7,7 @@ from wukong_engine.app.shared.iterables import batched
 from wukong_engine.app.staging.ports import RelationshipStore
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship
+from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
 from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
 from wukong_engine.core.graph.model import RelationshipType
 from wukong_engine.core.graph.model.values import RelationshipTypeName
@@ -186,7 +186,7 @@ class SQLiteRelationshipStore(RelationshipStore):
         for row in rows:
             yield self._row_to_relationship(row, relationship_type)
 
-    def stream_chunk_provenance(self) -> Iterator[ChunkRelationshipProvenance]:
+    def stream_provenance_by_chunk(self) -> Iterator[ChunkRelationshipProvenance]:
         """Stream all links of extracted relationships and their source chunks, grouped by chunk."""
         rows = self._conn.execute(
             """
@@ -253,6 +253,68 @@ class SQLiteRelationshipStore(RelationshipStore):
                 parent_document_id=current_document_id,
                 relationship_ids=tuple(current_relationship_ids),
                 relationship_types=tuple(current_relationship_types),
+            )
+
+    def stream_provenance_by_relationship_type(
+        self,
+        relationship_type: RelationshipType,
+    ) -> Iterator[RelationshipChunkProvenance]:
+        """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship."""
+        rows = self._conn.execute(
+            """
+            SELECT
+                r.content_id AS relationship_content_id,
+                r.instance_id AS relationship_instance_id,
+                c.content_id AS chunk_content_id,
+                c.instance_id AS chunk_instance_id
+            FROM relationship_provenance rp
+            JOIN relationships r ON r.content_id = rp.relationship_content_id
+            JOIN chunks c ON c.content_id = rp.chunk_content_id
+            WHERE r.relationship_type_name = ?
+            ORDER BY r.content_id, c.document_content_id, c.chunk_index
+            """,
+            (relationship_type.name.value,),
+        )
+
+        # Track the current relationship and its associated chunk info to group them together
+        current_relationship_id: RelationshipId | None = None
+        current_chunk_ids: list[ChunkId] = []
+
+        # Iterate through the rows and yield provenance objects when the relationship changes
+        for row in rows:
+            relationship_id = RelationshipId.from_components(
+                instance=InstanceId.from_bytes(row['relationship_instance_id']),
+                content=ContentHash.from_bytes(row['relationship_content_id']),
+            )
+
+            chunk_id = ChunkId.from_components(
+                instance=InstanceId.from_bytes(row['chunk_instance_id']),
+                content=ContentHash.from_bytes(row['chunk_content_id']),
+            )
+
+            # If this is the first row, initialize the current relationship
+            if current_relationship_id is None:
+                current_relationship_id = relationship_id
+
+            # If the relationship has changed, yield the current provenance and reset for the new relationship
+            if relationship_id != current_relationship_id:
+                yield RelationshipChunkProvenance(
+                    relationship_id=current_relationship_id,
+                    relationship_type=relationship_type.name,
+                    chunk_ids=tuple(current_chunk_ids),
+                )
+                current_relationship_id = relationship_id
+                current_chunk_ids = []
+
+            # Accumulate chunk info for the current relationship
+            current_chunk_ids.append(chunk_id)
+
+        # After the loop, yield any remaining provenance for the last relationship
+        if current_relationship_id is not None:
+            yield RelationshipChunkProvenance(
+                relationship_id=current_relationship_id,
+                relationship_type=relationship_type.name,
+                chunk_ids=tuple(current_chunk_ids),
             )
 
     def count_relationships(self) -> int:

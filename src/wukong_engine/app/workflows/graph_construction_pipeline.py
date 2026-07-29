@@ -10,7 +10,7 @@ from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, Get
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.app.workspace import Workspace
-from wukong_engine.core.pipeline.model.values import PipelineStep
+from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus, PipelineStep
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -118,6 +118,10 @@ class GraphConstructionPipeline:
 
             # Check if step has already been completed
             with self._uow as tx:
+                tx.pipeline.set_checkpoint_status(
+                    PipelineCheckpoint.KNOWLEDGE_EXPORTED,
+                    PipelineCheckpointStatus.PENDING,
+                )  # Reset the knowledge export checkpoint to be able to export every run
                 completed = tx.pipeline.is_step_completed(step)
 
             # If not completed, execute the step
@@ -131,7 +135,7 @@ class GraphConstructionPipeline:
                     case PipelineStep.EXTRACT_RELATIONSHIPS:
                         await self._extract_relationships.execute(graph_model)
                     case PipelineStep.EXPORT_KNOWLEDGE:
-                        self._export_knowledge.execute(graph_model, str(workspace.paths.exports))
+                        self._export_knowledge.execute(graph_model)
 
                 # Stop the pipeline if the step did not fully complete
                 completed = False

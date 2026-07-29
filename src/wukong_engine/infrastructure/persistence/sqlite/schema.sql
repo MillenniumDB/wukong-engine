@@ -231,6 +231,10 @@ CREATE INDEX IF NOT EXISTS idx_dc_collection_document ON document_collections(co
 CREATE INDEX IF NOT EXISTS idx_entities_type_id ON entities(entity_type_name, content_id);
 -- Relationships
 CREATE INDEX IF NOT EXISTS idx_relationships_type_id ON relationships(relationship_type_name, content_id);
+CREATE INDEX IF NOT EXISTS idx_rp_relationship_chunk ON relationship_provenance(
+    relationship_content_id,
+    chunk_content_id
+);
 -- Extraction
 CREATE INDEX IF NOT EXISTS idx_ee_level_status_ctx_type ON entity_extractions(
     context_level,

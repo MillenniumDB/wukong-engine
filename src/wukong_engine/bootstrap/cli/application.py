@@ -219,7 +219,11 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         batch_synchronizer=relationship_batch_synchronizer,
         metrics_tracker=relationship_metrics_tracker,
     )
-    export_knowledge = ExportKnowledge(uow=staging_uow, exporter=knowledge_exporter)
+    export_knowledge = ExportKnowledge(
+        uow=staging_uow,
+        exporter=knowledge_exporter,
+        export_uri=str(workspace.paths.exports),
+    )
 
     # Workflows
     graph_construction = GraphConstructionPipeline(

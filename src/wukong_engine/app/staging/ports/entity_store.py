@@ -40,11 +40,11 @@ class EntityStore(Protocol):
         """Stream all entities linked to a specific source context."""
         ...
 
-    def stream_document_provenance(self) -> Iterator[DocumentEntityProvenance]:
+    def stream_provenance_by_document(self) -> Iterator[DocumentEntityProvenance]:
         """Stream all links of extracted entities and their source documents, grouped by document."""
         ...
 
-    def stream_chunk_provenance(self) -> Iterator[ChunkEntityProvenance]:
+    def stream_provenance_by_chunk(self) -> Iterator[ChunkEntityProvenance]:
         """Stream all links of extracted entities and their source chunks, grouped by chunk."""
         ...
 

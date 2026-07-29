@@ -2,7 +2,7 @@ from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.core.documents.elements import ContextRef
-from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship
+from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
 from wukong_engine.core.graph.model import RelationshipType
 
 
@@ -25,8 +25,15 @@ class RelationshipStore(Protocol):
         """Stream all relationships of a given type."""
         ...
 
-    def stream_chunk_provenance(self) -> Iterator[ChunkRelationshipProvenance]:
+    def stream_provenance_by_chunk(self) -> Iterator[ChunkRelationshipProvenance]:
         """Stream all links of extracted relationships and their source chunks, grouped by chunk."""
+        ...
+
+    def stream_provenance_by_relationship_type(
+        self,
+        relationship_type: RelationshipType,
+    ) -> Iterator[RelationshipChunkProvenance]:
+        """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship."""
         ...
 
     def count_relationships(self) -> int:
