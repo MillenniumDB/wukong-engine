@@ -20,8 +20,8 @@ from wukong_engine.infrastructure.storage.filesystem import clear_directory
 # Logging
 logger = logging.getLogger(__name__)
 
-# Neo4j type mapping
-TYPE_MAPPING = {
+# Neo4j data type name mapping
+DATA_TYPE_NAME_MAPPING = {
     DataType.STRING: 'string',
 }
 
@@ -54,14 +54,17 @@ class Neo4jWriter:
     def _serialize_value(self, value: Any) -> str:
         """Serialize a value for CSV writing."""
         serialized_value = self._serializer.serialize(value)
-        if serialized_value is None:  # If the value is None, return an empty string for CSV compatibility
+
+        # If the value is None, return an empty string for CSV compatibility
+        if serialized_value is None:
             return ''
+
         return serialized_value
 
     @staticmethod
     def _to_neo4j_type(data_type: DataType) -> str:
         """Map a DataType to its corresponding Neo4j type."""
-        return TYPE_MAPPING.get(data_type, 'string')  # Default to string if not found
+        return DATA_TYPE_NAME_MAPPING.get(data_type, 'string')  # Default to string if not found
 
     def _write_header(self) -> None:
         """Write the header row to the CSV file."""
@@ -135,7 +138,7 @@ class Neo4jDocumentWriter(Neo4jWriter):
         row = [document.id.instance.hex, document.id.content.hex]
 
         # Properties
-        row.append(document.source_uri)  # Source URI does not require serialization
+        row.append(self._serialize_value(document.source_uri))
 
         return row
 
@@ -205,7 +208,7 @@ class Neo4jRelationshipWriter(Neo4jWriter):
         # Write the header
         self._writer.writerow(header)
 
-    def _serialize(self, relationship: Relationship, chunk_ids: tuple[ChunkId, ...]) -> list[str]:
+    def _serialize(self, relationship: Relationship, provenance: tuple[ChunkId, ...]) -> list[str]:
         """Serialize a relationship to a list of strings for CSV writing."""
         # Endpoint: Source ID, Target ID
         row = [relationship.source.instance.hex, relationship.target.instance.hex]
@@ -221,7 +224,7 @@ class Neo4jRelationshipWriter(Neo4jWriter):
         )
 
         # Provenance: Chunk IDs (multiple)
-        row.append(';'.join(chunk_id.instance.hex for chunk_id in chunk_ids))
+        row.append(';'.join(chunk_id.instance.hex for chunk_id in provenance))
 
         # Properties
         for field in self._relationship_type.fields.values():
@@ -230,9 +233,9 @@ class Neo4jRelationshipWriter(Neo4jWriter):
 
         return row
 
-    def write(self, relationship: Relationship, chunk_ids: tuple[ChunkId, ...]) -> None:
+    def write(self, relationship: Relationship, provenance: tuple[ChunkId, ...]) -> None:
         """Write a relationship to the CSV file."""
-        self._writer.writerow(self._serialize(relationship, chunk_ids))
+        self._writer.writerow(self._serialize(relationship, provenance))
 
 
 class Neo4jChunkSourceWriter(Neo4jWriter):
@@ -353,10 +356,10 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             logger.info(f'Exporting Relationships of type: {relationship_type.name}')
             relationship_type_file_path = relationships_dir / f'{relationship_type.name}.csv'
             with Neo4jRelationshipWriter(relationship_type_file_path, relationship_type) as writer:
-                for relationship, chunk_ids in self._repository.stream_relationships_by_type_with_provenance(
+                for relationship, provenance in self._repository.stream_relationships_by_type_with_provenance(
                     relationship_type,
                 ):
-                    writer.write(relationship, chunk_ids)
+                    writer.write(relationship, provenance)
 
     def clear(self, export_uri: str) -> None:
         """Clear the exported knowledge state, removing any exported data."""
