@@ -12,7 +12,6 @@ class ExportConfigSchema(BaseModel):
 
     # Mapping of various string representations to KnowledgeExportFormat members
     _EXPORT_FORMAT_ALIASES: ClassVar[dict[str, KnowledgeExportFormat]] = {
-        'json': KnowledgeExportFormat.JSON,
         'mdb': KnowledgeExportFormat.MDB,
         'millenniumdb': KnowledgeExportFormat.MDB,
         'neo4j': KnowledgeExportFormat.NEO4J,

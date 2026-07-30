@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class ExportConfig:
     """Export configuration."""
 
-    format: KnowledgeExportFormat = KnowledgeExportFormat.JSON
+    format: KnowledgeExportFormat = KnowledgeExportFormat.MDB
 
     def __str__(self) -> str:
         """User-friendly string representation of the export configuration."""

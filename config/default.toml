@@ -89,8 +89,7 @@ overlap_tokens = 120
 
 ### Format for exporting the results ###
 # You can choose from the following formats:
-# "json": Generic graph-formatted JSON files
 # "mdb": MillenniumDB graph database QM (Quad Model) file
 # "neo4j": Neo4j graph database CSV files
-# Default: "json"
-format = "json"
+# Default: "mdb"
+format = "mdb"

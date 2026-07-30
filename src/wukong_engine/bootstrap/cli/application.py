@@ -30,11 +30,7 @@ from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumen
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
-from wukong_engine.infrastructure.export.graph import (
-    JSONKnowledgeExporter,
-    MillenniumDBKnowledgeExporter,
-    Neo4jKnowledgeExporter,
-)
+from wukong_engine.infrastructure.export.graph import MillenniumDBKnowledgeExporter, Neo4jKnowledgeExporter
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import set_logger_verbosity
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
@@ -67,8 +63,6 @@ class CLIApplication:
 def _format_to_exporter(export_format: KnowledgeExportFormat, repository: KnowledgeRepository) -> KnowledgeExporter:
     """Map an export format to its corresponding KnowledgeExporter implementation."""
     match export_format:
-        case KnowledgeExportFormat.JSON:
-            return JSONKnowledgeExporter(repository)
         case KnowledgeExportFormat.MDB:
             return MillenniumDBKnowledgeExporter(repository)
         case KnowledgeExportFormat.NEO4J:
