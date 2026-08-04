@@ -5,10 +5,10 @@ from collections.abc import Iterable
 from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, BatchCursor, ExtractionBatch, ExtractionJob
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
+    DurationMetrics,
     ExtractionBatchId,
     ExtractionJobId,
     ExtractionStatus,
-    JobDurationMetrics,
     JobRetryPolicy,
     JobStatus,
     TokenUsageMetrics,
@@ -560,7 +560,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         groups = self._conn.execute(
             """
             SELECT
-                b.batch_status,
+                batch_status,
                 COUNT(*) AS batch_count
             FROM extraction_batches b
             WHERE EXISTS (
@@ -570,7 +570,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 AND j.job_type = ?
                 AND j.context_level = ?
             )
-            GROUP BY b.batch_status
+            GROUP BY batch_status
             """,
             (EXTRACTION_JOB_TYPE, context_level.value),
         )
@@ -580,9 +580,9 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             batch_counts[status] = count
         return batch_counts
 
-    def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, JobDurationMetrics]:
+    def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, DurationMetrics]:
         """Get job duration metrics grouped by job status for a given context level (in milliseconds)."""
-        job_durations: dict[JobStatus, JobDurationMetrics] = dict.fromkeys(JobStatus, JobDurationMetrics(0, 0, 0))
+        job_durations: dict[JobStatus, DurationMetrics] = dict.fromkeys(JobStatus, DurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """
             SELECT
@@ -598,13 +598,46 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
         for group in groups:
             status = JobStatus(group['job_status'])
-            metrics = JobDurationMetrics(
+            metrics = DurationMetrics(
                 avg=int(group['avg_duration'] or 0),
                 min=int(group['min_duration'] or 0),
                 max=int(group['max_duration'] or 0),
             )
             job_durations[status] = metrics
         return job_durations
+
+    def get_batch_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[BatchStatus, DurationMetrics]:
+        """Get batch duration metrics grouped by batch status for a given context level (in milliseconds)."""
+        batch_durations: dict[BatchStatus, DurationMetrics] = dict.fromkeys(BatchStatus, DurationMetrics(0, 0, 0))
+        groups = self._conn.execute(
+            """
+            SELECT
+                batch_status,
+                AVG(b.finished_at - b.created_at) AS avg_duration,
+                MIN(b.finished_at - b.created_at) AS min_duration,
+                MAX(b.finished_at - b.created_at) AS max_duration
+            FROM extraction_batches b
+            WHERE EXISTS (
+                SELECT 1
+                FROM extraction_jobs j
+                WHERE j.batch_id = b.batch_id
+                AND j.job_type = ?
+                AND j.context_level = ?
+            )
+            AND b.finished_at IS NOT NULL
+            GROUP BY batch_status
+            """,
+            (EXTRACTION_JOB_TYPE, context_level.value),
+        )
+        for group in groups:
+            status = BatchStatus(group['batch_status'])
+            metrics = DurationMetrics(
+                avg=int(group['avg_duration'] or 0),
+                min=int(group['min_duration'] or 0),
+                max=int(group['max_duration'] or 0),
+            )
+            batch_durations[status] = metrics
+        return batch_durations
 
     def get_job_token_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, TokenUsageMetrics]:
         """Get job token metrics grouped by job status for a given context level."""

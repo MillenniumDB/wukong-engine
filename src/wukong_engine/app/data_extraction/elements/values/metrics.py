@@ -4,7 +4,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Any
 
-from .status import ExtractionStatus, JobStatus
+from .status import BatchStatus, ExtractionStatus, JobStatus
 
 
 # Helpers
@@ -17,8 +17,8 @@ def _safe_int(value: Any) -> int | None:
 
 
 @dataclass(frozen=True)
-class JobDurationMetrics:
-    """Relevant job duration metrics, in milliseconds."""
+class DurationMetrics:
+    """Relevant job/batch duration metrics, in milliseconds."""
 
     avg: int  # In milliseconds
     min: int  # In milliseconds
@@ -57,9 +57,15 @@ class TokenUsageMetrics:
 class PerformanceMetricsState:
     """State of performance metrics at a given point during execution."""
 
-    timestamp: float | None = None  # Timestamp of the state (seconds), None means no state has been recorded yet
+    # Timestamp of the state (seconds), None means no state has been recorded yet
+    timestamp: float | None = None
+
+    # Real-time state
     job_status_counts: dict[JobStatus, int] = field(default_factory=dict)  # Number of jobs grouped by status
     smoothed_job_resolution_rate: float | None = None  # Smoothed rate of job resolution (jobs per minute)
+
+    # Batch state
+    batch_status_counts: dict[BatchStatus, int] = field(default_factory=dict)  # Number of batches grouped by status
 
 
 @dataclass(frozen=True)
@@ -68,7 +74,9 @@ class ExtractionMetrics:
 
     source_status_counts: dict[ExtractionStatus, int]
     job_status_counts: dict[JobStatus, int]
-    job_status_duration: dict[JobStatus, JobDurationMetrics]  # In milliseconds
+    job_status_duration: dict[JobStatus, DurationMetrics]  # In milliseconds
+    batch_status_counts: dict[BatchStatus, int]
+    batch_status_duration: dict[BatchStatus, DurationMetrics]  # In milliseconds
     object_count: int
     object_mentions: int
     token_usage: dict[JobStatus, TokenUsageMetrics]
@@ -138,7 +146,7 @@ class ExtractionMetrics:
             return f'{minutes}m {seconds}s'
         return f'{seconds}s'
 
-    # Execution
+    # Execution - Jobs
 
     @property
     def total_jobs(self) -> int:
@@ -238,6 +246,93 @@ class ExtractionMetrics:
             'avg': avg_duration / 1000,
             'min': min_duration / 1000,
             'max': max_duration / 1000,
+        }
+
+    # Execution - Batches
+
+    @property
+    def total_batches(self) -> int:
+        """Total number of batches."""
+        return int(sum(self.batch_status_counts.values()))
+
+    @property
+    def batch_counts(self) -> dict[str, int]:
+        """Batch counts grouped by status."""
+        return {
+            'submitted': self.batch_status_counts.get(BatchStatus.SUBMITTED, 0),
+            'in_progress': self.batch_status_counts.get(BatchStatus.IN_PROGRESS, 0),
+            'completed': self.batch_status_counts.get(BatchStatus.COMPLETED, 0),
+            'failed': self.batch_status_counts.get(BatchStatus.FAILED, 0),
+            'cancelled': self.batch_status_counts.get(BatchStatus.CANCELLED, 0),
+        }
+
+    @property
+    def batch_percentages(self) -> dict[str, float]:
+        """Batch percentages grouped by status."""
+        total_batches = self.total_batches
+        return {
+            'submitted': (self.batch_counts['submitted'] / total_batches) * 100 if total_batches > 0 else 0.0,
+            'in_progress': (self.batch_counts['in_progress'] / total_batches) * 100 if total_batches > 0 else 0.0,
+            'completed': (self.batch_counts['completed'] / total_batches) * 100 if total_batches > 0 else 0.0,
+            'failed': (self.batch_counts['failed'] / total_batches) * 100 if total_batches > 0 else 0.0,
+            'cancelled': (self.batch_counts['cancelled'] / total_batches) * 100 if total_batches > 0 else 0.0,
+        }
+
+    @property
+    def batch_resolution_rate(self) -> float:
+        """Batch resolution rate, in batches per hour."""
+        if self.elapsed_time is None or self.elapsed_time <= 0:
+            return 0.0
+        resolved_batches = self.batch_counts['completed'] + self.batch_counts['failed'] + self.batch_counts['cancelled']
+        last_completed_batches = self.performance_state.batch_status_counts.get(BatchStatus.COMPLETED, 0)
+        last_failed_batches = self.performance_state.batch_status_counts.get(BatchStatus.FAILED, 0)
+        last_cancelled_batches = self.performance_state.batch_status_counts.get(BatchStatus.CANCELLED, 0)
+        last_resolved_batches = last_completed_batches + last_failed_batches + last_cancelled_batches
+        resolution_delta = resolved_batches - last_resolved_batches
+        return (resolution_delta / self.elapsed_time) * 3600  # Convert to batches per hour
+
+    @property
+    def batch_completion_rate(self) -> float:
+        """Batch completion rate, in batches per hour."""
+        if self.elapsed_time is None or self.elapsed_time <= 0:
+            return 0.0
+        completed_batches = self.batch_counts['completed']
+        last_completed_batches = self.performance_state.batch_status_counts.get(BatchStatus.COMPLETED, 0)
+        completion_delta = completed_batches - last_completed_batches
+        return (completion_delta / self.elapsed_time) * 3600  # Convert to batches per hour
+
+    @property
+    def batch_throughput(self) -> dict[str, float]:
+        """Batch throughput metrics, in batches per hour."""
+        return {'resolution': self.batch_resolution_rate, 'completion': self.batch_completion_rate}
+
+    @property
+    def batch_duration(self) -> dict[str, float]:
+        """Batch duration metrics across all finished batches, in minutes."""
+        finished_batches = self.batch_counts['completed'] + self.batch_counts['failed'] + self.batch_counts['cancelled']
+        finished_batch_durations = {
+            status: duration
+            for status, duration in self.batch_status_duration.items()
+            if status in {BatchStatus.COMPLETED, BatchStatus.FAILED, BatchStatus.CANCELLED}
+            and self.batch_status_counts.get(status, 0)
+        }
+        avg_duration = (
+            sum(
+                duration.avg * self.batch_status_counts.get(status, 0)
+                for status, duration in finished_batch_durations.items()
+            )
+            / finished_batches
+            if finished_batches > 0
+            else 0.0
+        )
+        min_duration = min((duration.min for duration in finished_batch_durations.values()), default=0)
+        max_duration = max((duration.max for duration in finished_batch_durations.values()), default=0)
+
+        # Convert milliseconds to minutes
+        return {
+            'avg': avg_duration / 60000,
+            'min': min_duration / 60000,
+            'max': max_duration / 60000,
         }
 
     # Output

@@ -23,12 +23,6 @@ BATCH_LOG_INTERVAL = 300  # Display metrics (default: 300 seconds / 5 minutes)
 BATCH_PERFORMANCE_INTERVAL = 300  # Update performance state (default: 300 seconds / 5 minutes)
 
 
-# TODO: Separate job counts and duration metrics for real-time and batch processing (group by execution mode and then by status),
-# these affect the rates and ETA, we choose the one corresponding to the current execution mode
-# TODO: Add batch metrics (similar to job counts + duration)
-# TODO: Include batch counts and smoothed rate in the performance state, track them the same way
-# TODO: Add batch metrics to the calculated metrics, display them when in batch mode
-# TODO: Batch smoothing should be different or not even use smoothing due to longer time intervals
 class ExtractionMetricsTracker:
     """Manages and tracks data extraction metrics."""
 
@@ -50,6 +44,7 @@ class ExtractionMetricsTracker:
             timestamp=time.monotonic(),
             job_status_counts=dict(metrics.job_status_counts),
             smoothed_job_resolution_rate=metrics.smoothed_job_resolution_rate,
+            batch_status_counts=dict(metrics.batch_status_counts),
         )
 
     def _collect_metrics(self, *, should_update_performance: bool = True) -> ExtractionMetrics | None:
@@ -77,7 +72,7 @@ class ExtractionMetricsTracker:
 
         # Progress
         progress = (
-            'Progress:\n\n'
+            'Progress\n\n'
             f'  {"Total Sources:":<18} {metrics.total_sources:>15,}\n'
             '\n'
             f'  {"Completed:":<18} {metrics.source_counts["completed"]:>15,}  {metrics.source_percentages["completed"]:>5.1f}%\n'
@@ -92,27 +87,49 @@ class ExtractionMetricsTracker:
         )
 
         # Execution
-        execution = (
-            'Execution:\n\n'
-            f'  Jobs:\n\n'
-            f'    {"Total Jobs:":<16} {metrics.total_jobs:>15,}\n'
-            '\n'
-            f'    {"Completed:":<16} {metrics.job_counts["completed"]:>15,}  {metrics.job_percentages["completed"]:>5.1f}%\n'
-            f'    {"In Progress:":<16} {metrics.job_counts["in_progress"]:>15,}  {metrics.job_percentages["in_progress"]:>5.1f}%\n'
-            f'    {"Failed:":<16} {metrics.job_counts["failed"]:>15,}  {metrics.job_percentages["failed"]:>5.1f}%\n'
-            '\n'
-            f'  Performance:\n\n'
-            f'    {"Resolution Rate:":<16} {metrics.job_throughput["resolution"]:>15.1f} jobs/min\n'
-            f'    {"Completion Rate:":<16} {metrics.job_throughput["completion"]:>15.1f} jobs/min\n'
-            f'    {"Avg Duration:":<16} {metrics.job_duration["avg"]:>15.1f} seconds\n'
-            f'    {"Min Duration:":<16} {metrics.job_duration["min"]:>15.1f} seconds\n'
-            f'    {"Max Duration:":<16} {metrics.job_duration["max"]:>15.1f} seconds\n'
-            '\n'
-        )
+        execution = ''
+        if self._execution_mode == ExecutionMode.REALTIME:
+            execution = (
+                'Execution\n\n'
+                f'  Jobs\n\n'
+                f'    {"Total Jobs:":<16} {metrics.total_jobs:>15,}\n'
+                '\n'
+                f'    {"Completed:":<16} {metrics.job_counts["completed"]:>15,}  {metrics.job_percentages["completed"]:>5.1f}%\n'
+                f'    {"In Progress:":<16} {metrics.job_counts["in_progress"]:>15,}  {metrics.job_percentages["in_progress"]:>5.1f}%\n'
+                f'    {"Failed:":<16} {metrics.job_counts["failed"]:>15,}  {metrics.job_percentages["failed"]:>5.1f}%\n'
+                '\n'
+                f'  Performance\n\n'
+                f'    {"Resolution Rate:":<16} {metrics.job_throughput["resolution"]:>15.1f} jobs/min\n'
+                f'    {"Completion Rate:":<16} {metrics.job_throughput["completion"]:>15.1f} jobs/min\n'
+                f'    {"Avg Duration:":<16} {metrics.job_duration["avg"]:>15.1f} seconds\n'
+                f'    {"Min Duration:":<16} {metrics.job_duration["min"]:>15.1f} seconds\n'
+                f'    {"Max Duration:":<16} {metrics.job_duration["max"]:>15.1f} seconds\n'
+                '\n'
+            )
+        elif self._execution_mode == ExecutionMode.BATCH:
+            execution = (
+                'Execution\n\n'
+                f'  Batches\n\n'
+                f'    {"Total Batches:":<16} {metrics.total_batches:>15,}\n'
+                '\n'
+                f'    {"Completed:":<16} {metrics.batch_counts["completed"]:>15,}  {metrics.batch_percentages["completed"]:>5.1f}%\n'
+                f'    {"Submitted:":<16} {metrics.batch_counts["submitted"]:>15,}  {metrics.batch_percentages["submitted"]:>5.1f}%\n'
+                f'    {"In Progress:":<16} {metrics.batch_counts["in_progress"]:>15,}  {metrics.batch_percentages["in_progress"]:>5.1f}%\n'
+                f'    {"Failed:":<16} {metrics.batch_counts["failed"]:>15,}  {metrics.batch_percentages["failed"]:>5.1f}%\n'
+                f'    {"Cancelled:":<16} {metrics.batch_counts["cancelled"]:>15,}  {metrics.batch_percentages["cancelled"]:>5.1f}%\n'
+                '\n'
+                f'  Performance\n\n'
+                f'    {"Resolution Rate:":<16} {metrics.batch_throughput["resolution"]:>15.1f} batches/hour\n'
+                f'    {"Completion Rate:":<16} {metrics.batch_throughput["completion"]:>15.1f} batches/hour\n'
+                f'    {"Avg Duration:":<16} {metrics.batch_duration["avg"]:>15.1f} minutes\n'
+                f'    {"Min Duration:":<16} {metrics.batch_duration["min"]:>15.1f} minutes\n'
+                f'    {"Max Duration:":<16} {metrics.batch_duration["max"]:>15.1f} minutes\n'
+                '\n'
+            )
 
         # Output
         output = (
-            'Output:\n\n'
+            'Output\n\n'
             f'  {"Unique Objects:":<18} {metrics.object_count:>15,}\n'
             f'  {"Object Mentions:":<18} {metrics.object_mentions:>15,}\n'
             f'  {"Mentions / Object:":<18} {metrics.mentions_per_object:>15.1f}\n'
@@ -123,14 +140,14 @@ class ExtractionMetricsTracker:
 
         # Usage
         usage = (
-            'Usage:\n\n'
-            f'  Total Tokens:\n\n'
+            'Usage\n\n'
+            f'  Total Tokens\n\n'
             f'    {"Input:":<16} {metrics.token_counts["input"]:>15,} {(metrics.token_counts["input"] / 1000000):>12.3f} M\n'
             f'    {"Cached:":<16} {metrics.token_counts["cached"]:>15,} {(metrics.token_counts["cached"] / 1000000):>12.3f} M\n'
             f'    {"Output:":<16} {metrics.token_counts["output"]:>15,} {(metrics.token_counts["output"] / 1000000):>12.3f} M\n'
             f'    {"Reasoning:":<16} {metrics.token_counts["reasoning"]:>15,} {(metrics.token_counts["reasoning"] / 1000000):>12.3f} M\n'
             '\n'
-            f'  Tokens / Request:\n\n'
+            f'  Tokens / Request\n\n'
             f'    {"Input:":<16} {metrics.average_token_counts["input"]:>15,}\n'
             f'    {"Cached:":<16} {metrics.average_token_counts["cached"]:>15,}\n'
             f'    {"Output:":<16} {metrics.average_token_counts["output"]:>15,}\n'
