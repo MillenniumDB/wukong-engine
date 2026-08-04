@@ -363,4 +363,6 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
 
     def clear(self, export_uri: str) -> None:
         """Clear the exported knowledge state, removing any exported data."""
-        clear_directory(Path(export_uri).resolve())
+        export_path = Path(export_uri).resolve()
+        if export_path.exists() and export_path.is_dir():
+            clear_directory(export_path)
