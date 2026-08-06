@@ -93,7 +93,7 @@ class ExtractionRepository(Protocol):
         """Mark a batch as completed."""
         ...
 
-    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus) -> None:
+    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
         """Mark a batch as failed or cancelled and fail all associated jobs."""
         ...
 
@@ -250,13 +250,13 @@ class EntityExtractionRepository(ExtractionRepository):
         with self._uow as tx:
             tx.extraction.entities.update_batch_status(batch, BatchStatus.COMPLETED)
 
-    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus) -> None:
+    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
         """Mark a batch as failed or cancelled and fail all associated jobs."""
         if status not in {BatchStatus.FAILED, BatchStatus.CANCELLED}:
             raise ValueError(f'Invalid status "{status}" for failing a batch. Must be FAILED or CANCELLED.')
         with self._uow as tx:
             tx.extraction.entities.fail_batch_jobs(batch, status)
-            tx.extraction.entities.update_batch_status(batch, status)
+            tx.extraction.entities.update_batch_status(batch, status, error=error)
 
     def record_batch_error(self, batch: ExtractionBatch, error: str) -> None:
         """Record an error for a batch while keeping its current status."""
@@ -489,13 +489,13 @@ class RelationshipExtractionRepository(ExtractionRepository):
         with self._uow as tx:
             tx.extraction.relationships.update_batch_status(batch, BatchStatus.COMPLETED)
 
-    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus) -> None:
+    def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
         """Mark a batch as failed or cancelled and fail all associated jobs."""
         if status not in {BatchStatus.FAILED, BatchStatus.CANCELLED}:
             raise ValueError(f'Invalid status "{status}" for failing a batch. Must be FAILED or CANCELLED.')
         with self._uow as tx:
             tx.extraction.relationships.fail_batch_jobs(batch, status)
-            tx.extraction.relationships.update_batch_status(batch, status)
+            tx.extraction.relationships.update_batch_status(batch, status, error=error)
 
     def record_batch_error(self, batch: ExtractionBatch, error: str) -> None:
         """Record an error for a batch while keeping its current status."""

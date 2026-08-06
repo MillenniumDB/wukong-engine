@@ -1,6 +1,7 @@
 """Extraction Batch Synchronizers."""
 
 import json
+import time
 from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements import (
@@ -34,6 +35,7 @@ from .result_materializer import ExtractionResultMaterializer
 # Constants
 MAX_STATUS_CONCURRENCY = 50  # Maximum number of concurrent batch status requests (default: 50)
 MAX_RESULTS_CONCURRENCY = 10  # Maximum number of concurrent batch result retrievals (default: 10)
+MAX_BATCH_RESOLUTION_TIME = 30  # Maximum time (in hours) for the external provider to resolve a batch (default: 30)
 
 
 class ExtractionBatchSynchronizer(Protocol):
@@ -120,6 +122,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
     def _resolve_batch_status(self, batch: ExtractionBatch, status_result: BatchStatusResult) -> None:
         """Perform provider status resolution."""
+        # If the batch has not been resolved in the maximum allowed time, cancel it and record the error
+        if batch.created_at is not None and status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS):
+            elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
+            if elapsed_time > MAX_BATCH_RESOLUTION_TIME:
+                self._repository.fail_batch(
+                    batch,
+                    BatchStatus.CANCELLED,
+                    error=f'Cancelled batch due to not resolving within {MAX_BATCH_RESOLUTION_TIME} hours',
+                )
+                return
+
         # If there was an error retrieving the status, record the error and keep the current batch status
         if status_result.error is not None:
             self._repository.record_batch_error(batch, status_result.error)
@@ -135,7 +148,11 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                 self._repository.update_batch_status(batch, status_result.status)
 
             case BatchStatus.FAILED | BatchStatus.CANCELLED:  # Batch failed or cancelled, process failure
-                self._repository.fail_batch(batch, status_result.status)
+                self._repository.fail_batch(
+                    batch,
+                    status_result.status,
+                    error=f'Batch was {status_result.status.value} by the external provider',
+                )
 
             case BatchStatus.COMPLETED:  # Batch completed, mark for processing later
                 self._completed_batches.append(batch)

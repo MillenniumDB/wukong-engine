@@ -250,4 +250,5 @@ CREATE INDEX IF NOT EXISTS idx_jobs_type_level_status ON extraction_jobs(
     context_level,
     job_status
 );
+CREATE INDEX IF NOT EXISTS idx_jobs_batch_type_level ON extraction_jobs(batch_id, job_type, context_level);
 CREATE INDEX IF NOT EXISTS idx_batches_status_created_id ON extraction_batches(batch_status, created_at, batch_id);
