@@ -40,12 +40,12 @@ class OpenAIClient(LLMClient):
 
         # Set reasoning effort if supported by the model
         reasoning_effort = (
-            request.reasoning_effort
+            LLMRegistry.reasoning_effort(model, request.reasoning_effort)
             if request.reasoning_effort is not None
-            else LLMRegistry.get_reasoning_effort(model)
+            else LLMRegistry.default_reasoning_effort(model)
         )
         if LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
-            payload['reasoning'] = {'effort': reasoning_effort.value}
+            payload['reasoning'] = {'effort': reasoning_effort}
 
         # Set temperature if supported by the model
         temperature = request.temperature if request.temperature is not None else 0.0

@@ -37,7 +37,6 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 logger = logging.getLogger(__name__)
 
 # Constants
-# TODO: Test and set reasoning effort to None or a specific value best for extraction
 ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
 RELATIONSHIP_EXTRACTION_EFFORT = ReasoningEffort.LOW
 MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits

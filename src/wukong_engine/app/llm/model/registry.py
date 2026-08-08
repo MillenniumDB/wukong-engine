@@ -10,14 +10,13 @@ from .values import LLMProvider
 class LLMRegistry:
     """Registry of supported LLM providers and their models."""
 
-    _DEFAULT_MODEL: LLM = LLM(provider=LLMProvider.OPENAI, name='gpt-5-mini')
+    _DEFAULT_MODEL: LLM = LLM(provider=LLMProvider.OPENAI, name='gpt-5.6-luna')
     _SUPPORTED: MappingProxyType[LLMProvider, frozenset[str]] = MappingProxyType(
         {
             LLMProvider.OPENAI: frozenset(
                 {
                     'gpt-4.1-mini',
-                    'gpt-5-mini',
-                    'gpt-5.4-mini',
+                    'gpt-5.6-luna',
                 },
             ),
         },
@@ -25,8 +24,16 @@ class LLMRegistry:
     _REASONING: MappingProxyType[LLMProvider, Any] = MappingProxyType(
         {
             LLMProvider.OPENAI: {
-                'gpt-5-mini': {'effort': ReasoningEffort.MINIMAL},
-                'gpt-5.4-mini': {'effort': ReasoningEffort.NONE},
+                'gpt-5.6-luna': {
+                    ReasoningEffort.EXTREME: 'xhigh',
+                },
+            },
+        },
+    )
+    _DEFAULT_REASONING: MappingProxyType[LLMProvider, Any] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: {
+                'gpt-5.6-luna': 'low',
             },
         },
     )
@@ -52,6 +59,14 @@ class LLMRegistry:
         return model.name in cls._REASONING.get(model.provider, {})
 
     @classmethod
-    def get_reasoning_effort(cls, model: LLM) -> ReasoningEffort | None:
+    def reasoning_effort(cls, model: LLM, effort_level: ReasoningEffort) -> str | None:
+        """Native reasoning effort name for the given model and effort level, or None if not supported."""
+        effort_levels = cls._REASONING.get(model.provider, {}).get(model.name)
+        if effort_levels is None:
+            return None
+        return effort_levels.get(effort_level, effort_level.value)
+
+    @classmethod
+    def default_reasoning_effort(cls, model: LLM) -> str | None:
         """Default reasoning effort level for the given model, or None if not supported."""
-        return cls._REASONING.get(model.provider, {}).get(model.name, {}).get('effort')
+        return cls._DEFAULT_REASONING.get(model.provider, {}).get(model.name)

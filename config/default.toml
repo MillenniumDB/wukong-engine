@@ -40,11 +40,10 @@ export_knowledge = true
 ### The LLM model to use for extraction ###
 # Note: Currently only OpenAI models are supported
 # Supported models:
-# "gpt-4.1-mini": Best non-reasoning, cheapest
-# "gpt-5-mini": Most balanced
-# "gpt-5.4-mini": Best reasoning, more expensive
-# Default: "gpt-4.1-mini"
-model = "gpt-4.1-mini"
+# "gpt-4.1-mini": Cheaper (non-reasoning)
+# "gpt-5.6-luna": Balanced
+# Default: "gpt-5.6-luna"
+model = "gpt-5.6-luna"
 
 ### Execution mode for LLM interactions ###
 # You can choose from the following modes:
