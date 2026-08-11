@@ -533,7 +533,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 batch_status_duration=dict.fromkeys(BatchStatus, DurationMetrics(0, 0, 0)),
                 object_count=0,
                 object_mentions=0,
-                token_usage=dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0)),
+                token_usage=dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0, 0)),
                 performance_state=performance_state,
             )
         with self._uow as tx:

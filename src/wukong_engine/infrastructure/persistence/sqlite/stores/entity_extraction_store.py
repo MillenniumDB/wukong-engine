@@ -172,6 +172,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 finished_at = ?,
                 input_tokens = ?,
                 cached_tokens = ?,
+                cache_write_tokens = ?,
                 output_tokens = ?,
                 reasoning_tokens = ?,
                 error = ?
@@ -185,6 +186,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 int(time.time() * 1000),
                 metrics.input_tokens if metrics else None,
                 metrics.cached_tokens if metrics else None,
+                metrics.cache_write_tokens if metrics else None,
                 metrics.output_tokens if metrics else None,
                 metrics.reasoning_tokens if metrics else None,
                 error,
@@ -641,13 +643,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
 
     def get_job_token_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, TokenUsageMetrics]:
         """Get job token metrics grouped by job status for a given context level."""
-        job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0))
+        job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0, 0))
         groups = self._conn.execute(
             """
             SELECT
                 job_status,
                 SUM(input_tokens) AS total_input_tokens,
                 SUM(cached_tokens) AS total_cached_tokens,
+                SUM(cache_write_tokens) AS total_cache_write_tokens,
                 SUM(output_tokens) AS total_output_tokens,
                 SUM(reasoning_tokens) AS total_reasoning_tokens
             FROM extraction_jobs
@@ -661,6 +664,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             metrics = TokenUsageMetrics(
                 input_tokens=int(group['total_input_tokens'] or 0),
                 cached_tokens=int(group['total_cached_tokens'] or 0),
+                cache_write_tokens=int(group['total_cache_write_tokens'] or 0),
                 output_tokens=int(group['total_output_tokens'] or 0),
                 reasoning_tokens=int(group['total_reasoning_tokens'] or 0),
             )

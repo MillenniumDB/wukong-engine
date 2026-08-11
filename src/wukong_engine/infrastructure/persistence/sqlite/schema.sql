@@ -162,6 +162,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     finished_at INTEGER,
     input_tokens INTEGER,
     cached_tokens INTEGER,
+    cache_write_tokens INTEGER,
     output_tokens INTEGER,
     reasoning_tokens INTEGER,
     batch_id BLOB,
