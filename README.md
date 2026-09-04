@@ -10,7 +10,7 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
 
 <!-- omit from toc -->
 ## 📚 Table of Contents
-- [🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs](#-wukong-weaving-unstructured-knowledge-onto-navigable-graphs)
+- [🐵 WUKONG: Weaving Unstructured Knowledge - Organize, Normalize, Generate](#-wukong-weaving-unstructured-knowledge---organize-normalize-generate)
 - [⚙️ Setup](#️-setup)
   - [Pre-requisites](#pre-requisites)
   - [Installation](#installation)
@@ -27,7 +27,7 @@ Engine for constructing knowledge graphs from unstructured documents, using the 
 - [🤝 Contributing](#-contributing)
 - [🗺️ Roadmap](#️-roadmap)
 
-## 🐵 WUKONG: Weaving Unstructured Knowledge Onto Navigable Graphs
+## 🐵 WUKONG: Weaving Unstructured Knowledge - Organize, Normalize, Generate
 
 The **WUKONG** engine is a tool designed to process **unstructured documents** and construct a **knowledge graph** based on a user-defined **graph model**. It leverages the power of **Large Language Models (LLMs)** to extract entities and relations from the documents, and then organizes this information into a structured **property graph** format that can be easily managed, queried and navigated by graph database engines (e.g. `MillenniumDB`, `Neo4j`). The original documents are also stored in the graph, allowing for easy retrieval and context-aware querying. The knowledge graphs produced by this engine are particularly useful for applications in **information retrieval**, **data integration**, and **AI agents**.
 
