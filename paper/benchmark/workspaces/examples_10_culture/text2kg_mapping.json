@@ -1,0 +1,25 @@
+{
+    "ontology_id": "ont_10_culture",
+    "title": "Culture Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "Dance": "dance",
+        "Festival": "festival",
+        "Language": "language",
+        "EthnicGroup": "ethnic group",
+        "Human": "human",
+        "Art": "art",
+        "Literature": "literature",
+        "Religion": "religion"
+    },
+    "relationship_types": {
+        "EthnicGroup": "ethnic_group",
+        "ReligiousOrder": "religious_order",
+        "LanguagesSpokenWrittenOrSigned": "languages_spoken,_written_or_signed",
+        "Inception": "inception",
+        "StartTime": "start_time",
+        "DedicatedTo": "dedicated_to",
+        "IconographicSymbol": "iconographic_symbol",
+        "IndigenousTo": "indigenous_to"
+    }
+}

@@ -1,0 +1,496 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Movie Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Film",
+                "FilmCharacter",
+                "FilmProductionCompany",
+                "WrittenWork",
+                "Genre",
+                "Human",
+                "City",
+                "Award",
+                "Country",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "Director",
+                "Screenwriter",
+                "Genre",
+                "BasedOn",
+                "CastMember",
+                "AwardReceived",
+                "ProductionCompany",
+                "CountryOfOrigin",
+                "PublicationDate",
+                "Characters",
+                "NarrativeLocation",
+                "FilmingLocation",
+                "MainSubject",
+                "NominatedFor",
+                "Cost"
+            ]
+        }
+    },
+    "entity_types": {
+        "Film": {
+            "description": "An entity of the type \"film\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Film in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Urusei Yatsura 2: Beautiful Dreamer",
+                        "She and Her Cat",
+                        "Minimum Viable Product"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "FilmCharacter": {
+            "description": "An entity of the type \"film character\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this FilmCharacter in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Daisy Duck",
+                        "Legolas",
+                        "Bugs Bunny"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "FilmProductionCompany": {
+            "description": "An entity of the type \"film production company\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this FilmProductionCompany in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Focus Features",
+                        "Essanay Studios",
+                        "Yash Raj Films"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "WrittenWork": {
+            "description": "An entity of the type \"written work\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this WrittenWork in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Three Act Tragedy",
+                        "The Hound of the Baskervilles",
+                        "Othello"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Genre": {
+            "description": "An entity of the type \"genre\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Genre in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "yaoi",
+                        "comedy horror",
+                        "stand-up comedy"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Mamoru Oshii",
+                        "Makoto Shinkai",
+                        "Mike Judge"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "City": {
+            "description": "An entity of the type \"city\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this City in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Beijing",
+                        "Buenos Aires",
+                        "Chennai"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Award": {
+            "description": "An entity of the type \"award\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Award in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Palme d'Or",
+                        "Golden Lion",
+                        "Golden Leopard"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Country": {
+            "description": "An entity of the type \"country\", as defined by the Movie Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Country in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Canada",
+                        "Israel",
+                        "Japan"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"cost\", \"main subject\", \"publication date\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words. Dates must be written in the format \"<DD> <Month> <YYYY>\". When the source text states only a year, use \"01 January <YYYY>\".",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "24 June 2009",
+                        "01 January 2003",
+                        "surfing",
+                        "Korean War",
+                        "Alps"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Director": {
+            "description": "The \"director\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Screenwriter": {
+            "description": "The \"screenwriter\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Genre": {
+            "description": "The \"genre\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Genre": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "BasedOn": {
+            "description": "The \"based on\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "WrittenWork": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CastMember": {
+            "description": "The \"cast member\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "AwardReceived": {
+            "description": "The \"award received\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Award": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "ProductionCompany": {
+            "description": "The \"production company\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "FilmProductionCompany": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CountryOfOrigin": {
+            "description": "The \"country of origin\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Country": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PublicationDate": {
+            "description": "The \"publication date\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Characters": {
+            "description": "The \"characters\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "FilmCharacter": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "NarrativeLocation": {
+            "description": "The \"narrative location\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "City": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "FilmingLocation": {
+            "description": "The \"filming location\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "City": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MainSubject": {
+            "description": "The \"main subject\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "NominatedFor": {
+            "description": "The \"nominated for\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Award": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Cost": {
+            "description": "The \"cost\" relation, as defined by the Movie Ontology.",
+            "endpoints": {
+                "Film": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

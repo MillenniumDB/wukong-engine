@@ -1,0 +1,27 @@
+# Generated benchmark artifacts.
+# The workspace definitions (graph_model.json, document_collections.json,
+# text2kg_mapping.json) stay tracked so runs are reproducible from the repo.
+
+# Test sentences, reproducible from the Text2KGBench repository
+data/
+
+# Per-run engine state and exports
+workspaces/*/staging/
+workspaces/*/exports/
+
+# Generated results, except the two that are the scientific record of a run:
+# the converted system output and the evaluator's metrics. The results-* trees
+# are the ablation arms of paper/benchmark.md section 10.
+results/*
+!results/wukong/
+!results/eval/
+results-*/*
+!results-*/wukong/
+!results-*/eval/
+
+# Written per run with absolute paths, so it is machine specific
+results/eval/eval_config.json
+results-*/eval/eval_config.json
+
+# Evaluator environment (nltk), recreated by the setup steps in paper/benchmark.md
+.venv-eval/

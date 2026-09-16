@@ -1,0 +1,19 @@
+{
+    "ontology_id": "ont_6_computer",
+    "title": "Computer Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "Application": "application",
+        "Human": "human",
+        "ComputerModel": "computer model",
+        "Computer": "computer",
+        "Software": "software",
+        "OperatingSystem": "operating system"
+    },
+    "relationship_types": {
+        "Developer": "developer",
+        "Creator": "creator",
+        "Platform": "platform",
+        "OperatingSystem": "operating_system"
+    }
+}

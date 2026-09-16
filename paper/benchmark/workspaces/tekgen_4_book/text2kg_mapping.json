@@ -1,0 +1,30 @@
+{
+    "ontology_id": "ont_4_book",
+    "title": "Book Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "Publisher": "publisher",
+        "LiteraryGenre": "literary genre",
+        "Language": "language",
+        "Territory": "territory",
+        "Human": "human",
+        "Book": "book",
+        "TradeMagazine": "trade magazine",
+        "LiteraryWork": "literary work",
+        "FictionalCharacter": "fictional character"
+    },
+    "relationship_types": {
+        "Illustrator": "illustrator",
+        "FollowedBy": "followed_by",
+        "PublicationDate": "publication_date",
+        "Author": "author",
+        "Publisher": "publisher",
+        "Characters": "characters",
+        "Editor": "editor",
+        "PlaceOfPublication": "place_of_publication",
+        "NarrativeLocation": "narrative_location",
+        "Genre": "genre",
+        "LanguageOfWorkOrName": "language_of_work_or_name",
+        "Depicts": "depicts"
+    }
+}

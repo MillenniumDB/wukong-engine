@@ -1,0 +1,25 @@
+{
+    "ontology_id": "ont_7_space",
+    "title": "Space Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "AstronomicalObjectType": "astronomical object type",
+        "SpiralGalaxy": "spiral galaxy",
+        "Asteroid": "asteroid",
+        "Spacecraft": "Spacecraft",
+        "Human": "human",
+        "Spaceflight": "spaceflight",
+        "Observatory": "observatory",
+        "GeographicRegion": "geographic region",
+        "Constellation": "constellation"
+    },
+    "relationship_types": {
+        "SiteOfAstronomicalDiscovery": "site_of_astronomical_discovery",
+        "MinorPlanetGroup": "minor_planet_group",
+        "Constellation": "constellation",
+        "AstronautMission": "astronaut_mission",
+        "SpacecraftDockingUndockingDate": "spacecraft_docking/undocking_date",
+        "BackupOrReserveTeamOrCrew": "backup_or_reserve_team_or_crew",
+        "LocationOfLanding": "location_of_landing"
+    }
+}

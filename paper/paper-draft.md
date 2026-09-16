@@ -47,10 +47,14 @@ lower cost.
 The result is provenance-aware by default: every extracted object is linked to the exact
 text region it was read from, and the source documents and their chunks are first-class
 objects in the output. We describe the design, discuss the trade-offs of each decision, and
-report `[TODO: evaluation]` on `[TODO: corpora]`. Preliminary measurements on a corpus of
-~1,000 Spanish news articles show that request grouping and endpoint pruning together
-reduce the number of LLM calls by roughly 6× against a naive per-type decomposition.
-`[TODO: replace with the headline quality result once available.]`
+report an evaluation on a public benchmark with reference annotations and on a corpus of
+~1,000 Spanish news articles. On Text2KGBench's Wikidata-TekGen suite the system produces
+output that conforms to the given ontology in every case and whose relation arguments are
+almost never absent from the source sentence — subject hallucination 0.00 and object
+hallucination 0.01, against 0.17 for 2-shot baselines on the same data — at accuracy
+comparable to those baselines and a cost of roughly $0.0007 per sentence. On the news
+corpus, request grouping and endpoint pruning together reduce the number of LLM calls by
+roughly 6× against a naive per-type decomposition.
 
 **Keywords:** knowledge extraction, knowledge graph construction, information extraction,
 large language models, schema-guided extraction, entity resolution, provenance.
@@ -149,7 +153,10 @@ knowledge that is read once and can then take whatever shape its consumer requir
    rendered into target formats by an interchangeable final stage, together with a
    *projection* mechanism that selects which schema elements reach the output.
 
-`[TODO: add a one-sentence statement of empirical results once evaluation exists.]`
+Empirically (§11.5), on a public benchmark with reference annotations the design yields
+output that is ontology-conformant in every case and effectively free of hallucinated
+arguments (subject 0.00, object 0.01, against 0.17–0.19 for 2-shot baselines), at accuracy
+comparable to those baselines and a cost of ≈$0.0007 per sentence.
 
 ---
 
@@ -484,8 +491,12 @@ that entity deduplication just removed. Endpoints are guaranteed to resolve to e
 that exist (R3). The local identifiers are compact, so the candidate set costs little to
 transmit compared with the entity descriptions it replaces. And the task itself becomes a
 selection problem over a small closed set, which is markedly easier than open generation
-— a difference we expect to be most pronounced for smaller and cheaper models.
-`[TODO: this is a claim to support empirically — see §11.]`
+— a difference we expect to be most pronounced for smaller and cheaper models. The
+grounding half of this claim is supported in §11.5: selecting endpoints from a candidate set
+yields 0.00 subject and 0.01 object hallucination on a public benchmark, where 2-shot
+baselines generating endpoint strings freely reach 0.17–0.19 on the same sentences. The
+claim about *smaller* models specifically remains untested, since we report one model.
+`[TODO: a second, cheaper model would turn this into a real comparison — see RQ6.]`
 
 **Type-compatibility pruning.** Before anything is sent anywhere, each chunk is checked
 against the declared endpoints: for each relationship type, is there an endpoint whose
@@ -781,7 +792,24 @@ models used in the evaluation — this is a genuinely useful number for readers.
 **Recall ceiling from strict validation.** Discarding objects that violate their declared
 constraints costs recall whenever a constraint is too strict or the LLM's output is nearly
 right. We consider this the correct default for output intended to be authoritative, but it
-is a real trade, and a "repair" or "quarantine" tier is plausible future work.
+is a real trade, and a "repair" or "quarantine" tier is plausible future work. §11.5
+measures the trade on a benchmark whose ontologies we did not author and could not adjust:
+798 gold triples — 11% of that gold standard — were unreachable because both arguments had
+been extracted but the entity pass assigned one of them a type the relation did not admit,
+typically a sibling concept the same ontology also declares. Relaxing the endpoint
+constraint on one such ontology raised its F1 from 0.09 to 0.23. This is the sharpest
+evidence we have that strict validation is a cost borne by the *quality of the schema*
+rather than by the extractor, and it is the strongest argument for a quarantine tier that
+retains near-miss objects for review instead of discarding them.
+
+**Dependence on schema quality.** Related but distinct: the system is only as good as the
+model it is given, and §11.5 quantifies this more starkly than we expected. Adding a handful
+of example surface forms per entity type — no change to the engine, the prompts or the
+evaluator — moved benchmark F1 from 0.26 to 0.34, improved all ten ontologies, and cut
+degenerate self-referential output by 85%. For users this is encouraging, since it means
+effort spent on the model pays off directly; for the design it is a caution, since a
+mechanically derived model can underperform badly for reasons that look like extraction
+failures and are not.
 
 **Identity brittleness for name-like keys.** Exact identity on normalized keys is
 predictable but unforgiving. Where primary keys are natural-language names rather than
@@ -808,11 +836,14 @@ long-range dependencies.
 
 ---
 
-## 11. Evaluation `[TODO — plan + preliminary measurements]`
+## 11. Evaluation `[TODO — RQ2, RQ4, RQ7 outstanding]`
 
-This section is mostly a proposal. §11.4 reports descriptive measurements from one real run
-under the current design; they are not yet an evaluation, since they establish cost and
-behaviour but not correctness.
+This section is part result, part proposal. §11.5 reports a comparative evaluation against
+reference annotations on a public benchmark, which settles RQ1, RQ3 and RQ5 and provides a
+first answer on RQ6. §11.4 reports descriptive measurements from one production-shaped run,
+establishing cost and behaviour but not correctness. RQ2 (quality against human annotation
+on our own corpora), RQ4 (deduplication) and RQ7 (stability across repeated runs) remain
+unaddressed by either.
 
 ### 11.1 Corpora
 
@@ -837,8 +868,16 @@ behaviour but not correctness.
   Together the two corpora support the domain-independence claim (R7) and, more usefully,
   span the two extremes of the identity discussion — identifier-like keys versus
   name-like keys — which makes the trade-off in §6.5 measurable rather than asserted.
-- `[TODO: consider a public benchmark with reference annotations, to allow comparison with
-  prior systems even if imperfectly aligned with our setting.]`
+- **Text2KGBench, Wikidata-TekGen (English).** A public benchmark with reference
+  annotations: 10 ontologies and 4,062 single-sentence documents, each with gold triples and
+  a manually verified subset (939 sentences). Unlike the two corpora above it is not
+  representative of our intended deployment — the documents are single sentences, the
+  ontologies are Wikidata fragments we did not author, and the expected output is bare
+  triples rather than a typed graph with properties (§11.5 discusses what that costs). Its
+  value is precisely that it is not ours: it supplies reference annotations, published
+  baselines, and an evaluation script written by someone else, which makes the conformance
+  and hallucination claims of R1 and R3 falsifiable rather than self-reported. It is the
+  corpus behind §11.5.
 
 ### 11.2 Research questions
 
@@ -871,7 +910,14 @@ behaviour but not correctness.
   recipe), same model and corpus.
 - Schema-aware prompting without candidate-set grounding, to isolate the contribution of
   §5.3 from that of §4.
-- `[TODO: an external system, if one can be configured fairly for these corpora.]`
+- **Vicuna-13B and Alpaca-LoRA-13B, 2-shot** — the published baselines of Text2KGBench,
+  which prompt an instruction-tuned model with the ontology and two train sentences
+  retrieved by similarity. They are not configured by us: we re-scored their released
+  outputs with the benchmark's own evaluator, reproducing the published aggregate exactly,
+  so the comparison in §11.5 rests on their authors' numbers rather than our
+  reimplementation. The comparison is imperfect — these are 13B open models and we run a
+  proprietary model of unknown scale — so §11.5 reads the *hallucination and conformance*
+  columns as the meaningful contrast and treats the F1 column as context.
 
 ### 11.4 Preliminary measurements
 
@@ -931,6 +977,90 @@ and cached-token counts were zero for this run, so the caching and reasoning-eff
 dimensions of RQ5/RQ6 are untested. Before publication these numbers should be regenerated
 under a fixed configuration, with repetitions, alongside the legal corpus.
 
+### 11.5 Benchmark evaluation against reference annotations
+
+We evaluate on Text2KGBench's Wikidata-TekGen suite (§11.1): 10 ontologies, 4,062 sentences,
+scored by the benchmark authors' own `run_eval.py`, unmodified. Each ontology is compiled
+into a knowledge model mechanically — concepts become entity types, relation labels become
+relationship types, declared domains and ranges become endpoints — with no per-ontology
+hand-tuning, and the extracted graph is converted back to triples through relationship
+provenance. The full protocol, the harness and the per-sentence outputs are in
+`paper/benchmark.md`; this section reports what it establishes for the design.
+
+Two configurations are reported. **Zero-tuning** compiles each ontology exactly as published
+and gives the model nothing beyond it. **Train-grounded** additionally seeds each entity type
+with up to three example surface forms drawn from the benchmark's *train* split — the same
+mechanism the pipeline already uses for date formats, generalized from one field convention
+to entity types. Neither configuration reads the test or ground-truth files. The second is
+the closer comparison to the baselines, which retrieve two train sentences *with their gold
+triples* for every test sentence; three surface forms per type is considerably less
+supervision than that.
+
+| System | P | R | F1 | Ontology conf. | Subj. halluc. | Rel. halluc. | Obj. halluc. |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| WUKONG, zero-tuning | 0.28 | 0.26 | 0.26 | **1.00** | **0.00** | **0.00** | **0.01** |
+| WUKONG, train-grounded | 0.36 | 0.35 | **0.34** | **1.00** | **0.00** | **0.00** | **0.01** |
+| Vicuna-13B, 2-shot | 0.38 | 0.35 | 0.35 | 0.84 | 0.17 | 0.13 | 0.17 |
+| Alpaca-LoRA-13B, 2-shot | 0.32 | 0.26 | 0.27 | 0.88 | 0.19 | 0.12 | 0.18 |
+
+Conformance and relation hallucination are reported after correcting a benchmark defect:
+three ontology files declare a relation label with a trailing space that their own ground
+truth omits, so no output string can satisfy the conformance vocabulary and the F1 matcher
+simultaneously. We emit the ground-truth form, which the evaluator then counts as a relation
+hallucination; every one of the 117 affected triples is one of those three relations, and
+measured conformance is 0.97. The baselines are depressed by the same defect.
+
+**RQ1 — Conformance.** Every triple WUKONG produced in both configurations uses a relation
+declared by its ontology: conformance 1.000 on all ten ontologies, against 0.84 and 0.88 for
+the baselines. This is the schema-first argument at its strongest, and it is structural
+rather than statistical — output that cannot be validated against the model never becomes
+part of the graph (§5.2, §5.3).
+
+**RQ3 — Grounding.** Subject hallucination is 0.00 and object hallucination 0.01, against
+0.17–0.19 and 0.17–0.18 for the baselines. Endpoints selected from a candidate set of
+already-extracted entities cannot name something absent from the text, which is the claim of
+§5.3; the baselines generate endpoint strings freely and 17% of their subjects do not occur
+in the sentence they were extracted from.
+
+**RQ5 — Cost.** The full suite cost **$2.81** at `gpt-5.6-luna` rates — 6.78M input and
+1.10M output tokens over 6,709 calls, 25 minutes at concurrency 15, ≈$0.00069 per sentence,
+with no failed call. Cost is linear in corpus size and output-dominated: output is 48% of
+spend from 14% of tokens, and reasoning accounts for 64% of billable output, which makes
+reasoning effort rather than prompt size the lever if cost binds. Prompt caching was
+ineffective here (0.3% hit rate) because every document is a distinct sentence.
+
+**RQ6 — Ablation.** Train-grounded entity types raise F1 from 0.26 to 0.34, improving every
+one of the ten ontologies, with precision rising alongside recall and conformance and
+hallucination unchanged, at 5% additional cost. The same change reduces degenerate
+self-referential triples from 192 to 29 and, without altering any endpoint declaration,
+reduces by 38% the gold triples that were unreachable because the entity pass assigned an
+argument a type the relation did not admit. A second arm, run on one ontology only, removes
+the endpoint type constraint entirely and raises that ontology's F1 from 0.09 to 0.23,
+confirming that those arguments were being extracted and the model was refusing the link.
+
+**What the F1 column does and does not show.** Three properties of the benchmark bound it
+for any faithful system, and they should be stated wherever the number is quoted. First,
+only 65% of gold triples are reachable at all: 2,001 name a subject the sentence never
+mentions — inherited from the source article rather than stated — and 96 use relations absent
+from their own ontology. Second, 142 sentences have an empty gold standard and score zero
+however a system answers, including when it correctly answers nothing. Together these cap
+macro F1 at **0.644**. Third, and specific to us, a benchmark triple has no place for a
+property: a literal that WUKONG would model as a field on an entity must instead become a
+node with a relationship pointing at it, and recall on those objects is 0.199 against 0.382
+for objects that are genuinely entities, across 24% of the gold standard. The baselines emit
+undifferentiated `(s, r, o)` strings and pay nothing for that distinction. The honest reading
+is that WUKONG reaches accuracy comparable to the baselines *while* satisfying constraints
+they do not satisfy, not that it is the more accurate extractor on this benchmark.
+
+**Caveats.** One model, one run per configuration, no repetitions, so RQ7 is untouched. The
+benchmark's documents are single sentences, which exercises neither cross-chunk nor
+document-level extraction (§5.2) and leaves deduplication almost inert — 4,062 sentences
+yield 3,911 distinct documents and little entity merging — so RQ4 is untested here. The
+second ablation arm covers one ontology rather than ten, for reasons of cost: removing the
+endpoint constraint makes every relationship type applicable to every chunk and inflates the
+relationship prompt roughly 29×. `[TODO: decide whether to run that arm on the full suite —
+approximately $20 and five hours — or report it as the targeted probe it currently is.]`
+
 ---
 
 ## 12. Limitations and Future Work
@@ -943,6 +1073,20 @@ under a fixed configuration, with repetitions, alongside the legal corpus.
 - **Field data types.** Only string-valued fields are supported today; numeric, boolean and
   temporal types would allow richer constraints and better downstream querying — and matter
   more once representations with real type systems are targeted.
+- **Properties versus triples.** The model represents a literal as a field on an entity,
+  which is the right shape for the data but does not survive conversion to a bare triple:
+  the literal has to become a node with a relationship pointing at it, and it must therefore
+  be recognized as an entity in its own right before any link can be made. §11.5 measures
+  the cost on a benchmark that admits only triples — recall 0.199 on such objects against
+  0.382 on genuine entities, over a quarter of that gold standard. This is a limitation of
+  the interchange format rather than of the extraction, but it is a real obstacle to
+  evaluating property-bearing models against triple-shaped reference data, and it will
+  recur with any RDF-style target.
+- **Schema quality as the dominant variable.** §11.5 shows a larger effect from grounding
+  entity types with a few examples (F1 0.26 → 0.34) than we would have predicted from the
+  design alone. Systematically studying what makes a knowledge model good — which of
+  descriptions, examples, instructions and endpoint breadth actually carry the weight — is
+  probably the highest-value follow-up, and would also inform the schema assistance below.
 - **Approximate identity.** An optional similarity-based identity mode — fuzzy matching over
   normalized keys, blocking for tractability — would raise recall for name-like keys. The
   challenge is to add it without losing the predictability that motivated the current
@@ -979,7 +1123,16 @@ provenance, and can be built incrementally and resumably at a known cost — and
 kept in a canonical form independent of any output syntax, a corpus is read once and can be
 rendered in whatever representation its consumer needs.
 
-`[TODO: close with the headline empirical result.]`
+On a public benchmark with reference annotations these properties hold in the numbers and
+not only in the design: every triple the system emitted conformed to the ontology it was
+given, its relation arguments were almost never absent from the sentence they were read
+from — subject hallucination 0.00 against 0.17 for 2-shot baselines on the same data — and
+accuracy was comparable to those baselines at roughly $0.0007 per sentence. What the same
+evaluation shows just as clearly is how much of the remaining gap belongs to the schema
+rather than the extractor: grounding the entity types with a handful of examples per type,
+and nothing else, moved F1 from 0.26 to 0.34 without disturbing either property. A knowledge
+model is not merely a constraint the system must satisfy; it is the main thing the system's
+quality depends on.
 
 ---
 

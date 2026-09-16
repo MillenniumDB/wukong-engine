@@ -1,0 +1,529 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Nature Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Synonym",
+                "Dam",
+                "Reservoir",
+                "CyclingRace",
+                "BodyOfWater",
+                "Taxon",
+                "DrainageBasin",
+                "Watercourse",
+                "MountainRange",
+                "Human",
+                "ConservationStatus",
+                "Mountain",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "ParentTaxon",
+                "MountainRange",
+                "ParentPeak",
+                "TaxonCommonName",
+                "Tributary",
+                "OriginOfTheWatercourse",
+                "MouthOfTheWatercourse",
+                "IUCNConservationStatus",
+                "TaxonSynonym",
+                "ReservoirCreated",
+                "DrainageBasin",
+                "MountainsClassification",
+                "Habitat"
+            ]
+        }
+    },
+    "entity_types": {
+        "Synonym": {
+            "description": "An entity of the type \"synonym\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Synonym in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Panaeolus sphinctrinus",
+                        "Hoplestigmataceae",
+                        "Myiophasia metallica"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Dam": {
+            "description": "An entity of the type \"dam\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Dam in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Dix Dam",
+                        "Canyon Ferry Dam",
+                        "O'Neill Dam"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Reservoir": {
+            "description": "An entity of the type \"reservoir\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Reservoir in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Herrington Lake",
+                        "Canyon Ferry Lake",
+                        "O'Neill Forebay"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "CyclingRace": {
+            "description": "An entity of the type \"cycling race\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this CyclingRace in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "2019 Tour of Slovenia",
+                        "2017 Tour de France",
+                        "2017 Volta a Catalunya"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "BodyOfWater": {
+            "description": "An entity of the type \"body of water\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this BodyOfWater in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Togiak Lake",
+                        "Lake Tana",
+                        "Todos los Santos Lake"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Taxon": {
+            "description": "An entity of the type \"taxon\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Taxon in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Tymoviridae",
+                        "Tymovirales",
+                        "Buff-throated Purpletuft"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "DrainageBasin": {
+            "description": "An entity of the type \"drainage basin\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this DrainageBasin in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Santa Ana River watershed",
+                        "James Bay Basin",
+                        "Gambia River basin"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Watercourse": {
+            "description": "An entity of the type \"watercourse\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Watercourse in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Mulde",
+                        "Freiberger Mulde",
+                        "Ogeechee River"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MountainRange": {
+            "description": "An entity of the type \"mountain range\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MountainRange in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Bowles Ridge",
+                        "Ahlmann Ridge",
+                        "Alaska Range"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Diego Ulissi",
+                        "Warren Barguil",
+                        "Marc Soler"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "ConservationStatus": {
+            "description": "An entity of the type \"conservation status\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this ConservationStatus in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Mountain": {
+            "description": "An entity of the type \"mountain\", as defined by the Nature Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Mountain in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Svoge Knoll",
+                        "Lorentzen Peak",
+                        "Mount Crosson"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"taxon common name\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "ParentTaxon": {
+            "description": "The \"parent taxon\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Taxon": {
+                    "Taxon": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MountainRange": {
+            "description": "The \"mountain range\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Mountain": {
+                    "MountainRange": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "ParentPeak": {
+            "description": "The \"parent peak\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Mountain": {
+                    "Mountain": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "TaxonCommonName": {
+            "description": "The \"taxon common name\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Value": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Tributary": {
+            "description": "The \"tributary\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Watercourse": {
+                    "Watercourse": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "OriginOfTheWatercourse": {
+            "description": "The \"origin of the watercourse\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Watercourse": {
+                    "BodyOfWater": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MouthOfTheWatercourse": {
+            "description": "The \"mouth of the watercourse\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Watercourse": {
+                    "Watercourse": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "IUCNConservationStatus": {
+            "description": "The \"IUCN conservation status\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Taxon": {
+                    "ConservationStatus": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "TaxonSynonym": {
+            "description": "The \"taxon synonym\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Taxon": {
+                    "Synonym": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "ReservoirCreated": {
+            "description": "The \"reservoir created\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Dam": {
+                    "Reservoir": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "DrainageBasin": {
+            "description": "The \"drainage basin\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Watercourse": {
+                    "DrainageBasin": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MountainsClassification": {
+            "description": "The \"mountains classification\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "CyclingRace": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Habitat": {
+            "description": "The \"Habitat\" relation, as defined by the Nature Ontology.",
+            "endpoints": {
+                "Taxon": {
+                    "BodyOfWater": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

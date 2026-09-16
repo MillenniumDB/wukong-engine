@@ -1,0 +1,219 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Computer Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Application",
+                "Human",
+                "ComputerModel",
+                "Computer",
+                "Software",
+                "OperatingSystem",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "Developer",
+                "Creator",
+                "Platform",
+                "OperatingSystem"
+            ]
+        }
+    },
+    "entity_types": {
+        "Application": {
+            "description": "An entity of the type \"application\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Application in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "ComputerModel": {
+            "description": "An entity of the type \"computer model\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this ComputerModel in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Computer": {
+            "description": "An entity of the type \"computer\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Computer in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Software": {
+            "description": "An entity of the type \"software\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Software in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "OperatingSystem": {
+            "description": "An entity of the type \"operating system\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this OperatingSystem in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"developer\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Developer": {
+            "description": "The \"developer\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "Software": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Creator": {
+            "description": "The \"creator\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "Application": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Platform": {
+            "description": "The \"platform\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "Software": {
+                    "Computer": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "OperatingSystem": {
+            "description": "The \"operating system\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "ComputerModel": {
+                    "OperatingSystem": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

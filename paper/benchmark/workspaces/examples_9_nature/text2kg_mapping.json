@@ -1,0 +1,34 @@
+{
+    "ontology_id": "ont_9_nature",
+    "title": "Nature Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "Synonym": "synonym",
+        "Dam": "dam",
+        "Reservoir": "reservoir",
+        "CyclingRace": "cycling race",
+        "BodyOfWater": "body of water",
+        "Taxon": "taxon",
+        "DrainageBasin": "drainage basin",
+        "Watercourse": "watercourse",
+        "MountainRange": "mountain range",
+        "Human": "human",
+        "ConservationStatus": "conservation status",
+        "Mountain": "mountain"
+    },
+    "relationship_types": {
+        "ParentTaxon": "parent_taxon",
+        "MountainRange": "mountain_range",
+        "ParentPeak": "parent_peak",
+        "TaxonCommonName": "taxon_common_name",
+        "Tributary": "tributary",
+        "OriginOfTheWatercourse": "origin_of_the_watercourse",
+        "MouthOfTheWatercourse": "mouth_of_the_watercourse",
+        "IUCNConservationStatus": "IUCN_conservation_status",
+        "TaxonSynonym": "taxon_synonym",
+        "ReservoirCreated": "reservoir_created",
+        "DrainageBasin": "drainage_basin",
+        "MountainsClassification": "mountains_classification",
+        "Habitat": "Habitat"
+    }
+}
