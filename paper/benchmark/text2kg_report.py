@@ -135,7 +135,7 @@ def recall_by_object_type(
         workspace = workspaces / f'{prefix}{onto}'
         if not (responses / f'ont_{onto}_wukong_responses.jsonl').exists():
             continue
-        model = json.loads((workspace / 'graph_model.json').read_text(encoding='utf-8'))
+        model = json.loads((workspace / 'knowledge_model.json').read_text(encoding='utf-8'))
         mapping = json.loads((workspace / 'text2kg_mapping.json').read_text(encoding='utf-8'))
         value_type = mapping['value_entity_type']
 
@@ -225,7 +225,7 @@ def miss_decomposition(
         workspace = workspaces / f'{prefix}{onto}'
         if not (responses / f'ont_{onto}_wukong_responses.jsonl').exists():
             continue
-        model = json.loads((workspace / 'graph_model.json').read_text(encoding='utf-8'))
+        model = json.loads((workspace / 'knowledge_model.json').read_text(encoding='utf-8'))
         mapping = json.loads((workspace / 'text2kg_mapping.json').read_text(encoding='utf-8'))
         relationship_of = {label: name for name, label in mapping['relationship_types'].items()}
         allowed = {

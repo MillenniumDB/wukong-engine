@@ -22,9 +22,9 @@ class WorkspacePaths:
         return self._root / self._layout.DOCUMENT_REGISTRY
 
     @property
-    def graph_model(self) -> Path:
-        """Path to the graph model file."""
-        return self._root / self._layout.GRAPH_MODEL
+    def knowledge_model(self) -> Path:
+        """Path to the knowledge model file."""
+        return self._root / self._layout.KNOWLEDGE_MODEL
 
     @property
     def staging_db(self) -> Path:

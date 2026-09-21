@@ -30,7 +30,7 @@ class WorkspaceValidator:
             error = f'Missing document collections JSON file at "{paths.document_registry}"'
             logger.error(error)
             raise InvalidWorkspaceError(error)
-        if not paths.graph_model.exists():
-            error = f'Missing graph model JSON file at "{paths.graph_model}"'
+        if not paths.knowledge_model.exists():
+            error = f'Missing knowledge model JSON file at "{paths.knowledge_model}"'
             logger.error(error)
             raise InvalidWorkspaceError(error)

@@ -19,7 +19,7 @@ from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import ExtractionTask
-from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 # Constants

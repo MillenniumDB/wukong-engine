@@ -9,7 +9,7 @@ class DocumentId:
     """The unique identifier for documents.
 
     The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used as the id for the final graph.
+        1. instance: A unique id for the runtime instance, used as the id in the exported knowledge.
         2. content: A content-based id, used for efficient deduplication and provenance tracking.
 
     Instance: UUIDv7
@@ -58,7 +58,7 @@ class ChunkId:
     """The unique identifier for document chunks.
 
     The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used as the id for the final graph.
+        1. instance: A unique id for the runtime instance, used as the id in the exported knowledge.
         2. content: A content-based id, used for efficient deduplication and provenance tracking.
 
     Current Version: v1

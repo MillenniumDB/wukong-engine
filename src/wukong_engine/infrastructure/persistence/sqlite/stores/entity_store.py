@@ -10,11 +10,11 @@ from wukong_engine.app.staging.ports import EntityStore
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
-from wukong_engine.core.graph.elements import ChunkEntityProvenance, DocumentEntityProvenance, Entity
-from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import EntityType, GraphModel
-from wukong_engine.core.graph.model.values import EntityTypeName
-from wukong_engine.core.graph.services import EntityMerger
+from wukong_engine.core.knowledge.elements import ChunkEntityProvenance, DocumentEntityProvenance, Entity
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel
+from wukong_engine.core.knowledge.model.values import EntityTypeName
+from wukong_engine.core.knowledge.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
@@ -168,7 +168,7 @@ class SQLiteEntityStore(EntityStore):
         for row in rows:
             yield self._row_to_entity(row, entity_type)
 
-    def stream_by_source_context(self, context: ContextRef, model: GraphModel) -> Iterator[Entity]:
+    def stream_by_source_context(self, context: ContextRef, model: KnowledgeModel) -> Iterator[Entity]:
         """Stream all entities linked to a specific source context."""
         rows = self._conn.execute(
             """
@@ -184,7 +184,7 @@ class SQLiteEntityStore(EntityStore):
             entity_type_name = EntityTypeName(row['entity_type_name'])
             entity_type = model.entity_type(entity_type_name)
             if entity_type is None:
-                raise ValueError(f'Entity type "{entity_type_name.value}" not found in the provided graph model.')
+                raise ValueError(f'Entity type "{entity_type_name.value}" not found in the provided knowledge model.')
             yield self._row_to_entity(row, entity_type)
 
     def stream_provenance_by_document(self) -> Iterator[DocumentEntityProvenance]:

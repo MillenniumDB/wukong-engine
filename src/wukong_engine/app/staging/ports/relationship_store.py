@@ -2,8 +2,8 @@ from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.core.documents.elements import ContextRef
-from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
-from wukong_engine.core.graph.model import RelationshipType
+from wukong_engine.core.knowledge.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
+from wukong_engine.core.knowledge.model import RelationshipType
 
 
 class RelationshipStore(Protocol):

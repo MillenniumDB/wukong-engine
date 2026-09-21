@@ -7,11 +7,11 @@ from wukong_engine.app.shared.iterables import batched
 from wukong_engine.app.staging.ports import RelationshipStore
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.graph.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
-from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
-from wukong_engine.core.graph.model import RelationshipType
-from wukong_engine.core.graph.model.values import RelationshipTypeName
-from wukong_engine.core.graph.services import RelationshipMerger
+from wukong_engine.core.knowledge.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
+from wukong_engine.core.knowledge.elements.values import EntityId, RelationshipId
+from wukong_engine.core.knowledge.model import RelationshipType
+from wukong_engine.core.knowledge.model.values import RelationshipTypeName
+from wukong_engine.core.knowledge.services import RelationshipMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 

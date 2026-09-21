@@ -5,7 +5,7 @@ from wukong_engine.app.llm.elements.values import LLMPrompt
 
 # Constants
 KG_EXTRACTION_INSTRUCTIONS = """
-You are a knowledge graph extraction engine.
+You are a knowledge extraction engine.
 Extract only information explicitly supported by the source text.
 If information is ambiguous, omit it rather than guessing.
 Preserve extracted values exactly as expressed in the source text.

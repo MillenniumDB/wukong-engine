@@ -9,7 +9,7 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
 
 # Logging
@@ -42,7 +42,7 @@ class ExtractEntities:
         if reset > 0:
             logger.info(f'Reset {reset} deferred extractions for re-processing')
 
-    async def execute(self, graph_model: GraphModel) -> None:
+    async def execute(self, knowledge_model: KnowledgeModel) -> None:
         """Execute the entity extraction process."""
         # Materialize extractions (if not already done)
         with self._uow as tx:
@@ -51,7 +51,7 @@ class ExtractEntities:
             )
         if not is_materialized:
             logger.info('Materializing ALL pending entity extractions...')
-            self._repository.materialize_all_extractions(graph_model)
+            self._repository.materialize_all_extractions(knowledge_model)
 
             # Set checkpoint to indicate all extractions have been materialized
             with self._uow as tx:
@@ -74,7 +74,7 @@ class ExtractEntities:
 
                     # Batch Synchronization: Manage lifecycle for submitted batches
                     logger.info(f'Synchronizing batches for {context_level.value}S...')
-                    await self._batch_synchronizer.synchronize(graph_model)
+                    await self._batch_synchronizer.synchronize(knowledge_model)
                     logger.info(f'Finished batch synchronization for {context_level.value}S!')
 
                     # Recovery: Handle extractions that are in an incomplete/inconsistent state
@@ -84,7 +84,7 @@ class ExtractEntities:
 
                     # Run extractions for the current context level
                     logger.info(f'Extracting entities from {context_level.value}S...')
-                    await self._extraction_engine.run(context_level, graph_model)
+                    await self._extraction_engine.run(context_level, knowledge_model)
 
                     # Stop execution if there are still remaining sources/batches for the current context level
                     # Subsequent runs have to complete the remaining extractions before moving on to the next context level

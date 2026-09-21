@@ -3,7 +3,7 @@ import logging
 from wukong_engine.app.knowledge_export.exceptions import KnowledgeExportError
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.staging.ports import UnitOfWork
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.pipeline.model.values import PipelineCheckpoint, PipelineCheckpointStatus
 
 # Logging
@@ -19,7 +19,7 @@ class ExportKnowledge:
         self._exporter = exporter
         self._export_uri = export_uri
 
-    def execute(self, model: GraphModel) -> None:
+    def execute(self, model: KnowledgeModel) -> None:
         """Export the extracted knowledge to output files using a specified format."""
         try:
             self._exporter.export(model, self._export_uri)

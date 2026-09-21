@@ -23,13 +23,13 @@ from wukong_engine.app.knowledge_export.model.values import KnowledgeExportForma
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
-from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetGraphModel
-from wukong_engine.app.workflows import GraphConstructionPipeline
+from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
+from wukong_engine.app.workflows import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
-from wukong_engine.infrastructure.definitions.graph import LocalGraphModelProvider
+from wukong_engine.infrastructure.definitions.knowledge import LocalKnowledgeModelProvider
 from wukong_engine.infrastructure.export.graph import MillenniumDBKnowledgeExporter, Neo4jKnowledgeExporter
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import set_logger_verbosity
@@ -55,9 +55,9 @@ class CLIApplication:
     Owns infrastructure and ready-to-use workflows and use cases.
     """
 
-    def __init__(self, graph_construction_pipeline: GraphConstructionPipeline) -> None:
+    def __init__(self, knowledge_construction_pipeline: KnowledgeConstructionPipeline) -> None:
         """Initialize the CLI application, composing all dependencies."""
-        self.graph_construction = graph_construction_pipeline
+        self.knowledge_construction = knowledge_construction_pipeline
 
 
 def _format_to_exporter(export_format: KnowledgeExportFormat, repository: KnowledgeRepository) -> KnowledgeExporter:
@@ -88,7 +88,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     initialize_sqlite_database(db_path=workspace.paths.staging_db, connection_factory=session_factory)
 
     # Infrastructure
-    graph_model_provider = LocalGraphModelProvider()
+    knowledge_model_provider = LocalKnowledgeModelProvider()
     document_registry_provider = LocalDocumentRegistryProvider()
     document_source_validator = LocalDocumentSourceValidator()
     document_stream_provider = LocalDocumentStreamProvider()
@@ -192,7 +192,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         provider=document_registry_provider,
         validator=document_source_validator,
     )
-    get_graph_model = GetGraphModel(provider=graph_model_provider)
+    get_knowledge_model = GetKnowledgeModel(provider=knowledge_model_provider)
     ingest_documents = IngestDocuments(
         stream_provider=document_stream_provider,
         loader=document_loader,
@@ -220,14 +220,14 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
 
     # Workflows
-    graph_construction = GraphConstructionPipeline(
+    knowledge_construction = KnowledgeConstructionPipeline(
         app_config=app_config,
         uow=staging_uow,
         get_document_registry=get_document_registry,
-        get_graph_model=get_graph_model,
+        get_knowledge_model=get_knowledge_model,
         ingest_documents=ingest_documents,
         extract_entities=extract_entities,
         extract_relationships=extract_relationships,
         export_knowledge=export_knowledge,
     )
-    return CLIApplication(graph_construction_pipeline=graph_construction)
+    return CLIApplication(knowledge_construction_pipeline=knowledge_construction)

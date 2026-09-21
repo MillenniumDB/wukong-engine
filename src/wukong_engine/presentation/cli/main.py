@@ -32,7 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     # Main parser
     parser = argparse.ArgumentParser(
         prog='wukong',
-        description='Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs.',
+        description='Engine for extracting structured knowledge from unstructured documents using the power of LLMs, exportable to graph and other formats.',
         allow_abbrev=False,
     )
     subparsers = parser.add_subparsers(dest='command', required=True)
@@ -119,7 +119,7 @@ def handle_run(args: argparse.Namespace) -> None:
         # Build and run the pipeline
         app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
         asyncio.run(
-            app.graph_construction.execute(workspace=workspace, data_uri=args.data_dir, should_reset=args.reset),
+            app.knowledge_construction.execute(workspace=workspace, data_uri=args.data_dir, should_reset=args.reset),
         )
         print('WUKONG engine pipeline execution completed!')
 

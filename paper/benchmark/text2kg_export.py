@@ -1,6 +1,6 @@
 """Convert a WUKONG run into Text2KGBench system output.
 
-Reads the extracted graph straight from a workspace's staging database and
+Reads the extracted knowledge straight from a workspace's staging database and
 emits one JSONL record per test sentence, in the shape `run_eval.py` consumes:
 
     {"id": "ont_2_music_test_1", "triples": [["' 39", "composer", "Brian May"]]}
@@ -62,7 +62,7 @@ def read_primary_key(properties: str, primary_keys: dict[str, str], entity_type:
 
 def load_primary_keys(workspace: Path) -> dict[str, str]:
     """Map each entity type to the field holding its primary key."""
-    model = json.loads((workspace / 'graph_model.json').read_text(encoding='utf-8'))
+    model = json.loads((workspace / 'knowledge_model.json').read_text(encoding='utf-8'))
     return {name: definition['primary_key'] for name, definition in model['entity_types'].items()}
 
 

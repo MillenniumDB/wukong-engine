@@ -3,9 +3,9 @@ from typing import Protocol
 
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
-from wukong_engine.core.graph.elements import ChunkEntityProvenance, DocumentEntityProvenance, Entity
-from wukong_engine.core.graph.model import EntityType, GraphModel
-from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.knowledge.elements import ChunkEntityProvenance, DocumentEntityProvenance, Entity
+from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 
 
 class EntityStore(Protocol):
@@ -36,7 +36,7 @@ class EntityStore(Protocol):
         """Stream all entities of a given type."""
         ...
 
-    def stream_by_source_context(self, context: ContextRef, model: GraphModel) -> Iterator[Entity]:
+    def stream_by_source_context(self, context: ContextRef, model: KnowledgeModel) -> Iterator[Entity]:
         """Stream all entities linked to a specific source context."""
         ...
 

@@ -13,9 +13,9 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.app.llm.elements import LLMBatchResult
 from wukong_engine.app.llm.elements.values import ReasoningEffort
-from wukong_engine.core.graph.elements import Entity
-from wukong_engine.core.graph.model import RelationshipType
-from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.knowledge.elements import Entity
+from wukong_engine.core.knowledge.model import RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 
 from .batch import ExtractionBatch
 from .job import ExtractionJob

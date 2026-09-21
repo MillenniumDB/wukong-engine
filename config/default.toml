@@ -41,15 +41,15 @@ export_knowledge = true
 # Note: Currently only OpenAI models are supported
 # Supported models:
 # "gpt-4.1-mini": Cheaper (non-reasoning)
-# "gpt-5.6-luna": Balanced
-# Default: "gpt-5.6-luna"
+# "gpt-5.6-luna": Balanced (reasoning model, runs at low effort)
+# Built-in default: "gpt-5.6-luna"
 model = "gpt-5.6-luna"
 
 ### Execution mode for LLM interactions ###
 # You can choose from the following modes:
 # "real-time": Real-time execution using concurrent API calls (faster, but more expensive)
 # "batch": Asynchronous execution using external batch API processing (slower, but more cost-effective)
-# Default: "real-time"
+# Built-in default: "real-time"
 execution_mode = "real-time"
 
 ### Maximum concurrency for LLM API calls ###
@@ -57,10 +57,10 @@ execution_mode = "real-time"
 # Reference values to consider based on OpenAI usage tiers (for mini models):
 # - Tier 1: 1
 # - Tier 2: 8
-# - Tier 3: 15 (default)
+# - Tier 3: 15
 # - Tier 4: 35
 # - Tier 5: 500
-# Default: 15
+# Built-in default: 5 (this file sets 15)
 max_concurrency = 15
 
 ##############
@@ -72,12 +72,12 @@ max_concurrency = 15
 
 ### Ideal number of tokens for each chunk ###
 # Note: This value should be in the range [1, 5000], with the recommended range being [100, 2000]
-# Default: 800
+# Built-in default: 800
 target_tokens = 800
 
 ### Number of overlapping tokens between consecutive chunks ###
-# Note: This value should be in the range [0, target_tokens - 1] (a good default is 0.15 * target_tokens)
-# Default: 120
+# Note: This value should be in the range [0, target_tokens - 1]
+# Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200)
 overlap_tokens = 120
 
 ##############
@@ -90,5 +90,5 @@ overlap_tokens = 120
 # You can choose from the following formats:
 # "mdb": MillenniumDB graph database QM (Quad Model) file
 # "neo4j": Neo4j graph database CSV files
-# Default: "mdb"
+# Built-in default: "mdb"
 format = "mdb"

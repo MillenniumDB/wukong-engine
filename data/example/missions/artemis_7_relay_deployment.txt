@@ -1,0 +1,126 @@
+MERIDIAN DEEP SPACE AGENCY
+MISSION REPORT — ARTEMIS-7
+
+Mission code: ARTEMIS-7
+Designation: Sun-Earth L2 Relay Deployment
+Status: completed
+Launch: 14 March 2189
+Recovery: 2 September 2189
+Vehicle: MDV Cassiopeia (VSP-03), Vesper-class crew transport
+
+
+1. OBJECTIVE
+
+ARTEMIS-7 was tasked with deploying the L2 Relay Array, a three-node
+communications installation at the Sun-Earth L2 point, and with certifying the
+crew transport MDV Cassiopeia (VSP-03) for extended crewed operations beyond
+cislunar space. Secondary objectives covered long-duration habitability data
+and a shakedown of the array's autonomous station-keeping software.
+
+The mission was approved following the loss of the Tycho ground relay in 2187,
+which left deep-space telemetry dependent on a single downlink path. ARTEMIS-7
+was the agency's first crewed deployment beyond the lunar gateway in eleven
+years.
+
+
+2. CREW
+
+The mission flew with a crew of three:
+
+- Cmdr. Amara Okonkwo (MDSA-2071), mission commander. Responsible for overall
+  mission authority, EVA sequencing and the L2 insertion burn.
+- Lt. Theo Vance (MDSA-2233), pilot. Responsible for the flight of VSP-03,
+  proximity operations during node release, and the recovery trajectory.
+- Dr. Mei Liang (MDSA-2190), science officer. Responsible for array
+  calibration, the habitability instrument suite and the medical log.
+
+
+3. FLIGHT SUMMARY
+
+Launch occurred on 14 March 2189 with no holds. MDV Cassiopeia (VSP-03)
+completed its trans-L2 injection on flight day 3 and arrived on station on
+flight day 41. Lt. Theo Vance (MDSA-2233) flew all three proximity approaches
+manually after the automated approach system produced an unacceptable closure
+rate on the first attempt.
+
+Node A and Node B were released and activated on flight days 44 and 46
+respectively. Node C release was deferred by six days following the hull
+anomaly described in section 4. Dr. Mei Liang (MDSA-2190) completed the full
+calibration sequence for all three nodes by flight day 58, and the array was
+handed over to ground control on flight day 61.
+
+Cmdr. Amara Okonkwo (MDSA-2071) logged 22 hours 40 minutes of EVA across four
+excursions, the longest cumulative EVA time recorded on a Vesper-class
+transport.
+
+
+4. ANOMALIES
+
+Incident INC-0412 was recorded on flight day 45, when a micrometeoroid strike
+produced a hull breach in the aft equipment bay of MDV Cassiopeia (VSP-03).
+The bay was isolated within 90 seconds. Cmdr. Amara Okonkwo (MDSA-2071) and
+Lt. Theo Vance (MDSA-2233) completed the patch during an unscheduled EVA on
+flight day 47. No crew injury resulted, and the incident is treated in full in
+the dedicated incident report.
+
+A second, minor anomaly involving intermittent star-tracker dropouts was
+logged but not assigned an incident code, as the behaviour was traced to a
+known firmware defect already scheduled for correction.
+
+
+5. OUTCOME
+
+All primary objectives were met. The L2 Relay Array has been operational and
+within specification since handover. MDV Cassiopeia (VSP-03) was certified for
+extended crewed operations on return, with the standing recommendation that
+aft bay shielding be uprated before any mission of comparable duration.
+
+The habitability dataset gathered by Dr. Mei Liang (MDSA-2190) was released to
+the agency's mission planning office and has since informed the crew rotation
+schedule adopted for KEPLER-12.
+
+
+6. TIMELINE
+
+Flight day 1 — Launch from the equatorial range. No holds.
+Flight day 3 — Trans-L2 injection burn executed by Lt. Theo Vance
+  (MDSA-2233). Residuals within tolerance.
+Flight day 41 — Arrival on station. L2 insertion burn executed by Cmdr. Amara
+  Okonkwo (MDSA-2071).
+Flight day 42 — First proximity approach aborted after the automated approach
+  system commanded an unacceptable closure rate.
+Flight day 44 — Node A released and activated. Approach flown manually.
+Flight day 45 — Incident INC-0412. Pressure alarm in the aft equipment bay of
+  MDV Cassiopeia (VSP-03); bay isolated.
+Flight day 46 — Node B released and activated.
+Flight day 47 — Unscheduled EVA. Hull patch applied by Cmdr. Amara Okonkwo
+  (MDSA-2071) and Lt. Theo Vance (MDSA-2233).
+Flight day 52 — Node C released and activated, six days behind plan.
+Flight day 58 — Calibration of all three nodes completed by Dr. Mei Liang
+  (MDSA-2190).
+Flight day 61 — L2 Relay Array handed over to ground control.
+Flight day 173 — Recovery.
+
+
+7. RECOMMENDATIONS
+
+R1. Uprate aft bay shielding on all Vesper-class transports to the
+forward-bay standard before flying any mission exceeding 120 days. Raised in
+response to incident INC-0412 and carried into the fleet review.
+
+R2. Retain manual proximity operations as the primary approach mode for relay
+node deployment until the automated approach system has been requalified. The
+manual approaches flown by Lt. Theo Vance (MDSA-2233) were faster and used
+less propellant than the automated attempt.
+
+R3. Adopt the rotating watch schedule derived from the habitability dataset
+returned by Dr. Mei Liang (MDSA-2190) for all missions beyond 120 days. This
+recommendation has already been taken up by KEPLER-12.
+
+R4. Stow no experiment racks in the aft equipment bay of a Vesper-class
+transport until R1 is closed. Two racks were lost to vacuum exposure during
+INC-0412.
+
+R5. Schedule the star-tracker firmware correction before the next crewed
+deployment beyond cislunar space. The dropouts observed on this flight did not
+warrant an incident code but consumed crew attention during a critical phase.

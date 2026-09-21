@@ -24,9 +24,9 @@ from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.elements import Entity, EntityRef, Relationship
-from wukong_engine.core.graph.model import GraphModel, RelationshipType
-from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.knowledge.elements import Entity, EntityRef, Relationship
+from wukong_engine.core.knowledge.model import KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
 
 # Constants
 BATCH_GROUP_SIZE = 1000  # Number of active batches to retrieve from the DB at once (default: 1000)
@@ -40,7 +40,7 @@ class ExtractionRepository(Protocol):
 
     # Extraction Jobs
 
-    def materialize_all_extractions(self, graph_model: GraphModel) -> None:
+    def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
         """Materialize all extractions for later processing."""
         ...
 
@@ -139,10 +139,10 @@ class EntityExtractionRepository(ExtractionRepository):
 
     # Extraction Jobs
 
-    def materialize_all_extractions(self, graph_model: GraphModel) -> None:
+    def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
         """Materialize all extractions for later processing."""
         # Setup entity types and associated document collections
-        entity_types = tuple(graph_model.active_entity_types.values())
+        entity_types = tuple(knowledge_model.active_entity_types.values())
         with self._uow as tx:
             tx.entities.add_entity_types(et.name for et in entity_types)
             for entity_type in entity_types:
@@ -336,10 +336,10 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
     # Extraction Jobs
 
-    def materialize_all_extractions(self, graph_model: GraphModel) -> None:
+    def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
         """Materialize all extractions for later processing."""
         # Setup relationship types
-        relationship_types = tuple(graph_model.active_relationship_types.values())
+        relationship_types = tuple(knowledge_model.active_relationship_types.values())
         with self._uow as tx:
             tx.relationships.add_relationship_types(relationship_types)
 
@@ -639,12 +639,12 @@ class RelationshipExtractionRepository(ExtractionRepository):
         with self._uow as tx:
             return tx.extraction.relationships.get_job_relationship_types(job)
 
-    def get_job_chunk_entities(self, job: ExtractionJob, model: GraphModel) -> tuple[Entity, ...]:
+    def get_job_chunk_entities(self, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
         """Retrieve the entities associated with a given extraction job's source chunk."""
         with self._uow as tx:
             return tuple(tx.entities.stream_by_source_context(job.context_ref, model))
 
-    def get_job_parent_document_entities(self, job: ExtractionJob, model: GraphModel) -> tuple[Entity, ...]:
+    def get_job_parent_document_entities(self, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
         """Retrieve the entities associated with the parent document of a given extraction job's source chunk."""
         source_chunk = self.get_job_source_context(job)
         parent_document_ref = ContextRef(level=ContextLevel.DOCUMENT, content_id=source_chunk.document_id.content)
@@ -654,7 +654,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
     def get_job_extraction_elements(
         self,
         job: ExtractionJob,
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> RelationshipExtractionRequestObjects:
         """Retrieve necessary elements for building a relationship extraction request for a given job, including relationship types and associated entities."""
         relationship_types = [model.relationship_type(name) for name in self.get_job_relationship_types(job)]
@@ -698,7 +698,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
         self,
         job: ExtractionJob,
         entity_ref: EntityRef,
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> set[ContextLevel]:
         """Retrieve the context levels for a given EntityRef in a specific extraction job."""
         elements = self.get_job_extraction_elements(job, model)

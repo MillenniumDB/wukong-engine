@@ -10,10 +10,10 @@ from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import EntityType, GraphModel, RelationshipType
-from wukong_engine.core.graph.model.values import DataType
+from wukong_engine.core.knowledge.elements import Entity, Relationship
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import DataType
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import clear_directory
 
@@ -288,7 +288,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         """Initialize the exporter with necessary dependencies."""
         self._repository = repository
 
-    def export(self, model: GraphModel, export_uri: str) -> None:
+    def export(self, model: KnowledgeModel, export_uri: str) -> None:
         """Export knowledge to a specified output format."""
         # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'neo4j'
@@ -330,7 +330,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             for chunk in self._repository.stream_all_chunks():
                 writer.write(chunk)
 
-    def _export_entities(self, model: GraphModel, entities_dir: Path) -> None:
+    def _export_entities(self, model: KnowledgeModel, entities_dir: Path) -> None:
         """Export entities to a set of Neo4j CSV files."""
         # Entities
         logger.info('Exporting Entities...')
@@ -348,7 +348,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             for source_id, entity_id in self._repository.stream_entity_provenance():
                 writer.write(source_id, entity_id)
 
-    def _export_relationships(self, model: GraphModel, relationships_dir: Path) -> None:
+    def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path) -> None:
         """Export relationships to a set of Neo4j CSV files."""
         # Relationships
         logger.info('Exporting Relationships...')

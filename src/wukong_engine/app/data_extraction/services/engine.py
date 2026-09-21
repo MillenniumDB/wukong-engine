@@ -7,7 +7,7 @@ from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, Job
 from wukong_engine.app.data_extraction.exceptions import ExtractionExecutionError, ExtractionRequestBuildError
 from wukong_engine.app.shared.iterables import batched
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.knowledge.model import KnowledgeModel
 
 from .batch_submitter import ExtractionBatchSubmitter
 from .executor import ExtractionExecutor
@@ -26,8 +26,8 @@ BATCH_SIZE = 1000  # Number of jobs to process in each batch (default: 1000)
 class ExtractionEngine(Protocol):
     """Engine that orchestrates data extraction from sources."""
 
-    async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
-        """Run extractions for a given context level, using the provided graph model."""
+    async def run(self, context_level: ContextLevel, knowledge_model: KnowledgeModel) -> None:
+        """Run extractions for a given context level, using the provided knowledge model."""
         ...
 
 
@@ -52,9 +52,9 @@ class RealtimeExtractionEngine(ExtractionEngine):
     def _stream_extraction_requests(
         self,
         context_level: ContextLevel,
-        graph_model: GraphModel,
+        knowledge_model: KnowledgeModel,
     ) -> Iterator[ExtractionRequest]:
-        """Stream extraction requests for a given context level, using the provided graph model."""
+        """Stream extraction requests for a given context level, using the provided knowledge model."""
         while True:
             # Prepare extraction job batch
             jobs = self._repository.claim_next_job_batch(context_level, batch_size=BATCH_SIZE)
@@ -68,7 +68,7 @@ class RealtimeExtractionEngine(ExtractionEngine):
             requests: list[ExtractionRequest] = []
             for job in jobs:
                 try:
-                    requests.append(self._request_builder.build(job, graph_model))
+                    requests.append(self._request_builder.build(job, knowledge_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
                     self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
@@ -76,13 +76,13 @@ class RealtimeExtractionEngine(ExtractionEngine):
             # Yield each request in the batch
             yield from requests
 
-    async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
-        """Run extractions for a given context level, using the provided graph model."""
+    async def run(self, context_level: ContextLevel, knowledge_model: KnowledgeModel) -> None:
+        """Run extractions for a given context level, using the provided knowledge model."""
         # Initial metrics log
         self._metrics_tracker.request_metrics(force_log=True, force_update=True)
 
         # Execute all jobs and process results
-        extraction_requests = self._stream_extraction_requests(context_level, graph_model)
+        extraction_requests = self._stream_extraction_requests(context_level, knowledge_model)
         try:
             async for request, result in self._executor.execute_many(extraction_requests):
                 # Handle failed job
@@ -106,11 +106,11 @@ class RealtimeExtractionEngine(ExtractionEngine):
 
                     continue
 
-                # Materialization of results into graph objects
-                graph_objects = self._result_materializer.materialize(result, request.job, graph_model)
+                # Materialization of results into knowledge objects
+                knowledge_objects = self._result_materializer.materialize(result, request.job, knowledge_model)
 
-                # Persist graph objects and provenance, update job status to completed
-                self._repository.complete_job(request.job, graph_objects, usage_metrics=result.metrics)
+                # Persist knowledge objects and provenance, update job status to completed
+                self._repository.complete_job(request.job, knowledge_objects, usage_metrics=result.metrics)
 
                 # Request a metrics log after each job completion
                 self._metrics_tracker.request_metrics()
@@ -144,9 +144,9 @@ class BatchExtractionEngine(ExtractionEngine):
     def _stream_extraction_requests(
         self,
         context_level: ContextLevel,
-        graph_model: GraphModel,
+        knowledge_model: KnowledgeModel,
     ) -> Iterator[ExtractionRequest]:
-        """Stream extraction requests for a given context level, using the provided graph model."""
+        """Stream extraction requests for a given context level, using the provided knowledge model."""
         while True:
             # Prepare extraction job batch
             jobs = self._repository.claim_next_job_batch(context_level, batch_size=BATCH_SIZE)
@@ -160,7 +160,7 @@ class BatchExtractionEngine(ExtractionEngine):
             requests: list[ExtractionRequest] = []
             for job in jobs:
                 try:
-                    requests.append(self._request_builder.build(job, graph_model))
+                    requests.append(self._request_builder.build(job, knowledge_model))
                 except ExtractionRequestBuildError as exc:
                     # Handle request build failure for the current job (deferred retry)
                     self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=str(exc))
@@ -171,21 +171,21 @@ class BatchExtractionEngine(ExtractionEngine):
     def _stream_batch_submissions(
         self,
         context_level: ContextLevel,
-        graph_model: GraphModel,
+        knowledge_model: KnowledgeModel,
     ) -> Iterator[BatchSubmissionRequest]:
-        """Stream batch submission requests for a given context level, using the provided graph model."""
+        """Stream batch submission requests for a given context level, using the provided knowledge model."""
         # Yield a submission request for each batch of extraction requests
-        batches = batched(self._stream_extraction_requests(context_level, graph_model), size=BATCH_SIZE)
+        batches = batched(self._stream_extraction_requests(context_level, knowledge_model), size=BATCH_SIZE)
         for batch in batches:
             yield BatchSubmissionRequest(batch)
 
-    async def run(self, context_level: ContextLevel, graph_model: GraphModel) -> None:
-        """Run extractions for a given context level, using the provided graph model."""
+    async def run(self, context_level: ContextLevel, knowledge_model: KnowledgeModel) -> None:
+        """Run extractions for a given context level, using the provided knowledge model."""
         # Initial metrics log (do not force update since batching performance is long-lived)
         self._metrics_tracker.request_metrics(force_log=True)
 
         # Stream all batches and submit them
-        batch_submissions = self._stream_batch_submissions(context_level, graph_model)
+        batch_submissions = self._stream_batch_submissions(context_level, knowledge_model)
         try:
             async for submission, result in self._submitter.submit_many(batch_submissions):
                 # Get jobs from the batch

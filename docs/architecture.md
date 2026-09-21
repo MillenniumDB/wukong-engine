@@ -452,9 +452,9 @@ As the system grows, the structure may evolve to:
 presentation/
 ├── api/  # HTTP API
 │   ├── main.py
-│   ├── graph/  # Graph-related API component
+│   ├── knowledge/  # Knowledge-related API component
 │   │   ├── schemas/  # API schemas for input/output
-│   │   │   └── graph_model.py
+│   │   │   └── knowledge_model.py
 │   │   ├── router.py
 │   │   ├── handlers.py
 │   │   ├── mappers.py  # Maps app DTOs to/from API schemas

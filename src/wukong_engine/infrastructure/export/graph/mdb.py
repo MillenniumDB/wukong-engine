@@ -9,9 +9,9 @@ from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import EntityType, GraphModel, RelationshipType
+from wukong_engine.core.knowledge.elements import Entity, Relationship
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import clear_directory
 
@@ -182,7 +182,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         """Initialize the exporter with necessary dependencies."""
         self._repository = repository
 
-    def export(self, model: GraphModel, export_uri: str) -> None:
+    def export(self, model: KnowledgeModel, export_uri: str) -> None:
         """Export knowledge to a specified output format."""
         # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'mdb'
@@ -209,7 +209,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             writer.write_chunk(chunk)
             writer.write_chunk_source(chunk)
 
-    def _export_entities(self, model: GraphModel, writer: MillenniumDBWriter) -> None:
+    def _export_entities(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
         """Export entities to the MillenniumDB format."""
         # Entities
         logger.info('Exporting Entities...')
@@ -223,7 +223,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         for source_id, entity_id in self._repository.stream_entity_provenance():
             writer.write_entity_provenance(source_id, entity_id)
 
-    def _export_relationships(self, model: GraphModel, writer: MillenniumDBWriter) -> None:
+    def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
         """Export relationships to the MillenniumDB format."""
         # Relationships
         logger.info('Exporting Relationships...')

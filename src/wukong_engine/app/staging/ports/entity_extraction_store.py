@@ -12,7 +12,7 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.graph.model.values import EntityTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 
 
 class EntityExtractionStore(Protocol):

@@ -210,18 +210,15 @@ __marimo__/
 
 ######### Custom #########
 
-# Example data
+# Example data (the whole example corpus is tracked; other corpora are not)
 data/*
 !data/example/
-data/example/*
-!data/example/docs/
-!data/example/metadata/
 
 # Example workspace
 workspaces/*
 !workspaces/example/
 workspaces/example/*
-!workspaces/example/graph_model.json
+!workspaces/example/knowledge_model.json
 !workspaces/example/document_collections.json
 
 # Custom configuration

@@ -6,7 +6,7 @@ import unicodedata
 from unidecode import unidecode
 
 from wukong_engine.app.data_extraction.ports import PKNormalizer
-from wukong_engine.core.graph.elements.values import NormalizedPK
+from wukong_engine.core.knowledge.elements.values import NormalizedPK
 
 
 class DefaultPKNormalizer(PKNormalizer):

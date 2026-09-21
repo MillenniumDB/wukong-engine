@@ -6,19 +6,19 @@ from wukong_engine.app.data_extraction.elements import ExtractionJob, Extraction
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
-from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import EntityType, GraphModel, RelationshipType
-from wukong_engine.core.graph.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.knowledge.elements import Entity, Relationship
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
 
 class ExtractionResultMaterializer(Protocol):
-    """Materializer that converts raw extraction results into graph object instances."""
+    """Materializer that converts raw extraction results into knowledge object instances."""
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: GraphModel) -> tuple[object, ...]:
-        """Materialize the extraction result into graph object instances."""
+    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[object, ...]:
+        """Materialize the extraction result into knowledge object instances."""
         ...
 
 
@@ -30,7 +30,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: GraphModel) -> tuple[Entity, ...]:
+    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
         """Materialize the extraction result into entity instances."""
         extracted_entities = result.data.get('entities', [])
         materialized_entities: list[Entity] = []
@@ -83,7 +83,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         self,
         data: dict[str, Any],
         job_types: set[EntityTypeName],
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> EntityType | None:
         """Materialize the entity type from extracted data."""
         try:
@@ -93,11 +93,11 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             if extracted_et_name is None:
                 return None
 
-            # Get EntityType instance from graph model
+            # Get EntityType instance from knowledge model
             et_name = EntityTypeName(str(extracted_et_name))
             entity_type = model.entity_type(et_name)
 
-            # Valid entity type found in graph model and job types
+            # Valid entity type found in knowledge model and job types
             if entity_type is not None and entity_type.name in job_types:
                 return entity_type
         except ValueError:
@@ -167,7 +167,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: GraphModel) -> tuple[Relationship, ...]:
+    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Relationship, ...]:
         """Materialize the extraction result into relationship instances."""
         extracted_relationships = result.data.get('relationships', [])
         materialized_relationships: list[Relationship] = []
@@ -229,7 +229,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         self,
         data: dict[str, Any],
         job_types: set[RelationshipTypeName],
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> RelationshipType | None:
         """Materialize the relationship type from extracted data."""
         try:
@@ -239,11 +239,11 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             if extracted_rt_name is None:
                 return None
 
-            # Get RelationshipType instance from graph model
+            # Get RelationshipType instance from knowledge model
             rt_name = RelationshipTypeName(str(extracted_rt_name))
             relationship_type = model.relationship_type(rt_name)
 
-            # Valid relationship type found in graph model and job types
+            # Valid relationship type found in knowledge model and job types
             if relationship_type is not None and relationship_type.name in job_types:
                 return relationship_type
         except ValueError:
@@ -254,7 +254,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         data: dict[str, Any],
         relationship_type: RelationshipType,
         job: ExtractionJob,
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> tuple[EntityId, EntityId] | None:
         """Materialize the source and target entity IDs."""
         # Get source and target temporary entity IDs from extracted data

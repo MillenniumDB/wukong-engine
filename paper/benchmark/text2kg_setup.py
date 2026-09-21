@@ -1,12 +1,12 @@
 """Generate WUKONG workspaces and data directories from Text2KGBench ontologies.
 
 For each requested ontology, this script produces:
-    - <workspace>/graph_model.json: the ontology mapped to a WUKONG graph model
+    - <workspace>/knowledge_model.json: the ontology mapped to a WUKONG knowledge model
     - <workspace>/document_collections.json: a single "sentences" collection
     - <workspace>/text2kg_mapping.json: WUKONG type names -> benchmark labels
     - <data>/sentences/<test_id>.txt: one test sentence per document
 
-The mapping file is what lets `text2kg_export.py` translate an extracted graph
+The mapping file is what lets `text2kg_export.py` translate extracted knowledge
 back into benchmark triples, since WUKONG type names cannot contain the spaces
 and underscores used by the benchmark relation labels.
 
@@ -88,7 +88,7 @@ def benchmark_relation(label: str) -> str:
 
 
 class OntologyAdapter:
-    """Maps a single Text2KGBench ontology onto a WUKONG graph model."""
+    """Maps a single Text2KGBench ontology onto a WUKONG knowledge model."""
 
     def __init__(
         self,
@@ -181,7 +181,7 @@ class OntologyAdapter:
         """Resolve a domain/range qid to the entity type name representing it."""
         return self._entity_names.get(qid.strip(), VALUE_TYPE)
 
-    # Graph model construction
+    # Knowledge model construction
 
     def _value_instruction(self) -> str | None:
         """Describe which relations need a Value object, to bound its extraction.
@@ -335,8 +335,8 @@ class OntologyAdapter:
                 endpoints[source][target].append(rule)
         return relationship_types
 
-    def graph_model(self) -> dict[str, Any]:
-        """Build the complete WUKONG graph model for this ontology."""
+    def knowledge_model(self) -> dict[str, Any]:
+        """Build the complete WUKONG knowledge model for this ontology."""
         entity_types = self._build_entity_types()
         relationship_types = self._build_relationship_types(entity_types)
         return {
@@ -483,7 +483,7 @@ def setup_ontology(onto: str, args: argparse.Namespace) -> dict[str, Any]:
     workspace = Path(args.workspace_root) / f'{args.prefix}{onto}'
     data_dir = Path(args.data_root) / onto
 
-    write_json(workspace / 'graph_model.json', adapter.graph_model())
+    write_json(workspace / 'knowledge_model.json', adapter.knowledge_model())
     write_json(
         workspace / 'document_collections.json',
         {'collections': {args.collection: {'sources': [{'root': args.collection, 'mode': 'directory'}]}}},
@@ -492,7 +492,7 @@ def setup_ontology(onto: str, args: argparse.Namespace) -> dict[str, Any]:
 
     sentences = write_sentences(dataset / 'test' / f'ont_{onto}_test.jsonl', data_dir / args.collection)
 
-    model = adapter.graph_model()
+    model = adapter.knowledge_model()
     return {
         'onto': onto,
         'workspace': str(workspace),

@@ -28,7 +28,7 @@ Everything under `paper/benchmark/` is the harness; everything under
 Text2KGBench is the closest published benchmark to what WUKONG does: it does not
 ask for free-form triples, it asks for triples that conform to a *given*
 ontology, and it scores conformance and hallucination as first-class metrics
-alongside precision and recall. That matches WUKONG's design premise — a graph
+alongside precision and recall. That matches WUKONG's design premise — a knowledge
 model constrains extraction up front — so the benchmark's conformance and
 hallucination metrics measure exactly the property the engine claims.
 
@@ -134,8 +134,7 @@ paper/benchmark/run_benchmark.sh
 `run_benchmark.sh` runs the engine once per ontology, then converts and
 evaluates all 10 in a single pass. It skips any ontology that already has a
 staging database, so an interrupted run resumes by re-invoking it. To force a
-re-extraction, delete that workspace's `staging/` directory (or use
-`wukong reset --all`).
+re-extraction, delete that workspace's `staging/` directory.
 
 The individual steps, if you need them separately:
 
@@ -191,7 +190,7 @@ target, so each document is exactly one chunk.
 
 ## 4. Converting a run into benchmark output
 
-`text2kg_export.py` reads the extracted graph straight from the workspace's
+`text2kg_export.py` reads the extracted knowledge straight from the workspace's
 staging SQLite database rather than from an exported artifact, and attributes
 each triple to a sentence through relationship provenance:
 
@@ -386,7 +385,7 @@ column.
 
 The honest framing for this run: WUKONG is **not** the most accurate system by
 F1 here, and should not be presented as one. What it demonstrates is that a
-graph model given up front buys near-total conformance and faithfulness at a
+knowledge model given up front buys near-total conformance and faithfulness at a
 measurable cost in coverage.
 
 **§10.1 shows most of that cost was avoidable.** Giving entity types the same
@@ -481,7 +480,7 @@ Our harness emits the ground-truth form, which is the choice that preserves F1.
 Checking every triple we produced against the ontology labels *after stripping*,
 **all 117 non-conformant triples are these three relations, and corrected
 ontology conformance is 1.000 on all ten ontologies** — WUKONG never emitted a
-relation outside its graph model, which is what the design guarantees. The
+relation outside its knowledge model, which is what the design guarantees. The
 affected baselines show the same depression (Vicuna: 5_military 0.80,
 9_nature 0.68), so it is not specific to us.
 
@@ -544,12 +543,12 @@ corrects a plausible but wrong reading of the raw counts — the gold objects ar
 The engine found `Microsoft Windows`, `PlayStation` and the rest; it filed them
 under `ComputerModel`, while `platform` is compiled as *Software → Computer*. So
 we emit 5 `platform` triples against 199 in the gold standard not because the
-values were missed but because the graph model forbids the link. The relations
+values were missed but because the knowledge model forbids the link. The relations
 most affected are `6_computer:platform` (102), `2_music:performer` (94),
 `3_sport:sport` (65), `member_of_sports_team` (49) and `league` (46) —
 concentrated in precisely the ontologies where we trail the baselines.
 
-This is a modelling artifact, not an engine limit. A graph model authored for a
+This is a modelling artifact, not an engine limit. A knowledge model authored for a
 task would either reconcile the near-synonymous types or declare several endpoint
 pairs per relationship, which WUKONG supports and our compilation already emits
 wherever the ontology states more than one range (§2). A prompt-based baseline
@@ -566,7 +565,7 @@ instruction (§2) says to reproduce the span without normalizing it, but says
 nothing about *how much* of the phrase to take, and for a type-like object the
 model tends to return the semantic head.
 
-All three failures are properties of the *mechanical* ontology→graph-model
+All three failures are properties of the *mechanical* ontology→knowledge-model
 compilation and of harness-level instructions, not of the engine's extraction.
 
 **§10 tests exactly that, and confirms it.** Generalizing the train-derived
@@ -574,7 +573,7 @@ example mechanism from dates to entity types (§10.1) cuts self-loops from 192 t
 29, reduces type-gated misses from 798 to 493 and lifts global F1 from 0.26 to
 0.34, at 5% extra cost. Removing the endpoint constraint outright (§10.2) raises
 6_computer's F1 from 0.09 to 0.23 on its own, confirming that the values were
-extracted and the graph model was refusing the link.
+extracted and the knowledge model was refusing the link.
 
 ### 7.5 The benchmark has no properties, only triples — and that costs us most
 
@@ -819,7 +818,7 @@ the results are quoted.
 
 Everything in §6 was produced with **`gpt-5.6-luna`**, a light/balanced model,
 in `real-time` mode at concurrency 15 with `config/default.toml` otherwise
-untouched. The engine is model-agnostic: the graph model, the prompts and the
+untouched. The engine is model-agnostic: the knowledge model, the prompts and the
 extraction pipeline are unchanged across models, so the model is a dial, not a
 design decision baked into the results.
 
@@ -851,7 +850,7 @@ was told by an ontology that did not say what it meant. A prompt-based baseline
 is looser: it is not bound by the declared domain and range, so an
 underspecified ontology constrains it less and can cost it less. **A modest
 amount of ontology curation — which is the normal situation in a real
-deployment, where the graph model is authored for the task — would remove most
+deployment, where the knowledge model is authored for the task — would remove most
 of these losses without touching the engine.**
 
 §10 quantifies this, and the answer is most of it: grounding entity types with
@@ -875,7 +874,7 @@ more than the total:
 of billable output.** If cost becomes a constraint at scale, reasoning effort is
 the lever, not prompt size or caching. Caching in particular does nothing for
 this workload — 22,808 cache reads against 5,020,517 writes, a 0.3% hit rate,
-because every sentence is a unique document and only the graph model prefix is
+because every sentence is a unique document and only the knowledge model prefix is
 reusable.
 
 
@@ -1009,7 +1008,7 @@ misses and `platform` is the clearest case (§7.4).
 
 **F1 improves 2.6× (0.09 → 0.23), with precision rising alongside recall and no
 loss of conformance or faithfulness.** This confirms the §7.4 diagnosis
-directly: the values were being extracted and the graph model was refusing the
+directly: the values were being extracted and the knowledge model was refusing the
 link. Arm A and arm B reach the same F1 on this ontology (0.23) by different
 routes — A by removing the constraint, B by helping the entity pass satisfy it.
 
@@ -1044,7 +1043,7 @@ the primary run alone suggests: *at comparable accuracy, WUKONG produces
 knowledge graphs that conform to the ontology and do not hallucinate, which the
 few-shot baselines do not.* Both numbers belong in the paper — the primary run as
 the zero-tuning result, arm B as the like-for-like comparison — and the gap
-between them is itself the finding about how much a graph model's quality
+between them is itself the finding about how much a knowledge model's quality
 matters.
 
 What remains unrecovered after arm B is the representational mismatch of §7.5

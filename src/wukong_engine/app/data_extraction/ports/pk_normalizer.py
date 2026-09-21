@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from wukong_engine.core.graph.elements.values import NormalizedPK
+from wukong_engine.core.knowledge.elements.values import NormalizedPK
 
 
 class PKNormalizer(Protocol):

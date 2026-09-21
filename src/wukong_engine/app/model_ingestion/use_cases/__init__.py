@@ -4,9 +4,9 @@ This package contains use cases for loading and validating input models.
 """
 
 from .get_document_registry import GetDocumentRegistry
-from .get_graph_model import GetGraphModel
+from .get_knowledge_model import GetKnowledgeModel
 
 __all__ = [
     'GetDocumentRegistry',
-    'GetGraphModel',
+    'GetKnowledgeModel',
 ]

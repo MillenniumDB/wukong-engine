@@ -26,7 +26,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMTransientError,
 )
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
-from wukong_engine.core.graph.model import GraphModel
+from wukong_engine.core.knowledge.model import KnowledgeModel
 
 from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
@@ -41,7 +41,7 @@ MAX_BATCH_RESOLUTION_TIME = 30  # Maximum time (in hours) for the external provi
 class ExtractionBatchSynchronizer(Protocol):
     """Synchronizer for managing the lifecycle of submitted extraction batches."""
 
-    async def synchronize(self, graph_model: GraphModel) -> None:
+    async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
         """Synchronize all submitted extraction batches."""
         ...
 
@@ -63,7 +63,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._metrics_tracker = metrics_tracker
         self._completed_batches: list[ExtractionBatch] = []
 
-    async def synchronize(self, graph_model: GraphModel) -> None:
+    async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
         """Synchronize all submitted extraction batches."""
         # Initialize the async runners and reset completed batches
         self._completed_batches = []
@@ -81,7 +81,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
         # Process completed batches concurrently for result retrieval, then resolve them locally
         async for batch, completed_result in results_runner.run(self._completed_batches):
-            self._resolve_batch_results(batch, completed_result, graph_model)
+            self._resolve_batch_results(batch, completed_result, knowledge_model)
             self._metrics_tracker.request_metrics()  # Request a metrics log after each completed batch
 
         # Final metrics log (do not force update since batching performance is long-lived)
@@ -171,7 +171,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self,
         batch: ExtractionBatch,
         completed_result: CompletedBatchResult,
-        model: GraphModel,
+        model: KnowledgeModel,
     ) -> None:
         """Process the results of a completed batch and persist them."""
         # If there was an error retrieving the results, record the error and keep the current batch status
@@ -237,15 +237,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         # Mark batch as completed
         self._repository.complete_batch(batch)
 
-    def _process_extraction_result(self, result: ExtractionResult, job: ExtractionJob, model: GraphModel) -> None:
+    def _process_extraction_result(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> None:
         """Process an individual extraction result, materializing and persisting it."""
         # Handle failed job
         if result.status == JobStatus.FAILED:
             self._repository.fail_job(job, retry_policy=result.retry_policy, error=result.error, metrics=result.metrics)
             return
 
-        # Materialization of results into graph objects
-        graph_objects = self._result_materializer.materialize(result, job, model)
+        # Materialization of results into knowledge objects
+        knowledge_objects = self._result_materializer.materialize(result, job, model)
 
-        # Persist graph objects and provenance, update job status to completed
-        self._repository.complete_job(job, graph_objects, usage_metrics=result.metrics)
+        # Persist knowledge objects and provenance, update job status to completed
+        self._repository.complete_job(job, knowledge_objects, usage_metrics=result.metrics)

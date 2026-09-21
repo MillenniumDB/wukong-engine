@@ -5,9 +5,9 @@ from collections.abc import Iterator
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.graph.elements import Entity, Relationship
-from wukong_engine.core.graph.elements.values import EntityId, RelationshipId
-from wukong_engine.core.graph.model import EntityType, RelationshipType
+from wukong_engine.core.knowledge.elements import Entity, Relationship
+from wukong_engine.core.knowledge.elements.values import EntityId, RelationshipId
+from wukong_engine.core.knowledge.model import EntityType, RelationshipType
 
 
 class KnowledgeRepository:

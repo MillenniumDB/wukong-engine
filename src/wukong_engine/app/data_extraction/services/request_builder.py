@@ -17,19 +17,19 @@ from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
-from wukong_engine.core.graph.elements import Entity, EntityRef
-from wukong_engine.core.graph.elements.values import EntityId
-from wukong_engine.core.graph.model import (
+from wukong_engine.core.knowledge.elements import Entity, EntityRef
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model import (
     Endpoint,
     EntityField,
     EntityType,
     ExtractionConfig,
     Field,
-    GraphModel,
+    KnowledgeModel,
     RelationshipField,
     RelationshipType,
 )
-from wukong_engine.core.graph.model.values import DataType, EntityTypeName
+from wukong_engine.core.knowledge.model.values import DataType, EntityTypeName
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
@@ -71,7 +71,7 @@ def _data_type_to_json(data_type: DataType) -> str:
 class ExtractionRequestBuilder(Protocol):
     """Request builder for data extraction tasks."""
 
-    def build(self, job: ExtractionJob, model: GraphModel) -> ExtractionRequest:
+    def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
         ...
 
@@ -98,7 +98,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         self._document_loader = document_loader
         self.max_document_tokens = MAX_DOCUMENT_TOKENS
 
-    def build(self, job: ExtractionJob, model: GraphModel) -> ExtractionRequest:
+    def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
         # Handle potential errors like missing documents
         try:
@@ -108,12 +108,12 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
             logger.error(error)
             raise ExtractionRequestBuildError(error) from exc
 
-        # Gather entity types for the job, ensuring they exist in the graph model
+        # Gather entity types for the job, ensuring they exist in the knowledge model
         entity_types: list[EntityType] = []
         for name in self._repository.get_job_entity_types(job):
             entity_type = model.entity_type(name)
             if entity_type is None:
-                error = f'Failed to build extraction request: EntityType "{name}" not found in graph model'
+                error = f'Failed to build extraction request: EntityType "{name}" not found in knowledge model'
                 logger.error(error)
                 raise ExtractionRequestBuildError(error)
             entity_types.append(entity_type)
@@ -299,17 +299,17 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         self._entity_temp_to_ref: dict[str, EntityRef] = {}  # Mapping of temporary entity IDs to EntityRefs
         self._entity_true_to_temp_id: dict[EntityId, str] = {}  # Mapping of true EntityIds to temporary entity IDs
 
-    def build(self, job: ExtractionJob, model: GraphModel) -> ExtractionRequest:
+    def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job."""
         # Reset entity count and ID mappings for the current job
         self._current_entity_count = 0
         self._entity_temp_to_ref.clear()
         self._entity_true_to_temp_id.clear()
 
-        # Ensure that all relationship types for the job exist in the graph model
+        # Ensure that all relationship types for the job exist in the knowledge model
         for name in self._repository.get_job_relationship_types(job):
             if model.relationship_type(name) is None:
-                error = f'Failed to build extraction request: RelationshipType "{name}" not found in graph model'
+                error = f'Failed to build extraction request: RelationshipType "{name}" not found in knowledge model'
                 logger.error(error)
                 raise ExtractionRequestBuildError(error)
 

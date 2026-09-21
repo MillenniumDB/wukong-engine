@@ -12,8 +12,8 @@ from wukong_engine.app.data_extraction.elements.values import (
 )
 from wukong_engine.core.documents.elements import Chunk
 from wukong_engine.core.documents.elements.values import ChunkId
-from wukong_engine.core.graph.elements import EntityRef
-from wukong_engine.core.graph.model.values import RelationshipTypeName
+from wukong_engine.core.knowledge.elements import EntityRef
+from wukong_engine.core.knowledge.model.values import RelationshipTypeName
 
 
 class RelationshipExtractionStore(Protocol):

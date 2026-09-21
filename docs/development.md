@@ -243,7 +243,7 @@ Here, `<type>` can be any of the **supporting branch types** listed previously.
 
 Example **PR** titles:
 
-- `feat(core): add support for custom graph models`
+- `feat(core): add support for custom knowledge models`
 - `hotfix(parsing): resolve critical error with document parsing`
 
 [📚 Back to Table of Contents](#-table-of-contents)

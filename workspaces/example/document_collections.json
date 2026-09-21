@@ -1,25 +1,25 @@
 {
     "collections": {
-        "LGUC": {
+        "missions": {
             "sources": [
                 {
-                    "root": "docs/LGUC",
+                    "root": "missions",
                     "mode": "directory"
                 }
             ]
         },
-        "OGUC": {
+        "crew": {
             "sources": [
                 {
-                    "root": "docs/OGUC",
+                    "root": "crew",
                     "mode": "directory"
                 }
             ]
         },
-        "DDU": {
+        "incidents": {
             "sources": [
                 {
-                    "root": "docs/DDU",
+                    "root": "incidents",
                     "mode": "directory"
                 }
             ]

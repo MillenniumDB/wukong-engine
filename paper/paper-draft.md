@@ -1163,10 +1163,10 @@ figures.
 2. **Framing.** Should the paper be positioned as (a) a *system* paper, (b) a *methodology*
    paper about schema-guided extraction, or (c) a *resource/application* paper centred on
    the legal knowledge graph? The draft currently sits between (a) and (b).
-3. **Primary claim.** If a reader remembers one thing, should it be the declarative graph
-   model, the candidate-set relationship extraction, the deterministic identity discipline,
-   or the resumable/cost-aware execution model? I currently give the first three roughly
-   equal weight and treat the fourth as supporting.
+3. **Primary claim.** If a reader remembers one thing, should it be the declarative
+   knowledge model, the candidate-set relationship extraction, the deterministic identity
+   discipline, or the resumable/cost-aware execution model? I currently give the first
+   three roughly equal weight and treat the fourth as supporting.
 
 **Naming and generality** *(new — from the rename)*
 
@@ -1180,15 +1180,21 @@ figures.
 5. **Which representations are actually planned?** Naming them in §9 costs one sentence and
    makes the forward-looking framing concrete rather than vague. Relational tables? JSONL
    record sets? RDF? Something domain-specific?
-6. **Knowledge model rename — pending in the code.** The paper now says *knowledge model*
-   throughout, ahead of the rename in the tool, where the artifact is still `graph_model.json`.
-   Two consequences. First, if the engine is released as an artifact alongside the paper
-   (Q17), the rename should land first, or a reader following the paper into the repository
-   will not find the term it uses. Second, if any figure or appendix listing shows a real
-   model file, its filename and any internal keys must match whatever the code says at
-   submission time — worth a final consistency pass once the code rename is done.
+6. **Knowledge model rename — landed in the code.** ✅ The rename the paper was written
+   ahead of is now done throughout the tool: the artifact is `knowledge_model.json`, the
+   domain type is `KnowledgeModel`, and the package that holds it is `core/knowledge/`.
+   The term *graph* survives in the code only where the output genuinely is a graph — the
+   MillenniumDB and Neo4j exporters under `infrastructure/export/graph/` — which matches
+   the paper's §9 framing of rendering as a separable final stage. A reader following the
+   paper into the repository will now find the term the paper uses.
 
-   Related: since "model" alone is now genuinely ambiguous between the knowledge model and
+   Two things still worth a check at submission time. First, if any figure or appendix
+   listing shows a real model file, confirm its filename and internal keys against the
+   code as it stands then. Second, the user-facing docs were rewritten alongside the
+   rename, so `docs/knowledge-model.md` is now the authoritative statement of the schema
+   and is worth diffing against §4 to make sure the paper has not drifted from it.
+
+   Related: since "model" alone is genuinely ambiguous between the knowledge model and
    the LLM, I have reserved *the LLM* for the language model and always qualified *the
    knowledge model*, including changing "model calls" to "LLM calls" throughout. Worth
    preserving in later edits.
