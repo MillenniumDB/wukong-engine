@@ -15,8 +15,8 @@ def initialize_sqlite_database(db_path: Path, connection_factory: Callable[[], s
         connection_factory: Factory returning a new connection to the database at ``db_path``.
     """
     db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = connection_factory()
     try:
-        conn = connection_factory()
         conn.executescript(_load_schema())
     finally:
         conn.close()

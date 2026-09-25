@@ -142,7 +142,7 @@ class EntityExtractionStore(Protocol):
         ...
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry.
+        """Fail the in-progress jobs linked with a batch, resetting their in-progress extractions to pending for retry.
 
         Args:
             batch: Batch whose jobs are failed.

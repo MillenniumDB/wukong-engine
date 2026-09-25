@@ -118,8 +118,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         IN_PROGRESS.
 
         Args:
-            jobs: Jobs to schedule. Iterated twice, so it must be a re-iterable collection.
+            jobs: Jobs to schedule.
         """
+        # Materialized since the jobs are iterated twice (extractions update and jobs insert)
+        jobs = tuple(jobs)
+
         # Update extractions relevant to the jobs
         self._conn.executemany(
             """
@@ -572,20 +575,18 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             )
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry.
-
-        Every job linked to the batch and every extraction of their chunks is affected, whatever its current status.
+        """Fail the in-progress jobs linked with a batch, resetting their in-progress extractions to pending for retry.
 
         Args:
             batch: Batch whose jobs are failed.
             status: Batch status that caused the failure, included in the stored error message.
         """
-        # Fail all jobs linked to the batch
+        # Fail all active jobs linked to the batch
         failed_jobs = self._conn.execute(
             """
             UPDATE extraction_jobs
             SET job_status = ?, finished_at = ?, error = ?
-            WHERE job_type = ? AND batch_id = ?
+            WHERE job_type = ? AND batch_id = ? AND job_status = ?
             RETURNING context_content_id
             """,
             (
@@ -594,21 +595,23 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 f'Batch failed with status "{status.value}"',
                 EXTRACTION_JOB_TYPE,
                 batch.id.instance.bytes,
+                JobStatus.IN_PROGRESS.value,
             ),
         )
 
-        # Reset associated extractions back to pending for retry
+        # Reset associated in-progress extractions back to pending for retry, leaving other jobs' extractions untouched
         self._conn.executemany(
             """
             UPDATE relationship_extractions
             SET extraction_status = ?, last_error = ?
-            WHERE chunk_content_id = ?
+            WHERE chunk_content_id = ? AND extraction_status = ?
             """,
             [
                 (
                     ExtractionStatus.PENDING.value,
                     f'Batch failed with status "{status.value}"',
                     row['context_content_id'],
+                    ExtractionStatus.IN_PROGRESS.value,
                 )
                 for row in failed_jobs
             ],

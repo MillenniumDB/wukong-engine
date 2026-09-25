@@ -175,7 +175,7 @@ your-workspace/exports/
         └── <RelationshipType>.csv
 ```
 
-Only the format selected in the configuration is written. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
+Only the format selected in the configuration is written. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
 
 > ⚙️ For selecting the export format, refer to the [Configuration](/docs/configuration.md) documentation.
 

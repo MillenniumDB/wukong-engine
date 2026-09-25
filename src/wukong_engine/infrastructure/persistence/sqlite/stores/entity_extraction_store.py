@@ -135,8 +135,11 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         persists the jobs as in progress.
 
         Args:
-            jobs: Jobs to schedule. The iterable is consumed twice, so it must be re-iterable (e.g. a tuple).
+            jobs: Jobs to schedule.
         """
+        # Materialized since the jobs are iterated twice (extractions update and jobs insert)
+        jobs = tuple(jobs)
+
         # Update extractions relevant to the jobs
         self._conn.executemany(
             """
@@ -551,21 +554,18 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry.
-
-        Every job linked to the batch is failed and every extraction of those jobs' sources is reset, regardless of
-        their current status.
+        """Fail the in-progress jobs linked with a batch, resetting their in-progress extractions to pending for retry.
 
         Args:
             batch: Batch whose jobs are failed.
             status: Batch status that caused the failure, included in the recorded error message.
         """
-        # Fail all jobs linked to the batch
+        # Fail all active jobs linked to the batch
         failed_jobs = self._conn.execute(
             """
             UPDATE extraction_jobs
             SET job_status = ?, finished_at = ?, error = ?
-            WHERE job_type = ? AND batch_id = ?
+            WHERE job_type = ? AND batch_id = ? AND job_status = ?
             RETURNING context_level, context_content_id
             """,
             (
@@ -574,15 +574,16 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 f'Batch failed with status "{status.value}"',
                 EXTRACTION_JOB_TYPE,
                 batch.id.instance.bytes,
+                JobStatus.IN_PROGRESS.value,
             ),
         )
 
-        # Reset associated extractions back to pending for retry
+        # Reset associated in-progress extractions back to pending for retry, leaving other jobs' extractions untouched
         self._conn.executemany(
             """
             UPDATE entity_extractions
             SET extraction_status = ?, last_error = ?
-            WHERE context_level = ? AND context_content_id = ?
+            WHERE context_level = ? AND context_content_id = ? AND extraction_status = ?
             """,
             [
                 (
@@ -590,6 +591,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                     f'Batch failed with status "{status.value}"',
                     context_level,
                     context_content_id,
+                    ExtractionStatus.IN_PROGRESS.value,
                 )
                 for context_level, context_content_id in failed_jobs
             ],

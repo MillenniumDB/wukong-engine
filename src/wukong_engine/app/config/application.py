@@ -45,7 +45,7 @@ class ApplicationConfig:
 
         # Export Config
         lines.append('\n[EXPORT]\n')
-        lines.extend(f'  {line}' for line in str(self.export).split('\n)'))
+        lines.extend(f'  {line}' for line in str(self.export).split('\n'))
 
         lines.append('\n' + '=' * 80 + '\n')
         return '\n'.join(lines)
