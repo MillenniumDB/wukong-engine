@@ -1,7 +1,7 @@
 ### Project ###
 [project]
 name = "wukong-engine"
-version = "0.2.0"
+version = "0.5.0"
 description = "Engine for extracting structured knowledge from unstructured documents using the power of LLMs, exportable to graph and other formats."
 readme = "README.md"
 requires-python = ">=3.14"
