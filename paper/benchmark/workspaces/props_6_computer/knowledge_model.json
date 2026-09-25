@@ -1,0 +1,225 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Computer Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Application",
+                "Human",
+                "ComputerModel",
+                "Computer",
+                "Software",
+                "OperatingSystem"
+            ],
+            "enabled_relationships": [
+                "Creator",
+                "Platform",
+                "OperatingSystem"
+            ]
+        }
+    },
+    "entity_types": {
+        "Application": {
+            "description": "An entity of the type \"application\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Application in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "The Pirate Bay",
+                        "Vampirella",
+                        "Billoo"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Fredrik Neij",
+                        "Forrest J Ackerman",
+                        "Pran Kumar Sharma"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "ComputerModel": {
+            "description": "An entity of the type \"computer model\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this ComputerModel in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "SGI Prism",
+                        "Gigabyte M912",
+                        "SGI Visual Workstation"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Computer": {
+            "description": "An entity of the type \"computer\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Computer in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Commodore 64",
+                        "Commodore PET",
+                        "TRS-80 Color Computer"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Software": {
+            "description": "An entity of the type \"software\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Software in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Neverwinter Nights 2: Storm of Zehir",
+                        "The Elder Scrolls III: Tribunal",
+                        "Diablo II: Lord of Destruction"
+                    ]
+                },
+                "developer": {
+                    "data_type": "string",
+                    "description": "The \"developer\" of this Software, as defined by the Computer Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Obsidian Entertainment",
+                        "Bethesda Game Studios",
+                        "Blizzard North"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "OperatingSystem": {
+            "description": "An entity of the type \"operating system\", as defined by the Computer Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this OperatingSystem in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Linux",
+                        "Windows 2000",
+                        "IRIX"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Creator": {
+            "description": "The \"creator\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "Application": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Platform": {
+            "description": "The \"platform\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "Software": {
+                    "Computer": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "OperatingSystem": {
+            "description": "The \"operating system\" relation, as defined by the Computer Ontology.",
+            "endpoints": {
+                "ComputerModel": {
+                    "OperatingSystem": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

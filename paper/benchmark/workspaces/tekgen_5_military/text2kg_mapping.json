@@ -1,0 +1,28 @@
+{
+    "ontology_id": "ont_5_military",
+    "title": "Military Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "MilitaryVehicle": "military vehicle",
+        "MilitaryCasualtyClassification": "military casualty classification",
+        "ArmedOrganization": "armed organization",
+        "MilitaryUnit": "military unit",
+        "MilitaryEquipment": "military equipment",
+        "Command": "command",
+        "Rank": "rank",
+        "Organization": "organization",
+        "Human": "human",
+        "MilitaryRank": "military rank",
+        "Country": "country"
+    },
+    "relationship_types": {
+        "MilitaryRank": "military_rank",
+        "MilitaryBranch": "military_branch",
+        "MilitaryCasualtyClassification": "military_casualty_classification",
+        "DesignedBy": "designed_by",
+        "CommandedBy": "commanded_by",
+        "NextHigherRank": "next_higher_rank",
+        "DesignatedAsTerroristBy": "designated_as_terrorist_by",
+        "WingConfiguration": "wing_configuration"
+    }
+}

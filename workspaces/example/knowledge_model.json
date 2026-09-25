@@ -1,0 +1,394 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Mission reports, crew dossiers and incident reports published by the Meridian Deep Space Agency, a fictional deep-space exploration agency. Documents are written in a formal institutional register and consistently print an identifier in parentheses after the first mention of a person or vehicle.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Mission",
+                "Astronaut",
+                "Spacecraft",
+                "Incident"
+            ],
+            "enabled_relationships": [
+                "AssignedTo",
+                "Operates",
+                "OccurredDuring"
+            ]
+        }
+    },
+    "entity_types": {
+        "Mission": {
+            "description": "A crewed mission flown by the agency, identified by its mission code.",
+            "instructions": {
+                "document": "This document IS a mission report. Extract the single mission that the report covers, which is the one named in the 'Mission code' header field.",
+                "chunk": "Extract every mission explicitly named in this passage by its mission code, including missions only referred to in passing. Do not extract a mission that is merely alluded to without its code."
+            },
+            "primary_key": "code",
+            "deduplication": "primary_key",
+            "default_merge_strategy": "keep",
+            "fields": {
+                "code": {
+                    "data_type": "string",
+                    "description": "The agency's unique mission code.",
+                    "instructions": "Uppercase letters, a hyphen, then the mission number, exactly as printed. Do not confuse it with an incident code (which starts with 'INC-') or a vehicle designation (which has exactly three letters).",
+                    "regex": "^[A-Z]{4,10}-[0-9]{1,3}$",
+                    "examples": [
+                        "ARTEMIS-7",
+                        "KEPLER-12"
+                    ],
+                    "required": true
+                },
+                "designation": {
+                    "data_type": "string",
+                    "description": "The descriptive name of the mission, as distinct from its code.",
+                    "instructions": "Printed in the 'Designation' header field of a mission report.",
+                    "examples": "Sun-Earth L2 Relay Deployment",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "status": {
+                    "data_type": "string",
+                    "description": "The current status of the mission.",
+                    "instructions": "Printed in the 'Status' header field of a mission report. Use 'active' for a mission still under way.",
+                    "options": [
+                        "planned",
+                        "active",
+                        "completed",
+                        "aborted"
+                    ],
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "replace"
+                },
+                "summary": {
+                    "data_type": "string",
+                    "description": "A concise summary of the mission's objective and outcome.",
+                    "instructions": "Two or three sentences. Mention the objective, the vehicle flown and the outcome so far.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "longest"
+                }
+            },
+            "document_collections": {
+                "document": "missions",
+                "chunk": [
+                    "missions",
+                    "crew",
+                    "incidents"
+                ]
+            }
+        },
+        "Astronaut": {
+            "description": "A member of the agency's flight crew, identified by their crew ID.",
+            "instructions": {
+                "document": "This document IS a crew dossier. Extract the single crew member that the dossier describes, named in the 'Name' and 'Crew ID' header fields.",
+                "chunk": "Extract every crew member explicitly named in this passage together with their crew ID. If a passage refers to a person by surname alone, with no crew ID anywhere in the passage, do not extract them."
+            },
+            "primary_key": "crew_id",
+            "deduplication": "primary_key",
+            "default_merge_strategy": "keep",
+            "fields": {
+                "crew_id": {
+                    "data_type": "string",
+                    "description": "The agency's unique crew identifier, printed in parentheses after a crew member's name.",
+                    "instructions": "The literal 'MDSA-' prefix followed by four digits. Take it from the parenthesised identifier that follows the person's name, or from the 'Crew ID' header field of a dossier.",
+                    "regex": "^MDSA-[0-9]{4}$",
+                    "examples": [
+                        "MDSA-2071",
+                        "MDSA-2233"
+                    ],
+                    "required": true
+                },
+                "full_name": {
+                    "data_type": "string",
+                    "description": "The crew member's full name, without rank or title.",
+                    "instructions": "Given name followed by surname. Strip ranks and titles such as 'Cmdr.', 'Lt.' or 'Dr.'.",
+                    "examples": [
+                        "Amara Okonkwo",
+                        "Theo Vance"
+                    ],
+                    "required": true,
+                    "merge_strategy": "longest"
+                },
+                "specialty": {
+                    "data_type": "string",
+                    "description": "The crew member's professional specialty.",
+                    "instructions": "Printed in the 'Specialty' header field of a dossier.",
+                    "options": [
+                        "command",
+                        "piloting",
+                        "engineering",
+                        "planetary science",
+                        "medicine"
+                    ],
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "biography": {
+                    "data_type": "string",
+                    "description": "A concise summary of the crew member's background and flight record.",
+                    "instructions": "Two or three sentences. Mention when they joined the agency, their qualifications and the missions they have flown.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "longest"
+                }
+            },
+            "document_collections": {
+                "document": "crew",
+                "chunk": [
+                    "missions",
+                    "crew",
+                    "incidents"
+                ]
+            }
+        },
+        "Spacecraft": {
+            "description": "A spaceflight vehicle operated by the agency, identified by its hull designation.",
+            "instructions": "Extract every vehicle explicitly named in this passage together with its hull designation. Vehicles are written as a name followed by the designation in parentheses, for example 'MDV Cassiopeia (VSP-03)'. Do not extract a vehicle class on its own, such as 'Vesper-class', as a vehicle.",
+            "primary_key": "designation",
+            "deduplication": "primary_key",
+            "default_merge_strategy": "keep",
+            "fields": {
+                "designation": {
+                    "data_type": "string",
+                    "description": "The vehicle's hull designation, printed in parentheses after its name.",
+                    "instructions": "Exactly three uppercase letters, a hyphen, then two digits. Do not confuse it with a mission code (four or more letters) or a crew ID (which starts with 'MDSA-').",
+                    "regex": "^[A-Z]{3}-[0-9]{2}$",
+                    "examples": [
+                        "VSP-03",
+                        "AUR-01"
+                    ],
+                    "required": true
+                },
+                "name": {
+                    "data_type": "string",
+                    "description": "The vehicle's name, including the 'MDV' prefix.",
+                    "examples": [
+                        "MDV Cassiopeia",
+                        "MDV Perihelion"
+                    ],
+                    "required": true,
+                    "merge_strategy": "longest"
+                },
+                "vehicle_class": {
+                    "data_type": "string",
+                    "description": "The kind of vehicle.",
+                    "instructions": "Usually stated next to the vehicle as '<Name>-class <kind>', for example 'Vesper-class crew transport'. Extract only the kind, not the class name.",
+                    "options": [
+                        "crew transport",
+                        "survey vessel",
+                        "cargo tender",
+                        "orbital tug"
+                    ]
+                },
+                "operator": {
+                    "data_type": "string",
+                    "description": "The organization operating the vehicle.",
+                    "default_value": "Meridian Deep Space Agency",
+                    "retrieval_mode": "default"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "missions",
+                    "crew",
+                    "incidents"
+                ]
+            }
+        },
+        "Incident": {
+            "description": "A recorded in-flight anomaly, identified by its incident code.",
+            "instructions": {
+                "document": "This document IS an incident report. Extract the single incident that the report covers, named in the 'Incident code' header field.",
+                "chunk": "Extract every incident explicitly named in this passage by its incident code. An anomaly described without an incident code is not an Incident."
+            },
+            "primary_key": "code",
+            "deduplication": "primary_key",
+            "default_merge_strategy": "keep",
+            "fields": {
+                "code": {
+                    "data_type": "string",
+                    "description": "The agency's unique incident code.",
+                    "instructions": "The literal 'INC-' prefix followed by four digits.",
+                    "regex": "^INC-[0-9]{4}$",
+                    "examples": [
+                        "INC-0412",
+                        "INC-0517"
+                    ],
+                    "required": true
+                },
+                "title": {
+                    "data_type": "string",
+                    "description": "The short title of the incident.",
+                    "instructions": "Printed in the 'Title' header field of an incident report.",
+                    "examples": "Aft equipment bay hull breach",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "severity": {
+                    "data_type": "string",
+                    "description": "How serious the incident was.",
+                    "instructions": "Printed in the 'Severity' header field of an incident report.",
+                    "options": [
+                        "minor",
+                        "major",
+                        "critical"
+                    ],
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "cause": {
+                    "data_type": "string",
+                    "description": "A concise statement of what caused the incident.",
+                    "instructions": "One or two sentences, drawn from the cause section of the report.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "longest"
+                }
+            },
+            "document_collections": {
+                "document": "incidents",
+                "chunk": [
+                    "missions",
+                    "crew",
+                    "incidents"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "AssignedTo": {
+            "description": "A crew member serving on a mission.",
+            "instructions": "Only assert the assignment when the text says the person served on, flew, or commanded that mission. Do not infer it from the person merely being mentioned alongside the mission. A person may be assigned to more than one mission, in different roles.",
+            "endpoints": {
+                "Astronaut": {
+                    "Mission": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": [
+                                "document",
+                                "chunk"
+                            ]
+                        },
+                        {
+                            "source_context_levels": "document",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "primary_key": "role",
+            "deduplication": "primary_key",
+            "default_merge_strategy": "keep",
+            "fields": {
+                "role": {
+                    "data_type": "string",
+                    "description": "The role the crew member served in on this mission.",
+                    "instructions": "Use the role stated for that specific mission. A person promoted between missions holds a different role on each.",
+                    "options": [
+                        "mission commander",
+                        "pilot",
+                        "flight engineer",
+                        "science officer",
+                        "medical officer"
+                    ],
+                    "required": true
+                },
+                "notes": {
+                    "data_type": "string",
+                    "description": "A short note on what the crew member did in this role.",
+                    "instructions": "One sentence. Omit the field if the text says nothing beyond the role itself.",
+                    "examples": "Flew all three relay node approaches manually after the automated approach system failed.",
+                    "merge_strategy": "longest"
+                }
+            }
+        },
+        "Operates": {
+            "description": "A mission flown using a particular spacecraft.",
+            "instructions": "Only assert this when the text connects the vehicle to that specific mission. A vehicle mentioned for an unrelated reason, such as sharing a faulty component batch, is not operated by the mission under discussion.",
+            "endpoints": {
+                "Mission": {
+                    "Spacecraft": [
+                        {
+                            "source_context_levels": [
+                                "document",
+                                "chunk"
+                            ],
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints",
+            "default_merge_strategy": "longest",
+            "fields": {
+                "note": {
+                    "data_type": "string",
+                    "description": "A short note on how the vehicle was used on this mission.",
+                    "instructions": "One sentence. Omit the field if the text says nothing beyond the vehicle being flown.",
+                    "examples": "Certified for extended crewed operations beyond cislunar space on this flight."
+                }
+            }
+        },
+        "OccurredDuring": {
+            "description": "An incident that took place in the course of a mission.",
+            "instructions": "Only assert this when the text places the incident within that mission's flight. An incident mentioned in a mission report as background, without having occurred on that mission, does not qualify.",
+            "endpoints": {
+                "Incident": {
+                    "Mission": [
+                        {
+                            "source_context_levels": "document",
+                            "target_context_levels": "chunk"
+                        },
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": [
+                                "document",
+                                "chunk"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints",
+            "default_merge_strategy": "longest",
+            "fields": {
+                "flight_day": {
+                    "data_type": "string",
+                    "description": "The mission flight day on which the incident occurred.",
+                    "instructions": "The number alone, without the words 'flight day'. Omit the field if the text does not state it.",
+                    "regex": "^[0-9]{1,4}$",
+                    "examples": [
+                        "45",
+                        "703"
+                    ]
+                },
+                "impact": {
+                    "data_type": "string",
+                    "description": "A short statement of how the incident affected the mission.",
+                    "instructions": "One sentence.",
+                    "examples": "Deferred the release of relay Node C by six days.",
+                    "merge_strategy": "longest"
+                }
+            }
+        }
+    }
+}

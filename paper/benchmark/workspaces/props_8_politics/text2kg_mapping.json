@@ -1,0 +1,29 @@
+{
+    "ontology_id": "ont_8_politics",
+    "title": "Politics Ontology",
+    "value_entity_type": null,
+    "entity_types": {
+        "PoliticalIdeology": "political ideology",
+        "PoliticalAlignment": "political alignment",
+        "President": "president",
+        "PublicElection": "Public election",
+        "Organization": "organization",
+        "Human": "human",
+        "Country": "country",
+        "PoliticalParty": "political party"
+    },
+    "relationship_types": {
+        "HeadOfState": "head_of_state",
+        "HeadOfGovernment": "head_of_government",
+        "PositionHeld": "position_held",
+        "MemberOf": "Member_of",
+        "PoliticalAlignment": "political_alignment",
+        "MemberOfPoliticalParty": "member_of_political_party",
+        "ElectedIn": "elected_in",
+        "CandidacyInElection": "candidacy_in_election",
+        "PoliticalIdeology": "political_ideology"
+    },
+    "subject_types": {},
+    "property_separator": "; ",
+    "properties": {}
+}

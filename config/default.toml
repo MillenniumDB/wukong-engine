@@ -5,55 +5,90 @@
 # You can modify the values below to customize the execution of the tool.
 # For more information, see: https://github.com/MillenniumDB/wukong-engine/blob/main/docs/configuration.md
 
-##################
-# PIPELINE STEPS #
-##################
-# Enable or disable each step in the pipeline (true/false)
+##############
+#  PIPELINE  #
+##############
+# This section controls which steps of the engine pipeline are executed
 [pipeline]
 
-# This step is responsible for processing the plain text files
-# Note: This step requires the original plain text documents to be available
-# Note: Only skip this step if you have already completed it at least once
+### Ingest documents into the system ###
+# Note: Expects input documents to be available as specified in the workspace document collections
 # Default: true
-document_processing = true
+ingest_documents = true
 
-# This step is responsible for extracting entities from the processed documents
-# Note: This step requires the processed documents to be available
+### Extract entities from the documents ###
+# Note: Expects input documents to be already ingested into the system
 # Default: true
-entity_extraction = true
+extract_entities = true
 
-# This step is responsible for extracting relations between entities from the processed documents
-# Note: This step requires the extracted entities to be available
+### Extract relationships between entities from the documents ###
+# Note: Expects input documents to be already ingested and previously extracted entities to be available
 # Default: true
-relation_extraction = true
+extract_relationships = true
 
-# This step is responsible for exporting the knowledge graph to various formats
-# Note: This step requires the extracted entities and relations to be available
+### Export the extracted knowledge ###
+# Note: Expects previously extracted entities and relationships to be available
 # Default: true
-export_graph = true
+export_knowledge = true
 
 ##############
-# PARAMETERS #
+#    LLM     #
 ##############
-# Customize different parameters
-[parameters]
+# This section controls the configuration of the LLM used for knowledge extraction
+[llm]
 
-### List of formats for exporting the results ###
+### The LLM model to use for extraction ###
+# Note: Currently only OpenAI models are supported
+# Supported models:
+# "gpt-4.1-mini": Cheaper (non-reasoning)
+# "gpt-5.6-luna": Balanced (reasoning model, runs at low effort)
+# Built-in default: "gpt-5.6-luna"
+model = "gpt-5.6-luna"
+
+### Execution mode for LLM interactions ###
+# You can choose from the following modes:
+# "real-time": Real-time execution using concurrent API calls (faster, but more expensive)
+# "batch": Asynchronous execution using external batch API processing (slower, but more cost-effective)
+# Built-in default: "real-time"
+execution_mode = "real-time"
+
+### Maximum concurrency for LLM API calls ###
+# Note: Adjust this value based on the LLM provider's rate limits
+# Reference values to consider based on OpenAI usage tiers (for mini models):
+# - Tier 1: 1
+# - Tier 2: 8
+# - Tier 3: 15
+# - Tier 4: 35
+# - Tier 5: 500
+# Built-in default: 5 (this file sets 15)
+max_concurrency = 15
+
+##############
+#  CHUNKING  #
+##############
+# This section controls the configuration of the document chunking process
+# Note: Adjust these settings based on desired granularity vs cost trade-off, the LLM's context window, API request/response size limits
+[chunking]
+
+### Ideal number of tokens for each chunk ###
+# Note: This value should be in the range [1, 5000], with the recommended range being [100, 2000]
+# Built-in default: 800
+target_tokens = 800
+
+### Number of overlapping tokens between consecutive chunks ###
+# Note: This value should be in the range [0, target_tokens - 1]
+# Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200)
+overlap_tokens = 120
+
+##############
+#   EXPORT   #
+##############
+# This section controls the configuration of the export process for the extracted knowledge
+[export]
+
+### Format for exporting the results ###
 # You can choose from the following formats:
-# "mdb": MillenniumDB Quad Model file
-# "neo4j": Neo4j CSV files
-# "json": JSON files
-# Default: ["mdb", "neo4j", "json"]
-export_formats = ["mdb", "neo4j", "json"]
-
-### Maximum number of tokens for each document chunk ###
-# This is used to control the size of the text processed by each LLM call
-# Adjust this value based on the LLM's context window, API request/response size and your needs
-# Default: 2000
-max_tokens = 2000
-
-### Maximum number of worker threads to use for API calls ###
-# This controls the concurrency of API requests to the LLM
-# Adjust this value based on your system's capabilities and the LLM's rate limits
-# Default: 10
-max_worker_threads = 10
+# "mdb": MillenniumDB graph database QM (Quad Model) file
+# "neo4j": Neo4j graph database CSV files
+# Built-in default: "mdb"
+format = "mdb"

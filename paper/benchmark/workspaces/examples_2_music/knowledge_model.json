@@ -1,0 +1,424 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Music Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "MusicGenre",
+                "MusicalWork",
+                "Language",
+                "Album",
+                "Human",
+                "Award",
+                "Voice",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "Composer",
+                "PartOf",
+                "LyricsBy",
+                "PublicationDate",
+                "LanguageOfWorkOrName",
+                "VoiceType",
+                "Instrumentation",
+                "Tracklist",
+                "Genre",
+                "Performer",
+                "Producer",
+                "NominatedFor",
+                "RecordLabel"
+            ]
+        }
+    },
+    "entity_types": {
+        "MusicGenre": {
+            "description": "An entity of the type \"music genre\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MusicGenre in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "ghazal",
+                        "opera",
+                        "cantata"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MusicalWork": {
+            "description": "An entity of the type \"musical work\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MusicalWork in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Have You Ever?",
+                        "Ballo della Regina",
+                        "If It's Lovin' that You Want"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Language": {
+            "description": "An entity of the type \"language\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Language in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Yiddish",
+                        "Arabic",
+                        "Latin"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Album": {
+            "description": "An entity of the type \"album\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Album in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Love on the Beat",
+                        "After the Gold Rush",
+                        "Still da Baddest"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Diane Warren",
+                        "Giuseppe Verdi",
+                        "Makeba Riddick"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Award": {
+            "description": "An entity of the type \"award\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Award in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Grammy Award for Best Rap Album",
+                        "Grammy Award for Best Latin Pop Album",
+                        "Grammy Award for Best New Age Album"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Voice": {
+            "description": "An entity of the type \"voice\", as defined by the Music Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Voice in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "tenor",
+                        "soprano"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"instrumentation\", \"performer\", \"producer\", \"publication date\", \"record label\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words. Dates must be written in the format \"<DD> <Month> <YYYY>\". When the source text states only a year, use \"01 January <YYYY>\".",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "24 September 1996",
+                        "01 January 1987",
+                        "choir",
+                        "cello",
+                        "piano",
+                        "Nicki Minaj",
+                        "Milli Vanilli",
+                        "Johnny Cash",
+                        "Jason Becker",
+                        "King Crimson",
+                        "Deep Purple",
+                        "Fascination Records",
+                        "Capitol Records",
+                        "Earache Records"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Composer": {
+            "description": "The \"composer\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PartOf": {
+            "description": "The \"part of\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Album": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "LyricsBy": {
+            "description": "The \"lyrics by\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PublicationDate": {
+            "description": "The \"publication date\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "LanguageOfWorkOrName": {
+            "description": "The \"language of work or name\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Language": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "VoiceType": {
+            "description": "The \"voice type\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Voice": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Instrumentation": {
+            "description": "The \"instrumentation\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Tracklist": {
+            "description": "The \"tracklist\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "Album": {
+                    "MusicalWork": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Genre": {
+            "description": "The \"genre\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "MusicGenre": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Performer": {
+            "description": "The \"performer\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "MusicalWork": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Producer": {
+            "description": "The \"producer\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "Album": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "NominatedFor": {
+            "description": "The \"nominated for\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "Album": {
+                    "Award": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "RecordLabel": {
+            "description": "The \"record label\" relation, as defined by the Music Ontology.",
+            "endpoints": {
+                "Album": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

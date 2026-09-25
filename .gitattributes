@@ -1,5 +1,16 @@
-# Default: files are treated as text and normalized
+# By default, files are treated as text and normalized automatically
 * text=auto
+
+# Strongly enforce LF line endings for UNIX-style scripts and configuration files
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Strongly enforce CRLF line endings for Windows batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
 
 # Treat images as binary
 *.png binary

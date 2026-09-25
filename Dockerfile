@@ -1,5 +1,5 @@
 # Use official Python image
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -21,4 +21,4 @@ COPY . .
 RUN pip install --no-cache-dir -e .
 
 # Default command entrypoint
-ENTRYPOINT ["python", "-m", "wukong_engine"]
+ENTRYPOINT ["wukong"]

@@ -1,0 +1,372 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Space Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "AstronomicalObjectType",
+                "SpiralGalaxy",
+                "Asteroid",
+                "Spacecraft",
+                "Human",
+                "Spaceflight",
+                "Observatory",
+                "GeographicRegion",
+                "Constellation",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "SiteOfAstronomicalDiscovery",
+                "MinorPlanetGroup",
+                "Constellation",
+                "AstronautMission",
+                "SpacecraftDockingUndockingDate",
+                "BackupOrReserveTeamOrCrew",
+                "LocationOfLanding"
+            ]
+        }
+    },
+    "entity_types": {
+        "AstronomicalObjectType": {
+            "description": "An entity of the type \"astronomical object type\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this AstronomicalObjectType in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Amor asteroid",
+                        "Apollo asteroid"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "SpiralGalaxy": {
+            "description": "An entity of the type \"spiral galaxy\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SpiralGalaxy in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "NGC 331",
+                        "NGC 6085",
+                        "NGC 61"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Asteroid": {
+            "description": "An entity of the type \"asteroid\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Asteroid in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "145534 Jhongda",
+                        "2015 KG163",
+                        "5357 Sekiguchi"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Spacecraft": {
+            "description": "An entity of the type \"Spacecraft\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Spacecraft in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Soyuz TM-1",
+                        "Soyuz TMA-18M",
+                        "Progress M-29M"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Frank De Winne",
+                        "James McDivitt",
+                        "Pyotr Klimuk"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Spaceflight": {
+            "description": "An entity of the type \"spaceflight\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Spaceflight in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Expedition 21",
+                        "Apollo 9",
+                        "Soyuz 18"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Observatory": {
+            "description": "An entity of the type \"observatory\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Observatory in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Lulin Observatory",
+                        "Mauna Kea Observatories",
+                        "Kitami Observatory"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "GeographicRegion": {
+            "description": "An entity of the type \"geographic region\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this GeographicRegion in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Kazakhstan",
+                        "Pacific Ocean",
+                        "Lake Tengiz"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Constellation": {
+            "description": "An entity of the type \"constellation\", as defined by the Space Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Constellation in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Cetus",
+                        "Corona Borealis",
+                        "Serpens"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"spacecraft docking/undocking date\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words. Dates must be written in the format \"<DD> <Month> <YYYY>\". When the source text states only a year, use \"01 January <YYYY>\".",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "23 May 1986",
+                        "02 March 2016"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "SiteOfAstronomicalDiscovery": {
+            "description": "The \"site of astronomical discovery\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Asteroid": {
+                    "Observatory": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MinorPlanetGroup": {
+            "description": "The \"minor planet group\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Asteroid": {
+                    "AstronomicalObjectType": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Constellation": {
+            "description": "The \"constellation\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "SpiralGalaxy": {
+                    "Constellation": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "AstronautMission": {
+            "description": "The \"astronaut mission\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Spaceflight": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "SpacecraftDockingUndockingDate": {
+            "description": "The \"spacecraft docking/undocking date\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Spacecraft": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "BackupOrReserveTeamOrCrew": {
+            "description": "The \"backup or reserve team or crew\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Spaceflight": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "LocationOfLanding": {
+            "description": "The \"location of landing\" relation, as defined by the Space Ontology.",
+            "endpoints": {
+                "Spacecraft": {
+                    "GeographicRegion": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

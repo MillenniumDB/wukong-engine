@@ -1,0 +1,37 @@
+{
+    "ontology_id": "ont_2_music",
+    "title": "Music Ontology",
+    "value_entity_type": null,
+    "entity_types": {
+        "MusicGenre": "music genre",
+        "MusicalWork": "musical work",
+        "Language": "language",
+        "Album": "album",
+        "Human": "human",
+        "Award": "award",
+        "Voice": "voice"
+    },
+    "relationship_types": {
+        "Composer": "composer",
+        "PartOf": "part_of",
+        "LyricsBy": "lyrics_by",
+        "LanguageOfWorkOrName": "language_of_work_or_name",
+        "VoiceType": "voice_type",
+        "Tracklist": "tracklist",
+        "Genre": "genre",
+        "NominatedFor": "nominated_for"
+    },
+    "subject_types": {},
+    "property_separator": "; ",
+    "properties": {
+        "MusicalWork": {
+            "publication_date": "publication_date",
+            "instrumentation": "instrumentation",
+            "performer": "performer"
+        },
+        "Album": {
+            "producer": "producer",
+            "record_label": "record_label"
+        }
+    }
+}

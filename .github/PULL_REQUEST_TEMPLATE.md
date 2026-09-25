@@ -18,7 +18,7 @@ Select all types of changes that apply to this **PR**:
 
 Use the following **naming convention** for the title of this **PR**: `<main-type>(optional scope): short description`
 
-**Example:** `feat(core): add support for custom data models`
+**Example:** `feat(core): add support for custom knowledge models`
 
 ## 📄 Description
 

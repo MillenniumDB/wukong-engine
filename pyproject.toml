@@ -1,29 +1,29 @@
 ### Project ###
-
 [project]
 name = "wukong-engine"
 version = "0.2.0"
-description = "Engine for constructing knowledge graphs from unstructured documents, using the power of LLMs."
+description = "Engine for extracting structured knowledge from unstructured documents using the power of LLMs, exportable to graph and other formats."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 license = "Proprietary"
 authors = [{ name = "BFFV" }]
 dependencies = [
-    "nltk (>=3.9.1,<4.0.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
     "openai (>=1.88.0,<2.0.0)",
-    "semantic-text-splitter (>=0.27.0,<0.28.0)",
-    "datasketch (>=1.6.5,<2.0.0)",
-    "fuzzywuzzy (>=0.18.0,<0.19.0)",
     "unidecode (>=1.4.0,<2.0.0)",
-    "levenshtein (>=0.27.1,<0.28.0)",
+    "blingfire (>=0.1.8,<0.2.0)",
+    "numpy (>=2.4.5,<3.0.0)",
+    "transformers (>=5.8.1,<6.0.0)",
 ]
 
 [project.urls]
 repository = "https://github.com/MillenniumDB/wukong-engine"
 
-### Packaging ###
+### Scripts ###
+[project.scripts]
+wukong = "wukong_engine.presentation.cli:main"
 
+### Packaging ###
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
@@ -36,7 +36,6 @@ where = ["src"]
 include = ["wukong_engine"]
 
 ### Development ###
-
 [tool.ruff]
 line-length = 120
 indent-width = 4
@@ -56,6 +55,11 @@ ignore = [
     "TRY003", # Allow long custom exception messages
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
+    "T201",   # Allow print statements (intended for CLI output)
+    "TC001",  # Allow imports that are only used in type annotations
+    "TC002",  # Allow imports that are only used in type annotations
+    "TC003",  # Allow imports that are only used in type annotations
+    "CPY001", # Ignore copyright header checks
 ]
 unfixable = ["F401"] # Do not auto-fix unused imports
 
@@ -63,22 +67,21 @@ unfixable = ["F401"] # Do not auto-fix unused imports
 inline-quotes = "single"
 multiline-quotes = "double"
 
-[tool.ruff.lint.mccabe]
-max-complexity = 30
-
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[tool.ruff.lint.pylint]
-max-branches = 30
-max-statements = 75
-max-args = 10
 
 [tool.ruff.format]
 quote-style = "single"
 indent-style = "space"
 skip-magic-trailing-comma = false
 docstring-code-format = false
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-branches = 15
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
 
 [tool.pyright]
 typeCheckingMode = "basic"

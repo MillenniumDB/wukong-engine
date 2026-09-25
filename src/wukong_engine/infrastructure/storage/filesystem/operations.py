@@ -1,0 +1,25 @@
+"""Filesystem operations for local storage."""
+
+import shutil
+from pathlib import Path
+
+
+def clear_directory(directory: Path) -> None:
+    """Delete all files and subdirectories inside a directory.
+
+    The directory itself is kept.
+
+    Args:
+        directory: Directory to empty.
+
+    Raises:
+        NotADirectoryError: If the path is not an existing directory.
+    """
+    if not directory.is_dir():
+        raise NotADirectoryError(directory)
+
+    for child in directory.iterdir():
+        if child.is_dir():
+            shutil.rmtree(child)
+        else:
+            child.unlink()

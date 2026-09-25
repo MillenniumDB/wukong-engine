@@ -1,0 +1,28 @@
+{
+    "collections": {
+        "missions": {
+            "sources": [
+                {
+                    "root": "missions",
+                    "mode": "directory"
+                }
+            ]
+        },
+        "crew": {
+            "sources": [
+                {
+                    "root": "crew",
+                    "mode": "directory"
+                }
+            ]
+        },
+        "incidents": {
+            "sources": [
+                {
+                    "root": "incidents",
+                    "mode": "directory"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,428 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Military Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "MilitaryVehicle",
+                "MilitaryCasualtyClassification",
+                "ArmedOrganization",
+                "MilitaryUnit",
+                "MilitaryEquipment",
+                "Command",
+                "Rank",
+                "Organization",
+                "Human",
+                "MilitaryRank",
+                "Country",
+                "SubjectQ11436"
+            ],
+            "enabled_relationships": [
+                "MilitaryRank",
+                "MilitaryBranch",
+                "MilitaryCasualtyClassification",
+                "DesignedBy",
+                "CommandedBy",
+                "NextHigherRank",
+                "DesignatedAsTerroristBy"
+            ]
+        }
+    },
+    "entity_types": {
+        "MilitaryVehicle": {
+            "description": "An entity of the type \"military vehicle\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MilitaryVehicle in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "XM312",
+                        "13.5 cm K 09",
+                        "Roketsan Cirit"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MilitaryCasualtyClassification": {
+            "description": "An entity of the type \"military casualty classification\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MilitaryCasualtyClassification in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "killed in action",
+                        "prisoner of war"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "ArmedOrganization": {
+            "description": "An entity of the type \"armed organization\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this ArmedOrganization in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Turkistan Islamic Party",
+                        "Babbar Khalsa",
+                        "Popular Front for the Liberation of Palestine"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MilitaryUnit": {
+            "description": "An entity of the type \"military unit\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MilitaryUnit in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Prussian Army",
+                        "Royal Navy",
+                        "air force"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MilitaryEquipment": {
+            "description": "An entity of the type \"military equipment\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MilitaryEquipment in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Command": {
+            "description": "An entity of the type \"command\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Command in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Rank": {
+            "description": "An entity of the type \"rank\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Rank in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "brigadier general"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Organization": {
+            "description": "An entity of the type \"organization\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Organization in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "General Dynamics",
+                        "Krupp",
+                        "ROKETSAN"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Zhu Fuxi",
+                        "Harold Taylor Wood Grant",
+                        "Cai Yingting"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "MilitaryRank": {
+            "description": "An entity of the type \"military rank\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this MilitaryRank in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Shang Jiang",
+                        "vice admiral",
+                        "Zhong Jiang"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Country": {
+            "description": "An entity of the type \"country\", as defined by the Military Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Country in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Pakistan",
+                        "Canada",
+                        "Kazakhstan"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "SubjectQ11436": {
+            "description": "An entity that is the subject of the \"wing configuration\" relation(s) of the Military Ontology, whose type the ontology does not name.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SubjectQ11436 in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Aero A.200",
+                        "Aichi AB-6"
+                    ]
+                },
+                "wing_configuration": {
+                    "data_type": "string",
+                    "description": "The \"wing configuration\" of this SubjectQ11436, as defined by the Military Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "monoplane",
+                        "biplane"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "MilitaryRank": {
+            "description": "The \"military rank\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "Human": {
+                    "MilitaryRank": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MilitaryBranch": {
+            "description": "The \"military branch\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "Human": {
+                    "MilitaryUnit": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MilitaryCasualtyClassification": {
+            "description": "The \"military casualty classification\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "Human": {
+                    "MilitaryCasualtyClassification": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "DesignedBy": {
+            "description": "The \"designed by\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "MilitaryEquipment": {
+                    "Organization": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                },
+                "MilitaryVehicle": {
+                    "Organization": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CommandedBy": {
+            "description": "The \"commanded by\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "Command": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "NextHigherRank": {
+            "description": "The \"next higher rank\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "MilitaryRank": {
+                    "Rank": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "DesignatedAsTerroristBy": {
+            "description": "The \"designated as terrorist by\" relation, as defined by the Military Ontology.",
+            "endpoints": {
+                "ArmedOrganization": {
+                    "Country": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

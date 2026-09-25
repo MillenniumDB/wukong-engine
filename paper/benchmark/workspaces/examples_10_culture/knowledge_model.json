@@ -1,0 +1,349 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Culture Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Dance",
+                "Festival",
+                "Language",
+                "EthnicGroup",
+                "Human",
+                "Art",
+                "Literature",
+                "Religion",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "EthnicGroup",
+                "ReligiousOrder",
+                "LanguagesSpokenWrittenOrSigned",
+                "Inception",
+                "StartTime",
+                "DedicatedTo",
+                "IconographicSymbol",
+                "IndigenousTo"
+            ]
+        }
+    },
+    "entity_types": {
+        "Dance": {
+            "description": "An entity of the type \"dance\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Dance in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Festival": {
+            "description": "An entity of the type \"festival\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Festival in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "FESTAC 77",
+                        "Internationale Gartenausstellung 2017",
+                        "Nelson Mandela: An International Tribute for a Free South Africa"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Language": {
+            "description": "An entity of the type \"language\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Language in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Latin",
+                        "Esperanto"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "EthnicGroup": {
+            "description": "An entity of the type \"ethnic group\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this EthnicGroup in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "African Americans",
+                        "Goths",
+                        "Métis"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Elizabeth Carter Brooks",
+                        "Robin Washington",
+                        "Xernona Clayton"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Art": {
+            "description": "An entity of the type \"art\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Art in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Literature": {
+            "description": "An entity of the type \"literature\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Literature in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Journal of Dental Biomechanics",
+                        "Canadian Family Physician",
+                        "Jordan Medical Journal"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Religion": {
+            "description": "An entity of the type \"religion\", as defined by the Culture Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Religion in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"iconographic symbol\", \"inception\", \"indigenous to\", \"start time\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words. Dates must be written in the format \"<DD> <Month> <YYYY>\". When the source text states only a year, use \"01 January <YYYY>\".",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "01 January 2009",
+                        "01 January 1967",
+                        "15 January 1977",
+                        "13 April 2017"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "EthnicGroup": {
+            "description": "The \"ethnic group\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Human": {
+                    "EthnicGroup": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "ReligiousOrder": {
+            "description": "The \"religious order\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Religion": {
+                    "Religion": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "LanguagesSpokenWrittenOrSigned": {
+            "description": "The \"languages spoken, written or signed\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Language": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Inception": {
+            "description": "The \"inception\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Literature": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "StartTime": {
+            "description": "The \"start time\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Festival": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "DedicatedTo": {
+            "description": "The \"dedicated to\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Art": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "IconographicSymbol": {
+            "description": "The \"iconographic symbol\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "IndigenousTo": {
+            "description": "The \"indigenous to\" relation, as defined by the Culture Ontology.",
+            "endpoints": {
+                "Dance": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

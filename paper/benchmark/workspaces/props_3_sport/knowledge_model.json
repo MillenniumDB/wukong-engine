@@ -1,0 +1,386 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Sports Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "SportsCompetition",
+                "ProfessionalSportsLeague",
+                "Athlete",
+                "SportsSeason",
+                "Sport",
+                "SportsOrganization",
+                "Human",
+                "Country",
+                "SportsClub"
+            ],
+            "enabled_relationships": [
+                "Occupation",
+                "Sport",
+                "MemberOfSportsTeam",
+                "CountryForSport",
+                "CoachOfSportsTeam",
+                "League",
+                "CountryOfOrigin"
+            ]
+        }
+    },
+    "entity_types": {
+        "SportsCompetition": {
+            "description": "An entity of the type \"sports competition\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SportsCompetition in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "1966 Eastern Suburbs season",
+                        "1974 Amco Cup",
+                        "2008 State of Origin series"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "ProfessionalSportsLeague": {
+            "description": "An entity of the type \"professional sports league\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this ProfessionalSportsLeague in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Athlete": {
+            "description": "An entity of the type \"athlete\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Athlete in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "swimmer",
+                        "bodybuilder",
+                        "hammer thrower"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "SportsSeason": {
+            "description": "An entity of the type \"sports season\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SportsSeason in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "2000 Men's World Ice Hockey Championships",
+                        "2009 Cricket World Cup Qualifier",
+                        "2005 BNP Paribas Masters"
+                    ]
+                },
+                "sports_season_of_league_or_competition": {
+                    "data_type": "string",
+                    "description": "The \"sports season of league or competition\" of this SportsSeason, as defined by the Sports Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Ice Hockey World Championships",
+                        "ICC World Cup Qualifier",
+                        "Paris Masters"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Sport": {
+            "description": "An entity of the type \"sport\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Sport in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "rugby league",
+                        "ice climbing",
+                        "bodybuilding"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "SportsOrganization": {
+            "description": "An entity of the type \"sports organization\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SportsOrganization in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Bosnia and Herzegovina women's national volleyball team",
+                        "Russia men's national under-19 volleyball team",
+                        "Senegal women's national volleyball team"
+                    ]
+                },
+                "competition_class": {
+                    "data_type": "string",
+                    "description": "The \"competition class\" of this SportsOrganization, as defined by the Sports Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "women's volleyball",
+                        "men's volleyball",
+                        "women's water polo"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Toivo Reingoldt",
+                        "Arnold Schwarzenegger",
+                        "Tatyana Lysenko"
+                    ]
+                },
+                "league": {
+                    "data_type": "string",
+                    "description": "The \"league\" of this Human, as defined by the Sports Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Premier League",
+                        "Major League Soccer",
+                        "Negro league baseball"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Country": {
+            "description": "An entity of the type \"country\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Country in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "Canada",
+                        "Japan",
+                        "Egypt"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "SportsClub": {
+            "description": "An entity of the type \"sports club\", as defined by the Sports Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this SportsClub in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "AJ Auxerre",
+                        "Tiro Federal",
+                        "FC Rostov"
+                    ]
+                },
+                "home_venue": {
+                    "data_type": "string",
+                    "description": "The \"home venue\" of this SportsClub, as defined by the Sports Ontology.",
+                    "instructions": "Only fill this field when the source text explicitly states it; otherwise leave it empty. Each value must use the exact surface form as it appears in the source text, without normalizing its words. When the text states several values, for instance as an enumeration, extract each value on its own and separate them with \";\": \"written for violin, cello and piano\" gives \"violin; cello; piano\".",
+                    "required": false,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Occupation": {
+            "description": "The \"occupation\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Athlete": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Sport": {
+            "description": "The \"sport\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "SportsCompetition": {
+                    "Sport": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MemberOfSportsTeam": {
+            "description": "The \"member of sports team\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Human": {
+                    "SportsClub": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CountryForSport": {
+            "description": "The \"country for sport\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Country": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CoachOfSportsTeam": {
+            "description": "The \"coach of sports team\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Human": {
+                    "SportsClub": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "League": {
+            "description": "The \"league\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Human": {
+                    "ProfessionalSportsLeague": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CountryOfOrigin": {
+            "description": "The \"country of origin\" relation, as defined by the Sports Ontology.",
+            "endpoints": {
+                "Sport": {
+                    "Country": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

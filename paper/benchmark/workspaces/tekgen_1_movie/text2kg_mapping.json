@@ -1,0 +1,33 @@
+{
+    "ontology_id": "ont_1_movie",
+    "title": "Movie Ontology",
+    "value_entity_type": "Value",
+    "entity_types": {
+        "Film": "film",
+        "FilmCharacter": "film character",
+        "FilmProductionCompany": "film production company",
+        "WrittenWork": "written work",
+        "Genre": "genre",
+        "Human": "human",
+        "City": "city",
+        "Award": "award",
+        "Country": "country"
+    },
+    "relationship_types": {
+        "Director": "director",
+        "Screenwriter": "screenwriter",
+        "Genre": "genre",
+        "BasedOn": "based_on",
+        "CastMember": "cast_member",
+        "AwardReceived": "award_received",
+        "ProductionCompany": "production_company",
+        "CountryOfOrigin": "country_of_origin",
+        "PublicationDate": "publication_date",
+        "Characters": "characters",
+        "NarrativeLocation": "narrative_location",
+        "FilmingLocation": "filming_location",
+        "MainSubject": "main_subject",
+        "NominatedFor": "nominated_for",
+        "Cost": "cost"
+    }
+}

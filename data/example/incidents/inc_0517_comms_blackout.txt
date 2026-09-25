@@ -1,0 +1,59 @@
+MERIDIAN DEEP SPACE AGENCY
+INCIDENT REPORT
+
+Incident code: INC-0517
+Title: High-gain antenna gimbal fault and communications blackout
+Severity: minor
+Date: 11 December 2192 (KEPLER-12 flight day 703)
+Vehicle: MDV Perihelion (AUR-01)
+Status: open
+
+
+1. SUMMARY
+
+On flight day 703 of KEPLER-12, the high-gain antenna of MDV Perihelion
+(AUR-01) failed to track during a scheduled downlink window. The vehicle lost
+its link to the deep-space network for 31 hours before the crew restored
+pointing manually. No loss of vehicle control occurred at any point, and the
+crew were never out of contact on the low-gain backup beacon.
+
+
+2. CAUSE
+
+The fault has been traced to a seized elevation bearing in the antenna
+gimbal. The bearing comes from a supplier batch that was also fitted to the
+crew transport MDV Cassiopeia (VSP-03), and the agency has opened a
+fleet-wide review of the batch. A firmware contribution has not been ruled
+out and is under investigation.
+
+
+3. RESPONSE
+
+Cmdr. Theo Vance (MDSA-2233) powered down the survey instrument for the
+duration of the blackout rather than operate it without a downlink. Lt. Ravi
+Sundaram (MDSA-2408) diagnosed the gimbal and restored pointing manually
+after 31 hours. Telemetry buffered during the outage was recovered in full
+once the link was re-established.
+
+Dr. Mei Liang (MDSA-2190) entered a dissent in the observation log, arguing
+that onboard storage would have preserved the particle-flux record and that
+the instrument should have kept running.
+
+
+4. CONSEQUENCES
+
+The particle-flux record of KEPLER-12 carries a 31-hour gap. No catalogue
+observations were lost, as the survey instrument was not scheduled to observe
+during the affected window. The gimbal remains serviceable under manual
+pointing with a reduced slew rate.
+
+
+5. FINDINGS AND ACTIONS
+
+The board endorses the power-down decision taken by Cmdr. Theo Vance
+(MDSA-2233) as consistent with standing procedure.
+
+The board refers the underlying question raised by Dr. Mei Liang (MDSA-2190) —
+whether instruments may be operated without an active downlink — to the
+operations standards group. The incident remains open pending the outcome of
+the supplier batch review.

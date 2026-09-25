@@ -1,0 +1,403 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Book Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Publisher",
+                "LiteraryGenre",
+                "Language",
+                "Territory",
+                "Human",
+                "Book",
+                "TradeMagazine",
+                "LiteraryWork",
+                "FictionalCharacter",
+                "Value"
+            ],
+            "enabled_relationships": [
+                "Illustrator",
+                "FollowedBy",
+                "PublicationDate",
+                "Author",
+                "Publisher",
+                "Characters",
+                "Editor",
+                "PlaceOfPublication",
+                "NarrativeLocation",
+                "Genre",
+                "LanguageOfWorkOrName",
+                "Depicts"
+            ]
+        }
+    },
+    "entity_types": {
+        "Publisher": {
+            "description": "An entity of the type \"publisher\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Publisher in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "LiteraryGenre": {
+            "description": "An entity of the type \"literary genre\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this LiteraryGenre in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Language": {
+            "description": "An entity of the type \"language\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Language in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Territory": {
+            "description": "An entity of the type \"territory\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Territory in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Book": {
+            "description": "An entity of the type \"book\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Book in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "TradeMagazine": {
+            "description": "An entity of the type \"trade magazine\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this TradeMagazine in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "LiteraryWork": {
+            "description": "An entity of the type \"literary work\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this LiteraryWork in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "FictionalCharacter": {
+            "description": "An entity of the type \"fictional character\", as defined by the Book Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this FictionalCharacter in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Value": {
+            "description": "A literal value mentioned in the source text, such as a date, a quantity, a name or a descriptive term, that is the object of a relation with no specific type.",
+            "instructions": "Only extract a value when it is the object of one of the following relations: \"depicts\", \"followed by\", \"place of publication\", \"publication date\". Do not extract any other terms from the source text.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Value in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words. Dates must be written in the format \"<DD> <Month> <YYYY>\". When the source text states only a year, use \"01 January <YYYY>\".",
+                    "required": true,
+                    "retrieval_mode": "extract",
+                    "examples": [
+                        "01 January 2004",
+                        "01 April 1995"
+                    ]
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "Illustrator": {
+            "description": "The \"illustrator\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Value": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "FollowedBy": {
+            "description": "The \"followed by\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Value": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PublicationDate": {
+            "description": "The \"publication date\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Book": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Author": {
+            "description": "The \"author\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Book": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Publisher": {
+            "description": "The \"publisher\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Book": {
+                    "Publisher": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Characters": {
+            "description": "The \"characters\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "LiteraryWork": {
+                    "FictionalCharacter": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Editor": {
+            "description": "The \"editor\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "TradeMagazine": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PlaceOfPublication": {
+            "description": "The \"place of publication\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Value": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "NarrativeLocation": {
+            "description": "The \"narrative location\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "LiteraryWork": {
+                    "Territory": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Genre": {
+            "description": "The \"genre\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "LiteraryWork": {
+                    "LiteraryGenre": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "LanguageOfWorkOrName": {
+            "description": "The \"language of work or name\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "LiteraryWork": {
+                    "Language": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "Depicts": {
+            "description": "The \"depicts\" relation, as defined by the Book Ontology.",
+            "endpoints": {
+                "Value": {
+                    "Value": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}

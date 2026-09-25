@@ -1,0 +1,313 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Politics Ontology. Single sentences extracted from Wikipedia articles.",
+            "language": "en"
+        },
+        "projection": {
+            "enabled_entities": [
+                "PoliticalIdeology",
+                "PoliticalAlignment",
+                "President",
+                "PublicElection",
+                "Organization",
+                "Human",
+                "Country",
+                "PoliticalParty"
+            ],
+            "enabled_relationships": [
+                "HeadOfState",
+                "HeadOfGovernment",
+                "PositionHeld",
+                "MemberOf",
+                "PoliticalAlignment",
+                "MemberOfPoliticalParty",
+                "ElectedIn",
+                "CandidacyInElection",
+                "PoliticalIdeology"
+            ]
+        }
+    },
+    "entity_types": {
+        "PoliticalIdeology": {
+            "description": "An entity of the type \"political ideology\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this PoliticalIdeology in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "PoliticalAlignment": {
+            "description": "An entity of the type \"political alignment\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this PoliticalAlignment in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "President": {
+            "description": "An entity of the type \"president\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this President in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "PublicElection": {
+            "description": "An entity of the type \"Public election\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this PublicElection in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Organization": {
+            "description": "An entity of the type \"organization\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Organization in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Human": {
+            "description": "An entity of the type \"human\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Human in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "Country": {
+            "description": "An entity of the type \"country\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this Country in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        },
+        "PoliticalParty": {
+            "description": "An entity of the type \"political party\", as defined by the Politics Ontology.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The text that identifies this PoliticalParty in the source text.",
+                    "instructions": "Use the exact surface form as it appears in the source text, without adding, removing, reordering or normalizing any words.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "sentences"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "HeadOfState": {
+            "description": "The \"head of state\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Country": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "HeadOfGovernment": {
+            "description": "The \"head of government\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Country": {
+                    "Human": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PositionHeld": {
+            "description": "The \"position held\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Human": {
+                    "President": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MemberOf": {
+            "description": "The \"Member of\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Human": {
+                    "Organization": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PoliticalAlignment": {
+            "description": "The \"political alignment\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "PoliticalParty": {
+                    "PoliticalAlignment": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "MemberOfPoliticalParty": {
+            "description": "The \"member of political party\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Human": {
+                    "PoliticalParty": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "ElectedIn": {
+            "description": "The \"elected in\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Human": {
+                    "PublicElection": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "CandidacyInElection": {
+            "description": "The \"candidacy in election\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "Human": {
+                    "PublicElection": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        },
+        "PoliticalIdeology": {
+            "description": "The \"political ideology\" relation, as defined by the Politics Ontology.",
+            "endpoints": {
+                "PoliticalParty": {
+                    "PoliticalIdeology": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints"
+        }
+    }
+}
