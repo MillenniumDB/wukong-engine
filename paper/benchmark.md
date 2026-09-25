@@ -586,7 +586,7 @@ compilation and of harness-level instructions, not of the engine's extraction.
 **§10 tests exactly that, and confirms it.** Generalizing the train-derived
 example mechanism from dates to entity types (§10.1) cuts self-loops from 192 to
 29, reduces type-gated misses from 798 to 493 and lifts global F1 from 0.26 to
-0.34, at 5% extra cost. Removing the endpoint constraint outright (§10.2) raises
+0.34, at 6% extra cost. Removing the endpoint constraint outright (§10.2) raises
 6_computer's F1 from 0.09 to 0.23 on its own, confirming that the values were
 extracted and the knowledge model was refusing the link.
 
@@ -873,26 +873,39 @@ train-derived examples raises global F1 from 0.26 to 0.34 and removing the
 endpoint constraint raises 6_computer from 0.09 to 0.23, neither of which
 changes the engine or the evaluator.
 
-### 9.3 Cost follows the model, and scales — but output dominates
+### 9.3 Cost follows the model, and scales — but output and cache writes dominate
 
-At `gpt-5.6-luna` rates ($0.20/M input, $1.20/M output, ~10% surcharge on
-cache-write tokens) the full primary run cost **$2.81**. The breakdown matters
-more than the total:
+At `gpt-5.6-luna` rates ($0.20/M uncached input, $0.02/M cache reads, $0.25/M
+cache writes, $1.20/M output including reasoning) the full primary run cost
+**$2.93**. The breakdown matters more than the total:
 
 | | Tokens | Cost | Share |
 |---|---|---|---|
-| Input (incl. 22,808 cache reads) | 6,783,862 | $1.36 | 48% |
-| Cache-write surcharge | 5,020,517 | $0.10 | 4% |
-| Output + reasoning | 1,103,688 | $1.32 | 48% |
+| Uncached input | 1,740,537 | $0.35 | 12% |
+| Cache reads | 22,808 | $0.00 | 0% |
+| Cache writes | 5,020,517 | $1.26 | 43% |
+| Output + reasoning | 1,103,688 | $1.32 | 45% |
 
-**Output is 48% of the cost from 14% of the tokens, and reasoning tokens are 64%
-of billable output.** If cost becomes a constraint at scale, reasoning effort is
-the lever, not prompt size or caching. Caching in particular does nothing for
-this workload — 22,808 cache reads against 5,020,517 writes, a 0.3% hit rate,
-because every sentence is a unique document and only the knowledge model prefix is
-reusable.
+**Output is 45% of the cost from 14% of the tokens, and reasoning tokens are 64%
+of billable output.** Cache writes are most of the rest, and they bought nothing:
+22,808 cache reads against 5,020,517 writes, a 0.3% hit rate. The cause was the
+prompt layout of the engine version used here, not the workload. Each request was
+sent as a single message ending in the sentence being extracted from, so
+`gpt-5.6-luna`'s implicit caching wrote the whole prompt, sentence included, at
+1.25× the input rate, and no other request could reuse it. With caching out of
+the way, reasoning effort is the lever if cost becomes a constraint at scale.
 
-
+> **Newer engine versions cache the shared prefix.** On GPT-5.6 and later models,
+> the engine now sends the part of each prompt shared by every job extracting the
+> same types (document context, task and type definitions) as a separate block
+> with an explicit cache breakpoint, and caches only that part. That shared prefix
+> is most of every entity prompt in this benchmark, so after the first request
+> each prompt reuses it at a tenth of the input rate, and the sentence-specific
+> part is never written to the cache. The text the model sees is unchanged, so the
+> quality results in this document still hold. The token counts and costs here
+> are those of the earlier version and were not re-measured. They overstate what a
+> run on the current engine costs, most of all in the $1.26 spent on cache writes,
+> since the reusable prefix is then read at $0.02/M instead of written at $0.25/M.
 
 The run in aggregate:
 
@@ -905,7 +918,7 @@ The run in aggregate:
 | Reasoning tokens | 704,970 |
 | Wall clock | 1,510 s (25 min) at concurrency 15 |
 | Throughput | ≈2.7 sentences/s |
-| Cost | $2.81 (≈$0.00069 per sentence) |
+| Cost | $2.93 (≈$0.00072 per sentence) |
 
 Two properties matter for scaling beyond benchmark size. Cost is **linear in
 corpus size** — there is no cross-document join whose cost grows super-linearly,
@@ -998,7 +1011,7 @@ limits:
 | Recall on entity-typed objects | 0.317 | **0.382** |
 | Achievable gold triples matched | 1,883 (42.0%) | **2,345 (52.3%)** |
 | Corrected ontology conformance (§7.3) | 1.000 | 1.000 |
-| Cost | $2.81 | $2.95 |
+| Cost | $2.93 | $3.10 |
 
 Self-loops fall by 85% because an example shows that an `occupation` object looks
 like `athletics competitor`, not like the person's name. Type gating falls by 38%
@@ -1006,7 +1019,7 @@ without any endpoint change, because better-grounded entity types are assigned
 more often to the type the relation expects. Both were free side effects of
 grounding the entity types.
 
-Cost rises 5% ($2.81 → $2.95) for the examples carried in each prompt; job count,
+Cost rises 6% ($2.93 → $3.10) for the examples carried in each prompt; job count,
 wall clock and failure count are unchanged (6,872 jobs, 24 min, 0 failed).
 
 ### 10.2 Arm A — permissive endpoints (6_computer probe)
@@ -1038,8 +1051,8 @@ The multiplier scales with the ontology's relationship-type count:
 | 6_computer | 4 | 3.5× (measured) |
 | 1_movie | 15 | ~12× (measured, partial run) |
 
-Extrapolated to all ten this is ≈81M input tokens, roughly **$20 and 5 hours**,
-against $2.81 for the primary run. Since arm B recovers the same ground on this
+Extrapolated to all ten this is ≈81M input tokens, roughly **$21 and 5 hours**,
+against $2.93 for the primary run. Since arm B recovers the same ground on this
 ontology at a fraction of the cost, the full permissive sweep was not worth the
 spend; the probe is reported as a targeted confirmation of the mechanism, not as
 a suite-level result.

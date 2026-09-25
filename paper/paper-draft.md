@@ -55,7 +55,7 @@ hallucination 0.01, against 0.17 for 2-shot baselines on the same data — at ac
 comparable to those baselines under the benchmark's published protocol, and higher than
 theirs (F1 0.39 against 0.36) under an adjusted protocol that lets literals be entity
 properties and corrects the gold standard identically for every system, at a cost of
-roughly $0.0007 per sentence. On the news
+roughly $0.0008 per sentence. On the news
 corpus, request grouping and endpoint pruning together reduce the number of LLM calls by
 roughly 6× against a naive per-type decomposition.
 
@@ -161,7 +161,7 @@ output that is ontology-conformant in every case and effectively free of halluci
 arguments (subject 0.00, object 0.01, against 0.17–0.19 for 2-shot baselines), at accuracy
 comparable to those baselines under the published protocol (F1 0.34 against 0.35) and
 above them under an adjusted protocol that removes benchmark defects for every system and
-lets literal values be entity properties (0.39 against 0.36), at a cost of ≈$0.0007 per
+lets literal values be entity properties (0.39 against 0.36), at a cost of ≈$0.0008 per
 sentence.
 
 ---
@@ -724,7 +724,8 @@ reset with it, since their results are no longer justified by their inputs.
 Long, expensive runs need to be legible while they are running. The pipeline continuously
 reports, per stage and context level: how many sources are pending, in progress, completed
 and failed; call throughput and a smoothed completion-rate estimate; per-status timing;
-token consumption broken down into fresh input, cached input, output and reasoning tokens;
+token consumption broken down into uncached input, cache reads, cache writes, output and
+reasoning tokens, which do not overlap and are each billed at their own rate;
 the number of objects and mentions produced so far; and derived ratios such as objects per
 source and mentions per object. Token accounting at this granularity is what makes the
 cost of a configuration choice — a chunk size, an overlap, a reasoning effort, a decision to
@@ -785,8 +786,11 @@ undoing entity normalization.
 **Cost structure.** The dominant cost is the number and size of LLM calls. WUKONG attacks
 both: grouping types per source amortizes the source text across all types; endpoint pruning
 eliminates calls that provably cannot produce anything; document-level extraction reads a
-bounded prefix rather than whole documents; non-extracted fields never enter a prompt; and
-batch execution trades latency for a materially lower rate.
+bounded prefix rather than whole documents; non-extracted fields never enter a prompt;
+prompts place everything shared by jobs of the same types (task and type definitions) in a
+prefix that is cached explicitly on models that support it, so only the source-specific
+part is paid at the full input rate; and batch execution trades latency for a materially
+lower rate.
 
 ### 10.2 Costs of the design
 
@@ -1039,16 +1043,22 @@ already-extracted entities cannot name something absent from the text, which is 
 §5.3; the baselines generate endpoint strings freely and 17% of their subjects do not occur
 in the sentence they were extracted from.
 
-**RQ5 — Cost.** The full suite cost **$2.81** at `gpt-5.6-luna` rates — 6.78M input and
-1.10M output tokens over 6,709 calls, 25 minutes at concurrency 15, ≈$0.00069 per sentence,
-with no failed call. Cost is linear in corpus size and output-dominated: output is 48% of
-spend from 14% of tokens, and reasoning accounts for 64% of billable output, which makes
-reasoning effort rather than prompt size the lever if cost binds. Prompt caching was
-ineffective here (0.3% hit rate) because every document is a distinct sentence.
+**RQ5 — Cost.** The full suite cost **$2.93** at `gpt-5.6-luna` rates — 6.78M input and
+1.10M output tokens over 6,709 calls, 25 minutes at concurrency 15, ≈$0.00072 per sentence,
+with no failed call. Cost is linear in corpus size. Output is 45% of spend from 14% of
+tokens, and reasoning accounts for 64% of billable output. Cache writes are a further 43%
+of spend and bought nothing: prompt caching was ineffective here (0.3% hit rate), because
+the engine version used sent each prompt as a single message ending in the sentence, so
+the whole prompt was written to the cache at 1.25× the input rate and never reused.
+Newer versions cache only the prefix shared by jobs of the same types on GPT-5.6 and later
+models (§10.1). That prefix is most of each entity prompt here, so the reported cost
+overstates a run on the current engine, while the quality results are unaffected because
+the text the model sees is unchanged. With caching fixed, reasoning effort rather than
+prompt size is the lever if cost binds.
 
 **RQ6 — Ablation.** Train-grounded entity types raise F1 from 0.26 to 0.34, improving every
 one of the ten ontologies, with precision rising alongside recall and conformance and
-hallucination unchanged, at 5% additional cost. The same change reduces degenerate
+hallucination unchanged, at 6% additional cost. The same change reduces degenerate
 self-referential triples from 192 to 29 and, without altering any endpoint declaration,
 reduces by 38% the gold triples that were unreachable because the entity pass assigned an
 argument a type the relation did not admit. A second arm, run on one ontology only, removes
@@ -1118,7 +1128,7 @@ Separating the two changes:
 **The property representation alone is worth +0.03 F1** (0.34 → 0.37 with identical
 scoring), and it takes WUKONG past Vicuna under the benchmark's own, unmodified protocol.
 It raises recall on range-less objects from 0.199 to 0.330, closing most of the gap to
-genuine entities (0.376), at unchanged conformance and hallucination and a cost of $0.02
+genuine entities (0.376), at unchanged conformance and hallucination and a cost of $0.04
 over the train-grounded run. The clearest case is film publication dates: 13 of 364 gold
 triples matched when the year had to survive as an entity, 140 when it is a field on the
 film. **The scoring corrections are nearly neutral between systems**, adding 0.02 to every
@@ -1146,7 +1156,7 @@ yield 3,911 distinct documents and little entity merging — so RQ4 is untested 
 second ablation arm covers one ontology rather than ten, for reasons of cost: removing the
 endpoint constraint makes every relationship type applicable to every chunk and inflates the
 relationship prompt roughly 29×. `[TODO: decide whether to run that arm on the full suite —
-approximately $20 and five hours — or report it as the targeted probe it currently is.]`
+approximately $21 and five hours — or report it as the targeted probe it currently is.]`
 
 ---
 

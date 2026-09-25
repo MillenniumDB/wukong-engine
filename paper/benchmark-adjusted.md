@@ -455,18 +455,22 @@ mostly dates with a specific day that the sentence does not state (§6.2).
 | Triples emitted | 5,265 | 5,794 | 6,399 |
 | Jobs (failed) | 6,709 (0) | 6,872 (0) | 6,599 (0) |
 | Wall clock | 25 min | 24 min | 25 min |
-| Cost | $2.78 | $2.92 | **$2.94** |
+| Cost | $2.93 | $3.10 | **$3.15** |
 
-Costs in this table are computed with one formula for all three runs:
-$0.20/M input including cache reads, a $0.02/M surcharge on cache writes, and
-$1.20/M on output plus reasoning tokens. `benchmark.md` reports $2.81 and $2.95
-for the first two runs. The source of that $0.03 gap was not traced, but it is
-the same for both runs, so the relative comparison holds either way.
+Costs in this table are computed with the same formula as `benchmark.md` §9.3
+for all three runs: $0.20/M uncached input, $0.02/M cache reads, $0.25/M cache
+writes and $1.20/M on output plus reasoning tokens.
 
-**The property modelling is cost-neutral.** Input tokens rise 8% over arm B,
-because entity prompts now carry the property fields. Relationship jobs fall
-because there are fewer relationship types, and reasoning tokens fall 15%. Net
-cost is +$0.02.
+**The property modelling is close to cost-neutral.** Input tokens rise 8% over
+arm B, because entity prompts now carry the property fields. Relationship jobs
+fall because there are fewer relationship types, and reasoning tokens fall 15%.
+Net cost is +$0.04 (+1%).
+
+All three runs used the same engine version as `benchmark.md`, which gained
+almost nothing from prompt caching. Newer versions cache the prompt prefix shared
+by jobs of the same types on GPT-5.6 and later models, which lowers input cost
+without changing the text the model sees (`benchmark.md` §9.3). The quality
+results here are unaffected, and the costs above are those of the earlier version.
 
 ---
 
