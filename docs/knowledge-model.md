@@ -24,6 +24,7 @@ This document describes the expected format for a `knowledge_model.json` file, w
 - [🧮 Identity and Merging](#-identity-and-merging)
   - [Deduplication](#deduplication)
   - [Merge Strategies](#merge-strategies)
+  - [Identifiers and Versioning](#identifiers-and-versioning)
 - [🔒 Reserved Names](#-reserved-names)
 - [💡 Knowledge Model Example](#-knowledge-model-example)
 
@@ -149,7 +150,7 @@ Entity type names must start with an **uppercase letter**, contain only **alphan
 | ------------------------ | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------: | --------------- |
 | `description`            |    ✅     | What this type represents, in your own words. Reaches the LLM.                                                                                                                                                               |               `string`               | —               |
 | `instructions`           |    🟡     | Additional technical guidance for extracting this type. Accepts a context level mapping, since telling the model how to recognize "the mission this document *is*" differs from "the missions this text *mentions*".         | `object[string, string]` or `string` | `{}`            |
-| `primary_key`            |    ✅     | The name of the field that identifies instances of this type. Must be defined in `fields`, must be marked `"required": true`, and its retrieval mode must be `"extract"` (or the planned `"load"`) at every context level it is used at — never `"default"` or `"skip"`.               |               `string`               | —               |
+| `primary_key`            |    ✅     | The name of the field that identifies instances of this type. Must be defined in `fields`, must be marked `"required": true`, and its retrieval mode must be `"extract"` at every context level it is used at — never `"default"` or `"skip"`.               |               `string`               | —               |
 | `deduplication`          |    🟡     | The identity policy for this type. Currently only `"primary_key"` is supported. See [Identity and Merging](#-identity-and-merging).                                                                                          |               `string`               | `"primary_key"` |
 | `default_merge_strategy` |    🟡     | How to reconcile field values when the same entity is observed again. Individual fields may override it. See [Merge Strategies](#merge-strategies).                                                                          |               `string`               | `"keep"`        |
 | `fields`                 |    🟡     | The **fields** of this entity type, keyed by field name. See [Entity Fields](#entity-fields).                                                                                                                                |       `object[string, Field]`        | `{}`            |
@@ -181,9 +182,6 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `"extract"` | The LLM reads the value from the source text.                               |    ✅    |     ✅      |
 | `"default"` | The declared `default_value` is used; the field never enters a prompt.      |    ✅    |     ✅      |
 | `"skip"`    | The field is not retrieved at this level and is left `NULL`.                |    ✅    |     ✅      |
-| `"load"`    | Load the value from an external file instead of the text. 🚧 **Planned — not yet implemented.** |    ❌    |     ✅      |
-
-> 🚧 `"load"` is a **planned** mode. It is part of the schema and passes validation today, but no loader is wired up yet, so a field declared `"load"` resolves to its `default_value`, or to `NULL` if none is declared. Prefer `"extract"`, `"default"` or `"skip"` until it ships, and treat any `"load"` already in a model as a marker for a value the engine will populate once the mode lands.
 
 Choosing `"default"` or `"skip"` where possible is a real cost and precision lever: a field whose value is known in advance should never occupy space in a prompt or risk being hallucinated. Declaring `"default"` for a context level requires a `default_value` for that same level.
 
@@ -400,6 +398,54 @@ When an object is observed again, each field is reconciled according to its merg
 A `NULL` value never overwrites a non-null one, regardless of strategy. Observations are therefore monotonically informative: seeing an object again can add knowledge but never remove it.
 
 A typical arrangement is `"keep"` as the type default (identifier-like fields should be immutable) with `"longest"` on descriptive fields such as summaries.
+
+### Identifiers and Versioning
+
+Every exported object carries two identifiers:
+
+| Identifier     | Form                                                              | Meaning                                                                                                                                                           |
+| -------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Instance ID** | A UUIDv7, as 32 hex characters.                                  | Unique per object and per run. It is the object's ID in the export, and what relationships and provenance links use to reference their endpoints.                |
+| **Content ID**  | The first 128 bits of a SHA-256 hash, as 32 hex characters.      | Derived only from the object's identity-defining components, so it is **deterministic**: the same components always produce the same content ID, in any run or workspace. Two objects are the same object exactly when their content IDs are equal. |
+
+The content ID is what makes identity reproducible, and what lets results be compared across runs: an entity extracted in two different workspaces with the same type and the same normalized primary key has the same content ID in both.
+
+The way a content ID is computed is an **identity definition**, and each definition is **versioned**. The version tag is the first component of the hashed string, so identifiers from different versions can never collide, and it is exported next to the content ID so that every identifier in the output declares the definition it was computed under. If a future release changes what goes into an identity — its components, their order, or the primary key normalization — the version is bumped rather than the meaning of an existing version changed. Content IDs are therefore only comparable when their versions match; to compare results produced under different versions, re-run the older workspace with the current engine.
+
+The current identity definitions are version **`v1`**, where `|` is a literal separator and a *content ID* component is the hex content ID of the referenced object:
+
+| Object                                  | Version | Hashed String                                                                   |
+| --------------------------------------- | :-----: | --------------------------------------------------------------------------------- |
+| Entity                                  |  `v1`   | `v1\|<EntityType>\|<NormalizedPK>`                                               |
+| Relationship (`"primary_key"`)          |  `v1`   | `v1\|<RelationshipType>\|PRIMARY_KEY\|<SourceContentID>\|<TargetContentID>\|<NormalizedPK>` |
+| Relationship (`"endpoints"`)            |  `v1`   | `v1\|<RelationshipType>\|ENDPOINTS\|<SourceContentID>\|<TargetContentID>`        |
+| Relationship (`"none"`)                 |  `v1`   | Nothing is hashed: the content ID equals the instance ID, so every relationship is distinct. |
+| `Chunk`                                 |  `v1`   | `v1\|<DocumentContentID>\|<ChunkIndex>`                                          |
+| `Document`                              |    —    | The document's raw bytes. Unversioned, since it depends on nothing but the file.  |
+
+Relationship identities are built from the **content IDs** of their endpoints, not their instance IDs, so they are as reproducible as the entities they connect. The identity policy is part of the hashed string, so changing a relationship type's `deduplication` changes the identity of all of its relationships.
+
+The normalized primary key is part of the `v1` definition. Under `v1`, a raw primary key is normalized by, in order:
+
+1. Applying Unicode **NFKC** normalization.
+2. Removing non-printable characters.
+3. Replacing en and em dashes (`–`, `—`) with a hyphen (`-`).
+4. **Case folding**.
+5. **Transliterating** to ASCII (e.g. `é` → `e`, `ß` → `ss`).
+6. Removing every character other than lowercase letters, digits, whitespace and `/ \ - + _ # & @ . : ( )`.
+7. Trimming whitespace and `/ \ . : ( )` from both ends.
+8. Collapsing runs of whitespace into a single space.
+
+A key that is empty after these steps is invalid, and its object is discarded.
+
+In the exported output, identifiers appear as follows:
+
+| Export Format | Instance ID                                                    | Content ID      | Version         | Relationship Identity Policy |
+| ------------- | -------------------------------------------------------------- | --------------- | --------------- | ---------------------------- |
+| `mdb`         | The node ID (`N_<InstanceID>`); `P_id` on relationships.       | `P_content_id`  | `P_id_version`  | `P_id_policy`                |
+| `neo4j`       | `_id`                                                          | `_content_id`   | `_id_version`   | `_id_policy`                 |
+
+`Document` objects carry no version property, and the `ChunkOf` / `ExtractedFrom` provenance links carry no identifiers of their own.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

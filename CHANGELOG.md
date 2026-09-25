@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
-  - [🚧 Deferred](#-deferred)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
@@ -72,13 +71,9 @@ and the changes are **not backwards compatible** with a `0.2.0` data directory.
 
 - **JSON export format.** The supported formats are now `mdb` (MillenniumDB) and `neo4j`.
 - **Approximate deduplication.** Identity is exact on the normalized primary key. The recommended substitute is to move canonicalization into the schema, with a declared pattern and worked examples on the primary key field.
-- **Metadata files.** The `docs/metadata/` directory and property extraction from it are gone. The `load` retrieval mode that read them is **deferred rather than dropped** — see Deferred below.
+- **Metadata files.** The `docs/metadata/` directory and property extraction from it are gone.
 - **Hybrid entities and document sets**, superseded by context levels and document collections.
 - Configuration parameters `export_formats`, `max_tokens` and `max_worker_threads`, superseded by `export.format`, `chunking.target_tokens` and `llm.max_concurrency`.
-
-### 🚧 Deferred
-
-- **`load` retrieval mode**, for populating entity fields from external files rather than from the text. The mode is part of the schema and passes validation — it is accepted at the `document` context level and may be used by a primary key — but no loader is wired up yet, so a field declared `load` currently resolves to its `default_value`, or to `NULL` if none is declared. Planned, not abandoned.
 
 ### 🐛 Fixed
 
@@ -98,7 +93,7 @@ and the changes are **not backwards compatible** with a `0.2.0` data directory.
 ### 📝 Documentation
 
 - Rewrote the **README** around workspaces, the knowledge model and the current CLI.
-- Rewrote the **Knowledge Model** documentation (`docs/knowledge-model.md`, previously `docs/graph-model.md`) against the current schema, including identity, merging and reserved names.
+- Rewrote the **Knowledge Model** documentation (`docs/knowledge-model.md`, previously `docs/graph-model.md`) against the current schema, including identity, identifier versioning, merging and reserved names.
 - Added **Workspace** documentation (`docs/workspace.md`) covering the workspace layout, the document collection registry and the export output.
 - Rewrote the **Configuration** documentation against the current TOML sections, and corrected stale default values in the shipped configuration comments.
 - Rewrote the **Project Structure** documentation against the current layout.
