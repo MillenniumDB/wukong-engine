@@ -1,0 +1,40 @@
+{
+    "ontology_id": "ont_4_book",
+    "title": "Book Ontology",
+    "value_entity_type": null,
+    "entity_types": {
+        "Publisher": "publisher",
+        "LiteraryGenre": "literary genre",
+        "Language": "language",
+        "Territory": "territory",
+        "Human": "human",
+        "Book": "book",
+        "TradeMagazine": "trade magazine",
+        "LiteraryWork": "literary work",
+        "FictionalCharacter": "fictional character"
+    },
+    "relationship_types": {
+        "Illustrator": "illustrator",
+        "Author": "author",
+        "Publisher": "publisher",
+        "Characters": "characters",
+        "Editor": "editor",
+        "NarrativeLocation": "narrative_location",
+        "Genre": "genre",
+        "LanguageOfWorkOrName": "language_of_work_or_name"
+    },
+    "subject_types": {
+        "SubjectQ47461344": "Q47461344"
+    },
+    "property_separator": "; ",
+    "properties": {
+        "SubjectQ47461344": {
+            "followed_by": "followed_by",
+            "place_of_publication": "place_of_publication",
+            "depicts": "depicts"
+        },
+        "Book": {
+            "publication_date": "publication_date"
+        }
+    }
+}

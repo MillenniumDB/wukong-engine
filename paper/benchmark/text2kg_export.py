@@ -13,6 +13,16 @@ Since setup writes one sentence per document named after its benchmark id, the
 document's file stem is the test sentence id. Every test sentence gets a record,
 including sentences that yielded no triples, so the evaluator counts them.
 
+A workspace compiled with `--literal-properties` also carries relations as entity
+properties. Each property value becomes a triple `(entity, relation, value)`,
+attributed through entity provenance instead:
+
+    entities -> entity_provenance -> chunks -> documents.source_uri
+
+Entities are merged across sentences, so a merged value may have been read from
+a different sentence than the one being attributed. A value is therefore only
+emitted for a sentence that states it.
+
 Example:
     python paper/benchmark/text2kg_export.py \
         --benchmark ../benchmarks/Text2KGBench --onto 2_music \
@@ -21,6 +31,7 @@ Example:
 
 import argparse
 import json
+import re
 import sqlite3
 import sys
 from collections import defaultdict
@@ -28,7 +39,21 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from text2kg_setup import ONTOLOGIES  # noqa: E402
+from text2kg_setup import DATE_OBJECT_PATTERN, ONTOLOGIES  # noqa: E402
+
+# Every chunk-level sighting of an entity, with the text it was seen in
+PROPERTY_QUERY = """
+    SELECT
+        d.source_uri       AS source_uri,
+        c.content          AS content,
+        e.entity_type_name AS entity_type,
+        e.properties       AS properties
+    FROM entity_provenance ep
+    JOIN entities e  ON e.content_id = ep.entity_content_id
+    JOIN chunks c    ON c.content_id = ep.context_content_id
+    JOIN documents d ON d.content_id = c.document_content_id
+    WHERE ep.context_level = 'CHUNK'
+"""
 
 # Each relationship is attributed to every chunk it was extracted from, so a
 # triple is emitted once per contributing sentence.
@@ -106,6 +131,64 @@ def collect_triples(
     return triples, skipped
 
 
+def compact(text: str) -> str:
+    """Lowercase and drop spaces and underscores, as the evaluator compares strings."""
+    return re.sub(r'(_|\s+)', '', text).lower()
+
+
+def stated_in(value: str, text: str) -> bool:
+    """Whether a property value is stated in a sentence.
+
+    A date follows the dataset's `<DD> <Month> <YYYY>` convention rather than the
+    sentence's wording, so only its year is required to occur.
+    """
+    if DATE_OBJECT_PATTERN.match(value):
+        return value[-4:] in text
+    return compact(value) in compact(text)
+
+
+def collect_property_triples(
+    staging_db: Path,
+    properties: dict[str, dict[str, str]],
+    separator: str,
+    primary_keys: dict[str, str],
+    triples: dict[str, list[list[str]]],
+) -> int:
+    """Add the triples encoded as entity properties to the per-sentence triples.
+
+    Returns the number of values withheld because the sentence does not state them.
+    """
+    withheld = 0
+    connection = sqlite3.connect(f'file:{staging_db}?mode=ro', uri=True)
+    connection.row_factory = sqlite3.Row
+    try:
+        for row in connection.execute(PROPERTY_QUERY):
+            fields = properties.get(row['entity_type'])
+            if not fields:
+                continue
+            subject = read_primary_key(row['properties'], primary_keys, row['entity_type'])
+            if subject is None:
+                continue
+            values = json.loads(row['properties'])
+            sentence_id = Path(row['source_uri']).stem
+            for field, relation in fields.items():
+                raw = values.get(field)
+                if not isinstance(raw, str):
+                    continue
+                for value in (part.strip() for part in raw.split(separator.strip())):
+                    if not value:
+                        continue
+                    if not stated_in(value, row['content']):
+                        withheld += 1
+                        continue
+                    triple = [subject, relation, value]
+                    if triple not in triples[sentence_id]:
+                        triples[sentence_id].append(triple)
+    finally:
+        connection.close()
+    return withheld
+
+
 def read_test_cases(test_path: Path) -> list[tuple[str, str]]:
     """Read the ordered (id, sentence) pairs for an ontology."""
     cases = []
@@ -125,7 +208,13 @@ def export_ontology(onto: str, args: argparse.Namespace) -> dict[str, int | str]
         raise FileNotFoundError(f'No staging database for {onto}: {staging_db}')
 
     mapping = json.loads((workspace / 'text2kg_mapping.json').read_text(encoding='utf-8'))
-    by_document, skipped = collect_triples(staging_db, mapping['relationship_types'], load_primary_keys(workspace))
+    primary_keys = load_primary_keys(workspace)
+    by_document, skipped = collect_triples(staging_db, mapping['relationship_types'], primary_keys)
+    withheld = 0
+    if mapping.get('properties'):
+        withheld = collect_property_triples(
+            staging_db, mapping['properties'], mapping['property_separator'], primary_keys, by_document,
+        )
 
     test_path = Path(args.benchmark).resolve() / 'data' / args.dataset / 'test' / f'ont_{onto}_test.jsonl'
     test_cases = read_test_cases(test_path)
@@ -162,6 +251,7 @@ def export_ontology(onto: str, args: argparse.Namespace) -> dict[str, int | str]
         'with_triples': sum(1 for i, _ in test_cases if triples.get(i)),
         'triples': sum(len(triples.get(i, [])) for i, _ in test_cases),
         'skipped': skipped,
+        'withheld': withheld,
         'unknown_ids': unknown,
         'out': str(out_path),
     }
@@ -187,6 +277,8 @@ def main() -> int:
         warning = ''
         if result['skipped']:
             warning += f' skipped={result["skipped"]}'
+        if result['withheld']:
+            warning += f' withheld_unstated={result["withheld"]}'
         if result['unknown_ids']:
             warning += f' UNKNOWN_IDS={result["unknown_ids"]}'
         print(

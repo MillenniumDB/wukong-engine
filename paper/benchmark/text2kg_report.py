@@ -126,7 +126,9 @@ def recall_by_object_type(
     has no room for a property, so setup routes objects with no usable range
     concept to the catch-all `Value` entity type. Such an object must then be
     extracted as an entity in its own right before any relationship can point at
-    it, which is the cost this table measures.
+    it, which is the cost this table measures. A workspace compiled with
+    `--literal-properties` stores those objects as entity properties instead, and
+    the same bucket then measures recall on property-valued triples.
     """
     buckets: dict[str, list[int]] = {'entity': [0, 0], 'value': [0, 0], 'off_ontology': [0, 0]}
     per_relation: list[tuple[str, str, int, int]] = []
@@ -139,11 +141,15 @@ def recall_by_object_type(
         mapping = json.loads((workspace / 'text2kg_mapping.json').read_text(encoding='utf-8'))
         value_type = mapping['value_entity_type']
 
-        # A relation is "value typed" when every endpoint it declares targets Value
+        # A relation is "value typed" when every endpoint it declares targets
+        # Value, or when it is compiled into an entity property
         is_value: dict[str, bool] = {}
         for wukong_name, label in mapping['relationship_types'].items():
             targets = {t for source in model['relationship_types'][wukong_name]['endpoints'].values() for t in source}
             is_value[label] = bool(targets) and targets == {value_type}
+        for fields in mapping.get('properties', {}).values():
+            for label in fields.values():
+                is_value[label] = True
 
         system: dict[str, list[list[str]]] = {}
         for line in (responses / f'ont_{onto}_wukong_responses.jsonl').read_text(encoding='utf-8').splitlines():
@@ -228,6 +234,12 @@ def miss_decomposition(
         model = json.loads((workspace / 'knowledge_model.json').read_text(encoding='utf-8'))
         mapping = json.loads((workspace / 'text2kg_mapping.json').read_text(encoding='utf-8'))
         relationship_of = {label: name for name, label in mapping['relationship_types'].items()}
+
+        # A property-valued object is never an entity, so the entity/relationship
+        # decomposition does not apply to it
+        property_only = {
+            label for fields in mapping.get('properties', {}).values() for label in fields.values()
+        } - set(relationship_of)
         allowed = {
             name: {(source, target) for source, targets in spec['endpoints'].items() for target in targets}
             for name, spec in model['relationship_types'].items()
@@ -258,7 +270,7 @@ def miss_decomposition(
 
             for subject, relation, obj in gold:
                 key_s, key_o = normalize_triple([subject]), normalize_triple([obj])
-                if key_s not in sentence or key_o not in sentence:
+                if relation in property_only or key_s not in sentence or key_o not in sentence:
                     continue
                 totals['achievable'] += 1
                 if key_s + normalize_triple([relation]) + key_o in keys:
@@ -336,7 +348,7 @@ def main() -> int:
         print('|---|---|---|---|')
         for bucket, label in (
             ('entity', 'A typed entity'),
-            ('value', 'Generic `Value` node (a property in WUKONG terms)'),
+            ('value', 'Generic `Value` node, or entity property with `--literal-properties`'),
             ('off_ontology', 'Relation absent from the ontology'),
         ):
             total, matched = buckets[bucket]

@@ -52,7 +52,10 @@ report an evaluation on a public benchmark with reference annotations and on a c
 output that conforms to the given ontology in every case and whose relation arguments are
 almost never absent from the source sentence — subject hallucination 0.00 and object
 hallucination 0.01, against 0.17 for 2-shot baselines on the same data — at accuracy
-comparable to those baselines and a cost of roughly $0.0007 per sentence. On the news
+comparable to those baselines under the benchmark's published protocol, and higher than
+theirs (F1 0.39 against 0.36) under an adjusted protocol that lets literals be entity
+properties and corrects the gold standard identically for every system, at a cost of
+roughly $0.0007 per sentence. On the news
 corpus, request grouping and endpoint pruning together reduce the number of LLM calls by
 roughly 6× against a naive per-type decomposition.
 
@@ -156,7 +159,10 @@ knowledge that is read once and can then take whatever shape its consumer requir
 Empirically (§11.5), on a public benchmark with reference annotations the design yields
 output that is ontology-conformant in every case and effectively free of hallucinated
 arguments (subject 0.00, object 0.01, against 0.17–0.19 for 2-shot baselines), at accuracy
-comparable to those baselines and a cost of ≈$0.0007 per sentence.
+comparable to those baselines under the published protocol (F1 0.34 against 0.35) and
+above them under an adjusted protocol that removes benchmark defects for every system and
+lets literal values be entity properties (0.39 against 0.36), at a cost of ≈$0.0007 per
+sentence.
 
 ---
 
@@ -987,6 +993,17 @@ hand-tuning, and the extracted graph is converted back to triples through relati
 provenance. The full protocol, the harness and the per-sentence outputs are in
 `paper/benchmark.md`; this section reports what it establishes for the design.
 
+We report the benchmark under two protocols, and both belong in the paper. The **vanilla
+protocol** takes the benchmark exactly as published and is directly comparable to its
+published baselines. It is also demonstrably unfair to a property-bearing extractor, and it
+scores gold triples that no faithful system can produce. The **adjusted protocol**
+(`paper/benchmark-adjusted.md`) changes two things. It lets WUKONG represent literals the
+way it natively does, as entity properties. And it scores every system, baselines included,
+against a corrected copy of the gold standard, with the benchmark's evaluator unmodified.
+It is fairer, but its numbers are not comparable to anything published on Text2KGBench.
+
+#### Vanilla protocol
+
 Two configurations are reported. **Zero-tuning** compiles each ontology exactly as published
 and gives the model nothing beyond it. **Train-grounded** additionally seeds each entity type
 with up to three example surface forms drawn from the benchmark's *train* split — the same
@@ -1037,6 +1054,8 @@ reduces by 38% the gold triples that were unreachable because the entity pass as
 argument a type the relation did not admit. A second arm, run on one ontology only, removes
 the endpoint type constraint entirely and raises that ontology's F1 from 0.09 to 0.23,
 confirming that those arguments were being extracted and the model was refusing the link.
+A third change, representing literals as entity properties, is the subject of the
+adjusted protocol below: +0.03 F1 on its own.
 
 **What the F1 column does and does not show.** Three properties of the benchmark bound it
 for any faithful system, and they should be stated wherever the number is quoted. First,
@@ -1048,11 +1067,79 @@ macro F1 at **0.644**. Third, and specific to us, a benchmark triple has no plac
 property: a literal that WUKONG would model as a field on an entity must instead become a
 node with a relationship pointing at it, and recall on those objects is 0.199 against 0.382
 for objects that are genuinely entities, across 24% of the gold standard. The baselines emit
-undifferentiated `(s, r, o)` strings and pay nothing for that distinction. The honest reading
-is that WUKONG reaches accuracy comparable to the baselines *while* satisfying constraints
-they do not satisfy, not that it is the more accurate extractor on this benchmark.
+undifferentiated `(s, r, o)` strings and pay nothing for that distinction. Under this
+protocol the honest reading is that WUKONG reaches accuracy comparable to the baselines
+*while* satisfying constraints they do not satisfy, not that it is the more accurate
+extractor.
 
-**Caveats.** One model, one run per configuration, no repetitions, so RQ7 is untouched. The
+#### Adjusted protocol
+
+The adjusted protocol keeps the train-grounded configuration and changes two things.
+
+**Modelling: literals as properties.** A relation with no usable range concept, which
+the vanilla compilation had to point at a catch-all `Value` entity, is compiled instead
+into an optional string field on its domain entity type. That is how WUKONG represents
+a date or a classification natively. The field is filled in the same call that extracts
+the entity, and the exporter turns each value back into the triple the benchmark expects.
+The rule is applied mechanically to all 25 such relations, including the few whose objects
+are really entities with an undeclared type, since choosing which ones are "real" literals
+would be per-ontology tuning. Two safeguards keep this faithful. A value is only emitted
+for a sentence that states it, because entities merge across sentences and a merged value
+may have been read elsewhere. And multi-valued properties are split on a declared
+separator.
+
+**Scoring: corrections applied to every system.** Five defects documented under the
+vanilla protocol are corrected on a copy of the benchmark data, and all systems are
+re-scored by the unmodified evaluator: trailing spaces in three relation labels (B1);
+142 sentences whose empty gold standard makes a correct empty answer score zero (B2); 96
+gold triples using relations absent from their own ontology (B3); 158 gold dates written
+in a zero-day convention the train split never shows, which neither baseline ever emits
+(B4); and 320 test sentences present verbatim in the train split the baselines retrieve
+their examples from (B5). A sixth correction, dropping gold triples whose subject is absent
+from the sentence (B6), is reported only as a secondary view: it is the largest defect,
+but also the one most obviously in a faithful extractor's favour. A copy with no
+corrections reproduces every system's published score exactly.
+
+| System | P | R | F1 | Ontology conf. | Subj. halluc. | Rel. halluc. | Obj. halluc. |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| WUKONG, train-grounded + properties | **0.41** | **0.40** | **0.39** | **1.00** | **0.00** | **0.00** | **0.01** |
+| WUKONG, train-grounded | 0.38 | 0.37 | 0.36 | **1.00** | **0.00** | **0.00** | **0.01** |
+| Vicuna-13B, 2-shot | 0.38 | 0.36 | 0.36 | 0.84 | 0.17 | 0.13 | 0.18 |
+| Alpaca-LoRA-13B, 2-shot | 0.31 | 0.27 | 0.27 | 0.88 | 0.18 | 0.12 | 0.19 |
+
+Separating the two changes:
+
+| Global F1 | WUKONG + properties | WUKONG train-grounded | Vicuna-13B | Alpaca-LoRA-13B |
+| --- | ---: | ---: | ---: | ---: |
+| Vanilla scoring | **0.37** | 0.34 | 0.35 | 0.27 |
+| Adjusted scoring (B1–B5) | **0.39** | 0.36 | 0.36 | 0.27 |
+| Reachable gold only (B1–B6) | **0.54** | 0.50 | 0.46 | 0.35 |
+
+**The property representation alone is worth +0.03 F1** (0.34 → 0.37 with identical
+scoring), and it takes WUKONG past Vicuna under the benchmark's own, unmodified protocol.
+It raises recall on range-less objects from 0.199 to 0.330, closing most of the gap to
+genuine entities (0.376), at unchanged conformance and hallucination and a cost of $0.02
+over the train-grounded run. The clearest case is film publication dates: 13 of 364 gold
+triples matched when the year had to survive as an entity, 140 when it is a field on the
+film. **The scoring corrections are nearly neutral between systems**, adding 0.02 to every
+WUKONG configuration and 0.01 to Vicuna; the train/test leakage correction, notably, does
+not measurably reduce the baselines' advantage. Only B6 separates the systems sharply
+(+0.15 for WUKONG, +0.10 for Vicuna), which is the expected signature of a system that
+never invents subjects. WUKONG leads Vicuna on seven of ten ontologies (eight on the
+manually verified subset). Vicuna still wins clearly on the two where endpoint type gating
+costs WUKONG most, which the adjusted protocol deliberately does not relax.
+
+Two threats to validity are specific to this protocol. The multi-value instruction was
+reworded once, after a first attempt showed the model keeping enumerations verbatim as a
+single value; the run was restarted from scratch, and only the re-run is reported. The
+zero-day date convention (B4) was likewise found by inspecting this run's misses. Both are
+disclosed in `paper/benchmark-adjusted.md` §7, together with an unexplained regression on
+one ontology (music, 0.43 → 0.40) that a single run cannot attribute to the change rather
+than to variance.
+
+#### Caveats common to both protocols
+
+One model, one run per configuration, no repetitions, so RQ7 is untouched. The
 benchmark's documents are single sentences, which exercises neither cross-chunk nor
 document-level extraction (§5.2) and leaves deduplication almost inert — 4,062 sentences
 yield 3,911 distinct documents and little entity merging — so RQ4 is untested here. The
@@ -1074,14 +1161,14 @@ approximately $20 and five hours — or report it as the targeted probe it curre
   temporal types would allow richer constraints and better downstream querying — and matter
   more once representations with real type systems are targeted.
 - **Properties versus triples.** The model represents a literal as a field on an entity,
-  which is the right shape for the data but does not survive conversion to a bare triple:
-  the literal has to become a node with a relationship pointing at it, and it must therefore
-  be recognized as an entity in its own right before any link can be made. §11.5 measures
-  the cost on a benchmark that admits only triples — recall 0.199 on such objects against
-  0.382 on genuine entities, over a quarter of that gold standard. This is a limitation of
-  the interchange format rather than of the extraction, but it is a real obstacle to
-  evaluating property-bearing models against triple-shaped reference data, and it will
-  recur with any RDF-style target.
+  which is the right shape for the data but has no direct counterpart in a bare triple.
+  §11.5 measures what forcing the literal into a node costs: recall 0.199 on such objects
+  against 0.382 on genuine entities, over a quarter of that gold standard. It also measures
+  the remedy: keeping the literal a property and converting it to a triple only at export
+  raises that recall to 0.330. The remaining obstacle is evaluative rather than technical.
+  Triple-shaped reference data has no notion of a property, so the conversion must be
+  written per benchmark and disclosed as a protocol change, and the same will be true of
+  any RDF-style target.
 - **Schema quality as the dominant variable.** §11.5 shows a larger effect from grounding
   entity types with a few examples (F1 0.26 → 0.34) than we would have predicted from the
   design alone. Systematically studying what makes a knowledge model good — which of
@@ -1130,7 +1217,10 @@ from — subject hallucination 0.00 against 0.17 for 2-shot baselines on the sam
 accuracy was comparable to those baselines at roughly $0.0007 per sentence. What the same
 evaluation shows just as clearly is how much of the remaining gap belongs to the schema
 rather than the extractor: grounding the entity types with a handful of examples per type,
-and nothing else, moved F1 from 0.26 to 0.34 without disturbing either property. A knowledge
+and nothing else, moved F1 from 0.26 to 0.34 without disturbing either property.
+Representing literals as properties, the way the knowledge model is designed to, moved it
+to 0.37, past the strongest baseline, and to 0.39 against that baseline's 0.36 once the
+benchmark's gold-standard defects are corrected for every system alike. A knowledge
 model is not merely a constraint the system must satisfy; it is the main thing the system's
 quality depends on.
 
@@ -1233,11 +1323,20 @@ figures.
 15. **Corpora we may publish about.** Are both the crime-news and urban-planning corpora
     usable in a publication (licensing, redistribution of the source articles)? If the news
     corpus cannot be released, the paper can still report over it but the artifact story in
-    Q17 changes.
+    Q18 changes.
+16. **Which Text2KGBench protocol leads?** §11.5 now reports two: vanilla (comparable to the
+    published baselines, F1 0.34 vs 0.35) and adjusted (fairer to us, F1 0.39 vs 0.36, but
+    it changes the modelling and removes defective gold for every system). The draft gives
+    both equal standing and leads the abstract with the vanilla comparison. A reviewer will
+    accept the adjusted numbers more readily if the vanilla ones are never hidden. Do you want
+    the adjusted protocol promoted to the headline, or kept as the second number? Also: the
+    adjusted protocol has two disclosed test-informed steps (a reworded instruction and the
+    date correction), and repeating both runs a few times would address them and the
+    unexplained music regression at once, for about $3 per run.
 
 **Attribution**
 
-16. **Author list, affiliations, funding and acknowledgements.**
-17. **Artifact availability.** Will the engine, the example knowledge models, or a produced
+17. **Author list, affiliations, funding and acknowledgements.**
+18. **Artifact availability.** Will the engine, the example knowledge models, or a produced
     graph be released alongside the paper? This affects both venue choice and how §9 and
     §11 should be written.

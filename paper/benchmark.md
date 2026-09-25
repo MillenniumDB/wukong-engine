@@ -1,7 +1,21 @@
-# WUKONG on Text2KGBench: Protocol and Results
+# WUKONG on Text2KGBench: Protocol and Results (Vanilla)
 
 This document records how the WUKONG engine is evaluated on Text2KGBench, so
 the experiment can be reproduced from the repository, and what the results say.
+
+> **This is the vanilla run: the benchmark exactly as published, and unfair to
+> WUKONG.** Ontologies are compiled as published, the gold standard is scored as
+> published, and the numbers are directly comparable to the published
+> baselines. It is also the run whose defects this document diagnoses: literals
+> forced into entity nodes (§7.5), unscoreable and unreachable gold (§7.2, §8),
+> and train/test leakage favouring the baselines (§8.2).
+>
+> A companion run, [`benchmark-adjusted.md`](benchmark-adjusted.md), is **fairer
+> to WUKONG but changes things**. It models range-less relations as entity
+> properties, and scores every system, baselines included, against a corrected
+> copy of the gold. There WUKONG reaches **F1 0.39 against Vicuna's 0.36**, and
+> **0.37 against 0.35** with the modelling change alone under this document's
+> unmodified scoring. Quote both, labelled.
 
 - **Benchmark**: [Text2KGBench](https://github.com/cenguix/Text2KGBench) (ISWC 2023), Wikidata-TekGen test suite
 - **Task**: ontology-driven knowledge graph generation — given a sentence and an ontology, emit the triples the sentence states
@@ -162,6 +176,7 @@ interpreter path will not resolve.
 | `text2kg_eval.py` | Write the evaluator config and invoke the benchmark's `run_eval.py` (§5) |
 | `text2kg_report.py` | Regenerate every table in §6 from the results on disk; `--benchmark` adds the recall-by-object-type table (§7.5) |
 | `text2kg_diagnose.py` | Reachability, the macro F1 ceiling and the data artifacts (§7.2, §8); needs the eval venv |
+| `text2kg_rescore.py` | Corrected benchmark copies and cross-system re-scoring, for [`benchmark-adjusted.md`](benchmark-adjusted.md) only |
 
 `run_benchmark.sh` reads `PREFIX` and `RESULTS` from the environment, which is
 how an ablation arm runs against its own workspaces without touching the primary
@@ -1048,4 +1063,7 @@ matters.
 
 What remains unrecovered after arm B is the representational mismatch of §7.5
 (`Value` recall 0.199 against 0.382 for typed entities) and the benchmark
-ceiling of §7.2 and §8.1. Those are not addressable by compilation changes.
+ceiling of §7.2 and §8.1. Those are not addressable within this protocol.
+[`benchmark-adjusted.md`](benchmark-adjusted.md) addresses both by changing the
+protocol: range-less relations become entity properties (`Value` recall 0.199 →
+0.330), and the gold is corrected for every system.
