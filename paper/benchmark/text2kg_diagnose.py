@@ -40,7 +40,14 @@ MOJIBAKE = re.compile('[ÃÂ][-¿]|â')
 
 
 def read_jsonl(path: Path) -> list[dict]:
-    """Read a JSONL file into a list of records."""
+    """Read a JSONL file into a list of records.
+
+    Args:
+        path: JSONL file to read. Blank lines are skipped.
+
+    Returns:
+        One decoded record per non-blank line, in file order.
+    """
     return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
 
 
@@ -49,13 +56,27 @@ def normalize(stemmer: PorterStemmer, text: str) -> str:
 
     The evaluator strips the stemmed form of the "01 January" date prefix, since
     TekGen writes year-only dates that way and only the year is in the sentence.
+
+    Args:
+        stemmer: Porter stemmer applied to each token.
+        text: Text to normalize.
+
+    Returns:
+        The stemmed tokens joined without whitespace or underscores, lowercased, with ``01januari`` removed.
     """
     stemmed = ''.join(stemmer.stem(word) for word in word_tokenize(text))
     return re.sub(r'(_|\s+)', '', stemmed).lower().replace('01januari', '')
 
 
 def repair_encoding(text: str) -> str:
-    """Undo one round of utf-8-decoded-as-latin-1, where that is reversible."""
+    """Undo one round of utf-8-decoded-as-latin-1, where that is reversible.
+
+    Args:
+        text: Possibly mojibake-corrupted text.
+
+    Returns:
+        The repaired text, or ``text`` unchanged if it doesn't round-trip through latin-1 and utf-8.
+    """
     try:
         return text.encode('latin-1').decode('utf-8')
     except (UnicodeEncodeError, UnicodeDecodeError):
@@ -63,10 +84,25 @@ def repair_encoding(text: str) -> str:
 
 
 class OntologyData:
-    """The ground truth, ontology and verified subset for one ontology."""
+    """The ground truth, ontology and verified subset for one ontology.
+
+    Attributes:
+        onto: Ontology identifier, as used in the dataset file names.
+        stemmer: Stemmer used to normalize sentences and triple arguments.
+        labels: Relation labels declared by the ontology.
+        concepts: Space-joined concept labels of the ontology, searched alongside each sentence.
+        ground_truth: Ground-truth records, one per test sentence.
+        selected: IDs of the manually verified sentences, or an empty set if the ontology has none.
+    """
 
     def __init__(self, onto: str, dataset: Path, stemmer: PorterStemmer) -> None:
-        """Load every file the diagnostics need for a single ontology."""
+        """Load every file the diagnostics need for a single ontology.
+
+        Args:
+            onto: Ontology identifier, as used in the dataset file names.
+            dataset: Root directory of the dataset suite.
+            stemmer: Stemmer used to normalize sentences and triple arguments.
+        """
         self.onto = onto
         self.stemmer = stemmer
         ontology = json.loads((dataset / 'ontologies' / f'{onto}_ontology.json').read_text(encoding='utf-8'))
@@ -82,7 +118,18 @@ class OntologyData:
         )
 
     def reachable(self, record: dict) -> tuple[int, dict[str, int]]:
-        """Count the gold triples of one sentence a faithful extractor could produce."""
+        """Count the gold triples of one sentence a faithful extractor could produce.
+
+        A triple is reachable when its relation is declared by the ontology and both arguments appear, after
+        normalization, in the sentence or the ontology's concept labels.
+
+        Args:
+            record: Ground-truth record holding the sentence and its gold triples.
+
+        Returns:
+            A tuple of the number of reachable triples and a counter of the unreachability causes
+            (``off_ontology``, ``absent_subject``, ``absent_object``). A triple may count towards several causes.
+        """
         haystack = normalize(self.stemmer, record['sent'] + ' ' + self.concepts)
         counts = collections.Counter()
         ok = 0
@@ -98,7 +145,11 @@ class OntologyData:
 
 
 def report_reachability(data: list[OntologyData]) -> None:
-    """Print the share of gold triples that any faithful extractor could match."""
+    """Print the share of gold triples that any faithful extractor could match.
+
+    Args:
+        data: Loaded data for every ontology in the suite.
+    """
     print('\n## Reachable ground truth\n')
     print('| Ontology | GT triples | Off-ontology | Absent subject | Absent object | Reachable |')
     print('|---|---|---|---|---|---|')
@@ -133,6 +184,9 @@ def report_ceiling(data: list[OntologyData]) -> None:
     however the system answers, and unreachable gold triples cost recall. The
     ceiling assumes a system that emits exactly the reachable triples and
     nothing else, so its precision is 1 wherever it answers at all.
+
+    Args:
+        data: Loaded data for every ontology in the suite.
     """
     print('\n## Macro F1 ceiling\n')
     print('| Ontology | Sentences | Empty GT | Ceiling (all) | Ceiling (verified) |')
@@ -170,7 +224,11 @@ def report_ceiling(data: list[OntologyData]) -> None:
 
 
 def report_artifacts(data: list[OntologyData]) -> None:
-    """Print data defects that distort scores independently of any system."""
+    """Print data defects that distort scores independently of any system.
+
+    Args:
+        data: Loaded data for every ontology in the suite.
+    """
     print('\n## Data artifacts\n')
     print('| Ontology | Empty GT | Dup. triples | GT self-loops | Mojibake sents | Fragments |')
     print('|---|---|---|---|---|---|')
@@ -219,7 +277,12 @@ def report_artifacts(data: list[OntologyData]) -> None:
 
 
 def report_contamination(data: list[OntologyData], dataset: Path) -> None:
-    """Print how many test sentences also appear in the train split."""
+    """Print how many test sentences also appear in the train split.
+
+    Args:
+        data: Loaded data for every ontology in the suite.
+        dataset: Root directory of the dataset suite, holding the ``train`` split.
+    """
     print('\n## Train/test overlap\n')
     print('| Ontology | Test sentences | Also in train | Share |')
     print('|---|---|---|---|')
@@ -236,7 +299,11 @@ def report_contamination(data: list[OntologyData], dataset: Path) -> None:
 
 
 def main() -> int:
-    """Print every diagnostic for the Wikidata-TekGen suite."""
+    """Print every diagnostic for the Wikidata-TekGen suite.
+
+    Returns:
+        The process exit code, always 0.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--benchmark', type=Path, required=True)
     parser.add_argument('--dataset', default='wikidata_tekgen')

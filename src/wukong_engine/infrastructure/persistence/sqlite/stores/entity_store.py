@@ -22,12 +22,24 @@ class SQLiteEntityStore(EntityStore):
     """SQLite implementation of the EntityStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the staging store with a SQLite connection."""
+        """Initialize the staging store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection used for all queries.
+        """
         self._conn = conn
         self._merger = EntityMerger()
 
     def _row_to_entity(self, row: sqlite3.Row, entity_type: EntityType) -> Entity:
-        """Map a database row to an Entity object."""
+        """Map a database row to an Entity object.
+
+        Args:
+            row: Row with ``instance_id``, ``content_id`` and ``properties`` columns.
+            entity_type: Entity type to assign to the entity.
+
+        Returns:
+            The entity rebuilt from the row.
+        """
         return Entity(
             id=EntityId.from_components(
                 instance=InstanceId.from_bytes(row['instance_id']),
@@ -38,7 +50,16 @@ class SQLiteEntityStore(EntityStore):
         )
 
     def _find_duplicates(self, entities: Iterable[Entity]) -> dict[bytes, Entity]:
-        """Find existing entities that match the content of the given entities."""
+        """Find existing entities that match the content of the given entities.
+
+        Stored entities are rebuilt with the type of the given entity sharing their content ID.
+
+        Args:
+            entities: Entities to look up by content ID.
+
+        Returns:
+            The stored entities, keyed by content ID bytes. Entities not yet stored are absent.
+        """
         # If no entities are provided, no duplicates can exist
         if not entities:
             return {}
@@ -62,7 +83,11 @@ class SQLiteEntityStore(EntityStore):
         return result
 
     def _bulk_insert_entities(self, entities: Iterable[Entity]) -> None:
-        """Insert a batch of new unique entities."""
+        """Insert a batch of new unique entities.
+
+        Args:
+            entities: Entities not yet present in the store.
+        """
         self._conn.executemany(
             """
             INSERT INTO entities (content_id, instance_id, entity_type_name, properties)
@@ -80,7 +105,11 @@ class SQLiteEntityStore(EntityStore):
         )
 
     def _bulk_update_properties(self, entities: Iterable[Entity]) -> None:
-        """Update properties for a batch of existing entities."""
+        """Update properties for a batch of existing entities.
+
+        Args:
+            entities: Stored entities, matched by content ID, whose properties are overwritten.
+        """
         self._conn.executemany(
             """
             UPDATE entities
@@ -94,7 +123,11 @@ class SQLiteEntityStore(EntityStore):
         )
 
     def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:
-        """Add entity types."""
+        """Add entity types.
+
+        Args:
+            entity_type_names: Names of the entity types to register. Already registered names are ignored.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO entity_types (entity_type_name)
@@ -109,7 +142,13 @@ class SQLiteEntityStore(EntityStore):
         entity_type_name: EntityTypeName,
         context_level: ContextLevel,
     ) -> None:
-        """Link a set of document collections to an entity type under a specific context level."""
+        """Link a set of document collections to an entity type under a specific context level.
+
+        Args:
+            collection_names: Collections to link. Existing links are ignored.
+            entity_type_name: Entity type extracted from the collections.
+            context_level: Context level at which the entity type is extracted from the collections.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO entity_type_collections (context_level, entity_type_name, collection_name)
@@ -119,7 +158,14 @@ class SQLiteEntityStore(EntityStore):
         )
 
     def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
-        """Insert or update a batch of entities, ensuring deduplication."""
+        """Insert or update a batch of entities, ensuring deduplication.
+
+        Entities sharing a content ID are merged, first within the batch and then with any stored entity. Stored
+        entities are only updated when merging changes their properties.
+
+        Args:
+            entities: Entities to upsert.
+        """
         # Deduplicate batch of entities locally first
         grouped_entities: dict[bytes, list[Entity]] = defaultdict(list)
         for entity in entities:
@@ -150,7 +196,12 @@ class SQLiteEntityStore(EntityStore):
         self._bulk_update_properties(to_update)
 
     def link_entities_to_source_context(self, entities: Iterable[Entity], context: ContextRef) -> None:
-        """Link a batch of entities to their source context."""
+        """Link a batch of entities to their source context.
+
+        Args:
+            entities: Entities extracted from the context.
+            context: Source context (document or chunk) the entities were extracted from.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO entity_provenance (context_level, context_content_id, entity_content_id)
@@ -160,7 +211,14 @@ class SQLiteEntityStore(EntityStore):
         )
 
     def stream_by_entity_type(self, entity_type: EntityType) -> Iterator[Entity]:
-        """Stream all entities of a given type."""
+        """Stream all entities of a given type.
+
+        Args:
+            entity_type: Entity type to filter by.
+
+        Yields:
+            The stored entities of that type, ordered by content ID.
+        """
         rows = self._conn.execute(
             'SELECT content_id, instance_id, properties FROM entities WHERE entity_type_name = ? ORDER BY content_id',
             (entity_type.name.value,),
@@ -169,7 +227,18 @@ class SQLiteEntityStore(EntityStore):
             yield self._row_to_entity(row, entity_type)
 
     def stream_by_source_context(self, context: ContextRef, model: KnowledgeModel) -> Iterator[Entity]:
-        """Stream all entities linked to a specific source context."""
+        """Stream all entities linked to a specific source context.
+
+        Args:
+            context: Source context whose linked entities are streamed.
+            model: Knowledge model used to resolve each entity's type.
+
+        Yields:
+            The entities linked to the context, ordered by content ID.
+
+        Raises:
+            ValueError: If an entity's type is not an active entity type in the knowledge model.
+        """
         rows = self._conn.execute(
             """
             SELECT e.content_id, e.instance_id, e.entity_type_name, e.properties
@@ -188,7 +257,11 @@ class SQLiteEntityStore(EntityStore):
             yield self._row_to_entity(row, entity_type)
 
     def stream_provenance_by_document(self) -> Iterator[DocumentEntityProvenance]:
-        """Stream all links of extracted entities and their source documents, grouped by document."""
+        """Stream all links of extracted entities and their source documents, grouped by document.
+
+        Yields:
+            One provenance record per document with linked entities, holding the IDs and types of those entities.
+        """
         rows = self._conn.execute(
             """
             SELECT d.content_id AS document_content_id, d.instance_id AS document_instance_id,
@@ -247,7 +320,12 @@ class SQLiteEntityStore(EntityStore):
             )
 
     def stream_provenance_by_chunk(self) -> Iterator[ChunkEntityProvenance]:
-        """Stream all links of extracted entities and their source chunks, grouped by chunk."""
+        """Stream all links of extracted entities and their source chunks, grouped by chunk.
+
+        Yields:
+            One provenance record per chunk with linked entities, holding its parent document ID and the IDs and types
+            of those entities, ordered by document and chunk index.
+        """
         rows = self._conn.execute(
             """
             SELECT c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id,
@@ -317,7 +395,14 @@ class SQLiteEntityStore(EntityStore):
             )
 
     def count_entities(self, context_level: ContextLevel) -> int:
-        """Count the number of unique entities for a given context level."""
+        """Count the number of unique entities for a given context level.
+
+        Args:
+            context_level: Context level whose entity links are counted.
+
+        Returns:
+            The number of distinct entities linked to at least one context of that level.
+        """
         row = self._conn.execute(
             """
             SELECT COUNT(DISTINCT entity_content_id) AS count
@@ -329,7 +414,14 @@ class SQLiteEntityStore(EntityStore):
         return int(row['count']) if row else 0
 
     def count_entity_mentions(self, context_level: ContextLevel) -> int:
-        """Count the number of entity mentions for a given context level."""
+        """Count the number of entity mentions for a given context level.
+
+        Args:
+            context_level: Context level whose entity links are counted.
+
+        Returns:
+            The number of entity-context links at that level.
+        """
         row = self._conn.execute(
             """
             SELECT COUNT(*) AS count

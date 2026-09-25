@@ -27,7 +27,13 @@ class ExtractionMetricsTracker:
     """Manages and tracks data extraction metrics."""
 
     def __init__(self, repository: ExtractionRepository, execution_mode: ExecutionMode) -> None:
-        """Initialize the tracker with necessary dependencies."""
+        """Initialize the tracker with necessary dependencies.
+
+        Args:
+            repository: Repository used to query extraction metrics.
+            execution_mode: Execution mode being tracked, which sets the logging and performance update intervals
+                and the execution section shown in the logs.
+        """
         self._repository = repository
         self._execution_mode = execution_mode
         self._log_interval = BATCH_LOG_INTERVAL if execution_mode == ExecutionMode.BATCH else REALTIME_LOG_INTERVAL
@@ -39,7 +45,12 @@ class ExtractionMetricsTracker:
         self._log_timestamp = time.monotonic()
 
     def _update_performance_state(self, metrics: ExtractionMetrics) -> None:
-        """Update the performance state with new metrics."""
+        """Update the performance state with new metrics.
+
+        Args:
+            metrics: Newly collected metrics whose status counts and smoothed resolution rate become the new
+                baseline, timestamped now.
+        """
         self._performance_state = PerformanceMetricsState(
             timestamp=time.monotonic(),
             job_status_counts=dict(metrics.job_status_counts),
@@ -48,7 +59,14 @@ class ExtractionMetricsTracker:
         )
 
     def _collect_metrics(self, *, should_update_performance: bool = True) -> ExtractionMetrics | None:
-        """Collect extraction metrics for the current context level."""
+        """Collect extraction metrics for the current context level.
+
+        Args:
+            should_update_performance: Whether to replace the performance state with the collected metrics.
+
+        Returns:
+            The collected metrics, or None if no context level is set.
+        """
         # If no context level is set, cannot collect metrics
         context_level = self._context_level
         if context_level is None:
@@ -65,7 +83,15 @@ class ExtractionMetricsTracker:
         return metrics
 
     def _format_metrics(self, metrics: ExtractionMetrics, context_level: ContextLevel) -> str:
-        """Format extraction metrics for logging and display."""
+        """Format extraction metrics for logging and display.
+
+        Args:
+            metrics: Metrics to format.
+            context_level: Context level the metrics belong to, shown in the title.
+
+        Returns:
+            The multi-line metrics report, with a job or batch execution section depending on the execution mode.
+        """
         # Title
         name = f' Extraction Metrics ({context_level.value}S) '
         title = '=' * 24 + name + '=' * 24 + '\n\n'
@@ -162,7 +188,15 @@ class ExtractionMetricsTracker:
         return f'{title}{progress}{execution}{output}{usage}{ending}'
 
     def request_metrics(self, *, force_log: bool = False, force_update: bool = False) -> None:
-        """Collect and log extraction metrics for the current context level, depending on the elapsed time."""
+        """Collect and log extraction metrics for the current context level, depending on the elapsed time.
+
+        Metrics are collected when the performance update interval or the log interval has elapsed (always, before
+        the first performance update), and logged only when the log interval has elapsed.
+
+        Args:
+            force_log: Whether to log regardless of the time since the last log.
+            force_update: Whether to update the performance state regardless of the time since the last update.
+        """
         # Determine whether to update performance state and log metrics based on elapsed time since last update/log
         should_update = True
         should_log = True
@@ -193,7 +227,14 @@ class ExtractionMetricsTracker:
             self._log_timestamp = time.monotonic()
 
     def set_context_level(self, context_level: ContextLevel) -> None:
-        """Set the context level for metrics tracking."""
+        """Set the context level for metrics tracking.
+
+        Resets the tracker when the context level changes or in real-time mode. In batch mode with the same context
+        level, the previous performance state is kept. Metrics are then collected once for the new level.
+
+        Args:
+            context_level: Context level to track.
+        """
         should_update = True
         if self._context_level != context_level:
             # If the context level has changed, reset the metrics tracker

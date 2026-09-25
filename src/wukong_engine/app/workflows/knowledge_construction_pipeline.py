@@ -30,7 +30,18 @@ class KnowledgeConstructionPipeline:
         extract_relationships: ExtractRelationships,
         export_knowledge: ExportKnowledge,
     ) -> None:
-        """Initialize the knowledge construction workflow with its use cases."""
+        """Initialize the knowledge construction workflow with its use cases.
+
+        Args:
+            app_config: Application configuration; its pipeline settings select which steps run.
+            uow: Unit of work used to read and update pipeline checkpoints.
+            get_document_registry: Use case that loads and validates the document registry.
+            get_knowledge_model: Use case that loads the knowledge model.
+            ingest_documents: Use case for the document ingestion step.
+            extract_entities: Use case for the entity extraction step.
+            extract_relationships: Use case for the relationship extraction step.
+            export_knowledge: Use case for the knowledge export step.
+        """
         self._app_config = app_config
         self._uow = uow
         self._get_document_registry = get_document_registry
@@ -44,7 +55,17 @@ class KnowledgeConstructionPipeline:
         self,
         step: PipelineStep,
     ) -> IngestDocuments | ExtractEntities | ExtractRelationships | ExportKnowledge:
-        """Map a pipeline step to its corresponding use case."""
+        """Map a pipeline step to its corresponding use case.
+
+        Args:
+            step: Pipeline step to resolve.
+
+        Returns:
+            The use case that executes the given step.
+
+        Raises:
+            PipelineExecutionError: If no use case is registered for the step.
+        """
         match step:
             case PipelineStep.INGEST_DOCUMENTS:
                 return self._ingest_documents
@@ -62,17 +83,25 @@ class KnowledgeConstructionPipeline:
     async def execute(self, workspace: Workspace, data_uri: str, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
-        Orchestrates the entire pipeline, which includes:
+        Loads the document registry and knowledge model, then runs the steps configured in
+        ``app_config.pipeline.steps``, which may include:
 
         1. Ingest documents
         2. Extract entities
         3. Extract relationships
         4. Export knowledge
 
+        Steps whose checkpoint is already completed are skipped. The pipeline stops early (without raising) if a step
+        finishes without being fully completed.
+
         Args:
             workspace: The user workspace containing key files and directories for the pipeline execution.
             data_uri: The base URI pointing to the data to be ingested (e.g. a local directory).
-            should_reset: If True, clears existing data on each pipeline step. If False, keeps existing data and appends any new results.
+            should_reset: If True, resets each step and every step that depends on it before running it. If False,
+                keeps existing data and appends any new results.
+
+        Raises:
+            PipelineExecutionError: If a step has no use case or its required steps have not been completed.
         """
         # Initialize the pipeline checkpoints
         with self._uow as tx:

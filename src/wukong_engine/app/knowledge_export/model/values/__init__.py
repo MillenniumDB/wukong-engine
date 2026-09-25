@@ -1,4 +1,4 @@
-"""The model package for knowledge export."""
+"""Value objects for the knowledge export model."""
 
 from .format import KnowledgeExportFormat
 

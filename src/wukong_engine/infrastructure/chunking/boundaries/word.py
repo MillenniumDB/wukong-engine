@@ -1,3 +1,5 @@
+"""Whitespace-based word boundary rule."""
+
 from collections.abc import Iterator
 
 from wukong_engine.infrastructure.chunking.models import Segment
@@ -9,7 +11,16 @@ class WordBoundary(Boundary):
     """Boundary rule capable of partitioning text into words based on whitespace."""
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
-        """Split the given text into segments."""
+        """Split the given text into segments ending after the first whitespace following each word.
+
+        Args:
+            text: Full text being chunked; offsets refer to positions in this string.
+            start: Offset where the region to split begins (inclusive).
+            end: Offset where the region to split ends (exclusive).
+
+        Yields:
+            Contiguous, non-overlapping segments that together cover ``text[start:end]``.
+        """
         # Detect segments for each contiguous sequence of non-whitespace characters
         segment_start = start
         has_content = False

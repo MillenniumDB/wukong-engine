@@ -41,11 +41,23 @@ class ExtractionRepository(Protocol):
     # Extraction Jobs
 
     def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
-        """Materialize all extractions for later processing."""
+        """Materialize all extractions for later processing.
+
+        Args:
+            knowledge_model: Knowledge model whose active types determine which extractions to materialize.
+        """
         ...
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
-        """Claim the next batch of extraction jobs for processing, under a given context level."""
+        """Claim the next batch of extraction jobs for processing, under a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to claim jobs for.
+            batch_size: Maximum number of jobs to claim.
+
+        Returns:
+            The claimed jobs, already scheduled (possibly empty if nothing is pending).
+        """
         ...
 
     def complete_job(
@@ -54,7 +66,13 @@ class ExtractionRepository(Protocol):
         results: tuple[object, ...],
         usage_metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Persist the results of a completed extraction job and mark it as completed."""
+        """Persist the results of a completed extraction job and mark it as completed.
+
+        Args:
+            job: Job whose results are being persisted.
+            results: Extracted objects to upsert and link to the job's source context.
+            usage_metrics: Token usage recorded for the job, if available.
+        """
         ...
 
     def fail_job(
@@ -64,49 +82,117 @@ class ExtractionRepository(Protocol):
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Terminate an extraction job and mark it as failed."""
+        """Terminate an extraction job and mark it as failed.
+
+        Args:
+            job: Job to mark as failed.
+            retry_policy: Policy that decides what happens to the job's extractions. If None, they are marked as failed
+                with no retry.
+            error: Error message to record on the job, if any.
+            metrics: Token usage recorded for the job, if available.
+        """
         ...
 
     def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
-        """Retrieve the source context for a given extraction job."""
+        """Retrieve the source context for a given extraction job.
+
+        Args:
+            job: Job whose source context to retrieve.
+
+        Returns:
+            The document or chunk the job extracts from.
+        """
         ...
 
     def remaining_sources(self, context_level: ContextLevel) -> int:
-        """Amount of remaining sources to process for a given context level."""
+        """Count the remaining sources to process for a given context level.
+
+        Args:
+            context_level: Context level to count sources for.
+
+        Returns:
+            Number of sources whose extraction is pending, in progress, or awaiting retry.
+        """
         ...
 
     # Extraction Batches
 
     def register_batch_submission(self, batch: ExtractionBatch, jobs: Iterable[ExtractionJob]) -> None:
-        """Persist a submitted extraction batch and associate its jobs."""
+        """Persist a submitted extraction batch and associate its jobs.
+
+        Args:
+            batch: Batch that was submitted.
+            jobs: Jobs included in the batch.
+        """
         ...
 
     def stream_active_batches(self) -> Iterator[ExtractionBatch]:
-        """Stream all active extraction batches."""
+        """Stream all active extraction batches.
+
+        Yields:
+            Each active batch.
+        """
         ...
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Update the status of a batch."""
+        """Update the status of a batch.
+
+        Args:
+            batch: Batch to update.
+            status: New status for the batch.
+        """
         ...
 
     def complete_batch(self, batch: ExtractionBatch) -> None:
-        """Mark a batch as completed."""
+        """Mark a batch as completed.
+
+        Args:
+            batch: Batch to mark as completed.
+        """
         ...
 
     def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
-        """Mark a batch as failed or cancelled and fail all associated jobs."""
+        """Mark a batch as failed or cancelled and fail all associated jobs.
+
+        Args:
+            batch: Batch to terminate.
+            status: Terminal status to set, either FAILED or CANCELLED.
+            error: Error message to record on the batch, if any.
+
+        Raises:
+            ValueError: If ``status`` is neither FAILED nor CANCELLED.
+        """
         ...
 
     def record_batch_error(self, batch: ExtractionBatch, error: str) -> None:
-        """Record an error for a batch while keeping its current status."""
+        """Record an error for a batch while keeping its current status.
+
+        Args:
+            batch: Batch to record the error on.
+            error: Error message to record.
+        """
         ...
 
     def stream_active_jobs_for_batch(self, batch: ExtractionBatch) -> Iterator[ExtractionJob]:
-        """Stream all active jobs associated with a given batch."""
+        """Stream all active jobs associated with a given batch.
+
+        Args:
+            batch: Batch whose active jobs to stream.
+
+        Yields:
+            Each active job linked to the batch.
+        """
         ...
 
     def remaining_batches(self, context_level: ContextLevel) -> int:
-        """Amount of remaining batches to process for a given context level."""
+        """Count the remaining batches to process for a given context level.
+
+        Args:
+            context_level: Context level to count batches for.
+
+        Returns:
+            Number of batches that are submitted or in progress.
+        """
         ...
 
     # Metrics
@@ -116,13 +202,26 @@ class ExtractionRepository(Protocol):
         context_level: ContextLevel,
         performance_state: PerformanceMetricsState,
     ) -> ExtractionMetrics:
-        """Retrieve extraction metrics for a given context level and performance state."""
+        """Retrieve extraction metrics for a given context level and performance state.
+
+        Args:
+            context_level: Context level to compute metrics for.
+            performance_state: Current performance state to attach to the metrics.
+
+        Returns:
+            Aggregated source, job, batch, object and token usage metrics.
+        """
         ...
 
     # Recovery
 
     def recover_extractions(self) -> tuple[int, int]:
-        """Recover extractions that are in an incomplete/inconsistent state."""
+        """Recover extractions that are in an incomplete/inconsistent state.
+
+        Returns:
+            A tuple of the number of stalled jobs terminated and the number of deferred extractions reset to
+            pending.
+        """
         ...
 
     def reset(self) -> None:
@@ -134,13 +233,21 @@ class EntityExtractionRepository(ExtractionRepository):
     """Repository for managing entity extraction DB interactions."""
 
     def __init__(self, uow: UnitOfWork) -> None:
-        """Initialize the repository with necessary dependencies."""
+        """Initialize the repository with necessary dependencies.
+
+        Args:
+            uow: Unit of work used to open a transaction for each operation.
+        """
         self._uow = uow
 
     # Extraction Jobs
 
     def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
-        """Materialize all extractions for later processing."""
+        """Materialize all extractions for later processing.
+
+        Args:
+            knowledge_model: Knowledge model whose active types determine which extractions to materialize.
+        """
         # Setup entity types and associated document collections
         entity_types = tuple(knowledge_model.active_entity_types.values())
         with self._uow as tx:
@@ -163,7 +270,15 @@ class EntityExtractionRepository(ExtractionRepository):
                 tx.extraction.entities.materialize_all_extractions(context_level)
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
-        """Claim the next batch of extraction jobs for processing, under a given context level."""
+        """Claim the next batch of extraction jobs for processing, under a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to claim jobs for.
+            batch_size: Maximum number of jobs to claim.
+
+        Returns:
+            The claimed jobs, already scheduled (possibly empty if nothing is pending).
+        """
         with self._uow as tx:
             jobs = tx.extraction.entities.create_job_batch(context_level, size=batch_size)
             tx.extraction.entities.schedule_jobs(jobs)
@@ -175,7 +290,13 @@ class EntityExtractionRepository(ExtractionRepository):
         results: tuple[Entity, ...],
         usage_metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Persist the results of a completed extraction job and mark it as completed."""
+        """Persist the results of a completed extraction job and mark it as completed.
+
+        Args:
+            job: Job whose results are being persisted.
+            results: Extracted entities to upsert and link to the job's source context.
+            usage_metrics: Token usage recorded for the job, if available.
+        """
         with self._uow as tx:
             tx.entities.bulk_upsert_entities(results)
             tx.entities.link_entities_to_source_context(results, job.context_ref)
@@ -188,7 +309,15 @@ class EntityExtractionRepository(ExtractionRepository):
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Terminate an extraction job and mark it as failed."""
+        """Terminate an extraction job and mark it as failed.
+
+        Args:
+            job: Job to mark as failed.
+            retry_policy: Policy that decides what happens to the job's extractions. If None, they are marked as failed
+                with no retry.
+            error: Error message to record on the job, if any.
+            metrics: Token usage recorded for the job, if available.
+        """
         with self._uow as tx:
             tx.extraction.entities.update_job_status(
                 job=job,
@@ -199,12 +328,26 @@ class EntityExtractionRepository(ExtractionRepository):
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
-        """Retrieve the source context for a given extraction job."""
+        """Retrieve the source context for a given extraction job.
+
+        Args:
+            job: Job whose source context to retrieve.
+
+        Returns:
+            The document or chunk the job extracts from.
+        """
         with self._uow as tx:
             return tx.extraction.entities.get_job_source_context(job)
 
     def remaining_sources(self, context_level: ContextLevel) -> int:
-        """Amount of remaining sources to process for a given context level."""
+        """Count the remaining sources to process for a given context level.
+
+        Args:
+            context_level: Context level to count sources for.
+
+        Returns:
+            Number of sources whose extraction is pending, in progress, or awaiting retry.
+        """
         with self._uow as tx:
             source_counts = tx.extraction.entities.count_sources_by_status(context_level)
             return (
@@ -216,13 +359,22 @@ class EntityExtractionRepository(ExtractionRepository):
     # Extraction Batches
 
     def register_batch_submission(self, batch: ExtractionBatch, jobs: Iterable[ExtractionJob]) -> None:
-        """Persist a submitted extraction batch and associate its jobs."""
+        """Persist a submitted extraction batch and associate its jobs.
+
+        Args:
+            batch: Batch that was submitted.
+            jobs: Jobs included in the batch.
+        """
         with self._uow as tx:
             tx.extraction.entities.register_batch(batch)
             tx.extraction.entities.link_jobs_to_batch(jobs, batch)
 
     def stream_active_batches(self) -> Iterator[ExtractionBatch]:
-        """Stream all active extraction batches."""
+        """Stream all active extraction batches.
+
+        Yields:
+            Each active batch, fetched from the store in groups using keyset pagination.
+        """
         cursor: BatchCursor | None = None
         while True:
             # Fetch a group of active batches using keyset pagination
@@ -241,17 +393,35 @@ class EntityExtractionRepository(ExtractionRepository):
             yield from batches
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Update the status of a batch."""
+        """Update the status of a batch.
+
+        Args:
+            batch: Batch to update.
+            status: New status for the batch.
+        """
         with self._uow as tx:
             tx.extraction.entities.update_batch_status(batch, status)
 
     def complete_batch(self, batch: ExtractionBatch) -> None:
-        """Mark a batch as completed."""
+        """Mark a batch as completed.
+
+        Args:
+            batch: Batch to mark as completed.
+        """
         with self._uow as tx:
             tx.extraction.entities.update_batch_status(batch, BatchStatus.COMPLETED)
 
     def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
-        """Mark a batch as failed or cancelled and fail all associated jobs."""
+        """Mark a batch as failed or cancelled and fail all associated jobs.
+
+        Args:
+            batch: Batch to terminate.
+            status: Terminal status to set, either FAILED or CANCELLED.
+            error: Error message to record on the batch, if any.
+
+        Raises:
+            ValueError: If ``status`` is neither FAILED nor CANCELLED.
+        """
         if status not in {BatchStatus.FAILED, BatchStatus.CANCELLED}:
             raise ValueError(f'Invalid status "{status}" for failing a batch. Must be FAILED or CANCELLED.')
         with self._uow as tx:
@@ -259,18 +429,37 @@ class EntityExtractionRepository(ExtractionRepository):
             tx.extraction.entities.update_batch_status(batch, status, error=error)
 
     def record_batch_error(self, batch: ExtractionBatch, error: str) -> None:
-        """Record an error for a batch while keeping its current status."""
+        """Record an error for a batch while keeping its current status.
+
+        Args:
+            batch: Batch to record the error on.
+            error: Error message to record.
+        """
         with self._uow as tx:
             tx.extraction.entities.update_batch_status(batch, batch.status, error=error)
 
     def stream_active_jobs_for_batch(self, batch: ExtractionBatch) -> Iterator[ExtractionJob]:
-        """Stream all active jobs associated with a given batch."""
+        """Stream all active jobs associated with a given batch.
+
+        Args:
+            batch: Batch whose active jobs to stream.
+
+        Yields:
+            Each active job linked to the batch.
+        """
         with self._uow as tx:
             jobs = tx.extraction.entities.get_active_jobs_for_batch(batch)
         yield from jobs
 
     def remaining_batches(self, context_level: ContextLevel) -> int:
-        """Amount of remaining batches to process for a given context level."""
+        """Count the remaining batches to process for a given context level.
+
+        Args:
+            context_level: Context level to count batches for.
+
+        Returns:
+            Number of batches that are submitted or in progress.
+        """
         with self._uow as tx:
             batch_counts = tx.extraction.entities.count_batches_by_status(context_level)
             return batch_counts.get(BatchStatus.SUBMITTED, 0) + batch_counts.get(BatchStatus.IN_PROGRESS, 0)
@@ -282,7 +471,15 @@ class EntityExtractionRepository(ExtractionRepository):
         context_level: ContextLevel,
         performance_state: PerformanceMetricsState,
     ) -> ExtractionMetrics:
-        """Retrieve extraction metrics for a given context level and performance state."""
+        """Retrieve extraction metrics for a given context level and performance state.
+
+        Args:
+            context_level: Context level to compute metrics for.
+            performance_state: Current performance state to attach to the metrics.
+
+        Returns:
+            Aggregated source, job, batch, object and token usage metrics.
+        """
         with self._uow as tx:
             return ExtractionMetrics(
                 source_status_counts=tx.extraction.entities.count_sources_by_status(context_level),
@@ -299,7 +496,12 @@ class EntityExtractionRepository(ExtractionRepository):
     # Recovery
 
     def recover_extractions(self) -> tuple[int, int]:
-        """Recover extractions that are in an incomplete/inconsistent state."""
+        """Recover extractions that are in an incomplete/inconsistent state.
+
+        Returns:
+            A tuple of the number of stalled jobs terminated and the number of deferred extractions reset to
+            pending.
+        """
         # Terminate stalled jobs and recover their extractions
         # Stalled jobs are those that are in status IN_PROGRESS before extraction happens and are not tied to any batch
         with self._uow as tx:
@@ -322,7 +524,14 @@ class EntityExtractionRepository(ExtractionRepository):
     # Entity Extraction
 
     def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
-        """Retrieve the entity types associated with a given extraction job."""
+        """Retrieve the entity types associated with a given extraction job.
+
+        Args:
+            job: Job whose target entity types to retrieve.
+
+        Returns:
+            Names of the entity types the job should extract.
+        """
         with self._uow as tx:
             return tx.extraction.entities.get_job_entity_types(job)
 
@@ -331,13 +540,21 @@ class RelationshipExtractionRepository(ExtractionRepository):
     """Repository for managing relationship extraction DB interactions."""
 
     def __init__(self, uow: UnitOfWork) -> None:
-        """Initialize the repository with necessary dependencies."""
+        """Initialize the repository with necessary dependencies.
+
+        Args:
+            uow: Unit of work used to open a transaction for each operation.
+        """
         self._uow = uow
 
     # Extraction Jobs
 
     def materialize_all_extractions(self, knowledge_model: KnowledgeModel) -> None:
-        """Materialize all extractions for later processing."""
+        """Materialize all extractions for later processing.
+
+        Args:
+            knowledge_model: Knowledge model whose active types determine which extractions to materialize.
+        """
         # Setup relationship types
         relationship_types = tuple(knowledge_model.active_relationship_types.values())
         with self._uow as tx:
@@ -355,6 +572,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
 
             # Helper function to materialize the current batch of chunks and their associated relationship types
             def flush_chunks() -> None:
+                """Materialize the pending chunks and their relationship types, then clear both buffers."""
                 if not chunks_to_materialize:
                     return
                 tx.extraction.relationships.materialize_extractions_for_chunks(
@@ -398,7 +616,17 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 flush_chunks()
 
     def claim_next_job_batch(self, context_level: ContextLevel, batch_size: int) -> tuple[ExtractionJob, ...]:
-        """Claim the next batch of extraction jobs for processing, under a given context level."""
+        """Claim the next batch of extraction jobs for processing, under a given context level.
+
+        Relationship extraction only runs at chunk level, so any other context level yields no jobs.
+
+        Args:
+            context_level: Context level to claim jobs for.
+            batch_size: Maximum number of jobs to claim.
+
+        Returns:
+            The claimed jobs, already scheduled, or an empty tuple if ``context_level`` is not CHUNK.
+        """
         if context_level != ContextLevel.CHUNK:
             return ()
         with self._uow as tx:
@@ -412,7 +640,13 @@ class RelationshipExtractionRepository(ExtractionRepository):
         results: tuple[Relationship, ...],
         usage_metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Persist the results of a completed extraction job and mark it as completed."""
+        """Persist the results of a completed extraction job and mark it as completed.
+
+        Args:
+            job: Job whose results are being persisted.
+            results: Extracted relationships to upsert and link to the job's source context.
+            usage_metrics: Token usage recorded for the job, if available.
+        """
         with self._uow as tx:
             tx.relationships.bulk_upsert_relationships(results)
             tx.relationships.link_relationships_to_source_context(results, job.context_ref)
@@ -425,7 +659,15 @@ class RelationshipExtractionRepository(ExtractionRepository):
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
     ) -> None:
-        """Terminate an extraction job and mark it as failed."""
+        """Terminate an extraction job and mark it as failed.
+
+        Args:
+            job: Job to mark as failed.
+            retry_policy: Policy that decides what happens to the job's extractions. If None, they are marked as failed
+                with no retry.
+            error: Error message to record on the job, if any.
+            metrics: Token usage recorded for the job, if available.
+        """
         with self._uow as tx:
             tx.extraction.relationships.update_job_status(
                 job=job,
@@ -436,12 +678,27 @@ class RelationshipExtractionRepository(ExtractionRepository):
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Chunk:
-        """Retrieve the source context for a given extraction job."""
+        """Retrieve the source context for a given extraction job.
+
+        Args:
+            job: Job whose source context to retrieve.
+
+        Returns:
+            The chunk the job extracts from.
+        """
         with self._uow as tx:
             return tx.extraction.relationships.get_job_source_context(job)
 
     def remaining_sources(self, context_level: ContextLevel) -> int:
-        """Amount of remaining sources to process for a given context level."""
+        """Count the remaining sources to process for a given context level.
+
+        Args:
+            context_level: Context level to count sources for.
+
+        Returns:
+            Number of sources whose extraction is pending, in progress, or awaiting retry; always 0 if
+            ``context_level`` is not CHUNK.
+        """
         if context_level != ContextLevel.CHUNK:
             return 0
         with self._uow as tx:
@@ -455,13 +712,22 @@ class RelationshipExtractionRepository(ExtractionRepository):
     # Extraction Batches
 
     def register_batch_submission(self, batch: ExtractionBatch, jobs: Iterable[ExtractionJob]) -> None:
-        """Persist a submitted extraction batch and associate its jobs."""
+        """Persist a submitted extraction batch and associate its jobs.
+
+        Args:
+            batch: Batch that was submitted.
+            jobs: Jobs included in the batch.
+        """
         with self._uow as tx:
             tx.extraction.relationships.register_batch(batch)
             tx.extraction.relationships.link_jobs_to_batch(jobs, batch)
 
     def stream_active_batches(self) -> Iterator[ExtractionBatch]:
-        """Stream all active extraction batches."""
+        """Stream all active extraction batches.
+
+        Yields:
+            Each active batch, fetched from the store in groups using keyset pagination.
+        """
         cursor: BatchCursor | None = None
         while True:
             # Fetch a group of active batches using keyset pagination
@@ -480,17 +746,35 @@ class RelationshipExtractionRepository(ExtractionRepository):
             yield from batches
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Update the status of a batch."""
+        """Update the status of a batch.
+
+        Args:
+            batch: Batch to update.
+            status: New status for the batch.
+        """
         with self._uow as tx:
             tx.extraction.relationships.update_batch_status(batch, status)
 
     def complete_batch(self, batch: ExtractionBatch) -> None:
-        """Mark a batch as completed."""
+        """Mark a batch as completed.
+
+        Args:
+            batch: Batch to mark as completed.
+        """
         with self._uow as tx:
             tx.extraction.relationships.update_batch_status(batch, BatchStatus.COMPLETED)
 
     def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
-        """Mark a batch as failed or cancelled and fail all associated jobs."""
+        """Mark a batch as failed or cancelled and fail all associated jobs.
+
+        Args:
+            batch: Batch to terminate.
+            status: Terminal status to set, either FAILED or CANCELLED.
+            error: Error message to record on the batch, if any.
+
+        Raises:
+            ValueError: If ``status`` is neither FAILED nor CANCELLED.
+        """
         if status not in {BatchStatus.FAILED, BatchStatus.CANCELLED}:
             raise ValueError(f'Invalid status "{status}" for failing a batch. Must be FAILED or CANCELLED.')
         with self._uow as tx:
@@ -498,18 +782,37 @@ class RelationshipExtractionRepository(ExtractionRepository):
             tx.extraction.relationships.update_batch_status(batch, status, error=error)
 
     def record_batch_error(self, batch: ExtractionBatch, error: str) -> None:
-        """Record an error for a batch while keeping its current status."""
+        """Record an error for a batch while keeping its current status.
+
+        Args:
+            batch: Batch to record the error on.
+            error: Error message to record.
+        """
         with self._uow as tx:
             tx.extraction.relationships.update_batch_status(batch, batch.status, error=error)
 
     def stream_active_jobs_for_batch(self, batch: ExtractionBatch) -> Iterator[ExtractionJob]:
-        """Stream all active jobs associated with a given batch."""
+        """Stream all active jobs associated with a given batch.
+
+        Args:
+            batch: Batch whose active jobs to stream.
+
+        Yields:
+            Each active job linked to the batch.
+        """
         with self._uow as tx:
             jobs = tx.extraction.relationships.get_active_jobs_for_batch(batch)
         yield from jobs
 
     def remaining_batches(self, context_level: ContextLevel) -> int:
-        """Amount of remaining batches to process for a given context level."""
+        """Count the remaining batches to process for a given context level.
+
+        Args:
+            context_level: Context level to count batches for.
+
+        Returns:
+            Number of batches that are submitted or in progress; always 0 if ``context_level`` is not CHUNK.
+        """
         if context_level != ContextLevel.CHUNK:
             return 0
         with self._uow as tx:
@@ -523,7 +826,16 @@ class RelationshipExtractionRepository(ExtractionRepository):
         context_level: ContextLevel,
         performance_state: PerformanceMetricsState,
     ) -> ExtractionMetrics:
-        """Retrieve extraction metrics for a given context level and performance state."""
+        """Retrieve extraction metrics for a given context level and performance state.
+
+        Args:
+            context_level: Context level to compute metrics for.
+            performance_state: Current performance state to attach to the metrics.
+
+        Returns:
+            Aggregated source, job, batch, object and token usage metrics; all zeroed if ``context_level`` is not
+            CHUNK.
+        """
         if context_level != ContextLevel.CHUNK:
             return ExtractionMetrics(
                 source_status_counts=dict.fromkeys(ExtractionStatus, 0),
@@ -552,7 +864,12 @@ class RelationshipExtractionRepository(ExtractionRepository):
     # Recovery
 
     def recover_extractions(self) -> tuple[int, int]:
-        """Recover extractions that are in an incomplete/inconsistent state."""
+        """Recover extractions that are in an incomplete/inconsistent state.
+
+        Returns:
+            A tuple of the number of stalled jobs terminated and the number of deferred extractions reset to
+            pending.
+        """
         # Terminate stalled jobs and recover their extractions
         # Stalled jobs are those that are in status IN_PROGRESS before extraction happens and are not tied to any batch
         with self._uow as tx:
@@ -580,7 +897,21 @@ class RelationshipExtractionRepository(ExtractionRepository):
         chunk_entity_type_names: Iterable[EntityTypeName],
         parent_document_entity_type_names: Iterable[EntityTypeName],
     ) -> RelationshipExtractionRequestContext:
-        """Filter valid relationship types and chunk/document entity types for extraction from a given chunk and its parent document."""
+        """Filter relationship types and entity types down to those extractable from a chunk.
+
+        A relationship type is kept if at least one of its endpoint context pairs has its source and target entity types
+        available at the corresponding level (the chunk itself or its parent document). Entity type names are kept only if
+        they take part in such a compatible endpoint.
+
+        Args:
+            relationship_types: Candidate relationship types; duplicates by name are collapsed.
+            chunk_entity_type_names: Entity types present in the chunk.
+            parent_document_entity_type_names: Entity types present in the chunk's parent document.
+
+        Returns:
+            The compatible relationship types, chunk entity type names and parent document entity type names, each
+            sorted by name.
+        """
         # Sets of available relationship types and entity type names found in the chunk and its parent document
         relationship_types = tuple({rt.name.value: rt for rt in relationship_types}.values())
         chunk_entity_type_names = set(chunk_entity_type_names)
@@ -635,17 +966,40 @@ class RelationshipExtractionRepository(ExtractionRepository):
         )
 
     def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
-        """Retrieve the relationship types associated with a given extraction job."""
+        """Retrieve the relationship types associated with a given extraction job.
+
+        Args:
+            job: Job whose target relationship types to retrieve.
+
+        Returns:
+            Names of the relationship types the job should extract.
+        """
         with self._uow as tx:
             return tx.extraction.relationships.get_job_relationship_types(job)
 
     def get_job_chunk_entities(self, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
-        """Retrieve the entities associated with a given extraction job's source chunk."""
+        """Retrieve the entities associated with a given extraction job's source chunk.
+
+        Args:
+            job: Job whose source chunk's entities to retrieve.
+            model: Knowledge model used to rebuild the entities.
+
+        Returns:
+            The entities linked to the job's source chunk.
+        """
         with self._uow as tx:
             return tuple(tx.entities.stream_by_source_context(job.context_ref, model))
 
     def get_job_parent_document_entities(self, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
-        """Retrieve the entities associated with the parent document of a given extraction job's source chunk."""
+        """Retrieve the entities associated with the parent document of a given extraction job's source chunk.
+
+        Args:
+            job: Job whose source chunk's parent document entities to retrieve.
+            model: Knowledge model used to rebuild the entities.
+
+        Returns:
+            The entities linked to the parent document of the job's source chunk.
+        """
         source_chunk = self.get_job_source_context(job)
         parent_document_ref = ContextRef(level=ContextLevel.DOCUMENT, content_id=source_chunk.document_id.content)
         with self._uow as tx:
@@ -656,7 +1010,18 @@ class RelationshipExtractionRepository(ExtractionRepository):
         job: ExtractionJob,
         model: KnowledgeModel,
     ) -> RelationshipExtractionRequestObjects:
-        """Retrieve necessary elements for building a relationship extraction request for a given job, including relationship types and associated entities."""
+        """Retrieve the elements needed to build a relationship extraction request for a given job.
+
+        Relationship types and entities are filtered down to those compatible with the job's source chunk (see
+        ``get_extraction_context_for_chunk``); relationship type names unknown to ``model`` are dropped.
+
+        Args:
+            job: Job to gather the request elements for.
+            model: Knowledge model used to resolve relationship types and rebuild entities.
+
+        Returns:
+            The compatible relationship types, chunk entities and parent document entities.
+        """
         relationship_types = [model.relationship_type(name) for name in self.get_job_relationship_types(job)]
         relationship_types = tuple(rt for rt in relationship_types if rt is not None)
         chunk_entities = self.get_job_chunk_entities(job, model)
@@ -684,12 +1049,25 @@ class RelationshipExtractionRepository(ExtractionRepository):
         )
 
     def set_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:
-        """Set the EntityRef mapping for a given extraction job."""
+        """Set the EntityRef mapping for a given extraction job.
+
+        Args:
+            job: Job to store the mapping for.
+            mapping: Mapping from the temporary entity IDs used in the job's prompt to their entity references.
+        """
         with self._uow as tx:
             tx.extraction.relationships.store_job_entity_ref_mapping(job, mapping)
 
     def get_entity_ref_for_job(self, job: ExtractionJob, temp_entity_id: str) -> EntityRef | None:
-        """Retrieve the EntityRef for a given temporary entity ID in the context of a specific extraction job."""
+        """Retrieve the EntityRef for a given temporary entity ID in the context of a specific extraction job.
+
+        Args:
+            job: Job whose stored mapping to look up.
+            temp_entity_id: Temporary entity ID used in the job's prompt.
+
+        Returns:
+            The mapped entity reference, or None if the ID isn't in the job's mapping.
+        """
         with self._uow as tx:
             mapping = tx.extraction.relationships.get_job_entity_ref_mapping(job)
             return mapping.get(temp_entity_id)
@@ -700,7 +1078,17 @@ class RelationshipExtractionRepository(ExtractionRepository):
         entity_ref: EntityRef,
         model: KnowledgeModel,
     ) -> set[ContextLevel]:
-        """Retrieve the context levels for a given EntityRef in a specific extraction job."""
+        """Retrieve the context levels for a given EntityRef in a specific extraction job.
+
+        Args:
+            job: Job whose extraction elements to inspect.
+            entity_ref: Entity reference to locate.
+            model: Knowledge model used to resolve the job's extraction elements.
+
+        Returns:
+            The context levels (chunk and/or parent document) at which the entity is available to the job; empty if
+            it's in neither.
+        """
         elements = self.get_job_extraction_elements(job, model)
         chunk_entity_ids = {entity.id for entity in elements.chunk_entities}
         document_entity_ids = {entity.id for entity in elements.parent_document_entities}

@@ -31,7 +31,11 @@ class Neo4jWriter:
     """Base class for writing to a CSV file in the Neo4j format."""
 
     def __init__(self, path: Path) -> None:
-        """Initialize the writer."""
+        """Initialize the writer.
+
+        Args:
+            path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
+        """
         self._path = path
         self._serializer = PropertyValueSerializer(EscapedStringSerializer())
 
@@ -52,7 +56,14 @@ class Neo4jWriter:
         self._file.close()
 
     def _serialize_value(self, value: Any) -> str:
-        """Serialize a value for CSV writing."""
+        """Serialize a value for CSV writing.
+
+        Args:
+            value: Property value to serialize.
+
+        Returns:
+            The serialized value, or an empty string if the value is null.
+        """
         serialized_value = self._serializer.serialize(value)
 
         # If the value is None, return an empty string for CSV compatibility
@@ -63,7 +74,14 @@ class Neo4jWriter:
 
     @staticmethod
     def _to_neo4j_type(data_type: DataType) -> str:
-        """Map a DataType to its corresponding Neo4j type."""
+        """Map a DataType to its corresponding Neo4j type.
+
+        Args:
+            data_type: Field data type to map.
+
+        Returns:
+            The Neo4j import type name, defaulting to ``string`` for unmapped data types.
+        """
         return DATA_TYPE_NAME_MAPPING.get(data_type, 'string')  # Default to string if not found
 
     def _write_header(self) -> None:
@@ -71,11 +89,22 @@ class Neo4jWriter:
         raise NotImplementedError('Subclasses must implement this method.')
 
     def _serialize(self, obj: Any) -> list[str]:
-        """Serialize an object to a list of strings for CSV writing."""
+        """Serialize an object to a list of strings for CSV writing.
+
+        Args:
+            obj: Object to serialize into a CSV row.
+
+        Returns:
+            The CSV row values, in header order.
+        """
         raise NotImplementedError('Subclasses must implement this method.')
 
     def write(self, obj: Any) -> None:
-        """Write an object to the CSV file."""
+        """Write an object to the CSV file.
+
+        Args:
+            obj: Object to serialize and write as a CSV row.
+        """
         self._writer.writerow(self._serialize(obj))
 
 
@@ -84,7 +113,12 @@ class Neo4jEntityWriter(Neo4jWriter):
     """Writes entities of a specific type to a CSV file in the Neo4j format."""
 
     def __init__(self, path: Path, entity_type: EntityType) -> None:
-        """Initialize the writer."""
+        """Initialize the writer.
+
+        Args:
+            path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
+            entity_type: Entity type whose fields define the CSV columns.
+        """
         super().__init__(path)
         self._entity_type = entity_type
 
@@ -102,7 +136,14 @@ class Neo4jEntityWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, entity: Entity) -> list[str]:
-        """Serialize an entity to a list of strings for CSV writing."""
+        """Serialize an entity to a list of strings for CSV writing.
+
+        Args:
+            entity: Entity to serialize.
+
+        Returns:
+            The instance ID, content ID and identity version, followed by one value per entity type field.
+        """
         # Instance ID (main ID), Content ID, Identity Version
         row = [entity.id.instance.hex, entity.id.content.hex, entity.id.VERSION]
 
@@ -114,7 +155,11 @@ class Neo4jEntityWriter(Neo4jWriter):
         return row
 
     def write(self, entity: Entity) -> None:
-        """Write an entity to the CSV file."""
+        """Write an entity to the CSV file.
+
+        Args:
+            entity: Entity to write as a CSV row.
+        """
         self._writer.writerow(self._serialize(entity))
 
 
@@ -133,7 +178,14 @@ class Neo4jDocumentWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, document: Document) -> list[str]:
-        """Serialize a document to a list of strings for CSV writing."""
+        """Serialize a document to a list of strings for CSV writing.
+
+        Args:
+            document: Document to serialize.
+
+        Returns:
+            The instance ID, content ID and source URI of the document.
+        """
         # Instance ID (main ID), Content ID
         row = [document.id.instance.hex, document.id.content.hex]
 
@@ -143,7 +195,11 @@ class Neo4jDocumentWriter(Neo4jWriter):
         return row
 
     def write(self, document: Document) -> None:
-        """Write a document to the CSV file."""
+        """Write a document to the CSV file.
+
+        Args:
+            document: Document to write as a CSV row.
+        """
         self._writer.writerow(self._serialize(document))
 
 
@@ -162,7 +218,14 @@ class Neo4jChunkWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, chunk: Chunk) -> list[str]:
-        """Serialize a chunk to a list of strings for CSV writing."""
+        """Serialize a chunk to a list of strings for CSV writing.
+
+        Args:
+            chunk: Chunk to serialize.
+
+        Returns:
+            The instance ID, content ID and identity version, followed by the chunk index, offsets and content.
+        """
         # Instance ID (main ID), Content ID, Identity Version
         row = [chunk.id.instance.hex, chunk.id.content.hex, chunk.id.VERSION]
 
@@ -173,7 +236,11 @@ class Neo4jChunkWriter(Neo4jWriter):
         return row
 
     def write(self, chunk: Chunk) -> None:
-        """Write a chunk to the CSV file."""
+        """Write a chunk to the CSV file.
+
+        Args:
+            chunk: Chunk to write as a CSV row.
+        """
         self._writer.writerow(self._serialize(chunk))
 
 
@@ -182,7 +249,12 @@ class Neo4jRelationshipWriter(Neo4jWriter):
     """Writes relationships of a specific type to a CSV file in the Neo4j format."""
 
     def __init__(self, path: Path, relationship_type: RelationshipType) -> None:
-        """Initialize the writer."""
+        """Initialize the writer.
+
+        Args:
+            path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
+            relationship_type: Relationship type whose identity policy and fields define the CSV columns.
+        """
         super().__init__(path)
         self._relationship_type = relationship_type
 
@@ -209,7 +281,16 @@ class Neo4jRelationshipWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, relationship: Relationship, provenance: tuple[ChunkId, ...]) -> list[str]:
-        """Serialize a relationship to a list of strings for CSV writing."""
+        """Serialize a relationship to a list of strings for CSV writing.
+
+        Args:
+            relationship: Relationship to serialize.
+            provenance: Identifiers of the chunks the relationship was extracted from.
+
+        Returns:
+            The source and target entity IDs, the identity columns, the ``;``-joined provenance chunk IDs, and one
+            value per relationship type field.
+        """
         # Endpoint: Source ID, Target ID
         row = [relationship.source.instance.hex, relationship.target.instance.hex]
 
@@ -234,7 +315,12 @@ class Neo4jRelationshipWriter(Neo4jWriter):
         return row
 
     def write(self, relationship: Relationship, provenance: tuple[ChunkId, ...]) -> None:
-        """Write a relationship to the CSV file."""
+        """Write a relationship to the CSV file.
+
+        Args:
+            relationship: Relationship to write as a CSV row.
+            provenance: Identifiers of the chunks the relationship was extracted from.
+        """
         self._writer.writerow(self._serialize(relationship, provenance))
 
 
@@ -250,12 +336,23 @@ class Neo4jChunkSourceWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, chunk: Chunk) -> list[str]:
-        """Serialize a chunk/document to a list of strings for CSV writing."""
+        """Serialize a chunk/document to a list of strings for CSV writing.
+
+        Args:
+            chunk: Chunk whose ``ChunkOf`` edge to its document is serialized.
+
+        Returns:
+            The chunk ID (start) and its document ID (end).
+        """
         # Endpoint: Source ID, Target ID
         return [chunk.id.instance.hex, chunk.document_id.instance.hex]
 
     def write(self, chunk: Chunk) -> None:
-        """Write a relationship between a chunk and its source document to the CSV file."""
+        """Write a relationship between a chunk and its source document to the CSV file.
+
+        Args:
+            chunk: Chunk whose ``ChunkOf`` edge to its document is written.
+        """
         self._writer.writerow(self._serialize(chunk))
 
 
@@ -271,12 +368,25 @@ class Neo4jEntityProvenanceWriter(Neo4jWriter):
         self._writer.writerow(header)
 
     def _serialize(self, source_id: DocumentId | ChunkId, entity_id: EntityId) -> list[str]:
-        """Serialize a provenance relationship to a list of strings for CSV writing."""
+        """Serialize a provenance relationship to a list of strings for CSV writing.
+
+        Args:
+            source_id: Identifier of the document or chunk the entity was extracted from.
+            entity_id: Identifier of the extracted entity.
+
+        Returns:
+            The entity ID (start) and the source ID (end).
+        """
         # Endpoint: Source ID, Target ID
         return [entity_id.instance.hex, source_id.instance.hex]
 
     def write(self, source_id: DocumentId | ChunkId, entity_id: EntityId) -> None:
-        """Write a provenance relationship to the CSV file."""
+        """Write a provenance relationship to the CSV file.
+
+        Args:
+            source_id: Identifier of the document or chunk the entity was extracted from.
+            entity_id: Identifier of the extracted entity.
+        """
         self._writer.writerow(self._serialize(source_id, entity_id))
 
 
@@ -285,11 +395,23 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
     """Exports knowledge as a graph to the Neo4j graph database format."""
 
     def __init__(self, repository: KnowledgeRepository) -> None:
-        """Initialize the exporter with necessary dependencies."""
+        """Initialize the exporter with necessary dependencies.
+
+        Args:
+            repository: Repository that streams the documents, chunks, entities and relationships to export.
+        """
         self._repository = repository
 
     def export(self, model: KnowledgeModel, export_uri: str) -> None:
-        """Export knowledge to a specified output format."""
+        """Export knowledge to a specified output format.
+
+        Writes one CSV file per node/edge type under ``<export_uri>/neo4j/entities`` and
+        ``<export_uri>/neo4j/relationships``.
+
+        Args:
+            model: Knowledge model whose active entity and relationship types are exported.
+            export_uri: Base export directory.
+        """
         # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'neo4j'
         base_export_dir.mkdir(parents=True, exist_ok=True)
@@ -309,7 +431,11 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         self._export_relationships(model, relationships_dir)
 
     def _export_sources(self, export_dir: Path) -> None:
-        """Export sources to a set of Neo4j CSV files."""
+        """Export sources to a set of Neo4j CSV files.
+
+        Args:
+            export_dir: Neo4j export directory containing the ``entities`` and ``relationships`` subdirectories.
+        """
         # Documents
         logger.info('Exporting Documents...')
         docs_file_path = export_dir / 'entities' / 'Document.csv'
@@ -331,7 +457,14 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
                 writer.write(chunk)
 
     def _export_entities(self, model: KnowledgeModel, entities_dir: Path) -> None:
-        """Export entities to a set of Neo4j CSV files."""
+        """Export entities to a set of Neo4j CSV files.
+
+        Also writes the ``ExtractedFrom`` provenance edges to the sibling ``relationships`` directory.
+
+        Args:
+            model: Knowledge model whose active entity types are exported.
+            entities_dir: Directory where one CSV file per entity type is written.
+        """
         # Entities
         logger.info('Exporting Entities...')
         for entity_type in model.active_entity_types.values():
@@ -349,7 +482,12 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
                 writer.write(source_id, entity_id)
 
     def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path) -> None:
-        """Export relationships to a set of Neo4j CSV files."""
+        """Export relationships to a set of Neo4j CSV files.
+
+        Args:
+            model: Knowledge model whose active relationship types are exported.
+            relationships_dir: Directory where one CSV file per relationship type is written.
+        """
         # Relationships
         logger.info('Exporting Relationships...')
         for relationship_type in model.active_relationship_types.values():
@@ -362,7 +500,11 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
                     writer.write(relationship, provenance)
 
     def clear(self, export_uri: str) -> None:
-        """Clear the exported knowledge state, removing any exported data."""
+        """Clear the exported knowledge state, removing any exported data.
+
+        Args:
+            export_uri: Base export directory; its whole contents are removed if it exists.
+        """
         export_path = Path(export_uri).resolve()
         if export_path.exists() and export_path.is_dir():
             clear_directory(export_path)

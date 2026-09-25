@@ -12,9 +12,14 @@ from .context_ref import ContextRef
 from .values import DocumentId
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Document:
-    """A source document."""
+    """A source document.
+
+    Attributes:
+        id: Unique identifier of the document.
+        source_uri: URI the document was loaded from.
+    """
 
     id: DocumentId
     source_uri: str
@@ -32,9 +37,14 @@ class Document:
         )
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class LoadedDocument:
-    """A source document that has been loaded into memory, including its content."""
+    """A source document that has been loaded into memory, including its content.
+
+    Attributes:
+        metadata: The document's identity and source.
+        content: Full text content of the document.
+    """
 
     metadata: Document
     content: str

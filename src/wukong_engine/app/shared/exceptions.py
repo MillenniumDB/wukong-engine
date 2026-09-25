@@ -1,3 +1,6 @@
+"""Base exceptions for the application layer."""
+
+
 class ApplicationError(Exception):
     """Base exception for application layer errors."""
 

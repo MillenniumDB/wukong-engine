@@ -1,3 +1,5 @@
+"""Relationship instances between extracted entities."""
+
 from dataclasses import dataclass
 from typing import Any
 
@@ -6,9 +8,17 @@ from wukong_engine.core.knowledge.model import RelationshipField, RelationshipTy
 from .values import EntityId, NormalizedPK, RelationshipId
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Relationship:
-    """Relationship instance in the extracted knowledge."""
+    """Relationship instance in the extracted knowledge.
+
+    Attributes:
+        id: Unique identifier of the relationship.
+        type: Relationship type the instance conforms to.
+        source: Identifier of the source entity.
+        target: Identifier of the target entity.
+        properties: Mapping from field name to string value. Null values are omitted rather than stored.
+    """
 
     id: RelationshipId
     type: RelationshipType
@@ -17,12 +27,23 @@ class Relationship:
     properties: dict[str, Any]
 
     def __post_init__(self) -> None:
-        """Validate relationship invariants."""
+        """Validate relationship invariants.
+
+        Raises:
+            ValueError: If a property is not a field of the relationship type, a required field is missing, a stored
+                value is null, or a value is not among the field's options.
+            TypeError: If a property value is not a string.
+        """
         self._validate_property_fields()
         self._validate_property_values()
 
     def _validate_property_fields(self) -> None:
-        """Validate property field invariants."""
+        """Validate property field invariants.
+
+        Raises:
+            ValueError: If a property is not a field of the relationship type, or a required field is missing or
+                null.
+        """
         # All property keys must be valid field names for the relationship type
         valid_field_names = {field.name.value for field in self.type.fields.values()}
         for p_name in self.properties:
@@ -40,7 +61,12 @@ class Relationship:
                 )
 
     def _validate_property_values(self) -> None:
-        """Validate property value invariants."""
+        """Validate property value invariants.
+
+        Raises:
+            ValueError: If a stored value is null or not among the field's defined options.
+            TypeError: If a stored value is not a string.
+        """
         fields_by_name = {f_name.value: field for f_name, field in self.type.fields.items()}
         for property_name, value in self.properties.items():
             field = fields_by_name[property_name]
@@ -86,7 +112,27 @@ class Relationship:
         properties: dict[str, Any],
         normalized_pk: NormalizedPK | None = None,
     ) -> Relationship:
-        """Create a relationship instance from extraction results."""
+        """Create a relationship instance from extraction results.
+
+        Properties that are not fields of the relationship type, or whose value is None, are dropped.
+
+        Args:
+            relationship_type: Relationship type of the extracted relationship.
+            source: Identifier of the source entity.
+            target: Identifier of the target entity.
+            properties: Extracted properties, keyed by field name.
+            normalized_pk: Normalized primary key value. Required only when the type's identity policy is
+                ``PRIMARY_KEY``; ignored otherwise.
+
+        Returns:
+            The relationship with a freshly generated instance ID and a content ID derived according to the type's
+            identity policy.
+
+        Raises:
+            ValueError: If the identity policy requires a primary key and ``normalized_pk`` is None, or the remaining
+                properties miss a required field or hold a value outside a field's options.
+            TypeError: If a remaining property value is not a string.
+        """
         relationship_id = RelationshipId.from_identity(
             relationship_type=relationship_type.name,
             identity_policy=relationship_type.identity_policy,

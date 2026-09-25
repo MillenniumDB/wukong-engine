@@ -1,3 +1,5 @@
+"""Exceptions raised when defining or validating a workspace."""
+
 from wukong_engine.app.shared.exceptions import ApplicationError
 
 

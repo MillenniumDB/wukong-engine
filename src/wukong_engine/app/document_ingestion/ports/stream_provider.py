@@ -1,3 +1,5 @@
+"""Port for discovering and streaming documents from their sources."""
+
 from collections.abc import Iterator
 from typing import Protocol
 
@@ -9,5 +11,15 @@ class DocumentStreamProvider(Protocol):
     """Streams documents from a given list of sources."""
 
     def stream(self, sources: tuple[DocumentSource, ...]) -> Iterator[Document]:
-        """Find and stream documents from the given list of sources."""
+        """Find and stream documents from the given list of sources.
+
+        Args:
+            sources: Document sources to resolve into individual documents.
+
+        Yields:
+            Each document found in the sources, in source order.
+
+        Raises:
+            ValueError: If a source is invalid for its mode.
+        """
         ...

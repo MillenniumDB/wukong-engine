@@ -19,7 +19,19 @@ class ApplicationConfigMapper:
     """Mapper from configuration schemas to application configuration models."""
 
     def map_configuration(self, schema: ApplicationConfigSchema) -> ApplicationConfig:
-        """Map application configuration schema to application configuration model."""
+        """Map application configuration schema to application configuration model.
+
+        Settings left unset in the schema fall back to the defaults of the configuration models.
+
+        Args:
+            schema: Validated application configuration schema.
+
+        Returns:
+            The application configuration.
+
+        Raises:
+            ValueError: If any mapped configuration section fails validation.
+        """
         return ApplicationConfig(
             pipeline=self._map_pipeline(schema.pipeline),
             llm=self._map_llm(schema.llm),
@@ -28,20 +40,48 @@ class ApplicationConfigMapper:
         )
 
     def _map_pipeline(self, schema: PipelineConfigSchema) -> PipelineConfig:
-        """Map pipeline configuration schema to pipeline configuration model."""
+        """Map pipeline configuration schema to pipeline configuration model.
+
+        Args:
+            schema: Pipeline configuration schema.
+
+        Returns:
+            The pipeline configuration, using the model defaults for unset steps.
+        """
         return PipelineConfig(**schema.model_dump(exclude_none=True))
 
     def _map_llm(self, schema: LLMConfigSchema) -> LLMConfig:
-        """Map LLM configuration schema to LLM configuration model."""
+        """Map LLM configuration schema to LLM configuration model.
+
+        Args:
+            schema: LLM configuration schema. A non-empty ``model`` name is wrapped into an ``LLM``.
+
+        Returns:
+            The LLM configuration, using the model defaults for unset fields.
+        """
         kwargs = schema.model_dump(exclude_none=True)
         if kwargs.get('model'):
             kwargs['model'] = LLM(name=kwargs['model'])
         return LLMConfig(**kwargs)
 
     def _map_chunking(self, schema: ChunkingConfigSchema) -> ChunkingConfig:
-        """Map chunking configuration schema to chunking configuration model."""
+        """Map chunking configuration schema to chunking configuration model.
+
+        Args:
+            schema: Chunking configuration schema.
+
+        Returns:
+            The chunking configuration, using the model defaults (or derived values) for unset fields.
+        """
         return ChunkingConfig(**schema.model_dump(exclude_none=True))
 
     def _map_export(self, schema: ExportConfigSchema) -> ExportConfig:
-        """Map export configuration schema to export configuration model."""
+        """Map export configuration schema to export configuration model.
+
+        Args:
+            schema: Export configuration schema.
+
+        Returns:
+            The export configuration, using the model default for an unset format.
+        """
         return ExportConfig(**schema.model_dump(exclude_none=True))

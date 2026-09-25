@@ -1,3 +1,5 @@
+"""Knowledge model provider backed by a local JSON file."""
+
 import json
 from pathlib import Path
 
@@ -12,7 +14,14 @@ class LocalKnowledgeModelProvider(KnowledgeModelProvider):
     """Loads knowledge models from local JSON files."""
 
     def get(self, source_uri: str) -> KnowledgeModel:
-        """Load a knowledge model from a local JSON file."""
+        """Load a knowledge model from a local JSON file.
+
+        Args:
+            source_uri: Path to the JSON file defining the knowledge model.
+
+        Returns:
+            The validated knowledge model.
+        """
         path = Path(source_uri)
         raw = json.load(path.open())
         schema = KnowledgeModelSchema.model_validate(raw)

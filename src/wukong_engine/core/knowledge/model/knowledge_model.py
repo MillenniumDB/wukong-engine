@@ -1,7 +1,7 @@
 """Provides a knowledge model interface for the engine.
 
 Classes:
-    KnowledgeModel: The knowledge model containing all entity types.
+    KnowledgeModel: The knowledge model containing all entity and relationship types.
 """
 
 import json
@@ -15,9 +15,18 @@ from .relationship_type import RelationshipType
 from .values import EntityTypeName, RelationshipTypeName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class KnowledgeModel:
-    """The knowledge model containing all entity types."""
+    """The knowledge model containing all entity and relationship types.
+
+    The extraction config may project the model onto a subset of its types. The ``active_*`` accessors and the
+    ``entity_type``/``relationship_type`` lookups only expose types within that projection.
+
+    Attributes:
+        extraction_config: Extraction settings, including the optional entity and relationship projections.
+        entity_types: All defined entity types, keyed by name, regardless of the projection.
+        relationship_types: All defined relationship types, keyed by name, regardless of the projection.
+    """
 
     extraction_config: ExtractionConfig
     entity_types: MappingProxyType[EntityTypeName, EntityType]
@@ -65,12 +74,21 @@ class KnowledgeModel:
         return json.dumps(model, indent=2, ensure_ascii=False)
 
     def __post_init__(self) -> None:
-        """Validate knowledge model invariants."""
+        """Validate knowledge model invariants.
+
+        Raises:
+            ValueError: If a projection references unknown types, or a relationship endpoint references an unknown
+                entity type.
+        """
         self._validate_projections()
         self._validate_relationship_endpoints()
 
     def _validate_projections(self) -> None:
-        """Validate that the entity and relationship projections in the extraction config are valid."""
+        """Validate that the entity and relationship projections in the extraction config are valid.
+
+        Raises:
+            ValueError: If a projection contains entity or relationship type names that aren't defined in the model.
+        """
         if self.extraction_config.entity_projection is not None:
             invalid_entities = self.extraction_config.entity_projection - set(self.entity_types.keys())
             if invalid_entities:
@@ -85,7 +103,11 @@ class KnowledgeModel:
                 )
 
     def _validate_relationship_endpoints(self) -> None:
-        """Validate that all relationship endpoints reference valid entity types."""
+        """Validate that all relationship endpoints reference valid entity types.
+
+        Raises:
+            ValueError: If an endpoint's source or target is not a defined entity type.
+        """
         valid_entity_types = set(self.entity_types.keys())
         for relationship_type in self.relationship_types.values():
             for endpoint in relationship_type.endpoints:
@@ -108,11 +130,27 @@ class KnowledgeModel:
         )
 
     def entity_type(self, name: EntityTypeName) -> EntityType | None:
-        """Get an active entity type by name."""
+        """Get an active entity type by name.
+
+        Args:
+            name: Name of the entity type to look up.
+
+        Returns:
+            The entity type, or None if it's not defined or falls outside the entity projection.
+        """
         return self.active_entity_types.get(name)
 
     def active_endpoints(self, relationship_type: RelationshipType) -> tuple[Endpoint, ...]:
-        """Active endpoints for a given relationship type, based on the active entity types in the knowledge model projection."""
+        """Return the active endpoints for a given relationship type.
+
+        An endpoint is active when both its source and target entity types are active in the projection.
+
+        Args:
+            relationship_type: Relationship type whose endpoints are filtered.
+
+        Returns:
+            The relationship type's endpoints whose source and target are both active entity types.
+        """
         return tuple(
             endpoint
             for endpoint in relationship_type.endpoints
@@ -130,5 +168,13 @@ class KnowledgeModel:
         return MappingProxyType({k: v for k, v in projected_relationship_types.items() if self.active_endpoints(v)})
 
     def relationship_type(self, name: RelationshipTypeName) -> RelationshipType | None:
-        """Get an active relationship type by name."""
+        """Get an active relationship type by name.
+
+        Args:
+            name: Name of the relationship type to look up.
+
+        Returns:
+            The relationship type, or None if it's not defined, falls outside the relationship projection, or has no
+            active endpoints.
+        """
         return self.active_relationship_types.get(name)

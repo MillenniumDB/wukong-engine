@@ -1,3 +1,5 @@
+"""Registry of supported LLMs and their capabilities."""
+
 from types import MappingProxyType
 from typing import Any
 
@@ -49,27 +51,61 @@ class LLMRegistry:
 
     @classmethod
     def is_supported_model(cls, model: LLM) -> bool:
-        """Whether the given model is supported."""
+        """Check whether the given model is supported.
+
+        Args:
+            model: Model to check.
+
+        Returns:
+            True if the model is supported by its provider, False otherwise.
+        """
         return model.name in cls._SUPPORTED.get(model.provider, frozenset())
 
     @classmethod
     def supported_models(cls, provider: LLMProvider) -> list[str]:
-        """Set of supported models for the given provider."""
+        """Return the supported models for the given provider.
+
+        Args:
+            provider: Provider to list the models of.
+
+        Returns:
+            The names of the supported models, sorted alphabetically; empty if the provider has none.
+        """
         return sorted(cls._SUPPORTED.get(provider, frozenset()))
 
     @classmethod
     def default_model(cls) -> LLM:
-        """Default LLM model."""
+        """Return the default LLM model.
+
+        Returns:
+            The model used when none is configured.
+        """
         return cls._DEFAULT_MODEL
 
     @classmethod
     def is_reasoning_model(cls, model: LLM) -> bool:
-        """Whether the given model supports reasoning."""
+        """Check whether the given model supports reasoning.
+
+        Args:
+            model: Model to check.
+
+        Returns:
+            True if the model supports reasoning, False otherwise.
+        """
         return model.name in cls._REASONING.get(model.provider, {})
 
     @classmethod
     def reasoning_effort(cls, model: LLM, effort_level: ReasoningEffort) -> str | None:
-        """Native reasoning effort name for the given model and effort level, or None if not supported."""
+        """Return the native reasoning effort name for the given model and effort level, or None if not supported.
+
+        Args:
+            model: Model to get the reasoning effort name for.
+            effort_level: Generic reasoning effort level to translate.
+
+        Returns:
+            The model's native name for the effort level, which defaults to the level's own value when the model has
+            no specific mapping for it, or None if the model doesn't support reasoning.
+        """
         effort_levels = cls._REASONING.get(model.provider, {}).get(model.name)
         if effort_levels is None:
             return None
@@ -77,10 +113,24 @@ class LLMRegistry:
 
     @classmethod
     def supports_explicit_caching(cls, model: LLM) -> bool:
-        """Whether the given model supports explicit prompt caching, with caller-placed cache breakpoints."""
+        """Check whether the given model supports explicit prompt caching, with caller-placed cache breakpoints.
+
+        Args:
+            model: Model to check.
+
+        Returns:
+            True if the model supports explicit prompt caching, False otherwise.
+        """
         return model.name in cls._EXPLICIT_CACHING.get(model.provider, frozenset())
 
     @classmethod
     def default_reasoning_effort(cls, model: LLM) -> str | None:
-        """Default reasoning effort level for the given model, or None if not supported."""
+        """Return the default reasoning effort level for the given model, or None if not supported.
+
+        Args:
+            model: Model to get the default reasoning effort for.
+
+        Returns:
+            The model's native name for its default reasoning effort, or None if it has no default.
+        """
         return cls._DEFAULT_REASONING.get(model.provider, {}).get(model.name)

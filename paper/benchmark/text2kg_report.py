@@ -30,7 +30,15 @@ BASELINES = ('Vicuna-13B', 'Alpaca-LoRA-13B')
 
 
 def read_avg_stats(path: Path) -> dict[tuple[str, str], dict[str, float]]:
-    """Read an average-metrics file into {(ontology, population): metrics}."""
+    """Read an average-metrics file into {(ontology, population): metrics}.
+
+    Args:
+        path: Average-metrics JSONL file written by the evaluator.
+
+    Returns:
+        Mapping from ``(ontology, population)`` to the metrics listed in ``METRICS``. Empty if the file doesn't
+        exist.
+    """
     stats: dict[tuple[str, str], dict[str, float]] = {}
     if not path.exists():
         return stats
@@ -50,12 +58,26 @@ def baseline_stats(results_root: Path) -> dict[str, dict[tuple[str, str], dict[s
     metrics files shipped with the benchmark, because those ship two settings
     side by side (the main test split and a separate "unseen sentences" split)
     and only the main split is comparable to our run.
+
+    Args:
+        results_root: Results directory holding ``baselines/<name>/ont_avg_stats.jsonl`` for each baseline.
+
+    Returns:
+        Mapping from baseline name to its metrics, as returned by ``read_avg_stats``.
     """
     return {name: read_avg_stats(results_root / 'baselines' / name / 'ont_avg_stats.jsonl') for name in BASELINES}
 
 
 def coverage(responses: Path) -> dict[str, tuple[int, int, int]]:
-    """Count (sentences, sentences with triples, total triples) per ontology."""
+    """Count (sentences, sentences with triples, total triples) per ontology.
+
+    Args:
+        responses: Directory of converted WUKONG system outputs.
+
+    Returns:
+        Mapping from ontology to its ``(sentences, sentences with triples, total triples)`` counts. Ontologies
+        without an output file are omitted.
+    """
     counts = {}
     for onto in ONTOLOGIES:
         path = responses / f'ont_{onto}_wukong_responses.jsonl'
@@ -74,7 +96,16 @@ def coverage(responses: Path) -> dict[str, tuple[int, int, int]]:
 
 
 def cost(workspaces: Path, prefix: str) -> dict[str, dict[str, int]]:
-    """Read job counts, token usage and wall clock from each staging database."""
+    """Read job counts, token usage and wall clock from each staging database.
+
+    Args:
+        workspaces: Root directory of the benchmark workspaces.
+        prefix: Workspace directory name prefix, followed by the ontology identifier.
+
+    Returns:
+        Mapping from ontology to its document, job, failed-job and token counts, and the seconds between the first
+        job's creation and the last job's completion. Ontologies without a staging database are omitted.
+    """
     usage = {}
     for onto in ONTOLOGIES:
         staging = workspaces / f'{prefix}{onto}' / 'staging' / 'extraction.db'
@@ -110,7 +141,14 @@ def cost(workspaces: Path, prefix: str) -> dict[str, dict[str, int]]:
 
 
 def normalize_triple(triple: list[str]) -> str:
-    """Build the comparison key `run_eval.py` uses for a triple."""
+    """Build the comparison key `run_eval.py` uses for a triple.
+
+    Args:
+        triple: Triple parts to normalize; a single-element list normalizes one argument.
+
+    Returns:
+        The parts, lowercased and stripped of whitespace and underscores, concatenated.
+    """
     return ''.join(re.sub(r'(_|\s+)', '', part).lower() for part in triple)
 
 
@@ -129,6 +167,16 @@ def recall_by_object_type(
     it, which is the cost this table measures. A workspace compiled with
     `--literal-properties` stores those objects as entity properties instead, and
     the same bucket then measures recall on property-valued triples.
+
+    Args:
+        dataset: Benchmark dataset directory holding the ground truth.
+        responses: Directory of converted WUKONG system outputs.
+        workspaces: Root directory of the benchmark workspaces.
+        prefix: Workspace directory name prefix, followed by the ontology identifier.
+
+    Returns:
+        A tuple of the ``(gold triples, matched)`` counts per bucket (``entity``, ``value`` and ``off_ontology``),
+        and the ``(ontology, relation, gold triples, matched)`` rows of every value-typed relation.
     """
     buckets: dict[str, list[int]] = {'entity': [0, 0], 'value': [0, 0], 'off_ontology': [0, 0]}
     per_relation: list[tuple[str, str, int, int]] = []
@@ -188,7 +236,16 @@ def recall_by_object_type(
 
 
 def extracted_entities(staging: Path, model: dict) -> dict[str, dict[str, set[str]]]:
-    """Map each sentence to the entities extracted from it and their types."""
+    """Map each sentence to the entities extracted from it and their types.
+
+    Args:
+        staging: Staging SQLite database of the workspace, opened read-only.
+        model: Compiled knowledge model, used to find each entity type's primary key.
+
+    Returns:
+        Mapping from sentence id (document file stem) to a mapping from normalized primary key value to the
+        entity types it was extracted as.
+    """
     primary_keys = {name: spec['primary_key'] for name, spec in model['entity_types'].items()}
     query = """
         SELECT d.source_uri, e.entity_type_name, e.properties
@@ -223,6 +280,16 @@ def miss_decomposition(
     the entity pass from the relationship pass, and single out the triples lost
     because a relationship's compiled endpoint types reject the pair of types the
     entity pass actually assigned.
+
+    Args:
+        dataset: Benchmark dataset directory holding the ground truth.
+        responses: Directory of converted WUKONG system outputs.
+        workspaces: Root directory of the benchmark workspaces.
+        prefix: Workspace directory name prefix, followed by the ontology identifier.
+
+    Returns:
+        A tuple of a counter holding the ``achievable`` and ``matched`` totals plus one count per miss cause, and a
+        counter of triples blocked by endpoint types, keyed by ``<ontology>:<relation>``.
     """
     totals = collections.Counter()
     blocked_by_relation = collections.Counter()
@@ -293,7 +360,12 @@ def miss_decomposition(
 
 
 def print_metric_table(stats: dict[tuple[str, str], dict[str, float]], population: str) -> None:
-    """Print the per-ontology metric table for one test population."""
+    """Print the per-ontology metric table for one test population.
+
+    Args:
+        stats: Metrics keyed by ``(ontology, population)``, as returned by ``read_avg_stats``.
+        population: Test population to print (``all_test_cases`` or ``selected_test_cases``).
+    """
     print(f'\n### {population}\n')
     print('| Ontology | P | R | F1 | Conf. | Subj. hall. | Rel. hall. | Obj. hall. |')
     print('|---|---|---|---|---|---|---|---|')
@@ -308,7 +380,11 @@ def print_metric_table(stats: dict[tuple[str, str], dict[str, float]], populatio
 
 
 def main() -> int:
-    """Print every summary table for a completed run."""
+    """Print every summary table for a completed run.
+
+    Returns:
+        The process exit code, always 0.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--results', type=Path, default=Path('paper/benchmark/results'))
     parser.add_argument('--workspace-root', type=Path, default=Path('paper/benchmark/workspaces'))

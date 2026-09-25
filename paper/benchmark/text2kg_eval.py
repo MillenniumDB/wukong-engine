@@ -30,7 +30,15 @@ def build_config(args: argparse.Namespace, ontologies: list[str]) -> dict[str, o
     """Build the evaluator config with absolute paths.
 
     Paths are absolute because run_eval.py resolves them against its own working
-    directory, which must be the benchmark's evaluation source directory.
+    directory, which must be the benchmark's evaluation source directory. Creates
+    the output directory if it doesn't exist.
+
+    Args:
+        args: Parsed command-line arguments (benchmark, dataset, responses, sys_pattern and out).
+        ontologies: Ontology identifiers to evaluate.
+
+    Returns:
+        The evaluator config, with the ontology list, per-ontology path patterns and the average metrics file.
     """
     dataset = Path(args.benchmark).resolve() / 'data' / args.dataset
     responses = Path(args.responses).resolve()
@@ -57,7 +65,11 @@ def build_config(args: argparse.Namespace, ontologies: list[str]) -> dict[str, o
 
 
 def main() -> int:
-    """Generate the evaluation config and run the benchmark evaluator."""
+    """Generate the evaluation config and run the benchmark evaluator.
+
+    Returns:
+        The process exit code: the evaluator's return code if it failed, 0 otherwise.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--benchmark', type=Path, required=True, help='Path to the Text2KGBench repository')
     parser.add_argument('--dataset', default='wikidata_tekgen', help='Benchmark dataset directory name')

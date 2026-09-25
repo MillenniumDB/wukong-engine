@@ -46,6 +46,13 @@ class PromptRenderer:
 
         Everything shared by jobs extracting the same types goes into the shared content, so that it forms a
         reusable prefix, and everything specific to the job's source goes after it.
+
+        Args:
+            spec: Extraction specification holding the task, definitions, document context and source text.
+
+        Returns:
+            The rendered prompt, with the shared prefix, the source-specific content, the fixed system
+            instructions and the response schema.
         """
         shared_content = (
             KG_EXTRACTION_SHARED_CONTENT.format(

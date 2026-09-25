@@ -1,12 +1,22 @@
+"""SQLite connection factory for the staging database."""
+
 import sqlite3
 from pathlib import Path
 
 
 class SQLiteSessionFactory:
-    """Factory for creating SQLite connections."""
+    """Factory for creating SQLite connections.
+
+    Attributes:
+        db_path: Path to the SQLite database file that connections open.
+    """
 
     def __init__(self, db_path: Path) -> None:
-        """Initialize the factory with the path to the SQLite database."""
+        """Initialize the factory with the path to the SQLite database.
+
+        Args:
+            db_path: Path to the SQLite database file that connections open.
+        """
         self.db_path = db_path
 
     def __call__(self) -> sqlite3.Connection:
@@ -14,7 +24,17 @@ class SQLiteSessionFactory:
         return self._create_sqlite_connection(self.db_path)
 
     def _create_sqlite_connection(self, db_path: Path) -> sqlite3.Connection:
-        """Create and configure a SQLite connection."""
+        """Create and configure a SQLite connection.
+
+        The connection runs in autocommit mode (transactions are managed manually), returns rows as
+        ``sqlite3.Row`` and has the performance and integrity PRAGMAs applied.
+
+        Args:
+            db_path: Path to the SQLite database file to open.
+
+        Returns:
+            The configured connection.
+        """
         conn = sqlite3.connect(
             db_path,
             isolation_level=None,  # Required to control transactions manually
@@ -26,7 +46,11 @@ class SQLiteSessionFactory:
 
     @staticmethod
     def _apply_pragmas(conn: sqlite3.Connection) -> None:
-        """Apply SQLite connection PRAGMAs for performance and integrity."""
+        """Apply SQLite connection PRAGMAs for performance and integrity.
+
+        Args:
+            conn: Connection to configure.
+        """
         cursor = conn.cursor()
 
         # --- Core Correctness ---

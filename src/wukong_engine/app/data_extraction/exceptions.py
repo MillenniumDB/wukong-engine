@@ -1,3 +1,5 @@
+"""Exceptions for data extraction."""
+
 from wukong_engine.app.shared.exceptions import ApplicationError
 
 

@@ -1,3 +1,5 @@
+"""Status values for pipeline checkpoints."""
+
 from enum import Enum
 
 

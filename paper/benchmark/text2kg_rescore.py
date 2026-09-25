@@ -74,7 +74,15 @@ ZERO_DAY_DATE = re.compile(r'^00\s+(?:([A-Za-z]+)\s+)?(\d{4})$')
 
 
 def normalize_date(value: str) -> str:
-    """Rewrite a zero-day gold date in the convention the train split uses."""
+    """Rewrite a zero-day gold date in the convention the train split uses.
+
+    Args:
+        value: Gold object string, possibly a zero-day date such as "00 June 1962".
+
+    Returns:
+        The date rewritten with day "01" (and month "January" when absent), or ``value`` unchanged if it isn't a
+        zero-day date.
+    """
     match = ZERO_DAY_DATE.match(value)
     if match is None:
         return value
@@ -84,7 +92,17 @@ METRICS = ('avg_precision', 'avg_recall', 'avg_f1', 'avg_onto_conf', 'avg_sub_ha
 
 
 def systems(root: Path, benchmark: Path, dataset: str) -> dict[str, tuple[Path, str]]:
-    """Map each system name to its output directory and filename pattern."""
+    """Map each system name to its output directory and filename pattern.
+
+    Args:
+        root: Harness directory holding the WUKONG result directories.
+        benchmark: Path to the Text2KGBench repository, which holds the baseline outputs.
+        dataset: Benchmark dataset name, e.g. "wikidata_tekgen".
+
+    Returns:
+        Mapping from system name to a tuple of its responses directory and its response filename pattern, where
+        ``$$onto$$`` stands for the ontology name.
+    """
     baselines = benchmark / 'data' / dataset / 'baselines'
     wukong = 'ont_$$onto$$_wukong_responses.jsonl'
     return {
@@ -97,7 +115,14 @@ def systems(root: Path, benchmark: Path, dataset: str) -> dict[str, tuple[Path, 
 
 
 def slug(name: str) -> str:
-    """Turn a system name into a directory name."""
+    """Turn a system name into a directory name.
+
+    Args:
+        name: Display name of the system.
+
+    Returns:
+        The lowercased name with every run of non-alphanumeric characters replaced by a single underscore.
+    """
     return re.sub(r'[^0-9A-Za-z]+', '_', name).strip('_').lower()
 
 
@@ -106,6 +131,10 @@ def write_jsonl(path: Path, records: list[dict[str, Any]]) -> None:
 
     Escaping matters: raw U+2028/U+0085 inside a string would split the line for
     any reader using `str.splitlines()`.
+
+    Args:
+        path: Output file; its parent directories are created if missing.
+        records: Records to write, one per line.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open('w', encoding='utf-8') as out_file:
@@ -120,7 +149,19 @@ def correct_ontology(
     corrections: tuple[str, ...],
     stemmer: PorterStemmer,
 ) -> dict[str, int]:
-    """Write the corrected ontology, ground truth and verified subset for one ontology."""
+    """Write the corrected ontology, ground truth and verified subset for one ontology.
+
+    Args:
+        onto: Ontology name.
+        source: Original dataset directory to read from.
+        target: Variant dataset directory to write the corrected files into.
+        corrections: Names of the corrections to apply (see ``CORRECTIONS``).
+        stemmer: Stemmer used to match gold subjects against the sentence, as the evaluator does.
+
+    Returns:
+        Counts of the kept sentences (``sentences``), verified sentences (``verified``) and gold triples
+        (``triples``).
+    """
     ontology = json.loads((source / 'ontologies' / f'{onto}_ontology.json').read_text(encoding='utf-8'))
     if 'strip_labels' in corrections:
         for relation in ontology['relations']:
@@ -180,7 +221,19 @@ def build_variant(
     out_root: Path,
     stemmer: PorterStemmer,
 ) -> tuple[Path, dict[str, dict[str, int]]]:
-    """Materialize one corrected, benchmark-shaped directory."""
+    """Materialize one corrected, benchmark-shaped directory.
+
+    Args:
+        name: Variant name, used as the directory name under ``out_root``.
+        corrections: Names of the corrections to apply.
+        benchmark: Path to the Text2KGBench repository.
+        dataset: Benchmark dataset name.
+        out_root: Directory under which the variant is created.
+        stemmer: Stemmer passed on to the ground-truth corrections.
+
+    Returns:
+        A tuple of the variant's root directory and the per-ontology counts from ``correct_ontology``.
+    """
     root = out_root / name
     source = benchmark / 'data' / dataset
     target = root / 'data' / dataset
@@ -204,7 +257,22 @@ def evaluate(
     out: Path,
     python: str,
 ) -> dict[tuple[str, str], dict[str, float]]:
-    """Score one system under one variant with the unmodified evaluator."""
+    """Score one system under one variant with the unmodified evaluator.
+
+    Args:
+        variant_root: Benchmark-shaped variant directory to score against.
+        responses: Directory holding the system's response files.
+        pattern: Response filename pattern, with ``$$onto$$`` standing for the ontology name.
+        out: Directory the evaluator writes its outputs to.
+        python: Python interpreter used to run the evaluator.
+
+    Returns:
+        Mapping from ``(ontology, population)`` to the metric values in ``METRICS``; the global row is keyed
+        ``("global", "global")``.
+
+    Raises:
+        RuntimeError: If the evaluator exits with a non-zero status.
+    """
     result = subprocess.run(  # noqa: S603
         [
             python, str(Path(__file__).parent / 'text2kg_eval.py'),
@@ -233,7 +301,13 @@ def print_tables(
     scores: dict[str, dict[str, dict[tuple[str, str], dict[str, float]]]],
     names: list[str],
 ) -> None:
-    """Print the data, waterfall, comparison and per-ontology tables."""
+    """Print the data, waterfall, comparison and per-ontology tables.
+
+    Args:
+        counts: Per-variant, per-ontology counts from ``build_variant``.
+        scores: Per-variant, per-system scores from ``evaluate``.
+        names: Systems to include, in column order.
+    """
     print('## Scored population per variant\n')
     print('| Variant | Sentences | Verified | Gold triples |')
     print('|---|---|---|---|')
@@ -278,7 +352,11 @@ def print_tables(
 
 
 def main() -> int:
-    """Build every variant, score every system under it and print the tables."""
+    """Build every variant, score every system under it and print the tables.
+
+    Returns:
+        The process exit code, always 0.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--benchmark', type=Path, required=True, help='Path to the Text2KGBench repository')
     parser.add_argument('--dataset', default='wikidata_tekgen')

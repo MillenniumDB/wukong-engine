@@ -1,3 +1,5 @@
+"""Composition root that wires the CLI application together."""
+
 import logging
 from pathlib import Path
 
@@ -53,15 +55,33 @@ class CLIApplication:
     """Composition root for the CLI.
 
     Owns infrastructure and ready-to-use workflows and use cases.
+
+    Attributes:
+        knowledge_construction: Fully wired knowledge construction pipeline.
     """
 
     def __init__(self, knowledge_construction_pipeline: KnowledgeConstructionPipeline) -> None:
-        """Initialize the CLI application, composing all dependencies."""
+        """Initialize the CLI application with its already composed workflows.
+
+        Args:
+            knowledge_construction_pipeline: Fully wired knowledge construction pipeline.
+        """
         self.knowledge_construction = knowledge_construction_pipeline
 
 
 def _format_to_exporter(export_format: KnowledgeExportFormat, repository: KnowledgeRepository) -> KnowledgeExporter:
-    """Map an export format to its corresponding KnowledgeExporter implementation."""
+    """Map an export format to its corresponding KnowledgeExporter implementation.
+
+    Args:
+        export_format: Configured export format.
+        repository: Repository the exporter reads the staged knowledge from.
+
+    Returns:
+        The exporter for the given format.
+
+    Raises:
+        ValueError: If the export format is not supported.
+    """
     match export_format:
         case KnowledgeExportFormat.MDB:
             return MillenniumDBKnowledgeExporter(repository)
@@ -72,7 +92,22 @@ def _format_to_exporter(export_format: KnowledgeExportFormat, repository: Knowle
 
 
 def build_application(workspace: Workspace, config_path: Path, verbosity: int) -> CLIApplication:
-    """Build the CLI application."""
+    """Build the CLI application.
+
+    Sets the logging verbosity, loads the configuration, initializes the staging database and wires every service,
+    use case and workflow.
+
+    Args:
+        workspace: Workspace whose staging database and export directory are used.
+        config_path: Path to the TOML configuration file.
+        verbosity: Logging verbosity level (0 for WARNING, 1 for INFO, 2 or more for DEBUG).
+
+    Returns:
+        The composed CLI application.
+
+    Raises:
+        ConfigurationError: If the verbosity, environment or configuration file cannot be loaded.
+    """
     # Configuration
     try:
         set_logger_verbosity(verbosity)

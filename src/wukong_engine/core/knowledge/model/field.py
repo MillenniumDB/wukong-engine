@@ -13,9 +13,20 @@ from wukong_engine.core.shared import RegexPattern
 from .values import DataType, FieldName, MergeStrategy
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Field:
-    """Base field class for entity and relationship types."""
+    """Base field class for entity and relationship types.
+
+    Attributes:
+        name: Name of the field.
+        data_type: Data type of the field's values.
+        description: Description of what the field holds.
+        options: Allowed values for the field. Empty if any value is allowed.
+        examples: Example values given to the LLM.
+        required: Whether instances must have a non-null value for this field.
+        merge_strategy: Strategy for merging values when deduplicating instances, or None to use the type's
+            default merge strategy.
+    """
 
     name: FieldName
     data_type: DataType
@@ -43,9 +54,17 @@ class Field:
         return json.dumps(field_info)
 
 
-@dataclass(frozen=True, repr=False)
+@dataclass(frozen=True, slots=True, repr=False)
 class EntityField(Field):
-    """A field from an entity type."""
+    """A field from an entity type.
+
+    Attributes:
+        instructions: Extra extraction instructions per context level.
+        regex: Pattern that values must match, per context level.
+        default_value: Default value per context level, used by the ``DEFAULT`` retrieval mode and when an
+            extracted value is null.
+        retrieval_mode: How the field's value is retrieved, per context level. Levels not listed use ``EXTRACT``.
+    """
 
     instructions: MappingProxyType[ContextLevel, str] = field(compare=False, hash=False)
     regex: MappingProxyType[ContextLevel, RegexPattern] = field(compare=False, hash=False)
@@ -53,13 +72,22 @@ class EntityField(Field):
     retrieval_mode: MappingProxyType[ContextLevel, EntityRetrievalMode] = field(compare=False, hash=False)
 
     def __post_init__(self) -> None:
-        """Validate entity field invariants."""
+        """Validate entity field invariants.
+
+        Raises:
+            ValueError: If the default values, retrieval modes, or examples are inconsistent with the field rules.
+        """
         self._validate_default_values()
         self._validate_retrieval_mode()
         self._validate_examples()
 
     def _validate_default_values(self) -> None:
-        """Validate that default values are consistent with field rules."""
+        """Validate that default values are consistent with field rules.
+
+        Raises:
+            ValueError: If a context level uses the ``DEFAULT`` retrieval mode without a default value, or a default
+                value is not among the options or doesn't match the regex for its context level.
+        """
         # For context levels that use DEFAULT retrieval mode, a default value must be explicitly defined
         for ctx_level, ret_mode in self.retrieval_mode.items():
             if ret_mode == EntityRetrievalMode.DEFAULT and self.default_value.get(ctx_level) is None:
@@ -88,14 +116,22 @@ class EntityField(Field):
                 )
 
     def _validate_retrieval_mode(self) -> None:
-        """Validate that the retrieval mode is properly defined."""
+        """Validate that the retrieval mode is properly defined.
+
+        Raises:
+            ValueError: If a retrieval mode is not supported at its context level.
+        """
         try:
             ensure_compatible_retrieval_modes(self.retrieval_mode)
         except ValueError as error:
             raise ValueError(f'Invalid EntityField "{self.name}": {error}') from error
 
     def _validate_examples(self) -> None:
-        """Validate that examples are consistent with field rules."""
+        """Validate that examples are consistent with field rules.
+
+        Raises:
+            ValueError: If an example is not among the options or doesn't match the regex of some context level.
+        """
         if not self.examples:
             return
 
@@ -118,9 +154,16 @@ class EntityField(Field):
                     )
 
 
-@dataclass(frozen=True, repr=False)
+@dataclass(frozen=True, slots=True, repr=False)
 class RelationshipField(Field):
-    """A field from a relationship type."""
+    """A field from a relationship type.
+
+    Attributes:
+        instructions: Extra extraction instructions, or None if there are none.
+        regex: Pattern that values must match, or None if unconstrained.
+        default_value: Default value, used by the ``DEFAULT`` retrieval mode and when an extracted value is null.
+        retrieval_mode: How the field's value is retrieved.
+    """
 
     instructions: str | None
     regex: RegexPattern | None
@@ -128,12 +171,21 @@ class RelationshipField(Field):
     retrieval_mode: RelationshipRetrievalMode
 
     def __post_init__(self) -> None:
-        """Validate relationship field invariants."""
+        """Validate relationship field invariants.
+
+        Raises:
+            ValueError: If the default value or examples are inconsistent with the field rules.
+        """
         self._validate_default_value()
         self._validate_examples()
 
     def _validate_default_value(self) -> None:
-        """Validate that the default value is consistent with field rules."""
+        """Validate that the default value is consistent with field rules.
+
+        Raises:
+            ValueError: If the ``DEFAULT`` retrieval mode has no default value, or the default value is not among the
+                options or doesn't match the regex.
+        """
         # For fields that use DEFAULT retrieval mode, a default value must be explicitly defined
         if self.retrieval_mode == RelationshipRetrievalMode.DEFAULT and self.default_value is None:
             raise ValueError(
@@ -155,7 +207,11 @@ class RelationshipField(Field):
             )
 
     def _validate_examples(self) -> None:
-        """Validate that examples are consistent with field rules."""
+        """Validate that examples are consistent with field rules.
+
+        Raises:
+            ValueError: If an example is not among the options or doesn't match the regex.
+        """
         if not self.examples:
             return
 

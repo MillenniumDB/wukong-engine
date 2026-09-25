@@ -1,3 +1,5 @@
+"""Severity levels for data extraction errors."""
+
 from enum import Enum
 
 

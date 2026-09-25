@@ -7,11 +7,25 @@ class StringSerializer(Protocol):
     """Serializes and deserializes string values for storage/transmission and retrieval."""
 
     def serialize(self, value: str) -> str:
-        """Serialize a string value."""
+        """Serialize a string value.
+
+        Args:
+            value: String to serialize.
+
+        Returns:
+            The serialized string.
+        """
         ...
 
     def deserialize(self, value: str) -> str:
-        """Deserialize a string value."""
+        """Deserialize a string value.
+
+        Args:
+            value: Previously serialized string.
+
+        Returns:
+            The original string.
+        """
         ...
 
 
@@ -19,11 +33,25 @@ class IdentityStringSerializer(StringSerializer):
     """Maintains the original string value without any transformation."""
 
     def serialize(self, value: str) -> str:
-        """Serialize a string value."""
+        """Serialize a string value.
+
+        Args:
+            value: String to serialize.
+
+        Returns:
+            The same string, unchanged.
+        """
         return value
 
     def deserialize(self, value: str) -> str:
-        """Deserialize a string value."""
+        """Deserialize a string value.
+
+        Args:
+            value: Previously serialized string.
+
+        Returns:
+            The same string, unchanged.
+        """
         return value
 
 
@@ -63,7 +91,14 @@ class EscapedStringSerializer(StringSerializer):
     }
 
     def serialize(self, value: str) -> str:
-        """Serialize a string value."""
+        """Serialize a string value.
+
+        Args:
+            value: String to escape.
+
+        Returns:
+            The string with backslashes and control characters escaped.
+        """
         out = []
 
         # Loop through the string and escape control characters
@@ -83,7 +118,14 @@ class EscapedStringSerializer(StringSerializer):
         return ''.join(out)
 
     def deserialize(self, value: str) -> str:
-        """Deserialize a string value."""
+        """Deserialize a string value.
+
+        Args:
+            value: Escaped string produced by ``serialize``.
+
+        Returns:
+            The string with escape sequences decoded; unknown or malformed escapes are kept literally.
+        """
         out = []
         i = 0
 

@@ -24,7 +24,11 @@ class MillenniumDBWriter:
     """Writes entities and relationships to a MillenniumDB QM file."""
 
     def __init__(self, path: Path) -> None:
-        """Initialize the writer."""
+        """Initialize the writer.
+
+        Args:
+            path: Path of the QM file to write; it is opened (and truncated) on entering the context.
+        """
         self._path = path
         self._serializer = PropertyValueSerializer(EscapedStringSerializer())
 
@@ -43,7 +47,15 @@ class MillenniumDBWriter:
         self._file.close()
 
     def _serialize_value(self, value: Any) -> str | None:
-        """Serialize a property value for MillenniumDB."""
+        """Serialize a property value for MillenniumDB.
+
+        Args:
+            value: Property value to serialize.
+
+        Returns:
+            The serialized value (strings are double-quoted with internal quotes escaped), or None if the value is
+            null.
+        """
         serialized_value = self._serializer.serialize(value)
 
         # If the value is null, return None to be explicit
@@ -58,13 +70,24 @@ class MillenniumDBWriter:
         return serialized_value
 
     def _write_line(self, identity: str, label: str, properties: list[str]) -> None:
-        """Write a line to the QM file representing an object in the MillenniumDB format."""
+        """Write a line to the QM file representing an object in the MillenniumDB format.
+
+        Args:
+            identity: Node identifier, or ``source->target`` endpoint pair for an edge.
+            label: Label of the node or edge.
+            properties: Pre-serialized ``key:value`` property entries.
+        """
         self._file.write(f'{identity} :{label} {" ".join(properties)}'.strip() + '\n')
 
     # Entities
 
     def write_entity(self, entity: Entity, entity_type: EntityType) -> None:
-        """Write an entity to the QM file."""
+        """Write an entity to the QM file.
+
+        Args:
+            entity: Entity to write as a node.
+            entity_type: Type of the entity, providing its label and the fields to export.
+        """
         # Label
         label = entity_type.name.value
 
@@ -82,7 +105,11 @@ class MillenniumDBWriter:
         self._write_line(identity, label, properties)
 
     def write_document(self, document: Document) -> None:
-        """Write a document to the QM file."""
+        """Write a document to the QM file.
+
+        Args:
+            document: Document to write as a node.
+        """
         # Label
         label = 'Document'
 
@@ -101,7 +128,11 @@ class MillenniumDBWriter:
         self._write_line(identity, label, properties)
 
     def write_chunk(self, chunk: Chunk) -> None:
-        """Write a chunk to the QM file."""
+        """Write a chunk to the QM file.
+
+        Args:
+            chunk: Chunk to write as a node.
+        """
         # Label
         label = 'Chunk'
 
@@ -127,7 +158,13 @@ class MillenniumDBWriter:
         relationship_type: RelationshipType,
         provenance: tuple[ChunkId, ...],
     ) -> None:
-        """Write a relationship to the QM file."""
+        """Write a relationship to the QM file.
+
+        Args:
+            relationship: Relationship to write as an edge between its endpoint entities.
+            relationship_type: Type of the relationship, providing its label, identity policy and fields to export.
+            provenance: Identifiers of the chunks the relationship was extracted from.
+        """
         # Label
         label = relationship_type.name.value
 
@@ -154,7 +191,11 @@ class MillenniumDBWriter:
         self._write_line(identity, label, properties)
 
     def write_chunk_source(self, chunk: Chunk) -> None:
-        """Write a relationship between a chunk and its source document to the QM file."""
+        """Write a relationship between a chunk and its source document to the QM file.
+
+        Args:
+            chunk: Chunk whose ``ChunkOf`` edge to its document is written.
+        """
         # Label
         label = 'ChunkOf'
 
@@ -164,7 +205,12 @@ class MillenniumDBWriter:
         self._write_line(identity, label, [])
 
     def write_entity_provenance(self, source_id: DocumentId | ChunkId, entity_id: EntityId) -> None:
-        """Write a provenance relationship to the QM file."""
+        """Write a provenance relationship to the QM file.
+
+        Args:
+            source_id: Identifier of the document or chunk the entity was extracted from.
+            entity_id: Identifier of the extracted entity.
+        """
         # Label
         label = 'ExtractedFrom'
 
@@ -179,11 +225,22 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
     """Exports knowledge as a graph to the MillenniumDB graph database format."""
 
     def __init__(self, repository: KnowledgeRepository) -> None:
-        """Initialize the exporter with necessary dependencies."""
+        """Initialize the exporter with necessary dependencies.
+
+        Args:
+            repository: Repository that streams the documents, chunks, entities and relationships to export.
+        """
         self._repository = repository
 
     def export(self, model: KnowledgeModel, export_uri: str) -> None:
-        """Export knowledge to a specified output format."""
+        """Export knowledge to a specified output format.
+
+        Writes every source, entity and relationship to ``<export_uri>/mdb/knowledge_graph.qm``.
+
+        Args:
+            model: Knowledge model whose active entity and relationship types are exported.
+            export_uri: Base export directory.
+        """
         # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'mdb'
         base_export_dir.mkdir(parents=True, exist_ok=True)
@@ -197,7 +254,11 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             self._export_relationships(model, writer)
 
     def _export_sources(self, writer: MillenniumDBWriter) -> None:
-        """Export sources to the MillenniumDB format."""
+        """Export sources to the MillenniumDB format.
+
+        Args:
+            writer: Open writer that receives the documents, chunks and ``ChunkOf`` edges.
+        """
         # Documents
         logger.info('Exporting Documents...')
         for doc in self._repository.stream_all_documents():
@@ -210,7 +271,12 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             writer.write_chunk_source(chunk)
 
     def _export_entities(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
-        """Export entities to the MillenniumDB format."""
+        """Export entities to the MillenniumDB format.
+
+        Args:
+            model: Knowledge model whose active entity types are exported.
+            writer: Open writer that receives the entities and their ``ExtractedFrom`` edges.
+        """
         # Entities
         logger.info('Exporting Entities...')
         for entity_type in model.active_entity_types.values():
@@ -224,7 +290,12 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             writer.write_entity_provenance(source_id, entity_id)
 
     def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
-        """Export relationships to the MillenniumDB format."""
+        """Export relationships to the MillenniumDB format.
+
+        Args:
+            model: Knowledge model whose active relationship types are exported.
+            writer: Open writer that receives the relationships.
+        """
         # Relationships
         logger.info('Exporting Relationships...')
         for relationship_type in model.active_relationship_types.values():
@@ -235,7 +306,11 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
                 writer.write_relationship(relationship, relationship_type, provenance)
 
     def clear(self, export_uri: str) -> None:
-        """Clear the exported knowledge state, removing any exported data."""
+        """Clear the exported knowledge state, removing any exported data.
+
+        Args:
+            export_uri: Base export directory; its whole contents are removed if it exists.
+        """
         export_path = Path(export_uri).resolve()
         if export_path.exists() and export_path.is_dir():
             clear_directory(export_path)

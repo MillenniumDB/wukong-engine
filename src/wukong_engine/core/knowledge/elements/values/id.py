@@ -1,3 +1,5 @@
+"""Identifiers for entity and relationship instances."""
+
 from dataclasses import dataclass
 from typing import ClassVar, Self
 
@@ -7,17 +9,17 @@ from wukong_engine.core.shared.identity import ContentHash, InstanceId
 from .normalized_pk import NormalizedPK
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class EntityId:
     """The unique identifier for entities.
 
-    The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used for relationship references and as the id in the exported knowledge.
-        2. content: A content-based id, used for efficient deduplication.
+    Current version: v1. Instance: UUIDv7. Content: sha-256 hash of "Version|EntityType|NormalizedPK" (first 128
+    bits).
 
-    Current Version: v1
-    Instance: UUIDv7
-    Content: sha-256 hash of "Version|EntityType|NormalizedPK" (first 128 bits)
+    Attributes:
+        instance: Unique id for the runtime instance, used for relationship references and as the id in the exported
+            knowledge.
+        content: Content-based id, used for efficient deduplication.
     """
 
     instance: InstanceId
@@ -62,20 +64,21 @@ class EntityId:
         return cls(instance=instance, content=content)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class RelationshipId:
     """The unique identifier for relationships.
 
-    The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used as the id in the exported knowledge.
-        2. content: A content-based id, used for efficient deduplication.
+    Current version: v1. Instance: UUIDv7. Content depends on the relationship type's identity policy, where
+    SRC_ID and TGT_ID are the content IDs of the source and target entities:
 
-    Current Version: v1
-    Instance: UUIDv7
-    Content (by policy):
-        NONE: Instance ID (UUIDv7)
-        ENDPOINTS: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID" (first 128 bits)
-        PRIMARY_KEY: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID|NormalizedPK" (first 128 bits)
+    - NONE: the instance ID (UUIDv7) bytes, so no deduplication happens.
+    - ENDPOINTS: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID" (first 128 bits).
+    - PRIMARY_KEY: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID|NormalizedPK" (first 128
+      bits).
+
+    Attributes:
+        instance: Unique id for the runtime instance, used as the id in the exported knowledge.
+        content: Content-based id, used for efficient deduplication.
     """
 
     instance: InstanceId
@@ -108,13 +111,15 @@ class RelationshipId:
             identity_policy: The relationship type identity policy.
             source: The source entity id.
             target: The target entity id.
-            normalized_pk: Normalized relationship primary key when required by policy.
+            normalized_pk: Normalized relationship primary key. Required when the policy is ``PRIMARY_KEY``,
+                ignored otherwise.
 
         Returns:
             A RelationshipId that contains instance and content components.
 
         Raises:
-            ValueError: If primary-key-based relationship identity is requested but no normalized primary key is provided.
+            ValueError: If primary-key-based relationship identity is requested but no normalized primary key is
+                provided.
         """
         instance_id = InstanceId.generate()
 

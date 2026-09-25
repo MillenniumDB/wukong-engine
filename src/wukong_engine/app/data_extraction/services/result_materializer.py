@@ -18,7 +18,18 @@ class ExtractionResultMaterializer(Protocol):
     """Materializer that converts raw extraction results into knowledge object instances."""
 
     def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[object, ...]:
-        """Materialize the extraction result into knowledge object instances."""
+        """Materialize the extraction result into knowledge object instances.
+
+        Extracted items that are malformed or don't match the knowledge model are skipped.
+
+        Args:
+            result: Raw LLM extraction result to materialize.
+            job: Extraction job that produced the result.
+            model: Knowledge model used to resolve and validate types and fields.
+
+        Returns:
+            The valid knowledge objects built from the result.
+        """
         ...
 
 
@@ -26,12 +37,29 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
     """Materializer that converts raw extraction results into entity instances."""
 
     def __init__(self, repository: EntityExtractionRepository, pk_normalizer: PKNormalizer) -> None:
-        """Initialize the materializer with necessary dependencies."""
+        """Initialize the materializer with necessary dependencies.
+
+        Args:
+            repository: Repository used to look up the entity types assigned to a job.
+            pk_normalizer: Normalizer applied to primary key values before computing entity identities.
+        """
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
     def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
-        """Materialize the extraction result into entity instances."""
+        """Materialize the extraction result into entity instances.
+
+        Items under the result's ``entities`` key are skipped when their type is unknown or not assigned to the job,
+        their properties fail validation, or their primary key doesn't normalize.
+
+        Args:
+            result: Raw LLM extraction result to materialize.
+            job: Extraction job that produced the result.
+            model: Knowledge model used to resolve and validate entity types and fields.
+
+        Returns:
+            The valid entities built from the result.
+        """
         extracted_entities = result.data.get('entities', [])
         materialized_entities: list[Entity] = []
         for extracted in extracted_entities:
@@ -85,7 +113,16 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         job_types: set[EntityTypeName],
         model: KnowledgeModel,
     ) -> EntityType | None:
-        """Materialize the entity type from extracted data."""
+        """Materialize the entity type from extracted data.
+
+        Args:
+            data: Single extracted item, carrying its type name under ``_entity_type``.
+            job_types: Entity types assigned to the job that produced the item.
+            model: Knowledge model used to resolve the type name.
+
+        Returns:
+            The entity type, or None if it is missing, invalid, unknown to the model, or not assigned to the job.
+        """
         try:
             extracted_et_name = data.get('_entity_type')
 
@@ -110,7 +147,20 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         context_level: ContextLevel,
         retrieval_mode: EntityRetrievalMode,
     ) -> dict[str, Any]:
-        """Materialize the entity properties obtained through a given retrieval mode."""
+        """Materialize the entity properties obtained through a given retrieval mode.
+
+        Extracted values are stringified; fields with no extracted value fall back to their default for the context
+        level, and fields that end up null are omitted.
+
+        Args:
+            data: Single extracted item holding the extracted field values.
+            entity_type: Entity type whose fields are materialized.
+            context_level: Context level of the job, which selects the applicable fields and defaults.
+            retrieval_mode: Retrieval mode of the fields to materialize.
+
+        Returns:
+            Mapping from field name to value. Empty for the ``SKIP`` retrieval mode.
+        """
         # Skipped fields should not be materialized
         if retrieval_mode == EntityRetrievalMode.SKIP:
             return {}
@@ -139,7 +189,18 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         entity_type: EntityType,
         context_level: ContextLevel,
     ) -> bool:
-        """Check whether the materialized properties are valid according to the entity type definition."""
+        """Check whether the materialized properties are valid according to the entity type definition.
+
+        Only extracted fields are checked, against their required flag, allowed options, and regex.
+
+        Args:
+            properties: Materialized properties to validate.
+            entity_type: Entity type defining the field constraints.
+            context_level: Context level of the job, which selects the applicable fields and regexes.
+
+        Returns:
+            True if every extracted field satisfies its constraints, False otherwise.
+        """
         for field in entity_type.fields_for(context_level, EntityRetrievalMode.EXTRACT):
             value = properties.get(field.name.value)
 
@@ -163,12 +224,30 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
     """Materializer that converts raw extraction results into relationship instances."""
 
     def __init__(self, repository: RelationshipExtractionRepository, pk_normalizer: PKNormalizer) -> None:
-        """Initialize the materializer with necessary dependencies."""
+        """Initialize the materializer with necessary dependencies.
+
+        Args:
+            repository: Repository used to look up a job's relationship types and resolve its entity references.
+            pk_normalizer: Normalizer applied to primary key values when the relationship identity requires one.
+        """
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
     def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Relationship, ...]:
-        """Materialize the extraction result into relationship instances."""
+        """Materialize the extraction result into relationship instances.
+
+        Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
+        job, their endpoints don't resolve to a valid endpoint of the type, their properties fail validation, or a
+        required primary key is missing or doesn't normalize.
+
+        Args:
+            result: Raw LLM extraction result to materialize.
+            job: Extraction job that produced the result.
+            model: Knowledge model used to resolve and validate relationship types, fields, and endpoints.
+
+        Returns:
+            The valid relationships built from the result.
+        """
         extracted_relationships = result.data.get('relationships', [])
         materialized_relationships: list[Relationship] = []
         for extracted in extracted_relationships:
@@ -231,7 +310,17 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         job_types: set[RelationshipTypeName],
         model: KnowledgeModel,
     ) -> RelationshipType | None:
-        """Materialize the relationship type from extracted data."""
+        """Materialize the relationship type from extracted data.
+
+        Args:
+            data: Single extracted item, carrying its type name under ``_relationship_type``.
+            job_types: Relationship types assigned to the job that produced the item.
+            model: Knowledge model used to resolve the type name.
+
+        Returns:
+            The relationship type, or None if it is missing, invalid, unknown to the model, or not assigned to the
+            job.
+        """
         try:
             extracted_rt_name = data.get('_relationship_type')
 
@@ -256,7 +345,21 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         job: ExtractionJob,
         model: KnowledgeModel,
     ) -> tuple[EntityId, EntityId] | None:
-        """Materialize the source and target entity IDs."""
+        """Materialize the source and target entity IDs.
+
+        The extracted ``_source_entity_id`` and ``_target_entity_id`` are temporary IDs local to the job's prompt;
+        they are capitalized and mapped back to the job's entity references.
+
+        Args:
+            data: Single extracted item holding the temporary source and target IDs.
+            relationship_type: Relationship type whose endpoint definitions the pair must match.
+            job: Extraction job whose entity references the temporary IDs belong to.
+            model: Knowledge model used to resolve the context levels of the referenced entities.
+
+        Returns:
+            The source and target entity IDs, or None if either ID is missing or unknown, or the pair doesn't match
+            an endpoint of the relationship type.
+        """
         # Get source and target temporary entity IDs from extracted data
         source_id = data.get('_source_entity_id')
         target_id = data.get('_target_entity_id')
@@ -299,7 +402,19 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         relationship_type: RelationshipType,
         retrieval_mode: RelationshipRetrievalMode,
     ) -> dict[str, Any]:
-        """Materialize the relationship properties obtained through a given retrieval mode."""
+        """Materialize the relationship properties obtained through a given retrieval mode.
+
+        Extracted values are stringified; fields with no extracted value fall back to their default, and fields
+        that end up null are omitted.
+
+        Args:
+            data: Single extracted item holding the extracted field values.
+            relationship_type: Relationship type whose fields are materialized.
+            retrieval_mode: Retrieval mode of the fields to materialize.
+
+        Returns:
+            Mapping from field name to value.
+        """
         # Materialize properties according to the retrieval mode
         properties: dict[str, Any] = {}
         for field in relationship_type.fields_for(retrieval_mode):
@@ -319,7 +434,17 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         return properties
 
     def _are_valid_properties(self, properties: dict[str, Any], relationship_type: RelationshipType) -> bool:
-        """Check whether the materialized properties are valid according to the relationship type definition."""
+        """Check whether the materialized properties are valid according to the relationship type definition.
+
+        Only extracted fields are checked, against their required flag, allowed options, and regex.
+
+        Args:
+            properties: Materialized properties to validate.
+            relationship_type: Relationship type defining the field constraints.
+
+        Returns:
+            True if every extracted field satisfies its constraints, False otherwise.
+        """
         for field in relationship_type.fields_for(RelationshipRetrievalMode.EXTRACT):
             value = properties.get(field.name.value)
 

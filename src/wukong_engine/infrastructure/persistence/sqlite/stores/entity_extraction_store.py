@@ -1,3 +1,5 @@
+"""SQLite store for entity extraction jobs, batches and their metrics."""
+
 import sqlite3
 import time
 from collections.abc import Iterable
@@ -30,13 +32,24 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     """SQLite implementation of the EntityExtractionStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the entity extraction store with a SQLite connection."""
+        """Initialize the entity extraction store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection whose transaction is managed by the caller.
+        """
         self._conn = conn
 
     # Extraction Jobs
 
     def materialize_all_extractions(self, context_level: ContextLevel) -> None:
-        """Materialize all entity type extractions for a given context level."""
+        """Materialize all entity type extractions for a given context level.
+
+        Creates a pending extraction for every (source, entity type) pair where the entity type is configured at this
+        context level for one of the source's collections. Existing extractions are left untouched.
+
+        Args:
+            context_level: Context level (document or chunk) to materialize extractions for.
+        """
         if context_level == ContextLevel.DOCUMENT:
             self._conn.execute(
                 """
@@ -80,7 +93,18 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
 
     def create_job_batch(self, context_level: ContextLevel, size: int) -> tuple[ExtractionJob, ...]:
-        """Create a batch of jobs to process pending extractions for a given context level."""
+        """Create a batch of jobs to process pending extractions for a given context level.
+
+        The jobs are only built in memory, one per distinct source with pending extractions; they are not persisted
+        until scheduled.
+
+        Args:
+            context_level: Context level (document or chunk) to create jobs for.
+            size: Maximum number of jobs to create.
+
+        Returns:
+            New jobs ordered by source content identifier, or an empty tuple if ``size`` is not positive.
+        """
         # Avoid invalid batch sizes
         if size <= 0:
             return ()
@@ -105,7 +129,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def schedule_jobs(self, jobs: Iterable[ExtractionJob]) -> None:
-        """Schedule entity extraction jobs for processing."""
+        """Schedule entity extraction jobs for processing.
+
+        Marks the pending extractions of each job's source as in progress (incrementing their attempt count) and
+        persists the jobs as in progress.
+
+        Args:
+            jobs: Jobs to schedule. The iterable is consumed twice, so it must be re-iterable (e.g. a tuple).
+        """
         # Update extractions relevant to the jobs
         self._conn.executemany(
             """
@@ -158,7 +189,23 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
     ) -> None:
-        """Update the status of a job and its associated extractions upon completion/termination."""
+        """Update the status of a job and its associated extractions upon completion/termination.
+
+        Only in-progress jobs and extractions are updated. On completion, the extractions are marked as completed.
+        On failure, the extractions move to a status determined by ``retry_policy``, unless their failed attempts
+        exceed the maximum, in which case they are marked as failed.
+
+        Args:
+            job: Job to update.
+            status: New job status; must be completed or failed.
+            metrics: Token usage recorded for the job. If None, no token metrics are stored.
+            error: Error message recorded for the job and, on failure, for its extractions.
+            retry_policy: How failed extractions are retried: immediately (back to pending, counting a failed
+                attempt), deferred (to retry in the next execution cycle) or not at all. If None, no retry.
+
+        Raises:
+            ValueError: If ``status`` is neither completed nor failed.
+        """
         # New status must be either completed or failed
         if status not in {JobStatus.COMPLETED, JobStatus.FAILED}:
             raise ValueError(f'Invalid job status for update: {status.value}. Must be COMPLETED or FAILED.')
@@ -263,7 +310,17 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
-        """Retrieve the source context for a given extraction job."""
+        """Retrieve the source context for a given extraction job.
+
+        Args:
+            job: Job whose source document or chunk is retrieved.
+
+        Returns:
+            The source document for document-level jobs, or the source chunk for chunk-level jobs.
+
+        Raises:
+            ValueError: If the source document or chunk is not found.
+        """
         # Document source context
         if job.context_ref.level == ContextLevel.DOCUMENT:
             row = self._conn.execute(
@@ -329,7 +386,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
-        """Retrieve the entity types associated with a given extraction job."""
+        """Retrieve the entity types associated with a given extraction job.
+
+        Args:
+            job: Job whose source's extractions determine the entity types.
+
+        Returns:
+            Names of all entity types with an extraction for the job's source, sorted by name.
+        """
         rows = self._conn.execute(
             """
             SELECT DISTINCT entity_type_name
@@ -344,7 +408,11 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     # Extraction Batches
 
     def register_batch(self, batch: ExtractionBatch) -> None:
-        """Persist a submitted extraction batch."""
+        """Persist a submitted extraction batch.
+
+        Args:
+            batch: Batch to persist; it is stored with the submitted status regardless of its own status.
+        """
         self._conn.execute(
             """
             INSERT INTO extraction_batches (
@@ -366,7 +434,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def link_jobs_to_batch(self, jobs: Iterable[ExtractionJob], batch: ExtractionBatch) -> None:
-        """Link extraction jobs to a submitted batch."""
+        """Link extraction jobs to a submitted batch.
+
+        Only in-progress jobs not yet linked to a batch are updated.
+
+        Args:
+            jobs: Jobs to link.
+            batch: Batch the jobs were submitted in.
+        """
         self._conn.executemany(
             """
             UPDATE extraction_jobs
@@ -389,7 +464,17 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def get_active_batch_group(self, size: int, cursor: BatchCursor | None = None) -> tuple[ExtractionBatch, ...]:
-        """Retrieve a group of active extraction batches using keyset pagination."""
+        """Retrieve a group of active extraction batches using keyset pagination.
+
+        Active batches are those that are submitted or in progress, ordered by creation time and batch identifier.
+
+        Args:
+            size: Maximum number of batches to retrieve.
+            cursor: Position after which to continue retrieving batches. If None, start from the beginning.
+
+        Returns:
+            Up to ``size`` active batches following the cursor.
+        """
         # Base query and parameters
         query = """
             SELECT
@@ -437,7 +522,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
-        """Update the status of a batch."""
+        """Update the status of a batch.
+
+        Terminal statuses (completed, failed, cancelled) also record the batch's finish time.
+
+        Args:
+            batch: Batch to update.
+            status: New batch status.
+            error: Error message recorded for the batch; None clears any previous error.
+        """
         if status in {BatchStatus.COMPLETED, BatchStatus.FAILED, BatchStatus.CANCELLED}:
             self._conn.execute(
                 """
@@ -458,7 +551,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             )
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry."""
+        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry.
+
+        Every job linked to the batch is failed and every extraction of those jobs' sources is reset, regardless of
+        their current status.
+
+        Args:
+            batch: Batch whose jobs are failed.
+            status: Batch status that caused the failure, included in the recorded error message.
+        """
         # Fail all jobs linked to the batch
         failed_jobs = self._conn.execute(
             """
@@ -495,7 +596,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         )
 
     def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[ExtractionJob, ...]:
-        """Retrieve all active jobs linked to a given batch."""
+        """Retrieve all active jobs linked to a given batch.
+
+        Args:
+            batch: Batch whose jobs are retrieved.
+
+        Returns:
+            The in-progress jobs linked to the batch.
+        """
         rows = self._conn.execute(
             """
             SELECT
@@ -521,7 +629,16 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     # Metrics
 
     def count_sources_by_status(self, context_level: ContextLevel) -> dict[ExtractionStatus, int]:
-        """Count sources by status for a given context level."""
+        """Count sources by status for a given context level.
+
+        A source is counted once per status held by any of its extractions.
+
+        Args:
+            context_level: Context level (document or chunk) to count sources for.
+
+        Returns:
+            Number of distinct sources per extraction status, with every status present (0 if none).
+        """
         status_counts: dict[ExtractionStatus, int] = dict.fromkeys(ExtractionStatus, 0)
         groups = self._conn.execute(
             """
@@ -539,7 +656,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return status_counts
 
     def count_jobs_by_status(self, context_level: ContextLevel) -> dict[JobStatus, int]:
-        """Count jobs by status for a given context level."""
+        """Count jobs by status for a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to count jobs for.
+
+        Returns:
+            Number of entity extraction jobs per job status, with every status present (0 if none).
+        """
         job_counts: dict[JobStatus, int] = dict.fromkeys(JobStatus, 0)
         groups = self._conn.execute(
             """
@@ -557,7 +681,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return job_counts
 
     def count_batches_by_status(self, context_level: ContextLevel) -> dict[BatchStatus, int]:
-        """Count batches by status for a given context level."""
+        """Count batches by status for a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to count batches for.
+
+        Returns:
+            Number of batches containing entity extraction jobs at this level per batch status, with every status
+            present (0 if none).
+        """
         batch_counts: dict[BatchStatus, int] = dict.fromkeys(BatchStatus, 0)
         groups = self._conn.execute(
             """
@@ -583,7 +715,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return batch_counts
 
     def get_job_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, DurationMetrics]:
-        """Get job duration metrics grouped by job status for a given context level (in milliseconds)."""
+        """Get job duration metrics grouped by job status for a given context level (in milliseconds).
+
+        Args:
+            context_level: Context level (document or chunk) to compute job durations for.
+
+        Returns:
+            Average, minimum and maximum duration of finished jobs per job status, with every status present (all
+            zeros if none).
+        """
         job_durations: dict[JobStatus, DurationMetrics] = dict.fromkeys(JobStatus, DurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """
@@ -609,7 +749,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return job_durations
 
     def get_batch_duration_metrics_by_status(self, context_level: ContextLevel) -> dict[BatchStatus, DurationMetrics]:
-        """Get batch duration metrics grouped by batch status for a given context level (in milliseconds)."""
+        """Get batch duration metrics grouped by batch status for a given context level (in milliseconds).
+
+        Args:
+            context_level: Context level (document or chunk) to compute batch durations for.
+
+        Returns:
+            Average, minimum and maximum duration of finished batches containing entity extraction jobs at this level
+            per batch status, with every status present (all zeros if none).
+        """
         batch_durations: dict[BatchStatus, DurationMetrics] = dict.fromkeys(BatchStatus, DurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """
@@ -642,7 +790,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return batch_durations
 
     def get_job_token_metrics_by_status(self, context_level: ContextLevel) -> dict[JobStatus, TokenUsageMetrics]:
-        """Get job token metrics grouped by job status for a given context level."""
+        """Get job token metrics grouped by job status for a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to aggregate token usage for.
+
+        Returns:
+            Total token usage of the jobs per job status, with every status present (all zeros if none).
+        """
         job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0, 0))
         groups = self._conn.execute(
             """
@@ -674,7 +829,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     # Recovery
 
     def terminate_stalled_jobs(self) -> int:
-        """Terminate stalled jobs that were never resolved to completion."""
+        """Terminate stalled jobs that were never resolved to completion.
+
+        Stalled jobs are in-progress jobs not linked to any batch. They are marked as failed and their in-progress
+        extractions are reset to pending.
+
+        Returns:
+            The number of terminated jobs.
+        """
         # Gather stalled jobs: jobs that are still in progress but are not tied to any batch
         stalled_jobs = self._conn.execute(
             """
@@ -716,7 +878,11 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         return len(stalled_jobs)
 
     def reset_deferred_extractions(self) -> int:
-        """Reset deferred extractions for re-processing."""
+        """Reset deferred extractions for re-processing.
+
+        Returns:
+            The number of extractions moved from the retry status back to pending.
+        """
         rows = self._conn.execute(
             """
             UPDATE entity_extractions

@@ -11,7 +11,11 @@ class SQLitePipelineStore(PipelineStore):
     """SQLite implementation of the PipelineStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the staging store with a SQLite connection."""
+        """Initialize the staging store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection used for all queries.
+        """
         self._conn = conn
 
     def initialize_all_steps(self) -> None:
@@ -34,7 +38,14 @@ class SQLitePipelineStore(PipelineStore):
         )
 
     def set_checkpoint_status(self, checkpoint: PipelineCheckpoint, status: PipelineCheckpointStatus) -> None:
-        """Set the status of a specific checkpoint."""
+        """Set the status of a specific checkpoint.
+
+        Inserts the checkpoint if it doesn't exist yet and refreshes its update timestamp.
+
+        Args:
+            checkpoint: Checkpoint to update.
+            status: New status of the checkpoint.
+        """
         self._conn.execute(
             """
             INSERT INTO pipeline_checkpoints (
@@ -50,7 +61,14 @@ class SQLitePipelineStore(PipelineStore):
         )
 
     def get_checkpoint_status(self, checkpoint: PipelineCheckpoint) -> PipelineCheckpointStatus:
-        """Get the status of a specific checkpoint."""
+        """Get the status of a specific checkpoint.
+
+        Args:
+            checkpoint: Checkpoint to look up.
+
+        Returns:
+            The stored status, or PENDING if the checkpoint has no row.
+        """
         row = self._conn.execute(
             """
             SELECT checkpoint_status
@@ -67,26 +85,57 @@ class SQLitePipelineStore(PipelineStore):
         return PipelineCheckpointStatus(row['checkpoint_status'])
 
     def is_checkpoint_completed(self, checkpoint: PipelineCheckpoint) -> bool:
-        """Whether a specific checkpoint has been completed."""
+        """Check whether a specific checkpoint has been completed.
+
+        Args:
+            checkpoint: Checkpoint to check.
+
+        Returns:
+            True if the checkpoint's status is COMPLETED, False otherwise.
+        """
         return self.get_checkpoint_status(checkpoint) == PipelineCheckpointStatus.COMPLETED
 
     def reset_step_checkpoints(self, step: PipelineStep) -> None:
-        """Reset all checkpoints associated with a specific pipeline step."""
+        """Reset all checkpoints associated with a specific pipeline step.
+
+        Args:
+            step: Step whose checkpoints are set back to PENDING.
+        """
         for checkpoint in step.checkpoints:
             self.set_checkpoint_status(checkpoint, PipelineCheckpointStatus.PENDING)
 
     def reset_dependent_checkpoints(self, step: PipelineStep) -> None:
-        """Reset all checkpoints dependent on a specific pipeline step."""
+        """Reset all checkpoints dependent on a specific pipeline step.
+
+        Resets the step's own checkpoints and those of the steps that directly depend on it.
+
+        Args:
+            step: Step whose checkpoints, and those of its direct dependents, are set back to PENDING.
+        """
         self.reset_step_checkpoints(step)
         for dependent_step in step.is_required_by:
             self.reset_step_checkpoints(dependent_step)
 
     def is_step_completed(self, step: PipelineStep) -> bool:
-        """Whether all checkpoints for a specific pipeline step are completed."""
+        """Check whether all checkpoints for a specific pipeline step are completed.
+
+        Args:
+            step: Step to check.
+
+        Returns:
+            True if every checkpoint of the step is COMPLETED, False otherwise.
+        """
         return all(self.is_checkpoint_completed(checkpoint) for checkpoint in step.checkpoints)
 
     def are_dependencies_completed(self, step: PipelineStep) -> bool:
-        """Whether all step dependencies for a specific pipeline step are completed."""
+        """Check whether all step dependencies for a specific pipeline step are completed.
+
+        Args:
+            step: Step whose direct dependencies are checked.
+
+        Returns:
+            True if every step it depends on is completed, False otherwise.
+        """
         return all(self.is_step_completed(dependency) for dependency in step.depends_on)
 
     def clear(self) -> None:

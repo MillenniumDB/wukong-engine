@@ -1,3 +1,5 @@
+"""Mapper from knowledge model schemas to domain models."""
+
 from types import MappingProxyType
 from typing import Any
 
@@ -33,7 +35,14 @@ class KnowledgeModelMapper:
     """Maps KnowledgeModel schemas to domain models."""
 
     def map_knowledge_model(self, schema: KnowledgeModelSchema) -> KnowledgeModel:
-        """Convert a KnowledgeModelSchema to a KnowledgeModel domain model."""
+        """Convert a KnowledgeModelSchema to a KnowledgeModel domain model.
+
+        Args:
+            schema: Parsed knowledge model schema.
+
+        Returns:
+            The knowledge model, with entity and relationship types keyed by name.
+        """
         return KnowledgeModel(
             extraction_config=self._map_extraction_config(schema.extraction_config),
             entity_types=MappingProxyType(
@@ -51,7 +60,14 @@ class KnowledgeModelMapper:
         )
 
     def _map_extraction_config(self, schema: ExtractionConfigSchema) -> ExtractionConfig:
-        """Convert an ExtractionConfigSchema to an ExtractionConfig domain model."""
+        """Convert an ExtractionConfigSchema to an ExtractionConfig domain model.
+
+        Args:
+            schema: Parsed extraction config schema.
+
+        Returns:
+            The extraction config; projections stay None when the schema leaves them unset (all types enabled).
+        """
         return ExtractionConfig(
             domain=schema.llm.domain,
             language=schema.llm.language,
@@ -66,7 +82,15 @@ class KnowledgeModelMapper:
         )
 
     def _map_entity_type(self, name: str, schema: EntityTypeSchema) -> EntityType:
-        """Convert an EntityTypeSchema to an EntityType domain model."""
+        """Convert an EntityTypeSchema to an EntityType domain model.
+
+        Args:
+            name: Name of the entity type, taken from its key in the knowledge model.
+            schema: Parsed entity type schema.
+
+        Returns:
+            The entity type with its fields and document collections mapped to domain values.
+        """
         return EntityType(
             name=EntityTypeName(name),
             description=schema.description,
@@ -86,7 +110,15 @@ class KnowledgeModelMapper:
         )
 
     def _map_relationship_type(self, name: str, schema: RelationshipTypeSchema) -> RelationshipType:
-        """Convert a RelationshipTypeSchema to a RelationshipType domain model."""
+        """Convert a RelationshipTypeSchema to a RelationshipType domain model.
+
+        Args:
+            name: Name of the relationship type, taken from its key in the knowledge model.
+            schema: Parsed relationship type schema.
+
+        Returns:
+            The relationship type with its endpoints and fields mapped to domain values.
+        """
         return RelationshipType(
             name=RelationshipTypeName(name),
             description=schema.description,
@@ -101,7 +133,15 @@ class KnowledgeModelMapper:
         )
 
     def _map_entity_field(self, name: str, schema: EntityFieldSchema) -> EntityField:
-        """Convert an EntityFieldSchema to an EntityField domain model."""
+        """Convert an EntityFieldSchema to an EntityField domain model.
+
+        Args:
+            name: Name of the field, taken from its key in the entity type.
+            schema: Parsed entity field schema.
+
+        Returns:
+            The entity field with its per-context-level settings as read-only mappings.
+        """
         return EntityField(
             name=FieldName(name),
             data_type=schema.data_type,
@@ -117,7 +157,15 @@ class KnowledgeModelMapper:
         )
 
     def _map_relationship_field(self, name: str, schema: RelationshipFieldSchema) -> RelationshipField:
-        """Convert a RelationshipFieldSchema to a RelationshipField domain model."""
+        """Convert a RelationshipFieldSchema to a RelationshipField domain model.
+
+        Args:
+            name: Name of the field, taken from its key in the relationship type.
+            schema: Parsed relationship field schema.
+
+        Returns:
+            The relationship field.
+        """
         return RelationshipField(
             name=FieldName(name),
             data_type=schema.data_type,
@@ -136,7 +184,17 @@ class KnowledgeModelMapper:
         self,
         endpoints: dict[str, dict[str, list[EndpointContextRule] | EndpointContextRule]],
     ) -> tuple[Endpoint, ...]:
-        """Materialize the relationship endpoints from the schema into the domain model format."""
+        """Materialize the relationship endpoints from the schema into the domain model format.
+
+        Every rule for a source/target entity type pair is expanded into all combinations of its source and target
+        context levels; the resulting pairs are deduplicated and sorted.
+
+        Args:
+            endpoints: Endpoint rules keyed by source entity type name, then by target entity type name.
+
+        Returns:
+            One endpoint per source/target entity type pair, with its allowed context level pairs.
+        """
         endpoint_mapping: dict[
             tuple[EntityTypeName, EntityTypeName],
             tuple[tuple[ContextLevel, ContextLevel], ...],
@@ -172,12 +230,34 @@ class KnowledgeModelMapper:
 
 
 def _as_dict(value: Any) -> dict:
+    """Return the value unchanged after checking that it is a dictionary.
+
+    Args:
+        value: Value expected to be a dictionary (already normalized by the schema).
+
+    Returns:
+        The same value.
+
+    Raises:
+        TypeError: If the value is not a dictionary.
+    """
     if not isinstance(value, dict):
         raise TypeError(f'Mapping Error: expected a dictionary, got {type(value)} instead')
     return value
 
 
 def _as_list(value: Any) -> list:
+    """Return the value unchanged after checking that it is a list.
+
+    Args:
+        value: Value expected to be a list (already normalized by the schema).
+
+    Returns:
+        The same value.
+
+    Raises:
+        TypeError: If the value is not a list.
+    """
     if not isinstance(value, list):
         raise TypeError(f'Mapping Error: expected a list, got {type(value)} instead')
     return value

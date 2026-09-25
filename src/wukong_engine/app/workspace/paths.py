@@ -1,3 +1,5 @@
+"""Resolved paths to the key files and directories of a workspace."""
+
 from pathlib import Path
 
 from .layout import WorkspaceLayout
@@ -7,7 +9,12 @@ class WorkspacePaths:
     """Group of paths to key files and directories in a workspace."""
 
     def __init__(self, root: Path, layout: WorkspaceLayout) -> None:
-        """Initialize with the root directory and layout."""
+        """Initialize with the root directory and layout.
+
+        Args:
+            root: Root directory of the workspace.
+            layout: Layout giving each file and directory's path relative to ``root``.
+        """
         self._root = root
         self._layout = layout
 

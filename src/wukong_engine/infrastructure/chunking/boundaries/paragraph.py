@@ -1,3 +1,5 @@
+"""Paragraph boundary rule."""
+
 import re
 from collections.abc import Iterator
 from typing import ClassVar
@@ -13,7 +15,16 @@ class ParagraphBoundary(Boundary):
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'\n\s*\n+')
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
-        """Split the given text into segments."""
+        """Split the given text into segments ending after each blank-line paragraph separator.
+
+        Args:
+            text: Full text being chunked; offsets refer to positions in this string.
+            start: Offset where the region to split begins (inclusive).
+            end: Offset where the region to split ends (exclusive).
+
+        Yields:
+            Contiguous, non-overlapping segments that together cover ``text[start:end]``.
+        """
         # Use regex to find paragraph boundaries
         segment_start = start
         for match in self._PATTERN.finditer(text, start, end):

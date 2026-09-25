@@ -1,3 +1,5 @@
+"""Use case for extracting entities from documents and chunks."""
+
 import logging
 
 from wukong_engine.app.data_extraction.exceptions import DataExtractionError
@@ -27,7 +29,15 @@ class ExtractEntities:
         batch_synchronizer: ExtractionBatchSynchronizer,
         metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
-        """Initialize the use case with necessary dependencies."""
+        """Initialize the use case with necessary dependencies.
+
+        Args:
+            uow: Unit of work used to read and update pipeline checkpoints.
+            repository: Repository of pending and completed entity extractions.
+            extraction_engine: Engine that runs entity extraction jobs for a context level.
+            batch_synchronizer: Synchronizer that manages the lifecycle of submitted LLM batches.
+            metrics_tracker: Tracker of extraction metrics, scoped to the context level being processed.
+        """
         self._uow = uow
         self._repository = repository
         self._extraction_engine = extraction_engine
@@ -43,7 +53,18 @@ class ExtractEntities:
             logger.info(f'Reset {reset} deferred extractions for re-processing')
 
     async def execute(self, knowledge_model: KnowledgeModel) -> None:
-        """Execute the entity extraction process."""
+        """Execute the entity extraction process.
+
+        Materializes pending extractions once, then processes the document and chunk context levels in order.
+        If a level still has remaining sources or batches after its run, execution stops early and the remaining work
+        is left for subsequent runs; otherwise the ``ENTITIES_EXTRACTED`` checkpoint is marked as completed.
+
+        Args:
+            knowledge_model: Knowledge model defining the entity types to extract.
+
+        Raises:
+            DataExtractionError: If extraction fails due to an unrecoverable error.
+        """
         # Materialize extractions (if not already done)
         with self._uow as tx:
             is_materialized = tx.pipeline.is_checkpoint_completed(

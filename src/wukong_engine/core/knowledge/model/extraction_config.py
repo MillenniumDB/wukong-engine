@@ -1,3 +1,5 @@
+"""Extraction process configuration from the knowledge model."""
+
 import json
 from dataclasses import dataclass
 
@@ -6,9 +8,16 @@ from wukong_engine.core.extraction.model.values import Language
 from .values import EntityTypeName, RelationshipTypeName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ExtractionConfig:
-    """The parameter configuration for the extraction process."""
+    """The parameter configuration for the extraction process.
+
+    Attributes:
+        domain: Description of the domain of the source documents, given to the LLM as context.
+        language: Language of the source documents, or None if unspecified.
+        entity_projection: Entity types enabled for extraction, or None to enable all of them.
+        relationship_projection: Relationship types enabled for extraction, or None to enable all of them.
+    """
 
     domain: str
     language: Language | None

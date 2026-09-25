@@ -1,17 +1,19 @@
+"""Identifiers for extraction jobs and batches."""
+
 from dataclasses import dataclass
 from typing import Self
 
 from wukong_engine.core.shared.identity import InstanceId
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ExtractionJobId:
     """The unique identifier for extraction jobs.
 
-    The identifier consists of a single component:
-        instance: A unique id for the runtime instance.
+    The identifier consists of a single instance component (UUIDv7).
 
-    Instance: UUIDv7
+    Attributes:
+        instance: A unique id for the runtime instance (UUIDv7).
     """
 
     instance: InstanceId
@@ -46,14 +48,14 @@ class ExtractionJobId:
         return cls(instance=instance)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ExtractionBatchId:
     """The unique identifier for extraction batches.
 
-    The identifier consists of a single component:
-        instance: A unique id for the runtime instance.
+    The identifier consists of a single instance component (UUIDv7).
 
-    Instance: UUIDv7
+    Attributes:
+        instance: A unique id for the runtime instance (UUIDv7).
     """
 
     instance: InstanceId

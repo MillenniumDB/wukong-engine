@@ -12,9 +12,6 @@ class DataType(Enum):
 
     Attributes:
         STRING: Textual data.
-        INTEGER: Whole number data.
-        FLOAT: Decimal number data.
-        BOOLEAN: True/False data.
     """
 
     STRING = 'string'

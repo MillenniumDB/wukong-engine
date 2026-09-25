@@ -18,7 +18,14 @@ COMPATIBLE_ENTITY_RETRIEVAL_MODES: dict[ContextLevel, set[EntityRetrievalMode]] 
 
 
 def ensure_compatible_retrieval_modes(retrieval_mode_map: MappingProxyType[ContextLevel, EntityRetrievalMode]) -> None:
-    """Ensure that all retrieval modes are compatible with their context levels."""
+    """Ensure that all retrieval modes are compatible with their context levels.
+
+    Args:
+        retrieval_mode_map: Retrieval mode configured for each context level.
+
+    Raises:
+        ValueError: If a retrieval mode is not supported at its context level.
+    """
     for context_level, retrieval_mode in retrieval_mode_map.items():
         if retrieval_mode not in COMPATIBLE_ENTITY_RETRIEVAL_MODES.get(context_level, set()):
             raise ValueError(

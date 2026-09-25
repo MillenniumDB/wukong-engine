@@ -75,7 +75,17 @@ TRIPLE_QUERY = """
 
 
 def read_primary_key(properties: str, primary_keys: dict[str, str], entity_type: str) -> str | None:
-    """Read an entity's primary key value out of its serialized properties."""
+    """Read an entity's primary key value out of its serialized properties.
+
+    Args:
+        properties: JSON-serialized entity properties, as stored in the staging database.
+        primary_keys: Mapping from entity type name to its primary key field.
+        entity_type: Name of the entity's type.
+
+    Returns:
+        The stripped primary key value, or None if the type has no known primary key or the value is missing, not a
+        string, or blank.
+    """
     field = primary_keys.get(entity_type)
     if field is None:
         return None
@@ -86,7 +96,14 @@ def read_primary_key(properties: str, primary_keys: dict[str, str], entity_type:
 
 
 def load_primary_keys(workspace: Path) -> dict[str, str]:
-    """Map each entity type to the field holding its primary key."""
+    """Map each entity type to the field holding its primary key.
+
+    Args:
+        workspace: Workspace directory holding the compiled ``knowledge_model.json``.
+
+    Returns:
+        Mapping from entity type name to its primary key field name.
+    """
     model = json.loads((workspace / 'knowledge_model.json').read_text(encoding='utf-8'))
     return {name: definition['primary_key'] for name, definition in model['entity_types'].items()}
 
@@ -98,8 +115,17 @@ def collect_triples(
 ) -> tuple[dict[str, list[list[str]]], int]:
     """Group extracted triples by the test sentence they were extracted from.
 
-    Returns the per-sentence triples and the number of rows skipped because an
-    endpoint carried no usable primary key value.
+    Args:
+        staging_db: Staging SQLite database of the workspace, opened read-only.
+        relation_labels: Mapping from relationship type name to benchmark relation label.
+        primary_keys: Mapping from entity type name to its primary key field.
+
+    Returns:
+        A tuple of the deduplicated ``[subject, relation, object]`` triples keyed by sentence (document file stem),
+        and the number of rows skipped because an endpoint carried no usable primary key value.
+
+    Raises:
+        KeyError: If an extracted relationship type is missing from ``relation_labels``.
     """
     triples: dict[str, list[list[str]]] = defaultdict(list)
     skipped = 0
@@ -132,15 +158,30 @@ def collect_triples(
 
 
 def compact(text: str) -> str:
-    """Lowercase and drop spaces and underscores, as the evaluator compares strings."""
+    """Lowercase and drop spaces and underscores, as the evaluator compares strings.
+
+    Args:
+        text: Text to compact.
+
+    Returns:
+        The lowercased text without whitespace or underscores.
+    """
     return re.sub(r'(_|\s+)', '', text).lower()
 
 
 def stated_in(value: str, text: str) -> bool:
-    """Whether a property value is stated in a sentence.
+    """Return whether a property value is stated in a sentence.
 
     A date follows the dataset's `<DD> <Month> <YYYY>` convention rather than the
     sentence's wording, so only its year is required to occur.
+
+    Args:
+        value: Property value to look for.
+        text: Sentence text to search.
+
+    Returns:
+        True if the value (or, for a date, its year) occurs in the text, compared as the evaluator does, False
+        otherwise.
     """
     if DATE_OBJECT_PATTERN.match(value):
         return value[-4:] in text
@@ -156,7 +197,18 @@ def collect_property_triples(
 ) -> int:
     """Add the triples encoded as entity properties to the per-sentence triples.
 
-    Returns the number of values withheld because the sentence does not state them.
+    Multi-valued properties are split on ``separator``, and each value is only kept for
+    a sentence that states it. ``triples`` is updated in place, skipping duplicates.
+
+    Args:
+        staging_db: Staging SQLite database of the workspace, opened read-only.
+        properties: Mapping from entity type name to a mapping from field name to benchmark relation label.
+        separator: Separator between values in a multi-valued property. Surrounding whitespace is ignored.
+        primary_keys: Mapping from entity type name to its primary key field.
+        triples: Per-sentence triples to extend, keyed by sentence (document file stem).
+
+    Returns:
+        The number of values withheld because the sentence does not state them.
     """
     withheld = 0
     connection = sqlite3.connect(f'file:{staging_db}?mode=ro', uri=True)
@@ -190,7 +242,14 @@ def collect_property_triples(
 
 
 def read_test_cases(test_path: Path) -> list[tuple[str, str]]:
-    """Read the ordered (id, sentence) pairs for an ontology."""
+    """Read the ordered (id, sentence) pairs for an ontology.
+
+    Args:
+        test_path: JSONL file of the ontology's test split.
+
+    Returns:
+        The ``(id, stripped sentence)`` pairs in file order.
+    """
     cases = []
     with test_path.open(encoding='utf-8') as test_file:
         for line in test_file:
@@ -201,7 +260,20 @@ def read_test_cases(test_path: Path) -> list[tuple[str, str]]:
 
 
 def export_ontology(onto: str, args: argparse.Namespace) -> dict[str, int | str]:
-    """Convert one ontology's workspace into a benchmark system output file."""
+    """Convert one ontology's workspace into a benchmark system output file.
+
+    Args:
+        onto: Ontology identifier.
+        args: Parsed command-line arguments (benchmark, dataset, workspace_root, prefix and out).
+
+    Returns:
+        Export summary: ontology, sentence count, sentences with triples, triple count, skipped and withheld rows,
+        number of documents not matching any test id, and the output path.
+
+    Raises:
+        FileNotFoundError: If the workspace has no staging database.
+        KeyError: If an extracted relationship type is missing from the workspace's mapping file.
+    """
     workspace = Path(args.workspace_root) / f'{args.prefix}{onto}'
     staging_db = workspace / 'staging' / 'extraction.db'
     if not staging_db.exists():
@@ -258,7 +330,11 @@ def export_ontology(onto: str, args: argparse.Namespace) -> dict[str, int | str]
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the command line parser."""
+    """Build the command line parser.
+
+    Returns:
+        The argument parser for this script.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--benchmark', type=Path, required=True, help='Path to the Text2KGBench repository')
     parser.add_argument('--dataset', default='wikidata_tekgen', help='Benchmark dataset directory name')
@@ -270,7 +346,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    """Convert every requested ontology into benchmark system output."""
+    """Convert every requested ontology into benchmark system output.
+
+    Returns:
+        The process exit code, always 0.
+    """
     args = build_parser().parse_args()
     for onto in args.onto or ONTOLOGIES:
         result = export_ontology(onto, args)

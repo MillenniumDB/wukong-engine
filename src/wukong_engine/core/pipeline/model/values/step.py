@@ -1,3 +1,5 @@
+"""Pipeline steps with their dependencies and checkpoints."""
+
 from enum import Enum
 
 from .checkpoint import PipelineCheckpoint

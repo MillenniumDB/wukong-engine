@@ -11,7 +11,7 @@ back into benchmark triples, since WUKONG type names cannot contain the spaces
 and underscores used by the benchmark relation labels.
 
 Example:
-    python scripts/benchmark/text2kg_setup.py \
+    python paper/benchmark/text2kg_setup.py \
         --benchmark ../benchmarks/Text2KGBench \
         --onto 2_music \
         --workspace-root workspaces --data-root data/tekgen
@@ -84,7 +84,18 @@ def pascal_case(label: str) -> str:
     """Convert an ontology label into a valid WUKONG type name.
 
     Type names must match `^[A-Z][a-zA-Z0-9]{0,63}$`, so every non-alphanumeric
-    separator is dropped and each remaining word is capitalized.
+    separator is dropped and each remaining word is capitalized. A name that
+    would start with a digit is prefixed with "X", and names are truncated to 64
+    characters.
+
+    Args:
+        label: Ontology concept or relation label.
+
+    Returns:
+        The PascalCase type name.
+
+    Raises:
+        ValueError: If the label contains no alphanumeric characters.
     """
     parts = [p for p in re.split(r'[^0-9A-Za-z]+', label.strip()) if p]
     if not parts:
@@ -101,7 +112,17 @@ def pascal_case(label: str) -> str:
 def snake_case(label: str) -> str:
     """Convert an ontology relation label into a valid WUKONG field name.
 
-    Field names must match `^[a-z][a-z0-9_]{0,63}$`.
+    Field names must match `^[a-z][a-z0-9_]{0,63}$`, so a name that would start
+    with a digit is prefixed with "x_", and names are truncated to 64 characters.
+
+    Args:
+        label: Ontology relation label.
+
+    Returns:
+        The snake_case field name.
+
+    Raises:
+        ValueError: If the label contains no alphanumeric characters.
     """
     parts = [p.lower() for p in re.split(r'[^0-9A-Za-z]+', label.strip()) if p]
     if not parts:
@@ -113,7 +134,14 @@ def snake_case(label: str) -> str:
 
 
 def benchmark_relation(label: str) -> str:
-    """Convert an ontology relation label into the string the evaluator expects."""
+    """Convert an ontology relation label into the string the evaluator expects.
+
+    Args:
+        label: Ontology relation label.
+
+    Returns:
+        The stripped label with spaces replaced by underscores.
+    """
     return label.strip().replace(' ', '_')
 
 
@@ -169,6 +197,9 @@ class OntologyAdapter:
 
         A qid that no concept declares carries no label we could describe to the
         LLM, so it is treated exactly like an empty range and falls back to Value.
+
+        Returns:
+            The declared concept qids referenced by at least one relation.
         """
         qids: set[str] = set()
         for relation in self._ontology['relations']:
@@ -179,7 +210,12 @@ class OntologyAdapter:
         return qids
 
     def _resolve_entity_names(self) -> dict[str, str]:
-        """Build the qid -> WUKONG entity type name mapping."""
+        """Build the qid -> WUKONG entity type name mapping.
+
+        Returns:
+            Mapping from each referenced concept qid to a unique entity type name that avoids reserved names and
+            `Value`.
+        """
         names: dict[str, str] = {}
         taken: set[str] = {VALUE_TYPE}
         for qid in sorted(self._referenced_qids()):
@@ -195,7 +231,15 @@ class OntologyAdapter:
         return names
 
     def _is_property(self, relation: dict[str, Any]) -> bool:
-        """Whether a relation declaration is compiled into a property of its domain."""
+        """Return whether a relation declaration is compiled into a property of its domain.
+
+        Args:
+            relation: Relation declaration from the ontology.
+
+        Returns:
+            True if literal properties are enabled and the relation's range is not a declared entity type, False
+            otherwise.
+        """
         return self._literal_properties and relation.get('range', '').strip() not in self._entity_names
 
     def _resolve_subject_names(self) -> dict[str, str]:
@@ -203,6 +247,10 @@ class OntologyAdapter:
 
         Only used with literal properties: a property needs an entity type to
         live on, and an undeclared domain qid would otherwise fall back to Value.
+
+        Returns:
+            Mapping from each undeclared domain qid (possibly empty) to a unique subject type name, or an empty
+            mapping when literal properties are disabled.
         """
         if not self._literal_properties:
             return {}
@@ -220,7 +268,12 @@ class OntologyAdapter:
         return names
 
     def _resolve_property_names(self) -> dict[str, dict[str, str]]:
-        """Build the entity type name -> {field name: benchmark relation label} mapping."""
+        """Build the entity type name -> {field name: benchmark relation label} mapping.
+
+        Returns:
+            Mapping from each domain entity type name to its property fields, keyed by field name. A field name
+            that clashes with `name` or another field gets the relation pid appended.
+        """
         properties: dict[str, dict[str, str]] = {}
         for relation in self._ontology['relations']:
             if not self._is_property(relation):
@@ -242,6 +295,9 @@ class OntologyAdapter:
 
         Relations sharing a label (same pid, different range) are a single
         relationship type carrying several endpoint pairs.
+
+        Returns:
+            Mapping from each non-property relation label to a unique relationship type name.
         """
         names: dict[str, str] = {}
         taken: set[str] = set()
@@ -261,7 +317,14 @@ class OntologyAdapter:
         return names
 
     def _endpoint_type(self, qid: str) -> str:
-        """Resolve a domain/range qid to the entity type name representing it."""
+        """Resolve a domain/range qid to the entity type name representing it.
+
+        Args:
+            qid: Domain or range qid from a relation declaration, possibly empty.
+
+        Returns:
+            The declared entity type name, else the generic subject type name, else `Value`.
+        """
         qid = qid.strip()
         return self._entity_names.get(qid) or self._subject_names.get(qid, VALUE_TYPE)
 
@@ -272,6 +335,9 @@ class OntologyAdapter:
 
         Without this the type is unbounded and the LLM extracts every noun phrase
         in the sentence.
+
+        Returns:
+            The instruction listing the relations whose object falls back to Value, or None if there are none.
         """
         labels = sorted(
             {
@@ -297,7 +363,20 @@ class OntologyAdapter:
         *,
         dates: bool = False,
     ) -> dict[str, Any]:
-        """Build a single entity type definition."""
+        """Build a single entity type definition.
+
+        Args:
+            name: Entity type name, used in the primary key field description.
+            description: Description of the entity type.
+            instructions: Type-level extraction instructions, or None to omit them.
+            examples: Example surface forms for the `name` primary key field. If None or empty, no examples are
+                given and the date convention is not added.
+            dates: Whether the examples include dates, which appends the date convention to the field
+                instructions.
+
+        Returns:
+            The entity type definition, with `name` as its primary key field.
+        """
         definition: dict[str, Any] = {'description': description}
         if instructions is not None:
             definition['instructions'] = instructions
@@ -327,7 +406,12 @@ class OntologyAdapter:
         return definition
 
     def _date_target_examples(self) -> dict[str, list[str]]:
-        """Map entity type names to date examples, for types that receive date objects."""
+        """Map entity type names to date examples, for types that receive date objects.
+
+        Returns:
+            Mapping from each range entity type name of a non-property relation with date examples to the
+            deduplicated examples of all such relations.
+        """
         targets: dict[str, list[str]] = {}
         for relation in self._ontology['relations']:
             examples = self._date_examples.get(relation['label'].strip())
@@ -340,7 +424,16 @@ class OntologyAdapter:
         return targets
 
     def _property_field(self, entity_type: str, label: str) -> dict[str, Any]:
-        """Build the property field holding the objects of one range-less relation."""
+        """Build the property field holding the objects of one range-less relation.
+
+        Args:
+            entity_type: Name of the domain entity type the property lives on.
+            label: Benchmark relation label the property represents.
+
+        Returns:
+            The property field definition, with date examples (and the date convention) first, followed by
+            entity examples keyed by the relation.
+        """
         field: dict[str, Any] = {
             'data_type': 'string',
             'description': f'The "{label}" of this {entity_type}, as defined by the {self._title}.',
@@ -362,7 +455,12 @@ class OntologyAdapter:
         return field
 
     def _add_property_fields(self, entity_types: dict[str, Any]) -> None:
-        """Attach every range-less relation as a property of its domain entity type."""
+        """Attach every range-less relation as a property of its domain entity type.
+
+        Args:
+            entity_types: Entity type definitions to update in place; must include every domain type that has
+                properties.
+        """
         for entity_type, fields in self._property_names.items():
             for field_name, label in fields.items():
                 entity_types[entity_type]['fields'][field_name] = self._property_field(entity_type, label)
@@ -372,6 +470,9 @@ class OntologyAdapter:
 
         The ontology gives no label for such a domain, so the type is described
         by the relations it is the subject of, which is all the ontology says.
+
+        Returns:
+            Mapping from each subject type name to its entity type definition.
         """
         entity_types: dict[str, Any] = {}
         for qid, name in self._subject_names.items():
@@ -393,7 +494,14 @@ class OntologyAdapter:
         return entity_types
 
     def _build_entity_types(self) -> dict[str, Any]:
-        """Build every entity type required by the ontology's relations."""
+        """Build every entity type required by the ontology's relations.
+
+        With literal properties, this adds the generic subject types and the property fields instead of the
+        `Value` type.
+
+        Returns:
+            Mapping from entity type name to its definition.
+        """
         date_examples = self._date_target_examples()
         entity_types: dict[str, Any] = {}
         for qid, name in self._entity_names.items():
@@ -448,12 +556,25 @@ class OntologyAdapter:
         Used by the permissive ablation. The declared domain and range become
         documentation rather than a constraint, because a sentence often mentions
         an argument whose most natural type is a sibling of the declared one.
+
+        Args:
+            entity_types: Entity type definitions, keyed by name.
+
+        Returns:
+            Endpoints mapping every source type to every target type, each with a single chunk-level rule.
         """
         rule = {'source_context_levels': 'chunk', 'target_context_levels': 'chunk'}
         return {source: {target: [rule] for target in entity_types} for source in entity_types}
 
     def _build_relationship_types(self, entity_types: dict[str, Any]) -> dict[str, Any]:
-        """Build one relationship type per distinct ontology relation label."""
+        """Build one relationship type per distinct ontology relation label.
+
+        Args:
+            entity_types: Entity type definitions, used for the permissive endpoints.
+
+        Returns:
+            Mapping from relationship type name to its definition, skipping relations compiled into properties.
+        """
         relationship_types: dict[str, Any] = {}
         for relation in self._ontology['relations']:
             if self._is_property(relation):
@@ -480,7 +601,11 @@ class OntologyAdapter:
         return relationship_types
 
     def knowledge_model(self) -> dict[str, Any]:
-        """Build the complete WUKONG knowledge model for this ontology."""
+        """Build the complete WUKONG knowledge model for this ontology.
+
+        Returns:
+            The knowledge model document, with every entity and relationship type enabled in the projection.
+        """
         entity_types = self._build_entity_types()
         relationship_types = self._build_relationship_types(entity_types)
         return {
@@ -499,7 +624,12 @@ class OntologyAdapter:
         }
 
     def mapping(self) -> dict[str, Any]:
-        """Build the reverse mapping used to export benchmark triples."""
+        """Build the reverse mapping used to export benchmark triples.
+
+        Returns:
+            The mapping from WUKONG entity, relationship and (with literal properties) subject and property
+            names back to benchmark labels.
+        """
         mapping: dict[str, Any] = {
             'ontology_id': self._ontology['id'],
             'title': self._title,
@@ -527,6 +657,14 @@ def scan_train_date_examples(train_path: Path, limit: int = 2) -> dict[str, list
     obj_label. Only the train split is read, never test or ground truth,
     mirroring the information the few-shot baselines obtained from their
     retrieved examples.
+
+    Args:
+        train_path: Path to the ontology's train split JSONL file.
+        limit: Maximum number of distinct examples kept per relation.
+
+    Returns:
+        Mapping from relation label to its "<DD> <Month> <YYYY>" example objects, or an empty mapping if the
+        train file doesn't exist.
     """
     examples: dict[str, list[str]] = {}
     if not train_path.exists():
@@ -564,6 +702,17 @@ def scan_train_entity_examples(
     With `undeclared_subjects`, subjects of relations whose domain qid is not a
     declared concept are also collected, keyed by that qid, for the generic
     subject types that literal properties compile such domains into.
+
+    Args:
+        train_path: Path to the ontology's train split JSONL file.
+        ontology: Parsed ontology definition, giving each relation's domain and range.
+        limit: Maximum number of distinct examples kept per key.
+        undeclared_subjects: Whether to also collect subjects of relations whose domain qid is undeclared.
+
+    Returns:
+        Mapping from key to non-date example surface forms, where the key is a declared concept qid, an
+        undeclared domain qid, or "rel:<label>" for objects of relations with no declared range. Empty if the
+        train file doesn't exist.
     """
     examples: dict[str, list[str]] = {}
     if not train_path.exists():
@@ -609,13 +758,26 @@ def scan_train_entity_examples(
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
-    """Write a JSON document with a trailing newline."""
+    """Write a JSON document with a trailing newline.
+
+    Args:
+        path: Output file; its parent directories are created if missing.
+        payload: Document to write.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=4, ensure_ascii=False) + '\n', encoding='utf-8')
 
 
 def write_sentences(test_path: Path, sentences_dir: Path) -> int:
-    """Write one document per test sentence, named after its benchmark id."""
+    """Write one document per test sentence, named after its benchmark id.
+
+    Args:
+        test_path: Path to the ontology's test split JSONL file.
+        sentences_dir: Directory to write the `<id>.txt` documents into; created if missing.
+
+    Returns:
+        The number of sentences written.
+    """
     sentences_dir.mkdir(parents=True, exist_ok=True)
     count = 0
     with test_path.open(encoding='utf-8') as test_file:
@@ -629,7 +791,16 @@ def write_sentences(test_path: Path, sentences_dir: Path) -> int:
 
 
 def setup_ontology(onto: str, args: argparse.Namespace) -> dict[str, Any]:
-    """Generate the workspace and data directory for a single ontology."""
+    """Generate the workspace and data directory for a single ontology.
+
+    Args:
+        onto: Ontology name, e.g. "2_music".
+        args: Parsed command line arguments.
+
+    Returns:
+        A summary of the generated ontology: its name, workspace and data paths, and the counts of sentences,
+        entity types, relationship types and relations with date examples.
+    """
     dataset = Path(args.benchmark).resolve() / 'data' / args.dataset
     ontology = json.loads((dataset / 'ontologies' / f'{onto}_ontology.json').read_text(encoding='utf-8'))
 
@@ -673,7 +844,11 @@ def setup_ontology(onto: str, args: argparse.Namespace) -> dict[str, Any]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the command line parser."""
+    """Build the command line parser.
+
+    Returns:
+        The argument parser for this script.
+    """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--benchmark', type=Path, required=True, help='Path to the Text2KGBench repository')
     parser.add_argument('--dataset', default='wikidata_tekgen', help='Benchmark dataset directory name')
@@ -711,7 +886,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    """Generate workspaces and data directories for the requested ontologies."""
+    """Generate workspaces and data directories for the requested ontologies.
+
+    Returns:
+        The process exit code, always 0.
+    """
     args = build_parser().parse_args()
     for onto in args.onto or ONTOLOGIES:
         result = setup_ontology(onto, args)

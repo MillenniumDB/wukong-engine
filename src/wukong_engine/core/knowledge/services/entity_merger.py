@@ -1,3 +1,5 @@
+"""Service for merging duplicate entities."""
+
 from typing import Any
 
 from wukong_engine.core.knowledge.elements import Entity
@@ -9,7 +11,20 @@ class EntityMerger:
     """Merge two entities based on specified strategies."""
 
     def merge(self, existing: Entity, incoming: Entity) -> Entity:
-        """Merge two entities into one."""
+        """Merge two entities into one.
+
+        The result keeps the identifier of ``existing``; only properties are merged.
+
+        Args:
+            existing: Entity already stored.
+            incoming: Newly extracted entity to merge into ``existing``.
+
+        Returns:
+            A new entity with the merged properties.
+
+        Raises:
+            ValueError: If the entities don't share the same type.
+        """
         # Both entities should have the same type, otherwise this is a data integrity issue
         if incoming.type != existing.type:
             raise ValueError(
@@ -27,7 +42,16 @@ class EntityMerger:
         incoming: dict[str, Any],
         entity_type: EntityType,
     ) -> dict[str, Any]:
-        """Merge properties of two entities based on the entity type's field merge strategy."""
+        """Merge properties of two entities based on the entity type's field merge strategy.
+
+        Args:
+            existing: Properties of the existing entity.
+            incoming: Properties of the incoming entity.
+            entity_type: Type whose field and default merge strategies are applied.
+
+        Returns:
+            The union of both property sets, with each value chosen by its field's merge strategy.
+        """
         merged: dict[str, Any] = {}
         fields = {name.value: field for name, field in entity_type.fields.items()}
         all_keys = sorted(set(existing) | set(incoming))
@@ -43,7 +67,18 @@ class EntityMerger:
 
     @staticmethod
     def _choose_value(existing: Any, incoming: Any, strategy: MergeStrategy) -> Any:
-        """Choose the value according to the field's merge strategy."""
+        """Choose the value according to the field's merge strategy.
+
+        If either value is None, the other one is returned regardless of the strategy. Length ties keep ``existing``.
+
+        Args:
+            existing: Current value of the field.
+            incoming: New value of the field.
+            strategy: Merge strategy to apply when both values are present.
+
+        Returns:
+            The chosen value.
+        """
         # If one of the values is None, return the other value regardless of the strategy
         if existing is None:
             return incoming

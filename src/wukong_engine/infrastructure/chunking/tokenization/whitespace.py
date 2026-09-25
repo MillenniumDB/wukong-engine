@@ -1,3 +1,5 @@
+"""Whitespace-based text tokenizer."""
+
 import re
 from typing import ClassVar
 
@@ -11,7 +13,14 @@ class WhitespaceTokenizer(TextTokenizer):
     _TOKEN_PATTERN: ClassVar[re.Pattern] = re.compile(r'\S+')
 
     def tokenize(self, text: str) -> TokenizedText:
-        """Tokenize a given text."""
+        """Tokenize a given text.
+
+        Args:
+            text: Text to tokenize.
+
+        Returns:
+            The text with one token per contiguous run of non-whitespace characters.
+        """
         starts: list[int] = []
         ends: list[int] = []
 

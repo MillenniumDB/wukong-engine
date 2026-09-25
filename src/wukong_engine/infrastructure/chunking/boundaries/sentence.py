@@ -1,3 +1,5 @@
+"""Sentence boundary rules based on regular expressions and Blingfire."""
+
 import re
 from collections.abc import Iterator
 from typing import ClassVar
@@ -15,7 +17,16 @@ class RegexSentenceBoundary(Boundary):
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'(?<=[.!?])(?:["\')\]]+)?\s+')
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
-        """Split the given text into segments."""
+        """Split the given text into segments ending after sentence-ending punctuation and whitespace.
+
+        Args:
+            text: Full text being chunked; offsets refer to positions in this string.
+            start: Offset where the region to split begins (inclusive).
+            end: Offset where the region to split ends (exclusive).
+
+        Yields:
+            Contiguous, non-overlapping segments that together cover ``text[start:end]``.
+        """
         # Sliding window looking for sentence-ending punctuation
         sentence_start = start
         for match in self._PATTERN.finditer(text, start, end):
@@ -32,7 +43,16 @@ class BlingfireSentenceBoundary(Boundary):
     """Boundary rule capable of partitioning text into sentences using the specialized Blingfire library."""
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
-        """Split the given text into segments."""
+        """Split the given text into sentence segments using Blingfire sentence offsets.
+
+        Args:
+            text: Full text being chunked; offsets refer to positions in this string.
+            start: Offset where the region to split begins (inclusive).
+            end: Offset where the region to split ends (exclusive).
+
+        Yields:
+            Contiguous, non-overlapping segments that together cover ``text[start:end]``.
+        """
         # Get normalized sentence offsets from Blingfire
         subtext = text[start:end]
         _, offsets = text_to_sentences_and_offsets(subtext)

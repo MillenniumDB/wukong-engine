@@ -1,19 +1,22 @@
+"""Identifiers for documents and document chunks."""
+
 from dataclasses import dataclass
 from typing import ClassVar, Self
 
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class DocumentId:
     """The unique identifier for documents.
 
-    The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used as the id in the exported knowledge.
-        2. content: A content-based id, used for efficient deduplication and provenance tracking.
+    The identifier consists of two components, an instance id (UUIDv7) and a content id (sha-256 hash of the
+    document's raw bytes, first 128 bits).
 
-    Instance: UUIDv7
-    Content: sha-256 hash of the document's raw bytes (first 128 bits)
+    Attributes:
+        instance: A unique id for the runtime instance, used as the id in the exported knowledge (UUIDv7).
+        content: A content-based id, used for efficient deduplication and provenance tracking (sha-256 hash of the
+            document's raw bytes, first 128 bits).
     """
 
     instance: InstanceId
@@ -53,17 +56,17 @@ class DocumentId:
         return cls(instance=instance, content=content)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ChunkId:
     """The unique identifier for document chunks.
 
-    The identifier consists of two components:
-        1. instance: A unique id for the runtime instance, used as the id in the exported knowledge.
-        2. content: A content-based id, used for efficient deduplication and provenance tracking.
+    The identifier consists of two components, an instance id (UUIDv7) and a content id (sha-256 hash of
+    "Version|DocumentContentId|ChunkIndex", first 128 bits). Current version: v1.
 
-    Current Version: v1
-    Instance: UUIDv7
-    Content: sha-256 hash of "Version|DocumentContentId|ChunkIndex" (first 128 bits)
+    Attributes:
+        instance: A unique id for the runtime instance, used as the id in the exported knowledge (UUIDv7).
+        content: A content-based id, used for efficient deduplication and provenance tracking (sha-256 hash of
+            "Version|DocumentContentId|ChunkIndex", first 128 bits).
     """
 
     instance: InstanceId

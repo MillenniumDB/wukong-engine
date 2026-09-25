@@ -1,3 +1,5 @@
+"""Execution modes for extraction jobs."""
+
 from enum import Enum
 
 

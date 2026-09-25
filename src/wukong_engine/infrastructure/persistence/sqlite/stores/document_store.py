@@ -1,3 +1,5 @@
+"""SQLite store for staged documents, chunks and collections."""
+
 import sqlite3
 from collections.abc import Iterable, Iterator
 
@@ -12,11 +14,22 @@ class SQLiteDocumentStore(DocumentStore):
     """SQLite implementation of the DocumentStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the staging store with a SQLite connection."""
+        """Initialize the staging store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection whose transaction is managed by the caller.
+        """
         self._conn = conn
 
     def _row_to_document(self, row: sqlite3.Row) -> Document:
-        """Map a database row to a Document object."""
+        """Map a database row to a Document object.
+
+        Args:
+            row: Row with ``instance_id``, ``content_id`` and ``source_uri`` columns.
+
+        Returns:
+            The reconstructed document.
+        """
         return Document(
             id=DocumentId.from_components(
                 instance=InstanceId.from_bytes(row['instance_id']),
@@ -26,7 +39,15 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def _row_to_chunk(self, row: sqlite3.Row) -> Chunk:
-        """Map a database row to a Chunk object."""
+        """Map a database row to a Chunk object.
+
+        Args:
+            row: Row with the chunk and parent document identifier columns plus the chunk's index, offsets and
+                content.
+
+        Returns:
+            The reconstructed chunk.
+        """
         return Chunk(
             id=ChunkId.from_components(
                 instance=InstanceId.from_bytes(row['chunk_instance_id']),
@@ -43,7 +64,11 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def add_collections(self, collection_names: Iterable[DocumentCollectionName]) -> None:
-        """Add document collections."""
+        """Add document collections, ignoring ones that already exist.
+
+        Args:
+            collection_names: Names of the collections to add.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO collections (collection_name)
@@ -53,7 +78,13 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def bulk_upsert_documents(self, documents: Iterable[Document]) -> None:
-        """Insert or update a batch of documents."""
+        """Insert a batch of documents, ignoring ones that are already stored.
+
+        Existing rows are left unchanged (``INSERT OR IGNORE``), despite the method name.
+
+        Args:
+            documents: Documents to insert.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO documents (content_id, instance_id, source_uri)
@@ -63,7 +94,13 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def bulk_upsert_chunks(self, chunks: Iterable[Chunk]) -> None:
-        """Insert or update a batch of document chunks."""
+        """Insert a batch of document chunks, ignoring ones that are already stored.
+
+        Existing rows are left unchanged (``INSERT OR IGNORE``), despite the method name.
+
+        Args:
+            chunks: Chunks to insert.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO chunks (content_id, instance_id, document_content_id, chunk_index, start_offset, end_offset, content)
@@ -88,7 +125,12 @@ class SQLiteDocumentStore(DocumentStore):
         documents: Iterable[Document],
         collection_name: DocumentCollectionName,
     ) -> None:
-        """Link a batch of documents to a collection."""
+        """Link a batch of documents to a collection, ignoring links that already exist.
+
+        Args:
+            documents: Documents to link.
+            collection_name: Name of the collection to link the documents to.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO document_collections (document_content_id, collection_name)
@@ -98,17 +140,29 @@ class SQLiteDocumentStore(DocumentStore):
         )
 
     def count_documents(self) -> int:
-        """Count the total number of documents."""
+        """Count the total number of documents.
+
+        Returns:
+            The number of stored documents.
+        """
         row = self._conn.execute('SELECT COUNT(*) AS count FROM documents').fetchone()
         return int(row['count']) if row else 0
 
     def count_chunks(self) -> int:
-        """Count the total number of chunks."""
+        """Count the total number of chunks.
+
+        Returns:
+            The number of stored chunks.
+        """
         row = self._conn.execute('SELECT COUNT(*) AS count FROM chunks').fetchone()
         return int(row['count']) if row else 0
 
     def stream_all_documents(self) -> Iterator[Document]:
-        """Stream all documents present in the store."""
+        """Stream all documents present in the store.
+
+        Yields:
+            Each stored document, ordered by content identifier.
+        """
         rows = self._conn.execute(
             'SELECT content_id, instance_id, source_uri FROM documents ORDER BY content_id',
         )
@@ -116,7 +170,11 @@ class SQLiteDocumentStore(DocumentStore):
             yield self._row_to_document(row)
 
     def stream_all_chunks(self) -> Iterator[Chunk]:
-        """Stream all chunks present in the store."""
+        """Stream all chunks present in the store.
+
+        Yields:
+            Each stored chunk, ordered by parent document content identifier and chunk index.
+        """
         rows = self._conn.execute(
             """
             SELECT

@@ -1,3 +1,5 @@
+"""Supported output formats for knowledge export."""
+
 from enum import Enum
 
 

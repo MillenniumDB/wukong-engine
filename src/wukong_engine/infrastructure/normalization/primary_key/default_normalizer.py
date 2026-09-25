@@ -13,7 +13,18 @@ class DefaultPKNormalizer(PKNormalizer):
     """Normalizes raw primary key values into a consistent format using standard string manipulation and unicode transliteration."""
 
     def normalize(self, raw_pk: str) -> NormalizedPK | None:
-        """Normalize a raw primary key value."""
+        """Normalize a raw primary key value.
+
+        Applies Unicode NFKC normalization, drops non-printable characters, unifies dashes, case-folds,
+        transliterates to ASCII, removes disallowed characters, trims forbidden edge characters and collapses
+        whitespace.
+
+        Args:
+            raw_pk: Primary key value as extracted.
+
+        Returns:
+            The normalized primary key, or None if the result isn't a valid NormalizedPK.
+        """
         # Unicode normalization
         value = unicodedata.normalize('NFKC', raw_pk)
 

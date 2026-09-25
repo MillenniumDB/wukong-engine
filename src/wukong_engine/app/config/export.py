@@ -1,3 +1,5 @@
+"""Knowledge export configuration."""
+
 import logging
 from dataclasses import dataclass
 
@@ -7,9 +9,13 @@ from wukong_engine.app.knowledge_export.model.values import KnowledgeExportForma
 logger = logging.getLogger(__name__)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ExportConfig:
-    """Export configuration."""
+    """Export configuration.
+
+    Attributes:
+        format: Output format for the exported knowledge graph.
+    """
 
     format: KnowledgeExportFormat = KnowledgeExportFormat.MDB
 

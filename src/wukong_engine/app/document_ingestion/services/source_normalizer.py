@@ -10,7 +10,17 @@ class DocumentSourceNormalizer:
     """Normalize document sources by removing redundant entries."""
 
     def normalize(self, sources: tuple[DocumentSource, ...]) -> tuple[DocumentSource, ...]:
-        """Return a tuple of sources with redundant entries removed."""
+        """Return a tuple of sources with redundant entries removed.
+
+        A source is redundant when another source already covers all of its documents (a duplicate, a file inside a
+        directory source, or a path inside a recursive source).
+
+        Args:
+            sources: Document sources to normalize.
+
+        Returns:
+            The remaining sources in their original order, or ``sources`` itself if nothing was redundant.
+        """
         to_remove: set[DocumentSource] = set()
         source_list = list(sources)
 
@@ -28,7 +38,15 @@ class DocumentSourceNormalizer:
 
     @staticmethod
     def _detect_redundant_source(a: DocumentSource, b: DocumentSource) -> DocumentSource | None:
-        """Return whichever of a/b is made redundant by the other, or None."""
+        """Return whichever of a/b is made redundant by the other, or None.
+
+        Args:
+            a: First source to compare.
+            b: Second source to compare.
+
+        Returns:
+            The redundant source, or None if neither source covers the other.
+        """
         detectors = {
             frozenset({DocumentSourceMode.FILE}): DocumentSourceNormalizer._detect_equal_source,
             frozenset({DocumentSourceMode.DIRECTORY}): DocumentSourceNormalizer._detect_equal_source,
@@ -50,14 +68,30 @@ class DocumentSourceNormalizer:
 
     @staticmethod
     def _detect_equal_source(a: DocumentSource, b: DocumentSource) -> DocumentSource | None:
-        """Return a redundant source when both entries have the same mode and path."""
+        """Return a redundant source when both entries have the same mode and path.
+
+        Args:
+            a: First source to compare.
+            b: Second source to compare.
+
+        Returns:
+            ``b`` if both sources are equal, None otherwise.
+        """
         if a == b:
             return b
         return None
 
     @staticmethod
     def _detect_child_source(a: DocumentSource, b: DocumentSource) -> DocumentSource | None:
-        """Return a redundant source when contained by the parent directory source."""
+        """Return a redundant source when contained by the parent directory source.
+
+        Args:
+            a: First source to compare; one of a/b must be a FILE source and the other a DIRECTORY source.
+            b: Second source to compare.
+
+        Returns:
+            The FILE source if it sits directly in the DIRECTORY source's root, None otherwise.
+        """
         if {a.mode, b.mode} != {DocumentSourceMode.FILE, DocumentSourceMode.DIRECTORY}:
             return None
 
@@ -69,7 +103,17 @@ class DocumentSourceNormalizer:
 
     @staticmethod
     def _detect_contained_source(a: DocumentSource, b: DocumentSource) -> DocumentSource | None:
-        """Return a redundant source when fully contained by a recursive source."""
+        """Return a redundant source when fully contained by a recursive source.
+
+        When both sources are RECURSIVE, the one with the shallower root is treated as the container.
+
+        Args:
+            a: First source to compare; at least one of a/b must be a RECURSIVE source.
+            b: Second source to compare.
+
+        Returns:
+            The other source if its root is at or below the recursive source's root, None otherwise.
+        """
         if DocumentSourceMode.RECURSIVE not in {a.mode, b.mode}:
             return None
 

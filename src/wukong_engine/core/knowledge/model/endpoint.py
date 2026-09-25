@@ -1,3 +1,5 @@
+"""Relationship type endpoints."""
+
 import json
 from dataclasses import dataclass
 
@@ -5,9 +7,15 @@ from wukong_engine.core.documents.model.values import EndpointContext
 from wukong_engine.core.knowledge.model.values import EntityTypeName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Endpoint:
-    """A relationship type endpoint."""
+    """A relationship type endpoint.
+
+    Attributes:
+        source: Entity type allowed as the relationship's source.
+        target: Entity type allowed as the relationship's target.
+        context_pairs: Allowed pairings of source and target context levels for this endpoint.
+    """
 
     source: EntityTypeName
     target: EntityTypeName

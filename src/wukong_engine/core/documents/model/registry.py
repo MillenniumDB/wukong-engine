@@ -12,9 +12,13 @@ from .source import DocumentSource
 from .values import DocumentCollectionName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class DocumentRegistry:
-    """The document registry."""
+    """The document registry.
+
+    Attributes:
+        collections: Read-only mapping from collection name to its document collection.
+    """
 
     collections: MappingProxyType[DocumentCollectionName, DocumentCollection]
 
@@ -48,7 +52,11 @@ class DocumentRegistry:
             raise ValueError(f'Unknown document collection names found: {details}')
 
     def get_all_sources(self) -> tuple[DocumentSource, ...]:
-        """Return all unique DocumentSources contained in all collections."""
+        """Return all unique DocumentSources contained in all collections.
+
+        Returns:
+            The unique sources across all collections, in order of first appearance.
+        """
         seen: set[DocumentSource] = set()
         sources: list[DocumentSource] = []
         for collection in self.collections.values():

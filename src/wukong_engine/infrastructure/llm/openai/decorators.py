@@ -1,3 +1,5 @@
+"""Decorators for translating OpenAI SDK errors into LLM port exceptions."""
+
 from collections.abc import Awaitable, Callable
 from functools import wraps
 
@@ -11,10 +13,22 @@ from wukong_engine.app.llm.exceptions import (
 
 
 def translate_openai_errors[T](fn: Callable[..., Awaitable[T]]) -> Callable[..., Awaitable[T]]:
-    """Translate OpenAI API errors into custom LLM exceptions."""
+    """Translate OpenAI API errors into custom LLM exceptions.
+
+    Authentication and invalid-request errors become ``LLMConfigurationError``; rate limits, timeouts, connection
+    failures and server-side errors become ``LLMTransientError``; ``LLMResponseError`` is propagated unchanged; any
+    other error becomes ``LLMInternalError``.
+
+    Args:
+        fn: Async function whose errors are translated.
+
+    Returns:
+        An async wrapper around ``fn`` that raises only LLM port exceptions.
+    """
 
     @wraps(fn)
     async def wrapper(*args: object, **kwargs: object) -> T:
+        """Await the wrapped function and translate any error it raises."""
         try:
             return await fn(*args, **kwargs)
         except AuthenticationError as exc:

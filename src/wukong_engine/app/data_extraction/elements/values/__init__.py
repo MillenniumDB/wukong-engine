@@ -1,4 +1,4 @@
-"""The data extraction models values package."""
+"""The elements values package for data extraction."""
 
 from .error_severity import ErrorSeverity
 from .id import ExtractionBatchId, ExtractionJobId

@@ -1,3 +1,5 @@
+"""Concurrent execution of async operations with graceful draining."""
+
 import asyncio
 import itertools
 import logging
@@ -26,7 +28,12 @@ class ExecutionController:
         return self._termination_error
 
     def request_termination(self, error: Exception | None = None) -> None:
-        """Request graceful termination of the execution, providing the error that caused the termination."""
+        """Request graceful termination of the execution, providing the error that caused the termination.
+
+        Args:
+            error: Error that caused the termination, raised by the runner once draining finishes. Only the first
+                non-None error is kept. If None, termination is requested without raising.
+        """
         self._termination_requested = True
 
         # Set the termination error if it hasn't been set already
@@ -47,7 +54,15 @@ class AsyncConcurrentRunner[T, R]:
     """
 
     def __init__(self, fn: Callable[[T], Awaitable[R]], max_concurrency: int) -> None:
-        """Initialize the runner with an async function and maximum concurrency."""
+        """Initialize the runner with an async function and maximum concurrency.
+
+        Args:
+            fn: Async callable applied to each item.
+            max_concurrency: Maximum number of tasks running at the same time.
+
+        Raises:
+            ValueError: If ``max_concurrency`` is not greater than zero.
+        """
         # Validate max_concurrency parameter
         if max_concurrency <= 0:
             raise ValueError('max_concurrency must be greater than zero')
@@ -67,12 +82,27 @@ class AsyncConcurrentRunner[T, R]:
         return self._controller
 
     async def run(self, items: Iterable[T]) -> AsyncIterator[tuple[T, R]]:
-        """Run the async function concurrently over the provided items, yielding results as they complete."""
+        """Run the async function concurrently over the provided items, yielding results as they complete.
+
+        Each call creates a fresh execution controller, accessible through ``controller`` while the run is active.
+
+        Args:
+            items: Items to process. Consumed lazily as task slots free up.
+
+        Yields:
+            Tuples of (item, result) in completion order, not input order.
+
+        Raises:
+            CancelledError: If any task was cancelled (``asyncio.CancelledError``).
+            Exception: The first exception raised by a task (remaining tasks are cancelled), or the termination error
+                passed to ``request_termination`` once all running tasks have drained.
+        """
         # Initialize the execution controller for this run
         self._controller = ExecutionController()
 
         # fn: Execute the async callable for a given item
         async def execute(item: T) -> tuple[T, R]:
+            """Return the item paired with the result of the async callable applied to it."""
             return item, await self._fn(item)
 
         # Create an iterator over the items and a set of active async tasks
@@ -81,6 +111,7 @@ class AsyncConcurrentRunner[T, R]:
 
         # fn: Start a new task for the given item and add it to the active set
         def start_task(item: T) -> None:
+            """Schedule a task for the item and add it to the active set."""
             task = asyncio.create_task(execute(item))
             active.add(task)
 

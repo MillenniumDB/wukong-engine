@@ -1,3 +1,5 @@
+"""Relationship type definition for the knowledge model."""
+
 import json
 from collections.abc import Iterable
 from dataclasses import dataclass, field
@@ -12,9 +14,20 @@ from .field import RelationshipField
 from .values import EntityTypeName, FieldName, MergeStrategy, RelationshipIdentityPolicy, RelationshipTypeName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class RelationshipType:
-    """A relationship type from the knowledge model."""
+    """A relationship type from the knowledge model.
+
+    Attributes:
+        name: Name of the relationship type.
+        description: Description of what the relationship represents.
+        instructions: Optional extra extraction instructions for this relationship type.
+        endpoints: Allowed source/target entity type pairs and their context level pairings.
+        primary_key: Name of the field used as primary key, or None if the relationship has none.
+        identity_policy: Policy used to deduplicate relationships of this type.
+        fields: Field definitions, keyed by field name.
+        default_merge_strategy: Merge strategy for fields that don't define their own.
+    """
 
     name: RelationshipTypeName
     description: str
@@ -53,13 +66,21 @@ class RelationshipType:
         return json.dumps(rel_info)
 
     def __post_init__(self) -> None:
-        """Validate relationship type invariants."""
+        """Validate relationship type invariants and build the fields index.
+
+        Raises:
+            ValueError: If an endpoint has incompatible context level pairings or the primary key is invalid.
+        """
         self._validate_endpoints()
         self._validate_primary_key()
         object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_endpoints(self) -> None:
-        """Validate that all context level pairings in endpoints are compatible."""
+        """Validate that all context level pairings in endpoints are compatible.
+
+        Raises:
+            ValueError: If any endpoint has an incompatible context level pairing.
+        """
         for endpoint in self.endpoints:
             try:
                 ensure_compatible_context_pairings(endpoint.context_pairs)
@@ -69,7 +90,12 @@ class RelationshipType:
                 ) from error
 
     def _validate_primary_key(self) -> None:
-        """Validate primary key invariants."""
+        """Validate primary key invariants.
+
+        Raises:
+            ValueError: If the primary key is not among the fields, is missing while the identity policy requires one,
+                doesn't use the extract retrieval mode, or isn't marked as required.
+        """
         # PK existence when specified
         if self.primary_key is not None and self.primary_key not in self.fields:
             raise ValueError(
@@ -97,7 +123,11 @@ class RelationshipType:
                 )
 
     def _build_fields_index(self) -> MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]]:
-        """Precompute fields by retrieval mode for fast lookups."""
+        """Precompute fields by retrieval mode for fast lookups.
+
+        Returns:
+            The fields grouped by retrieval mode, with an entry (possibly empty) for every mode.
+        """
         index: dict[RelationshipRetrievalMode, list[RelationshipField]] = {
             mode: [] for mode in RelationshipRetrievalMode
         }
@@ -108,7 +138,14 @@ class RelationshipType:
         )
 
     def fields_for(self, retrieval_mode: RelationshipRetrievalMode) -> tuple[RelationshipField, ...]:
-        """Get the relevant fields for a specific retrieval mode."""
+        """Get the relevant fields for a specific retrieval mode.
+
+        Args:
+            retrieval_mode: Retrieval mode to filter fields by.
+
+        Returns:
+            The fields that use the given retrieval mode.
+        """
         return self._fields_index.get(retrieval_mode, ())
 
     def is_valid_endpoint(
@@ -118,7 +155,18 @@ class RelationshipType:
         target_type: EntityTypeName,
         target_ctx: ContextLevel | Iterable[ContextLevel],
     ) -> bool:
-        """Whether the given source and target entity types and contexts match a valid endpoint definition for this relationship type."""
+        """Check whether the given entity types and contexts match a valid endpoint of this relationship type.
+
+        Args:
+            source_type: Entity type of the source.
+            source_ctx: Context level, or set of candidate context levels, of the source.
+            target_type: Entity type of the target.
+            target_ctx: Context level, or set of candidate context levels, of the target.
+
+        Returns:
+            True if some endpoint has matching source and target types and a context pairing whose levels are among
+            the given ones, False otherwise.
+        """
         source_ctx_levels = {source_ctx} if isinstance(source_ctx, ContextLevel) else set(source_ctx)
         target_ctx_levels = {target_ctx} if isinstance(target_ctx, ContextLevel) else set(target_ctx)
         for endpoint in self.endpoints:

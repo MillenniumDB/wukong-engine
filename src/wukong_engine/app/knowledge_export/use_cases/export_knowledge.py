@@ -1,3 +1,5 @@
+"""Use case for exporting extracted knowledge."""
+
 import logging
 
 from wukong_engine.app.knowledge_export.exceptions import KnowledgeExportError
@@ -14,13 +16,28 @@ class ExportKnowledge:
     """Use case for exporting extracted knowledge to a specified output format."""
 
     def __init__(self, uow: UnitOfWork, exporter: KnowledgeExporter, export_uri: str) -> None:
-        """Initialize the use case with its dependencies."""
+        """Initialize the use case with its dependencies.
+
+        Args:
+            uow: Unit of work used to record the export pipeline checkpoint.
+            exporter: Exporter that writes the knowledge in the target output format.
+            export_uri: Base location where the exporter writes (and clears) its output.
+        """
         self._uow = uow
         self._exporter = exporter
         self._export_uri = export_uri
 
     def execute(self, model: KnowledgeModel) -> None:
-        """Export the extracted knowledge to output files using a specified format."""
+        """Export the extracted knowledge to output files using a specified format.
+
+        On success, the knowledge-exported pipeline checkpoint is marked as completed.
+
+        Args:
+            model: Knowledge model whose entity and relationship types define what gets exported.
+
+        Raises:
+            KnowledgeExportError: If the exporter fails.
+        """
         try:
             self._exporter.export(model, self._export_uri)
             logger.info('Knowledge exported successfully!')
@@ -33,7 +50,11 @@ class ExportKnowledge:
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.KNOWLEDGE_EXPORTED, PipelineCheckpointStatus.COMPLETED)
 
     def reset(self) -> None:
-        """Reset the knowledge export state."""
+        """Reset the knowledge export state by clearing all exported output.
+
+        Raises:
+            KnowledgeExportError: If the exporter fails to clear the exported output.
+        """
         logger.warning('Resetting knowledge export state. This will clear ALL exports...')
         try:
             self._exporter.clear(self._export_uri)

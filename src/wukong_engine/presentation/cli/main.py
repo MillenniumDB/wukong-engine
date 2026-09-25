@@ -24,10 +24,10 @@ logger = logging.getLogger(__name__)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Parse command line arguments for the WUKONG CLI.
+    """Build the command-line argument parser for the WUKONG CLI.
 
     Returns:
-        A configured ArgumentParser instance.
+        A configured ArgumentParser instance, with the ``run`` and ``reset`` subcommands bound to their handlers.
     """
     # Main parser
     parser = argparse.ArgumentParser(
@@ -100,7 +100,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def handle_run(args: argparse.Namespace) -> None:
-    """Run command execution.
+    """Execute the run command.
+
+    Validates the workspace and data directory, then runs the knowledge construction pipeline. Exits the process
+    with status 1 on invalid input or errors, and 130 if interrupted by the user.
 
     Args:
         args: Parsed command-line arguments.
@@ -138,7 +141,9 @@ def handle_run(args: argparse.Namespace) -> None:
 
 # TODO: New command for 'wukong reset <workspace>' that resets everything
 def handle_reset(args: argparse.Namespace) -> None:
-    """Reset command execution.
+    """Execute the reset command.
+
+    Not implemented yet: the command currently does nothing.
 
     Args:
         args: Parsed command-line arguments.

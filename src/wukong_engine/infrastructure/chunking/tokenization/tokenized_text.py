@@ -1,16 +1,23 @@
+"""Tokenized text with character offsets for span measurement."""
+
 from bisect import bisect_left, bisect_right
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class TokenizedText:
     """Indexed tokenized representation of a text.
 
-    Invariants:
+    Invariants, enforced on creation:
         - len(token_starts) == len(token_ends)
         - token_starts is sorted ascending
         - token_ends is sorted ascending
         - token_starts[i] < token_ends[i]
+
+    Attributes:
+        text: The original text.
+        token_starts: Character offset where each token starts (inclusive).
+        token_ends: Character offset where each token ends (exclusive).
     """
 
     text: str
@@ -18,11 +25,19 @@ class TokenizedText:
     token_ends: tuple[int, ...]
 
     def __post_init__(self) -> None:
-        """Validate the invariants of the tokenized text."""
+        """Validate the invariants of the tokenized text.
+
+        Raises:
+            ValueError: If the token offsets break any of the invariants.
+        """
         self._validate_token_offsets()
 
     def _validate_token_offsets(self) -> None:
-        """Validate the token offsets."""
+        """Validate the token offsets.
+
+        Raises:
+            ValueError: If the offset arrays differ in length, aren't sorted, or contain an empty or inverted span.
+        """
         if len(self.token_starts) != len(self.token_ends):
             raise ValueError('token offset arrays must have equal length')
 
@@ -53,6 +68,16 @@ class TokenizedText:
         """Count tokens overlapping the character span [start, end).
 
         A token overlaps if: token_end > start AND token_start < end
+
+        Args:
+            start: Start character offset (inclusive).
+            end: End character offset (exclusive).
+
+        Returns:
+            The number of overlapping tokens, 0 for an empty span.
+
+        Raises:
+            ValueError: If the span is negative, inverted, or exceeds the text length.
         """
         self._validate_span(start, end)
 
@@ -68,8 +93,16 @@ class TokenizedText:
     def token_span(self, start: int, end: int) -> tuple[int, int]:
         """Get the token span overlapping the character span [start, end).
 
+        Args:
+            start: Start character offset (inclusive).
+            end: End character offset (exclusive).
+
         Returns:
-            [token_start_index, token_end_index)
+            The token indices [token_start_index, token_end_index). An empty character span yields an empty token span
+            at the index of the first token starting at or after ``start``.
+
+        Raises:
+            ValueError: If the span is negative, inverted, or exceeds the text length.
         """
         self._validate_span(start, end)
 
@@ -86,8 +119,16 @@ class TokenizedText:
     def char_span(self, token_start: int, token_end: int) -> tuple[int, int]:
         """Get the character span covered by the token slice [token_start, token_end).
 
+        Args:
+            token_start: Index of the first token (inclusive).
+            token_end: Index past the last token (exclusive).
+
         Returns:
-            [char_start, char_end)
+            The character offsets [char_start, char_end). An empty token slice yields an empty span at the start of
+            token ``token_start``, or at the end of the text if it's past the last token.
+
+        Raises:
+            ValueError: If the token slice is negative, inverted, or exceeds the token count.
         """
         self._validate_token_span(token_start, token_end)
 
@@ -104,7 +145,15 @@ class TokenizedText:
         return char_start, char_end
 
     def _validate_span(self, start: int, end: int) -> None:
-        """Validate character span."""
+        """Validate character span.
+
+        Args:
+            start: Start character offset (inclusive).
+            end: End character offset (exclusive).
+
+        Raises:
+            ValueError: If ``start`` is negative, ``end`` is before ``start``, or ``end`` exceeds the text length.
+        """
         if start < 0:
             raise ValueError('start must be >= 0')
         if end < start:
@@ -113,7 +162,15 @@ class TokenizedText:
             raise ValueError('end exceeds text length')
 
     def _validate_token_span(self, start: int, end: int) -> None:
-        """Validate token span."""
+        """Validate token span.
+
+        Args:
+            start: Start token index (inclusive).
+            end: End token index (exclusive).
+
+        Raises:
+            ValueError: If ``start`` is negative, ``end`` is before ``start``, or ``end`` exceeds the token count.
+        """
         if start < 0:
             raise ValueError('token start must be >= 0')
         if end < start:

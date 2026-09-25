@@ -1,3 +1,5 @@
+"""Use case for ingesting document collections into staging storage."""
+
 import logging
 
 from wukong_engine.app.document_ingestion.exceptions import DocumentIngestionError
@@ -26,7 +28,14 @@ class IngestDocuments:
         chunker: DocumentChunker,
         uow: UnitOfWork,
     ) -> None:
-        """Initialize the use case with its dependencies."""
+        """Initialize the use case with its dependencies.
+
+        Args:
+            stream_provider: Provider that discovers documents from each collection's sources.
+            loader: Loader that reads the text contents of discovered documents.
+            chunker: Chunker that splits loaded documents into chunks.
+            uow: Unit of work used to persist documents, chunks and pipeline checkpoints.
+        """
         self._source_normalizer = DocumentSourceNormalizer()
         self._stream_provider = stream_provider
         self._loader = loader
@@ -34,7 +43,17 @@ class IngestDocuments:
         self._uow = uow
 
     def execute(self, registry: DocumentRegistry) -> None:
-        """Ingest all document collections into the system."""
+        """Ingest all document collections into the system.
+
+        Registers every collection, ingests the documents and chunks of each one, and marks the
+        ``DOCUMENTS_INGESTED`` pipeline checkpoint as completed.
+
+        Args:
+            registry: Registry holding the document collections to ingest.
+
+        Raises:
+            DocumentIngestionError: If ingesting any collection fails.
+        """
         # Add collection definitions
         collections = tuple(registry.collections.values())
         with self._uow as tx:
@@ -59,7 +78,17 @@ class IngestDocuments:
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
 
     def _ingest_collection(self, collection: DocumentCollection) -> None:
-        """Ingest a specific collection of documents into the system."""
+        """Ingest a specific collection of documents into the system.
+
+        Normalizes the collection's sources, then stores its documents, links them to the collection and stores their
+        chunks, in batches.
+
+        Args:
+            collection: Collection whose documents and chunks are ingested.
+
+        Raises:
+            DocumentIngestionError: If any step of the ingestion fails.
+        """
         try:
             normalized_sources = self._source_normalizer.normalize(collection.sources)
             for doc_batch in batched(self._stream_provider.stream(normalized_sources), size=DOCUMENT_BATCH_SIZE):

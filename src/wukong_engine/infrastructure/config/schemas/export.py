@@ -1,3 +1,5 @@
+"""Schema for the export configuration section."""
+
 from typing import Any, ClassVar
 
 from pydantic import BaseModel, field_validator
@@ -6,7 +8,12 @@ from wukong_engine.app.knowledge_export.model.values import KnowledgeExportForma
 
 
 class ExportConfigSchema(BaseModel):
-    """Export configuration schema."""
+    """Export configuration schema.
+
+    Attributes:
+        format: Knowledge export format. Case-insensitive aliases (``mdb``, ``millenniumdb``, ``neo4j``) are
+            accepted. If None, the model default is used.
+    """
 
     format: KnowledgeExportFormat | None = None
 
@@ -20,7 +27,15 @@ class ExportConfigSchema(BaseModel):
     @field_validator('format', mode='before')
     @classmethod
     def normalize_format(cls, value: Any) -> Any:
-        """Normalize format strings to KnowledgeExportFormat members."""
+        """Normalize format strings to KnowledgeExportFormat members.
+
+        Args:
+            value: Raw ``format`` value from the configuration.
+
+        Returns:
+            The matching KnowledgeExportFormat member for a known alias, or the value unchanged otherwise, for
+            pydantic to validate.
+        """
         if isinstance(value, str):
             return cls._EXPORT_FORMAT_ALIASES.get(value.strip().lower(), value)
         return value

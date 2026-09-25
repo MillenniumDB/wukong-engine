@@ -1,3 +1,5 @@
+"""Pipeline checkpoints used to resume interrupted runs."""
+
 from enum import Enum
 
 

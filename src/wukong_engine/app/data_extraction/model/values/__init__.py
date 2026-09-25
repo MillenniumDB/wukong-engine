@@ -1,4 +1,4 @@
-"""The model package for data extraction."""
+"""The model values package for data extraction."""
 
 from .execution_mode import ExecutionMode
 

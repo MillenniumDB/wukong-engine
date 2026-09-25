@@ -14,26 +14,52 @@ class KnowledgeRepository:
     """Repository for retrieving extracted knowledge."""
 
     def __init__(self, uow: UnitOfWork) -> None:
-        """Initialize the repository with necessary dependencies."""
+        """Initialize the repository with necessary dependencies.
+
+        Args:
+            uow: Unit of work used to open a staging transaction for each stream.
+        """
         self._uow = uow
 
     def stream_all_documents(self) -> Iterator[Document]:
-        """Stream all documents from the knowledge base."""
+        """Stream all documents from the knowledge base.
+
+        Yields:
+            Each stored document.
+        """
         with self._uow as tx:
             yield from tx.documents.stream_all_documents()
 
     def stream_all_chunks(self) -> Iterator[Chunk]:
-        """Stream all document chunks from the knowledge base."""
+        """Stream all document chunks from the knowledge base.
+
+        Yields:
+            Each stored chunk.
+        """
         with self._uow as tx:
             yield from tx.documents.stream_all_chunks()
 
     def stream_entities_by_type(self, entity_type: EntityType) -> Iterator[Entity]:
-        """Stream entities of a specific type from the knowledge base."""
+        """Stream entities of a specific type from the knowledge base.
+
+        Args:
+            entity_type: Entity type whose entities are streamed.
+
+        Yields:
+            Each stored entity of the given type.
+        """
         with self._uow as tx:
             yield from tx.entities.stream_by_entity_type(entity_type)
 
     def stream_relationships_by_type(self, relationship_type: RelationshipType) -> Iterator[Relationship]:
-        """Stream relationships of a specific type from the knowledge base."""
+        """Stream relationships of a specific type from the knowledge base.
+
+        Args:
+            relationship_type: Relationship type whose relationships are streamed.
+
+        Yields:
+            Each stored relationship of the given type.
+        """
         with self._uow as tx:
             yield from tx.relationships.stream_by_relationship_type(relationship_type)
 
@@ -41,7 +67,21 @@ class KnowledgeRepository:
         self,
         relationship_type: RelationshipType,
     ) -> Iterator[tuple[Relationship, tuple[ChunkId, ...]]]:
-        """Stream relationships of a specific type along with their provenance information from the knowledge base."""
+        """Stream relationships of a specific type along with their provenance information from the knowledge base.
+
+        The relationship and provenance streams are consumed in lockstep, relying on both being ordered by
+        relationship identifier.
+
+        Args:
+            relationship_type: Relationship type whose relationships are streamed.
+
+        Yields:
+            Tuples of (relationship, identifiers of the chunks the relationship was extracted from).
+
+        Raises:
+            RuntimeError: If the provenance stream ends early, contains extra entries, or falls out of sync with the
+                relationship stream.
+        """
         with self._uow as tx:
             relationships = iter(tx.relationships.stream_by_relationship_type(relationship_type))
             provenance = iter(tx.relationships.stream_provenance_by_relationship_type(relationship_type))
@@ -73,7 +113,13 @@ class KnowledgeRepository:
                 )
 
     def stream_entity_provenance(self) -> Iterator[tuple[DocumentId | ChunkId, EntityId]]:
-        """Stream provenance information for documents/chunks and their associated entities from the knowledge base."""
+        """Stream provenance information for documents/chunks and their associated entities from the knowledge base.
+
+        Document-level provenance is streamed first, followed by chunk-level provenance.
+
+        Yields:
+            Tuples of (identifier of the source document or chunk, identifier of an entity extracted from it).
+        """
         with self._uow as tx:
             for provenance in tx.entities.stream_provenance_by_document():
                 for entity_id in provenance.entity_ids:
@@ -83,7 +129,11 @@ class KnowledgeRepository:
                     yield provenance.chunk_id, entity_id
 
     def stream_relationship_provenance(self) -> Iterator[tuple[ChunkId, RelationshipId]]:
-        """Stream provenance information for chunks and their associated relationships from the knowledge base."""
+        """Stream provenance information for chunks and their associated relationships from the knowledge base.
+
+        Yields:
+            Tuples of (chunk identifier, identifier of a relationship extracted from that chunk).
+        """
         with self._uow as tx:
             for provenance in tx.relationships.stream_provenance_by_chunk():
                 for relationship_id in provenance.relationship_ids:

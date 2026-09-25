@@ -1,8 +1,14 @@
+"""Validated regular expression pattern."""
+
 import re
 
 
 class RegexPattern:
-    """A validated regex pattern."""
+    """A validated regex pattern.
+
+    Attributes:
+        pattern: Source string of the regex pattern.
+    """
 
     def __init__(self, pattern: str) -> None:
         """Initialize and validate the regex pattern.

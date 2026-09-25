@@ -10,9 +10,14 @@ from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.shared.identity import ContentHash
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ContextRef:
-    """A source context reference."""
+    """A source context reference.
+
+    Attributes:
+        level: Context level of the referenced source (document or chunk).
+        content_id: Content-based id of the referenced document or chunk.
+    """
 
     level: ContextLevel
     content_id: ContentHash

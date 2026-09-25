@@ -1,3 +1,5 @@
+"""SQLite-backed relationship extraction store."""
+
 import json
 import sqlite3
 import time
@@ -33,7 +35,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     """SQLite implementation of the RelationshipExtractionStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the relationship extraction store with a SQLite connection."""
+        """Initialize the relationship extraction store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection used for all queries.
+        """
         self._conn = conn
 
     # Extraction Jobs
@@ -43,7 +49,15 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         chunks: Iterable[ChunkId],
         relationship_type_groups: Iterable[Iterable[RelationshipTypeName]],
     ) -> None:
-        """Materialize extractions for a batch of chunks and their associated relationship types."""
+        """Materialize extractions for a batch of chunks and their associated relationship types.
+
+        Creates one PENDING extraction per (chunk, relationship type) pair. Existing pairs are left untouched.
+
+        Args:
+            chunks: Chunks to extract relationships from.
+            relationship_type_groups: Relationship types to extract for each chunk, aligned with ``chunks``. Must have
+                the same length as ``chunks``.
+        """
         # Prepare data for materialization
         to_materialize: list[tuple[bytes, str, str]] = []
         for chunk_id, rel_type_names in zip(chunks, relationship_type_groups, strict=True):
@@ -64,7 +78,16 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def create_job_batch(self, size: int) -> tuple[ExtractionJob, ...]:
-        """Create a batch of jobs to process pending extractions."""
+        """Create a batch of jobs to process pending extractions.
+
+        Jobs are only built, not persisted; use ``schedule_jobs`` to persist them.
+
+        Args:
+            size: Maximum number of jobs to create. Non-positive sizes yield no jobs.
+
+        Returns:
+            One chunk-level job per distinct chunk with pending extractions, ordered by chunk content ID.
+        """
         # Avoid invalid batch sizes
         if size <= 0:
             return ()
@@ -89,7 +112,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def schedule_jobs(self, jobs: Iterable[ExtractionJob]) -> None:
-        """Schedule relationship extraction jobs for processing."""
+        """Schedule relationship extraction jobs for processing.
+
+        Moves the jobs' pending extractions to IN_PROGRESS, increments their attempt count, and inserts the jobs as
+        IN_PROGRESS.
+
+        Args:
+            jobs: Jobs to schedule. Iterated twice, so it must be a re-iterable collection.
+        """
         # Update extractions relevant to the jobs
         self._conn.executemany(
             """
@@ -141,7 +171,22 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
     ) -> None:
-        """Update the status of a job and its associated extractions upon completion/termination."""
+        """Update the status of a job and its associated extractions upon completion/termination.
+
+        Only IN_PROGRESS jobs and extractions are affected. On failure, the extractions move to a status chosen by the
+        retry policy (FAILED for NONE, RETRY for DEFERRED, PENDING for IMMEDIATE, which also counts a failed attempt),
+        or to FAILED once their failed attempts exceed ``MAX_FAILED_ATTEMPTS``.
+
+        Args:
+            job: Job to update.
+            status: New job status, either COMPLETED or FAILED.
+            metrics: Token usage of the job. If None, token columns are cleared.
+            error: Error message stored on the job and, on failure, on its extractions.
+            retry_policy: Retry policy applied to the extractions on failure. If None, no retry is done.
+
+        Raises:
+            ValueError: If ``status`` is neither COMPLETED nor FAILED.
+        """
         # New status must be either completed or failed
         if status not in {JobStatus.COMPLETED, JobStatus.FAILED}:
             raise ValueError(f'Invalid job status for update: {status.value}. Must be COMPLETED or FAILED.')
@@ -244,7 +289,17 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Chunk:
-        """Retrieve the source context for a given extraction job."""
+        """Retrieve the source context for a given extraction job.
+
+        Args:
+            job: Job whose source chunk is retrieved.
+
+        Returns:
+            The chunk the job extracts from.
+
+        Raises:
+            ValueError: If the job's chunk is not found.
+        """
         row = self._conn.execute(
             """
             SELECT
@@ -283,7 +338,15 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
-        """Retrieve the relationship types associated with a given extraction job."""
+        """Retrieve the relationship types associated with a given extraction job.
+
+        Args:
+            job: Job whose relationship types are retrieved.
+
+        Returns:
+            The distinct relationship types materialized for the job's chunk, sorted by name, regardless of their
+            extraction status.
+        """
         rows = self._conn.execute(
             """
             SELECT DISTINCT relationship_type_name
@@ -296,7 +359,12 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return tuple(RelationshipTypeName(row['relationship_type_name']) for row in rows)
 
     def store_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:
-        """Store the EntityRef mapping associated with a given extraction job."""
+        """Store the EntityRef mapping associated with a given extraction job.
+
+        Args:
+            job: Job the mapping belongs to.
+            mapping: Entity references keyed by the reference labels used for the job, replacing any stored mapping.
+        """
         # Convert EntityRef instances to a serializable format
         serializable_mapping = {
             key: {
@@ -322,7 +390,17 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def get_job_entity_ref_mapping(self, job: ExtractionJob) -> dict[str, EntityRef]:
-        """Retrieve the EntityRef mapping associated with a given extraction job."""
+        """Retrieve the EntityRef mapping associated with a given extraction job.
+
+        Args:
+            job: Job whose mapping is retrieved.
+
+        Returns:
+            The entity references keyed by the reference labels used for the job.
+
+        Raises:
+            ValueError: If the job is not found.
+        """
         row = self._conn.execute(
             """
             SELECT entity_id_mapping
@@ -352,7 +430,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     # Extraction Batches
 
     def register_batch(self, batch: ExtractionBatch) -> None:
-        """Persist a submitted extraction batch."""
+        """Persist a submitted extraction batch.
+
+        Args:
+            batch: Batch to persist, stored with SUBMITTED status regardless of its own status.
+        """
         self._conn.execute(
             """
             INSERT INTO extraction_batches (
@@ -374,7 +456,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def link_jobs_to_batch(self, jobs: Iterable[ExtractionJob], batch: ExtractionBatch) -> None:
-        """Link extraction jobs to a submitted batch."""
+        """Link extraction jobs to a submitted batch.
+
+        Only IN_PROGRESS jobs not yet linked to a batch are affected.
+
+        Args:
+            jobs: Jobs to link.
+            batch: Batch the jobs were submitted in.
+        """
         self._conn.executemany(
             """
             UPDATE extraction_jobs
@@ -397,7 +486,16 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def get_active_batch_group(self, size: int, cursor: BatchCursor | None = None) -> tuple[ExtractionBatch, ...]:
-        """Retrieve a group of active extraction batches using keyset pagination."""
+        """Retrieve a group of active extraction batches using keyset pagination.
+
+        Args:
+            size: Maximum number of batches to retrieve.
+            cursor: Position after which to resume, ordered by creation time and batch ID. If None, start from the
+                beginning.
+
+        Returns:
+            The SUBMITTED or IN_PROGRESS batches after the cursor, ordered by creation time and batch ID.
+        """
         # Base query and parameters
         query = """
             SELECT
@@ -445,7 +543,15 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def update_batch_status(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
-        """Update the status of a batch."""
+        """Update the status of a batch.
+
+        Terminal statuses (COMPLETED, FAILED, CANCELLED) also record the finish time.
+
+        Args:
+            batch: Batch to update.
+            status: New batch status.
+            error: Error message to store. If None, any stored error is cleared.
+        """
         if status in {BatchStatus.COMPLETED, BatchStatus.FAILED, BatchStatus.CANCELLED}:
             self._conn.execute(
                 """
@@ -466,7 +572,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             )
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry."""
+        """Fail all jobs linked with a batch, resetting their associated extractions to pending for retry.
+
+        Every job linked to the batch and every extraction of their chunks is affected, whatever its current status.
+
+        Args:
+            batch: Batch whose jobs are failed.
+            status: Batch status that caused the failure, included in the stored error message.
+        """
         # Fail all jobs linked to the batch
         failed_jobs = self._conn.execute(
             """
@@ -502,7 +615,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def get_active_jobs_for_batch(self, batch: ExtractionBatch) -> tuple[ExtractionJob, ...]:
-        """Retrieve all active jobs linked to a given batch."""
+        """Retrieve all active jobs linked to a given batch.
+
+        Args:
+            batch: Batch whose jobs are retrieved.
+
+        Returns:
+            The IN_PROGRESS jobs linked to the batch.
+        """
         rows = self._conn.execute(
             """
             SELECT
@@ -528,7 +648,12 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     # Metrics
 
     def count_sources_by_status(self) -> dict[ExtractionStatus, int]:
-        """Count sources by status."""
+        """Count sources by status.
+
+        Returns:
+            The number of distinct chunks with at least one extraction in each status, with 0 for unused statuses. A
+            chunk may be counted under several statuses.
+        """
         status_counts: dict[ExtractionStatus, int] = dict.fromkeys(ExtractionStatus, 0)
         groups = self._conn.execute(
             """
@@ -544,7 +669,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return status_counts
 
     def count_jobs_by_status(self) -> dict[JobStatus, int]:
-        """Count jobs by status."""
+        """Count jobs by status.
+
+        Returns:
+            The number of chunk-level relationship extraction jobs in each status, with 0 for unused statuses.
+        """
         job_counts: dict[JobStatus, int] = dict.fromkeys(JobStatus, 0)
         groups = self._conn.execute(
             """
@@ -562,7 +691,12 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return job_counts
 
     def count_batches_by_status(self) -> dict[BatchStatus, int]:
-        """Count batches by status."""
+        """Count batches by status.
+
+        Returns:
+            The number of batches linked to chunk-level relationship extraction jobs in each status, with 0 for unused
+            statuses.
+        """
         batch_counts: dict[BatchStatus, int] = dict.fromkeys(BatchStatus, 0)
         groups = self._conn.execute(
             """
@@ -588,7 +722,12 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return batch_counts
 
     def get_job_duration_metrics_by_status(self) -> dict[JobStatus, DurationMetrics]:
-        """Get job duration metrics grouped by job status (in milliseconds)."""
+        """Get job duration metrics grouped by job status (in milliseconds).
+
+        Returns:
+            The average, minimum and maximum duration of finished chunk-level jobs in each status, with zeros for
+            statuses without finished jobs.
+        """
         job_durations: dict[JobStatus, DurationMetrics] = dict.fromkeys(JobStatus, DurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """
@@ -614,7 +753,12 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return job_durations
 
     def get_batch_duration_metrics_by_status(self) -> dict[BatchStatus, DurationMetrics]:
-        """Get batch duration metrics grouped by batch status (in milliseconds)."""
+        """Get batch duration metrics grouped by batch status (in milliseconds).
+
+        Returns:
+            The average, minimum and maximum duration of finished batches linked to chunk-level jobs in each status,
+            with zeros for statuses without finished batches.
+        """
         batch_durations: dict[BatchStatus, DurationMetrics] = dict.fromkeys(BatchStatus, DurationMetrics(0, 0, 0))
         groups = self._conn.execute(
             """
@@ -647,7 +791,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return batch_durations
 
     def get_job_token_metrics_by_status(self) -> dict[JobStatus, TokenUsageMetrics]:
-        """Get job token usage metrics grouped by job status."""
+        """Get job token usage metrics grouped by job status.
+
+        Returns:
+            The summed token usage of chunk-level jobs in each status, with zeros for unused statuses.
+        """
         job_tokens: dict[JobStatus, TokenUsageMetrics] = dict.fromkeys(JobStatus, TokenUsageMetrics(0, 0, 0, 0, 0))
         groups = self._conn.execute(
             """
@@ -679,7 +827,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     # Recovery
 
     def terminate_stalled_jobs(self) -> int:
-        """Terminate stalled jobs that were never resolved to completion."""
+        """Terminate stalled jobs that were never resolved to completion.
+
+        Stalled jobs are IN_PROGRESS jobs not linked to any batch. They are marked FAILED and their IN_PROGRESS
+        extractions are reset to PENDING.
+
+        Returns:
+            The number of stalled jobs terminated.
+        """
         # Gather stalled jobs: jobs that are still in progress but are not tied to any batch
         stalled_jobs = self._conn.execute(
             """
@@ -720,7 +875,11 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         return len(stalled_jobs)
 
     def reset_deferred_extractions(self) -> int:
-        """Reset deferred extractions for re-processing."""
+        """Reset deferred extractions for re-processing.
+
+        Returns:
+            The number of extractions moved from RETRY back to PENDING.
+        """
         rows = self._conn.execute(
             """
             UPDATE relationship_extractions

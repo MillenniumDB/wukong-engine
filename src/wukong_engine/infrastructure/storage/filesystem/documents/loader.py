@@ -21,7 +21,20 @@ class LocalDocumentLoader(DocumentLoader):
         self._tokenizer = HuggingFaceTokenizer()
 
     def load(self, document: Document, encoding: str = 'utf-8', max_tokens: int | None = None) -> LoadedDocument:
-        """Load the text contents of a document from the local filesystem."""
+        """Load the text contents of a document from the local filesystem.
+
+        Args:
+            document: Document whose file at ``source_uri`` is read.
+            encoding: Text encoding used to decode the file.
+            max_tokens: Maximum number of tokens to keep, truncating the content beyond it. If None, the content is
+                not truncated.
+
+        Returns:
+            The document paired with its decoded, possibly truncated content.
+
+        Raises:
+            ValueError: If the file content no longer matches the document's content hash.
+        """
         try:
             content = Path(document.source_uri).read_bytes()
             content_hash = ContentHash.from_content_bytes(content)
@@ -43,6 +56,18 @@ class LocalDocumentLoader(DocumentLoader):
         encoding: str = 'utf-8',
         max_tokens: int | None = None,
     ) -> Iterator[LoadedDocument]:
-        """Load the text contents of multiple documents from the local filesystem."""
+        """Load the text contents of multiple documents from the local filesystem.
+
+        Args:
+            documents: Documents to load, consumed lazily.
+            encoding: Text encoding used to decode each file.
+            max_tokens: Maximum number of tokens to keep per document. If None, contents are not truncated.
+
+        Yields:
+            Each loaded document, in input order.
+
+        Raises:
+            ValueError: If a file's content no longer matches its document's content hash.
+        """
         for document in documents:
             yield self.load(document=document, encoding=encoding, max_tokens=max_tokens)

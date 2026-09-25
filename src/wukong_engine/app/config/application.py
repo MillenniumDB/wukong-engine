@@ -1,3 +1,5 @@
+"""Top-level application configuration."""
+
 from dataclasses import dataclass
 
 from .chunking import ChunkingConfig
@@ -6,9 +8,16 @@ from .llm import LLMConfig
 from .pipeline import PipelineConfig
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ApplicationConfig:
-    """Top-level application configuration."""
+    """Top-level application configuration.
+
+    Attributes:
+        pipeline: Which pipeline steps are enabled.
+        llm: LLM model, execution mode and concurrency settings.
+        chunking: Document chunking token budgets.
+        export: Knowledge export settings.
+    """
 
     pipeline: PipelineConfig
     llm: LLMConfig

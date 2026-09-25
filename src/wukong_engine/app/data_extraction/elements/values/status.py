@@ -1,3 +1,5 @@
+"""Statuses for extractions, extraction jobs and batches."""
+
 from enum import Enum
 
 

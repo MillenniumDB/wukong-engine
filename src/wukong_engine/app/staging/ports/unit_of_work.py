@@ -1,3 +1,5 @@
+"""Unit of work port grouping the staging stores in a single transaction."""
+
 from types import TracebackType
 from typing import Protocol, Self
 
@@ -9,7 +11,18 @@ from .relationship_store import RelationshipStore
 
 
 class UnitOfWork(Protocol):
-    """Unit of Work for managing operations across multiple staging stores."""
+    """Unit of Work for managing operations across multiple staging stores.
+
+    The stores are only usable inside the context, whose exit commits the staged changes, or rolls them back if an
+    exception was raised.
+
+    Attributes:
+        documents: Store for documents and collections.
+        entities: Store for entities and entity types.
+        relationships: Store for relationships and relationship types.
+        extraction: Store for entity and relationship extractions.
+        pipeline: Store for the pipeline state.
+    """
 
     documents: DocumentStore
     entities: EntityStore
@@ -18,7 +31,11 @@ class UnitOfWork(Protocol):
     pipeline: PipelineStore
 
     def __enter__(self) -> Self:
-        """Enter the runtime context related to this object."""
+        """Enter the runtime context related to this object.
+
+        Raises:
+            RuntimeError: If the context is already active, since nested contexts are not supported.
+        """
         ...
 
     def __exit__(
@@ -31,9 +48,17 @@ class UnitOfWork(Protocol):
         ...
 
     def commit(self) -> None:
-        """Commit the staged changes to the underlying stores."""
+        """Commit the staged changes to the underlying stores.
+
+        Raises:
+            RuntimeError: If the unit of work is not active.
+        """
         ...
 
     def rollback(self) -> None:
-        """Rollback any staged changes in case of an error."""
+        """Rollback any staged changes in case of an error.
+
+        Raises:
+            RuntimeError: If the unit of work is not active.
+        """
         ...

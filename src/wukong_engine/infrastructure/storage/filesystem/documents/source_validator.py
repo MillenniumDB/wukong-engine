@@ -17,6 +17,13 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
         1) The path exists and is contained inside data_uri.
         2) The path type matches the source mode.
         3) The path can be accessed/read.
+
+        Args:
+            sources: Document sources to validate.
+            data_uri: Data root directory every source must be contained in.
+
+        Raises:
+            ValueError: If any source is invalid, listing the errors of every invalid source.
         """
         errors: list[str] = []
         for source in sources:
@@ -47,7 +54,15 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
             raise ValueError('Invalid document source(s):\n' + '\n'.join(errors))
 
     def _validate_file_source(self, path: Path, source_label: str) -> str | None:
-        """Validate FILE mode path constraints and return an error message when invalid."""
+        """Validate FILE mode path constraints and return an error message when invalid.
+
+        Args:
+            path: Resolved, existing source path.
+            source_label: Source description used to prefix the error message.
+
+        Returns:
+            An error message if the path is not a readable ".txt" file, None otherwise.
+        """
         if not path.is_file():
             return f'{source_label}: expected a file path, but found a non-file path'
         if path.suffix != '.txt':
@@ -57,7 +72,15 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
         return None
 
     def _validate_directory_source(self, path: Path, source_label: str) -> str | None:
-        """Validate DIRECTORY/RECURSIVE mode path constraints and return an error when invalid."""
+        """Validate DIRECTORY/RECURSIVE mode path constraints and return an error when invalid.
+
+        Args:
+            path: Resolved, existing source path.
+            source_label: Source description used to prefix the error message.
+
+        Returns:
+            An error message if the path is not an accessible directory, None otherwise.
+        """
         if not path.is_dir():
             return f'{source_label}: expected a directory path, but found a non-directory path'
         if not self._is_accessible_directory(path):
@@ -65,7 +88,14 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
         return None
 
     def _is_readable_file(self, path: Path) -> bool:
-        """Return True if the file can be opened for reading."""
+        """Return True if the file can be opened for reading.
+
+        Args:
+            path: File to check.
+
+        Returns:
+            True if the file can be opened for reading, False otherwise.
+        """
         try:
             with path.open('rb'):
                 pass
@@ -74,7 +104,14 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
         return True
 
     def _is_accessible_directory(self, path: Path) -> bool:
-        """Return True if the directory can be traversed/listed."""
+        """Return True if the directory can be traversed/listed.
+
+        Args:
+            path: Directory to check.
+
+        Returns:
+            True if the directory can be listed, False otherwise.
+        """
         try:
             next(path.iterdir(), None)
         except OSError:

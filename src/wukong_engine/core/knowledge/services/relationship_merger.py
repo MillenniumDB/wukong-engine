@@ -1,3 +1,5 @@
+"""Service for merging duplicate relationships."""
+
 from typing import Any
 
 from wukong_engine.core.knowledge.elements import Relationship
@@ -9,7 +11,20 @@ class RelationshipMerger:
     """Merge two relationships based on specified strategies."""
 
     def merge(self, existing: Relationship, incoming: Relationship) -> Relationship:
-        """Merge two relationships into one."""
+        """Merge two relationships into one.
+
+        The result keeps the identifier and endpoints of ``existing``; only properties are merged.
+
+        Args:
+            existing: Relationship already stored.
+            incoming: Newly extracted relationship to merge into ``existing``.
+
+        Returns:
+            A new relationship with the merged properties.
+
+        Raises:
+            ValueError: If the relationships don't share the same type.
+        """
         # Both relationships should have the same type, otherwise this is a data integrity issue
         if incoming.type != existing.type:
             raise ValueError(
@@ -29,7 +44,16 @@ class RelationshipMerger:
         incoming: dict[str, Any],
         relationship_type: RelationshipType,
     ) -> dict[str, Any]:
-        """Merge properties of two relationships based on the relationship type's field merge strategy."""
+        """Merge properties of two relationships based on the relationship type's field merge strategy.
+
+        Args:
+            existing: Properties of the existing relationship.
+            incoming: Properties of the incoming relationship.
+            relationship_type: Type whose field and default merge strategies are applied.
+
+        Returns:
+            The union of both property sets, with each value chosen by its field's merge strategy.
+        """
         merged: dict[str, Any] = {}
         fields = {name.value: field for name, field in relationship_type.fields.items()}
         all_keys = sorted(set(existing) | set(incoming))
@@ -45,7 +69,18 @@ class RelationshipMerger:
 
     @staticmethod
     def _choose_value(existing: Any, incoming: Any, strategy: MergeStrategy) -> Any:
-        """Choose the value according to the field's merge strategy."""
+        """Choose the value according to the field's merge strategy.
+
+        If either value is None, the other one is returned regardless of the strategy. Length ties keep ``existing``.
+
+        Args:
+            existing: Current value of the field.
+            incoming: New value of the field.
+            strategy: Merge strategy to apply when both values are present.
+
+        Returns:
+            The chosen value.
+        """
         # If one of the values is None, return the other value regardless of the strategy
         if existing is None:
             return incoming

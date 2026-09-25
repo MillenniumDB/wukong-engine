@@ -31,11 +31,24 @@ class RecursiveDocumentChunker(DocumentChunker):
     """
 
     def __init__(self, plan: ChunkingPlan) -> None:
-        """Initialize the chunker with its configuration."""
+        """Initialize the chunker with its configuration.
+
+        Args:
+            plan: Chunking plan with size parameters, boundary hierarchy and tokenizer.
+        """
         self._plan = plan
 
     def chunk(self, document: LoadedDocument) -> Iterator[Chunk]:
-        """Chunk a document into smaller pieces."""
+        """Chunk a document into smaller pieces.
+
+        The document content is normalized first; chunk offsets and content refer to the normalized text.
+
+        Args:
+            document: Loaded document whose content is chunked.
+
+        Yields:
+            Chunks in document order, indexed from zero, each overlapping the previous one as configured by the plan.
+        """
         text = self._normalize_text(document.content)
         root_segment = Segment(0, len(text))
         tokenized_text = self._plan.tokenizer.tokenize(text)
@@ -55,9 +68,14 @@ class RecursiveDocumentChunker(DocumentChunker):
     def _normalize_text(text: str) -> str:
         """Normalize document text for more consistent chunking.
 
-        Current Strategy (conservative for preservation):
-            - Normalize newlines to unix standard
-            - Remove null bytes
+        The strategy is conservative to preserve the source: newlines (CRLF, CR and the Unicode line and paragraph
+        separators) are normalized to the Unix LF standard, and null bytes are removed.
+
+        Args:
+            text: Raw document text.
+
+        Returns:
+            The normalized text.
         """
         return (
             text.replace('\r\n', '\n')
@@ -68,7 +86,21 @@ class RecursiveDocumentChunker(DocumentChunker):
         )
 
     def _split_recursive(self, tokenized_text: TokenizedText, segment: Segment, level_index: int) -> list[Segment]:
-        """Recursively split a segment using the boundary hierarchy."""
+        """Recursively split a segment using the boundary hierarchy.
+
+        Segments within ``max_size`` are returned as-is. Otherwise the segment is split with the boundary at
+        ``level_index``, oversized pieces are refined with the next boundary level, and the pieces are greedily packed
+        toward ``target_size``. When all boundary levels are exhausted, a hard token split is used.
+
+        Args:
+            tokenized_text: Tokenized document text used for measuring and mapping offsets.
+            segment: Segment to split.
+            level_index: Index of the boundary in the plan's hierarchy to split with.
+
+        Returns:
+            Contiguous segments covering ``segment``, each at most ``max_size`` tokens except where a hard split
+            cannot guarantee it.
+        """
         # Base case: segment is acceptable, no further splitting needed
         if self._measure(tokenized_text, segment) <= self._plan.max_size:
             return [segment]
@@ -141,7 +173,19 @@ class RecursiveDocumentChunker(DocumentChunker):
         return output
 
     def _apply_overlap(self, tokenized_text: TokenizedText, segments: list[Segment]) -> list[Segment]:
-        """Apply token-based overlap between adjacent chunks."""
+        """Apply token-based overlap between adjacent chunks.
+
+        Each segment after the first is extended backward to start ``overlap_size`` tokens before the end of the
+        previous segment, snapped forward to whitespace to avoid starting mid-word.
+
+        Args:
+            tokenized_text: Tokenized document text used for measuring and mapping offsets.
+            segments: Contiguous, non-overlapping segments in document order.
+
+        Returns:
+            The segments with overlap applied, or the input unchanged if overlap is disabled or there is at most one
+            segment.
+        """
         if self._plan.overlap_size <= 0 or len(segments) <= 1:
             return segments
 
@@ -154,11 +198,30 @@ class RecursiveDocumentChunker(DocumentChunker):
         return output
 
     def _measure(self, tokenized_text: TokenizedText, segment: Segment) -> int:
-        """Measure a segment in tokens."""
+        """Measure a segment in tokens.
+
+        Args:
+            tokenized_text: Tokenized document text used for measuring and mapping offsets.
+            segment: Segment to measure.
+
+        Returns:
+            The number of tokens in the segment.
+        """
         return tokenized_text.count(segment.start, segment.end)
 
     def _hard_split(self, tokenized_text: TokenizedText, segment: Segment) -> list[Segment]:
-        """Terminal fallback split using token boundaries."""
+        """Split a segment into token windows as the terminal fallback.
+
+        Each window spans at most ``max_size`` tokens; inner split points are snapped backward to whitespace when
+        possible to avoid cutting words.
+
+        Args:
+            tokenized_text: Tokenized document text used for measuring and mapping offsets.
+            segment: Segment to split.
+
+        Returns:
+            Contiguous segments covering ``segment``.
+        """
         segment_token_start, segment_token_end = tokenized_text.token_span(segment.start, segment.end)
         output: list[Segment] = []
         start_token = segment_token_start
@@ -186,7 +249,16 @@ class RecursiveDocumentChunker(DocumentChunker):
         return output
 
     def _compute_overlap_start(self, tokenized_text: TokenizedText, segment: Segment) -> int:
-        """Compute chunk overlap start using token counts."""
+        """Compute chunk overlap start using token counts.
+
+        Args:
+            tokenized_text: Tokenized document text used for measuring and mapping offsets.
+            segment: Previous segment whose tail is overlapped by the next chunk.
+
+        Returns:
+            Character offset ``overlap_size`` tokens before the end of ``segment`` (clamped to its start), snapped
+            forward to whitespace.
+        """
         token_start, token_end = tokenized_text.token_span(segment.start, segment.end)
         overlap_token_start = max(token_end - self._plan.overlap_size, token_start)
         overlap_start, _ = tokenized_text.char_span(overlap_token_start, overlap_token_start)
@@ -194,13 +266,33 @@ class RecursiveDocumentChunker(DocumentChunker):
 
     @staticmethod
     def _is_inside_word(text: str, offset: int) -> bool:
-        """Check if the offset is in the middle of a word."""
+        """Check if the offset is in the middle of a word.
+
+        Args:
+            text: Text the offset refers to.
+            offset: Character offset to check.
+
+        Returns:
+            True if the characters on both sides of the offset are non-whitespace, False otherwise (including at the
+            text edges).
+        """
         if offset <= 0 or offset >= len(text):
             return False
         return not text[offset - 1].isspace() and not text[offset].isspace()
 
     def _snap_forward_to_whitespace(self, text: str, offset: int, *, max_offset: int, max_adjustment: int = 30) -> int:
-        """Move forward until reaching whitespace."""
+        """Move forward until reaching whitespace.
+
+        Args:
+            text: Text the offset refers to.
+            offset: Character offset to snap.
+            max_offset: Largest offset the result may snap to.
+            max_adjustment: Maximum number of characters to move forward.
+
+        Returns:
+            The offset of the first whitespace character found (or the end of the text if it is reached), or the
+            original offset if it is not inside a word or no whitespace is found within the limits.
+        """
         # Avoid snapping if not inside a word
         if not self._is_inside_word(text, offset):
             return offset
@@ -215,7 +307,18 @@ class RecursiveDocumentChunker(DocumentChunker):
         return offset
 
     def _snap_backward_to_whitespace(self, text: str, offset: int, *, min_offset: int, max_adjustment: int = 30) -> int:
-        """Move backward until reaching whitespace."""
+        """Move backward until reaching whitespace.
+
+        Args:
+            text: Text the offset refers to.
+            offset: Character offset to snap.
+            min_offset: Smallest offset the search may reach; the result is always greater than it.
+            max_adjustment: Maximum number of characters to move backward.
+
+        Returns:
+            The offset just after the nearest preceding whitespace character, or the original offset if it is not
+            inside a word or no whitespace is found within the limits.
+        """
         # Avoid snapping if not inside a word
         if not self._is_inside_word(text, offset):
             return offset

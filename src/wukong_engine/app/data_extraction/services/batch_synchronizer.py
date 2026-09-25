@@ -42,7 +42,11 @@ class ExtractionBatchSynchronizer(Protocol):
     """Synchronizer for managing the lifecycle of submitted extraction batches."""
 
     async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
-        """Synchronize all submitted extraction batches."""
+        """Synchronize all submitted extraction batches.
+
+        Args:
+            knowledge_model: Knowledge model used to materialize the results of completed batches.
+        """
         ...
 
 
@@ -56,7 +60,14 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         result_materializer: ExtractionResultMaterializer,
         metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
-        """Initialize the synchronizer with necessary dependencies."""
+        """Initialize the synchronizer with necessary dependencies.
+
+        Args:
+            repository: Repository used to stream active batches and jobs and persist their outcomes.
+            llm_client: LLM client used to query batch statuses and retrieve batch results from the provider.
+            result_materializer: Materializer that turns successful extraction results into knowledge objects.
+            metrics_tracker: Tracker that logs extraction metrics while batches are resolved.
+        """
         self._repository = repository
         self._llm_client = llm_client
         self._result_materializer = result_materializer
@@ -64,7 +75,14 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._completed_batches: list[ExtractionBatch] = []
 
     async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
-        """Synchronize all submitted extraction batches."""
+        """Synchronize all submitted extraction batches.
+
+        Queries the provider status of every active batch concurrently and resolves it locally (updating, failing
+        or cancelling it), then retrieves the results of the batches that completed and persists them.
+
+        Args:
+            knowledge_model: Knowledge model used to materialize the results of completed batches.
+        """
         # Initialize the async runners and reset completed batches
         self._completed_batches = []
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
@@ -89,7 +107,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
     @staticmethod
     def _map_batch_status(provider_status: str) -> BatchStatus:
-        """Map the provider-specific batch status to a BatchStatus state."""
+        """Map the provider-specific batch status to a BatchStatus state.
+
+        Args:
+            provider_status: Batch status string reported by the provider.
+
+        Returns:
+            The corresponding local batch status.
+
+        Raises:
+            ValueError: If the provider status is unknown.
+        """
         status_mapping = {
             'validating': BatchStatus.SUBMITTED,
             'in_progress': BatchStatus.IN_PROGRESS,
@@ -106,7 +134,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             raise ValueError(f'Unknown batch status "{provider_status}" returned by provider') from exc
 
     async def _get_batch_status(self, batch: ExtractionBatch) -> BatchStatusResult:
-        """Retrieve the status of a batch from the external provider, with error handling."""
+        """Retrieve the status of a batch from the external provider, with error handling.
+
+        Args:
+            batch: Active batch whose provider status is queried.
+
+        Returns:
+            The mapped provider status, or the batch's current status with an error message if the status could
+            not be retrieved or is unknown.
+        """
         try:
             provider_status = await self._llm_client.get_batch_status(batch.provider_id)
             return BatchStatusResult(self._map_batch_status(provider_status))
@@ -121,7 +157,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             )
 
     def _resolve_batch_status(self, batch: ExtractionBatch, status_result: BatchStatusResult) -> None:
-        """Perform provider status resolution."""
+        """Perform provider status resolution.
+
+        Cancels batches still pending after ``MAX_BATCH_RESOLUTION_TIME`` hours, records retrieval errors, updates
+        or fails the batch according to the provider status, and queues completed batches for result retrieval.
+
+        Args:
+            batch: Batch being resolved.
+            status_result: Provider status retrieved for the batch.
+        """
         # If the batch has not been resolved in the maximum allowed time, cancel it and record the error
         if batch.created_at is not None and status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS):
             elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
@@ -158,7 +202,14 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                 self._completed_batches.append(batch)
 
     async def _get_batch_results(self, batch: ExtractionBatch) -> CompletedBatchResult:
-        """Retrieve the results of a completed batch from the external provider, with error handling."""
+        """Retrieve the results of a completed batch from the external provider, with error handling.
+
+        Args:
+            batch: Completed batch whose results are retrieved.
+
+        Returns:
+            The batch results, or no results with an error message if they could not be retrieved.
+        """
         try:
             batch_results = await self._llm_client.get_batch_results(batch.provider_id)
             return CompletedBatchResult(batch_results)
@@ -173,7 +224,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         completed_result: CompletedBatchResult,
         model: KnowledgeModel,
     ) -> None:
-        """Process the results of a completed batch and persist them."""
+        """Process the results of a completed batch and persist them.
+
+        Matches each active job of the batch with its provider result, completes or fails the job accordingly and
+        marks the batch as completed. Retrieval errors or missing results are recorded on the batch instead,
+        leaving its status unchanged.
+
+        Args:
+            batch: Completed batch being resolved.
+            completed_result: Results retrieved for the batch.
+            model: Knowledge model used to materialize successful results.
+        """
         # If there was an error retrieving the results, record the error and keep the current batch status
         if completed_result.error is not None:
             self._repository.record_batch_error(batch, completed_result.error)
@@ -238,7 +299,13 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._repository.complete_batch(batch)
 
     def _process_extraction_result(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> None:
-        """Process an individual extraction result, materializing and persisting it."""
+        """Process an individual extraction result, materializing and persisting it.
+
+        Args:
+            result: Extraction result for the job; failed results fail the job with its retry policy.
+            job: Job the result belongs to.
+            model: Knowledge model used to materialize the result.
+        """
         # Handle failed job
         if result.status == JobStatus.FAILED:
             self._repository.fail_job(job, retry_policy=result.retry_policy, error=result.error, metrics=result.metrics)

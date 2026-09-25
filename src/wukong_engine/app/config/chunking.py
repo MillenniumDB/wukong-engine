@@ -1,3 +1,5 @@
+"""Document chunking configuration."""
+
 import logging
 from dataclasses import dataclass
 
@@ -11,9 +13,17 @@ MAX_ALLOWED_TARGET_TOKENS = 5000
 MAX_ALLOWED_MAX_TOKENS = 10000
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class ChunkingConfig:
-    """Chunking configuration."""
+    """Chunking configuration.
+
+    Attributes:
+        target_tokens: Target size of each chunk, in tokens.
+        overlap_tokens: Tokens shared between consecutive chunks. If None, it is derived from ``target_tokens``
+            (15% of it but at least 20, then capped at a third of the target and at 200).
+        max_tokens: Hard upper bound on chunk size, in tokens. If None, it is derived as 130% of
+            ``target_tokens``, capped at ``MAX_ALLOWED_MAX_TOKENS``.
+    """
 
     target_tokens: int = 800
     overlap_tokens: int | None = None
@@ -24,7 +34,11 @@ class ChunkingConfig:
         return f'Target Tokens: {self.target_tokens}\nOverlap Tokens: {self.overlap_tokens}'
 
     def __post_init__(self) -> None:
-        """Validate chunking configuration invariants."""
+        """Validate chunking configuration invariants and fill in derived token budgets.
+
+        Raises:
+            ValueError: If the base or derived token budgets are out of range or inconsistent.
+        """
         # Validate base parameters
         self._validate_base_params()
 
@@ -45,7 +59,13 @@ class ChunkingConfig:
         self._validate_derived_params()
 
     def _validate_base_params(self) -> None:
-        """Validate the base parameters of the configuration."""
+        """Validate the base parameters of the configuration.
+
+        Logs a warning when ``target_tokens`` is valid but outside the recommended range.
+
+        Raises:
+            ValueError: If ``target_tokens`` is not positive or exceeds ``MAX_ALLOWED_TARGET_TOKENS``.
+        """
         if self.target_tokens <= 0 or self.target_tokens > MAX_ALLOWED_TARGET_TOKENS:
             raise ValueError(f'target_tokens must be > 0 and <= {MAX_ALLOWED_TARGET_TOKENS}')
         if self.target_tokens < MIN_RECOMMENDED_TARGET_TOKENS or self.target_tokens > MAX_RECOMMENDED_TARGET_TOKENS:
@@ -55,7 +75,12 @@ class ChunkingConfig:
             )
 
     def _validate_derived_params(self) -> None:
-        """Validate the derived parameters of the configuration."""
+        """Validate the derived parameters of the configuration.
+
+        Raises:
+            ValueError: If ``max_tokens`` or ``overlap_tokens`` is unset, ``max_tokens`` is out of range or smaller
+                than ``target_tokens``, or ``overlap_tokens`` is negative or not smaller than ``target_tokens``.
+        """
         if self.max_tokens is None or self.overlap_tokens is None:
             raise ValueError('max_tokens and overlap_tokens must be set after initialization')
         if self.max_tokens <= 0 or self.max_tokens > MAX_ALLOWED_MAX_TOKENS:

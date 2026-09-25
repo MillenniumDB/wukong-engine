@@ -1,3 +1,5 @@
+"""Validation of a workspace's directory structure and required files."""
+
 import logging
 
 from .exceptions import InvalidWorkspaceError
@@ -15,6 +17,10 @@ class WorkspaceValidator:
 
         Args:
             workspace: The Workspace instance to validate.
+
+        Raises:
+            InvalidWorkspaceError: If the root directory doesn't exist or isn't a directory, or if the document
+                collections or knowledge model file is missing.
         """
         root = workspace.paths.root
         paths = workspace.paths

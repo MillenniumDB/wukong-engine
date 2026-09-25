@@ -24,14 +24,27 @@ class OpenAIClient(LLMClient):
     """Client that executes LLM requests against the OpenAI API."""
 
     def __init__(self, config: OpenAIConfig) -> None:
-        """Initialize the OpenAI client with the given configuration."""
+        """Initialize the OpenAI client with the given configuration.
+
+        Args:
+            config: Client configuration with credentials, model, output limit, timeout and retry settings.
+        """
         self._config = config
         self._client = AsyncOpenAI(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.OPENAI
 
     @staticmethod
     def _build_input(prompt: LLMPrompt, *, explicit_caching: bool) -> list[dict[str, Any]]:
-        """Build the input message, marking the end of the shared content as a cache breakpoint if supported."""
+        """Build the input message, marking the end of the shared content as a cache breakpoint if supported.
+
+        Args:
+            prompt: Prompt whose shared content (if any) and request-specific content form the user message.
+            explicit_caching: Whether to mark the shared content block as an explicit prompt cache breakpoint.
+
+        Returns:
+            A single-element list with the user message, whose content holds the shared block (if any) followed by
+            the request-specific block.
+        """
         content: list[dict[str, Any]] = []
         if prompt.shared_content:
             shared_block: dict[str, Any] = {'type': 'input_text', 'text': prompt.shared_content}
@@ -42,6 +55,18 @@ class OpenAIClient(LLMClient):
         return [{'role': 'user', 'content': content}]
 
     def _build_request_payload(self, request: LLMRequest) -> dict[str, Any]:
+        """Build the Responses API payload for a request.
+
+        Adds explicit prompt caching options, reasoning effort and temperature only when the configured model
+        supports them, and a strict JSON schema response format when the prompt defines a schema.
+
+        Args:
+            request: LLM request to translate into an API payload.
+
+        Returns:
+            The keyword arguments for a Responses API call, including a ``prompt_cache_options`` entry when explicit
+            caching is supported.
+        """
         # Base parameters for the API call
         model = self._config.model
         explicit_caching = LLMRegistry.supports_explicit_caching(model)
@@ -87,7 +112,14 @@ class OpenAIClient(LLMClient):
 
     @staticmethod
     def _ensure_successful_response(response: OpenAIResponse) -> None:
-        """Ensure the LLM response indicates a successful generation."""
+        """Ensure the LLM response indicates a successful generation.
+
+        Args:
+            response: Response returned by the OpenAI API.
+
+        Raises:
+            LLMResponseError: If the response is not completed or contains a refusal.
+        """
         # Incomplete response
         if response.status != 'completed':
             raise LLMResponseError(f'The LLM response status was "{response.status}", indicating a generation failure')
@@ -102,7 +134,14 @@ class OpenAIClient(LLMClient):
 
     @staticmethod
     def _build_llm_response(response: OpenAIResponse) -> LLMResponse:
-        """Build an LLMResponse from the API response."""
+        """Build an LLMResponse from the API response.
+
+        Args:
+            response: Successful response returned by the OpenAI API.
+
+        Returns:
+            The response's output text, model name and usage metrics (empty if usage is unavailable).
+        """
         return LLMResponse(
             content=response.output_text,
             model=response.model,
@@ -110,7 +149,15 @@ class OpenAIClient(LLMClient):
         )
 
     def _parse_batch_result(self, line: str) -> LLMBatchResult | None:
-        """Parse a single line of the batch result file."""
+        """Parse a single line of the batch result file.
+
+        Args:
+            line: JSONL line of the batch output file.
+
+        Returns:
+            A successful result, an error result if the response was unsuccessful or could not be parsed, or None
+            if the line carries no job identifier.
+        """
         try:
             # Parse the JSON line and extract the item and job ID
             custom_id: str | None = None
@@ -142,7 +189,15 @@ class OpenAIClient(LLMClient):
             return None
 
     def _parse_batch_error(self, line: str) -> LLMBatchResult | None:
-        """Parse a single line of the batch error file."""
+        """Parse a single line of the batch error file.
+
+        Args:
+            line: JSONL line of the batch error file.
+
+        Returns:
+            An error result with the provider's error message (or a parsing failure message), or None if the line
+            carries no job identifier.
+        """
         try:
             # Parse the JSON line and extract the item and job ID
             custom_id: str | None = None
@@ -176,7 +231,20 @@ class OpenAIClient(LLMClient):
 
     @translate_openai_errors
     async def generate(self, request: LLMRequest) -> LLMResponse:
-        """Generate a response from the LLM based on the given request."""
+        """Generate a response from the LLM based on the given request.
+
+        Args:
+            request: LLM request with the prompt and optional generation parameters.
+
+        Returns:
+            The generated response with its content, model and usage metrics.
+
+        Raises:
+            LLMResponseError: If the response is not completed or the model refused to respond.
+            LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
+            LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
+            LLMInternalError: If any other unexpected provider error occurs.
+        """
         # Build the request payload for the API
         payload = self._build_request_payload(request)
 
@@ -194,7 +262,23 @@ class OpenAIClient(LLMClient):
 
     @translate_openai_errors
     async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:
-        """Create a batch for asynchronous request processing."""
+        """Create a batch for asynchronous request processing.
+
+        The requests are uploaded as a JSONL file and submitted as a 24-hour Responses API batch; the uploaded file
+        is deleted if batch creation fails.
+
+        Args:
+            requests: LLM requests to include in the batch.
+            job_ids: Job identifiers used as the custom ID of each request, in the same order as ``requests``.
+
+        Returns:
+            The provider's batch identifier together with the provider.
+
+        Raises:
+            LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
+            LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
+            LLMInternalError: If any other unexpected provider error occurs.
+        """
         # Build the JSONL payload for the batch
         lines = []
         for request, job_id in zip(requests, job_ids, strict=True):
@@ -231,13 +315,42 @@ class OpenAIClient(LLMClient):
 
     @translate_openai_errors
     async def get_batch_status(self, batch_id: str) -> str:
-        """Get the current status of a batch."""
+        """Get the current status of a batch.
+
+        Args:
+            batch_id: Provider identifier of the batch.
+
+        Returns:
+            The provider's batch status string (e.g. ``completed``).
+
+        Raises:
+            LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
+            LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
+            LLMInternalError: If any other unexpected provider error occurs.
+        """
         provider_batch = await self._client.batches.retrieve(batch_id)
         return provider_batch.status
 
     @translate_openai_errors
     async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
-        """Get the results of a completed batch."""
+        """Get the results of a completed batch.
+
+        Failures to read the batch error file are ignored, so only the successfully parsed error results are
+        included.
+
+        Args:
+            batch_id: Provider identifier of the batch.
+
+        Returns:
+            The parsed results from the output file followed by the parsed error results from the error file.
+
+        Raises:
+            LLMResponseError: If the batch is not completed.
+            LLMInternalError: If the completed batch has no output file, or any other unexpected provider error
+                occurs.
+            LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
+            LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
+        """
         # Retrieve the batch from the provider
         provider_batch = await self._client.batches.retrieve(batch_id)
 

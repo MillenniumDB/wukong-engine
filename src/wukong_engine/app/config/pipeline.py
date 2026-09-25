@@ -6,9 +6,16 @@ from typing import ClassVar
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class PipelineConfig:
-    """Pipeline configuration."""
+    """Pipeline configuration.
+
+    Attributes:
+        ingest_documents: Whether the document ingestion step runs.
+        extract_entities: Whether the entity extraction step runs.
+        extract_relationships: Whether the relationship extraction step runs.
+        export_knowledge: Whether the knowledge export step runs.
+    """
 
     ingest_documents: bool = True
     extract_entities: bool = True
@@ -36,5 +43,12 @@ class PipelineConfig:
         return tuple(step for step in PipelineStep if getattr(self, self._STEP_TO_FIELD[step]))
 
     def is_active(self, step: PipelineStep) -> bool:
-        """Whether a pipeline step is active in this configuration."""
+        """Return whether a pipeline step is active in this configuration.
+
+        Args:
+            step: Pipeline step to check.
+
+        Returns:
+            True if the step is enabled, False otherwise.
+        """
         return step in self.steps

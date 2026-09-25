@@ -1,3 +1,5 @@
+"""Schema for entity type definitions."""
+
 from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
@@ -9,7 +11,18 @@ from .field import EntityFieldSchema
 
 
 class EntityTypeSchema(BaseModel):
-    """Schema-level representation of an entity type definition."""
+    """Schema-level representation of an entity type definition.
+
+    Attributes:
+        description: Description of the entity type.
+        instructions: Extraction instructions per context level; a single string applies to every context level.
+        primary_key: Name of the field that identifies entities of this type.
+        deduplication: Identity policy used to deduplicate entities.
+        fields: Field definitions keyed by field name.
+        document_collections: Document collection names per context level; a single string is treated as a
+            one-element list.
+        default_merge_strategy: Merge strategy for fields that don't define their own.
+    """
 
     description: StrictStr
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
@@ -49,7 +62,14 @@ class EntityTypeSchema(BaseModel):
     @field_validator('deduplication', mode='before')
     @classmethod
     def normalize_deduplication(cls, value: Any) -> Any:
-        """Normalize deduplication strings to EntityIdentityPolicy members."""
+        """Normalize deduplication strings to EntityIdentityPolicy members.
+
+        Args:
+            value: Raw deduplication value; strings are matched case-insensitively against known aliases.
+
+        Returns:
+            The matching EntityIdentityPolicy member, or the value unchanged if it isn't a known alias.
+        """
         if isinstance(value, str):
             return cls._DEDUPLICATION_ALIASES.get(value.strip().lower(), value)
         return value
@@ -57,7 +77,14 @@ class EntityTypeSchema(BaseModel):
     @field_validator('default_merge_strategy', mode='before')
     @classmethod
     def normalize_merge_strategy(cls, value: Any) -> Any:
-        """Normalize default merge strategy strings to MergeStrategy members."""
+        """Normalize default merge strategy strings to MergeStrategy members.
+
+        Args:
+            value: Raw merge strategy value; strings are matched case-insensitively against known aliases.
+
+        Returns:
+            The matching MergeStrategy member, or the value unchanged if it isn't a known alias.
+        """
         if isinstance(value, str):
             return cls._MERGE_STRATEGY_ALIASES.get(value.strip().lower(), value)
         return value
@@ -65,7 +92,14 @@ class EntityTypeSchema(BaseModel):
     @field_validator('instructions')
     @classmethod
     def normalize_instructions(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
-        """Normalize instructions to a context level -> instruction mapping."""
+        """Normalize instructions to a context level -> instruction mapping.
+
+        Args:
+            value: Instructions per context level, or a single instruction for all of them.
+
+        Returns:
+            The instructions keyed by context level; a single string is applied to every context level.
+        """
         if isinstance(value, str):
             return dict.fromkeys(ContextLevel, value)
         return value
@@ -76,5 +110,12 @@ class EntityTypeSchema(BaseModel):
         cls,
         value: dict[ContextLevel, list[str] | str],
     ) -> dict[ContextLevel, list[str]]:
-        """Normalize document collections to a context level -> list of document collections mapping."""
+        """Normalize document collections to a context level -> list of document collections mapping.
+
+        Args:
+            value: Document collection names per context level, each as a list or a single name.
+
+        Returns:
+            The document collection names per context level, always as lists.
+        """
         return {k: [v] if isinstance(v, str) else v for k, v in value.items()}

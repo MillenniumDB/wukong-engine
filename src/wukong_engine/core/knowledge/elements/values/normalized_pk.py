@@ -5,16 +5,20 @@ from dataclasses import dataclass
 from typing import ClassVar
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class NormalizedPK:
     """A normalized primary key (PK) value for entity and relationship deduplication.
 
-    Current Version: v1
-    Enforced Rules:
-        1. Non-empty: The normalized PK cannot be an empty string.
-        2. Allowed Characters: Only lowercase letters, numbers, spaces, and specific special characters are allowed.
-        3. Normalized Whitespace: No leading/trailing whitespace and no consecutive spaces are allowed.
-        4. Edge Characters: Cannot start or end with certain special characters.
+    Current version: v1. Enforced rules:
+
+    1. Non-empty: The normalized PK cannot be an empty string.
+    2. Allowed characters: Only lowercase ASCII letters, digits, whitespace, backslashes, and the special
+       characters ``/ - + _ # & @ . : ( )`` are allowed.
+    3. Normalized whitespace: No leading/trailing whitespace and no consecutive whitespace characters are allowed.
+    4. Edge characters: Cannot start or end with whitespace, a backslash, or any of ``/ . : ( )``.
+
+    Attributes:
+        value: The normalized primary key string.
     """
 
     value: str
@@ -24,11 +28,20 @@ class NormalizedPK:
     FORBIDDEN_EDGE_CHARS_PATTERN: ClassVar[str] = r'\s/\\.:\(\)'
 
     def __post_init__(self) -> None:
-        """Validate normalized PK invariants."""
+        """Validate normalized PK invariants.
+
+        Raises:
+            ValueError: If the value breaks any of the enforced normalization rules.
+        """
         self._validate_pk()
 
     def _validate_pk(self) -> None:
-        """Validate that the normalized PK value meets expected criteria."""
+        """Validate that the normalized PK value meets expected criteria.
+
+        Raises:
+            ValueError: If the value is empty, contains disallowed characters, has non-normalized whitespace, or
+                starts or ends with a forbidden edge character.
+        """
         # Non-empty
         if not self.value:
             raise ValueError('NormalizedPK cannot be empty')

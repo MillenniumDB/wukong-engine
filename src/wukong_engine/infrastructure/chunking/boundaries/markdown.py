@@ -1,3 +1,5 @@
+"""Markdown heading boundary rule."""
+
 import re
 from collections.abc import Iterator
 from typing import ClassVar
@@ -13,7 +15,16 @@ class MarkdownHeadingBoundary(Boundary):
     _PATTERN: ClassVar[re.Pattern] = re.compile(r'(?m)^#{1,6}[ \t]+')
 
     def split(self, text: str, start: int, end: int) -> Iterator[Segment]:
-        """Split the given text into segments."""
+        """Split the given text into segments that start at each Markdown heading.
+
+        Args:
+            text: Full text being chunked; offsets refer to positions in this string.
+            start: Offset where the region to split begins (inclusive).
+            end: Offset where the region to split ends (exclusive).
+
+        Yields:
+            Contiguous, non-overlapping segments that together cover ``text[start:end]``.
+        """
         # No headings -> single segment
         matches = list(self._PATTERN.finditer(text, start, end))
         if not matches:

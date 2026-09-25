@@ -1,3 +1,5 @@
+"""Entity instances and lightweight entity references."""
+
 from dataclasses import dataclass
 from typing import Any
 
@@ -7,29 +9,50 @@ from wukong_engine.core.knowledge.model.values import EntityTypeName
 from .values import EntityId, NormalizedPK
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class EntityRef:
-    """Simplified representation of an Entity instance."""
+    """Simplified representation of an Entity instance.
+
+    Attributes:
+        entity_id: Identifier of the referenced entity.
+        entity_type_name: Name of the referenced entity's type.
+    """
 
     entity_id: EntityId
     entity_type_name: EntityTypeName
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Entity:
-    """Entity instance in the extracted knowledge."""
+    """Entity instance in the extracted knowledge.
+
+    Attributes:
+        id: Unique identifier of the entity.
+        type: Entity type the instance conforms to.
+        properties: Mapping from field name to string value. Null values are omitted rather than stored.
+    """
 
     id: EntityId
     type: EntityType
     properties: dict[str, Any]
 
     def __post_init__(self) -> None:
-        """Validate entity invariants."""
+        """Validate entity invariants.
+
+        Raises:
+            ValueError: If a property is not a field of the entity type, a required field is missing, a stored value
+                is null, or a value is not among the field's options.
+            TypeError: If a property value is not a string.
+        """
         self._validate_property_fields()
         self._validate_property_values()
 
     def _validate_property_fields(self) -> None:
-        """Validate property field invariants."""
+        """Validate property field invariants.
+
+        Raises:
+            ValueError: If a property is not a field of the entity type, or a required field is missing or null.
+        """
         # All property keys must be valid field names for the entity type
         valid_field_names = {field.name.value for field in self.type.fields.values()}
         for p_name in self.properties:
@@ -47,7 +70,12 @@ class Entity:
                 )
 
     def _validate_property_values(self) -> None:
-        """Validate property value invariants."""
+        """Validate property value invariants.
+
+        Raises:
+            ValueError: If a stored value is null or not among the field's defined options.
+            TypeError: If a stored value is not a string.
+        """
         fields_by_name = {f_name.value: field for f_name, field in self.type.fields.items()}
         for property_name, value in self.properties.items():
             field = fields_by_name[property_name]
@@ -89,7 +117,22 @@ class Entity:
         properties: dict[str, Any],
         normalized_pk: NormalizedPK,
     ) -> Entity:
-        """Create an entity instance from extraction results."""
+        """Create an entity instance from extraction results.
+
+        Properties that are not fields of the entity type, or whose value is None, are dropped.
+
+        Args:
+            entity_type: Entity type of the extracted entity.
+            properties: Extracted properties, keyed by field name.
+            normalized_pk: Normalized primary key value, used to derive the entity's content identity.
+
+        Returns:
+            The entity with a freshly generated instance ID and a content ID derived from its type and primary key.
+
+        Raises:
+            ValueError: If the remaining properties miss a required field or hold a value outside a field's options.
+            TypeError: If a remaining property value is not a string.
+        """
         entity_id = EntityId.from_identity(entity_type=entity_type.name, normalized_pk=normalized_pk)
         valid_properties = {}
         for field in entity_type.fields.values():

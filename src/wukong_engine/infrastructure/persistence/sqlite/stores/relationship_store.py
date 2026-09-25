@@ -1,3 +1,5 @@
+"""SQLite store for relationships, relationship types and their chunk provenance."""
+
 import json
 import sqlite3
 from collections import defaultdict
@@ -19,12 +21,25 @@ class SQLiteRelationshipStore(RelationshipStore):
     """SQLite implementation of the RelationshipStore."""
 
     def __init__(self, conn: sqlite3.Connection) -> None:
-        """Initialize the relationship store with a SQLite connection."""
+        """Initialize the relationship store with a SQLite connection.
+
+        Args:
+            conn: Open SQLite connection whose rows are accessible by column name.
+        """
         self._conn = conn
         self._merger = RelationshipMerger()
 
     def _row_to_relationship(self, row: sqlite3.Row, relationship_type: RelationshipType) -> Relationship:
-        """Map a database row to a Relationship object."""
+        """Map a database row to a Relationship object.
+
+        Args:
+            row: Row holding the relationship's identifier components, its source and target entity identifier
+                components and its JSON-encoded properties.
+            relationship_type: Type assigned to the relationship, since the row only stores its name.
+
+        Returns:
+            The relationship built from the row.
+        """
         return Relationship(
             id=RelationshipId.from_components(
                 instance=InstanceId.from_bytes(row['instance_id']),
@@ -43,7 +58,15 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def _find_duplicates(self, relationships: Iterable[Relationship]) -> dict[bytes, Relationship]:
-        """Find existing relationships that match the content of the given relationships."""
+        """Find existing relationships that match the content of the given relationships.
+
+        Args:
+            relationships: Relationships to look up by content identifier; each match keeps the type of the
+                relationship it matched.
+
+        Returns:
+            Mapping from content identifier bytes to the stored relationship, for those that already exist.
+        """
         # If no relationships are provided, no duplicates can exist
         if not relationships:
             return {}
@@ -76,7 +99,11 @@ class SQLiteRelationshipStore(RelationshipStore):
         return result
 
     def _bulk_insert_relationships(self, relationships: Iterable[Relationship]) -> None:
-        """Insert a batch of new unique relationships."""
+        """Insert a batch of new unique relationships.
+
+        Args:
+            relationships: Relationships not yet stored, with unique content identifiers.
+        """
         self._conn.executemany(
             """
             INSERT INTO relationships (content_id, instance_id, relationship_type_name, source_content_id, target_content_id, properties)
@@ -96,7 +123,12 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def _bulk_update_properties(self, relationships: Iterable[Relationship]) -> None:
-        """Update properties for a batch of existing relationships."""
+        """Update properties for a batch of existing relationships.
+
+        Args:
+            relationships: Stored relationships whose properties replace the current ones, matched by content
+                identifier.
+        """
         self._conn.executemany(
             """
             UPDATE relationships
@@ -113,7 +145,11 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def add_relationship_types(self, relationship_types: Iterable[RelationshipType]) -> None:
-        """Add relationship types."""
+        """Add relationship types.
+
+        Args:
+            relationship_types: Relationship types to register; types already stored are ignored.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO relationship_types (relationship_type_name)
@@ -123,7 +159,14 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def bulk_upsert_relationships(self, relationships: Iterable[Relationship]) -> None:
-        """Insert or update a batch of relationships, ensuring deduplication."""
+        """Insert or update a batch of relationships, ensuring deduplication.
+
+        Relationships sharing a content identifier are merged within the batch first, then merged with the stored
+        relationship if one exists; stored relationships are only updated when the merge changes their properties.
+
+        Args:
+            relationships: Relationships to upsert.
+        """
         # Deduplicate batch of relationships locally first
         grouped_relationships: dict[bytes, list[Relationship]] = defaultdict(list)
         for relationship in relationships:
@@ -154,7 +197,12 @@ class SQLiteRelationshipStore(RelationshipStore):
         self._bulk_update_properties(to_update)
 
     def link_relationships_to_source_context(self, relationships: Iterable[Relationship], context: ContextRef) -> None:
-        """Link a batch of relationships to their source context."""
+        """Link a batch of relationships to their source context.
+
+        Args:
+            relationships: Relationships extracted from the context; existing links are ignored.
+            context: Source context the relationships were extracted from, recorded as a chunk provenance link.
+        """
         self._conn.executemany(
             """
             INSERT OR IGNORE INTO relationship_provenance (chunk_content_id, relationship_content_id)
@@ -164,7 +212,14 @@ class SQLiteRelationshipStore(RelationshipStore):
         )
 
     def stream_by_relationship_type(self, relationship_type: RelationshipType) -> Iterator[Relationship]:
-        """Stream all relationships of a given type."""
+        """Stream all relationships of a given type.
+
+        Args:
+            relationship_type: Type whose relationships are streamed.
+
+        Yields:
+            Each relationship of the type, ordered by content identifier.
+        """
         rows = self._conn.execute(
             """
             SELECT
@@ -187,7 +242,12 @@ class SQLiteRelationshipStore(RelationshipStore):
             yield self._row_to_relationship(row, relationship_type)
 
     def stream_provenance_by_chunk(self) -> Iterator[ChunkRelationshipProvenance]:
-        """Stream all links of extracted relationships and their source chunks, grouped by chunk."""
+        """Stream all links of extracted relationships and their source chunks, grouped by chunk.
+
+        Yields:
+            One provenance per chunk with its parent document and the identifiers and type names of the
+            relationships extracted from it, ordered by document and chunk index.
+        """
         rows = self._conn.execute(
             """
             SELECT c.content_id AS chunk_content_id, c.instance_id AS chunk_instance_id,
@@ -259,7 +319,15 @@ class SQLiteRelationshipStore(RelationshipStore):
         self,
         relationship_type: RelationshipType,
     ) -> Iterator[RelationshipChunkProvenance]:
-        """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship."""
+        """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship.
+
+        Args:
+            relationship_type: Type whose relationships' provenance is streamed.
+
+        Yields:
+            One provenance per relationship with the chunks it was extracted from, ordered by relationship content
+            identifier and then by document and chunk index.
+        """
         rows = self._conn.execute(
             """
             SELECT
@@ -318,12 +386,20 @@ class SQLiteRelationshipStore(RelationshipStore):
             )
 
     def count_relationships(self) -> int:
-        """Count the number of unique relationships."""
+        """Count the number of unique relationships.
+
+        Returns:
+            The number of stored relationships.
+        """
         row = self._conn.execute('SELECT COUNT(*) AS count FROM relationships').fetchone()
         return int(row['count']) if row else 0
 
     def count_relationship_mentions(self) -> int:
-        """Count the number of relationship mentions."""
+        """Count the number of relationship mentions.
+
+        Returns:
+            The number of relationship-chunk provenance links.
+        """
         row = self._conn.execute('SELECT COUNT(*) AS count FROM relationship_provenance').fetchone()
         return int(row['count']) if row else 0
 

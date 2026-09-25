@@ -7,7 +7,14 @@ import logging
 
 
 def _map_verbosity_to_level(verbosity: int) -> int:
-    """Map a verbosity count to a logging level."""
+    """Map a verbosity count to a logging level.
+
+    Args:
+        verbosity: Verbosity count (0 or less for WARNING, 1 for INFO, 2 or more for DEBUG).
+
+    Returns:
+        The corresponding logging level.
+    """
     if verbosity <= 0:
         return logging.WARNING
     if verbosity == 1:
