@@ -12,6 +12,7 @@ from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
+from wukong_engine.app.llm.elements.values import LLMPrompt
 from wukong_engine.app.llm.exceptions import LLMInternalError, LLMResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 
@@ -28,15 +29,33 @@ class OpenAIClient(LLMClient):
         self._client = AsyncOpenAI(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.OPENAI
 
+    @staticmethod
+    def _build_input(prompt: LLMPrompt, *, explicit_caching: bool) -> list[dict[str, Any]]:
+        """Build the input message, marking the end of the shared content as a cache breakpoint if supported."""
+        content: list[dict[str, Any]] = []
+        if prompt.shared_content:
+            shared_block: dict[str, Any] = {'type': 'input_text', 'text': prompt.shared_content}
+            if explicit_caching:
+                shared_block['prompt_cache_breakpoint'] = {'mode': 'explicit'}
+            content.append(shared_block)
+        content.append({'type': 'input_text', 'text': prompt.content})
+        return [{'role': 'user', 'content': content}]
+
     def _build_request_payload(self, request: LLMRequest) -> dict[str, Any]:
         # Base parameters for the API call
         model = self._config.model
+        explicit_caching = LLMRegistry.supports_explicit_caching(model)
         payload = {
             'model': model.name,
             'instructions': request.prompt.instructions,
-            'input': request.prompt.content,
+            'input': self._build_input(request.prompt, explicit_caching=explicit_caching),
             'max_output_tokens': self._config.max_output_tokens,
         }
+
+        # Cache only at the explicit breakpoint: implicit mode would instead write the whole prompt, including the
+        # request-specific tail that no other request can reuse, and cache writes cost 1.25x the input rate
+        if explicit_caching:
+            payload['prompt_cache_options'] = {'mode': 'explicit'}
 
         # Set reasoning effort if supported by the model
         reasoning_effort = (
@@ -161,8 +180,13 @@ class OpenAIClient(LLMClient):
         # Build the request payload for the API
         payload = self._build_request_payload(request)
 
+        # The SDK has no typed parameter for the prompt caching options yet
+        extra_body = (
+            {'prompt_cache_options': payload.pop('prompt_cache_options')} if 'prompt_cache_options' in payload else None
+        )
+
         # Send API request and await response
-        response: OpenAIResponse = await self._client.responses.create(**payload)
+        response: OpenAIResponse = await self._client.responses.create(**payload, extra_body=extra_body)
         self._ensure_successful_response(response)
 
         # Return the response in the expected format

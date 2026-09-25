@@ -19,6 +19,7 @@ Engine for extracting structured knowledge from unstructured documents using the
   - [Workspace and Data](#workspace-and-data)
   - [Running the Engine](#running-the-engine)
   - [Output](#output)
+  - [Extraction Metrics](#extraction-metrics)
   - [Engine Configuration](#engine-configuration)
 - [🐳 Docker Support](#-docker-support)
   - [Building the Image](#building-the-image)
@@ -203,6 +204,24 @@ Alongside the entity and relationship types declared in the knowledge model, the
 Because the sources are part of the output, the result is self-contained: it can be queried for domain facts, for the text that supports them, or for both at once, without consulting the original corpus.
 
 > 📂 For the exact layout of the exported files, refer to the [Workspace](/docs/workspace.md) documentation.
+
+### Extraction Metrics
+
+With `-v` or higher verbosity, the engine periodically logs **extraction metrics** for the step in progress: every 20 seconds in real-time mode and every 5 minutes in batch mode. They cover progress, execution throughput and timing, the extracted objects, and **token usage**, both in total and per request.
+
+Token usage is split into categories that **do not overlap**, each billed at its own rate by the provider:
+
+| Category        | Tokens                                                                  |
+| --------------- | ----------------------------------------------------------------------- |
+| `Input`         | Input tokens that neither read from nor wrote to the provider's cache.  |
+| `Cache (Read)`  | Input tokens read from the cache, usually billed at a steep discount.   |
+| `Cache (Write)` | Input tokens written to the cache, billed at a premium on some models.  |
+| `Output`        | Generated tokens, excluding reasoning.                                  |
+| `Reasoning`     | Tokens spent on reasoning, for reasoning models.                        |
+
+The engine does not track prices, since they change over time. The cost of a run is the sum of each category multiplied by its current per-token rate for the configured model. A category the model does not report (e.g. `Cache (Write)` on models without a write charge) is always zero.
+
+The same counts are also stored per extraction job in the staging database, in the `input_tokens`, `cached_tokens`, `cache_write_tokens`, `output_tokens` and `reasoning_tokens` columns of the `extraction_jobs` table.
 
 ### Engine Configuration
 

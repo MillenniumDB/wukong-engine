@@ -23,13 +23,18 @@ from .job import ExtractionJob
 
 @dataclass(frozen=True)
 class ExtractionSpec:
-    """Structured specification for an extraction job."""
+    """Structured specification for an extraction job.
+
+    `definitions` are shared by every job extracting the same types, while `source_definitions` are specific to
+    the job's source (e.g. the entities available in it).
+    """
 
     document_context: str
     task: str
     definitions: str
     source_text: str
     response_schema: dict[str, Any] | None = None
+    source_definitions: str | None = None
 
 
 @dataclass(frozen=True)

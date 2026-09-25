@@ -37,6 +37,15 @@ class LLMRegistry:
             },
         },
     )
+    _EXPLICIT_CACHING: MappingProxyType[LLMProvider, frozenset[str]] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: frozenset(
+                {
+                    'gpt-5.6-luna',
+                },
+            ),
+        },
+    )
 
     @classmethod
     def is_supported_model(cls, model: LLM) -> bool:
@@ -65,6 +74,11 @@ class LLMRegistry:
         if effort_levels is None:
             return None
         return effort_levels.get(effort_level, effort_level.value)
+
+    @classmethod
+    def supports_explicit_caching(cls, model: LLM) -> bool:
+        """Whether the given model supports explicit prompt caching, with caller-placed cache breakpoints."""
+        return model.name in cls._EXPLICIT_CACHING.get(model.provider, frozenset())
 
     @classmethod
     def default_reasoning_effort(cls, model: LLM) -> str | None:

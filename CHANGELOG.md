@@ -46,7 +46,7 @@ and the changes are **not backwards compatible** with a `0.2.0` data directory.
 - **Typed failure handling**: immediate retry, deferred retry and critical failure, with bounded attempt budgets, inter-pass state recovery and graceful termination that preserves in-flight results.
 - **Asynchronous batch execution mode**, submitting grouped requests to the provider's batch interface at substantially lower cost, with submission, polling and resolution tracked across sessions.
 - **Recursive, boundary-aware chunking** along a hierarchy of headings, paragraphs, lines, sentences and words, with configurable target and overlap token counts and soft target packing.
-- **Extraction metrics**: per-status progress and timing, call throughput with a smoothed completion estimate, object and mention counts, and token accounting broken down into fresh input, cached input, cache write, output and reasoning tokens.
+- **Extraction metrics**: per-status progress and timing, call throughput with a smoothed completion estimate, object and mention counts, and token accounting broken down into non-overlapping uncached input, cache read, cache write, output and reasoning tokens, so that the cost of a run follows from the provider's current rate for each category.
 - **Projection**, selecting which entity and relationship types are active for a run. Inactive types are never extracted, stored or exported, and a relationship type whose endpoints are all inactive deactivates itself.
 - **Field constraints** used both to shape the request and to validate the reply: closed vocabularies, examples, regular expressions, default values and a required flag.
 - **Primary key normalization** (Unicode normalization and transliteration, case folding, dash and whitespace unification, trimming) applied before any identity comparison.
@@ -89,6 +89,7 @@ and the changes are **not backwards compatible** with a `0.2.0` data directory.
 - Document-level extraction reads a bounded prefix of each document rather than the whole text.
 - Fields that are defaulted or skipped never enter a prompt.
 - SQLite indexes for extraction jobs, batches and provenance streaming queries.
+- **Explicit prompt caching** on models that support it (`gpt-5.6-luna`). Each prompt is split into a prefix shared by every job extracting the same types (document context, task and type definitions) and the job-specific part (available entities and source text). Only the shared prefix is cached, instead of every request paying the cache-write rate for a whole prompt that no other request can reuse.
 
 ### 📝 Documentation
 

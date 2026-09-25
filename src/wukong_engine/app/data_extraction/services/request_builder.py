@@ -332,6 +332,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
             definitions=self._render_definitions(extraction_elements),
             source_text=source_chunk.content,
             response_schema=self._generate_response_schema(extraction_elements.relationship_types),
+            source_definitions=self._render_source_definitions(extraction_elements),
         )
 
         # Return the extraction request with the specified reasoning effort
@@ -360,13 +361,14 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
 
     def _render_definitions(self, elements: RelationshipExtractionRequestObjects) -> str:
         """Render the definitions section."""
-        definitions: list[str] = []
-
-        # Relationship types section
         rel_types = [
             self._render_relationship_type(rt) for rt in sorted(elements.relationship_types, key=lambda r: r.name.value)
         ]
-        definitions.append(f'Relationship Type Definitions\n{"-" * 29}\n\n' + '\n\n'.join(rel_types))
+        return f'Relationship Type Definitions\n{"-" * 29}\n\n' + '\n\n'.join(rel_types)
+
+    def _render_source_definitions(self, elements: RelationshipExtractionRequestObjects) -> str | None:
+        """Render the definitions of the entities available in the source, or None if there are none."""
+        definitions: list[str] = []
 
         # Chunk entities section
         chunk_entities = self._render_available_entities(elements.chunk_entities)
@@ -378,7 +380,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         if document_entities:
             definitions.append(f'Available DOCUMENT Entities\n{"-" * 27}\n' + '\n'.join(document_entities))
 
-        return '\n\n'.join(definitions)
+        return '\n\n'.join(definitions) or None
 
     def _render_relationship_type(self, relationship_type: RelationshipType) -> str:
         """Render the definition for a single relationship type."""
