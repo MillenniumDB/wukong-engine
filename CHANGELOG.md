@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
+- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
@@ -27,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - [📝 Documentation](#-documentation-2)
 
 ## [Unreleased]
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## [0.5.0] - 2026-09-25
 
 This entry covers a substantial redesign of the engine. The extraction model, the
 execution model, the on-disk layout and the internal architecture have all changed,
