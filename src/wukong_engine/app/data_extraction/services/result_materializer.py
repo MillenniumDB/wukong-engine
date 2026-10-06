@@ -50,7 +50,8 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the extraction result into entity instances.
 
         Items under the result's ``entities`` key are skipped when their type is unknown or not assigned to the job,
-        their properties fail validation, or their primary key doesn't normalize.
+        a required property is missing or invalid, or their primary key doesn't normalize. Invalid optional properties
+        are unset instead.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -92,9 +93,12 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
                 ),
             )
 
-            # Validate properties and skip materialization if invalid
-            if not self._are_valid_properties(properties, entity_type, job.context_ref.level):
+            # Validate properties, unsetting invalid optional values, and skip materialization if a required one is
+            # missing or invalid
+            validated = self._validate_properties(properties, entity_type, job.context_ref.level)
+            if validated is None:
                 continue
+            properties = validated
 
             # Normalize PK value and skip materialization if invalid
             normalized_pk = self._pk_normalizer.normalize(properties[entity_type.primary_key.value])
@@ -183,15 +187,18 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
 
         return properties
 
-    def _are_valid_properties(
+    def _validate_properties(
         self,
         properties: dict[str, Any],
         entity_type: EntityType,
         context_level: ContextLevel,
-    ) -> bool:
-        """Check whether the materialized properties are valid according to the entity type definition.
+    ) -> dict[str, Any] | None:
+        """Validate the materialized properties against the entity type definition.
 
-        Only extracted fields are checked, against their required flag, allowed options, and regex.
+        Only extracted fields are checked, against their required flag, allowed options, and regex. An invalid value
+        of a required field (which includes the primary key) rejects the entity, since the entity is incomplete
+        without it. An invalid value of an optional field only rejects the value: the field is unset, without falling
+        back to its default, so that the property is absent rather than asserted.
 
         Args:
             properties: Materialized properties to validate.
@@ -199,25 +206,27 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             context_level: Context level of the job, which selects the applicable fields and regexes.
 
         Returns:
-            True if every extracted field satisfies its constraints, False otherwise.
+            The properties without the invalid optional values, or None if a required field is missing or invalid.
         """
+        validated = dict(properties)
         for field in entity_type.fields_for(context_level, EntityRetrievalMode.EXTRACT):
-            value = properties.get(field.name.value)
+            value = validated.get(field.name.value)
+            if value is None:
+                # Required fields must be present and not null
+                if field.required:
+                    return None
+                continue
 
-            # Required fields must be present and not null
-            if field.required and value is None:
-                return False
-
-            # Allowed values must be respected when options are defined
-            if field.options and value is not None and value not in field.options:
-                return False
-
-            # Regex pattern must be respected when defined
+            # Allowed values must be respected when options are defined, and the regex pattern when one is defined
             regex_pattern = field.regex.get(context_level)
-            if regex_pattern is not None and value is not None and not regex_pattern.match(str(value)):
-                return False
+            if (field.options and value not in field.options) or (
+                regex_pattern is not None and not regex_pattern.match(str(value))
+            ):
+                if field.required:
+                    return None
+                del validated[field.name.value]
 
-        return True
+        return validated
 
 
 class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
@@ -238,7 +247,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
         job, their endpoints don't resolve to a valid endpoint of the type (or form a self-loop on an irreflexive
-        type), their properties fail validation, or a required primary key is missing or doesn't normalize.
+        type), a required property is missing or invalid, or a required primary key is missing or doesn't normalize.
+        Invalid optional properties are unset instead.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -284,9 +294,12 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
                 ),
             )
 
-            # Validate properties and skip materialization if invalid
-            if not self._are_valid_properties(properties, relationship_type):
+            # Validate properties, unsetting invalid optional values, and skip materialization if a required one is
+            # missing or invalid
+            validated = self._validate_properties(properties, relationship_type)
+            if validated is None:
                 continue
+            properties = validated
 
             # If the identity policy uses a Primary Key, normalize the PK value and skip materialization if invalid
             normalized_pk = None
@@ -437,32 +450,41 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
         return properties
 
-    def _are_valid_properties(self, properties: dict[str, Any], relationship_type: RelationshipType) -> bool:
-        """Check whether the materialized properties are valid according to the relationship type definition.
+    def _validate_properties(
+        self,
+        properties: dict[str, Any],
+        relationship_type: RelationshipType,
+    ) -> dict[str, Any] | None:
+        """Validate the materialized properties against the relationship type definition.
 
-        Only extracted fields are checked, against their required flag, allowed options, and regex.
+        Only extracted fields are checked, against their required flag, allowed options, and regex. An invalid value
+        of a required field (which includes the primary key) rejects the relationship, since the relationship is
+        incomplete without it. An invalid value of an optional field only rejects the value: the field is unset,
+        without falling back to its default, so that the property is absent rather than asserted.
 
         Args:
             properties: Materialized properties to validate.
             relationship_type: Relationship type defining the field constraints.
 
         Returns:
-            True if every extracted field satisfies its constraints, False otherwise.
+            The properties without the invalid optional values, or None if a required field is missing or invalid.
         """
+        validated = dict(properties)
         for field in relationship_type.fields_for(RelationshipRetrievalMode.EXTRACT):
-            value = properties.get(field.name.value)
+            value = validated.get(field.name.value)
+            if value is None:
+                # Required fields must be present and not null
+                if field.required:
+                    return None
+                continue
 
-            # Required fields must be present and not null
-            if field.required and value is None:
-                return False
-
-            # Allowed values must be respected when options are defined
-            if field.options and value is not None and value not in field.options:
-                return False
-
-            # Regex pattern must be respected when defined
+            # Allowed values must be respected when options are defined, and the regex pattern when one is defined
             regex_pattern = field.regex
-            if regex_pattern is not None and value is not None and not regex_pattern.match(str(value)):
-                return False
+            if (field.options and value not in field.options) or (
+                regex_pattern is not None and not regex_pattern.match(str(value))
+            ):
+                if field.required:
+                    return None
+                del validated[field.name.value]
 
-        return True
+        return validated

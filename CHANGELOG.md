@@ -10,16 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
   - [✨ Added](#-added)
+  - [♻️ Changed](#️-changed)
 - [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added-1)
-  - [♻️ Changed](#️-changed)
+  - [♻️ Changed](#️-changed-1)
   - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-2)
-  - [♻️ Changed](#️-changed-1)
+  - [♻️ Changed](#️-changed-2)
   - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-1)
@@ -33,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### ✨ Added
 
 - **Irreflexive relationship types**: a relationship type may declare `"irreflexive": true` to rule out self-loops. The LLM is told that source and target must differ, and self-loops it still returns are discarded. Self-loops remain allowed by default, since some relationships are legitimately reflexive.
+
+### ♻️ Changed
+
+- **Invalid optional values no longer discard their object**: a value outside `options` or not matching `regex` now rejects the entity or relationship only when the field is required (which includes the primary key). On an optional field, the value is unset and the object is kept; `default_value` is not used, so the property is absent rather than asserted.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

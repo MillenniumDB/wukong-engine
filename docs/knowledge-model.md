@@ -173,7 +173,7 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`). Accepts a context level mapping, so one level can be stricter than the other.                                       | `object[string, string]` or `string` | `{}`        |
 | `default_value`  |    🟡     | The value used when nothing can be extracted, or when the `"default"` retrieval mode is chosen. Accepts a context level mapping. Must itself satisfy `options` and `regex`.                             | `object[string, string]` or `string` | `{}`        |
 | `retrieval_mode` |    🟡     | How the value is obtained. Accepts a context level mapping. See the table below.                                                                                                                        | `object[string, string]` or `string` | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. An entity missing a required value is discarded rather than repaired. The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing, outside `options` or not matching `regex` is discarded rather than repaired. An invalid **optional** value is unset instead: the entity is kept without that property, and `default_value` is not used. The primary key field must set this to `true` explicitly. |                `bool`                | `false`     |
 | `merge_strategy` |    🟡     | Overrides the entity type's `default_merge_strategy` for this field. See [Merge Strategies](#merge-strategies).                                                                                         |               `string`               | `null`      |
 
 **Retrieval modes** determine where an entity field's value comes from:
@@ -332,7 +332,7 @@ Relationship fields work like entity fields, except that they take **plain value
 | `regex`          |    🟡     | A pattern the value must match to be considered valid.                                                                            |          `string`          | `null`      |
 | `default_value`  |    🟡     | The value used when nothing is extracted, or with the `"default"` retrieval mode. Must satisfy `options` and `regex`.             |          `string`          | `null`      |
 | `retrieval_mode` |    🟡     | Either `"extract"` (the LLM reads it from the text) or `"default"` (the declared `default_value` is used). `"default"` requires a non-null `default_value`. |          `string`          | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. A relationship missing a required value is discarded.                                             |           `bool`           | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing or invalid is discarded. An invalid **optional** value is unset instead, and `default_value` is not used. |           `bool`           | `false`     |
 | `merge_strategy` |    🟡     | Overrides the relationship type's `default_merge_strategy` for this field.                                                        |          `string`          | `null`      |
 
 ### Relationship Example
