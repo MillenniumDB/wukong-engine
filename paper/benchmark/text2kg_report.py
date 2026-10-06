@@ -1,7 +1,7 @@
 """Summarize a completed benchmark run into the tables used by the paper.
 
-Reads the evaluator's per-ontology metrics, the converted system outputs and the
-workspace staging databases, and prints:
+Reads the evaluator's per-ontology metrics, the converted system outputs, the
+run records (falling back to the workspace staging databases), and prints:
 
     - the per-ontology metric table, for both test populations
     - the comparison against the published Text2KGBench baselines
@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from text2kg_record import read_usage  # noqa: E402
 from text2kg_setup import ONTOLOGIES  # noqa: E402
 
 # Metric keys as the evaluator writes them, in reporting order
@@ -95,47 +96,43 @@ def coverage(responses: Path) -> dict[str, tuple[int, int, int]]:
     return counts
 
 
-def cost(workspaces: Path, prefix: str) -> dict[str, dict[str, int]]:
-    """Read job counts, token usage and wall clock from each staging database.
+def cost(results: Path, workspaces: Path, prefix: str) -> dict[str, dict[str, int]]:
+    """Read job counts, token usage and wall clock for each ontology.
+
+    The tracked run record written by `text2kg_record.py` is read first, so the table can be rebuilt from the
+    repository alone; the workspace's staging database is the fallback for runs made before records existed.
 
     Args:
+        results: Results directory of the run, holding `runs/<onto>.json`.
         workspaces: Root directory of the benchmark workspaces.
         prefix: Workspace directory name prefix, followed by the ontology identifier.
 
     Returns:
         Mapping from ontology to its document, job, failed-job and token counts, and the seconds between the first
-        job's creation and the last job's completion. Ontologies without a staging database are omitted.
+        job's creation and the last job's completion. Ontologies with neither a record nor a staging database are
+        omitted.
     """
     usage = {}
     for onto in ONTOLOGIES:
+        record = results / 'runs' / f'{onto}.json'
         staging = workspaces / f'{prefix}{onto}' / 'staging' / 'extraction.db'
-        if not staging.exists():
+        if record.exists():
+            run = json.loads(record.read_text(encoding='utf-8'))['usage']
+        elif staging.exists():
+            run = read_usage(staging)
+        else:
             continue
-        connection = sqlite3.connect(f'file:{staging}?mode=ro', uri=True)
-        try:
-            jobs, failed = connection.execute(
-                "SELECT COUNT(*), SUM(job_status != 'COMPLETED') FROM extraction_jobs",
-            ).fetchone()
-            tokens = connection.execute(
-                'SELECT SUM(input_tokens), SUM(cached_tokens), SUM(cache_write_tokens),'
-                ' SUM(output_tokens), SUM(reasoning_tokens) FROM extraction_jobs',
-            ).fetchone()
-            started, finished = connection.execute(
-                'SELECT MIN(created_at), MAX(finished_at) FROM extraction_jobs',
-            ).fetchone()
-            documents = connection.execute('SELECT COUNT(*) FROM documents').fetchone()[0]
-        finally:
-            connection.close()
+        total = run['total']
         usage[onto] = {
-            'documents': documents,
-            'jobs': jobs,
-            'failed': failed or 0,
-            'input': tokens[0] or 0,
-            'cached': tokens[1] or 0,
-            'cache_write': tokens[2] or 0,
-            'output': tokens[3] or 0,
-            'reasoning': tokens[4] or 0,
-            'seconds': round((finished - started) / 1000) if started and finished else 0,
+            'documents': run['documents'],
+            'jobs': total['jobs'],
+            'failed': total['failed'],
+            'input': total['input_tokens'],
+            'cached': total['cached_tokens'],
+            'cache_write': total['cache_write_tokens'],
+            'output': total['output_tokens'],
+            'reasoning': total['reasoning_tokens'],
+            'seconds': run['seconds'],
         }
     return usage
 
@@ -458,7 +455,7 @@ def main() -> int:
     print('\n## Coverage and cost\n')
     print('| Ontology | Sentences | With triples | Triples | Docs | Jobs | Failed | Input tok | Output tok | Reasoning tok | Seconds |')
     print('|---|---|---|---|---|---|---|---|---|---|---|')
-    counts, usage = coverage(args.results / 'wukong'), cost(args.workspace_root, args.prefix)
+    counts, usage = coverage(args.results / 'wukong'), cost(args.results, args.workspace_root, args.prefix)
     totals: dict[str, int] = {}
     for onto in ONTOLOGIES:
         if onto not in counts or onto not in usage:
