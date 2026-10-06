@@ -11,8 +11,11 @@ database, which is not tracked. For every ontology this writes:
       database and the run's log, kept so that any later analysis can be done
       without re-running
 
-An ontology that already has a run record is skipped unless `--force` is
-given. The archive is large; back it up outside the repository.
+A run is recorded once: an ontology whose record matches its staging database
+is skipped, and one whose record does not (the workspace was extracted again,
+or resumed after recording) is an error, since the outputs next to the record
+may no longer belong to it. The archive is large; back it up outside the
+repository.
 
 Example:
     python3 paper/benchmark/text2kg_record.py \
@@ -157,7 +160,8 @@ def main() -> int:
     """Write the run record of every selected ontology and archive its state.
 
     Returns:
-        The process exit code: 1 if a selected ontology has no staging database, 0 otherwise.
+        The process exit code: 1 if a selected ontology has no staging database, or a run record that does not match
+        it, 0 otherwise.
     """
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--results', type=Path, default=Path('paper/benchmark/results'))
@@ -166,25 +170,32 @@ def main() -> int:
     parser.add_argument('--config', type=Path, default=Path('config/default.toml'), help='Engine config of the run')
     parser.add_argument('--onto', action='append', choices=[*ONTOLOGIES], help='Ontology to record (repeatable)')
     parser.add_argument('--no-archive', action='store_true', help='Write the run records only')
-    parser.add_argument('--force', action='store_true', help='Overwrite existing run records')
     args = parser.parse_args()
 
     engine = engine_revision()
     config = tomllib.loads(args.config.read_text(encoding='utf-8'))
     recorded_at = datetime.now(UTC).isoformat(timespec='seconds')
 
-    missing = []
+    missing, conflicts = [], []
     for onto in args.onto or [*ONTOLOGIES]:
         workspace = args.workspace_root / f'{args.prefix}{onto}'
         staging = workspace / 'staging' / 'extraction.db'
         if not staging.exists():
             missing.append(onto)
             continue
+        usage = read_usage(staging)
 
-        # A run is recorded once: re-recording a resumed or skipped run would attach the current config to it
+        # A run is recorded once. The same usage means the same run, recorded by an earlier invocation, and
+        # recording it again would attach this invocation's config to it. Different usage means the workspace was
+        # extracted again, or resumed after recording, and the outputs next to the record may no longer match it.
         out = args.results / 'runs' / f'{onto}.json'
-        if out.exists() and not args.force:
-            print(f'{onto:12s} already recorded -> {out}')
+        if out.exists():
+            recorded = json.loads(out.read_text(encoding='utf-8'))['usage']
+            if recorded == usage:
+                print(f'{onto:12s} already recorded -> {out}')
+            else:
+                same_start = recorded['started'] == usage['started']
+                conflicts.append(f'{onto} ({"resumed after recording" if same_start else "extracted again"})')
             continue
 
         record = {
@@ -197,7 +208,7 @@ def main() -> int:
             'definitions': {
                 name: sha256(workspace / name) for name in DEFINITIONS if (workspace / name).exists()
             },
-            'usage': read_usage(staging),
+            'usage': usage,
         }
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
@@ -210,8 +221,14 @@ def main() -> int:
 
     if missing:
         print(f'No staging database for: {", ".join(missing)}', file=sys.stderr)
-        return 1
-    return 0
+    if conflicts:
+        print(
+            f'The run record does not match the staging database for: {", ".join(conflicts)}.\n'
+            f'Run each new extraction against its own PREFIX and RESULTS. To replace the record on purpose, '
+            f'delete it from {args.results / "runs"} and record again.',
+            file=sys.stderr,
+        )
+    return 1 if missing or conflicts else 0
 
 
 if __name__ == '__main__':

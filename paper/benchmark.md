@@ -195,8 +195,10 @@ The run records are what makes cost and token figures traceable: staging
 databases are not tracked, so before this step the figures in §6.4 and §9.3
 existed only on the machine that ran them. `text2kg_report.py` reads the
 records, falling back to the staging databases for older runs. A run is
-recorded once; pass `--force` to `text2kg_record.py` to replace a record. Back
-up `archive/` outside the repository.
+recorded once, so re-invoking `run_benchmark.sh` does not duplicate it; if a
+workspace is extracted again into the same `RESULTS`, recording stops with an
+error rather than mixing two runs. Give each repetition its own `PREFIX` and
+`RESULTS`. Back up `archive/` outside the repository.
 
 ### Configuration
 
