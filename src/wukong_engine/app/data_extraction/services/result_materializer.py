@@ -237,8 +237,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the extraction result into relationship instances.
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
-        job, their endpoints don't resolve to a valid endpoint of the type, their properties fail validation, or a
-        required primary key is missing or doesn't normalize.
+        job, their endpoints don't resolve to a valid endpoint of the type (or form a self-loop on an irreflexive
+        type), their properties fail validation, or a required primary key is missing or doesn't normalize.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -357,8 +357,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve the context levels of the referenced entities.
 
         Returns:
-            The source and target entity IDs, or None if either ID is missing or unknown, or the pair doesn't match
-            an endpoint of the relationship type.
+            The source and target entity IDs, or None if either ID is missing or unknown, the pair doesn't match an
+            endpoint of the relationship type, or the type is irreflexive and both IDs refer to the same entity.
         """
         # Get source and target temporary entity IDs from extracted data
         source_id = data.get('_source_entity_id')
@@ -391,6 +391,10 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             target_ref.entity_type_name,
             target_ctx,
         ):
+            return None
+
+        # Irreflexive types can't relate an entity to itself; compared by content, since that identifies the entity
+        if relationship_type.irreflexive and source_ref.entity_id.content == target_ref.entity_id.content:
             return None
 
         # Return valid endpoint

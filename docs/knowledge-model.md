@@ -19,6 +19,7 @@ This document describes the expected format for a `knowledge_model.json` file, w
 - [🔗 Relationship Types](#-relationship-types)
   - [General Definition](#general-definition-1)
   - [Endpoints](#endpoints)
+  - [Self-Loops](#self-loops)
   - [Relationship Fields](#relationship-fields)
   - [Relationship Example](#relationship-example)
 - [🧮 Identity and Merging](#-identity-and-merging)
@@ -246,6 +247,7 @@ Each relationship type is a key inside the `relationship_types` object (the **re
 | `primary_key`            |    🟡     | The field that distinguishes relationships sharing the same endpoints. Required by the `"primary_key"` deduplication policy. Must be in `fields`, marked `"required": true`, and `"extract"`.    |                           `string`                            | `null`          |
 | `deduplication`          |    🟡     | The identity policy for this type: `"primary_key"`, `"endpoints"` or `"none"`. See [Deduplication](#deduplication).                                                                             |                           `string`                            | `"primary_key"` |
 | `default_merge_strategy` |    🟡     | How to reconcile field values when the same relationship is observed again. Individual fields may override it.                                                                                  |                           `string`                            | `"keep"`        |
+| `irreflexive`            |    🟡     | Whether an entity can never be related to itself by this type. See [Self-Loops](#self-loops).                                                                                                   |                           `boolean`                           | `false`         |
 | `fields`                 |    🟡     | The **fields** of this relationship type, keyed by field name. See [Relationship Fields](#relationship-fields).                                                                                 |                     `object[string, Field]`                   | `{}`            |
 
 > ⚠️ `deduplication` defaults to `"primary_key"`, which **requires** a `primary_key`. A relationship type with no primary key must declare `"deduplication": "endpoints"` or `"deduplication": "none"` explicitly, otherwise the model is rejected.
@@ -296,6 +298,25 @@ Endpoint declarations are used three times: to decide whether an extraction is w
 ```
 
 In this example, `Astronaut` entities found in a chunk may be connected to `Mission` entities found either at the document level or in the same chunk, and to `Spacecraft` entities found in the same chunk.
+
+### Self-Loops
+
+A relationship whose source and target are the same entity is a **self-loop**. Self-loops are allowed by default, because some relationships are legitimately reflexive: a taxonomy's subclass relation, a politician who voted for themselves, an author who cites their own work.
+
+For relationship types where a self-loop is always an error, such as `IsMemberOf` from a person to an organization, or `ParentOf`, declare `"irreflexive": true`. The LLM is then told that the source and target must be different entities, and any self-loop it still returns is discarded. Two endpoints are the same entity when they share an identity, that is, the same entity type and normalized primary key (see [Identity and Merging](#-identity-and-merging)).
+
+```json
+"ParentOf": {
+    "description": "A person who is a parent of another person.",
+    "deduplication": "endpoints",
+    "irreflexive": true,
+    "endpoints": {
+        "Person": {
+            "Person": { "source_context_levels": "chunk", "target_context_levels": "chunk" }
+        }
+    }
+}
+```
 
 ### Relationship Fields
 

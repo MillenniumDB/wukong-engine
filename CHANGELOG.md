@@ -9,25 +9,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
+- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
+  - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
-  - [✨ Added](#-added-1)
+  - [✨ Added](#-added-2)
   - [♻️ Changed](#️-changed-1)
   - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-1)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
-  - [✨ Added](#-added-2)
+  - [✨ Added](#-added-3)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation-2)
 
 ## [Unreleased]
+
+### ✨ Added
+
+- **Irreflexive relationship types**: a relationship type may declare `"irreflexive": true` to rule out self-loops. The LLM is told that source and target must differ, and self-loops it still returns are discarded. Self-loops remain allowed by default, since some relationships are legitimately reflexive.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

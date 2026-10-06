@@ -568,6 +568,10 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         if instructions is not None:
             lines.append(instructions)
 
+        # Irreflexive types can't relate an entity to itself
+        if relationship_type.irreflexive:
+            lines.append('The source and target must be different entities.')
+
         # Endpoints
         endpoints: list[str] = []
         for endpoint in sorted(relationship_type.endpoints, key=lambda f: f.source.value + f.target.value):
