@@ -172,7 +172,7 @@ interpreter path will not resolve.
 |---|---|
 | `text2kg_setup.py` | Compile ontologies into workspaces and sentence documents (§2); `--permissive-endpoints` and `--entity-examples` select the ablation arms (§10) |
 | `run_benchmark.sh` | Drive extraction, run records, conversion, evaluation, baseline re-scoring and the summary |
-| `text2kg_record.py` | Write each run's record (jobs, tokens, timing, engine commit, config, definition hashes) and archive its staging database and log |
+| `text2kg_record.py` | Write each run's record (jobs, tokens, timing, engine commit, config, definition hashes, and the objects discarded and values unset by validation) and archive its staging database and log |
 | `text2kg_export.py` | Convert a workspace's staging database into benchmark system output (§4) |
 | `text2kg_eval.py` | Write the evaluator config and invoke the benchmark's `run_eval.py` (§5) |
 | `text2kg_report.py` | Regenerate every table in §6 from the results on disk; `--benchmark` adds the recall-by-object-type table (§7.5) |

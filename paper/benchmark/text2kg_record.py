@@ -5,8 +5,10 @@ database, which is not tracked. For every ontology this writes:
 
     - `<results>/runs/<onto>.json`, tracked: job and token counts (in total and
       per job type and context level), the run's start and end, the engine
-      version and commit, the engine configuration, and hashes of the workspace
-      definitions the run was built from
+      version and commit, the engine configuration, hashes of the workspace
+      definitions the run was built from, and what validation rejected: the
+      objects the LLM returned, the objects discarded (per reason) and the
+      values unset (per field and reason)
     - `<results>/archive/<onto>/`, not tracked: a compressed copy of the staging
       database and the run's log, kept so that any later analysis can be done
       without re-running
@@ -92,6 +94,53 @@ def read_usage(staging: Path) -> dict[str, object]:
         'started': timestamp(started),
         'finished': timestamp(finished),
         'seconds': round((finished - started) / 1000) if started and finished else 0,
+    }
+
+
+def read_validation(staging: Path) -> dict[str, object] | None:
+    """Read what validation rejected from a staging database.
+
+    Only completed jobs are counted, since a failed job's objects are never materialized. The objects the LLM
+    returned are counted from the raw responses, so that discards can be read as a fraction of them.
+
+    Args:
+        staging: Path to the workspace's `extraction.db`.
+
+    Returns:
+        Per job type and context level: the objects the LLM returned; the objects discarded, per reason, type and
+        field; and the values unset in kept objects, per type, field and reason. None if the database predates the
+        recording of rejections.
+    """
+    connection = sqlite3.connect(f'file:{staging}?mode=ro', uri=True)
+    try:
+        returned = connection.execute(
+            "SELECT job_type, context_level, COALESCE(SUM(json_array_length(raw_response,"
+            " CASE job_type WHEN 'ENTITY_EXTRACTION' THEN '$.entities' ELSE '$.relationships' END)), 0)"
+            " FROM extraction_jobs WHERE job_status = 'COMPLETED'"
+            ' GROUP BY job_type, context_level ORDER BY job_type, context_level',
+        ).fetchall()
+        rejected = connection.execute(
+            'SELECT j.job_type, j.context_level, r.rejection_scope, r.rejection_reason, r.type_name, r.field_name,'
+            ' SUM(r.rejection_count) FROM extraction_rejections r JOIN extraction_jobs j USING (job_id)'
+            " WHERE j.job_status = 'COMPLETED' GROUP BY 1, 2, 3, 4, 5, 6 ORDER BY 1, 2, 3, 4, 5, 6",
+        ).fetchall()
+    except sqlite3.OperationalError:
+        return None  # No raw_response column or extraction_rejections table
+    finally:
+        connection.close()
+
+    def entry(job_type: str, level: str, reason: str, type_name: str | None, field: str | None, count: int):
+        return {
+            'job_type': job_type, 'context_level': level, 'type': type_name, 'field': field, 'reason': reason,
+            'count': count,
+        }
+
+    return {
+        'returned': [
+            {'job_type': job_type, 'context_level': level, 'objects': objects} for job_type, level, objects in returned
+        ],
+        'discarded': [entry(t, lv, rs, tn, f, c) for t, lv, scope, rs, tn, f, c in rejected if scope == 'OBJECT'],
+        'unset': [entry(t, lv, rs, tn, f, c) for t, lv, scope, rs, tn, f, c in rejected if scope == 'VALUE'],
     }
 
 
@@ -209,6 +258,7 @@ def main() -> int:
                 name: sha256(workspace / name) for name in DEFINITIONS if (workspace / name).exists()
             },
             'usage': usage,
+            'validation': read_validation(staging),
         }
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
@@ -217,7 +267,12 @@ def main() -> int:
             archive(staging, args.results / 'logs' / f'{onto}.log', args.results / 'archive' / onto)
 
         total = record['usage']['total']
-        print(f'{onto:12s} jobs={total["jobs"]} failed={total["failed"]} -> {out}')
+        validation = record['validation'] or {'discarded': [], 'unset': []}
+        discarded = sum(entry['count'] for entry in validation['discarded'])
+        unset = sum(entry['count'] for entry in validation['unset'])
+        print(
+            f'{onto:12s} jobs={total["jobs"]} failed={total["failed"]} discarded={discarded} unset={unset} -> {out}',
+        )
 
     if missing:
         print(f'No staging database for: {", ".join(missing)}', file=sys.stderr)
