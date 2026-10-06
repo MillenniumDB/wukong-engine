@@ -383,7 +383,7 @@ Relationship fields work like entity fields, except that they take **plain value
 
 Identity in WUKONG is **declared, not inferred**. Whether two extracted objects are the same object is decided from the knowledge model and the extracted values alone, with no similarity thresholds and no global clustering step.
 
-Before anything is compared, primary key values are **normalized**: Unicode normalization and transliteration, case folding, dash and whitespace unification, removal of non-printable characters, and trimming. The normalized form is used for identity only — the original extracted value is what the object carries as its property. A value that normalizes to nothing (an empty or purely punctuational key) invalidates its object, which is discarded.
+Before anything is compared, primary key values are **normalized**: Unicode normalization and transliteration, case folding, dash and whitespace unification, removal of non-printable characters, and trimming. The normalized form is used for identity only — the original extracted value is what the object carries as its property. A key with no letter or digit once normalized (an empty key, or one made only of symbols such as `-` or `#`) invalidates its object, which is discarded: such a key identifies nothing, and accepting it would merge unrelated objects under one identity.
 
 Normalization is deliberately conservative. It removes variation that carries no information (accents, casing, spacing, dash styles) and preserves everything else. Stemming, abbreviation expansion and token reordering are **not** performed, because they destroy distinctions that matter in some domains. The practical consequence is that a primary key with a declared `regex` and worked `examples` — which asks the LLM to emit a canonical form directly — deduplicates far better than a free-form name-like key.
 
@@ -457,7 +457,7 @@ The normalized primary key is part of the `v1` definition. Under `v1`, a raw pri
 7. Trimming whitespace and `/ \ . : ( )` from both ends.
 8. Collapsing runs of whitespace into a single space.
 
-A key that is empty after these steps is invalid, and its object is discarded.
+A key that contains no letter or digit after these steps (for example, one that is empty or only `-`) is invalid, and its object is discarded. This rule was added within `v1`: it changes no key that it accepts, so every content ID computed under `v1` keeps its meaning.
 
 In the exported output, identifiers appear as follows:
 

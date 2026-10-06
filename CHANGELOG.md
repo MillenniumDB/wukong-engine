@@ -41,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - **Invalid optional values no longer discard their object**: a value outside `options` or not matching `regex` now rejects the entity or relationship only when the field is required (which includes the primary key). On an optional field, the value is unset and the object is kept; `default_value` is not used, so the property is absent rather than asserted.
 
+### 🐛 Fixed
+
+- **Primary keys made only of symbols** (e.g. `-`, `#` or `&`) were accepted, so every object of a type with such a key merged into one. A normalized key must now contain at least one letter or digit, otherwise its object is discarded. No key that is still accepted changes, so identities remain `v1`.
+
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## [0.5.0] - 2026-09-25
