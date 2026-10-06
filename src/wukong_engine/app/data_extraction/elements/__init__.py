@@ -9,6 +9,8 @@ from .extraction import (
     ExtractionRequest,
     ExtractionResult,
     ExtractionSpec,
+    MaterializedResult,
+    Rejection,
     RelationshipExtractionRequestContext,
     RelationshipExtractionRequestObjects,
 )
@@ -26,6 +28,8 @@ __all__ = [
     'ExtractionRequest',
     'ExtractionResult',
     'ExtractionSpec',
+    'MaterializedResult',
+    'Rejection',
     'RelationshipExtractionRequestContext',
     'RelationshipExtractionRequestObjects',
 ]

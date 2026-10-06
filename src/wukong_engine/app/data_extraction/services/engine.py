@@ -132,6 +132,7 @@ class RealtimeExtractionEngine(ExtractionEngine):
                         retry_policy=result.retry_policy,
                         error=result.error,
                         metrics=result.metrics,
+                        raw_response=result.raw_response,
                     )
 
                     # Request a metrics log after each job failure
@@ -146,11 +147,17 @@ class RealtimeExtractionEngine(ExtractionEngine):
 
                     continue
 
-                # Materialization of results into knowledge objects
-                knowledge_objects = self._result_materializer.materialize(result, request.job, knowledge_model)
+                # Materialization of results into knowledge objects, keeping track of what was rejected
+                materialized = self._result_materializer.materialize(result, request.job, knowledge_model)
 
-                # Persist knowledge objects and provenance, update job status to completed
-                self._repository.complete_job(request.job, knowledge_objects, usage_metrics=result.metrics)
+                # Persist knowledge objects, provenance and rejections, update job status to completed
+                self._repository.complete_job(
+                    request.job,
+                    materialized.objects,
+                    rejections=materialized.rejections,
+                    usage_metrics=result.metrics,
+                    raw_response=result.raw_response,
+                )
 
                 # Request a metrics log after each job completion
                 self._metrics_tracker.request_metrics()

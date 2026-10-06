@@ -2,7 +2,8 @@
 
 from typing import Any, Protocol
 
-from wukong_engine.app.data_extraction.elements import ExtractionJob, ExtractionResult
+from wukong_engine.app.data_extraction.elements import ExtractionJob, ExtractionResult, MaterializedResult, Rejection
+from wukong_engine.app.data_extraction.elements.values import RejectionReason, RejectionScope
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
@@ -10,6 +11,7 @@ from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.shared.regex_pattern import RegexPattern
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
@@ -17,10 +19,10 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 class ExtractionResultMaterializer(Protocol):
     """Materializer that converts raw extraction results into knowledge object instances."""
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[object, ...]:
+    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> MaterializedResult:
         """Materialize the extraction result into knowledge object instances.
 
-        Extracted items that are malformed or don't match the knowledge model are skipped.
+        Extracted items that are malformed or don't match the knowledge model are skipped, and reported as rejections.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -28,9 +30,45 @@ class ExtractionResultMaterializer(Protocol):
             model: Knowledge model used to resolve and validate types and fields.
 
         Returns:
-            The valid knowledge objects built from the result.
+            The valid knowledge objects built from the result, and the rejections.
         """
         ...
+
+
+def _object_rejection(reason: RejectionReason, type_name: object, field_name: str | None = None) -> Rejection:
+    """Build the rejection of a whole extracted object.
+
+    Args:
+        reason: Why the object is rejected.
+        type_name: Type name of the object as returned by the LLM, or None if it returned none.
+        field_name: Name of the field the rejection is about, if any.
+
+    Returns:
+        A rejection of ``OBJECT`` scope.
+    """
+    return Rejection(RejectionScope.OBJECT, reason, str(type_name) if type_name is not None else None, field_name)
+
+
+def _invalid_value_reason(
+    value: object,
+    options: tuple[str, ...],
+    regex: RegexPattern | None,
+) -> RejectionReason | None:
+    """Check a non-null extracted value against its field's allowed options and regex.
+
+    Args:
+        value: Extracted value to check.
+        options: Allowed values of the field. Empty if any value is allowed.
+        regex: Pattern the value must match, or None if there is none.
+
+    Returns:
+        Why the value is invalid, or None if it is valid. Options are checked before the regex.
+    """
+    if options and value not in options:
+        return RejectionReason.INVALID_OPTION
+    if regex is not None and not regex.match(str(value)):
+        return RejectionReason.REGEX_MISMATCH
+    return None
 
 
 class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
@@ -46,12 +84,17 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Entity, ...]:
+    def materialize(
+        self,
+        result: ExtractionResult,
+        job: ExtractionJob,
+        model: KnowledgeModel,
+    ) -> MaterializedResult[Entity]:
         """Materialize the extraction result into entity instances.
 
         Items under the result's ``entities`` key are skipped when their type is unknown or not assigned to the job,
         a required property is missing or invalid, or their primary key doesn't normalize. Invalid optional properties
-        are unset instead.
+        are unset instead. Each skipped item, and each value unset in a kept item, is reported as a rejection.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -59,16 +102,19 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve and validate entity types and fields.
 
         Returns:
-            The valid entities built from the result.
+            The valid entities built from the result, and the rejections.
         """
         extracted_entities = result.data.get('entities', [])
         materialized_entities: list[Entity] = []
+        rejections: list[Rejection] = []
         for extracted in extracted_entities:
             # Get entity type
             job_types = set(self._repository.get_job_entity_types(job))
             entity_type = self._materialize_entity_type(extracted, job_types, model)
             if entity_type is None:
+                rejections.append(_object_rejection(RejectionReason.UNKNOWN_TYPE, extracted.get('_entity_type')))
                 continue
+            type_name = entity_type.name.value
 
             # Assemble properties
             properties: dict[str, Any] = {}
@@ -95,21 +141,25 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # Validate properties, unsetting invalid optional values, and skip materialization if a required one is
             # missing or invalid
-            validated = self._validate_properties(properties, entity_type, job.context_ref.level)
+            validated, field_rejections = self._validate_properties(properties, entity_type, job.context_ref.level)
             if validated is None:
+                rejections.extend(field_rejections)
                 continue
             properties = validated
 
             # Normalize PK value and skip materialization if invalid
-            normalized_pk = self._pk_normalizer.normalize(properties[entity_type.primary_key.value])
+            pk_name = entity_type.primary_key.value
+            normalized_pk = self._pk_normalizer.normalize(properties[pk_name])
             if normalized_pk is None:
-                continue  # Invalid primary key value
+                rejections.append(_object_rejection(RejectionReason.INVALID_PRIMARY_KEY, type_name, pk_name))
+                continue
 
-            # Materialize full entity instance
+            # Materialize full entity instance; values unset during validation only count once the entity is kept
             entity = Entity.from_extraction(entity_type, properties, normalized_pk)
             materialized_entities.append(entity)
+            rejections.extend(field_rejections)
 
-        return tuple(materialized_entities)
+        return MaterializedResult(tuple(materialized_entities), tuple(rejections))
 
     def _materialize_entity_type(
         self,
@@ -192,7 +242,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         properties: dict[str, Any],
         entity_type: EntityType,
         context_level: ContextLevel,
-    ) -> dict[str, Any] | None:
+    ) -> tuple[dict[str, Any] | None, tuple[Rejection, ...]]:
         """Validate the materialized properties against the entity type definition.
 
         Only extracted fields are checked, against their required flag, allowed options, and regex. An invalid value
@@ -206,27 +256,30 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             context_level: Context level of the job, which selects the applicable fields and regexes.
 
         Returns:
-            The properties without the invalid optional values, or None if a required field is missing or invalid.
+            The properties without the invalid optional values, or None if a required field is missing or invalid;
+            and the rejections: the one that rejects the entity, or else one per unset value.
         """
+        type_name = entity_type.name.value
         validated = dict(properties)
+        unset: list[Rejection] = []
         for field in entity_type.fields_for(context_level, EntityRetrievalMode.EXTRACT):
-            value = validated.get(field.name.value)
+            field_name = field.name.value
+            value = validated.get(field_name)
             if value is None:
                 # Required fields must be present and not null
                 if field.required:
-                    return None
+                    return None, (_object_rejection(RejectionReason.MISSING_VALUE, type_name, field_name),)
                 continue
 
             # Allowed values must be respected when options are defined, and the regex pattern when one is defined
-            regex_pattern = field.regex.get(context_level)
-            if (field.options and value not in field.options) or (
-                regex_pattern is not None and not regex_pattern.match(str(value))
-            ):
+            reason = _invalid_value_reason(value, field.options, field.regex.get(context_level))
+            if reason is not None:
                 if field.required:
-                    return None
-                del validated[field.name.value]
+                    return None, (_object_rejection(reason, type_name, field_name),)
+                del validated[field_name]
+                unset.append(Rejection(RejectionScope.VALUE, reason, type_name, field_name))
 
-        return validated
+        return validated, tuple(unset)
 
 
 class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
@@ -242,13 +295,19 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Relationship, ...]:
+    def materialize(
+        self,
+        result: ExtractionResult,
+        job: ExtractionJob,
+        model: KnowledgeModel,
+    ) -> MaterializedResult[Relationship]:
         """Materialize the extraction result into relationship instances.
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
         job, their endpoints don't resolve to a valid endpoint of the type (or form a self-loop on an irreflexive
         type), a required property is missing or invalid, or a required primary key is missing or doesn't normalize.
-        Invalid optional properties are unset instead.
+        Invalid optional properties are unset instead. Each skipped item, and each value unset in a kept item, is
+        reported as a rejection.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -256,20 +315,24 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve and validate relationship types, fields, and endpoints.
 
         Returns:
-            The valid relationships built from the result.
+            The valid relationships built from the result, and the rejections.
         """
         extracted_relationships = result.data.get('relationships', [])
         materialized_relationships: list[Relationship] = []
+        rejections: list[Rejection] = []
         for extracted in extracted_relationships:
             # Get relationship type
             job_types = set(self._repository.get_job_relationship_types(job))
             relationship_type = self._materialize_relationship_type(extracted, job_types, model)
             if relationship_type is None:
+                rejections.append(_object_rejection(RejectionReason.UNKNOWN_TYPE, extracted.get('_relationship_type')))
                 continue
+            type_name = relationship_type.name.value
 
             # Get source and target entity IDs
             endpoint = self._materialize_endpoint(extracted, relationship_type, job, model)
-            if endpoint is None:
+            if isinstance(endpoint, RejectionReason):
+                rejections.append(_object_rejection(endpoint, type_name))
                 continue
             source, target = endpoint
 
@@ -296,8 +359,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # Validate properties, unsetting invalid optional values, and skip materialization if a required one is
             # missing or invalid
-            validated = self._validate_properties(properties, relationship_type)
+            validated, field_rejections = self._validate_properties(properties, relationship_type)
             if validated is None:
+                rejections.extend(field_rejections)
                 continue
             properties = validated
 
@@ -305,17 +369,21 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             normalized_pk = None
             if relationship_type.identity_policy.requires_primary_key:
                 pk_field = relationship_type.primary_key
-                if pk_field is None or pk_field.value not in properties:
-                    continue  # No valid primary key field
-                normalized_pk = self._pk_normalizer.normalize(properties[pk_field.value])
+                pk_name = pk_field.value if pk_field is not None else None
+                if pk_name is None or pk_name not in properties:
+                    rejections.append(_object_rejection(RejectionReason.MISSING_VALUE, type_name, pk_name))
+                    continue
+                normalized_pk = self._pk_normalizer.normalize(properties[pk_name])
                 if normalized_pk is None:
-                    continue  # Invalid primary key value
+                    rejections.append(_object_rejection(RejectionReason.INVALID_PRIMARY_KEY, type_name, pk_name))
+                    continue
 
-            # Materialize full relationship instance
+            # Materialize full relationship instance; values unset during validation only count once it is kept
             relationship = Relationship.from_extraction(relationship_type, source, target, properties, normalized_pk)
             materialized_relationships.append(relationship)
+            rejections.extend(field_rejections)
 
-        return tuple(materialized_relationships)
+        return MaterializedResult(tuple(materialized_relationships), tuple(rejections))
 
     def _materialize_relationship_type(
         self,
@@ -357,7 +425,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         relationship_type: RelationshipType,
         job: ExtractionJob,
         model: KnowledgeModel,
-    ) -> tuple[EntityId, EntityId] | None:
+    ) -> tuple[EntityId, EntityId] | RejectionReason:
         """Materialize the source and target entity IDs.
 
         The extracted ``_source_entity_id`` and ``_target_entity_id`` are temporary IDs local to the job's prompt;
@@ -370,8 +438,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve the context levels of the referenced entities.
 
         Returns:
-            The source and target entity IDs, or None if either ID is missing or unknown, the pair doesn't match an
-            endpoint of the relationship type, or the type is irreflexive and both IDs refer to the same entity.
+            The source and target entity IDs, or the reason they are rejected: either ID is missing or unknown, the
+            pair doesn't match an endpoint of the relationship type, or the type is irreflexive and both IDs refer to
+            the same entity.
         """
         # Get source and target temporary entity IDs from extracted data
         source_id = data.get('_source_entity_id')
@@ -379,7 +448,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
         # Missing temporary entity IDs in extracted data
         if source_id is None or target_id is None:
-            return None
+            return RejectionReason.MISSING_ENDPOINT
 
         # Normalize temporary entity IDs
         source_id = str(source_id).capitalize()
@@ -391,7 +460,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
         # Invalid EntityRef instances
         if source_ref is None or target_ref is None:
-            return None
+            return RejectionReason.UNRESOLVED_ENDPOINT
 
         # Get context levels for source and target refs
         source_ctx = self._repository.get_job_entity_ref_context_levels(job, source_ref, model)
@@ -404,11 +473,11 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             target_ref.entity_type_name,
             target_ctx,
         ):
-            return None
+            return RejectionReason.INVALID_ENDPOINT
 
         # Irreflexive types can't relate an entity to itself; compared by content, since that identifies the entity
         if relationship_type.irreflexive and source_ref.entity_id.content == target_ref.entity_id.content:
-            return None
+            return RejectionReason.SELF_LOOP
 
         # Return valid endpoint
         return source_ref.entity_id, target_ref.entity_id
@@ -454,7 +523,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         self,
         properties: dict[str, Any],
         relationship_type: RelationshipType,
-    ) -> dict[str, Any] | None:
+    ) -> tuple[dict[str, Any] | None, tuple[Rejection, ...]]:
         """Validate the materialized properties against the relationship type definition.
 
         Only extracted fields are checked, against their required flag, allowed options, and regex. An invalid value
@@ -467,24 +536,27 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             relationship_type: Relationship type defining the field constraints.
 
         Returns:
-            The properties without the invalid optional values, or None if a required field is missing or invalid.
+            The properties without the invalid optional values, or None if a required field is missing or invalid;
+            and the rejections: the one that rejects the relationship, or else one per unset value.
         """
+        type_name = relationship_type.name.value
         validated = dict(properties)
+        unset: list[Rejection] = []
         for field in relationship_type.fields_for(RelationshipRetrievalMode.EXTRACT):
-            value = validated.get(field.name.value)
+            field_name = field.name.value
+            value = validated.get(field_name)
             if value is None:
                 # Required fields must be present and not null
                 if field.required:
-                    return None
+                    return None, (_object_rejection(RejectionReason.MISSING_VALUE, type_name, field_name),)
                 continue
 
             # Allowed values must be respected when options are defined, and the regex pattern when one is defined
-            regex_pattern = field.regex
-            if (field.options and value not in field.options) or (
-                regex_pattern is not None and not regex_pattern.match(str(value))
-            ):
+            reason = _invalid_value_reason(value, field.options, field.regex)
+            if reason is not None:
                 if field.required:
-                    return None
-                del validated[field.name.value]
+                    return None, (_object_rejection(reason, type_name, field_name),)
+                del validated[field_name]
+                unset.append(Rejection(RejectionScope.VALUE, reason, type_name, field_name))
 
-        return validated
+        return validated, tuple(unset)

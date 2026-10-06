@@ -168,6 +168,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     batch_id BLOB,
     error TEXT,
     entity_id_mapping TEXT,
+    raw_response TEXT,
     CHECK (
         job_type IN (
             'ENTITY_EXTRACTION',
@@ -189,6 +190,21 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     ),
     FOREIGN KEY (batch_id) REFERENCES extraction_batches(batch_id) ON DELETE
     SET NULL
+);
+CREATE TABLE IF NOT EXISTS extraction_rejections (
+    job_id BLOB NOT NULL,
+    rejection_scope TEXT NOT NULL,
+    rejection_reason TEXT NOT NULL,
+    type_name TEXT,
+    field_name TEXT,
+    rejection_count INTEGER NOT NULL,
+    FOREIGN KEY (job_id) REFERENCES extraction_jobs(job_id) ON DELETE CASCADE,
+    CHECK (
+        rejection_scope IN (
+            'OBJECT',
+            'VALUE'
+        )
+    )
 );
 CREATE TABLE IF NOT EXISTS extraction_batches (
     batch_id BLOB PRIMARY KEY,
@@ -252,4 +268,5 @@ CREATE INDEX IF NOT EXISTS idx_jobs_type_level_status ON extraction_jobs(
     job_status
 );
 CREATE INDEX IF NOT EXISTS idx_jobs_batch_type_level ON extraction_jobs(batch_id, job_type, context_level);
+CREATE INDEX IF NOT EXISTS idx_rejections_job ON extraction_rejections(job_id);
 CREATE INDEX IF NOT EXISTS idx_batches_status_created_id ON extraction_batches(batch_status, created_at, batch_id);
