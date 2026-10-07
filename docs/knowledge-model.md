@@ -459,6 +459,13 @@ The normalized primary key is part of the `v1` definition. Under `v1`, a raw pri
 
 A key that contains no letter or digit after these steps (for example, one that is empty or only `-`) is invalid, and its object is discarded. This rule was added within `v1`: it changes no key that it accepts, so every content ID computed under `v1` keeps its meaning.
 
+Case folding (step 4) runs **before** transliteration (step 5), so any uppercase letter that transliteration produces is then deleted by step 6. This is part of the `v1` definition and is kept as is, since changing the order would change existing keys. In practice:
+
+- **Unaffected:** Latin script with accents (`Ñuñoa` → `nunoa`, `Bergström` → `bergstrom`, `Straße` → `strasse`), Cyrillic, Greek, Korean, Japanese kana and Devanagari, which transliterate to lowercase.
+- **Affected:** Chinese characters, which transliterate to capitalized syllables and lose each syllable's first letter (`北京` → `ei ing`), so distinct names can collide (`美京` also gives `ei ing`); the Hebrew letter `ש` (`SH`); and some symbols (`§12` → `12`).
+
+Exact identity is therefore unreliable for keys written in Chinese characters. For such corpora, prefer a primary key in Latin script or digits (e.g. a code or an official romanization), and say so in the field's `instructions` and `regex`.
+
 In the exported output, identifiers appear as follows:
 
 | Export Format | Instance ID                                                    | Content ID      | Version         | Relationship Identity Policy |
