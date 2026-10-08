@@ -158,6 +158,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     entity_request_builder = EntityExtractionRequestBuilder(
         repository=entity_extraction_repository,
         document_loader=document_loader,
+        max_document_tokens=app_config.chunking.document_prefix_tokens,
     )
     entity_result_materializer = EntityExtractionResultMaterializer(
         repository=entity_extraction_repository,

@@ -66,7 +66,7 @@ Many parameters can be specialized per **context level**, which is the kind of s
 | Context Level | Source Text                     | Meaning                                                                            |
 | ------------- | ------------------------------- | ---------------------------------------------------------------------------------- |
 | `"chunk"`     | A single text chunk.            | The entities a document **mentions**.                                              |
-| `"document"`  | A bounded prefix of a document. | The single entity of a given type that a document **is** (e.g. a specific report). |
+| `"document"`  | A bounded prefix of a document (`document_prefix_tokens` in the [configuration](configuration.md#️-chunking), 8000 by default). | The single entity of a given type that a document **is** (e.g. a specific report). If the LLM returns several different entities of one type, only the first valid one is kept. |
 
 Wherever a parameter accepts a context level mapping, you may write either:
 

@@ -39,7 +39,6 @@ logger = logging.getLogger(__name__)
 # Constants
 ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
 RELATIONSHIP_EXTRACTION_EFFORT = ReasoningEffort.LOW
-MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits
 
 
 def _generate_field_schema(field: Field) -> dict[str, Any]:
@@ -123,16 +122,22 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract an entity if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: EntityExtractionRepository, document_loader: DocumentLoader) -> None:
+    def __init__(
+        self,
+        repository: EntityExtractionRepository,
+        document_loader: DocumentLoader,
+        max_document_tokens: int,
+    ) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's source context and entity types.
             document_loader: Loader used to read the content of document-level sources.
+            max_document_tokens: Maximum number of tokens loaded from a full document used as source text.
         """
         self._repository = repository
         self._document_loader = document_loader
-        self.max_document_tokens = MAX_DOCUMENT_TOKENS
+        self.max_document_tokens = max_document_tokens
 
     def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job.

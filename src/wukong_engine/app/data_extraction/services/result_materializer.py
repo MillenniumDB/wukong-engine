@@ -94,7 +94,9 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
 
         Items under the result's ``entities`` key are skipped when their type is unknown or not assigned to the job,
         a required property is missing or invalid, or their primary key doesn't normalize. Invalid optional properties
-        are unset instead. Each skipped item, and each value unset in a kept item, is reported as a rejection.
+        are unset instead. At document level, only the first valid entity of each type is kept, since a
+        document-level type stands for the document itself; a later one with the same identity is a repetition of it
+        and is kept for merging. Each skipped item, and each value unset in a kept item, is reported as a rejection.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -107,6 +109,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         extracted_entities = result.data.get('entities', [])
         materialized_entities: list[Entity] = []
         rejections: list[Rejection] = []
+        document_entities: dict[EntityTypeName, EntityId] = {}  # First valid entity of each type, at document level
         for extracted in extracted_entities:
             # Get entity type
             job_types = set(self._repository.get_job_entity_types(job))
@@ -154,8 +157,17 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
                 rejections.append(_object_rejection(RejectionReason.INVALID_PRIMARY_KEY, type_name, pk_name))
                 continue
 
-            # Materialize full entity instance; values unset during validation only count once the entity is kept
+            # Materialize full entity instance
             entity = Entity.from_extraction(entity_type, properties, normalized_pk)
+
+            # At document level, a different entity of a type already returned is not the document's own entity
+            if job.context_ref.level == ContextLevel.DOCUMENT:
+                first = document_entities.setdefault(entity_type.name, entity.id)
+                if first.content != entity.id.content:
+                    rejections.append(_object_rejection(RejectionReason.EXTRA_DOCUMENT_ENTITY, type_name))
+                    continue
+
+            # Keep the entity; values unset during validation only count once the entity is kept
             materialized_entities.append(entity)
             rejections.extend(field_rejections)
 

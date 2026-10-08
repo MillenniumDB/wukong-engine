@@ -80,6 +80,12 @@ target_tokens = 800
 # Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200)
 overlap_tokens = 120
 
+### Number of tokens of a document read by document-level extraction ###
+# Document-level extraction reads the start of each document, up to this many tokens, instead of a chunk
+# Note: This value must be positive; raise it if document-level entities need information from later in the document
+# Built-in default: 8000
+document_prefix_tokens = 8000
+
 ##############
 #   EXPORT   #
 ##############

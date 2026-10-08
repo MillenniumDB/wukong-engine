@@ -116,12 +116,15 @@ Both modes share the same work plan, validation and identity logic, so you can p
 
 ## ✂️ Chunking
 
-The `[chunking]` section controls how documents are segmented into the text chunks that chunk-level extraction reads.
+The `[chunking]` section controls how much text each extraction reads: how documents are segmented into the chunks that chunk-level extraction reads, and how much of a document document-level extraction reads.
 
 | Key              | Description                                                                                 |   Type    | Default  |
 | ---------------- | ----------------------------------------------------------------------------------------------- | :-------: | -------- |
 | `target_tokens`  | The size each chunk aims for. Must be in `[1, 5000]`; the recommended range is `[100, 2000]`, and a value outside it logs a warning. | `integer` | `800`    |
 | `overlap_tokens` | Tokens shared between consecutive chunks. Must be in `[0, target_tokens - 1]`.              | `integer` | derived  |
+| `document_prefix_tokens` | Tokens of a document that document-level extraction reads, from its start. Must be positive. Text beyond it is not seen at document level (chunk-level extraction still covers the whole document). | `integer` | `8000` |
+
+Document-level extraction identifies the single entity a document **is** (see [Context Levels](knowledge-model.md#-context-levels)), so it reads the start of the document, where that entity is usually introduced, rather than a chunk. Raise `document_prefix_tokens` when the information a document-level entity needs appears later in the document; every document-level request grows accordingly.
 
 When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum per chunk, derived as `min(1.3 × target_tokens, 10000)`, which is not user-configurable.
 

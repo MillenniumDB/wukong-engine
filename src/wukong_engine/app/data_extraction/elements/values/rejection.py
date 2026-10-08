@@ -28,6 +28,8 @@ class RejectionReason(Enum):
         UNRESOLVED_ENDPOINT: The source or target ID doesn't refer to an entity shown to the LLM.
         INVALID_ENDPOINT: The source and target don't match any endpoint of the relationship type.
         SELF_LOOP: The source and target are the same entity, on an irreflexive relationship type.
+        EXTRA_DOCUMENT_ENTITY: A document-level job returned a second, different entity of a type it already returned
+            one of. A document-level type stands for the document itself, so only the first valid one is kept.
     """
 
     UNKNOWN_TYPE = 'UNKNOWN_TYPE'
@@ -39,3 +41,4 @@ class RejectionReason(Enum):
     UNRESOLVED_ENDPOINT = 'UNRESOLVED_ENDPOINT'
     INVALID_ENDPOINT = 'INVALID_ENDPOINT'
     SELF_LOOP = 'SELF_LOOP'
+    EXTRA_DOCUMENT_ENTITY = 'EXTRA_DOCUMENT_ENTITY'
