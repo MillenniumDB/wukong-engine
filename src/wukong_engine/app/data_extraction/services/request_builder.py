@@ -289,7 +289,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
 
         Args:
             field: Entity field to render.
-            context_level: Context level of the job, used to select the field's extraction instructions.
+            context_level: Context level of the job, used to select the field's extraction instructions and regex.
 
         Returns:
             The lines of the field definition.
@@ -304,6 +304,11 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         instructions = field.instructions.get(context_level)
         if instructions is not None:
             lines.append(f'  {instructions}')
+
+        # Optional regex, shown so the LLM writes values in the form that validation will accept
+        regex = field.regex.get(context_level)
+        if regex is not None:
+            lines.append(f'  Must match the regular expression: {regex.pattern}')
 
         # Optional examples
         if field.examples:
@@ -633,6 +638,10 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         instructions = field.instructions
         if instructions is not None:
             lines.append(f'  {instructions}')
+
+        # Optional regex, shown so the LLM writes values in the form that validation will accept
+        if field.regex is not None:
+            lines.append(f'  Must match the regular expression: {field.regex.pattern}')
 
         # Optional examples
         if field.examples:

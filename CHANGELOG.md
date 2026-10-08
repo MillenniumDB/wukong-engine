@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### ♻️ Changed
 
+- **Regexes reach the LLM**: a field's `regex` is now shown in its definition in the prompt ("Must match the regular expression: …"), using the pattern for the job's context level, so the LLM writes values in the form validation accepts. It was previously only checked after the call.
 - **One entity per type at document level**: a document-level type stands for the document itself, so when the LLM returns several different entities of one type for a document, only the first valid one is kept; the others are rejected as `EXTRA_DOCUMENT_ENTITY`. A repetition of the kept entity (same identity) is still merged.
 - **Configurable document prefix**: the number of tokens document-level extraction reads, previously fixed at 8000, is now `document_prefix_tokens` in the `[chunking]` section, with 8000 as the default.
 - **Invalid optional values no longer discard their object**: a value outside `options` or not matching `regex` now rejects the entity or relationship only when the field is required (which includes the primary key). On an optional field, the value is unset and the object is kept; `default_value` is not used, so the property is absent rather than asserted.
