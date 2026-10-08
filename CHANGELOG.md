@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### ✨ Added
 
+- **Configurable reasoning effort**: `reasoning_effort` in the `[llm]` section sets the effort of every extraction call, entities and relationships alike. It was hard-coded to `low`, which remains the default.
 - **Irreflexive relationship types**: a relationship type may declare `"irreflexive": true` to rule out self-loops. The LLM is told that source and target must differ, and self-loops it still returns are discarded. Self-loops remain allowed by default, since some relationships are legitimately reflexive.
 - **Raw LLM responses** are stored per extraction job in the staging database (`raw_response` column of `extraction_jobs`), including responses that could not be decoded, so that a run can be audited without re-running it.
 - **Rejection counts**: what validation rejects is no longer skipped silently. The `extraction_rejections` table counts, per job, the entities and relationships discarded and the optional values unset, with the reason (unknown type, missing value, invalid option, regex mismatch, invalid primary key, missing, unresolved or invalid endpoint, self-loop), the type and the field. Staging databases created by earlier versions gain the new column and table on the next run.

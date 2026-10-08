@@ -41,7 +41,7 @@ export_knowledge = true
 # Note: Currently only OpenAI models are supported
 # Supported models:
 # "gpt-4.1-mini": Cheaper (non-reasoning)
-# "gpt-5.6-luna": Balanced (reasoning model, runs at low effort)
+# "gpt-5.6-luna": Balanced (reasoning model; see reasoning_effort below)
 # Built-in default: "gpt-5.6-luna"
 model = "gpt-5.6-luna"
 
@@ -62,6 +62,12 @@ execution_mode = "real-time"
 # - Tier 5: 500
 # Built-in default: 5 (this file sets 15)
 max_concurrency = 15
+
+### Reasoning effort for every extraction call (entities and relationships) ###
+# You can choose from: "none", "low", "medium", "high", "extreme" (alias "xhigh"), "max"
+# Note: Higher effort costs more (reasoning tokens are billed as output); ignored by non-reasoning models
+# Built-in default: "low"
+reasoning_effort = "low"
 
 ##############
 #  CHUNKING  #

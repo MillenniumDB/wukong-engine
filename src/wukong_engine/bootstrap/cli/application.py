@@ -159,6 +159,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         repository=entity_extraction_repository,
         document_loader=document_loader,
         max_document_tokens=app_config.chunking.document_prefix_tokens,
+        reasoning_effort=app_config.llm.reasoning_effort,
     )
     entity_result_materializer = EntityExtractionResultMaterializer(
         repository=entity_extraction_repository,
@@ -194,7 +195,10 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         repository=relationship_extraction_repository,
         execution_mode=app_config.llm.execution_mode,
     )
-    relationship_request_builder = RelationshipExtractionRequestBuilder(repository=relationship_extraction_repository)
+    relationship_request_builder = RelationshipExtractionRequestBuilder(
+        repository=relationship_extraction_repository,
+        reasoning_effort=app_config.llm.reasoning_effort,
+    )
     relationship_result_materializer = RelationshipExtractionResultMaterializer(
         repository=relationship_extraction_repository,
         pk_normalizer=pk_normalizer,

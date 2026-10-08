@@ -37,8 +37,6 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 logger = logging.getLogger(__name__)
 
 # Constants
-ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
-RELATIONSHIP_EXTRACTION_EFFORT = ReasoningEffort.LOW
 
 
 def _generate_field_schema(field: Field) -> dict[str, Any]:
@@ -127,6 +125,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         repository: EntityExtractionRepository,
         document_loader: DocumentLoader,
         max_document_tokens: int,
+        reasoning_effort: ReasoningEffort,
     ) -> None:
         """Initialize the request builder.
 
@@ -134,10 +133,12 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
             repository: Repository used to look up each job's source context and entity types.
             document_loader: Loader used to read the content of document-level sources.
             max_document_tokens: Maximum number of tokens loaded from a full document used as source text.
+            reasoning_effort: Reasoning effort requested for every entity extraction call.
         """
         self._repository = repository
         self._document_loader = document_loader
         self.max_document_tokens = max_document_tokens
+        self._reasoning_effort = reasoning_effort
 
     def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job.
@@ -181,7 +182,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         )
 
         # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=ENTITY_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section.
@@ -416,14 +417,16 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract a relationship if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: RelationshipExtractionRepository) -> None:
+    def __init__(self, repository: RelationshipExtractionRepository, reasoning_effort: ReasoningEffort) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's relationship types, source chunk and available entities,
                 and to store the job's temporary entity ID mapping.
+            reasoning_effort: Reasoning effort requested for every relationship extraction call.
         """
         self._repository = repository
+        self._reasoning_effort = reasoning_effort
         self._current_entity_count: int = 0  # Track the number of extracted entities for the current job (for temp IDs)
         self._entity_temp_to_ref: dict[str, EntityRef] = {}  # Mapping of temporary entity IDs to EntityRefs
         self._entity_true_to_temp_id: dict[EntityId, str] = {}  # Mapping of true EntityIds to temporary entity IDs
@@ -478,7 +481,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         )
 
         # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=RELATIONSHIP_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _build_entity_id_mappings(self, entities: tuple[Entity, ...]) -> None:
         """Build mappings between temporary entity IDs and true EntityIds.

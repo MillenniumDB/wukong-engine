@@ -85,12 +85,13 @@ The `[llm]` section controls the language model used for extraction.
 | `model`           | The model to use. Only OpenAI models are currently supported.                                    | `string`  | `"gpt-5.6-luna"` |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
+| `reasoning_effort` | Reasoning effort requested for every extraction call, entities and relationships alike: `"none"`, `"low"`, `"medium"`, `"high"`, `"extreme"` (alias `"xhigh"`) or `"max"`. Ignored by non-reasoning models. | `string` | `"low"` |
 
 **Supported models:**
 
 | Model            | Notes                                                    |
 | ---------------- | -------------------------------------------------------- |
-| `"gpt-5.6-luna"` | Reasoning model, runs at `low` effort. Balanced default. |
+| `"gpt-5.6-luna"` | Reasoning model; effort set by `reasoning_effort`. Balanced default. |
 | `"gpt-4.1-mini"` | Non-reasoning. Cheaper, lower quality.                   |
 
 **Execution modes:**
@@ -101,6 +102,8 @@ The `[llm]` section controls the language model used for extraction.
 | `"batch"`       | `"batched"`, `"async"`, `"asynchronous"`, `"queue"`, `"queued"`, `"deferred"` | Requests are grouped and submitted to the provider's asynchronous batch interface. Substantially cheaper per token, in exchange for a delayed, best-effort turnaround. |
 
 Both modes share the same work plan, validation and identity logic, so you can prototype interactively on a subset and then run the full corpus in batch mode by changing nothing but this key. In batch mode a run may be submitted in one session and collected in another.
+
+`reasoning_effort` trades cost for quality: reasoning tokens are billed as output, so higher effort makes every call more expensive. It is part of the configuration of a run, so when comparing systems on the same model, give them the same effort or report each one's.
 
 `max_concurrency` only applies to real-time mode, and the binding constraint is the provider's rate limits rather than local resources. Reference values for OpenAI usage tiers with mini models:
 
