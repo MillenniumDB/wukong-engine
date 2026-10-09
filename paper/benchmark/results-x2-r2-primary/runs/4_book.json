@@ -1,0 +1,143 @@
+{
+  "ontology": "4_book",
+  "workspace": "x2r2_tekgen_4_book",
+  "recorded_at": "2026-10-08T17:14:09+00:00",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "c1f61e78b4dea989aa8c2381492965183ee7b198",
+    "uncommitted_changes": false
+  },
+  "config_file": "config/default.toml",
+  "config": {
+    "pipeline": {
+      "ingest_documents": true,
+      "extract_entities": true,
+      "extract_relationships": true,
+      "export_knowledge": true
+    },
+    "llm": {
+      "model": "gpt-5.6-luna",
+      "execution_mode": "real-time",
+      "max_concurrency": 15,
+      "reasoning_effort": "low"
+    },
+    "chunking": {
+      "target_tokens": 800,
+      "overlap_tokens": 120,
+      "document_prefix_tokens": 8000
+    },
+    "export": {
+      "format": "mdb"
+    }
+  },
+  "definitions": {
+    "knowledge_model.json": "1a0c9f486f01dfb15bf36f59807fdb5bfaac32608d3aada2e26ea748ce355120",
+    "document_collections.json": "f7bc2a960542f74d7cc7b2bd5997d02a71c5a9733892eaa13e73deae2b2ae352",
+    "text2kg_mapping.json": "db92fec0082f8a59746028068f874a591966a5db237c05bb8c7cf6fa0c3e7b16"
+  },
+  "usage": {
+    "documents": 540,
+    "chunks": 540,
+    "total": {
+      "jobs": 883,
+      "failed": 0,
+      "input_tokens": 249861,
+      "cached_tokens": 708246,
+      "cache_write_tokens": 1314,
+      "output_tokens": 52733,
+      "reasoning_tokens": 106437
+    },
+    "by_job": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 540,
+        "failed": 0,
+        "input_tokens": 25796,
+        "cached_tokens": 708246,
+        "cache_write_tokens": 1314,
+        "output_tokens": 34277,
+        "reasoning_tokens": 80107
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 343,
+        "failed": 0,
+        "input_tokens": 224065,
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "output_tokens": 18456,
+        "reasoning_tokens": 26330
+      }
+    ],
+    "started": "2026-10-08T17:00:57.358000+00:00",
+    "finished": "2026-10-08T17:04:24.116000+00:00",
+    "seconds": 207
+  },
+  "validation": {
+    "returned": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 1950
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 613
+      }
+    ],
+    "discarded": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Language",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Author",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 1
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "FollowedBy",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 4
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Genre",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 1
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Illustrator",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 15
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "PlaceOfPublication",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 2
+      }
+    ],
+    "unset": []
+  }
+}
