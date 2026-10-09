@@ -1,0 +1,85 @@
+{
+  "ontology": "7_space",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:49:25+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 203,
+  "failed": 0,
+  "with_triples": 203,
+  "triples": 1002,
+  "distinct_predicates": 293,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_located_in",
+      83
+    ],
+    [
+      "is_a",
+      81
+    ],
+    [
+      "was_discovered_by",
+      66
+    ],
+    [
+      "was_discovered_on",
+      59
+    ],
+    [
+      "was_discovered_at",
+      47
+    ],
+    [
+      "flew_on",
+      32
+    ],
+    [
+      "is_located_in_the_constellation",
+      25
+    ],
+    [
+      "is_in",
+      22
+    ],
+    [
+      "occurred_in",
+      16
+    ],
+    [
+      "flew_aboard",
+      15
+    ],
+    [
+      "is_an",
+      14
+    ],
+    [
+      "was_a",
+      13
+    ],
+    [
+      "served_as",
+      13
+    ],
+    [
+      "was_aboard",
+      12
+    ],
+    [
+      "was_commander_of",
+      12
+    ]
+  ],
+  "usage": {
+    "calls": 406,
+    "input_tokens": 148133,
+    "cached_tokens": 0,
+    "output_tokens": 48442,
+    "reasoning_tokens": 6619
+  },
+  "seconds": 66
+}

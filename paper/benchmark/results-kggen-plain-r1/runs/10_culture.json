@@ -1,0 +1,85 @@
+{
+  "ontology": "10_culture",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:54:00+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 159,
+  "failed": 0,
+  "with_triples": 159,
+  "triples": 752,
+  "distinct_predicates": 365,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "was_a",
+      51
+    ],
+    [
+      "was_established_in",
+      51
+    ],
+    [
+      "also_known_as",
+      28
+    ],
+    [
+      "is_a",
+      21
+    ],
+    [
+      "is_published_by",
+      14
+    ],
+    [
+      "was_an",
+      11
+    ],
+    [
+      "was_born_on",
+      10
+    ],
+    [
+      "written_in",
+      10
+    ],
+    [
+      "died_on",
+      9
+    ],
+    [
+      "addressed",
+      9
+    ],
+    [
+      "was",
+      8
+    ],
+    [
+      "was_born_in",
+      8
+    ],
+    [
+      "associated_with",
+      7
+    ],
+    [
+      "translated",
+      6
+    ],
+    [
+      "wrote",
+      6
+    ]
+  ],
+  "usage": {
+    "calls": 318,
+    "input_tokens": 115756,
+    "cached_tokens": 0,
+    "output_tokens": 37990,
+    "reasoning_tokens": 6356
+  },
+  "seconds": 59
+}

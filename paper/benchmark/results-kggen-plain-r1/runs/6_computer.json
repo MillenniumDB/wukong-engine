@@ -1,0 +1,85 @@
+{
+  "ontology": "6_computer",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:48:19+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 229,
+  "triples": 1177,
+  "distinct_predicates": 458,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_a",
+      88
+    ],
+    [
+      "was_released_for",
+      85
+    ],
+    [
+      "was_ported_to",
+      34
+    ],
+    [
+      "was_released_in",
+      30
+    ],
+    [
+      "was_created_by",
+      29
+    ],
+    [
+      "was_developed_by",
+      26
+    ],
+    [
+      "developed_by",
+      16
+    ],
+    [
+      "was_subsequently_released_for",
+      15
+    ],
+    [
+      "available_for",
+      14
+    ],
+    [
+      "was_later_ported_to",
+      14
+    ],
+    [
+      "is_also_known_as",
+      12
+    ],
+    [
+      "is_an",
+      11
+    ],
+    [
+      "supports",
+      11
+    ],
+    [
+      "created",
+      11
+    ],
+    [
+      "was_released_on",
+      10
+    ]
+  ],
+  "usage": {
+    "calls": 461,
+    "input_tokens": 168358,
+    "cached_tokens": 0,
+    "output_tokens": 57632,
+    "reasoning_tokens": 9266
+  },
+  "seconds": 76
+}
