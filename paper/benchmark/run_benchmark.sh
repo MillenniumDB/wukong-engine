@@ -23,6 +23,7 @@ PREFIX=${PREFIX:-tekgen_}
 RESULTS=${RESULTS:-$ROOT/results}
 LOGS=$RESULTS/logs
 EVAL_PYTHON=${EVAL_PYTHON:-$PWD/$ROOT/.venv-eval/bin/python}
+CONFIG=${CONFIG:-config/default.toml}
 
 ALL_ONTOLOGIES=(1_movie 2_music 3_sport 4_book 5_military 6_computer 7_space 8_politics 9_nature 10_culture)
 ONTOLOGIES=("${@:-}")
@@ -49,7 +50,7 @@ PY
         continue
     fi
     echo "== $onto: extracting ($(date -Is))"
-    wukong run "$workspace" "$DATA/$onto" --config config/default.toml -v \
+    wukong run "$workspace" "$DATA/$onto" --config "$CONFIG" -v \
         >"$LOGS/$onto.log" 2>&1
     echo "== $onto: done ($(date -Is))"
 done
@@ -58,6 +59,13 @@ done
 # an arm restricted to a subset does not fail on the workspaces it never built
 SELECTED=()
 for onto in "${ONTOLOGIES[@]}"; do SELECTED+=(--onto "$onto"); done
+
+# The staging databases are not tracked, so record what each run consumed (and
+# archive its state) before anything else can overwrite or delete them
+echo
+echo "== Recording runs"
+python3 $ROOT/text2kg_record.py --results "$RESULTS" --workspace-root "$WORKSPACES" --prefix "$PREFIX" \
+    --config "$CONFIG" "${SELECTED[@]}"
 
 echo
 echo "== Converting to benchmark system output"

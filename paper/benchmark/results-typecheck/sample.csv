@@ -1,0 +1,61 @@
+system,ontology,sentence,subject,relation,object,subject types (judge),declared domain,object types (judge),declared range,type conformant
+Wukong props,9_nature,ont_9_nature_test_340,Quintinia,parent_taxon,Quintiniaceae,taxon,taxon,taxon,taxon,yes
+Wukong props,9_nature,ont_9_nature_test_220,Niemur River,tributary,Wakool River,body of water|geographical feature|watercourse,watercourse,body of water|geographical feature|watercourse,watercourse,yes
+Vicuna-13B,10_culture,ont_10_culture_test_23,null,inception,Louis Armstrong,,literature,human,,no
+Vicuna-13B,10_culture,ont_10_culture_test_14,Charles Spurgeon Johnson,ethnic_group,African Americans,human,human,ethnic group|human,ethnic group,yes
+Vicuna-13B,2_music,ont_2_music_test_176,I'm Gonna Be Alright,language_of_work_or_name,language,composed musical work|music|musical work,musical work,language,language,yes
+Alpaca-LoRA-13B,1_movie,ont_1_movie_test_573,The cartoon follows Mickey Mouse as The Pointer tries to teach his dog Pluto to be a pointer dog during a quail hunt,characters,Mickey Mouse,,film,film character,film character,no
+Gold standard,8_politics,ont_8_politics_test_186,People 's Democratic Party of Tajikistan,political ideology,Statism,organization|political party,political party,political alignment|political ideology,political ideology,yes
+Vicuna-13B,4_book,ont_4_book_test_127,The Blue Lotus,publisher,Casterman,book|intellectual work|literary work,book,publisher,publisher,yes
+Prompting (luna),2_music,ont_2_music_test_219,Batdance,part_of,Batman soundtrack,composed musical work|music|musical work,musical work,album|music|musical work,album,yes
+Wukong props,1_movie,ont_1_movie_test_121,"Sexykiller, morirÃ¡s por ella",screenwriter,Paco Cabezas,film,film,human,human,yes
+Alpaca-LoRA-13B,9_nature,ont_9_nature_test_319,Habitat,origin_of_the_watercourse,body of water,Habitat,watercourse,body of water,body of water,no
+Prompting (luna),9_nature,ont_9_nature_test_345,Penaeaceae,taxon_synonym,Rhynchocalycaceae,taxon,taxon,taxon,synonym,no
+Wukong primary,4_book,ont_4_book_test_473,Chandler: Red Tide,genre,illustrated novel,book|intellectual work|literary work|publication,literary work,literary genre,literary genre,yes
+Wukong arm B,1_movie,ont_1_movie_test_110,The Boy and the Beast,director,Mamoru Hosoda,film,film,human,human,yes
+Alpaca-LoRA-13B,10_culture,ont_10_culture_test_4,Percy Lavon Julian,ethnic_group,African Americans,human,human,ethnic group,ethnic group,yes
+Vicuna-13B,1_movie,ont_1_movie_test_782,The Film,nominated_for, Academy Award for Best Actress,film,film,award|film award,award,yes
+Wukong props,1_movie,ont_1_movie_test_4,Spirited Away,director,Hayao Miyazaki,film,film,human,human,yes
+Alpaca-LoRA-13B,9_nature,ont_9_nature_test_217,Mount Fuji,mountain_range,Fuji-Hakone-Izu National Park,geographical feature|mountain,mountain,geographical feature,mountain range,no
+Prompting (luna),6_computer,ont_6_computer_test_115,Zynaps,platform,ZX Spectrum,application|software,software,computer|computer hardware|computer model,computer,yes
+Vicuna-13B,7_space,ont_7_space_test_177,Mark L. Polansky,astronaut_mission,STS-98,astronaut|human,human,space mission|spaceflight,spaceflight,yes
+Wukong primary,1_movie,ont_1_movie_test_140,Jack Brooks: Monster Slayer,genre,comedy,film,film,film genre|genre,genre,yes
+Wukong arm B,4_book,ont_4_book_test_426,Huasipungo,author,Jorge Icaza,book|intellectual work|literary work|publication,book,author|human|writer,human,yes
+Wukong arm B,1_movie,ont_1_movie_test_572,Motor Mania,characters,Mr. Hyde,film,film,film character,film character,yes
+Alpaca-LoRA-13B,6_computer,ont_6_computer_test_24,Driver: San Francisco,creator,human,software,application,human|person,human,no
+Wukong primary,2_music,ont_2_music_test_60,I Kissed a Girl,part_of,One of the Boys,composed musical work|music|musical work,musical work,album,album,yes
+Vicuna-13B,1_movie,ont_1_movie_test_694,Bulletproof Monk,production_company,Gracie Films,film,film,film production company,film production company,yes
+Vicuna-13B,9_nature,ont_9_nature_test_30,Sarcophilus harrisii,Habitat,Habitat,taxon,taxon,Habitat,body of water,no
+Wukong arm B,5_military,ont_5_military_test_7,Felix von Bendemann,military_branch,German Imperial Navy,human|military personnel,human,armed organization|organization,military unit,no
+Wukong props,4_book,ont_4_book_test_480,The Blue Baba of the Marsh,genre,folk tale,intellectual work|literary work,literary work,literary genre,literary genre,yes
+Vicuna-13B,2_music,ont_2_music_test_471,Daddy,performer,Korn,composed musical work|music|musical work,musical work,music industry,,yes
+Prompting (luna),5_military,ont_5_military_test_134,Donald B. Steinaker,military_rank,Private First Class,human|military personnel,human,military rank|rank,military rank,yes
+Alpaca-LoRA-13B,5_military,ont_5_military_test_38,megas doux,military_rank,rank,military rank|rank,human,rank,military rank,no
+Wukong primary,5_military,ont_5_military_test_11,Wang Jiasheng,military_rank,shang jiang,human|military personnel,human,military rank|rank,military rank,yes
+Wukong primary,2_music,ont_2_music_test_237,Flowers Are Red,composer,Harry Chapin,composed musical work|music|musical work,musical work,composer|human,human,yes
+Vicuna-13B,2_music,ont_2_music_test_117,The Eminem Show,producer,Eminem,album|music|musical work,album,composer|human|record producer,,yes
+Vicuna-13B,1_movie,ont_1_movie_test_471,Incendies,production_company,Micro_scope,film,film,film production company,film production company,yes
+Wukong primary,9_nature,ont_9_nature_test_34,Nesoluma,parent_taxon,Sapotaceae,taxon,taxon,taxon,taxon,yes
+Gold standard,2_music,ont_2_music_test_505,Marry You,performer,Bruno Mars,composed musical work|music|musical work,musical work,composer|human,,yes
+Vicuna-13B,2_music,ont_2_music_test_203,Avant de partir,Performer,Angeli,composed musical work|music|musical work,musical work,human,,yes
+Gold standard,9_nature,ont_9_nature_test_90,Lardigo Peak,mountain range,Snegotin Ridge,geographical feature|mountain,mountain,geographical feature|mountain range,mountain range,yes
+Prompting (luna),2_music,ont_2_music_test_573,100th Window,performer,Sinéad O'Connor,album|music|musical work,musical work,human,,yes
+Alpaca-LoRA-13B,7_space,ont_7_space_test_46,4923 Clarke,minor_planet_group,asteroid,Celestial bodies|asteroid,asteroid,asteroid|astronomical object type,astronomical object type,yes
+Prompting (luna),1_movie,ont_1_movie_test_765,The First Great Train Robbery,screenwriter,Michael Crichton,film,film,human,human,yes
+Alpaca-LoRA-13B,9_nature,ont_9_nature_test_163,watercourse,origin_of_the_watercourse,body of water,body of water|geographical feature|watercourse,watercourse,body of water,body of water,yes
+Wukong props,6_computer,ont_6_computer_test_150,Army Moves,platform,Atari ST,application|software,software,computer|computer hardware|computer model,computer,yes
+Vicuna-13B,3_sport,ont_3_sport_test_23,Laura Unsworth,member_of_sports_team,Great Britain national field hockey team,athlete|human|sportsperson,human,sports team season|team,sports club,no
+Prompting (luna),1_movie,ont_1_movie_test_391,La Symphonie fantastique,production_company,Continental Films,film,film,film organization|film production company,film production company,yes
+Gold standard,1_movie,ont_1_movie_test_148,Terror Firmer,genre,Comedy horror,film,film,film genre|genre,genre,yes
+Vicuna-13B,1_movie,ont_1_movie_test_589,Batman v Superman: Dawn of Justice,cast_member,Jesse Eisenberg,film,film,human,human,yes
+Wukong props,1_movie,ont_1_movie_test_171,The Legend of Gator Face,director,Vic Sarin,film,film,human,human,yes
+Vicuna-13B,1_movie,ont_1_movie_test_415,Digimon: The Movie,production_company,Saban Entertainment,film,film,film organization|film production company,film production company,yes
+Wukong props,4_book,ont_4_book_test_240,Pears ' Cyclopaedia,publication_date,01 January 1959,book|intellectual work|literary work|publication,book,calender date,,yes
+Vicuna-13B,1_movie,ont_1_movie_test_726,The Pride of the Yankees,filming_location,New York City,film,film,city,city,yes
+Wukong primary,2_music,ont_2_music_test_108,Stop Loving You,part_of,The Seventh One,composed musical work|music|musical work,musical work,album|music,album,yes
+Wukong props,1_movie,ont_1_movie_test_706,Une chambre en ville,main_subject,workers' strike,film,film,,,yes
+Wukong props,2_music,ont_2_music_test_216,Mach die Augen zu,part_of,Die Bestie in Menschengestalt,composed musical work|music|musical work,musical work,album,album,yes
+Wukong arm B,4_book,ont_4_book_test_487,Chronicle of Great Peace,genre,gunki monogatari,book|intellectual work|literary work,literary work,literary genre,literary genre,yes
+Prompting (luna),4_book,ont_4_book_test_250,The Oxford Dictionary of World Religions,publisher,Oxford University Press,book|intellectual work|literary work|publication,book,publisher,publisher,yes
+Alpaca-LoRA-13B,7_space,ont_7_space_test_191,asteroid,minor_planet_group,astronomical_object_type,asteroid|astronomical object type,asteroid,astronomical object type,astronomical object type,yes
+Wukong primary,2_music,ont_2_music_test_420,Clap Your Hands,publication_date,09 September 2010,composed musical work|music|musical work,musical work,,,yes

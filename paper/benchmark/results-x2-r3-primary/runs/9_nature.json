@@ -1,0 +1,119 @@
+{
+  "ontology": "9_nature",
+  "workspace": "x2r3_tekgen_9_nature",
+  "recorded_at": "2026-10-08T18:28:05+00:00",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "c1f61e78b4dea989aa8c2381492965183ee7b198",
+    "uncommitted_changes": false
+  },
+  "config_file": "config/default.toml",
+  "config": {
+    "pipeline": {
+      "ingest_documents": true,
+      "extract_entities": true,
+      "extract_relationships": true,
+      "export_knowledge": true
+    },
+    "llm": {
+      "model": "gpt-5.6-luna",
+      "execution_mode": "real-time",
+      "max_concurrency": 15,
+      "reasoning_effort": "low"
+    },
+    "chunking": {
+      "target_tokens": 800,
+      "overlap_tokens": 120,
+      "document_prefix_tokens": 8000
+    },
+    "export": {
+      "format": "mdb"
+    }
+  },
+  "definitions": {
+    "knowledge_model.json": "0a60a7eacd0d88dccb55ff3272aac690ad863d4670ecfe094e7bf9f7bce56699",
+    "document_collections.json": "f7bc2a960542f74d7cc7b2bd5997d02a71c5a9733892eaa13e73deae2b2ae352",
+    "text2kg_mapping.json": "9b2d0fb2ad65557ee53432aee76d4a93c8996f58e7fbab1771ae105ee6e474dc"
+  },
+  "usage": {
+    "documents": 467,
+    "chunks": 467,
+    "total": {
+      "jobs": 864,
+      "failed": 0,
+      "input_tokens": 218789,
+      "cached_tokens": 732552,
+      "cache_write_tokens": 1572,
+      "output_tokens": 40829,
+      "reasoning_tokens": 83400
+    },
+    "by_job": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 467,
+        "failed": 0,
+        "input_tokens": 23211,
+        "cached_tokens": 732552,
+        "cache_write_tokens": 1572,
+        "output_tokens": 24654,
+        "reasoning_tokens": 42934
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 397,
+        "failed": 0,
+        "input_tokens": 195578,
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "output_tokens": 16175,
+        "reasoning_tokens": 40466
+      }
+    ],
+    "started": "2026-10-08T18:24:20.843000+00:00",
+    "finished": "2026-10-08T18:27:06.339000+00:00",
+    "seconds": 165
+  },
+  "validation": {
+    "returned": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 1333
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 445
+      }
+    ],
+    "discarded": [
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "MouthOfTheWatercourse",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 3
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "TaxonCommonName",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 28
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Tributary",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 1
+      }
+    ],
+    "unset": []
+  }
+}

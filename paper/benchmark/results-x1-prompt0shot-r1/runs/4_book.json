@@ -1,0 +1,24 @@
+{
+  "ontology": "4_book",
+  "system": "prompting baseline (benchmark prompts, example removed)",
+  "recorded_at": "2026-10-09T16:05:14+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": true
+  },
+  "prompts_file_sha256": "39b4964b2e79dd4df3107f52e9cede6f0af81d5d4a8cbccbbcddcd72648f4922",
+  "prompts": 550,
+  "failed": 0,
+  "with_triples": 494,
+  "triples": 1210,
+  "usage": {
+    "input_tokens": 131395,
+    "cached_tokens": 0,
+    "output_tokens": 98402,
+    "reasoning_tokens": 80436
+  },
+  "seconds": 124
+}

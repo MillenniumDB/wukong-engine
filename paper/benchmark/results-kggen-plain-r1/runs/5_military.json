@@ -1,0 +1,85 @@
+{
+  "ontology": "5_military",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:47:03+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 227,
+  "triples": 1174,
+  "distinct_predicates": 471,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 1,
+  "top_predicates": [
+    [
+      "was_a",
+      86
+    ],
+    [
+      "served_in",
+      46
+    ],
+    [
+      "is_a",
+      44
+    ],
+    [
+      "was_born_on",
+      39
+    ],
+    [
+      "died_on",
+      38
+    ],
+    [
+      "also_known_as",
+      29
+    ],
+    [
+      "was_killed_in_action_during",
+      28
+    ],
+    [
+      "served_during",
+      19
+    ],
+    [
+      "designated",
+      18
+    ],
+    [
+      "was_born_in",
+      17
+    ],
+    [
+      "is_also_known_as",
+      16
+    ],
+    [
+      "was_an",
+      14
+    ],
+    [
+      "is_located_in",
+      13
+    ],
+    [
+      "was",
+      13
+    ],
+    [
+      "is_an",
+      12
+    ]
+  ],
+  "usage": {
+    "calls": 460,
+    "input_tokens": 171463,
+    "cached_tokens": 0,
+    "output_tokens": 61909,
+    "reasoning_tokens": 10314
+  },
+  "seconds": 75
+}

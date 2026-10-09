@@ -1,0 +1,8 @@
+military rank,"military, police or similar special rank achieved by a person (should usually have a ""start time"" qualifier), or military or police rank associated with a position (subject: human; object: military rank)"
+military branch,"branch to which this military unit, award, office, or person belongs, e.g. Royal Navy (subject: human; object: military unit)"
+military casualty classification,"allowed values: killed in action (Q210392), missing in action (Q2344557), died of wounds (Q16861372), prisoner of war (Q179637), killed in flight accident (Q16861407), others used in military casualty classification (subject: human; object: military casualty classification)"
+designed by,"person or organization which designed the object. For buildings use ""architect"" (Property:P84) (subject: military equipment; object: organization)"
+commanded by,"commander of a military unit/army/security service, operation, etc (subject: command; object: human)"
+next higher rank,"higher rank or level in a ranked hierarchy like sport league, military ranks. If there are several possible, list each one and qualify with ""criterion used"" (P1013), avoid using ranks and date qualifiers. For sports leagues/taxa, use specific properties instead (subject: military rank; object: rank)"
+designated as terrorist by,"country or organization that has officially designated a given group as a terrorist organization (e.g. for India, listed on http://mha.nic.in/BO ) (subject: armed organization; object: country)"
+wing configuration,configuration of wing(s) used by an aircraft (subject: any entity; object: a value)

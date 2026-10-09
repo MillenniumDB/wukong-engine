@@ -1,0 +1,85 @@
+{
+  "ontology": "4_book",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:45:48+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 550,
+  "failed": 0,
+  "with_triples": 547,
+  "triples": 2644,
+  "distinct_predicates": 1004,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 4,
+  "top_predicates": [
+    [
+      "is_a",
+      184
+    ],
+    [
+      "was_published_in",
+      116
+    ],
+    [
+      "was_written_by",
+      85
+    ],
+    [
+      "is_also_known_as",
+      52
+    ],
+    [
+      "was_published_by",
+      40
+    ],
+    [
+      "is_an",
+      37
+    ],
+    [
+      "is_set_in",
+      37
+    ],
+    [
+      "was_a_contributor_alongside",
+      36
+    ],
+    [
+      "was_first_published_in",
+      32
+    ],
+    [
+      "was_released_in",
+      27
+    ],
+    [
+      "was_illustrated_by",
+      26
+    ],
+    [
+      "written_by",
+      26
+    ],
+    [
+      "is_located_in",
+      23
+    ],
+    [
+      "was_created_by",
+      20
+    ],
+    [
+      "is",
+      20
+    ]
+  ],
+  "usage": {
+    "calls": 1100,
+    "input_tokens": 401153,
+    "cached_tokens": 0,
+    "output_tokens": 138939,
+    "reasoning_tokens": 25493
+  },
+  "seconds": 178
+}

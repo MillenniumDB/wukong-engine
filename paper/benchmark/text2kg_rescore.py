@@ -364,11 +364,27 @@ def main() -> int:
     parser.add_argument('--variants-root', type=Path, default=Path('paper/benchmark/scoring'))
     parser.add_argument('--out', type=Path, default=Path('paper/benchmark/results-properties/scoring'))
     parser.add_argument('--workers', type=int, default=8)
+    parser.add_argument(
+        '--system',
+        action='append',
+        default=[],
+        metavar='NAME=DIR',
+        help='Also score the output in DIR (a results directory holding wukong/ or llm/) as NAME (repeatable)',
+    )
     args = parser.parse_args()
 
     benchmark = args.benchmark.resolve()
     stemmer = PorterStemmer()
     all_systems = systems(args.root.resolve(), benchmark, args.dataset)
+    for spec in args.system:
+        name, _, directory = spec.partition('=')
+        if not name or not directory:
+            parser.error(f'--system expects NAME=DIR, got {spec!r}')
+        # A WUKONG results directory holds wukong/; a baseline run (prompting, EDC, KGGen) holds llm/
+        if (Path(directory) / 'wukong').is_dir():
+            all_systems[name] = (Path(directory).resolve() / 'wukong', 'ont_$$onto$$_wukong_responses.jsonl')
+        else:
+            all_systems[name] = (Path(directory).resolve() / 'llm', 'ont_$$onto$$_llm_responses.jsonl')
     names = [name for name, (responses, _) in all_systems.items() if responses.is_dir()]
 
     roots: dict[str, Path] = {}

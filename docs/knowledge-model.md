@@ -19,6 +19,7 @@ This document describes the expected format for a `knowledge_model.json` file, w
 - [🔗 Relationship Types](#-relationship-types)
   - [General Definition](#general-definition-1)
   - [Endpoints](#endpoints)
+  - [Self-Loops](#self-loops)
   - [Relationship Fields](#relationship-fields)
   - [Relationship Example](#relationship-example)
 - [🧮 Identity and Merging](#-identity-and-merging)
@@ -65,7 +66,7 @@ Many parameters can be specialized per **context level**, which is the kind of s
 | Context Level | Source Text                     | Meaning                                                                            |
 | ------------- | ------------------------------- | ---------------------------------------------------------------------------------- |
 | `"chunk"`     | A single text chunk.            | The entities a document **mentions**.                                              |
-| `"document"`  | A bounded prefix of a document. | The single entity of a given type that a document **is** (e.g. a specific report). |
+| `"document"`  | A bounded prefix of a document (`document_prefix_tokens` in the [configuration](configuration.md#️-chunking), 8000 by default). | The single entity of a given type that a document **is** (e.g. a specific report). If the LLM returns several different entities of one type, only the first valid one is kept. |
 
 Wherever a parameter accepts a context level mapping, you may write either:
 
@@ -169,10 +170,10 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `instructions`   |    🟡     | Detailed technical guidance for obtaining this field. Accepts a context level mapping.                                                                                                                  | `object[string, string]` or `string` | `{}`        |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take. An empty array means unrestricted.                                                                                                            |      `string array` or `string`      | `[]`        |
 | `examples`       |    🟡     | Example value(s) illustrating the expected form. Must themselves satisfy `options` and `regex`, otherwise the model is rejected.                                                                        |      `string array` or `string`      | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`). Accepts a context level mapping, so one level can be stricter than the other.                                       | `object[string, string]` or `string` | `{}`        |
+| `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`). The pattern is shown to the LLM in the field's definition, and checked again on what it returns. Accepts a context level mapping, so one level can be stricter than the other. | `object[string, string]` or `string` | `{}`        |
 | `default_value`  |    🟡     | The value used when nothing can be extracted, or when the `"default"` retrieval mode is chosen. Accepts a context level mapping. Must itself satisfy `options` and `regex`.                             | `object[string, string]` or `string` | `{}`        |
 | `retrieval_mode` |    🟡     | How the value is obtained. Accepts a context level mapping. See the table below.                                                                                                                        | `object[string, string]` or `string` | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. An entity missing a required value is discarded rather than repaired. The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing, outside `options` or not matching `regex` is discarded rather than repaired. An invalid **optional** value is unset instead: the entity is kept without that property, and `default_value` is not used. The primary key field must set this to `true` explicitly. |                `bool`                | `false`     |
 | `merge_strategy` |    🟡     | Overrides the entity type's `default_merge_strategy` for this field. See [Merge Strategies](#merge-strategies).                                                                                         |               `string`               | `null`      |
 
 **Retrieval modes** determine where an entity field's value comes from:
@@ -246,6 +247,7 @@ Each relationship type is a key inside the `relationship_types` object (the **re
 | `primary_key`            |    🟡     | The field that distinguishes relationships sharing the same endpoints. Required by the `"primary_key"` deduplication policy. Must be in `fields`, marked `"required": true`, and `"extract"`.    |                           `string`                            | `null`          |
 | `deduplication`          |    🟡     | The identity policy for this type: `"primary_key"`, `"endpoints"` or `"none"`. See [Deduplication](#deduplication).                                                                             |                           `string`                            | `"primary_key"` |
 | `default_merge_strategy` |    🟡     | How to reconcile field values when the same relationship is observed again. Individual fields may override it.                                                                                  |                           `string`                            | `"keep"`        |
+| `irreflexive`            |    🟡     | Whether an entity can never be related to itself by this type. See [Self-Loops](#self-loops).                                                                                                   |                           `boolean`                           | `false`         |
 | `fields`                 |    🟡     | The **fields** of this relationship type, keyed by field name. See [Relationship Fields](#relationship-fields).                                                                                 |                     `object[string, Field]`                   | `{}`            |
 
 > ⚠️ `deduplication` defaults to `"primary_key"`, which **requires** a `primary_key`. A relationship type with no primary key must declare `"deduplication": "endpoints"` or `"deduplication": "none"` explicitly, otherwise the model is rejected.
@@ -297,6 +299,25 @@ Endpoint declarations are used three times: to decide whether an extraction is w
 
 In this example, `Astronaut` entities found in a chunk may be connected to `Mission` entities found either at the document level or in the same chunk, and to `Spacecraft` entities found in the same chunk.
 
+### Self-Loops
+
+A relationship whose source and target are the same entity is a **self-loop**. Self-loops are allowed by default, because some relationships are legitimately reflexive: a taxonomy's subclass relation, a politician who voted for themselves, an author who cites their own work.
+
+For relationship types where a self-loop is always an error, such as `IsMemberOf` from a person to an organization, or `ParentOf`, declare `"irreflexive": true`. The LLM is then told that the source and target must be different entities, and any self-loop it still returns is discarded. Two endpoints are the same entity when they share an identity, that is, the same entity type and normalized primary key (see [Identity and Merging](#-identity-and-merging)).
+
+```json
+"ParentOf": {
+    "description": "A person who is a parent of another person.",
+    "deduplication": "endpoints",
+    "irreflexive": true,
+    "endpoints": {
+        "Person": {
+            "Person": { "source_context_levels": "chunk", "target_context_levels": "chunk" }
+        }
+    }
+}
+```
+
 ### Relationship Fields
 
 Relationship fields work like entity fields, except that they take **plain values instead of context level mappings** (relationships are only extracted at chunk level) and support a reduced set of retrieval modes.
@@ -308,10 +329,10 @@ Relationship fields work like entity fields, except that they take **plain value
 | `instructions`   |    🟡     | Detailed technical guidance for extracting this field.                                                                            |          `string`          | `null`      |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take.                                                                         | `string array` or `string` | `[]`        |
 | `examples`       |    🟡     | Example value(s). Must satisfy `options` and `regex`.                                                                             | `string array` or `string` | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid.                                                                            |          `string`          | `null`      |
+| `regex`          |    🟡     | A pattern the value must match to be considered valid. Shown to the LLM, and checked again on what it returns.                    |          `string`          | `null`      |
 | `default_value`  |    🟡     | The value used when nothing is extracted, or with the `"default"` retrieval mode. Must satisfy `options` and `regex`.             |          `string`          | `null`      |
 | `retrieval_mode` |    🟡     | Either `"extract"` (the LLM reads it from the text) or `"default"` (the declared `default_value` is used). `"default"` requires a non-null `default_value`. |          `string`          | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. A relationship missing a required value is discarded.                                             |           `bool`           | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing or invalid is discarded. An invalid **optional** value is unset instead, and `default_value` is not used. |           `bool`           | `false`     |
 | `merge_strategy` |    🟡     | Overrides the relationship type's `default_merge_strategy` for this field.                                                        |          `string`          | `null`      |
 
 ### Relationship Example
@@ -362,7 +383,7 @@ Relationship fields work like entity fields, except that they take **plain value
 
 Identity in WUKONG is **declared, not inferred**. Whether two extracted objects are the same object is decided from the knowledge model and the extracted values alone, with no similarity thresholds and no global clustering step.
 
-Before anything is compared, primary key values are **normalized**: Unicode normalization and transliteration, case folding, dash and whitespace unification, removal of non-printable characters, and trimming. The normalized form is used for identity only — the original extracted value is what the object carries as its property. A value that normalizes to nothing (an empty or purely punctuational key) invalidates its object, which is discarded.
+Before anything is compared, primary key values are **normalized**: Unicode normalization and transliteration, case folding, dash and whitespace unification, removal of non-printable characters, and trimming. The normalized form is used for identity only — the original extracted value is what the object carries as its property. A key with no letter or digit once normalized (an empty key, or one made only of symbols such as `-` or `#`) invalidates its object, which is discarded: such a key identifies nothing, and accepting it would merge unrelated objects under one identity.
 
 Normalization is deliberately conservative. It removes variation that carries no information (accents, casing, spacing, dash styles) and preserves everything else. Stemming, abbreviation expansion and token reordering are **not** performed, because they destroy distinctions that matter in some domains. The practical consequence is that a primary key with a declared `regex` and worked `examples` — which asks the LLM to emit a canonical form directly — deduplicates far better than a free-form name-like key.
 
@@ -436,7 +457,14 @@ The normalized primary key is part of the `v1` definition. Under `v1`, a raw pri
 7. Trimming whitespace and `/ \ . : ( )` from both ends.
 8. Collapsing runs of whitespace into a single space.
 
-A key that is empty after these steps is invalid, and its object is discarded.
+A key that contains no letter or digit after these steps (for example, one that is empty or only `-`) is invalid, and its object is discarded. This rule was added within `v1`: it changes no key that it accepts, so every content ID computed under `v1` keeps its meaning.
+
+Case folding (step 4) runs **before** transliteration (step 5), so any uppercase letter that transliteration produces is then deleted by step 6. This is part of the `v1` definition and is kept as is, since changing the order would change existing keys. In practice:
+
+- **Unaffected:** Latin script with accents (`Ñuñoa` → `nunoa`, `Bergström` → `bergstrom`, `Straße` → `strasse`), Cyrillic, Greek, Korean, Japanese kana and Devanagari, which transliterate to lowercase.
+- **Affected:** Chinese characters, which transliterate to capitalized syllables and lose each syllable's first letter (`北京` → `ei ing`), so distinct names can collide (`美京` also gives `ei ing`); the Hebrew letter `ש` (`SH`); and some symbols (`§12` → `12`).
+
+Exact identity is therefore unreliable for keys written in Chinese characters. For such corpora, prefer a primary key in Latin script or digits (e.g. a code or an official romanization), and say so in the field's `instructions` and `regex`.
 
 In the exported output, identifiers appear as follows:
 

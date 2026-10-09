@@ -191,6 +191,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Update the status of a job and its associated extractions upon completion/termination.
 
@@ -205,6 +206,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             error: Error message recorded for the job and, on failure, for its extractions.
             retry_policy: How failed extractions are retried: immediately (back to pending, counting a failed
                 attempt), deferred (to retry in the next execution cycle) or not at all. If None, no retry.
+            raw_response: LLM response exactly as received, stored on the job. If None, none is stored.
 
         Raises:
             ValueError: If ``status`` is neither completed nor failed.
@@ -225,7 +227,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 cache_write_tokens = ?,
                 output_tokens = ?,
                 reasoning_tokens = ?,
-                error = ?
+                error = ?,
+                raw_response = ?
             WHERE
                 job_id = ? AND
                 job_type = ? AND
@@ -240,6 +243,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 metrics.output_tokens if metrics else None,
                 metrics.reasoning_tokens if metrics else None,
                 error,
+                raw_response,
                 job.id.instance.bytes,
                 EXTRACTION_JOB_TYPE,
                 JobStatus.IN_PROGRESS.value,

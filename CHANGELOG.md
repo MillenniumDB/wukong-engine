@@ -9,25 +9,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
+- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
+  - [✨ Added](#-added-1)
+  - [♻️ Changed](#️-changed-1)
   - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
-  - [✨ Added](#-added-1)
-  - [♻️ Changed](#️-changed-1)
+  - [✨ Added](#-added-2)
+  - [♻️ Changed](#️-changed-2)
   - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-1)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
-  - [✨ Added](#-added-2)
+  - [✨ Added](#-added-3)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation-2)
 
 ## [Unreleased]
+
+### ✨ Added
+
+- **Configurable reasoning effort**: `reasoning_effort` in the `[llm]` section sets the effort of every extraction call, entities and relationships alike. It was hard-coded to `low`, which remains the default.
+- **Irreflexive relationship types**: a relationship type may declare `"irreflexive": true` to rule out self-loops. The LLM is told that source and target must differ, and self-loops it still returns are discarded. Self-loops remain allowed by default, since some relationships are legitimately reflexive.
+- **Raw LLM responses** are stored per extraction job in the staging database (`raw_response` column of `extraction_jobs`), including responses that could not be decoded, so that a run can be audited without re-running it.
+- **Rejection counts**: what validation rejects is no longer skipped silently. The `extraction_rejections` table counts, per job, the entities and relationships discarded and the optional values unset, with the reason (unknown type, missing value, invalid option, regex mismatch, invalid primary key, missing, unresolved or invalid endpoint, self-loop), the type and the field. Staging databases created by earlier versions gain the new column and table on the next run.
+
+### ♻️ Changed
+
+- **Regexes reach the LLM**: a field's `regex` is now shown in its definition in the prompt ("Must match the regular expression: …"), using the pattern for the job's context level, so the LLM writes values in the form validation accepts. It was previously only checked after the call.
+- **One entity per type at document level**: a document-level type stands for the document itself, so when the LLM returns several different entities of one type for a document, only the first valid one is kept; the others are rejected as `EXTRA_DOCUMENT_ENTITY`. A repetition of the kept entity (same identity) is still merged.
+- **Configurable document prefix**: the number of tokens document-level extraction reads, previously fixed at 8000, is now `document_prefix_tokens` in the `[chunking]` section, with 8000 as the default.
+- **Invalid optional values no longer discard their object**: a value outside `options` or not matching `regex` now rejects the entity or relationship only when the field is required (which includes the primary key). On an optional field, the value is unset and the object is kept; `default_value` is not used, so the property is absent rather than asserted.
+
+### 🐛 Fixed
+
+- **Primary keys made only of symbols** (e.g. `-`, `#` or `&`) were accepted, so every object of a type with such a key merged into one. A normalized key must now contain at least one letter or digit, otherwise its object is discarded. No key that is still accepted changes, so identities remain `v1`.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

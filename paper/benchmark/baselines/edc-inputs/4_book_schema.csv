@@ -1,0 +1,12 @@
+illustrator,person drawing the pictures or taking the photographs in a book or similar work (subject: any entity; object: human)
+followed by,"immediately following item in a series of which the subject is a part, preferably use as qualifier of P179 [if the subject has been replaced, e.g. political offices, use ""replaced by"" (P1366)] (subject: any entity; object: a value)"
+publication date,date or point in time when a work or product was first published or released (subject: book; object: a value)
+author,"main creator(s) of a written work (use on works, not humans); use P2093 (author name string) when Wikidata item is unknown or does not exist (subject: book; object: human)"
+publisher,"organization or person responsible for publishing a work, such as a book, periodical, printed music, podcast, game or software (subject: book; object: publisher)"
+characters,"characters which appear in this item (like plays, operas, operettas, books, comics, films, TV series, video games) (subject: literary work; object: fictional character)"
+editor,"person who checks and corrects a work (such as a book, newspaper, academic journal, etc.) to comply with a rules of certain genre. Also applies to person who establishes the text of an ancient written work or manuscript (subject: trade magazine; object: human)"
+place of publication,geographical place of publication of the edition (use 1st edition when referring to works) (subject: any entity; object: a value)
+narrative location,the narrative of the work is set in this location (subject: literary work; object: territory)
+genre,creative work's genre or an artist's field of work (P101). Use main subject (P921) to relate creative works to their topic (subject: literary work; object: literary genre)
+language of work or name,"language associated with this creative work (such as books, shows, songs, broadcasts or websites) or a name (for persons use ""native language"" (P103) and ""languages spoken, written or signed"" (P1412)) (subject: literary work; object: language)"
+depicts,"entity visually depicted in an image, literarily described in a work, or otherwise incorporated into an audiovisual or other medium; see also P921, 'main subject' (subject: any entity; object: a value)"

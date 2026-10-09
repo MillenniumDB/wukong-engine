@@ -37,9 +37,6 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 logger = logging.getLogger(__name__)
 
 # Constants
-ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
-RELATIONSHIP_EXTRACTION_EFFORT = ReasoningEffort.LOW
-MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits
 
 
 def _generate_field_schema(field: Field) -> dict[str, Any]:
@@ -123,16 +120,25 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract an entity if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: EntityExtractionRepository, document_loader: DocumentLoader) -> None:
+    def __init__(
+        self,
+        repository: EntityExtractionRepository,
+        document_loader: DocumentLoader,
+        max_document_tokens: int,
+        reasoning_effort: ReasoningEffort,
+    ) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's source context and entity types.
             document_loader: Loader used to read the content of document-level sources.
+            max_document_tokens: Maximum number of tokens loaded from a full document used as source text.
+            reasoning_effort: Reasoning effort requested for every entity extraction call.
         """
         self._repository = repository
         self._document_loader = document_loader
-        self.max_document_tokens = MAX_DOCUMENT_TOKENS
+        self.max_document_tokens = max_document_tokens
+        self._reasoning_effort = reasoning_effort
 
     def build(self, job: ExtractionJob, model: KnowledgeModel) -> ExtractionRequest:
         """Build extraction request for a single job.
@@ -176,7 +182,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         )
 
         # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=ENTITY_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section.
@@ -283,7 +289,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
 
         Args:
             field: Entity field to render.
-            context_level: Context level of the job, used to select the field's extraction instructions.
+            context_level: Context level of the job, used to select the field's extraction instructions and regex.
 
         Returns:
             The lines of the field definition.
@@ -298,6 +304,11 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         instructions = field.instructions.get(context_level)
         if instructions is not None:
             lines.append(f'  {instructions}')
+
+        # Optional regex, shown so the LLM writes values in the form that validation will accept
+        regex = field.regex.get(context_level)
+        if regex is not None:
+            lines.append(f'  Must match the regular expression: {regex.pattern}')
 
         # Optional examples
         if field.examples:
@@ -411,14 +422,16 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract a relationship if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: RelationshipExtractionRepository) -> None:
+    def __init__(self, repository: RelationshipExtractionRepository, reasoning_effort: ReasoningEffort) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's relationship types, source chunk and available entities,
                 and to store the job's temporary entity ID mapping.
+            reasoning_effort: Reasoning effort requested for every relationship extraction call.
         """
         self._repository = repository
+        self._reasoning_effort = reasoning_effort
         self._current_entity_count: int = 0  # Track the number of extracted entities for the current job (for temp IDs)
         self._entity_temp_to_ref: dict[str, EntityRef] = {}  # Mapping of temporary entity IDs to EntityRefs
         self._entity_true_to_temp_id: dict[EntityId, str] = {}  # Mapping of true EntityIds to temporary entity IDs
@@ -473,7 +486,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         )
 
         # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=RELATIONSHIP_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _build_entity_id_mappings(self, entities: tuple[Entity, ...]) -> None:
         """Build mappings between temporary entity IDs and true EntityIds.
@@ -568,6 +581,10 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         if instructions is not None:
             lines.append(instructions)
 
+        # Irreflexive types can't relate an entity to itself
+        if relationship_type.irreflexive:
+            lines.append('The source and target must be different entities.')
+
         # Endpoints
         endpoints: list[str] = []
         for endpoint in sorted(relationship_type.endpoints, key=lambda f: f.source.value + f.target.value):
@@ -621,6 +638,10 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         instructions = field.instructions
         if instructions is not None:
             lines.append(f'  {instructions}')
+
+        # Optional regex, shown so the LLM writes values in the form that validation will accept
+        if field.regex is not None:
+            lines.append(f'  Must match the regular expression: {field.regex.pattern}')
 
         # Optional examples
         if field.examples:

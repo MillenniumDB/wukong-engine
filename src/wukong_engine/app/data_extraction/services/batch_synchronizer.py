@@ -261,6 +261,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                         status=JobStatus.COMPLETED,
                         data=data,
                         metrics=TokenUsageMetrics.from_usage(response.metrics),
+                        raw_response=response.content,
                     )
 
                 # Handle JSON decoding or response parsing errors
@@ -271,6 +272,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                         error=f'Failed LLM response decoding ({exc})',
                         error_severity=ErrorSeverity.RECOVERABLE,
                         retry_policy=JobRetryPolicy.IMMEDIATE,
+                        raw_response=response.content if response else None,
                     )
 
             # No result found for the job
@@ -308,11 +310,23 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         """
         # Handle failed job
         if result.status == JobStatus.FAILED:
-            self._repository.fail_job(job, retry_policy=result.retry_policy, error=result.error, metrics=result.metrics)
+            self._repository.fail_job(
+                job,
+                retry_policy=result.retry_policy,
+                error=result.error,
+                metrics=result.metrics,
+                raw_response=result.raw_response,
+            )
             return
 
-        # Materialization of results into knowledge objects
-        knowledge_objects = self._result_materializer.materialize(result, job, model)
+        # Materialization of results into knowledge objects, keeping track of what was rejected
+        materialized = self._result_materializer.materialize(result, job, model)
 
-        # Persist knowledge objects and provenance, update job status to completed
-        self._repository.complete_job(job, knowledge_objects, usage_metrics=result.metrics)
+        # Persist knowledge objects, provenance and rejections, update job status to completed
+        self._repository.complete_job(
+            job,
+            materialized.objects,
+            rejections=materialized.rejections,
+            usage_metrics=result.metrics,
+            raw_response=result.raw_response,
+        )

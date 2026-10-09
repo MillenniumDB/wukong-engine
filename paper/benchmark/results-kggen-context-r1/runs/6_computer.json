@@ -1,0 +1,85 @@
+{
+  "ontology": "6_computer",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:10:16+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Computer Ontology\". Use only these relations, written exactly as given: developer (software -> value); creator (application -> human); platform (software -> computer); operating system (computer model -> operating system).",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 230,
+  "triples": 1190,
+  "distinct_predicates": 457,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_a",
+      106
+    ],
+    [
+      "was_released_for",
+      78
+    ],
+    [
+      "was_developed_by",
+      34
+    ],
+    [
+      "was_ported_to",
+      34
+    ],
+    [
+      "was_released_in",
+      29
+    ],
+    [
+      "was_created_by",
+      25
+    ],
+    [
+      "is_an",
+      18
+    ],
+    [
+      "was_later_ported_to",
+      18
+    ],
+    [
+      "was_subsequently_released_for",
+      15
+    ],
+    [
+      "developed_by",
+      14
+    ],
+    [
+      "were_released_for",
+      14
+    ],
+    [
+      "created",
+      13
+    ],
+    [
+      "developed",
+      11
+    ],
+    [
+      "is_also_known_as",
+      10
+    ],
+    [
+      "has",
+      9
+    ]
+  ],
+  "usage": {
+    "calls": 460,
+    "input_tokens": 167922,
+    "cached_tokens": 0,
+    "output_tokens": 56954,
+    "reasoning_tokens": 8368
+  },
+  "seconds": 77
+}

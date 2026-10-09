@@ -1,0 +1,24 @@
+{
+  "ontology": "6_computer",
+  "system": "prompting baseline (benchmark prompts)",
+  "recorded_at": "2026-10-09T14:48:26+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": false
+  },
+  "prompts_file_sha256": "427a4383b166c95105b7c399fab9a471eb0784af21fdb74182e29ba1751b7d1d",
+  "prompts": 230,
+  "failed": 0,
+  "with_triples": 207,
+  "triples": 397,
+  "usage": {
+    "input_tokens": 48660,
+    "cached_tokens": 0,
+    "output_tokens": 30909,
+    "reasoning_tokens": 25288
+  },
+  "seconds": 44
+}

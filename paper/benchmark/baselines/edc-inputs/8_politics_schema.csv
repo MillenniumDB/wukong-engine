@@ -1,0 +1,9 @@
+head of state,official with the highest formal authority in a country/state (subject: country; object: human)
+head of government,"head of the executive power of this town, city, municipality, state, country, or other governmental body (subject: country; object: human)"
+position held,subject currently or formerly holds the object position or public office (subject: human; object: president)
+Member of,"organization, club or musical group to which the subject belongs. Do not use for membership in ethnic or social groups, nor for holding a political position, such as a member of parliament (use P39 for that) (subject: human; object: organization)"
+political alignment,political position within the left–right political spectrum (subject: political party; object: political alignment)
+member of political party,the political party of which a person is or has been a member or otherwise affiliated (subject: human; object: political party)
+elected in,"election in which a person gained a position (as qualifier), or a position or legislative term is/was elected (as main value) (subject: human; object: Public election)"
+candidacy in election,election where the subject is a candidate (subject: human; object: Public election)
+political ideology,political ideology of an organization or person or of a work (such as a newspaper) (subject: political party; object: political ideology)

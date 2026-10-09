@@ -130,6 +130,7 @@ class KnowledgeModelMapper:
                 {FieldName(name): self._map_relationship_field(name, schema) for name, schema in schema.fields.items()},
             ),
             default_merge_strategy=schema.default_merge_strategy,
+            irreflexive=schema.irreflexive,
         )
 
     def _map_entity_field(self, name: str, schema: EntityFieldSchema) -> EntityField:

@@ -1,0 +1,85 @@
+{
+  "ontology": "3_sport",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:42:50+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 487,
+  "failed": 0,
+  "with_triples": 481,
+  "triples": 2352,
+  "distinct_predicates": 746,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 3,
+  "top_predicates": [
+    [
+      "is_a",
+      121
+    ],
+    [
+      "played_for",
+      116
+    ],
+    [
+      "won",
+      80
+    ],
+    [
+      "was_born_on",
+      75
+    ],
+    [
+      "is",
+      68
+    ],
+    [
+      "competes_in",
+      51
+    ],
+    [
+      "plays_for",
+      44
+    ],
+    [
+      "was_a",
+      43
+    ],
+    [
+      "also_known_as",
+      36
+    ],
+    [
+      "represents",
+      36
+    ],
+    [
+      "participates_in",
+      36
+    ],
+    [
+      "located_in",
+      31
+    ],
+    [
+      "was_born_in",
+      30
+    ],
+    [
+      "played_in",
+      30
+    ],
+    [
+      "was_the",
+      27
+    ]
+  ],
+  "usage": {
+    "calls": 975,
+    "input_tokens": 355630,
+    "cached_tokens": 0,
+    "output_tokens": 118403,
+    "reasoning_tokens": 18249
+  },
+  "seconds": 153
+}

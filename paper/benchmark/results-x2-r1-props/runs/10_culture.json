@@ -1,0 +1,94 @@
+{
+  "ontology": "10_culture",
+  "workspace": "x2r1_props_10_culture",
+  "recorded_at": "2026-10-08T16:48:28+00:00",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "c1f61e78b4dea989aa8c2381492965183ee7b198",
+    "uncommitted_changes": false
+  },
+  "config_file": "config/default.toml",
+  "config": {
+    "pipeline": {
+      "ingest_documents": true,
+      "extract_entities": true,
+      "extract_relationships": true,
+      "export_knowledge": true
+    },
+    "llm": {
+      "model": "gpt-5.6-luna",
+      "execution_mode": "real-time",
+      "max_concurrency": 15,
+      "reasoning_effort": "low"
+    },
+    "chunking": {
+      "target_tokens": 800,
+      "overlap_tokens": 120,
+      "document_prefix_tokens": 8000
+    },
+    "export": {
+      "format": "mdb"
+    }
+  },
+  "definitions": {
+    "knowledge_model.json": "dfcc8c4c8155f80007d0f61b6606a306bbf2920f6a575d7ae12235548f4a6f93",
+    "document_collections.json": "f7bc2a960542f74d7cc7b2bd5997d02a71c5a9733892eaa13e73deae2b2ae352",
+    "text2kg_mapping.json": "2fc814f33690452c28b8627fca733b88b9f6ba71ac7e532f88e5d6ad6c6738e7"
+  },
+  "usage": {
+    "documents": 159,
+    "chunks": 159,
+    "total": {
+      "jobs": 245,
+      "failed": 0,
+      "input_tokens": 45527,
+      "cached_tokens": 261456,
+      "cache_write_tokens": 3352,
+      "output_tokens": 11846,
+      "reasoning_tokens": 15533
+    },
+    "by_job": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 159,
+        "failed": 0,
+        "input_tokens": 9253,
+        "cached_tokens": 261456,
+        "cache_write_tokens": 3352,
+        "output_tokens": 8245,
+        "reasoning_tokens": 10649
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 86,
+        "failed": 0,
+        "input_tokens": 36274,
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "output_tokens": 3601,
+        "reasoning_tokens": 4884
+      }
+    ],
+    "started": "2026-10-08T16:47:42.447000+00:00",
+    "finished": "2026-10-08T16:48:27.625000+00:00",
+    "seconds": 45
+  },
+  "validation": {
+    "returned": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 353
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 93
+      }
+    ],
+    "discarded": [],
+    "unset": []
+  }
+}

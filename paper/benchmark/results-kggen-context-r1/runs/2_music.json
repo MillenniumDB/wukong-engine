@@ -1,0 +1,85 @@
+{
+  "ontology": "2_music",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:02:15+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Music Ontology\". Use only these relations, written exactly as given: composer (musical work -> human); part of (musical work -> album); lyrics by (musical work -> human); publication date (musical work -> value); language of work or name (musical work -> language); voice type (human -> voice); instrumentation (musical work -> value); tracklist (album -> musical work); genre (musical work -> music genre); performer (musical work -> value); producer (album -> value); nominated for (album -> award ); record label (album -> value).",
+  "sentences": 675,
+  "failed": 0,
+  "with_triples": 668,
+  "triples": 3322,
+  "distinct_predicates": 974,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 1,
+  "top_predicates": [
+    [
+      "is_a",
+      240
+    ],
+    [
+      "was_released_in",
+      179
+    ],
+    [
+      "is_an",
+      110
+    ],
+    [
+      "was_released_on",
+      84
+    ],
+    [
+      "was_written_by",
+      82
+    ],
+    [
+      "is_a_song_by",
+      76
+    ],
+    [
+      "was_released_by",
+      56
+    ],
+    [
+      "was_produced_by",
+      47
+    ],
+    [
+      "produced",
+      40
+    ],
+    [
+      "was_composed_by",
+      39
+    ],
+    [
+      "was_a",
+      39
+    ],
+    [
+      "wrote",
+      37
+    ],
+    [
+      "is_the",
+      33
+    ],
+    [
+      "features",
+      32
+    ],
+    [
+      "is_also_known_as",
+      32
+    ]
+  ],
+  "usage": {
+    "calls": 1351,
+    "input_tokens": 492351,
+    "cached_tokens": 0,
+    "output_tokens": 171671,
+    "reasoning_tokens": 34892
+  },
+  "seconds": 213
+}

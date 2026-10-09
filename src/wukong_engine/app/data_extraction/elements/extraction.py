@@ -9,6 +9,8 @@ from wukong_engine.app.data_extraction.elements.values import (
     ErrorSeverity,
     JobRetryPolicy,
     JobStatus,
+    RejectionReason,
+    RejectionScope,
     TokenUsageMetrics,
 )
 from wukong_engine.app.llm.elements import LLMBatchResult
@@ -75,6 +77,7 @@ class ExtractionResult:
         error: Error message, if the extraction failed.
         error_severity: Severity of the error, if the extraction failed.
         retry_policy: How the failed job may be retried, if the extraction failed.
+        raw_response: LLM response exactly as received, before decoding. None if no response was received.
     """
 
     status: JobStatus
@@ -83,6 +86,37 @@ class ExtractionResult:
     error: str | None = None
     error_severity: ErrorSeverity | None = None
     retry_policy: JobRetryPolicy | None = None
+    raw_response: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class Rejection:
+    """Something rejected while materializing an extraction result: a whole object, or one of its values.
+
+    Attributes:
+        scope: Whether the object was discarded or only the value unset.
+        reason: Why it was rejected.
+        type_name: Type name of the object as returned by the LLM, or None if it returned none.
+        field_name: Name of the field the rejection is about, or None if it isn't about a field.
+    """
+
+    scope: RejectionScope
+    reason: RejectionReason
+    type_name: str | None = None
+    field_name: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class MaterializedResult[T]:
+    """Knowledge objects materialized from an extraction result, and what was rejected on the way.
+
+    Attributes:
+        objects: Valid knowledge objects built from the result.
+        rejections: Objects discarded, and values unset in the objects that were kept.
+    """
+
+    objects: tuple[T, ...]
+    rejections: tuple[Rejection, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

@@ -1,0 +1,85 @@
+{
+  "ontology": "9_nature",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:53:01+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 474,
+  "failed": 0,
+  "with_triples": 466,
+  "triples": 2191,
+  "distinct_predicates": 781,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_located_in",
+      139
+    ],
+    [
+      "is_a",
+      89
+    ],
+    [
+      "is_in",
+      60
+    ],
+    [
+      "located_in",
+      53
+    ],
+    [
+      "has_elevation",
+      46
+    ],
+    [
+      "won",
+      34
+    ],
+    [
+      "flows_through",
+      30
+    ],
+    [
+      "also_known_as",
+      28
+    ],
+    [
+      "is_a_tributary_of",
+      28
+    ],
+    [
+      "has_scientific_name",
+      27
+    ],
+    [
+      "is_part_of",
+      27
+    ],
+    [
+      "belongs_to_family",
+      25
+    ],
+    [
+      "is_also_known_as",
+      23
+    ],
+    [
+      "flows_into",
+      23
+    ],
+    [
+      "belongs_to",
+      21
+    ]
+  ],
+  "usage": {
+    "calls": 949,
+    "input_tokens": 347393,
+    "cached_tokens": 0,
+    "output_tokens": 116745,
+    "reasoning_tokens": 23553
+  },
+  "seconds": 147
+}

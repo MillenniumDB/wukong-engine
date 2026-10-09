@@ -1,0 +1,85 @@
+{
+  "ontology": "10_culture",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:15:57+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Culture Ontology\". Use only these relations, written exactly as given: ethnic group (human -> ethnic group); religious order (religion -> religion); languages spoken, written or signed (human -> language); inception (literature -> value); start time (festival -> value); dedicated to (art -> human); iconographic symbol (human -> value); indigenous to (dance -> value).",
+  "sentences": 159,
+  "failed": 0,
+  "with_triples": 159,
+  "triples": 735,
+  "distinct_predicates": 357,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "was_established_in",
+      51
+    ],
+    [
+      "was_a",
+      39
+    ],
+    [
+      "also_known_as",
+      30
+    ],
+    [
+      "is_a",
+      16
+    ],
+    [
+      "is_published_by",
+      14
+    ],
+    [
+      "was",
+      11
+    ],
+    [
+      "was_born_on",
+      10
+    ],
+    [
+      "was_an",
+      10
+    ],
+    [
+      "died_on",
+      9
+    ],
+    [
+      "is_also_known_as",
+      9
+    ],
+    [
+      "wrote",
+      9
+    ],
+    [
+      "addressed",
+      9
+    ],
+    [
+      "was_born_in",
+      8
+    ],
+    [
+      "is_an",
+      6
+    ],
+    [
+      "was_held_in",
+      6
+    ]
+  ],
+  "usage": {
+    "calls": 318,
+    "input_tokens": 115865,
+    "cached_tokens": 0,
+    "output_tokens": 36843,
+    "reasoning_tokens": 5728
+  },
+  "seconds": 53
+}

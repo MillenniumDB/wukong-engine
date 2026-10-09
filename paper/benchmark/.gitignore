@@ -9,17 +9,26 @@ data/
 workspaces/*/staging/
 workspaces/*/exports/
 
-# Generated results, except the two that are the scientific record of a run:
-# the converted system output and the evaluator's metrics. The results-* trees
-# are the ablation arms of paper/benchmark.md section 10, and the adjusted run
-# of paper/benchmark-adjusted.md, whose scoring/ holds the re-scored metrics.
+# Generated results, except the three that are the scientific record of a run:
+# the converted system output, the evaluator's metrics, and the run record
+# (tokens, jobs, engine and config) of text2kg_record.py. Its archive/ copy of
+# the staging database and log stays untracked: back it up elsewhere.
+# The results-* trees are the ablation arms of paper/benchmark.md section 10,
+# and the adjusted run of paper/benchmark-adjusted.md, whose scoring/ holds the
+# re-scored metrics.
 results/*
 !results/wukong/
 !results/eval/
+!results/runs/
 results-*/*
 !results-*/wukong/
 !results-*/eval/
+!results-*/runs/
 !results-*/scoring/
+# Baseline runs (prompting, EDC, KGGen) write their converted output to llm/ instead of wukong/,
+# and the type-conformance check keeps its judgements, summary and hand-check sample
+!results-*/llm/
+!results-typecheck/*
 
 # Written per run with absolute paths, so it is machine specific
 results/eval/eval_config.json

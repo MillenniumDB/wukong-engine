@@ -1,0 +1,24 @@
+{
+  "ontology": "7_space",
+  "system": "prompting baseline (benchmark prompts, example removed)",
+  "recorded_at": "2026-10-09T16:07:17+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": true
+  },
+  "prompts_file_sha256": "80bb5088354873bfc1fe2f83bcb5a4cc9fc1e9d90c653a16a204b3437a7c2c7a",
+  "prompts": 203,
+  "failed": 0,
+  "with_triples": 191,
+  "triples": 249,
+  "usage": {
+    "input_tokens": 46563,
+    "cached_tokens": 0,
+    "output_tokens": 20004,
+    "reasoning_tokens": 14923
+  },
+  "seconds": 34
+}

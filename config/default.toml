@@ -41,7 +41,7 @@ export_knowledge = true
 # Note: Currently only OpenAI models are supported
 # Supported models:
 # "gpt-4.1-mini": Cheaper (non-reasoning)
-# "gpt-5.6-luna": Balanced (reasoning model, runs at low effort)
+# "gpt-5.6-luna": Balanced (reasoning model; see reasoning_effort below)
 # Built-in default: "gpt-5.6-luna"
 model = "gpt-5.6-luna"
 
@@ -63,6 +63,12 @@ execution_mode = "real-time"
 # Built-in default: 5 (this file sets 15)
 max_concurrency = 15
 
+### Reasoning effort for every extraction call (entities and relationships) ###
+# You can choose from: "none", "low", "medium", "high", "extreme" (alias "xhigh"), "max"
+# Note: Higher effort costs more (reasoning tokens are billed as output); ignored by non-reasoning models
+# Built-in default: "low"
+reasoning_effort = "low"
+
 ##############
 #  CHUNKING  #
 ##############
@@ -79,6 +85,12 @@ target_tokens = 800
 # Note: This value should be in the range [0, target_tokens - 1]
 # Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200)
 overlap_tokens = 120
+
+### Number of tokens of a document read by document-level extraction ###
+# Document-level extraction reads the start of each document, up to this many tokens, instead of a chunk
+# Note: This value must be positive; raise it if document-level entities need information from later in the document
+# Built-in default: 8000
+document_prefix_tokens = 8000
 
 ##############
 #   EXPORT   #

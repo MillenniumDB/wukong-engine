@@ -1,0 +1,6746 @@
+{
+ "ont_5_military_test_1": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Russian navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Vasily Stepanovich Zavoyko": [
+   "human",
+   "military personnel"
+  ],
+  "Vasily Zavoyko": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_2": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Hai Jun Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Li Yaowen": [
+   "human",
+   "military personnel"
+  ],
+  "Nanhai Fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_3": {
+  "Fuzhou Military Region": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Shao Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Xiong Zhaoren": [
+   "human",
+   "military personnel"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_4": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Korchagin": [
+   "human"
+  ],
+  "Stepan Makarov": [
+   "human"
+  ],
+  "Vasily Golovnin": [
+   "human"
+  ],
+  "navy": [
+   "armed organization",
+   "organization"
+  ],
+  "vice admiral": [
+   "military rank",
+   "rank"
+  ],
+  "vice-admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_5": {
+  "Dogan Penjor Rabgye": [
+   "human",
+   "military personnel"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_6": {
+  "China": [
+   "country"
+  ],
+  "Hao Jiang": [
+   "human"
+  ],
+  "Lieutenant General": [
+   "military rank",
+   "rank"
+  ],
+  "Military Casualty Classification": [
+   "military casualty classification"
+  ],
+  "Nan Jiang": [
+   "human"
+  ],
+  "PLA": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "PLA Military Rank": [
+   "military rank",
+   "rank"
+  ],
+  "People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Quan Jiang": [
+   "human"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Wang Jiang": [
+   "human"
+  ],
+  "Zhang Yulin": [
+   "human",
+   "military personnel"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "astronautic engineer": [
+   "human"
+  ],
+  "command": [
+   "command",
+   "organization"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "human",
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit",
+   "organization"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ],
+  "terrorist": [
+   "human"
+  ],
+  "wing configuration": []
+ },
+ "ont_5_military_test_7": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Felix von Bendemann": [
+   "human",
+   "military personnel"
+  ],
+  "German Imperial Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Imperial German Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Kaiserliche Marine": [
+   "armed organization",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_8": {
+  "Admiral": [
+   "military rank"
+  ],
+  "England": [
+   "country"
+  ],
+  "English Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "John Churchill": [
+   "human",
+   "military personnel"
+  ],
+  "Prince Rupert of the Rhine": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Unknown": [],
+  "admiral": [
+   "military rank"
+  ],
+  "armor": [
+   "military equipment"
+  ],
+  "army officer": [
+   "human",
+   "military personnel",
+   "military rank"
+  ],
+  "country": [],
+  "duke": [
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military equipment)\n\nTest Sentence: The armed organization was designated as terrorist by the country.\nTest Output: designated_as_terrorist_by(armed organization": [
+   "military equipment"
+  ],
+  "military museum": [
+   "military museum"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ],
+  "wing configuration": []
+ },
+ "ont_5_military_test_9": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Admiral Fouad Mohamed Abou Zikry": [
+   "human",
+   "military personnel"
+  ],
+  "Commander-in-Chief": [
+   "command"
+  ],
+  "Egyptian Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Fouad Mohamed Abou Zikry": [
+   "human",
+   "military personnel"
+  ],
+  "Hai Jun Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Hai Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Vice Defense Minister": [
+   "command"
+  ]
+ },
+ "ont_5_military_test_10": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Chinese People's Liberation Army Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Chinese People's Liberation Army Navy (PLAN)": [
+   "armed organization",
+   "organization"
+  ],
+  "Hai Jun Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Hai Jun Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Miao Hua": [
+   "human",
+   "military personnel"
+  ],
+  "PLAN": [
+   "armed organization",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_11": {
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "General Dynamics": [
+   "organization"
+  ],
+  "Harbin Institute of Technology": [
+   "organization"
+  ],
+  "M1 Abrams tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "People's Liberation Army (PLA)": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Type 095": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Wang Jiasheng": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "shang jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_12": {
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "You Taizhong": [
+   "human",
+   "military personnel"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_13": {
+  "Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "Aluf Amikam Norkin": [
+   "human",
+   "military personnel"
+  ],
+  "Amikam Norkin": [
+   "human",
+   "military personnel"
+  ],
+  "Israeli Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_14": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Datis": [
+   "human",
+   "military personnel"
+  ],
+  "Datis or Datus": [
+   "human",
+   "military personnel"
+  ],
+  "Datus": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_15": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Admiralty Shipyard": [
+   "organization"
+  ],
+  "Counter-Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Vasily Berkov": [
+   "human"
+  ],
+  "Vasily Ivanovich Berkov": [
+   "human"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "counter-admiral": [
+   "military rank",
+   "rank"
+  ],
+  "counter_admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_16": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "Li Tianyou": [
+   "human",
+   "military personnel"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "shang jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_17": {
+  "APC": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Full General": [
+   "military rank",
+   "rank"
+  ],
+  "Lieutenant General": [
+   "military rank",
+   "rank"
+  ],
+  "Major General": [
+   "military rank",
+   "rank"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 03A": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 56": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 63": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 72 ZBD-01": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 80": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 86": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Zhang Zhijian": [
+   "human",
+   "military personnel"
+  ],
+  "assault rifle": [
+   "military equipment"
+  ],
+  "full general": [
+   "military rank",
+   "rank"
+  ],
+  "howitzer": [
+   "military equipment"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "tank destroyer": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_18": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "Peter von Sivers": [
+   "human",
+   "military personnel"
+  ],
+  "Russia": [
+   "country"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "country": [
+   "country"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_19": {
+  "Dong Guishan": [
+   "human",
+   "military personnel"
+  ],
+  "Lieutenant General": [
+   "military rank",
+   "rank"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_20": {
+  "Admiral": [
+   "military rank"
+  ],
+  "Baltic Fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Count Apraksin": [
+   "human",
+   "military personnel"
+  ],
+  "Count Fyodor Matveyevich Apraksin": [
+   "human",
+   "military personnel"
+  ],
+  "Fyodor Apraksin": [
+   "human",
+   "military personnel"
+  ],
+  "Fyodor Matveyevich Apraksin": [
+   "human",
+   "military personnel"
+  ],
+  "Russian Admiralty": [
+   "armed organization",
+   "organization"
+  ],
+  "admiral": [
+   "military rank"
+  ],
+  "admirals": [
+   "military personnel"
+  ],
+  "command": [
+   "command"
+  ],
+  "general admiral": [
+   "military rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_21": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Ahmed Muhiddin Piri": [
+   "human",
+   "military personnel"
+  ],
+  "HacÄ± Ahmet Muhittin PÃ®rÃ® Bey": [
+   "human",
+   "military personnel"
+  ],
+  "Piri Reis": [
+   "human",
+   "military personnel"
+  ],
+  "PÃ®rÃ® Reis": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "command": [
+   "command"
+  ],
+  "country": [
+   "country"
+  ],
+  "designed_by(Piri Reis,organization": [],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military museum": [
+   "military museum"
+  ],
+  "military personnel": [
+   "military personnel",
+   "human"
+  ],
+  "military unit": [
+   "military unit",
+   "armed organization",
+   "organization"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "military_branch(Piri Reis,military unit": [],
+  "military_rank(admiral": [],
+  "next_higher_rank(military rank": [],
+  "next_higher_rank(military rank,rank": [],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_22": {
+  "Caroline Aigle": [
+   "human",
+   "military personnel"
+  ],
+  "Commandant": [
+   "military rank",
+   "rank"
+  ],
+  "Commandant Caroline Aigle": [
+   "human",
+   "military personnel"
+  ],
+  "French Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "commandant": [
+   "military rank",
+   "rank"
+  ],
+  "junior officer": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military unit": [
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_23": {
+  "Guo Huaruo": [
+   "human",
+   "military personnel"
+  ],
+  "Lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "People's Liberation Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_24": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Chinese People's Liberation Army (PLA)": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Gao Jin": [
+   "human",
+   "military personnel"
+  ],
+  "PLA": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_25": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Hanseatic fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Johann Wittenborg": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "death": [
+   "military casualty classification"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_26": {
+  "Francisco Verdugo": [
+   "human",
+   "military personnel"
+  ],
+  "Maestre de Campo General": [
+   "military rank",
+   "rank"
+  ],
+  "Maestre de campo": [
+   "military rank",
+   "rank"
+  ],
+  "Spanish Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Spanish Netherlands": [
+   "country"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_27": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Chinese People's Liberation Army Ground Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Ground Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Killed in Action": [
+   "military casualty classification"
+  ],
+  "Nan Yuan": [],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Wang Jiaocheng": [
+   "human",
+   "military personnel"
+  ],
+  "Wang Jiaocheng)\ncountry(China)\nmilitary_casualty_classification(Wang Jiaocheng": [
+   "human",
+   "military personnel"
+  ],
+  "Yuan Shuai": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "terrorist": [
+   "human"
+  ]
+ },
+ "ont_5_military_test_28": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Hai Jun Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Imperial Japanese Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Takeo Kurita": [
+   "human",
+   "military personnel"
+  ],
+  "Vice Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "vice admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_29": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Commander": [
+   "command"
+  ],
+  "PLA Rocket Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Second Artillery Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Wei Fenghe": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "shang jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_30": {
+  "Karl Ernst Rahtgens": [
+   "human",
+   "military personnel"
+  ],
+  "Oberstleutnant": [
+   "military rank",
+   "rank"
+  ],
+  "Prussian Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Rahtgens": [
+   "human",
+   "military personnel"
+  ],
+  "oberstleutnant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_31": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Chinese People's Liberation Army Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Hai Jun Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhang Lianzhong": [
+   "human",
+   "military personnel"
+  ],
+  "Zhōngguó Rénmín Gómíng Jūn": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "submarine": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_32": {
+  "German Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Leutnant": [
+   "military rank",
+   "rank"
+  ],
+  "Leutnant Otto Paul Wilhelm Höhne": [
+   "human",
+   "military personnel"
+  ],
+  "Oberleutnant": [
+   "military rank",
+   "rank"
+  ],
+  "Otto Höhne": [
+   "human",
+   "military personnel"
+  ],
+  "Otto Paul Wilhelm Höhne": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_33": {
+  "Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "Aluf Eliezer Shkedy": [
+   "human",
+   "military personnel"
+  ],
+  "Eliezer Shkedi": [
+   "human",
+   "military personnel"
+  ],
+  "Eliezer Shkedy": [
+   "human",
+   "military personnel"
+  ],
+  "Israel Defense Forces": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Israeli Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_34": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Admiral Hipper": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "HMS Sheffield (C24)": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "HMSÂ SheffieldÂ (C24": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "HMSÂ SheffieldÂ (C24)": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "Oskar Kummetz": [
+   "human",
+   "military personnel"
+  ],
+  "Z16 Friedrich Eckoldt": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "command": [
+   "command"
+  ],
+  "commodore": [
+   "military rank",
+   "rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military rank": [
+   "military rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "military_unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ],
+  "the Admiral Hipper": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "z16 Friedrich Eckoldt": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_35": {
+  "Admiral": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "Lysander": [
+   "human",
+   "military personnel"
+  ],
+  "Spartan Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Spartan fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "admiral": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_36": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Kaiserliche Marine": [
+   "armed organization",
+   "organization"
+  ],
+  "Kaiserliche Marine's Mediterranean squadron": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Mediterranean squadron": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Wilhelm Anton Souchon": [
+   "human",
+   "military personnel"
+  ],
+  "Wilhelm Souchon": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_37": {
+  "People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Tang Liang": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_38": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Alexios Doukas Philanthropenos": [
+   "human",
+   "military personnel"
+  ],
+  "Byzantine Empire": [
+   "country"
+  ],
+  "Byzantine Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Byzantine military casualty classification": [],
+  "Byzantine military unit": [
+   "military unit"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "human": [
+   "human"
+  ],
+  "megas doux": [
+   "military rank",
+   "rank"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "protostrator": [
+   "military rank",
+   "rank"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_39": {
+  "Marshal": [
+   "military rank",
+   "rank"
+  ],
+  "Marshal of the People's Republic of China": [
+   "military rank",
+   "rank"
+  ],
+  "Nie Rongzhen": [
+   "human",
+   "military personnel"
+  ],
+  "PLA": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "Yu Huang": [],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_40": {
+  "Li Jukui": [
+   "human",
+   "military personnel"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "person": [
+   "human"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_41": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Hai Jun": [
+   "military unit",
+   "organization",
+   "armed organization"
+  ],
+  "Hai Jun Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Liu Xiaojiang": [
+   "human",
+   "military personnel"
+  ],
+  "PLAN": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "People's Liberation Army Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "People's Liberation Army Navy (PLAN)": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "command": [],
+  "country": [
+   "country"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "next_higher_rank(Hai Jun Shang Jiang,Shang Jiang": [],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_42": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Chilean Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Jorge Montt": [
+   "human"
+  ],
+  "Jorge Montt Álvarez": [
+   "human"
+  ],
+  "Jorge Montt Ãlvarez": [
+   "human"
+  ],
+  "Vice Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "vice admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_43": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Chinese People's Liberation Army (PLA)": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "PLA": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Wu Changde": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_44": {
+  "Lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhang Guohua": [
+   "human",
+   "military personnel"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_45": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Andrei Avgustovich Ebergard": [
+   "human",
+   "military personnel"
+  ],
+  "Andrei Eberhardt": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Russian Empire": [
+   "country"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "country": [],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_46": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Combined Fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "IJN": [
+   "armed organization",
+   "organization"
+  ],
+  "Imperial Japanese Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Isoroku Yamamoto": [
+   "human",
+   "military personnel"
+  ],
+  "Marshal Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Yamamoto Isoroku": [
+   "human",
+   "military personnel"
+  ],
+  "death": [],
+  "designated_as_terrorist_by(country,terrorist": [],
+  "designed_by(aircraft_carrier,organization": [],
+  "marshal_admiral": [
+   "military rank",
+   "rank"
+  ],
+  "military_branch(Isoroku Yamamoto,Imperial Japanese Navy": []
+ },
+ "ont_5_military_test_47": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Commodore": [
+   "military rank",
+   "rank"
+  ],
+  "Fredrik von Otter": [
+   "human",
+   "military personnel"
+  ],
+  "Hai Jun Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Haijun": [
+   "armed organization",
+   "organization"
+  ],
+  "Kong Jian": [
+   "armed organization",
+   "organization"
+  ],
+  "Swedish Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Vice Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "vice admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_48": {
+  "Eastern Theater Command": [
+   "command",
+   "military unit",
+   "organization"
+  ],
+  "Liu Yuejun": [
+   "human",
+   "military personnel"
+  ],
+  "People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "shang jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_49": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Holy Alliance fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "John of Austria": [
+   "human",
+   "military personnel"
+  ],
+  "Philip II of Spain": [
+   "human"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_50": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "German Navy": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "German battleship Bismarck": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "German battleships": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Nazi Germany": [
+   "country"
+  ],
+  "Otto von Schrader": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_51": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Lieutenant General": [
+   "military rank",
+   "rank"
+  ],
+  "Nie Li": [
+   "human",
+   "military personnel"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Zhong Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_52": {
+  "Adam Johann von Krusenstern": [
+   "human"
+  ],
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "IvÃ¡n Fyodorovich KruzenshtÃ©rn": [
+   "human"
+  ],
+  "IvÃ¡n KruzenshtÃ©rn": [
+   "human"
+  ],
+  "Iván Fyodorovich Kruzenshtern": [
+   "human"
+  ],
+  "Kruzenshtern": [
+   "human"
+  ],
+  "Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "casualty": [],
+  "ship": []
+ },
+ "ont_5_military_test_53": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Duke of the Abruzzi,admiral": [
+   "human",
+   "military personnel"
+  ],
+  "Italian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Luigi Amedeo": [
+   "human"
+  ],
+  "Prince Luigi Amedeo": [
+   "human"
+  ],
+  "Prince Luigi Amedeo , Duke of the Abruzzi": [
+   "human",
+   "military personnel"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_54": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Xing Shizhong": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_55": {
+  "Capitaine": [
+   "military rank",
+   "rank"
+  ],
+  "Capitaine Jean Georges Fernand Matton": [
+   "human",
+   "military personnel"
+  ],
+  "French Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Jean Georges Fernand Matton": [
+   "human",
+   "military personnel"
+  ],
+  "Jean Matton": [
+   "human",
+   "military personnel"
+  ],
+  "Matton": [
+   "human",
+   "military personnel"
+  ],
+  "capitaine": [
+   "military rank",
+   "rank"
+  ],
+  "cavalry": [
+   "military unit"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_56": {
+  "Chinese People's Liberation Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "PLA": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "Wang Guanzhong": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "shang jiang": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_57": {
+  "Aharon Haliva": [
+   "human",
+   "military personnel"
+  ],
+  "Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "IDF": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "IDF's Operations Directorate": [
+   "organization",
+   "military unit"
+  ],
+  "Major general": [
+   "military rank",
+   "rank"
+  ],
+  "Major general (Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "Operations Directorate": [
+   "organization",
+   "military unit"
+  ],
+  "command": [
+   "command"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_58": {
+  "Austro-Hungarian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Austro-Hungarian Empire": [
+   "country"
+  ],
+  "Ferdinand Udvardy": [
+   "human",
+   "military personnel"
+  ],
+  "Stabsfeldwebel": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military of the Austro-Hungarian Empire": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_59": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Counter-Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Ruggero Settimo": [
+   "human",
+   "military personnel"
+  ],
+  "Sicilian Fleet": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "counter-admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_60": {
+  "Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "Central Command": [
+   "command",
+   "military unit",
+   "organization"
+  ],
+  "F-15 Eagle": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "McDonnell Douglas": [
+   "organization"
+  ],
+  "Nehemiah Tamari": [
+   "human",
+   "military personnel"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_61": {
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Martin Dempsey": [
+   "human",
+   "military personnel"
+  ],
+  "Martin Edward Dempsey": [
+   "human",
+   "military personnel"
+  ],
+  "Martin Edward Dempsey KBE": [
+   "human",
+   "military personnel"
+  ],
+  "Marty Dempsey": [
+   "human",
+   "military personnel"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_62": {
+  "Abhakara Kiartivongse": [
+   "human",
+   "military personnel"
+  ],
+  "Father of our Thai Navy": [],
+  "Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Thai Royal Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Thailand": [
+   "country"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "country": [
+   "country"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_63": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Prince Louis of Battenberg": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "midshipman": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_64": {
+  "Infantry": [],
+  "Infantry Regiment n. 14": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "Prussian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Robert Heinrich Wagner": [
+   "human",
+   "military personnel"
+  ],
+  "lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "the army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_65": {
+  "David Howell Petraeus": [
+   "human"
+  ],
+  "David Petraeus": [
+   "human"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "KIA": [
+   "military casualty classification"
+  ],
+  "Lieutenant General": [
+   "military rank",
+   "rank"
+  ],
+  "US Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_66": {
+  "British Indian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Muhammad Zia-ul-Haq": [
+   "human",
+   "military personnel"
+  ],
+  "Yahya Khan": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_67": {
+  "Adolphe Niel": [
+   "human",
+   "military personnel"
+  ],
+  "French Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Marshal": [
+   "military rank",
+   "rank"
+  ],
+  "Marshal of France": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_68": {
+  "Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Army Group B": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Army Group Center": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Army Group North": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Army Group South": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Bock": [
+   "human",
+   "military personnel"
+  ],
+  "Fedor von Bock": [
+   "human",
+   "military personnel"
+  ],
+  "Fedor von Bock, country": [],
+  "Fedor von Bock, military equipment": [],
+  "Fedor von Bock, military unit": [],
+  "Fedor von Bock, military vehicle": [],
+  "Germany": [
+   "country"
+  ],
+  "army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "tank": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_69": {
+  "Fatality": [
+   "military casualty classification"
+  ],
+  "George Gaynes": [
+   "human"
+  ],
+  "German Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "German military": [
+   "armed organization",
+   "organization"
+  ],
+  "Naval officer": [
+   "human",
+   "military personnel"
+  ],
+  "Naval personnel": [
+   "military personnel"
+  ],
+  "Naval unit": [
+   "military unit"
+  ],
+  "Royal Netherlands Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_70": {
+  "Heinrich Liebe": [
+   "human",
+   "military personnel"
+  ],
+  "High Command of the Kriegsmarine": [
+   "command",
+   "organization"
+  ],
+  "Kriegsmarine": [
+   "armed organization",
+   "organization"
+  ],
+  "U-boat": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "U-boat commander": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "commander": [
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_71": {
+  "Army Air Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "George Wallace": [
+   "human"
+  ],
+  "United States Army Air Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Wallace": [
+   "human"
+  ]
+ },
+ "ont_5_military_test_72": {
+  "Aviator": [
+   "human",
+   "military personnel"
+  ],
+  "Biplane": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Captain": [
+   "military rank",
+   "rank"
+  ],
+  "Eddie Rickenbacker": [
+   "human",
+   "military personnel"
+  ],
+  "Frank Luke": [
+   "human",
+   "military personnel"
+  ],
+  "Frank Luke Jr.": [
+   "human",
+   "military personnel"
+  ],
+  "French Aeroplane Company": [
+   "organization"
+  ],
+  "SPAD XIII": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "United States Army Air Service": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "single-seat": []
+ },
+ "ont_5_military_test_73": {
+  "AH-64 Apache": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "AK-47": [
+   "military equipment"
+  ],
+  "B-29 Superfortress": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "BMP-1": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Boeing": [
+   "organization"
+  ],
+  "Chrysler": [
+   "organization"
+  ],
+  "GAZ": [
+   "organization"
+  ],
+  "General Motors": [
+   "organization"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "John Paul Jones": [
+   "human",
+   "military personnel"
+  ],
+  "KB-112": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "M1 Abrams tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "M4 Sherman": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Messerschmitt Bf 109G-10": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Messerschmitt Bf 109G-14": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Messerschmitt Bf 109G-6": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "MiG-15": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Mikhail Kalashnikov": [
+   "human",
+   "military personnel"
+  ],
+  "Mikoyan-Gurevich": [
+   "organization"
+  ],
+  "N. V. Tsiolkovsky": [
+   "human"
+  ],
+  "Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Su-25": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Sukhoi": [
+   "organization"
+  ],
+  "T-34 tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-55 tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "air force": [
+   "armed organization",
+   "organization"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "navy": [
+   "armed organization",
+   "organization"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rear admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_74": {
+  "Commanding General": [
+   "military rank",
+   "rank"
+  ],
+  "Commanding General of the United States Army": [
+   "command"
+  ],
+  "Confederate States of America": [
+   "country",
+   "organization"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Military Casualty": [
+   "military casualty classification"
+  ],
+  "Ulysses S. Grant": [
+   "human",
+   "military personnel"
+  ],
+  "Union Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_75": {
+  "Direct Commission Officer": [
+   "military personnel"
+  ],
+  "Georgia": [
+   "country"
+  ],
+  "Mark Kirk": [
+   "human",
+   "military personnel"
+  ],
+  "NATO": [
+   "armed organization",
+   "organization"
+  ],
+  "The F/A-18 Hornet": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "The Fort Benning Infantry Museum in Columbus": [
+   "military museum"
+  ],
+  "The internationally recognized American Military Museum in Danville": [
+   "military museum"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Navy Reserve": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Virginia": [],
+  "Yugoslavia": [
+   "country"
+  ],
+  "command": [],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_76": {
+  "Karl-Friedrich Merten": [
+   "human",
+   "military personnel"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "William McKinley": [
+   "human"
+  ],
+  "prisoner of war": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_77": {
+  "Egyptian Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Hosni Mubarak": [
+   "human",
+   "military personnel"
+  ],
+  "Lockheed Martin": [
+   "organization"
+  ],
+  "Mubarak": [
+   "human",
+   "military personnel"
+  ],
+  "new fighter jet": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_78": {
+  "6th Infantry Division": [
+   "military unit",
+   "organization",
+   "armed organization"
+  ],
+  "Auleb": [
+   "human",
+   "military personnel"
+  ],
+  "Helge Auleb": [
+   "human",
+   "military personnel"
+  ],
+  "Infantry": [],
+  "VI Army Corps": [
+   "military unit",
+   "organization",
+   "armed organization"
+  ],
+  "Wehrmacht": [
+   "armed organization",
+   "organization"
+  ],
+  "commanded_by": [
+   "command"
+  ],
+  "generalleutnant": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_79": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Admiral Nikolai von Essen": [
+   "human",
+   "military personnel"
+  ],
+  "Alexander Kolchak": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_80": {
+  "Eugen Meindl": [
+   "human",
+   "military personnel"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "German Luftwaffe": [
+   "armed organization",
+   "organization"
+  ],
+  "German paratroop general": [
+   "human",
+   "military personnel"
+  ],
+  "Junkers Ju 87": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Luftwaffe": [
+   "armed organization",
+   "organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "paratroop general": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_81": {
+  "Abdul Haris Nasution": [
+   "human",
+   "military personnel"
+  ],
+  "Airlangga": [
+   "human"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Indonesia": [
+   "country"
+  ],
+  "Indonesian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Indonesian Military Museum": [
+   "military museum",
+   "organization"
+  ],
+  "Indonesian army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Indonesian military": [
+   "armed organization",
+   "organization"
+  ],
+  "Indonesian military command": [
+   "armed organization",
+   "command",
+   "military unit",
+   "organization"
+  ],
+  "Indonesian military equipment": [
+   "military equipment"
+  ],
+  "Indonesian military vehicle": [
+   "military vehicle",
+   "military equipment"
+  ],
+  "Shang Jiang": [
+   "military rank",
+   "rank"
+  ],
+  "T-34": [
+   "military vehicle",
+   "military equipment"
+  ],
+  "Uralvagonzavod": [
+   "organization"
+  ],
+  "armed organization": [
+   "armed organization"
+  ],
+  "army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "army general": [
+   "military rank",
+   "rank"
+  ],
+  "command": [
+   "command"
+  ],
+  "country": [
+   "country"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "human": [
+   "human"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military museum": [
+   "military museum"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_82": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Admiral James Vashon": [
+   "human",
+   "military personnel"
+  ],
+  "British": [
+   "country"
+  ],
+  "James Vashon": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "sailing ship": []
+ },
+ "ont_5_military_test_83": {
+  "Blues and Royals": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Duke of Sussex,Blues and Royals": [
+   "armed organization",
+   "human",
+   "military unit",
+   "organization"
+  ],
+  "Duke of Sussex,cornet": [
+   "human",
+   "military rank",
+   "rank"
+  ],
+  "Duke of Sussex,cornet (second lieutenant": [
+   "human",
+   "military rank",
+   "rank"
+  ],
+  "Lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "Prince Harry": [
+   "human",
+   "military personnel"
+  ],
+  "Prince Harry , Duke of Sussex": [
+   "human",
+   "military personnel"
+  ],
+  "cornet": [
+   "military rank",
+   "rank"
+  ],
+  "second lieutenant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_84": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "John Franklin": [
+   "human",
+   "military personnel"
+  ],
+  "KCH FLS FRGS": [],
+  "Rear-Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Rear-Admiral Sir John Franklin": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Sir John Franklin": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_85": {
+  "Confederate States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Confederate States of America": [
+   "country"
+  ],
+  "John B. Gordon": [
+   "human",
+   "military personnel"
+  ],
+  "John Brown Gordon": [
+   "human",
+   "military personnel"
+  ],
+  "Killed in action": [
+   "military casualty classification"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_86": {
+  "FregattenkapitÃ¤n": [
+   "military rank",
+   "rank"
+  ],
+  "FregattenkapitÃ¤n Heinrich Lehmann-Willenbrock": [
+   "human",
+   "military personnel"
+  ],
+  "Fregattenkapitän": [
+   "military rank",
+   "rank"
+  ],
+  "Fw 190": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "German": [
+   "country"
+  ],
+  "Heinrich Lehmann-Willenbrock": [
+   "human",
+   "military personnel"
+  ],
+  "Kriegsmarine": [
+   "armed organization",
+   "organization"
+  ],
+  "MG 42": [
+   "military equipment"
+  ],
+  "Messerschmitt Bf 109": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Panther tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Tiger tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "fighter aircraft": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "kapitÃ¤n": [
+   "military rank",
+   "rank"
+  ],
+  "machine gun": [
+   "military equipment"
+  ],
+  "tank": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_87": {
+  "Cavalry": [
+   "military unit"
+  ],
+  "German Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Helmuth von Pannwitz": [
+   "human",
+   "military personnel"
+  ],
+  "aircraft wing": [
+   "military unit"
+  ],
+  "cavalry": [
+   "military unit"
+  ],
+  "field marshal": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military unit": [
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_88": {
+  "Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "German Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "German army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Hermann Hoth": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "war criminal": [
+   "human"
+  ]
+ },
+ "ont_5_military_test_89": {
+  "Cavalry": [
+   "armed organization",
+   "military unit"
+  ],
+  "Pyotr Koshevoy": [
+   "human",
+   "military personnel"
+  ],
+  "cavalry units": [
+   "armed organization",
+   "military unit"
+  ],
+  "junior commander": [
+   "military rank",
+   "rank"
+  ],
+  "late 1930s": []
+ },
+ "ont_5_military_test_90": {
+  "Buzz Aldrin": [
+   "human",
+   "military personnel"
+  ],
+  "German military": [
+   "armed organization",
+   "organization"
+  ],
+  "The vehicle designed by Ferdinand Porsche": [
+   "military vehicle"
+  ],
+  "United States Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "jet fighter pilot": [
+   "military personnel"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_91": {
+  "Admiral": [
+   "military rank",
+   "rank"
+  ],
+  "Andrei Avgustovich Ebergard": [
+   "human",
+   "military personnel"
+  ],
+  "Andrei Eberhardt": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Russian Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_92": {
+  "Alexander Schimmelfennig": [
+   "human",
+   "military personnel"
+  ],
+  "Union Army": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "Union Army general": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_93": {
+  "August Kundtz": [
+   "human",
+   "military personnel"
+  ],
+  "August von Gierke": [
+   "human",
+   "military personnel"
+  ],
+  "General Motors": [
+   "organization"
+  ],
+  "Imperial Russian Army": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "M4 Sherman": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Pyotr Wrangel": [
+   "human",
+   "military personnel"
+  ],
+  "Russian officer": [
+   "human",
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_94": {
+  "Benjamin Cowburn": [
+   "human"
+  ],
+  "Benjamin Hodkinson Cowburn": [
+   "human"
+  ],
+  "British Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Captain": [
+   "military rank",
+   "rank"
+  ],
+  "Germany": [
+   "country"
+  ],
+  "Major": [
+   "military rank",
+   "rank"
+  ],
+  "Special Operations Executive": [
+   "armed organization",
+   "organization"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "Unknown": [],
+  "fighter": [
+   "human",
+   "military personnel"
+  ],
+  "non-fatal injury": [
+   "military casualty classification"
+  ],
+  "single-seat": []
+ },
+ "ont_5_military_test_95": {
+  "Alexandros Papagos": [
+   "human",
+   "military personnel"
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Greek Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Hellenic Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_96": {
+  "Aluf": [
+   "military rank",
+   "rank"
+  ],
+  "Henry Allingham": [
+   "human",
+   "military personnel"
+  ],
+  "P-40 Warhawk": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "RAF": [
+   "armed organization",
+   "organization"
+  ],
+  "RNAS": [
+   "armed organization",
+   "organization"
+  ],
+  "Royal Air Force": [
+   "armed organization",
+   "organization"
+  ],
+  "Royal Naval Air Service": [
+   "armed organization",
+   "organization"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_97": {
+  "Confederate States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "William Penn Adair": [
+   "human",
+   "military personnel"
+  ],
+  "brigadier general": [
+   "military rank",
+   "rank"
+  ],
+  "colonel": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_98": {
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "General Tadamichi Kuribayashi": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial Japanese Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Imperial Japanese Army General Staff": [
+   "armed organization",
+   "organization"
+  ],
+  "Kuribayashi Tadamichi": [
+   "human",
+   "military personnel"
+  ],
+  "Organization": [
+   "organization"
+  ],
+  "Tadamichi Kuribayashi": [
+   "human",
+   "military personnel"
+  ],
+  "armed organization": [
+   "armed organization"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "human": [
+   "human"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "wing_configuration": []
+ },
+ "ont_5_military_test_99": {
+  "Arthur da Costa e Silva": [
+   "human"
+  ],
+  "Artur da Costa e Silva": [
+   "human"
+  ],
+  "Brazilian Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Marshal": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_100": {
+  "B-52 Stratofortress": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "British armed forces": [
+   "armed organization",
+   "organization"
+  ],
+  "Evelyn Waugh": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Horse Guards": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Royal Marines": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Air Force": [
+   "armed organization",
+   "organization"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "officer": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_101": {
+  "Gough Whitlam": [
+   "human",
+   "military personnel"
+  ],
+  "Royal Australian Air Force": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "Whitlam": [
+   "human",
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank"
+  ]
+ },
+ "ont_5_military_test_102": {
+  "Lieutenant colonel": [
+   "military rank",
+   "rank"
+  ],
+  "Red Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Soviet Air Defence Forces": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Stanislav Petrov": [
+   "human"
+  ],
+  "Stanislav Yevgrafovich Petrov": [
+   "human"
+  ],
+  "lieutenant colonel": [
+   "military rank",
+   "rank"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_103": {
+  "Army of the Holy Roman Empire": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Generalfeldmarschall": [
+   "military rank",
+   "rank"
+  ],
+  "Generalfeldzeugmeister": [
+   "military rank",
+   "rank"
+  ],
+  "Hesse-Kassel": [
+   "country"
+  ],
+  "Maximilian": [
+   "human",
+   "military personnel"
+  ],
+  "Maximilian of Hesse-Kassel": [
+   "human",
+   "military personnel"
+  ],
+  "Prussian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Reichsgeneralfeldmarschall": [
+   "military rank",
+   "rank"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "army of the Holy Roman Empire": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_104": {
+  "Hans-Joachim Marseille": [
+   "human",
+   "military personnel"
+  ],
+  "Killed in Action": [
+   "military casualty classification"
+  ],
+  "Luftwaffe": [
+   "armed organization",
+   "organization"
+  ],
+  "Luftwaffe_Oberleutnant": [
+   "military rank",
+   "rank"
+  ],
+  "Marseille": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_105": {
+  "AEB astronaut": [
+   "human",
+   "military personnel"
+  ],
+  "Brazil": [
+   "country"
+  ],
+  "Brazilian Air Force": [
+   "armed organization",
+   "organization"
+  ],
+  "Brazilian Air Force pilot": [
+   "human",
+   "military personnel"
+  ],
+  "Marcos Cesar Pontes": [
+   "human",
+   "military personnel"
+  ],
+  "Marcos Pontes": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_106": {
+  "Cavalry": [
+   "armed organization",
+   "military personnel",
+   "military unit",
+   "organization"
+  ],
+  "Imperial Russian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Paul von Rennenkampf": [
+   "human",
+   "military personnel"
+  ],
+  "Rennenkampf": [
+   "human",
+   "military personnel"
+  ],
+  "cavalry": [
+   "armed organization",
+   "military personnel",
+   "military unit",
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_107": {
+  "Luostari Air Base": [
+   "military unit",
+   "organization"
+  ],
+  "Soviet Air Forces": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Yuri Gagarin": [
+   "human",
+   "military personnel"
+  ],
+  "pilot": []
+ },
+ "ont_5_military_test_108": {
+  "Bob Kerrey": [
+   "human",
+   "military personnel"
+  ],
+  "Navy SEAL": [
+   "military personnel"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "United States Navy SEAL": [
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_109": {
+  "Provisional Irish Republican Army": [
+   "armed organization",
+   "organization"
+  ],
+  "Raymond McCreesh": [
+   "human",
+   "military personnel"
+  ],
+  "South Armagh Brigade": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_110": {
+  "Sergey Gorshkov": [
+   "human",
+   "military personnel"
+  ],
+  "Soviet Navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "admiral": [
+   "military rank",
+   "rank"
+  ],
+  "navy": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "vice_admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_111": {
+  "Carl Gustaf Emil Mannerheim": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial Russian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "Mannerheim": [
+   "human",
+   "military personnel"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_112": {
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Imperial Japanese Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Japan": [
+   "country"
+  ],
+  "Japanese Imperial Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Tomobumi Yamashita": [
+   "human",
+   "military personnel"
+  ],
+  "Tomoyuki Yamashita": [
+   "human",
+   "military personnel"
+  ],
+  "Yamashita Tomoyuki": [
+   "human",
+   "military personnel"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_113": {
+  "Grace Brewster Murray Hopper": [
+   "human",
+   "military personnel"
+  ],
+  "Grace Hopper": [
+   "human",
+   "military personnel"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "computer": [],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rear admiral": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_114": {
+  "Imperial Russian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Konstantin Rokossovsky": [
+   "human",
+   "military personnel"
+  ],
+  "Rokossovsky": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_115": {
+  "Musharraf": [
+   "human",
+   "military personnel"
+  ],
+  "Pakistan Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Pervez Musharraf": [
+   "human",
+   "military personnel"
+  ],
+  "next_higher_rank(military rank,rank": [],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_116": {
+  "Continental Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Daniel Morgan": [
+   "human",
+   "military personnel"
+  ],
+  "Morgan": [
+   "human",
+   "military personnel"
+  ],
+  "\\*": [],
+  "\\*,\\*,\\*,\\*,\\*,\\*": [],
+  "army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "organization": []
+ },
+ "ont_5_military_test_117": {
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "Helmuth von Moltke the Elder": [
+   "human",
+   "military personnel"
+  ],
+  "Prussian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_118": {
+  "Hans Ludwig Raimund von Koester": [
+   "human",
+   "military personnel"
+  ],
+  "Hans von Koester": [
+   "human",
+   "military personnel"
+  ],
+  "Imperial German Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "Prussian Navy": [
+   "armed organization",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_119": {
+  "Austro-Hungarian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Franz Conrad von Hötzendorf": [
+   "human",
+   "military personnel"
+  ],
+  "Generalfeldmarschall": [
+   "military rank",
+   "rank"
+  ],
+  "The Austro-Hungarian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "exhausted force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_120": {
+  "Army": [
+   "armed organization",
+   "military unit"
+  ],
+  "Generaloberst": [
+   "military rank",
+   "rank"
+  ],
+  "Gerd von Rundstedt": [
+   "human",
+   "military personnel"
+  ],
+  "Hans-Joachim Rudel": [
+   "human",
+   "military personnel"
+  ],
+  "Prussian Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Prussian Army General": [
+   "military personnel"
+  ],
+  "Rundstedt": [
+   "human",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_121": {
+  "Jack Chevigny": [
+   "human"
+  ],
+  "John Edward Chevigny": [
+   "human",
+   "military personnel"
+  ],
+  "Marine Raiders": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_122": {
+  "Lieutenant Commander": [
+   "military rank",
+   "rank"
+  ],
+  "Lieutenant Commander MacKenzie": [
+   "human",
+   "military personnel"
+  ],
+  "MacKenzie": [
+   "human",
+   "military personnel"
+  ],
+  "Triton": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "United States": [
+   "country"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "command": [
+   "military unit",
+   "organization"
+  ],
+  "country": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military equipment": [],
+  "military personnel": [],
+  "military unit": [],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "organization": [],
+  "rank": [],
+  "submarine": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_123": {
+  "Great Britain": [
+   "country"
+  ],
+  "Royal Warwickshire Regiment": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Vigurs": [
+   "human",
+   "military personnel"
+  ],
+  "country": [
+   "country"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "private": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_124": {
+  "James B. Terrill": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_125": {
+  "Josef Miner": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_126": {
+  "Dan Bullock": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_127": {
+  "Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Neldon Theo French": [
+   "human",
+   "military personnel"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "private": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_128": {
+  "Grigori Nikitin": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_129": {
+  "Sergeant": [
+   "military rank",
+   "rank"
+  ],
+  "Squires": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "sergeant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_130": {
+  "11th Marines,military unit": [
+   "military unit"
+  ],
+  "1st Battalion": [
+   "military unit"
+  ],
+  "American military": [
+   "armed organization",
+   "organization"
+  ],
+  "Bill Genaust": [
+   "human",
+   "military personnel"
+  ],
+  "Col. Robert H. Pepper": [
+   "human",
+   "military personnel"
+  ],
+  "Genaust": [
+   "human",
+   "military personnel"
+  ],
+  "Jr,rank": [],
+  "active duty military personnel": [
+   "human",
+   "military personnel"
+  ],
+  "attack on Pearl Harbor": [],
+  "exhibit": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military action": [],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "human",
+   "military personnel"
+  ],
+  "remains not recovered": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_131": {
+  "Charles C. Tew": [
+   "human"
+  ],
+  "Charles Courtenay Tew": [
+   "human"
+  ],
+  "Charles Tew": [
+   "human"
+  ],
+  "Confederate States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "colonel": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_132": {
+  "203 Squadron RAF": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Robert A. Little": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_133": {
+  "Harry L. Corl": [
+   "human",
+   "military personnel"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "commanded_by(command,human": [
+   "command"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_134": {
+  "Donald B. Steinaker": [
+   "human",
+   "military personnel"
+  ],
+  "Private First Class": [
+   "military rank",
+   "rank"
+  ],
+  "Private First Class Steinaker": [
+   "human",
+   "military personnel"
+  ],
+  "Private first class": [
+   "military rank",
+   "rank"
+  ],
+  "US Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "weapon": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_135": {
+  "(": [],
+  "(Tibor Rubin": [
+   "human",
+   "military personnel"
+  ],
+  "Army Corporal": [
+   "military rank",
+   "rank"
+  ],
+  "Company A, 23rd Infantry Regiment": [
+   "military unit"
+  ],
+  "Medal_of_Honor": [],
+  "Tibor Rubin": [
+   "human",
+   "military personnel"
+  ],
+  "Tibor_Rubin": [
+   "human",
+   "military personnel"
+  ],
+  "United States": [
+   "country"
+  ],
+  "United States Army": [
+   "armed organization",
+   "organization",
+   "military unit"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "prisoner of war": [
+   "military casualty classification"
+  ],
+  "prisoner of war (POW)": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_136": {
+  "104th Guards Airborne Regiment": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "2nd Battalion": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "76th Guards Airborne Division": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Lieutenant-Colonel": [
+   "military rank",
+   "rank"
+  ],
+  "Mark Nikolayevich Yevtyukhin": [
+   "human",
+   "military personnel"
+  ],
+  "Mark Yevtyukhin": [
+   "human",
+   "military personnel"
+  ],
+  "Russian Federation": [
+   "country"
+  ],
+  "air force": [
+   "armed organization",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant_colonel": [
+   "military rank",
+   "rank"
+  ],
+  "major_general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_137": {
+  "Germany": [
+   "country"
+  ],
+  "Missouri State Guard": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Panzer I": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Richard Hanson Weightman": [
+   "human",
+   "military personnel"
+  ],
+  "Richard Weightman": [
+   "human",
+   "military personnel"
+  ],
+  "United States": [
+   "country"
+  ],
+  "armed organization": [
+   "armed organization"
+  ],
+  "command": [
+   "command"
+  ],
+  "country": [
+   "country"
+  ],
+  "district commander": [
+   "command"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "major_general": [
+   "military rank",
+   "rank"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_138": {
+  "Jost": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_139": {
+  "77th Division": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Air Service": [
+   "armed organization",
+   "organization"
+  ],
+  "Harold Ernest Goettler": [
+   "human",
+   "military personnel"
+  ],
+  "Lost Battalion": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "U.S. Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "U.S. Army Air Service": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "aircraft": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "captain": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_140": {
+  "Daniel P. Matthews": [
+   "human"
+  ],
+  "Daniel Paul Matthews": [
+   "human"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "killed in action)": [
+   "military casualty classification"
+  ],
+  "military_casualty_classification_(killed in action": [
+   "military casualty classification"
+  ],
+  "sergeant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_141": {
+  "Maksim": [
+   "human"
+  ],
+  "Mikhail Katukov": [
+   "human",
+   "military personnel"
+  ],
+  "Soviet": [],
+  "Soviet Union": [
+   "country"
+  ],
+  "country": [
+   "country"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "major-general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_142": {
+  "Tamon Yamaguchi": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_143": {
+  "John E. Kilmer": [
+   "human",
+   "military personnel"
+  ],
+  "John Edward Kilmer": [
+   "human",
+   "military personnel"
+  ],
+  "Korea": [
+   "country"
+  ],
+  "Marine Corps rifle company": [
+   "military unit",
+   "organization"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "country": [],
+  "hospital company": [
+   "military unit",
+   "organization"
+  ],
+  "hospitalman": [
+   "human",
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "rifle company": [
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_144": {
+  "Francis Ledwidge": [
+   "human",
+   "military personnel"
+  ],
+  "Ireland": [
+   "country"
+  ],
+  "country": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military unit": [],
+  "next_higher_rank": [],
+  "organization": [],
+  "rank": []
+ },
+ "ont_5_military_test_145": {
+  "Arthur E. Loeser": [
+   "human",
+   "military personnel"
+  ],
+  "Atlanta": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "Lieutenant Commander": [
+   "military rank",
+   "rank"
+  ],
+  "Lieutenant Commander Karl Loeser": [
+   "human",
+   "military personnel"
+  ],
+  "Lieutenant Commander Loeser": [
+   "human",
+   "military personnel"
+  ],
+  "Lieutenant commander": [
+   "military rank",
+   "rank"
+  ],
+  "Loeser": [
+   "human",
+   "military personnel"
+  ],
+  "Naval": [],
+  "USS Atlanta": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "USS Atlanta,Military unit": [
+   "military equipment",
+   "military unit",
+   "military vehicle"
+  ],
+  "command": [
+   "command"
+  ],
+  "heavily damaged": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant commander": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant_commander": [
+   "military rank",
+   "rank"
+  ],
+  "next_higher_rank": [],
+  "rank_of_commander": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_146": {
+  "Michael Murach": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_147": {
+  "Shamsulla Aliyev": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_148": {
+  "1st Infantry Division": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "2nd Infantry Division": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "General Ulysses S. Grant": [
+   "human",
+   "military personnel"
+  ],
+  "James B. McPherson": [
+   "human",
+   "military personnel"
+  ],
+  "Sherman tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-55 main battle tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "US Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "designed_by(organization,Soviet Union": [
+   "country"
+  ],
+  "designed_by(organization,United States": [
+   "country"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank"
+  ]
+ },
+ "ont_5_military_test_149": {
+  "American National Guard": [
+   "armed organization",
+   "organization"
+  ],
+  "Jack Llewellyn Knight": [
+   "human",
+   "military personnel"
+  ],
+  "National Guard": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Army": [
+   "armed organization",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "second lieutenant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_150": {
+  "Army of the Potomac": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Hidden": [
+   "human",
+   "military personnel"
+  ],
+  "Union volunteer cavalry": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "cavalry": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "killed in the Civil War": [
+   "military casualty classification"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "officer": [
+   "human",
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_151": {
+  "Confederate States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "John M. Jones": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_152": {
+  ",": [],
+  "Franz Walter Stahlecker": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_153": {
+  "China": [
+   "country"
+  ],
+  "Ren Fuchen": [
+   "human",
+   "military personnel"
+  ],
+  "White Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_154": {
+  "Samuel W. Preston": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_155": {
+  "Lesley J. McNair": [
+   "human",
+   "military personnel"
+  ],
+  "__person": [
+   "human"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_156": {
+  "M48 Patton tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Richard E. Kraus": [
+   "human",
+   "military personnel"
+  ],
+  "Richard Edward Kraus": [
+   "human",
+   "military personnel"
+  ],
+  "United States": [
+   "country"
+  ],
+  "United States Marine": [
+   "human",
+   "military personnel"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "command": [
+   "command"
+  ],
+  "corporal": [
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_157": {
+  "Donald Ralph Walters": [
+   "human",
+   "military personnel"
+  ],
+  "Donald Walters": [
+   "human",
+   "military personnel"
+  ],
+  "Quartermaster Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Army Quartermaster Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "none": [],
+  "organization": [
+   "organization"
+  ],
+  "sergeant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_158": {
+  "Robert A. Owens": [
+   "human"
+  ],
+  "Robert Allen Owens": [
+   "human"
+  ],
+  "Sergeant Robert A. Owens": [
+   "human",
+   "military personnel"
+  ],
+  "United States Marine": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ],
+  "sergeant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_159": {
+  "Stonewall Division": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Stonewall Jackson": [
+   "human",
+   "military personnel"
+  ],
+  "William E. Starke": [
+   "human",
+   "military personnel"
+  ],
+  "brevet brigadier general": [
+   "military rank",
+   "rank"
+  ],
+  "country": [
+   "country"
+  ],
+  "human": [
+   "human"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_160": {
+  "John G. Sproston": [
+   "human",
+   "military personnel"
+  ],
+  "Naval": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military rank",
+   "military personnel"
+  ],
+  "riverine unit": [
+   "military unit",
+   "armed organization"
+  ]
+ },
+ "ont_5_military_test_161": {
+  "Tarasov": [
+   "human",
+   "military personnel"
+  ],
+  "human": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military equipment": [],
+  "military unit": [],
+  "military vehicle": []
+ },
+ "ont_5_military_test_162": {
+  "Filipino guerrilla battalion": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Howard E. Woodford": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_163": {
+  "Rupert Lonsdale": [
+   "human",
+   "military personnel"
+  ],
+  "army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank"
+  ],
+  "prisoner of war": [
+   "human",
+   "military casualty classification",
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_164": {
+  "John Basilone": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_165": {
+  "Abdullayev": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_166": {
+  "CIA's Special Activities Division's Ground Branch": [
+   "organization"
+  ],
+  "Douglas A. Zembiec": [
+   "human",
+   "military personnel"
+  ],
+  "Douglas Alexander Zembiec": [
+   "human",
+   "military personnel"
+  ],
+  "Ground Branch": [
+   "organization"
+  ],
+  "Special Activities Division's Ground Branch": [
+   "organization"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Marine Corps officer": [
+   "human",
+   "military personnel",
+   "military rank",
+   "rank"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "officer": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_167": {
+  "John Raymond Rice": [
+   "human",
+   "military personnel"
+  ],
+  "Sergeant First Class": [
+   "military rank",
+   "rank"
+  ],
+  "United States": [
+   "country"
+  ],
+  "United States Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "armed organization": [
+   "organization"
+  ],
+  "command": [],
+  "country": [],
+  "human": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military casualty classification": [],
+  "military equipment": [],
+  "military personnel": [
+   "human"
+  ],
+  "military unit": [],
+  "organization": [],
+  "rank": [],
+  "squad": [
+   "military unit"
+  ],
+  "unspecified": [],
+  "wing_configuration": []
+ },
+ "ont_5_military_test_168": {
+  "F4F Wildcat fighter aircraft": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Grumman": [
+   "organization"
+  ],
+  "Oliver Mitchell": [
+   "human",
+   "military personnel"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_169": {
+  "Franklin R. Sousley": [
+   "human",
+   "military personnel"
+  ],
+  "Franklin Runyon Sousley": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_170": {
+  "Konstantin Pankov": [
+   "human",
+   "military personnel"
+  ],
+  "Volkhov Front": [
+   "military unit",
+   "armed organization",
+   "organization"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_171": {
+  "British": [
+   "country"
+  ],
+  "Denis Avey": [
+   "human",
+   "military personnel"
+  ],
+  "prisoner of war": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_172": {
+  "Clement H. Stevens": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_173": {
+  "Coldstream Guards": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Marquess of Hartington,killed in action": [
+   "human",
+   "military casualty classification",
+   "military personnel"
+  ],
+  "William Cavendish": [
+   "human",
+   "military personnel"
+  ],
+  "William Cavendish , Marquess of Hartington": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_174": {
+  "Mikhail Kirponos": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_175": {
+  "AH-64 Apache": [
+   "military equipment"
+  ],
+  "Corpsman": [
+   "military personnel"
+  ],
+  "F-117 Nighthawk": [
+   "military equipment"
+  ],
+  "F-16 Fighting Falcon": [
+   "military equipment"
+  ],
+  "F-22 Raptor": [
+   "military equipment"
+  ],
+  "Hospital corpsman": [
+   "military personnel"
+  ],
+  "Lockheed Martin Skunk Works": [
+   "organization"
+  ],
+  "M1 Abrams": [
+   "military equipment"
+  ],
+  "M113 armored personnel carrier": [
+   "military equipment"
+  ],
+  "Marine Corps rifle company": [
+   "military unit"
+  ],
+  "RQ-170 Sentinel": [
+   "military equipment"
+  ],
+  "Richard David De Wert": [
+   "human",
+   "military personnel"
+  ],
+  "Richard De Wert": [
+   "human",
+   "military personnel"
+  ],
+  "United States Air Force": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Army": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Army,United States Marine Corps": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "hospital corpsman": [
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_176": {
+  "Donald W. Wolf": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_177": {
+  "Samad Abdullayev": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ]
+ },
+ "ont_5_military_test_178": {
+  "British Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "Chieftain Main Battle Tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Corporal": [
+   "military rank",
+   "rank"
+  ],
+  "Jabron Hashmi": [
+   "human",
+   "military personnel"
+  ],
+  "Lance Corporal": [
+   "military rank",
+   "rank"
+  ],
+  "Lance Corporal Jabron Hashmi": [
+   "human",
+   "military personnel"
+  ],
+  "Lance corporal": [
+   "military rank",
+   "rank"
+  ],
+  "Sherman M4A3 (76) W HVSS tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Tupolev Tu-95": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "designed by": [],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military unit": [
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_179": {
+  "James M. Scribner": [
+   "human",
+   "military personnel"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "organization"
+  ],
+  "human": [
+   "human"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "military rank": [],
+  "rank": []
+ },
+ "ont_5_military_test_180": {
+  "Lockheed Martin C-130 Hercules": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Ronald Cartland": [
+   "human",
+   "military personnel"
+  ],
+  "killed in action": [
+   "military casualty classification"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_181": {
+  "Benelli Argo EL": [
+   "military equipment"
+  ],
+  "Benelli Argo EL rifle": [
+   "military equipment"
+  ],
+  "Benelli Armi SpA": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_182": {
+  "AAM-N-5": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "AAM-N-5 Meteor": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Bell Aircraft": [
+   "organization"
+  ],
+  "Massachusetts Institute of Technology": [
+   "organization"
+  ],
+  "United States Navy": [
+   "armed organization",
+   "military unit"
+  ]
+ },
+ "ont_5_military_test_183": {
+  "10.5 cm Feldhaubitze 98/09": [
+   "military equipment"
+  ],
+  "10.5 cm Feldhaubitze M. 12": [
+   "military equipment"
+  ],
+  "105 mm Obuzierul Krupp": [
+   "military equipment"
+  ],
+  "Krupp": [
+   "organization"
+  ],
+  "Obuzierul Krupp": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_184": {
+  "Remington Arms": [
+   "organization"
+  ],
+  "Remington Model 740": [
+   "military equipment"
+  ],
+  "Remington Woodsmaster Model 740": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_185": {
+  "Russia": [
+   "country"
+  ],
+  "T-90": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-90:M1": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T_90": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Uralvagonzavod": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_186": {
+  "Convair": [
+   "organization"
+  ],
+  "Convair Division": [
+   "organization"
+  ],
+  "General Dynamics Corporation": [
+   "organization"
+  ],
+  "Pye Wacket": [
+   "military equipment"
+  ],
+  "human": [
+   "human"
+  ],
+  "military_rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_187": {
+  "75mm L/31": [
+   "military equipment"
+  ],
+  "AB Landsverk": [
+   "organization"
+  ],
+  "Lago II-III-IV": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Lieutenant_Colonel": [
+   "military rank",
+   "rank"
+  ],
+  "Stridsvagn m / 42": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_188": {
+  "B83": [
+   "military equipment"
+  ],
+  "B83 nuclear bomb": [
+   "military equipment"
+  ],
+  "Lawrence Livermore National Laboratory": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_189": {
+  "M-71": [
+   "military equipment"
+  ],
+  "Soltam M-71": [
+   "military equipment"
+  ],
+  "Soltam Systems": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_190": {
+  "APC Factory of Heavy Industries Taxila": [
+   "organization"
+  ],
+  "APC Factory of Heavy Industries Taxila (HIT)": [
+   "organization"
+  ],
+  "APC Talha": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Heavy Industries Taxila": [
+   "organization"
+  ],
+  "Talha": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Talha APC": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Talha armoured personnel carrier": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Wing Commander": [
+   "military rank",
+   "rank"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_191": {
+  "B-24 Liberator": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Consolidated Aircraft": [
+   "organization"
+  ],
+  "Ilyushin Il-2 Shturmovik": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Krupp": [
+   "organization"
+  ],
+  "M102 105 mm howitzer": [
+   "military equipment"
+  ],
+  "M24 Chaffee": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "M41 Bulldog": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "North American Aviation": [
+   "organization"
+  ],
+  "P-51 Mustang": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Portée family": [],
+  "R.J. Mitchell,Supermarine Aviation Works Ltd": [
+   "human",
+   "organization"
+  ],
+  "Soviet Union": [
+   "country"
+  ],
+  "Supermarine Spitfire": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-34 tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-35": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Type 38 10 cm cannon": [
+   "military equipment"
+  ],
+  "United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_192": {
+  "Kharkiv Morozov Machine Building Design Bureau": [
+   "organization"
+  ],
+  "T-55AGM": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "country": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_193": {
+  "GAZ": [
+   "organization"
+  ],
+  "GAZ Tigr": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "VPK-3927 Volk": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Volk": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_194": {
+  "Al-Khalid tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "MBT-2000": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Norinco": [
+   "organization"
+  ],
+  "Royal Moroccan Army": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military personnel": [
+   "military personnel"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_195": {
+  "Agency for Defense Development": [
+   "organization"
+  ],
+  "Agency for Defense Development (ADD)": [
+   "organization"
+  ],
+  "Daewoo Precision Industries K1": [
+   "military equipment"
+  ],
+  "Daewoo Precision Industries K1/K1A": [
+   "military equipment"
+  ],
+  "Republic of Korea Armed Forces": [
+   "armed organization",
+   "organization"
+  ],
+  "firearm": [
+   "military equipment"
+  ],
+  "military_personnel": [],
+  "military_rank": [],
+  "military_unit": [],
+  "rank": []
+ },
+ "ont_5_military_test_196": {
+  "FGM-172 SRAW": [
+   "military equipment"
+  ],
+  "Israel Military Industries": [
+   "organization"
+  ],
+  "Lockheed Martin": [
+   "organization"
+  ],
+  "SRAW": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_197": {
+  "N/A": [],
+  "SWARM": [
+   "military equipment"
+  ],
+  "SWARM Remote Weapon System": [
+   "military equipment"
+  ],
+  "Thales Group": [
+   "organization"
+  ],
+  "UK": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_198": {
+  "Benelli Armi SpA": [
+   "organization"
+  ],
+  "Benelli M4": [
+   "military equipment"
+  ],
+  "Benelli M4 Super 90": [
+   "military equipment"
+  ],
+  "human": [
+   "human"
+  ]
+ },
+ "ont_5_military_test_199": {
+  "Land Systems OMC": [
+   "organization"
+  ],
+  "RG41": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_200": {
+  "BTR-T": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "BTR-T military vehicle": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Design Bureau of Transport Machine-Building": [
+   "organization"
+  ],
+  "Omsktransmash": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_201": {
+  "Lockheed Martin": [
+   "organization"
+  ],
+  "Lockheed_Martin": [
+   "organization"
+  ],
+  "MGM-166 LOSAT": [
+   "military equipment"
+  ],
+  "MGM_166_LOSAT": [
+   "military equipment"
+  ],
+  "Vought": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_202": {
+  "AH-64 Apache": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "American": [
+   "country"
+  ],
+  "B-2 Spirit": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Boeing": [
+   "organization"
+  ],
+  "F-15E Strike Eagle": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "F-16 Fighting Falcon": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "General Dynamics": [
+   "organization"
+  ],
+  "Izz ad-Din al-Qassam Brigades": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "M1 Abrams": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "M41 Bulldog": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Northrop Grumman": [
+   "organization"
+  ],
+  "Qassam rocket": [
+   "military equipment"
+  ],
+  "Soviet": [
+   "country"
+  ],
+  "T-72": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "United States Air Force": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ],
+  "United States Air Force (USAF": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_203": {
+  ". 450 Marlin": [
+   "military equipment"
+  ],
+  "450 Marlin": [
+   "military equipment"
+  ],
+  "450_Marlin": [
+   "military equipment"
+  ],
+  "Hornady": [
+   "organization"
+  ],
+  "Marlin": [
+   "organization"
+  ],
+  "Marlin_and_Hornady_engineers": [
+   "human"
+  ],
+  "joint team of Marlin and Hornady engineers headed by Hornady's Mitch Mittelstaedt": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_204": {
+  "50R6 Vityaz": [
+   "military equipment"
+  ],
+  "Almaz-Antey": [
+   "organization"
+  ],
+  "GSKB Almaz-Antey": [
+   "organization"
+  ],
+  "S-350E": [
+   "military equipment"
+  ],
+  "S-350E Vityaz 50R6": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_205": {
+  "BAE Systems": [
+   "organization"
+  ],
+  "BAE Systems Land Systems South Africa": [
+   "organization"
+  ],
+  "Land Systems OMC": [
+   "organization"
+  ],
+  "RG-32 Scout": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "armed organization": [
+   "armed organization"
+  ]
+ },
+ "ont_5_military_test_206": {
+  "Mizrak-U": [
+   "military equipment"
+  ],
+  "ROKETSAN": [
+   "organization"
+  ],
+  "UMTAS": [
+   "military equipment"
+  ],
+  "UMTAS or Mizrak-U": [
+   "military equipment"
+  ],
+  "Uzun Menzilli Tanksavar Sistemi": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_207": {
+  "20": [
+   "military equipment"
+  ],
+  "Marlin Firearms": [
+   "organization"
+  ],
+  "Marlin Firearms Co.": [
+   "organization"
+  ],
+  "Marlin Model 20": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_208": {
+  "Ordnance Factory Tiruchirappalli": [
+   "organization"
+  ],
+  "Vidhwansak": [
+   "military equipment"
+  ],
+  "armed organization": [
+   "armed organization",
+   "organization"
+  ],
+  "command": [
+   "military unit"
+  ],
+  "country": [
+   "country"
+  ],
+  "human": [
+   "human"
+  ],
+  "military casualty classification": [
+   "military casualty classification"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military rank": [
+   "military rank",
+   "rank"
+  ],
+  "military unit": [
+   "military unit"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ],
+  "rank": [
+   "rank"
+  ]
+ },
+ "ont_5_military_test_209": {
+  "Abhay": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Abhay ICV": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Abhay IFV": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Abhay Infantry Combat Vehicle": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "DRDO": [
+   "organization"
+  ],
+  "Defence Research and Development Organisation": [
+   "organization"
+  ],
+  "Defence Research and Development Organisation (DRDO)": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_210": {
+  "APC Factory of Heavy Industries Taxila": [
+   "organization"
+  ],
+  "APC Factory of Heavy Industries Taxila (HIT)": [
+   "organization"
+  ],
+  "APC Talha": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Heavy Industries Taxila": [
+   "organization"
+  ],
+  "Talha": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Talha APC": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Talha armoured personnel carrier": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_211": {
+  "ADI": [
+   "organization"
+  ],
+  "Australian Defence Industries (ADI)": [
+   "organization"
+  ],
+  "Bushmaster": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Bushmaster Protected Mobility Vehicle": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Thales Australia": [
+   "organization"
+  ],
+  "military equipment": [
+   "military equipment"
+  ],
+  "military vehicle": [
+   "military vehicle"
+  ],
+  "organization": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_212": {
+  "AB Landsverk": [
+   "organization"
+  ],
+  "Lago II-III-IV": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Stridsvagn m / 42": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_213": {
+  "Kharkiv Morozov Machine Building Design Bureau": [
+   "organization"
+  ],
+  "T-55AGM": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_214": {
+  "TAI Hürkuş": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Turkish Aerospace Industries": [
+   "organization"
+  ],
+  "Turkish Aerospace Industries (TAI)": [
+   "organization"
+  ],
+  "low-wing": []
+ },
+ "ont_5_military_test_215": {
+  "Bionix": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Bionix AFV": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "M113": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "ST Kinetics": [
+   "organization"
+  ]
+ },
+ "ont_5_military_test_216": {
+  "GAZ": [
+   "organization"
+  ],
+  "GAZ Tigr": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "GAZ_Tigr": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "VPK-3927 Volk": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Volk": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Volk_family": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_217": {
+  "3S90M": [
+   "military equipment"
+  ],
+  "Almaz-Antey": [
+   "organization"
+  ],
+  "Buk missile system": [
+   "military equipment"
+  ],
+  "Gollum": [
+   "military equipment"
+  ],
+  "MNIIRE Altair": [
+   "organization"
+  ],
+  "SA-N-7C": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_218": {
+  "BAE Systems": [
+   "organization"
+  ],
+  "BAE Systems Land Systems South Africa": [
+   "organization"
+  ],
+  "Land Systems OMC": [
+   "organization"
+  ],
+  "RG-32 Scout": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "South Africa": [
+   "country"
+  ],
+  "armed organization": [],
+  "command": [],
+  "country": [],
+  "human": [],
+  "military casualty classification": [],
+  "military rank": [],
+  "military unit": [],
+  "next_higher_rank": [],
+  "rank": []
+ },
+ "ont_5_military_test_219": {
+  "Land Systems OMC": [
+   "organization"
+  ],
+  "RG-35": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "RG_35": [
+   "military equipment",
+   "military vehicle"
+  ]
+ },
+ "ont_5_military_test_220": {
+  "Lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "Major general": [
+   "military rank",
+   "rank"
+  ],
+  "The": [],
+  "lieutenant": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "major": [
+   "military rank",
+   "rank"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "rank": [
+   "military rank",
+   "rank"
+  ],
+  "sergeant": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_221": {
+  "Colonel general": [
+   "military rank",
+   "rank"
+  ],
+  "France": [
+   "country"
+  ],
+  "Italy": [
+   "country"
+  ],
+  "Lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "brigadier general": [
+   "military rank",
+   "rank"
+  ],
+  "colonel": [
+   "military rank",
+   "rank"
+  ],
+  "command": [
+   "command"
+  ],
+  "corps general": [
+   "military rank",
+   "rank"
+  ],
+  "general": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant colonel general": [
+   "military rank",
+   "rank"
+  ],
+  "lieutenant general": [
+   "military rank",
+   "rank"
+  ],
+  "major general": [
+   "military rank",
+   "rank"
+  ],
+  "military equipment": [
+   "military equipment"
+  ]
+ },
+ "ont_5_military_test_222": {
+  "Australia": [
+   "country"
+  ],
+  "Canada": [
+   "country"
+  ],
+  "India": [
+   "country"
+  ],
+  "Jaish-e-Mohammed": [
+   "armed organization",
+   "organization"
+  ],
+  "Kazakhstan": [
+   "country"
+  ],
+  "Mujahideen organisation": [
+   "armed organization",
+   "organization"
+  ],
+  "Pakistan": [
+   "country"
+  ],
+  "Russia": [
+   "country"
+  ],
+  "Turkistan Islamic Party": [
+   "armed organization",
+   "organization"
+  ],
+  "United Arab Emirates": [
+   "country"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "United Nations": [
+   "organization"
+  ],
+  "United States": [
+   "country"
+  ],
+  "United_Arab_Emirates": [
+   "country"
+  ],
+  "United_Kingdom": [
+   "country"
+  ],
+  "United_Nations": [
+   "organization"
+  ],
+  "United_States": [
+   "country"
+  ],
+  "the United Arab Emirates": [
+   "country"
+  ],
+  "the United Kingdom": [
+   "country"
+  ],
+  "the United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_223": {
+  "China": [
+   "country"
+  ],
+  "European Union": [
+   "organization"
+  ],
+  "Kazakhstan": [
+   "country"
+  ],
+  "Kyrgyzstan": [
+   "country"
+  ],
+  "Pakistan": [
+   "country"
+  ],
+  "Turkistan Islamic Party": [
+   "armed organization",
+   "organization"
+  ],
+  "United Nations": [
+   "organization"
+  ],
+  "United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_224": {
+  "Real Irish Republican Army": [
+   "armed organization",
+   "organization"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_225": {
+  "Australia": [
+   "country"
+  ],
+  "Canada": [
+   "country"
+  ],
+  "Harkat-ul-Mujahideen": [
+   "armed organization",
+   "organization"
+  ],
+  "India": [
+   "country"
+  ],
+  "Jaish-e-Mohammed": [
+   "armed organization",
+   "organization"
+  ],
+  "Kazakhstan": [
+   "country"
+  ],
+  "Mujahideen": [
+   "armed organization",
+   "organization"
+  ],
+  "Mujahideen organisation": [
+   "armed organization",
+   "organization"
+  ],
+  "Pakistan": [
+   "country"
+  ],
+  "Russia": [
+   "country"
+  ],
+  "Turkistan Islamic Party": [
+   "armed organization",
+   "organization"
+  ],
+  "United Arab Emirates": [
+   "country"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "United Nations": [
+   "organization"
+  ],
+  "United States": [
+   "country"
+  ],
+  "command": [],
+  "human": [],
+  "military casualty classification": [],
+  "military equipment": [],
+  "military rank": [],
+  "military unit": [],
+  "military vehicle": [],
+  "organization": [],
+  "rank": [],
+  "the United Arab Emirates": [
+   "country"
+  ],
+  "the United Kingdom": [
+   "country"
+  ],
+  "the United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_226": {
+  "Australia": [
+   "country"
+  ],
+  "Canada": [
+   "country"
+  ],
+  "Hizbul Mujahideen": [
+   "armed organization",
+   "organization"
+  ],
+  "India": [
+   "country"
+  ],
+  "Jaish-e-Mohammed": [
+   "armed organization",
+   "organization"
+  ],
+  "Mujahideen organisation": [
+   "armed organization",
+   "organization"
+  ],
+  "Pakistan": [
+   "country"
+  ],
+  "Russia": [
+   "country"
+  ],
+  "Turkistan Islamic Party": [
+   "armed organization",
+   "organization"
+  ],
+  "United Arab Emirates": [
+   "country"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "United Nations": [
+   "organization"
+  ],
+  "United States": [
+   "country"
+  ],
+  "lieutenant_colonel": [
+   "military rank",
+   "rank"
+  ],
+  "major": [
+   "military rank",
+   "rank"
+  ],
+  "the United Arab Emirates": [
+   "country"
+  ],
+  "the United Kingdom": [
+   "country"
+  ],
+  "the United States": [
+   "country"
+  ]
+ },
+ "ont_5_military_test_227": {
+  "Jamaat Ansar al-Sunna": [
+   "armed organization",
+   "organization"
+  ],
+  "Turkistan Islamic Party": [
+   "armed organization",
+   "organization"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "group": [
+   "armed organization",
+   "organization"
+  ]
+ },
+ "ont_5_military_test_228": {
+  "Aero A. 200": [],
+  "Aero A.200": [],
+  "Monoplane": [],
+  "monoplane": [],
+  "rank": [
+   "military rank",
+   "rank"
+  ]
+ },
+ "ont_5_military_test_229": {
+  "AB-4": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Aichi AB-4": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Biplane": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "biplane": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "military personnel": [
+   "military personnel"
+  ]
+ },
+ "ont_5_military_test_230": {
+  "Biplane": [],
+  "France": [
+   "country"
+  ],
+  "Levasseur PL. 8": [],
+  "Levasseur PL.8": [],
+  "armed organization": [
+   "armed organization"
+  ],
+  "biplane": []
+ }
+}
