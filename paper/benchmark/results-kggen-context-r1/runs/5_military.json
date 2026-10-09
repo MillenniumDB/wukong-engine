@@ -1,0 +1,85 @@
+{
+  "ontology": "5_military",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:08:59+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Military Ontology\". Use only these relations, written exactly as given: military rank (human -> military rank); military branch (human -> military unit); military casualty classification (human -> military casualty classification); designed by (military equipment -> organization); designed by (military vehicle -> organization); commanded by (command -> human); next higher rank (military rank -> rank); designated as terrorist by (armed organization -> country); wing configuration (any -> value).",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 227,
+  "triples": 1182,
+  "distinct_predicates": 473,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 3,
+  "top_predicates": [
+    [
+      "was_a",
+      76
+    ],
+    [
+      "served_in",
+      44
+    ],
+    [
+      "is_a",
+      43
+    ],
+    [
+      "died_on",
+      39
+    ],
+    [
+      "was_born_on",
+      39
+    ],
+    [
+      "was_killed_in_action_during",
+      25
+    ],
+    [
+      "also_known_as",
+      23
+    ],
+    [
+      "was_born_in",
+      20
+    ],
+    [
+      "is_also_known_as",
+      20
+    ],
+    [
+      "designated",
+      18
+    ],
+    [
+      "served_during",
+      17
+    ],
+    [
+      "was_an",
+      13
+    ],
+    [
+      "was_killed_in_action_at",
+      12
+    ],
+    [
+      "designated_by",
+      12
+    ],
+    [
+      "served_as",
+      11
+    ]
+  ],
+  "usage": {
+    "calls": 460,
+    "input_tokens": 171417,
+    "cached_tokens": 0,
+    "output_tokens": 62497,
+    "reasoning_tokens": 10150
+  },
+  "seconds": 77
+}

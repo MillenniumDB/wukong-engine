@@ -1,0 +1,85 @@
+{
+  "ontology": "4_book",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:07:42+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Book Ontology\". Use only these relations, written exactly as given: illustrator (any -> human); followed by (any -> value); publication date (book -> value); author (book -> human); publisher (book -> publisher); characters (literary work -> fictional character); editor (trade magazine -> human); place of publication (any -> value); narrative location (literary work -> territory); genre (literary work -> literary genre); language of work or name (literary work -> language); depicts (any -> value).",
+  "sentences": 550,
+  "failed": 0,
+  "with_triples": 547,
+  "triples": 2638,
+  "distinct_predicates": 1026,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 1,
+  "top_predicates": [
+    [
+      "is_a",
+      190
+    ],
+    [
+      "was_published_in",
+      102
+    ],
+    [
+      "was_written_by",
+      82
+    ],
+    [
+      "is_also_known_as",
+      50
+    ],
+    [
+      "written_by",
+      39
+    ],
+    [
+      "is_an",
+      32
+    ],
+    [
+      "was_published_by",
+      32
+    ],
+    [
+      "was_first_published_in",
+      30
+    ],
+    [
+      "is_set_in",
+      30
+    ],
+    [
+      "is_located_in",
+      26
+    ],
+    [
+      "features",
+      24
+    ],
+    [
+      "was_released_in",
+      24
+    ],
+    [
+      "was_illustrated_by",
+      23
+    ],
+    [
+      "published_in",
+      21
+    ],
+    [
+      "concerns",
+      21
+    ]
+  ],
+  "usage": {
+    "calls": 1101,
+    "input_tokens": 401534,
+    "cached_tokens": 0,
+    "output_tokens": 137431,
+    "reasoning_tokens": 24819
+  },
+  "seconds": 174
+}

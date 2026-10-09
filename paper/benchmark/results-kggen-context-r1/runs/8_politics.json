@@ -1,0 +1,85 @@
+{
+  "ontology": "8_politics",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:12:36+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Politics Ontology\". Use only these relations, written exactly as given: head of state (country -> human); head of government (country -> human); position held (human -> president); Member of (human -> organization); political alignment (political party -> political alignment); member of political party (human -> political party); elected in (human -> Public election); candidacy in election (human -> Public election); political ideology (political party -> political ideology).",
+  "sentences": 214,
+  "failed": 0,
+  "with_triples": 214,
+  "triples": 1129,
+  "distinct_predicates": 516,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 2,
+  "top_predicates": [
+    [
+      "is_a",
+      75
+    ],
+    [
+      "was_born_on",
+      40
+    ],
+    [
+      "served_as",
+      35
+    ],
+    [
+      "was_a",
+      25
+    ],
+    [
+      "is_also_known_as",
+      20
+    ],
+    [
+      "includes",
+      20
+    ],
+    [
+      "died_on",
+      17
+    ],
+    [
+      "is_a_position_in",
+      15
+    ],
+    [
+      "advocates",
+      14
+    ],
+    [
+      "was",
+      12
+    ],
+    [
+      "was_president_of",
+      12
+    ],
+    [
+      "was_a_member_of",
+      12
+    ],
+    [
+      "has_elements_of",
+      12
+    ],
+    [
+      "served_until",
+      11
+    ],
+    [
+      "is_an",
+      11
+    ]
+  ],
+  "usage": {
+    "calls": 428,
+    "input_tokens": 158379,
+    "cached_tokens": 0,
+    "output_tokens": 57628,
+    "reasoning_tokens": 8932
+  },
+  "seconds": 74
+}

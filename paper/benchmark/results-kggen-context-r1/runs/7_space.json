@@ -1,0 +1,85 @@
+{
+  "ontology": "7_space",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:11:22+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Space Ontology\". Use only these relations, written exactly as given: site of astronomical discovery (asteroid -> observatory); minor planet group (asteroid -> astronomical object type); constellation (spiral galaxy -> constellation); astronaut mission (human -> spaceflight); spacecraft docking/undocking date (Spacecraft -> value); backup or reserve team or crew (spaceflight -> human); location of landing (Spacecraft -> geographic region).",
+  "sentences": 203,
+  "failed": 0,
+  "with_triples": 203,
+  "triples": 1010,
+  "distinct_predicates": 293,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_located_in",
+      89
+    ],
+    [
+      "is_a",
+      82
+    ],
+    [
+      "was_discovered_by",
+      62
+    ],
+    [
+      "was_discovered_on",
+      61
+    ],
+    [
+      "was_discovered_at",
+      47
+    ],
+    [
+      "flew_on",
+      30
+    ],
+    [
+      "is_located_in_the_constellation",
+      21
+    ],
+    [
+      "served_as",
+      17
+    ],
+    [
+      "was_aboard",
+      16
+    ],
+    [
+      "is_in",
+      15
+    ],
+    [
+      "discovered",
+      15
+    ],
+    [
+      "occurred_in",
+      14
+    ],
+    [
+      "is_an",
+      13
+    ],
+    [
+      "aboard",
+      11
+    ],
+    [
+      "flew_aboard",
+      11
+    ]
+  ],
+  "usage": {
+    "calls": 406,
+    "input_tokens": 148178,
+    "cached_tokens": 0,
+    "output_tokens": 47809,
+    "reasoning_tokens": 5510
+  },
+  "seconds": 65
+}
