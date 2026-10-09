@@ -1,0 +1,13 @@
+composer,"person(s) who wrote the music [for lyricist, use ""lyrics by"" (P676)] (subject: musical work; object: human)"
+part of,"object of which the subject is a part (if this subject is already part of object A which is a part of object B, then please only make the subject part of object A), inverse property of ""has part"" (P527, see also ""has parts of the class"" (P2670)) (subject: musical work; object: album)"
+lyrics by,author of song lyrics (subject: musical work; object: human)
+publication date,date or point in time when a work or product was first published or released (subject: musical work; object: a value)
+language of work or name,"language associated with this creative work (such as books, shows, songs, broadcasts or websites) or a name (for persons use ""native language"" (P103) and ""languages spoken, written or signed"" (P1412)) (subject: musical work; object: language)"
+voice type,"person's voice type. expected values: soprano, mezzo-soprano, contralto, countertenor, tenor, baritone, bass (and derivatives) (subject: human; object: voice)"
+instrumentation,combination of musical instruments employed in a composition or accompanying a (folk) dance (subject: musical work; object: a value)
+tracklist,audio tracks contained in this release (subject: album; object: musical work)
+genre,creative work's genre or an artist's field of work (P101). Use main subject (P921) to relate creative works to their topic (subject: musical work; object: music genre)
+performer,"actor, musician, band or other performer associated with this role or musical work (subject: musical work; object: a value)"
+producer,"person(s) who produced the film, musical work, theatrical production, etc. (for film, this does not include executive producers, associate producers, etc.) [for production company, use P272, video games - use P178] (subject: album; object: a value)"
+nominated for,"award nomination received by a person, organisation or creative work (inspired from ""award received"" (Property:P166)) (subject: album; object: award )"
+record label,brand and trademark associated with the marketing of subject music recordings and music videos (subject: album; object: a value)

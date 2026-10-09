@@ -1,0 +1,15 @@
+director,"director(s) of film, TV-series, stageplay, video game or similar (subject: film; object: human)"
+screenwriter,person(s) who wrote the script for subject item (subject: film; object: human)
+genre,creative work's genre or an artist's field of work (P101). Use main subject (P921) to relate creative works to their topic (subject: film; object: genre)
+based on,the work(s) or inputs used as the basis for subject item; for fictional analog use P1074 (subject: film; object: written work)
+cast member,"actor in the subject production [use ""character role"" (P453) and/or ""name of the character role"" (P4633) as qualifiers] [use ""voice actor"" (P725) for voice-only role] - [use ""recorded participant"" (P11108) for non-fiction productions] (subject: film; object: human)"
+award received,"award or recognition received by a person, organization or creative work (subject: film; object: award)"
+production company,"company that produced this film, audio or performing arts work (subject: film; object: film production company)"
+country of origin,"country of origin of this item (creative work, food, phrase, product, etc.) (subject: film; object: country)"
+publication date,date or point in time when a work or product was first published or released (subject: film; object: a value)
+characters,"characters which appear in this item (like plays, operas, operettas, books, comics, films, TV series, video games) (subject: film; object: film character)"
+narrative location,the narrative of the work is set in this location (subject: film; object: city)
+filming location,"actual place where this scene/film was shot. For the setting, use ""narrative location"" (P840) (subject: film; object: city)"
+main subject,primary topic of a work or act of communication (subject: film; object: a value)
+nominated for,"award nomination received by a person, organisation or creative work (inspired from ""award received"" (Property:P166)) (subject: film; object: award)"
+cost,amount of money spent on building or producing an object (subject: film; object: a value)

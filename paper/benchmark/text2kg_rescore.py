@@ -369,7 +369,7 @@ def main() -> int:
         action='append',
         default=[],
         metavar='NAME=DIR',
-        help='Also score the WUKONG output in DIR (a results directory holding wukong/) as NAME (repeatable)',
+        help='Also score the output in DIR (a results directory holding wukong/ or llm/) as NAME (repeatable)',
     )
     args = parser.parse_args()
 
@@ -380,7 +380,11 @@ def main() -> int:
         name, _, directory = spec.partition('=')
         if not name or not directory:
             parser.error(f'--system expects NAME=DIR, got {spec!r}')
-        all_systems[name] = (Path(directory).resolve() / 'wukong', 'ont_$$onto$$_wukong_responses.jsonl')
+        # A WUKONG results directory holds wukong/; a baseline run (prompting, EDC, KGGen) holds llm/
+        if (Path(directory) / 'wukong').is_dir():
+            all_systems[name] = (Path(directory).resolve() / 'wukong', 'ont_$$onto$$_wukong_responses.jsonl')
+        else:
+            all_systems[name] = (Path(directory).resolve() / 'llm', 'ont_$$onto$$_llm_responses.jsonl')
     names = [name for name, (responses, _) in all_systems.items() if responses.is_dir()]
 
     roots: dict[str, Path] = {}

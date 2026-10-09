@@ -25,6 +25,10 @@ results-*/*
 !results-*/eval/
 !results-*/runs/
 !results-*/scoring/
+# Baseline runs (prompting, EDC, KGGen) write their converted output to llm/ instead of wukong/,
+# and the type-conformance check keeps its judgements, summary and hand-check sample
+!results-*/llm/
+!results-typecheck/*
 
 # Written per run with absolute paths, so it is machine specific
 results/eval/eval_config.json
