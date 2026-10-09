@@ -147,6 +147,19 @@
                         "document": "extract",
                         "chunk": "skip"
                     }
+                },
+                "current_team": {
+                    "data_type": "string",
+                    "description": "The player's current NBA team or, if the player is no longer active in the NBA, the last NBA team the player played for.",
+                    "instructions": "Full name of the team: location and nickname, never the nickname alone.",
+                    "examples": [
+                        "Vancouver Grizzlies",
+                        "Kansas City Kings"
+                    ],
+                    "retrieval_mode": {
+                        "document": "extract",
+                        "chunk": "skip"
+                    }
                 }
             },
             "document_collections": {
@@ -292,8 +305,7 @@
                         "Comcast Spectacor"
                     ],
                     "required": true,
-                    "merge_strategy": "longest",
-                    "instructions": "The name the owner is commonly known by, as in news coverage, not the full legal name. For an organization, its usual name."
+                    "merge_strategy": "longest"
                 },
                 "birth_date": {
                     "data_type": "string",

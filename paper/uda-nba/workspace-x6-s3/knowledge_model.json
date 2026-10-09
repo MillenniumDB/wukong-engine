@@ -14,7 +14,6 @@
             },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
@@ -24,8 +23,7 @@
                         "Larry Bird",
                         "Dirk Nowitzki"
                     ],
-                    "required": true,
-                    "merge_strategy": "longest"
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
@@ -165,7 +163,6 @@
             },
             "primary_key": "team_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "team_name": {
                     "data_type": "string",
@@ -215,7 +212,6 @@
             },
             "primary_key": "city_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "city_name": {
                     "data_type": "string",
@@ -282,7 +278,6 @@
             },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
@@ -291,9 +286,7 @@
                         "Mikhail Prokhorov",
                         "Comcast Spectacor"
                     ],
-                    "required": true,
-                    "merge_strategy": "longest",
-                    "instructions": "The name the owner is commonly known by, as in news coverage, not the full legal name. For an organization, its usual name."
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
@@ -343,9 +336,6 @@
                     ]
                 }
             },
-            "primary_key": "tenure",
-            "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "tenure": {
                     "data_type": "string",
@@ -357,7 +347,8 @@
                     ],
                     "required": true
                 }
-            }
+            },
+            "deduplication": "none"
         },
         "LocatedIn": {
             "description": "An NBA team being based in a city.",
@@ -376,7 +367,7 @@
                     ]
                 }
             },
-            "deduplication": "endpoints"
+            "deduplication": "none"
         },
         "Owns": {
             "description": "A person or organization owning an NBA team.",
@@ -395,15 +386,14 @@
                     ]
                 }
             },
-            "deduplication": "endpoints",
-            "default_merge_strategy": "keep",
             "fields": {
                 "since_year": {
                     "data_type": "string",
                     "description": "Year in which the owner acquired the team.",
                     "regex": "^[0-9]{4}$"
                 }
-            }
+            },
+            "deduplication": "none"
         }
     }
 }

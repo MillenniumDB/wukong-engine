@@ -71,7 +71,38 @@ def check(name, km, bad):
                     continue
                 if norm(ex) in bad:
                     errors.append(f'{name}: {t}.{fname} example {ex!r} is {bad[norm(ex)]}')
+    # free text (descriptions, instructions, the domain statement) must not name a gold value
+    # either; a field may mention its own declared options
+    for where, text, allowed in schema_texts(km):
+        n = norm(text)
+        for k, why in bad.items():
+            if len(k) >= 4 and not k.isdigit() and k not in TEXT_ALLOWED and k not in allowed \
+                    and re.search(rf'(?<![a-z0-9]){re.escape(k)}(?![a-z0-9])', n):
+                errors.append(f'{name}: {where} mentions {k!r} ({why})')
     return errors
+
+
+# generic words that happen to equal a gold cell ("Canadian province" in City.state_name), and the
+# target vocabulary of Player.position, used on purpose (it also appears where its options are stripped)
+TEXT_ALLOWED = {'canadian', 'frontcourt', 'backcourt'}
+
+
+def schema_texts(km):
+    """(location, text, allowed values) for every description and instruction in the schema."""
+    def strings(v):
+        return list(v.values()) if isinstance(v, dict) else [v] if isinstance(v, str) else []
+    for k, v in km.get('extraction_config', {}).get('llm', {}).items():
+        yield f'extraction_config.llm.{k}', v, set()
+    for kind in ('entity_types', 'relationship_types'):
+        for t, d in km.get(kind, {}).items():
+            for key in ('description', 'instructions'):
+                for text in strings(d.get(key)):
+                    yield f'{t}.{key}', text, set()
+            for f, fd in d.get('fields', {}).items():
+                allowed = {norm(o) for o in fd.get('options', [])}
+                for key in ('description', 'instructions'):
+                    for text in strings(fd.get(key)):
+                        yield f'{t}.{f}.{key}', text, allowed
 
 
 base = json.loads((HERE / 'workspace/knowledge_model.json').read_text())
@@ -92,6 +123,10 @@ def add_examples(km, table):
 
 # v1: same fields that had examples in the original, same number of examples, clean values
 v1 = copy.deepcopy(base)
+# the original Team.team_name instruction used a subject team as its format example
+v1['entity_types']['Team']['fields']['team_name']['instructions'] = (
+    "Always use the full name, even if the text uses only the nickname "
+    "(write 'Vancouver Grizzlies', not 'Grizzlies').")
 set_examples(v1, {
     ('Player', 'name'): ['Larry Bird', 'Dirk Nowitzki'],
     ('Player', 'birth_date'): ['1978/2/14', '1961/9/5'],

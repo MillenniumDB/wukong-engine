@@ -1,0 +1,296 @@
+id: http://w3id.org/ontogpt/ontogpt_nba
+name: ontogpt_nba
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nba: http://w3id.org/ontogpt/ontogpt_nba/
+default_prefix: nba
+default_range: string
+imports:
+- linkml:types
+- core
+description: 'English Wikipedia articles about NBA basketball: players, NBA teams, the cities that host
+  them, and team owners.'
+in_language: en
+classes:
+  PlayerArticle:
+    attributes:
+      name:
+        range: string
+        description: Full name of the player.
+        annotations:
+          prompt: The name the player is commonly known by, without nicknames in quotes.
+        examples:
+        - value: Larry Bird
+        - value: Dirk Nowitzki
+        required: true
+        key: true
+      birth_date:
+        range: string
+        description: Birth date of the player.
+        annotations:
+          prompt: Use the format YYYY/M/D, without leading zeros.
+        examples:
+        - value: 1978/2/14
+        - value: 1961/9/5
+        pattern: ^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$
+      death_date:
+        range: string
+        description: Date of death of the player, if the player has died.
+        annotations:
+          prompt: Use the format YYYY/M/D, without leading zeros. Omit if the player is alive.
+        pattern: ^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$
+      nationality:
+        range: string
+        description: Nationality of the player, as a demonym.
+        examples:
+        - value: Lithuanian
+        - value: Brazilian
+        - value: Japanese
+      position:
+        range: PlayerPositionOptions
+        description: The player's primary position.
+        annotations:
+          prompt: Guards (point guard, shooting guard) are Backcourt. Forwards and centers (small forward,
+            power forward, center) are Frontcourt.
+      draft_pick:
+        range: string
+        description: Overall pick number at which the player was selected in the NBA draft.
+        annotations:
+          prompt: Only the overall pick number, as digits. Omit if the player went undrafted.
+        pattern: ^[0-9]{1,3}$
+      draft_year:
+        range: string
+        description: Year in which the player was selected in the NBA draft.
+        pattern: ^[0-9]{4}$
+      college:
+        range: string
+        description: The college the player attended, if any.
+        examples:
+        - value: Georgetown University
+        - value: Wake Forest
+      nba_championships:
+        range: string
+        description: Number of NBA championships the player has won.
+        annotations:
+          prompt: A count, as digits. Use 0 if the article makes clear the player won none.
+        pattern: ^[0-9]{1,2}$
+      mvp_awards:
+        range: string
+        description: Number of NBA Most Valuable Player awards the player has won.
+        annotations:
+          prompt: A count, as digits. Use 0 if none.
+        pattern: ^[0-9]{1,2}$
+      olympic_gold_medals:
+        range: string
+        description: Number of Olympic gold medals the player has won.
+        annotations:
+          prompt: A count, as digits. Use 0 if none.
+        pattern: ^[0-9]{1,2}$
+      fiba_world_cup:
+        range: string
+        description: Number of FIBA World Cup titles the player has won.
+        annotations:
+          prompt: A count, as digits. Use 0 if none.
+        pattern: ^[0-9]{1,2}$
+      plays_for:
+        multivalued: true
+        description: semicolon-separated list of teams. A player playing, or having played, for an NBA
+          team.
+        annotations:
+          prompt: Only assert it when the text says the player played for, signed with, or was traded
+            to the team.
+        range: PlaysForTeam
+        inlined: true
+        inlined_as_list: true
+    annotations:
+      prompt: This article IS about a player. Extract the single player the article is about.
+  Player:
+    is_a: NamedEntity
+    description: A basketball player who has played in the NBA.
+    annotations:
+      prompt: Extract every NBA player explicitly named in this passage.
+  TeamArticle:
+    attributes:
+      team_name:
+        range: string
+        description: 'Full name of the team: location and nickname.'
+        annotations:
+          prompt: Always use the full name, even if the text uses only the nickname (write 'Los Angeles
+            Lakers', not 'Lakers').
+        examples:
+        - value: Vancouver Grizzlies
+        - value: Kansas City Kings
+        - value: Buffalo Braves
+        required: true
+        key: true
+      founded_year:
+        range: string
+        description: Year in which the franchise was founded.
+        pattern: ^[0-9]{4}$
+      championships:
+        range: string
+        description: Number of NBA championships the franchise has won.
+        annotations:
+          prompt: A count, as digits.
+        pattern: ^[0-9]{1,2}$
+      players:
+        multivalued: true
+        description: semicolon-separated list of players. A player playing, or having played, for an NBA
+          team.
+        annotations:
+          prompt: Only assert it when the text says the player played for, signed with, or was traded
+            to the team.
+        range: PlaysForPlayer
+        inlined: true
+        inlined_as_list: true
+      located_in:
+        multivalued: true
+        description: semicolon-separated list of cities. An NBA team being based in a city.
+        annotations:
+          prompt: The city where the team plays its home games now or, for a defunct team, where it last
+            played.
+        range: City
+      owned_by:
+        multivalued: true
+        description: semicolon-separated list of owners. A person or organization owning an NBA team.
+        annotations:
+          prompt: Only assert it for the current owner, or controlling owner, of the team.
+        range: OwnsOwner
+        inlined: true
+        inlined_as_list: true
+    annotations:
+      prompt: This article IS about an NBA team. Extract the single team the article is about.
+  Team:
+    is_a: NamedEntity
+    description: An NBA franchise, current or defunct.
+    annotations:
+      prompt: Extract every NBA team explicitly named in this passage. Do not extract college, international
+        or minor-league teams.
+  CityArticle:
+    attributes:
+      city_name:
+        range: string
+        description: Name of the city, without the state.
+        examples:
+        - value: Kansas City
+        - value: Seattle
+        required: true
+        key: true
+      state_name:
+        range: string
+        description: The US state (or Canadian province) the city is in.
+        examples:
+        - value: Missouri
+        - value: Quebec
+      population:
+        range: string
+        description: Population of the city proper, from the most recent figure given.
+        annotations:
+          prompt: Digits only, no separators.
+        pattern: ^[0-9]+$
+      area:
+        range: string
+        description: Total area of the city in square miles.
+        annotations:
+          prompt: A number, digits and optional decimal point.
+        pattern: ^[0-9]+(\.[0-9]+)?$
+      gdp:
+        range: string
+        description: Gross domestic product of the city or its metropolitan area, as stated.
+      teams:
+        multivalued: true
+        description: semicolon-separated list of teams. An NBA team being based in a city.
+        annotations:
+          prompt: The city where the team plays its home games now or, for a defunct team, where it last
+            played.
+        range: Team
+    annotations:
+      prompt: This article IS about a city. Extract the single city the article is about.
+  City:
+    is_a: NamedEntity
+    description: A city that hosts an NBA team.
+    annotations:
+      prompt: Extract every city explicitly named in this passage as the home of an NBA team.
+  OwnerArticle:
+    attributes:
+      name:
+        range: string
+        description: Full name of the owner.
+        examples:
+        - value: Mikhail Prokhorov
+        - value: Comcast Spectacor
+        required: true
+        key: true
+      birth_date:
+        range: string
+        description: Birth date of the owner, if a person.
+        annotations:
+          prompt: Use the format YYYY/M/D, without leading zeros.
+        pattern: ^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$
+      nationality:
+        range: string
+        description: Nationality of the owner, as a demonym.
+        examples:
+        - value: Russian
+      owns:
+        multivalued: true
+        description: semicolon-separated list of teams. A person or organization owning an NBA team.
+        annotations:
+          prompt: Only assert it for the current owner, or controlling owner, of the team.
+        range: OwnsTeam
+        inlined: true
+        inlined_as_list: true
+    annotations:
+      prompt: This article IS about a team owner. Extract the single owner the article is about.
+  Owner:
+    is_a: NamedEntity
+    description: A person or organization that owns an NBA team.
+    annotations:
+      prompt: Extract every person or organization named in this passage as the owner of an NBA team.
+  PlaysForTeam:
+    attributes:
+      team:
+        range: Team
+      tenure:
+        range: PlaysForTenureOptions
+        description: Whether this is the player's latest NBA team.
+        annotations:
+          prompt: Use 'latest' for the player's current NBA team or, if the player is no longer active
+            in the NBA, the last NBA team the player played for. Use 'earlier' for any other team.
+        required: true
+  PlaysForPlayer:
+    attributes:
+      player:
+        range: Player
+      tenure:
+        range: PlaysForTenureOptions
+        description: Whether this is the player's latest NBA team.
+        annotations:
+          prompt: Use 'latest' for the player's current NBA team or, if the player is no longer active
+            in the NBA, the last NBA team the player played for. Use 'earlier' for any other team.
+        required: true
+  OwnsOwner:
+    attributes:
+      owner:
+        range: Owner
+      since_year:
+        range: string
+        description: Year in which the owner acquired the team.
+        pattern: ^[0-9]{4}$
+  OwnsTeam:
+    attributes:
+      team:
+        range: Team
+      since_year:
+        range: string
+        description: Year in which the owner acquired the team.
+        pattern: ^[0-9]{4}$
+enums:
+  PlayerPositionOptions:
+    permissible_values:
+      Backcourt: {}
+      Frontcourt: {}
+  PlaysForTenureOptions:
+    permissible_values:
+      latest: {}
+      earlier: {}

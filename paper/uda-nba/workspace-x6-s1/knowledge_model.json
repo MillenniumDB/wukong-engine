@@ -1,41 +1,23 @@
 {
     "extraction_config": {
         "llm": {
-            "domain": "English Wikipedia articles about NBA basketball: players, NBA teams, the cities that host them, and team owners.",
             "language": "en"
         }
     },
     "entity_types": {
         "Player": {
             "description": "A basketball player who has played in the NBA.",
-            "instructions": {
-                "document": "This article IS about a player. Extract the single player the article is about.",
-                "chunk": "Extract every NBA player explicitly named in this passage."
-            },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
                     "description": "Full name of the player.",
-                    "instructions": "The name the player is commonly known by, without nicknames in quotes.",
-                    "examples": [
-                        "Larry Bird",
-                        "Dirk Nowitzki"
-                    ],
-                    "required": true,
-                    "merge_strategy": "longest"
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
                     "description": "Birth date of the player.",
-                    "instructions": "Use the format YYYY/M/D, without leading zeros.",
-                    "examples": [
-                        "1978/2/14",
-                        "1961/9/5"
-                    ],
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -44,8 +26,6 @@
                 "death_date": {
                     "data_type": "string",
                     "description": "Date of death of the player, if the player has died.",
-                    "instructions": "Use the format YYYY/M/D, without leading zeros. Omit if the player is alive.",
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -54,11 +34,6 @@
                 "nationality": {
                     "data_type": "string",
                     "description": "Nationality of the player, as a demonym.",
-                    "examples": [
-                        "Lithuanian",
-                        "Brazilian",
-                        "Japanese"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -67,11 +42,6 @@
                 "position": {
                     "data_type": "string",
                     "description": "The player's primary position.",
-                    "instructions": "Guards (point guard, shooting guard) are Backcourt. Forwards and centers (small forward, power forward, center) are Frontcourt.",
-                    "options": [
-                        "Backcourt",
-                        "Frontcourt"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -80,8 +50,6 @@
                 "draft_pick": {
                     "data_type": "string",
                     "description": "Overall pick number at which the player was selected in the NBA draft.",
-                    "instructions": "Only the overall pick number, as digits. Omit if the player went undrafted.",
-                    "regex": "^[0-9]{1,3}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -90,7 +58,6 @@
                 "draft_year": {
                     "data_type": "string",
                     "description": "Year in which the player was selected in the NBA draft.",
-                    "regex": "^[0-9]{4}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -99,10 +66,6 @@
                 "college": {
                     "data_type": "string",
                     "description": "The college the player attended, if any.",
-                    "examples": [
-                        "Georgetown University",
-                        "Wake Forest"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -111,8 +74,6 @@
                 "nba_championships": {
                     "data_type": "string",
                     "description": "Number of NBA championships the player has won.",
-                    "instructions": "A count, as digits. Use 0 if the article makes clear the player won none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -121,8 +82,6 @@
                 "mvp_awards": {
                     "data_type": "string",
                     "description": "Number of NBA Most Valuable Player awards the player has won.",
-                    "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -131,8 +90,6 @@
                 "olympic_gold_medals": {
                     "data_type": "string",
                     "description": "Number of Olympic gold medals the player has won.",
-                    "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -141,8 +98,6 @@
                 "fiba_world_cup": {
                     "data_type": "string",
                     "description": "Number of FIBA World Cup titles the player has won.",
-                    "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -159,29 +114,17 @@
         },
         "Team": {
             "description": "An NBA franchise, current or defunct.",
-            "instructions": {
-                "document": "This article IS about an NBA team. Extract the single team the article is about.",
-                "chunk": "Extract every NBA team explicitly named in this passage. Do not extract college, international or minor-league teams."
-            },
             "primary_key": "team_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "team_name": {
                     "data_type": "string",
                     "description": "Full name of the team: location and nickname.",
-                    "instructions": "Always use the full name, even if the text uses only the nickname (write 'Vancouver Grizzlies', not 'Grizzlies').",
-                    "examples": [
-                        "Vancouver Grizzlies",
-                        "Kansas City Kings",
-                        "Buffalo Braves"
-                    ],
                     "required": true
                 },
                 "founded_year": {
                     "data_type": "string",
                     "description": "Year in which the franchise was founded.",
-                    "regex": "^[0-9]{4}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -190,8 +133,6 @@
                 "championships": {
                     "data_type": "string",
                     "description": "Number of NBA championships the franchise has won.",
-                    "instructions": "A count, as digits.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -209,30 +150,17 @@
         },
         "City": {
             "description": "A city that hosts an NBA team.",
-            "instructions": {
-                "document": "This article IS about a city. Extract the single city the article is about.",
-                "chunk": "Extract every city explicitly named in this passage as the home of an NBA team."
-            },
             "primary_key": "city_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "city_name": {
                     "data_type": "string",
                     "description": "Name of the city, without the state.",
-                    "examples": [
-                        "Kansas City",
-                        "Seattle"
-                    ],
                     "required": true
                 },
                 "state_name": {
                     "data_type": "string",
                     "description": "The US state (or Canadian province) the city is in.",
-                    "examples": [
-                        "Missouri",
-                        "Quebec"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -241,8 +169,6 @@
                 "population": {
                     "data_type": "string",
                     "description": "Population of the city proper, from the most recent figure given.",
-                    "instructions": "Digits only, no separators.",
-                    "regex": "^[0-9]+$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -251,8 +177,6 @@
                 "area": {
                     "data_type": "string",
                     "description": "Total area of the city in square miles.",
-                    "instructions": "A number, digits and optional decimal point.",
-                    "regex": "^[0-9]+(\\.[0-9]+)?$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -276,30 +200,17 @@
         },
         "Owner": {
             "description": "A person or organization that owns an NBA team.",
-            "instructions": {
-                "document": "This article IS about a team owner. Extract the single owner the article is about.",
-                "chunk": "Extract every person or organization named in this passage as the owner of an NBA team."
-            },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
                     "description": "Full name of the owner.",
-                    "examples": [
-                        "Mikhail Prokhorov",
-                        "Comcast Spectacor"
-                    ],
-                    "required": true,
-                    "merge_strategy": "longest",
-                    "instructions": "The name the owner is commonly known by, as in news coverage, not the full legal name. For an organization, its usual name."
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
                     "description": "Birth date of the owner, if a person.",
-                    "instructions": "Use the format YYYY/M/D, without leading zeros.",
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -308,9 +219,6 @@
                 "nationality": {
                     "data_type": "string",
                     "description": "Nationality of the owner, as a demonym.",
-                    "examples": [
-                        "Russian"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -328,7 +236,6 @@
     "relationship_types": {
         "PlaysFor": {
             "description": "A player playing, or having played, for an NBA team.",
-            "instructions": "Only assert it when the text says the player played for, signed with, or was traded to the team.",
             "endpoints": {
                 "Player": {
                     "Team": [
@@ -343,25 +250,16 @@
                     ]
                 }
             },
-            "primary_key": "tenure",
-            "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "tenure": {
                     "data_type": "string",
-                    "description": "Whether this is the player's latest NBA team.",
-                    "instructions": "Use 'latest' for the player's current NBA team or, if the player is no longer active in the NBA, the last NBA team the player played for. Use 'earlier' for any other team.",
-                    "options": [
-                        "latest",
-                        "earlier"
-                    ],
-                    "required": true
+                    "description": "Whether this is the player's latest NBA team."
                 }
-            }
+            },
+            "deduplication": "none"
         },
         "LocatedIn": {
             "description": "An NBA team being based in a city.",
-            "instructions": "The city where the team plays its home games now or, for a defunct team, where it last played.",
             "endpoints": {
                 "Team": {
                     "City": [
@@ -376,11 +274,10 @@
                     ]
                 }
             },
-            "deduplication": "endpoints"
+            "deduplication": "none"
         },
         "Owns": {
             "description": "A person or organization owning an NBA team.",
-            "instructions": "Only assert it for the current owner, or controlling owner, of the team.",
             "endpoints": {
                 "Owner": {
                     "Team": [
@@ -395,15 +292,13 @@
                     ]
                 }
             },
-            "deduplication": "endpoints",
-            "default_merge_strategy": "keep",
             "fields": {
                 "since_year": {
                     "data_type": "string",
-                    "description": "Year in which the owner acquired the team.",
-                    "regex": "^[0-9]{4}$"
+                    "description": "Year in which the owner acquired the team."
                 }
-            }
+            },
+            "deduplication": "none"
         }
     }
 }

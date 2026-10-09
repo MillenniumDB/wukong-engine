@@ -204,7 +204,7 @@
                 "team_name": {
                     "data_type": "string",
                     "description": "Full name of the team: location and nickname.",
-                    "instructions": "Always use the full name, even if the text uses only the nickname (write 'Los Angeles Lakers', not 'Lakers').",
+                    "instructions": "Always use the full name, even if the text uses only the nickname (write 'Vancouver Grizzlies', not 'Grizzlies').",
                     "examples": [
                         "Vancouver Grizzlies",
                         "Kansas City Kings",

@@ -33,7 +33,7 @@ EMB_CACHE = LABELS / 'embeddings.npz'
 def labelings():
     """name -> (edges with 'label' set, nodes)"""
     out = {}
-    nodes, edges, _ = A.load_wukong('wukong-v1')
+    nodes, edges, _ = A.load_wukong(A.WUKONG_RUNS['Wukong-r1'])  # 3 types, the same in every run
     out['Wukong'] = (edges, nodes)
     nodes, edges, _ = A.load_lightrag()
     out['LightRAG-keywords'] = (edges, nodes)

@@ -1,0 +1,398 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\emergencystretch=3em
+\newcommand{\wk}{WUKONG}
+
+\title{UDA-Bench NBA experiments\\\large E1 graph structure, X6 coupling ablation, schema-based extractors}
+\author{}
+\date{October 9, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Goal}
+
+Three studies on the same corpus, with the same language model:
+\begin{itemize}
+  \item \textbf{E1, graph structure.} \wk{}, LightRAG and GraphRAG build a graph from the corpus. We
+    measure how the graphs can be navigated and queried, with statistics that can be read without
+    knowing the domain: size, node and relation vocabularies, edge direction and properties. Recall
+    against the gold tables is a control, to check that the graphs contain comparable information.
+  \item \textbf{X6, coupling ablation.} \wk{} with six schemas, from the schema core alone (types,
+    fields, endpoints) to the full extraction schema, adding one family of annotations at a time.
+  \item \textbf{Schema-based extractors.} Three tools that take a schema as input (Neo4j's
+    \code{neo4j-graphrag}, LlamaIndex's \code{SchemaLLMPathExtractor}, OntoGPT's SPIRES), given our
+    schema in their own formats, scored like the X6 variants.
+\end{itemize}
+
+\section{Common setup}
+
+\paragraph{Corpus and gold.} The NBA dataset of UDA-Bench: 216 English Wikipedia articles,
+141 about players, 30 about teams, 29 about cities and 16 about team owners. The gold tables
+(player, team, city, manager) have one row per article; the row ID is the document number.
+
+\paragraph{Model.} Every system uses \code{gpt-5.6-luna} with low reasoning effort, and
+\code{text-\allowbreak embedding-\allowbreak 3-small} where it embeds. Output tokens below include reasoning tokens.
+
+\paragraph{\wk.} Engine at commit \code{baeeb13}, chunks of 800 tokens with 120 overlap, document
+level reading the first 8000 tokens of each document, export to Neo4j CSV
+(\code{x6-config.toml}). The full schema (\code{workspace-x6-s4/}) has four entity types (Player,
+Team, City, Owner) with typed fields and three relationship types (PlaysFor, with a
+\code{tenure} field; LocatedIn; Owns, with a \code{since\_year} field). Each \wk{} configuration
+was run three times; tables give the mean and, where runs differ, the range.
+
+\paragraph{Schema hygiene.} The first version of the schema (\code{workspace/}) used example values
+taken from the corpus, including gold answers (two players' birth dates, two cities' states, a
+team's owner, and subject names), and one instruction used a subject team as its format example.
+We replaced every such value by one that is neither a gold cell nor the name of a subject entity,
+leaving everything else unchanged. \code{make\_schema\_variants.py} and
+\code{make\_coupling\_variants.py} reject any schema whose examples, descriptions or instructions
+contain a gold value or a subject's name. Two conventions of the gold tables are used on purpose as
+target-schema knowledge: the closed vocabulary \{Frontcourt, Backcourt\} for a player's position,
+and the date format \code{YYYY/M/D}.
+
+\paragraph{Matching against gold.} Each gold row is matched to graph nodes by the article's title
+and the gold name, after normalization (case, accents, punctuation), and by aliases: for people,
+the same surname with a compatible first name (prefix or common nickname); for teams, the nickname
+alone; for cities, \emph{City, State} and \emph{City of X}. Nodes of typed graphs (\wk{} and the
+schema-based extractors) must also have the right type (\code{e1\_analysis.py}).
+
+\section{E1: graph structure}
+
+\paragraph{Systems.}
+\begin{itemize}
+  \item \textbf{\wk}, full schema, three runs.
+  \item \textbf{LightRAG} 1.5.7, default extraction, chunks of 1200 tokens with 100 overlap,
+    16 concurrent LLM calls (\code{lightrag\_build.py}).
+  \item \textbf{GraphRAG} 3.2.0, standard indexing with its default entity types
+    (organization, person, geo, event), one gleaning, chunks of 1200 tokens with 100 overlap,
+    default prompts (\code{graphrag-config/}).
+\end{itemize}
+LightRAG and GraphRAG receive no schema.
+
+\paragraph{Build cost.} Table~\ref{tab:cost}. Runs were executed concurrently with other runs, so
+wall times are indicative.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+ & LLM calls & Input tokens & Output tokens & Wall time \\
+\midrule
+\wk{} & 4,443 & 6.5M & 1.1M & 18 min \\
+LightRAG & 6,341 & 17.3M & 7.8M & 92 min \\
+GraphRAG & 24,965 & 35.3M & 15.1M & 101 min \\
+\bottomrule
+\end{tabular}
+\caption{Cost of building each graph over the 216 documents. GraphRAG's calls are
+3,362 graph extractions, 16,511 description summaries and 5,092 community reports; it also used
+8.2M embedding tokens.}
+\label{tab:cost}
+\end{table}
+
+\paragraph{Graph.} For \wk{} we count domain nodes and edges; the provenance nodes and edges that
+link every object to its source chunk and document are left out. For LightRAG we read its
+GraphML graph; for GraphRAG its entity and relationship tables.
+
+\paragraph{Relation vocabulary, own labels.} The label of an edge is what the system stores:
+the relationship type in \wk, the set of keywords in LightRAG. GraphRAG stores no relation
+label, only a free-text description and a weight. For a labeling we report the number of
+distinct labels, the fraction used by a single edge, the number of most frequent labels needed
+to cover 50\% and 90\% of the edges, and the mean number of distinct labels per pair of node
+types (over pairs with at least 100 edges).
+
+\paragraph{Relation vocabulary, derived predicates.} To measure LightRAG and GraphRAG in the same
+way, and to give GraphRAG a label at all, an LLM (same model and effort as the builds) reads the
+description of every edge, together with the names of its two endpoints, and names the main
+relation as a short predicate in lower snake case, 1--3 words, present tense, without dates,
+numbers or names, and states which endpoint is its subject (\code{derive\_labels.py}; the prompt's
+examples come from an unrelated domain). Edges are labeled independently, 100 per call: 980 calls,
+5.5M input and 1.5M output tokens for 97,931 edges, all of which received a label.
+
+\paragraph{Synonym merging.} To discount surface variation, all labels are embedded
+(\code{text-\allowbreak embedding-\allowbreak 3-small}, 512 dimensions) and merged by leader
+clustering: in decreasing order of frequency, each label joins the most similar existing leader if
+the cosine similarity is at least $t$, and otherwise becomes a leader (\code{relation\_vocab.py}).
+We report $t = 0.85$. At $t = 0.80$ the largest cluster already merges opposite relations
+(\code{plays\_for} with \code{plays\_against}), so 0.85 is the most aggressive threshold that still
+merges only synonyms; lower thresholds are in \code{relation\_vocab.json}.
+
+\paragraph{Direction.} For a derived predicate, an edge is stored against its relation when the
+subject of the predicate is the edge's target. We also report the fraction of predicates with at
+least 10 edges where at least 10\% of the edges go each way. In \wk{} direction is fixed by the
+endpoint types of each relationship type. LightRAG stores an undirected graph.
+
+\paragraph{Properties.} Typed property values per node, and the fraction of nodes whose content is
+only free text (a description).
+
+\paragraph{Control: recall against gold.} A gold attribute value (non-empty, and non-zero for
+counts) is found in \wk{} if the typed field holds it (numbers within 1\%, city areas in either
+square miles or km$^2$, since the gold table mixes them). For LightRAG and GraphRAG it is found if
+it appears anywhere in the descriptions of the matched nodes or of their edges: dates in the usual
+written forms, counts only within 60 characters of a word naming what is counted, positions through
+\emph{forward/center} and \emph{guard}. This is an upper bound: the value is in the graph but not
+in a form a query can select. A gold relation (player's team, team's city, team's owners, owner's
+team) is found in \wk{} if an edge of the right type joins the matched nodes, and in LightRAG and
+GraphRAG if any edge joins them.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llrrr}
+\toprule
+ & & \wk & LightRAG & GraphRAG \\
+\midrule
+Size & Nodes & 2,129 & 34,162 & 37,917 \\
+ & Edges & 3,339 & 44,040 & 53,891 \\
+\midrule
+Node vocabulary & Node types & 4 & 14 & 99 \\
+ & Node types used once & 0 & 1 & 94 \\
+\midrule
+Relation vocabulary, & Labels & 3 & 25,151 & none \\
+own labels & Labels used once & 0\% & 79\% & -- \\
+ & Labels to cover 90\% of edges & 1 & 20,747 & -- \\
+\midrule
+Relation vocabulary, & Labels & 3 & 4,388 & 4,428 \\
+derived predicates & Labels used once & 0\% & 56\% & 52\% \\
+ & Labels to cover 50\% / 90\% of edges & 1 / 1 & 51 / 1,079 & 47 / 936 \\
+ & Labels per node-type pair (mean) & 1 & 310 & 736 \\
+\midrule
+Synonyms merged & Labels & 3 & 3,488 & 3,477 \\
+($\cos \ge 0.85$) & Labels to cover 90\% of edges & 1 & 738 & 633 \\
+\midrule
+Direction & Edges stored against their relation & 0\% & 48\%$^{a}$ & 16\% \\
+ & Frequent labels used in both directions & 0\% & 85\% & 56\% \\
+\midrule
+Properties & Typed property values per node & 1.5 & 0 & 0 \\
+ & Nodes described only by free text & 0\% & 100\% & 100\% \\
+\midrule
+Control: & Entities found & 213/216 & 214/216 & 214/216 \\
+recall vs.\ gold & Attribute values found$^{b}$ & 865/955 & 714/955 & 729/955 \\
+ & Relations found$^{c}$ & 169/220 & 195/220 & 192/220 \\
+\bottomrule
+\end{tabular}
+\caption{E1: structure of the three graphs. \wk{} values are means of three runs, which range
+2,114--2,137 nodes, 3,278--3,390 edges, 213--214 entities, 864--867 attribute values and 168--170
+relations. For \wk{} the derived and merged rows repeat its own labels. $^{a}$LightRAG's graph is
+undirected. $^{b}$For LightRAG and GraphRAG, a value counts if it appears in their text (upper
+bound). $^{c}$For LightRAG and GraphRAG, any edge between the two entities counts, whatever
+relation it describes; most of their extra relations are players' teams outside the NBA, which the
+\wk{} schema does not target.}
+\label{tab:e1}
+\end{table}
+
+\paragraph{Notes.}
+\begin{itemize}
+  \item The three graphs find the same entities and comparable numbers of facts. \wk{} finds more
+    attribute values as typed fields than the baselines hold anywhere in their text; the baselines
+    connect more player--team pairs, mostly with non-NBA clubs.
+  \item In the derived labelings, about 50 predicates cover half of the edges and about 1,000 are
+    needed for 90\%; more than half of all predicates label a single edge. Merging synonyms at
+    $t = 0.85$ reduces the 90\% figure to 738 and 633.
+  \item Example: in LightRAG, the 892 edges between a player and a team in the gold tables carry 676
+    distinct keyword labels; \emph{played for} labels 17 of them.
+\end{itemize}
+
+\section{X6: coupling ablation}
+
+\paragraph{Variants.} Every key of the full schema belongs to exactly one family; variant
+s$k$ keeps the core and the first $k$ families (\code{make\_coupling\_variants.py}, which checks that
+s4 equals the full schema):
+\begin{itemize}
+  \item \textbf{s0, core:} types and their descriptions, fields (data type, description), the primary
+    key of each entity type (the engine requires one), relationship endpoints, the corpus language.
+    No source is bound: every entity and relationship type is extracted from every chunk of every
+    collection, never at document level, and no relationship identity is declared.
+  \item \textbf{s1, +bindings:} which collection and context level each type and field is found at,
+    and the context levels of each endpoint.
+  \item \textbf{s2, +guidance:} the corpus domain statement, instructions and examples.
+  \item \textbf{s3, +validation:} options, regex, required fields.
+  \item \textbf{s4, +identity (full schema):} relationship deduplication policies and merge strategies.
+  \item \textbf{s5, +current\_team:} a revision of the schema made after seeing the s4 results, not an
+    annotation family. In s4 a player's current team is the \code{tenure} of PlaysFor, decided by
+    every chunk that mentions the player and a team; a chunk sees only part of a career, so players
+    get on average about two teams marked \emph{latest}. A player's article \emph{is} the player, so
+    s5 adds a Player field \code{current\_team}, read once at document level from the player's own
+    article and skipped in chunks. Everything else is as in s4.
+\end{itemize}
+
+\paragraph{Measures.} On the 216 subject entities: entities found, and entities split into several
+nodes. A gold attribute value is \emph{exact} if the typed field holds it in the gold's form, so a
+query can compare and filter it as it is, and \emph{lenient} if it holds it in any form
+(``December 30, 1984'' for 1984/12/30, ``third pick'' for 3, ``power forward'' for Frontcourt); a
+value is \emph{wrong} if the field is filled but not leniently equal. Relations are the 148 gold
+relations between gold entities, found when an edge of the right type joins the matched nodes. For
+the current team of the 90 players whose gold team is an NBA team we report how many are found, and
+the precision of what is marked as current: every team on a PlaysFor edge with tenure \emph{latest},
+or the value of \code{current\_team} in s5 (\code{x6\_analysis.py}).
+
+\begin{table}[h]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & s0 core & s1 & s2 & s3 & s4 full & s5 \\
+ & & +bindings & +guidance & +validation & +identity & +current\_team \\
+\midrule
+LLM calls & 4,011 & 4,352 & 4,442 & 4,444 & 4,443 & 4,447 \\
+Output tokens & 2.44M & 1.02M & 1.08M & 1.10M & 1.10M & 1.11M \\
+Wall time (min) & 30 & 17 & 19 & 18 & 18 & 18 \\
+Edges & 8,919 & 6,809 & 5,905 & 5,149 & 3,339 & 3,212 \\
+\midrule
+Entities found (of 216) & 205 & 208 & 213 & 214 & 213 & 214 \\
+Entities split & 62 & 47 & 9 & 8 & 8 & 8 \\
+Attribute values, exact (of 955) & 449 & 467 & 861 & 870 & 865 & 871 \\
+Attribute values, lenient & 763 & 801 & 864 & 870 & 865 & 871 \\
+Wrong values & 47 & 24 & 22 & 19 & 21 & 21 \\
+Relations found (of 148) & 133 & 136 & 138 & 136 & 135 & 136 \\
+\midrule
+Current team, edges: found (of 90) & 18 & 12 & 77 & 78 & 78 & 78 \\
+\quad precision & 85\% & 75\% & 53\% & 46\% & 46\% & 58\% \\
+Current team, field: found (of 90) & -- & -- & -- & -- & -- & 77 \\
+\quad precision & -- & -- & -- & -- & -- & 90\% \\
+\bottomrule
+\end{tabular}
+\caption{X6: \wk{} with each schema variant, means of three runs. Over the three runs of a variant,
+the values vary by at most 10 split entities, 15 attribute values, 3 relations, 2 current teams
+found and 174 edges, and the current-team precision by at most 6 points, except 18 points in s0,
+which marks few teams; the ranges are in \code{runs/x6/summary.csv}. Wall time excludes one run per variant from s2 to s5, during which the
+computer slept.}
+\label{tab:x6}
+\end{table}
+
+\paragraph{Notes.}
+\begin{itemize}
+  \item Without guidance, most attribute values are found but not in a form a query can use: 763
+    lenient against 449 exact in s0. Guidance closes the gap (861 exact against 864 lenient in s2)
+    and reduces split entities from 47 to 9.
+  \item Bindings halve the output tokens (2.44M to 1.02M), shorten the build from 30 to 17 minutes and
+    halve the wrong values.
+  \item Identity removes repeated edges (5,149 to 3,339) without changing the scores.
+  \item The current team marked on edges has low precision once guidance asks for it (46--53\%).
+    Reading it as a document-level field of the player keeps the same recall and raises precision
+    to 90\%.
+\end{itemize}
+
+\section{Schema-based extractors}
+
+\paragraph{Translation rule.} Each tool receives our schema in its own format: every key of the full
+schema goes into the tool's matching slot if it has one, even if the tool then ignores it, and never
+into a different slot. Table~\ref{tab:slots} summarizes the mapping; each tool's \code{mapping.md}
+lists every key. Each tool keeps its default chunking and pipeline; a small wrapper around its LLM
+client sets the model and reasoning effort and records token usage. All three completed every
+document without a failed call (\code{baselines/}).
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Schema element & Neo4j & LlamaIndex & OntoGPT \\
+\midrule
+Types, endpoints & types, patterns & names, triples & classes, slots \\
+Type descriptions & yes & no slot & yes$^{*}$ \\
+Field descriptions & yes & flat list over types & yes \\
+Options & no slot & no slot & enum \\
+Regex & no slot & no slot & pattern$^{\dagger}$ \\
+Instructions & no slot & no slot & prompt annotation$^{*}$ \\
+Examples & no slot & no slot & examples$^{*}$ \\
+Primary key, required & KEY, EXISTENCE & entity name & key, required \\
+Bindings & no slot & no slot & a root class per article type \\
+Identity & exact name per type & exact name & identical id \\
+Domain statement & no slot & no slot & schema description$^{*}$ \\
+\midrule
+Unit of extraction & 4,000 characters & 1,024 tokens & whole document \\
+\bottomrule
+\end{tabular}
+\caption{Where each element of the schema goes. $^{*}$In the slot, but OntoGPT 1.2.0 does not put
+it in the prompt. $^{\dagger}$In the template but not enforced: enforced, a single non-matching
+value rejects the whole document, and 0 of 8 pilot documents survived.}
+\label{tab:slots}
+\end{table}
+
+\paragraph{Neo4j \code{neo4j-graphrag} 1.22.0.} The components of \code{SimpleKGPipeline} without the
+database writer: fixed-size splitter (4,000 characters, 200 overlap), LLM extractor with structured
+output, schema pruning, and its default entity resolution (per type, exact match on \code{name},
+first property values win, duplicate relationships merged), reimplemented in Python because it
+only runs inside Neo4j with APOC. The chunk embedder is skipped; it does not affect extraction.
+
+\paragraph{LlamaIndex \code{SchemaLLMPathExtractor} 0.14.25.} With this model and effort the stock
+extractor cannot fill properties: its open property dictionary is either rejected by strict
+structured output or forced to be empty. We use its documented \code{kg\_schema\_cls} parameter
+with the stock models, properties typed as optional strings. Defaults otherwise: sentence splitter
+(1,024 tokens, 20 overlap), at most 10 triplets per chunk, strict schema, nodes identified by name
+alone.
+
+\paragraph{OntoGPT SPIRES 1.2.0.} A LinkML template generated from the schema, one root class per
+article type, selected per collection. Whole document per call, default recursion into list items,
+no grounding annotators. OntoGPT splits lists on semicolons; following its own templates, the
+description of each list slot starts with ``semicolon-separated list of''. Each list item is
+extracted in a separate call that sees only the item, so the tenure of nearly every PlaysFor edge
+is \emph{latest}.
+
+\begin{table}[h]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+ & \wk{} s0 core & \wk{} s5 & Neo4j & LlamaIndex & OntoGPT \\
+\midrule
+LLM calls & 4,011 & 4,447 & 2,044 & 2,295 & 2,728 \\
+Output tokens & 2.44M & 1.11M & 1.37M & 1.60M & 0.39M \\
+Wall time (min) & 30 & 18 & 27 & 17 & 12 \\
+Edges & 8,919 & 3,212 & 4,784 & 3,590 & 2,544 \\
+\midrule
+Entities found (of 216) & 205 & 214 & 211 & 212 & 213 \\
+Entities split & 62 & 8 & 40 & 23 & 60 \\
+Attribute values, exact (of 955) & 449 & 871 & 589 & 242 & 618 \\
+Attribute values, lenient & 763 & 871 & 817 & 340 & 770 \\
+Wrong values & 47 & 21 & 21 & 11 & 56 \\
+Relations found (of 148) & 133 & 136 & 141 & 142 & 139 \\
+\midrule
+Current team found (of 90) & 18 & 77 & 45 & 1 & 82 \\
+\quad precision & 85\% & 90\% & 66\% & 100\% & 27\% \\
+\bottomrule
+\end{tabular}
+\caption{Schema-based extractors, one run each, next to \wk{} with the schema core only and with
+the revised full schema (means of three runs). For \wk{} s5 the current team is the document-level
+field; for the others, the teams on PlaysFor edges marked \emph{latest}.}
+\label{tab:baselines}
+\end{table}
+
+\paragraph{Notes.}
+\begin{itemize}
+  \item All three tools find the entities, and leniently most attribute values (Neo4j 817, OntoGPT 770),
+    but fewer in the gold's form (589, 618), and they split 23--60 entities into several nodes.
+    LlamaIndex fills few properties (340 lenient), and its name-only node identity merges entities
+    of different types: it has 722 Team nodes, against 85 for \wk{} s5.
+  \item OntoGPT finds 82 current teams because it marks 99\% of its PlaysFor edges as \emph{latest}.
+\end{itemize}
+
+\section{Limitations}
+
+LightRAG, GraphRAG and the three schema-based extractors were run once; \wk{} configurations three
+times. Derived predicates come from labeling each edge independently, without a shared vocabulary,
+which is the situation of a user who wants to query these graphs by relation. s5 was designed
+after seeing the s4 results. The gold tables contain errors (mixed units for city areas, legal names
+for owners), which affect all systems alike.
+
+\section*{Reproduction}
+
+From \code{paper/uda-nba/}: \code{run\_full.sh} builds the LightRAG and GraphRAG graphs,
+\code{run\_x6.sh} the \wk{} variants and \code{baselines/run\_baselines.sh} the schema-based
+extractors. Then \code{e1\_analysis.py}, \code{derive\_labels.py} (once per RAG system),
+\code{relation\_vocab.py} and \code{e1\_table.py} give Table~\ref{tab:e1}, and
+\code{x6\_analysis.py} gives Tables~\ref{tab:x6} and~\ref{tab:baselines}. Data, environments and
+runs are not versioned.
+
+\end{document}

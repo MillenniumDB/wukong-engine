@@ -126,13 +126,60 @@ def load_graphrag():
     return nodes, edges, {'community_reports': len(pd.read_parquet(o / 'community_reports.parquet'))}
 
 
-# Wukong-orig used the original schema, whose examples leak gold values (see
-# make_schema_variants.py); it is kept for reference only. The clean schemas are v1-v3.
-SYSTEMS = {'Wukong-orig': load_wukong, 'LightRAG': load_lightrag, 'GraphRAG': load_graphrag}
-# schema ablation, included once their runs have exported
-for _v in ('v1', 'v2', 'v3'):
-    if (RUNS / f'wukong-{_v}/exports/neo4j/relationships').is_dir():
-        SYSTEMS[f'Wukong-{_v}'] = lambda _v=_v: load_wukong(f'wukong-{_v}')
+def load_common(run):
+    """Graphs exported by the schema-based baselines (baselines/*_build.py): graph/nodes.jsonl
+    and graph/edges.jsonl, already typed with our entity and relationship type names."""
+    d = RUNS / run / 'graph'
+    nodes, edges = {}, []
+    for line in (d / 'nodes.jsonl').open():
+        r = json.loads(line)
+        nodes[r['id']] = dict(name=r['name'], type=r['type'], attrs=r.get('attrs', {}), text='')
+    for line in (d / 'edges.jsonl').open():
+        r = json.loads(line)
+        if r['src'] in nodes and r['dst'] in nodes:
+            edges.append(dict(src=r['src'], dst=r['dst'], label=r['label'], text='', props=r.get('props', {})))
+    return nodes, edges, {}
+
+
+def common_usage(run):
+    """Calls and tokens from usage.jsonl (one line per LLM call), wall time from meta.json."""
+    tot = Counter()
+    for line in (RUNS / run / 'usage.jsonl').open():
+        r = json.loads(line)
+        tot['calls'] += 1
+        tot['input'] += r.get('input', 0)
+        tot['output'] += r.get('output', 0) - r.get('reasoning', 0)  # as in Wukong: output without reasoning
+        tot['reasoning'] += r.get('reasoning', 0)
+    meta = json.loads((RUNS / run / 'meta.json').read_text())
+    wall = meta.get('wall_time_s') or meta.get('wall_seconds') or meta.get('wall_secs') or meta.get('wall_time_seconds')
+    tot['wall_min'] = round(wall / 60, 1) if wall else None
+    return dict(tot)
+
+
+# graphs with typed nodes and edges: matched by type, scored on typed fields
+TYPED = ('Wukong', 'Neo4j', 'LlamaIndex', 'OntoGPT')
+
+
+def typed(system):
+    return system.startswith(TYPED)
+
+
+BASELINES = {'Neo4j-GraphRAG': 'neo4j-graphrag-full', 'LlamaIndex': 'llamaindex-full', 'OntoGPT': 'ontogpt-full'}
+
+# Wukong runs, by name. E1 reports Wukong-r1..r3: the full schema (workspace-x6-s4) on the current
+# engine, three runs (run_x6.sh). The others are kept for reference: Wukong-orig used the original
+# schema, whose examples leaked gold values; Wukong-v1..v3 used the first clean schemas on engine
+# 99d591e, and their Team.team_name instruction still named a subject team (make_schema_variants.py).
+WUKONG_RUNS = {'Wukong-orig': 'wukong-full', 'Wukong-v1': 'wukong-v1', 'Wukong-v2': 'wukong-v2',
+               'Wukong-v3': 'wukong-v3', 'Wukong-r1': 'x6-s4-r1', 'Wukong-r2': 'x6-s4-r2', 'Wukong-r3': 'x6-s4-r3'}
+
+SYSTEMS = {'LightRAG': load_lightrag, 'GraphRAG': load_graphrag}
+for _name, _run in WUKONG_RUNS.items():
+    if (RUNS / _run / 'exports/neo4j/relationships').is_dir():
+        SYSTEMS[_name] = lambda _run=_run: load_wukong(_run)
+for _name, _run in BASELINES.items():
+    if (RUNS / _run / 'graph/edges.jsonl').exists():
+        SYSTEMS[_name] = lambda _run=_run: load_common(_run)
 
 # --------------------------------------------------------------------- 1. structure
 
@@ -255,7 +302,7 @@ class Matcher:
     def candidates(self, kind, i):
         # Wukong nodes are typed, so a Player is only matched against Player nodes;
         # RAG node types are unreliable, so any node may match (lenient to them)
-        return not self.system.startswith('Wukong') or self.nodes[i]['type'] == WUKONG_TYPE[kind]
+        return not typed(self.system) or self.nodes[i]['type'] == WUKONG_TYPE[kind]
 
     def match(self, e):
         exact = {i for a in e['names'] for i in self.by_norm.get(a, []) if self.candidates(e['kind'], i)}
@@ -319,6 +366,8 @@ def value_equal(gold, got, field=None):
     a, b = num(gold), num(got)
     if a is not None and b is not None:
         return any(abs(a - b * u) <= 0.01 * max(abs(a), 1) for u in UNITS.get(field, (1,)))
+    if a is not None:  # a number must be stored as a number: "3rd overall" is not 3
+        return False
     if re.fullmatch(r'\d{4}/\d{1,2}/\d{1,2}', str(gold)):
         return [int(x) for x in str(gold).split('/')] == [int(x) for x in re.findall(r'\d+', str(got))[:3]]
     a, b = norm(gold), norm(got)
@@ -378,7 +427,7 @@ def coverage(system, nodes, edges, gold):
         for k, v in e['attrs'].items():
             if empty(v):
                 continue
-            if system.startswith('Wukong'):
+            if typed(system):
                 field = {'championships': 'championships', 'own_year': None}.get(k, k)
                 got = [nodes[i]['attrs'].get(field) for i in ids] if field else []
                 if k == 'own_year':  # stored on the Owns edge
@@ -408,13 +457,13 @@ def coverage(system, nodes, edges, gold):
                         dst |= {i for k, ids in m.by_norm.items() if same_person(k, [norm(t)]) for i in ids}
                 hits = [x for i in src for x in adj[i]
                         if (x['src'] in dst or x['dst'] in dst) and (x['src'] in src or x['dst'] in src)]
-                if system.startswith('Wukong'):
+                if typed(system):
                     hits = [x for x in hits if x['label'] == wk_label[r]]
                     current = [x for x in hits if x['props'].get('tenure', 'latest') == 'latest']
                 else:
                     current = hits  # no way to tell current from former team
                 facts.append(dict(kind=e['kind'], id=e['id'], fact=r, gold=t, covered=bool(hits),
-                                  current=bool(current) if r == 'plays_for' and system.startswith('Wukong') else None,
+                                  current=bool(current) if r == 'plays_for' and typed(system) else None,
                                   nba_target=te is not None))
     return ent, pd.DataFrame(facts)
 
@@ -426,7 +475,7 @@ def surface_duplicates(nodes):
         g[norm(n['name'])].add(i)
     groups = {k: v for k, v in g.items() if len(v) > 1 and k}
     return {'groups': len(groups), 'nodes_in_groups': sum(len(v) for v in groups.values()),
-            'examples': sorted(([nodes[i]['name'] for i in v] for v in groups.values()), key=len)[-3:]}
+            'examples': sorted((sorted(nodes[i]['name'] for i in v) for v in groups.values()), key=lambda g: (len(g), g))[-3:]}
 
 
 # --------------------------------------------------------------------- main
@@ -444,7 +493,9 @@ def main():
         s = structure(nodes, edges)
         s.update(extra)
         if name.startswith('Wukong'):
-            s['usage'] = wukong_usage('wukong-full' if name == 'Wukong-orig' else f'wukong-{name[7:]}')
+            s['usage'] = wukong_usage(WUKONG_RUNS[name])
+        elif name in BASELINES:
+            s['usage'] = common_usage(BASELINES[name])
         s['surface_duplicates'] = surface_duplicates(nodes)
         ent, facts = coverage(name, nodes, edges, gold)
         ent.to_csv(args.out / f'{name}_entities.csv', index=False)
@@ -461,7 +512,7 @@ def main():
         pf = facts[facts.fact == 'plays_for']
         s['plays_for_split'] = {('nba' if k else 'non_nba'): f"{int(d.covered.sum())}/{len(d)}"
                                 for k, d in pf.groupby('nba_target')}
-        s['plays_for_current'] = int(pf.current.fillna(False).astype(bool).sum()) if name.startswith('Wukong') else 'n/a'
+        s['plays_for_current'] = int(pf.current.fillna(False).astype(bool).sum()) if typed(name) else 'n/a'
         report[name] = s
     (args.out / 'report.json').write_text(json.dumps(report, indent=1, default=str))
     print_report(report)

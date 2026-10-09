@@ -14,7 +14,6 @@
             },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
@@ -24,8 +23,7 @@
                         "Larry Bird",
                         "Dirk Nowitzki"
                     ],
-                    "required": true,
-                    "merge_strategy": "longest"
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
@@ -35,7 +33,6 @@
                         "1978/2/14",
                         "1961/9/5"
                     ],
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -45,7 +42,6 @@
                     "data_type": "string",
                     "description": "Date of death of the player, if the player has died.",
                     "instructions": "Use the format YYYY/M/D, without leading zeros. Omit if the player is alive.",
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -68,10 +64,6 @@
                     "data_type": "string",
                     "description": "The player's primary position.",
                     "instructions": "Guards (point guard, shooting guard) are Backcourt. Forwards and centers (small forward, power forward, center) are Frontcourt.",
-                    "options": [
-                        "Backcourt",
-                        "Frontcourt"
-                    ],
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -81,7 +73,6 @@
                     "data_type": "string",
                     "description": "Overall pick number at which the player was selected in the NBA draft.",
                     "instructions": "Only the overall pick number, as digits. Omit if the player went undrafted.",
-                    "regex": "^[0-9]{1,3}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -90,7 +81,6 @@
                 "draft_year": {
                     "data_type": "string",
                     "description": "Year in which the player was selected in the NBA draft.",
-                    "regex": "^[0-9]{4}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -112,7 +102,6 @@
                     "data_type": "string",
                     "description": "Number of NBA championships the player has won.",
                     "instructions": "A count, as digits. Use 0 if the article makes clear the player won none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -122,7 +111,6 @@
                     "data_type": "string",
                     "description": "Number of NBA Most Valuable Player awards the player has won.",
                     "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -132,7 +120,6 @@
                     "data_type": "string",
                     "description": "Number of Olympic gold medals the player has won.",
                     "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -142,7 +129,6 @@
                     "data_type": "string",
                     "description": "Number of FIBA World Cup titles the player has won.",
                     "instructions": "A count, as digits. Use 0 if none.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -165,7 +151,6 @@
             },
             "primary_key": "team_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "team_name": {
                     "data_type": "string",
@@ -181,7 +166,6 @@
                 "founded_year": {
                     "data_type": "string",
                     "description": "Year in which the franchise was founded.",
-                    "regex": "^[0-9]{4}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -191,7 +175,6 @@
                     "data_type": "string",
                     "description": "Number of NBA championships the franchise has won.",
                     "instructions": "A count, as digits.",
-                    "regex": "^[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -215,7 +198,6 @@
             },
             "primary_key": "city_name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "city_name": {
                     "data_type": "string",
@@ -242,7 +224,6 @@
                     "data_type": "string",
                     "description": "Population of the city proper, from the most recent figure given.",
                     "instructions": "Digits only, no separators.",
-                    "regex": "^[0-9]+$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -252,7 +233,6 @@
                     "data_type": "string",
                     "description": "Total area of the city in square miles.",
                     "instructions": "A number, digits and optional decimal point.",
-                    "regex": "^[0-9]+(\\.[0-9]+)?$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -282,7 +262,6 @@
             },
             "primary_key": "name",
             "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "name": {
                     "data_type": "string",
@@ -291,15 +270,12 @@
                         "Mikhail Prokhorov",
                         "Comcast Spectacor"
                     ],
-                    "required": true,
-                    "merge_strategy": "longest",
-                    "instructions": "The name the owner is commonly known by, as in news coverage, not the full legal name. For an organization, its usual name."
+                    "required": true
                 },
                 "birth_date": {
                     "data_type": "string",
                     "description": "Birth date of the owner, if a person.",
                     "instructions": "Use the format YYYY/M/D, without leading zeros.",
-                    "regex": "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$",
                     "retrieval_mode": {
                         "document": "extract",
                         "chunk": "skip"
@@ -343,21 +319,14 @@
                     ]
                 }
             },
-            "primary_key": "tenure",
-            "deduplication": "primary_key",
-            "default_merge_strategy": "keep",
             "fields": {
                 "tenure": {
                     "data_type": "string",
                     "description": "Whether this is the player's latest NBA team.",
-                    "instructions": "Use 'latest' for the player's current NBA team or, if the player is no longer active in the NBA, the last NBA team the player played for. Use 'earlier' for any other team.",
-                    "options": [
-                        "latest",
-                        "earlier"
-                    ],
-                    "required": true
+                    "instructions": "Use 'latest' for the player's current NBA team or, if the player is no longer active in the NBA, the last NBA team the player played for. Use 'earlier' for any other team."
                 }
-            }
+            },
+            "deduplication": "none"
         },
         "LocatedIn": {
             "description": "An NBA team being based in a city.",
@@ -376,7 +345,7 @@
                     ]
                 }
             },
-            "deduplication": "endpoints"
+            "deduplication": "none"
         },
         "Owns": {
             "description": "A person or organization owning an NBA team.",
@@ -395,15 +364,13 @@
                     ]
                 }
             },
-            "deduplication": "endpoints",
-            "default_merge_strategy": "keep",
             "fields": {
                 "since_year": {
                     "data_type": "string",
-                    "description": "Year in which the owner acquired the team.",
-                    "regex": "^[0-9]{4}$"
+                    "description": "Year in which the owner acquired the team."
                 }
-            }
+            },
+            "deduplication": "none"
         }
     }
 }
