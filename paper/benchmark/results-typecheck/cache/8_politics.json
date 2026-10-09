@@ -39,6 +39,20 @@
   "political party of Egypt": [
    "political party",
    "organization"
+  ],
+  "Egypt's current government": [
+   "government",
+   "organization"
+  ],
+  "authoritarian": [
+   "political alignment",
+   "political ideology"
+  ],
+  "semi-presidential republic": [
+   "government"
+  ],
+  "watchdogs": [
+   "organization"
   ]
  },
  "ont_8_politics_test_2": {
@@ -61,6 +75,14 @@
   ],
   "president": [
    "position",
+   "head of state",
+   "president"
+  ],
+  "January 2017": [],
+  "defeated Jammeh in": [],
+  "third president": [
+   "human",
+   "head of government",
    "head of state",
    "president"
   ]
@@ -95,6 +117,14 @@
    "human",
    "head of state",
    "president"
+  ],
+  "2016": [],
+  "A Quiet Revolution": [],
+  "Revolution from Above": [],
+  "second president": [
+   "human",
+   "head of state",
+   "president"
   ]
  },
  "ont_8_politics_test_4": {
@@ -118,6 +148,21 @@
   "president": [
    "position",
    "president"
+  ],
+  "1975": [],
+  "1982": [],
+  "incumbent president": [
+   "head of state",
+   "human",
+   "president"
+  ],
+  "presidency": [
+   "head of state",
+   "position"
+  ],
+  "prime minister": [
+   "head of government",
+   "position"
   ]
  },
  "ont_8_politics_test_5": {
@@ -134,6 +179,13 @@
   "Zimbabwe": [
    "country",
    "state"
+  ],
+  "19 November 2017": [],
+  "Vice-President": [
+   "position"
+  ],
+  "party leader": [
+   "position"
   ]
  },
  "ont_8_politics_test_6": {
@@ -153,7 +205,10 @@
   "head_of_state(Fiji": [
    "head of state",
    "position"
-  ]
+  ],
+  "2006": [],
+  "coup": [],
+  "power": []
  },
  "ont_8_politics_test_7": {
   "2007": [],
@@ -180,6 +235,15 @@
   "president": [
    "position",
    "president"
+  ],
+  "acting president": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
+  ],
+  "vice-president": [
+   "position"
   ]
  },
  "ont_8_politics_test_8": {
@@ -219,7 +283,8 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "20 January 2015": []
  },
  "ont_8_politics_test_9": {
   "Dmitry Medvedev": [
@@ -249,7 +314,9 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "2008": [],
+  "2012": []
  },
  "ont_8_politics_test_10": {
   "Ephraim Katzir": [
@@ -265,6 +332,13 @@
    "head of state",
    "position",
    "president"
+  ],
+  "1973": [],
+  "1978": [],
+  "fourth President of Israel": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_11": {
@@ -276,6 +350,20 @@
    "head of state",
    "position",
    "president"
+  ],
+  "18 August 2009": [],
+  "1998": [],
+  "2003": [],
+  "6 January 1924": [],
+  "South Korea": [
+   "country",
+   "state"
+  ],
+  "South Korean politician": [
+   "human"
+  ],
+  "South Korean statesman": [
+   "human"
   ]
  },
  "ont_8_politics_test_12": {
@@ -290,7 +378,16 @@
    "position",
    "president",
    "head of state"
-  ]
+  ],
+  "1993": [],
+  "1999": [],
+  "Guntis Rumpītis": [
+   "human"
+  ],
+  "Latvian politician": [
+   "human"
+  ],
+  "September 13, 1939": []
  },
  "ont_8_politics_test_13": {
   "2013 general election": [
@@ -326,6 +423,21 @@
   ],
   "presidential election in Italy)": [
    "Public election"
+  ],
+  "87 years old": [],
+  "April 2013": [],
+  "Napolitano": [
+   "head of state",
+   "human",
+   "president"
+  ],
+  "continuity of the country's institutions": [],
+  "parliamentary deadlock": [],
+  "presidential term": [],
+  "second term": [],
+  "seven-year presidential term": [],
+  "the country's institutions": [
+   "organization"
   ]
  },
  "ont_8_politics_test_14": {
@@ -339,6 +451,14 @@
    "head of state",
    "position",
    "president"
+  ],
+  "19 May 1949": [],
+  "Afghan politician": [
+   "human"
+  ],
+  "Afghanistan": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_15": {
@@ -363,7 +483,21 @@
   "president": [
    "position",
    "president"
-  ]
+  ],
+  "1957": [],
+  "Britain": [
+   "country",
+   "state"
+  ],
+  "Gold Coast": [
+   "country",
+   "state"
+  ],
+  "first Prime Minister of Ghana": [
+   "head of government",
+   "position"
+  ],
+  "independence": []
  },
  "ont_8_politics_test_16": {
   "Nauru": [
@@ -383,6 +517,16 @@
    "human"
   ],
   "Sprent Dabwido": [
+   "human"
+  ],
+  "16 September 1972": [],
+  "2011": [],
+  "2013": [],
+  "8 May 2019": [],
+  "Nauruan politician": [
+   "human"
+  ],
+  "weightlifter": [
    "human"
   ]
  },
@@ -413,7 +557,15 @@
   ],
   "political ideology": [
    "political ideology"
-  ]
+  ],
+  "16 August 2003": [],
+  "1971": [],
+  "1979": [],
+  "Uganda": [
+   "country",
+   "state"
+  ],
+  "c. 1925": []
  },
  "ont_8_politics_test_18": {
   "Burundi": [
@@ -451,6 +603,19 @@
    "president",
    "head of state",
    "head of government"
+  ],
+  "18 December 1964": [],
+  "8 June 2020": [],
+  "August 2005": [],
+  "Burundian politician": [
+   "human"
+  ],
+  "June 2020": [],
+  "ninth president of Burundi": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_19": {
@@ -478,6 +643,21 @@
   ],
   "Public election": [
    "Public election"
+  ],
+  "19 March 2019": [],
+  "24 April 1990": [],
+  "6 July 1940": [],
+  "Kazakhstan": [
+   "country",
+   "state"
+  ],
+  "Security Council of Kazakhstan": [
+   "organization"
+  ],
+  "first President of Kazakhstan": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_20": {
@@ -507,7 +687,18 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "1 April 2008": [],
+  "1998": [],
+  "2008": [],
+  "Botswana": [
+   "country",
+   "state"
+  ],
+  "Commander of the Botswana Defence Force": [
+   "position"
+  ],
+  "politics": []
  },
  "ont_8_politics_test_21": {
   "Abdullah Gül": [
@@ -553,7 +744,10 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "2008": [],
+  "2014": [],
+  "21 November 1948": []
  },
  "ont_8_politics_test_22": {
   "Alexander Van der Bellen": [
@@ -569,7 +763,8 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "18 January 1944": []
  },
  "ont_8_politics_test_23": {
   "Imata Jabro Kabua": [
@@ -596,6 +791,17 @@
   ],
   "organization": [
    "organization"
+  ],
+  "10 January 2000": [],
+  "14 January 1997": [],
+  "18 September 2019": [],
+  "20 May 1943": [],
+  "Marshallese": [],
+  "Marshallese politician": [
+   "human"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_24": {
@@ -628,7 +834,24 @@
   ],
   "political alignment": [
    "political alignment"
-  ]
+  ],
+  "1961": [],
+  "1961-1974": [],
+  "1974": [],
+  "1975": [],
+  "1975-1979": [],
+  "1979": [],
+  "1st President of Angola": [
+   "head of state",
+   "position",
+   "president"
+  ],
+  "Angolan War of Independence": [],
+  "Popular Movement for the Liberation of Angola": [
+   "organization",
+   "political party"
+  ],
+  "war for independence": []
  },
  "ont_8_politics_test_25": {
   "James Alix Michel": [
@@ -645,6 +868,13 @@
   "Seychelles": [
    "country",
    "state"
+  ],
+  "2004": [],
+  "2016": [],
+  "August 16, 1944": [],
+  "GCSK": [],
+  "Seychellois politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_26": {
@@ -663,6 +893,19 @@
   ],
   "Vice President of Nigeria": [
    "position"
+  ],
+  "2005": [],
+  "2007": [],
+  "2010": [],
+  "Bayelsa State": [
+   "state"
+  ],
+  "Nigeria": [
+   "country",
+   "state"
+  ],
+  "oil-rich Bayelsa State": [
+   "state"
   ]
  },
  "ont_8_politics_test_27": {
@@ -682,6 +925,36 @@
    "head of government",
    "head of state",
    "position",
+   "president"
+  ],
+  "1967": [],
+  "1998": [],
+  "27 January 2008": [],
+  "31 years": [],
+  "8 June 1921": [],
+  "Indonesia": [
+   "country",
+   "state"
+  ],
+  "Indonesian military leader": [
+   "human"
+  ],
+  "Indonesian politician": [
+   "human"
+  ],
+  "Indonesian presidency": [
+   "position"
+  ],
+  "Sukarno": [
+   "human"
+  ],
+  "politician": [
+   "human"
+  ],
+  "second president of Indonesia": [
+   "head of government",
+   "head of state",
+   "human",
    "president"
   ]
  },
@@ -708,7 +981,10 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "1999": [],
+  "2004": [],
+  "4 January 1934": []
  },
  "ont_8_politics_test_29": {
   "1824": [],
@@ -745,6 +1021,28 @@
    "head of government",
    "head of state",
    "president"
+  ],
+  "John Adams's wife": [
+   "human"
+  ],
+  "United States": [
+   "country",
+   "state"
+  ],
+  "diplomats": [
+   "human"
+  ],
+  "historians": [
+   "human"
+  ],
+  "politicians": [
+   "human"
+  ],
+  "sixth president of the United States": [
+   "head of government",
+   "head of state",
+   "human",
+   "president"
   ]
  },
  "ont_8_politics_test_30": {
@@ -777,7 +1075,9 @@
   ],
   "Syrian presidential election": [
    "Public election"
-  ]
+  ],
+  "1971": [],
+  "2000": []
  },
  "ont_8_politics_test_31": {
   "Leonid Kravchuk": [
@@ -794,7 +1094,18 @@
   "Ukraine": [
    "country",
    "state"
-  ]
+  ],
+  "19 July 1994": [],
+  "5 December 1991": [],
+  "Ukrainian politician": [
+   "human"
+  ],
+  "first President of Ukraine": [
+   "head of state",
+   "president",
+   "position"
+  ],
+  "resignation": []
  },
  "ont_8_politics_test_32": {
   "Dominican Liberation Party": [
@@ -825,6 +1136,17 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "1996": [],
+  "2000": [],
+  "2004": [],
+  "2012": [],
+  "December 26, 1953": [],
+  "Dominican lawyer": [
+   "human"
+  ],
+  "academic": [
+   "human"
   ]
  },
  "ont_8_politics_test_33": {
@@ -859,6 +1181,14 @@
   ],
   "political party": [
    "political party"
+  ],
+  "1972": [],
+  "1981": [],
+  "1986": [],
+  "1992": [],
+  "Austria": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_34": {
@@ -895,6 +1225,19 @@
   ],
   "political party": [
    "political party"
+  ],
+  "1 January 1944": [],
+  "1989": [],
+  "2019": [],
+  "Sudanese politician": [
+   "human"
+  ],
+  "coup d'état": [],
+  "seventh President of Sudan": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_35": {
@@ -930,7 +1273,9 @@
    "position",
    "head of state",
    "president"
-  ]
+  ],
+  "1994": [],
+  "mainland sub-Saharan Africa": []
  },
  "ont_8_politics_test_36": {
   "Arabic: FuÄd el-Mbaza; born 15 June 1933) is a Tunisian politician who was President of Tunisia from 15 January 2011 to 13 December 2011.\n\nOn 12 December 2011": [],
@@ -961,6 +1306,14 @@
   ],
   "position_held)": [
    "position"
+  ],
+  "12 December 2011": [],
+  "Constituent Assembly": [
+   "organization"
+  ],
+  "Tunisia": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_37": {
@@ -994,6 +1347,24 @@
   ],
   "right-wing": [
    "political alignment"
+  ],
+  "19 July 1965": [],
+  "1948": [],
+  "1960": [],
+  "26 March 1875": [],
+  "Korean": [],
+  "Korean language": [],
+  "South Korea": [
+   "country",
+   "state"
+  ],
+  "South Korean politician": [
+   "human"
+  ],
+  "first President of South Korea": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_38": {
@@ -1018,6 +1389,13 @@
   "Senegal": [
    "country",
    "state"
+  ],
+  "2000": [],
+  "2012": [],
+  "May 29, 1926": [],
+  "Senegalese": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_39": {
@@ -1037,7 +1415,9 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "2002": [],
+  "2007": []
  },
  "ont_8_politics_test_40": {
   "Moldova": [
@@ -1060,6 +1440,21 @@
   "Vladimir Voronin": [
    "human",
    "president"
+  ],
+  "1994": [],
+  "2001": [],
+  "2009": [],
+  "First Secretary of the Party of Communists of the Republic of Moldova": [
+   "position"
+  ],
+  "PCRM": [
+   "organization",
+   "political party"
+  ],
+  "third President of Moldova": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_41": {
@@ -1077,7 +1472,9 @@
   ],
   "Reform Party": [
    "political party"
-  ]
+  ],
+  "1992": [],
+  "2001": []
  },
  "ont_8_politics_test_42": {
   "Elias Hrawi": [
@@ -1098,7 +1495,11 @@
    "position",
    "president",
    "head of state"
-  ]
+  ],
+  "1989": [],
+  "1998": [],
+  "4 September 1926": [],
+  "7 July 2006": []
  },
  "ont_8_politics_test_43": {
   "Christopher Jorebon Loeak": [
@@ -1116,6 +1517,12 @@
    "head of state",
    "position",
    "president"
+  ],
+  "11 November 1952": [],
+  "2012": [],
+  "2016": [],
+  "Marshallese politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_44": {
@@ -1134,6 +1541,14 @@
   "Togo": [
    "country",
    "state"
+  ],
+  "2005": [],
+  "6 June 1966": [],
+  "Togolese politician": [
+   "human"
+  ],
+  "dictator": [
+   "human"
   ]
  },
  "ont_8_politics_test_45": {
@@ -1152,6 +1567,11 @@
   ],
   "president of the United States": [
    "position"
+  ],
+  "African-American": [],
+  "United States": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_46": {
@@ -1216,6 +1636,11 @@
   ],
   "general elections": [
    "Public election"
+  ],
+  "June 2011": [],
+  "seventh National Assembly": [
+   "government",
+   "organization"
   ]
  },
  "ont_8_politics_test_47": {
@@ -1243,7 +1668,11 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "1949": [],
+  "1953": [],
+  "August 25, 1891": [],
+  "October 10, 1973": []
  },
  "ont_8_politics_test_48": {
   "24th President of Liberia": [
@@ -1267,6 +1696,12 @@
    "head of state",
    "position",
    "president"
+  ],
+  "2006": [],
+  "2018": [],
+  "29 October 1938": [],
+  "Liberian politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_49": {
@@ -1297,6 +1732,11 @@
   ],
   "political party": [
    "political party"
+  ],
+  "April 21, 1889": [],
+  "August 15, 1967": [],
+  "banker": [
+   "human"
   ]
  },
  "ont_8_politics_test_50": {
@@ -1317,6 +1757,14 @@
   "State of Palestine": [
    "country",
    "state"
+  ],
+  "23 November 2008": [],
+  "8 May 2005": [],
+  "Palestine Liberation Organization": [
+   "organization"
+  ],
+  "Palestine Liberation Organization's Central Council": [
+   "organization"
   ]
  },
  "ont_8_politics_test_51": {
@@ -1350,7 +1798,17 @@
   ],
   "political ideology": [
    "political ideology"
-  ]
+  ],
+  "1975": [],
+  "Chiang Kai-shek's death": [],
+  "Mao's death": [],
+  "Republic of China": [
+   "country",
+   "state"
+  ],
+  "economic prosperity": [],
+  "six-year terms": [],
+  "social reforms": []
  },
  "ont_8_politics_test_52": {
   "Ford": [
@@ -1375,6 +1833,18 @@
    "Public election"
   ],
   "Vice President of the United States": [
+   "position"
+  ],
+  "40th vice president of the United States": [
+   "position"
+  ],
+  "August 1974": [],
+  "December 1973": [],
+  "United States": [
+   "country",
+   "state"
+  ],
+  "presidency": [
    "position"
   ]
  },
@@ -1430,6 +1900,12 @@
   ],
   "vice president of the United States": [
    "position"
+  ],
+  "New York": [
+   "state"
+  ],
+  "United States": [
+   "country"
   ]
  },
  "ont_8_politics_test_54": {
@@ -1465,6 +1941,24 @@
   "political party": [
    "organization",
    "political party"
+  ],
+  "1 December 1931": [],
+  "2003": [],
+  "2013": [],
+  "8 January 2018": [],
+  "CM": [],
+  "George Maxwell Richards, TC, CM, PhD": [
+   "human"
+  ],
+  "PhD": [],
+  "TC": [],
+  "Trinidadian and Tobagonian politician": [
+   "human"
+  ],
+  "fourth President of Trinidad and Tobago": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_55": {
@@ -1498,6 +1992,18 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "12 February 1961": [],
+  "February 2016": [],
+  "Haitian singer": [
+   "human"
+  ],
+  "May 2011": [],
+  "former politician": [
+   "human"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_56": {
@@ -1544,7 +2050,13 @@
   "president": [
    "position",
    "president"
-  ]
+  ],
+  "DC": [
+   "organization",
+   "political party"
+  ],
+  "December 1971": [],
+  "June 1978": []
  },
  "ont_8_politics_test_57": {
   "Ernest Bai Koroma": [
@@ -1587,6 +2099,25 @@
    "head of state",
    "position",
    "president"
+  ],
+  "1964": [],
+  "1991": [],
+  "April 28, 1924": [],
+  "KK": [
+   "human"
+  ],
+  "Zambia": [
+   "country",
+   "state"
+  ],
+  "Zambian former politician": [
+   "human"
+  ],
+  "first President of Zambia": [
+   "position",
+   "president",
+   "head of state",
+   "head of government"
   ]
  },
  "ont_8_politics_test_58": {
@@ -1598,6 +2129,18 @@
    "state"
   ],
   "President of Israel": [
+   "head of state",
+   "position",
+   "president"
+  ],
+  "15 June 1924": [],
+  "1993": [],
+  "1998": [],
+  "24 April 2005": [],
+  "Ezer Vaytsman": [
+   "human"
+  ],
+  "seventh President of Israel": [
    "head of state",
    "position",
    "president"
@@ -1647,6 +2190,25 @@
    "head of state",
    "position",
    "president"
+  ],
+  "1981": [],
+  "2011": [],
+  "25 February 2020": [],
+  "4 May 1928": [],
+  "Egyptian": [
+   "human"
+  ],
+  "fourth president of Egypt": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
+  ],
+  "military leader": [
+   "human"
+  ],
+  "political leader": [
+   "human"
   ]
  },
  "ont_8_politics_test_60": {
@@ -1674,7 +2236,11 @@
   ],
   "Public election": [
    "Public election"
-  ]
+  ],
+  "2000": [],
+  "2008": [],
+  "Ailinglaplap": [],
+  "August 7, 1950": []
  },
  "ont_8_politics_test_61": {
   "John Kofi Agyekum Kufuor": [
@@ -1700,6 +2266,22 @@
    "head of state",
    "position",
    "president"
+  ],
+  "7 January 2001": [],
+  "7 January 2009": [],
+  "8 December 1938": [],
+  "Ghana": [
+   "country",
+   "state"
+  ],
+  "Ghanaian": [
+   "human"
+  ],
+  "Ghanaian politician": [
+   "human"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_62": {
@@ -1737,6 +2319,13 @@
   ],
   "political party": [
    "political party"
+  ],
+  "South Africa": [
+   "country",
+   "state"
+  ],
+  "interim presidency": [
+   "position"
   ]
  },
  "ont_8_politics_test_63": {
@@ -1784,7 +2373,9 @@
   "social-democratic": [
    "political alignment",
    "political ideology"
-  ]
+  ],
+  "1964": [],
+  "1970": []
  },
  "ont_8_politics_test_64": {
   "Levy Mwanawasa": [
@@ -1823,6 +2414,14 @@
   ],
   "president of Zambia": [
    "position"
+  ],
+  "19 August 2008": [],
+  "3 September 1948": [],
+  "third President of Zambia": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_65": {
@@ -1877,6 +2476,19 @@
   ],
   "political party": [
    "political party"
+  ],
+  "1947 Constitution": [],
+  "Republic of China": [
+   "country",
+   "state"
+  ],
+  "acting President": [
+   "head of state",
+   "position",
+   "president"
+  ],
+  "vice-president": [
+   "position"
   ]
  },
  "ont_8_politics_test_66": {
@@ -1893,6 +2505,20 @@
   "Václav Klaus": [
    "head of state",
    "human",
+   "president"
+  ],
+  "19 June 1941": [],
+  "2003": [],
+  "2013": [],
+  "Czech economist": [
+   "human"
+  ],
+  "Czech politician": [
+   "human"
+  ],
+  "second President of the Czech Republic": [
+   "human",
+   "head of state",
    "president"
   ]
  },
@@ -1912,6 +2538,14 @@
    "president",
    "head of state",
    "head of government"
+  ],
+  "21 April 1957": [],
+  "Central African politician": [
+   "human"
+  ],
+  "March 2016": [],
+  "academic": [
+   "human"
   ]
  },
  "ont_8_politics_test_68": {
@@ -1935,6 +2569,15 @@
   ],
   "Public election": [
    "Public election"
+  ],
+  "1 January 2018": [],
+  "1934": [],
+  "2018": [],
+  "31 December 2018": [],
+  "45": [],
+  "Swiss Confederation": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_69": {
@@ -1969,6 +2612,22 @@
   "president": [
    "position",
    "president"
+  ],
+  "22 February 1943": [],
+  "9 May 1921": [],
+  "German student": [
+   "human"
+  ],
+  "Nazi Germany": [
+   "country",
+   "state"
+  ],
+  "anti-Nazi political activist": [
+   "human",
+   "political alignment"
+  ],
+  "non-violent resistance group": [
+   "organization"
   ]
  },
  "ont_8_politics_test_70": {
@@ -1987,6 +2646,17 @@
   "United States": [
    "country",
    "state"
+  ],
+  "Fellow of the Royal Society": [
+   "position"
+  ],
+  "Presidential Medal of Freedom": [],
+  "highest civilian award in the United States": [],
+  "lifetime member of the Pontifical Academy of Sciences": [
+   "position"
+  ],
+  "recipient of the Presidential Medal of Freedom": [
+   "human"
   ]
  },
  "ont_8_politics_test_71": {
@@ -2004,6 +2674,17 @@
   ],
   "Rote Armee Fraktion": [
    "organization"
+  ],
+  "Germany": [
+   "country",
+   "state"
+  ],
+  "West German far-left militant group": [
+   "organization"
+  ],
+  "West Germany": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_72": {
@@ -2029,6 +2710,10 @@
   ],
   "Sir Roger Bannister": [
    "human"
+  ],
+  "UK": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_73": {
@@ -2061,6 +2746,9 @@
   ],
   "president": [
    "position"
+  ],
+  "Akademio de Esperanto": [
+   "organization"
   ]
  },
  "ont_8_politics_test_74": {
@@ -2069,6 +2757,18 @@
   ],
   "Rosicrucian Order": [
    "organization"
+  ],
+  "Christian Rose Cross": [
+   "human"
+  ],
+  "Christian Rosenkreutz": [
+   "human"
+  ],
+  "Order of the Rose Cross": [
+   "organization"
+  ],
+  "Rosenkreutz": [
+   "human"
   ]
  },
  "ont_8_politics_test_75": {
@@ -2077,6 +2777,22 @@
   ],
   "Mike Shinoda": [
    "human"
+  ],
+  "1996": [],
+  "keyboardist": [
+   "position"
+  ],
+  "primary songwriter": [
+   "position"
+  ],
+  "producer": [
+   "position"
+  ],
+  "rhythm guitarist": [
+   "position"
+  ],
+  "vocalist": [
+   "position"
   ]
  },
  "ont_8_politics_test_76": {
@@ -2092,6 +2808,12 @@
   ],
   "political alignment": [
    "political alignment"
+  ],
+  "2005": [],
+  "2013": [],
+  "first permanent President of the Eurogroup": [
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_77": {
@@ -2126,6 +2848,20 @@
   "president": [
    "position",
    "president"
+  ],
+  "International Olympic Committee": [
+   "organization"
+  ],
+  "current President of the International Olympic Committee": [
+   "human",
+   "president"
+  ],
+  "former member of the German Olympic Sports Confederation Executive Board": [
+   "human"
+  ],
+  "ninth President of the International Olympic Committee": [
+   "human",
+   "president"
   ]
  },
  "ont_8_politics_test_78": {
@@ -2156,6 +2892,20 @@
   "White Rose": [
    "organization",
    "political alignment"
+  ],
+  "13 July 1943": [],
+  "24 October 1893": [],
+  "anti-Nazi group": [
+   "organization"
+  ],
+  "anti-Nazi group White Rose": [
+   "organization"
+  ],
+  "resistance fighter": [
+   "human"
+  ],
+  "university professor": [
+   "position"
   ]
  },
  "ont_8_politics_test_80": {
@@ -2170,6 +2920,19 @@
   ],
   "Vienna Circle": [
    "organization"
+  ],
+  "April 14, 1882": [],
+  "German": [],
+  "German philosopher": [
+   "human"
+  ],
+  "June 22, 1936": [],
+  "logical positivism": [],
+  "philosopher": [
+   "human"
+  ],
+  "physicist": [
+   "human"
   ]
  },
  "ont_8_politics_test_81": {
@@ -2191,7 +2954,8 @@
   "member_of_organization": [],
   "senior scientist": [
    "position"
-  ]
+  ],
+  "1991": []
  },
  "ont_8_politics_test_82": {
   "Christian August Friedrich Peters": [
@@ -2199,6 +2963,9 @@
   ],
   "Royal Swedish Academy of Sciences": [
    "organization"
+  ],
+  "foreign member": [
+   "position"
   ]
  },
  "ont_8_politics_test_83": {
@@ -2210,6 +2977,19 @@
   ],
   "The Cure": [
    "organization"
+  ],
+  "1 June 1960": [],
+  "English": [
+   "country"
+  ],
+  "alternative rock band": [
+   "organization"
+  ],
+  "bassist": [
+   "position"
+  ],
+  "musician": [
+   "human"
   ]
  },
  "ont_8_politics_test_84": {
@@ -2255,6 +3035,14 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "18 May 1951": [],
+  "7 October 1995": [],
+  "German terrorist": [
+   "human"
+  ],
+  "J2M": [
+   "organization"
   ]
  },
  "ont_8_politics_test_85": {
@@ -2263,7 +3051,8 @@
   ],
   "Susanne Albrecht": [
    "human"
-  ]
+  ],
+  "1 March 1951": []
  },
  "ont_8_politics_test_86": {
   "Christian Klar": [
@@ -2277,6 +3066,12 @@
   ],
   "Red Army Faction (RAF)": [
    "organization"
+  ],
+  "1970s": [],
+  "1980s": [],
+  "20 May 1952": [],
+  "second generation Red Army Faction": [
+   "organization"
   ]
  },
  "ont_8_politics_test_87": {
@@ -2286,7 +3081,17 @@
   ],
   "Satyendra Nath Bose": [
    "human"
-  ]
+  ],
+  "1954": [],
+  "Fellow of the Royal Society": [
+   "position"
+  ],
+  "Government of India": [
+   "government",
+   "organization"
+  ],
+  "India's second highest civilian award": [],
+  "Padma Vibhushan": []
  },
  "ont_8_politics_test_88": {
   "Kaiser Wilhelm Society": [
@@ -2306,6 +3111,13 @@
   ],
   "president": [
    "position"
+  ],
+  "1948": [],
+  "German scientific institution": [
+   "organization"
+  ],
+  "MPS": [
+   "organization"
   ]
  },
  "ont_8_politics_test_89": {
@@ -2317,7 +3129,8 @@
   ],
   "Maurice de Hirsch": [
    "human"
-  ]
+  ],
+  "large-scale Jewish immigration": []
  },
  "ont_8_politics_test_90": {
   "IOC": [
@@ -2340,6 +3153,28 @@
   ],
   "member of the International Olympic Committee": [
    "position"
+  ],
+  "International Olympic Committee (IOC)": [
+   "organization"
+  ],
+  "National Water Company": [
+   "organization"
+  ],
+  "SONES": [
+   "organization"
+  ],
+  "Senegal": [
+   "country",
+   "state"
+  ],
+  "Société Nationale des Eaux": [
+   "organization"
+  ],
+  "chairman of the National Water Company Société Nationale des Eaux of Senegal": [
+   "position"
+  ],
+  "honorary member of the International Olympic Committee": [
+   "position"
   ]
  },
  "ont_8_politics_test_91": {
@@ -2351,7 +3186,11 @@
   ],
   "Monrose": [
    "organization"
-  ]
+  ],
+  "German television talent show Popstars": [],
+  "Popstars": [],
+  "fifth season of Popstars": [],
+  "the fifth season of the German television talent show Popstars": []
  },
  "ont_8_politics_test_92": {
   "Eckartshausen": [
@@ -2368,6 +3207,13 @@
   ],
   "the order of the Illuminati": [
    "organization"
+  ],
+  "Adam Weishaupt": [
+   "human"
+  ],
+  "human reason": [],
+  "the Illuminati": [
+   "organization"
   ]
  },
  "ont_8_politics_test_93": {
@@ -2379,7 +3225,8 @@
   ],
   "organization": [
    "organization"
-  ]
+  ],
+  "nine further albums": []
  },
  "ont_8_politics_test_94": {
   "Andi Deris": [
@@ -2423,7 +3270,11 @@
   ],
   "position_name": [
    "position"
-  ]
+  ],
+  "Asia": [],
+  "Europe": [],
+  "North America": [],
+  "South America": []
  },
  "ont_8_politics_test_95": {
   "Friedrich von Schubert": [
@@ -2443,6 +3294,15 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "Russian army": [
+   "organization"
+  ],
+  "infantry general": [
+   "position"
+  ],
+  "military topographic service": [
+   "organization"
   ]
  },
  "ont_8_politics_test_96": {
@@ -2471,7 +3331,21 @@
   ],
   "lead singer": [
    "position"
-  ]
+  ],
+  "1982": [],
+  "1997": [],
+  "2004": [],
+  "2017": [],
+  "Scottish pop group": [
+   "organization"
+  ],
+  "first split": [],
+  "first split of Wet Wet Wet": [],
+  "formation of Wet Wet Wet": [],
+  "reformation": [],
+  "reformation of Wet Wet Wet": [],
+  "second split": [],
+  "second split of Wet Wet Wet": []
  },
  "ont_8_politics_test_98": {
   "DJ Tukutz": [
@@ -2485,6 +3359,11 @@
   ],
   "Tablo": [
    "human"
+  ],
+  "2001": [],
+  "Korea": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_99": {
@@ -2493,6 +3372,23 @@
   ],
   "Mina Caputo": [
    "human"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "December 4, 1973": [],
+  "Keith Caputo": [
+   "human"
+  ],
+  "New York City": [],
+  "founding member": [
+   "position"
+  ],
+  "heavy metal band": [
+   "organization"
+  ],
+  "lead singer": [
+   "position"
   ]
  },
  "ont_8_politics_test_100": {
@@ -2504,6 +3400,20 @@
   ],
   "West German Red Army Faction (RAF)": [
    "organization"
+  ],
+  "27 July 1956": [],
+  "RAF": [
+   "organization"
+  ],
+  "Red Army Faction (RAF)": [
+   "organization"
+  ],
+  "West German Red Army Faction": [
+   "organization"
+  ],
+  "West Germany": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_101": {
@@ -2521,6 +3431,18 @@
   ],
   "Jeanne Ferrante": [
    "human"
+  ],
+  "ACM": [
+   "organization"
+  ],
+  "Fellow of the Association for Computing Machinery (ACM)": [
+   "position"
+  ],
+  "Fellow of the Institute of Electrical and Electronics Engineers (IEEE)": [
+   "position"
+  ],
+  "IEEE": [
+   "organization"
   ]
  },
  "ont_8_politics_test_102": {
@@ -2532,6 +3454,13 @@
   ],
   "bassist": [
    "position"
+  ],
+  "11 April 1971": [],
+  "German Neue Deutsche Härte band": [
+   "organization"
+  ],
+  "German musician": [
+   "human"
   ]
  },
  "ont_8_politics_test_103": {
@@ -2546,7 +3475,9 @@
   ],
   "plenipotentiary": [
    "position"
-  ]
+  ],
+  "1995": [],
+  "Schweinfurt": []
  },
  "ont_8_politics_test_104": {
   "Institute of Electrical and Electronics Engineers": [
@@ -2554,7 +3485,12 @@
   ],
   "Rosalind Picard": [
    "human"
-  ]
+  ],
+  "Fellow of the Institute of Electrical and Electronics Engineers": [
+   "position"
+  ],
+  "affective computing": [],
+  "image and video analysis": []
  },
  "ont_8_politics_test_105": {
   "European Southern Observatory": [
@@ -2584,7 +3520,9 @@
   ],
   "political ideology": [
    "political ideology"
-  ]
+  ],
+  "1941": [],
+  "1962": []
  },
  "ont_8_politics_test_106": {
   "Erhard Heiden": [
@@ -2626,6 +3564,17 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "Adolf Hitler": [
+   "human",
+   "head of government",
+   "head of state"
+  ],
+  "SA": [
+   "organization"
+  ],
+  "Storm Battalion": [
+   "organization"
   ]
  },
  "ont_8_politics_test_107": {
@@ -2639,6 +3588,12 @@
    "human"
   ],
   "Sturmabteilung": [
+   "organization"
+  ],
+  "Julius Schreck": [
+   "human"
+  ],
+  "Storm Detachment": [
    "organization"
   ]
  },
@@ -2669,6 +3624,11 @@
   ],
   "political party": [
    "political party"
+  ],
+  "1930s": [],
+  "Nazi Party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_109": {
@@ -2686,6 +3646,17 @@
   ],
   "Unknown": [],
   "comedy group": [
+   "organization"
+  ],
+  "Chicago": [],
+  "Chicago-based improvisational comedy group": [
+   "organization"
+  ],
+  "comedy": [],
+  "featured player": [
+   "position"
+  ],
+  "improvisational comedy group": [
    "organization"
   ]
  },
@@ -2726,7 +3697,20 @@
   ],
   "president": [
    "position"
-  ]
+  ],
+  "Debian project": [
+   "organization"
+  ],
+  "Ubuntu project": [
+   "organization"
+  ],
+  "contributor": [
+   "position"
+  ],
+  "free software developer": [
+   "position"
+  ],
+  "technical manuals": []
  },
  "ont_8_politics_test_111": {
   "Inge Scholl": [
@@ -2735,7 +3719,13 @@
   "White Rose": [
    "organization"
   ],
-  "book": []
+  "book": [],
+  "several books": [],
+  "the White Rose": [
+   "organization"
+  ],
+  "the war": [],
+  "wrote several books": []
  },
  "ont_8_politics_test_112": {
   "Heinrich Himmler": [
@@ -2760,6 +3750,21 @@
   ],
   "Schutzstaffel": [
    "organization"
+  ],
+  "23 May 1945": [],
+  "7 October 1900": [],
+  "Germany": [
+   "country",
+   "state"
+  ],
+  "Protection Squadron": [
+   "organization"
+  ],
+  "Reichsführer of the Schutzstaffel": [
+   "position"
+  ],
+  "SS": [
+   "organization"
   ]
  },
  "ont_8_politics_test_113": {
@@ -2771,7 +3776,8 @@
   ],
   "Slovenian society of natural history": [
    "organization"
-  ]
+  ],
+  "1940": []
  },
  "ont_8_politics_test_114": {
   "Bruce Frederick Joseph Springsteen": [
@@ -2789,13 +3795,47 @@
   "Liberal": [
    "political alignment",
    "political ideology"
+  ],
+  "American": [
+   "human"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "September 23, 1949": [],
+  "musician": [
+   "human"
+  ],
+  "singer": [
+   "human"
+  ],
+  "solo artist": [
+   "human"
+  ],
+  "songwriter": [
+   "human"
   ]
  },
  "ont_8_politics_test_115": {
   "Cher": [
    "human"
   ],
-  "The Sonny & Cher Comedy Hour": []
+  "The Sonny & Cher Comedy Hour": [],
+  "1970s": [],
+  "30 million viewers": [
+   "human"
+  ],
+  "She": [
+   "human"
+  ],
+  "over 30 million viewers": [
+   "human"
+  ],
+  "television personality": [
+   "human"
+  ],
+  "the 1970s": [],
+  "three-year run": []
  },
  "ont_8_politics_test_116": {
   "Austria": [
@@ -2816,6 +3856,11 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "Gustav Klimt's methods": [],
+  "Japanese art": [],
+  "artists of the Vienna Secession": [
+   "human"
   ]
  },
  "ont_8_politics_test_117": {
@@ -2827,6 +3872,12 @@
   ],
   "Royal Society": [
    "organization"
+  ],
+  "Fellow of the Royal Society": [
+   "position"
+  ],
+  "first female professor": [
+   "position"
   ]
  },
  "ont_8_politics_test_118": {
@@ -2879,6 +3930,11 @@
   ],
   "Sturmabteilung (SA)": [
    "organization"
+  ],
+  "1931": [],
+  "late 1920s": [],
+  "paramilitary Sturmabteilung (SA)": [
+   "organization"
   ]
  },
  "ont_8_politics_test_121": {
@@ -2901,6 +3957,18 @@
    "political party"
   ],
   "Schutzstaffel": [
+   "organization"
+  ],
+  "24 August 1903": [],
+  "8 June 1945": [],
+  "NSDAP": [
+   "political party",
+   "organization"
+  ],
+  "Reichsführer": [
+   "position"
+  ],
+  "SS": [
    "organization"
   ]
  },
@@ -2931,7 +3999,8 @@
   ],
   "president_UK": [
    "position"
-  ]
+  ],
+  "modern scientific travel literature": []
  },
  "ont_8_politics_test_123": {
   "Gandhi": [
@@ -2951,7 +4020,17 @@
   ],
   "the Inner Temple": [
    "organization"
-  ]
+  ],
+  "Hindu family": [],
+  "June 1891": [],
+  "London": [],
+  "age 22": [],
+  "coastal Gujarat": [
+   "state"
+  ],
+  "law": [],
+  "the bar": [],
+  "western India": []
  },
  "ont_8_politics_test_124": {
   "Free Software Foundation": [
@@ -2976,7 +4055,11 @@
   ],
   "president": [
    "position"
-  ]
+  ],
+  "FSF": [
+   "organization"
+  ],
+  "October 1985": []
  },
  "ont_8_politics_test_125": {
   "Fred Durst": [
@@ -2984,7 +4067,12 @@
   ],
   "Limp Bizkit": [
    "organization"
-  ]
+  ],
+  "1994": [],
+  "rap rock band": [
+   "organization"
+  ],
+  "six studio albums": []
  },
  "ont_8_politics_test_126": {
   "Gary Barlow": [
@@ -2998,7 +4086,11 @@
   ],
   "Take That": [
    "organization"
-  ]
+  ],
+  "Robbie Williams's solo career": [],
+  "Williams's departure from Take That": [],
+  "Williams's solo career": [],
+  "late 2011": []
  },
  "ont_8_politics_test_127": {
   "Alex Gaskarth": [
@@ -3023,6 +4115,21 @@
    "organization"
   ],
   "blink-182": [
+   "organization"
+  ],
+  "American": [
+   "country"
+  ],
+  "March 15, 1972": [],
+  "former television personality": [],
+  "musician": [],
+  "record producer": [],
+  "rock band": [
+   "organization"
+  ],
+  "singer": [],
+  "songwriter": [],
+  "synth-pop duo": [
    "organization"
   ]
  },
@@ -3053,7 +4160,9 @@
   ],
   "Robert Johnsons": [
    "human"
-  ]
+  ],
+  "Crossroads": [],
+  "Layla": []
  },
  "ont_8_politics_test_129": {
   "Centre Alliance": [
@@ -3100,6 +4209,14 @@
   ],
   "social_liberalism": [
    "political ideology"
+  ],
+  "The party": [
+   "organization",
+   "political party"
+  ],
+  "the party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_130": {
@@ -3116,6 +4233,14 @@
   ],
   "Irina Krohn": [
    "human"
+  ],
+  "Finnish politician": [
+   "human",
+   "political alignment"
+  ],
+  "July 10, 1962": [],
+  "former member of Finnish Parliament": [
+   "position"
   ]
  },
  "ont_8_politics_test_131": {
@@ -3138,6 +4263,16 @@
   ],
   "president": [
    "position"
+  ],
+  "6 August 1968": [],
+  "German": [
+   "human"
+  ],
+  "physicist": [
+   "human"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_132": {
@@ -3156,7 +4291,8 @@
   ],
   "mayor of Beerta": [
    "position"
-  ]
+  ],
+  "Beerta": []
  },
  "ont_8_politics_test_133": {
   "Argentine Chamber of Deputies": [
@@ -3201,6 +4337,13 @@
   ],
   "member of the Parliament of Finland": [
    "position"
+  ],
+  "1977": [],
+  "Member of the Parliament of Finland": [
+   "position"
+  ],
+  "Topi Oras Kalevi Tynkkynen": [
+   "human"
   ]
  },
  "ont_8_politics_test_135": {
@@ -3230,6 +4373,18 @@
   ],
   "political ideology": [
    "political ideology"
+  ],
+  "Mexican politician": [
+   "human"
+  ],
+  "Mexico": [
+   "country",
+   "state"
+  ],
+  "Mexico City": [],
+  "October 14, 1970": [],
+  "presidential candidate": [
+   "human"
   ]
  },
  "ont_8_politics_test_136": {
@@ -3243,6 +4398,10 @@
   ],
   "Gerben Wagenaar": [
    "human"
+  ],
+  "CPN": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_137": {
@@ -3256,6 +4415,23 @@
   "ÃDP": [
    "organization",
    "political party"
+  ],
+  "15 May 1957": [],
+  "German": [
+   "country"
+  ],
+  "mathematician": [
+   "human"
+  ],
+  "politician": [
+   "human"
+  ],
+  "professor": [
+   "human"
+  ],
+  "ÖDP": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_138": {
@@ -3265,6 +4441,10 @@
   ],
   "Noel Lynch": [
    "human"
+  ],
+  "20 January 1947": [],
+  "England": [
+   "country"
   ]
  },
  "ont_8_politics_test_139": {
@@ -3293,6 +4473,17 @@
   ],
   "city councillor for Oxford": [
    "position"
+  ],
+  "1994": [],
+  "2004": [],
+  "6 November 1965": [],
+  "9 July 2004": [],
+  "Oxford": [],
+  "Principal Speaker": [
+   "position"
+  ],
+  "city councillor": [
+   "position"
   ]
  },
  "ont_8_politics_test_140": {
@@ -3312,6 +4503,22 @@
    "human"
   ],
   "Theodore M. Berry": [
+   "human"
+  ],
+  "African-American mayor": [
+   "human"
+  ],
+  "American": [
+   "human"
+  ],
+  "Cincinnati, Ohio": [],
+  "November 5, 1905": [],
+  "October 15, 2000": [],
+  "mayor of Cincinnati, Ohio": [
+   "head of government",
+   "position"
+  ],
+  "politician": [
    "human"
   ]
  },
@@ -3342,6 +4549,19 @@
   ],
   "elections of 2006 and 2010": [
    "Public election"
+  ],
+  "2006 Illinois gubernatorial election": [
+   "Public election"
+  ],
+  "2010 Illinois gubernatorial election": [
+   "Public election"
+  ],
+  "American politician": [
+   "human"
+  ],
+  "April 21, 1955": [],
+  "civil rights attorney": [
+   "human"
   ]
  },
  "ont_8_politics_test_142": {
@@ -3375,7 +4595,9 @@
   ],
   "state": [
    "state"
-  ]
+  ],
+  "2009": [],
+  "Saint-LÃ©onard-Est": []
  },
  "ont_8_politics_test_143": {
   "Caroline Lucas": [
@@ -3401,6 +4623,13 @@
    "human"
   ],
   "Zac Goldsmith": [
+   "human"
+  ],
+  "10 August 1962": [],
+  "activist": [
+   "human"
+  ],
+  "politician": [
    "human"
   ]
  },
@@ -3436,7 +4665,8 @@
   ],
   "Public election": [
    "Public election"
-  ]
+  ],
+  "September 24, 2009": []
  },
  "ont_8_politics_test_146": {
   "Gilles Deguire": [
@@ -3470,7 +4700,8 @@
   "Pirate Party Germany": [
    "organization",
    "political party"
-  ]
+  ],
+  "November 2009": []
  },
  "ont_8_politics_test_149": {
   "Green League": [
@@ -3482,7 +4713,9 @@
   ],
   "chairman": [
    "position"
-  ]
+  ],
+  "2017": [],
+  "2018": []
  },
  "ont_8_politics_test_150": {
   "Berend \"Bertus\" Brandsen": [
@@ -3500,6 +4733,29 @@
   ],
   "Public election": [
    "Public election"
+  ],
+  "CPN": [
+   "organization",
+   "political party"
+  ],
+  "Communist Party of the Netherlands (CPN)": [
+   "organization",
+   "political party"
+  ],
+  "Dutch politician": [
+   "human"
+  ],
+  "GL": [
+   "organization",
+   "political party"
+  ],
+  "GreenLeft": [
+   "organization",
+   "political party"
+  ],
+  "GreenLeft (GL)": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_151": {
@@ -3509,6 +4765,10 @@
   ],
   "Heidi Hautala": [
    "human"
+  ],
+  "European Green Party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_152": {
@@ -3527,6 +4787,20 @@
   ],
   "vice_mayor": [
    "position"
+  ],
+  "American politician": [
+   "human"
+  ],
+  "Cincinnati": [],
+  "Ohio": [
+   "state"
+  ],
+  "city council": [
+   "government",
+   "organization"
+  ],
+  "vice-mayor": [
+   "position"
   ]
  },
  "ont_8_politics_test_153": {
@@ -3543,6 +4817,13 @@
   "Tourism and Transportation": [
    "government",
    "organization"
+  ],
+  "1990": [],
+  "Canary Islands": [
+   "state"
+  ],
+  "autonomous elections": [
+   "Public election"
   ]
  },
  "ont_8_politics_test_154": {
@@ -3567,6 +4848,20 @@
   ],
   "president": [
    "position"
+  ],
+  "22 August 1980": [],
+  "Finnish": [
+   "country"
+  ],
+  "Helsinki": [],
+  "entrepreneur": [
+   "human"
+  ],
+  "former actor": [
+   "human"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_155": {
@@ -3579,6 +4874,12 @@
   "Green Party of England and Wales": [
    "organization",
    "political party"
+  ],
+  "British politician": [
+   "human"
+  ],
+  "member of the Green Party of England and Wales": [
+   "human"
   ]
  },
  "ont_8_politics_test_156": {
@@ -3601,7 +4902,13 @@
   ],
   "political party": [
    "political party"
-  ]
+  ],
+  "2012": [],
+  "independent councillor": [
+   "political alignment",
+   "position"
+  ],
+  "late 2012": []
  },
  "ont_8_politics_test_157": {
   "Pirate Party Germany": [
@@ -3614,7 +4921,8 @@
   "other_political_party": [
    "organization",
    "political party"
-  ]
+  ],
+  "February 2014": []
  },
  "ont_8_politics_test_158": {
   "Chuck Turner": [
@@ -3638,6 +4946,10 @@
   "political party": [
    "organization",
    "political party"
+  ],
+  "national Green Party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_159": {
@@ -3653,6 +4965,18 @@
   ],
   "Stefan Körner": [
    "human"
+  ],
+  "8 November 1968": [],
+  "August 2016": [],
+  "Chairman of the Pirate Party Germany": [
+   "position"
+  ],
+  "German": [
+   "country"
+  ],
+  "June 2014": [],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_160": {
@@ -3662,6 +4986,10 @@
   ],
   "Will Duckworth": [
    "human"
+  ],
+  "20 January 1954": [],
+  "deputy leader": [
+   "position"
   ]
  },
  "ont_8_politics_test_161": {
@@ -3679,6 +5007,17 @@
   "political party": [
    "organization",
    "political party"
+  ],
+  "11 June 2018": [],
+  "1949/50": [],
+  "Australian politician": [
+   "human"
+  ],
+  "Councillor of the City of Sydney": [
+   "position"
+  ],
+  "New South Wales": [
+   "state"
   ]
  },
  "ont_8_politics_test_162": {
@@ -3703,6 +5042,14 @@
   ],
   "environmentalist": [
    "human"
+  ],
+  "9 December 1960": [],
+  "Brighton Pavilion": [],
+  "British politician": [
+   "human"
+  ],
+  "MP": [
+   "position"
   ]
  },
  "ont_8_politics_test_163": {
@@ -3727,7 +5074,8 @@
   ],
   "Mikkonen": [
    "human"
-  ]
+  ],
+  "2016-2019": []
  },
  "ont_8_politics_test_164": {
   "2010 Colombian presidential election": [
@@ -3742,6 +5090,17 @@
   ],
   "candidate in 2010 Colombian presidential election": [
    "human"
+  ],
+  "2009": [],
+  "Colombia": [
+   "country",
+   "state"
+  ],
+  "fourth place": [
+   "position"
+  ],
+  "presidency of Colombia": [
+   "position"
   ]
  },
  "ont_8_politics_test_165": {
@@ -3769,7 +5128,12 @@
   "elected_in(Ted van Koeverden,2019 Canadian federal election": [],
   "van Koeverden": [
    "human"
-  ]
+  ],
+  "Liberal Party of Canada caucus": [
+   "organization"
+  ],
+  "Milton": [],
+  "electoral district of Milton": []
  },
  "ont_8_politics_test_166": {
   "2017 German federal election": [
@@ -3781,6 +5145,13 @@
   "Green Party of Germany": [
    "organization",
    "political party"
+  ],
+  "Greens": [
+   "organization",
+   "political party"
+  ],
+  "top two Greens candidates": [
+   "human"
   ]
  },
  "ont_8_politics_test_167": {
@@ -3801,6 +5172,18 @@
   "communist party": [
    "organization",
    "political party"
+  ],
+  "economic goals of communism": [],
+  "establishment of a strong state": [],
+  "political party": [
+   "organization",
+   "political party"
+  ],
+  "revolution": [],
+  "social and economic goals": [],
+  "social goals of communism": [],
+  "strong state": [
+   "state"
   ]
  },
  "ont_8_politics_test_168": {
@@ -3847,6 +5230,22 @@
   "social progressivism": [
    "political ideology",
    "political alignment"
+  ],
+  "PGJ": [
+   "organization",
+   "political party"
+  ],
+  "Partia e Gjelbër": [
+   "organization",
+   "political party"
+  ],
+  "Të Gjelbrit": [
+   "organization",
+   "political party"
+  ],
+  "Të gjelbrit": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_169": {
@@ -3867,6 +5266,22 @@
   ],
   "pro-Albanian": [
    "political alignment"
+  ],
+  "2008": [],
+  "American": [
+   "country"
+  ],
+  "The American Party of Labor": [
+   "organization",
+   "political party"
+  ],
+  "anti-revisionist Marxist-Leninist party": [
+   "political ideology",
+   "political party"
+  ],
+  "pro-Albanian tradition": [
+   "political alignment",
+   "political ideology"
   ]
  },
  "ont_8_politics_test_170": {
@@ -3918,6 +5333,19 @@
   "totalitarian": [
    "political alignment",
    "political ideology"
+  ],
+  "forward-looking direction on policy": [
+   "political alignment",
+   "position"
+  ],
+  "liberalism": [
+   "political ideology",
+   "political alignment"
+  ],
+  "pre-French Revolutionary world": [],
+  "reactionary restoration": [
+   "political alignment",
+   "position"
   ]
  },
  "ont_8_politics_test_171": {
@@ -3939,7 +5367,10 @@
    "political ideology"
   ],
   "nonviolence": [],
-  "social justice": []
+  "social justice": [],
+  "political party": [
+   "political party"
+  ]
  },
  "ont_8_politics_test_172": {
   "Ecological Democratic Party": [
@@ -4000,6 +5431,20 @@
   "president": [
    "position",
    "president"
+  ],
+  "1993": [],
+  "2007": [],
+  "NBP": [
+   "organization",
+   "political party"
+  ],
+  "Russia": [
+   "country",
+   "state"
+  ],
+  "Russian political party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_173": {
@@ -4020,6 +5465,14 @@
   ],
   "green politics": [
    "political ideology"
+  ],
+  "Europe": [],
+  "European Greens": [
+   "organization",
+   "political party"
+  ],
+  "federation of political parties": [
+   "organization"
   ]
  },
  "ont_8_politics_test_174": {
@@ -4065,7 +5518,8 @@
   ],
   "state": [
    "state"
-  ]
+  ],
+  "illegal immigration": []
  },
  "ont_8_politics_test_175": {
   "Christian socialism": [
@@ -4116,6 +5570,23 @@
   "political party": [
    "organization",
    "political party"
+  ],
+  "2005": [],
+  "BChD": [
+   "organization",
+   "political party"
+  ],
+  "Belarus": [
+   "country",
+   "state"
+  ],
+  "Christian-democratic political party": [
+   "organization",
+   "political party"
+  ],
+  "beginning of the 20th century": [],
+  "short-lived movement with the same name": [
+   "organization"
   ]
  },
  "ont_8_politics_test_177": {
@@ -4169,7 +5640,22 @@
   ],
   "political party": [
    "political party"
-  ]
+  ],
+  "Article 1 of the Basic Law": [],
+  "Article 12 of the Basic Law": [],
+  "Basic Law": [],
+  "Hong Kong": [],
+  "Hong Kong SAR government": [
+   "government",
+   "organization"
+  ],
+  "Hong Kong is a Special Administrative Region (SAR) of the People's Republic of China": [],
+  "People's Republic of China": [
+   "country",
+   "state"
+  ],
+  "SAR": [],
+  "Special Administrative Region (SAR)": []
  },
  "ont_8_politics_test_179": {
   "Communism": [
@@ -4184,7 +5670,12 @@
   ],
   "Walter Goldwater": [
    "human"
-  ]
+  ],
+  "1940": [],
+  "Creative Communism": [],
+  "Philadelphia": [],
+  "Truth": [],
+  "bibliography of radical periodicals": []
  },
  "ont_8_politics_test_180": {
   "Communist Party of Norway": [
@@ -4206,6 +5697,32 @@
   ],
   "revolutionary socialism": [
    "political ideology"
+  ],
+  "Norway": [
+   "country",
+   "state"
+  ],
+  "Norwegian parliament": [
+   "organization"
+  ],
+  "Norwegian political party": [
+   "organization",
+   "political party"
+  ],
+  "RV": [
+   "organization",
+   "political party"
+  ],
+  "Raud Valallianse": [
+   "organization",
+   "political party"
+  ],
+  "Rød Valgallianse": [
+   "organization",
+   "political party"
+  ],
+  "far-left groups": [
+   "organization"
   ]
  },
  "ont_8_politics_test_181": {
@@ -4219,6 +5736,18 @@
   ],
   "Armenian nationalism": [
    "political ideology"
+  ],
+  "Armenian organizations": [
+   "organization"
+  ],
+  "Armenian parties": [
+   "organization",
+   "political party"
+  ],
+  "educational projects": [],
+  "humanitarian projects": [],
+  "organizations": [
+   "organization"
   ]
  },
  "ont_8_politics_test_182": {
@@ -4244,6 +5773,9 @@
   ],
   "social conservatism": [
    "political ideology"
+  ],
+  "foreign policy": [
+   "position"
   ]
  },
  "ont_8_politics_test_183": {
@@ -4265,6 +5797,30 @@
   ],
   "right-wing": [
    "political alignment"
+  ],
+  "The Finns Party": [
+   "organization",
+   "political party"
+  ],
+  "international media": [
+   "organization"
+  ],
+  "nationalist movements in Europe": [
+   "organization",
+   "political ideology",
+   "political alignment"
+  ],
+  "other Nordic populist parties": [
+   "organization",
+   "political party"
+  ],
+  "right-wing populist movements in Europe": [
+   "organization",
+   "political ideology",
+   "political alignment"
+  ],
+  "the Finnish welfare state": [
+   "state"
   ]
  },
  "ont_8_politics_test_184": {
@@ -4285,6 +5841,18 @@
   "communist party": [
    "organization",
    "political party"
+  ],
+  "economic goals": [],
+  "economic goals of communism": [],
+  "political party": [
+   "organization",
+   "political party"
+  ],
+  "revolution": [],
+  "social goals": [],
+  "social goals of communism": [],
+  "strong state": [
+   "state"
   ]
  },
  "ont_8_politics_test_185": {
@@ -4328,7 +5896,23 @@
   ],
   "socialist democratic regime": [
    "government"
-  ]
+  ],
+  "Socialist Alternative Movement's constitution": [],
+  "a socialist democratic regime": [
+   "government"
+  ],
+  "all forms of oppression": [],
+  "capitalist exploitation": [],
+  "human beings": [
+   "human"
+  ],
+  "the fight against capitalist exploitation": [],
+  "the party": [
+   "organization",
+   "political party"
+  ],
+  "the transition to Socialism": [],
+  "workers' power": []
  },
  "ont_8_politics_test_186": {
   "Janata Dal (United)": [
@@ -4374,6 +5958,19 @@
   "statism": [
    "political ideology",
    "political alignment"
+  ],
+  "The party": [
+   "organization",
+   "political party"
+  ],
+  "a secular state": [
+   "state"
+  ],
+  "secular society": [],
+  "society": [],
+  "the party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_187": {
@@ -4394,6 +5991,9 @@
   "political party": [
    "organization",
    "political party"
+  ],
+  "European Union": [
+   "organization"
   ]
  },
  "ont_8_politics_test_188": {
@@ -4411,6 +6011,30 @@
   ],
   "The Belarusian Christian Democracy": [
    "political party",
+   "organization"
+  ],
+  "2005": [],
+  "BCD": [
+   "organization",
+   "political party"
+  ],
+  "BChD": [
+   "organization",
+   "political party"
+  ],
+  "Belarus": [
+   "country",
+   "state"
+  ],
+  "Christian-democratic political party": [
+   "organization",
+   "political party"
+  ],
+  "beginning of the 20th century": [],
+  "short-lived Belarusian Christian Democracy movement": [
+   "organization"
+  ],
+  "short-lived movement with the same name": [
    "organization"
   ]
  },
@@ -4430,6 +6054,15 @@
    "human"
   ],
   "Rebirth of Christian Democracy": [
+   "organization",
+   "political party"
+  ],
+  "1997": [],
+  "The party": [
+   "organization",
+   "political party"
+  ],
+  "the party": [
    "organization",
    "political party"
   ]
@@ -4460,6 +6093,13 @@
   ],
   "sicilianism": [
    "political ideology"
+  ],
+  "isolationist view": [
+   "political ideology"
+  ],
+  "the party": [
+   "political party",
+   "organization"
   ]
  },
  "ont_8_politics_test_191": {
@@ -4505,6 +6145,12 @@
   ],
   "president": [
    "position"
+  ],
+  "economic goals of communism": [],
+  "revolution": [],
+  "social goals of communism": [],
+  "strong state": [
+   "state"
   ]
  },
  "ont_8_politics_test_192": {
@@ -4517,6 +6163,17 @@
   "National Fascist Party": [
    "political party",
    "organization"
+  ],
+  "French Revolution": [],
+  "forward-looking direction on policy": [
+   "position"
+  ],
+  "liberalism": [
+   "political ideology"
+  ],
+  "pre-French Revolutionary world": [],
+  "reactionary restoration": [
+   "position"
   ]
  },
  "ont_8_politics_test_193": {
@@ -4558,6 +6215,13 @@
   "the party": [
    "organization",
    "political party"
+  ],
+  "a secular state": [
+   "state"
+  ],
+  "secular society": [],
+  "secular state": [
+   "state"
   ]
  },
  "ont_8_politics_test_194": {
@@ -4572,6 +6236,10 @@
   "green politics": [
    "political alignment",
    "political ideology"
+  ],
+  "Lebanon": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_195": {
@@ -4593,7 +6261,9 @@
   "democratic socialism": [
    "political alignment",
    "political ideology"
-  ]
+  ],
+  "1907": [],
+  "2003": []
  },
  "ont_8_politics_test_196": {
   "Country": [
@@ -4633,6 +6303,15 @@
   ],
   "social justice": [
    "political ideology"
+  ],
+  "A Green party": [
+   "political party",
+   "organization",
+   "political ideology"
+  ],
+  "formally organized political party": [
+   "political party",
+   "organization"
   ]
  },
  "ont_8_politics_test_197": {
@@ -4652,6 +6331,18 @@
   ],
   "white nationalism": [
    "political ideology"
+  ],
+  "A3P": [
+   "organization",
+   "political party"
+  ],
+  "American Third Position Party": [
+   "organization",
+   "political party"
+  ],
+  "American political party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_198": {
@@ -4690,6 +6381,27 @@
   ],
   "secularism": [
    "political ideology"
+  ],
+  "2008–2013": [],
+  "2008–2013 Pakistani cabinet": [
+   "government",
+   "organization"
+  ],
+  "ANP's political position": [
+   "political alignment",
+   "position"
+  ],
+  "PPP": [
+   "organization",
+   "political party"
+  ],
+  "PPP-led cabinet": [
+   "government",
+   "organization"
+  ],
+  "Pakistani government": [
+   "government",
+   "organization"
   ]
  },
  "ont_8_politics_test_199": {
@@ -4780,6 +6492,9 @@
   "liberal": [
    "political alignment",
    "political ideology"
+  ],
+  "The federation": [
+   "organization"
   ]
  },
  "ont_8_politics_test_200": {
@@ -4826,7 +6541,32 @@
    "human"
   ],
   "x": [],
-  "y": []
+  "y": [],
+  "PCE": [
+   "organization",
+   "political party"
+  ],
+  "PCE statutes": [],
+  "PCE's goals": [],
+  "Spanish State": [
+   "country",
+   "state"
+  ],
+  "capitalist system": [],
+  "emancipating ideal of communism": [
+   "political ideology"
+  ],
+  "political structures": [
+   "government"
+  ],
+  "revolutionary transformation of political structures": [],
+  "revolutionary transformation of society": [],
+  "revolutionary transformation of society and its political structures": [],
+  "socialism worldwide": [
+   "political ideology"
+  ],
+  "society": [],
+  "transition to socialism worldwide": []
  },
  "ont_8_politics_test_201": {
   "Federalism": [
@@ -4848,6 +6588,19 @@
   ],
   "fiscal federalism": [
    "political ideology"
+  ],
+  "1991": [],
+  "Lega Lombarda": [
+   "organization",
+   "political party"
+  ],
+  "Lega Nord": [
+   "organization",
+   "political party"
+  ],
+  "Northern Italy": [],
+  "Umberto Bossi": [
+   "human"
   ]
  },
  "ont_8_politics_test_202": {
@@ -4863,6 +6616,14 @@
    "political party"
   ],
   "political party": [
+   "organization",
+   "political party"
+  ],
+  "ideology": [
+   "political ideology"
+  ],
+  "policy": [],
+  "the party": [
    "organization",
    "political party"
   ]
@@ -4886,7 +6647,19 @@
    "political ideology"
   ],
   "nonviolence": [],
-  "social justice": []
+  "social justice": [],
+  "A Green party": [
+   "organization",
+   "political party"
+  ],
+  "formally organized political party": [
+   "organization",
+   "political party"
+  ],
+  "political party": [
+   "organization",
+   "political party"
+  ]
  },
  "ont_8_politics_test_204": {
   "Christian democracy": [
@@ -4929,6 +6702,19 @@
   ],
   "president": [
    "position"
+  ],
+  "Italian": [
+   "country"
+  ],
+  "Italian Christian democracy": [
+   "political ideology"
+  ],
+  "Italy": [
+   "country",
+   "state"
+  ],
+  "popolarismo": [
+   "political ideology"
   ]
  },
  "ont_8_politics_test_205": {
@@ -4963,6 +6749,18 @@
   ],
   "statism": [
    "political ideology"
+  ],
+  "The party": [
+   "organization",
+   "political party"
+  ],
+  "a secular state": [
+   "state"
+  ],
+  "society": [],
+  "the party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_206": {
@@ -4985,6 +6783,18 @@
   "green politics": [
    "political ideology",
    "political alignment"
+  ],
+  "Belgium": [
+   "country",
+   "state"
+  ],
+  "French-speaking political party": [
+   "organization",
+   "political party"
+  ],
+  "Écologistes Confédérés pour l'organisation de luttes originales": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_207": {
@@ -5009,6 +6819,15 @@
   ],
   "right-wing": [
    "political alignment"
+  ],
+  "1978": [],
+  "Flemish movement": [
+   "organization",
+   "political alignment"
+  ],
+  "militant right wing": [
+   "political alignment",
+   "political ideology"
   ]
  },
  "ont_8_politics_test_208": {
@@ -5059,6 +6878,10 @@
   ],
   "social justice": [
    "political ideology"
+  ],
+  "formally organized political party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_209": {
@@ -5081,6 +6904,18 @@
   ],
   "workers' self-management": [
    "political ideology"
+  ],
+  "1952": [],
+  "pro-Soviet members": [
+   "human"
+  ],
+  "the League of Communists": [
+   "organization",
+   "political party"
+  ],
+  "the party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_210": {
@@ -5117,7 +6952,20 @@
   "left wing agrarianism": [
    "political alignment",
    "political ideology"
-  ]
+  ],
+  "1926": [],
+  "Prepeluh": [
+   "human"
+  ],
+  "ideology": [
+   "political ideology"
+  ],
+  "left-wing agrarianism": [
+   "political alignment",
+   "political ideology"
+  ],
+  "organization structure": [],
+  "program": []
  },
  "ont_8_politics_test_211": {
   "Coalition for the Defence of the Republic": [
@@ -5137,6 +6985,27 @@
   ],
   "fascism": [
    "political ideology"
+  ],
+  "CDR": [
+   "organization",
+   "political party"
+  ],
+  "Coalition pour la Défense de la République": [
+   "organization",
+   "political party"
+  ],
+  "Rwanda": [
+   "country",
+   "state"
+  ],
+  "Rwandan far-right Hutu Power political party": [
+   "organization",
+   "political party"
+  ],
+  "Rwandan genocide": [],
+  "far-right political party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_212": {
@@ -5160,7 +7029,15 @@
   ],
   "corporatism": [
    "political ideology"
-  ]
+  ],
+  "Mexico": [
+   "country",
+   "state"
+  ],
+  "co-option": [],
+  "electoral fraud": [],
+  "power": [],
+  "violent repression": []
  },
  "ont_8_politics_test_213": {
   "Anti-communism": [
@@ -5240,6 +7117,9 @@
   ],
   "social justice": [
    "political ideology"
+  ],
+  "political party": [
+   "political party"
   ]
  }
 }

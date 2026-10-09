@@ -46,6 +46,19 @@
   ],
   "voice": [
    "voice"
+  ],
+  "fifth track": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "fourth studio album": [
+   "album",
+   "music"
+  ],
+  "lead guitarist": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_2": {
@@ -97,6 +110,11 @@
   ],
   "language": [
    "language"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_4": {
@@ -121,6 +139,9 @@
   ],
   "album": [
    "album"
+  ],
+  "Billboard": [
+   "music industry"
   ]
  },
  "ont_2_music_test_5": {
@@ -183,6 +204,15 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2008": [],
+  "American singer": [
+   "human"
+  ],
+  "debut studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_6": {
@@ -211,6 +241,16 @@
   "pop": [
    "music",
    "music genre"
+  ],
+  "1962": [],
+  "American songwriters": [
+   "composer",
+   "human"
+  ],
+  "pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_7": {
@@ -254,6 +294,14 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Both artists": [
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_8": {
@@ -268,6 +316,17 @@
   ],
   "Let's Get Loud": [
    "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Lopez": [
+   "human"
+  ],
+  "her previous material": [
+   "music",
+   "musical work"
+  ],
+  "previous material": [
    "music",
    "musical work"
   ]
@@ -302,6 +361,10 @@
   "The Fame": [
    "album",
    "music"
+  ],
+  "2008": [],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_10": {
@@ -318,6 +381,10 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "English singer-songwriter": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_11": {
@@ -336,7 +403,8 @@
   "Ian and Sylvia": [],
   "folk": [
    "music genre"
-  ]
+  ],
+  "Canadian folk duo": []
  },
  "ont_2_music_test_12": {
   "00  1913": [],
@@ -392,7 +460,16 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Bärina Hallonhätta och andra visor": [],
+  "Sjung med oss, Mamma!": [],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "volume 6": [],
+  "volume 6 of Sjung med oss, Mamma!": []
  },
  "ont_2_music_test_13": {
   "Jim Morrison": [
@@ -413,6 +490,23 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "fans": [
+   "human"
+  ],
+  "lead singer": [
+   "composer",
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_14": {
@@ -429,6 +523,18 @@
   "Jean-Jacques Goldman": [
    "composer",
    "human"
+  ],
+  "French singer": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "songwriter": [
+   "human",
+   "composer"
   ]
  },
  "ont_2_music_test_15": {
@@ -443,6 +549,13 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "2010": [],
+  "American singer-songwriter": [
+   "human"
+  ],
+  "debut studio album": [
+   "album"
   ]
  },
  "ont_2_music_test_16": {
@@ -485,6 +598,15 @@
    "human",
    "composer",
    "record producer"
+  ],
+  "Both artists": [
+   "composer",
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_17": {
@@ -505,6 +627,14 @@
   ],
   "Jennifer Lopez": [
    "human"
+  ],
+  "2001": [],
+  "American singer": [
+   "human"
+  ],
+  "second studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_18": {
@@ -521,6 +651,28 @@
   "Reign in Blood": [
    "album",
    "music"
+  ],
+  "1986": [],
+  "1986 studio album Reign in Blood": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Heaven": [],
+  "Kerry King": [
+   "composer",
+   "human"
+  ],
+  "religious concept": [],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_19": {
@@ -554,6 +706,14 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "Les Millions d'Arléquin": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Zimmermann": [
+   "music industry"
   ]
  },
  "ont_2_music_test_20": {
@@ -590,6 +750,18 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "Sugar Hill Records": [
+   "music industry"
+  ],
+  "copyright infringement": [],
+  "settlement": [],
+  "songwriter credits": [],
+  "the settlement": [],
+  "the track": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_21": {
@@ -615,7 +787,15 @@
   ],
   "oratorio": [
    "music genre"
-  ]
+  ],
+  "1749": [],
+  "1827": [],
+  "Austrian Empire": [],
+  "Emperor of the Holy Roman Empire": [],
+  "Francis II": [
+   "human"
+  ],
+  "Holy Roman Empire": []
  },
  "ont_2_music_test_22": {
   "A Kind of Magic": [
@@ -633,6 +813,13 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "Highlander": [],
+  "film": [],
+  "lead guitarist": [],
+  "soundtrack": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_23": {
@@ -654,7 +841,13 @@
   ],
   "pop": [
    "music genre"
-  ]
+  ],
+  "Italian pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "addzurro": []
  },
  "ont_2_music_test_24": {
   "31 May 2014": [],
@@ -674,7 +867,22 @@
    "musical work"
   ],
   "lyrics_by": [],
-  "musical_work": []
+  "musical_work": [],
+  "Jackson 5": [],
+  "May 31, 2014": [],
+  "US Billboard Hot 100": [
+   "music industry"
+  ],
+  "first artist in history": [
+   "human"
+  ],
+  "five different decades": [],
+  "number 9": [],
+  "six decades": [],
+  "top 10 single": [
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_25": {
   "Cathy Dennis": [
@@ -701,6 +909,10 @@
   "Perry": [
    "composer",
    "human"
+  ],
+  "Benny Blanco": [
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_26": {
@@ -765,7 +977,8 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Eurovision Song Contest 2013": []
  },
  "ont_2_music_test_27": {
   "1957": [],
@@ -792,6 +1005,9 @@
   "musical": [
    "composed musical work",
    "musical work"
+  ],
+  "Arthur Laurents": [
+   "human"
   ]
  },
  "ont_2_music_test_28": {
@@ -819,6 +1035,11 @@
   ],
   "voice": [
    "voice"
+  ],
+  "suite of piano pieces": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_29": {
@@ -833,6 +1054,20 @@
   "Waka Waka (This Time for Africa)": [
    "composed musical work",
    "music",
+   "musical work"
+  ],
+  "Marcus Raboy": [
+   "human"
+  ],
+  "a group of dancers": [],
+  "children": [
+   "human"
+  ],
+  "dancers": [
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
    "musical work"
   ]
  },
@@ -849,6 +1084,11 @@
   "Swiss folk song": [
    "composed musical work",
    "music",
+   "musical work"
+  ],
+  "1825": [],
+  "Ich hatt' einen Kameraden": [
+   "composed musical work",
    "musical work"
   ]
  },
@@ -872,6 +1112,15 @@
   ],
   "the Edge": [
    "human"
+  ],
+  "chiming arpeggio": [
+   "music"
+  ],
+  "lead guitarist": [],
+  "lead singer": [],
+  "vocals": [
+   "voice",
+   "music"
   ]
  },
  "ont_2_music_test_32": {
@@ -919,7 +1168,8 @@
   "religious music": [
    "music genre",
    "music"
-  ]
+  ],
+  "three movements": []
  },
  "ont_2_music_test_33": {
   "Chris Greatti": [
@@ -957,6 +1207,11 @@
   ],
   "album": [
    "album"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_34": {
@@ -1011,6 +1266,13 @@
   "Walk This Way": [
    "composed musical work",
    "music",
+   "musical work"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "fourth studio album": [
+   "album",
    "musical work"
   ]
  },
@@ -1203,6 +1465,37 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "2015": [],
+  "Ballet de l'Opéra de Lyon": [],
+  "Concerti Grossi Op. 8 No.": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Concerti Grossi, Op. 8 No.": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Concerto for Two Mandolins in G major": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Concerto for two mandolins in G major": [
+   "composed musical work",
+   "musical work"
+  ],
+  "France": [],
+  "Oboe Concerto in D minor": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Salomon Rossi Suite": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Stabat Mater": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_38": {
@@ -1285,6 +1578,31 @@
    "album",
    "music",
    "musical work"
+  ],
+  "Allen Ritter": [
+   "human",
+   "record producer"
+  ],
+  "Atlanta": [],
+  "Future": [
+   "human"
+  ],
+  "Mano": [
+   "human",
+   "record producer"
+  ],
+  "Mike Dean": [
+   "human",
+   "record producer"
+  ],
+  "Zaytoven": [
+   "human",
+   "record producer"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_40": {
@@ -1317,6 +1635,14 @@
   ],
   "You're Gonna Be OK": [
    "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "2017": [],
+  "first studio album": [
+   "album"
+  ],
+  "lead single": [
    "musical work",
    "music"
   ]
@@ -1360,6 +1686,13 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "third studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_42": {
@@ -1380,6 +1713,11 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Bharoto Bhagyo Bidhata": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_43": {
@@ -1400,6 +1738,9 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Russian-Armenian singer": [
+   "human"
   ]
  },
  "ont_2_music_test_44": {
@@ -1435,6 +1776,21 @@
    "music genre"
   ],
   "fairy ballet": [
+   "music genre"
+  ],
+  "1892": [],
+  "Lev Ivanov": [
+   "human"
+  ],
+  "Marius Petipa": [
+   "human"
+  ],
+  "Op.": [],
+  "balet-feyeriya": [
+   "music genre"
+  ],
+  "two-act ballet": [
+   "musical work",
    "music genre"
   ]
  },
@@ -1503,7 +1859,17 @@
   "classical": [
    "music genre"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "1727": [],
+  "HWV 258": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "King George II": [
+   "human"
+  ],
+  "coronation of King George II": []
  },
  "ont_2_music_test_47": {
   "David Bowie": [
@@ -1518,7 +1884,18 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "1972": [],
+  "1972 re-release": [
+   "album",
+   "music"
+  ],
+  "David Bowie (album)": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "United Kingdom": []
  },
  "ont_2_music_test_48": {
   "Fearless": [
@@ -1598,7 +1975,8 @@
   "orchestra": [],
   "record producer": [
    "record producer"
-  ]
+  ],
+  "1875-76": []
  },
  "ont_2_music_test_50": {
   "Crosby, Stills & Nash": [
@@ -1618,7 +1996,8 @@
   "Suite: Judy Blue Eyes": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "CSN": []
  },
  "ont_2_music_test_51": {
   "BeyoncÃ©": [
@@ -1648,6 +2027,11 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Beyoncé": [
+   "composer",
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_52": {
@@ -1865,6 +2249,23 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "13 May 1848": [],
+  "German immigrant": [
+   "human"
+  ],
+  "German immigrant Fredrik Pacius": [
+   "composer",
+   "human"
+  ],
+  "first performance of Maamme": [],
+  "music": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "original Swedish words": [
+   "language"
   ]
  },
  "ont_2_music_test_58": {
@@ -1875,6 +2276,21 @@
   ],
   "Jay-Z": [
    "human"
+  ],
+  "Beyoncé's assertive delivery of the lyrics": [
+   "music",
+   "voice"
+  ],
+  "Jay-Z's contribution": [
+   "music"
+  ],
+  "Music critics": [
+   "human"
+  ],
+  "the hook": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_59": {
@@ -1898,6 +2314,20 @@
    "language"
   ],
   "Wild Dances": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Dyki tantsi": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Ukraine": [],
+  "Ukrainian singer-songwriter": [
+   "human"
+  ],
+  "single": [
    "composed musical work",
    "music",
    "musical work"
@@ -1935,6 +2365,15 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2008": [],
+  "American singer": [
+   "human"
+  ],
+  "second studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_61": {
@@ -1959,6 +2398,13 @@
   "country music": [
    "music",
    "music genre"
+  ],
+  "2013": [],
+  "Canadian country music duo": [],
+  "debut studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_62": {
@@ -1975,6 +2421,18 @@
   "U2": [],
   "rock": [
    "music genre"
+  ],
+  "2009 album": [
+   "album"
+  ],
+  "Irish rock band": [
+   "music industry",
+   "music genre"
+  ],
+  "sixth track": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_63": {
@@ -2094,7 +2552,8 @@
   "nominated_for": [],
   "voice": [
    "voice"
-  ]
+  ],
+  "British funk/acid jazz band": []
  },
  "ont_2_music_test_66": {
   "18 April 2011": [],
@@ -2136,7 +2595,8 @@
    "composed musical work",
    "music",
    "musical work"
-  ]
+  ],
+  "2018": []
  },
  "ont_2_music_test_68": {
   "00 February 1984": [],
@@ -2157,6 +2617,15 @@
    "musical work"
   ],
   "album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "single": [
+   "music",
+   "musical work"
+  ],
+  "studio album": [
    "album",
    "music",
    "musical work"
@@ -2201,6 +2670,15 @@
   ],
   "voice": [
    "voice"
+  ],
+  "stage production of Hercules": [
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_70": {
@@ -2279,6 +2757,9 @@
   ],
   "record label": [
    "music industry"
+  ],
+  "French electronic/electroclash musician": [
+   "human"
   ]
  },
  "ont_2_music_test_71": {
@@ -2306,7 +2787,8 @@
   ],
   "Mia Martini": [
    "human"
-  ]
+  ],
+  "Italy": []
  },
  "ont_2_music_test_72": {
   "Depeche Mode": [
@@ -2356,6 +2838,15 @@
   "singer": [],
   "voice": [
    "voice"
+  ],
+  "2005": [],
+  "English electronic music band": [
+   "music industry"
+  ],
+  "eleventh studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_73": {
@@ -2388,7 +2879,8 @@
   "guitar": [],
   "rock": [
    "music genre"
-  ]
+  ],
+  "the band": []
  },
  "ont_2_music_test_74": {
   "1974": [],
@@ -2409,7 +2901,8 @@
   ],
   "progressive_rock": [
    "music genre"
-  ]
+  ],
+  "Yess": []
  },
  "ont_2_music_test_75": {
   "18 March 2014": [],
@@ -2434,6 +2927,19 @@
   "March 18, 2014": [],
   "hip hop": [
    "music genre"
+  ],
+  "2014": [],
+  "American hip hop recording artist": [
+   "human"
+  ],
+  "fifth studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "first single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_76": {
@@ -2483,6 +2989,10 @@
   ],
   "The Velvet Rope": [
    "album"
+  ],
+  "1997": [],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_79": {
@@ -2510,7 +3020,8 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "1985": []
  },
  "ont_2_music_test_80": {
   "00 May 1998": [],
@@ -2532,6 +3043,21 @@
   ],
   "language": [
    "language"
+  ],
+  "French hip hop band": [],
+  "The Dana's tribe": [],
+  "debut album": [
+   "album"
+  ],
+  "second track": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_81": {
@@ -2555,6 +3081,20 @@
   ],
   "rap": [
    "music genre"
+  ],
+  "2010": [],
+  "American hip hop recording artist": [
+   "human",
+   "music industry"
+  ],
+  "fifth studio album": [
+   "album",
+   "music"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_82": {
@@ -2592,6 +3132,30 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Beautiful, Dirty, Rich": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Enigma": [
+   "music industry"
+  ],
+  "Las Vegas residency": [
+   "music industry"
+  ],
+  "The Fame Ball Tour": [
+   "music industry"
+  ],
+  "The Monster Ball Tour": [
+   "music industry"
+  ],
+  "futuristic bustier": [],
+  "silver triangular panels": [],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_83": {
@@ -2660,6 +3224,21 @@
   ],
   "Tutte storie": [
    "album"
+  ],
+  "Things in life": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_85": {
@@ -2699,6 +3278,15 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1977": [],
+  "1977 album Slowhand": [
+   "album"
+  ],
+  "Clapton": [
+   "human",
+   "composer",
+   "record producer"
   ]
  },
  "ont_2_music_test_87": {
@@ -2712,7 +3300,8 @@
   "In Through the Out Door": [
    "album"
   ],
-  "Led Zeppelin": []
+  "Led Zeppelin": [],
+  "1979": []
  },
  "ont_2_music_test_88": {
   "Hot Space": [
@@ -2753,6 +3342,26 @@
   ],
   "rock)\n* performer(Not Like That": [
    "human"
+  ],
+  "Hot Space album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "incredibly powerful and poignant pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "monster rock track": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_89": {
@@ -2776,7 +3385,9 @@
   ],
   "human": [
    "human"
-  ]
+  ],
+  "1986": [],
+  "the band": []
  },
  "ont_2_music_test_90": {
   "01 January 1986": [],
@@ -2797,7 +3408,22 @@
   "Motown": [
    "music industry"
   ],
-  "The song is a track from Richie's Dancing on the Ceiling album": []
+  "The song is a track from Richie's Dancing on the Ceiling album": [],
+  "Richie": [
+   "composer",
+   "human",
+   "record producer"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_91": {
   "18 August 1997": [],
@@ -2813,6 +3439,16 @@
   ],
   "The Colour and the Shape": [
    "album"
+  ],
+  "1997": [],
+  "second single": [
+   "musical work",
+   "music"
+  ],
+  "second studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_92": {
@@ -2875,6 +3511,13 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2011": [],
+  "Eurovision Song Contest 2011": [
+   "music industry"
+  ],
+  "second studio album": [
+   "album"
   ]
  },
  "ont_2_music_test_94": {
@@ -2920,7 +3563,11 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Canada": [],
+  "Japan": [],
+  "US": [],
+  "most countries": []
  },
  "ont_2_music_test_95": {
   "27 March 1980": [],
@@ -2937,6 +3584,11 @@
   ],
   "language": [
    "language"
+  ],
+  "1980": [],
+  "the band": [],
+  "the band's 1980 album Making Movies": [
+   "album"
   ]
  },
  "ont_2_music_test_96": {
@@ -3000,7 +3652,8 @@
   "guitar, bass guitar, drums, keyboards": [],
   "rock": [
    "music genre"
-  ]
+  ],
+  "Australian rock band": []
  },
  "ont_2_music_test_98": {
   "00 March 1991": [],
@@ -3037,7 +3690,9 @@
    "composed musical work",
    "music",
    "musical work"
-  ]
+  ],
+  "1991": [],
+  "Northern Ireland": []
  },
  "ont_2_music_test_99": {
   "00  1991": [],
@@ -3082,6 +3737,32 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Ambiance Secousse": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "debut album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "first single": [
+   "music",
+   "music industry",
+   "musical work"
+  ],
+  "former professional tennis player": [
+   "human"
+  ],
+  "professional tennis player": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_100": {
@@ -3093,6 +3774,9 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "1982 album": [
+   "album"
   ]
  },
  "ont_2_music_test_101": {
@@ -3123,6 +3807,20 @@
   "guitar,drums,piano": [],
   "human": [
    "human"
+  ],
+  "September 30, 2013": [],
+  "fourth single": [
+   "musical work",
+   "music"
+  ],
+  "his debut studio album": [
+   "album",
+   "musical work",
+   "music"
+  ],
+  "third single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_102": {
@@ -3141,6 +3839,13 @@
   ],
   "heavy metal": [
    "music genre"
+  ],
+  "heavy metal band": [
+   "music industry"
+  ],
+  "sixth studio album": [
+   "album",
+   "music"
   ]
  },
  "ont_2_music_test_103": {
@@ -3187,6 +3892,14 @@
    "album",
    "musical work",
    "music"
+  ],
+  "2007 studio album": [
+   "album"
+  ],
+  "French duo Air": [],
+  "song": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_105": {
@@ -3202,6 +3915,10 @@
    "album",
    "music",
    "musical work"
+  ],
+  "2012": [],
+  "ninth studio album": [
+   "album"
   ]
  },
  "ont_2_music_test_106": {
@@ -3213,7 +3930,15 @@
   "Jumped Right In": [
    "album"
   ],
-  "March 2012": []
+  "March 2012": [],
+  "his debut solo album": [
+   "album",
+   "music"
+  ],
+  "second single": [
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_107": {
   "A Kind of Magic": [
@@ -3226,6 +3951,12 @@
   "June 1986": [],
   "Who Wants to Live Forever": [
    "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Highlander": [],
+  "lead guitarist": [],
+  "soundtrack": [
    "music",
    "musical work"
   ]
@@ -3298,6 +4029,17 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "1993": [],
+  "British hard rock band": [
+   "music industry"
+  ],
+  "multi-platinum album": [
+   "album"
+  ],
+  "single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_110": {
@@ -3313,6 +4055,13 @@
   ],
   "Smiley Smile": [
    "album"
+  ],
+  "September 1967 release": [
+   "album"
+  ],
+  "the track": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_111": {
@@ -3340,7 +4089,8 @@
   ],
   "album": [
    "album"
-  ]
+  ],
+  "1987": []
  },
  "ont_2_music_test_112": {
   "Humaine": [
@@ -3367,6 +4117,15 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "On n'oublie jamais rien, on vit avec": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Ségara's third studio album": [
+   "album",
+   "music"
   ]
  },
  "ont_2_music_test_113": {
@@ -3382,6 +4141,13 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "1982": [],
+  "debut album": [
+   "album"
+  ],
+  "single": [
+   "musical work"
   ]
  },
  "ont_2_music_test_114": {
@@ -3472,6 +4238,15 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "1993": [],
+  "third single": [
+   "music",
+   "musical work"
+  ],
+  "thirteenth track": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_117": {
@@ -3512,6 +4287,9 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "American rapper": [
+   "human"
   ]
  },
  "ont_2_music_test_118": {
@@ -3524,7 +4302,9 @@
   "I Love to Boogie": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "1977": [],
+  "T. Rex": []
  },
  "ont_2_music_test_119": {
   "Game Over ( Flip )": [
@@ -3540,6 +4320,10 @@
   "U Gotta Feel Me": [
    "album",
    "music"
+  ],
+  "Lil' Flip": [
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_120": {
@@ -3604,6 +4388,27 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1964": [],
+  "1964 debut LP": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "American girl group": [
+   "music industry"
+  ],
+  "Gold Star Studios": [
+   "music industry"
+  ],
+  "Hollywood": [],
+  "July 5, 1963": [],
+  "Veronica": [
+   "human"
+  ],
+  "single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_121": {
@@ -3620,6 +4425,15 @@
   ],
   "Styles": [
    "human"
+  ],
+  "American rappers": [
+   "human"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "The LOX": [
+   "music industry"
   ]
  },
  "ont_2_music_test_122": {
@@ -3647,6 +4461,16 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "His own": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Kosovo-Albanian": [],
+  "Kosovo-Albanian singer and songwriter": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_124": {
@@ -3688,6 +4512,21 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Liam Howlett was presented with three remixes": [],
+  "the single": [
+   "music",
+   "musical work"
+  ],
+  "the title song": [
+   "music",
+   "musical work",
+   "composed musical work"
+  ],
+  "three remixes": [
+   "music",
+   "musical work",
+   "composed musical work"
   ]
  },
  "ont_2_music_test_125": {
@@ -3730,6 +4569,26 @@
   ],
   "techno-pop": [
    "music genre"
+  ],
+  "dance song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "dance-pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "nu-disco song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "techno-pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_126": {
@@ -3747,6 +4606,13 @@
    "album",
    "music",
    "musical work"
+  ],
+  "Welsh musician": [
+   "human"
+  ],
+  "composer": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_127": {
@@ -3759,6 +4625,21 @@
    "musical work"
   ],
   "Echo (You and I)": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "France": [],
+  "Indonesia": [],
+  "Indonesian/French singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "song": [
    "composed musical work",
    "music",
    "musical work"
@@ -3780,6 +4661,12 @@
   ],
   "album": [
    "album"
+  ],
+  "1984": [],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_129": {
@@ -3883,6 +4770,49 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Chipmunk": [
+   "human",
+   "music"
+  ],
+  "Gabriella Cilmi": [
+   "human",
+   "music",
+   "voice"
+  ],
+  "Jon Shave": [
+   "composer",
+   "human",
+   "music",
+   "record producer"
+  ],
+  "Kyle Abrahams": [
+   "composer",
+   "human",
+   "music",
+   "record producer"
+  ],
+  "N-Dubz": [
+   "music"
+  ],
+  "Noisettes": [
+   "music"
+  ],
+  "Orson": [
+   "music"
+  ],
+  "Sugababes": [
+   "music"
+  ],
+  "The Invisible Men": [
+   "composer",
+   "music",
+   "music industry",
+   "record producer"
+  ],
+  "United Kingdom": [],
+  "Xenomania": [
+   "music industry"
   ]
  },
  "ont_2_music_test_131": {
@@ -3929,6 +4859,10 @@
   "\\*": [],
   "video": [
    "music"
+  ],
+  "The video": [],
+  "construction worker": [
+   "human"
   ]
  },
  "ont_2_music_test_132": {
@@ -3972,6 +4906,16 @@
   "music genre": [],
   "voice": [
    "voice"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_133": {
@@ -3986,6 +4930,21 @@
   "Welcome to St. Tropez": [
    "composed musical work",
    "music",
+   "musical work"
+  ],
+  "Swiss DJ": [
+   "human"
+  ],
+  "Swiss DJ and record producer": [
+   "human",
+   "record producer"
+  ],
+  "record producer": [
+   "human",
+   "record producer"
+  ],
+  "studio album": [
+   "album",
    "musical work"
   ]
  },
@@ -4003,7 +4962,10 @@
    "music",
    "musical work"
   ],
-  "Tangled": []
+  "Tangled": [],
+  "2010": [],
+  "50th animated feature film": [],
+  "Walt Disney Animation Studios": []
  },
  "ont_2_music_test_135": {
   "David Bowie": [
@@ -4019,6 +4981,15 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "English singer-songwriter": [
+   "composer",
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_136": {
@@ -4143,7 +5114,16 @@
   ],
   "publication_date": [],
   "s).\nThe song was composed by Klaus GÃ¼nter Neumann": [],
-  "while production was handled by Bader and Arnie, with lyrics by Ralf Arnie and Gene Martyn, with the album released on the record label BMG, with a nomination for an award in 1977, with the award being a Grammy Award for Best Arrangement Accompanying Vocalist(s": []
+  "while production was handled by Bader and Arnie, with lyrics by Ralf Arnie and Gene Martyn, with the album released on the record label BMG, with a nomination for an award in 1977, with the award being a Grammy Award for Best Arrangement Accompanying Vocalist(s": [],
+  "Klaus Günter Neumann": [
+   "composer",
+   "human"
+  ],
+  "Most English versions of the song": [
+   "music",
+   "musical work",
+   "composed musical work"
+  ]
  },
  "ont_2_music_test_138": {
   "The Minstrel Boy": [
@@ -4156,6 +5136,22 @@
    "human"
   ],
   "patriotic song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "1779-1852": [],
+  "Irish patriotic song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "The Moreen": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "old Irish air": [
    "composed musical work",
    "music",
    "musical work"
@@ -4182,6 +5178,13 @@
   "nomination for best original score for a motion picture": [],
   "rock": [
    "music genre"
+  ],
+  "Highlander": [],
+  "June 1986": [],
+  "lead guitarist": [],
+  "soundtrack": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_140": {
@@ -4277,7 +5280,21 @@
    "music industry",
    "record producer"
   ],
-  "piano,synthesizer": []
+  "piano,synthesizer": [],
+  "2013": [],
+  "self-titled fifth studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the duo": [
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_141": {
   "20 April 2010": [],
@@ -4302,6 +5319,16 @@
   "electric guitar,bass,drums": [],
   "pop": [
    "music genre"
+  ],
+  "2010": [],
+  "American singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "debut studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_142": {
@@ -4323,7 +5350,16 @@
   "poem-song": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "1936": [],
+  "Yiddish poem-song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "our little town is burning": [],
+  "our shtetl is burning": [],
+  "shtetl": []
  },
  "ont_2_music_test_143": {
   "Dancehall": [
@@ -4342,6 +5378,10 @@
   ],
   "Tomahawk Technique": [
    "album"
+  ],
+  "Jamaica": [],
+  "Jamaican Dancehall": [
+   "music genre"
   ]
  },
  "ont_2_music_test_144": {
@@ -4384,7 +5424,17 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "Marcus Raboy": [
+   "human"
+  ],
+  "children": [
+   "human"
+  ],
+  "dancers": [
+   "human"
+  ],
+  "music video": []
  },
  "ont_2_music_test_146": {
   "In the Air Tonight": [
@@ -4394,6 +5444,13 @@
   "Phil Collins": [
    "composer",
    "human"
+  ],
+  "English drummer": [
+   "human"
+  ],
+  "singer-songwriter": [
+   "human",
+   "composer"
   ]
  },
  "ont_2_music_test_147": {
@@ -4409,6 +5466,16 @@
   ],
   "Stromae": [
    "human"
+  ],
+  "2010": [],
+  "31 May": [],
+  "Belgian singer": [
+   "human"
+  ],
+  "fourth promo-single": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_148": {
@@ -4545,6 +5612,9 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Billboard": [
+   "music industry"
   ]
  },
  "ont_2_music_test_151": {
@@ -4559,6 +5629,27 @@
    "album"
   ],
   "Sk8er Boi": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "2002": [],
+  "Canada": [],
+  "Canadian singer-songwriter": [
+   "composer",
+   "human"
+  ],
+  "debut album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "second single": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "skater boy": [
    "composed musical work",
    "music",
    "musical work"
@@ -4583,6 +5674,25 @@
    "album"
   ],
   "voice": [
+   "voice"
+  ],
+  "American singers": [
+   "human"
+  ],
+  "French DJ": [
+   "human"
+  ],
+  "record producer": [
+   "human",
+   "record producer"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "vocals": [
+   "music",
    "voice"
   ]
  },
@@ -4629,7 +5739,10 @@
   ],
   "Shakira": [
    "human"
-  ]
+  ],
+  "a naked embrace": [],
+  "revealing outfits": [],
+  "the accompanying video": []
  },
  "ont_2_music_test_155": {
   "1995": [],
@@ -4652,6 +5765,11 @@
   "guitar": [],
   "rock": [
    "music genre"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_156": {
@@ -4692,7 +5810,13 @@
   "space_oddity_voice": [
    "voice"
   ],
-  "tracklist": []
+  "tracklist": [],
+  "David Bowie (album)": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "United Kingdom": []
  },
  "ont_2_music_test_157": {
   "Funk Volume": [
@@ -4722,6 +5846,21 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Hopsin's third studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_158": {
@@ -4745,6 +5884,14 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "fourth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_159": {
@@ -4768,7 +5915,8 @@
    "composer",
    "human",
    "record producer"
-  ]
+  ],
+  "1983": []
  },
  "ont_2_music_test_160": {
   "' 39": [
@@ -4787,6 +5935,18 @@
   "Brian May": [
    "composer",
    "human"
+  ],
+  "'39": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "fourth studio album": [
+   "album"
+  ],
+  "lead guitarist": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_161": {
@@ -4798,6 +5958,21 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "a new species": [],
+  "a sham": [],
+  "a song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "a woman": [
+   "human"
+  ],
+  "her life": [],
+  "her reality": [],
+  "the band's frontman": [
+   "human"
   ]
  },
  "ont_2_music_test_162": {
@@ -4832,6 +6007,22 @@
    "music",
    "music genre",
    "musical work"
+  ],
+  "Johann Walter": [
+   "composer",
+   "human"
+  ],
+  "We all believe in one God": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "chorale hymnal": [],
+  "creed": [],
+  "paraphrase of the creed": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_163": {
@@ -4860,6 +6051,11 @@
   ],
   "album": [
    "album"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_164": {
@@ -4888,6 +6084,21 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "American recording artist": [
+   "human",
+   "music industry"
+  ],
+  "Bratz: The Movie": [],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_165": {
@@ -4952,6 +6163,20 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "The Edge": [
+   "composer",
+   "human"
+  ],
+  "The song": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_166": {
@@ -4965,6 +6190,17 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "record producer": [
+   "human",
+   "record producer"
+  ],
+  "songwriter": [
+   "human",
+   "composer"
   ]
  },
  "ont_2_music_test_167": {
@@ -4990,7 +6226,8 @@
   "rock": [
    "music genre"
   ],
-  "the Kinks": []
+  "the Kinks": [],
+  "English rock band": []
  },
  "ont_2_music_test_168": {
   "Alan Braxe": [
@@ -5027,6 +6264,9 @@
   ],
   "house": [
    "music genre"
+  ],
+  "Daft Punk": [
+   "music industry"
   ]
  },
  "ont_2_music_test_169": {
@@ -5040,6 +6280,9 @@
   ],
   "Eric Carmen": [
    "composer",
+   "human"
+  ],
+  "American artist": [
    "human"
   ]
  },
@@ -5115,6 +6358,9 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "American rock band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_172": {
@@ -5139,6 +6385,13 @@
   "Walter Afanasieff": [
    "human",
    "record producer"
+  ],
+  "1990": [],
+  "Carey's debut studio album": [
+   "album"
+  ],
+  "Mariah Carey (1990)": [
+   "album"
   ]
  },
  "ont_2_music_test_173": {
@@ -5158,7 +6411,10 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "2013": [],
+  "British film": [],
+  "One Chance": []
  },
  "ont_2_music_test_174": {
   "Anthony Kiedis": [
@@ -5179,7 +6435,15 @@
   ],
   "hard rock": [
    "music genre"
-  ]
+  ],
+  "Anthony Kiedis's life": [],
+  "Under the Bridge's impact on his life": [],
+  "despondency": [],
+  "feelings of loneliness": [],
+  "lyrics": [
+   "musical work"
+  ],
+  "narcotics": []
  },
  "ont_2_music_test_175": {
   "Aftermath Entertainment": [
@@ -5329,6 +6593,25 @@
   "vocals": [
    "music",
    "voice"
+  ],
+  "other songs": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "solo vocals": [
+   "voice",
+   "music"
+  ],
+  "the band": [
+   "music"
+  ],
+  "the rest of the band": [
+   "music"
+  ],
+  "vocal harmony": [
+   "voice",
+   "music"
   ]
  },
  "ont_2_music_test_179": {
@@ -5358,6 +6641,10 @@
   "Rasamna Ala Al-Qalb Wajh Al-Watan": [
    "composed musical work",
    "musical work"
+  ],
+  "The Lyrics": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_181": {
@@ -5384,6 +6671,14 @@
   "The single": [
    "music",
    "musical work"
+  ],
+  "Barbados": [],
+  "Hinds": [],
+  "United Kingdom": [],
+  "the United Kingdom": [],
+  "the single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_182": {
@@ -5425,6 +6720,11 @@
   ],
   "language": [
    "language"
+  ],
+  "2006 FIFA World Cup": [],
+  "French football team": [],
+  "Zinedine Zidane": [
+   "human"
   ]
  },
  "ont_2_music_test_183": {
@@ -5437,6 +6737,29 @@
   ],
   "Sauver l'amour": [
    "album",
+   "music",
+   "musical work"
+  ],
+  "March 1986": [],
+  "album Sauver l'amour": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "eighth album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "last album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "posthumous release": [
+   "music industry"
+  ],
+  "second single": [
    "music",
    "musical work"
   ]
@@ -5458,6 +6781,10 @@
   "single": [
    "musical work",
    "music"
+  ],
+  "the single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_185": {
@@ -5499,6 +6826,13 @@
   "guitar,bass,drums": [],
   "heavy metal": [
    "music genre"
+  ],
+  "1971": [],
+  "British heavy metal": [
+   "music genre"
+  ],
+  "British heavy metal band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_186": {
@@ -5544,6 +6878,10 @@
   ],
   "voice": [
    "voice"
+  ],
+  "June 22, 2012": [],
+  "album": [
+   "album"
   ]
  },
  "ont_2_music_test_187": {
@@ -5583,7 +6921,8 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Europe": []
  },
  "ont_2_music_test_188": {
   "01 January 1965": [],
@@ -5602,6 +6941,17 @@
   ],
   "language": [
    "language"
+  ],
+  "1965": [],
+  "single": [
+   "music",
+   "music industry",
+   "musical work"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_189": {
@@ -5635,7 +6985,8 @@
   ],
   "language": [
    "language"
-  ]
+  ],
+  "1999": []
  },
  "ont_2_music_test_190": {
   "10 September 1984": [],
@@ -5651,7 +7002,8 @@
   "The Works": [
    "album",
    "music"
-  ]
+  ],
+  "1984": []
  },
  "ont_2_music_test_191": {
   "01 January 2011": [],
@@ -5664,7 +7016,14 @@
    "composer",
    "human",
    "record producer"
-  ]
+  ],
+  "2011": [],
+  "Gil Scott-Heron": [
+   "human",
+   "composer"
+  ],
+  "funeral": [],
+  "funeral of Gil Scott-Heron": []
  },
  "ont_2_music_test_192": {
   "01 January 1999": [],
@@ -5727,6 +7086,15 @@
   ],
   "voice,": [
    "voice"
+  ],
+  "1999": [],
+  "French singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "Mylène Farmer": [
+   "human",
+   "composer"
   ]
  },
  "ont_2_music_test_193": {
@@ -5749,7 +7117,12 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "2005-06": [],
+  "music industry awards": [
+   "award"
+  ],
+  "music industry nominations": []
  },
  "ont_2_music_test_194": {
   "02 January 2006": [],
@@ -5789,6 +7162,11 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2 January 2006": [],
+  "third single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_195": {
@@ -5829,7 +7207,31 @@
   "piano": [],
   "soprano": [
    "voice"
-  ]
+  ],
+  "February 2004": [],
+  "Hot R&B/Hip-Hop Songs chart": [
+   "music industry"
+  ],
+  "Keys": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "US Billboard Hot 100": [
+   "music industry"
+  ],
+  "album's second single": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "number four": [],
+  "second consecutive R&B chart-topper": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "six weeks": []
  },
  "ont_2_music_test_196": {
   "14 January 1971": [],
@@ -5854,7 +7256,19 @@
   "Single": [
    "music",
    "musical work"
-  ]
+  ],
+  "1971": [],
+  "April 10": [],
+  "March 27": [],
+  "number 1 position": [],
+  "the Billboard Pop Singles Chart": [
+   "music industry"
+  ],
+  "the single": [
+   "music",
+   "musical work"
+  ],
+  "two weeks": []
  },
  "ont_2_music_test_197": {
   "01 February 1974": [],
@@ -5886,6 +7300,15 @@
   ],
   "record_label": [
    "music industry"
+  ],
+  "February 1974": [],
+  "RCA Victor": [
+   "music industry"
+  ],
+  "United Kingdom": [],
+  "lead single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_198": {
@@ -5914,7 +7337,16 @@
   "folk": [
    "music genre"
   ],
-  "self-released": []
+  "self-released": [],
+  "2008 YouTube Award": [
+   "award"
+  ],
+  "CTV": [],
+  "Music": [
+   "music"
+  ],
+  "hottest viral video of summer 2007": [],
+  "summer 2007": []
  },
  "ont_2_music_test_199": {
   "29 July 2011": [],
@@ -5930,6 +7362,15 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "2011": [],
+  "English singer": [
+   "human"
+  ],
+  "debut studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_200": {
@@ -5962,7 +7403,17 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Belgium": [],
+  "France": [],
+  "Spain": [],
+  "Top 20 hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Wallonia": [],
+  "francophone countries": []
  },
  "ont_2_music_test_201": {
   "05 March 2001": [],
@@ -5990,6 +7441,20 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2001": [],
+  "5 March 2001": [],
+  "lead single": [
+   "musical work",
+   "music industry"
+  ],
+  "second studio album": [
+   "album",
+   "music"
+  ],
+  "the band's second studio album": [
+   "album",
+   "music"
   ]
  },
  "ont_2_music_test_202": {
@@ -6021,7 +7486,29 @@
   "music": [
    "music"
   ],
-  "music genre": []
+  "music genre": [],
+  "album's fifth US single": [
+   "music",
+   "music industry",
+   "musical work"
+  ],
+  "sixth overall single": [
+   "music",
+   "music industry",
+   "musical work"
+  ],
+  "the album's fifth US single": [
+   "music",
+   "music industry",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the third quarter of 1999": [],
+  "third quarter of 1999": []
  },
  "ont_2_music_test_203": {
   "08 September 2000": [],
@@ -6051,7 +7538,8 @@
   ],
   "pop": [
    "music genre"
-  ]
+  ],
+  "2001": []
  },
  "ont_2_music_test_204": {
   "' Till I Collapse": [
@@ -6094,6 +7582,14 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "fourth studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_205": {
@@ -6172,7 +7668,8 @@
   "Walk of Life": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "1979": []
  },
  "ont_2_music_test_207": {
   "01 February 2010": [],
@@ -6195,7 +7692,9 @@
   ],
   "human": [
    "human"
-  ]
+  ],
+  "Belgium": [],
+  "Europe": []
  },
  "ont_2_music_test_208": {
   "11 May 2010": [],
@@ -6212,6 +7711,14 @@
   ],
   "Teenage Dream": [
    "album"
+  ],
+  "May 11, 2010": [],
+  "album's lead single": [
+   "musical work",
+   "music"
+  ],
+  "iTunes": [
+   "music industry"
   ]
  },
  "ont_2_music_test_209": {
@@ -6229,7 +7736,14 @@
   ],
   "The Butterfly Returns": [
    "music industry"
-  ]
+  ],
+  "2015-2017": [],
+  "2018": [],
+  "Las Vegas": [],
+  "Number 1's tour": [
+   "music industry"
+  ],
+  "late 1990": []
  },
  "ont_2_music_test_210": {
   "21 November 2011": [],
@@ -6261,6 +7775,15 @@
    "record producer"
   ],
   "When Christmas Comes": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "single": [
+   "musical work",
+   "music"
+  ],
+  "the song": [
    "composed musical work",
    "musical work",
    "music"
@@ -6302,6 +7825,12 @@
    "composer",
    "human",
    "record producer"
+  ],
+  "four nominations": [
+   "award"
+  ],
+  "the video": [
+   "musical work"
   ]
  },
  "ont_2_music_test_212": {
@@ -6321,7 +7850,8 @@
   ],
   "soul": [
    "music genre"
-  ]
+  ],
+  "1966": []
  },
  "ont_2_music_test_213": {
   "14 August 1995": [],
@@ -6357,7 +7887,8 @@
   "The Fat of the Land": [
    "album",
    "music"
-  ]
+  ],
+  "November 1997": []
  },
  "ont_2_music_test_215": {
   "...": [],
@@ -6389,7 +7920,11 @@
   ],
   "alto": [
    "voice"
-  ]
+  ],
+  "Australasia": [],
+  "Europe": [],
+  "November 14, 2011": [],
+  "US radio": []
  },
  "ont_2_music_test_216": {
   "15 November 1993": [],
@@ -6400,6 +7935,17 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "1993 album": [
+   "album"
+  ],
+  "eighth track": [
+   "musical work",
+   "music"
+  ],
+  "second single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_217": {
@@ -6415,6 +7961,17 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "1985 in music": [],
+  "Europe": [],
+  "single": [
+   "musical work",
+   "music"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_218": {
@@ -6469,6 +8026,22 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Carey": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "Glitter (2001)": [
+   "album"
+  ],
+  "charitable events": [],
+  "hospitalization": [],
+  "short promotional tour": [],
+  "the single": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_219": {
@@ -6502,6 +8075,19 @@
   ],
   "musical work": [
    "musical work"
+  ],
+  "American musician": [
+   "human"
+  ],
+  "American musician Prince": [
+   "composer",
+   "human",
+   "record producer"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_220": {
@@ -6519,6 +8105,15 @@
   "the album": [
    "album",
    "music"
+  ],
+  "43rd single overall": [
+   "music",
+   "musical work"
+  ],
+  "United Kingdom": [],
+  "album's third single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_221": {
@@ -6528,6 +8123,9 @@
    "album",
    "music",
    "musical work"
+  ],
+  "Wax": [
+   "album"
   ]
  },
  "ont_2_music_test_222": {
@@ -6558,6 +8156,26 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "January 10, 2012": [],
+  "fourth single": [
+   "music"
+  ],
+  "the album": [
+   "album",
+   "music"
+  ],
+  "the band": [],
+  "the band's frontman": [
+   "human"
+  ],
+  "the fourth single": [
+   "music"
+  ],
+  "the song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_223": {
@@ -6578,7 +8196,12 @@
   "rock": [
    "music",
    "music genre"
-  ]
+  ],
+  "2009 album": [
+   "album",
+   "music"
+  ],
+  "Irish rock band": []
  },
  "ont_2_music_test_224": {
   "18 April 2009": [],
@@ -6602,6 +8225,16 @@
   ],
   "You Belong with Me": [
    "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "2008": [],
+  "Swift's second studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "third single": [
    "music",
    "musical work"
   ]
@@ -6675,6 +8308,16 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Düsseldorf": [],
+  "Eurovision Song Contest 2011": [
+   "music industry"
+  ],
+  "France": [],
+  "Germany": [],
+  "I Dream": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_227": {
@@ -6720,7 +8363,13 @@
   "pop": [
    "music genre"
   ],
-  "synthesizer": []
+  "synthesizer": [],
+  "David Levine": [
+   "human"
+  ],
+  "PWL Records": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_228": {
   "10 October 1970": [],
@@ -6739,7 +8388,8 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "1970": []
  },
  "ont_2_music_test_229": {
   "04 March 2011": [],
@@ -6789,7 +8439,13 @@
    "music",
    "musical work"
   ],
-  "video": []
+  "video": [],
+  "Best Pop Video": [
+   "award"
+  ],
+  "the video": [
+   "musical work"
+  ]
  },
  "ont_2_music_test_230": {
   "06 January 1987": [],
@@ -6814,6 +8470,14 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "album's fifth single": [
+   "music",
+   "musical work"
+  ],
+  "the album's fifth single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_231": {
@@ -6832,6 +8496,16 @@
   "U2": [],
   "human": [
    "human"
+  ],
+  "2000": [],
+  "lead single": [
+   "music",
+   "musical work"
+  ],
+  "tenth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_232": {
@@ -6864,6 +8538,10 @@
   ],
   "pop": [
    "music genre"
+  ],
+  "2008": [],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_233": {
@@ -6898,7 +8576,16 @@
   "the band": [],
   "voice": [
    "voice"
-  ]
+  ],
+  "Finland": [],
+  "Italy": [],
+  "Portugal": [],
+  "Spain": [],
+  "late 2001": [],
+  "number five": [],
+  "number one": [],
+  "number two": [],
+  "the United Kingdom": []
  },
  "ont_2_music_test_234": {
   "01 July 1989": [],
@@ -6915,7 +8602,16 @@
   "Girl You Know It's True": [
    "album"
   ],
-  "July 1989": []
+  "July 1989": [],
+  "debut album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "single": [
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_235": {
   "25 May 1987": [],
@@ -6960,7 +8656,17 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "1987": [],
+  "I Still Haven't Found What I'm Looking For": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "U2": [
+   "music industry"
+  ],
+  "second single": []
  },
  "ont_2_music_test_236": {
   "02 October 1995": [],
@@ -6998,6 +8704,19 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "1995": [],
+  "1995 greatest hits album Vault": [
+   "album"
+  ],
+  "British rock band": [
+   "music industry"
+  ],
+  "British rock band Def Leppard": [
+   "music industry"
+  ],
+  "greatest hits album": [
+   "album"
   ]
  },
  "ont_2_music_test_237": {
@@ -7021,7 +8740,8 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "1978": []
  },
  "ont_2_music_test_238": {
   "19 May 2003": [],
@@ -7042,6 +8762,14 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "second album": [
+   "album"
+  ],
+  "the song": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_239": {
@@ -7055,6 +8783,13 @@
   "The Colour and the Shape": [
    "album",
    "musical work"
+  ],
+  "1997": [],
+  "second single": [
+   "musical work"
+  ],
+  "second studio album": [
+   "album"
   ]
  },
  "ont_2_music_test_240": {
@@ -7106,6 +8841,13 @@
   "soul": [
    "music",
    "music genre"
+  ],
+  "2001": [],
+  "contemporary R&B ballad": [
+   "music genre"
+  ],
+  "piano-driven soul": [
+   "music genre"
   ]
  },
  "ont_2_music_test_241": {
@@ -7138,7 +8880,22 @@
    "music genre"
   ],
   "mine liking,Middle English": [],
-  "mine liking,human": []
+  "mine liking,human": [],
+  "15th century": [],
+  "Middle English lyric poem": [
+   "composed musical work",
+   "musical work"
+  ],
+  "Nativity": [],
+  "infant Christ": [
+   "human"
+  ],
+  "narrative": [],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_242": {
   "1731": [],
@@ -7189,6 +8946,23 @@
   ],
   "voice": [
    "voice"
+  ],
+  "BWV 191": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "German Baroque composer": [
+   "composer",
+   "human"
+  ],
+  "Glory to God in the Highest": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Latin text": [
+   "language"
   ]
  },
  "ont_2_music_test_243": {
@@ -7219,6 +8993,11 @@
   ],
   "record label": [
    "music industry"
+  ],
+  "Fida'ī": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_244": {
@@ -7238,6 +9017,16 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "O my country": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Ya Beladi": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_245": {
@@ -7265,7 +9054,9 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Latin work of fiction": [],
+  "manuscript tradition": []
  },
  "ont_2_music_test_246": {
   "Arabic": [
@@ -7277,6 +9068,17 @@
    "music"
   ],
   "United Republic": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Yemen": [],
+  "al-Jomhuriyah al-Mottaedah": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "national anthem": [
    "composed musical work",
    "musical work",
    "music"
@@ -7305,6 +9107,10 @@
   ],
   "Similar Latin lyrics": [
    "musical work"
+  ],
+  "1500s": [],
+  "Latin lyrics": [
+   "language"
   ]
  },
  "ont_2_music_test_248": {
@@ -7336,6 +9142,27 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "Ave Regina caelorum": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Latin hexameter": [],
+  "Loving Mother of our Saviour": [],
+  "Regina caeli": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Salve Regina": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "office of Compline": [],
+  "seasonal liturgical Marian antiphons": [
+   "music genre"
   ]
  },
  "ont_2_music_test_249": {
@@ -7358,7 +9185,20 @@
   ],
   "mystery play": [
    "music genre"
-  ]
+  ],
+  "Carl Orff": [
+   "composer",
+   "human"
+  ],
+  "Orff": [
+   "composer",
+   "human"
+  ],
+  "Wolfgang Schadewaldt": [
+   "human"
+  ],
+  "end of time": [],
+  "the end of time": []
  },
  "ont_2_music_test_250": {
   "Amharic": [
@@ -7423,6 +9263,27 @@
    "music",
    "composed musical work",
    "musical work"
+  ],
+  "Ethiopia": [],
+  "Honour of Citizenship": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "YÃ¤zÃ©gennÃ¤t Keber": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Yäzégen­nät Keber": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "national anthem of Ethiopia": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_251": {
@@ -7482,7 +9343,42 @@
    "music genre",
    "music"
   ],
-  "popular": []
+  "popular": [],
+  "1932": [],
+  "1932 Yiddish-language comedy musical": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "Brooklyn": [],
+  "New York City": [],
+  "Parkway Theatre": [],
+  "To Me You're Beautiful": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "Yiddish song": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "Yiddish-language comedy musical": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "You could live, but they don't let you": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "[baj mir bistu ejn]": [
+   "musical work",
+   "composed musical work",
+   "music"
+  ],
+  "one season": []
  },
  "ont_2_music_test_253": {
   "A solis ortus cardine": [
@@ -7540,6 +9436,12 @@
   "original Latin hymn": [
    "composed musical work",
    "musical work"
+  ],
+  "chorus": [],
+  "organ": [],
+  "the original Latin hymn": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_254": {
@@ -7583,6 +9485,20 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "11 July 1772": [],
+  "13 April 1839": [],
+  "1796-1829": [],
+  "Italian": [],
+  "international career": [
+   "music industry"
+  ],
+  "leading opera houses": [
+   "music industry"
+  ],
+  "operatic tenor": [
+   "human",
+   "voice"
   ]
  },
  "ont_2_music_test_255": {
@@ -7606,7 +9522,26 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "80 roles": [],
+  "Ciprijonas Petrauskas": [
+   "human"
+  ],
+  "January 17, 1968": [],
+  "Lithuanian": [],
+  "Lithuanian Association of Artists": [
+   "music industry"
+  ],
+  "Lithuanian operatic tenor": [
+   "human",
+   "voice"
+  ],
+  "November 23, 1885": [],
+  "operatic tenor": [
+   "human",
+   "voice"
+  ],
+  "professor": []
  },
  "ont_2_music_test_256": {
   "Caroline Stam": [
@@ -7617,6 +9552,28 @@
   ],
   "soprano": [
    "voice"
+  ],
+  "Dutch": [],
+  "Dutch classical soprano": [
+   "human"
+  ],
+  "European performing career": [
+   "music industry"
+  ],
+  "baroque repertoire": [
+   "musical work",
+   "music"
+  ],
+  "classical soprano": [
+   "voice",
+   "music genre"
+  ],
+  "international European performing career": [
+   "music industry"
+  ],
+  "modern recordings": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_257": {
@@ -7646,6 +9603,17 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "28 December 1850": [],
+  "31 August 1905": [],
+  "America": [],
+  "Europe": [],
+  "Italian": [],
+  "Italian operatic tenor": [
+   "human"
+  ],
+  "operatic tenor": [
+   "human"
   ]
  },
  "ont_2_music_test_258": {
@@ -7666,6 +9634,14 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "29 November 1966": [],
+  "Italian opera": [
+   "music",
+   "music genre"
+  ],
+  "Tibetan tenor": [
+   "human"
   ]
  },
  "ont_2_music_test_259": {
@@ -7683,6 +9659,16 @@
   "soprano": [
    "human",
    "voice"
+  ],
+  "10 February 2008": [],
+  "1971": [],
+  "2 June 1946": [],
+  "2006": [],
+  "Danish soprano": [
+   "human"
+  ],
+  "international opera career": [
+   "music industry"
   ]
  },
  "ont_2_music_test_260": {
@@ -7699,6 +9685,17 @@
   "tenor": [
    "human",
    "voice"
+  ],
+  "1 December 1932": [],
+  "1960s": [],
+  "1990s": [],
+  "28 August 2003": [],
+  "Slovak": [
+   "human"
+  ],
+  "international career": [],
+  "operatic tenor": [
+   "human"
   ]
  },
  "ont_2_music_test_261": {
@@ -7713,7 +9710,11 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Mexican": [],
+  "Mexico": [],
+  "Mexico City": [],
+  "October 30, 1937": []
  },
  "ont_2_music_test_262": {
   "Angelo Maria Amorevoli": [
@@ -7733,6 +9734,14 @@
   "tenor": [
    "human",
    "voice"
+  ],
+  "15 November 1798": [],
+  "16 September 1716": [],
+  "Baroque opera": [
+   "music genre"
+  ],
+  "Italian tenor": [
+   "human"
   ]
  },
  "ont_2_music_test_263": {
@@ -7747,6 +9756,18 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "England": [],
+  "January 11, 1890": [],
+  "November 24, 1963": [],
+  "Russian": [],
+  "Russian-born": [],
+  "United States": [],
+  "operatic tenor": [
+   "human"
+  ],
+  "stage director": [
+   "human"
   ]
  },
  "ont_2_music_test_264": {
@@ -7792,6 +9813,16 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "1895": [],
+  "Italian tenor": [
+   "human",
+   "voice"
+  ],
+  "March 21, 1804": [],
+  "composer": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_265": {
@@ -7809,7 +9840,10 @@
   ],
   "soprano": [
    "voice"
-  ]
+  ],
+  "21 August 1972": [],
+  "6 March 1885": [],
+  "French": []
  },
  "ont_2_music_test_266": {
   "Abdylas Maldybaev": [
@@ -7850,6 +9884,28 @@
   "singer": [],
   "tenor": [
    "voice"
+  ],
+  "Abdylas Maldıbayev": [
+   "human"
+  ],
+  "Adlas Maldajev": [
+   "human"
+  ],
+  "July 7, 1906": [],
+  "June 1, 1978": [],
+  "Kyrgyz composer": [
+   "composer",
+   "human"
+  ],
+  "actor": [
+   "human"
+  ],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "operatic tenor singer": [
+   "human"
   ]
  },
  "ont_2_music_test_267": {
@@ -7861,7 +9917,13 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "2012": [],
+  "Florida Artists Hall of Fame": [
+   "award"
+  ],
+  "January 26, 1921": [],
+  "November 5, 2017": []
  },
  "ont_2_music_test_268": {
   "Giuseppina Cobelli": [
@@ -7891,7 +9953,9 @@
   ],
   "soprano": [
    "voice"
-  ]
+  ],
+  "1 August 1898": [],
+  "10 August 1948": []
  },
  "ont_2_music_test_269": {
   "Maurice Stern": [
@@ -7905,7 +9969,21 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Andrea Chenier": [],
+  "Bacchus": [],
+  "Calaf": [],
+  "Canio": [],
+  "Dick Johnson": [],
+  "Don Alvaro": [],
+  "Don José": [],
+  "Lohengrin": [],
+  "Manrico": [],
+  "Otello": [],
+  "Radames": [],
+  "Samson": [],
+  "Tannhäuser": [],
+  "dramatic tenor roles": []
  },
  "ont_2_music_test_270": {
   "\"I Will Always Love You\"": [
@@ -7964,6 +10042,15 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Victorian era": [],
+  "comic tenors": [
+   "human",
+   "voice"
+  ],
+  "leading tenor role": [],
+  "works": [
+   "musical work"
   ]
  },
  "ont_2_music_test_271": {
@@ -7981,6 +10068,21 @@
   "tenor": [
    "human",
    "voice"
+  ],
+  "24 August 2019": [],
+  "4 September 1942": [],
+  "German": [],
+  "German lyric tenor": [
+   "human",
+   "voice"
+  ],
+  "Mozart": [
+   "composer",
+   "human"
+  ],
+  "Mozart opera roles": [],
+  "baroque concert soloist": [
+   "human"
   ]
  },
  "ont_2_music_test_272": {
@@ -8005,7 +10107,19 @@
   "tenor": [
    "voice"
   ],
-  "tenor(Giovanni Paroli": []
+  "tenor(Giovanni Paroli": [],
+  "1856": [],
+  "1920": [],
+  "Brescia": [],
+  "Italian": [],
+  "Italian operatic tenor": [
+   "human"
+  ],
+  "Italy": [],
+  "four decades": [],
+  "international performance career": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_273": {
   "Clyde McPhatter": [
@@ -8016,6 +10130,15 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Mount Lebanon Singers": [
+   "music industry"
+  ],
+  "gospel group": [
+   "music industry"
+  ],
+  "teenager": [
+   "human"
   ]
  },
  "ont_2_music_test_274": {
@@ -8034,6 +10157,18 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "American": [],
+  "August 12, 1935": [],
+  "August 26, 2019": [],
+  "impresario": [
+   "human"
+  ],
+  "singer": [
+   "human"
+  ],
+  "voice teacher": [
+   "human"
   ]
  },
  "ont_2_music_test_275": {
@@ -8051,6 +10186,12 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "5 December 1957": [],
+  "6 February 1865": [],
+  "Italian lyric tenor": [
+   "human",
+   "voice"
   ]
  },
  "ont_2_music_test_276": {
@@ -8065,6 +10206,14 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "18 September 1937": [],
+  "2001": [],
+  "Hungarian": [
+   "human"
+  ],
+  "cantor": [
+   "human"
   ]
  },
  "ont_2_music_test_277": {
@@ -8099,7 +10248,30 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Giacomo Puccini": [
+   "composer",
+   "human"
+  ],
+  "Norwegian Music History Archive": [],
+  "Norwegian history": [],
+  "Richard Strauss": [
+   "composer",
+   "human"
+  ],
+  "Richard Wagner": [
+   "composer",
+   "human"
+  ],
+  "greatest dramatic tenor in Norwegian history": [
+   "human",
+   "voice"
+  ],
+  "operas": [
+   "musical work",
+   "composed musical work"
+  ],
+  "portrayals": []
  },
  "ont_2_music_test_278": {
   "Donald Robin Smith": [
@@ -8115,6 +10287,15 @@
   "tenor": [
    "human",
    "voice"
+  ],
+  "26 March 1942": [],
+  "Australian": [
+   "human"
+  ],
+  "operatic tenor": [
+   "human",
+   "voice",
+   "music genre"
   ]
  },
  "ont_2_music_test_279": {
@@ -8157,6 +10338,15 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "1895": [],
+  "Soviet": [],
+  "Ukrainian": [
+   "human"
+  ],
+  "composer": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_280": {
@@ -8256,6 +10446,17 @@
   ],
   "tenor_baritone": [
    "voice"
+  ],
+  "1852": [],
+  "1920": [],
+  "Josef Ichhäuser": [
+   "human"
+  ],
+  "Polish-born singer": [
+   "human"
+  ],
+  "actor": [
+   "human"
   ]
  },
  "ont_2_music_test_281": {
@@ -8267,7 +10468,11 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Italian": [
+   "language"
+  ],
+  "Italy": []
  },
  "ont_2_music_test_282": {
   "Tenor": [
@@ -8287,6 +10492,11 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "11 April 1969": [],
+  "28 July 1908": [],
+  "Soviet singer": [
+   "human"
   ]
  },
  "ont_2_music_test_283": {
@@ -8326,7 +10536,8 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "late 1980s": []
  },
  "ont_2_music_test_284": {
   "Garðar Thór Cortes": [
@@ -8344,6 +10555,13 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "London's West End": [],
+  "leading tenor roles": [],
+  "operas": [
+   "composed musical work",
+   "musical work",
+   "music genre"
   ]
  },
  "ont_2_music_test_285": {
@@ -8381,6 +10599,23 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "October 2, 1981": [],
+  "Polish": [],
+  "Polish singer": [
+   "human"
+  ],
+  "arranger": [],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "lyricist": [
+   "human"
+  ],
+  "music co-producer": [
+   "record producer",
+   "human"
   ]
  },
  "ont_2_music_test_286": {
@@ -8396,6 +10631,23 @@
   "singer": [],
   "soprano": [
    "voice"
+  ],
+  "August 12, 1907": [],
+  "Japanese": [],
+  "September 22, 1999": [],
+  "chanteuse": [
+   "human"
+  ],
+  "female soprano": [
+   "human",
+   "voice"
+  ],
+  "popular music": [
+   "music",
+   "music genre"
+  ],
+  "ryūkōka singer": [
+   "human"
   ]
  },
  "ont_2_music_test_287": {
@@ -8410,6 +10662,13 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "11 July 1925": [],
+  "8 January 2017": [],
+  "Swedish": [],
+  "operatic tenor": [
+   "human",
+   "voice"
   ]
  },
  "ont_2_music_test_288": {
@@ -8420,6 +10679,19 @@
    "voice"
   ],
   "tenor": [
+   "voice"
+  ],
+  "1940s": [],
+  "1970s": [],
+  "American": [],
+  "August 27, 1911": [],
+  "September 4, 2006": [],
+  "international career": [
+   "music industry"
+  ],
+  "operatic tenor": [
+   "human",
+   "music genre",
    "voice"
   ]
  },
@@ -8432,6 +10704,21 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "22 May 1969": [],
+  "British tenor": [
+   "human",
+   "voice"
+  ],
+  "London": [],
+  "classical music": [
+   "music",
+   "music genre"
+  ],
+  "concert platform": [],
+  "opera house": [],
+  "recordings": [
+   "music"
   ]
  },
  "ont_2_music_test_290": {
@@ -8443,6 +10730,16 @@
   ],
   "composed musical work": [],
   "tenor": [
+   "voice"
+  ],
+  "16 November 1708": [],
+  "2 January 1768": [],
+  "Cesena": [],
+  "Italian": [
+   "human"
+  ],
+  "operatic tenor": [
+   "human",
    "voice"
   ]
  },
@@ -8468,6 +10765,35 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "30 November 1935": [],
+  "8 December 2015": [],
+  "Austria": [],
+  "Austrian": [],
+  "Austrian television presenter": [
+   "human"
+  ],
+  "Happi Prikopa": [
+   "human"
+  ],
+  "actor": [
+   "human"
+  ],
+  "cabaret artist": [
+   "human"
+  ],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "pianist": [
+   "human"
+  ],
+  "television presenter": [
+   "human"
+  ],
+  "writer": [
+   "human"
   ]
  },
  "ont_2_music_test_292": {
@@ -8489,6 +10815,21 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "2010": [],
+  "2016": [],
+  "American": [
+   "human"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "November 15, 1977": [],
+  "Rockapella": [
+   "music industry"
+  ],
+  "a cappella group Rockapella": [
+   "music industry"
   ]
  },
  "ont_2_music_test_293": {
@@ -8501,6 +10842,20 @@
   ],
   "bornNovember27": [],
   "tenor": [
+   "voice"
+  ],
+  "American": [
+   "human"
+  ],
+  "American opera houses": [],
+  "European opera houses": [],
+  "New York City": [],
+  "November 27, 1947": [],
+  "leading tenor roles": [],
+  "major American opera houses": [],
+  "major European opera houses": [],
+  "operatic tenor": [
+   "human",
    "voice"
   ]
  },
@@ -8525,7 +10880,18 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "American musical theater": [
+   "music genre"
+  ],
+  "Danny Newman": [
+   "human"
+  ],
+  "Lyric Opera of Chicago": [
+   "music industry"
+  ],
+  "biggest theaters": [],
+  "the biggest theaters": []
  },
  "ont_2_music_test_295": {
   "Composer": [
@@ -8552,6 +10918,24 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "14 May 1574": [],
+  "30 November 1621": [],
+  "Italian": [
+   "human"
+  ],
+  "chitarrone player": [
+   "human"
+  ],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "poet": [
+   "human"
+  ],
+  "singer": [
+   "human"
   ]
  },
  "ont_2_music_test_296": {
@@ -8580,7 +10964,9 @@
   "tenor singing voice": [
    "voice"
   ],
-  "unknown": []
+  "unknown": [],
+  "androgynous stage persona": [],
+  "flamboyant stage persona": []
  },
  "ont_2_music_test_297": {
   "Peter Pears": [
@@ -8597,6 +10983,18 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "22 June 1910": [],
+  "3 April 1986": [],
+  "CBE": [
+   "award"
+  ],
+  "English tenor": [
+   "human",
+   "voice"
+  ],
+  "Peter Neville Luard Pears": [
+   "human"
   ]
  },
  "ont_2_music_test_298": {
@@ -8614,6 +11012,22 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "1973": [],
+  "24 January 1942": [],
+  "26 April 1997": [],
+  "Mari Autonomous Soviet Socialist Republic": [],
+  "Meritorious Artist of the Mari Autonomous Soviet Socialist Republic": [
+   "award"
+  ],
+  "Russian singer": [
+   "human"
+  ],
+  "Soviet": [
+   "human"
+  ],
+  "Soviet singer": [
+   "human"
   ]
  },
  "ont_2_music_test_299": {
@@ -8634,6 +11048,30 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "1956": [],
+  "American": [],
+  "American musician": [
+   "human",
+   "music"
+  ],
+  "February 19, 1940": [],
+  "March 3, 2013": [],
+  "Southfield, Michigan": [],
+  "musician": [
+   "human",
+   "music"
+  ],
+  "tenor singer": [
+   "human",
+   "music",
+   "voice"
+  ],
+  "the Miracles": [
+   "music"
+  ],
+  "vocal group": [
+   "music"
   ]
  },
  "ont_2_music_test_300": {
@@ -8663,7 +11101,12 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "American tenor": [
+   "human"
+  ],
+  "August 11, 1952": [],
+  "November 18, 1874": []
  },
  "ont_2_music_test_301": {
   "Barber of Seville": [
@@ -8717,7 +11160,16 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Bayan": [],
+  "Bolshoi": [],
+  "Count Almaviva": [],
+  "Duke of Mantua": [],
+  "Indian Guest": [],
+  "Lensky": [],
+  "Sinodal": [],
+  "Vladimir": [],
+  "lyric tenor repertoire": []
  },
  "ont_2_music_test_302": {
   "100 Greatest Tenors": [
@@ -8762,6 +11214,12 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Italian Columbia Company": [
+   "music industry"
+  ],
+  "tenor stars": [
+   "human"
   ]
  },
  "ont_2_music_test_303": {
@@ -8779,6 +11237,21 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "American": [
+   "human"
+  ],
+  "March 15, 1869": [],
+  "March 30, 1948": [],
+  "early years of the twentieth century": [],
+  "pioneer recording artist": [
+   "human"
+  ],
+  "recording artist": [
+   "human"
+  ],
+  "tenor singer": [
+   "human"
   ]
  },
  "ont_2_music_test_304": {
@@ -8798,6 +11271,15 @@
   "boxer": [],
   "tenor": [
    "voice"
+  ],
+  "13 December 1978": [],
+  "31 August 1913": [],
+  "Irish boxer": [
+   "human"
+  ],
+  "The Gorgeous Gael": [],
+  "actor": [
+   "human"
   ]
  },
  "ont_2_music_test_305": {
@@ -8812,6 +11294,25 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Ireland": [],
+  "Irish": [],
+  "Scotland": [],
+  "Scottish": [],
+  "Scottish tenor": [
+   "human",
+   "voice"
+  ],
+  "Sydney Alfred MacEwan": [
+   "human"
+  ],
+  "traditional Irish songs": [
+   "music",
+   "musical work"
+  ],
+  "traditional Scottish songs": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_306": {
@@ -8841,6 +11342,12 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "26 February 1957": [],
+  "Italian": [],
+  "Naples": [],
+  "voice-actor": [
+   "human"
   ]
  },
  "ont_2_music_test_307": {
@@ -8851,6 +11358,14 @@
    "voice"
   ],
   "tenor": [
+   "voice"
+  ],
+  "14 August 1913": [],
+  "1940s": [],
+  "1950s": [],
+  "28 January 1995": [],
+  "Italian operatic tenor": [
+   "human",
    "voice"
   ]
  },
@@ -8871,6 +11386,15 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "1892": [],
+  "D'Oyly Carte Opera Company": [
+   "music industry"
+  ],
+  "age 18": [],
+  "leading tenor roles": [],
+  "tour": [
+   "music industry"
   ]
  },
  "ont_2_music_test_309": {
@@ -8902,7 +11426,14 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "London": [],
+  "Nadvirna": [],
+  "Ukraine": [],
+  "Ukrainian bandurist": [
+   "human"
+  ],
+  "eastern Poland": []
  },
  "ont_2_music_test_310": {
   "Roberto Stagno": [
@@ -8913,6 +11444,13 @@
    "voice"
   ],
   "tenor": [
+   "human",
+   "voice"
+  ],
+  "18 October 1840": [],
+  "1836": [],
+  "26 April 1897": [],
+  "Italian opera tenor": [
    "human",
    "voice"
   ]
@@ -8932,6 +11470,12 @@
   ],
   "dramatic tenor": [
    "voice"
+  ],
+  "Siegfried": [],
+  "Tristan": [],
+  "Wagnerian heroes": [],
+  "dramatic repertoire": [
+   "music"
   ]
  },
  "ont_2_music_test_312": {
@@ -8945,6 +11489,9 @@
    "voice"
   ],
   "tenor": [
+   "voice"
+  ],
+  "tenor vocal range": [
    "voice"
   ]
  },
@@ -8964,7 +11511,13 @@
   "tenor": [
    "voice"
   ],
-  "unknown": []
+  "unknown": [],
+  "14 Sept 1944": [],
+  "British": [],
+  "operatic tenor": [
+   "voice",
+   "human"
+  ]
  },
  "ont_2_music_test_314": {
   "Estudiantina": [
@@ -8984,7 +11537,16 @@
   ],
   "piano": [],
   "two pianos": [],
-  "two-piano": []
+  "two-piano": [],
+  "classical music audiences": [],
+  "orchestral version": [
+   "composed musical work",
+   "musical work"
+  ],
+  "two-piano version": [
+   "composed musical work",
+   "musical work"
+  ]
  },
  "ont_2_music_test_315": {
   "Orchestra": [],
@@ -9021,6 +11583,19 @@
   "orchestra": [],
   "voice": [
    "voice"
+  ],
+  "concerto": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "instrumental ensemble": [],
+  "solo violin": [],
+  "two or more violins": [],
+  "violin concerto": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_316": {
@@ -9037,7 +11612,22 @@
    "music genre",
    "musical work"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "concerto": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
+  ],
+  "instrumental ensemble": [],
+  "solo violin": [],
+  "two or more violins": [],
+  "violin concerto": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
+  ]
  },
  "ont_2_music_test_317": {
   "01 January 1951": [],
@@ -9066,6 +11656,11 @@
   "piano": [],
   "three percussionists": [
    "human"
+  ],
+  "Crossplay": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_318": {
@@ -9172,7 +11767,29 @@
   ],
   "orchestra": [],
   "piano": [],
-  "solo piano": []
+  "solo piano": [],
+  "1910": [],
+  "Op.  32": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Op. 32": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Solo piano": [],
+  "Thirteen Preludes": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "thirteen preludes": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_320": {
   "01 January 1909": [],
@@ -9188,7 +11805,13 @@
    "human"
   ],
   "chorus": [],
-  "orchestra": []
+  "orchestra": [],
+  "1909": [],
+  "composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_321": {
   "Oboe Concerto": [
@@ -9210,7 +11833,20 @@
    "musical work"
   ],
   "orchestra": [],
-  "string orchestra": []
+  "string orchestra": [],
+  "concertos": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "non-concerto works": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "other solo instruments": [],
+  "similar large ensemble": [],
+  "solo instrument": []
  },
  "ont_2_music_test_322": {
   "Clarinet": [],
@@ -9236,7 +11872,9 @@
   "piano trio": [
    "music genre"
   ],
-  "viola": []
+  "viola": [],
+  "E-flat major": [],
+  "K. 498": []
  },
  "ont_2_music_test_323": {
   "Cello": [],
@@ -9254,7 +11892,18 @@
   "violin": [],
   "voice": [
    "voice"
-  ]
+  ],
+  "50 minutes": [],
+  "B-flat": [],
+  "cello": [],
+  "clarinet": [],
+  "complete work": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "performance": [],
+  "piano": []
  },
  "ont_2_music_test_324": {
   "French": [
@@ -9293,6 +11942,9 @@
   "violin": [],
   "voice": [
    "voice"
+  ],
+  "original instrumentation": [
+   "music"
   ]
  },
  "ont_2_music_test_325": {
@@ -9337,7 +11989,22 @@
   "classical": [
    "music genre"
   ],
-  "piano": []
+  "piano": [],
+  "Caprice No.": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Opus 35": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "work for piano": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_327": {
   "(1975)": [
@@ -9369,7 +12036,16 @@
    "musical work",
    "music"
   ],
-  "piano": []
+  "piano": [],
+  "American composer": [
+   "composer",
+   "human"
+  ],
+  "piano composition": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_328": {
   "BÃ©la BartÃ³k": [
@@ -9409,7 +12085,12 @@
    "music",
    "musical work"
   ],
-  "piano": []
+  "piano": [],
+  "piano pieces": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_329": {
   "Bassoon": [],
@@ -9467,7 +12148,11 @@
   "record producer": [
    "record producer"
   ],
-  "string orchestra": []
+  "string orchestra": [],
+  "1946/47": [],
+  "1948": [],
+  "F major": [],
+  "TrV 293": []
  },
  "ont_2_music_test_330": {
   "60": [],
@@ -9505,6 +12190,28 @@
   "russian": [],
   "symphonic": [
    "music genre"
+  ],
+  "1910": [],
+  "Opus 60": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Preston Millar": [
+   "human"
+  ],
+  "Russian composer": [
+   "composer",
+   "human"
+  ],
+  "Scriabin's lifetime": [],
+  "color organ": [],
+  "optional choir": [],
+  "performances of the piece": [],
+  "symphonic work": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_331": {
@@ -9541,7 +12248,13 @@
    "voice"
   ],
   "contralto and bass soli, chorus, and orchestra": [],
-  "orchestra": []
+  "orchestra": [],
+  "15-minute": [],
+  "15-minute composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_332": {
   "01 January 1920": [],
@@ -9560,6 +12273,18 @@
   "suite": [
    "composed musical work",
    "musical work",
+   "music"
+  ],
+  "30 pieces for piano": [
+   "composed musical work",
+   "musical work"
+  ],
+  "single day": [],
+  "suite of 30 pieces": [
+   "composed musical work",
+   "musical work"
+  ],
+  "three-four time": [
    "music"
   ]
  },
@@ -9580,7 +12305,22 @@
   ],
   "human": [],
   "orchestra": [],
-  "viola": []
+  "viola": [],
+  "BartÃ³k": [
+   "composer",
+   "human"
+  ],
+  "Bartók": [
+   "composer",
+   "human"
+  ],
+  "Walton": [
+   "composer",
+   "human"
+  ],
+  "viola concerto repertoire": [
+   "music"
+  ]
  },
  "ont_2_music_test_334": {
   "Best New Artist": [
@@ -9647,7 +12387,19 @@
   "cello": [],
   "clarinet": [],
   "flute": [],
-  "piano": []
+  "piano": [],
+  "1999": [],
+  "2009": [],
+  "Later versions": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "later versions": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_336": {
   "01 January 1893": [],
@@ -9672,7 +12424,19 @@
    "musical work",
    "music"
   ],
-  "piano": []
+  "piano": [],
+  "Gothic Dances": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Rosicrucian period": [],
+  "mystic period": [],
+  "piano composition": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_337": {
   "A Sea Symphony": [
@@ -9697,7 +12461,14 @@
   "symphonic music": [
    "music",
    "music genre"
-  ]
+  ],
+  "20th century": [],
+  "Britain": [],
+  "first half of the 20th century": [],
+  "musical texture": [
+   "music"
+  ],
+  "new era": []
  },
  "ont_2_music_test_338": {
   "20th Century Masters: The Millennium Collection": [
@@ -9725,7 +12496,16 @@
   ],
   "orchestra": [],
   "trombone": [],
-  "trombone and orchestra": []
+  "trombone and orchestra": [],
+  "Greek composer": [
+   "composer",
+   "human"
+  ],
+  "composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_339": {
   "13": [],
@@ -9753,7 +12533,15 @@
   ],
   "Piano": [],
   "piano": [],
-  "piano solo": []
+  "piano solo": [],
+  "Catalogue of birds": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "October 1956": [],
+  "September 1958": [],
+  "thirteen pieces": []
  },
  "ont_2_music_test_340": {
   "Orchestra": [],
@@ -9765,7 +12553,45 @@
    "composed musical work",
    "musical work"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "another instrumentalist": [
+   "human"
+  ],
+  "cellist": [
+   "human"
+  ],
+  "double concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "double piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "instrumentalist": [
+   "human"
+  ],
+  "larger solo groups": [],
+  "piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "piano soloist": [
+   "human"
+  ],
+  "solo pianists": [
+   "human"
+  ],
+  "triple concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "two solo pianists": [
+   "human"
+  ],
+  "violinist": [
+   "human"
+  ]
  },
  "ont_2_music_test_341": {
   "Orchestra": [],
@@ -9802,6 +12628,38 @@
   ],
   "voice": [
    "voice"
+  ],
+  "another instrumentalist": [
+   "human"
+  ],
+  "cellist": [
+   "human"
+  ],
+  "double concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "double piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "larger solo groups": [],
+  "piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "piano soloist": [
+   "human"
+  ],
+  "triple concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "two solo pianists": [
+   "human"
+  ],
+  "violinist": [
+   "human"
   ]
  },
  "ont_2_music_test_342": {
@@ -9836,7 +12694,15 @@
   "album": [
    "album"
   ],
-  "bassoon": []
+  "bassoon": [],
+  "clarinet duets": [
+   "music genre",
+   "musical work"
+  ],
+  "melodic themes": [
+   "music"
+  ],
+  "supporting role": []
  },
  "ont_2_music_test_344": {
   "01 January 1904": [],
@@ -9864,7 +12730,14 @@
    "album"
   ],
   "piano": [],
-  "solo piano": []
+  "solo piano": [],
+  "1904": [],
+  "L. 106": [],
+  "solo piano piece": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_345": {
   "Harpsichord": [],
@@ -9898,6 +12771,19 @@
   "record_label": [],
   "violin": [],
   "violin sonatas": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "1720": [],
+  "harpsichord part": [
+   "music"
+  ],
+  "melodic material": [
+   "music"
+  ],
+  "obbligato": [],
+  "violin sonatas of Johann Sebastian Bach": [
    "composed musical work",
    "musical work",
    "music"
@@ -9956,7 +12842,12 @@
   ],
   "piano": [],
   "piano duet": [],
-  "piano solo": []
+  "piano solo": [],
+  "The galop chromatique": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_349": {
   "Grammy Award for Best Rap Song": [
@@ -9999,7 +12890,15 @@
    "music"
   ],
   "solo trombone": [],
-  "trombone": []
+  "trombone": [],
+  "composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "series of pieces": [
+   "music"
+  ]
  },
  "ont_2_music_test_350": {
   "Clarinet": [],
@@ -10013,7 +12912,16 @@
   "clarinet": [],
   "orchestra": [],
   "piano": [],
-  "string quartet": []
+  "string quartet": [],
+  "Op.": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "composer": [
+   "composer",
+   "human"
+  ]
  },
  "ont_2_music_test_351": {
   "Cello": [],
@@ -10030,7 +12938,15 @@
   "double bass": [],
   "piano": [],
   "viola": [],
-  "violin": []
+  "violin": [],
+  "piano quintet": [
+   "music",
+   "music genre"
+  ],
+  "string quartet": [
+   "music",
+   "music genre"
+  ]
  },
  "ont_2_music_test_352": {
   "01 January 1863": [],
@@ -10068,7 +12984,16 @@
    "music genre"
   ],
   "violin": [],
-  "violin and orchestra": []
+  "violin and orchestra": [],
+  "composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "orchestra": [],
+  "virtuoso violinist": [
+   "human"
+  ]
  },
  "ont_2_music_test_353": {
   "1786": [],
@@ -10132,7 +13057,9 @@
    "music",
    "music genre"
   ],
-  "viola": []
+  "viola": [],
+  "E-flat major": [],
+  "K. 498": []
  },
  "ont_2_music_test_354": {
   "Orchestra": [],
@@ -10142,7 +13069,20 @@
   "Violin concerto": [
    "music genre"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "concerto": [
+   "composed musical work",
+   "music genre",
+   "musical work"
+  ],
+  "instrumental ensemble": [],
+  "solo violin": [],
+  "two or more violins": [],
+  "violin concerto": [
+   "composed musical work",
+   "music genre",
+   "musical work"
+  ]
  },
  "ont_2_music_test_355": {
   "Contralto": [
@@ -10174,7 +13114,13 @@
    "voice"
   ],
   "contralto and bass soli, chorus, and orchestra": [],
-  "orchestra": []
+  "orchestra": [],
+  "15-minute": [],
+  "15-minute composition": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_356": {
   "01 January 1834": [],
@@ -10205,7 +13151,17 @@
    "music genre"
   ],
   "piano": [],
-  "piano solo": []
+  "piano solo": [],
+  "1834": [],
+  "G": [],
+  "fanfare-like sequence": [
+   "music"
+  ],
+  "the two parts": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_357": {
   "01 January 1849": [],
@@ -10254,6 +13210,16 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "1849": [],
+  "After a Reading of Dante: Fantasia quasi Sonata": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Hungarian composer Franz Liszt": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_358": {
@@ -10276,7 +13242,24 @@
   "pianist": [
    "human"
   ],
-  "piano": []
+  "piano": [],
+  "Alfred Brendel": [
+   "human"
+  ],
+  "Donald Tovey": [
+   "human",
+   "composer"
+  ],
+  "the greatest of all piano works": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "the greatest set of variations ever written": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_359": {
   "Ernest Bloch": [
@@ -10308,6 +13291,11 @@
   "violoncello and orchestra": [],
   "voice": [
    "voice"
+  ],
+  "Rhapsodie Hébraïque": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_360": {
@@ -10328,7 +13316,51 @@
   ],
   "orchestra": [],
   "piano": [],
-  "string orchestra": []
+  "string orchestra": [],
+  "Air": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Allegretto": [
+   "music"
+  ],
+  "Allegro con brio": [
+   "music"
+  ],
+  "Allegro vivace": [
+   "music"
+  ],
+  "Andante": [
+   "music"
+  ],
+  "Andante religioso": [
+   "music"
+  ],
+  "Edvard Grieg": [
+   "composer",
+   "human"
+  ],
+  "Gavotte": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Praeludium": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Rigaudon": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Sarabande": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_361": {
   "Bass clarinet": [],
@@ -10403,6 +13435,44 @@
   "record_label": [],
   "voice": [
    "voice"
+  ],
+  "another instrumentalist": [
+   "human"
+  ],
+  "cellist": [
+   "human"
+  ],
+  "double concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "double piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "instrumentalist": [
+   "human"
+  ],
+  "larger solo groups": [],
+  "piano concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "piano soloist": [
+   "human"
+  ],
+  "solo pianists": [
+   "human"
+  ],
+  "triple concertos": [
+   "composed musical work",
+   "musical work"
+  ],
+  "two solo pianists": [
+   "human"
+  ],
+  "violinist": [
+   "human"
   ]
  },
  "ont_2_music_test_363": {
@@ -10475,7 +13545,13 @@
    "music genre",
    "musical work"
   ],
-  "symphony orchestra": []
+  "symphony orchestra": [],
+  "E major": [],
+  "Ouverture, Scherzo und Finale": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_364": {
   "01 January 1831": [],
@@ -10497,7 +13573,13 @@
    "composer",
    "human"
   ],
-  "piano": []
+  "piano": [],
+  "1831": [],
+  "suite of piano pieces": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_365": {
   "1812 Overture": [
@@ -10574,7 +13656,14 @@
   "fantasy": [
    "music genre"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "January 1880": [],
+  "May 1880": [],
+  "fantasy for orchestra": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_366": {
   "Andante favori": [
@@ -10637,6 +13726,31 @@
   ],
   "voice": [
    "voice"
+  ],
+  "abandoned latter movements": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "composition": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "composition for piano and orchestra": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "single-movement Piano Concerto No.": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "sketches": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_368": {
@@ -10668,7 +13782,23 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "17th century": [],
+  "18th century": [],
+  "20th century": [],
+  "Pleyel": [],
+  "harpsichord works": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "heavy touch": [],
+  "historic instruments": [],
+  "leather plectra": [],
+  "metal frame": [],
+  "pedals": [],
+  "revival Pleyel contemporary harpsichord": [],
+  "the 'revival' Pleyel contemporary harpsichord": []
  },
  "ont_2_music_test_369": {
   "2 violins, viola, cello, optional double bass": [],
@@ -10699,7 +13829,19 @@
    "human"
   ],
   "orchestra": [],
-  "string orchestra": []
+  "string orchestra": [],
+  "2 violins": [],
+  "cello": [],
+  "double bass": [],
+  "ensemble": [],
+  "optional double bass": [],
+  "string orchestras": [],
+  "the work": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "viola": []
  },
  "ont_2_music_test_370": {
   "Carl Reinecke": [
@@ -10732,7 +13874,16 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Friedrich de la Motte Fouqué": [
+   "human"
+  ],
+  "Undine": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "novel Undine": []
  },
  "ont_2_music_test_371": {
   "01 January 1942": [],
@@ -10754,7 +13905,53 @@
    "music genre",
    "music"
   ],
-  "piano": []
+  "piano": [],
+  "Counterpoint, tonal and technical studies for the piano": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Kontrapunktische, tonale, und Klaviertechnische Übungen": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Ludus Litterarius": [],
+  "Paul Hindemith's stay in the United States": [],
+  "Play of Tones": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Tonal Game": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Tonal Primary School": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "United States": [],
+  "counterpoint": [
+   "music"
+  ],
+  "piano work": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "technical studies": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "tonal studies": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_372": {
   "2 violins, viola, cello, optional double bass": [],
@@ -10775,7 +13972,17 @@
    "music genre"
   ],
   "orchestra": [],
-  "string orchestras": []
+  "string orchestras": [],
+  "2 violins": [],
+  "cello": [],
+  "double bass": [],
+  "ensemble": [],
+  "optional double bass": [],
+  "the work": [
+   "composed musical work",
+   "musical work"
+  ],
+  "viola": []
  },
  "ont_2_music_test_373": {
   "Orchestra": [],
@@ -10789,7 +13996,22 @@
    "musical work",
    "music"
   ],
-  "orchestra": []
+  "orchestra": [],
+  "concerto": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
+  ],
+  "instrumental ensemble": [],
+  "solo violin": [],
+  "two or more violins": [],
+  "violin concerto": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
+  ]
  },
  "ont_2_music_test_374": {
   "00  1963": [],
@@ -10818,7 +14040,21 @@
   ],
   "The Beatles": [
    "music industry"
-  ]
+  ],
+  "EMI": [
+   "music industry"
+  ],
+  "Melody Maker": [
+   "music industry"
+  ],
+  "NME": [
+   "music industry"
+  ],
+  "UK Singles Chart": [
+   "music industry"
+  ],
+  "number 1": [],
+  "number 17": []
  },
  "ont_2_music_test_375": {
   "Cucumber Castle": [
@@ -10845,6 +14081,20 @@
   "This album": [
    "album",
    "music"
+  ],
+  "album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "hit single": [
+   "music",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_376": {
@@ -10892,7 +14142,8 @@
   "Saturday Night's Alright for Fighting": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "17 tracks": []
  },
  "ont_2_music_test_377": {
   "Here 's Little Richard": [
@@ -10905,6 +14156,14 @@
   "The Beatles": [],
   "The album": [
    "album"
+  ],
+  "album": [
+   "album",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_378": {
@@ -11048,6 +14307,28 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "Top 10 hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "UK": [],
+  "UK Albums Chart": [
+   "music industry"
+  ],
+  "United Kingdom": [],
+  "music critics": [
+   "human",
+   "musicology"
+  ],
+  "musical styles": [
+   "music genre"
+  ],
+  "number one single": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_380": {
@@ -11080,7 +14361,14 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Belgium": [],
+  "Une seule vie (marcher dans le sable)": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Wallonia": []
  },
  "ont_2_music_test_381": {
   "1984 Grammy": [
@@ -11106,6 +14394,14 @@
    "musical work"
   ],
   "Sexual Healing": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "two-time Grammy Award": [
+   "award"
+  ],
+  "two-time Grammy Award-winning smash": [
    "composed musical work",
    "music",
    "musical work"
@@ -11153,7 +14449,8 @@
   ],
   "record label": [
    "music industry"
-  ]
+  ],
+  "the band": []
  },
  "ont_2_music_test_383": {
   "\"Friends Keep Secrets\"": [
@@ -11203,6 +14500,36 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Hey Now": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Nightcall": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Seven singles": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Sights": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Strong": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_385": {
@@ -11249,6 +14576,21 @@
   ],
   "protest song": [
    "music genre"
+  ],
+  "Six singles": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "protest songs": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "six singles": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_386": {
@@ -11277,6 +14619,20 @@
    "album",
    "music",
    "musical work"
+  ],
+  "English language": [
+   "language"
+  ],
+  "French language": [
+   "language"
+  ],
+  "French singer": [
+   "human"
+  ],
+  "bilingual French and English-language album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_387": {
@@ -11307,6 +14663,19 @@
   ],
   "country": [
    "music genre"
+  ],
+  "U.S. country singles chart": [
+   "music industry"
+  ],
+  "album": [
+   "album"
+  ],
+  "duet": [
+   "musical work",
+   "music"
+  ],
+  "the album": [
+   "album"
   ]
  },
  "ont_2_music_test_388": {
@@ -11337,6 +14706,16 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "autobiographical perspective": [],
+  "darker musical moods": [],
+  "more introspective lyrics": [
+   "language"
+  ],
+  "songs": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_390": {
@@ -11360,7 +14739,13 @@
    "album",
    "musical work",
    "music"
-  ]
+  ],
+  "2 June 2003": [],
+  "hit single": [
+   "musical work",
+   "music"
+  ],
+  "regular jewel case": []
  },
  "ont_2_music_test_391": {
   "Blue Christmas": [
@@ -11383,6 +14768,14 @@
   ],
   "the album": [
    "album"
+  ],
+  "album": [
+   "album"
+  ],
+  "group": [],
+  "single": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_392": {
@@ -11402,6 +14795,20 @@
   ],
   "The Soulful Sound of Vannesa Hudgens": [
    "album"
+  ],
+  "first top-thirty single": [
+   "music",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the band": [],
+  "the band's first top-thirty single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_393": {
@@ -11425,6 +14832,16 @@
   "The Fame": [
    "album",
    "music",
+   "musical work"
+  ],
+  "fourth single": [
+   "musical work"
+  ],
+  "several countries": [],
+  "third single": [
+   "musical work"
+  ],
+  "top-ten hits": [
    "musical work"
   ]
  },
@@ -11471,6 +14888,16 @@
    "album",
    "music",
    "musical work"
+  ],
+  "The sessions": [],
+  "film": [],
+  "items of incidental music": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "single": [
+   "music industry"
   ]
  },
  "ont_2_music_test_395": {
@@ -11507,7 +14934,10 @@
    "music",
    "musical work"
   ],
-  "The Beatles": []
+  "The Beatles": [],
+  "US charts": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_396": {
   "Let It Snow, Let It Snow, Let It Snow": [
@@ -11535,6 +14965,23 @@
   "What Christmas Means to Me": [
    "composed musical work",
    "musical work",
+   "music"
+  ],
+  "Let ReJoyce : The Christmas Album Snow, Let It Snow, Let It Snow": [
+   "music",
+   "musical work"
+  ],
+  "Let ReJoyce: The Christmas Album": [
+   "album",
+   "music"
+  ],
+  "Two singles": [
+   "music",
+   "musical work"
+  ],
+  "accompanying video": [],
+  "the album": [
+   "album",
    "music"
   ]
  },
@@ -11612,6 +15059,22 @@
   "pop": [
    "music genre",
    "music"
+  ],
+  "Belgium": [],
+  "France": [],
+  "J'ai demandé à la lune": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Switzerland": [],
+  "hit singles": [
+   "music",
+   "musical work"
+  ],
+  "six singles": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_398": {
@@ -11627,6 +15090,17 @@
   ],
   "human": [
    "human"
+  ],
+  "Top 10 hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the band": [],
+  "the band's most commercially successful studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_399": {
@@ -11644,7 +15118,8 @@
   "Roulette russe": [
    "composed musical work",
    "musical work"
-  ]
+  ],
+  "France": []
  },
  "ont_2_music_test_400": {
   "Back in the High Life": [
@@ -11721,6 +15196,14 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "20 years": [],
+  "Grammy Awards": [
+   "award"
+  ],
+  "Spencer Davis Group": [],
+  "Winwood": [
+   "human"
   ]
  },
  "ont_2_music_test_401": {
@@ -11755,6 +15238,25 @@
   ],
   "UB44": [
    "album"
+  ],
+  "1980": [],
+  "Billboard 200": [
+   "music industry"
+  ],
+  "Billboard Hot 100": [
+   "music industry"
+  ],
+  "The album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "number 32": [],
+  "number 91": [],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_402": {
@@ -11778,6 +15280,14 @@
    "human",
    "composer",
    "record producer"
+  ],
+  "English singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "tenth studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_403": {
@@ -11942,6 +15452,11 @@
   ],
   "voice": [
    "voice"
+  ],
+  "October 1970": [],
+  "their first recording": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_406": {
@@ -11960,6 +15475,22 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "A second single": [
+   "music",
+   "musical work",
+   "music industry"
+  ],
+  "Hot 100 chart": [
+   "music industry"
+  ],
+  "country Top Thirty": [
+   "music industry"
+  ],
+  "number 64": [],
+  "the Beatles": [
+   "music",
+   "music industry"
   ]
  },
  "ont_2_music_test_407": {
@@ -11982,6 +15513,17 @@
   ],
   "The Immaculate Collection": [
    "album"
+  ],
+  "US Billboard Hot 100": [
+   "music industry"
+  ],
+  "ninth number-one hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "sexually explicit music video": [
+   "music industry"
   ]
  },
  "ont_2_music_test_408": {
@@ -11994,6 +15536,15 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "UK Albums Chart": [
+   "music industry"
+  ],
+  "international success": [],
+  "summer of 2005": [],
+  "worldwide hit": [
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_409": {
@@ -12016,7 +15567,30 @@
    "album",
    "music"
   ],
-  "The Beatles": []
+  "The Beatles": [],
+  "11 February 1963": [],
+  "20 February": [],
+  "EMI Studios": [
+   "music industry"
+  ],
+  "Martin": [
+   "human",
+   "record producer"
+  ],
+  "already released singles": [
+   "music",
+   "musical work"
+  ],
+  "overdubs": [
+   "music",
+   "music industry"
+  ],
+  "recording session": [
+   "music industry"
+  ],
+  "the Beatles": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_410": {
   "J'ai demandÃ  la lune": [
@@ -12082,7 +15656,10 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Belgium": [],
+  "France": [],
+  "Switzerland": []
  },
  "ont_2_music_test_411": {
   "Alternative rock": [
@@ -12118,6 +15695,21 @@
   ],
   "album": [
    "album"
+  ],
+  "Bliss": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Four singles": [
+   "music",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_412": {
@@ -12160,7 +15752,16 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "French": [
+   "language"
+  ],
+  "French top five hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "moderate success": []
  },
  "ont_2_music_test_413": {
   "22": [],
@@ -12195,7 +15796,14 @@
    "composed musical work",
    "music",
    "musical work"
-  ]
+  ],
+  "December 22, 2012": [],
+  "R&B Songs chart": [
+   "music industry"
+  ],
+  "United States": [],
+  "number 22": [],
+  "number 23": []
  },
  "ont_2_music_test_414": {
   "Better to Lie": [
@@ -12266,6 +15874,11 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "film": [],
+  "first side": [],
+  "vinyl album": [
+   "album"
   ]
  },
  "ont_2_music_test_416": {
@@ -12302,7 +15915,8 @@
   "The Whole Story": [
    "album",
    "music"
-  ]
+  ],
+  "opening lyrics": []
  },
  "ont_2_music_test_417": {
   "Everytime": [
@@ -12322,7 +15936,14 @@
    "composed musical work",
    "music",
    "musical work"
-  ]
+  ],
+  "She's So Unusual": [
+   "album"
+  ],
+  "the chart": [
+   "music industry"
+  ],
+  "worldwide": []
  },
  "ont_2_music_test_418": {
   "Baby": [
@@ -12354,6 +15975,9 @@
   ],
   "album": [
    "album"
+  ],
+  "Jessica Simpson": [
+   "human"
   ]
  },
  "ont_2_music_test_419": {
@@ -12423,7 +16047,13 @@
   "To Anyone": [
    "album",
    "music"
-  ]
+  ],
+  "It Hurts (Slow)": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "lead singles": []
  },
  "ont_2_music_test_421": {
   "A single": [
@@ -12451,6 +16081,10 @@
   "album": [
    "album",
    "music"
+  ],
+  "single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_422": {
@@ -12600,7 +16234,10 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "Belgium": [],
+  "France": [],
+  "Switzerland": []
  },
  "ont_2_music_test_423": {
   "A Dramatic Turn of Events": [
@@ -12613,6 +16250,11 @@
    "album"
   ],
   "On the Backs of Angels": [
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "music",
    "musical work"
   ]
  },
@@ -12640,6 +16282,24 @@
   "The Wall": [
    "album",
    "music"
+  ],
+  "Three singles": [
+   "music",
+   "musical work"
+  ],
+  "United States number-one single": [
+   "music",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the band": [],
+  "the band's only US number-one single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_425": {
@@ -12683,7 +16343,16 @@
   "album": [
    "album",
    "music"
-  ]
+  ],
+  "successful world tour": [],
+  "the album": [
+   "album"
+  ],
+  "three singles": [
+   "musical work",
+   "music"
+  ],
+  "world tour": []
  },
  "ont_2_music_test_426": {
   "\"Heaven\"": [
@@ -12746,6 +16415,11 @@
   ],
   "album": [
    "album"
+  ],
+  "The album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_427": {
@@ -12771,6 +16445,45 @@
    "album",
    "musical work",
    "music"
+  ],
+  "Beatles album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Lennon-McCartney": [
+   "composer"
+  ],
+  "Motown": [
+   "music",
+   "music genre",
+   "music industry"
+  ],
+  "R&B": [
+   "music",
+   "music genre"
+  ],
+  "R&B hits": [
+   "music",
+   "musical work"
+  ],
+  "eight original compositions": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "first recorded solo composition": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "rock and roll": [
+   "music",
+   "music genre"
+  ],
+  "six covers": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_428": {
@@ -12831,6 +16544,20 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2004's 500 Greatest Songs of All Time": [],
+  "500 Greatest Songs of All Time": [],
+  "Rolling Stone magazine": [],
+  "Rolling Stones live shows": [
+   "music"
+  ],
+  "best ever songs lists": [],
+  "rock radio stations": [
+   "music industry"
+  ],
+  "the album's songs": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_429": {
@@ -12924,6 +16651,16 @@
   ],
   "pop": [
    "music genre"
+  ],
+  "The album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "one of Bush's biggest hits": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_431": {
@@ -12941,6 +16678,10 @@
   "contains": [],
   "human": [
    "human"
+  ],
+  "B-side": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_432": {
@@ -12960,7 +16701,13 @@
    "composed musical work",
    "musical work",
    "music"
-  ]
+  ],
+  "Top 30": [],
+  "UK singles chart": [
+   "music industry"
+  ],
+  "United States": [],
+  "different countries": []
  },
  "ont_2_music_test_433": {
   "00  1963": [],
@@ -12980,7 +16727,17 @@
   "Please Please Me": [
    "album"
   ],
-  "The Beatles": []
+  "The Beatles": [],
+  "11 February 1963": [],
+  "20 February": [],
+  "EMI Studios": [
+   "music industry"
+  ],
+  "Martin": [
+   "human",
+   "composer",
+   "record producer"
+  ]
  },
  "ont_2_music_test_434": {
   "Checker Records": [
@@ -13000,6 +16757,20 @@
   ],
   "doo-wop": [
    "music genre"
+  ],
+  "Tyus": [
+   "human"
+  ],
+  "recording contract": [
+   "music industry"
+  ],
+  "the Students": [
+   "music"
+  ],
+  "two doo-wop songs": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_435": {
@@ -13017,6 +16788,9 @@
   ],
   "post-punk": [
    "music genre"
+  ],
+  "English post-punk band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_436": {
@@ -13068,7 +16842,21 @@
    "music",
    "music genre"
   ],
-  "unspecified": []
+  "unspecified": [],
+  "BWV 22": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Jesus": [
+   "human"
+  ],
+  "Lent": [],
+  "Quinquagesima": [],
+  "die Zwölfe": [
+   "human"
+  ],
+  "the last Sunday before Lent": []
  },
  "ont_2_music_test_437": {
   "Alternative country": [
@@ -13090,7 +16878,8 @@
   ],
   "alternative country": [
    "music genre"
-  ]
+  ],
+  "Whiskeytown": []
  },
  "ont_2_music_test_438": {
   "00  1907": [],
@@ -13110,6 +16899,16 @@
   ],
   "ragtime": [
    "music genre"
+  ],
+  "The Searchlight Rag": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "ragtime composition": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_439": {
@@ -13138,7 +16937,14 @@
   ],
   "opera": [
    "music genre"
-  ]
+  ],
+  "16 scenes": [],
+  "The Face in the Mirror": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "libretto": []
  },
  "ont_2_music_test_440": {
   "Indie rock": [
@@ -13159,6 +16965,9 @@
   "indie rock": [
    "music",
    "music genre"
+  ],
+  "American indie rock band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_441": {
@@ -13179,6 +16988,15 @@
   ],
   "human": [],
   "thrash metal": [
+   "music genre"
+  ],
+  "band": [],
+  "lyrical sophistication": [],
+  "musical growth": [],
+  "the album": [
+   "album"
+  ],
+  "thrash metal genre": [
    "music genre"
   ]
  },
@@ -13213,6 +17031,22 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "first opera": [
+   "composed musical work",
+   "musical work"
+  ],
+  "oratorio": [
+   "composed musical work",
+   "musical work"
+  ],
+  "the first opera": [
+   "composed musical work",
+   "musical work"
   ]
  },
  "ont_2_music_test_443": {
@@ -13237,6 +17071,11 @@
   ],
   "rhythm and blues": [
    "music genre"
+  ],
+  "1960": [],
+  "single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_444": {
@@ -13265,6 +17104,18 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Guatemalan Grammy Award winner": [
+   "human"
+  ],
+  "The Problem": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "singer-songwriter": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_445": {
@@ -13306,6 +17157,10 @@
   ],
   "voice": [
    "voice"
+  ],
+  "12/8 time": [],
+  "doo-wop ballad": [
+   "music genre"
   ]
  },
  "ont_2_music_test_446": {
@@ -13324,6 +17179,9 @@
    "music genre"
   ],
   "the Ramones": [
+   "music industry"
+  ],
+  "American punk rock band": [
    "music industry"
   ]
  },
@@ -13358,7 +17216,11 @@
   ],
   "language": [
    "language"
-  ]
+  ],
+  "fifth album": [
+   "album"
+  ],
+  "indie rock band": []
  },
  "ont_2_music_test_448": {
   "00  1959": [],
@@ -13383,7 +17245,11 @@
   "doo-wop": [
    "music genre"
   ],
-  "the Mystics": []
+  "the Mystics": [],
+  "1959": [],
+  "doo-wop vocal group": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_449": {
   "17 December 2014": [],
@@ -13400,6 +17266,13 @@
   ],
   "indie rock": [
    "music genre"
+  ],
+  "American indie rock bands": [
+   "music industry"
+  ],
+  "single": [
+   "musical work",
+   "music industry"
   ]
  },
  "ont_2_music_test_450": {
@@ -13445,7 +17318,10 @@
   ],
   "rhythm and blues": [
    "music genre"
-  ]
+  ],
+  "C": [],
+  "D7": [],
+  "G": []
  },
  "ont_2_music_test_452": {
   "Do n't Swallow the Cap": [
@@ -13464,7 +17340,8 @@
   "The National": [],
   "indie rock": [
    "music genre"
-  ]
+  ],
+  "American indie rock band": []
  },
  "ont_2_music_test_453": {
   "Eduardo Filippi": [
@@ -13509,6 +17386,26 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1 act": [],
+  "3 little tableaux": [],
+  "3 piccoli quadri": [],
+  "3 tableaux": [],
+  "Alfred de Musset": [
+   "human"
+  ],
+  "Italian libretto": [],
+  "La Mouche": [
+   "composed musical work",
+   "musical work"
+  ],
+  "La mouche": [],
+  "musical novelette": [
+   "music genre"
+  ],
+  "novella La mouche": [],
+  "novelletta musicale": [
+   "music genre"
   ]
  },
  "ont_2_music_test_454": {
@@ -13532,7 +17429,13 @@
   "opera": [
    "music",
    "music genre"
-  ]
+  ],
+  "1814 poem": [],
+  "Lord Byron": [
+   "human"
+  ],
+  "The Corsair": [],
+  "three acts": []
  },
  "ont_2_music_test_455": {
   "Amazing Grace": [
@@ -13580,6 +17483,12 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Jamaican Dancehall": [
+   "music genre"
+  ],
+  "recording artist": [
+   "human"
   ]
  },
  "ont_2_music_test_456": {
@@ -13605,7 +17514,12 @@
    "music"
   ],
   "Si Quieres, American Society of Composers, Authors and Publishers Awards of 1993, Latin Pop Song of the Year": [],
-  "Si Quieres,American Society of Composers, Authors and Publishers Awards of 1993,Latin Pop Song of the Year": []
+  "Si Quieres,American Society of Composers, Authors and Publishers Awards of 1993,Latin Pop Song of the Year": [],
+  "1993": [],
+  "American Society of Composers, Authors and Publishers Awards": [
+   "award",
+   "music industry"
+  ]
  },
  "ont_2_music_test_457": {
   "A cappella": [
@@ -13638,7 +17552,12 @@
   "record label": [
    "music industry"
   ],
-  "short Latin text": []
+  "short Latin text": [],
+  "2000": [],
+  "Latin text": [],
+  "a cappella": [
+   "music genre"
+  ]
  },
  "ont_2_music_test_458": {
   "01 January 1900": [],
@@ -13667,6 +17586,12 @@
   ],
   "orchestral": [
    "music genre"
+  ],
+  "1899-1900": [],
+  "orchestral interlude": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_459": {
@@ -13702,6 +17627,33 @@
   "guitar,percussion": [],
   "tenor": [
    "voice"
+  ],
+  "Argentine pop singer-songwriter": [
+   "composer",
+   "human"
+  ],
+  "Latin pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Today is Sunday": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "eighth studio album": [
+   "album"
+  ],
+  "first single": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_460": {
@@ -13724,6 +17676,12 @@
   ],
   "hardstyle": [
    "music genre"
+  ],
+  "Scantraxx": [
+   "music industry"
+  ],
+  "Scantraxx Reloaded": [
+   "music industry"
   ]
  },
  "ont_2_music_test_461": {
@@ -13753,6 +17711,16 @@
   "ragtime": [
    "music",
    "music genre"
+  ],
+  "1914": [],
+  "American composer": [
+   "composer",
+   "human"
+  ],
+  "ragtime piano composition": [
+   "composed musical work",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_462": {
@@ -13767,6 +17735,12 @@
   "Tourniquet": [],
   "thrash metal": [
    "music genre"
+  ],
+  "American thrash metal band": [
+   "music industry"
+  ],
+  "American thrash metal band Tourniquet": [
+   "music industry"
   ]
  },
  "ont_2_music_test_463": {
@@ -13787,6 +17761,14 @@
   ],
   "heavy metal": [
    "music genre"
+  ],
+  "American thrash metal scene": [
+   "music industry"
+  ],
+  "heavy metal albums": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_464": {
@@ -13842,7 +17824,13 @@
   "opera": [
    "music genre",
    "music"
-  ]
+  ],
+  "French libretto": [],
+  "Opéra, Paris": [
+   "music industry"
+  ],
+  "five acts": [],
+  "original French libretto": []
  },
  "ont_2_music_test_465": {
   "Cold War Kids": [
@@ -13861,7 +17849,8 @@
   ],
   "indie rock": [
    "music genre"
-  ]
+  ],
+  "American indie rock band": []
  },
  "ont_2_music_test_466": {
   "01 January 2009": [],
@@ -13881,7 +17870,8 @@
   ],
   "indie rock": [
    "music genre"
-  ]
+  ],
+  "American indie rock band": []
  },
  "ont_2_music_test_467": {
   "53rd & 3rd": [
@@ -13905,7 +17895,8 @@
   ],
   "the Ramones": [
    "music industry"
-  ]
+  ],
+  "American punk rock band": []
  },
  "ont_2_music_test_468": {
   "Dancehall": [
@@ -13957,6 +17948,25 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Jamaican music": [
+   "music",
+   "music genre"
+  ],
+  "singer": [
+   "human"
+  ],
+  "song production": [
+   "music industry"
+  ],
+  "unique sound": [
+   "music"
+  ],
+  "uptempo dancehall track": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
   ]
  },
  "ont_2_music_test_469": {
@@ -13985,7 +17995,9 @@
   "post-punk": [
    "music genre"
   ],
-  "the Fall": []
+  "the Fall": [],
+  "British post-punk band": [],
+  "Coldcut": []
  },
  "ont_2_music_test_470": {
   "01 January 1943": [],
@@ -14020,7 +18032,8 @@
   "gospel": [
    "music genre"
   ],
-  "the Golden Gate Jubilee Quartet": []
+  "the Golden Gate Jubilee Quartet": [],
+  "a cappella gospel group": []
  },
  "ont_2_music_test_471": {
   "11 October 1994": [],
@@ -14055,6 +18068,25 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1994": [],
+  "American nu metal band": [
+   "music industry"
+  ],
+  "Daddy (Korn song)": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Korn's self-titled debut album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_472": {
@@ -14096,6 +18128,13 @@
   "worldbeat": [
    "music",
    "music genre"
+  ],
+  "Britain's mods": [
+   "human"
+  ],
+  "Ghana": [],
+  "James Brown": [
+   "human"
   ]
  },
  "ont_2_music_test_473": {
@@ -14135,6 +18174,19 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1902": [],
+  "American composer": [
+   "composer",
+   "human"
+  ],
+  "John Stark & Son": [
+   "music industry"
+  ],
+  "ragtime piano composition": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_474": {
@@ -14161,7 +18213,12 @@
   ],
   "post-punk": [
    "music genre"
-  ]
+  ],
+  "English post-punk": [
+   "music genre"
+  ],
+  "English post-punk/gothic rock band": [],
+  "the Cult": []
  },
  "ont_2_music_test_475": {
   "La campana sommersa": [
@@ -14190,7 +18247,12 @@
   "opera": [
    "music",
    "music genre"
-  ]
+  ],
+  "Italian composer": [
+   "composer",
+   "human"
+  ],
+  "four acts": []
  },
  "ont_2_music_test_476": {
   "Elvis Presley": [
@@ -14221,6 +18283,15 @@
   "religious": [],
   "tenor": [
    "voice"
+  ],
+  "Presley": [
+   "human"
+  ],
+  "gospel music albums": [
+   "album",
+   "music",
+   "music genre",
+   "musical work"
   ]
  },
  "ont_2_music_test_477": {
@@ -14240,7 +18311,12 @@
   "opera": [
    "music",
    "music genre"
-  ]
+  ],
+  "Italian composer": [
+   "composer",
+   "human"
+  ],
+  "three acts": []
  },
  "ont_2_music_test_478": {
   "Doo-wop": [
@@ -14259,6 +18335,25 @@
   "doo-wop": [
    "music",
    "music genre"
+  ],
+  "an enduring hit single": [
+   "music",
+   "musical work"
+  ],
+  "doo-wop songs": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the 1950s": [],
+  "the original recording of the song": [
+   "music",
+   "musical work"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_479": {
@@ -14272,6 +18367,15 @@
   ],
   "Zouglou": [
    "music genre"
+  ],
+  "1er Gaou (album)": [
+   "album"
+  ],
+  "Ivorian Zouglou": [
+   "music genre"
+  ],
+  "album": [
+   "album"
   ]
  },
  "ont_2_music_test_480": {
@@ -14327,6 +18431,13 @@
   "opera": [
    "music genre",
    "music"
+  ],
+  "La Scala": [],
+  "Milan": [],
+  "the opera": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_482": {
@@ -14358,7 +18469,13 @@
   "post-punk": [
    "music genre"
   ],
-  "the Fall": []
+  "the Fall": [],
+  "British post-punk band": [
+   "music industry"
+  ],
+  "British post-punk band the Fall": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_483": {
   "\"She's Lost Control": [
@@ -14399,7 +18516,8 @@
   "Unknown": [],
   "post-punk": [
    "music genre"
-  ]
+  ],
+  "British post-punk band": []
  },
  "ont_2_music_test_484": {
   "01 January 1914": [],
@@ -14438,6 +18556,16 @@
   "ragtime": [
    "music genre",
    "music"
+  ],
+  "piano composition": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "ragtime piano composition": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_485": {
@@ -14490,7 +18618,14 @@
   ],
   "human": [
    "human"
-  ]
+  ],
+  "1940": [],
+  "Jaliscian musical composer Blas Galindo": [
+   "composer",
+   "human"
+  ],
+  "Nayarit": [],
+  "Tepic": []
  },
  "ont_2_music_test_486": {
   "Frank Zappa": [
@@ -14516,7 +18651,14 @@
   ],
   "opera": [
    "music genre"
-  ]
+  ],
+  "Italian composer": [
+   "composer"
+  ],
+  "Saint Mary of Egypt": [
+   "human"
+  ],
+  "three episodes": []
  },
  "ont_2_music_test_487": {
   "Controlla": [
@@ -14553,6 +18695,11 @@
   ],
   "dancehall": [
    "music genre"
+  ],
+  "three dancehall singles": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_488": {
@@ -14590,7 +18737,8 @@
   ],
   "the Sugarhill Gang": [
    "music industry"
-  ]
+  ],
+  "1979": []
  },
  "ont_2_music_test_489": {
   "Cory Rooney": [
@@ -14630,7 +18778,14 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "American rappers": [
+   "human"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "The LOX": []
  },
  "ont_2_music_test_490": {
   "B2K": [
@@ -14678,6 +18833,9 @@
   ],
   "male voice": [
    "voice"
+  ],
+  "American boy band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_491": {
@@ -14687,6 +18845,12 @@
    "musical work"
   ],
   "Nicki Minaj": [
+   "human"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "singer": [
    "human"
   ]
  },
@@ -14733,6 +18897,9 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_493": {
@@ -14747,6 +18914,10 @@
   ],
   "The Next Episode": [
    "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "The track": [
    "music",
    "musical work"
   ]
@@ -14770,6 +18941,14 @@
    "human"
   ],
   "musical work": [
+   "musical work"
+  ],
+  "The track": [
+   "music",
+   "musical work"
+  ],
+  "the track": [
+   "music",
    "musical work"
   ]
  },
@@ -14796,6 +18975,21 @@
   ],
   "human": [
    "human"
+  ],
+  "France": [],
+  "Indonesia": [],
+  "Indonesian/French singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_496": {
@@ -14827,6 +19021,15 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "1996": [],
+  "Swedish rock band": [
+   "music industry"
+  ],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_497": {
@@ -14912,7 +19115,21 @@
   "piano": [],
   "voice": [
    "voice"
-  ]
+  ],
+  "Canadian musician": [
+   "human"
+  ],
+  "instrumental piece": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "international hit": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "late 1970s": []
  },
  "ont_2_music_test_499": {
   "2010": [],
@@ -14946,6 +19163,14 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_500": {
@@ -14986,6 +19211,16 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2006": [],
+  "Canada": [],
+  "Canadian singer": [
+   "human"
+  ],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_501": {
@@ -15005,6 +19240,12 @@
   ],
   "Tomahawk Technique": [
    "album"
+  ],
+  "Jamaican Dancehall": [
+   "music genre"
+  ],
+  "Jamaican Dancehall recording artist": [
+   "human"
   ]
  },
  "ont_2_music_test_502": {
@@ -15055,6 +19296,25 @@
   ],
   "the album": [
    "album"
+  ],
+  "Eurodance artist": [
+   "human",
+   "music industry"
+  ],
+  "Trinidadian-German": [
+   "human"
+  ],
+  "artist": [
+   "human",
+   "music industry"
+  ],
+  "debut album": [
+   "album"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_504": {
@@ -15082,6 +19342,12 @@
   ],
   "Jennifer Warnes": [
    "human"
+  ],
+  "1987 film": [],
+  "Dirty Dancing": [],
+  "theme song": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_505": {
@@ -15108,6 +19374,21 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "2010": [],
+  "American singer": [
+   "human"
+  ],
+  "debut studio album": [
+   "album"
+  ],
+  "song": [
+   "composed musical work",
+   "musical work"
+  ],
+  "songwriter": [
+   "composer",
+   "human"
   ]
  },
  "ont_2_music_test_506": {
@@ -15190,6 +19471,22 @@
   ],
   "Soca Queen": [
    "album"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "debut album": [
+   "album"
+  ],
+  "soca singer": [
+   "human"
+  ],
+  "the song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_509": {
@@ -15247,6 +19544,17 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Colombia": [],
+  "Colombian singer": [
+   "human"
+  ],
+  "South Africa": [],
+  "South African band": [],
+  "Waka Waka (Esto es África)": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_510": {
@@ -15286,6 +19594,12 @@
   "rock music": [
    "music",
    "music genre"
+  ],
+  "Creedence Clearwater Revival": [],
+  "rock song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_511": {
@@ -15318,7 +19632,16 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "American singer": [
+   "human"
+  ],
+  "Party in the U.S.A.'s first extended play (EP)": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "United States of America": []
  },
  "ont_2_music_test_512": {
   "14 August 1981": [],
@@ -15344,6 +19667,22 @@
   ],
   "album": [
    "album"
+  ],
+  "1981 film Arthur": [],
+  "American singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "Dudley Moore": [
+   "human"
+  ],
+  "Liza Minnelli": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_513": {
@@ -15359,6 +19698,26 @@
   "Pink Friday: Roman Reloaded": [
    "album",
    "music"
+  ],
+  "2012": [],
+  "American rapper": [
+   "human"
+  ],
+  "American rapper and singer": [
+   "human"
+  ],
+  "second studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "singer": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_514": {
@@ -15389,6 +19748,18 @@
   ],
   "pop": [
    "music genre"
+  ],
+  "1999": [],
+  "American singer": [
+   "human"
+  ],
+  "debut studio album": [
+   "album"
+  ],
+  "pop song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_515": {
@@ -15399,6 +19770,23 @@
    "album"
   ],
   "Va Va Voom": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "deluxe version": [
+   "album"
+  ],
+  "second studio album": [
+   "album"
+  ],
+  "singer": [
+   "human"
+  ],
+  "song": [
    "composed musical work",
    "music",
    "musical work"
@@ -15431,6 +19819,16 @@
   "guitar": [],
   "voice": [
    "voice"
+  ],
+  "blues artists": [
+   "human"
+  ],
+  "early 1960s singles": [
+   "music",
+   "musical work"
+  ],
+  "rock artists": [
+   "human"
   ]
  },
  "ont_2_music_test_517": {
@@ -15453,6 +19851,10 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American country singer": [
+   "human",
+   "music genre"
   ]
  },
  "ont_2_music_test_518": {
@@ -15481,6 +19883,12 @@
   ],
   "Warner Bros. Records": [
    "music industry"
+  ],
+  "American rock band": [],
+  "July 9, 2002": [],
+  "eighth studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_519": {
@@ -15519,6 +19927,14 @@
   ],
   "voice": [
    "voice"
+  ],
+  "The song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the 1957 rock and roll/rockabilly version": [
+   "music"
   ]
  },
  "ont_2_music_test_520": {
@@ -15550,7 +19966,20 @@
    "music genre"
   ],
   "record_label": [],
-  "tracklist(\\\"The Next Episode\\\"": []
+  "tracklist(\\\"The Next Episode\\\"": [],
+  "1999": [],
+  "American rapper": [
+   "human",
+   "record producer"
+  ],
+  "American rapper Dr. Dre": [
+   "human",
+   "record producer"
+  ],
+  "third single": [
+   "composed musical work",
+   "musical work"
+  ]
  },
  "ont_2_music_test_521": {
   "12th major single": [
@@ -15575,7 +20004,11 @@
   ],
   "Romance": [
    "music genre"
-  ]
+  ],
+  "Japanese idol group AKB48": [
+   "music industry"
+  ],
+  "June 24, 2009": []
  },
  "ont_2_music_test_522": {
   "29 July 2011": [],
@@ -15591,6 +20024,10 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "2011": [],
+  "English singer": [
+   "human"
   ]
  },
  "ont_2_music_test_523": {
@@ -15657,6 +20094,16 @@
   ],
   "voice": [
    "voice"
+  ],
+  "fifth studio album": [
+   "album",
+   "music"
+  ],
+  "rock song": [
+   "composed musical work",
+   "music",
+   "music genre",
+   "musical work"
   ]
  },
  "ont_2_music_test_524": {
@@ -15691,6 +20138,10 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "American singer-songwriter Taylor Swift": [
+   "human",
+   "composer"
   ]
  },
  "ont_2_music_test_525": {
@@ -15707,7 +20158,9 @@
   ],
   "rock": [
    "music genre"
-  ]
+  ],
+  "American rock band": [],
+  "March 16, 2004": []
  },
  "ont_2_music_test_526": {
   "Eye to the Telescope": [
@@ -15726,6 +20179,18 @@
   ],
   "language": [
    "language"
+  ],
+  "Scottish singer-songwriter": [
+   "composer",
+   "human"
+  ],
+  "debut album": [
+   "album"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_527": {
@@ -15749,7 +20214,15 @@
    "human",
    "record producer"
   ],
-  "will.i.am_supporting_Barack_Obama_presidential_campaign": []
+  "will.i.am_supporting_Barack_Obama_presidential_campaign": [],
+  "American recording artist": [
+   "human",
+   "music industry"
+  ],
+  "Barack Obama": [
+   "human"
+  ],
+  "presidential campaign": []
  },
  "ont_2_music_test_528": {
   "23 January 2008": [],
@@ -15782,6 +20255,41 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "DefSTAR Records": [
+   "music industry"
+  ],
+  "Irane": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "January 23, 2008": [],
+  "Japanese idol group": [],
+  "Romance, no need": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Romansu": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Romansu, Irane": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "ninth single": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "seventh major single": [
+   "composed musical work",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_529": {
@@ -15821,6 +20329,9 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Spanish band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_530": {
@@ -15854,7 +20365,8 @@
   ],
   "rock": [
    "music genre"
-  ]
+  ],
+  "English rock group": []
  },
  "ont_2_music_test_531": {
   "David Guetta": [
@@ -15871,6 +20383,15 @@
    "human"
   ],
   "Taio Cruz": [
+   "human"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "English recording artist": [
+   "human"
+  ],
+  "French DJ": [
    "human"
   ]
  },
@@ -15942,7 +20463,8 @@
   ],
   "Whitney Houston": [
    "human"
-  ]
+  ],
+  "Swedish group": []
  },
  "ont_2_music_test_534": {
   "26 November 1976": [],
@@ -15961,6 +20483,10 @@
   "Sex Pistols": [],
   "punk rock": [
    "music genre"
+  ],
+  "debut single": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_535": {
@@ -15979,6 +20505,11 @@
    "music genre"
   ],
   "song": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "These Words (I Love You, I Love You)": [
    "composed musical work",
    "music",
    "musical work"
@@ -16010,7 +20541,18 @@
   ],
   "The Offspring": [
    "music industry"
-  ]
+  ],
+  "1989": [],
+  "1997": [],
+  "Australia": [],
+  "Central West Queensland": [],
+  "Die Kreuzen": [],
+  "Gone Away (EP)": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Goneaway National Park": []
  },
  "ont_2_music_test_537": {
   "David Guetta": [
@@ -16074,6 +20616,17 @@
   ],
   "Pop": [
    "music genre"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "debut single": [
+   "music",
+   "musical work"
+  ],
+  "second studio album": [
+   "album",
+   "music"
   ]
  },
  "ont_2_music_test_539": {
@@ -16103,6 +20656,9 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "American rapper": [
+   "human"
   ]
  },
  "ont_2_music_test_540": {
@@ -16124,6 +20680,19 @@
    "human"
   ],
   "musical work": [
+   "musical work"
+  ],
+  "Life of mine": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "Portuguese singer": [
+   "human"
+  ],
+  "song": [
+   "composed musical work",
+   "music",
    "musical work"
   ]
  },
@@ -16151,7 +20720,8 @@
   "The Wailers": [],
   "reggae": [
    "music genre"
-  ]
+  ],
+  "the Wailers": []
  },
  "ont_2_music_test_542": {
   "Christina Perri": [
@@ -16166,6 +20736,9 @@
    "album",
    "music",
    "musical work"
+  ],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_543": {
@@ -16194,6 +20767,9 @@
   ],
   "voice": [
    "voice"
+  ],
+  "debut studio album": [
+   "album"
   ]
  },
  "ont_2_music_test_544": {
@@ -16240,7 +20816,8 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Irish rock band": []
  },
  "ont_2_music_test_545": {
   "25 September 2007": [],
@@ -16260,6 +20837,10 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2007": [],
+  "American singer": [
+   "human"
   ]
  },
  "ont_2_music_test_546": {
@@ -16323,6 +20904,23 @@
   ],
   "new wave,punk": [
    "music genre"
+  ],
+  "contemporary musical trends": [
+   "music",
+   "music genre"
+  ],
+  "new wave": [
+   "music",
+   "music genre"
+  ],
+  "punk": [
+   "music",
+   "music genre"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_549": {
@@ -16420,6 +21018,20 @@
    "album",
    "music",
    "musical work"
+  ],
+  "2000": [],
+  "English musician": [
+   "human"
+  ],
+  "Pure": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "fifteenth solo studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_552": {
@@ -16461,7 +21073,11 @@
    "album",
    "musical work",
    "music"
-  ]
+  ],
+  "US Billboard 200": [
+   "music industry"
+  ],
+  "number 15": []
  },
  "ont_2_music_test_553": {
   "01 October 2001": [],
@@ -16505,7 +21121,8 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "DVD": []
  },
  "ont_2_music_test_554": {
   "Danja": [
@@ -16523,6 +21140,19 @@
   "Timbaland": [
    "human",
    "record producer"
+  ],
+  "Timberlake": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "new material": [
+   "music",
+   "musical work"
+  ],
+  "new music": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_555": {
@@ -16534,6 +21164,18 @@
    "album",
    "music",
    "musical work"
+  ],
+  "its predecessors": [
+   "album",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "musical work"
+  ],
+  "the band's guitarist": [
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_556": {
@@ -16554,7 +21196,9 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "Faces": [],
+  "Small Faces": []
  },
  "ont_2_music_test_557": {
   "David Gilmour": [
@@ -16567,6 +21211,42 @@
   ],
   "The Madcap Laughs": [
    "album"
+  ],
+  "1968 sessions": [
+   "music industry"
+  ],
+  "April 1969": [],
+  "Barrett": [
+   "human",
+   "record producer"
+  ],
+  "July 1969": [],
+  "Malcolm Jones": [
+   "human",
+   "record producer"
+  ],
+  "Peter Jenner": [
+   "human",
+   "record producer"
+  ],
+  "Pink Floyd": [
+   "music industry"
+  ],
+  "early-to-mid-1969 sessions": [
+   "music industry"
+  ],
+  "five different producers": [
+   "human",
+   "record producer"
+  ],
+  "mid-1968": [],
+  "mid-1969 sessions": [
+   "music industry"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_558": {
@@ -16586,6 +21266,17 @@
   ],
   "album": [
    "album"
+  ],
+  "post-punk": [
+   "music genre"
+  ],
+  "second studio album": [
+   "album",
+   "musical work"
+  ],
+  "studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_559": {
@@ -16602,6 +21293,12 @@
   ],
   "Hannibal Records": [
    "music industry"
+  ],
+  "June 2005": [],
+  "twenty-third solo studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_560": {
@@ -16645,6 +21342,15 @@
   "the Bass Brothers": [
    "record producer",
    "music industry"
+  ],
+  "Ferndale, Michigan": [],
+  "Jimmy Iovine": [
+   "human"
+  ],
+  "the album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_561": {
@@ -16682,6 +21388,32 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Bill Wyman": [
+   "human",
+   "composer"
+  ],
+  "Charlie Watts": [
+   "human",
+   "composer"
+  ],
+  "Ian Stewart": [
+   "human",
+   "composer"
+  ],
+  "Mick Jagger": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "Nicky Hopkins": [
+   "human",
+   "composer"
+  ],
+  "Ry Cooder": [
+   "human",
+   "composer",
+   "record producer"
   ]
  },
  "ont_2_music_test_562": {
@@ -16717,6 +21449,14 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "English rock band": [
+   "music genre"
+  ],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_563": {
@@ -16730,7 +21470,8 @@
   "Neal Avron,": [
    "human",
    "record producer"
-  ]
+  ],
+  "production duties": []
  },
  "ont_2_music_test_564": {
   ",": [],
@@ -16747,7 +21488,10 @@
    "musical work",
    "music"
   ],
-  "Rolling Stones": []
+  "Rolling Stones": [],
+  "the band's manager": [
+   "human"
+  ]
  },
  "ont_2_music_test_565": {
   "00 April 1955": [],
@@ -16769,7 +21513,12 @@
   "string orchestra": [
    "music"
   ],
-  "various instruments": []
+  "various instruments": [],
+  "April 1955": [],
+  "Nelson Riddle": [
+   "composer",
+   "human"
+  ]
  },
  "ont_2_music_test_566": {
   "00  2001": [],
@@ -16796,7 +21545,8 @@
   "Tone Capone": [
    "human",
    "record producer"
-  ]
+  ],
+  "October 23, 2001": []
  },
  "ont_2_music_test_567": {
   "00 January 1984": [],
@@ -16821,6 +21571,15 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1984": [],
+  "Welsh musician": [
+   "human"
+  ],
+  "ninth solo studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_568": {
@@ -16848,7 +21607,9 @@
   ],
   "ambient techno": [
    "music genre"
-  ]
+  ],
+  "Killing Joke": [],
+  "the Orb": []
  },
  "ont_2_music_test_569": {
   "16 October 1990": [],
@@ -16868,7 +21629,8 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "1990": []
  },
  "ont_2_music_test_570": {
   "Accelerated Evolution": [
@@ -16881,7 +21643,13 @@
    "record producer"
   ],
   "Devin Townsend Band": [],
-  "The Devin Townsend Band": []
+  "The Devin Townsend Band": [],
+  "Accelerated Evolution's solo material": [
+   "music",
+   "musical work"
+  ],
+  "Strapping Young Lad": [],
+  "Townsend's extreme metal project": []
  },
  "ont_2_music_test_571": {
   "Adelio Cogliati": [
@@ -16920,6 +21688,14 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "lyrics": [
+   "musical work"
+  ],
+  "music": [
+   "music",
+   "musical work",
+   "composed musical work"
   ]
  },
  "ont_2_music_test_572": {
@@ -16945,6 +21721,12 @@
   "nomination": [],
   "progressive metal": [
    "music genre"
+  ],
+  "1986": [],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_573": {
@@ -17003,6 +21785,9 @@
   ],
   "voice": [
    "voice"
+  ],
+  "2D": [
+   "human"
   ]
  },
  "ont_2_music_test_574": {
@@ -17058,7 +21843,9 @@
   ],
   "the band": [
    "music"
-  ]
+  ],
+  "1988": [],
+  "sixteen years": []
  },
  "ont_2_music_test_575": {
   "Behind Enemy Lines": [
@@ -17178,7 +21965,23 @@
   "the album": [
    "album"
   ],
-  "who produced the album(producer,album": []
+  "who produced the album(producer,album": [],
+  "American boy band the Jonas Brothers": [],
+  "record producer John Fields": [
+   "human",
+   "record producer"
+  ],
+  "songs": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "the Jonas Brothers": [],
+  "the songs": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ]
  },
  "ont_2_music_test_576": {
   "1976": [],
@@ -17222,6 +22025,24 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Cooper": [
+   "human",
+   "composer"
+  ],
+  "Steven": [],
+  "Welcome to My Nightmare": [
+   "album",
+   "music"
+  ],
+  "concept album": [
+   "album",
+   "music"
+  ],
+  "guitar player": [],
+  "producer": [
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_577": {
@@ -17259,6 +22080,9 @@
   ],
   "musical work": [
    "musical work"
+  ],
+  "New contributions": [
+   "music"
   ]
  },
  "ont_2_music_test_578": {
@@ -17284,6 +22108,27 @@
    "album",
    "music",
    "musical work"
+  ],
+  "Arco Studios": [
+   "music industry"
+  ],
+  "Munich": [],
+  "Musicland Studios": [
+   "music industry"
+  ],
+  "Summer": [
+   "human"
+  ],
+  "Summer's long-term collaborators": [
+   "human"
+  ],
+  "production team": [
+   "music industry"
+  ],
+  "the album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_579": {
@@ -17311,7 +22156,20 @@
    "musical work",
    "music"
   ],
-  "genre(Walking on Locusts,music genre": []
+  "genre(Walking on Locusts,music genre": [],
+  "Welsh musician": [
+   "human"
+  ],
+  "solo studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "thirteenth solo studio album": [
+   "album",
+   "music",
+   "musical work"
+  ]
  },
  "ont_2_music_test_580": {
   "HIStory : Past , Present and Future , Book I": [
@@ -17361,6 +22219,14 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "American singer": [
+   "human"
+  ],
+  "ninth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_581": {
@@ -17393,6 +22259,9 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "Porcupine Tree": [
+   "music industry"
   ]
  },
  "ont_2_music_test_582": {
@@ -17414,6 +22283,10 @@
    "album",
    "music",
    "musical work"
+  ],
+  "21 November 1983": [],
+  "Irish rock band": [
+   "music industry"
   ]
  },
  "ont_2_music_test_583": {
@@ -17443,6 +22316,23 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "California": [],
+  "Chester Bennington's parents": [
+   "human"
+  ],
+  "NRG Recordings": [
+   "music industry"
+  ],
+  "North Hollywood": [],
+  "constant fighting": [],
+  "divorce": [],
+  "drug abuse": [],
+  "fighting": [],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_584": {
@@ -17538,7 +22428,8 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "2014": []
  },
  "ont_2_music_test_586": {
   "American V: A Hundred Highways": [
@@ -17559,6 +22450,11 @@
   ],
   "the band's prior album": [
    "album"
+  ],
+  "The album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_587": {
@@ -17591,7 +22487,14 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Carl Palmer": [
+   "human"
+  ],
+  "Greg Lake": [
+   "human"
+  ],
+  "the island": []
  },
  "ont_2_music_test_588": {
   "Alto": [
@@ -17635,6 +22538,20 @@
    "composed musical work",
    "music",
    "musical work"
+  ],
+  "Colombian singer-songwriter": [
+   "human",
+   "composer"
+  ],
+  "Loba": [
+   "album",
+   "musical work",
+   "music"
+  ],
+  "eighth studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_589": {
@@ -17657,6 +22574,14 @@
   ],
   "Polydor Records": [
    "music industry"
+  ],
+  "English musician": [
+   "human"
+  ],
+  "sixth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_590": {
@@ -17694,6 +22619,10 @@
   ],
   "Vocal": [
    "voice"
+  ],
+  "2005 reissue": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_591": {
@@ -17747,6 +22676,33 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Pink Floyd's earlier recordings and performances": [
+   "music",
+   "musical work"
+  ],
+  "The Dark Side of the Moon's earlier work": [
+   "music",
+   "musical work"
+  ],
+  "The record": [
+   "album"
+  ],
+  "earlier recordings": [
+   "music",
+   "musical work"
+  ],
+  "earlier work": [
+   "music",
+   "musical work"
+  ],
+  "extended instrumentals": [
+   "music",
+   "musical work"
+  ],
+  "ideas": [],
+  "performances": [
+   "music"
   ]
  },
  "ont_2_music_test_592": {
@@ -17785,6 +22741,16 @@
   "Xenomania": [
    "music industry",
    "record producer"
+  ],
+  "What Will the Neighbours Say?": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "entire album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_593": {
@@ -17798,6 +22764,34 @@
   ],
   "Scary Monsters and Nice Sprites": [
    "album",
+   "musical work"
+  ],
+  "Kaskade": [
+   "human",
+   "music industry",
+   "record producer"
+  ],
+  "Phonat": [
+   "human",
+   "music industry",
+   "record producer"
+  ],
+  "The Juggernauts": [
+   "music industry"
+  ],
+  "four additional remixes": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "the title track": [
+   "composed musical work",
+   "music",
+   "musical work"
+  ],
+  "three original tracks": [
+   "composed musical work",
+   "music",
    "musical work"
   ]
  },
@@ -17822,6 +22816,15 @@
   ],
   "musical work": [
    "musical work"
+  ],
+  "1989": [],
+  "Mother's Milk": [
+   "album",
+   "musical work"
+  ],
+  "heavy metal guitar riffs": [
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_595": {
@@ -17843,6 +22846,24 @@
   ],
   "music genre": [
    "music genre"
+  ],
+  "1982": [],
+  "composer": [
+   "composer",
+   "human"
+  ],
+  "multi-instrumentalist": [
+   "human"
+  ],
+  "record album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "seventh record album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_596": {
@@ -17925,6 +22946,19 @@
   ],
   "rock": [
    "music genre"
+  ],
+  "9 February 1972": [],
+  "Das Kalte Paradies": [],
+  "German anti-drug movie": [],
+  "May 1973": [],
+  "Scorpions": [],
+  "United States": [],
+  "West Germany": [],
+  "fully professional band": [],
+  "soundtrack": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_598": {
@@ -17968,6 +23002,29 @@
    "composed musical work",
    "musical work",
    "music"
+  ],
+  "4×4=12": [
+   "album",
+   "musical work"
+  ],
+  "Fuse": [
+   "music industry"
+  ],
+  "Get Scraped": [
+   "album",
+   "musical work"
+  ],
+  "deadmau5's previous albums": [
+   "album",
+   "musical work"
+  ],
+  "previous albums": [
+   "album",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_599": {
@@ -17980,6 +23037,24 @@
   "Armin van Buuren": [
    "human",
    "record producer"
+  ],
+  "A State of Trance compilation series": [
+   "music"
+  ],
+  "Dutch DJ": [
+   "human",
+   "music",
+   "music industry"
+  ],
+  "record producer": [
+   "human",
+   "music industry",
+   "record producer"
+  ],
+  "seventh compilation album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_600": {
@@ -17998,7 +23073,20 @@
   ],
   "V2 Records": [
    "music industry"
-  ]
+  ],
+  "2004": [],
+  "Bad Religion": [],
+  "January 2008": [],
+  "new album": [
+   "album",
+   "musical work",
+   "music"
+  ],
+  "new material": [
+   "musical work",
+   "music"
+  ],
+  "the band": []
  },
  "ont_2_music_test_601": {
   "00 May 1978": [],
@@ -18026,6 +23114,10 @@
    "album",
    "musical work",
    "music"
+  ],
+  "second album": [
+   "album",
+   "music"
   ]
  },
  "ont_2_music_test_602": {
@@ -18042,6 +23134,16 @@
   ],
   "electronic rock": [
    "music genre"
+  ],
+  "British musician": [
+   "composer",
+   "human",
+   "record producer"
+  ],
+  "seventh solo studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_603": {
@@ -18076,6 +23178,16 @@
   ],
   "Mo B. Dick": [
    "human",
+   "record producer"
+  ],
+  "2002": [],
+  "2003": [],
+  "Recording sessions": [
+   "music industry"
+  ],
+  "record producers": [
+   "human",
+   "music industry",
    "record producer"
   ]
  },
@@ -18122,7 +23234,16 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "#1": [],
+  "#3": [],
+  "Austrian albums chart": [
+   "music industry"
+  ],
+  "German albums chart": [
+   "music industry"
+  ],
+  "Switzerland": []
  },
  "ont_2_music_test_605": {
   "20 September 1980": [],
@@ -18140,6 +23261,16 @@
   ],
   "RCA Records": [
    "music industry"
+  ],
+  "British heavy metal vocalist": [
+   "human"
+  ],
+  "United Kingdom": [],
+  "United States": [],
+  "debut studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_606": {
@@ -18164,7 +23295,20 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "2": [],
+  "English rock band": [],
+  "September 1969": [],
+  "UK": [],
+  "US": [],
+  "United Kingdom": [],
+  "United States": [],
+  "second compilation album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the Rolling Stones": []
  },
  "ont_2_music_test_607": {
   "00  2011": [],
@@ -18199,7 +23343,9 @@
   ],
   "music genre": [
    "music genre"
-  ]
+  ],
+  "August 2, 2011": [],
+  "August 9, 2011": []
  },
  "ont_2_music_test_608": {
   "2006 Grammy Award for Best Rap Album": [
@@ -18228,7 +23374,31 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "NME": [
+   "music industry"
+  ],
+  "Pitchfork": [
+   "music industry"
+  ],
+  "West": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "album": [
+   "album",
+   "musical work"
+  ],
+  "the album": [
+   "album",
+   "musical work"
+  ],
+  "top albums": [
+   "album",
+   "musical work"
+  ],
+  "year-end lists": []
  },
  "ont_2_music_test_609": {
   "2011 Grammy Award for Best Comedy Album": [
@@ -18299,6 +23469,14 @@
    "album",
    "music",
    "musical work"
+  ],
+  "1995": [],
+  "critics": [
+   "human"
+  ],
+  "the inaugural Grammy Award for Best Rock Album": [
+   "award",
+   "music industry"
   ]
  },
  "ont_2_music_test_611": {
@@ -18341,6 +23519,17 @@
   "Slide Hampton: Grammy Award for Best Instrumental Arrangement Accompanying Vocalist(s) for his arrangement of \"Cotton Tail\"": [
    "composer",
    "human"
+  ],
+  "Bridgewater": [
+   "human"
+  ],
+  "Cotton Tail": [
+   "composed musical work",
+   "musical work",
+   "music"
+  ],
+  "Slide Hampton": [
+   "human"
   ]
  },
  "ont_2_music_test_612": {
@@ -18353,6 +23542,12 @@
    "musical work"
   ],
   "Grammy Award for Best Rock Performance by a Duo or Group with Vocal": [
+   "award"
+  ],
+  "Best Rock Performance by a Duo or Group with Vocal": [
+   "award"
+  ],
+  "Grammy Award": [
    "award"
   ]
  },
@@ -18371,6 +23566,13 @@
   "Reggae": [
    "music",
    "music genre"
+  ],
+  "2004": [],
+  "Best Reggae Album": [
+   "award"
+  ],
+  "Grammy Award": [
+   "award"
   ]
  },
  "ont_2_music_test_614": {
@@ -18386,6 +23588,20 @@
   ],
   "Grammy Award for Best Alternative Music Album": [
    "award"
+  ],
+  "1993 Grammys": [
+   "award",
+   "music industry"
+  ],
+  "Good Stuff (album)": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Tom Waits": [
+   "human",
+   "composer",
+   "record producer"
   ]
  },
  "ont_2_music_test_615": {
@@ -18399,6 +23615,10 @@
   ],
   "Reggae": [
    "music genre"
+  ],
+  "1998": [],
+  "40th Grammy Awards": [
+   "award"
   ]
  },
  "ont_2_music_test_616": {
@@ -18420,6 +23640,12 @@
    "album",
    "musical work",
    "music"
+  ],
+  "the band": [],
+  "two albums": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_617": {
@@ -18454,6 +23680,12 @@
   ],
   "tenor": [
    "voice"
+  ],
+  "2007": [],
+  "Washington, D.C.": [],
+  "rock band": [
+   "music",
+   "music industry"
   ]
  },
  "ont_2_music_test_618": {
@@ -18468,6 +23700,13 @@
    "album",
    "music",
    "musical work"
+  ],
+  "1985": [],
+  "American hardcore punk band": [],
+  "third album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_619": {
@@ -18483,7 +23722,8 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "October 26, 2009": []
  },
  "ont_2_music_test_620": {
   "04 November 1997": [],
@@ -18497,7 +23737,8 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "November 4, 1997": []
  },
  "ont_2_music_test_621": {
   "Candlelight Records": [
@@ -18537,7 +23778,13 @@
    "music",
    "music industry",
    "musical work"
-  ]
+  ],
+  "Europe": [],
+  "My Arms, Your Hearse": [
+   "album",
+   "music"
+  ],
+  "United States": []
  },
  "ont_2_music_test_622": {
   "The Screen Behind the Mirror": [
@@ -18567,6 +23814,11 @@
   ],
   "voice": [
    "voice"
+  ],
+  "Ibiza": [],
+  "Spain": [],
+  "Studios in Ibiza": [
+   "music industry"
   ]
  },
  "ont_2_music_test_623": {
@@ -18599,7 +23851,10 @@
   "piano": [],
   "soprano": [
    "voice"
-  ]
+  ],
+  "15 September 1959": [],
+  "New York": [],
+  "The Town Hall": []
  },
  "ont_2_music_test_624": {
   "00  2012": [],
@@ -18630,6 +23885,16 @@
   ],
   "musical work": [
    "musical work"
+  ],
+  "American hip hop group": [],
+  "June 12, 2012": [],
+  "Universal Music Group": [
+   "music industry"
+  ],
+  "fourth studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_625": {
@@ -18656,7 +23921,19 @@
    "music industry"
   ],
   "Still, Regal Recordings": [],
-  "Still,Regal Recordings": []
+  "Still,Regal Recordings": [],
+  "Allen": [
+   "human"
+  ],
+  "Alright, Still": [
+   "album"
+  ],
+  "London Records": [
+   "music industry"
+  ],
+  "several record labels": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_626": {
   "07 October 2003": [],
@@ -18680,6 +23957,15 @@
    "album",
    "musical work",
    "music"
+  ],
+  "October 7, 2003": [],
+  "indie rock": [
+   "music genre"
+  ],
+  "studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_627": {
@@ -18711,7 +23997,11 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "7 March 2008": [],
+  "Europe": [],
+  "March 11, 2008": [],
+  "North America": []
  },
  "ont_2_music_test_628": {
   "05 March 2002": [],
@@ -18779,7 +24069,9 @@
   "tenor": [
    "voice"
   ],
-  "unknown": []
+  "unknown": [],
+  "United Kingdom": [],
+  "United States": []
  },
  "ont_2_music_test_630": {
   "Capitol Records": [
@@ -18798,6 +24090,17 @@
   ],
   "Parlophone": [
    "music industry"
+  ],
+  "21 May 1997": [],
+  "EMI": [
+   "music industry"
+  ],
+  "English rock band": [],
+  "Radiohead": [],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_631": {
@@ -18834,7 +24137,8 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "1968": []
  },
  "ont_2_music_test_632": {
   "24 June 2003": [],
@@ -18889,6 +24193,18 @@
   ],
   "voice": [
    "voice"
+  ],
+  "American progressive rock band": [
+   "music industry"
+  ],
+  "June 24, 2003": [],
+  "debut studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "the Mars Volta": [
+   "music industry"
   ]
  },
  "ont_2_music_test_633": {
@@ -18904,6 +24220,12 @@
    "musical work"
   ],
   "We Have the Facts and We're Voting Yes": [
+   "album",
+   "musical work"
+  ],
+  "American rock band": [],
+  "March 21, 2000": [],
+  "second studio album": [
    "album",
    "musical work"
   ]
@@ -18942,7 +24264,8 @@
   "The_album": [
    "album",
    "musical work"
-  ]
+  ],
+  "November 18, 2009": []
  },
  "ont_2_music_test_636": {
   "00  2004": [],
@@ -19005,6 +24328,12 @@
   ],
   "voice": [
    "voice"
+  ],
+  "April 13, 2004": [],
+  "tenth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_637": {
@@ -19034,7 +24363,12 @@
   ],
   "Värttinä": [
    "music"
-  ]
+  ],
+  "1990": [],
+  "Finland": [],
+  "Finnish folk group VÃ¤rttinÃ¤": [],
+  "Finnish folk group Värttinä": [],
+  "VÃ¤rttinÃ¤": []
  },
  "ont_2_music_test_638": {
   "Music & Words": [
@@ -19046,7 +24380,10 @@
   ],
   "Xenophile Records": [
    "music industry"
-  ]
+  ],
+  "1993": [],
+  "Benelux": [],
+  "United States": []
  },
  "ont_2_music_test_639": {
   "13 September 2011": [],
@@ -19069,6 +24406,15 @@
   "progressive metal": [
    "music",
    "music genre"
+  ],
+  "American progressive metal band": [
+   "music industry"
+  ],
+  "September 2011": [],
+  "eleventh studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_640": {
@@ -19111,7 +24457,14 @@
    "album",
    "musical work",
    "music"
-  ]
+  ],
+  "1998": [],
+  "Hey You, I Love Your Soul": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "enhanced CD": []
  },
  "ont_2_music_test_641": {
   "08 December 2009": [],
@@ -19122,7 +24475,8 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "December 8, 2009": []
  },
  "ont_2_music_test_642": {
   "2003": [],
@@ -19183,6 +24537,29 @@
   ],
   "voice": [
    "voice"
+  ],
+  "1986": [],
+  "2004": [],
+  "The album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "UK": [],
+  "United Kingdom": [],
+  "United States": [],
+  "limited-edition version": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "specialty reissue label": [
+   "music industry"
+  ],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_643": {
@@ -19196,6 +24573,12 @@
    "music industry"
   ],
   "The album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "June 6, 2006": [],
+  "the album": [
    "album",
    "music",
    "musical work"
@@ -19239,6 +24622,20 @@
    "album",
    "music",
    "musical work"
+  ],
+  "1970": [],
+  "Jackson 5": [
+   "music"
+  ],
+  "second LP": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "third studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_645": {
@@ -19249,6 +24646,18 @@
    "music industry"
   ],
   "Ready to Die": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "American rapper": [
+   "human"
+  ],
+  "September 13, 1994": [],
+  "The Notorious B.I.G.": [
+   "human"
+  ],
+  "debut studio album": [
    "album",
    "music",
    "musical work"
@@ -19271,7 +24680,16 @@
    "human"
   ],
   "purchase": [],
-  "rescheduled": []
+  "rescheduled": [],
+  "March 2008": [],
+  "September 2007 release": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "purchase of Sanctuary Records by Universal Music": [
+   "music industry"
+  ]
  },
  "ont_2_music_test_647": {
   "25 October 1993": [],
@@ -19305,7 +24723,9 @@
   ],
   "Vertigo": [
    "music industry"
-  ]
+  ],
+  "January 1994": [],
+  "October 1993": []
  },
  "ont_2_music_test_648": {
   "00  1981": [],
@@ -19346,6 +24766,13 @@
   ],
   "rockabilly": [
    "music genre"
+  ],
+  "American rockabilly band": [],
+  "United Kingdom": [],
+  "second studio album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_649": {
@@ -19356,7 +24783,13 @@
   ],
   "Saddle Creek Records": [
    "music industry"
-  ]
+  ],
+  "32nd release": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Omaha, Nebraska": []
  },
  "ont_2_music_test_650": {
   "00  2011": [],
@@ -19370,6 +24803,12 @@
   ],
   "TV on the Radio": [
    "music"
+  ],
+  "American rock band": [],
+  "April 11, 2011": [],
+  "fourth studio album": [
+   "album",
+   "musical work"
   ]
  },
  "ont_2_music_test_651": {
@@ -19383,6 +24822,34 @@
   ],
   "Avex Trax": [
    "music industry"
+  ],
+  "2002 studio album": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "2002 studio album I Am...": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "Avex head staff": [
+   "human",
+   "music industry"
+  ],
+  "Hamasaki": [
+   "human"
+  ],
+  "I Am...": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "March 28, 2001": [],
+  "greatest hits album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_652": {
@@ -19396,7 +24863,11 @@
   ],
   "United Artists Records": [
    "music industry"
-  ]
+  ],
+  "19 November 1976": [],
+  "September 1976": [],
+  "United Kingdom": [],
+  "United States": []
  },
  "ont_2_music_test_653": {
   "01 January 1994": [],
@@ -19436,6 +24907,21 @@
   ],
   "male_voice": [
    "voice"
+  ],
+  "1994": [],
+  "Norwegian black metal band": [
+   "music industry"
+  ],
+  "Norwegian black metal band Emperor": [
+   "music industry"
+  ],
+  "fourth official release": [
+   "musical work"
+  ],
+  "studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_654": {
@@ -19456,7 +24942,9 @@
    "album",
    "music",
    "musical work"
-  ]
+  ],
+  "Europe": [],
+  "November 11, 2008": []
  },
  "ont_2_music_test_655": {
   "... Grand Champ": [
@@ -19488,6 +24976,12 @@
    "album",
    "music",
    "musical work"
+  ],
+  "September 16, 2003": [],
+  "the album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_656": {
@@ -19497,6 +24991,13 @@
   "Stack-o-Tracks": [
    "album",
    "musical work"
+  ],
+  "1990": [],
+  "2001": [],
+  "CD": [],
+  "booklet": [],
+  "vinyl edition": [
+   "album"
   ]
  },
  "ont_2_music_test_657": {
@@ -19511,7 +25012,8 @@
   ],
   "Polydor Records": [
    "music industry"
-  ]
+  ],
+  "January 27, 2012": []
  },
  "ont_2_music_test_658": {
   "29 March 1973": [],
@@ -19525,6 +25027,12 @@
   ],
   "The Jackson 5": [
    "music industry"
+  ],
+  "March 29, 1973": [],
+  "seventh studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_659": {
@@ -19596,7 +25104,11 @@
    "composed musical work",
    "music",
    "musical work"
-  ]
+  ],
+  "Europe": [],
+  "March 12, 2001": [],
+  "March 13, 2001": [],
+  "North America": []
  },
  "ont_2_music_test_660": {
   "00  1996": [],
@@ -19628,7 +25140,11 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "Europe": [],
+  "June 24, 1996": [],
+  "June 24, 1997": [],
+  "United States": []
  },
  "ont_2_music_test_661": {
   "14 March 2000": [],
@@ -19643,7 +25159,8 @@
   "MCA Records": [
    "music industry",
    "record producer"
-  ]
+  ],
+  "2000": []
  },
  "ont_2_music_test_662": {
   "00  2003": [],
@@ -19664,6 +25181,15 @@
   ],
   "progressive metal": [
    "music genre"
+  ],
+  "2003": [],
+  "American progressive metal band": [
+   "music industry"
+  ],
+  "fifth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_663": {
@@ -19744,7 +25270,11 @@
   ],
   "mau5trap": [
    "music industry"
-  ]
+  ],
+  "5 October 2009": [],
+  "Canada": [],
+  "September 22, 2009": [],
+  "United States": []
  },
  "ont_2_music_test_665": {
   "00  2006": [],
@@ -19756,7 +25286,10 @@
   "Nuclear Blast": [
    "music industry"
   ],
-  "September 1, 2006": []
+  "September 1, 2006": [],
+  "Europe": [],
+  "North America": [],
+  "September 5, 2006": []
  },
  "ont_2_music_test_666": {
   "00  1983": [],
@@ -19790,7 +25323,11 @@
   "music genre": [
    "music genre"
   ],
-  "on Broadway": []
+  "on Broadway": [],
+  "1969": [],
+  "Diana Ross and the Supremes and The Temptations on Broadway": [],
+  "On Broadway": [],
+  "television special": []
  },
  "ont_2_music_test_668": {
   "Blood on the Tracks": [
@@ -19812,6 +25349,24 @@
    "album",
    "music",
    "musical work"
+  ],
+  "Asylum Records": [
+   "music industry"
+  ],
+  "Dylan": [
+   "human",
+   "composer",
+   "record producer"
+  ],
+  "The album": [
+   "album",
+   "musical work",
+   "music"
+  ],
+  "the album": [
+   "album",
+   "musical work",
+   "music"
   ]
  },
  "ont_2_music_test_669": {
@@ -19825,6 +25380,11 @@
   ],
   "Misanthropy Records": [
    "music industry"
+  ],
+  "Vikernes": [
+   "composer",
+   "human",
+   "record producer"
   ]
  },
  "ont_2_music_test_670": {
@@ -19861,7 +25421,10 @@
   ],
   "voice": [
    "voice"
-  ]
+  ],
+  "American heavy metal band": [],
+  "May 15, 2001": [],
+  "Megadeth": []
  },
  "ont_2_music_test_671": {
   "?": [],
@@ -19897,6 +25460,18 @@
   ],
   "voice": [
    "voice"
+  ],
+  "7 December 1973": [],
+  "English progressive rock band": [
+   "music industry"
+  ],
+  "English progressive rock band Yes": [
+   "music industry"
+  ],
+  "sixth studio album": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_672": {
@@ -19923,7 +25498,12 @@
   ],
   "tenor": [
    "voice"
-  ]
+  ],
+  "Jackson 5": [
+   "music",
+   "music industry"
+  ],
+  "May 1972": []
  },
  "ont_2_music_test_673": {
   "Epitaph Records": [
@@ -19938,6 +25518,20 @@
    "musical work"
   ],
   "WEA": [
+   "music industry"
+  ],
+  "2004's Smack Smash": [
+   "album",
+   "music",
+   "musical work"
+  ],
+  "mainstream": [
+   "music genre"
+  ],
+  "the band": [
+   "music industry"
+  ],
+  "the band's breakthrough into the mainstream": [
    "music industry"
   ]
  },
@@ -19957,6 +25551,12 @@
   ],
   "Virgin Records": [
    "music industry"
+  ],
+  "November 1993": [],
+  "Voodoo Lounge": [
+   "album",
+   "music",
+   "musical work"
   ]
  },
  "ont_2_music_test_675": {
@@ -19967,6 +25567,10 @@
    "musical work"
   ],
   "Zarjazz": [
+   "music industry"
+  ],
+  "September 1985": [],
+  "Virgin Records": [
    "music industry"
   ]
  }

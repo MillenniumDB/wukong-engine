@@ -8,6 +8,32 @@
   ],
   "Louise Meriwether": [
    "human"
+  ],
+  "American": [
+   "human"
+  ],
+  "May 8, 1923": [],
+  "activist": [
+   "human"
+  ],
+  "children": [
+   "human"
+  ],
+  "essayist": [
+   "human"
+  ],
+  "historically important African Americans": [
+   "ethnic group",
+   "human"
+  ],
+  "journalist": [
+   "human"
+  ],
+  "novelist": [
+   "human"
+  ],
+  "writer of biographies": [
+   "human"
   ]
  },
  "ont_10_culture_test_2": {
@@ -23,6 +49,18 @@
   "Rothair": [
    "human",
    "history"
+  ],
+  "636": [],
+  "652": [],
+  "Brescia": [
+   "geographical feature"
+  ],
+  "c. 606": [],
+  "duke of Brescia": [],
+  "house of Arodus": [],
+  "king of the Lombards": [],
+  "the Lombards": [
+   "ethnic group"
   ]
  },
  "ont_10_culture_test_3": {
@@ -35,6 +73,11 @@
   ],
   "art": [
    "art"
+  ],
+  "equal rights": [],
+  "equal rights for African Americans": [],
+  "the arts": [
+   "art"
   ]
  },
  "ont_10_culture_test_4": {
@@ -46,7 +89,8 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "doctorate in chemistry": []
  },
  "ont_10_culture_test_5": {
   "African Americans": [
@@ -64,7 +108,27 @@
   ],
   "black leaders": [
    "human"
-  ]
+  ],
+  "Black leaders": [
+   "human"
+  ],
+  "Dudley Pettey": [
+   "human"
+  ],
+  "North Carolina": [
+   "geographical feature"
+  ],
+  "improvements for African Americans": [],
+  "middle-class values": [
+   "culture"
+  ],
+  "nadir of race relations": [
+   "history"
+  ],
+  "subsequent Black leaders": [
+   "human"
+  ],
+  "women's public work": []
  },
  "ont_10_culture_test_6": {
   "African Americans": [
@@ -75,6 +139,12 @@
   ],
   "Virginian African Americans": [
    "ethnic group"
+  ],
+  "January 17, 1985": [],
+  "October 7, 1888": [],
+  "access to education": [],
+  "education": [
+   "culture"
   ]
  },
  "ont_10_culture_test_7": {
@@ -82,6 +152,14 @@
    "ethnic group"
   ],
   "Charlotte E. Ray": [
+   "human"
+  ],
+  "business": [],
+  "law": [],
+  "law practice": [],
+  "prejudice": [],
+  "prejudice against African Americans": [],
+  "women": [
    "human"
   ]
  },
@@ -102,6 +180,15 @@
   ],
   "The series depicted": [
    "art"
+  ],
+  "The series": [
+   "art"
+  ],
+  "rural South": [
+   "geographical feature"
+  ],
+  "urban North": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_9": {
@@ -132,6 +219,16 @@
   "Jazz music": [
    "art",
    "culture"
+  ],
+  "1910s": [
+   "history"
+  ],
+  "African Americans music scene": [
+   "art",
+   "culture"
+  ],
+  "New York City": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_10": {
@@ -159,6 +256,16 @@
   ],
   "Broyard": [
    "human"
+  ],
+  "black political figures": [
+   "human"
+  ],
+  "communal political activity": [],
+  "individual": [
+   "human"
+  ],
+  "mixed-race ancestry": [
+   "heritage"
   ]
  },
  "ont_10_culture_test_11": {
@@ -170,6 +277,10 @@
   ],
   "Harry S. Cummings": [
    "human"
+  ],
+  "1889": [],
+  "University of Maryland School of Law": [
+   "culture"
   ]
  },
  "ont_10_culture_test_12": {
@@ -190,6 +301,25 @@
   "particularly in the South, demanded an end to racial discrimination in public accommodations, education, and employment.\nTest Output: ethnic_group(African Americans": [],
   "General Benjamin Franklin Butler": [
    "human"
+  ],
+  "American Civil War": [
+   "history"
+  ],
+  "Louisiana": [
+   "geographical feature"
+  ],
+  "New Orleans": [
+   "geographical feature"
+  ],
+  "bondage": [],
+  "federal troops": [
+   "human"
+  ],
+  "occupation of Louisiana by federal troops": [
+   "history"
+  ],
+  "the American Civil War": [
+   "history"
   ]
  },
  "ont_10_culture_test_13": {
@@ -199,7 +329,16 @@
   ],
   "Susan Elizabeth Frazier": [
    "human"
-  ]
+  ],
+  "African-Americans": [
+   "ethnic group",
+   "human"
+  ],
+  "other African Americans": [
+   "ethnic group",
+   "human"
+  ],
+  "teaching": []
  },
  "ont_10_culture_test_14": {
   "1619": [],
@@ -248,7 +387,23 @@
   ],
   "human": [
    "human"
-  ]
+  ],
+  "American sociologist": [
+   "human"
+  ],
+  "Fisk University": [],
+  "July 24, 1893": [],
+  "October 27, 1956": [],
+  "civil rights": [],
+  "college administrator": [],
+  "first Black president of Fisk University": [
+   "human"
+  ],
+  "first black president of Fisk University": [
+   "human"
+  ],
+  "historically Black university": [],
+  "racial equality": []
  },
  "ont_10_culture_test_15": {
   "African Americans": [
@@ -263,6 +418,21 @@
   ],
   "religion": [
    "religion"
+  ],
+  "1867": [],
+  "Civil War": [
+   "history"
+  ],
+  "Revolutionary War": [
+   "history"
+  ],
+  "first history of African Americans in the Revolutionary War": [
+   "history",
+   "literature"
+  ],
+  "the first history of African Americans in the Revolutionary War": [
+   "history",
+   "literature"
   ]
  },
  "ont_10_culture_test_16": {
@@ -294,7 +464,14 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "African American women": [
+   "ethnic group",
+   "human"
+  ],
+  "medical care": [],
+  "obstetrical hospital": [],
+  "private general hospital": []
  },
  "ont_10_culture_test_17": {
   "Armenian": [
@@ -311,6 +488,25 @@
   ],
   "reformed": [
    "language"
+  ],
+  "1893": [],
+  "1907": [],
+  "29 October 1907": [],
+  "4 April 1820": [],
+  "Armenian Apostolic Church": [
+   "religion"
+  ],
+  "Catholicos of All Armenians": [
+   "religion"
+  ],
+  "church leader": [
+   "religion"
+  ],
+  "educator": [
+   "human"
+  ],
+  "publisher": [
+   "human"
   ]
  },
  "ont_10_culture_test_18": {
@@ -322,7 +518,14 @@
   "Josiah T. Walls": [
    "human",
    "history"
-  ]
+  ],
+  "Florida": [
+   "geographical feature"
+  ],
+  "Reconstruction Era": [
+   "history"
+  ],
+  "United States Congress": []
  },
  "ont_10_culture_test_19": {
   "African Americans": [
@@ -349,7 +552,8 @@
   ],
   "women": [
    "human"
-  ]
+  ],
+  "inequality for women": []
  },
  "ont_10_culture_test_20": {
   "1919": [],
@@ -375,6 +579,14 @@
   "his camera": [],
   "photography": [
    "art"
+  ],
+  "Roy DeCarava's photography": [
+   "art"
+  ],
+  "communities": [],
+  "communities where he lived and worked": [],
+  "jazz musicians": [
+   "human"
   ]
  },
  "ont_10_culture_test_21": {
@@ -389,7 +601,21 @@
   ],
   "Langston Hughes": [
    "human"
-  ]
+  ],
+  "1873": [],
+  "Cleveland": [
+   "geographical feature"
+  ],
+  "Cleveland, Ohio": [
+   "geographical feature"
+  ],
+  "Justice of the Peace": [],
+  "Ohio": [
+   "geographical feature"
+  ],
+  "Republican": [],
+  "Republican Justice of the Peace": [],
+  "public office": []
  },
  "ont_10_culture_test_22": {
   "African Americans": [
@@ -406,6 +632,13 @@
   ],
   "religion": [
    "religion"
+  ],
+  "United States": [],
+  "the best known Colored Woman in the United States": [
+   "human"
+  ],
+  "the most prominent African Americans": [
+   "ethnic group"
   ]
  },
  "ont_10_culture_test_23": {
@@ -419,7 +652,16 @@
   "null": [],
   "religion": [
    "religion"
-  ]
+  ],
+  "Little Rock crisis": [
+   "history"
+  ],
+  "desegregation": [],
+  "fellow African Americans": [
+   "ethnic group",
+   "human"
+  ],
+  "race": []
  },
  "ont_10_culture_test_24": {
   "African American cuisine": [
@@ -468,6 +710,19 @@
   "none specified": [],
   "visual art": [
    "art"
+  ],
+  "Young's work": [
+   "art"
+  ],
+  "collage": [
+   "art"
+  ],
+  "found objects": [],
+  "painting": [
+   "art"
+  ],
+  "the south": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_25": {
@@ -482,7 +737,9 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "100 Greatest African Americans": [],
+  "2002": []
  },
  "ont_10_culture_test_26": {
   "Alexander Khatisian": [
@@ -493,7 +750,14 @@
   ],
   "Armenians": [
    "ethnic group"
-  ]
+  ],
+  "Armenian Congress of Eastern Armenians": [],
+  "Armenian National Council": [],
+  "Armenian National Council of Tiflis": [],
+  "Eastern Armenians": [
+   "ethnic group"
+  ],
+  "permanent executive committee": []
  },
  "ont_10_culture_test_27": {
   "01 January 1829": [],
@@ -511,6 +775,13 @@
   ],
   "religious order": [
    "religion"
+  ],
+  "enslavement": [
+   "history"
+  ],
+  "poetry": [
+   "art",
+   "literature"
   ]
  },
  "ont_10_culture_test_28": {
@@ -588,7 +859,38 @@
   "returning to grandmother's home": [],
   "tradition": [
    "tradition"
-  ]
+  ],
+  "1910": [],
+  "A team player": [
+   "human"
+  ],
+  "An athlete": [
+   "human"
+  ],
+  "Athletic activities": [],
+  "Edwin Henderson's family": [
+   "human"
+  ],
+  "Edwin Henderson's grandmother": [
+   "human"
+  ],
+  "Edwin Henderson's wife": [
+   "human"
+  ],
+  "Fairfax County, Virginia": [
+   "geographical feature"
+  ],
+  "Henderson's family": [
+   "human"
+  ],
+  "Henderson's wife": [
+   "human"
+  ],
+  "Physical education": [],
+  "Washington, D.C.": [
+   "geographical feature"
+  ],
+  "athletic activities": []
  },
  "ont_10_culture_test_29": {
   "Mandubracius": [
@@ -608,6 +910,11 @@
   "Mandubratius": [
    "human",
    "history"
+  ],
+  "1st century BC": [],
+  "king": [],
+  "south-eastern Britain": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_30": {
@@ -627,7 +934,13 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "February 26, 1931": [],
+  "Oklahoma": [
+   "geographical feature"
+  ],
+  "politician": [],
+  "social activist": []
  },
  "ont_10_culture_test_31": {
   "African American": [
@@ -680,6 +993,9 @@
   "invention": [],
   "tradition": [
    "tradition"
+  ],
+  "southern United States": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_32": {
@@ -693,6 +1009,15 @@
    "human"
   ],
   "Virgil": [
+   "human"
+  ],
+  "Latin literature": [
+   "literature"
+  ],
+  "canonical poets": [
+   "human"
+  ],
+  "three canonical poets of Latin literature": [
    "human"
   ]
  },
@@ -713,6 +1038,28 @@
    "human"
   ],
   "Theodore Bibliander": [
+   "human"
+  ],
+  "1525-1527": [],
+  "Basel": [
+   "geographical feature"
+  ],
+  "Bibliander": [
+   "human"
+  ],
+  "Bischofszell": [
+   "geographical feature"
+  ],
+  "Jakob Ceporin": [
+   "human"
+  ],
+  "Johannes Oecolampadius": [
+   "human"
+  ],
+  "Konrad Pelikan": [
+   "human"
+  ],
+  "Oswald Myconius": [
    "human"
   ]
  },
@@ -738,7 +1085,94 @@
    "language",
    "culture"
   ],
-  "Unknown": []
+  "Unknown": [],
+  "1st prize": [],
+  "2015": [],
+  "2019": [],
+  "2nd prize": [],
+  "3rd prize": [],
+  "All-Ukrainian literary and musical contest «Inspiro»": [
+   "culture",
+   "literature"
+  ],
+  "EKRA-2006": [
+   "culture",
+   "literature"
+  ],
+  "Inspiro": [
+   "culture"
+  ],
+  "International poetry contest «Una ballata per l'Esperanto»": [
+   "culture",
+   "literature"
+  ],
+  "Kaliningrad, Russia": [
+   "geographical feature"
+  ],
+  "Kolomyia": [
+   "geographical feature"
+  ],
+  "Kyiv": [
+   "geographical feature"
+  ],
+  "Liro-1982": [
+   "culture",
+   "literature"
+  ],
+  "Messina, Italy": [
+   "geographical feature"
+  ],
+  "Original poetry": [
+   "literature"
+  ],
+  "Razgrad, Bulgaria": [
+   "geographical feature"
+  ],
+  "Rukomeslo 2006": [
+   "culture",
+   "literature"
+  ],
+  "Song Vernissage-2006": [
+   "art",
+   "culture",
+   "festival"
+  ],
+  "Translated poetry": [
+   "literature"
+  ],
+  "Ukrainian literary contest «Rukomeslo 2006»": [
+   "culture",
+   "literature"
+  ],
+  "Una ballata per l'Esperanto": [
+   "culture",
+   "literature"
+  ],
+  "XVII Ukrainian festival of Ukrainian modern pop songs «Song Vernissage-2006»": [
+   "art",
+   "culture",
+   "festival"
+  ],
+  "international literary contest in Esperanto (poetry) «EKRA-2006»": [
+   "culture",
+   "language",
+   "literature"
+  ],
+  "international literary contest in Esperanto (poetry) «Liro-1982»": [
+   "culture",
+   "language",
+   "literature"
+  ],
+  "laureate lyrics": [
+   "art",
+   "literature"
+  ],
+  "poetry": [
+   "literature"
+  ],
+  "translation": [
+   "literature"
+  ]
  },
  "ont_10_culture_test_35": {
   "Cato": [
@@ -752,6 +1186,9 @@
   ],
   "Latin": [
    "language"
+  ],
+  "history": [
+   "history"
   ]
  },
  "ont_10_culture_test_36": {
@@ -763,6 +1200,36 @@
   ],
   "German": [
    "ethnic group"
+  ],
+  "1 May 1765": [],
+  "17 January 1697": [],
+  "German Jesuit": [
+   "human",
+   "religion"
+  ],
+  "Latin dramas": [
+   "language",
+   "literature"
+  ],
+  "ascetical subjects": [
+   "religion"
+  ],
+  "author": [
+   "human"
+  ],
+  "controversial subjects": [],
+  "preacher": [
+   "human",
+   "religion"
+  ],
+  "sacred themes": [
+   "religion"
+  ],
+  "theological subjects": [
+   "religion"
+  ],
+  "writer": [
+   "human"
   ]
  },
  "ont_10_culture_test_37": {
@@ -774,6 +1241,27 @@
   "Latin": [
    "language",
    "culture"
+  ],
+  "German": [
+   "ethnic group"
+  ],
+  "German Lutheran cleric": [
+   "human",
+   "religion"
+  ],
+  "Jo(h)annes Wigandus": [
+   "human"
+  ],
+  "Lutheran cleric": [
+   "human",
+   "religion"
+  ],
+  "Protestant reformer": [
+   "human",
+   "religion"
+  ],
+  "theologian": [
+   "human"
   ]
  },
  "ont_10_culture_test_38": {
@@ -788,6 +1276,31 @@
   ],
   "second language": [
    "language"
+  ],
+  "The book": [
+   "literature"
+  ],
+  "United Nations": [],
+  "constructed language": [
+   "language"
+  ],
+  "every schoolchild": [
+   "human"
+  ],
+  "natural language": [
+   "language"
+  ],
+  "one language": [
+   "language"
+  ],
+  "schoolchild": [
+   "human"
+  ],
+  "the world": [
+   "geographical feature"
+  ],
+  "world": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_39": {
@@ -817,6 +1330,41 @@
   ],
   "Switzerland": [
    "geographical feature"
+  ],
+  "Alsace": [
+   "geographical feature"
+  ],
+  "Christian Hebraist": [
+   "human",
+   "religion"
+  ],
+  "Conrad Kürsner": [
+   "human"
+  ],
+  "Conrad Pellican": [
+   "human"
+  ],
+  "Conradus Pellicanus": [
+   "human"
+  ],
+  "German Protestant theologian": [
+   "human",
+   "religion"
+  ],
+  "January 8, 1478": [],
+  "May 6, 1556": [],
+  "Protestant reformer": [
+   "human",
+   "religion"
+  ],
+  "Rouffach": [
+   "geographical feature"
+  ],
+  "Zurich": [
+   "geographical feature"
+  ],
+  "humanist": [
+   "human"
   ]
  },
  "ont_10_culture_test_40": {
@@ -825,6 +1373,17 @@
   ],
   "Latin": [
    "language"
+  ],
+  "Franciscus Philelphus": [
+   "human"
+  ],
+  "Italian Renaissance": [
+   "culture",
+   "history",
+   "heritage"
+  ],
+  "Italian Renaissance humanist": [
+   "human"
   ]
  },
  "ont_10_culture_test_41": {
@@ -848,6 +1407,15 @@
   ],
   "human": [
    "human"
+  ],
+  "2006": [],
+  "Esperanto studies": [],
+  "festschrift": [
+   "literature"
+  ],
+  "interlingual studies": [],
+  "volume": [
+   "literature"
   ]
  },
  "ont_10_culture_test_42": {
@@ -861,6 +1429,9 @@
    "language"
   ],
   "Polisinteza Esperanto": [
+   "language"
+  ],
+  "constructed language": [
    "language"
   ]
  },
@@ -901,6 +1472,18 @@
   ],
   "Slovak": [
    "culture"
+  ],
+  "1921": [],
+  "Baron Révay": [],
+  "Czechoslovak Association of Esperanto": [],
+  "Jánošík": [
+   "art"
+  ],
+  "Slovak movie": [
+   "art"
+  ],
+  "first Slovak movie": [
+   "art"
   ]
  },
  "ont_10_culture_test_46": {
@@ -911,6 +1494,26 @@
    "human"
   ],
   "Hendrik Jan Bulthuis": [
+   "human"
+  ],
+  "15 September 1865": [],
+  "27 April 1945": [],
+  "Dutch customs official": [
+   "human"
+  ],
+  "Noordbroek": [
+   "geographical feature"
+  ],
+  "Warffum": [
+   "geographical feature"
+  ],
+  "author": [
+   "human"
+  ],
+  "more than thirty works": [
+   "literature"
+  ],
+  "translator": [
    "human"
   ]
  },
@@ -932,6 +1535,30 @@
   ],
   "ethnic group": [
    "ethnic group"
+  ],
+  "14 July 1454": [],
+  "24 September 1494": [],
+  "Angelo Ambrogini": [
+   "human"
+  ],
+  "Florentine Renaissance": [
+   "culture",
+   "history"
+  ],
+  "Italian classical scholar": [
+   "human"
+  ],
+  "Politian": [
+   "human"
+  ],
+  "Politianus": [
+   "human"
+  ],
+  "classical scholar": [
+   "human"
+  ],
+  "poet": [
+   "human"
   ]
  },
  "ont_10_culture_test_48": {
@@ -946,6 +1573,10 @@
   ],
   "Wilhelm Fabry": [
    "human"
+  ],
+  "Hildanusstrasse": [],
+  "Latin versions of Wilhelm Fabry's name": [
+   "language"
   ]
  },
  "ont_10_culture_test_49": {
@@ -967,6 +1598,47 @@
   ],
   "Ramon Llull TOSF": [
    "human"
+  ],
+  "Franciscan tertiary": [
+   "human",
+   "religion"
+  ],
+  "Kingdom of Majorca": [],
+  "Lullius": [
+   "human"
+  ],
+  "Raimundo Lulio": [
+   "human"
+  ],
+  "Raimundus": [
+   "human"
+  ],
+  "Raymond Lull": [
+   "human"
+  ],
+  "Raymond Lully": [
+   "human"
+  ],
+  "Raymundus Lullus": [
+   "human"
+  ],
+  "TOSF": [
+   "religion"
+  ],
+  "logician": [
+   "human"
+  ],
+  "mathematician": [
+   "human"
+  ],
+  "philosopher": [
+   "human"
+  ],
+  "polymath": [
+   "human"
+  ],
+  "writer": [
+   "human"
   ]
  },
  "ont_10_culture_test_50": {
@@ -978,7 +1650,16 @@
   ],
   "Latin": [
    "language"
-  ]
+  ],
+  "February 14, 1468": [],
+  "German mathematician": [
+   "human"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Ioannis Vernerus": [],
+  "May 1522": []
  },
  "ont_10_culture_test_51": {
   "Esperanto": [
@@ -986,6 +1667,9 @@
   ],
   "Vilho Väisälä": [
    "human"
+  ],
+  "Esperanto movement": [
+   "culture"
   ]
  },
  "ont_10_culture_test_52": {
@@ -998,7 +1682,8 @@
   ],
   "translations": [
    "literature"
-  ]
+  ],
+  "1910": []
  },
  "ont_10_culture_test_53": {
   "British": [
@@ -1015,6 +1700,12 @@
   ],
   "Quaker": [
    "religion"
+  ],
+  "First World War": [
+   "history"
+  ],
+  "conscientious objector": [
+   "human"
   ]
  },
  "ont_10_culture_test_54": {
@@ -1023,7 +1714,20 @@
   ],
   "Latin": [
    "language"
-  ]
+  ],
+  "anal abscess": [],
+  "ascites": [],
+  "books": [
+   "literature"
+  ],
+  "fistulae": [],
+  "goitre": [],
+  "haemorrhoids": [],
+  "hydrocephalus": [],
+  "nasal polyp": [],
+  "phimosis": [],
+  "surgical techniques": [],
+  "tumours": []
  },
  "ont_10_culture_test_55": {
   "Esperanto": [
@@ -1031,7 +1735,13 @@
   ],
   "Han Moo-hyup": [
    "human"
-  ]
+  ],
+  "CEO": [],
+  "Hyundai Insurance": [],
+  "Korea Esperanto-Asocio": [],
+  "Republic of Korea Army": [],
+  "major general": [],
+  "owner": []
  },
  "ont_10_culture_test_56": {
   "Latin": [
@@ -1039,6 +1749,18 @@
   ],
   "Martial": [
    "human"
+  ],
+  "Latin epigrammatist": [
+   "human"
+  ],
+  "modern epigram": [
+   "literature"
+  ],
+  "the greatest Latin epigrammatist": [
+   "human"
+  ],
+  "the modern epigram": [
+   "literature"
   ]
  },
  "ont_10_culture_test_57": {
@@ -1055,7 +1777,11 @@
   ],
   "William Edward Collinson": [
    "human"
-  ]
+  ],
+  "The Human Language": [
+   "literature"
+  ],
+  "linguistics": []
  },
  "ont_10_culture_test_58": {
   "Esperanto": [
@@ -1072,6 +1798,10 @@
   ],
   "dance": [
    "dance"
+  ],
+  "China": [],
+  "Chinese literature": [
+   "literature"
   ]
  },
  "ont_10_culture_test_59": {
@@ -1087,6 +1817,17 @@
   "Neo-Latin": [
    "language",
    "literature"
+  ],
+  "August 14, 1774": [],
+  "December 25, 1716": [],
+  "German scholar": [
+   "human"
+  ],
+  "Johannes Jacobus Reiskius": [
+   "human"
+  ],
+  "physician": [
+   "human"
   ]
  },
  "ont_10_culture_test_60": {
@@ -1104,6 +1845,15 @@
   ],
   "vernacular": [
    "language"
+  ],
+  "educated readers": [
+   "human"
+  ],
+  "literature": [
+   "literature"
+  ],
+  "poetry": [
+   "literature"
   ]
  },
  "ont_10_culture_test_61": {
@@ -1120,6 +1870,14 @@
    "ethnic group"
   ],
   "Vilius L. Adamkus": [
+   "human"
+  ],
+  "Esperanto movement": [
+   "language",
+   "culture"
+  ],
+  "Lithuania": [],
+  "Lithuanian traveler": [
    "human"
   ]
  },
@@ -1153,7 +1911,17 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "Esperantis Katsumu Kuroita": [
+   "human"
+  ],
+  "Tokyo": [
+   "geographical feature"
+  ],
+  "Yamaga": [
+   "human"
+  ],
+  "historian": []
  },
  "ont_10_culture_test_63": {
   "Conrad Celtes": [
@@ -1169,6 +1937,33 @@
    "human"
   ],
   "Konrad Celtes": [
+   "human"
+  ],
+  "1 February 1459": [],
+  "4 February 1508": [],
+  "Bavaria": [
+   "geographical feature"
+  ],
+  "Conradus Celtis": [
+   "human"
+  ],
+  "Franconia": [
+   "geographical feature"
+  ],
+  "German Renaissance": [
+   "culture",
+   "history"
+  ],
+  "German humanist scholar": [
+   "human"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Protucius": [
+   "human"
+  ],
+  "poet": [
    "human"
   ]
  },
@@ -1278,7 +2073,10 @@
   "religious_order": [
    "religion"
   ],
-  "start_time": []
+  "start_time": [],
+  "De Revolutionibus Orbium Coelestium": [
+   "literature"
+  ]
  },
  "ont_10_culture_test_65": {
   "Classical Latin": [
@@ -1295,6 +2093,17 @@
   ],
   "Virgil": [
    "human"
+  ],
+  "15 October 70 BC": [],
+  "21 September 19 BC": [],
+  "Augustan period": [
+   "history"
+  ],
+  "English": [
+   "language"
+  ],
+  "ancient Roman poet": [
+   "human"
   ]
  },
  "ont_10_culture_test_66": {
@@ -1309,6 +2118,16 @@
   ],
   "Latin": [
    "language"
+  ],
+  "1128": [],
+  "1202/03": [],
+  "French poet": [
+   "human",
+   "literature"
+  ],
+  "French theologian": [
+   "human",
+   "religion"
   ]
  },
  "ont_10_culture_test_67": {
@@ -1326,13 +2145,27 @@
   ],
   "Maier": [
    "human"
-  ]
+  ],
+  "1924": []
  },
  "ont_10_culture_test_68": {
   "Esperanto": [
    "language"
   ],
   "Gerrit Berveling": [
+   "human"
+  ],
+  "1 April 1944": [],
+  "Dutch": [
+   "ethnic group"
+  ],
+  "Esperanto author": [
+   "human"
+  ],
+  "Vlaardingen": [
+   "geographical feature"
+  ],
+  "author": [
    "human"
   ]
  },
@@ -1368,6 +2201,46 @@
   "drama": [
    "art",
    "literature"
+  ],
+  "21 December 1508": [],
+  "29 December 1563": [],
+  "German Renaissance": [
+   "culture",
+   "history",
+   "heritage"
+  ],
+  "Kirchmair": [
+   "human"
+  ],
+  "Latin dramatist": [
+   "human",
+   "language",
+   "literature"
+  ],
+  "Neubauer": [
+   "human"
+  ],
+  "Protestant reformer": [
+   "human",
+   "religion"
+  ],
+  "Protestant theologian": [
+   "human",
+   "religion"
+  ],
+  "Thomas Kirchmeyer": [
+   "human"
+  ],
+  "humanist": [
+   "human"
+  ],
+  "pamphleteer": [
+   "human",
+   "literature"
+  ],
+  "preacher": [
+   "human",
+   "religion"
   ]
  },
  "ont_10_culture_test_70": {
@@ -1377,6 +2250,9 @@
   "Esperanto": [
    "language",
    "culture"
+  ],
+  "Esperanto works": [
+   "literature"
   ]
  },
  "ont_10_culture_test_71": {
@@ -1390,6 +2266,17 @@
    "human"
   ],
   "Felix Stone Moscheles": [
+   "human"
+  ],
+  "22 December 1917": [],
+  "8 February 1833": [],
+  "English painter": [
+   "human"
+  ],
+  "advocate of Esperanto": [
+   "human"
+  ],
+  "peace activist": [
    "human"
   ]
  },
@@ -1414,6 +2301,14 @@
   ],
   "Spanish": [
    "language"
+  ],
+  "poetry": [
+   "art",
+   "literature"
+  ],
+  "tales": [
+   "art",
+   "literature"
   ]
  },
  "ont_10_culture_test_73": {
@@ -1446,6 +2341,10 @@
   ],
   "arts": [
    "art"
+  ],
+  "science": [],
+  "the arts": [
+   "art"
   ]
  },
  "ont_10_culture_test_74": {
@@ -1462,7 +2361,18 @@
   ],
   "Vilma Sindona Eichholz": [
    "human"
-  ]
+  ],
+  "1926": [],
+  "Canadian Esperanto Association": [],
+  "Esperantist": [
+   "human",
+   "language"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "July 15, 1995": [],
+  "teacher": []
  },
  "ont_10_culture_test_75": {
   "Esperanto": [
@@ -1470,13 +2380,27 @@
   ],
   "Johannes Waldemar Karsch": [
    "human"
-  ]
+  ],
+  "1913": [],
+  "Estraro": [],
+  "Komitato": [],
+  "UEA": [],
+  "World Esperanto Association": []
  },
  "ont_10_culture_test_76": {
   "Latin": [
    "language"
   ],
   "Propertius": [
+   "human"
+  ],
+  "Latin elegists": [
+   "human"
+  ],
+  "major poet": [
+   "human"
+  ],
+  "scholars": [
    "human"
   ]
  },
@@ -1490,7 +2414,12 @@
   ],
   "festival": [
    "festival"
-  ]
+  ],
+  "United States": [],
+  "religion": [
+   "religion"
+  ],
+  "the United States": []
  },
  "ont_10_culture_test_78": {
   "AIL": [
@@ -1518,6 +2447,19 @@
   ],
   "Max Mangold": [
    "human"
+  ],
+  "early years": [],
+  "languages": [
+   "language"
+  ],
+  "linguistic matters": [
+   "language"
+  ],
+  "many languages": [
+   "language"
+  ],
+  "nearly 40 languages": [
+   "language"
   ]
  },
  "ont_10_culture_test_80": {
@@ -1526,7 +2468,11 @@
   ],
   "Valerius Cordus": [
    "human"
-  ]
+  ],
+  "ether": [],
+  "method for synthesizing ether": [],
+  "oleum dulci vitrioli": [],
+  "sweet oil of vitriol": []
  },
  "ont_10_culture_test_81": {
   "Georg Fabricius": [
@@ -1543,6 +2489,27 @@
   ],
   "German": [
    "language"
+  ],
+  "Georg Goldschmidt": [
+   "human"
+  ],
+  "German Renaissance": [
+   "culture",
+   "history",
+   "heritage"
+  ],
+  "Protestant": [
+   "religion"
+  ],
+  "archaeologist": [
+   "human"
+  ],
+  "historian": [
+   "human"
+  ],
+  "poet": [
+   "human",
+   "literature"
   ]
  },
  "ont_10_culture_test_82": {
@@ -1567,6 +2534,17 @@
   ],
   "religion": [
    "religion"
+  ],
+  "1910": [],
+  "Washington D.C.": [
+   "geographical feature"
+  ],
+  "first performance of As You Like It": [
+   "art",
+   "culture"
+  ],
+  "sixth World Esperanto Congress": [
+   "culture"
   ]
  },
  "ont_10_culture_test_83": {
@@ -1578,6 +2556,31 @@
   ],
   "Welsh": [
    "language"
+  ],
+  "British cleric": [
+   "human"
+  ],
+  "British historiography": [
+   "history"
+  ],
+  "Galfridus Arturus": [
+   "human"
+  ],
+  "Galfridus Monemutensis": [
+   "human"
+  ],
+  "Gruffudd ap Arthur": [
+   "human"
+  ],
+  "King Arthur": [
+   "human"
+  ],
+  "Sieffre o Fynwy": [
+   "human"
+  ],
+  "tales of King Arthur": [
+   "literature",
+   "tradition"
   ]
  },
  "ont_10_culture_test_84": {
@@ -1586,6 +2589,16 @@
   ],
   "Ferdinand Duviard": [
    "human"
+  ],
+  "1905": [],
+  "Esperantist": [
+   "human"
+  ],
+  "Esperanto youth groups": [
+   "culture"
+  ],
+  "publications": [
+   "literature"
   ]
  },
  "ont_10_culture_test_85": {
@@ -1594,6 +2607,21 @@
   ],
   "Latin": [
    "religion"
+  ],
+  "Church Fathers": [
+   "human"
+  ],
+  "Latin Church": [
+   "religion"
+  ],
+  "Patristic Period": [
+   "history"
+  ],
+  "Western Christianity": [
+   "religion"
+  ],
+  "Western philosophy": [
+   "culture"
   ]
  },
  "ont_10_culture_test_86": {
@@ -1608,6 +2636,23 @@
   ],
   "Nadija Hordijenko Andrianova": [
    "human"
+  ],
+  "1921": [],
+  "1998": [],
+  "Ukrainian": [
+   "ethnic group"
+  ],
+  "Ukrainian language": [
+   "language"
+  ],
+  "Ukrainian writer": [
+   "human"
+  ],
+  "translator": [
+   "human"
+  ],
+  "writer": [
+   "human"
   ]
  },
  "ont_10_culture_test_87": {
@@ -1616,6 +2661,17 @@
   ],
   "Trevor Steele": [
    "human"
+  ],
+  "1940": [],
+  "Australian Esperantist": [
+   "human",
+   "culture"
+  ],
+  "novels": [
+   "literature"
+  ],
+  "short stories": [
+   "literature"
   ]
  },
  "ont_10_culture_test_88": {
@@ -1636,6 +2692,19 @@
   ],
   "Walter Loo": [
    "human"
+  ],
+  "SerÄo Elgo": [
+   "human"
+  ],
+  "detective novels": [
+   "literature"
+  ],
+  "poems": [
+   "literature"
+  ],
+  "theater pieces": [
+   "art",
+   "literature"
   ]
  },
  "ont_10_culture_test_89": {
@@ -1643,6 +2712,27 @@
    "language"
   ],
   "Oliviero Carafa": [
+   "human"
+  ],
+  "Italian": [
+   "ethnic group"
+  ],
+  "Italian cardinal": [
+   "human",
+   "religion"
+  ],
+  "Oliverius Carafa": [
+   "human"
+  ],
+  "Renaissance": [
+   "culture",
+   "history"
+  ],
+  "cardinal": [
+   "human",
+   "religion"
+  ],
+  "diplomat": [
    "human"
   ]
  },
@@ -1658,6 +2748,20 @@
   ],
   "de Wahl": [
    "human"
+  ],
+  "1894": [],
+  "a completely new reform": [],
+  "international auxiliary language": [
+   "language"
+  ],
+  "the failed vote to reform Esperanto": [
+   "history"
+  ],
+  "the failed vote to reform the language in 1894": [
+   "history"
+  ],
+  "the ideal form of an international auxiliary language": [
+   "language"
   ]
  },
  "ont_10_culture_test_91": {
@@ -1669,6 +2773,9 @@
   ],
   "Magomet Isayev": [
    "human"
+  ],
+  "Ossetic": [
+   "language"
   ]
  },
  "ont_10_culture_test_92": {
@@ -1716,13 +2823,20 @@
   ],
   "the region": [
    "geographical feature"
-  ]
+  ],
+  "1997": [],
+  "Blackwell Publishing": []
  },
  "ont_10_culture_test_93": {
   "01 January 1964": [],
   "British Journal of Sports Medicine": [
    "literature"
-  ]
+  ],
+  "1964": [],
+  "Karim Khan": [
+   "human"
+  ],
+  "University of British Columbia": []
  },
  "ont_10_culture_test_94": {
   "01 January 1888": [],
@@ -1739,6 +2853,10 @@
   ],
   "The Clinical Investigator": [
    "literature"
+  ],
+  "1992 to 1994": [],
+  "journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_96": {
@@ -1752,13 +2870,18 @@
   ],
   "Vascular Pharmacology": [
    "literature"
-  ]
+  ],
+  "1970": [],
+  "1975": [],
+  "2002": []
  },
  "ont_10_culture_test_97": {
   "01 January 1973": [],
   "The Physician and Sportsmedicine": [
    "literature"
-  ]
+  ],
+  "1973": [],
+  "Informa Healthcare": []
  },
  "ont_10_culture_test_98": {
   "01 January 1966": [],
@@ -1769,7 +2892,9 @@
   ],
   "European Journal of Medicinal Chemistry": [
    "literature"
-  ]
+  ],
+  "1974": [],
+  "CODEN: CHTPBA": []
  },
  "ont_10_culture_test_99": {
   "01 January 1995": [],
@@ -1781,11 +2906,25 @@
   ],
   "journal": [
    "literature"
+  ],
+  "1995": [],
+  "Hong-yu Li": [
+   "human"
+  ],
+  "Kunal Roy": [
+   "human"
+  ],
+  "The journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_100": {
   "01 January 1972": [],
   "Current Medical Research and Opinion": [
+   "literature"
+  ],
+  "1972": [],
+  "peer-reviewed medical journal": [
    "literature"
   ]
  },
@@ -1846,7 +2985,9 @@
   "traditional English sporting event": [],
   "winter festival": [
    "festival"
-  ]
+  ],
+  "1978": [],
+  "Society for the Study of Inborn Errors of Metabolism": []
  },
  "ont_10_culture_test_102": {
   "01 January 1939": [],
@@ -1874,6 +3015,13 @@
   ],
   "religion": [
    "religion"
+  ],
+  "Palle Holmstrup": [
+   "human"
+  ],
+  "University of Copenhagen": [],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_103": {
@@ -1890,6 +3038,16 @@
   "founding_editor_in_chief": [],
   "human": [
    "human"
+  ],
+  "1999": [],
+  "Glenn McGee": [
+   "human"
+  ],
+  "The journal": [
+   "literature"
+  ],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_104": {
@@ -1903,6 +3061,16 @@
   ],
   "journal": [
    "literature"
+  ],
+  "John A. Wagner": [
+   "human"
+  ],
+  "Takeda Pharmaceuticals International": [],
+  "The journal": [
+   "literature"
+  ],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_105": {
@@ -1911,6 +3079,20 @@
    "literature"
   ],
   "The Dermatology Online Journal": [
+   "literature"
+  ],
+  "1995": [],
+  "Arthur Huntley": [
+   "human"
+  ],
+  "Department of Dermatology": [],
+  "University of California, Davis": [],
+  "medical journal": [
+   "literature"
+  ],
+  "monthly": [],
+  "open-access": [],
+  "peer-reviewed medical journal": [
    "literature"
   ]
  },
@@ -1926,6 +3108,25 @@
   ],
   "religion": [],
   "Ophthalmic Record": [
+   "literature"
+  ],
+  "1917": [],
+  "Ophthalmoscope": [
+   "literature"
+  ],
+  "Royal London (Moorfields) Ophthalmic Hospital Reports": [
+   "literature"
+  ],
+  "The Ophthalmic Record": [
+   "literature"
+  ],
+  "The Ophthalmoscope": [
+   "literature"
+  ],
+  "The journal": [
+   "literature"
+  ],
+  "the journal": [
    "literature"
   ]
  },
@@ -1949,7 +3150,12 @@
   ],
   "The Journal of Molecular Diagnostics": [
    "literature"
-  ]
+  ],
+  "1999": [],
+  "Nelson Fausto": [
+   "human"
+  ],
+  "University of Washington": []
  },
  "ont_10_culture_test_108": {
   "01 January 1958": [],
@@ -1959,11 +3165,16 @@
   ],
   "Arthritis & Rheumatology": [
    "literature"
-  ]
+  ],
+  "2014": []
  },
  "ont_10_culture_test_109": {
   "01 January 1920": [],
   "JAMA Surgery": [
+   "literature"
+  ],
+  "1920": [],
+  "international peer-reviewed journal": [
    "literature"
   ]
  },
@@ -1972,13 +3183,16 @@
   "1997": [],
   "Journal of Musculoskeletal Research": [
    "literature"
-  ]
+  ],
+  "World Scientific": []
  },
  "ont_10_culture_test_111": {
   "01 January 1979": [],
   "Annals of Behavioral Medicine": [
    "literature"
-  ]
+  ],
+  "1979": [],
+  "Society of Behavioral Medicine": []
  },
  "ont_10_culture_test_112": {
   "01 January 2008": [],
@@ -1992,11 +3206,17 @@
   "inception(International Journal of Nephrology and Renovascular Disease": [],
   "language": [
    "language"
-  ]
+  ],
+  "2008": []
  },
  "ont_10_culture_test_113": {
   "01 January 1976": [],
   "Journal of Medical Physics": [
+   "literature"
+  ],
+  "1976": [],
+  "1996": [],
+  "AMPI Medical Physics Bulletin": [
    "literature"
   ]
  },
@@ -2014,13 +3234,19 @@
   ],
   "journal": [
    "literature"
+  ],
+  "2009": [],
+  "Dove Medical Press": [],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_115": {
   "01 January 1976": [],
   "American Journal of Hematology": [
    "literature"
-  ]
+  ],
+  "1976": []
  },
  "ont_10_culture_test_116": {
   "01 January 2006": [],
@@ -2031,7 +3257,9 @@
   "chronic obstructive pulmonary disease": [],
   "journal": [
    "literature"
-  ]
+  ],
+  "2006": [],
+  "online": []
  },
  "ont_10_culture_test_117": {
   "01 January 1975": [],
@@ -2046,6 +3274,15 @@
   ],
   "The journal": [
    "literature"
+  ],
+  "1975": [],
+  "child health issues": [],
+  "childhood illness": [],
+  "health care": [],
+  "paediatrics": [],
+  "social work": [],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_118": {
@@ -2056,7 +3293,15 @@
   "United States,United Kingdom": [
    "geographical feature"
   ],
-  "surgery": []
+  "surgery": [],
+  "1885": [],
+  "Lippincott Williams & Wilkins": [],
+  "United Kingdom": [
+   "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
+  ]
  },
  "ont_10_culture_test_119": {
   "01 January 1981": [],
@@ -2069,12 +3314,19 @@
    "literature"
   ],
   "pediatrics": [],
-  "tropical medicine": []
+  "tropical medicine": [],
+  "1981": []
  },
  "ont_10_culture_test_120": {
   "01 January 2003": [],
   "2003": [],
   "Annals of Family Medicine": [
+   "literature"
+  ],
+  "Annals of Family Medicine's first issue": [
+   "literature"
+  ],
+  "The Annals": [
    "literature"
   ]
  },
@@ -2134,7 +3386,10 @@
   ],
   "tradition": [
    "tradition"
-  ]
+  ],
+  "British Society of Toxicological Pathology": [],
+  "European Society of Toxicologic Pathology": [],
+  "SAGE Publications": []
  },
  "ont_10_culture_test_122": {
   "01 January 1981": [],
@@ -2144,13 +3399,16 @@
   ],
   "King Faisal Specialist Hospital Medical Journal": [
    "literature"
-  ]
+  ],
+  "1981": [],
+  "1985": []
  },
  "ont_10_culture_test_123": {
   "01 January 2003": [],
   "Clinical Gastroenterology and Hepatology": [
    "literature"
-  ]
+  ],
+  "January 2003": []
  },
  "ont_10_culture_test_124": {
   "01 January 1975": [],
@@ -2164,6 +3422,10 @@
    "literature"
   ],
   "Journal of Nuclear Medicine Technology": [
+   "literature"
+  ],
+  "1975": [],
+  "The journal": [
    "literature"
   ]
  },
@@ -2183,6 +3445,10 @@
   ],
   "Journal of Molecular Epidemiology and Evolutionary Genetics of Infectious Diseases": [
    "literature"
+  ],
+  "2001": [],
+  "peer-reviewed scientific journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_126": {
@@ -2192,7 +3458,9 @@
   ],
   "human": [
    "human"
-  ]
+  ],
+  "1999": [],
+  "Asian Society of Andrology": []
  },
  "ont_10_culture_test_127": {
   "01 January 1947": [],
@@ -2200,20 +3468,28 @@
    "literature"
   ],
   "_written_or_signed": [],
-  "language)\nBritish Journal of Nutrition(language_spoken": []
+  "language)\nBritish Journal of Nutrition(language_spoken": [],
+  "1947": [],
+  "Cambridge University Press": [],
+  "The Nutrition Society": []
  },
  "ont_10_culture_test_128": {
   "01 January 1975": [],
   "1975": [],
   "Comprehensive Therapy": [
    "literature"
-  ]
+  ],
+  "2008": [],
+  "American Society of Contemporary Medicine and Surgery": [],
+  "Humana Press": []
  },
  "ont_10_culture_test_129": {
   "01 January 1991": [],
   "European Journal of Cancer Prevention": [
    "literature"
-  ]
+  ],
+  "1991": [],
+  "Lippincott Williams & Wilkins": []
  },
  "ont_10_culture_test_130": {
   "01 January 1972": [],
@@ -2229,7 +3505,8 @@
   "01 January 1995": [],
   "Journal of Indian Association of Pediatric Surgeons": [
    "literature"
-  ]
+  ],
+  "1995": []
  },
  "ont_10_culture_test_132": {
   "01 January 1983": [],
@@ -2240,7 +3517,8 @@
    "human"
   ],
   "Orthopaedic Research": [],
-  "Washington University": []
+  "Washington University": [],
+  "1983": []
  },
  "ont_10_culture_test_133": {
   "01 January 1985": [],
@@ -2252,6 +3530,16 @@
   ],
   "journal": [
    "literature"
+  ],
+  "1985": [],
+  "Antiono Sanna": [
+   "human"
+  ],
+  "The journal": [
+   "literature"
+  ],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_134": {
@@ -2261,7 +3549,10 @@
    "literature"
   ],
   "medical research": [],
-  "medicine": []
+  "medicine": [],
+  "1982": [],
+  "2008": [],
+  "BioMed Central": []
  },
  "ont_10_culture_test_135": {
   "01 January 2008": [],
@@ -2280,7 +3571,9 @@
   "samba": [
    "dance",
    "culture"
-  ]
+  ],
+  "2008": [],
+  "Dove Medical Press": []
  },
  "ont_10_culture_test_136": {
   "01 January 2005": [],
@@ -2316,6 +3609,10 @@
   ],
   "religion": [
    "religion"
+  ],
+  "2005": [],
+  "American Society of Clinical Oncology": [
+   "culture"
   ]
  },
  "ont_10_culture_test_137": {
@@ -2351,7 +3648,11 @@
   "journal": [
    "literature"
   ],
-  "start_time(Abraham Jacobi": []
+  "start_time(Abraham Jacobi": [],
+  "1911": [],
+  "the journal": [
+   "literature"
+  ]
  },
  "ont_10_culture_test_138": {
   "01 January 2002": [],
@@ -2365,6 +3666,10 @@
   ],
   "journal": [
    "literature"
+  ],
+  "September 2017": [],
+  "The journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_139": {
@@ -2377,6 +3682,10 @@
    "literature"
   ],
   "The Journal of Medical Ethics": [
+   "literature"
+  ],
+  "1975": [],
+  "bioethics": [
    "literature"
   ]
  },
@@ -2393,7 +3702,9 @@
   ],
   "Applied and Environmental Microbiology": [
    "literature"
-  ]
+  ],
+  "1953": [],
+  "1975": []
  },
  "ont_10_culture_test_141": {
   "01 January 2008": [],
@@ -2424,6 +3735,10 @@
   ],
   "The journal": [
    "literature"
+  ],
+  "Dove Medical Press": [],
+  "the journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_142": {
@@ -2445,6 +3760,11 @@
   ],
   "The journal": [
    "literature"
+  ],
+  "2007": [],
+  "Dove Medical Press": [],
+  "journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_143": {
@@ -2459,7 +3779,9 @@
   ],
   "Antiviral Research": [
    "literature"
-  ]
+  ],
+  "1983": [],
+  "1987": []
  },
  "ont_10_culture_test_144": {
   "01 January 1959": [],
@@ -2482,34 +3804,54 @@
   ],
   "Medicina experimentalis": [
    "literature"
-  ]
+  ],
+  "1959": [],
+  "1995": []
  },
  "ont_10_culture_test_145": {
   "01 January 1992": [],
   "1992": [],
   "Human Mutation": [
    "literature"
-  ]
+  ],
+  "Richard G.H.": [
+   "human"
+  ],
+  "editors-in-chief": []
  },
  "ont_10_culture_test_146": {
   "0000-00-00": [],
   "01 January 1979": [],
   "Journal of Orthopaedic & Sports Physical Therapy": [
    "literature"
-  ]
+  ],
+  "1979": [],
+  "American Physical Therapy Association": [],
+  "Bulletin of the Orthopaedic Section": [
+   "literature"
+  ],
+  "Bulletin of the Sports Medicine Section": [
+   "literature"
+  ],
+  "Orthopedic and Sports Medicine sections": [],
+  "Orthopedic and Sports Medicine sections of the American Physical Therapy Association": []
  },
  "ont_10_culture_test_147": {
   "01 January 2001": [],
   "The Scientific World Journal": [
    "literature"
-  ]
+  ],
+  "2001": [],
+  "Hindawi Publishing Corporation": []
  },
  "ont_10_culture_test_148": {
   "01 January 1967": [],
   "1 January 1967": [],
   "Vascular and Endovascular Surgery": [
    "literature"
-  ]
+  ],
+  "1967": [],
+  "Sage Publications": []
  },
  "ont_10_culture_test_149": {
   "01 January 1977": [],
@@ -2530,7 +3872,9 @@
   ],
   "religion": [
    "religion"
-  ]
+  ],
+  "1977": [],
+  "Newman Pub.": []
  },
  "ont_10_culture_test_150": {
   "01 January 1925": [],
@@ -2551,6 +3895,14 @@
   ],
   "religion": [
    "religion"
+  ],
+  "1925": [],
+  "1927": [],
+  "Naibunpigaku Zasshi": [
+   "literature"
+  ],
+  "Nihon Naibunpigaku-kai Zasshi": [
+   "literature"
   ]
  },
  "ont_10_culture_test_151": {
@@ -2558,7 +3910,11 @@
   "1997": [],
   "European Journal of Pain": [
    "literature"
-  ]
+  ],
+  "Wiley-Blackwell": [
+   "literature"
+  ],
+  "ten times per year": []
  },
  "ont_10_culture_test_152": {
   "12 August 1994": [],
@@ -2611,7 +3967,10 @@
   "location": [],
   "religion": [
    "religion"
-  ]
+  ],
+  "Friday, August 12": [],
+  "third day": [],
+  "weekend of August 13-14": []
  },
  "ont_10_culture_test_153": {
   "00  2003": [],
@@ -2620,6 +3979,12 @@
   "2003": [],
   "Beovizija": [
    "festival"
+  ],
+  "Serbian": [
+   "language"
+  ],
+  "music festival": [
+   "festival"
   ]
  },
  "ont_10_culture_test_154": {
@@ -2627,6 +3992,26 @@
   "1999": [],
   "Ultra Music Festival": [
    "festival"
+  ],
+  "1997 Depeche Mode album": [
+   "art"
+  ],
+  "Alex Omes": [
+   "human"
+  ],
+  "Depeche Mode": [
+   "art",
+   "culture"
+  ],
+  "Russell Faibisch": [
+   "human"
+  ],
+  "The festival": [
+   "culture",
+   "festival"
+  ],
+  "Ultra": [
+   "art"
   ]
  },
  "ont_10_culture_test_155": {
@@ -2641,7 +4026,9 @@
   "Turkvision Song Contest": [
    "festival",
    "culture"
-  ]
+  ],
+  "grand final": [],
+  "semi-final": []
  },
  "ont_10_culture_test_156": {
   "Freddie Mercury": [
@@ -2651,7 +4038,40 @@
    "art",
    "culture",
    "dance"
-  ]
+  ],
+  "Bohemian Rhapsody": [
+   "art",
+   "culture"
+  ],
+  "Killer Queen": [
+   "art",
+   "culture"
+  ],
+  "Queen": [
+   "art",
+   "culture"
+  ],
+  "Radio Ga Ga": [
+   "art",
+   "culture"
+  ],
+  "Sean Bovim": [
+   "human"
+  ],
+  "classic songs": [
+   "art",
+   "culture"
+  ],
+  "music of Queen": [
+   "art",
+   "culture"
+  ],
+  "rock ballet": [
+   "art",
+   "culture",
+   "dance"
+  ],
+  "two acts": []
  },
  "ont_10_culture_test_157": {
   "Mani": [
@@ -2676,6 +4096,23 @@
    "human"
   ],
   "The Shabuhragan": [
+   "literature"
+  ],
+  "Sassanid Persian Empire": [
+   "history"
+  ],
+  "Shapuragan": [
+   "literature",
+   "religion"
+  ],
+  "book of Shapur": [
+   "literature"
+  ],
+  "sacred book": [
+   "literature",
+   "religion"
+  ],
+  "the book of Shapur": [
    "literature"
   ]
  },
@@ -2703,7 +4140,9 @@
    "tradition"
   ],
   "skinned alive": [],
-  "the curved flensing knife": []
+  "the curved flensing knife": [],
+  "beheading": [],
+  "skinning alive": []
  },
  "ont_10_culture_test_159": {
   "Agatha of Sicily": [
@@ -2720,6 +4159,27 @@
   ],
   "Latin": [
    "language"
+  ],
+  "Mount Etna": [
+   "geographical feature"
+  ],
+  "bakers": [
+   "human"
+  ],
+  "bell-founders": [
+   "human"
+  ],
+  "breast cancer patients": [
+   "human"
+  ],
+  "earthquakes": [],
+  "eruptions of Mount Etna": [],
+  "fire": [],
+  "martyrs": [
+   "human"
+  ],
+  "wet nurses": [
+   "human"
   ]
  }
 }

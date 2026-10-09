@@ -23,7 +23,34 @@
   "sacred kingfisher": [
    "taxon"
   ],
-  "synonym": []
+  "synonym": [],
+  "Australia": [
+   "geographical feature"
+  ],
+  "New Zealand": [
+   "geographical feature"
+  ],
+  "forests": [
+   "Habitat"
+  ],
+  "mangroves": [
+   "Habitat"
+  ],
+  "medium-sized woodland kingfisher": [
+   "taxon"
+  ],
+  "river valleys": [
+   "geographical feature"
+  ],
+  "western Pacific": [
+   "geographical feature"
+  ],
+  "woodland kingfisher": [
+   "taxon"
+  ],
+  "woodlands": [
+   "Habitat"
+  ]
  },
  "ont_9_nature_test_2": {
   "Conference": [
@@ -46,7 +73,13 @@
   "irrigation": [],
   "mountain": [],
   "taxon": [],
-  "water_source": []
+  "water_source": [],
+  "autumn cultivar": [
+   "taxon"
+  ],
+  "cultivated variety": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_3": {
   "Morphinae": [
@@ -60,6 +93,15 @@
   ],
   "Nymphalinae": [
    "taxon"
+  ],
+  "nymphalid butterflies": [
+   "taxon"
+  ],
+  "subfamily Morphinae": [
+   "taxon"
+  ],
+  "tribe": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_4": {
@@ -67,6 +109,13 @@
    "taxon"
   ],
   "Sesamum": [
+   "taxon"
+  ],
+  "20 species": [],
+  "flowering plant family": [
+   "taxon"
+  ],
+  "flowering plant family Pedaliaceae": [
    "taxon"
   ]
  },
@@ -109,7 +158,25 @@
    "taxon"
   ],
   "synonym": [],
-  "watercourse": []
+  "watercourse": [],
+  "Europe": [
+   "geographical feature"
+  ],
+  "Mongolia": [
+   "geographical feature"
+  ],
+  "Northwestern China": [
+   "geographical feature"
+  ],
+  "Palearctic": [
+   "geographical feature"
+  ],
+  "nightjar family": [
+   "taxon"
+  ],
+  "the Palearctic": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_6": {
   "Celastraceae": [
@@ -132,6 +199,21 @@
   ],
   "cyprinids": [
    "taxon"
+  ],
+  "genera": [
+   "taxon"
+  ],
+  "ostariophysian order": [
+   "taxon"
+  ],
+  "ostariophysian order Cypriniformes": [
+   "taxon"
+  ],
+  "species": [
+   "taxon"
+  ],
+  "the family": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_7": {
@@ -148,6 +230,13 @@
    "taxon"
   ],
   "dwarf spotted wobbegong": [
+   "taxon"
+  ],
+  "2008": [],
+  "carpet shark": [
+   "taxon"
+  ],
+  "family Orectolobidae": [
    "taxon"
   ]
  },
@@ -190,6 +279,12 @@
   ],
   "little auk": [
    "taxon"
+  ],
+  "auk": [
+   "taxon"
+  ],
+  "genus Alle": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_9": {
@@ -209,6 +304,18 @@
    "taxon"
   ],
   "turmeric": [
+   "taxon"
+  ],
+  "100 accepted species": [
+   "taxon"
+  ],
+  "about 100 accepted species": [
+   "taxon"
+  ],
+  "family Zingiberaceae": [
+   "taxon"
+  ],
+  "genus": [
    "taxon"
   ]
  },
@@ -300,6 +407,36 @@
   ],
   "wreathed hornbill": [
    "taxon"
+  ],
+  "Bhutan": [
+   "geographical feature"
+  ],
+  "Greater Sundas": [
+   "geographical feature"
+  ],
+  "India": [
+   "geographical feature"
+  ],
+  "Indonesia": [
+   "geographical feature"
+  ],
+  "Sulawesi": [
+   "geographical feature"
+  ],
+  "far north-eastern India": [
+   "geographical feature"
+  ],
+  "forests": [
+   "Habitat"
+  ],
+  "hornbill": [
+   "taxon"
+  ],
+  "mainland Southeast Asia": [
+   "geographical feature"
+  ],
+  "species of hornbill": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_11": {
@@ -331,6 +468,21 @@
    "geographical feature"
   ],
   "mountain swiftlet": [
+   "taxon"
+  ],
+  "The mountain swiftlet": [
+   "taxon"
+  ],
+  "a species of swift": [
+   "taxon"
+  ],
+  "family Apodidae": [
+   "taxon"
+  ],
+  "swift": [
+   "taxon"
+  ],
+  "the family Apodidae": [
    "taxon"
   ]
  },
@@ -380,6 +532,9 @@
   "white-winged scavenger": [
    "taxon",
    "synonym"
+  ],
+  "genus Aphantochroa": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_13": {
@@ -456,6 +611,15 @@
   ],
   "waterbody": [
    "body of water"
+  ],
+  "family Ericaceae": [
+   "taxon"
+  ],
+  "flowering plants": [
+   "taxon"
+  ],
+  "monotypic genus": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_14": {
@@ -466,6 +630,9 @@
    "taxon"
   ],
   "Mormyrus genus": [
+   "taxon"
+  ],
+  "fish": [
    "taxon"
   ]
  },
@@ -508,7 +675,13 @@
   ],
   "tributary": [
    "watercourse"
-  ]
+  ],
+  "Americas": [
+   "geographical feature"
+  ],
+  "aquarium vegetation": [],
+  "cellular activities": [],
+  "laboratory demonstrations": []
  },
  "ont_9_nature_test_16": {
   "Cobbler wobbegong": [
@@ -527,6 +700,15 @@
    "taxon"
   ],
   "wobbegong": [
+   "taxon"
+  ],
+  "carpet shark": [
+   "taxon"
+  ],
+  "family Orectolobidae": [
+   "taxon"
+  ],
+  "genus Sutorectus": [
    "taxon"
   ]
  },
@@ -547,6 +729,12 @@
    "taxon"
   ],
   "Paragalaxias mesotes": [
+   "taxon"
+  ],
+  "family Galaxiidae": [
+   "taxon"
+  ],
+  "fish": [
    "taxon"
   ]
  },
@@ -597,6 +785,9 @@
   ],
   "rough-legged hawk": [
    "synonym"
+  ],
+  "bird of prey": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_19": {
@@ -618,6 +809,15 @@
   ],
   "Sterna paradisaea": [
    "taxon"
+  ],
+  "The Arctic tern": [
+   "taxon"
+  ],
+  "family Laridae": [
+   "taxon"
+  ],
+  "tern": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_20": {
@@ -631,6 +831,9 @@
    "taxon"
   ],
   "Verrucariaceae": [
+   "taxon"
+  ],
+  "fungi": [
    "taxon"
   ]
  },
@@ -649,6 +852,15 @@
   ],
   "Kirkos": [],
   "Western marsh harrier": [
+   "taxon"
+  ],
+  "Ancient Greek kirkos": [],
+  "bird of prey": [
+   "taxon"
+  ],
+  "circle": [],
+  "circling flight": [],
+  "hen harrier": [
    "taxon"
   ]
  },
@@ -717,7 +929,22 @@
   ],
   "wobbegong family": [
    "taxon"
-  ]
+  ],
+  "43°N": [],
+  "6°N": [],
+  "Japan": [
+   "geographical feature"
+  ],
+  "Korea": [
+   "geographical feature"
+  ],
+  "Philippines": [
+   "geographical feature"
+  ],
+  "Viet Nam": [
+   "geographical feature"
+  ],
+  "latitudes 43 and 6°N": []
  },
  "ont_9_nature_test_24": {
   "Cerith": [
@@ -735,6 +962,12 @@
    "synonym"
   ],
   "sea snails": [
+   "taxon"
+  ],
+  "marine gastropod mollusks": [
+   "taxon"
+  ],
+  "small to medium-sized sea snails": [
    "taxon"
   ]
  },
@@ -834,6 +1067,12 @@
   ],
   "white-browed purpletuft": [
    "taxon"
+  ],
+  "South America": [
+   "geographical feature"
+  ],
+  "bird": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_27": {
@@ -847,7 +1086,15 @@
   "conservation status": [],
   "mountain range": [],
   "synonym": [],
-  "watercourse": []
+  "watercourse": [],
+  "evergreen aromatic trees": [],
+  "genus": [
+   "taxon"
+  ],
+  "laurel family": [
+   "taxon"
+  ],
+  "shrubs": []
  },
  "ont_9_nature_test_28": {
   "Anatidae": [
@@ -859,7 +1106,22 @@
   "shelduck-sheldgoose": [
    "taxon"
   ],
-  "taxon": []
+  "taxon": [],
+  "biological family": [
+   "taxon"
+  ],
+  "duck-like waterfowl": [
+   "taxon"
+  ],
+  "ducks": [
+   "taxon"
+  ],
+  "geese": [
+   "taxon"
+  ],
+  "swans": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_29": {
   "Australia": [
@@ -885,6 +1147,9 @@
   ],
   "koala bear": [
    "synonym"
+  ],
+  "arboreal herbivorous marsupial": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_30": {
@@ -929,6 +1194,15 @@
   ],
   "reservoir": [
    "reservoir"
+  ],
+  "Dasyuromorphia order": [
+   "taxon"
+  ],
+  "extant quolls": [
+   "taxon"
+  ],
+  "quolls": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_31": {
@@ -952,6 +1226,12 @@
    "taxon"
   ],
   "royal tern": [
+   "taxon"
+  ],
+  "family Laridae": [
+   "taxon"
+  ],
+  "tern": [
    "taxon"
   ]
  },
@@ -977,6 +1257,18 @@
   ],
   "fox brush orchids": [
    "synonym",
+   "taxon"
+  ],
+  "orchid family": [
+   "taxon"
+  ],
+  "subfamily Epidendroideae": [
+   "taxon"
+  ],
+  "subtribe Aeridinae": [
+   "taxon"
+  ],
+  "tribe Vandeae": [
    "taxon"
   ]
  },
@@ -1013,6 +1305,21 @@
   ],
   "galaxiid": [
    "taxon"
+  ],
+  "Chatham Islands": [
+   "geographical feature"
+  ],
+  "New Zealand": [
+   "geographical feature"
+  ],
+  "Stewart/Rakiura Islands": [
+   "geographical feature"
+  ],
+  "Stewart/Rakiura islands": [
+   "geographical feature"
+  ],
+  "genus Galaxias": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_34": {
@@ -1020,6 +1327,9 @@
    "taxon"
   ],
   "Sapotaceae": [
+   "taxon"
+  ],
+  "flowering plants": [
    "taxon"
   ]
  },
@@ -1105,7 +1415,15 @@
   ],
   "taxon": [
    "taxon"
-  ]
+  ],
+  "aquatic gastropod mollusks": [
+   "taxon"
+  ],
+  "freshwater snails": [
+   "taxon"
+  ],
+  "gills": [],
+  "operculum": []
  },
  "ont_9_nature_test_37": {
   "Columbiformes": [
@@ -1122,6 +1440,9 @@
   ],
   "endangered": [
    "conservation status"
+  ],
+  "genus Halichoerus": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_38": {
@@ -1135,6 +1456,12 @@
    "taxon"
   ],
   "fire salamander": [
+   "taxon"
+  ],
+  "Europe": [
+   "geographical feature"
+  ],
+  "The fire salamander": [
    "taxon"
   ]
  },
@@ -1151,7 +1478,10 @@
   "Wilson's snipe": [
    "taxon"
   ],
-  "unknown": []
+  "unknown": [],
+  "shorebird": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_40": {
   "Aerodramus": [
@@ -1167,6 +1497,15 @@
    "taxon"
   ],
   "Australian swiftlet": [
+   "taxon"
+  ],
+  "bird": [
+   "taxon"
+  ],
+  "small bird": [
+   "taxon"
+  ],
+  "swift family": [
    "taxon"
   ]
  },
@@ -1206,6 +1545,9 @@
   ],
   "protostome": [
    "taxon"
+  ],
+  "basal animal clade": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_42": {
@@ -1223,7 +1565,12 @@
   ],
   "Larus canus": [
    "taxon"
-  ]
+  ],
+  "Latin": [],
+  "genus name": [],
+  "gull": [],
+  "large seabird": [],
+  "larus": []
  },
  "ont_9_nature_test_43": {
   "Balistes": [
@@ -1233,6 +1580,9 @@
    "taxon"
   ],
   "triggerfish": [
+   "taxon"
+  ],
+  "genus": [
    "taxon"
   ]
  },
@@ -1247,6 +1597,9 @@
    "taxon"
   ],
   "genus": [
+   "taxon"
+  ],
+  "the genus": [
    "taxon"
   ]
  },
@@ -1277,7 +1630,9 @@
   ],
   "watercourse": [
    "watercourse"
-  ]
+  ],
+  "light brown": [],
+  "olive-green": []
  },
  "ont_9_nature_test_46": {
   "Black Scoter": [
@@ -1327,6 +1682,15 @@
   "watercourse": [
    "body of water",
    "geographical feature"
+  ],
+  "North America": [
+   "geographical feature"
+  ],
+  "eastern Siberia": [
+   "geographical feature"
+  ],
+  "subspecies": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_47": {
@@ -1340,6 +1704,15 @@
    "taxon"
   ],
   "non-biting midges": [
+   "taxon"
+  ],
+  "bloodworm family Chironomidae": [
+   "taxon"
+  ],
+  "genus": [
+   "taxon"
+  ],
+  "subfamily Orthocladiinae": [
    "taxon"
   ]
  },
@@ -1414,6 +1787,14 @@
   "synonym": [],
   "watercourse": [
    "watercourse"
+  ],
+  "eiderdown": [],
+  "female": [],
+  "female's breast": [],
+  "the eider's nest": [],
+  "the female's breast": [],
+  "the sea": [
+   "body of water"
   ]
  },
  "ont_9_nature_test_50": {
@@ -1424,6 +1805,12 @@
    "taxon"
   ],
   "taxon": [
+   "taxon"
+  ],
+  "family Castniidae": [
+   "taxon"
+  ],
+  "moths": [
    "taxon"
   ]
  },
@@ -1458,6 +1845,19 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Europe": [
+   "geographical feature"
+  ],
+  "North America": [
+   "geographical feature"
+  ],
+  "South America": [
+   "geographical feature"
+  ],
+  "human intervention": [],
+  "semiaquatic species": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_52": {
@@ -1475,7 +1875,13 @@
   "drainage basin": [],
   "human": [],
   "reservoir": [],
-  "the_majority_of_bees": []
+  "the_majority_of_bees": [],
+  "bees": [
+   "taxon"
+  ],
+  "family Apidae": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_53": {
   "Firewood catfish": [
@@ -1519,6 +1925,9 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "South American pimelodid catfish": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_54": {
@@ -1543,7 +1952,10 @@
   "scalidophora": [
    "taxon"
   ],
-  "unknown": []
+  "unknown": [],
+  "introvert": [],
+  "scalids": [],
+  "spines": []
  },
  "ont_9_nature_test_55": {
   "Body of Water": [],
@@ -1565,7 +1977,10 @@
   ],
   "Reservoir": [],
   "Synonym": [],
-  "Watercourse": []
+  "Watercourse": [],
+  "flatfish": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_56": {
   "Clangula": [
@@ -1600,7 +2015,15 @@
   "garden cress": [
    "synonym",
    "taxon"
-  ]
+  ],
+  "cress": [
+   "taxon"
+  ],
+  "edible herb": [
+   "taxon"
+  ],
+  "old Germanic cresso": [],
+  "sharp, spicy": []
  },
  "ont_9_nature_test_58": {
   "\"\"": [],
@@ -1615,6 +2038,10 @@
   ],
   "Tridesmostemon": [
    "taxon"
+  ],
+  "1905": [],
+  "plant family Sapotaceae": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_59": {
@@ -1626,7 +2053,12 @@
   ],
   "suctoria": [
    "taxon"
-  ]
+  ],
+  "class Phyllopharyngea": [
+   "taxon"
+  ],
+  "structure": [],
+  "ultrastructural similarities": []
  },
  "ont_9_nature_test_60": {
   "Ashburton Plains": [
@@ -1662,6 +2094,12 @@
   ],
   "mountain": [
    "mountain"
+  ],
+  "New Zealand": [
+   "geographical feature"
+  ],
+  "The Canterbury mudfish": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_61": {
@@ -1688,6 +2126,11 @@
   ],
   "White Mountains": [
    "mountain range",
+   "geographical feature"
+  ],
+  "1,450 m": [],
+  "4,760 ft": [],
+  "New Hampshire": [
    "geographical feature"
   ]
  },
@@ -1729,6 +2172,20 @@
   "watercourse": [
    "watercourse",
    "body of water"
+  ],
+  "2,300 metres": [],
+  "7,500 ft": [],
+  "71°32′S 35°36′E": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Mount Derom": [
+   "mountain",
+   "geographical feature"
+  ],
+  "rock and ice massif": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_63": {
@@ -1743,6 +2200,27 @@
   "Rockeskyller Kopf": [
    "geographical feature",
    "mountain"
+  ],
+  "554.6 m above sea level": [],
+  "554.6 m above sea level (NHN)": [],
+  "Germany": [
+   "geographical feature"
+  ],
+  "NHN": [],
+  "Rhineland-Palatinate": [
+   "geographical feature"
+  ],
+  "Rockeskyll": [
+   "geographical feature"
+  ],
+  "Vulkaneifel": [
+   "geographical feature"
+  ],
+  "county of Vulkaneifel": [
+   "geographical feature"
+  ],
+  "hill": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_64": {
@@ -1794,6 +2272,11 @@
   ],
   "synonym": [
    "synonym"
+  ],
+  "2,214 ft": [],
+  "674.9 metres": [],
+  "Germany": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_65": {
@@ -1820,7 +2303,18 @@
    "geographical feature",
    "mountain range"
   ],
-  "mountain range": []
+  "mountain range": [],
+  "1,550 metres": [],
+  "1,550 metres (5,100 ft)": [],
+  "5,100 ft": [],
+  "69°43S 158°43E": [],
+  "69°43′S 158°43′E": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Tomilin Glacier": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_66": {
   "Angelariy": [
@@ -1834,6 +2328,16 @@
   "St. Angelariy Peak": [
    "geographical feature",
    "mountain"
+  ],
+  "850 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Graham Land": [
+   "geographical feature"
+  ],
+  "Oscar II Coast": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_67": {
@@ -1860,7 +2364,12 @@
   "mount": [
    "mountain"
   ],
-  "volume": []
+  "volume": [],
+  "1,280 metres": [],
+  "15 km": [],
+  "4,200 ft": [],
+  "69°33′S 158°3′E": [],
+  "8 nautical miles": []
  },
  "ont_9_nature_test_68": {
   "Mount Van Pelt": [
@@ -1870,6 +2379,17 @@
   "Queen Fabiola Mountains": [
    "mountain range",
    "geographical feature"
+  ],
+  "2,000 m": [],
+  "71°15S 35°43E": [],
+  "71°15′S 35°43′E": [],
+  "Mount DeBreuck": [
+   "geographical feature",
+   "mountain"
+  ],
+  "steep, bare rock mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_69": {
@@ -1880,6 +2400,20 @@
   "Wilson Hills": [
    "geographical feature",
    "mountain range"
+  ],
+  "1,610 m": [],
+  "69°57′S 159°15′E": [],
+  "Mount Ellery": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Suvorov Glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "rock peak": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_70": {
@@ -1911,6 +2445,38 @@
   "Ursersberg": [
    "geographical feature",
    "mountain"
+  ],
+  "1,118 m above sea level (NHN)": [],
+  "1,129 m": [],
+  "Adelegg region": [
+   "geographical feature"
+  ],
+  "Baden-Württemberg": [
+   "geographical feature"
+  ],
+  "Bavaria": [
+   "geographical feature"
+  ],
+  "Bavarian county of Oberallgäu": [
+   "geographical feature"
+  ],
+  "Bolsternang": [
+   "geographical feature"
+  ],
+  "Eschachthal": [
+   "geographical feature"
+  ],
+  "Oberallgäu": [
+   "geographical feature"
+  ],
+  "Tübingen": [
+   "geographical feature"
+  ],
+  "county of Ravensburg": [
+   "geographical feature"
+  ],
+  "province of Tübingen": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_71": {
@@ -1919,6 +2485,21 @@
    "geographical feature"
   ],
   "Mount Moriya": [
+   "mountain",
+   "geographical feature"
+  ],
+  "1700 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Graham Land": [
+   "geographical feature"
+  ],
+  "Nordenskjöld Coast": [
+   "geographical feature"
+  ],
+  "vrah Moriya": [
+   "synonym",
    "mountain",
    "geographical feature"
   ]
@@ -1949,7 +2530,8 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "654.2 m above sea level (NN)": []
  },
  "ont_9_nature_test_73": {
   "Il Madone": [
@@ -1958,6 +2540,19 @@
   ],
   "Lepontine Alps": [
    "mountain range",
+   "geographical feature"
+  ],
+  "Swiss canton of Ticino": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "Ticino": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "mountain",
    "geographical feature"
   ]
  },
@@ -1968,6 +2563,28 @@
   ],
   "Kahiltna Dome": [
    "mountain",
+   "geographical feature"
+  ],
+  "12,411-foot (3,783 m) mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "12,411-foot mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "3,783 m mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "7.3 mi (12 km) west of Denali": [],
+  "Denali": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Denali National Park": [],
+  "central Alaska Range": [
+   "mountain range",
    "geographical feature"
   ]
  },
@@ -1987,6 +2604,10 @@
   "This prominent mountain": [
    "mountain",
    "geographical feature"
+  ],
+  "prominent mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_76": {
@@ -1997,6 +2618,23 @@
   "Mount Sannosawa": [
    "mountain",
    "geographical feature"
+  ],
+  "Chūbu region": [
+   "geographical feature"
+  ],
+  "Japan": [
+   "geographical feature"
+  ],
+  "Kiso District": [
+   "geographical feature"
+  ],
+  "Nagano Prefecture": [
+   "geographical feature"
+  ],
+  "Sannosawa-dake": [
+   "mountain",
+   "geographical feature",
+   "synonym"
   ]
  },
  "ont_9_nature_test_77": {
@@ -2011,6 +2649,13 @@
   "Veitskopf": [
    "geographical feature",
    "mountain"
+  ],
+  "428 m above sea level (NHN)": [],
+  "Germany": [
+   "geographical feature"
+  ],
+  "hill": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_78": {
@@ -2021,6 +2666,25 @@
   "Rayna Knyaginya Peak": [
    "geographical feature",
    "mountain"
+  ],
+  "680 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "IPA": [],
+  "Livingston Island": [
+   "geographical feature"
+  ],
+  "South Shetland Islands": [
+   "geographical feature"
+  ],
+  "[vrx rajn ki]": [],
+  "vrah Rayna Knyaginya": [
+   "synonym"
+  ],
+  "western Bowles Ridge": [
+   "geographical feature",
+   "mountain range"
   ]
  },
  "ont_9_nature_test_79": {
@@ -2034,6 +2698,13 @@
   "Wilson Hills": [
    "mountain range",
    "geographical feature"
+  ],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Noll Glacier": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_80": {
@@ -2043,6 +2714,13 @@
   "Ove Peak": [
    "geographical feature",
    "mountain"
+  ],
+  "72°11S 3°27W": [],
+  "Queen Maud Land": [
+   "geographical feature"
+  ],
+  "Wilson Saddle": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_81": {
@@ -2053,6 +2731,23 @@
   "Ticha Peak": [
    "mountain",
    "geographical feature"
+  ],
+  "790 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "IPA": [],
+  "Livingston Island": [
+   "geographical feature"
+  ],
+  "Omurtag Pass": [
+   "geographical feature"
+  ],
+  "South Shetland Islands": [
+   "geographical feature"
+  ],
+  "vrah Ticha": [
+   "synonym"
   ]
  },
  "ont_9_nature_test_82": {
@@ -2071,6 +2766,19 @@
   "Lepontine_Alps": [
    "mountain range",
    "geographical feature"
+  ],
+  "Swiss canton of Ticino": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "Ticino": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_83": {
@@ -2088,6 +2796,12 @@
   ],
   "Tindeklypa": [
    "geographical feature"
+  ],
+  "Queen Maud Land": [
+   "geographical feature"
+  ],
+  "the feature": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_84": {
@@ -2102,6 +2816,13 @@
   "Liljequist Heights": [
    "geographical feature",
    "mountain range"
+  ],
+  "72°6′S 2°48′W": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Queen Maud Land": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_85": {
@@ -2130,7 +2851,32 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "1100 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Boydell Glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Graham Land": [
+   "geographical feature"
+  ],
+  "Sjögren Glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Trinity Peninsula": [
+   "geographical feature"
+  ],
+  "[vrx morno]": [],
+  "southern Trinity Peninsula": [
+   "geographical feature"
+  ],
+  "vrah Mureno": [
+   "synonym"
+  ]
  },
  "ont_9_nature_test_86": {
   "Cantabrian Mountains": [
@@ -2145,6 +2891,21 @@
    "mountain",
    "geographical feature",
    "synonym"
+  ],
+  "Burgos": [
+   "geographical feature"
+  ],
+  "Cantabrian": [],
+  "Spain": [
+   "geographical feature"
+  ],
+  "Spanish": [],
+  "northern Spain": [
+   "geographical feature"
+  ],
+  "peak": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_87": {
@@ -2169,7 +2930,8 @@
   "Wilson Hills": [
    "geographical feature",
    "mountain range"
-  ]
+  ],
+  "75°23S 139°13W": []
  },
  "ont_9_nature_test_88": {
   "Ellsworth Mountains": [
@@ -2191,6 +2953,26 @@
   "southern Sentinel Range": [
    "geographical feature",
    "mountain range"
+  ],
+  "2800 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Bolgrad Glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Brook Glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Bulgarian language": [],
+  "peak": [
+   "mountain",
+   "geographical feature"
+  ],
+  "vrah Krusha": [
+   "synonym"
   ]
  },
  "ont_9_nature_test_89": {
@@ -2262,7 +3044,19 @@
    "geographical feature",
    "mountain"
   ],
-  "water": []
+  "water": [],
+  "1,116 m": [],
+  "1,116 m above sea level (NHN)": [],
+  "Bischofsmais": [],
+  "Geißkopf": [
+   "mountain",
+   "geographical feature"
+  ],
+  "sea level (NHN)": [],
+  "the mountain": [
+   "mountain",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_90": {
   "Lardigo Peak": [
@@ -2272,6 +3066,22 @@
   "Snegotin Ridge": [
    "geographical feature",
    "mountain range"
+  ],
+  "1158 m": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Bulgarian": [],
+  "Graham Land": [
+   "geographical feature"
+  ],
+  "Trinity Peninsula": [
+   "geographical feature"
+  ],
+  "vrah Lardigo": [
+   "synonym",
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_91": {
@@ -2292,6 +3102,14 @@
   "Hohe Acht": [
    "mountain",
    "geographical feature"
+  ],
+  "698.8 m": [],
+  "Hinterweiler": [
+   "geographical feature"
+  ],
+  "west Eifel volcanoes": [
+   "geographical feature",
+   "mountain range"
   ]
  },
  "ont_9_nature_test_92": {
@@ -2302,6 +3120,15 @@
   "Mount Kasa": [
    "mountain",
    "geographical feature"
+  ],
+  "Chūbu-Sangaku National Park": [
+   "geographical feature"
+  ],
+  "Gifu Prefecture": [
+   "geographical feature"
+  ],
+  "Japan": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_93": {
@@ -2310,6 +3137,17 @@
    "mountain range"
   ],
   "Istind Peak": [
+   "geographical feature",
+   "mountain"
+  ],
+  "72°6′S 2°23′W": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Queen Maud Land": [
+   "geographical feature"
+  ],
+  "Tindeklypa": [
    "geographical feature",
    "mountain"
   ]
@@ -2353,6 +3191,10 @@
   "Hohe_Acht": [
    "geographical feature",
    "mountain"
+  ],
+  "746.9 m above sea level (NHN)": [],
+  "Germany": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_97": {
@@ -2362,6 +3204,24 @@
   ],
   "Wilson Hills": [
    "mountain range",
+   "geographical feature"
+  ],
+  "1,320 m": [],
+  "12 nautical miles": [],
+  "12 nautical miles (22 km)": [],
+  "22 km": [],
+  "69°41′S 158°09′E": [],
+  "69°41′S 158°9′E": [],
+  "Governor Mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "extensive areas of exposed rock": [
+   "Habitat",
+   "geographical feature"
+  ],
+  "gneissic mountain": [
+   "mountain",
    "geographical feature"
   ]
  },
@@ -2376,6 +3236,35 @@
   ],
   "body of water": [
    "body of water"
+  ],
+  "Burning mountain": [
+   "synonym",
+   "mountain",
+   "geographical feature"
+  ],
+  "Gifu Prefecture": [
+   "geographical feature"
+  ],
+  "Japan": [
+   "geographical feature"
+  ],
+  "Matsumoto": [
+   "geographical feature"
+  ],
+  "Nagano Prefecture": [
+   "geographical feature"
+  ],
+  "Takayama": [
+   "geographical feature"
+  ],
+  "Yake-dake": [
+   "synonym",
+   "mountain",
+   "geographical feature"
+  ],
+  "active volcano": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_99": {
@@ -2392,6 +3281,19 @@
    "mountain range"
   ],
   "Shinmoedake": [
+   "geographical feature",
+   "mountain"
+  ],
+  "Japan": [
+   "geographical feature"
+  ],
+  "Kagoshima Prefecture": [
+   "geographical feature"
+  ],
+  "Kyūshū": [
+   "geographical feature"
+  ],
+  "volcano": [
    "geographical feature",
    "mountain"
   ]
@@ -2431,6 +3333,42 @@
   "reservoir": [
    "body of water",
    "reservoir"
+  ],
+  "14,043-foot (4,280 m) fourteener": [
+   "mountain",
+   "geographical feature"
+  ],
+  "14,043-foot fourteener": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Alamosa County": [
+   "geographical feature"
+  ],
+  "Blanca, Colorado": [
+   "geographical feature"
+  ],
+  "Colorado": [
+   "geographical feature"
+  ],
+  "Costilla County": [
+   "geographical feature"
+  ],
+  "Rio Grande National Forest": [
+   "Habitat",
+   "geographical feature"
+  ],
+  "Sangre de Cristo Land Grant": [
+   "geographical feature"
+  ],
+  "Town of Blanca": [
+   "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
+  ],
+  "drainage divide": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_101": {
@@ -2462,6 +3400,24 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "2,697 ft": [],
+  "822 metres": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Livingston Island": [
+   "geographical feature"
+  ],
+  "South Shetland Islands": [
+   "geographical feature"
+  ],
+  "central part of eastern Livingston Island": [
+   "geographical feature"
+  ],
+  "ice-covered mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_103": {
@@ -2471,6 +3427,26 @@
   ],
   "Pigeon House Mountain": [
    "mountain",
+   "geographical feature"
+  ],
+  "2,360 ft": [],
+  "720 metres": [],
+  "AHD": [],
+  "Australia": [
+   "geographical feature"
+  ],
+  "Didthul": [
+   "synonym",
+   "mountain",
+   "geographical feature"
+  ],
+  "Morton National Park": [
+   "geographical feature"
+  ],
+  "New South Wales": [
+   "geographical feature"
+  ],
+  "South Coast": [
    "geographical feature"
   ]
  },
@@ -2507,6 +3483,15 @@
   ],
   "queen maud land": [
    "geographical feature"
+  ],
+  "71°46S 1°21W": [],
+  "71°46′S 1°21′W": [],
+  "Queen Maud Land": [
+   "geographical feature"
+  ],
+  "Snøkallen Hill": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_106": {
@@ -2532,7 +3517,25 @@
    "mountain range"
   ],
   "parent_peak": [],
-  "parent_taxon": []
+  "parent_taxon": [],
+  "2,200 metres": [],
+  "7,200 ft": [],
+  "the feature": [
+   "geographical feature",
+   "mountain"
+  ],
+  "the south end of the Giggenbach Ridge": [
+   "geographical feature",
+   "mountain range"
+  ],
+  "the western peak": [
+   "geographical feature",
+   "mountain"
+  ],
+  "two peaks": [
+   "geographical feature",
+   "mountain"
+  ]
  },
  "ont_9_nature_test_107": {
   "Coughran Creek": [
@@ -2572,7 +3575,9 @@
   ],
   "watercourse": [
    "watercourse"
-  ]
+  ],
+  "1,700 metres": [],
+  "5,600 ft": []
  },
  "ont_9_nature_test_108": {
   "Dymcoff Crag": [
@@ -2582,6 +3587,17 @@
   "Lovech Heights": [
    "geographical feature",
    "mountain range"
+  ],
+  "1350 m": [],
+  "Dymcoff Kamak": [
+   "mountain",
+   "synonym"
+  ],
+  "Graham Land": [
+   "geographical feature"
+  ],
+  "Nordenskjöld Coast": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_109": {
@@ -2595,6 +3611,25 @@
   ],
   "Lorentzen Peak": [
    "mountain",
+   "geographical feature"
+  ],
+  "1,405 metres": [],
+  "13 km": [],
+  "4,610 ft": [],
+  "7 nautical miles": [],
+  "72°0′S 2°33′W": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "Mount Schumacher": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Queen Maud Land": [
+   "geographical feature"
+  ],
+  "small ridge": [
+   "mountain range",
    "geographical feature"
   ]
  },
@@ -2611,6 +3646,24 @@
    "mountain",
    "geographical feature",
    "synonym"
+  ],
+  "3,486 m": [],
+  "3,486m": [],
+  "Aosta Valley": [
+   "geographical feature"
+  ],
+  "Italy": [
+   "geographical feature"
+  ],
+  "Tête du Ruitor": [
+   "mountain",
+   "synonym"
+  ],
+  "mountain": [
+   "mountain"
+  ],
+  "north-western Italy": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_111": {
@@ -2629,6 +3682,17 @@
   "mountain_range": [
    "mountain range",
    "geographical feature"
+  ],
+  "1,516 ft": [],
+  "462 m": [],
+  "462 m (1,516 ft)": [],
+  "The Daumberg": [
+   "geographical feature",
+   "mountain"
+  ],
+  "extinct volcano": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_112": {
@@ -2643,6 +3707,11 @@
   "Wilson Hills": [
    "geographical feature",
    "mountain range"
+  ],
+  "69°54′S 158°22′E": [],
+  "nunataks": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_113": {
@@ -2675,6 +3744,15 @@
   "watercourse(Mount Crescent": [
    "geographical feature",
    "mountain"
+  ],
+  "Berlin": [
+   "geographical feature"
+  ],
+  "New Hampshire": [
+   "geographical feature"
+  ],
+  "Randolph": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_114": {
@@ -2689,6 +3767,19 @@
   "Swiss Lepontine Alps": [
    "geographical feature",
    "mountain range"
+  ],
+  "Cevio": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "canton of Ticino": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_115": {
@@ -2704,7 +3795,20 @@
   ],
   "reservoir": [
    "reservoir"
-  ]
+  ],
+  "Earth's crust": [
+   "geographical feature"
+  ],
+  "Siberian Altai Mountains": [
+   "mountain range"
+  ],
+  "depression": [
+   "geographical feature"
+  ],
+  "major faults": [
+   "geographical feature"
+  ],
+  "tectonic movement": []
  },
  "ont_9_nature_test_116": {
   "Melnik Peak": [
@@ -2728,6 +3832,27 @@
   "Pizzo Pesciora": [
    "mountain",
    "geographical feature"
+  ],
+  "Poncione di Pesciora": [
+   "mountain",
+   "geographical feature",
+   "synonym"
+  ],
+  "Swiss canton": [
+   "geographical feature"
+  ],
+  "Swiss cantons": [
+   "geographical feature"
+  ],
+  "Ticino": [
+   "geographical feature"
+  ],
+  "Valais": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_118": {
@@ -2744,6 +3869,41 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "14,048-foot fourteener": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Alamosa County": [
+   "geographical feature"
+  ],
+  "Blanca, Colorado": [
+   "geographical feature"
+  ],
+  "Colorado": [
+   "geographical feature"
+  ],
+  "Huerfano County": [
+   "geographical feature"
+  ],
+  "Rio Grande National Forest": [
+   "geographical feature"
+  ],
+  "San Isabel National Forest": [
+   "geographical feature"
+  ],
+  "Sierra Blanca Massif": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "Town of Blanca": [
+   "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
+  ],
+  "drainage divide": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_119": {
@@ -2753,6 +3913,15 @@
   ],
   "San Emigdio Mountains": [
    "mountain range",
+   "geographical feature"
+  ],
+  "Kern County": [
+   "geographical feature"
+  ],
+  "Southern California": [
+   "geographical feature"
+  ],
+  "Ventura County": [
    "geographical feature"
   ]
  },
@@ -2768,7 +3937,20 @@
   "Hessler Peak": [
    "geographical feature",
    "mountain"
-  ]
+  ],
+  "1,670 metres": [],
+  "5,480 ft": [],
+  "79°37′S": [],
+  "79°37′S 84°2′W": [],
+  "84°2′W": [],
+  "Antarctica": [
+   "geographical feature"
+  ],
+  "sharp peak": [
+   "mountain",
+   "geographical feature"
+  ],
+  "south end": []
  },
  "ont_9_nature_test_121": {
   "Great Dun Fell": [
@@ -2799,7 +3981,19 @@
   "mountain": [],
   "mountain range": [],
   "reservoir": [],
-  "synonym": []
+  "synonym": [],
+  "3,162 ft": [],
+  "964 metres": [],
+  "England": [
+   "geographical feature"
+  ],
+  "Mickledore col": [
+   "geographical feature"
+  ],
+  "second-highest mountain in England": [
+   "mountain",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_122": {
   "Matterhorn": [
@@ -2816,6 +4010,16 @@
   ],
   "mountain": [
    "mountain",
+   "geographical feature"
+  ],
+  "main Alpine watershed": [
+   "geographical feature"
+  ],
+  "the Matterhorn": [
+   "mountain",
+   "geographical feature"
+  ],
+  "the main Alpine watershed": [
    "geographical feature"
   ]
  },
@@ -2856,7 +4060,16 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "Swiss canton of Valais": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "Valais": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_124": {
   "Cairn Toul": [
@@ -2896,6 +4109,10 @@
   ],
   "spruce": [
    "taxon"
+  ],
+  "The Devil's Point": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_125": {
@@ -2937,6 +4154,17 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "2,343 m": [],
+  "Trient": [
+   "geographical feature"
+  ],
+  "canton of Valais": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_127": {
@@ -2965,6 +4193,23 @@
   "Mount Foraker": [
    "mountain",
    "geographical feature"
+  ],
+  "17,400-foot (5,304 m) mountain": [
+   "geographical feature",
+   "mountain"
+  ],
+  "17,400-foot mountain": [
+   "geographical feature",
+   "mountain"
+  ],
+  "5,304 m mountain": [
+   "geographical feature",
+   "mountain"
+  ],
+  "Denali National Park": [],
+  "central Alaska Range": [
+   "geographical feature",
+   "mountain range"
   ]
  },
  "ont_9_nature_test_129": {
@@ -2990,6 +4235,12 @@
   "reservoir": [
    "reservoir",
    "body of water"
+  ],
+  "the eastern Forest of Bowland": [
+   "geographical feature"
+  ],
+  "the second trig point": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_130": {
@@ -3012,7 +4263,14 @@
   "synonym": [],
   "taxon": [],
   "taxon_common_name(Piz Julier": [],
-  "watercourse": []
+  "watercourse": [],
+  "3,380 metres above sea level": [],
+  "Albula Pass": [
+   "geographical feature"
+  ],
+  "Julier Pass": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_131": {
   "Bernina Range": [
@@ -3033,6 +4291,23 @@
   ],
   "Poncione Piancascia": [
    "mountain",
+   "geographical feature"
+  ],
+  "3,895 m pass": [
+   "geographical feature"
+  ],
+  "3,971 m": [],
+  "Italy": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "north-east ridge": [
    "geographical feature"
   ]
  },
@@ -3131,7 +4406,16 @@
   "mountain": [],
   "reservoir": [],
   "synonym": [],
-  "taxon": []
+  "taxon": [],
+  "Zermatt": [
+   "geographical feature"
+  ],
+  "valley of Zinal": [
+   "geographical feature"
+  ],
+  "valley of Zmutt": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_134": {
   "Aletsch dam": [
@@ -3174,6 +4458,9 @@
   ],
   "reservoir": [
    "reservoir"
+  ],
+  "ridge": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_135": {
@@ -3198,7 +4485,21 @@
    "geographical feature",
    "mountain"
   ],
-  "unknown": []
+  "unknown": [],
+  "Alps": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "Weisshorn north ridge": [
+   "geographical feature"
+  ],
+  "minor summit": [
+   "mountain",
+   "geographical feature"
+  ],
+  "north ridge": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_136": {
   "\"Aroser Rothorn\"": [
@@ -3233,7 +4534,8 @@
   "human": [],
   "reservoir": [],
   "synonym": [],
-  "taxon": []
+  "taxon": [],
+  "2,906 metres": []
  },
  "ont_9_nature_test_137": {
   "1,880 sq mi": [],
@@ -3302,6 +4604,16 @@
   ],
   "critically endangered": [
    "conservation status"
+  ],
+  "California": [
+   "geographical feature"
+  ],
+  "Mono County": [
+   "geographical feature"
+  ],
+  "Mount Williamson": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_138": {
@@ -3368,6 +4680,9 @@
   "watercourse": [
    "watercourse",
    "geographical feature"
+  ],
+  "Lauterbrunnen valley": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_140": {
@@ -3420,6 +4735,18 @@
   ],
   "montane forest": [
    "Habitat"
+  ],
+  "Brig": [
+   "geographical feature"
+  ],
+  "Italian region of Piedmont": [
+   "geographical feature"
+  ],
+  "Swiss canton of Valais": [
+   "geographical feature"
+  ],
+  "Varzo": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_141": {
@@ -3471,6 +4798,14 @@
   ],
   "synonym": [
    "synonym"
+  ],
+  "England": [
+   "geographical feature"
+  ],
+  "access to Helvellyn": [],
+  "access to Helvellyn is easier than access to": [],
+  "the Lake District": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_142": {
@@ -3488,6 +4823,10 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "ridge": [
+   "geographical feature",
+   "mountain range"
   ]
  },
  "ont_9_nature_test_143": {
@@ -3509,6 +4848,9 @@
   ],
   "mountain range": [
    "mountain range",
+   "geographical feature"
+  ],
+  "Arran": [
    "geographical feature"
   ]
  },
@@ -3638,6 +4980,17 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "County Mayo": [
+   "geographical feature"
+  ],
+  "Ireland": [
+   "geographical feature"
+  ],
+  "Sliabh Mór": [
+   "mountain",
+   "geographical feature",
+   "synonym"
   ]
  },
  "ont_9_nature_test_147": {
@@ -3670,6 +5023,11 @@
   "Rhos Fawr": [
    "mountain",
    "geographical feature"
+  ],
+  "Y Domen Ddu": [
+   "geographical feature",
+   "mountain",
+   "synonym"
   ]
  },
  "ont_9_nature_test_149": {
@@ -3749,6 +5107,13 @@
   "bounded by the Western Hemisphere and the Eastern Hemisphere.\nTest Output: body_of_water(Pacific Ocean": [
    "body of water",
    "geographical feature"
+  ],
+  "California": [
+   "geographical feature"
+  ],
+  "peak": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_151": {
@@ -3757,6 +5122,15 @@
    "mountain"
   ],
   "Vogelberg": [
+   "geographical feature",
+   "mountain range"
+  ],
+  "2,925 metres": [],
+  "four km": [],
+  "four km ridge": [
+   "geographical feature"
+  ],
+  "higher massif of the Vogelberg": [
    "geographical feature",
    "mountain range"
   ]
@@ -3800,7 +5174,18 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "2,763 m": [],
+  "eastern Switzerland": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "mountain",
+   "geographical feature"
+  ],
+  "northern Italy": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_153": {
   "Brecon Beacons": [
@@ -3822,6 +5207,16 @@
   "Fan_Fawr": [
    "mountain",
    "geographical feature"
+  ],
+  "Brecon Beacons National Park": [
+   "geographical feature"
+  ],
+  "Fforest Fawr": [
+   "geographical feature",
+   "mountain range"
+  ],
+  "South Wales": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_154": {
@@ -3842,6 +5237,14 @@
   ],
   "human": [
    "human"
+  ],
+  "Kyle of Tongue": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Loch Loyal": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_155": {
@@ -3902,6 +5305,45 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Connecticut-Massachusetts state line": [
+   "geographical feature"
+  ],
+  "Hikers": [
+   "human"
+  ],
+  "Massachusetts": [
+   "geographical feature"
+  ],
+  "highest point in Connecticut": [
+   "geographical feature"
+  ],
+  "mountain": [
+   "mountain"
+  ],
+  "summit of Mount Frissell": [
+   "geographical feature"
+  ],
+  "the South Taconic": [
+   "geographical feature"
+  ],
+  "the highest point in Connecticut": [
+   "geographical feature"
+  ],
+  "the mountain": [
+   "mountain"
+  ],
+  "the route": [
+   "geographical feature"
+  ],
+  "the summit of Mount Frissell": [
+   "geographical feature"
+  ],
+  "the tristate marker": [
+   "geographical feature"
+  ],
+  "tristate marker": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_156": {
@@ -3940,6 +5382,12 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "Val Bercla": [
+   "geographical feature"
+  ],
+  "valley of Avers": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_158": {
@@ -3958,7 +5406,10 @@
   "body of water": [],
   "conservation status": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "Bedretto": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_159": {
   "Grand Darray": [
@@ -4036,6 +5487,12 @@
   "watercourse": [
    "watercourse",
    "geographical feature"
+  ],
+  "Diemtigen": [
+   "geographical feature"
+  ],
+  "Simmental": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_161": {
@@ -4104,6 +5561,19 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Conwy": [
+   "geographical feature"
+  ],
+  "Gwynedd": [
+   "geographical feature"
+  ],
+  "Gwynedd and Conwy": [
+   "geographical feature"
+  ],
+  "Pen yr Ole Wen": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_163": {
@@ -4169,6 +5639,16 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "2,884 m": [],
+  "Champex": [
+   "geographical feature"
+  ],
+  "Switzerland": [
+   "geographical feature"
+  ],
+  "canton of Valais": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_164": {
@@ -4186,6 +5666,16 @@
   "Vesletind Peak": [
    "geographical feature",
    "mountain"
+  ],
+  "Cassia County": [
+   "geographical feature"
+  ],
+  "Sawtooth National Forest": [
+   "Habitat"
+  ],
+  "The peak": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_165": {
@@ -4196,6 +5686,10 @@
   "Finsteraarhorn": [
    "geographical feature",
    "mountain"
+  ],
+  "the range": [
+   "mountain range",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_166": {
@@ -4238,6 +5732,27 @@
   "reservoir": [
    "reservoir",
    "body of water"
+  ],
+  "927.9 m above sea level (NN)": [],
+  "950.2 m above NN": [],
+  "Bavaria": [
+   "geographical feature"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Hesse": [
+   "geographical feature"
+  ],
+  "Hessen": [
+   "geographical feature"
+  ],
+  "Thuringia": [
+   "geographical feature"
+  ],
+  "low mountain range": [
+   "geographical feature",
+   "mountain range"
   ]
  },
  "ont_9_nature_test_167": {
@@ -4255,6 +5770,25 @@
   ],
   "Monte Mars": [
    "mountain",
+   "geographical feature"
+  ],
+  "2,548 m": [],
+  "2,556 m": [],
+  "2,600 m": [],
+  "Italy": [
+   "geographical feature"
+  ],
+  "Mont Crest": [
+   "mountain",
+   "synonym"
+  ],
+  "Northwestern Italy": [
+   "geographical feature"
+  ],
+  "Piedmont": [
+   "geographical feature"
+  ],
+  "Province of Biella": [
    "geographical feature"
   ]
  },
@@ -4289,7 +5823,14 @@
   "mountain range": [],
   "reservoir": [],
   "synonym": [],
-  "watercourse": []
+  "watercourse": [],
+  "Graubünden": [
+   "geographical feature"
+  ],
+  "the mountain": [
+   "mountain",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_169": {
   "Alps": [
@@ -4315,7 +5856,9 @@
   "Zugspitze_massif": [
    "mountain range",
    "geographical feature"
-  ]
+  ],
+  "2,875 metres": [],
+  "9,432 ft": []
  },
  "ont_9_nature_test_170": {
   "Hispar Muztagh": [
@@ -4386,6 +5929,10 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "the world's 6th highest mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_172": {
@@ -4402,7 +5949,10 @@
   "drainage basin": [],
   "mountain range": [],
   "reservoir": [],
-  "synonym": []
+  "synonym": [],
+  "Julier Pass": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_173": {
   "Piz Buin": [
@@ -4463,6 +6013,12 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Graubünden": [
+   "geographical feature"
+  ],
+  "Swiss canton of Graubünden": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_174": {
@@ -4516,6 +6072,11 @@
   "watercourse(Craig Cerrig-gleisiad": [
    "geographical feature",
    "mountain"
+  ],
+  "Craig Cerrig-gleisiad and Fan Frynych National Nature Reserve": [
+   "Habitat",
+   "conservation status",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_175": {
@@ -4547,7 +6108,10 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "Moming Pass": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_176": {
   "Dents du Midi": [
@@ -4635,6 +6199,15 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Martigny": [
+   "geographical feature"
+  ],
+  "Rhône Valley": [
+   "geographical feature"
+  ],
+  "Val-d'Illiez": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_177": {
@@ -4656,6 +6229,16 @@
   "Mallerstang Edge": [
    "geographical feature",
    "mountain range"
+  ],
+  "2000 ft": [],
+  "600 m": [],
+  "600 m (2000 ft)": [],
+  "high, boggy ground": [
+   "Habitat",
+   "geographical feature"
+  ],
+  "one great plateau": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_178": {
@@ -4682,6 +6265,58 @@
   "Wilson Hills": [
    "mountain range",
    "geographical feature"
+  ],
+  "1,600 m": [],
+  "10-km-long ridge": [
+   "geographical feature"
+  ],
+  "16 July 1876": [],
+  "4,000 m": [],
+  "60°": [],
+  "7 August 1876": [],
+  "Andreas Maurer": [
+   "human"
+  ],
+  "Argentière basin": [
+   "drainage basin",
+   "geographical feature"
+  ],
+  "B. Coolidge": [
+   "human"
+  ],
+  "Christian Almer": [
+   "human"
+  ],
+  "East summit": [
+   "geographical feature"
+  ],
+  "Henri Cordier": [
+   "human"
+  ],
+  "Johann Jaun": [
+   "human"
+  ],
+  "John Oakley Maund": [
+   "human"
+  ],
+  "The north face": [
+   "geographical feature"
+  ],
+  "Thomas Middlemore": [
+   "human"
+  ],
+  "Ulrich Almer": [
+   "human"
+  ],
+  "north face": [
+   "geographical feature"
+  ],
+  "the 10-km-long ridge": [
+   "geographical feature"
+  ],
+  "the mountain": [
+   "geographical feature",
+   "mountain"
   ]
  },
  "ont_9_nature_test_179": {
@@ -4690,6 +6325,10 @@
    "mountain"
   ],
   "Vogelberg": [
+   "geographical feature",
+   "mountain"
+  ],
+  "Zapporthorn": [
    "geographical feature",
    "mountain"
   ]
@@ -4719,7 +6358,20 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "Italy": [
+   "geographical feature"
+  ],
+  "flat glacier": [
+   "body of water",
+   "geographical feature"
+  ],
+  "international border": [
+   "geographical feature"
+  ],
+  "international border with Italy": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_181": {
   "Alzette": [
@@ -4865,6 +6517,19 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "5,091 m (16,703 ft)": [],
+  "Shingo La": [
+   "geographical feature"
+  ],
+  "The second branch": [
+   "watercourse"
+  ],
+  "the second branch": [
+   "watercourse"
+  ],
+  "two main tributaries": [
+   "watercourse"
   ]
  },
  "ont_9_nature_test_183": {
@@ -5012,6 +6677,19 @@
   ],
   "Zwickauer_Mulde_valley": [
    "geographical feature"
+  ],
+  "Allgäu": [
+   "geographical feature"
+  ],
+  "Alps": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "Austrian border": [
+   "geographical feature"
+  ],
+  "Oberstdorf": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_185": {
@@ -5146,6 +6824,14 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Erie Canal": [
+   "geographical feature",
+   "watercourse"
+  ],
+  "Welland Canal": [
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_187": {
@@ -5176,7 +6862,19 @@
   "mountain range": [],
   "reservoir": [],
   "synonym": [],
-  "taxon": []
+  "taxon": [],
+  "Michigan": [
+   "geographical feature"
+  ],
+  "Wisconsin": [
+   "geographical feature"
+  ],
+  "boundary": [
+   "geographical feature"
+  ],
+  "two states": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_188": {
   "Gwichin": [
@@ -5225,6 +6923,23 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Klondike Gold Rush International Historical Park": [
+   "geographical feature"
+  ],
+  "Lake Laberge": [
+   "body of water",
+   "geographical feature"
+  ],
+  "The Thirty Mile": [
+   "geographical feature",
+   "watercourse"
+  ],
+  "Yukon": [
+   "geographical feature"
+  ],
+  "national heritage river": [
+   "conservation status"
   ]
  },
  "ont_9_nature_test_189": {
@@ -5344,6 +7059,12 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Antananarivo": [
+   "geographical feature"
+  ],
+  "capital city of Antananarivo": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_191": {
@@ -5429,6 +7150,19 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Kinshasa": [
+   "geographical feature"
+  ],
+  "Kwah River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the lower stretch of the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_193": {
@@ -5490,7 +7224,9 @@
   ],
   "watercourse": [
    "watercourse"
-  ]
+  ],
+  "Ghana": [],
+  "Ivory Coast": []
  },
  "ont_9_nature_test_194": {
   "Chambal": [
@@ -5529,6 +7265,21 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Etawah District": [
+   "geographical feature"
+  ],
+  "Haryana": [
+   "geographical feature"
+  ],
+  "Noida": [
+   "geographical feature"
+  ],
+  "Pachnada": [
+   "geographical feature"
+  ],
+  "Uttar Pradesh": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_195": {
@@ -5541,6 +7292,14 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "The Huangpu": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "central Shanghai": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_196": {
@@ -5603,6 +7362,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Drei Annen Hohne": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_198": {
@@ -5675,6 +7437,21 @@
    "watercourse"
   ],
   "Niokolo Koba": [
+   "geographical feature"
+  ],
+  "Fatoto": [
+   "geographical feature"
+  ],
+  "Parc National du Niokolo Koba": [
+   "geographical feature"
+  ],
+  "Senegal": [
+   "geographical feature"
+  ],
+  "Tambacounda Region": [
+   "geographical feature"
+  ],
+  "the Gambia": [
    "geographical feature"
   ]
  },
@@ -5829,7 +7606,11 @@
    "body of water",
    "geographical feature",
    "watercourse"
-  ]
+  ],
+  "Ilebo": [
+   "geographical feature"
+  ],
+  "westerly direction": []
  },
  "ont_9_nature_test_203": {
   "Eastern Ourthe": [
@@ -5858,6 +7639,14 @@
    "body of water",
    "geographical feature",
    "synonym"
+  ],
+  "Houffalize": [
+   "geographical feature"
+  ],
+  "The Ourthe": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_204": {
@@ -5924,6 +7713,11 @@
    "watercourse"
   ],
   "Sur": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Götzinger Achen": [
    "body of water",
    "geographical feature",
    "watercourse"
@@ -6002,7 +7796,12 @@
    "geographical feature",
    "watercourse"
   ],
-  "river_mammal": []
+  "river_mammal": [],
+  "Tributaries of the Ure": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ]
  },
  "ont_9_nature_test_208": {
   "Hudson Bay": [
@@ -6022,6 +7821,12 @@
   "Winnipeg River": [
    "watercourse",
    "geographical feature"
+  ],
+  "644 kilometres (400 mi)": [],
+  "the river": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_209": {
@@ -6035,6 +7840,11 @@
   ],
   "upper Shire River": [
    "watercourse",
+   "geographical feature"
+  ],
+  "12 miles": [],
+  "Lake Malombe": [
+   "body of water",
    "geographical feature"
   ]
  },
@@ -6074,6 +7884,16 @@
   "White Nile": [
    "watercourse",
    "geographical feature"
+  ],
+  "Blue Nile": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "headwaters of Lake Victoria": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_212": {
@@ -6094,6 +7914,14 @@
   "Whatcom Falls Park": [
    "geographical feature",
    "Habitat"
+  ],
+  "4 miles": [],
+  "6.4 km": [],
+  "Bellingham": [
+   "geographical feature"
+  ],
+  "city of Bellingham": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_213": {
@@ -6112,7 +7940,15 @@
    "watercourse"
   ],
   "conservation status": [],
-  "watercourse": []
+  "watercourse": [],
+  "113 kilometres": [],
+  "70 mi": [],
+  "four ice-free months": [],
+  "marshes": [
+   "Habitat",
+   "geographical feature"
+  ],
+  "transportation link": []
  },
  "ont_9_nature_test_214": {
   "Dam of Igli": [
@@ -6139,6 +7975,22 @@
   "mountain": [
    "geographical feature",
    "mountain"
+  ],
+  "Igli": [
+   "geographical feature"
+  ],
+  "Saoura valley": [
+   "geographical feature"
+  ],
+  "intermittent river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "wadi": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_215": {
@@ -6197,6 +8049,19 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "lake": [
+   "body of water",
+   "geographical feature"
+  ],
+  "lake Virvatnet": [
+   "body of water",
+   "geographical feature"
+  ],
+  "stream": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_216": {
@@ -6221,6 +8086,17 @@
   "watercourse": [
    "geographical feature",
    "watercourse"
+  ],
+  "1,950 sq mi": [],
+  "150 mi": [],
+  "240 kilometres": [],
+  "5,060 square kilometres": [],
+  "Fort-Coulonge": [
+   "geographical feature"
+  ],
+  "La Vérendrye Wildlife Reserve": [
+   "Habitat",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_217": {
@@ -6276,6 +8152,9 @@
   "wetland": [
    "Habitat",
    "geographical feature"
+  ],
+  "Kushiro Plain": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_218": {
@@ -6326,6 +8205,18 @@
   "Weser": [
    "watercourse",
    "geographical feature"
+  ],
+  "Bremen": [
+   "geographical feature"
+  ],
+  "Hannoversch Münden": [
+   "geographical feature"
+  ],
+  "Hanseatic city of Bremen": [
+   "geographical feature"
+  ],
+  "Lower Saxony": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_220": {
@@ -6344,6 +8235,19 @@
    "geographical feature"
   ],
   "Wakool River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Deniliquin": [
+   "geographical feature"
+  ],
+  "Murray": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "eleven minor tributaries": [
    "body of water",
    "geographical feature",
    "watercourse"
@@ -6374,6 +8278,13 @@
   "Winnisook Lake": [
    "body of water",
    "geographical feature"
+  ],
+  "Catskills' highest peak": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Saugerties": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_222": {
@@ -6392,6 +8303,19 @@
   ],
   "river": [
    "watercourse",
+   "geographical feature"
+  ],
+  "2,400 feet": [],
+  "3 miles": [],
+  "34 separate waterfalls": [
+   "geographical feature"
+  ],
+  "5 km": [],
+  "730 m": [],
+  "diverse natural plant life": [],
+  "natural plant life": [],
+  "old growth forest": [
+   "Habitat",
    "geographical feature"
   ]
  },
@@ -6437,6 +8361,26 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the Bzyb River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the Gega River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_224": {
@@ -6503,6 +8447,25 @@
   "watershed of the Congo": [
    "drainage basin",
    "geographical feature"
+  ],
+  "Lake Kivu's former outlet": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "The mountains": [
+   "mountain",
+   "geographical feature"
+  ],
+  "the Ruzizi": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "the lake overflow": [
+   "watercourse"
+  ],
+  "the watershed of the Nile": [
+   "drainage basin",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_225": {
@@ -6524,6 +8487,17 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Gjesdal municipality": [
+   "geographical feature"
+  ],
+  "the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Ålgård": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_226": {
@@ -6536,6 +8510,12 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Singburi": [
+   "geographical feature"
+  ],
+  "Tambon Bang Phutsa": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_227": {
@@ -6574,6 +8554,18 @@
   ],
   "synonym": [
    "synonym"
+  ],
+  "1000 km": [],
+  "621 mi": [],
+  "64°09′00″N": [],
+  "64°09′00″N 95°30′00″W": [],
+  "95°30′00″W": [],
+  "Saskatchewan": [
+   "geographical feature"
+  ],
+  "north": [],
+  "northern Saskatchewan": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_228": {
@@ -6592,6 +8584,17 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "1,213 meters": [],
+  "1,213 meters (3,980 ft)": [],
+  "3,980 ft": [],
+  "lake": [
+   "body of water",
+   "geographical feature"
+  ],
+  "river": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_229": {
@@ -6606,6 +8609,27 @@
    "watercourse"
   ],
   "Moyka River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Field of Mars": [
+   "geographical feature"
+  ],
+  "The Griboyedov Canal": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "The Moyka River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the Field of Mars": [
+   "geographical feature"
+  ],
+  "the Moyka River": [
    "body of water",
    "geographical feature",
    "watercourse"
@@ -6626,6 +8650,18 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "Armenia": [
+   "geographical feature"
+  ],
+  "Bagaran": [
+   "geographical feature"
+  ],
+  "Turkey": [
+   "geographical feature"
+  ],
+  "geographic border": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_231": {
@@ -6678,7 +8714,11 @@
   "watercourse": [
    "geographical feature",
    "watercourse"
-  ]
+  ],
+  "quicksand": [
+   "geographical feature"
+  ],
+  "water": []
  },
  "ont_9_nature_test_234": {
   "Lake Ontario": [
@@ -6721,6 +8761,27 @@
   "watercourse": [
    "geographical feature",
    "watercourse"
+  ],
+  "Canada": [
+   "geographical feature"
+  ],
+  "Kingston": [
+   "geographical feature"
+  ],
+  "Ontario": [
+   "geographical feature"
+  ],
+  "Ottawa": [
+   "geographical feature"
+  ],
+  "Rideau Waterway": [
+   "synonym",
+   "watercourse",
+   "geographical feature"
+  ],
+  "The Rideau Canal": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_235": {
@@ -6739,6 +8800,15 @@
    "watercourse",
    "body of water",
    "geographical feature"
+  ],
+  "Briggs Township": [
+   "geographical feature"
+  ],
+  "Canada": [
+   "geographical feature"
+  ],
+  "Northeastern Ontario": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_236": {
@@ -6755,6 +8825,20 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "Klamath Falls": [
+   "geographical feature"
+  ],
+  "Oregon": [
+   "geographical feature"
+  ],
+  "The Link River": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_237": {
@@ -6775,6 +8859,13 @@
    "geographical feature"
   ],
   "river": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "Shiga Prefecture": [
+   "geographical feature"
+  ],
+  "the river": [
    "watercourse",
    "geographical feature"
   ]
@@ -6801,6 +8892,16 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "4.5 miles": [],
+  "7.2 km": [],
+  "Moel Ysgyfarnogod": [
+   "mountain",
+   "geographical feature"
+  ],
+  "Rhinog Fawr": [
+   "mountain",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_239": {
@@ -6816,6 +8917,23 @@
   ],
   "Murray-Darling basin": [
    "drainage basin",
+   "geographical feature"
+  ],
+  "Australia": [
+   "geographical feature"
+  ],
+  "Kyalite River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "New South Wales": [
+   "geographical feature"
+  ],
+  "south western New South Wales": [
+   "geographical feature"
+  ],
+  "western Riverina region": [
    "geographical feature"
   ]
  },
@@ -6852,7 +8970,26 @@
   "human": [],
   "mountain": [],
   "mountain range": [],
-  "reservoir": []
+  "reservoir": [],
+  "Dakota": [],
+  "Edina": [
+   "geographical feature"
+  ],
+  "Hopkins": [
+   "geographical feature"
+  ],
+  "Minneapolis": [
+   "geographical feature"
+  ],
+  "Minnetonka": [
+   "geographical feature"
+  ],
+  "Mniȟáȟa Wakpádaŋ": [
+   "synonym"
+  ],
+  "Saint Louis Park": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_241": {
   "Hrazdan River": [
@@ -6868,6 +9005,19 @@
   ],
   "Yerevan": [
    "geographical feature"
+  ],
+  "Armenia": [
+   "geographical feature"
+  ],
+  "Armenia's capital": [
+   "geographical feature"
+  ],
+  "northwest extremity of Lake Sevan": [
+   "geographical feature"
+  ],
+  "several streams": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_242": {
@@ -6880,6 +9030,16 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Adirondack Mountains": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "New York": [
+   "geographical feature"
+  ],
+  "Racquette": [
+   "synonym"
   ]
  },
  "ont_9_nature_test_243": {
@@ -6902,6 +9062,25 @@
   ],
   "watershed": [
    "drainage basin",
+   "geographical feature"
+  ],
+  "12.5 km": [],
+  "140 km²": [],
+  "7.8 mi": [],
+  "Amelia Point": [
+   "geographical feature"
+  ],
+  "Battery Point": [
+   "geographical feature"
+  ],
+  "Coxheath Hills": [
+   "geographical feature",
+   "mountain range"
+  ],
+  "Sydney shore": [
+   "geographical feature"
+  ],
+  "Westmount shore": [
    "geographical feature"
   ]
  },
@@ -6930,6 +9109,14 @@
   "reservoir": [
    "reservoir",
    "body of water",
+   "geographical feature"
+  ],
+  "2,320 miles": [],
+  "3,730 km": [],
+  "Mississippi River Delta": [
+   "geographical feature"
+  ],
+  "northern Minnesota": [
    "geographical feature"
   ]
  },
@@ -6963,6 +9150,16 @@
   ],
   "fish": [
    "taxon"
+  ],
+  "Guldbergaunet": [
+   "geographical feature"
+  ],
+  "Steinkjer": [
+   "geographical feature"
+  ],
+  "Trondheimsfjord": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_246": {
@@ -6989,6 +9186,15 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Downtown": [
+   "geographical feature"
+  ],
+  "Florida": [
+   "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_247": {
@@ -7021,7 +9227,11 @@
    "geographical feature",
    "watercourse"
   ],
-  "Taxon": []
+  "Taxon": [],
+  "Trondheimsfjord": [
+   "body of water",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_248": {
   "Conservation Status": [],
@@ -7066,7 +9276,14 @@
   "Tandi": [
    "geographical feature"
   ],
-  "source_of_watercourse": []
+  "source_of_watercourse": [],
+  "60 km (37 mi)": [],
+  "confluence": [
+   "geographical feature"
+  ],
+  "narrow gorges": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_250": {
   "C-6 Canal": [
@@ -7106,7 +9323,24 @@
    "geographical feature",
    "watercourse"
   ],
-  "Persistent": []
+  "Persistent": [],
+  "Miami": [
+   "geographical feature"
+  ],
+  "The Miami Canal": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "United States": [
+   "geographical feature"
+  ],
+  "downtown Miami": [
+   "geographical feature"
+  ],
+  "the United States": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_251": {
   "Malokamenishki Lakes group": [
@@ -7138,7 +9372,20 @@
   ],
   "wetland": [
    "Habitat"
-  ]
+  ],
+  "2,512 m": [],
+  "Northern Pirin": [
+   "geographical feature",
+   "mountain range"
+  ],
+  "four lakes": [
+   "body of water"
+  ],
+  "south-eastern corner": [
+   "geographical feature"
+  ],
+  "southern direction": [],
+  "westwards": []
  },
  "ont_9_nature_test_252": {
   "Auglaize County": [
@@ -7171,7 +9418,19 @@
   "human": [],
   "reservoir": [],
   "synonym": [],
-  "taxon": []
+  "taxon": [],
+  "Columbus": [
+   "geographical feature"
+  ],
+  "Ohio": [
+   "geographical feature"
+  ],
+  "Portsmouth": [
+   "geographical feature"
+  ],
+  "Roundhead": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_253": {
   "Danube": [
@@ -7224,6 +9483,12 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Cazères": [
+   "geographical feature"
+  ],
+  "Haute-Garonne": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_255": {
@@ -7246,6 +9511,12 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Nellie": [
+   "geographical feature"
+  ],
+  "western Coshocton County": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_256": {
@@ -7269,6 +9540,26 @@
   ],
   "drainage basin": [
    "drainage basin"
+  ],
+  "Chadda River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Tchadda": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "la BÃ©nouÃ©": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "la Bénoué": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_257": {
@@ -7302,6 +9593,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Brandon": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_259": {
@@ -7326,7 +9620,13 @@
   ],
   "reservoir": [
    "reservoir"
-  ]
+  ],
+  "Hanyu Pinyin": [],
+  "Taiwan": [
+   "geographical feature"
+  ],
+  "Tongyong Pinyin": [],
+  "Wade-Giles": []
  },
  "ont_9_nature_test_260": {
   "Elbe": [
@@ -7394,6 +9694,9 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "Gera": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_261": {
@@ -7406,6 +9709,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Stolberg": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_262": {
@@ -7427,6 +9733,18 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Englischer Garten": [
+   "geographical feature"
+  ],
+  "Garching bei München": [
+   "geographical feature"
+  ],
+  "Munich": [
+   "geographical feature"
+  ],
+  "centre of Munich": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_263": {
@@ -7439,6 +9757,15 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Golfech": [
+   "geographical feature"
+  ],
+  "LamagistÃ¨re": [
+   "geographical feature"
+  ],
+  "Lamagistère": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_264": {
@@ -7457,6 +9784,36 @@
   ],
   "reservoir": [
    "reservoir"
+  ],
+  "Bonn": [
+   "geographical feature"
+  ],
+  "Hennef": [
+   "geographical feature"
+  ],
+  "Mondorf": [
+   "geographical feature"
+  ],
+  "Naturschutzgebiet Siegaue": [
+   "Habitat",
+   "conservation status",
+   "geographical feature"
+  ],
+  "Niederkassel": [
+   "geographical feature"
+  ],
+  "Siegburg": [
+   "geographical feature"
+  ],
+  "protected area": [
+   "Habitat",
+   "conservation status",
+   "geographical feature"
+  ],
+  "the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_265": {
@@ -7473,6 +9830,27 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Almen": [
+   "geographical feature"
+  ],
+  "Delden": [
+   "geographical feature"
+  ],
+  "Eefde": [
+   "geographical feature"
+  ],
+  "Goor": [
+   "geographical feature"
+  ],
+  "Hengelo": [
+   "geographical feature"
+  ],
+  "Lochem": [
+   "geographical feature"
+  ],
+  "Zutphen": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_266": {
@@ -7500,6 +9878,12 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "110 miles": [],
+  "180 km": [],
+  "Lake Huron": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_267": {
@@ -7512,6 +9896,18 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Bonn": [
+   "geographical feature"
+  ],
+  "Remagen": [
+   "geographical feature"
+  ],
+  "Remagen and Sinzig": [
+   "geographical feature"
+  ],
+  "Sinzig": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_268": {
@@ -7558,6 +9954,24 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Canada": [
+   "geographical feature"
+  ],
+  "Carignan": [
+   "geographical feature"
+  ],
+  "National Historic Site of Canada": [
+   "conservation status"
+  ],
+  "Province of Quebec": [
+   "geographical feature"
+  ],
+  "Quebec": [
+   "geographical feature"
+  ],
+  "Saint-Jean-sur-Richelieu": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_269": {
@@ -7573,6 +9987,9 @@
   "Panjshir River": [
    "body of water",
    "watercourse",
+   "geographical feature"
+  ],
+  "Surobi": [
    "geographical feature"
   ]
  },
@@ -7593,6 +10010,38 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Liris": [
+   "watercourse",
+   "body of water",
+   "geographical feature",
+   "synonym"
+  ],
+  "Lyris": [
+   "watercourse",
+   "body of water",
+   "geographical feature",
+   "synonym"
+  ],
+  "Minturno": [
+   "geographical feature"
+  ],
+  "The Liri": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "Tyrrhenian Sea": [
+   "body of water",
+   "geographical feature"
+  ],
+  "central Italy": [
+   "geographical feature"
+  ],
+  "principal rivers of central Italy": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_271": {
@@ -7620,6 +10069,12 @@
    "watercourse"
   ],
   "village of Anseremme": [
+   "geographical feature"
+  ],
+  "Anseremme": [
+   "geographical feature"
+  ],
+  "Dinant": [
    "geographical feature"
   ]
  },
@@ -7715,7 +10170,36 @@
   "mountain range": [],
   "peak": [],
   "reservoir": [],
-  "taxon": []
+  "taxon": [],
+  "1,080 ft": [],
+  "1,080 ft above sea level": [],
+  "1,440 ft": [],
+  "1,440 ft above sea level": [],
+  "280 m": [],
+  "280 m above sea level": [],
+  "330 m": [],
+  "330 m above sea level": [],
+  "440 m": [],
+  "440 m above sea level": [],
+  "450 mi": [],
+  "730 kilometres": [],
+  "920 ft": [],
+  "920 ft above sea level": [],
+  "Amazon River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Ucayali River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Urubamba River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ]
  },
  "ont_9_nature_test_273": {
   "Danube": [
@@ -7732,6 +10216,21 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Bátonyterenye": [
+   "geographical feature"
+  ],
+  "Hatvan": [
+   "geographical feature"
+  ],
+  "Jászberény": [
+   "geographical feature"
+  ],
+  "Pásztó": [
+   "geographical feature"
+  ],
+  "Szolnok": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_274": {
@@ -7754,7 +10253,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
-  ]
+  ],
+  "107 mi": [],
+  "173 kilometres": []
  },
  "ont_9_nature_test_275": {
   "Ohio River": [
@@ -7763,6 +10264,16 @@
    "watercourse"
   ],
   "Tennessee River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "The Tennessee River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the Ohio River": [
    "body of water",
    "geographical feature",
    "watercourse"
@@ -7829,6 +10340,22 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Esztergom": [
+   "geographical feature"
+  ],
+  "Kráľova hoľa": [
+   "mountain"
+  ],
+  "central Slovakia": [
+   "geographical feature"
+  ],
+  "southern Slovakia": [
+   "geographical feature"
+  ],
+  "Štúro": [],
+  "Štúrovo": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_278": {
@@ -7914,6 +10441,19 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Zuni (Zuñi) River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Zuñi River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "southwestern United States": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_279": {
@@ -7926,6 +10466,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Clausthal-Zellerfeld": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_280": {
@@ -8042,6 +10585,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Holzminden": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_281": {
@@ -8064,6 +10610,22 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Feicheng": [
+   "geographical feature"
+  ],
+  "MouWÃ¨nHÃ©": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Tai'an": [
+   "geographical feature"
+  ],
+  "the merged river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_282": {
@@ -8081,6 +10643,12 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Serbia": [
+   "geographical feature"
+  ],
+  "western Serbia": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_283": {
@@ -8093,6 +10661,13 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "40 km east": [],
+  "Swakopmund": [
+   "geographical feature"
+  ],
+  "confluence": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_284": {
@@ -8105,6 +10680,21 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "393 mi": [],
+  "632 kilometres": [],
+  "Canada": [
+   "geographical feature"
+  ],
+  "Teslin Lake": [
+   "body of water",
+   "geographical feature"
+  ],
+  "northwestern British Columbia": [
+   "geographical feature"
+  ],
+  "southern Yukon Territory": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_285": {
@@ -8118,7 +10708,17 @@
   "Rigole de la plaine": [
    "geographical feature",
    "watercourse"
-  ]
+  ],
+  "The Canal du Midi": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "lock system": [],
+  "sufficient water": [],
+  "summer months": [],
+  "the lock system": [],
+  "the summer months": [],
+  "water": []
  },
  "ont_9_nature_test_286": {
   "Banzerbach": [
@@ -8135,6 +10735,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Pleinfeld": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_287": {
@@ -8159,7 +10762,39 @@
   "body of water": [],
   "conservation status": [],
   "synonym": [],
-  "watercourse": []
+  "watercourse": [],
+  "134 miles": [],
+  "215 kilometres": [],
+  "Afon Gwy": [
+   "synonym",
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "Plynlimon": [
+   "mountain",
+   "geographical feature"
+  ],
+  "The River Wye": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "mid Wales": [
+   "geographical feature"
+  ],
+  "the Severn estuary": [
+   "body of water",
+   "geographical feature"
+  ],
+  "the UK": [
+   "geographical feature"
+  ],
+  "the fifth-longest river in the UK": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_288": {
   "Athabasca River": [
@@ -8248,6 +10883,11 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Peace River and Athabasca River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_289": {
@@ -8330,7 +10970,31 @@
   ],
   "taxon": [
    "taxon"
-  ]
+  ],
+  "13 m": [],
+  "42 feet": [],
+  "7 locks": [],
+  "Duncan's Island": [
+   "geographical feature"
+  ],
+  "Millersburg": [
+   "geographical feature"
+  ],
+  "canal": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "east bank": [
+   "geographical feature"
+  ],
+  "mouth of the Juniata River": [
+   "geographical feature"
+  ],
+  "the canal": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "vertical lift": []
  },
  "ont_9_nature_test_292": {
   "Groundhog River": [
@@ -8344,6 +11008,16 @@
    "watercourse"
   ],
   "Mattagami River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "The river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the river": [
    "body of water",
    "geographical feature",
    "watercourse"
@@ -8381,6 +11055,12 @@
   ],
   "body of water": [
    "body of water"
+  ],
+  "British Columbia": [
+   "geographical feature"
+  ],
+  "Canada": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_294": {
@@ -8397,7 +11077,9 @@
    "watercourse",
    "body of water",
    "geographical feature"
-  ]
+  ],
+  "60 mi": [],
+  "97 kilometres": []
  },
  "ont_9_nature_test_295": {
   "Ganges": [
@@ -8424,7 +11106,21 @@
   "conservation status": [],
   "cycling race": [],
   "human": [],
-  "mountain": []
+  "mountain": [],
+  "Garhwal region": [
+   "geographical feature"
+  ],
+  "Himachal Pradesh": [
+   "geographical feature"
+  ],
+  "The Tons": [
+   "body of water",
+   "watercourse",
+   "geographical feature"
+  ],
+  "Uttarakhand": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_296": {
   "Liard River": [
@@ -8467,7 +11163,22 @@
    "geographical feature",
    "reservoir"
   ],
-  "synonym": []
+  "synonym": [],
+  "British Columbia": [
+   "geographical feature"
+  ],
+  "Fort Simpson": [
+   "geographical feature"
+  ],
+  "Northwest Territories": [
+   "geographical feature"
+  ],
+  "Yukon": [
+   "geographical feature"
+  ],
+  "southeastern Yukon": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_297": {
   "Ferndorfbach": [
@@ -8545,6 +11256,16 @@
    "watercourse",
    "body of water",
    "geographical feature"
+  ],
+  "the Panj River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_299": {
@@ -8560,6 +11281,29 @@
   ],
   "body of water": [
    "body of water"
+  ],
+  "15 mi": [],
+  "24 km": [],
+  "Allgäu Alps": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "Austria": [
+   "geographical feature"
+  ],
+  "Bavaria": [
+   "geographical feature"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Vorarlberg": [
+   "geographical feature"
+  ],
+  "mountain river": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_300": {
@@ -8572,6 +11316,14 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Lower Guadiana International bridge": [
+   "geographical feature"
+  ],
+  "the river": [
+   "body of water",
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_301": {
@@ -8626,7 +11378,18 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Lower Saxony": [
+   "geographical feature"
+  ],
+  "river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ]
  },
  "ont_9_nature_test_303": {
   "Andijan Reservoir": [
@@ -8648,6 +11411,9 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Kyrgyzstan": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_304": {
@@ -8695,7 +11461,21 @@
    "body of water",
    "geographical feature",
    "reservoir"
-  ]
+  ],
+  "Oder-Havel Canal": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "River Spree": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Spandau": [
+   "geographical feature"
+  ],
+  "river lock at Spandau": []
  },
  "ont_9_nature_test_305": {
   "Columbia River": [
@@ -8707,6 +11487,15 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "North American river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Pacific Ocean": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_306": {
@@ -8775,7 +11564,9 @@
   ],
   "synonym": [
    "synonym"
-  ]
+  ],
+  "724 kilometers": [],
+  "north-north-west": []
  },
  "ont_9_nature_test_307": {
   "Gardiners Creek": [
@@ -8802,6 +11593,17 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "Melbourne": [
+   "geographical feature"
+  ],
+  "eastern suburbs of Melbourne": [
+   "geographical feature"
+  ],
+  "waterway": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_308": {
@@ -8829,6 +11631,41 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Angeren": [
+   "geographical feature"
+  ],
+  "Lower Rhine": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Pannerden": [
+   "geographical feature"
+  ],
+  "left bank": [
+   "geographical feature"
+  ],
+  "old Rhine bend": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "right bank": [
+   "geographical feature"
+  ],
+  "river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "sea": [
+   "body of water",
+   "geographical feature"
+  ],
+  "the sea": [
+   "body of water",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_309": {
@@ -8852,6 +11689,21 @@
   ],
   "body of water": [
    "body of water"
+  ],
+  "2,180 m": [],
+  "550 m": [],
+  "56 mi": [],
+  "90 km": [],
+  "90 km (56 mi)": [],
+  "Brixen": [
+   "geographical feature"
+  ],
+  "Dolomites mountains": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "Toblach": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_310": {
@@ -8910,6 +11762,25 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "The stream": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "Wernigerode": [
+   "geographical feature"
+  ],
+  "West Gate (Westerntor)": [
+   "geographical feature"
+  ],
+  "the West Gate (Westerntor)": [
+   "geographical feature"
+  ],
+  "the stream": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_311": {
@@ -8935,6 +11806,9 @@
   "upper part of the Spree": [
    "watercourse",
    "geographical feature"
+  ],
+  "Zuid-Beveland": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_312": {
@@ -8953,7 +11827,10 @@
   "Malvaceae": [
    "taxon"
   ],
-  "body of water": []
+  "body of water": [],
+  "Canary Islands": [
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_313": {
   "Althaea arvensis": [
@@ -9067,6 +11944,12 @@
   ],
   "reservoir": [
    "reservoir"
+  ],
+  "flowering plant": [
+   "taxon"
+  ],
+  "mallow family": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_314": {
@@ -9094,6 +11977,12 @@
   "rusty molly": [
    "synonym",
    "taxon"
+  ],
+  "flowering plant": [
+   "taxon"
+  ],
+  "species of flowering plant": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_315": {
@@ -9105,6 +11994,12 @@
    "taxon"
   ],
   "Polygonum pensylvanicum": [
+   "taxon"
+  ],
+  "buckwheat family": [
+   "taxon"
+  ],
+  "flowering plant": [
    "taxon"
   ]
  },
@@ -9122,6 +12017,16 @@
    "taxon"
   ],
   "Tegicornia": [
+   "taxon"
+  ],
+  "2007": [],
+  "Australia": [
+   "geographical feature"
+  ],
+  "Australian genera": [
+   "taxon"
+  ],
+  "genus": [
    "taxon"
   ]
  },
@@ -9172,7 +12077,8 @@
   ],
   "watercourse": [
    "watercourse"
-  ]
+  ],
+  "herbaceous perennial": []
  },
  "ont_9_nature_test_318": {
   "Cockscomb": [
@@ -9240,6 +12146,12 @@
   ],
   "vulnerable": [
    "conservation status"
+  ],
+  "Angiosperm Phylogeny Group": [],
+  "Cronquist system of classification": [],
+  "modern classification systems": [],
+  "the family": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_319": {
@@ -9315,6 +12227,19 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Eastern Cape": [
+   "geographical feature"
+  ],
+  "South Africa": [
+   "geographical feature"
+  ],
+  "Xhosa": [],
+  "plant": [
+   "taxon"
+  ],
+  "white ways/paths": [
+   "synonym"
   ]
  },
  "ont_9_nature_test_320": {
@@ -9349,6 +12274,12 @@
   ],
   "club silverline": [
    "synonym",
+   "taxon"
+  ],
+  "butterfly": [
+   "taxon"
+  ],
+  "family Lycaenidae": [
    "taxon"
   ]
  },
@@ -9399,6 +12330,21 @@
   ],
   "reservoir created": [
    "reservoir"
+  ],
+  "New World warbler": [
+   "taxon"
+  ],
+  "The Tennessee warbler": [
+   "taxon"
+  ],
+  "eastern North America": [
+   "geographical feature"
+  ],
+  "northern South America": [
+   "geographical feature"
+  ],
+  "southern Central America": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_322": {
@@ -9417,6 +12363,9 @@
   ],
   "leafy goosefoot": [
    "synonym",
+   "taxon"
+  ],
+  "flowering plant": [
    "taxon"
   ]
  },
@@ -9448,6 +12397,15 @@
    "taxon"
   ],
   "orange holomelina": [
+   "taxon"
+  ],
+  "North America": [
+   "geographical feature"
+  ],
+  "family Erebidae": [
+   "taxon"
+  ],
+  "moth species": [
    "taxon"
   ]
  },
@@ -9500,6 +12458,9 @@
   "the spiny-headed seasnake": [
    "synonym",
    "taxon"
+  ],
+  "venomous snake": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_325": {
@@ -9520,6 +12481,9 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "squirrel": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_326": {
@@ -9540,6 +12504,12 @@
   ],
   "boletus": [
    "taxon"
+  ],
+  "Fr.": [
+   "human"
+  ],
+  "Paulet": [
+   "human"
   ]
  },
  "ont_9_nature_test_327": {
@@ -9572,7 +12542,10 @@
   "reservoir": [],
   "synonym": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "plant": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_328": {
   "Arctostaphylos alpina": [
@@ -9610,6 +12583,12 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "dwarf shrub": [
+   "taxon"
+  ],
+  "heather family": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_329": {
@@ -9645,6 +12624,15 @@
   ],
   "common redpoll": [
    "taxon"
+  ],
+  "bird": [
+   "taxon"
+  ],
+  "finch family": [
+   "taxon"
+  ],
+  "species of bird": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_330": {
@@ -9661,6 +12649,18 @@
    "taxon"
   ],
   "butterflies": [
+   "taxon"
+  ],
+  "butterfly": [
+   "taxon"
+  ],
+  "genus Papilio": [
+   "taxon"
+  ],
+  "moth-like Hedyloidea": [
+   "taxon"
+  ],
+  "moths": [
    "taxon"
   ]
  },
@@ -9683,6 +12683,9 @@
    "taxon"
   ],
   "green molly": [
+   "taxon"
+  ],
+  "species of flowering plant": [
    "taxon"
   ]
  },
@@ -9712,6 +12715,16 @@
   "pedunculate sea-purslane": [
    "synonym",
    "taxon"
+  ],
+  "annual plant": [
+   "taxon"
+  ],
+  "salty sandy grounds": [
+   "Habitat"
+  ],
+  "seashore": [
+   "geographical feature",
+   "Habitat"
   ]
  },
  "ont_9_nature_test_333": {
@@ -9814,6 +12827,36 @@
   "variegated ground squirrel": [
    "synonym",
    "taxon"
+  ],
+  "Arizona": [
+   "geographical feature"
+  ],
+  "Colorado": [
+   "geographical feature"
+  ],
+  "Mexico": [
+   "geographical feature"
+  ],
+  "New Mexico": [
+   "geographical feature"
+  ],
+  "Utah": [
+   "geographical feature"
+  ],
+  "Western Texas": [
+   "geographical feature"
+  ],
+  "family Sciuridae": [
+   "taxon"
+  ],
+  "panhandle of Oklahoma": [
+   "geographical feature"
+  ],
+  "southern Nevada": [
+   "geographical feature"
+  ],
+  "southwestern United States": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_337": {
@@ -9835,6 +12878,21 @@
    "taxon"
   ],
   "green frog": [
+   "taxon"
+  ],
+  "The green frog": [
+   "taxon"
+  ],
+  "eastern North America": [
+   "geographical feature"
+  ],
+  "frog": [
+   "taxon"
+  ],
+  "species": [
+   "taxon"
+  ],
+  "the green frog": [
    "taxon"
   ]
  },
@@ -9890,7 +12948,15 @@
   "body of water": [],
   "pygmy marmoset": [
    "taxon"
-  ]
+  ],
+  "83%": [],
+  "breeding female": [],
+  "dominant male": [],
+  "offspring": [],
+  "pygmy marmoset population": [],
+  "stable troops": [],
+  "two to nine individuals": [],
+  "up to four successive litters": []
  },
  "ont_9_nature_test_340": {
   "Paracryphia": [
@@ -9919,7 +12985,40 @@
   ],
   "watercourse": [
    "watercourse"
-  ]
+  ],
+  "1 species": [],
+  "25 species": [],
+  "A.DC.": [
+   "human"
+  ],
+  "Baill.": [
+   "human"
+  ],
+  "Baker f.": [
+   "human"
+  ],
+  "New Caledonia": [
+   "geographical feature"
+  ],
+  "New Guinea": [
+   "geographical feature"
+  ],
+  "New Zealand": [
+   "geographical feature"
+  ],
+  "Paracryphia Baker f.": [
+   "taxon"
+  ],
+  "Philippines": [
+   "geographical feature"
+  ],
+  "Quintinia A.DC": [
+   "taxon"
+  ],
+  "east coast of Australia": [
+   "geographical feature"
+  ],
+  "three genera": []
  },
  "ont_9_nature_test_341": {
   "Aucuba": [
@@ -9978,7 +13077,13 @@
    "synonym",
    "taxon"
   ],
-  "synonym": []
+  "synonym": [],
+  "owlfly species": [
+   "taxon"
+  ],
+  "owly sulphur species": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_344": {
   "Francoaceae": [
@@ -9994,7 +13099,8 @@
   "conservation status": [],
   "drainage basin": [],
   "human": [],
-  "reservoir": []
+  "reservoir": [],
+  "APG IV system": []
  },
  "ont_9_nature_test_345": {
   "Olinia": [
@@ -10013,6 +13119,10 @@
    "taxon"
   ],
   "Rhynchocalyx": [
+   "taxon"
+  ],
+  "APG III system of classification": [],
+  "single species from the genus Rhynchocalyx": [
    "taxon"
   ]
  },
@@ -10095,6 +13205,12 @@
   ],
   "taxon": [
    "taxon"
+  ],
+  "game bird": [
+   "taxon"
+  ],
+  "grouse family": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_347": {
@@ -10111,6 +13227,24 @@
    "taxon"
   ],
   "elbowed Pierrot": [
+   "taxon"
+  ],
+  "India": [
+   "geographical feature"
+  ],
+  "Southeast Asia": [
+   "geographical feature"
+  ],
+  "blues family": [
+   "taxon"
+  ],
+  "butterfly": [
+   "taxon"
+  ],
+  "lycaenids": [
+   "taxon"
+  ],
+  "the elbowed Pierrot": [
    "taxon"
   ]
  },
@@ -10148,6 +13282,13 @@
    "taxon"
   ],
   "Tegicornia": [
+   "taxon"
+  ],
+  "2007": [],
+  "Australian genera": [
+   "taxon"
+  ],
+  "genus": [
    "taxon"
   ]
  },
@@ -10200,6 +13341,10 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "APG III system": [],
+  "genus Pelliciera": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_351": {
@@ -10224,6 +13369,22 @@
   ],
   "dogwood": [
    "taxon"
+  ],
+  "Caspian Sea": [
+   "body of water",
+   "geographical feature"
+  ],
+  "England": [
+   "geographical feature"
+  ],
+  "Europe": [
+   "geographical feature"
+  ],
+  "central Scotland": [
+   "geographical feature"
+  ],
+  "western Asia": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_352": {
@@ -10253,6 +13414,12 @@
   ],
   "willet": [
    "taxon"
+  ],
+  "family Scolopacidae": [
+   "taxon"
+  ],
+  "shorebird": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_353": {
@@ -10266,7 +13433,10 @@
   "buckwheat family": [
    "taxon"
   ],
-  "common name": []
+  "common name": [],
+  "flowering plant": [
+   "taxon"
+  ]
  },
  "ont_9_nature_test_354": {
   "Olinia": [
@@ -10283,7 +13453,8 @@
   ],
   "Rhynchocalyx": [
    "taxon"
-  ]
+  ],
+  "APG III system of classification": []
  },
  "ont_9_nature_test_355": {
   "Maesaceae": [
@@ -10296,6 +13467,9 @@
    "taxon"
   ],
   "Theophrastaceae": [
+   "taxon"
+  ],
+  "Myrs inaceae": [
    "taxon"
   ]
  },
@@ -10317,6 +13491,9 @@
    "taxon"
   ],
   "broad-billed sandpiper": [
+   "taxon"
+  ],
+  "small wading bird": [
    "taxon"
   ]
  },
@@ -10360,6 +13537,15 @@
   ],
   "yellow paintbrush": [
    "taxon"
+  ],
+  "Pilosella": [
+   "taxon"
+  ],
+  "Pilosella species": [
+   "taxon"
+  ],
+  "hawkweeds": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_358": {
@@ -10382,6 +13568,9 @@
   ],
   "saloop": [
    "taxon"
+  ],
+  "small plant": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_359": {
@@ -10399,6 +13588,12 @@
   ],
   "ring-tailed ground squirrel": [
    "taxon"
+  ],
+  "family Sciuridae": [
+   "taxon"
+  ],
+  "rodent": [
+   "taxon"
   ]
  },
  "ont_9_nature_test_360": {
@@ -10414,6 +13609,9 @@
   ],
   "body of water": [
    "body of water"
+  ],
+  "Brazil": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_361": {
@@ -10426,6 +13624,14 @@
   "Polygonum nepalense": [
    "synonym",
    "taxon"
+  ],
+  "1826": [],
+  "1913": [],
+  "Carl Meissner": [
+   "human"
+  ],
+  "Hugo Gross": [
+   "human"
   ]
  },
  "ont_9_nature_test_362": {
@@ -10436,6 +13642,24 @@
   "Lake Hartwell": [
    "body of water",
    "reservoir",
+   "geographical feature"
+  ],
+  "Georgia": [
+   "geographical feature"
+  ],
+  "Savannah River": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "South Carolina": [
+   "geographical feature"
+  ],
+  "concrete dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "embankment dam": [
+   "dam",
    "geographical feature"
   ]
  },
@@ -10463,6 +13687,16 @@
    "reservoir",
    "body of water",
    "geographical feature"
+  ],
+  "Curecanti National Recreation Area": [
+   "geographical feature"
+  ],
+  "National Park Service": [],
+  "Upper Black Canyon of the Gunnison": [
+   "geographical feature"
+  ],
+  "upper Black Canyon of the Gunnison": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_365": {
@@ -10474,6 +13708,15 @@
    "body of water",
    "reservoir",
    "geographical feature"
+  ],
+  "27,500 ha": [],
+  "67,900 acres": [],
+  "Guntersville Dam's tailwaters": [
+   "watercourse"
+  ],
+  "Wheeler Lake": [
+   "body of water",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_366": {
@@ -10493,6 +13736,11 @@
   "The dam": [
    "dam",
    "geographical feature"
+  ],
+  "ornamental purposes": [],
+  "recreational purposes": [],
+  "the dam": [
+   "dam"
   ]
  },
  "ont_9_nature_test_367": {
@@ -10513,7 +13761,22 @@
    "body of water",
    "geographical feature",
    "reservoir"
-  ]
+  ],
+  "Middle Rio Grande Project": [],
+  "The earth-filled structure": [
+   "dam"
+  ],
+  "a storage reservoir": [
+   "body of water",
+   "reservoir",
+   "geographical feature"
+  ],
+  "storage reservoir": [
+   "body of water",
+   "reservoir",
+   "geographical feature"
+  ],
+  "the Middle Rio Grande Project": []
  },
  "ont_9_nature_test_368": {
   "Grand Lake": [
@@ -10527,6 +13790,14 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "natural Grand Lake": [
+   "body of water",
+   "geographical feature"
+  ],
+  "short channel": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_369": {
@@ -10537,6 +13808,12 @@
   "Navajo Lake": [
    "body of water",
    "reservoir",
+   "geographical feature"
+  ],
+  "Colorado": [
+   "geographical feature"
+  ],
+  "New Mexico": [
    "geographical feature"
   ]
  },
@@ -10549,6 +13826,33 @@
    "reservoir",
    "body of water",
    "geographical feature"
+  ],
+  "123 kilometers": [],
+  "76.4 miles": [],
+  "McNary Dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "The dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "The reservoir": [
+   "reservoir",
+   "body of water",
+   "geographical feature"
+  ],
+  "dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "river channel": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "the river channel": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_371": {
@@ -10559,6 +13863,19 @@
   ],
   "Longhorn Dam": [
    "dam",
+   "geographical feature"
+  ],
+  "Austin": [
+   "geographical feature"
+  ],
+  "Colorado River": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "Texas": [
+   "geographical feature"
+  ],
+  "United States": [
    "geographical feature"
   ]
  },
@@ -10584,6 +13901,11 @@
   "body of water": [
    "body of water",
    "geographical feature"
+  ],
+  "impounded reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_373": {
@@ -10605,6 +13927,12 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Colorado": [
+   "geographical feature"
+  ],
+  "Gunnison County": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_374": {
@@ -10615,6 +13943,20 @@
   "New Hogan Lake": [
    "body of water",
    "reservoir",
+   "geographical feature"
+  ],
+  "Rancho Calaveras": [
+   "geographical feature"
+  ],
+  "Sierra Nevada": [
+   "mountain range",
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "the foothills of the Sierra Nevada": [
    "geographical feature"
   ]
  },
@@ -10627,6 +13969,12 @@
   "Vidraru Dam": [
    "dam",
    "geographical feature"
+  ],
+  "1966": [],
+  "Argeș River": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_376": {
@@ -10638,7 +13986,16 @@
   "North Dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "1,580 feet": [],
+  "1,580 feet (480 m)": [],
+  "480 m": [],
+  "both dams": [
+   "dam"
+  ],
+  "elevation 1,570 feet": [],
+  "elevation 1,570 feet (480 m)": [],
+  "maximum water level": []
  },
  "ont_9_nature_test_377": {
   "Lake Alajuela": [
@@ -10648,6 +14005,20 @@
   ],
   "Madden Dam": [
    "dam"
+  ],
+  "Madden Lake": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "Panamanian control": [],
+  "The reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "the Canal Zone": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_378": {
@@ -10658,6 +14029,9 @@
   ],
   "Tom Bevill Lock and Dam": [
    "dam",
+   "geographical feature"
+  ],
+  "Aliceville, Alabama": [
    "geographical feature"
   ]
  },
@@ -10676,7 +14050,22 @@
    "reservoir",
    "geographical feature"
   ],
-  "Sultan Mahmud Power Station": []
+  "Sultan Mahmud Power Station": [],
+  "15,536 acres (62.87 km²) of land": [
+   "geographical feature"
+  ],
+  "17.36 MW of hydroelectricity": [],
+  "3.1 million gallons per day of drinking water": [],
+  "Skardu Valley": [
+   "geographical feature"
+  ],
+  "Skardu city": [
+   "geographical feature"
+  ],
+  "The dam": [
+   "dam"
+  ],
+  "approximately 30,000 households": []
  },
  "ont_9_nature_test_380": {
   "Least Concern": [
@@ -10725,7 +14114,8 @@
   "New Don Pedro Dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "the structure": []
  },
  "ont_9_nature_test_382": {
   "Shadehill Dam": [
@@ -10736,7 +14126,24 @@
    "reservoir",
    "body of water",
    "geographical feature"
-  ]
+  ],
+  "Shadehill Dam's impoundment": [
+   "reservoir",
+   "body of water",
+   "geographical feature"
+  ],
+  "The dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "flood control": [],
+  "recreation": [],
+  "silt control": [],
+  "the dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "wildlife conservation": []
  },
  "ont_9_nature_test_383": {
   "Alder Dam": [
@@ -10752,7 +14159,13 @@
    "body of water",
    "reservoir",
    "geographical feature"
-  ]
+  ],
+  "25 Megawatts": [],
+  "50 Megawatts": [],
+  "Water": [],
+  "base of the dam": [],
+  "total nameplate capacity": [],
+  "two generators": []
  },
  "ont_9_nature_test_384": {
   "Guri Dam": [
@@ -10776,7 +14189,16 @@
   "the dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "The Guri Reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "dam": [
+   "dam"
+  ],
+  "earth": []
  },
  "ont_9_nature_test_385": {
   "Maharana Pratap Sagar": [
@@ -10791,6 +14213,17 @@
   "the dam": [
    "dam",
    "geographical feature"
+  ],
+  "bird sanctuary": [
+   "Habitat"
+  ],
+  "dam": [
+   "dam"
+  ],
+  "lake": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_386": {
@@ -10855,6 +14288,16 @@
   "mountain": [
    "mountain",
    "geographical feature"
+  ],
+  "19,500 feet": [],
+  "235 feet": [],
+  "5,900 m": [],
+  "72 m": [],
+  "concrete gravity dam": [
+   "dam"
+  ],
+  "earthen wing dikes": [
+   "dam"
   ]
  },
  "ont_9_nature_test_387": {
@@ -10866,6 +14309,23 @@
    "body of water",
    "reservoir",
    "geographical feature"
+  ],
+  "15,820 ha": [],
+  "39,090 acres": [],
+  "Chattanooga": [
+   "geographical feature"
+  ],
+  "Chickamauga Lake": [
+   "body of water",
+   "reservoir"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "the dam's tailwaters": [
+   "body of water",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_388": {
@@ -10875,7 +14335,15 @@
    "reservoir",
    "geographical feature"
   ],
-  "Sultan Mahmud Power Station": []
+  "Sultan Mahmud Power Station": [],
+  "a major rowing regatta venue": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "power station": [],
+  "rowing regatta": [],
+  "the power station": []
  },
  "ont_9_nature_test_389": {
   "Banks Lake": [
@@ -10890,7 +14358,20 @@
   "Grand Coulee Dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "Columbia River": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "equalizing reservoir": [
+   "reservoir",
+   "body of water"
+  ],
+  "upper Grand Coulee": [
+   "geographical feature"
+  ],
+  "water": []
  },
  "ont_9_nature_test_390": {
   "Clarence River": [
@@ -10921,7 +14402,23 @@
   "Warragamba Dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "Australia": [
+   "geographical feature"
+  ],
+  "New South Wales": [
+   "geographical feature"
+  ],
+  "Sydney": [
+   "geographical feature"
+  ],
+  "concrete gravity dam": [
+   "dam"
+  ],
+  "primary reservoir": [
+   "reservoir"
+  ],
+  "water supply": []
  },
  "ont_9_nature_test_391": {
   "Irrigation Dam": [
@@ -10939,7 +14436,16 @@
   "this dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "113 km²": [],
+  "27,800 acres": [],
+  "dam": [
+   "dam"
+  ],
+  "irrigation": [],
+  "return flows": [],
+  "southern portion": [],
+  "upper portion of the project": []
  },
  "ont_9_nature_test_392": {
   "Lake Marble Falls": [
@@ -10954,6 +14460,11 @@
   "Starcke Dam": [
    "dam",
    "geographical feature"
+  ],
+  "Texas Highland Lakes": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_393": {
@@ -10973,6 +14484,16 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "The dam": [
+   "dam"
+  ],
+  "Umatilla Rapids": [
+   "geographical feature"
+  ],
+  "reservoir": [
+   "body of water",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_394": {
@@ -10992,6 +14513,18 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "Agua Fria": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "CAP aqueduct": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_395": {
@@ -11003,6 +14536,20 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "4,500,000 acre feet": [],
+  "4,500,000 acre-feet": [],
+  "5,600 GL": [],
+  "California": [
+   "geographical feature"
+  ],
+  "largest reservoir in the state": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "state": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_396": {
@@ -11019,6 +14566,27 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "California": [
+   "geographical feature"
+  ],
+  "Kern County": [
+   "geographical feature"
+  ],
+  "Kern River": [
+   "watercourse",
+   "body of water",
+   "geographical feature"
+  ],
+  "Kern River Valley": [
+   "geographical feature"
+  ],
+  "Kernville": [
+   "geographical feature"
+  ],
+  "embankment dam": [
+   "dam",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_397": {
@@ -11031,7 +14599,30 @@
    "reservoir",
    "geographical feature"
   ],
-  "reservoir_created(Chatuge Dam,Lake Chatuge": []
+  "reservoir_created(Chatuge Dam,Lake Chatuge": [],
+  "2,800 ha Chatuge Lake": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "7,000-acre Chatuge Lake": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "Georgia": [
+   "geographical feature"
+  ],
+  "North Carolina": [
+   "geographical feature"
+  ],
+  "North Carolina-Georgia state line": [
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
+  ]
  },
  "ont_9_nature_test_398": {
   "Lake Revelstoke": [
@@ -11059,7 +14650,12 @@
   "Red Bluff Reservoir": [
    "body of water",
    "reservoir"
-  ]
+  ],
+  "1936": [],
+  "Red Bluff Water Control District": [],
+  "hydroelectric power": [],
+  "irrigation": [],
+  "water": []
  },
  "ont_9_nature_test_400": {
   "Dam": [
@@ -11083,6 +14679,25 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "15 miles north of Fresno": [],
+  "2,000 ha reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "24 km north of Fresno": [],
+  "4,900-acre reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "Fresno": [
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_401": {
@@ -11094,6 +14709,32 @@
    "reservoir",
    "body of water",
    "geographical feature"
+  ],
+  "Hope Mills": [
+   "geographical feature"
+  ],
+  "Hope Mills Dam #1": [
+   "dam",
+   "synonym"
+  ],
+  "Hope Mills, North Carolina": [
+   "geographical feature"
+  ],
+  "Little Rockfish Creek": [
+   "watercourse",
+   "body of water"
+  ],
+  "North Carolina": [
+   "geographical feature"
+  ],
+  "The Hope Mills Dam": [
+   "dam"
+  ],
+  "USA": [
+   "geographical feature"
+  ],
+  "concrete gravity dam": [
+   "dam"
   ]
  },
  "ont_9_nature_test_402": {
@@ -11105,7 +14746,9 @@
    "body of water",
    "reservoir",
    "geographical feature"
-  ]
+  ],
+  "34 km²": [],
+  "8,300 acres": []
  },
  "ont_9_nature_test_403": {
   "Lake Havasu": [
@@ -11159,6 +14802,16 @@
   ],
   "watercourse": [
    "watercourse"
+  ],
+  "Arizona": [
+   "geographical feature"
+  ],
+  "Maricopa County": [
+   "geographical feature"
+  ],
+  "Salt River": [
+   "watercourse",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_404": {
@@ -11183,7 +14836,13 @@
   "the dam": [
    "dam",
    "geographical feature"
-  ]
+  ],
+  "boating": [],
+  "dam": [
+   "dam"
+  ],
+  "fishing": [],
+  "water sports": []
  },
  "ont_9_nature_test_405": {
   "Dobbins Dam": [
@@ -11198,7 +14857,21 @@
    "body of water",
    "reservoir",
    "geographical feature"
-  ]
+  ],
+  "1,196,000 dam³": [],
+  "1,196,000 dam³ of water": [],
+  "969,600 acre-feet": [],
+  "Dobbins": [
+   "geographical feature"
+  ],
+  "Yuba County": [
+   "geographical feature"
+  ],
+  "dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "water": []
  },
  "ont_9_nature_test_406": {
   "Kariba Dam": [
@@ -11213,6 +14886,15 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "150,000,000 acre-feet of water": [],
+  "170 mi": [],
+  "185 cubic kilometres": [],
+  "185 cubic kilometres (150,000,000 acre-ft) of water": [],
+  "280 kilometres": [],
+  "280 kilometres (170 mi)": [],
+  "the dam": [
+   "dam"
   ]
  },
  "ont_9_nature_test_407": {
@@ -11237,6 +14919,19 @@
   "The dam": [
    "dam",
    "geographical feature"
+  ],
+  "Baxter County": [
+   "geographical feature"
+  ],
+  "Marion County": [
+   "geographical feature"
+  ],
+  "Missouri": [
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_408": {
@@ -11247,6 +14942,24 @@
   "Lake Texoma": [
    "body of water",
    "reservoir",
+   "geographical feature"
+  ],
+  "Lake Texoma Dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "Oklahoma": [
+   "geographical feature"
+  ],
+  "Red River": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "Texas": [
+   "geographical feature"
+  ],
+  "dam": [
+   "dam",
    "geographical feature"
   ]
  },
@@ -11259,6 +14972,9 @@
   "Tabqa Dam": [
    "dam",
    "geographical feature"
+  ],
+  "Syria": [
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_410": {
@@ -11269,6 +14985,25 @@
   "Fontana Lake": [
    "body of water",
    "reservoir",
+   "geographical feature"
+  ],
+  "10,230 acres": [],
+  "10,230-acre (4,140 ha)": [],
+  "4,140 ha": [],
+  "Great Smoky Mountains National Park": [
+   "conservation status",
+   "geographical feature"
+  ],
+  "Little Tennessee": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
+  ],
+  "southwestern boundary of the Great Smoky Mountains National Park": [
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
    "geographical feature"
   ]
  },
@@ -11299,6 +15034,11 @@
   "Yenisey River": [
    "watercourse",
    "geographical feature"
+  ],
+  "Rezervuarul Dubăsari": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_412": {
@@ -11314,6 +15054,11 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
   ]
  },
  "ont_9_nature_test_413": {
@@ -11352,6 +15097,40 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "1938": [],
+  "desilting": [],
+  "diversion": [],
+  "the All-American Canal": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "the Colorado River": [
+   "body of water",
+   "watercourse",
+   "geographical feature"
+  ],
+  "the Gila River": [
+   "body of water",
+   "watercourse",
+   "geographical feature"
+  ],
+  "the Imperial Reservoir": [
+   "body of water",
+   "reservoir",
+   "geographical feature"
+  ],
+  "the Yuma Project aqueduct": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "the waters of the Colorado River": [
+   "body of water",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_414": {
@@ -11371,6 +15150,19 @@
   "the dam": [
    "dam",
    "geographical feature"
+  ],
+  "dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "river channel": [
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_415": {
@@ -11391,6 +15183,16 @@
   "Theodore Roosevelt Lake": [
    "body of water",
    "reservoir"
+  ],
+  "109 m": [],
+  "357 feet": [],
+  "Salt River": [
+   "watercourse",
+   "geographical feature"
+  ],
+  "The dam": [
+   "dam",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_416": {
@@ -11404,6 +15206,10 @@
    "geographical feature"
   ],
   "dam": [
+   "dam",
+   "geographical feature"
+  ],
+  "The dam": [
    "dam",
    "geographical feature"
   ]
@@ -11420,6 +15226,12 @@
   ],
   "Vonnes Dam": [
    "dam",
+   "geographical feature"
+  ],
+  "Tignes": [
+   "geographical feature"
+  ],
+  "town of Tignes": [
    "geographical feature"
   ]
  },
@@ -11440,6 +15252,16 @@
   "dam": [
    "dam",
    "geographical feature"
+  ],
+  "105 MW": [],
+  "2 km (1.2 mi)": [],
+  "Lake Maggiore": [
+   "body of water",
+   "geographical feature"
+  ],
+  "Verzasca hydroelectric power station": [],
+  "the dam": [
+   "dam"
   ]
  },
  "ont_9_nature_test_419": {
@@ -11471,7 +15293,20 @@
   ],
   "taxon": [
    "taxon"
-  ]
+  ],
+  "1,369,000 acre feet": [],
+  "1,369,000 acre-feet": [],
+  "1,689,000 dam³": [],
+  "2,100 ha": [],
+  "5,200 acres": [],
+  "New Mexico": [
+   "geographical feature"
+  ],
+  "full storage capacity": [],
+  "the dam": [
+   "dam"
+  ],
+  "water": []
  },
  "ont_9_nature_test_420": {
   "W.A.C. Bennett Dam": [
@@ -11482,6 +15317,11 @@
    "body of water",
    "geographical feature",
    "reservoir"
+  ],
+  "350,000 acres": [],
+  "former forest land": [
+   "Habitat",
+   "geographical feature"
   ]
  },
  "ont_9_nature_test_421": {
@@ -11493,7 +15333,20 @@
    "reservoir",
    "body of water",
    "geographical feature"
-  ]
+  ],
+  "112,800-acre-foot (139,100,000 m³) El Capitan Reservoir": [
+   "body of water",
+   "geographical feature",
+   "reservoir"
+  ],
+  "flood control": [],
+  "the city of San Diego": [
+   "geographical feature"
+  ],
+  "the dam": [
+   "dam"
+  ],
+  "water": []
  },
  "ont_9_nature_test_422": {
   "Atikameg River": [
@@ -11597,7 +15450,22 @@
   "Winnebago River": [
    "watercourse",
    "geographical feature"
-  ]
+  ],
+  "$3 million": [],
+  "Cedar River": [
+   "body of water",
+   "watercourse"
+  ],
+  "Cerro Gordo County": [
+   "geographical feature"
+  ],
+  "Cerro Gordo county": [
+   "geographical feature"
+  ],
+  "over $495 million": [],
+  "the damages from the flood in Cerro Gordo County": [],
+  "the damages from the flood in Cerro Gordo county": [],
+  "the total damage along the Cedar River and Iowa River basin": []
  },
  "ont_9_nature_test_427": {
   "Geronimo Creek": [
@@ -11626,6 +15494,14 @@
    "body of water",
    "geographical feature",
    "watercourse"
+  ],
+  "Seguin, Texas": [
+   "geographical feature"
+  ],
+  "the creek": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_428": {
@@ -11646,6 +15522,11 @@
   "James Bay drainage basin": [
    "drainage basin",
    "geographical feature"
+  ],
+  "the river": [
+   "body of water",
+   "geographical feature",
+   "watercourse"
   ]
  },
  "ont_9_nature_test_429": {
@@ -11677,6 +15558,21 @@
   "Rivière des Envies": [
    "body of water",
    "geographical feature",
+   "watercourse"
+  ],
+  "Canada": [
+   "geographical feature"
+  ],
+  "Mauricie administrative region": [
+   "geographical feature"
+  ],
+  "Quebec": [
+   "geographical feature"
+  ],
+  "River of cravings": [
+   "body of water",
+   "geographical feature",
+   "synonym",
    "watercourse"
   ]
  },
@@ -11782,6 +15678,9 @@
   ],
   "Gino Bartali": [
    "human"
+  ],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_436": {
@@ -11796,6 +15695,18 @@
   ],
   "Volta ao Algarve": [
    "cycling race"
+  ],
+  "Portugal": [
+   "geographical feature"
+  ],
+  "defending Volta ao Algarve champion": [
+   "human"
+  ],
+  "reigning Tour de France champion": [
+   "human"
+  ],
+  "riders": [
+   "human"
   ]
  },
  "ont_9_nature_test_437": {
@@ -11810,7 +15721,11 @@
   ],
   "Juan Felipe Osorio": [
    "human"
-  ]
+  ],
+  "Astana team": [],
+  "Team Manzana Postobón": [],
+  "mountains classification": [],
+  "teams classification": []
  },
  "ont_9_nature_test_438": {
   "2015 Volta ao Algarve": [
@@ -11819,7 +15734,10 @@
   "Geraint Thomas": [
    "human"
   ],
-  "Team Sky": []
+  "Team Sky": [],
+  "2015 race": [
+   "cycling race"
+  ]
  },
  "ont_9_nature_test_439": {
   "2019 Tour de La Provence": [
@@ -11833,6 +15751,10 @@
   ],
   "Luis León Sánchez": [
    "human"
+  ],
+  "Astana team": [],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_440": {
@@ -11846,7 +15768,12 @@
   ],
   "cycling race": [
    "cycling race"
-  ]
+  ],
+  "Caja Rural-Seguros RGA": [],
+  "Lotto-Soudal": [],
+  "intermediate sprints classification": [],
+  "mountains classification": [],
+  "young rider classification": []
  },
  "ont_9_nature_test_441": {
   "2014 Tour du Limousin": [
@@ -11855,7 +15782,9 @@
   "Nicolas Edet": [
    "human"
   ],
-  "The mountains classification": []
+  "The mountains classification": [],
+  "Cofidis": [],
+  "mountains classification": []
  },
  "ont_9_nature_test_442": {
   "2015 Ladies Tour of Norway": [
@@ -11863,7 +15792,8 @@
   ],
   "Megan Guarnier": [
    "human"
-  ]
+  ],
+  "Boels-Dolmans": []
  },
  "ont_9_nature_test_443": {
   "2018 Tour of the Basque Country": [
@@ -11871,7 +15801,19 @@
   ],
   "Carlos Verona": [
    "human"
-  ]
+  ],
+  "Caja Rural-Seguros RGA": [],
+  "Lluís Mas": [
+   "human"
+  ],
+  "Marc Soler": [
+   "human"
+  ],
+  "Movistar Team": [],
+  "jersey": [],
+  "sprints classification": [],
+  "teams classification": [],
+  "top-five overall": []
  },
  "ont_9_nature_test_444": {
   "2017 Tour de France": [
@@ -11885,7 +15827,14 @@
   ],
   "Rigoberto Urán": [
    "human"
-  ]
+  ],
+  "AG2R La Mondiale": [],
+  "Cannondale-Drapac": [],
+  "Romain Bardet": [
+   "human"
+  ],
+  "second place": [],
+  "third place": []
  },
  "ont_9_nature_test_445": {
   "2018 Tour of the Basque Country": [
@@ -11893,7 +15842,26 @@
   ],
   "Carlos Verona": [
    "human"
-  ]
+  ],
+  "Enric Mas": [
+   "human"
+  ],
+  "Mitchelton-Scott": [],
+  "Movistar Team": [],
+  "Nairo Quintana": [
+   "human"
+  ],
+  "Quick-Step Floors": [],
+  "Spaniards": [
+   "human"
+  ],
+  "final-stage breakaway win": [],
+  "mountains classification": [],
+  "mountains jersey": [],
+  "teams classification": [],
+  "top-five overall": [],
+  "young rider classification": [],
+  "young rider jersey": []
  },
  "ont_9_nature_test_446": {
   "2013 Tour of California": [
@@ -11901,7 +15869,16 @@
   ],
   "Carter Jones": [
    "human"
-  ]
+  ],
+  "21 years of age": [],
+  "Bissell": [],
+  "Bontrager Cycling Team": [],
+  "Lawson Craddock": [
+   "human"
+  ],
+  "breakaways": [],
+  "mountains classification": [],
+  "youth classification jersey": []
  },
  "ont_9_nature_test_447": {
   "2017 Redlands Bicycle Classic": [
@@ -11912,6 +15889,13 @@
   ],
   "Leah Thomas": [
    "human"
+  ],
+  "American rider Leah Thomas": [
+   "human"
+  ],
+  "Bigla Pro Cycling team": [],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_448": {
@@ -11923,6 +15907,10 @@
   ],
   "Attilio Moresi": [
    "human"
+  ],
+  "Carpano team": [],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_449": {
@@ -11938,7 +15926,17 @@
   "Sivakov": [
    "human"
   ],
-  "body of water": []
+  "body of water": [],
+  "2 seconds": [],
+  "Sivakov overtaking the Australian": [],
+  "Team Sunweb": [],
+  "the Australian": [
+   "human"
+  ],
+  "the sixth stage": [
+   "cycling race"
+  ],
+  "time bonuses": []
  },
  "ont_9_nature_test_450": {
   "2018 Tour of the Basque Country": [
@@ -11946,6 +15944,21 @@
   ],
   "Daniel Oss": [
    "human"
+  ],
+  "BMC Racing Team": [],
+  "Italian Daniel Oss": [
+   "human"
+  ],
+  "Julian Alaphilippe": [
+   "human"
+  ],
+  "best young rider's jersey": [],
+  "mountains classification jersey": [],
+  "queen stage 7": [
+   "cycling race"
+  ],
+  "stage 7": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_451": {
@@ -11955,13 +15968,45 @@
   "Geraint Thomas": [
    "human"
   ],
-  "overall general classification": []
+  "overall general classification": [],
+  "Team Sky": []
  },
  "ont_9_nature_test_452": {
   "2017 Tour de France": [
    "cycling race"
   ],
   "Warren Barguil": [
+   "human"
+  ],
+  "André Greipel": [
+   "human"
+  ],
+  "Ben Swift": [
+   "human"
+  ],
+  "Castle Douglas": [
+   "geographical feature"
+  ],
+  "Germany": [
+   "geographical feature"
+  ],
+  "Lotto-Soudal": [],
+  "Nicolas Roche": [
+   "human"
+  ],
+  "Team Sky": [],
+  "Tour's most combative rider": [
+   "human"
+  ],
+  "Tour's teams classification": [],
+  "opening stage": [
+   "cycling race"
+  ],
+  "teams classification": [],
+  "the Tour": [
+   "cycling race"
+  ],
+  "the Tour's most combative rider": [
    "human"
   ]
  },
@@ -11971,6 +16016,10 @@
   ],
   "Tour de Hongrie": [
    "cycling race"
+  ],
+  "Israel Start-Up Nation": [],
+  "Latvian rider": [
+   "human"
   ]
  },
  "ont_9_nature_test_454": {
@@ -11979,7 +16028,13 @@
   ],
   "Stefan Denifl": [
    "human"
-  ]
+  ],
+  "Aqua Blue Sport": [],
+  "The race": [
+   "cycling race"
+  ],
+  "professional career": [],
+  "the first victory": []
  },
  "ont_9_nature_test_455": {
   "2018 Giro d'Italia": [
@@ -11989,6 +16044,10 @@
    "human"
   ],
   "race": [
+   "cycling race"
+  ],
+  "Rally Cycling": [],
+  "The race": [
    "cycling race"
   ]
  },
@@ -12004,6 +16063,9 @@
   ],
   "race": [
    "cycling race"
+  ],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_457": {
@@ -12014,6 +16076,9 @@
    "human"
   ],
   "cycling race": [
+   "cycling race"
+  ],
+  "The race": [
    "cycling race"
   ]
  },
@@ -12029,6 +16094,24 @@
   ],
   "Wout Poels": [
    "human"
+  ],
+  "BMC Racing Team": [],
+  "Mitchelton-Scott": [],
+  "Richie Porte": [
+   "human"
+  ],
+  "South Africa": [
+   "geographical feature"
+  ],
+  "South African rider": [
+   "human"
+  ],
+  "countback": [],
+  "course": [
+   "geographical feature"
+  ],
+  "race overall": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_459": {
@@ -12051,7 +16134,38 @@
   "mountain range": [],
   "reservoir": [],
   "taxon": [],
-  "watercourse": []
+  "watercourse": [],
+  "80 km solo breakaway": [],
+  "Bardonecchia": [
+   "geographical feature"
+  ],
+  "Cima Coppi": [
+   "geographical feature",
+   "mountain"
+  ],
+  "Colle delle Finestre": [
+   "geographical feature",
+   "mountain"
+  ],
+  "Sestriere": [
+   "geographical feature"
+  ],
+  "graveled climb": [
+   "geographical feature"
+  ],
+  "more than three minute deficit": [],
+  "mountainous stage": [
+   "cycling race"
+  ],
+  "mountainous stage 19": [
+   "cycling race"
+  ],
+  "reigning champion": [],
+  "stage 19": [
+   "cycling race"
+  ],
+  "summit finish": [],
+  "victory": []
  },
  "ont_9_nature_test_460": {
   "2016 Tour of Britain": [
@@ -12061,6 +16175,10 @@
    "human"
   ],
   "race": [
+   "cycling race"
+  ],
+  "BMC Racing Team": [],
+  "The race": [
    "cycling race"
   ]
  },
@@ -12086,7 +16204,19 @@
   ],
   "mountain range": [
    "mountain range"
-  ]
+  ],
+  "Polish rider": [
+   "human"
+  ],
+  "Polish rider Katarzyna Niewiadoma": [
+   "human"
+  ],
+  "The race": [
+   "cycling race"
+  ],
+  "WM3 Pro Cycling team": [],
+  "lead of the overall Women's World Tour standings": [],
+  "overall Women's World Tour standings": []
  },
  "ont_9_nature_test_462": {
   "2018 Giro d'Italia Femminile": [
@@ -12097,6 +16227,26 @@
   ],
   "race": [
    "cycling race"
+  ],
+  "Boels-Dolmans": [],
+  "European champion": [],
+  "Olympic champion": [],
+  "The race": [
+   "cycling race"
+  ],
+  "UCI Women's World Tour standings": [],
+  "overall lead": [],
+  "pink jersey": [],
+  "second stage": [
+   "cycling race"
+  ],
+  "the Netherlands": [
+   "geographical feature"
+  ],
+  "the UCI Women's World Tour standings": [],
+  "the leader's pink jersey": [],
+  "the second stage": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_463": {
@@ -12105,7 +16255,12 @@
   ],
   "Rolf Maurer": [
    "human"
-  ]
+  ],
+  "Cynar team": [],
+  "The race": [
+   "cycling race"
+  ],
+  "the Cynar team": []
  },
  "ont_9_nature_test_464": {
   "2017 Tour de France": [
@@ -12116,7 +16271,16 @@
   ],
   "Warren Barguil": [
    "human"
-  ]
+  ],
+  "Cannondale-Drapac": [],
+  "Roompot-Nederlandse Loterij": [],
+  "Sep Vanmarcke": [
+   "human"
+  ],
+  "Team Dimension Data": [],
+  "mountains classification": [],
+  "points classification": [],
+  "teams classification": []
  },
  "ont_9_nature_test_465": {
   "2017 Boels Ladies Tour": [
@@ -12127,6 +16291,17 @@
   ],
   "Elisa Longo Borghini": [
    "human"
+  ],
+  "Italian rider": [
+   "human"
+  ],
+  "Van der Breggen": [
+   "human"
+  ],
+  "Wiggle High5": [],
+  "Wiggle High5 team": [],
+  "race overall": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_466": {
@@ -12135,7 +16310,26 @@
   ],
   "Michał Kwiatkowski": [
    "human"
-  ]
+  ],
+  "Omega Pharma-Quick-Step": [],
+  "The race": [
+   "cycling race"
+  ],
+  "end of the race": [],
+  "first stage race win": [],
+  "following day": [],
+  "following day's individual time trial": [
+   "cycling race"
+  ],
+  "individual time trial": [
+   "cycling race"
+  ],
+  "race finish": [],
+  "race lead": [],
+  "second stage": [
+   "cycling race"
+  ],
+  "solo stage victory": []
  },
  "ont_9_nature_test_467": {
   "1936 Tour de Suisse": [
@@ -12146,6 +16340,10 @@
   ],
   "Georges Pintens": [
    "human"
+  ],
+  "Hertekamp team": [],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_468": {
@@ -12161,6 +16359,9 @@
   ],
   "Pasquale Fornara": [
    "human"
+  ],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_469": {
@@ -12172,7 +16373,21 @@
   ],
   "Tom-Jelte Slagter": [
    "human"
-  ]
+  ],
+  "16 seconds": [],
+  "Impey": [
+   "human"
+  ],
+  "Team Dimension Data": [],
+  "Willunga Hill": [
+   "geographical feature"
+  ],
+  "four bonus seconds": [],
+  "four other competitors": [
+   "human"
+  ],
+  "podium placings": [],
+  "third place": []
  },
  "ont_9_nature_test_471": {
   "1956 Tour de Suisse": [
@@ -12180,6 +16395,9 @@
   ],
   "Karl Litschi": [
    "human"
+  ],
+  "The race": [
+   "cycling race"
   ]
  },
  "ont_9_nature_test_472": {
@@ -12195,6 +16413,14 @@
   ],
   "Richard Virenque": [
    "human"
+  ],
+  "1999 Tour de France": [
+   "cycling race"
+  ],
+  "8th place": [],
+  "bad preparation": [],
+  "important rider": [
+   "human"
   ]
  },
  "ont_9_nature_test_473": {
@@ -12205,6 +16431,19 @@
    "cycling race"
   ],
   "Richard Carapaz": [
+   "human"
+  ],
+  "Ecuadorian rider": [
+   "human"
+  ],
+  "Movistar Team": [],
+  "The race": [
+   "cycling race"
+  ],
+  "the Giro d'Italia": [
+   "cycling race"
+  ],
+  "the first Ecuadorian rider": [
    "human"
   ]
  },
@@ -12220,6 +16459,61 @@
   ],
   "marsh-marigold": [
    "synonym"
+  ],
+  "Northern Hemisphere": [
+   "geographical feature"
+  ],
+  "ditches": [
+   "watercourse"
+  ],
+  "fens": [
+   "Habitat"
+  ],
+  "marshes": [
+   "Habitat"
+  ],
+  "small to medium size perennial herbaceous plant": [
+   "taxon"
+  ],
+  "temperate regions": [
+   "geographical feature"
+  ],
+  "wet woodland": [
+   "Habitat"
   ]
+ },
+ "ont_9_nature_test_470": {
+  "Cannondale-Drapac": [],
+  "Dennis": [
+   "human"
+  ],
+  "Etixx-Quick-Step": [],
+  "Ewan": [
+   "human"
+  ],
+  "Greipel": [
+   "human"
+  ],
+  "Groenewegen": [
+   "human"
+  ],
+  "Ian Stannard": [
+   "human"
+  ],
+  "Jack Bauer": [
+   "human"
+  ],
+  "Team Sky": [],
+  "Tony Martin": [
+   "human"
+  ],
+  "Vermote": [
+   "human"
+  ],
+  "Wout Poels": [
+   "human"
+  ],
+  "stage wins": [],
+  "victories": []
  }
 }

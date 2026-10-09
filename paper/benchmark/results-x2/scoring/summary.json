@@ -3804,6 +3804,388 @@
           "avg_rel_halluc": 0.0,
           "avg_obj_halluc": 0.03
         }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.04
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
       }
     },
     "1_strip_labels": {
@@ -7243,6 +7625,388 @@
           "avg_sub_halluc": 0.01,
           "avg_rel_halluc": 0.03,
           "avg_obj_halluc": 0.03
+        }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.04
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
         }
       }
     },
@@ -10684,6 +11448,388 @@
           "avg_rel_halluc": 0.01,
           "avg_obj_halluc": 0.03
         }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
       }
     },
     "3_drop_off_ontology": {
@@ -14123,6 +15269,388 @@
           "avg_sub_halluc": 0.01,
           "avg_rel_halluc": 0.01,
           "avg_obj_halluc": 0.03
+        }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.01
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
         }
       }
     },
@@ -17564,6 +19092,388 @@
           "avg_rel_halluc": 0.01,
           "avg_obj_halluc": 0.03
         }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.01
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
       }
     },
     "5_drop_train_overlap": {
@@ -21004,6 +22914,388 @@
           "avg_rel_halluc": 0.01,
           "avg_obj_halluc": 0.03
         }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.04
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.01
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.02,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.98,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.05,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.05
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.06
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.03,
+          "avg_sub_halluc": 0.03,
+          "avg_rel_halluc": 0.97,
+          "avg_obj_halluc": 0.05
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.04
+        }
       }
     },
     "6_drop_absent_subject": {
@@ -24443,6 +26735,388 @@
           "avg_sub_halluc": 0.01,
           "avg_rel_halluc": 0.0,
           "avg_obj_halluc": 0.03
+        }
+      },
+      "results-kggen-plain-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.01,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.0
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        }
+      },
+      "results-kggen-context-r1": {
+        "1_movie|all_test_cases": {
+          "avg_precision": 0.01,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "1_movie|selected_test_cases": {
+          "avg_precision": 0.02,
+          "avg_recall": 0.01,
+          "avg_f1": 0.01,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "2_music|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.03
+        },
+        "2_music|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "3_sport|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "3_sport|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.01,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 0.99,
+          "avg_obj_halluc": 0.03
+        },
+        "4_book|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "4_book|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "5_military|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.02,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "5_military|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.04,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
+        },
+        "6_computer|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "6_computer|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.0
+        },
+        "7_space|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "7_space|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "8_politics|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.06
+        },
+        "8_politics|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.08
+        },
+        "9_nature|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.07
+        },
+        "9_nature|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.05
+        },
+        "10_culture|all_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.02
+        },
+        "10_culture|selected_test_cases": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.0,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.01
+        },
+        "global|global": {
+          "avg_precision": 0.0,
+          "avg_recall": 0.0,
+          "avg_f1": 0.0,
+          "avg_onto_conf": 0.0,
+          "avg_sub_halluc": 0.01,
+          "avg_rel_halluc": 1.0,
+          "avg_obj_halluc": 0.04
         }
       }
     }
