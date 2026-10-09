@@ -35,7 +35,7 @@ control, to check that the three graphs contain comparable information.
 \paragraph{Systems.} All three use \code{gpt-5.6-luna} with low reasoning effort and
 \code{text-embedding-3-small}.
 \begin{itemize}
-  \item \textbf{\wk}, engine at commit \code{99e591e}, with the extraction schema in \code{workspace-v1/}: four entity types
+  \item \textbf{\wk}, engine at commit \code{99d591e}, with the extraction schema in \code{workspace-v1/}: four entity types
     (Player, Team, City, Owner) with typed fields, and three relationship types
     (PlaysFor, with a \code{tenure} field; LocatedIn; Owns, with a \code{since\_year} field).
     Chunks of 800 tokens with 120 overlap; export to Neo4j CSV.
