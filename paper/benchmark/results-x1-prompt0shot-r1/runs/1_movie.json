@@ -1,0 +1,24 @@
+{
+  "ontology": "1_movie",
+  "system": "prompting baseline (benchmark prompts, example removed)",
+  "recorded_at": "2026-10-09T15:58:54+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": true
+  },
+  "prompts_file_sha256": "6abf7cc90ba2649e3a34f6b74483a81bfec797cb2f2de30593a5f9ef4ee6219c",
+  "prompts": 840,
+  "failed": 0,
+  "with_triples": 768,
+  "triples": 2396,
+  "usage": {
+    "input_tokens": 201360,
+    "cached_tokens": 0,
+    "output_tokens": 139381,
+    "reasoning_tokens": 106299
+  },
+  "seconds": 173
+}

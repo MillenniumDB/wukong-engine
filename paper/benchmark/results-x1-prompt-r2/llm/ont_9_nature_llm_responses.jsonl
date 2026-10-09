@@ -1,0 +1,474 @@
+{"id": "ont_9_nature_test_1", "response": "parent_taxon(Sacred kingfisher,Todiramphus)", "triples": [["Sacred kingfisher", "parent_taxon", "Todiramphus"]]}
+{"id": "ont_9_nature_test_2", "response": "parent_taxon(Conference pear,Pyrus communis)", "triples": [["Conference pear", "parent_taxon", "Pyrus communis"]]}
+{"id": "ont_9_nature_test_3", "response": "parent_taxon(Morphini,Morphinae)", "triples": [["Morphini", "parent_taxon", "Morphinae"]]}
+{"id": "ont_9_nature_test_4", "response": "parent_taxon(Sesamum,Pedaliaceae)", "triples": [["Sesamum", "parent_taxon", "Pedaliaceae"]]}
+{"id": "ont_9_nature_test_5", "response": "taxon_common_name(Caprimulus europaeus,European Nightjar)\ntaxon_synonym(Caprimulus europaeus,Common Goatsucker)\ntaxon_synonym(Caprimulus europaeus,Eurasian Nightjar)\ntaxon_synonym(Caprimulus europaeus,Nightjar)\nparent_taxon(Caprimulus europaeus,Nightjar)", "triples": [["Caprimulus europaeus", "taxon_common_name", "European Nightjar"], ["Caprimulus europaeus", "taxon_synonym", "Common Goatsucker"], ["Caprimulus europaeus", "taxon_synonym", "Eurasian Nightjar"], ["Caprimulus europaeus", "taxon_synonym", "Nightjar"], ["Caprimulus europaeus", "parent_taxon", "Nightjar"]]}
+{"id": "ont_9_nature_test_6", "response": "parent_taxon(Cyprinidae,Cypriniformes)", "triples": [["Cyprinidae", "parent_taxon", "Cypriniformes"]]}
+{"id": "ont_9_nature_test_7", "response": "parent_taxon(dwarf spotted wobbegong,Orectolobus)", "triples": [["dwarf spotted wobbegong", "parent_taxon", "Orectolobus"]]}
+{"id": "ont_9_nature_test_8", "response": "parent_taxon(Little auk,Alle)", "triples": [["Little auk", "parent_taxon", "Alle"]]}
+{"id": "ont_9_nature_test_9", "response": "parent_taxon(Curcuma,Zingiberaceae)\ntaxon_common_name(Curcuma,turmeric)\ntaxon_common_name(Curcuma,Siam tulip)", "triples": [["Curcuma", "parent_taxon", "Zingiberaceae"], ["Curcuma", "taxon_common_name", "turmeric"], ["Curcuma", "taxon_common_name", "Siam tulip"]]}
+{"id": "ont_9_nature_test_10", "response": "parent_taxon(Wreathed Hornbill,Hornbill)\ntaxon_synonym(Wreathed Hornbill,Bar-pouched Wreathed Hornbill)", "triples": [["Wreathed Hornbill", "parent_taxon", "Hornbill"], ["Wreathed Hornbill", "taxon_synonym", "Bar-pouched Wreathed Hornbill"]]}
+{"id": "ont_9_nature_test_11", "response": "parent_taxon(Mountain swiftlet,Aerodramus)", "triples": [["Mountain swiftlet", "parent_taxon", "Aerodramus"]]}
+{"id": "ont_9_nature_test_12", "response": "parent_taxon(sombre hummingbird,Aphantochroa)", "triples": [["sombre hummingbird", "parent_taxon", "Aphantochroa"]]}
+{"id": "ont_9_nature_test_13", "response": "taxon_common_name(Pityopus_californicus,pinefoot)", "triples": [["Pityopus_californicus", "taxon_common_name", "pinefoot"]]}
+{"id": "ont_9_nature_test_14", "response": "parent_taxon(Mormyrus,Mormyridae)", "triples": [["Mormyrus", "parent_taxon", "Mormyridae"]]}
+{"id": "ont_9_nature_test_15", "response": "parent_taxon(Elodea,Hydrocharitaceae)", "triples": [["Elodea", "parent_taxon", "Hydrocharitaceae"]]}
+{"id": "ont_9_nature_test_16", "response": "taxon_common_name(Sutorectus tentaculatus,cobbler wobbegong)\nparent_taxon(Sutorectus tentaculatus,Orectolobidae)\nparent_taxon(Sutorectus tentaculatus,Sutorectus)", "triples": [["Sutorectus tentaculatus", "taxon_common_name", "cobbler wobbegong"], ["Sutorectus tentaculatus", "parent_taxon", "Orectolobidae"], ["Sutorectus tentaculatus", "parent_taxon", "Sutorectus"]]}
+{"id": "ont_9_nature_test_17", "response": "parent_taxon(Arthurs galaxias,Galaxiidae)", "triples": [["Arthurs galaxias", "parent_taxon", "Galaxiidae"]]}
+{"id": "ont_9_nature_test_18", "response": "taxon_common_name(Buteo lagopus,rough-legged buzzard)\ntaxon_synonym(Buteo lagopus,rough-legged hawk)", "triples": [["Buteo lagopus", "taxon_common_name", "rough-legged buzzard"], ["Buteo lagopus", "taxon_synonym", "rough-legged hawk"]]}
+{"id": "ont_9_nature_test_19", "response": "taxon_synonym(Arctic Tern,Sterna paradisaea)", "triples": [["Arctic Tern", "taxon_synonym", "Sterna paradisaea"]]}
+{"id": "ont_9_nature_test_20", "response": "parent_taxon(Henrica,Verrucariaceae)", "triples": [["Henrica", "parent_taxon", "Verrucariaceae"]]}
+{"id": "ont_9_nature_test_21", "response": "parent_taxon(Western marsh harrier,Circus)", "triples": [["Western marsh harrier", "parent_taxon", "Circus"]]}
+{"id": "ont_9_nature_test_22", "response": "parent_taxon(Abadina virus,Palyam virus)\nparent_taxon(Palyam virus,Orbivirus)\nparent_taxon(Palyam virus,Palyam serogroup)", "triples": [["Abadina virus", "parent_taxon", "Palyam virus"], ["Palyam virus", "parent_taxon", "Orbivirus"], ["Palyam virus", "parent_taxon", "Palyam serogroup"]]}
+{"id": "ont_9_nature_test_23", "response": "parent_taxon(Japanese wobbegong,Orectolobus)", "triples": [["Japanese wobbegong", "parent_taxon", "Orectolobus"]]}
+{"id": "ont_9_nature_test_24", "response": "taxon_common_name(Cerithium,ceriths)", "triples": [["Cerithium", "taxon_common_name", "ceriths"]]}
+{"id": "ont_9_nature_test_25", "response": "parent_taxon(Bhut jolokia,Capsicum chinense)\nparent_taxon(Bhut jolokia,Capsicum frutescens)", "triples": [["Bhut jolokia", "parent_taxon", "Capsicum chinense"], ["Bhut jolokia", "parent_taxon", "Capsicum frutescens"]]}
+{"id": "ont_9_nature_test_26", "response": "parent_taxon(White-browed Purpletuft,Purpletuft)", "triples": [["White-browed Purpletuft", "parent_taxon", "Purpletuft"]]}
+{"id": "ont_9_nature_test_27", "response": "parent_taxon(Cinnamomum,Lauraceae)", "triples": [["Cinnamomum", "parent_taxon", "Lauraceae"]]}
+{"id": "ont_9_nature_test_28", "response": "parent_taxon(Tadorninae,Anatidae)", "triples": [["Tadorninae", "parent_taxon", "Anatidae"]]}
+{"id": "ont_9_nature_test_29", "response": "parent_taxon(koala,Phascolarctos)\ntaxon_synonym(koala,koala bear)", "triples": [["koala", "parent_taxon", "Phascolarctos"], ["koala", "taxon_synonym", "koala bear"]]}
+{"id": "ont_9_nature_test_30", "response": "parent_taxon(Dasyuridae,Dasyuromorphia)", "triples": [["Dasyuridae", "parent_taxon", "Dasyuromorphia"]]}
+{"id": "ont_9_nature_test_31", "response": "taxon_synonym(Royal tern,Thalasseus maximus)", "triples": [["Royal tern", "taxon_synonym", "Thalasseus maximus"]]}
+{"id": "ont_9_nature_test_32", "response": "parent_taxon(Aerides,Orchidaceae)\ntaxon_common_name(Aerides,cat's-tail orchids)\ntaxon_common_name(Aerides,fox brush orchids)", "triples": [["Aerides", "parent_taxon", "Orchidaceae"], ["Aerides", "taxon_common_name", "cat's-tail orchids"], ["Aerides", "taxon_common_name", "fox brush orchids"]]}
+{"id": "ont_9_nature_test_33", "response": "parent_taxon(banded kokopu,Galaxias)", "triples": [["banded kokopu", "parent_taxon", "Galaxias"]]}
+{"id": "ont_9_nature_test_34", "response": "parent_taxon(Nesoluma,Sapotaceae)", "triples": [["Nesoluma", "parent_taxon", "Sapotaceae"]]}
+{"id": "ont_9_nature_test_35", "response": "taxon_common_name(Eucalyptus,gums)\ntaxon_common_name(Eucalyptus,eucalypts)", "triples": [["Eucalyptus", "taxon_common_name", "gums"], ["Eucalyptus", "taxon_common_name", "eucalypts"]]}
+{"id": "ont_9_nature_test_36", "response": "parent_taxon(Pomacea,Ampullariidae)\ntaxon_common_name(Pomacea,apple snails)", "triples": [["Pomacea", "parent_taxon", "Ampullariidae"], ["Pomacea", "taxon_common_name", "apple snails"]]}
+{"id": "ont_9_nature_test_37", "response": "parent_taxon(Grey seal,Halichoerus)", "triples": [["Grey seal", "parent_taxon", "Halichoerus"]]}
+{"id": "ont_9_nature_test_38", "response": "parent_taxon(fire salamander,Salamandra)", "triples": [["fire salamander", "parent_taxon", "Salamandra"]]}
+{"id": "ont_9_nature_test_39", "response": "parent_taxon(Wilson's snipe,Gallinago)", "triples": [["Wilson's snipe", "parent_taxon", "Gallinago"]]}
+{"id": "ont_9_nature_test_40", "response": "parent_taxon(Australian Swiftlet,Aerodramus)", "triples": [["Australian Swiftlet", "parent_taxon", "Aerodramus"]]}
+{"id": "ont_9_nature_test_41", "response": "taxon_synonym(Eumetazoa,Diploblasts)\ntaxon_synonym(Eumetazoa,Epitheliozoa)\ntaxon_synonym(Eumetazoa,Histozoa)", "triples": [["Eumetazoa", "taxon_synonym", "Diploblasts"], ["Eumetazoa", "taxon_synonym", "Epitheliozoa"], ["Eumetazoa", "taxon_synonym", "Histozoa"]]}
+{"id": "ont_9_nature_test_42", "response": "taxon_common_name(Larus,Gull)", "triples": [["Larus", "taxon_common_name", "Gull"]]}
+{"id": "ont_9_nature_test_43", "response": "taxon_common_name(Balistes,triggerfish)", "triples": [["Balistes", "taxon_common_name", "triggerfish"]]}
+{"id": "ont_9_nature_test_44", "response": "parent_taxon(genus,Cichlasomatini)\nparent_taxon(Cichlasomatini,Cichlasomatinae)", "triples": [["genus", "parent_taxon", "Cichlasomatini"], ["Cichlasomatini", "parent_taxon", "Cichlasomatinae"]]}
+{"id": "ont_9_nature_test_45", "response": "", "triples": []}
+{"id": "ont_9_nature_test_46", "response": "parent_taxon(M. americana,M. nigra)", "triples": [["M. americana", "parent_taxon", "M. nigra"]]}
+{"id": "ont_9_nature_test_47", "response": "parent_taxon(Cricotopus,Orthocladiinae)\nparent_taxon(Orthocladiinae,Chironomidae)", "triples": [["Cricotopus", "parent_taxon", "Orthocladiinae"], ["Orthocladiinae", "parent_taxon", "Chironomidae"]]}
+{"id": "ont_9_nature_test_48", "response": "parent_taxon(Carlia,Lygosominae)", "triples": [["Carlia", "parent_taxon", "Lygosominae"]]}
+{"id": "ont_9_nature_test_49", "response": "Habitat(Eider,Sea)", "triples": [["Eider", "Habitat", "Sea"]]}
+{"id": "ont_9_nature_test_50", "response": "parent_taxon(Telchin,Castniidae)", "triples": [["Telchin", "parent_taxon", "Castniidae"]]}
+{"id": "ont_9_nature_test_51", "response": "parent_taxon(American mink,Neovison)", "triples": [["American mink", "parent_taxon", "Neovison"]]}
+{"id": "ont_9_nature_test_52", "response": "parent_taxon(Apinae,Apidae)", "triples": [["Apinae", "parent_taxon", "Apidae"]]}
+{"id": "ont_9_nature_test_53", "response": "parent_taxon(Firewood catfish,Sorubimichthys)", "triples": [["Firewood catfish", "parent_taxon", "Sorubimichthys"]]}
+{"id": "ont_9_nature_test_54", "response": "parent_taxon(Priapulida,Ecdysozoa)\nparent_taxon(Kinorhyncha,Ecdysozoa)\nparent_taxon(Loricifera,Ecdysozoa)\nparent_taxon(Priapulida,Scalidophora)\nparent_taxon(Kinorhyncha,Scalidophora)\nparent_taxon(Loricifera,Scalidophora)", "triples": [["Priapulida", "parent_taxon", "Ecdysozoa"], ["Kinorhyncha", "parent_taxon", "Ecdysozoa"], ["Loricifera", "parent_taxon", "Ecdysozoa"], ["Priapulida", "parent_taxon", "Scalidophora"], ["Kinorhyncha", "parent_taxon", "Scalidophora"], ["Loricifera", "parent_taxon", "Scalidophora"]]}
+{"id": "ont_9_nature_test_55", "response": "taxon_common_name(Pleuronectes platessa,European plaice)\nparent_taxon(Pleuronectes platessa,Pleuronectes)", "triples": [["Pleuronectes platessa", "taxon_common_name", "European plaice"], ["Pleuronectes platessa", "parent_taxon", "Pleuronectes"]]}
+{"id": "ont_9_nature_test_56", "response": "parent_taxon(Long-tailed duck,Clangula)", "triples": [["Long-tailed duck", "parent_taxon", "Clangula"]]}
+{"id": "ont_9_nature_test_57", "response": "taxon_synonym(Lepidium sativum,garden cress)\ntaxon_synonym(Lepidium sativum,curly cress)", "triples": [["Lepidium sativum", "taxon_synonym", "garden cress"], ["Lepidium sativum", "taxon_synonym", "curly cress"]]}
+{"id": "ont_9_nature_test_58", "response": "parent_taxon(Tridesmostemon,Sapotaceae)", "triples": [["Tridesmostemon", "parent_taxon", "Sapotaceae"]]}
+{"id": "ont_9_nature_test_59", "response": "parent_taxon(suctoria,Phyllopharyngea)", "triples": [["suctoria", "parent_taxon", "Phyllopharyngea"]]}
+{"id": "ont_9_nature_test_60", "response": "taxon_synonym(Canterbury mudfish,kowaro)", "triples": [["Canterbury mudfish", "taxon_synonym", "kowaro"]]}
+{"id": "ont_9_nature_test_61", "response": "mountain_range(Mount Eisenhower,Presidential Range)", "triples": [["Mount Eisenhower", "mountain_range", "Presidential Range"]]}
+{"id": "ont_9_nature_test_62", "response": "mountain_range(Mount Eyskens,Queen Fabiola Mountains)", "triples": [["Mount Eyskens", "mountain_range", "Queen Fabiola Mountains"]]}
+{"id": "ont_9_nature_test_63", "response": "mountain_range(Rockeskyller Kopf,Eifel mountains)", "triples": [["Rockeskyller Kopf", "mountain_range", "Eifel mountains"]]}
+{"id": "ont_9_nature_test_64", "response": "mountain_range(Hochkelberg,Vulkan Eifel)", "triples": [["Hochkelberg", "mountain_range", "Vulkan Eifel"]]}
+{"id": "ont_9_nature_test_65", "response": "mountain_range(Governor Mountain,Wilson Hills)", "triples": [["Governor Mountain", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_66", "response": "mountain_range(Angelariy,Metlichina Ridge)", "triples": [["Angelariy", "mountain_range", "Metlichina Ridge"]]}
+{"id": "ont_9_nature_test_67", "response": "mountain_range(Celestial Peak,Wilson Hills)", "triples": [["Celestial Peak", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_68", "response": "mountain_range(Mount Van Pelt,Queen Fabiola Mountains)", "triples": [["Mount Van Pelt", "mountain_range", "Queen Fabiola Mountains"]]}
+{"id": "ont_9_nature_test_69", "response": "mountain_range(Poorman Peak,Wilson Hills)", "triples": [["Poorman Peak", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_70", "response": "mountain_range(Schwarze Grat,Adelegg)  \nparent_peak(Schwarze Grat,Ursersberg)", "triples": [["Schwarze Grat", "mountain_range", "Adelegg"], ["Schwarze Grat", "parent_peak", "Ursersberg"]]}
+{"id": "ont_9_nature_test_71", "response": "mountain_range(Mount Moriya,Lovech Heights)", "triples": [["Mount Moriya", "mountain_range", "Lovech Heights"]]}
+{"id": "ont_9_nature_test_72", "response": "parent_peak(Salzburger Kopf,Fuchskaute)\nparent_peak(Salzburger Kopf,Stegskopf)", "triples": [["Salzburger Kopf", "parent_peak", "Fuchskaute"], ["Salzburger Kopf", "parent_peak", "Stegskopf"]]}
+{"id": "ont_9_nature_test_73", "response": "mountain_range(Il Madone,Lepontine Alps)", "triples": [["Il Madone", "mountain_range", "Lepontine Alps"]]}
+{"id": "ont_9_nature_test_74", "response": "mountain_range(Kahiltna Dome,Alaska Range)", "triples": [["Kahiltna Dome", "mountain_range", "Alaska Range"]]}
+{"id": "ont_9_nature_test_75", "response": "mountain_range(This prominent mountain,Howson Range)", "triples": [["This prominent mountain", "mountain_range", "Howson Range"]]}
+{"id": "ont_9_nature_test_76", "response": "mountain_range(Mount Sannosawa,Kiso Mountains)", "triples": [["Mount Sannosawa", "mountain_range", "Kiso Mountains"]]}
+{"id": "ont_9_nature_test_77", "response": "mountain_range(Veitskopf,Eifel mountains)", "triples": [["Veitskopf", "mountain_range", "Eifel mountains"]]}
+{"id": "ont_9_nature_test_78", "response": "mountain_range(Rayna Knyaginya Peak,Bowles Ridge)", "triples": [["Rayna Knyaginya Peak", "mountain_range", "Bowles Ridge"]]}
+{"id": "ont_9_nature_test_79", "response": "mountain_range(Jones Nunatak,Wilson Hills)", "triples": [["Jones Nunatak", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_80", "response": "mountain_range(Ove Peak,Ahlmann Ridge)", "triples": [["Ove Peak", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_81", "response": "mountain_range(Ticha Peak,Bowles Ridge)", "triples": [["Ticha Peak", "mountain_range", "Bowles Ridge"]]}
+{"id": "ont_9_nature_test_82", "response": "mountain_range(Cima di Bri,Lepontine Alps)", "triples": [["Cima di Bri", "mountain_range", "Lepontine Alps"]]}
+{"id": "ont_9_nature_test_83", "response": "mountain_range(The feature,Ahlmann Ridge)", "triples": [["The feature", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_84", "response": "mountain_range(Liljequist Heights,Ahlmann Ridge)", "triples": [["Liljequist Heights", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_85", "response": "mountain_range(Mureno Peak,Aldomir Ridge)", "triples": [["Mureno Peak", "mountain_range", "Aldomir Ridge"]]}
+{"id": "ont_9_nature_test_86", "response": "mountain_range(Castru Valnera,Cantabrian Mountains)", "triples": [["Castru Valnera", "mountain_range", "Cantabrian Mountains"]]}
+{"id": "ont_9_nature_test_87", "response": "mountain_range(Nichols Rock,Kinsey Ridge)", "triples": [["Nichols Rock", "mountain_range", "Kinsey Ridge"]]}
+{"id": "ont_9_nature_test_88", "response": "mountain_range(Krusha Peak,Owen Ridge)", "triples": [["Krusha Peak", "mountain_range", "Owen Ridge"]]}
+{"id": "ont_9_nature_test_89", "response": "mountain_range(mountain,Vorderer Bavarian Forest)", "triples": [["mountain", "mountain_range", "Vorderer Bavarian Forest"]]}
+{"id": "ont_9_nature_test_90", "response": "mountain_range(Lardigo Peak,Snegotin Ridge)", "triples": [["Lardigo Peak", "mountain_range", "Snegotin Ridge"]]}
+{"id": "ont_9_nature_test_91", "response": "taxon_synonym(Ernstberg,Erresberg)\nmountain_range(Ernstberg,Eifel)", "triples": [["Ernstberg", "taxon_synonym", "Erresberg"], ["Ernstberg", "mountain_range", "Eifel"]]}
+{"id": "ont_9_nature_test_92", "response": "mountain_range(Mount Kasa,Hida Mountains)", "triples": [["Mount Kasa", "mountain_range", "Hida Mountains"]]}
+{"id": "ont_9_nature_test_93", "response": "mountain_range(Istind Peak,Ahlmann Ridge)", "triples": [["Istind Peak", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_94", "response": "mountain_range(Schwanberg,Steigerwald)", "triples": [["Schwanberg", "mountain_range", "Steigerwald"]]}
+{"id": "ont_9_nature_test_95", "response": "mountain_range(Mount Foraker,Alaska Range)", "triples": [["Mount Foraker", "mountain_range", "Alaska Range"]]}
+{"id": "ont_9_nature_test_96", "response": "mountain_range(Hohe Acht,Eifel)", "triples": [["Hohe Acht", "mountain_range", "Eifel"]]}
+{"id": "ont_9_nature_test_97", "response": "mountain_range(Mount Blowaway,Wilson Hills)", "triples": [["Mount Blowaway", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_98", "response": "mountain_range(Mount Yake,Hida Mountains)", "triples": [["Mount Yake", "mountain_range", "Hida Mountains"]]}
+{"id": "ont_9_nature_test_99", "response": "mountain_range(Shinmoedake,Mount Kirishima)", "triples": [["Shinmoedake", "mountain_range", "Mount Kirishima"]]}
+{"id": "ont_9_nature_test_100", "response": "mountain_range(Blanca Peak,Sierra Blanca)", "triples": [["Blanca Peak", "mountain_range", "Sierra Blanca"]]}
+{"id": "ont_9_nature_test_101", "response": "mountain_range(Mount Hehuan,Central Mountain Range)", "triples": [["Mount Hehuan", "mountain_range", "Central Mountain Range"]]}
+{"id": "ont_9_nature_test_102", "response": "mountain_range(Mount Bowles,Bowles Ridge)", "triples": [["Mount Bowles", "mountain_range", "Bowles Ridge"]]}
+{"id": "ont_9_nature_test_103", "response": "mountain_range(Pigeon House Mountain,Budawang Range)", "triples": [["Pigeon House Mountain", "mountain_range", "Budawang Range"]]}
+{"id": "ont_9_nature_test_104", "response": "mountain_range(Seebuck,Black Forest)", "triples": [["Seebuck", "mountain_range", "Black Forest"]]}
+{"id": "ont_9_nature_test_105", "response": "mountain_range(Brautnuten Peak,Ahlmann Ridge)", "triples": [["Brautnuten Peak", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_106", "response": "mountain_range(the feature,Giggenbach Ridge)", "triples": [["the feature", "mountain_range", "Giggenbach Ridge"]]}
+{"id": "ont_9_nature_test_107", "response": "mountain_range(Coughran Peak,Kyle Hills)", "triples": [["Coughran Peak", "mountain_range", "Kyle Hills"]]}
+{"id": "ont_9_nature_test_108", "response": "mountain_range(Dymcoff Crag,Lovech Heights)", "triples": [["Dymcoff Crag", "mountain_range", "Lovech Heights"]]}
+{"id": "ont_9_nature_test_109", "response": "mountain_range(Jekselen Peak,Ahlmann Ridge)", "triples": [["Jekselen Peak", "mountain_range", "Ahlmann Ridge"]]}
+{"id": "ont_9_nature_test_110", "response": "mountain_range(Testa del Rutor,Graian Alps)", "triples": [["Testa del Rutor", "mountain_range", "Graian Alps"]]}
+{"id": "ont_9_nature_test_111", "response": "mountain_range(Daumberg,Odenwald)", "triples": [["Daumberg", "mountain_range", "Odenwald"]]}
+{"id": "ont_9_nature_test_112", "response": "mountain_range(Bourgeois Nunataks,Wilson Hills)", "triples": [["Bourgeois Nunataks", "mountain_range", "Wilson Hills"]]}
+{"id": "ont_9_nature_test_113", "response": "mountain_range(Black Crescent Mountain,Crescent Range)", "triples": [["Black Crescent Mountain", "mountain_range", "Crescent Range"]]}
+{"id": "ont_9_nature_test_114", "response": "mountain_range(Cima di Broglio,Lepontine Alps)", "triples": [["Cima di Broglio", "mountain_range", "Lepontine Alps"]]}
+{"id": "ont_9_nature_test_115", "response": "", "triples": []}
+{"id": "ont_9_nature_test_116", "response": "mountain_range(Melnik Peak,Melnik Ridge)", "triples": [["Melnik Peak", "mountain_range", "Melnik Ridge"]]}
+{"id": "ont_9_nature_test_117", "response": "mountain_range(Pizzo Pesciora,Lepontine Alps)", "triples": [["Pizzo Pesciora", "mountain_range", "Lepontine Alps"]]}
+{"id": "ont_9_nature_test_118", "response": "mountain_range(Mount Lindsey,Sierra Blanca Massif)", "triples": [["Mount Lindsey", "mountain_range", "Sierra Blanca Massif"]]}
+{"id": "ont_9_nature_test_119", "response": "mountain_range(San Emigdio Mountain,San Emigdio Mountains)", "triples": [["San Emigdio Mountain", "mountain_range", "San Emigdio Mountains"]]}
+{"id": "ont_9_nature_test_120", "response": "mountain_range(Hessler Peak,Heritage Range)", "triples": [["Hessler Peak", "mountain_range", "Heritage Range"]]}
+{"id": "ont_9_nature_test_121", "response": "parent_peak(Scafell Pike,Scafell Pike)", "triples": [["Scafell Pike", "parent_peak", "Scafell Pike"]]}
+{"id": "ont_9_nature_test_122", "response": "parent_peak(Testa del Leone,Matterhorn)", "triples": [["Testa del Leone", "parent_peak", "Matterhorn"]]}
+{"id": "ont_9_nature_test_123", "response": "mountain_range(Le Catogne,Mont Blanc massif)", "triples": [["Le Catogne", "mountain_range", "Mont Blanc massif"]]}
+{"id": "ont_9_nature_test_124", "response": "parent_peak(Sg\u00f2r an Lochain Uaine,Cairn Toul)\ntaxon_synonym(Sg\u00f2r an Lochain Uaine,The Angel's Peak)", "triples": [["Sg\u00f2r an Lochain Uaine", "parent_peak", "Cairn Toul"], ["Sg\u00f2r an Lochain Uaine", "taxon_synonym", "The Angel's Peak"]]}
+{"id": "ont_9_nature_test_125", "response": "parent_peak(Kidsty Pike,Rampsgill Head)", "triples": [["Kidsty Pike", "parent_peak", "Rampsgill Head"]]}
+{"id": "ont_9_nature_test_126", "response": "mountain_range(Croix de fer,Mont Blanc Massif)", "triples": [["Croix de fer", "mountain_range", "Mont Blanc Massif"]]}
+{"id": "ont_9_nature_test_127", "response": "parent_peak(Fusilier Peak,Constable Peak)", "triples": [["Fusilier Peak", "parent_peak", "Constable Peak"]]}
+{"id": "ont_9_nature_test_128", "response": "mountain_range(Mount Foraker,Alaska Range)", "triples": [["Mount Foraker", "mountain_range", "Alaska Range"]]}
+{"id": "ont_9_nature_test_129", "response": "mountain_range(Wolfhole Crag,Forest of Bowland)\nmountain_range(White Hill,Forest of Bowland)\nmountain_range(Ingleborough,Forest of Bowland)", "triples": [["Wolfhole Crag", "mountain_range", "Forest of Bowland"], ["White Hill", "mountain_range", "Forest of Bowland"], ["Ingleborough", "mountain_range", "Forest of Bowland"]]}
+{"id": "ont_9_nature_test_130", "response": "parent_peak(Piz Julier,Piz Calderas)", "triples": [["Piz Julier", "parent_peak", "Piz Calderas"]]}
+{"id": "ont_9_nature_test_131", "response": "mountain_range(Piz Scerscen,Bernina Range)", "triples": [["Piz Scerscen", "mountain_range", "Bernina Range"]]}
+{"id": "ont_9_nature_test_132", "response": "mountain_range(Foel y Geifr,Aran Fawddwy group)\nparent_peak(Foel y Geifr,Esgeiriau Gwynion)", "triples": [["Foel y Geifr", "mountain_range", "Aran Fawddwy group"], ["Foel y Geifr", "parent_peak", "Esgeiriau Gwynion"]]}
+{"id": "ont_9_nature_test_133", "response": "parent_peak(Pointe de Zinal,Dent Blanche)", "triples": [["Pointe de Zinal", "parent_peak", "Dent Blanche"]]}
+{"id": "ont_9_nature_test_134", "response": "", "triples": []}
+{"id": "ont_9_nature_test_135", "response": "parent_peak(Grand Gendarme,Weisshorn)", "triples": [["Grand Gendarme", "parent_peak", "Weisshorn"]]}
+{"id": "ont_9_nature_test_136", "response": "parent_peak(Lenzerhorn,Aroser Rothorn)", "triples": [["Lenzerhorn", "parent_peak", "Aroser Rothorn"]]}
+{"id": "ont_9_nature_test_137", "response": "mountain_range(White Mountain Peak,White Mountains)", "triples": [["White Mountain Peak", "mountain_range", "White Mountains"]]}
+{"id": "ont_9_nature_test_138", "response": "mountain_range(Le Linleu,Diablerets)\nmountain_range(Le Linleu,Dents du Midi)\nmountain_range(Le Linleu,Cornettes de Bise)", "triples": [["Le Linleu", "mountain_range", "Diablerets"], ["Le Linleu", "mountain_range", "Dents du Midi"], ["Le Linleu", "mountain_range", "Cornettes de Bise"]]}
+{"id": "ont_9_nature_test_139", "response": "parent_peak(Bietenhorn,Schilthorn)", "triples": [["Bietenhorn", "parent_peak", "Schilthorn"]]}
+{"id": "ont_9_nature_test_140", "response": "parent_peak(Wasenhorn,Monte Leone)", "triples": [["Wasenhorn", "parent_peak", "Monte Leone"]]}
+{"id": "ont_9_nature_test_141", "response": "parent_peak(Helvellyn,Scafell Pike)\nparent_peak(Helvellyn,Sca Fell)", "triples": [["Helvellyn", "parent_peak", "Scafell Pike"], ["Helvellyn", "parent_peak", "Sca Fell"]]}
+{"id": "ont_9_nature_test_142", "response": "parent_peak(Trifthorn,Ober Gabelhorn)", "triples": [["Trifthorn", "parent_peak", "Ober Gabelhorn"]]}
+{"id": "ont_9_nature_test_143", "response": "mountain_range(Caisteal Abhail,chain of three Corbetts)\nmountain_range(Goat Fell,chain of three Corbetts)", "triples": [["Caisteal Abhail", "mountain_range", "chain of three Corbetts"], ["Goat Fell", "mountain_range", "chain of three Corbetts"]]}
+{"id": "ont_9_nature_test_144", "response": "mountain_range(Ben A'an,Arrochar Alps)", "triples": [["Ben A'an", "mountain_range", "Arrochar Alps"]]}
+{"id": "ont_9_nature_test_145", "response": "parent_peak(Piz \u00dcertsch,Piz Kesch)", "triples": [["Piz \u00dcertsch", "parent_peak", "Piz Kesch"]]}
+{"id": "ont_9_nature_test_146", "response": "parent_peak(Croaghaun,Slievemore)", "triples": [["Croaghaun", "parent_peak", "Slievemore"]]}
+{"id": "ont_9_nature_test_147", "response": "", "triples": []}
+{"id": "ont_9_nature_test_148", "response": "parent_peak(Black Mixen,Rhos Fawr)", "triples": [["Black Mixen", "parent_peak", "Rhos Fawr"]]}
+{"id": "ont_9_nature_test_149", "response": "parent_peak(Mont Durand,Ober Gabelhorn)", "triples": [["Mont Durand", "parent_peak", "Ober Gabelhorn"]]}
+{"id": "ont_9_nature_test_150", "response": "mountain_range(Mount Muir,Sierra Nevada)", "triples": [["Mount Muir", "mountain_range", "Sierra Nevada"]]}
+{"id": "ont_9_nature_test_151", "response": "parent_peak(Cima Rossa,Vogelberg)", "triples": [["Cima Rossa", "parent_peak", "Vogelberg"]]}
+{"id": "ont_9_nature_test_152", "response": "mountain_range(Piz Chavalatsch,Ortler Range)", "triples": [["Piz Chavalatsch", "mountain_range", "Ortler Range"]]}
+{"id": "ont_9_nature_test_153", "response": "parent_peak(Craig Cerrig-gleisiad,Fan Fawr)", "triples": [["Craig Cerrig-gleisiad", "parent_peak", "Fan Fawr"]]}
+{"id": "ont_9_nature_test_154", "response": "parent_peak(Ben Loyal,Ben Hope)", "triples": [["Ben Loyal", "parent_peak", "Ben Hope"]]}
+{"id": "ont_9_nature_test_155", "response": "mountain_range(Mount Frissell,South Taconic)", "triples": [["Mount Frissell", "mountain_range", "South Taconic"]]}
+{"id": "ont_9_nature_test_156", "response": "parent_peak(It,Hoh Brisen)", "triples": [["It", "parent_peak", "Hoh Brisen"]]}
+{"id": "ont_9_nature_test_157", "response": "parent_peak(Mazzaspitz,Piz Platta)", "triples": [["Mazzaspitz", "parent_peak", "Piz Platta"]]}
+{"id": "ont_9_nature_test_158", "response": "parent_peak(Pizzo Pesciora,Witenwasserenstock)\nparent_peak(Pizzo Pesciora,Pizzo Rotondo)", "triples": [["Pizzo Pesciora", "parent_peak", "Witenwasserenstock"], ["Pizzo Pesciora", "parent_peak", "Pizzo Rotondo"]]}
+{"id": "ont_9_nature_test_159", "response": "parent_peak(Petit Darray,Grand Darray)", "triples": [["Petit Darray", "parent_peak", "Grand Darray"]]}
+{"id": "ont_9_nature_test_160", "response": "parent_peak(mountain,Albristhorn)", "triples": [["mountain", "parent_peak", "Albristhorn"]]}
+{"id": "ont_9_nature_test_161", "response": "parent_peak(Chli Spannort,Gross Spannort)", "triples": [["Chli Spannort", "parent_peak", "Gross Spannort"]]}
+{"id": "ont_9_nature_test_162", "response": "parent_peak(Carnedd Dafydd,Carnedd Llewelyn)\nmountain_range(Carnedd Dafydd,Carneddau)", "triples": [["Carnedd Dafydd", "parent_peak", "Carnedd Llewelyn"], ["Carnedd Dafydd", "mountain_range", "Carneddau"]]}
+{"id": "ont_9_nature_test_163", "response": "mountain_range(Le G\u00e9n\u00e9pi,Mont Blanc massif)", "triples": [["Le G\u00e9n\u00e9pi", "mountain_range", "Mont Blanc massif"]]}
+{"id": "ont_9_nature_test_164", "response": "", "triples": []}
+{"id": "ont_9_nature_test_165", "response": "parent_peak(Agassizhorn,Finsteraarhorn)", "triples": [["Agassizhorn", "parent_peak", "Finsteraarhorn"]]}
+{"id": "ont_9_nature_test_166", "response": "mountain_range(Dammersfeldkuppe,Rh\u00f6n)", "triples": [["Dammersfeldkuppe", "mountain_range", "Rh\u00f6n"]]}
+{"id": "ont_9_nature_test_167", "response": "", "triples": []}
+{"id": "ont_9_nature_test_168", "response": "parent_peak(Piz Boval,Piz Giuv)", "triples": [["Piz Boval", "parent_peak", "Piz Giuv"]]}
+{"id": "ont_9_nature_test_169", "response": "parent_peak(Schneefernerkopf,Zugspitze massif)\nmountain_range(Schneefernerkopf,Alps)", "triples": [["Schneefernerkopf", "parent_peak", "Zugspitze massif"], ["Schneefernerkopf", "mountain_range", "Alps"]]}
+{"id": "ont_9_nature_test_170", "response": "mountain_range(Momhil Sar,Hispar Muztagh)\nparent_peak(Momhil Sar,Trivor)", "triples": [["Momhil Sar", "mountain_range", "Hispar Muztagh"], ["Momhil Sar", "parent_peak", "Trivor"]]}
+{"id": "ont_9_nature_test_171", "response": "parent_peak(Siguang Ri,Cho Oyu)", "triples": [["Siguang Ri", "parent_peak", "Cho Oyu"]]}
+{"id": "ont_9_nature_test_172", "response": "parent_peak(Piz Polaschin,Piz Lagrev)", "triples": [["Piz Polaschin", "parent_peak", "Piz Lagrev"]]}
+{"id": "ont_9_nature_test_173", "response": "mountain_range(Piz Fliana,Silvretta Alps)\nparent_peak(Piz Fliana,Piz Buin)", "triples": [["Piz Fliana", "mountain_range", "Silvretta Alps"], ["Piz Fliana", "parent_peak", "Piz Buin"]]}
+{"id": "ont_9_nature_test_174", "response": "parent_peak(Fan Llia,Fan Fawr)", "triples": [["Fan Llia", "parent_peak", "Fan Fawr"]]}
+{"id": "ont_9_nature_test_175", "response": "parent_peak(Schalihorn,Zinalrothorn)\nparent_peak(Schalihorn,Weisshorn)", "triples": [["Schalihorn", "parent_peak", "Zinalrothorn"], ["Schalihorn", "parent_peak", "Weisshorn"]]}
+{"id": "ont_9_nature_test_176", "response": "mountain_range(Dents du Midi,Mont Blanc Massif)", "triples": [["Dents du Midi", "mountain_range", "Mont Blanc Massif"]]}
+{"id": "ont_9_nature_test_177", "response": "", "triples": []}
+{"id": "ont_9_nature_test_178", "response": "mountain_range(Aiguille Verte,10-km-long ridge)\nmountain_range(Mont Dolent,10-km-long ridge)", "triples": [["Aiguille Verte", "mountain_range", "10-km-long ridge"], ["Mont Dolent", "mountain_range", "10-km-long ridge"]]}
+{"id": "ont_9_nature_test_179", "response": "parent_peak(Puntone dei Fraci\u00f2n,Vogelberg)", "triples": [["Puntone dei Fraci\u00f2n", "parent_peak", "Vogelberg"]]}
+{"id": "ont_9_nature_test_180", "response": "mountain_range(Klein Matterhorn,Breithorn massif)", "triples": [["Klein Matterhorn", "mountain_range", "Breithorn massif"]]}
+{"id": "ont_9_nature_test_181", "response": "", "triples": []}
+{"id": "ont_9_nature_test_182", "response": "tributary(second branch,Kargyag River)\ntributary(second branch,Tsarap River)", "triples": [["second branch", "tributary", "Kargyag River"], ["second branch", "tributary", "Tsarap River"]]}
+{"id": "ont_9_nature_test_183", "response": "", "triples": []}
+{"id": "ont_9_nature_test_184", "response": "tributary(Iller,Breitach)\ntributary(Iller,Stillach)\ntributary(Iller,Trettach)", "triples": [["Iller", "tributary", "Breitach"], ["Iller", "tributary", "Stillach"], ["Iller", "tributary", "Trettach"]]}
+{"id": "ont_9_nature_test_185", "response": "tributary(Aitra,Gausant\u0117)  \ntributary(Aitra,Snietala)  \ntributary(Aitra,Antvard\u0117)  \ntributary(Aitra,Imsr\u0117)  \ntributary(Aitra,Akmena)  \ntributary(Aitra,Alsa)  \ntributary(Aitra,Vidauja)", "triples": [["Aitra", "tributary", "Gausant\u0117"], ["Aitra", "tributary", "Snietala"], ["Aitra", "tributary", "Antvard\u0117"], ["Aitra", "tributary", "Imsr\u0117"], ["Aitra", "tributary", "Akmena"], ["Aitra", "tributary", "Alsa"], ["Aitra", "tributary", "Vidauja"]]}
+{"id": "ont_9_nature_test_186", "response": "tributary(Tonawanda Creek,Niagara River)\ntributary(Welland River,Niagara River)", "triples": [["Tonawanda Creek", "tributary", "Niagara River"], ["Welland River", "tributary", "Niagara River"]]}
+{"id": "ont_9_nature_test_187", "response": "tributary(Brule River,Menominee River)", "triples": [["Brule River", "tributary", "Menominee River"]]}
+{"id": "ont_9_nature_test_188", "response": "", "triples": []}
+{"id": "ont_9_nature_test_189", "response": "tributary(Gran Valira,Valira del Nord river)", "triples": [["Gran Valira", "tributary", "Valira del Nord river"]]}
+{"id": "ont_9_nature_test_190", "response": "tributary(Betsiboka,Ikopa River)", "triples": [["Betsiboka", "tributary", "Ikopa River"]]}
+{"id": "ont_9_nature_test_191", "response": "", "triples": []}
+{"id": "ont_9_nature_test_192", "response": "tributary(Congo,Kasai River)", "triples": [["Congo", "tributary", "Kasai River"]]}
+{"id": "ont_9_nature_test_193", "response": "", "triples": []}
+{"id": "ont_9_nature_test_194", "response": "tributary(Somb,Yamuna)\ntributary(Hindon River,Yamuna)\nmouth_of_the_watercourse(Yamuna,Chambal)", "triples": [["Somb", "tributary", "Yamuna"], ["Hindon River", "tributary", "Yamuna"], ["Yamuna", "mouth_of_the_watercourse", "Chambal"]]}
+{"id": "ont_9_nature_test_195", "response": "tributary(Suzhou Creek,Huangpu River)", "triples": [["Suzhou Creek", "tributary", "Huangpu River"]]}
+{"id": "ont_9_nature_test_196", "response": "mouth_of_the_watercourse(Benue River,Niger River)", "triples": [["Benue River", "mouth_of_the_watercourse", "Niger River"]]}
+{"id": "ont_9_nature_test_197", "response": "tributary(Wormsgraben,Zillierbach)", "triples": [["Wormsgraben", "tributary", "Zillierbach"]]}
+{"id": "ont_9_nature_test_198", "response": "tributary(Wakenitz,Trave)\ntributary(Stepenitz,Trave)", "triples": [["Wakenitz", "tributary", "Trave"], ["Stepenitz", "tributary", "Trave"]]}
+{"id": "ont_9_nature_test_199", "response": "tributary(Gambia River,Koulountou)", "triples": [["Gambia River", "tributary", "Koulountou"]]}
+{"id": "ont_9_nature_test_200", "response": "tributary(Tributaries,Ramme)\ntributary(Tributaries,Aue)\ntributary(Tributaries,Twiste)\ntributary(Tributaries,Bade)\ntributary(Tributaries,Bever)\ntributary(Tributaries,Mehe)", "triples": [["Tributaries", "tributary", "Ramme"], ["Tributaries", "tributary", "Aue"], ["Tributaries", "tributary", "Twiste"], ["Tributaries", "tributary", "Bade"], ["Tributaries", "tributary", "Bever"], ["Tributaries", "tributary", "Mehe"]]}
+{"id": "ont_9_nature_test_201", "response": "tributary(D\u00e3o River,Criz river)", "triples": [["D\u00e3o River", "tributary", "Criz river"]]}
+{"id": "ont_9_nature_test_202", "response": "tributary(Kasai river,Lulua river)\ntributary(Kasai river,Sankuru river)", "triples": [["Kasai river", "tributary", "Lulua river"], ["Kasai river", "tributary", "Sankuru river"]]}
+{"id": "ont_9_nature_test_203", "response": "tributary(Ourthe,Western Ourthe)", "triples": [["Ourthe", "tributary", "Western Ourthe"]]}
+{"id": "ont_9_nature_test_204", "response": "tributary(Kara Darya,Kurshab River)", "triples": [["Kara Darya", "tributary", "Kurshab River"]]}
+{"id": "ont_9_nature_test_205", "response": "tributary(Salzach,Lammer)", "triples": [["Salzach", "tributary", "Lammer"]]}
+{"id": "ont_9_nature_test_206", "response": "tributary(Unknown,Ramme)\ntributary(Unknown,Aue)\ntributary(Unknown,Twiste)\ntributary(Unknown,Bade)\ntributary(Unknown,Bever)\ntributary(Unknown,Mehe)", "triples": [["Unknown", "tributary", "Ramme"], ["Unknown", "tributary", "Aue"], ["Unknown", "tributary", "Twiste"], ["Unknown", "tributary", "Bade"], ["Unknown", "tributary", "Bever"], ["Unknown", "tributary", "Mehe"]]}
+{"id": "ont_9_nature_test_207", "response": "tributary(Ure,River Skell)", "triples": [["Ure", "tributary", "River Skell"]]}
+{"id": "ont_9_nature_test_208", "response": "origin_of_the_watercourse(Nelson River,Lake Winnipeg)\nmouth_of_the_watercourse(Nelson River,Hudson Bay)", "triples": [["Nelson River", "origin_of_the_watercourse", "Lake Winnipeg"], ["Nelson River", "mouth_of_the_watercourse", "Hudson Bay"]]}
+{"id": "ont_9_nature_test_209", "response": "origin_of_the_watercourse(Shire River,Lake Malawi)", "triples": [["Shire River", "origin_of_the_watercourse", "Lake Malawi"]]}
+{"id": "ont_9_nature_test_210", "response": "origin_of_the_watercourse(Lugenda River,Lake Amaramba/Lake Chiuta)\ntributary(Lugenda River,Ruvuma River)", "triples": [["Lugenda River", "origin_of_the_watercourse", "Lake Amaramba/Lake Chiuta"], ["Lugenda River", "tributary", "Ruvuma River"]]}
+{"id": "ont_9_nature_test_211", "response": "origin_of_the_watercourse(White Nile,Lake Victoria)", "triples": [["White Nile", "origin_of_the_watercourse", "Lake Victoria"]]}
+{"id": "ont_9_nature_test_212", "response": "origin_of_the_watercourse(Whatcom Creek,Lake Whatcom)", "triples": [["Whatcom Creek", "origin_of_the_watercourse", "Lake Whatcom"]]}
+{"id": "ont_9_nature_test_213", "response": "mouth_of_the_watercourse(Great Bear River,Mackenzie River)", "triples": [["Great Bear River", "mouth_of_the_watercourse", "Mackenzie River"]]}
+{"id": "ont_9_nature_test_214", "response": "tributary(Oued Guir,Oued Saoura)\ntributary(Oued Zouzfana,Oued Saoura)", "triples": [["Oued Guir", "tributary", "Oued Saoura"], ["Oued Zouzfana", "tributary", "Oued Saoura"]]}
+{"id": "ont_9_nature_test_215", "response": "tributary(Boneselva,Virvasselva)", "triples": [["Boneselva", "tributary", "Virvasselva"]]}
+{"id": "ont_9_nature_test_216", "response": "mouth_of_the_watercourse(Coulonge River,Ottawa River)\norigin_of_the_watercourse(Coulonge River,Lac au Barrage)", "triples": [["Coulonge River", "mouth_of_the_watercourse", "Ottawa River"], ["Coulonge River", "origin_of_the_watercourse", "Lac au Barrage"]]}
+{"id": "ont_9_nature_test_217", "response": "origin_of_the_watercourse(Kushiro,Lake Kussharo)", "triples": [["Kushiro", "origin_of_the_watercourse", "Lake Kussharo"]]}
+{"id": "ont_9_nature_test_218", "response": "origin_of_the_watercourse(Traful River,Traful Lake)\nmouth_of_the_watercourse(Traful River,Limay River)", "triples": [["Traful River", "origin_of_the_watercourse", "Traful Lake"], ["Traful River", "mouth_of_the_watercourse", "Limay River"]]}
+{"id": "ont_9_nature_test_219", "response": "tributary(Fulda,Weser)\ntributary(Werra,Weser)\nmouth_of_the_watercourse(Weser,North Sea)", "triples": [["Fulda", "tributary", "Weser"], ["Werra", "tributary", "Weser"], ["Weser", "mouth_of_the_watercourse", "North Sea"]]}
+{"id": "ont_9_nature_test_220", "response": "tributary(Wakool River,Edward River)\ntributary(Edward River,Murray)\ntributary(Niemur River,Wakool River)", "triples": [["Wakool River", "tributary", "Edward River"], ["Edward River", "tributary", "Murray"], ["Niemur River", "tributary", "Wakool River"]]}
+{"id": "ont_9_nature_test_221", "response": "origin_of_the_watercourse(Esopus Creek,Winnisook Lake)\nmountain_range(Slide Mountain,Catskills)\nmouth_of_the_watercourse(Esopus Creek,Hudson)", "triples": [["Esopus Creek", "origin_of_the_watercourse", "Winnisook Lake"], ["Slide Mountain", "mountain_range", "Catskills"], ["Esopus Creek", "mouth_of_the_watercourse", "Hudson"]]}
+{"id": "ont_9_nature_test_222", "response": "origin_of_the_watercourse(river,Waldo Lake)", "triples": [["river", "origin_of_the_watercourse", "Waldo Lake"]]}
+{"id": "ont_9_nature_test_223", "response": "origin_of_the_watercourse(Gega River,Lake Ritsa)\ntributary(Gega River,Bzyb River)", "triples": [["Gega River", "origin_of_the_watercourse", "Lake Ritsa"], ["Gega River", "tributary", "Bzyb River"]]}
+{"id": "ont_9_nature_test_224", "response": "origin_of_the_watercourse(Ruzizi,Lake Kivu)", "triples": [["Ruzizi", "origin_of_the_watercourse", "Lake Kivu"]]}
+{"id": "ont_9_nature_test_225", "response": "origin_of_the_watercourse(river,Edlandsvatnet)", "triples": [["river", "origin_of_the_watercourse", "Edlandsvatnet"]]}
+{"id": "ont_9_nature_test_226", "response": "origin_of_the_watercourse(Lopburi River,Chao Phraya River)", "triples": [["Lopburi River", "origin_of_the_watercourse", "Chao Phraya River"]]}
+{"id": "ont_9_nature_test_227", "response": "origin_of_the_watercourse(Kazan River,Kasba Lake)\nmouth_of_the_watercourse(Kazan River,Baker Lake)", "triples": [["Kazan River", "origin_of_the_watercourse", "Kasba Lake"], ["Kazan River", "mouth_of_the_watercourse", "Baker Lake"]]}
+{"id": "ont_9_nature_test_228", "response": "origin_of_the_watercourse(Snero,Tinnh\u00f8len)", "triples": [["Snero", "origin_of_the_watercourse", "Tinnh\u00f8len"]]}
+{"id": "ont_9_nature_test_229", "response": "origin_of_the_watercourse(Griboyedov Canal,Moyka River)", "triples": [["Griboyedov Canal", "origin_of_the_watercourse", "Moyka River"]]}
+{"id": "ont_9_nature_test_230", "response": "origin_of_the_watercourse(Akhurian River,Lake Arpi)\ntributary(Akhurian River,Aras River)\nmouth_of_the_watercourse(Akhurian River,Aras River)", "triples": [["Akhurian River", "origin_of_the_watercourse", "Lake Arpi"], ["Akhurian River", "tributary", "Aras River"], ["Akhurian River", "mouth_of_the_watercourse", "Aras River"]]}
+{"id": "ont_9_nature_test_231", "response": "origin_of_the_watercourse(Sabine Pass,Sabine Lake)", "triples": [["Sabine Pass", "origin_of_the_watercourse", "Sabine Lake"]]}
+{"id": "ont_9_nature_test_232", "response": "origin_of_the_watercourse(Enco,Panguipulli Lake)\nmouth_of_the_watercourse(Enco,Ri\u00f1ihue Lake)", "triples": [["Enco", "origin_of_the_watercourse", "Panguipulli Lake"], ["Enco", "mouth_of_the_watercourse", "Ri\u00f1ihue Lake"]]}
+{"id": "ont_9_nature_test_233", "response": "origin_of_the_watercourse(river,Ogallala Aquifer)", "triples": [["river", "origin_of_the_watercourse", "Ogallala Aquifer"]]}
+{"id": "ont_9_nature_test_234", "response": "mouth_of_the_watercourse(Rideau Canal,Saint Lawrence River)", "triples": [["Rideau Canal", "mouth_of_the_watercourse", "Saint Lawrence River"]]}
+{"id": "ont_9_nature_test_235", "response": "origin_of_the_watercourse(Tetapaga River,Tetapaga Lake)", "triples": [["Tetapaga River", "origin_of_the_watercourse", "Tetapaga Lake"]]}
+{"id": "ont_9_nature_test_236", "response": "origin_of_the_watercourse(Link River,Upper Klamath Lake)\nmouth_of_the_watercourse(Link River,Lake Ewauna)", "triples": [["Link River", "origin_of_the_watercourse", "Upper Klamath Lake"], ["Link River", "mouth_of_the_watercourse", "Lake Ewauna"]]}
+{"id": "ont_9_nature_test_237", "response": "origin_of_the_watercourse(river,Lake Biwa)", "triples": [["river", "origin_of_the_watercourse", "Lake Biwa"]]}
+{"id": "ont_9_nature_test_238", "response": "origin_of_the_watercourse(River Artro,Llyn Cwm Bychan)", "triples": [["River Artro", "origin_of_the_watercourse", "Llyn Cwm Bychan"]]}
+{"id": "ont_9_nature_test_239", "response": "tributary(Edward River,Murray River)\ndrainage_basin(Edward River,Murray-Darling basin)", "triples": [["Edward River", "tributary", "Murray River"], ["Edward River", "drainage_basin", "Murray-Darling basin"]]}
+{"id": "ont_9_nature_test_240", "response": "tributary(Minnehaha Creek,Mississippi River)\norigin_of_the_watercourse(Minnehaha Creek,Lake Minnetonka)", "triples": [["Minnehaha Creek", "tributary", "Mississippi River"], ["Minnehaha Creek", "origin_of_the_watercourse", "Lake Minnetonka"]]}
+{"id": "ont_9_nature_test_241", "response": "origin_of_the_watercourse(Hrazdan River,Lake Sevan)", "triples": [["Hrazdan River", "origin_of_the_watercourse", "Lake Sevan"]]}
+{"id": "ont_9_nature_test_242", "response": "origin_of_the_watercourse(Raquette River,Raquette Lake)", "triples": [["Raquette River", "origin_of_the_watercourse", "Raquette Lake"]]}
+{"id": "ont_9_nature_test_243", "response": "origin_of_the_watercourse(Sydney River,Blacketts Lake)", "triples": [["Sydney River", "origin_of_the_watercourse", "Blacketts Lake"]]}
+{"id": "ont_9_nature_test_244", "response": "origin_of_the_watercourse(Mississippi River,Lake Itasca)", "triples": [["Mississippi River", "origin_of_the_watercourse", "Lake Itasca"]]}
+{"id": "ont_9_nature_test_245", "response": "tributary(Byaelva,Steinkjerelva)\ntributary(Ogna,Steinkjerelva)\nmouth_of_the_watercourse(Steinkjerelva,Beitstadfjorden)", "triples": [["Byaelva", "tributary", "Steinkjerelva"], ["Ogna", "tributary", "Steinkjerelva"], ["Steinkjerelva", "mouth_of_the_watercourse", "Beitstadfjorden"]]}
+{"id": "ont_9_nature_test_246", "response": "drainage_basin(Miami River,Everglades)", "triples": [["Miami River", "drainage_basin", "Everglades"]]}
+{"id": "ont_9_nature_test_247", "response": "tributary(Byaelva,Steinkjerelva)\ntributary(Ogna,Steinkjerelva)\nmouth_of_the_watercourse(Steinkjerelva,Beitstadfjorden)", "triples": [["Byaelva", "tributary", "Steinkjerelva"], ["Ogna", "tributary", "Steinkjerelva"], ["Steinkjerelva", "mouth_of_the_watercourse", "Beitstadfjorden"]]}
+{"id": "ont_9_nature_test_248", "response": "origin_of_the_watercourse(Presumpscot River,Sebago Lake)", "triples": [["Presumpscot River", "origin_of_the_watercourse", "Sebago Lake"]]}
+{"id": "ont_9_nature_test_249", "response": "mouth_of_the_watercourse(Bhaga,Tandi)", "triples": [["Bhaga", "mouth_of_the_watercourse", "Tandi"]]}
+{"id": "ont_9_nature_test_250", "response": "origin_of_the_watercourse(Miami Canal,Lake Okeechobee)\nmouth_of_the_watercourse(Miami Canal,Miami River)", "triples": [["Miami Canal", "origin_of_the_watercourse", "Lake Okeechobee"], ["Miami Canal", "mouth_of_the_watercourse", "Miami River"]]}
+{"id": "ont_9_nature_test_251", "response": "origin_of_the_watercourse(Sandanska Bistritsa,Tevnoto Lake)", "triples": [["Sandanska Bistritsa", "origin_of_the_watercourse", "Tevnoto Lake"]]}
+{"id": "ont_9_nature_test_252", "response": "origin_of_the_watercourse(Scioto River,Auglaize County)\ntributary(Scioto River,Olentangy River)\nmouth_of_the_watercourse(Scioto River,Ohio River)", "triples": [["Scioto River", "origin_of_the_watercourse", "Auglaize County"], ["Scioto River", "tributary", "Olentangy River"], ["Scioto River", "mouth_of_the_watercourse", "Ohio River"]]}
+{"id": "ont_9_nature_test_253", "response": "mouth_of_the_watercourse(Prut,Danube)", "triples": [["Prut", "mouth_of_the_watercourse", "Danube"]]}
+{"id": "ont_9_nature_test_254", "response": "tributary(Volp,Garonne)", "triples": [["Volp", "tributary", "Garonne"]]}
+{"id": "ont_9_nature_test_255", "response": "tributary(Kokosing,Walhonding River)\ntributary(Mohican River,Walhonding River)", "triples": [["Kokosing", "tributary", "Walhonding River"], ["Mohican River", "tributary", "Walhonding River"]]}
+{"id": "ont_9_nature_test_256", "response": "tributary(Benue River,Niger River)", "triples": [["Benue River", "tributary", "Niger River"]]}
+{"id": "ont_9_nature_test_257", "response": "drainage_basin(Watonwan,Blue Earth River)", "triples": [["Watonwan", "drainage_basin", "Blue Earth River"]]}
+{"id": "ont_9_nature_test_258", "response": "mouth_of_the_watercourse(Little Saskatchewan River,Assiniboine River)", "triples": [["Little Saskatchewan River", "mouth_of_the_watercourse", "Assiniboine River"]]}
+{"id": "ont_9_nature_test_259", "response": "tributary(Qishan River,Gaoping River)", "triples": [["Qishan River", "tributary", "Gaoping River"]]}
+{"id": "ont_9_nature_test_260", "response": "mouth_of_the_watercourse(Zaufensgraben,Gessenbach)", "triples": [["Zaufensgraben", "mouth_of_the_watercourse", "Gessenbach"]]}
+{"id": "ont_9_nature_test_261", "response": "mouth_of_the_watercourse(Vichtbach,Inde)", "triples": [["Vichtbach", "mouth_of_the_watercourse", "Inde"]]}
+{"id": "ont_9_nature_test_262", "response": "mouth_of_the_watercourse(Schwabinger Bach,Isar)", "triples": [["Schwabinger Bach", "mouth_of_the_watercourse", "Isar"]]}
+{"id": "ont_9_nature_test_263", "response": "mouth_of_the_watercourse(Barguelonne,Garonne)", "triples": [["Barguelonne", "mouth_of_the_watercourse", "Garonne"]]}
+{"id": "ont_9_nature_test_264", "response": "mouth_of_the_watercourse(Sieg,Rhine)", "triples": [["Sieg", "mouth_of_the_watercourse", "Rhine"]]}
+{"id": "ont_9_nature_test_265", "response": "origin_of_the_watercourse(Twentekanaal,IJssel)", "triples": [["Twentekanaal", "origin_of_the_watercourse", "IJssel"]]}
+{"id": "ont_9_nature_test_266", "response": "mouth_of_the_watercourse(Shiawassee River,Tittabawassee River)", "triples": [["Shiawassee River", "mouth_of_the_watercourse", "Tittabawassee River"]]}
+{"id": "ont_9_nature_test_267", "response": "mouth_of_the_watercourse(Ahr,Rhine)", "triples": [["Ahr", "mouth_of_the_watercourse", "Rhine"]]}
+{"id": "ont_9_nature_test_268", "response": "", "triples": []}
+{"id": "ont_9_nature_test_269", "response": "tributary(Panjshir River,Kabul River)", "triples": [["Panjshir River", "tributary", "Kabul River"]]}
+{"id": "ont_9_nature_test_270", "response": "", "triples": []}
+{"id": "ont_9_nature_test_271", "response": "mouth_of_the_watercourse(Lesse,Meuse)", "triples": [["Lesse", "mouth_of_the_watercourse", "Meuse"]]}
+{"id": "ont_9_nature_test_272", "response": "mouth_of_the_watercourse(Apur\u00edmac,Mantaro River)\nmouth_of_the_watercourse(Apur\u00edmac River,Peren\u00e9 River)\nmouth_of_the_watercourse(Apur\u00edmac River,Urubamba)", "triples": [["Apur\u00edmac", "mouth_of_the_watercourse", "Mantaro River"], ["Apur\u00edmac River", "mouth_of_the_watercourse", "Peren\u00e9 River"], ["Apur\u00edmac River", "mouth_of_the_watercourse", "Urubamba"]]}
+{"id": "ont_9_nature_test_273", "response": "mouth_of_the_watercourse(Zagyva,Tisza)", "triples": [["Zagyva", "mouth_of_the_watercourse", "Tisza"]]}
+{"id": "ont_9_nature_test_274", "response": "tributary(Sauer,Moselle)", "triples": [["Sauer", "tributary", "Moselle"]]}
+{"id": "ont_9_nature_test_275", "response": "tributary(Ohio River,Tennessee River)", "triples": [["Ohio River", "tributary", "Tennessee River"]]}
+{"id": "ont_9_nature_test_276", "response": "tributary(Kunar River,Kabul River)\ntributary(Kabul River,Indus River)", "triples": [["Kunar River", "tributary", "Kabul River"], ["Kabul River", "tributary", "Indus River"]]}
+{"id": "ont_9_nature_test_277", "response": "mouth_of_the_watercourse(Hron,Danube)", "triples": [["Hron", "mouth_of_the_watercourse", "Danube"]]}
+{"id": "ont_9_nature_test_278", "response": "tributary(Zuni River,Little Colorado River)", "triples": [["Zuni River", "tributary", "Little Colorado River"]]}
+{"id": "ont_9_nature_test_279", "response": "mouth_of_the_watercourse(Zellbach,Innerste)", "triples": [["Zellbach", "mouth_of_the_watercourse", "Innerste"]]}
+{"id": "ont_9_nature_test_280", "response": "mouth_of_the_watercourse(Holzminde,Weser)", "triples": [["Holzminde", "mouth_of_the_watercourse", "Weser"]]}
+{"id": "ont_9_nature_test_281", "response": "origin_of_the_watercourse(Mouwen River,Dongping Lake)", "triples": [["Mouwen River", "origin_of_the_watercourse", "Dongping Lake"]]}
+{"id": "ont_9_nature_test_282", "response": "mouth_of_the_watercourse(Kolubara,Sava)", "triples": [["Kolubara", "mouth_of_the_watercourse", "Sava"]]}
+{"id": "ont_9_nature_test_283", "response": "mouth_of_the_watercourse(Khan River,Swakop River)", "triples": [["Khan River", "mouth_of_the_watercourse", "Swakop River"]]}
+{"id": "ont_9_nature_test_284", "response": "mouth_of_the_watercourse(Teslin River,Yukon River)", "triples": [["Teslin River", "mouth_of_the_watercourse", "Yukon River"]]}
+{"id": "ont_9_nature_test_285", "response": "", "triples": []}
+{"id": "ont_9_nature_test_286", "response": "mouth_of_the_watercourse(Walkerszeller Bach,Banzerbach)", "triples": [["Walkerszeller Bach", "mouth_of_the_watercourse", "Banzerbach"]]}
+{"id": "ont_9_nature_test_287", "response": "mouth_of_the_watercourse(River Wye,River Severn)", "triples": [["River Wye", "mouth_of_the_watercourse", "River Severn"]]}
+{"id": "ont_9_nature_test_288", "response": "tributary(Slave River,Mackenzie River)", "triples": [["Slave River", "tributary", "Mackenzie River"]]}
+{"id": "ont_9_nature_test_289", "response": "tributary(Mbomou,Ubangi River)\ntributary(Uele River,Ubangi River)", "triples": [["Mbomou", "tributary", "Ubangi River"], ["Uele River", "tributary", "Ubangi River"]]}
+{"id": "ont_9_nature_test_290", "response": "mouth_of_the_watercourse(Schlenze,Saale)", "triples": [["Schlenze", "mouth_of_the_watercourse", "Saale"]]}
+{"id": "ont_9_nature_test_291", "response": "mouth_of_the_watercourse(Juniata River,Susquehanna River)", "triples": [["Juniata River", "mouth_of_the_watercourse", "Susquehanna River"]]}
+{"id": "ont_9_nature_test_292", "response": "tributary(Groundhog River,Mattagami River)", "triples": [["Groundhog River", "tributary", "Mattagami River"]]}
+{"id": "ont_9_nature_test_293", "response": "tributary(Yoho River,Kicking Horse River)", "triples": [["Yoho River", "tributary", "Kicking Horse River"]]}
+{"id": "ont_9_nature_test_294", "response": "origin_of_the_watercourse(Babine River,Babine Lake)\ntributary(Babine River,Skeena River)", "triples": [["Babine River", "origin_of_the_watercourse", "Babine Lake"], ["Babine River", "tributary", "Skeena River"]]}
+{"id": "ont_9_nature_test_295", "response": "tributary(Tons,Yamuna)", "triples": [["Tons", "tributary", "Yamuna"]]}
+{"id": "ont_9_nature_test_296", "response": "mouth_of_the_watercourse(Liard River,Mackenzie River)", "triples": [["Liard River", "mouth_of_the_watercourse", "Mackenzie River"]]}
+{"id": "ont_9_nature_test_297", "response": "mouth_of_the_watercourse(Littfe,Ferndorfbach)", "triples": [["Littfe", "mouth_of_the_watercourse", "Ferndorfbach"]]}
+{"id": "ont_9_nature_test_298", "response": "taxon_common_name(river,Panj River)", "triples": [["river", "taxon_common_name", "Panj River"]]}
+{"id": "ont_9_nature_test_299", "response": "tributary(Breitach,Iller)", "triples": [["Breitach", "tributary", "Iller"]]}
+{"id": "ont_9_nature_test_300", "response": "", "triples": []}
+{"id": "ont_9_nature_test_301", "response": "tributary(Vakhsh River,Amu Darya river)", "triples": [["Vakhsh River", "tributary", "Amu Darya river"]]}
+{"id": "ont_9_nature_test_302", "response": "mouth_of_the_watercourse(Wagenfelder Aue,Hunte)", "triples": [["Wagenfelder Aue", "mouth_of_the_watercourse", "Hunte"]]}
+{"id": "ont_9_nature_test_303", "response": "origin_of_the_watercourse(Kurshab,Andijan Reservoir)", "triples": [["Kurshab", "origin_of_the_watercourse", "Andijan Reservoir"]]}
+{"id": "ont_9_nature_test_304", "response": "mouth_of_the_watercourse(Berlin-Spandau Ship Canal,River Havel)", "triples": [["Berlin-Spandau Ship Canal", "mouth_of_the_watercourse", "River Havel"]]}
+{"id": "ont_9_nature_test_305", "response": "tributary(Kootenay River,Columbia River)", "triples": [["Kootenay River", "tributary", "Columbia River"]]}
+{"id": "ont_9_nature_test_306", "response": "tributary(Urubamba River,Ucayali River)\ntributary(Tambo River,Ucayali River)", "triples": [["Urubamba River", "tributary", "Ucayali River"], ["Tambo River", "tributary", "Ucayali River"]]}
+{"id": "ont_9_nature_test_307", "response": "drainage_basin(Gardiners Creek,Yarra River catchment)", "triples": [["Gardiners Creek", "drainage_basin", "Yarra River catchment"]]}
+{"id": "ont_9_nature_test_308", "response": "mouth_of_the_watercourse(Pannerdens Kanaal,Nederrijn)", "triples": [["Pannerdens Kanaal", "mouth_of_the_watercourse", "Nederrijn"]]}
+{"id": "ont_9_nature_test_309", "response": "mouth_of_the_watercourse(Rienz,Eisack)", "triples": [["Rienz", "mouth_of_the_watercourse", "Eisack"]]}
+{"id": "ont_9_nature_test_310", "response": "mouth_of_the_watercourse(stream,Holtemme)", "triples": [["stream", "mouth_of_the_watercourse", "Holtemme"]]}
+{"id": "ont_9_nature_test_311", "response": "mouth_of_the_watercourse(Canal through Zuid-Beveland,Western Scheldt)\nmouth_of_the_watercourse(Canal through Zuid-Beveland,Eastern Scheldt)", "triples": [["Canal through Zuid-Beveland", "mouth_of_the_watercourse", "Western Scheldt"], ["Canal through Zuid-Beveland", "mouth_of_the_watercourse", "Eastern Scheldt"]]}
+{"id": "ont_9_nature_test_312", "response": "taxon_synonym(Malva acerifolia,Lavatera acerifolia)\ntaxon_synonym(Malva acerifolia,Malva canariensis)", "triples": [["Malva acerifolia", "taxon_synonym", "Lavatera acerifolia"], ["Malva acerifolia", "taxon_synonym", "Malva canariensis"]]}
+{"id": "ont_9_nature_test_313", "response": "taxon_common_name(Malva linnaei,Cornish mallow)\ntaxon_common_name(Malva linnaei,Cretan hollyhock)", "triples": [["Malva linnaei", "taxon_common_name", "Cornish mallow"], ["Malva linnaei", "taxon_common_name", "Cretan hollyhock"]]}
+{"id": "ont_9_nature_test_314", "response": "taxon_synonym(Bassia californica,Kochia californica)", "triples": [["Bassia californica", "taxon_synonym", "Kochia californica"]]}
+{"id": "ont_9_nature_test_315", "response": "parent_taxon(Polygonum pensylvanicum,Polygonaceae)", "triples": [["Polygonum pensylvanicum", "parent_taxon", "Polygonaceae"]]}
+{"id": "ont_9_nature_test_316", "response": "taxon_synonym(Tecticornia,Sclerostegia)", "triples": [["Tecticornia", "taxon_synonym", "Sclerostegia"]]}
+{"id": "ont_9_nature_test_317", "response": "parent_taxon(Asteriscus maritimus,Asteraceae)", "triples": [["Asteriscus maritimus", "parent_taxon", "Asteraceae"]]}
+{"id": "ont_9_nature_test_318", "response": "taxon_synonym(Passifloraceae,Turneraceae)", "triples": [["Passifloraceae", "taxon_synonym", "Turneraceae"]]}
+{"id": "ont_9_nature_test_319", "response": "taxon_synonym(Silene undulata,Silene capensis)", "triples": [["Silene undulata", "taxon_synonym", "Silene capensis"]]}
+{"id": "ont_9_nature_test_320", "response": "taxon_common_name(Cigaritis syama,club silverline)", "triples": [["Cigaritis syama", "taxon_common_name", "club silverline"]]}
+{"id": "ont_9_nature_test_321", "response": "taxon_synonym(Tennessee Warbler,Vermivora peregrina)", "triples": [["Tennessee Warbler", "taxon_synonym", "Vermivora peregrina"]]}
+{"id": "ont_9_nature_test_322", "response": "taxon_common_name(Chenopodium foliosum,leafy goosefoot)", "triples": [["Chenopodium foliosum", "taxon_common_name", "leafy goosefoot"]]}
+{"id": "ont_9_nature_test_323", "response": "taxon_synonym(Virbia aurantiaca,Holomelina aurantiaca)", "triples": [["Virbia aurantiaca", "taxon_synonym", "Holomelina aurantiaca"]]}
+{"id": "ont_9_nature_test_324", "response": "taxon_common_name(Hydrophis peronii,horned sea snake)\ntaxon_common_name(Hydrophis peronii,Peron's sea snake)\ntaxon_common_name(Hydrophis peronii,spiny-headed seasnake)\nparent_taxon(Hydrophis peronii,Hydrophiinae)\nparent_taxon(Hydrophiinae,Elapidae)", "triples": [["Hydrophis peronii", "taxon_common_name", "horned sea snake"], ["Hydrophis peronii", "taxon_common_name", "Peron's sea snake"], ["Hydrophis peronii", "taxon_common_name", "spiny-headed seasnake"], ["Hydrophis peronii", "parent_taxon", "Hydrophiinae"], ["Hydrophiinae", "parent_taxon", "Elapidae"]]}
+{"id": "ont_9_nature_test_325", "response": "parent_taxon(Franklin's ground squirrel,Poliocitellus)", "triples": [["Franklin's ground squirrel", "parent_taxon", "Poliocitellus"]]}
+{"id": "ont_9_nature_test_326", "response": "taxon_synonym(Boletus reticulatus,Boletus aestivalis)", "triples": [["Boletus reticulatus", "taxon_synonym", "Boletus aestivalis"]]}
+{"id": "ont_9_nature_test_327", "response": "taxon_synonym(Polyscias maraisiana,Gastonia mauritiana)", "triples": [["Polyscias maraisiana", "taxon_synonym", "Gastonia mauritiana"]]}
+{"id": "ont_9_nature_test_328", "response": "taxon_common_name(Arctous alpina,alpine bearberry)\ntaxon_common_name(Arctous alpina,mountain bearberry)\ntaxon_common_name(Arctous alpina,black bearberry)", "triples": [["Arctous alpina", "taxon_common_name", "alpine bearberry"], ["Arctous alpina", "taxon_common_name", "mountain bearberry"], ["Arctous alpina", "taxon_common_name", "black bearberry"]]}
+{"id": "ont_9_nature_test_329", "response": "taxon_synonym(Common redpoll,Acanthis flammea)", "triples": [["Common redpoll", "taxon_synonym", "Acanthis flammea"]]}
+{"id": "ont_9_nature_test_330", "response": "parent_taxon(butterflies,Papilionoidea)", "triples": [["butterflies", "parent_taxon", "Papilionoidea"]]}
+{"id": "ont_9_nature_test_331", "response": "taxon_synonym(Bassia americana,Kochia americana)", "triples": [["Bassia americana", "taxon_synonym", "Kochia americana"]]}
+{"id": "ont_9_nature_test_332", "response": "taxon_common_name(Halimione pedunculata,pedunculate sea-purslane)", "triples": [["Halimione pedunculata", "taxon_common_name", "pedunculate sea-purslane"]]}
+{"id": "ont_9_nature_test_333", "response": "taxon_synonym(Kretania sephirus,Plebejus sephirus)", "triples": [["Kretania sephirus", "taxon_synonym", "Plebejus sephirus"]]}
+{"id": "ont_9_nature_test_334", "response": "taxon_synonym(Halothamnus glaucus,Salsola glauca)", "triples": [["Halothamnus glaucus", "taxon_synonym", "Salsola glauca"]]}
+{"id": "ont_9_nature_test_335", "response": "taxon_common_name(this subfamily,Hexatominae)", "triples": [["this subfamily", "taxon_common_name", "Hexatominae"]]}
+{"id": "ont_9_nature_test_336", "response": "parent_taxon(rock squirrel,Otospermophilus)", "triples": [["rock squirrel", "parent_taxon", "Otospermophilus"]]}
+{"id": "ont_9_nature_test_337", "response": "taxon_common_name(Lithobates clamitans,green frog)\ntaxon_synonym(Lithobates clamitans,Rana clamitans)", "triples": [["Lithobates clamitans", "taxon_common_name", "green frog"], ["Lithobates clamitans", "taxon_synonym", "Rana clamitans"]]}
+{"id": "ont_9_nature_test_338", "response": "taxon_synonym(Halothamnus bottae,Salsola bottae)", "triples": [["Halothamnus bottae", "taxon_synonym", "Salsola bottae"]]}
+{"id": "ont_9_nature_test_339", "response": "", "triples": []}
+{"id": "ont_9_nature_test_340", "response": "taxon_synonym(Quintinia,Quintiniaceae)", "triples": [["Quintinia", "taxon_synonym", "Quintiniaceae"]]}
+{"id": "ont_9_nature_test_341", "response": "taxon_synonym(Cornaceae,Aucubaceae)", "triples": [["Cornaceae", "taxon_synonym", "Aucubaceae"]]}
+{"id": "ont_9_nature_test_342", "response": "taxon_synonym(Bistorta vivipara,Polygonum viviparum)", "triples": [["Bistorta vivipara", "taxon_synonym", "Polygonum viviparum"]]}
+{"id": "ont_9_nature_test_343", "response": "parent_taxon(Libelloides coccajus,Ascalaphidae)\nparent_taxon(Libelloides coccajus,Ascalaphinae)", "triples": [["Libelloides coccajus", "parent_taxon", "Ascalaphidae"], ["Libelloides coccajus", "parent_taxon", "Ascalaphinae"]]}
+{"id": "ont_9_nature_test_344", "response": "taxon_synonym(Francoaceae,Melianthaceae)", "triples": [["Francoaceae", "taxon_synonym", "Melianthaceae"]]}
+{"id": "ont_9_nature_test_345", "response": "taxon_synonym(Penaeaceae,Oliniaceae)\ntaxon_synonym(Penaeaceae,Rhynchocalycaceae)", "triples": [["Penaeaceae", "taxon_synonym", "Oliniaceae"], ["Penaeaceae", "taxon_synonym", "Rhynchocalycaceae"]]}
+{"id": "ont_9_nature_test_346", "response": "taxon_synonym(Black Grouse,Blackgame)\ntaxon_synonym(Black Grouse,Blackcock)\nparent_taxon(Black Grouse,Grouse)", "triples": [["Black Grouse", "taxon_synonym", "Blackgame"], ["Black Grouse", "taxon_synonym", "Blackcock"], ["Black Grouse", "parent_taxon", "Grouse"]]}
+{"id": "ont_9_nature_test_347", "response": "taxon_common_name(Caleta elna,Elbowed Pierrot)\nparent_taxon(Caleta elna,Lycaenidae)", "triples": [["Caleta elna", "taxon_common_name", "Elbowed Pierrot"], ["Caleta elna", "parent_taxon", "Lycaenidae"]]}
+{"id": "ont_9_nature_test_348", "response": "taxon_synonym(Halothamnus somalensis,Chenopodiaceae)", "triples": [["Halothamnus somalensis", "taxon_synonym", "Chenopodiaceae"]]}
+{"id": "ont_9_nature_test_349", "response": "taxon_synonym(Tecticornia,Sclerostegia)", "triples": [["Tecticornia", "taxon_synonym", "Sclerostegia"]]}
+{"id": "ont_9_nature_test_350", "response": "parent_taxon(Pelliciera,Tetrameristaceae)\ntaxon_synonym(Pelliciera,Pellicieraceae)", "triples": [["Pelliciera", "parent_taxon", "Tetrameristaceae"], ["Pelliciera", "taxon_synonym", "Pellicieraceae"]]}
+{"id": "ont_9_nature_test_351", "response": "taxon_common_name(Cornus sanguinea,common dogwood)\ntaxon_common_name(Cornus sanguinea,bloody dogwood)", "triples": [["Cornus sanguinea", "taxon_common_name", "common dogwood"], ["Cornus sanguinea", "taxon_common_name", "bloody dogwood"]]}
+{"id": "ont_9_nature_test_352", "response": "taxon_synonym(Willet,Tringa semipalmata)\ntaxon_synonym(Willet,Catoptrophorus semipalmatus)", "triples": [["Willet", "taxon_synonym", "Tringa semipalmata"], ["Willet", "taxon_synonym", "Catoptrophorus semipalmatus"]]}
+{"id": "ont_9_nature_test_353", "response": "taxon_synonym(Persicaria perfoliata,Polygonum perfoliatum)", "triples": [["Persicaria perfoliata", "taxon_synonym", "Polygonum perfoliatum"]]}
+{"id": "ont_9_nature_test_354", "response": "taxon_synonym(Penaeaceae,Oliniaceae)\ntaxon_synonym(Penaeaceae,Rhynchocalycaceae)", "triples": [["Penaeaceae", "taxon_synonym", "Oliniaceae"], ["Penaeaceae", "taxon_synonym", "Rhynchocalycaceae"]]}
+{"id": "ont_9_nature_test_355", "response": "taxon_synonym(Primulaceae,Maesaceae)", "triples": [["Primulaceae", "taxon_synonym", "Maesaceae"]]}
+{"id": "ont_9_nature_test_356", "response": "parent_taxon(Broad-billed Sandpiper,Calidris)", "triples": [["Broad-billed Sandpiper", "parent_taxon", "Calidris"]]}
+{"id": "ont_9_nature_test_357", "response": "taxon_synonym(Pilosella caespitosa,Hieracium caespitosum)\ntaxon_common_name(Pilosella caespitosa,meadow hawkweed)\ntaxon_common_name(Pilosella caespitosa,yellow hawkweed)\ntaxon_common_name(Pilosella caespitosa,field hawkweed)\ntaxon_common_name(Pilosella caespitosa,king devil)\ntaxon_common_name(Pilosella caespitosa,yellow paintbrush)\ntaxon_common_name(Pilosella caespitosa,devil's paintbrush)\ntaxon_common_name(Pilosella caespitosa,yellow devil)\ntaxon_common_name(Pilosella caespitosa,yellow fox-and-cubs)\ntaxon_common_name(Pilosella caespitosa,yellow king-devil)", "triples": [["Pilosella caespitosa", "taxon_synonym", "Hieracium caespitosum"], ["Pilosella caespitosa", "taxon_common_name", "meadow hawkweed"], ["Pilosella caespitosa", "taxon_common_name", "yellow hawkweed"], ["Pilosella caespitosa", "taxon_common_name", "field hawkweed"], ["Pilosella caespitosa", "taxon_common_name", "king devil"], ["Pilosella caespitosa", "taxon_common_name", "yellow paintbrush"], ["Pilosella caespitosa", "taxon_common_name", "devil's paintbrush"], ["Pilosella caespitosa", "taxon_common_name", "yellow devil"], ["Pilosella caespitosa", "taxon_common_name", "yellow fox-and-cubs"], ["Pilosella caespitosa", "taxon_common_name", "yellow king-devil"]]}
+{"id": "ont_9_nature_test_358", "response": "taxon_synonym(Einadia hastata,Ragodia hastata)\ntaxon_common_name(Einadia hastata,saloop)\ntaxon_common_name(Einadia hastata,berry saltbush)", "triples": [["Einadia hastata", "taxon_synonym", "Ragodia hastata"], ["Einadia hastata", "taxon_common_name", "saloop"], ["Einadia hastata", "taxon_common_name", "berry saltbush"]]}
+{"id": "ont_9_nature_test_359", "response": "parent_taxon(ring-tailed ground squirrel,Notocitellus)", "triples": [["ring-tailed ground squirrel", "parent_taxon", "Notocitellus"]]}
+{"id": "ont_9_nature_test_360", "response": "Habitat(Othilia,Gulf of Mexico)", "triples": [["Othilia", "Habitat", "Gulf of Mexico"]]}
+{"id": "ont_9_nature_test_361", "response": "taxon_synonym(Persicaria,Polygonum nepalense)", "triples": [["Persicaria", "taxon_synonym", "Polygonum nepalense"]]}
+{"id": "ont_9_nature_test_362", "response": "reservoir_created(Hartwell Dam,Lake Hartwell)", "triples": [["Hartwell Dam", "reservoir_created", "Lake Hartwell"]]}
+{"id": "ont_9_nature_test_363", "response": "reservoir_created(Goodnough Dike,Quabbin Reservoir)\nreservoir_created(Winsor Dam,Quabbin Reservoir)", "triples": [["Goodnough Dike", "reservoir_created", "Quabbin Reservoir"], ["Winsor Dam", "reservoir_created", "Quabbin Reservoir"]]}
+{"id": "ont_9_nature_test_364", "response": "reservoir_created(Morrow Point Dam,Morrow Point Reservoir)", "triples": [["Morrow Point Dam", "reservoir_created", "Morrow Point Reservoir"]]}
+{"id": "ont_9_nature_test_365", "response": "reservoir_created(Guntersville Dam,Guntersville Lake)", "triples": [["Guntersville Dam", "reservoir_created", "Guntersville Lake"]]}
+{"id": "ont_9_nature_test_366", "response": "reservoir_created(The dam,Lake Burley Griffin)", "triples": [["The dam", "reservoir_created", "Lake Burley Griffin"]]}
+{"id": "ont_9_nature_test_367", "response": "reservoir_created(earth-filled structure,El Vado Lake)", "triples": [["earth-filled structure", "reservoir_created", "El Vado Lake"]]}
+{"id": "ont_9_nature_test_368", "response": "", "triples": []}
+{"id": "ont_9_nature_test_369", "response": "reservoir_created(Navajo Dam,Navajo Lake)", "triples": [["Navajo Dam", "reservoir_created", "Navajo Lake"]]}
+{"id": "ont_9_nature_test_370", "response": "reservoir_created(John Day Dam,Lake Umatilla)", "triples": [["John Day Dam", "reservoir_created", "Lake Umatilla"]]}
+{"id": "ont_9_nature_test_371", "response": "reservoir_created(Longhorn Dam,Lady Bird Lake)", "triples": [["Longhorn Dam", "reservoir_created", "Lady Bird Lake"]]}
+{"id": "ont_9_nature_test_372", "response": "reservoir_created(Hume Dam,Lake Hume)", "triples": [["Hume Dam", "reservoir_created", "Lake Hume"]]}
+{"id": "ont_9_nature_test_373", "response": "tributary(Taylor River,Gunnison River)\nreservoir_created(Taylor Park Dam,Taylor Park Reservoir)", "triples": [["Taylor River", "tributary", "Gunnison River"], ["Taylor Park Dam", "reservoir_created", "Taylor Park Reservoir"]]}
+{"id": "ont_9_nature_test_374", "response": "reservoir_created(New Hogan Dam,New Hogan Lake)", "triples": [["New Hogan Dam", "reservoir_created", "New Hogan Lake"]]}
+{"id": "ont_9_nature_test_375", "response": "reservoir_created(Vidraru Dam,Lake Vidraru)", "triples": [["Vidraru Dam", "reservoir_created", "Lake Vidraru"]]}
+{"id": "ont_9_nature_test_376", "response": "", "triples": []}
+{"id": "ont_9_nature_test_377", "response": "", "triples": []}
+{"id": "ont_9_nature_test_378", "response": "reservoir_created(Tom Bevill Lock and Dam,Aliceville Lake)", "triples": [["Tom Bevill Lock and Dam", "reservoir_created", "Aliceville Lake"]]}
+{"id": "ont_9_nature_test_379", "response": "reservoir_created(dam,Satpara Lake)", "triples": [["dam", "reservoir_created", "Satpara Lake"]]}
+{"id": "ont_9_nature_test_380", "response": "reservoir_created(Yale Dam,Yale Lake)", "triples": [["Yale Dam", "reservoir_created", "Yale Lake"]]}
+{"id": "ont_9_nature_test_381", "response": "reservoir_created(New Don Pedro Dam,Don Pedro Reservoir)", "triples": [["New Don Pedro Dam", "reservoir_created", "Don Pedro Reservoir"]]}
+{"id": "ont_9_nature_test_382", "response": "reservoir_created(Shadehill Dam,Shadehill Reservoir)", "triples": [["Shadehill Dam", "reservoir_created", "Shadehill Reservoir"]]}
+{"id": "ont_9_nature_test_383", "response": "", "triples": []}
+{"id": "ont_9_nature_test_384", "response": "reservoir_created(Guri Dam,Guri Reservoir)", "triples": [["Guri Dam", "reservoir_created", "Guri Reservoir"]]}
+{"id": "ont_9_nature_test_385", "response": "reservoir_created(the dam,Maharana Pratap Sagar)", "triples": [["the dam", "reservoir_created", "Maharana Pratap Sagar"]]}
+{"id": "ont_9_nature_test_386", "response": "reservoir_created(Conchas Dam,Conchas Lake)", "triples": [["Conchas Dam", "reservoir_created", "Conchas Lake"]]}
+{"id": "ont_9_nature_test_387", "response": "reservoir_created(Watts Bar Dam,Watts Bar Lake)", "triples": [["Watts Bar Dam", "reservoir_created", "Watts Bar Lake"]]}
+{"id": "ont_9_nature_test_388", "response": "", "triples": []}
+{"id": "ont_9_nature_test_389", "response": "reservoir_created(Grand Coulee Dam,Banks Lake)", "triples": [["Grand Coulee Dam", "reservoir_created", "Banks Lake"]]}
+{"id": "ont_9_nature_test_390", "response": "reservoir_created(Warragamba Dam,Lake Burragorang)", "triples": [["Warragamba Dam", "reservoir_created", "Lake Burragorang"]]}
+{"id": "ont_9_nature_test_391", "response": "reservoir_created(Potholes Dam,Potholes Reservoir)", "triples": [["Potholes Dam", "reservoir_created", "Potholes Reservoir"]]}
+{"id": "ont_9_nature_test_392", "response": "reservoir_created(Starcke Dam,Lake Marble Falls)", "triples": [["Starcke Dam", "reservoir_created", "Lake Marble Falls"]]}
+{"id": "ont_9_nature_test_393", "response": "reservoir_created(dam,Lake Wallula)", "triples": [["dam", "reservoir_created", "Lake Wallula"]]}
+{"id": "ont_9_nature_test_394", "response": "reservoir_created(the dam,Lake Pleasant)", "triples": [["the dam", "reservoir_created", "Lake Pleasant"]]}
+{"id": "ont_9_nature_test_395", "response": "", "triples": []}
+{"id": "ont_9_nature_test_396", "response": "", "triples": []}
+{"id": "ont_9_nature_test_397", "response": "reservoir_created(Chatuge Dam,Chatuge Lake)", "triples": [["Chatuge Dam", "reservoir_created", "Chatuge Lake"]]}
+{"id": "ont_9_nature_test_398", "response": "reservoir_created(Revelstoke Dam,Lake Revelstoke)", "triples": [["Revelstoke Dam", "reservoir_created", "Lake Revelstoke"]]}
+{"id": "ont_9_nature_test_399", "response": "reservoir_created(Red Bluff Dam,Red Bluff Reservoir)", "triples": [["Red Bluff Dam", "reservoir_created", "Red Bluff Reservoir"]]}
+{"id": "ont_9_nature_test_400", "response": "reservoir_created(dam,Millerton Lake)", "triples": [["dam", "reservoir_created", "Millerton Lake"]]}
+{"id": "ont_9_nature_test_401", "response": "reservoir_created(Hope Mills Dam,Hope Mills Lake)", "triples": [["Hope Mills Dam", "reservoir_created", "Hope Mills Lake"]]}
+{"id": "ont_9_nature_test_402", "response": "reservoir_created(De Cordova Bend Dam,Lake Granbury)", "triples": [["De Cordova Bend Dam", "reservoir_created", "Lake Granbury"]]}
+{"id": "ont_9_nature_test_403", "response": "reservoir_created(Stewart Mountain Dam,Saguaro Lake)", "triples": [["Stewart Mountain Dam", "reservoir_created", "Saguaro Lake"]]}
+{"id": "ont_9_nature_test_404", "response": "reservoir_created(Green Peter Dam,Green Peter Reservoir)", "triples": [["Green Peter Dam", "reservoir_created", "Green Peter Reservoir"]]}
+{"id": "ont_9_nature_test_405", "response": "reservoir_created(New Bullards Bar Dam,New Bullards Bar Reservoir)", "triples": [["New Bullards Bar Dam", "reservoir_created", "New Bullards Bar Reservoir"]]}
+{"id": "ont_9_nature_test_406", "response": "reservoir_created(dam,Lake Kariba)", "triples": [["dam", "reservoir_created", "Lake Kariba"]]}
+{"id": "ont_9_nature_test_407", "response": "reservoir_created(The dam,Bull Shoals Lake)", "triples": [["The dam", "reservoir_created", "Bull Shoals Lake"]]}
+{"id": "ont_9_nature_test_408", "response": "reservoir_created(Denison Dam,Lake Texoma)", "triples": [["Denison Dam", "reservoir_created", "Lake Texoma"]]}
+{"id": "ont_9_nature_test_409", "response": "reservoir_created(Tabqa Dam,Lake Assad)", "triples": [["Tabqa Dam", "reservoir_created", "Lake Assad"]]}
+{"id": "ont_9_nature_test_410", "response": "reservoir_created(Fontana Dam,Fontana Lake)", "triples": [["Fontana Dam", "reservoir_created", "Fontana Lake"]]}
+{"id": "ont_9_nature_test_411", "response": "reservoir_created(Dub\u0103sari Dam,Dub\u0103sari reservoir)", "triples": [["Dub\u0103sari Dam", "reservoir_created", "Dub\u0103sari reservoir"]]}
+{"id": "ont_9_nature_test_412", "response": "reservoir_created(Percy Priest Dam,Percy Priest Lake)", "triples": [["Percy Priest Dam", "reservoir_created", "Percy Priest Lake"]]}
+{"id": "ont_9_nature_test_413", "response": "reservoir_created(Imperial Dam,Imperial Reservoir)", "triples": [["Imperial Dam", "reservoir_created", "Imperial Reservoir"]]}
+{"id": "ont_9_nature_test_414", "response": "reservoir_created(dam,Lake Celilo)", "triples": [["dam", "reservoir_created", "Lake Celilo"]]}
+{"id": "ont_9_nature_test_415", "response": "reservoir_created(Theodore Roosevelt Dam,Theodore Roosevelt Lake)", "triples": [["Theodore Roosevelt Dam", "reservoir_created", "Theodore Roosevelt Lake"]]}
+{"id": "ont_9_nature_test_416", "response": "reservoir_created(Crystal Dam,Crystal Reservoir)", "triples": [["Crystal Dam", "reservoir_created", "Crystal Reservoir"]]}
+{"id": "ont_9_nature_test_417", "response": "reservoir_created(Chevril Dam,Lac du Chevril)", "triples": [["Chevril Dam", "reservoir_created", "Lac du Chevril"]]}
+{"id": "ont_9_nature_test_418", "response": "reservoir_created(dam,Lago di Vogorno)", "triples": [["dam", "reservoir_created", "Lago di Vogorno"]]}
+{"id": "ont_9_nature_test_419", "response": "reservoir_created(Abiquiu Dam,Abiquiu Lake)", "triples": [["Abiquiu Dam", "reservoir_created", "Abiquiu Lake"]]}
+{"id": "ont_9_nature_test_420", "response": "reservoir_created(W.A.C. Bennett Dam,Williston Lake)", "triples": [["W.A.C. Bennett Dam", "reservoir_created", "Williston Lake"]]}
+{"id": "ont_9_nature_test_421", "response": "reservoir_created(El Capitan Dam,El Capitan Reservoir)", "triples": [["El Capitan Dam", "reservoir_created", "El Capitan Reservoir"]]}
+{"id": "ont_9_nature_test_422", "response": "drainage_basin(North Wabassie River,James Bay Basin)\ntributary(North Wabassie River,Atikameg River)", "triples": [["North Wabassie River", "drainage_basin", "James Bay Basin"], ["North Wabassie River", "tributary", "Atikameg River"]]}
+{"id": "ont_9_nature_test_423", "response": "drainage_basin(Silverado Canyon,Santa Ana River watershed)", "triples": [["Silverado Canyon", "drainage_basin", "Santa Ana River watershed"]]}
+{"id": "ont_9_nature_test_424", "response": "drainage_basin(Poplar Rapids River,James Bay Basin)\ntributary(Poplar Rapids River,Mattagami River)", "triples": [["Poplar Rapids River", "drainage_basin", "James Bay Basin"], ["Poplar Rapids River", "tributary", "Mattagami River"]]}
+{"id": "ont_9_nature_test_425", "response": "drainage_basin(Muketei River,James Bay Basin)\ntributary(Muketei River,Attawapiskat River)", "triples": [["Muketei River", "drainage_basin", "James Bay Basin"], ["Muketei River", "tributary", "Attawapiskat River"]]}
+{"id": "ont_9_nature_test_426", "response": "drainage_basin(Cedar River,Iowa River basin)", "triples": [["Cedar River", "drainage_basin", "Iowa River basin"]]}
+{"id": "ont_9_nature_test_427", "response": "tributary(Geronimo Creek,Guadalupe River)", "triples": [["Geronimo Creek", "tributary", "Guadalupe River"]]}
+{"id": "ont_9_nature_test_428", "response": "drainage_basin(Groundhog River,James Bay Basin)", "triples": [["Groundhog River", "drainage_basin", "James Bay Basin"]]}
+{"id": "ont_9_nature_test_429", "response": "drainage_basin(Chapleau River,James Bay Basin)\norigin_of_the_watercourse(Chapleau River,Chapleau Lake)\ntributary(Chapleau River,Kapuskasing Lake)", "triples": [["Chapleau River", "drainage_basin", "James Bay Basin"], ["Chapleau River", "origin_of_the_watercourse", "Chapleau Lake"], ["Chapleau River", "tributary", "Kapuskasing Lake"]]}
+{"id": "ont_9_nature_test_430", "response": "", "triples": []}
+{"id": "ont_9_nature_test_431", "response": "drainage_basin(Pagashi River,James Bay Basin)\ntributary(Pagashi River,Albany River)", "triples": [["Pagashi River", "drainage_basin", "James Bay Basin"], ["Pagashi River", "tributary", "Albany River"]]}
+{"id": "ont_9_nature_test_432", "response": "drainage_basin(Gardiner River,James Bay Basin)", "triples": [["Gardiner River", "drainage_basin", "James Bay Basin"]]}
+{"id": "ont_9_nature_test_433", "response": "drainage_basin(Nemegosenda River,James Bay Basin)\ntributary(Nemegosenda River,Kapuskasing River)", "triples": [["Nemegosenda River", "drainage_basin", "James Bay Basin"], ["Nemegosenda River", "tributary", "Kapuskasing River"]]}
+{"id": "ont_9_nature_test_434", "response": "drainage_basin(Makonie River,James Bay Basin)\ntributary(Makonie River,Chapleau River)", "triples": [["Makonie River", "drainage_basin", "James Bay Basin"], ["Makonie River", "tributary", "Chapleau River"]]}
+{"id": "ont_9_nature_test_435", "response": "mountains_classification_(1946 Tour de Suisse,Gino Bartali)", "triples": [["1946 Tour de Suisse", "mountains_classification_", "Gino Bartali"]]}
+{"id": "ont_9_nature_test_436", "response": "mountains_classification_(Volta ao Algarve,Alberto Contador)", "triples": [["Volta ao Algarve", "mountains_classification_", "Alberto Contador"]]}
+{"id": "ont_9_nature_test_437", "response": "mountains_classification_(cycling race,Juan Felipe Osorio)", "triples": [["cycling race", "mountains_classification_", "Juan Felipe Osorio"]]}
+{"id": "ont_9_nature_test_438", "response": "mountains_classification_(2015 Volta ao Algarve,Geraint Thomas)", "triples": [["2015 Volta ao Algarve", "mountains_classification_", "Geraint Thomas"]]}
+{"id": "ont_9_nature_test_439", "response": "mountains_classification_(2018 Vuelta a Murcia,Luis Le\u00f3n S\u00e1nchez)", "triples": [["2018 Vuelta a Murcia", "mountains_classification_", "Luis Le\u00f3n S\u00e1nchez"]]}
+{"id": "ont_9_nature_test_440", "response": "mountains_classification_(cycling race,Thomas De Gendt)", "triples": [["cycling race", "mountains_classification_", "Thomas De Gendt"]]}
+{"id": "ont_9_nature_test_441", "response": "mountains_classification_(mountains classification,Nicolas Edet)", "triples": [["mountains classification", "mountains_classification_", "Nicolas Edet"]]}
+{"id": "ont_9_nature_test_442", "response": "mountains_classification_(2015 Ladies Tour of Norway,Megan Guarnier)", "triples": [["2015 Ladies Tour of Norway", "mountains_classification_", "Megan Guarnier"]]}
+{"id": "ont_9_nature_test_443", "response": "mountains_classification_(2018 Tour of the Basque Country,Llu\u00eds Mas)", "triples": [["2018 Tour of the Basque Country", "mountains_classification_", "Llu\u00eds Mas"]]}
+{"id": "ont_9_nature_test_444", "response": "mountains_classification_(2018 Tour de France,Rigoberto Ur\u00c3\u00a1n)\nmountains_classification_(2018 Tour de France,Romain Bardet)", "triples": [["2018 Tour de France", "mountains_classification_", "Rigoberto Ur\u00c3\u00a1n"], ["2018 Tour de France", "mountains_classification_", "Romain Bardet"]]}
+{"id": "ont_9_nature_test_445", "response": "mountains_classification_(2018 Tour of the Basque Country,Carlos Verona)", "triples": [["2018 Tour of the Basque Country", "mountains_classification_", "Carlos Verona"]]}
+{"id": "ont_9_nature_test_446", "response": "mountains_classification_(2013 Tour of California,Carter Jones)", "triples": [["2013 Tour of California", "mountains_classification_", "Carter Jones"]]}
+{"id": "ont_9_nature_test_447", "response": "mountains_classification_(2018 Setmana Ciclista Valenciana,Leah Thomas)", "triples": [["2018 Setmana Ciclista Valenciana", "mountains_classification_", "Leah Thomas"]]}
+{"id": "ont_9_nature_test_448", "response": "mountains_classification_(1961 Tour de Suisse,Attilio Moresi)", "triples": [["1961 Tour de Suisse", "mountains_classification_", "Attilio Moresi"]]}
+{"id": "ont_9_nature_test_449", "response": "mountains_classification_(Sivakov,Jai Hindley)", "triples": [["Sivakov", "mountains_classification_", "Jai Hindley"]]}
+{"id": "ont_9_nature_test_450", "response": "mountains_classification_(cycling race,Daniel Oss)", "triples": [["cycling race", "mountains_classification_", "Daniel Oss"]]}
+{"id": "ont_9_nature_test_451", "response": "mountains_classification_(2016 Volta ao Algarve,Geraint Thomas)", "triples": [["2016 Volta ao Algarve", "mountains_classification_", "Geraint Thomas"]]}
+{"id": "ont_9_nature_test_452", "response": "", "triples": []}
+{"id": "ont_9_nature_test_453", "response": "mountains_classification_(Tour de Hongrie,Krists Neilands)", "triples": [["Tour de Hongrie", "mountains_classification_", "Krists Neilands"]]}
+{"id": "ont_9_nature_test_454", "response": "mountains_classification_(2017 Tour of Austria,Stefan Denifl)", "triples": [["2017 Tour of Austria", "mountains_classification_", "Stefan Denifl"]]}
+{"id": "ont_9_nature_test_455", "response": "mountains_classification_(race,Rob Britton)", "triples": [["race", "mountains_classification_", "Rob Britton"]]}
+{"id": "ont_9_nature_test_456", "response": "mountains_classification_(cycling race,Pasquale Fornara)", "triples": [["cycling race", "mountains_classification_", "Pasquale Fornara"]]}
+{"id": "ont_9_nature_test_457", "response": "mountains_classification_(race,Pasquale Fornara)", "triples": [["race", "mountains_classification_", "Pasquale Fornara"]]}
+{"id": "ont_9_nature_test_458", "response": "mountains_classification_(2018 Tour Down Under,Daryl Impey)", "triples": [["2018 Tour Down Under", "mountains_classification_", "Daryl Impey"]]}
+{"id": "ont_9_nature_test_459", "response": "mountains_classification_(2018 Giro d'Italia,Chris Froome)", "triples": [["2018 Giro d'Italia", "mountains_classification_", "Chris Froome"]]}
+{"id": "ont_9_nature_test_460", "response": "mountains_classification_(the race,Rohan Dennis)", "triples": [["the race", "mountains_classification_", "Rohan Dennis"]]}
+{"id": "ont_9_nature_test_461", "response": "mountains_classification_(2017 The Women's Tour,Katarzyna Niewiadoma)", "triples": [["2017 The Women's Tour", "mountains_classification_", "Katarzyna Niewiadoma"]]}
+{"id": "ont_9_nature_test_462", "response": "mountains_classification_(race,Anna van der Breggen)", "triples": [["race", "mountains_classification_", "Anna van der Breggen"]]}
+{"id": "ont_9_nature_test_463", "response": "mountains_classification_(1956 Tour de Suisse,Rolf Maurer)", "triples": [["1956 Tour de Suisse", "mountains_classification_", "Rolf Maurer"]]}
+{"id": "ont_9_nature_test_464", "response": "mountains_classification_(2017 Tour de France,Pieter Weening)", "triples": [["2017 Tour de France", "mountains_classification_", "Pieter Weening"]]}
+{"id": "ont_9_nature_test_465", "response": "mountains_classification_(2017 Giro Rosa,Elisa Longo Borghini)", "triples": [["2017 Giro Rosa", "mountains_classification_", "Elisa Longo Borghini"]]}
+{"id": "ont_9_nature_test_466", "response": "mountains_classification_(2014 Volta ao Algarve,Micha\u0142 Kwiatkowski)", "triples": [["2014 Volta ao Algarve", "mountains_classification_", "Micha\u0142 Kwiatkowski"]]}
+{"id": "ont_9_nature_test_467", "response": "mountains_classification_(1971 Tour de Suisse,Georges Pintens)", "triples": [["1971 Tour de Suisse", "mountains_classification_", "Georges Pintens"]]}
+{"id": "ont_9_nature_test_468", "response": "mountains_classification_(1952 Tour de Suisse,Pasquale Fornara)", "triples": [["1952 Tour de Suisse", "mountains_classification_", "Pasquale Fornara"]]}
+{"id": "ont_9_nature_test_469", "response": "mountains_classification_(2018 Tour Down Under,Tom-Jelte Slagter)", "triples": [["2018 Tour Down Under", "mountains_classification_", "Tom-Jelte Slagter"]]}
+{"id": "ont_9_nature_test_470", "response": "", "triples": []}
+{"id": "ont_9_nature_test_471", "response": "mountains_classification_(1957 Tour de Suisse,Karl Litschi)", "triples": [["1957 Tour de Suisse", "mountains_classification_", "Karl Litschi"]]}
+{"id": "ont_9_nature_test_472", "response": "mountains_classification_(2000 Tour de France,Richard Virenque)", "triples": [["2000 Tour de France", "mountains_classification_", "Richard Virenque"]]}
+{"id": "ont_9_nature_test_473", "response": "mountains_classification_(race,Richard Carapaz)", "triples": [["race", "mountains_classification_", "Richard Carapaz"]]}
+{"id": "ont_9_nature_test_474", "response": "taxon_common_name(Caltha palustris,marsh-marigold)\ntaxon_common_name(Caltha palustris,kingcup)", "triples": [["Caltha palustris", "taxon_common_name", "marsh-marigold"], ["Caltha palustris", "taxon_common_name", "kingcup"]]}

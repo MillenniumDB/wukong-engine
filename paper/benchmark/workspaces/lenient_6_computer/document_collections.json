@@ -1,0 +1,12 @@
+{
+    "collections": {
+        "sentences": {
+            "sources": [
+                {
+                    "root": "sentences",
+                    "mode": "directory"
+                }
+            ]
+        }
+    }
+}

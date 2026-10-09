@@ -1,0 +1,24 @@
+{
+  "ontology": "3_sport",
+  "system": "prompting baseline (benchmark prompts, example removed)",
+  "recorded_at": "2026-10-09T16:03:09+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": true
+  },
+  "prompts_file_sha256": "c3f26f6b8f23e86b2396bee505c6aff11af5351125128c1820d5ee4dc95fab04",
+  "prompts": 487,
+  "failed": 0,
+  "with_triples": 447,
+  "triples": 975,
+  "usage": {
+    "input_tokens": 129295,
+    "cached_tokens": 0,
+    "output_tokens": 90853,
+    "reasoning_tokens": 75322
+  },
+  "seconds": 116
+}

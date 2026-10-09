@@ -1,0 +1,41 @@
+{
+    "ontology_id": "ont_3_sport",
+    "title": "Sports Ontology",
+    "value_entity_type": null,
+    "entity_types": {
+        "SportsCompetition": "sports competition",
+        "ProfessionalSportsLeague": "professional sports league",
+        "Athlete": "athlete",
+        "SportsSeason": "sports season",
+        "Sport": "sport",
+        "SportsOrganization": "sports organization",
+        "Human": "human",
+        "Country": "country",
+        "SportsClub": "sports club"
+    },
+    "relationship_types": {
+        "Occupation": "occupation",
+        "Sport": "sport",
+        "MemberOfSportsTeam": "member_of_sports_team",
+        "CountryForSport": "country_for_sport",
+        "CoachOfSportsTeam": "coach_of_sports_team",
+        "League": "league",
+        "CountryOfOrigin": "country_of_origin"
+    },
+    "subject_types": {},
+    "property_separator": "; ",
+    "properties": {
+        "SportsSeason": {
+            "sports_season_of_league_or_competition": "sports_season_of_league_or_competition"
+        },
+        "SportsClub": {
+            "home_venue": "home_venue"
+        },
+        "Human": {
+            "league": "league"
+        },
+        "SportsOrganization": {
+            "competition_class": "competition_class"
+        }
+    }
+}
