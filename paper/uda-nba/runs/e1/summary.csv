@@ -1,0 +1,21 @@
+,,Wukong,LightRAG,GraphRAG
+Size,Nodes,"2,129 (2,114–2,137)","34,162","37,917"
+Size,Edges,"3,339 (3,278–3,390)","44,040","53,891"
+Node vocabulary,Node types,4,14,99
+Node vocabulary,Node types used once,0,1,94
+Relation vocabulary (own labels),Labels,3,"25,151",0 (edges unlabeled)
+Relation vocabulary (own labels),Labels used once,0%,79%,–
+Relation vocabulary (own labels),Labels to cover 90% of edges,1,"20,747",–
+Relation vocabulary (derived predicates),Labels,3,"4,388","4,428"
+Relation vocabulary (derived predicates),Labels used once,0%,56%,52%
+Relation vocabulary (derived predicates),Labels to cover 50% / 90% of edges,1 / 1,"51 / 1,079",47 / 936
+Relation vocabulary (derived predicates),Labels per node-type pair (mean),1,310,736
+"Relation vocabulary (synonyms merged, cos ≥ 0.85)",Labels,3,"3,488","3,477"
+"Relation vocabulary (synonyms merged, cos ≥ 0.85)",Labels to cover 90% of edges,1,738,633
+Direction,Edges stored against their relation,0%,48% (undirected),16%
+Direction,Frequent labels used in both directions,0%,85%,56%
+Properties,Typed property values per node,1.5 (1.5–1.5),0.0,0.0
+Properties,Nodes described only by free text,0%,100%,100%
+Control: recall vs gold,Entities found,213 (213–214)/216,214/216,214/216
+Control: recall vs gold,Attribute values found,865 (864–867)/955,714/955,729/955
+Control: recall vs gold,Relations found,169 (168–170)/220,195/220,192/220

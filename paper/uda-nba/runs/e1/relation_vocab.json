@@ -1,0 +1,384 @@
+{
+ "Wukong": {
+  "raw": {
+   "edges": 3390,
+   "unlabeled_edges": 0,
+   "labels": 3,
+   "labels_cover_50": 1,
+   "labels_cover_90": 1,
+   "edges_per_label": 1130.0,
+   "singleton_labels_pct": 0.0,
+   "edges_with_singleton_label_pct": 0.0,
+   "top_label_share_pct": 94.0,
+   "type_pairs_100plus": 2,
+   "labels_per_type_pair_mean": 1.0,
+   "labels_per_type_pair_max": 1
+  }
+ },
+ "LightRAG-keywords": {
+  "raw": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 25151,
+   "labels_cover_50": 4262,
+   "labels_cover_90": 20747,
+   "edges_per_label": 1.8,
+   "singleton_labels_pct": 78.6,
+   "edges_with_singleton_label_pct": 44.9,
+   "top_label_share_pct": 0.5,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 1019.7,
+   "labels_per_type_pair_max": 5792
+  },
+  "merged_0.95": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 24739,
+   "labels_cover_50": 4113,
+   "labels_cover_90": 20335,
+   "edges_per_label": 1.8,
+   "singleton_labels_pct": 77.7,
+   "edges_with_singleton_label_pct": 43.7,
+   "top_label_share_pct": 0.5,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 1007.6,
+   "labels_per_type_pair_max": 5678,
+   "largest_cluster": {
+    "leader": "authorship,publication",
+    "labels": 1,
+    "edges_pct": 0.5,
+    "members": [
+     "authorship,publication"
+    ]
+   }
+  },
+  "merged_0.9": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 22779,
+   "labels_cover_50": 3240,
+   "labels_cover_90": 18375,
+   "edges_per_label": 1.9,
+   "singleton_labels_pct": 74.9,
+   "edges_with_singleton_label_pct": 38.7,
+   "top_label_share_pct": 0.5,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 950.2,
+   "labels_per_type_pair_max": 5208,
+   "largest_cluster": {
+    "leader": "authorship,publication",
+    "labels": 1,
+    "edges_pct": 0.5,
+    "members": [
+     "authorship,publication"
+    ]
+   }
+  },
+  "merged_0.85": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 19480,
+   "labels_cover_50": 2128,
+   "labels_cover_90": 15076,
+   "edges_per_label": 2.3,
+   "singleton_labels_pct": 69.9,
+   "edges_with_singleton_label_pct": 30.9,
+   "top_label_share_pct": 0.7,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 852.7,
+   "labels_per_type_pair_max": 4397,
+   "largest_cluster": {
+    "leader": "authorship,publication",
+    "labels": 8,
+    "edges_pct": 0.7,
+    "members": [
+     "authorship,publication",
+     "authorship",
+     "authorship,book",
+     "author,authorship,publication",
+     "authorship,research",
+     "authorship,scholarship",
+     "authorship,book,co-authored,publication",
+     "authorship,blog publishing"
+    ]
+   }
+  },
+  "merged_0.8": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 15573,
+   "labels_cover_50": 1246,
+   "labels_cover_90": 11169,
+   "edges_per_label": 2.8,
+   "singleton_labels_pct": 63.4,
+   "edges_with_singleton_label_pct": 22.4,
+   "top_label_share_pct": 0.8,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 741.6,
+   "labels_per_type_pair_max": 3499,
+   "largest_cluster": {
+    "leader": "authorship,publication",
+    "labels": 21,
+    "edges_pct": 0.8,
+    "members": [
+     "authorship,publication",
+     "authorship",
+     "author,publication",
+     "authorship,book",
+     "authorship,subject",
+     "authorship,biography",
+     "authorship,contribution",
+     "authorship,journalism,publication",
+     "author,authorship,publication",
+     "authorship,research",
+     "author,authored,publication",
+     "authorship,interview"
+    ]
+   }
+  }
+ },
+ "LightRAG-derived": {
+  "raw": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 4388,
+   "labels_cover_50": 51,
+   "labels_cover_90": 1079,
+   "edges_per_label": 10.0,
+   "singleton_labels_pct": 55.8,
+   "edges_with_singleton_label_pct": 5.6,
+   "top_label_share_pct": 4.3,
+   "edges_stored_backwards_pct": 47.8,
+   "labels_10plus_both_directions_pct": 85.3,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 310.1,
+   "labels_per_type_pair_max": 852
+  },
+  "merged_0.95": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 4358,
+   "labels_cover_50": 50,
+   "labels_cover_90": 1064,
+   "edges_per_label": 10.1,
+   "singleton_labels_pct": 55.6,
+   "edges_with_singleton_label_pct": 5.5,
+   "top_label_share_pct": 4.3,
+   "edges_stored_backwards_pct": 47.8,
+   "labels_10plus_both_directions_pct": 85.8,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 308.9,
+   "labels_per_type_pair_max": 846,
+   "largest_cluster": {
+    "leader": "located_in",
+    "labels": 1,
+    "edges_pct": 4.3,
+    "members": [
+     "located_in"
+    ]
+   }
+  },
+  "merged_0.9": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 4012,
+   "labels_cover_50": 49,
+   "labels_cover_90": 939,
+   "edges_per_label": 11.0,
+   "singleton_labels_pct": 53.9,
+   "edges_with_singleton_label_pct": 4.9,
+   "top_label_share_pct": 4.3,
+   "edges_stored_backwards_pct": 47.8,
+   "labels_10plus_both_directions_pct": 86.9,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 298.8,
+   "labels_per_type_pair_max": 800,
+   "largest_cluster": {
+    "leader": "located_in",
+    "labels": 1,
+    "edges_pct": 4.3,
+    "members": [
+     "located_in"
+    ]
+   }
+  },
+  "merged_0.85": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 3488,
+   "labels_cover_50": 41,
+   "labels_cover_90": 738,
+   "edges_per_label": 12.6,
+   "singleton_labels_pct": 51.6,
+   "edges_with_singleton_label_pct": 4.1,
+   "top_label_share_pct": 5.3,
+   "edges_stored_backwards_pct": 47.8,
+   "labels_10plus_both_directions_pct": 88.5,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 279.1,
+   "labels_per_type_pair_max": 729,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 3,
+    "edges_pct": 5.3,
+    "members": [
+     "plays_for",
+     "plays_in",
+     "plays_at"
+    ]
+   }
+  },
+  "merged_0.8": {
+   "edges": 44040,
+   "unlabeled_edges": 0,
+   "labels": 3013,
+   "labels_cover_50": 38,
+   "labels_cover_90": 599,
+   "edges_per_label": 14.6,
+   "singleton_labels_pct": 48.2,
+   "edges_with_singleton_label_pct": 3.3,
+   "top_label_share_pct": 7.1,
+   "edges_stored_backwards_pct": 47.8,
+   "labels_10plus_both_directions_pct": 90.1,
+   "type_pairs_100plus": 26,
+   "labels_per_type_pair_mean": 262.6,
+   "labels_per_type_pair_max": 678,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 8,
+    "edges_pct": 7.1,
+    "members": [
+     "plays_for",
+     "plays_against",
+     "plays_in",
+     "plays_at",
+     "played_for",
+     "plays_on",
+     "plays_as",
+     "plays_under"
+    ]
+   }
+  }
+ },
+ "GraphRAG-derived": {
+  "raw": {
+   "edges": 53891,
+   "unlabeled_edges": 0,
+   "labels": 4428,
+   "labels_cover_50": 47,
+   "labels_cover_90": 936,
+   "edges_per_label": 12.2,
+   "singleton_labels_pct": 51.8,
+   "edges_with_singleton_label_pct": 4.3,
+   "top_label_share_pct": 4.8,
+   "edges_stored_backwards_pct": 16.2,
+   "labels_10plus_both_directions_pct": 55.5,
+   "type_pairs_100plus": 10,
+   "labels_per_type_pair_mean": 735.6,
+   "labels_per_type_pair_max": 1014
+  },
+  "merged_0.95": {
+   "edges": 53891,
+   "unlabeled_edges": 0,
+   "labels": 4387,
+   "labels_cover_50": 47,
+   "labels_cover_90": 928,
+   "edges_per_label": 12.3,
+   "singleton_labels_pct": 51.5,
+   "edges_with_singleton_label_pct": 4.2,
+   "top_label_share_pct": 4.8,
+   "edges_stored_backwards_pct": 16.2,
+   "labels_10plus_both_directions_pct": 55.6,
+   "type_pairs_100plus": 10,
+   "labels_per_type_pair_mean": 731.4,
+   "labels_per_type_pair_max": 1012,
+   "largest_cluster": {
+    "leader": "located_in",
+    "labels": 1,
+    "edges_pct": 4.8,
+    "members": [
+     "located_in"
+    ]
+   }
+  },
+  "merged_0.9": {
+   "edges": 53891,
+   "unlabeled_edges": 0,
+   "labels": 4038,
+   "labels_cover_50": 45,
+   "labels_cover_90": 817,
+   "edges_per_label": 13.3,
+   "singleton_labels_pct": 50.0,
+   "edges_with_singleton_label_pct": 3.7,
+   "top_label_share_pct": 4.8,
+   "edges_stored_backwards_pct": 16.2,
+   "labels_10plus_both_directions_pct": 55.6,
+   "type_pairs_100plus": 10,
+   "labels_per_type_pair_mean": 700.6,
+   "labels_per_type_pair_max": 966,
+   "largest_cluster": {
+    "leader": "located_in",
+    "labels": 1,
+    "edges_pct": 4.8,
+    "members": [
+     "located_in"
+    ]
+   }
+  },
+  "merged_0.85": {
+   "edges": 53891,
+   "unlabeled_edges": 0,
+   "labels": 3477,
+   "labels_cover_50": 36,
+   "labels_cover_90": 633,
+   "edges_per_label": 15.5,
+   "singleton_labels_pct": 47.7,
+   "edges_with_singleton_label_pct": 3.1,
+   "top_label_share_pct": 7.2,
+   "edges_stored_backwards_pct": 16.2,
+   "labels_10plus_both_directions_pct": 58.4,
+   "type_pairs_100plus": 10,
+   "labels_per_type_pair_mean": 640.1,
+   "labels_per_type_pair_max": 881,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 3,
+    "edges_pct": 7.2,
+    "members": [
+     "plays_for",
+     "plays_in",
+     "plays_at"
+    ]
+   }
+  },
+  "merged_0.8": {
+   "edges": 53891,
+   "unlabeled_edges": 0,
+   "labels": 2971,
+   "labels_cover_50": 34,
+   "labels_cover_90": 508,
+   "edges_per_label": 18.1,
+   "singleton_labels_pct": 44.7,
+   "edges_with_singleton_label_pct": 2.5,
+   "top_label_share_pct": 8.9,
+   "edges_stored_backwards_pct": 16.2,
+   "labels_10plus_both_directions_pct": 60.6,
+   "type_pairs_100plus": 10,
+   "labels_per_type_pair_mean": 585.1,
+   "labels_per_type_pair_max": 813,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 6,
+    "edges_pct": 8.9,
+    "members": [
+     "plays_for",
+     "plays_in",
+     "plays_against",
+     "plays_at",
+     "plays_on",
+     "plays_under"
+    ]
+   }
+  }
+ }
+}
