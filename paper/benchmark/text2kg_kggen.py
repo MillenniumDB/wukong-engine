@@ -5,7 +5,10 @@ way to steer extraction is a free-text `context` hint. Two variants:
 
     - `plain`: KGGen as its authors use it, no context;
     - `context`: the ontology's relations (with their subject and object types) passed as the context hint, the same
-      information the benchmark's own prompt gives.
+      information the benchmark's own prompt gives. `KGGen.generate()` accepts the hint but (at 6259b4c) passes it
+      only to deduplication, never to its relation step, so this variant runs generate()'s two steps itself and
+      gives the hint to `get_relations()`, which puts it in its instructions. `results-kggen-context-r1` predates
+      this: the hint never reached the model there, so it is a second `plain` run.
 
 Each sentence is one KGGen call (entities, then relations: two LLM calls), with deduplication off (one sentence at a
 time) and the dspy cache disabled, so repetitions are independent. Run with KGGen's own environment (built from its
@@ -33,7 +36,10 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
 
+import dspy
 from kg_gen import KGGen
+from kg_gen.steps._1_get_entities import get_entities
+from kg_gen.steps._2_get_relations import get_relations
 
 ONTOLOGIES = ('1_movie', '2_music', '3_sport', '4_book', '5_military', '6_computer', '7_space', '8_politics',
               '9_nature', '10_culture')
@@ -67,6 +73,23 @@ def _client(args: argparse.Namespace) -> KGGen:
     return _local.kg
 
 
+def _generate(kg: KGGen, sentence: str, context: str) -> set[tuple[str, str, str]]:
+    """Extract the triples of one sentence, giving the context hint (if any) to KGGen's relation step.
+
+    Without a hint this is `generate()` itself. With one, it runs what `generate()` runs for a single chunk
+    (entities, then relations, with the client's LM and settings) and adds the hint to `get_relations()`, since
+    `generate()` would drop it.
+    """
+    if not context:
+        return kg.generate(input_data=sentence, deduplication_method=None).relations
+    with dspy.context(lm=kg.lm):
+        entities = get_entities(sentence, False, model=kg.model, api_key=kg.api_key, api_base=kg.api_base,
+                                temperature=kg.temperature)
+        relations = get_relations(sentence, entities, context=context, model=kg.model, api_key=kg.api_key,
+                                  api_base=kg.api_base, temperature=kg.temperature)
+    return set(relations)
+
+
 def _extract(args: argparse.Namespace, sentence: str, context: str) -> tuple[list | None, list[dict]]:
     """Run KGGen on one sentence, retrying with backoff.
 
@@ -77,9 +100,9 @@ def _extract(args: argparse.Namespace, sentence: str, context: str) -> tuple[lis
     for attempt in range(ATTEMPTS):
         start = len(kg.lm.history)
         try:
-            graph = kg.generate(input_data=sentence, context=context, deduplication_method=None)
+            relations = _generate(kg, sentence, context)
             usage = [h.get('usage') or {} for h in kg.lm.history[start:]]
-            return sorted(graph.relations), usage
+            return sorted(relations), usage
         except Exception as error:  # noqa: BLE001
             if attempt == ATTEMPTS - 1:
                 print(f'    gave up: {type(error).__name__}: {error}', file=sys.stderr)
