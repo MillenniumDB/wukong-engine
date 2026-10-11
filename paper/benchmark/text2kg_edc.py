@@ -45,6 +45,16 @@ ONTOLOGIES = ('1_movie', '2_music', '3_sport', '4_book', '5_military', '6_comput
 FEW_SHOT = 'wiki-nre'
 
 
+def read_sentences(path: Path) -> list[str]:
+    """Read one sentence per line, splitting on newlines only.
+
+    Not str.splitlines(): it also splits on U+0085, which two 3_sport sentences contain (mojibake in the
+    benchmark, e.g. 'Ã\\x85krehamn'), giving more sentences than ids. EDC reads input.txt with readlines(),
+    which splits on newlines only, so both sides see the same sentences.
+    """
+    return path.read_text().removesuffix('\n').split('\n')
+
+
 def run_shard(args: argparse.Namespace, onto: str, index: int, sentences: list[str]) -> tuple[int, list | None, dict]:
     """Run EDC on one shard of sentences.
 
@@ -99,7 +109,7 @@ def submit_ontology(args: argparse.Namespace, onto: str, pool: ThreadPoolExecuto
     if out_file.exists():
         print(f'{onto:12s} already done -> {out_file}')
         return None
-    sentences = (args.inputs / f'{onto}_sentences.txt').read_text().splitlines()
+    sentences = read_sentences(args.inputs / f'{onto}_sentences.txt')
     ids = json.loads((args.inputs / f'{onto}_ids.json').read_text())
     assert len(sentences) == len(ids), onto
     shards = [sentences[i:i + args.shard_size] for i in range(0, len(sentences), args.shard_size)]
@@ -173,7 +183,7 @@ def main() -> int:
         cut.mkdir(parents=True, exist_ok=True)
         for onto in args.onto or ONTOLOGIES:
             (cut / f'{onto}_schema.csv').write_text((args.inputs / f'{onto}_schema.csv').read_text())
-            lines = (args.inputs / f'{onto}_sentences.txt').read_text().splitlines()[:args.limit]
+            lines = read_sentences(args.inputs / f'{onto}_sentences.txt')[:args.limit]
             (cut / f'{onto}_sentences.txt').write_text(''.join(line + '\n' for line in lines))
             ids = json.loads((args.inputs / f'{onto}_ids.json').read_text())[:args.limit]
             (cut / f'{onto}_ids.json').write_text(json.dumps(ids))
