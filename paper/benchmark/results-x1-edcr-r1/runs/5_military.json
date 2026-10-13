@@ -1,0 +1,23 @@
+{
+  "ontology": "5_military",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-13T16:32:28+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 230,
+  "shards": 3,
+  "failed_shards": [],
+  "usage": {
+    "calls": 2725,
+    "failed_calls": 0,
+    "input_tokens": 1668599,
+    "cached_tokens": 10855,
+    "output_tokens": 211038,
+    "reasoning_tokens": 123471
+  },
+  "seconds": 7838,
+  "with_triples": 206,
+  "triples": 465
+}
