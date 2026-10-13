@@ -1,0 +1,49 @@
+{
+  "ontology": "10_culture",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:21:45+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Culture Ontology\". Use only these relations, written exactly as given: ethnic group (human -> ethnic group); religious order (religion -> religion); languages spoken, written or signed (human -> language); inception (literature -> value); start time (festival -> value); dedicated to (art -> human); iconographic symbol (human -> value); indigenous to (dance -> value).",
+  "sentences": 159,
+  "failed": 0,
+  "with_triples": 88,
+  "triples": 119,
+  "distinct_predicates": 6,
+  "distinct_predicates_in_ontology": 6,
+  "triples_with_ontology_predicate": 119,
+  "top_predicates": [
+    [
+      "languages_spoken,_written_or_signed",
+      52
+    ],
+    [
+      "inception",
+      50
+    ],
+    [
+      "ethnic_group",
+      11
+    ],
+    [
+      "start_time",
+      2
+    ],
+    [
+      "dedicated_to",
+      2
+    ],
+    [
+      "iconographic_symbol",
+      2
+    ]
+  ],
+  "usage": {
+    "calls": 318,
+    "input_tokens": 129298,
+    "cached_tokens": 0,
+    "output_tokens": 24339,
+    "reasoning_tokens": 11231
+  },
+  "seconds": 55
+}

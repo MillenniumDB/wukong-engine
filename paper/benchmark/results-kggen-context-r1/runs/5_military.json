@@ -1,0 +1,57 @@
+{
+  "ontology": "5_military",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:14:37+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Military Ontology\". Use only these relations, written exactly as given: military rank (human -> military rank); military branch (human -> military unit); military casualty classification (human -> military casualty classification); designed by (military equipment -> organization); designed by (military vehicle -> organization); commanded by (command -> human); next higher rank (military rank -> rank); designated as terrorist by (armed organization -> country); wing configuration (any -> value).",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 183,
+  "triples": 361,
+  "distinct_predicates": 8,
+  "distinct_predicates_in_ontology": 8,
+  "triples_with_ontology_predicate": 361,
+  "top_predicates": [
+    [
+      "military_branch",
+      134
+    ],
+    [
+      "military_rank",
+      116
+    ],
+    [
+      "designated_as_terrorist_by",
+      39
+    ],
+    [
+      "designed_by",
+      31
+    ],
+    [
+      "military_casualty_classification",
+      21
+    ],
+    [
+      "commanded_by",
+      16
+    ],
+    [
+      "wing_configuration",
+      2
+    ],
+    [
+      "next_higher_rank",
+      2
+    ]
+  ],
+  "usage": {
+    "calls": 460,
+    "input_tokens": 194436,
+    "cached_tokens": 0,
+    "output_tokens": 42484,
+    "reasoning_tokens": 16460
+  },
+  "seconds": 76
+}

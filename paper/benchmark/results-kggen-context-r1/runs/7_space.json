@@ -1,0 +1,53 @@
+{
+  "ontology": "7_space",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:17:06+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Space Ontology\". Use only these relations, written exactly as given: site of astronomical discovery (asteroid -> observatory); minor planet group (asteroid -> astronomical object type); constellation (spiral galaxy -> constellation); astronaut mission (human -> spaceflight); spacecraft docking/undocking date (Spacecraft -> value); backup or reserve team or crew (spaceflight -> human); location of landing (Spacecraft -> geographic region).",
+  "sentences": 203,
+  "failed": 0,
+  "with_triples": 187,
+  "triples": 260,
+  "distinct_predicates": 7,
+  "distinct_predicates_in_ontology": 7,
+  "triples_with_ontology_predicate": 260,
+  "top_predicates": [
+    [
+      "astronaut_mission",
+      118
+    ],
+    [
+      "site_of_astronomical_discovery",
+      64
+    ],
+    [
+      "constellation",
+      56
+    ],
+    [
+      "minor_planet_group",
+      14
+    ],
+    [
+      "location_of_landing",
+      4
+    ],
+    [
+      "backup_or_reserve_team_or_crew",
+      2
+    ],
+    [
+      "spacecraft_docking/undocking_date",
+      2
+    ]
+  ],
+  "usage": {
+    "calls": 406,
+    "input_tokens": 167261,
+    "cached_tokens": 0,
+    "output_tokens": 32920,
+    "reasoning_tokens": 13024
+  },
+  "seconds": 72
+}
