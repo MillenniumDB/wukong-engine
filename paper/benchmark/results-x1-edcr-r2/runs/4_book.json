@@ -1,0 +1,23 @@
+{
+  "ontology": "4_book",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-13T22:24:17+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 550,
+  "shards": 6,
+  "failed_shards": [],
+  "usage": {
+    "calls": 5248,
+    "failed_calls": 0,
+    "input_tokens": 3779444,
+    "cached_tokens": 78475,
+    "output_tokens": 394431,
+    "reasoning_tokens": 214187
+  },
+  "seconds": 5614,
+  "with_triples": 499,
+  "triples": 1466
+}
