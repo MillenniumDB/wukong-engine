@@ -35,6 +35,16 @@
   "sprinting events": [
    "sporting event",
    "sports discipline"
+  ],
+  "sprinting": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ],
+  "track and field": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_2": {
@@ -95,7 +105,11 @@
   "British": [
    "country"
   ],
-  "MBE": []
+  "MBE": [],
+  "track and field": [
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_3": {
   "Basketball": [
@@ -142,7 +156,10 @@
   "American": [
    "country"
   ],
-  "January 9, 1992": []
+  "January 9, 1992": [],
+  "United States": [
+   "country"
+  ]
  },
  "ont_3_sport_test_4": {
   "Abel Kirui": [
@@ -165,7 +182,12 @@
    "sports competition",
    "sports discipline"
   ],
-  "6 April 1982": []
+  "6 April 1982": [],
+  "marathon": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ]
  },
  "ont_3_sport_test_5": {
   "Australia": [
@@ -236,7 +258,17 @@
    "human",
    "sportsperson"
   ],
-  "13 December 1967": []
+  "13 December 1967": [],
+  "former professional tennis player": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "tennis": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_7": {
   "BCM Gravelines": [
@@ -277,7 +309,10 @@
   "American": [
    "country"
   ],
-  "July 22, 1986": []
+  "July 22, 1986": [],
+  "United States": [
+   "country"
+  ]
  },
  "ont_3_sport_test_8": {
   "2011": [],
@@ -458,6 +493,12 @@
   ],
   "second BWF": [
    "sports organization"
+  ],
+  "BWF": [
+   "sports organization"
+  ],
+  "the second BWF": [
+   "sports organization"
   ]
  },
  "ont_3_sport_test_11": {
@@ -497,7 +538,10 @@
   "German": [
    "country"
   ],
-  "Starnberg": []
+  "Starnberg": [],
+  "Germany": [
+   "country"
+  ]
  },
  "ont_3_sport_test_13": {
   "Argentina": [
@@ -590,6 +634,15 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "British": [
+   "country"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "presenter": [
+   "human"
   ]
  },
  "ont_3_sport_test_15": {
@@ -665,6 +718,11 @@
   "16 October 1977": [],
   "German": [
    "country"
+  ],
+  "pole vaulting": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_18": {
@@ -746,6 +804,9 @@
   "January 26, 2020": [],
   "basketball": [
    "sport"
+  ],
+  "United States": [
+   "country"
   ]
  },
  "ont_3_sport_test_20": {
@@ -773,7 +834,10 @@
    "human",
    "sportsperson"
   ],
-  "January 31, 1986": []
+  "January 31, 1986": [],
+  "United States": [
+   "country"
+  ]
  },
  "ont_3_sport_test_21": {
   "Larisa Latynina": [
@@ -803,7 +867,10 @@
    "sportsperson"
   ],
   "Ukrainian": [],
-  "southern Ukraine": []
+  "southern Ukraine": [],
+  "Soviet Union": [
+   "country"
+  ]
  },
  "ont_3_sport_test_22": {
   "Italian fencing league": [
@@ -860,6 +927,16 @@
   "21 October 1962": [],
   "Italian": [
    "country"
+  ],
+  "Ã©pÃ©e fencing": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ],
+  "épée fencing": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_23": {
@@ -944,7 +1021,16 @@
   "Tobagonian": [
    "country"
   ],
-  "male": []
+  "male": [],
+  "Tobago": [],
+  "Trinidad and Tobago": [
+   "country"
+  ],
+  "track and field": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_25": {
   "Anna Chicherova": [
@@ -1039,7 +1125,10 @@
    "country"
   ],
   "Evans, Georgia": [],
-  "October 8, 1977": []
+  "October 8, 1977": [],
+  "United States": [
+   "country"
+  ]
  },
  "ont_3_sport_test_27": {
   "Piotr Zaradny": [
@@ -1068,6 +1157,9 @@
   "16 February 1972": [],
   "Krotoszyn": [],
   "Polish": [
+   "country"
+  ],
+  "Poland": [
    "country"
   ]
  },
@@ -1366,6 +1458,14 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "United Kingdom": [
+   "country"
+  ],
+  "field hockey": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_34": {
@@ -1399,6 +1499,16 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "20 km race walking": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_35": {
@@ -1418,7 +1528,17 @@
   "20 May 1983": [],
   "2003": [],
   "Berchtesgaden": [],
-  "German": []
+  "German": [],
+  "skeleton": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ],
+  "skeleton racing": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ]
  },
  "ont_3_sport_test_36": {
   "Sierra Leone": [
@@ -1473,6 +1593,9 @@
   "June 13, 1991": [],
   "Sierra Leonean descent": [
    "country"
+  ],
+  "track and field": [
+   "sport"
   ]
  },
  "ont_3_sport_test_37": {
@@ -1566,6 +1689,16 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "shot put": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_39": {
@@ -1608,6 +1741,12 @@
   "Shizuoka Prefecture": [],
   "sports scientist": [
    "human"
+  ],
+  "Japanese": [
+   "country"
+  ],
+  "Romanian": [
+   "country"
   ]
  },
  "ont_3_sport_test_40": {
@@ -1713,6 +1852,16 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "epee fencer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "épée fencing": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_42": {
@@ -1932,6 +2081,9 @@
   "Ferrara": [],
   "Italian": [
    "country"
+  ],
+  "Italy": [
+   "country"
   ]
  },
  "ont_3_sport_test_48": {
@@ -1951,6 +2103,14 @@
   "7 April 1981": [],
   "Norwegian": [
    "country"
+  ],
+  "Norway": [
+   "country"
+  ],
+  "golf": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_49": {
@@ -2044,7 +2204,17 @@
    "country"
   ],
   "September 10, 1976": [],
-  "politician": []
+  "politician": [],
+  "former basketball player": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "retired professional wrestler": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_50": {
   "Brigetta Barrett": [
@@ -2197,7 +2367,10 @@
   "Finnish": [
    "country"
   ],
-  "Tampere": []
+  "Tampere": [],
+  "Finland": [
+   "country"
+  ]
  },
  "ont_3_sport_test_55": {
   "Formula One": [
@@ -2251,7 +2424,12 @@
    "human",
    "sportsperson"
   ],
-  "MBE": []
+  "MBE": [],
+  "former Formula One driver": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_56": {
   "Cuba": [
@@ -2327,6 +2505,11 @@
   "7 January 1991": [],
   "South African": [
    "country"
+  ],
+  "middle-distance running": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_58": {
@@ -2510,6 +2693,13 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Formula One World Championship": [
+   "sports competition",
+   "sporting event"
+  ],
+  "Spanish": [
+   "country"
   ]
  },
  "ont_3_sport_test_60": {
@@ -2548,7 +2738,17 @@
   "British": [
    "country"
   ],
-  "MBE": []
+  "MBE": [],
+  "boxing": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ],
+  "professional boxing": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_61": {
   "2012 European championships international draughts": [
@@ -2644,6 +2844,10 @@
   "Sydney Roosters": [
    "sports club",
    "team"
+  ],
+  "1949 New South Wales Rugby League season": [
+   "sports season",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_64": {
@@ -2683,6 +2887,10 @@
   "US$34 million": [],
   "prize pool": [],
   "single esports tournament": [
+   "sporting event",
+   "sports competition"
+  ],
+  "The International": [
    "sporting event",
    "sports competition"
   ]
@@ -2830,7 +3038,8 @@
   "1941": [],
   "34th season": [
    "sports season"
-  ]
+  ],
+  "34": []
  },
  "ont_3_sport_test_69": {
   "1931": [],
@@ -2985,6 +3194,9 @@
   "world rugby league": [
    "sport",
    "sports discipline"
+  ],
+  "Challenge Cup final": [
+   "sporting event"
   ]
  },
  "ont_3_sport_test_71": {
@@ -3049,7 +3261,13 @@
    "sports competition"
   ],
   "Las Vegas, Nevada": [],
-  "September 16-17, 2016": []
+  "September 16-17, 2016": [],
+  "professional": [],
+  "professional bodybuilding competition": [
+   "sporting event",
+   "sports competition",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_73": {
   "1944 New Zealand rugby league season": [
@@ -3122,6 +3340,11 @@
   "Rugby League Tri-Nations tournament": [
    "sporting event",
    "sports competition"
+  ],
+  "rugby league football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_75": {
@@ -3218,7 +3441,8 @@
   ],
   "attendance": [],
   "exposure": [],
-  "revenue": []
+  "revenue": [],
+  "2013": []
  },
  "ont_3_sport_test_78": {
   "New Zealand": [
@@ -3326,6 +3550,11 @@
    "sports season",
    "sports season of a sports club",
    "sports team season"
+  ],
+  "rugby league football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_81": {
@@ -3550,6 +3779,12 @@
   "third tier of rugby league football in the United Kingdom": [
    "professional sports league",
    "sports competition"
+  ],
+  "third tier": [],
+  "third tier of rugby league": [
+   "sports competition",
+   "sporting event",
+   "professional sports league"
   ]
  },
  "ont_3_sport_test_86": {
@@ -3593,7 +3828,9 @@
   "first tier": [],
   "semi-professional rugby league football competition": [
    "sports competition"
-  ]
+  ],
+  "one tier below Super League": [],
+  "semi-professional": []
  },
  "ont_3_sport_test_87": {
   "1989 Mr. Olympia": [
@@ -3632,7 +3869,8 @@
   "professional bodybuilding competition": [
    "sporting event",
    "sports competition"
-  ]
+  ],
+  "professional": []
  },
  "ont_3_sport_test_88": {
   "1949 New Zealand rugby league season": [
@@ -3996,7 +4234,8 @@
   "rugby league team": [
    "team"
   ],
-  "sponsor's name": []
+  "sponsor's name": [],
+  "a sponsor's name": []
  },
  "ont_3_sport_test_97": {
   "1968 Rugby League World Cup": [
@@ -4073,6 +4312,10 @@
   ],
   "the two host countries": [
    "country"
+  ],
+  "Final": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_98": {
@@ -4173,6 +4416,11 @@
   "Sydney Roosters": [
    "sports club",
    "team"
+  ],
+  "1961 New South Wales Rugby League season": [
+   "sports competition",
+   "sports season",
+   "sporting event"
   ]
  },
  "ont_3_sport_test_101": {
@@ -4203,6 +4451,11 @@
   ],
   "Cairns": [],
   "Northern Pride Rugby League Football Club": [
+   "sports club",
+   "sports organization",
+   "team"
+  ],
+  "Cairns Northern Pride Rugby League Football Club": [
    "sports club",
    "sports organization",
    "team"
@@ -4266,6 +4519,11 @@
   ],
   "Sydney Roosters": [
    "sports club",
+   "team"
+  ],
+  "Eastern Suburbs (Sydney Roosters)": [
+   "sports club",
+   "sports organization",
    "team"
   ]
  },
@@ -4400,6 +4658,10 @@
   "The club": [
    "sports club",
    "team"
+  ],
+  "National Rugby League": [
+   "professional sports league",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_105": {
@@ -4507,7 +4769,8 @@
   ],
   "47th season": [
    "sports season"
-  ]
+  ],
+  "47": []
  },
  "ont_3_sport_test_108": {
   "2012 State of Origin series": [
@@ -4540,7 +4803,8 @@
    "sporting event",
    "sports competition"
   ],
-  "state of origin rules": []
+  "state of origin rules": [],
+  "31st": []
  },
  "ont_3_sport_test_109": {
   "1966 Mr. Olympia": [
@@ -4620,6 +4884,13 @@
   ],
   "United Kingdom": [
    "country"
+  ],
+  "first tier": [],
+  "one tier below Super League": [],
+  "semi-professional": [],
+  "semi-professional rugby league football competition": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_111": {
@@ -5071,7 +5342,8 @@
   "professional bodybuilding competition": [
    "sporting event",
    "sports competition"
-  ]
+  ],
+  "professional": []
  },
  "ont_3_sport_test_119": {
   "2008 New Zealand rugby league season": [
@@ -5089,7 +5361,8 @@
   ],
   "New Zealand": [
    "country"
-  ]
+  ],
+  "101st": []
  },
  "ont_3_sport_test_120": {
   "ARWS": [
@@ -5174,6 +5447,13 @@
    "sports team season"
   ],
   "endurance racing season": [
+   "sports season"
+  ],
+  "Adventure racing teams": [
+   "team"
+  ],
+  "The Adventure Racing World Series": [
+   "sports competition",
    "sports season"
   ]
  },
@@ -5398,7 +5678,12 @@
   "sports team season": [
    "sports team season"
   ],
-  "2006": []
+  "2006": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_125": {
   "OGC Nice": [
@@ -5420,7 +5705,10 @@
   "French": [
    "country"
   ],
-  "Orléans": []
+  "Orléans": [],
+  "France": [
+   "country"
+  ]
  },
  "ont_3_sport_test_126": {
   "Aarhus Fremad": [
@@ -5482,7 +5770,11 @@
   "Under-20 squad": [
    "team",
    "sports team season"
-  ]
+  ],
+  "FC Rostov Under-20 squad": [
+   "team"
+  ],
+  "assistant coach": []
  },
  "ont_3_sport_test_128": {
   "Andy Pelmard": [
@@ -5538,6 +5830,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "France": [
+   "country"
   ]
  },
  "ont_3_sport_test_129": {
@@ -5549,7 +5844,8 @@
   "Vitaliy Kafanov": [
    "human",
    "sportsperson"
-  ]
+  ],
+  "senior coach": []
  },
  "ont_3_sport_test_130": {
   "FC Akhmat Grozny": [
@@ -5652,6 +5948,12 @@
   "analyst": [],
   "Under-21 squad": [
    "team"
+  ],
+  "FC Rostov Under-21 squad": [
+   "team"
+  ],
+  "analyst for the Under-21 squad": [
+   "human"
   ]
  },
  "ont_3_sport_test_133": {
@@ -5740,7 +6042,16 @@
   "St. Raphael": [
    "sports club"
   ],
-  "first-team coach": []
+  "first-team coach": [],
+  "France under-19 national football team": [
+   "team",
+   "sports team season"
+  ],
+  "OGC Nice first team": [
+   "team",
+   "sports team season"
+  ],
+  "coach": []
  },
  "ont_3_sport_test_135": {
   "Argentina": [
@@ -5973,6 +6284,11 @@
   ],
   "German": [
    "country"
+  ],
+  "former footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_140": {
@@ -6064,7 +6380,10 @@
   "French": [
    "country"
   ],
-  "midfielder": []
+  "midfielder": [],
+  "France": [
+   "country"
+  ]
  },
  "ont_3_sport_test_141": {
   "FC Rostov": [
@@ -6126,7 +6445,15 @@
   "French": [
    "country"
   ],
-  "midfielder": []
+  "midfielder": [],
+  "France": [
+   "country"
+  ],
+  "footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_143": {
   "FC Rostov": [
@@ -6295,7 +6622,12 @@
    "sports season",
    "sports team season"
   ],
-  "2005": []
+  "2005": [],
+  "footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_146": {
   "AS Monaco": [
@@ -6370,7 +6702,12 @@
    "sportsperson"
   ],
   "1983": [],
-  "October 1983": []
+  "October 1983": [],
+  "Lunde": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_149": {
   "Dmitri Burmistrov": [
@@ -6553,7 +6890,10 @@
   "French": [
    "country"
   ],
-  "central midfielder": []
+  "central midfielder": [],
+  "France": [
+   "country"
+  ]
  },
  "ont_3_sport_test_154": {
   "Aleksandr Maslov": [
@@ -6699,6 +7039,17 @@
   ],
   "Moroccan origin": [
    "country"
+  ],
+  "France": [
+   "country"
+  ],
+  "Morocco": [
+   "country"
+  ],
+  "association football": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_159": {
@@ -6734,7 +7085,11 @@
   ],
   "sports competition": [
    "sports competition"
-  ]
+  ],
+  "Russia": [
+   "country"
+  ],
+  "assistant manager": []
  },
  "ont_3_sport_test_160": {
   "Bayern Munich": [
@@ -6938,7 +7293,8 @@
    "sport",
    "physical activity",
    "sports discipline"
-  ]
+  ],
+  "1": []
  },
  "ont_3_sport_test_165": {
   "Hideki Irabu": [
@@ -7133,7 +7489,18 @@
   "full-time manager": [],
   "three Japan Series championships": [
    "sports competition"
-  ]
+  ],
+  "Yakult Swallows from 1990 to 1998": [
+   "sports club",
+   "sports organization",
+   "team"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "manager": []
  },
  "ont_3_sport_test_171": {
   "Baseball": [
@@ -7258,7 +7625,12 @@
    "professional sports league"
   ],
   "gold medals": [],
-  "junior": []
+  "junior": [],
+  "junior hockey": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ]
  },
  "ont_3_sport_test_173": {
   "Badminton": [
@@ -7349,6 +7721,11 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "chess grandmaster": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_176": {
@@ -7420,7 +7797,8 @@
   "Japan": [
    "country"
   ],
-  "Japan Ground Self-Defense Force": []
+  "Japan Ground Self-Defense Force": [],
+  "Captain": []
  },
  "ont_3_sport_test_180": {
   "Japan": [
@@ -7530,6 +7908,11 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "baseball": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_183": {
@@ -7586,7 +7969,12 @@
    "sportsperson"
   ],
   "September 11, 1974": [],
-  "Takarazuka": []
+  "Takarazuka": [],
+  "former Japanese professional baseball player": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_184": {
   "Fukuoka SoftBank Hawks": [
@@ -7655,6 +8043,13 @@
    "team"
   ],
   "top ice dance team": [
+   "team"
+  ],
+  "2004 Canadian junior championships": [
+   "sporting event",
+   "sports competition"
+  ],
+  "ice dance team": [
    "team"
   ]
  },
@@ -7869,6 +8264,11 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_189": {
@@ -7997,7 +8397,12 @@
    "human",
    "sportsperson"
   ],
-  "heavyweight silver medal": []
+  "heavyweight silver medal": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_192": {
   "Badminton": [
@@ -8186,6 +8591,16 @@
   ],
   "Ichikawa": [],
   "Satō Takahiko": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "professional player": [
    "athlete",
    "human",
    "sportsperson"
@@ -8518,7 +8933,12 @@
   "sports governing body": [
    "sports governing body"
   ],
-  "Pacific League MVP Award": []
+  "Pacific League MVP Award": [],
+  "Pacific League": [
+   "professional sports league",
+   "sports organization",
+   "sports competition"
+  ]
  },
  "ont_3_sport_test_204": {
   "Aleksandra Wozniak": [
@@ -8765,7 +9185,17 @@
   ],
   "Aichi": [],
   "August 11, 1963": [],
-  "Handa": []
+  "Handa": [],
+  "Nippon Professional Baseball pitcher": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "baseball": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_209": {
   "Canada": [
@@ -8842,7 +9272,12 @@
   ],
   "Osaka": [],
   "Osaka, Japan": [],
-  "September 12, 1983": []
+  "September 12, 1983": [],
+  "baseball pitcher": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_211": {
   "Japan": [
@@ -8933,6 +9368,11 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "baseball pitcher": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_214": {
@@ -8970,6 +9410,11 @@
   "2018": [],
   "45 years": [],
   "first ladies' World Champion": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "athlete": [
    "athlete",
    "human",
    "sportsperson"
@@ -9023,6 +9468,16 @@
   ],
   "October 21, 1985": [],
   "professional baseball outfielder": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "baseball": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ],
+  "professional baseball player": [
    "athlete",
    "human",
    "sportsperson"
@@ -9101,6 +9556,10 @@
   "runner-up": [],
   "singles": [
    "sports discipline"
+  ],
+  "Grand Slam": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_219": {
@@ -9137,7 +9596,17 @@
    "human",
    "sportsperson"
   ],
-  "Kamagaya": []
+  "Kamagaya": [],
+  "baseball outfielder": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ],
+  "professional baseball outfielder": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_220": {
   "Calgary Inferno": [
@@ -9277,7 +9746,12 @@
    "sports competition"
   ],
   "1951": [],
-  "1958": []
+  "1958": [],
+  "badminton": [
+   "sport",
+   "sports discipline",
+   "physical activity"
+  ]
  },
  "ont_3_sport_test_223": {
   "Baseball": [
@@ -9330,6 +9804,11 @@
   "three hundred games": [
    "sporting event",
    "sports competition"
+  ],
+  "baseball": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_224": {
@@ -9443,6 +9922,10 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "modern era NASCAR Cup Series": [
+   "professional sports league",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_228": {
@@ -9707,6 +10190,10 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "34th edition": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_238": {
@@ -9787,6 +10274,11 @@
   "Lawn Tennis": [
    "physical activity",
    "sport",
+   "sports discipline"
+  ],
+  "tennis": [
+   "sport",
+   "physical activity",
    "sports discipline"
   ]
  },
@@ -9948,6 +10440,16 @@
   "world club championship": [
    "sporting event",
    "sports competition"
+  ],
+  "men's association football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ],
+  "men's club association football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_245": {
@@ -9963,7 +10465,8 @@
    "professional sports league",
    "sports competition"
   ],
-  "Statistics": []
+  "Statistics": [],
+  "1963": []
  },
  "ont_3_sport_test_246": {
   "1963 NASCAR Grand National Series": [
@@ -10118,7 +10621,8 @@
    "sports club",
    "sports organization",
    "team"
-  ]
+  ],
+  "2": []
  },
  "ont_3_sport_test_252": {
   "1928 International Lawn Tennis Challenge": [
@@ -10550,7 +11054,8 @@
    "professional sports league",
    "sports competition"
   ],
-  "Statistics": []
+  "Statistics": [],
+  "1991": []
  },
  "ont_3_sport_test_268": {
   "1998 African Women 's Championship": [
@@ -10591,6 +11096,11 @@
   ],
   "women's national teams of Africa": [
    "team"
+  ],
+  "association football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_269": {
@@ -10663,7 +11173,8 @@
    "physical activity",
    "sport",
    "sports discipline"
-  ]
+  ],
+  "5th modern era": []
  },
  "ont_3_sport_test_272": {
   "2010 K League": [
@@ -10693,7 +11204,10 @@
    "sports season",
    "sports competition"
   ],
-  "K League establishment": []
+  "K League establishment": [],
+  "2010 K League season": [
+   "sports season"
+  ]
  },
  "ont_3_sport_test_273": {
   "2009": [],
@@ -10784,6 +11298,9 @@
   "Nextel Cup Series": [
    "professional sports league",
    "sports competition"
+  ],
+  "the season": [
+   "sports season"
   ]
  },
  "ont_3_sport_test_276": {
@@ -10844,6 +11361,11 @@
   "Lawn Tennis": [
    "sport",
    "physical activity",
+   "sports discipline"
+  ],
+  "tennis": [
+   "physical activity",
+   "sport",
    "sports discipline"
   ]
  },
@@ -11002,6 +11524,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "United States": [
+   "country"
   ]
  },
  "ont_3_sport_test_284": {
@@ -11032,7 +11557,8 @@
   "Santos Laguna": [
    "sports club",
    "team"
-  ]
+  ],
+  "manager": []
  },
  "ont_3_sport_test_286": {
   "FC Jazz": [
@@ -11071,6 +11597,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "football coach": [
+   "human"
   ]
  },
  "ont_3_sport_test_287": {
@@ -11098,6 +11627,14 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Australia": [
+   "country"
+  ],
+  "Australian rules football": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_288": {
@@ -11133,6 +11670,12 @@
   "controversial refereeing decisions": [],
   "scudetto": [
    "sports competition"
+  ],
+  "Brazil": [
+   "country"
+  ],
+  "football manager": [
+   "human"
   ]
  },
  "ont_3_sport_test_289": {
@@ -11253,7 +11796,12 @@
    "professional sports league",
    "sports competition"
   ],
-  "Åkrehamn": []
+  "Åkrehamn": [],
+  "footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_294": {
   "A.C. Milan": [
@@ -11283,6 +11831,16 @@
   ],
   "five national championships": [
    "sports competition"
+  ],
+  "football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ],
+  "football player": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_295": {
@@ -11315,6 +11873,13 @@
   "A.C. Milan coaching staff": [],
   "Italian": [
    "country"
+  ],
+  "Italy": [
+   "country"
+  ],
+  "football": [
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_296": {
@@ -11332,7 +11897,8 @@
    "sportsperson"
   ],
   "10 October 2012": [],
-  "12 November 2018": []
+  "12 November 2018": [],
+  "manager": []
  },
  "ont_3_sport_test_297": {
   "Hannover 96": [
@@ -11349,6 +11915,9 @@
   ],
   "football manager": [
    "human"
+  ],
+  "Germany": [
+   "country"
   ]
  },
  "ont_3_sport_test_298": {
@@ -11394,6 +11963,12 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Gre-No-Li": [
+   "team"
+  ],
+  "Sweden": [
+   "country"
   ]
  },
  "ont_3_sport_test_299": {
@@ -11502,7 +12077,10 @@
    "human",
    "sportsperson"
   ],
-  "manager": []
+  "manager": [],
+  "football manager": [
+   "human"
+  ]
  },
  "ont_3_sport_test_302": {
   "A.C. Milan": [
@@ -11530,7 +12108,8 @@
   "3 seasons": [
    "sports season"
   ],
-  "no goals": []
+  "no goals": [],
+  "0": []
  },
  "ont_3_sport_test_303": {
   "2005 FIFA U-17 World Championship": [
@@ -11904,7 +12483,12 @@
   "Spain national team": [
    "team"
   ],
-  "Spanish": []
+  "Spanish": [],
+  "footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_312": {
   "2009-2010": [
@@ -11934,6 +12518,11 @@
   "2009": [],
   "PFA Premier League Team of the Year": [
    "team"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_313": {
@@ -12331,6 +12920,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "England": [
+   "country"
   ]
  },
  "ont_3_sport_test_321": {
@@ -12781,6 +13373,9 @@
   ],
   "Republic of Ireland national team": [
    "team"
+  ],
+  "Ireland": [
+   "country"
   ]
  },
  "ont_3_sport_test_329": {
@@ -12838,6 +13433,11 @@
   ],
   "sports team season": [
    "sports team season"
+  ],
+  "N’Zogbia": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_330": {
@@ -13153,7 +13753,12 @@
    "human",
    "sportsperson"
   ],
-  "17-year professional career": []
+  "17-year professional career": [],
+  "He": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_338": {
   "Paulo Ferreira": [
@@ -13477,6 +14082,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Brazil": [
+   "country"
   ]
  },
  "ont_3_sport_test_346": {
@@ -13550,7 +14158,12 @@
    "sports competition"
   ],
   "August 2009": [],
-  "£6 million": []
+  "£6 million": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_348": {
   "Argentina": [
@@ -13599,6 +14212,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Argentina national football team": [
+   "team"
   ]
  },
  "ont_3_sport_test_349": {
@@ -13650,6 +14266,9 @@
   "UEFA Champions League": [
    "sporting event",
    "sports competition"
+  ],
+  "England": [
+   "country"
   ]
  },
  "ont_3_sport_test_350": {
@@ -13782,7 +14401,12 @@
    "team"
   ],
   "two FA Cup winners medals": [],
-  "two Premier League winners medals": []
+  "two Premier League winners medals": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_352": {
   "1997-1998": [
@@ -13837,7 +14461,12 @@
    "sports competition"
   ],
   "opening goal": [],
-  "winning goal": []
+  "winning goal": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_353": {
   "English Premier League": [
@@ -13886,7 +14515,12 @@
   "seven seasons": [
    "sports season"
   ],
-  "ten-year career": []
+  "ten-year career": [],
+  "football player": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_354": {
   "Aston Villa": [
@@ -14100,6 +14734,10 @@
   "2008 FIFA Club World Cup": [
    "sporting event",
    "sports competition"
+  ],
+  "UEFA Champions League": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_358": {
@@ -14158,6 +14796,11 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_360": {
@@ -14230,6 +14873,11 @@
   "1998": [],
   "Southampton Academy": [
    "sports organization"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_362": {
@@ -14444,7 +15092,8 @@
   ],
   "teams": [
    "team"
-  ]
+  ],
+  "male": []
  },
  "ont_3_sport_test_366": {
   "Bali Khela": [
@@ -14645,7 +15294,11 @@
    "human",
    "sportsperson"
   ],
-  "nine-year stint": []
+  "nine-year stint": [],
+  "club": [
+   "sports club",
+   "team"
+  ]
  },
  "ont_3_sport_test_371": {
   "Alan Wright": [
@@ -14779,6 +15432,12 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Arsenal U23": [
+   "team"
+  ],
+  "England": [
+   "country"
   ]
  },
  "ont_3_sport_test_373": {
@@ -14923,7 +15582,12 @@
   "St James' Park": [
    "association football venue"
   ],
-  "three months": []
+  "three months": [],
+  "Guivarc’h": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_375": {
   "Burnley": [
@@ -14969,6 +15633,9 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "Ireland": [
+   "country"
   ]
  },
  "ont_3_sport_test_376": {
@@ -15017,6 +15684,11 @@
   "injury": [],
   "two consecutive Premier League titles": [
    "sports competition"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_377": {
@@ -15102,6 +15774,9 @@
   ],
   "30 August 1985": [],
   "Welsh": [
+   "country"
+  ],
+  "Wales": [
    "country"
   ]
  },
@@ -15283,6 +15958,10 @@
   ],
   "the entire management team": [
    "team"
+  ],
+  "manager": [],
+  "manager of Burnley": [
+   "human"
   ]
  },
  "ont_3_sport_test_383": {
@@ -15665,7 +16344,8 @@
   ],
   "19 Premier League appearances": [],
   "247 first team appearances": [],
-  "Adrian Mariappa's first spell at Watford": []
+  "Adrian Mariappa's first spell at Watford": [],
+  "19": []
  },
  "ont_3_sport_test_390": {
   "David Stockdale": [
@@ -15696,7 +16376,8 @@
   "Premier League club": [
    "sports club",
    "team"
-  ]
+  ],
+  "2008": []
  },
  "ont_3_sport_test_391": {
   "2000": [],
@@ -15753,6 +16434,11 @@
   ],
   "thirteen consecutive seasons": [
    "sports season"
+  ],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_392": {
@@ -15834,6 +16520,11 @@
   ],
   "five Premier League titles": [
    "sports competition"
+  ],
+  "AS Monaco": [
+   "sports club",
+   "sports organization",
+   "team"
   ]
  },
  "ont_3_sport_test_395": {
@@ -15894,7 +16585,8 @@
    "sports competition",
    "sports organization"
   ],
-  "18 July 2018": []
+  "18 July 2018": [],
+  "assistant manager": []
  },
  "ont_3_sport_test_397": {
   "Marten Martis": [
@@ -15931,7 +16623,10 @@
    "human",
    "sportsperson"
   ],
-  "£50,000": []
+  "£50,000": [],
+  "Curaçao": [
+   "country"
+  ]
  },
  "ont_3_sport_test_398": {
   "Alvaro Ramage": [
@@ -16124,7 +16819,12 @@
   "PFA Team of the Year": [
    "team"
   ],
-  "promotion": []
+  "promotion": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_403": {
   "Arsenal": [
@@ -16271,6 +16971,14 @@
   ],
   "their first league title": [
    "sports competition"
+  ],
+  "Chelsea": [
+   "sports club",
+   "sports team season"
+  ],
+  "Premier League title": [
+   "sports competition",
+   "sporting event"
   ]
  },
  "ont_3_sport_test_406": {
@@ -16406,6 +17114,14 @@
   ],
   "professional football coach": [
    "human"
+  ],
+  "football coach": [
+   "human"
+  ],
+  "football player": [
+   "athlete",
+   "human",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_409": {
@@ -16541,7 +17257,12 @@
    "human",
    "sportsperson"
   ],
-  "Europe": []
+  "Europe": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_413": {
   "2011-2012": [
@@ -16797,6 +17518,11 @@
    "athlete",
    "human",
    "sportsperson"
+  ],
+  "football": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_419": {
@@ -16882,7 +17608,10 @@
   "Ghanaian": [
    "country"
   ],
-  "defender": []
+  "defender": [],
+  "Ghana": [
+   "country"
+  ]
  },
  "ont_3_sport_test_421": {
   "2000-2001": [
@@ -16918,7 +17647,12 @@
    "sportsperson"
   ],
   "first-choice striker": [],
-  "promotion": []
+  "promotion": [],
+  "athlete": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_422": {
   "Baseball": [
@@ -16959,6 +17693,21 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "Negro league baseball player": [
+   "athlete",
+   "sportsperson"
+  ],
+  "United States": [
+   "country"
+  ],
+  "athlete": [
+   "athlete",
+   "sportsperson"
+  ],
+  "baseball player": [
+   "athlete",
+   "sportsperson"
   ]
  },
  "ont_3_sport_test_423": {
@@ -17017,7 +17766,12 @@
    "sports competition"
   ],
   "January 2014": [],
-  "loan": []
+  "loan": [],
+  "Butland": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_424": {
   "Charlie Austin": [
@@ -17094,6 +17848,10 @@
   ],
   "following season": [
    "sports season"
+  ],
+  "2019-20 Premier League": [
+   "sports season",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_426": {
@@ -17116,7 +17874,12 @@
   ],
   "1993": [],
   "Chelsea Player of the Year": [],
-  "Chelsea's Player of the Year": []
+  "Chelsea's Player of the Year": [],
+  "footballer": [
+   "athlete",
+   "human",
+   "sportsperson"
+  ]
  },
  "ont_3_sport_test_427": {
   "Arsenal": [
@@ -17193,6 +17956,10 @@
   "Faroe Islands Football Association": [
    "sports governing body",
    "sports organization"
+  ],
+  "U19 national team": [
+   "sports team season",
+   "team"
   ]
  },
  "ont_3_sport_test_429": {
@@ -17252,7 +18019,13 @@
    "sporting event",
    "sports competition"
   ],
-  "under-23": []
+  "under-23": [],
+  "under-23 age level": [],
+  "under-23 volleyball": [
+   "physical activity",
+   "sport",
+   "sports discipline"
+  ]
  },
  "ont_3_sport_test_430": {
   "1988 Summer Olympics": [
@@ -17419,7 +18192,8 @@
    "sport",
    "sports discipline",
    "physical activity"
-  ]
+  ],
+  "21": []
  },
  "ont_3_sport_test_432": {
   "Association football": [
@@ -17474,7 +18248,8 @@
    "sports governing body",
    "sports organization"
   ],
-  "under-17 age level": []
+  "under-17 age level": [],
+  "under-17": []
  },
  "ont_3_sport_test_433": {
   "Afghanistan": [
@@ -17545,6 +18320,10 @@
   "international women's volleyball competitions": [
    "sports competition",
    "sporting event"
+  ],
+  "international women's volleyball": [
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_435": {
@@ -17788,7 +18567,8 @@
   ],
   "Maldives national football team": [
    "team"
-  ]
+  ],
+  "under-23 age level": []
  },
  "ont_3_sport_test_441": {
   "1964 South American Men's Volleyball Championship": [
@@ -18177,6 +18957,10 @@
   "international-level women's ice hockey competitions": [
    "sports competition",
    "sporting event"
+  ],
+  "International Ice Hockey Federation World Women's Championships": [
+   "sporting event",
+   "sports competition"
   ]
  },
  "ont_3_sport_test_448": {
@@ -18211,6 +18995,9 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "Hong Kong": [
+   "country"
   ]
  },
  "ont_3_sport_test_449": {
@@ -18450,6 +19237,10 @@
   "North America": [],
   "United States": [
    "country"
+  ],
+  "men's volleyball in North and Central America": [
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_454": {
@@ -18642,6 +19433,9 @@
   "the team": [
    "sports team season",
    "team"
+  ],
+  "The team": [
+   "team"
   ]
  },
  "ont_3_sport_test_458": {
@@ -18689,6 +19483,9 @@
   ],
   "friendly matches": [
    "sporting event"
+  ],
+  "women": [
+   "human"
   ]
  },
  "ont_3_sport_test_459": {
@@ -18836,6 +19633,14 @@
   "international volleyball body": [
    "sports governing body",
    "sports organization"
+  ],
+  "Brazilian men's national under-19 volleyball team": [
+   "sports team season",
+   "team"
+  ],
+  "under-19 volleyball": [
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_462": {
@@ -18889,7 +19694,11 @@
   "five silvers": [],
   "one bronze": [],
   "one silver": [],
-  "two bronzes": []
+  "two bronzes": [],
+  "NORCECA": [
+   "sports governing body",
+   "sports organization"
+  ]
  },
  "ont_3_sport_test_463": {
   "Zambia women 's national under-20 football team": [
@@ -18920,7 +19729,16 @@
   "the team": [
    "sports team season",
    "team"
-  ]
+  ],
+  "African qualifying competitions for the FIFA U19/U20 World Cup": [
+   "sports competition",
+   "sporting event"
+  ],
+  "The team": [
+   "sports team season",
+   "team"
+  ],
+  "under-19 age level": []
  },
  "ont_3_sport_test_464": {
   "2013 UEFA European Under-19 Championship": [
@@ -19106,6 +19924,11 @@
   ],
   "the first team representing Serbia": [
    "team"
+  ],
+  "association football": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_467": {
@@ -19155,7 +19978,8 @@
    "sport",
    "sports discipline",
    "physical activity"
-  ]
+  ],
+  "under-16 age level": []
  },
  "ont_3_sport_test_468": {
   "Estonia": [
@@ -19336,6 +20160,11 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "international football": [
+   "sport",
+   "sports discipline",
+   "physical activity"
   ]
  },
  "ont_3_sport_test_472": {
@@ -19822,6 +20651,17 @@
    "physical activity",
    "sport",
    "sports discipline"
+  ],
+  "Argentina": [
+   "country"
+  ],
+  "Brazil": [
+   "country"
+  ],
+  "men's volleyball on the South American continent": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_480": {
@@ -19856,6 +20696,11 @@
   ],
   "international women's volleyball competitions": [
    "sports competition"
+  ],
+  "international women's volleyball": [
+   "physical activity",
+   "sport",
+   "sports discipline"
   ]
  },
  "ont_3_sport_test_481": {
@@ -19909,6 +20754,9 @@
    "sports discipline"
   ],
   "national men's volleyball team": [
+   "team"
+  ],
+  "men's volleyball team": [
    "team"
   ]
  },
@@ -20006,7 +20854,10 @@
    "sport",
    "sports discipline"
   ],
-  "10 times": []
+  "10 times": [],
+  "New Zealand": [
+   "country"
+  ]
  },
  "ont_3_sport_test_484": {
   "Portugal national under-20 football team": [

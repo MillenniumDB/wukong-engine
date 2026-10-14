@@ -126,6 +126,14 @@
   "Vice Admiral": [
    "military rank",
    "rank"
+  ],
+  "Vasily Mikhailovich Golovnin": [
+   "human",
+   "military personnel"
+  ],
+  "navigator": [
+   "human",
+   "military personnel"
   ]
  },
  "ont_5_military_test_5": {
@@ -334,7 +342,11 @@
   "rank": [
    "rank"
   ],
-  "wing configuration": []
+  "wing configuration": [],
+  "The subject": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_9": {
   "Admiral": [
@@ -879,6 +891,10 @@
   ],
   "Russian admirals": [
    "military personnel"
+  ],
+  "Russian admiral": [
+   "human",
+   "military personnel"
   ]
  },
  "ont_5_military_test_21": {
@@ -1024,6 +1040,9 @@
   "woman fighter pilot": [
    "human",
    "military personnel"
+  ],
+  "France": [
+   "country"
   ]
  },
  "ont_5_military_test_23": {
@@ -1065,6 +1084,9 @@
   "military strategist": [
    "human",
    "military personnel"
+  ],
+  "China": [
+   "country"
   ]
  },
  "ont_5_military_test_24": {
@@ -1125,7 +1147,13 @@
    "rank"
   ],
   "Battle of Helsingborg": [],
-  "beheading": []
+  "beheading": [],
+  "Admiral of the Hanseatic fleet": [
+   "command",
+   "military rank",
+   "rank"
+  ],
+  "beheaded": []
  },
  "ont_5_military_test_26": {
   "Francisco Verdugo": [
@@ -1168,7 +1196,10 @@
    "military personnel"
   ],
   "Talavera de la Reina": [],
-  "province of Toledo": []
+  "province of Toledo": [],
+  "Spain": [
+   "country"
+  ]
  },
  "ont_5_military_test_27": {
   "Chinese People's Liberation Army": [
@@ -1211,7 +1242,12 @@
   ],
   "terrorist": [
    "human"
-  ]
+  ],
+  "General": [
+   "military rank",
+   "rank"
+  ],
+  "retired": []
  },
  "ont_5_military_test_28": {
   "Admiral": [
@@ -1405,7 +1441,10 @@
    "human",
    "military personnel"
   ],
-  "six confirmed aerial victories": []
+  "six confirmed aerial victories": [],
+  "Germany": [
+   "country"
+  ]
  },
  "ont_5_military_test_33": {
   "Aluf": [
@@ -1651,6 +1690,10 @@
   "Tang Changxian": [
    "human",
    "military personnel"
+  ],
+  "General": [
+   "military rank",
+   "rank"
   ]
  },
  "ont_5_military_test_38": {
@@ -1832,6 +1875,9 @@
   "December 1949": [],
   "Political Commissar": [
    "command"
+  ],
+  "China": [
+   "country"
   ]
  },
  "ont_5_military_test_42": {
@@ -1897,7 +1943,8 @@
   "general": [
    "military rank",
    "rank"
-  ]
+  ],
+  "retired": []
  },
  "ont_5_military_test_44": {
   "Lieutenant general": [
@@ -1948,7 +1995,10 @@
    "human"
   ],
   "simplified Chinese": [],
-  "traditional Chinese": []
+  "traditional Chinese": [],
+  "China": [
+   "country"
+  ]
  },
  "ont_5_military_test_45": {
   "Admiral": [
@@ -1985,7 +2035,10 @@
   "organization": [
    "organization"
   ],
-  "German ancestry": []
+  "German ancestry": [],
+  "Germans": [
+   "human"
+  ]
  },
  "ont_5_military_test_46": {
   "Admiral": [
@@ -2039,7 +2092,11 @@
    "military rank",
    "rank"
   ],
-  "World War II": []
+  "World War II": [],
+  "Marshal Admiral of the Imperial Japanese Navy": [
+   "military rank",
+   "rank"
+  ]
  },
  "ont_5_military_test_47": {
   "Admiral": [
@@ -2223,7 +2280,10 @@
    "military personnel"
   ],
   "Knight's Cross of the Iron Cross": [],
-  "World War II": []
+  "World War II": [],
+  "Germany": [
+   "country"
+  ]
  },
  "ont_5_military_test_51": {
   "Chinese People's Liberation Army": [
@@ -2254,6 +2314,10 @@
   "first woman to hold the rank": [
    "human",
    "military personnel"
+  ],
+  "Lieutenant General rank": [
+   "military rank",
+   "rank"
   ]
  },
  "ont_5_military_test_52": {
@@ -2295,7 +2359,11 @@
   ],
   "Russian circumnavigation of the globe": [],
   "explorer": [],
-  "first Russian circumnavigation of the globe": []
+  "first Russian circumnavigation of the globe": [],
+  "Ivan Fyodorovich Kruzenshtern": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_53": {
   "Admiral": [
@@ -2337,7 +2405,11 @@
    "military personnel",
    "military rank"
   ],
-  "World War I": []
+  "World War I": [],
+  "Prince Luigi Amedeo, Duke of the Abruzzi": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_54": {
   "Chinese People's Liberation Army": [
@@ -2539,7 +2611,11 @@
    "human",
    "military personnel"
   ],
-  "nine aerial victories": []
+  "nine aerial victories": [],
+  "Austro-Hungarian military": [
+   "armed organization",
+   "organization"
+  ]
  },
  "ont_5_military_test_59": {
   "Admiral": [
@@ -2739,6 +2815,10 @@
   ],
   "United Kingdom": [
    "country"
+  ],
+  "United Kingdom's Royal Navy": [
+   "armed organization",
+   "organization"
   ]
  },
  "ont_5_military_test_64": {
@@ -2883,7 +2963,11 @@
   "partition of India": [],
   "partition of India in 1947": [],
   "war with India": [],
-  "war with India in 1965": []
+  "war with India in 1965": [],
+  "Pakistan military": [
+   "armed organization",
+   "organization"
+  ]
  },
  "ont_5_military_test_67": {
   "Adolphe Niel": [
@@ -2918,6 +3002,10 @@
   ],
   "statesman": [
    "human"
+  ],
+  "French Army general": [
+   "human",
+   "military personnel"
   ]
  },
  "ont_5_military_test_68": {
@@ -3520,6 +3608,9 @@
   ],
   "polar explorer": [
    "human"
+  ],
+  "Russian Empire": [
+   "country"
   ]
  },
  "ont_5_military_test_80": {
@@ -3566,7 +3657,10 @@
   "Nazi Germany": [
    "country"
   ],
-  "World War II": []
+  "World War II": [],
+  "Germany": [
+   "country"
+  ]
  },
  "ont_5_military_test_81": {
   "Abdul Haris Nasution": [
@@ -3721,6 +3815,9 @@
   "British officer": [
    "human",
    "military personnel"
+  ],
+  "United Kingdom": [
+   "country"
   ]
  },
  "ont_5_military_test_83": {
@@ -3774,6 +3871,10 @@
   "troop leader": [
    "command",
    "military personnel"
+  ],
+  "Cornet": [
+   "military rank",
+   "rank"
   ]
  },
  "ont_5_military_test_84": {
@@ -4005,7 +4106,10 @@
    "human",
    "military personnel"
   ],
-  "World War II": []
+  "World War II": [],
+  "Germany": [
+   "country"
+  ]
  },
  "ont_5_military_test_89": {
   "Cavalry": [
@@ -4146,7 +4250,19 @@
    "military rank",
    "rank"
   ],
-  "Baltic German": []
+  "Baltic German": [],
+  "Russia": [
+   "country"
+  ],
+  "The subject": [
+   "human",
+   "military personnel"
+  ],
+  "officer": [
+   "military personnel",
+   "military rank",
+   "rank"
+  ]
  },
  "ont_5_military_test_94": {
   "Benjamin Cowburn": [
@@ -4217,7 +4333,11 @@
    "organization"
   ],
   "Greek Civil War": [],
-  "World War II": []
+  "World War II": [],
+  "Greek Army officer": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_96": {
   "Aluf": [
@@ -4703,7 +4823,11 @@
   ],
   "Medal of Honor": [],
   "Vietnam War": [],
-  "heroism in combat": []
+  "heroism in combat": [],
+  "SEAL officer": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_109": {
   "Provisional Irish Republican Army": [
@@ -4872,6 +4996,9 @@
   "United States Navy rear admiral": [
    "human",
    "military personnel"
+  ],
+  "United States": [
+   "country"
   ]
  },
  "ont_5_military_test_114": {
@@ -4958,7 +5085,8 @@
    "military unit",
    "organization"
   ],
-  "victory": []
+  "victory": [],
+  "Battle of Cowpens": []
  },
  "ont_5_military_test_117": {
   "General": [
@@ -5010,6 +5138,9 @@
   "German naval officer": [
    "human",
    "military personnel"
+  ],
+  "Germany": [
+   "country"
   ]
  },
  "ont_5_military_test_119": {
@@ -5073,7 +5204,8 @@
    "human",
    "military personnel"
   ],
-  "Prussian family": []
+  "Prussian family": [],
+  "1892": []
  },
  "ont_5_military_test_121": {
   "Jack Chevigny": [
@@ -5263,6 +5395,10 @@
   "youngest U.S. serviceman killed in action during the Vietnam War": [
    "human",
    "military personnel"
+  ],
+  "United States Marine Corps": [
+   "armed organization",
+   "organization"
   ]
  },
  "ont_5_military_test_127": {
@@ -5363,7 +5499,12 @@
    "military casualty classification"
   ],
   "action": [],
-  "remains": []
+  "remains": [],
+  "false": [],
+  "missing in action": [
+   "military casualty classification"
+  ],
+  "true": []
  },
  "ont_5_military_test_131": {
   "Charles C. Tew": [
@@ -5447,7 +5588,10 @@
    "rank"
   ],
   "Navy Cross": [],
-  "World War II": []
+  "World War II": [],
+  "United States": [
+   "country"
+  ]
  },
  "ont_5_military_test_134": {
   "Donald B. Steinaker": [
@@ -5615,7 +5759,10 @@
   "Russian": [
    "country"
   ],
-  "Ulus-Kert": []
+  "Ulus-Kert": [],
+  "Russia": [
+   "country"
+  ]
  },
  "ont_5_military_test_137": {
   "Germany": [
@@ -5817,7 +5964,18 @@
    "military personnel",
    "military rank"
   ],
-  "World War II": []
+  "World War II": [],
+  "Jews": [
+   "human"
+  ],
+  "The subject": [
+   "human",
+   "military personnel"
+  ],
+  "the person": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_142": {
   "Tamon Yamaguchi": [
@@ -5839,6 +5997,10 @@
   "aircraft carrier HiryÅ«": [
    "military equipment",
    "military vehicle"
+  ],
+  "Imperial Japanese Navy": [
+   "armed organization",
+   "organization"
   ]
  },
  "ont_5_military_test_143": {
@@ -5886,7 +6048,15 @@
   "August 13, 1952": [],
   "August 15, 1930": [],
   "Battle of Bunker Hill (1952)": [],
-  "Korean War": []
+  "Korean War": [],
+  "Marine Corps": [
+   "armed organization",
+   "organization"
+  ],
+  "United States Navy hospitalman": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_144": {
   "Francis Ledwidge": [
@@ -6048,7 +6218,11 @@
    "military personnel",
    "military rank"
   ],
-  "the war": []
+  "the war": [],
+  "second-highest-ranking Union officer": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_149": {
   "American National Guard": [
@@ -6088,7 +6262,15 @@
   ],
   "February 2, 1945": [],
   "May 29, 1917": [],
-  "World War II": []
+  "World War II": [],
+  "National Guard officer": [
+   "human",
+   "military personnel",
+   "military rank"
+  ],
+  "United States": [
+   "country"
+  ]
  },
  "ont_5_military_test_150": {
   "Army of the Potomac": [
@@ -6195,7 +6377,8 @@
   "Alexander Kolchak": [
    "human",
    "military personnel"
-  ]
+  ],
+  "a battle": []
  },
  "ont_5_military_test_154": {
   "Samuel W. Preston": [
@@ -6323,7 +6506,11 @@
   ],
   "March 23, 2003": [],
   "Nasiriyah": [],
-  "September 16, 1969": []
+  "September 16, 1969": [],
+  "United States Army Quartermaster Corps sergeant": [
+   "human",
+   "military personnel"
+  ]
  },
  "ont_5_military_test_158": {
   "Robert A. Owens": [
@@ -6364,7 +6551,11 @@
    "human",
    "military personnel"
   ],
-  "World War II": []
+  "World War II": [],
+  "Sergeant": [
+   "military rank",
+   "rank"
+  ]
  },
  "ont_5_military_test_159": {
   "Stonewall Division": [
@@ -6506,7 +6697,8 @@
   ],
   "killed in action": [
    "military casualty classification"
-  ]
+  ],
+  "action": []
  },
  "ont_5_military_test_166": {
   "CIA's Special Activities Division's Ground Branch": [
@@ -6677,7 +6869,12 @@
    "human",
    "military personnel"
   ],
-  "World War II": []
+  "World War II": [],
+  "United States Marine Corps": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
  },
  "ont_5_military_test_170": {
   "Konstantin Pankov": [
@@ -6719,6 +6916,10 @@
   ],
   "Second World War": [],
   "subcamp of Auschwitz": [
+   "organization"
+  ],
+  "British Armed Forces": [
+   "armed organization",
    "organization"
   ]
  },
@@ -6762,7 +6963,16 @@
    "military personnel"
   ],
   "Second World War": [],
-  "September 1944": []
+  "September 1944": [],
+  "William Cavendish, Marquess of Hartington": [
+   "human",
+   "military personnel"
+  ],
+  "company of the Coldstream Guards": [
+   "armed organization",
+   "military unit",
+   "organization"
+  ]
  },
  "ont_5_military_test_174": {
   "Mikhail Kirponos": [
@@ -6774,7 +6984,8 @@
   ],
   "20 September 1941": [],
   "German fire": [],
-  "Kiev": []
+  "Kiev": [],
+  "defense of Kiev": []
  },
  "ont_5_military_test_175": {
   "AH-64 Apache": [
@@ -6844,7 +7055,8 @@
   "Marine Corps": [
    "armed organization",
    "organization"
-  ]
+  ],
+  "April 5, 1951": []
  },
  "ont_5_military_test_176": {
   "Donald W. Wolf": [
@@ -6856,7 +7068,8 @@
   ],
   "Battle of Guadalcanal": [],
   "Matanikau River": [],
-  "second battle of Matanikau River": []
+  "second battle of Matanikau River": [],
+  "Second Battle of Matanikau River": []
  },
  "ont_5_military_test_177": {
   "Samad Abdullayev": [
@@ -6921,7 +7134,10 @@
    "human",
    "military personnel"
   ],
-  "Sangin": []
+  "Sangin": [],
+  "United Kingdom": [
+   "country"
+  ]
  },
  "ont_5_military_test_179": {
   "James M. Scribner": [
@@ -7304,6 +7520,13 @@
   "medium tank": [
    "military equipment",
    "military vehicle"
+  ],
+  "T-54/T-55": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "Ukraine": [
+   "country"
   ]
  },
  "ont_5_military_test_193": {
@@ -7502,7 +7725,11 @@
    "country"
   ],
   "mine resistant protection": [],
-  "mine-resistant protection": []
+  "mine-resistant protection": [],
+  "8x8 armored fighting vehicle (AFV)": [
+   "military equipment",
+   "military vehicle"
+  ]
  },
  "ont_5_military_test_200": {
   "BTR-T": [
@@ -7540,6 +7767,9 @@
   ],
   "state-run production association": [
    "organization"
+  ],
+  "Russia": [
+   "country"
   ]
  },
  "ont_5_military_test_201": {
@@ -7758,6 +7988,9 @@
   ],
   "long range air-to-surface anti-tank missile": [
    "military equipment"
+  ],
+  "Turkey": [
+   "country"
   ]
  },
  "ont_5_military_test_207": {
@@ -7963,7 +8196,10 @@
    "military equipment",
    "military vehicle"
   ],
-  "support contract": []
+  "support contract": [],
+  "Australian Defence Industries": [
+   "organization"
+  ]
  },
  "ont_5_military_test_212": {
   "AB Landsverk": [
@@ -8022,6 +8258,10 @@
   ],
   "Ukrainian modernization": [],
   "medium tank": [
+   "military equipment",
+   "military vehicle"
+  ],
+  "T-54/T-55": [
    "military equipment",
    "military vehicle"
   ]
@@ -8179,6 +8419,9 @@
   ],
   "naval version of the system": [
    "military equipment"
+  ],
+  "Naval version of the system": [
+   "military equipment"
   ]
  },
  "ont_5_military_test_218": {
@@ -8269,7 +8512,11 @@
    "military rank",
    "rank"
   ],
-  "title": []
+  "title": [],
+  "Major": [
+   "military rank",
+   "rank"
+  ]
  },
  "ont_5_military_test_221": {
   "Colonel general": [
@@ -8553,6 +8800,9 @@
   "the group": [
    "armed organization",
    "organization"
+  ],
+  "the United Nations": [
+   "organization"
   ]
  },
  "ont_5_military_test_226": {
@@ -8619,6 +8869,10 @@
   "The group": [
    "armed organization",
    "organization"
+  ],
+  "the group": [
+   "armed organization",
+   "organization"
   ]
  },
  "ont_5_military_test_227": {
@@ -8644,6 +8898,9 @@
   "Terrorism Act 2000": [],
   "the group": [
    "organization"
+  ],
+  "The group": [
+   "organization"
   ]
  },
  "ont_5_military_test_228": {
@@ -8655,7 +8912,8 @@
    "military rank",
    "rank"
   ],
-  "four-seater low-wing monoplane": []
+  "four-seater low-wing monoplane": [],
+  "low-wing": []
  },
  "ont_5_military_test_229": {
   "AB-4": [
@@ -8685,6 +8943,10 @@
   "single engined biplane": [
    "military equipment",
    "military vehicle"
+  ],
+  "single-engined biplane": [
+   "military equipment",
+   "military vehicle"
   ]
  },
  "ont_5_military_test_230": {
@@ -8711,6 +8973,9 @@
   "single engine": [],
   "single-engine aircraft": [],
   "two-seat": [],
-  "two-seat aircraft": []
+  "two-seat aircraft": [],
+  "biplane aircraft": [
+   "military equipment"
+  ]
  }
 }

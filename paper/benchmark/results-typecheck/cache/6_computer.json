@@ -362,6 +362,11 @@
   "Unix-like real-time operating system": [
    "operating system",
    "software"
+  ],
+  "Swedish company Dataindustrier AB": [],
+  "Unix": [
+   "operating system",
+   "software"
   ]
  },
  "ont_6_computer_test_17": {
@@ -539,7 +544,11 @@
   "1960s": [],
   "History of CP/CMS": [],
   "concepts": [],
-  "technology": []
+  "technology": [],
+  "IBM CP/CMS": [
+   "operating system",
+   "software"
+  ]
  },
  "ont_6_computer_test_23": {
   "King Art Games": [],
@@ -638,6 +647,10 @@
   "proprietary OS": [
    "operating system",
    "software"
+  ],
+  "Digital Equipment Corporation's 36-bit mainframe computers": [
+   "computer",
+   "computer hardware"
   ]
  },
  "ont_6_computer_test_26": {
@@ -794,6 +807,14 @@
   ],
   "proprietary star network topology": [
    "computer network"
+  ],
+  "Intel-based IBM PC compatible systems": [
+   "computer",
+   "computer hardware"
+  ],
+  "hardware-independent NetWare": [
+   "operating system",
+   "software"
   ]
  },
  "ont_6_computer_test_31": {
@@ -1150,7 +1171,8 @@
   "March 1, 2007": [],
   "March 2, 2007": [],
   "North America": [],
-  "Redwood Shores studio": []
+  "Redwood Shores studio": [],
+  "Redwood Shores": []
  },
  "ont_6_computer_test_45": {
   "Magix": [],
@@ -1305,6 +1327,10 @@
   "operating system": [
    "operating system",
    "software"
+  ],
+  "PDP-8 line of mini-computers": [
+   "computer",
+   "computer hardware"
   ]
  },
  "ont_6_computer_test_51": {
@@ -1336,6 +1362,11 @@
   "real-time operating system": [
    "operating system",
    "software"
+  ],
+  "Digital Equipment Corporation PDP-11 family": [
+   "computer",
+   "computer hardware",
+   "computer model"
   ]
  },
  "ont_6_computer_test_52": {
@@ -1433,6 +1464,10 @@
    "person"
   ],
   "user-made mod": [
+   "software"
+  ],
+  "the game": [
+   "application",
    "software"
   ]
  },
@@ -1660,7 +1695,8 @@
   "creator Martha Rountree": [
    "human",
    "person"
-  ]
+  ],
+  "the program": []
  },
  "ont_6_computer_test_66": {
   "Fredrik Neij": [
@@ -1860,7 +1896,11 @@
    "application",
    "software"
   ],
-  "early hypertext research project": []
+  "early hypertext research project": [],
+  "The Hypertext Editing System (HES)": [
+   "application",
+   "software"
+  ]
  },
  "ont_6_computer_test_74": {
   "60 Minutes": [],
@@ -1888,7 +1928,8 @@
   "Sundays": [],
   "live broadcast": [],
   "most time zones": [],
-  "tape delay": []
+  "tape delay": [],
+  "the program": []
  },
  "ont_6_computer_test_75": {
   "British AI scientist Rollo Carpenter": [
@@ -1907,7 +1948,8 @@
   "computer": [
    "computer",
    "computer hardware"
-  ]
+  ],
+  "United Kingdom": []
  },
  "ont_6_computer_test_76": {
   "Biz Stone": [
@@ -2093,7 +2135,8 @@
   ],
   "The Sunday Leader": [],
   "newspaper": [],
-  "Iruresa's outspoken and controversial news coverage": []
+  "Iruresa's outspoken and controversial news coverage": [],
+  "the newspaper": []
  },
  "ont_6_computer_test_82": {
   "Dilbert": [],
@@ -2102,7 +2145,8 @@
    "person"
   ],
   "American comic strip": [],
-  "April 16, 1989": []
+  "April 16, 1989": [],
+  "United States": []
  },
  "ont_6_computer_test_83": {
   "Paul Rhymer": [
@@ -2447,6 +2491,11 @@
    "person"
   ],
   "the piece": [
+   "software",
+   "web application"
+  ],
+  "The piece": [],
+  "The website": [
    "software",
    "web application"
   ]
@@ -3232,6 +3281,9 @@
   ],
   "cross-platform CD-ROM version": [
    "software"
+  ],
+  "CD-ROM": [
+   "computer hardware"
   ]
  },
  "ont_6_computer_test_125": {
@@ -3442,6 +3494,14 @@
   ],
   "human": [
    "human"
+  ],
+  "ZX Spectrum port": [
+   "application",
+   "software"
+  ],
+  "ZX Spectrum version of Rescue on Fractalus!": [
+   "application",
+   "software"
   ]
  },
  "ont_6_computer_test_130": {
@@ -3467,7 +3527,18 @@
    "computer hardware"
   ],
   "deathmatch combat": [],
-  "gaming": []
+  "gaming": [],
+  "MIDI ports on the Atari ST": [
+   "computer hardware"
+  ],
+  "The game": [
+   "application",
+   "software"
+  ],
+  "the game": [
+   "application",
+   "software"
+  ]
  },
  "ont_6_computer_test_131": {
   "Acorn Electron": [
@@ -4000,7 +4071,10 @@
   "The Eidolon": [
    "software",
    "application"
-  ]
+  ],
+  "One side": [],
+  "The other": [],
+  "The other side": []
  },
  "ont_6_computer_test_143": {
   "Atari 5200": [
@@ -4218,6 +4292,10 @@
   "Programming System/8": [
    "operating system",
    "software"
+  ],
+  "4K Disk Monitor System PS/8": [
+   "operating system",
+   "software"
   ]
  },
  "ont_6_computer_test_149": {
@@ -4365,7 +4443,10 @@
    "application",
    "software"
   ],
-  "1988": []
+  "1988": [],
+  "ports": [
+   "software"
+  ]
  },
  "ont_6_computer_test_153": {
   "007 : Licence to Kill": [
@@ -4444,6 +4525,10 @@
   ],
   "1989": [],
   "color version of the game": [
+   "application",
+   "software"
+  ],
+  "Color version of the game": [
    "application",
    "software"
   ]
@@ -4759,7 +4844,10 @@
    "application",
    "software"
   ],
-  "1982": []
+  "1982": [],
+  "it": [
+   "software"
+  ]
  },
  "ont_6_computer_test_161": {
   "Apple II+": [
@@ -4839,6 +4927,9 @@
   "July 1979": [],
   "version for the Commodore PET": [
    "software"
+  ],
+  "A version": [
+   "software"
   ]
  },
  "ont_6_computer_test_163": {
@@ -4908,6 +4999,11 @@
   "Delta 16": [
    "application",
    "software"
+  ],
+  "Commodore 16 home computer": [
+   "computer",
+   "computer hardware",
+   "computer model"
   ]
  },
  "ont_6_computer_test_165": {
@@ -5088,6 +5184,10 @@
    "computer",
    "computer hardware",
    "computer model"
+  ],
+  "computer clones": [
+   "computer",
+   "computer hardware"
   ]
  },
  "ont_6_computer_test_171": {
@@ -5265,6 +5365,10 @@
   ],
   "website": [
    "web application"
+  ],
+  "Google Drive apps": [
+   "application",
+   "software"
   ]
  },
  "ont_6_computer_test_175": {
@@ -5328,6 +5432,14 @@
   ],
   "photos": [],
   "remote servers": [
+   "computer",
+   "computer hardware"
+  ],
+  "iOS devices": [
+   "computer",
+   "computer hardware"
+  ],
+  "macOS devices": [
    "computer",
    "computer hardware"
   ]
@@ -5529,6 +5641,9 @@
   ],
   "suite of software": [
    "software"
+  ],
+  "Portable Document Format": [
+   "programming language"
   ]
  },
  "ont_6_computer_test_181": {
@@ -5546,6 +5661,11 @@
   "Oracle": [],
   "core development": [],
   "former OpenSolaris developers": [
+   "human",
+   "person",
+   "software engineer"
+  ],
+  "OpenSolaris developers": [
    "human",
    "person",
    "software engineer"
@@ -5670,7 +5790,15 @@
   "demo": [
    "software"
   ],
-  "pre-order bonus": []
+  "pre-order bonus": [],
+  "Demo of Ninety-Nine Nights": [
+   "application",
+   "software"
+  ],
+  "Ninety-Nine Nights demo": [
+   "application",
+   "software"
+  ]
  },
  "ont_6_computer_test_187": {
   "Amiga CD32": [
@@ -5903,7 +6031,14 @@
    "application",
    "software"
   ],
-  "traditional CD-ROM format": []
+  "traditional CD-ROM format": [],
+  "CD-ROM format": [
+   "computer hardware"
+  ],
+  "The game": [
+   "software",
+   "application"
+  ]
  },
  "ont_6_computer_test_194": {
   "CD-ROM": [
@@ -5940,7 +6075,11 @@
    "application",
    "software"
   ],
-  "videos": []
+  "videos": [],
+  "The game": [
+   "application",
+   "software"
+  ]
  },
  "ont_6_computer_test_195": {
   "DVD": [
@@ -6071,6 +6210,10 @@
   "Jack Nicklaus' Greatest 18 Holes of Major Championship Golf": [
    "application",
    "software"
+  ],
+  "the game": [
+   "application",
+   "software"
   ]
  },
  "ont_6_computer_test_199": {
@@ -6100,7 +6243,11 @@
    "application",
    "software"
   ],
-  "the series": []
+  "the series": [],
+  "game": [
+   "application",
+   "software"
+  ]
  },
  "ont_6_computer_test_200": {
   "Activision": [],
@@ -6450,6 +6597,16 @@
   ],
   "The Chemistry Development Kit": [
    "software"
+  ],
+  "JChemPaint application": [
+   "application",
+   "software"
+  ],
+  "Standard Widget Toolkit (SWT)": [
+   "software"
+  ],
+  "The Chemistry Development Kit (CDK)": [
+   "software"
   ]
  },
  "ont_6_computer_test_211": {
@@ -6559,7 +6716,12 @@
   "effects of nuclear detonations": [],
   "nuclear detonations": [],
   "stomach-churning": [],
-  "the most fun I've had with Google Maps since well, possibly ever": []
+  "the most fun I've had with Google Maps since well, possibly ever": [],
+  "Computer simulation of the effects of nuclear detonations": [
+   "application",
+   "computer model",
+   "software"
+  ]
  },
  "ont_6_computer_test_215": {
   "256Â KB": [],
@@ -6933,7 +7095,11 @@
    "computer",
    "computer hardware"
   ],
-  "historical artifact": []
+  "historical artifact": [],
+  "Some of the code": [
+   "software"
+  ],
+  "Tim Berners-Lee's NeXT Computer's status as a historical artifact": []
  },
  "ont_6_computer_test_228": {
   "Geoff Tootill": [
@@ -6977,6 +7143,11 @@
   ],
   "first program": [
    "software"
+  ],
+  "The Manchester Baby (Small-Scale Experimental Machine, SSEM)": [
+   "computer",
+   "computer hardware",
+   "computer model"
   ]
  },
  "ont_6_computer_test_229": {

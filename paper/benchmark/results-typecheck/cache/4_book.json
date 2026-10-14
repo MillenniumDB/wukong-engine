@@ -38,6 +38,12 @@
   "34 fairy tales": [
    "intellectual work",
    "literary work"
+  ],
+  "anthology": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_2": {
@@ -63,6 +69,13 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "children's book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication",
+   "literary genre"
   ]
  },
  "ont_4_book_test_3": {
@@ -240,6 +253,12 @@
    "author",
    "human",
    "writer"
+  ],
+  "picture book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_7": {
@@ -294,6 +313,9 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "illustrations": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_8": {
@@ -402,6 +424,12 @@
   ],
   "toddlers": [
    "human"
+  ],
+  "The book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_10": {
@@ -473,6 +501,12 @@
    "publication"
   ],
   "American children's picture book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "children's picture book": [
    "book",
    "intellectual work",
    "literary work",
@@ -967,6 +1001,12 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "children's picture book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_23": {
@@ -1019,6 +1059,11 @@
   "translation": [
    "intellectual work",
    "literary work"
+  ],
+  "1895 edition": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_24": {
@@ -1039,7 +1084,8 @@
    "intellectual work",
    "literary work",
    "publication"
-  ]
+  ],
+  "The book's cover": []
  },
  "ont_4_book_test_25": {
   "Apt. 3": [],
@@ -1064,6 +1110,12 @@
   ],
   "American": [
    "country"
+  ],
+  "children's picture book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_26": {
@@ -1124,6 +1176,12 @@
    "publisher"
   ],
   "satirical novella": [
+   "literary genre"
+  ],
+  "novella": [
+   "literary genre"
+  ],
+  "satire": [
    "literary genre"
   ]
  },
@@ -1617,7 +1675,16 @@
    "literary work",
    "publication"
   ],
-  "broomstick": []
+  "broomstick": [],
+  "children's story book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "witch": [
+   "fictional character"
+  ]
  },
  "ont_4_book_test_40": {
   "Bengali": [
@@ -1689,7 +1756,10 @@
   "Queenie Chan": [
    "human"
   ],
-  "manga style": []
+  "manga style": [],
+  "manga": [
+   "literary genre"
+  ]
  },
  "ont_4_book_test_42": {
   "<book: Akiko Hayashi>": [
@@ -1788,6 +1858,11 @@
   ],
   "black-and-white magazine": [
    "publication"
+  ],
+  "The black-and-white magazine": [
+   "publication",
+   "trade magazine",
+   "intellectual work"
   ]
  },
  "ont_4_book_test_44": {
@@ -2159,6 +2234,18 @@
    "writer"
   ],
   "children's picture book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "it": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "the book": [
    "book",
    "intellectual work",
    "literary work",
@@ -2662,6 +2749,9 @@
   "the first visual novel": [
    "intellectual work",
    "literary work"
+  ],
+  "first visual novel": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_67": {
@@ -2930,6 +3020,9 @@
   ],
   "direct game sequel": [
    "intellectual work"
+  ],
+  "first Final Fantasy game to have a direct game sequel": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_80": {
@@ -3026,6 +3119,9 @@
   ],
   "Gran Turismo HD": [
    "intellectual work"
+  ],
+  "full version title": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_84": {
@@ -3106,6 +3202,9 @@
   ],
   "1997": [
    "calender date"
+  ],
+  "It": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_88": {
@@ -3183,6 +3282,9 @@
    "fictional character"
   ],
   "drow": [
+   "fictional character"
+  ],
+  "Drizzt Do’Urden": [
    "fictional character"
   ]
  },
@@ -3378,6 +3480,16 @@
   ],
   "the following year": [
    "calender date"
+  ],
+  "25 December 2012": [
+   "calender date"
+  ],
+  "Christmas Day 2012": [
+   "calender date"
+  ],
+  "English version of Hatoful Boyfriend: Holiday Star": [
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_98": {
@@ -3678,6 +3790,9 @@
   ],
   "remastered version": [
    "intellectual work"
+  ],
+  "A remastered version of the original game": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_106": {
@@ -3752,6 +3867,14 @@
    "literary work"
   ],
   "the story": [
+   "intellectual work",
+   "literary work"
+  ],
+  "backstory of a companion character": [
+   "intellectual work",
+   "literary work"
+  ],
+  "backstory of one of the companion characters from Mass Effect 2": [
    "intellectual work",
    "literary work"
   ]
@@ -3892,7 +4015,8 @@
    "intellectual work",
    "literary work",
    "publication"
-  ]
+  ],
+  "Japanese literature and culture": []
  },
  "ont_4_book_test_111": {
   "01 February 1982": [
@@ -3987,6 +4111,36 @@
   "lexicographer": [
    "human",
    "writer"
+  ],
+  "1st edition (1974)": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "2nd edition (1982)": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "3rd edition (1992)": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "4th edition (2001)": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "5th edition (2007)": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "6th edition (2014)": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_112": {
@@ -4200,7 +4354,13 @@
   "poetry": [
    "literary genre"
   ],
-  "1963": []
+  "1963": [],
+  "poetry anthology": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_118": {
   "01 December 2011": [
@@ -4401,7 +4561,13 @@
   "1757": [
    "calender date"
   ],
-  "Scottish Enlightenment": []
+  "Scottish Enlightenment": [],
+  "collection of essays": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_120": {
   "01 January 1999": [
@@ -4423,6 +4589,12 @@
   ],
   "1999": [
    "calender date"
+  ],
+  "poetry anthology": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_121": {
@@ -4517,6 +4689,18 @@
   ],
   "2019": [
    "calender date"
+  ],
+  "Priya’s Mirror": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "Priya’s Shakti": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_123": {
@@ -4615,7 +4799,8 @@
    "author",
    "human",
    "writer"
-  ]
+  ],
+  "United States Poet Laureate": []
  },
  "ont_4_book_test_125": {
   ")": [],
@@ -4694,6 +4879,9 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "editors at The New York Times": [
+   "human"
   ]
  },
  "ont_4_book_test_126": {
@@ -4792,6 +4980,9 @@
   "the story": [
    "literary work",
    "intellectual work"
+  ],
+  "French": [
+   "language"
   ]
  },
  "ont_4_book_test_128": {
@@ -4985,6 +5176,12 @@
   "individual short stories": [
    "intellectual work",
    "literary work"
+  ],
+  "graphic collection": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_131": {
@@ -5031,6 +5228,12 @@
   "early science fiction drafts": [
    "intellectual work",
    "literary work"
+  ],
+  "The Alternate Asimovs (1986)": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_132": {
@@ -5110,6 +5313,14 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "1979": [
+   "calender date"
+  ],
+  "1979 edition of the dictionary": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_134": {
@@ -5152,6 +5363,18 @@
    "publication"
   ],
   "Bread & Wine": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "An Erotic Tale of New York": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "Bread and Wine": [
    "book",
    "intellectual work",
    "literary work",
@@ -5335,6 +5558,12 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "1983 children's book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_141": {
@@ -5466,6 +5695,12 @@
   ],
   "Irish poetry": [
    "literary genre"
+  ],
+  "poetry anthology": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_145": {
@@ -5501,6 +5736,15 @@
   ],
   "the 5th of each month": [
    "calender date"
+  ],
+  "Japan": [
+   "country"
+  ],
+  "Japanese": [
+   "language"
+  ],
+  "seinen manga magazine": [
+   "publication"
   ]
  },
  "ont_4_book_test_146": {
@@ -5614,7 +5858,32 @@
   "62,000 headwords": [],
   "65,000 headwords": [],
   "73,000 headwords": [],
-  "76,000 headwords": []
+  "76,000 headwords": [],
+  "1st edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "2nd edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "3rd edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "4th edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "5th edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_147": {
   "01 January 1989": [
@@ -5665,6 +5934,9 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "Japanese": [
+   "language"
   ]
  },
  "ont_4_book_test_148": {
@@ -5818,7 +6090,57 @@
   "62,000 headwords": [],
   "65,000 headwords": [],
   "73,000 headwords": [],
-  "76,000 headwords": []
+  "76,000 headwords": [],
+  "1st edition": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "1st edition of Sanseidō Kokugo Jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "2nd edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "2nd edition of Sanseidō Kokugo Jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "3rd edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "3rd edition of Sanseidō Kokugo Jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "4th edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "4th edition of Sanseidō Kokugo Jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "5th edition Sanseidō kokugo jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "5th edition of Sanseidō Kokugo Jiten": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_150": {
   "01 January 1978": [
@@ -5860,7 +6182,15 @@
   "1988": [
    "calender date"
   ],
-  "eight volumes": []
+  "eight volumes": [],
+  "1978–1988": [
+   "calender date"
+  ],
+  "universal encyclopedia": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_151": {
   "01 January 2013": [
@@ -5903,7 +6233,14 @@
   ],
   "church": [],
   "for kirke og hjem": [],
-  "home": []
+  "home": [],
+  "hymnal": [
+   "book",
+   "intellectual work",
+   "literary genre",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_152": {
   "01 January 1991": [
@@ -6337,6 +6674,9 @@
   ],
   "translators": [
    "human"
+  ],
+  "French language": [
+   "language"
   ]
  },
  "ont_4_book_test_161": {
@@ -6463,7 +6803,13 @@
   "language": [
    "language"
   ],
-  "publisher": []
+  "publisher": [],
+  "short graphic novel": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_163": {
   "01 January 1880": [
@@ -6577,6 +6923,11 @@
    "intellectual work",
    "literary genre",
    "publication"
+  ],
+  "Hebrew text of the Hebrew Bible": [
+   "language",
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_166": {
@@ -6777,6 +7128,14 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "The work": [
+   "intellectual work"
+  ],
+  "Written by Roy Thomas": [
+   "author",
+   "human",
+   "writer"
   ]
  },
  "ont_4_book_test_172": {
@@ -6910,6 +7269,11 @@
    "language"
   ],
   "Interlingua at First Sight": [
+   "book",
+   "intellectual work",
+   "publication"
+  ],
+  "manual": [
    "book",
    "intellectual work",
    "publication"
@@ -7216,6 +7580,9 @@
   "three short stories by Stephen King": [
    "intellectual work",
    "literary work"
+  ],
+  "horror fiction": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_181": {
@@ -7391,6 +7758,12 @@
    "publication"
   ],
   "comic books": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "children's book series": [
    "book",
    "intellectual work",
    "literary work",
@@ -7654,6 +8027,13 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "graphic novel": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication",
+   "literary genre"
   ]
  },
  "ont_4_book_test_192": {
@@ -7715,6 +8095,10 @@
   ],
   "science fiction short story": [
    "literary genre"
+  ],
+  "short story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_194": {
@@ -7895,6 +8279,11 @@
   ],
   "travelogues": [
    "literary genre"
+  ],
+  "4th volume": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_198": {
@@ -8143,7 +8532,9 @@
    "intellectual work",
    "literary work",
    "publication"
-  ]
+  ],
+  "educational": [],
+  "historical": []
  },
  "ont_4_book_test_203": {
   "Ernest Shackleton": [
@@ -8185,7 +8576,11 @@
   "Antarctica": [
    "territory"
   ],
-  "Imperial Trans-Antarctic Expedition": []
+  "Imperial Trans-Antarctic Expedition": [],
+  "Imperial Trans-Antarctic Expedition of 1914": [],
+  "Shackleton's crew": [
+   "human"
+  ]
  },
  "ont_4_book_test_204": {
   "00  1970": [
@@ -8406,7 +8801,11 @@
    "human",
    "writer"
   ],
-  "literary group": []
+  "literary group": [],
+  "Sweden": [
+   "country",
+   "territory"
+  ]
  },
  "ont_4_book_test_209": {
   "01 January 1965": [
@@ -8461,6 +8860,9 @@
    "author",
    "human",
    "writer"
+  ],
+  "French": [
+   "language"
   ]
  },
  "ont_4_book_test_210": {
@@ -8580,7 +8982,12 @@
   "International Plant Names Index": [],
   "unambiguous abbreviations": [],
   "websites": [],
-  "www.indexfungorum.org": []
+  "www.indexfungorum.org": [],
+  "Brummitt & Powell's Authors of plant names": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_212": {
   "* country": [
@@ -8741,7 +9148,14 @@
   "illustrations": [
    "intellectual work"
   ],
-  "mid-18th century": []
+  "mid-18th century": [],
+  "The Lives of Flemish, German, and Dutch Painters": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "mid 18th-century": []
  },
  "ont_4_book_test_215": {
   "00  1929": [
@@ -8918,7 +9332,12 @@
    "publication"
   ],
   "lexicographer": [],
-  "natural theologian": []
+  "natural theologian": [],
+  "thesaurus": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_218": {
   "00  1929": [
@@ -8995,6 +9414,10 @@
    "author",
    "human",
    "writer"
+  ],
+  "Sweden": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_219": {
@@ -9370,6 +9793,10 @@
   "American comic book anthology series": [
    "publication",
    "intellectual work"
+  ],
+  "United States": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_231": {
@@ -9426,6 +9853,14 @@
   "the story": [
    "literary work",
    "intellectual work"
+  ],
+  "The story": [
+   "literary work",
+   "intellectual work"
+  ],
+  "Tintin": [
+   "trade magazine",
+   "publication"
   ]
  },
  "ont_4_book_test_232": {
@@ -9449,6 +9884,9 @@
    "calender date"
   ],
   "Monthly Shōnen Jump": [
+   "publication"
+  ],
+  "magazine": [
    "publication"
   ]
  },
@@ -9528,6 +9966,13 @@
   ],
   "June 15, 2011": [
    "calender date"
+  ],
+  "Japanese": [
+   "language"
+  ],
+  "manga magazine": [
+   "publication",
+   "trade magazine"
   ]
  },
  "ont_4_book_test_236": {
@@ -9681,6 +10126,19 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "November 2002 to April 2003": [
+   "calender date"
+  ],
+  "United States": [
+   "country",
+   "territory"
+  ],
+  "comic book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_240": {
@@ -9720,6 +10178,9 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "2017": [
+   "calender date"
   ]
  },
  "ont_4_book_test_241": {
@@ -9825,6 +10286,9 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "A new edition": [
+   "publication"
   ]
  },
  "ont_4_book_test_245": {
@@ -9898,7 +10362,16 @@
    "fictional character"
   ],
   "June 1996": [],
-  "March 1995": []
+  "March 1995": [],
+  "March 1995 to June 1996": [
+   "calender date"
+  ],
+  "comic book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_248": {
   "01 January 1990": [
@@ -10037,6 +10510,15 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "1990–2006": [
+   "calender date"
+  ],
+  "full and part-time artists": [
+   "human"
+  ],
+  "full and part-time editors": [
+   "human"
   ]
  },
  "ont_4_book_test_249": {
@@ -10068,6 +10550,13 @@
   "Golden Age of Comic Books": [],
   "MLJ Comics": [
    "publisher"
+  ],
+  "United States": [
+   "country",
+   "territory"
+  ],
+  "comic book anthology": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_250": {
@@ -10139,6 +10628,10 @@
   ],
   "September-October 1954": [
    "calender date"
+  ],
+  "United States": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_252": {
@@ -10171,6 +10664,9 @@
    "author",
    "human",
    "writer"
+  ],
+  "1975": [
+   "calender date"
   ]
  },
  "ont_4_book_test_253": {
@@ -10198,6 +10694,12 @@
   ],
   "British": [
    "territory"
+  ],
+  "novel": [
+   "book",
+   "intellectual work",
+   "literary genre",
+   "literary work"
   ]
  },
  "ont_4_book_test_254": {
@@ -10227,6 +10729,13 @@
   "seinen manga magazine": [
    "publication",
    "trade magazine"
+  ],
+  "Japan": [
+   "country",
+   "territory"
+  ],
+  "seinen manga": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_255": {
@@ -10316,6 +10825,16 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "English": [
+   "language"
+  ],
+  "historical dictionary": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication",
+   "literary genre"
   ]
  },
  "ont_4_book_test_257": {
@@ -10330,7 +10849,8 @@
   ],
   "Late Antiquity": [],
   "Prehistory": [],
-  "ancient history": []
+  "ancient history": [],
+  "Prehistory to Late Antiquity": []
  },
  "ont_4_book_test_258": {
   "(": [],
@@ -10360,6 +10880,11 @@
   ],
   "children's stories": [
    "literary genre"
+  ],
+  "children's story": [
+   "intellectual work",
+   "literary genre",
+   "literary work"
   ]
  },
  "ont_4_book_test_259": {
@@ -10389,6 +10914,15 @@
   ],
   "1991": [
    "calender date"
+  ],
+  "1946 to 1987": [
+   "calender date"
+  ],
+  "comic book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_260": {
@@ -10410,7 +10944,10 @@
    "intellectual work",
    "publication"
   ],
-  "non-native audience": []
+  "non-native audience": [],
+  "English": [
+   "language"
+  ]
  },
  "ont_4_book_test_261": {
   "01 August 1980": [
@@ -10579,6 +11116,9 @@
   ],
   "shōjo manga magazine": [
    "publication"
+  ],
+  "shōjo manga": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_267": {
@@ -10651,6 +11191,16 @@
   ],
   "Yangu Yū": [
    "publication"
+  ],
+  "Japan": [
+   "country",
+   "territory"
+  ],
+  "Japanese": [
+   "language"
+  ],
+  "josei manga": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_269": {
@@ -10702,6 +11252,16 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "United States": [
+   "country",
+   "territory"
+  ],
+  "one-shot comic book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_271": {
@@ -10738,7 +11298,12 @@
   "1993": [
    "calender date"
   ],
-  "astronomy": []
+  "astronomy": [],
+  "Encyclopedia": [
+   "book",
+   "intellectual work",
+   "publication"
+  ]
  },
  "ont_4_book_test_272": {
   "00  1924": [
@@ -10831,6 +11396,13 @@
   ],
   "Elseworlds": [
    "literary genre"
+  ],
+  "Elseworlds graphic novel": [
+   "book",
+   "intellectual work",
+   "literary genre",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_274": {
@@ -10854,6 +11426,10 @@
    "book",
    "intellectual work",
    "publication"
+  ],
+  "England": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_275": {
@@ -10877,6 +11453,10 @@
   "Golden Age of Comic Books": [],
   "superhero anthology": [
    "literary genre"
+  ],
+  "United States": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_276": {
@@ -10894,6 +11474,12 @@
   ],
   "Japanese shōjo manga magazine": [
    "publication"
+  ],
+  "Japan": [
+   "country"
+  ],
+  "shōjo manga": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_277": {
@@ -11069,7 +11655,12 @@
   ],
   "Disney comics": [
    "literary genre"
-  ]
+  ],
+  "Disney": [
+   "publisher"
+  ],
+  "rivalry": [],
+  "rivalry between Donald Duck and Gladstone Gander": []
  },
  "ont_4_book_test_283": {
   "English": [
@@ -11136,6 +11727,12 @@
    "fictional character"
   ],
   "the novel": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "This book": [
    "book",
    "intellectual work",
    "literary work",
@@ -11232,6 +11829,10 @@
   "comic strip story": [
    "intellectual work",
    "literary work"
+  ],
+  "Scrooge McDuck comic strip story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_287": {
@@ -11296,6 +11897,13 @@
   ],
   "Walt Disney": [
    "human"
+  ],
+  "1937": [
+   "calender date"
+  ],
+  "Story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_289": {
@@ -11338,7 +11946,10 @@
   ],
   "hidden Inca civilisation": [],
   "mountains": [],
-  "rain forests": []
+  "rain forests": [],
+  "Inca": [
+   "human"
+  ]
  },
  "ont_4_book_test_290": {
   "Adventure": [
@@ -11381,7 +11992,11 @@
   "Critical analysis": [
    "intellectual work"
   ],
-  "innovation": []
+  "innovation": [],
+  "the Adventure": [
+   "intellectual work",
+   "literary work"
+  ]
  },
  "ont_4_book_test_291": {
   "Scrooge McDuck": [
@@ -11505,7 +12120,8 @@
   ],
   "Scrooge McDuck": [
    "fictional character"
-  ]
+  ],
+  "first appearance of Scrooge McDuck": []
  },
  "ont_4_book_test_296": {
   "Adventure": [
@@ -11569,6 +12185,10 @@
   "Lost Library of Alexandria": [
    "library",
    "fictional character"
+  ],
+  "In this story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_297": {
@@ -11625,6 +12245,10 @@
   ],
   "modern-day Greek demigods": [
    "fictional character"
+  ],
+  "the series": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_298": {
@@ -11651,7 +12275,8 @@
    "publication",
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "rivalry between Donald Duck and Gladstone Gander": []
  },
  "ont_4_book_test_299": {
   "A Visit from St. Nicholas": [
@@ -11754,6 +12379,10 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "Donald Duck story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_301": {
@@ -11944,6 +12573,13 @@
   ],
   "sword and sorcery": [
    "literary genre"
+  ],
+  "fantasy": [
+   "literary genre"
+  ],
+  "fantasy short stories": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_305": {
@@ -11991,6 +12627,9 @@
   "United States": [
    "country",
    "territory"
+  ],
+  "Anders And & Co. #1997-26": [
+   "publication"
   ]
  },
  "ont_4_book_test_306": {
@@ -12171,6 +12810,13 @@
   ],
   "Four Color Comics": [
    "publication"
+  ],
+  "#178": [
+   "publication"
+  ],
+  "Christmas on Bear Mountain (1947)": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_310": {
@@ -12206,6 +12852,10 @@
    "book",
    "publication",
    "literary genre"
+  ],
+  "comic book story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_311": {
@@ -12275,6 +12925,10 @@
   ],
   "of its genre).\n\nTest Sentence: The film is an adaptation of a famous literary work": [
    "literary genre"
+  ],
+  "the story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_312": {
@@ -12316,6 +12970,17 @@
   ],
   "Nature Boys club": [],
   "members of the Nature Boys club": [
+   "human"
+  ],
+  "Story": [
+   "intellectual work",
+   "literary work"
+  ],
+  "The story": [
+   "intellectual work",
+   "literary work"
+  ],
+  "a zookeeper": [
    "human"
   ]
  },
@@ -12473,7 +13138,11 @@
   "turning water into wine": [],
   "water": [],
   "wedding": [],
-  "wine": []
+  "wine": [],
+  "Jesus' disciples": [
+   "human"
+  ],
+  "Jesus' glory": []
  },
  "ont_4_book_test_316": {
   "Captain Haddock": [
@@ -12504,7 +13173,8 @@
   "abduction": [],
   "archaeological expedition": [],
   "investigations": [],
-  "mysterious illness": []
+  "mysterious illness": [],
+  "abduction of Professor Calculus": []
  },
  "ont_4_book_test_317": {
   "Carl Barks": [
@@ -12528,7 +13198,11 @@
   ],
   "Disney comics": [
    "literary genre"
-  ]
+  ],
+  "Disney": [
+   "publisher"
+  ],
+  "rivalry": []
  },
  "ont_4_book_test_318": {
   "00  1997": [
@@ -12564,6 +13238,10 @@
   ],
   "1997": [
    "calender date"
+  ],
+  "Attack of the Hideous Space-Monsters": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_319": {
@@ -12818,7 +13496,10 @@
   "Carità Romana": [
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "breastfeeding": [],
+  "death by starvation": [],
+  "incarceration": []
  },
  "ont_4_book_test_325": {
   "00  1996": [],
@@ -12847,6 +13528,10 @@
   "United States": [
    "country",
    "territory"
+  ],
+  "story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_326": {
@@ -12886,6 +13571,10 @@
   "Carità Romana": [
    "literary work",
    "intellectual work"
+  ],
+  "Roman Charity (Caritas romana; Carità Romana)": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_327": {
@@ -12995,6 +13684,9 @@
   "the journal": [
    "scientific journal",
    "publication"
+  ],
+  "2004": [
+   "calender date"
   ]
  },
  "ont_4_book_test_330": {
@@ -13091,6 +13783,10 @@
   ],
   "York University": [],
   "the journal": [
+   "publication",
+   "scientific journal"
+  ],
+  "Journal": [
    "publication",
    "scientific journal"
   ]
@@ -13221,7 +13917,8 @@
   "the journal": [
    "scientific journal",
    "publication"
-  ]
+  ],
+  "chief editor": []
  },
  "ont_4_book_test_339": {
   "Leigh Landy": [
@@ -13503,7 +14200,8 @@
    "calender date"
   ],
   "editor-in-chief": [],
-  "founding editor-in-chief": []
+  "founding editor-in-chief": [],
+  "Founding editor-in-chief": []
  },
  "ont_4_book_test_352": {
   "1992": [
@@ -13706,7 +14404,10 @@
   "Satoshi Tajiri": [
    "human"
   ],
-  "University of Helsinki": []
+  "University of Helsinki": [],
+  "Editor in chief": [
+   "human"
+  ]
  },
  "ont_4_book_test_360": {
   "1872": [
@@ -13755,7 +14456,8 @@
   "Rutgers University": [],
   "The editor-in-chief": [
    "human"
-  ]
+  ],
+  "editor-in-chief": []
  },
  "ont_4_book_test_362": {
   "Demetrios James Caraley": [
@@ -13840,6 +14542,12 @@
   "Social Evolution & History": [
    "publication",
    "scientific journal"
+  ],
+  "The editors-in-chief": [
+   "human"
+  ],
+  "editors-in-chief": [
+   "human"
   ]
  },
  "ont_4_book_test_367": {
@@ -13860,7 +14568,8 @@
   ],
   "The editor-in-chief": [
    "human"
-  ]
+  ],
+  "editor in chief": []
  },
  "ont_4_book_test_368": {
   "1 January 1980": [
@@ -13958,7 +14667,8 @@
   ],
   "The editor-in-chief": [
    "human"
-  ]
+  ],
+  "editor-in-chief": []
  },
  "ont_4_book_test_373": {
   "IEEE Software": [
@@ -14170,7 +14880,10 @@
    "publication",
    "scientific journal"
   ],
-  "Dalhousie University": []
+  "Dalhousie University": [],
+  "current editor-in-chief": [
+   "human"
+  ]
  },
  "ont_4_book_test_379": {
   "Gunther Eysenbach": [
@@ -14239,7 +14952,11 @@
    "scientific journal"
   ],
   "First National Symposium on Translational Psychiatry": [],
-  "The Australian National University": []
+  "The Australian National University": [],
+  "It": [
+   "publication",
+   "scientific journal"
+  ]
  },
  "ont_4_book_test_382": {
   "2007": [
@@ -14261,6 +14978,11 @@
   "The Journal": [
    "publication",
    "scientific journal"
+  ],
+  "Journal": [
+   "scientific journal",
+   "publication",
+   "intellectual work"
   ]
  },
  "ont_4_book_test_383": {
@@ -14321,7 +15043,8 @@
   ],
   "Antony Anghie": [
    "human"
-  ]
+  ],
+  "editor-in-chief": []
  },
  "ont_4_book_test_384": {
   "Boris Kashin": [
@@ -14370,7 +15093,8 @@
   "assistant editor": [],
   "editor": [],
   "editor in chief": [],
-  "managing editor": []
+  "managing editor": [],
+  "The current editorial team": []
  },
  "ont_4_book_test_387": {
   "Balthasar Bickel": [
@@ -14451,6 +15175,9 @@
    "calender date"
   ],
   "1978": [
+   "calender date"
+  ],
+  "1972–1978": [
    "calender date"
   ]
  },
@@ -14659,7 +15386,8 @@
    "book",
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "Events": []
  },
  "ont_4_book_test_394": {
   "1983": [],
@@ -14791,6 +15519,9 @@
    "intellectual work",
    "literary genre",
    "literary work"
+  ],
+  "Pennsylvania": [
+   "territory"
   ]
  },
  "ont_4_book_test_397": {
@@ -14994,6 +15725,14 @@
   ],
   "crime novels in translation": [
    "literary genre"
+  ],
+  "UK": [
+   "country",
+   "territory"
+  ],
+  "the UK": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_402": {
@@ -15072,7 +15811,12 @@
   "Minnesota": [
    "territory"
   ],
-  "set in Florida and/or Minnesota,": []
+  "set in Florida and/or Minnesota,": [],
+  "Stephen King": [
+   "author",
+   "human",
+   "writer"
+  ]
  },
  "ont_4_book_test_404": {
   "1623": [
@@ -15197,6 +15941,16 @@
   "the play": [
    "literary work",
    "intellectual work"
+  ],
+  "Chinese city of Sichuan": [
+   "territory"
+  ],
+  "The play": [
+   "intellectual work",
+   "literary work"
+  ],
+  "city of Sichuan": [
+   "territory"
   ]
  },
  "ont_4_book_test_408": {
@@ -15305,7 +16059,8 @@
    "territory"
   ],
   "fictional Army Air Forces base": [],
-  "most of the action": []
+  "most of the action": [],
+  "Most of the action": []
  },
  "ont_4_book_test_411": {
   "Barcelona": [
@@ -15345,7 +16100,8 @@
   ],
   "the story": [
    "literary work"
-  ]
+  ],
+  "The action": []
  },
  "ont_4_book_test_412": {
   "Finbarr, and his brother Manus.\n\nGenre(literary_work,literary_genre": [
@@ -15400,7 +16156,10 @@
   "1930s depression": [],
   "Morrison family": [
    "fictional character"
-  ]
+  ],
+  "the 1930s depression": [],
+  "the Morrison family household": [],
+  "the household of the Morrison family": []
  },
  "ont_4_book_test_413": {
   "Lester Goran": [
@@ -15514,6 +16273,18 @@
   ],
   "orphan girl": [
    "fictional character"
+  ],
+  "novel": [
+   "book",
+   "intellectual work",
+   "literary genre",
+   "literary work",
+   "publication"
+  ],
+  "series of novels": [
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_416": {
@@ -15547,7 +16318,8 @@
   "a small mountain town": [
    "territory"
   ],
-  "the case of a missing woman": []
+  "the case of a missing woman": [],
+  "case of a missing woman": []
  },
  "ont_4_book_test_417": {
   "Death at the Bar": [
@@ -15606,7 +16378,14 @@
   "the murder": [],
   "the novel's title": [],
   "the plot": [],
-  "the public house": []
+  "the public house": [],
+  "The novel": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ],
+  "the murder of a leading KC": []
  },
  "ont_4_book_test_418": {
   "As I Was Going Down Sackville Street": [
@@ -15932,6 +16711,12 @@
   "the stories from Tales": [
    "intellectual work",
    "literary work"
+  ],
+  "Tales of the City's novelization": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_425": {
@@ -16091,6 +16876,10 @@
   "the novel": [
    "intellectual work",
    "literary work"
+  ],
+  "England": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_428": {
@@ -16180,7 +16969,9 @@
   ],
   "British colonialism": [],
   "independence": [],
-  "partition of India": []
+  "partition of India": [],
+  "India's transition from British colonialism to independence": [],
+  "the partition of India": []
  },
  "ont_4_book_test_430": {
   "1928": [
@@ -16297,7 +17088,9 @@
    "intellectual work",
    "literary work",
    "publication"
-  ]
+  ],
+  "an archaeological excavation": [],
+  "an archaeological excavation in Iraq": []
  },
  "ont_4_book_test_432": {
   "Northern Europe": [
@@ -16342,7 +17135,13 @@
   "the story": [
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "The story": [
+   "intellectual work",
+   "literary work"
+  ],
+  "military occupation of a small town": [],
+  "occupation of Norway during World War II": []
  },
  "ont_4_book_test_433": {
   "Alexandria": [
@@ -16397,6 +17196,9 @@
    "writer"
   ],
   "Lost Library of Alexandria": [
+   "library"
+  ],
+  "the Lost Library of Alexandria": [
    "library"
   ]
  },
@@ -16473,6 +17275,12 @@
   ],
   "1958": [
    "calender date"
+  ],
+  "Confidential, and White Jazz": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_436": {
@@ -16596,7 +17404,8 @@
   ],
   "small town of Serenity": [
    "territory"
-  ]
+  ],
+  "friendship": []
  },
  "ont_4_book_test_440": {
   "California": [
@@ -16635,6 +17444,10 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "The stories": [
+   "literary work",
+   "intellectual work"
   ]
  },
  "ont_4_book_test_441": {
@@ -16751,6 +17564,9 @@
   "the origin of the vampires": [],
   "vampires": [
    "fictional character"
+  ],
+  "the history and mythology of the origin of the vampires": [
+   "intellectual work"
   ]
  },
  "ont_4_book_test_443": {
@@ -16787,6 +17603,11 @@
   ],
   "the author's claim that How Green Was My Valley was based on personal experiences": [
    "intellectual work"
+  ],
+  "Richard Llewellyn": [
+   "author",
+   "human",
+   "writer"
   ]
  },
  "ont_4_book_test_444": {
@@ -16845,7 +17666,10 @@
   "the property": [
    "territory"
   ],
-  "unity": []
+  "unity": [],
+  "the hero": [
+   "fictional character"
+  ]
  },
  "ont_4_book_test_446": {
   "Decadent movement": [
@@ -16983,7 +17807,8 @@
   ],
   "small town near Vienna": [
    "territory"
-  ]
+  ],
+  "years following World War I": []
  },
  "ont_4_book_test_449": {
   "Iran": [
@@ -17022,6 +17847,11 @@
   ],
   "the proletariat": [
    "human"
+  ],
+  "the author": [
+   "author",
+   "human",
+   "writer"
   ]
  },
  "ont_4_book_test_450": {
@@ -17060,7 +17890,12 @@
    "territory"
   ],
   "impoverished peasant family": [],
-  "totalitarian dictatorship": []
+  "totalitarian dictatorship": [],
+  "a totalitarian dictatorship": [],
+  "an Iraqi village": [
+   "territory"
+  ],
+  "an impoverished peasant family": []
  },
  "ont_4_book_test_452": {
   "01 January 1997": [
@@ -17138,7 +17973,10 @@
   "Black Americans": [
    "human"
   ],
-  "Temple University": []
+  "Temple University": [],
+  "one hundred historically great Black Americans": [
+   "human"
+  ]
  },
  "ont_4_book_test_454": {
   "Caballero": [
@@ -17305,7 +18143,8 @@
   "anonymous Middle High German heroic poem": [
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "anonymous": []
  },
  "ont_4_book_test_458": {
   "Annales Bertiniani": [
@@ -17421,6 +18260,16 @@
    "intellectual work",
    "literary work",
    "publication"
+  ],
+  "an essay on reprints of gay literature": [
+   "article",
+   "intellectual work",
+   "literary work"
+  ],
+  "essay on reprints of gay literature": [
+   "article",
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_461": {
@@ -17462,7 +18311,8 @@
   ],
   "teachers": [
    "human"
-  ]
+  ],
+  "2004": []
  },
  "ont_4_book_test_462": {
   "Back in the U.S.S.R": [
@@ -17526,7 +18376,10 @@
    "literary work"
   ],
   "the twentieth century": [],
-  "twentieth century": []
+  "twentieth century": [],
+  "alternate history of the twentieth century": [
+   "literary genre"
+  ]
  },
  "ont_4_book_test_463": {
   "Ananga Ranga": [
@@ -17589,7 +18442,8 @@
    "intellectual work",
    "literary work",
    "publication"
-  ]
+  ],
+  "15th or 16th century": []
  },
  "ont_4_book_test_464": {
   "Apocalypse of Adam": [
@@ -17713,6 +18567,11 @@
   "Soldiers' Happiness": [
    "intellectual work",
    "literary work"
+  ],
+  "Minna von Barnhelm or the Soldiers’ Happiness": [
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_467": {
@@ -17807,6 +18666,12 @@
   "Canada": [
    "country",
    "territory"
+  ],
+  "Harriet Beecher Stowe's novel Uncle Tom's Cabin": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_469": {
@@ -17869,6 +18734,12 @@
   ],
   "old stereotypes": [
    "intellectual work"
+  ],
+  "The New Negro’s anthology": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_470": {
@@ -17969,6 +18840,13 @@
   "subject matter": [],
   "suggestive art": [
    "intellectual work"
+  ],
+  "Obscure titles": [],
+  "lesbian pulp fiction": [
+   "literary genre"
+  ],
+  "pulp fiction": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_471": {
@@ -18093,6 +18971,9 @@
    "author",
    "human",
    "writer"
+  ],
+  "early form of graphic novel": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_474": {
@@ -18187,6 +19068,13 @@
   ],
   "graphic novel memoir": [
    "literary genre"
+  ],
+  "memoir": [
+   "book",
+   "intellectual work",
+   "literary genre",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_476": {
@@ -18354,7 +19242,11 @@
   ],
   "lesbian pulp fiction genre": [
    "literary genre"
-  ]
+  ],
+  "1952s": [
+   "calender date"
+  ],
+  "conformity in 1950s American society": []
  },
  "ont_4_book_test_479": {
   "2009": [
@@ -18389,6 +19281,11 @@
   "Canadian Culinary Gold award": [],
   "Cookbook category": [
    "literary genre"
+  ],
+  "cookbook": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_480": {
@@ -18580,6 +19477,13 @@
   ],
   "creative nonfiction": [
    "literary genre"
+  ],
+  "creative nonfiction book": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication",
+   "literary genre"
   ]
  },
  "ont_4_book_test_485": {
@@ -18642,6 +19546,12 @@
   ],
   "short stories": [
    "literary work"
+  ],
+  "collection of short stories": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
   ]
  },
  "ont_4_book_test_487": {
@@ -18688,6 +19598,9 @@
   ],
   "late 14th century": [
    "calender date"
+  ],
+  "1319 to 1367": [
+   "calender date"
   ]
  },
  "ont_4_book_test_488": {
@@ -18730,6 +19643,14 @@
   "American writer": [
    "human",
    "writer"
+  ],
+  "1975 alternate history short story": [
+   "intellectual work",
+   "literary work"
+  ],
+  "The short story": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_489": {
@@ -18836,7 +19757,10 @@
    "human",
    "writer"
   ],
-  "2010 Sidewise Award for Alternate History": []
+  "2010 Sidewise Award for Alternate History": [],
+  "2010": [
+   "calender date"
+  ]
  },
  "ont_4_book_test_492": {
   "Antioch": [
@@ -19006,7 +19930,8 @@
   "phrases": [],
   "second midrash sections": [],
   "sections": [],
-  "third midrash sections": []
+  "third midrash sections": [],
+  "end": []
  },
  "ont_4_book_test_495": {
   "1914": [
@@ -19199,6 +20124,11 @@
   "textbook": [
    "book",
    "publication"
+  ],
+  "Buku Iqro": [
+   "book",
+   "intellectual work",
+   "publication"
   ]
  },
  "ont_4_book_test_499": {
@@ -19308,6 +20238,11 @@
   ],
   "Tristan and Iseult": [
    "fictional character"
+  ],
+  "The Prose Tristan (Tristan en prose)": [
+   "book",
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_502": {
@@ -19441,6 +20376,14 @@
   "tribute to all casualties of war": [
    "intellectual work",
    "literary work"
+  ],
+  "a tribute to all casualties of war": [
+   "intellectual work",
+   "literary work"
+  ],
+  "the third and fourth stanzas of the poem": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_505": {
@@ -19562,7 +20505,10 @@
   "the tourist": [
    "fictional character",
    "human"
-  ]
+  ],
+  "an encounter between an enterprising tourist and a small fisherman": [],
+  "encounter between an enterprising tourist and a small fisherman": [],
+  "improving the fisherman's life": []
  },
  "ont_4_book_test_507": {
   "Beloved Name": [
@@ -19736,7 +20682,13 @@
    "literary work",
    "publication"
   ],
-  "Arabic magic": []
+  "Arabic magic": [],
+  "manual for achieving esoteric spirituality": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "publication"
+  ]
  },
  "ont_4_book_test_513": {
   "00  1582": [
@@ -19826,7 +20778,13 @@
   ],
   "medieval Old French chanson de geste": [
    "literary genre"
-  ]
+  ],
+  "France": [
+   "country",
+   "territory"
+  ],
+  "conquest of Brittany by Charlemagne": [],
+  "rivalry between Aiquin and Charlemagne": []
  },
  "ont_4_book_test_515": {
   "Christian hymn": [
@@ -19946,6 +20904,18 @@
   ],
   "Swedish Lutheran cleric": [
    "human"
+  ],
+  "Finland": [
+   "country",
+   "territory"
+  ],
+  "Medieval songs": [
+   "intellectual work",
+   "literary work"
+  ],
+  "song book": [
+   "book",
+   "publication"
   ]
  },
  "ont_4_book_test_518": {
@@ -20044,6 +21014,12 @@
   "series of horror/thriller novels": [
    "intellectual work",
    "literary work"
+  ],
+  "horror": [
+   "literary genre"
+  ],
+  "thriller": [
+   "literary genre"
   ]
  },
  "ont_4_book_test_521": {
@@ -20139,6 +21115,10 @@
    "literary work"
   ],
   "Theban cycle": [
+   "intellectual work",
+   "literary work"
+  ],
+  "Theban Cycle": [
    "intellectual work",
    "literary work"
   ]
@@ -20248,6 +21228,17 @@
   ],
   "the tablet": [
    "intellectual work"
+  ],
+  "Arabic part": [
+   "language"
+  ],
+  "The tablet": [
+   "intellectual work",
+   "literary work"
+  ],
+  "tablet": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_526": {
@@ -20306,6 +21297,11 @@
   ],
   "end of the twelfth century": [
    "calender date"
+  ],
+  "Old French chanson de geste": [
+   "literary genre",
+   "literary work",
+   "intellectual work"
   ]
  },
  "ont_4_book_test_527": {
@@ -20386,6 +21382,10 @@
   "office of Compline": [],
   "seasonal liturgical Marian antiphons": [
    "literary genre"
+  ],
+  "seasonal liturgical Marian antiphon": [
+   "intellectual work",
+   "literary work"
   ]
  },
  "ont_4_book_test_529": {
@@ -20672,6 +21672,13 @@
   ],
   "the game": [
    "intellectual work"
+  ],
+  "The game": [
+   "intellectual work"
+  ],
+  "a modern-day Central African nation": [
+   "country",
+   "territory"
   ]
  },
  "ont_4_book_test_535": {
@@ -20741,7 +21748,8 @@
   ],
   "Constantinople": [
    "territory"
-  ]
+  ],
+  "Battle of Mu’tah": []
  },
  "ont_4_book_test_537": {
   "1348-49": [
@@ -20841,6 +21849,9 @@
   "earth": [],
   "living humans": [
    "human"
+  ],
+  "a post-apocalypse world": [
+   "territory"
   ]
  },
  "ont_4_book_test_539": {
@@ -20881,6 +21892,12 @@
   ],
   "young adults": [
    "human"
+  ],
+  "novel": [
+   "book",
+   "intellectual work",
+   "literary work",
+   "literary genre"
   ]
  },
  "ont_4_book_test_540": {
@@ -20905,6 +21922,13 @@
   ],
   "young man": [
    "human"
+  ],
+  "The image": [],
+  "a young man": [
+   "human"
+  ],
+  "crucified, donkey-headed figure": [
+   "fictional character"
   ]
  },
  "ont_4_book_test_541": {
@@ -20937,7 +21961,10 @@
   "the story": [
    "intellectual work",
    "literary work"
-  ]
+  ],
+  "political climate of panic": [],
+  "political climate of panic over Red Army Faction terrorism": [],
+  "sensationalism of tabloid news": []
  },
  "ont_4_book_test_542": {
   ",": [],
@@ -20953,6 +21980,9 @@
    "human"
   ],
   "sharks": [
+   "fictional character"
+  ],
+  "a family of sharks": [
    "fictional character"
   ]
  },
@@ -20994,7 +22024,10 @@
    "intellectual work"
   ],
   "prologue": [],
-  "three acts": []
+  "three acts": [],
+  "Giovanna d’Arco": [
+   "intellectual work"
+  ]
  },
  "ont_4_book_test_544": {
   "Le Ventre de Paris": [
@@ -21083,7 +22116,12 @@
    "country",
    "territory"
   ],
-  "United States military": []
+  "United States military": [],
+  "history": [
+   "book",
+   "intellectual work",
+   "literary work"
+  ]
  },
  "ont_4_book_test_547": {
   "First Crusade": [],
@@ -21135,7 +22173,11 @@
   "grand historical novel": [
    "literary genre"
   ],
-  "patriotic slant": []
+  "patriotic slant": [],
+  "epic poem by Tommaso Grossi": [
+   "literary work",
+   "intellectual work"
+  ]
  },
  "ont_4_book_test_548": {
   "Bisclavret": [
@@ -21302,6 +22344,10 @@
   "the end of the 19th century": [
    "calender date"
   ],
-  "the period of Nazism": []
+  "the period of Nazism": [],
+  "Faehmel family": [
+   "fictional character"
+  ],
+  "Faehmel family's history": []
  }
 }

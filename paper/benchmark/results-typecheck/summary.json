@@ -105,6 +105,36 @@
       "range_conformance": 0.9411,
       "type_conformance": 0.8653
     },
+    "EDC+R": {
+      "triples": 10120,
+      "in_vocabulary": 10120,
+      "domain_checked": 9795,
+      "domain_ok": 8245,
+      "range_checked": 7736,
+      "range_ok": 6521,
+      "type_checked": 9874,
+      "type_ok": 7302,
+      "untyped": 0,
+      "vocabulary_conformance": 1.0,
+      "domain_conformance": 0.8418,
+      "range_conformance": 0.8429,
+      "type_conformance": 0.7395
+    },
+    "EDC": {
+      "triples": 8509,
+      "in_vocabulary": 8509,
+      "domain_checked": 8239,
+      "domain_ok": 6998,
+      "range_checked": 6409,
+      "range_ok": 5225,
+      "type_checked": 8326,
+      "type_ok": 6058,
+      "untyped": 0,
+      "vocabulary_conformance": 1.0,
+      "domain_conformance": 0.8494,
+      "range_conformance": 0.8153,
+      "type_conformance": 0.7276
+    },
     "KGGen plain": {
       "triples": 20424,
       "in_vocabulary": 14,
@@ -120,7 +150,7 @@
       "range_conformance": 0.9,
       "type_conformance": 0.9
     },
-    "KGGen context": {
+    "KGGen plain r2": {
       "triples": 20313,
       "in_vocabulary": 27,
       "domain_checked": 26,
@@ -134,6 +164,21 @@
       "domain_conformance": 0.9615,
       "range_conformance": 0.9231,
       "type_conformance": 0.8846
+    },
+    "KGGen context": {
+      "triples": 8331,
+      "in_vocabulary": 8331,
+      "domain_checked": 7943,
+      "domain_ok": 7212,
+      "range_checked": 6355,
+      "range_ok": 5594,
+      "type_checked": 8023,
+      "type_ok": 6590,
+      "untyped": 0,
+      "vocabulary_conformance": 1.0,
+      "domain_conformance": 0.908,
+      "range_conformance": 0.8803,
+      "type_conformance": 0.8214
     }
   },
   "per_ontology": {
@@ -921,6 +966,230 @@
         "untyped": 0
       }
     },
+    "EDC+R": {
+      "1_movie": {
+        "triples": 2830,
+        "in_vocabulary": 2830,
+        "domain_checked": 2830,
+        "domain_ok": 2481,
+        "range_checked": 2367,
+        "range_ok": 2041,
+        "type_checked": 2830,
+        "type_ok": 2220,
+        "untyped": 0
+      },
+      "2_music": {
+        "triples": 1959,
+        "in_vocabulary": 1959,
+        "domain_checked": 1959,
+        "domain_ok": 1704,
+        "range_checked": 892,
+        "range_ok": 781,
+        "type_checked": 1959,
+        "type_ok": 1615,
+        "untyped": 0
+      },
+      "3_sport": {
+        "triples": 1277,
+        "in_vocabulary": 1277,
+        "domain_checked": 1277,
+        "domain_ok": 919,
+        "range_checked": 1152,
+        "range_ok": 1036,
+        "type_checked": 1277,
+        "type_ok": 825,
+        "untyped": 0
+      },
+      "4_book": {
+        "triples": 1464,
+        "in_vocabulary": 1464,
+        "domain_checked": 1228,
+        "domain_ok": 870,
+        "range_checked": 1034,
+        "range_ok": 926,
+        "type_checked": 1307,
+        "type_ok": 871,
+        "untyped": 0
+      },
+      "5_military": {
+        "triples": 465,
+        "in_vocabulary": 465,
+        "domain_checked": 462,
+        "domain_ok": 425,
+        "range_checked": 462,
+        "range_ok": 342,
+        "type_checked": 462,
+        "type_ok": 312,
+        "untyped": 0
+      },
+      "6_computer": {
+        "triples": 538,
+        "in_vocabulary": 538,
+        "domain_checked": 538,
+        "domain_ok": 439,
+        "range_checked": 427,
+        "range_ok": 331,
+        "type_checked": 538,
+        "type_ok": 358,
+        "untyped": 0
+      },
+      "7_space": {
+        "triples": 289,
+        "in_vocabulary": 289,
+        "domain_checked": 289,
+        "domain_ok": 275,
+        "range_checked": 285,
+        "range_ok": 193,
+        "type_checked": 289,
+        "type_ok": 191,
+        "untyped": 0
+      },
+      "8_politics": {
+        "triples": 415,
+        "in_vocabulary": 415,
+        "domain_checked": 415,
+        "domain_ok": 397,
+        "range_checked": 415,
+        "range_ok": 316,
+        "type_checked": 415,
+        "type_ok": 308,
+        "untyped": 0
+      },
+      "9_nature": {
+        "triples": 719,
+        "in_vocabulary": 719,
+        "domain_checked": 633,
+        "domain_ok": 609,
+        "range_checked": 633,
+        "range_ok": 491,
+        "type_checked": 633,
+        "type_ok": 479,
+        "untyped": 0
+      },
+      "10_culture": {
+        "triples": 164,
+        "in_vocabulary": 164,
+        "domain_checked": 164,
+        "domain_ok": 126,
+        "range_checked": 69,
+        "range_ok": 64,
+        "type_checked": 164,
+        "type_ok": 123,
+        "untyped": 0
+      }
+    },
+    "EDC": {
+      "1_movie": {
+        "triples": 2435,
+        "in_vocabulary": 2435,
+        "domain_checked": 2435,
+        "domain_ok": 2111,
+        "range_checked": 2026,
+        "range_ok": 1759,
+        "type_checked": 2435,
+        "type_ok": 1914,
+        "untyped": 0
+      },
+      "2_music": {
+        "triples": 1651,
+        "in_vocabulary": 1651,
+        "domain_checked": 1651,
+        "domain_ok": 1384,
+        "range_checked": 662,
+        "range_ok": 552,
+        "type_checked": 1651,
+        "type_ok": 1297,
+        "untyped": 0
+      },
+      "3_sport": {
+        "triples": 990,
+        "in_vocabulary": 990,
+        "domain_checked": 990,
+        "domain_ok": 767,
+        "range_checked": 917,
+        "range_ok": 800,
+        "type_checked": 990,
+        "type_ok": 663,
+        "untyped": 0
+      },
+      "4_book": {
+        "triples": 1141,
+        "in_vocabulary": 1141,
+        "domain_checked": 926,
+        "domain_ok": 645,
+        "range_checked": 765,
+        "range_ok": 695,
+        "type_checked": 1013,
+        "type_ok": 687,
+        "untyped": 0
+      },
+      "5_military": {
+        "triples": 401,
+        "in_vocabulary": 401,
+        "domain_checked": 397,
+        "domain_ok": 389,
+        "range_checked": 397,
+        "range_ok": 224,
+        "type_checked": 397,
+        "type_ok": 220,
+        "untyped": 0
+      },
+      "6_computer": {
+        "triples": 509,
+        "in_vocabulary": 509,
+        "domain_checked": 509,
+        "domain_ok": 422,
+        "range_checked": 393,
+        "range_ok": 329,
+        "type_checked": 509,
+        "type_ok": 363,
+        "untyped": 0
+      },
+      "7_space": {
+        "triples": 283,
+        "in_vocabulary": 283,
+        "domain_checked": 283,
+        "domain_ok": 271,
+        "range_checked": 281,
+        "range_ok": 181,
+        "type_checked": 283,
+        "type_ok": 177,
+        "untyped": 0
+      },
+      "8_politics": {
+        "triples": 399,
+        "in_vocabulary": 399,
+        "domain_checked": 399,
+        "domain_ok": 396,
+        "range_checked": 399,
+        "range_ok": 251,
+        "type_checked": 399,
+        "type_ok": 248,
+        "untyped": 0
+      },
+      "9_nature": {
+        "triples": 565,
+        "in_vocabulary": 565,
+        "domain_checked": 514,
+        "domain_ok": 495,
+        "range_checked": 514,
+        "range_ok": 390,
+        "type_checked": 514,
+        "type_ok": 382,
+        "untyped": 0
+      },
+      "10_culture": {
+        "triples": 135,
+        "in_vocabulary": 135,
+        "domain_checked": 135,
+        "domain_ok": 118,
+        "range_checked": 55,
+        "range_ok": 44,
+        "type_checked": 135,
+        "type_ok": 107,
+        "untyped": 0
+      }
+    },
     "KGGen plain": {
       "1_movie": {
         "triples": 4577,
@@ -1033,7 +1302,7 @@
         "untyped": 0
       }
     },
-    "KGGen context": {
+    "KGGen plain r2": {
       "1_movie": {
         "triples": 4621,
         "in_vocabulary": 10,
@@ -1142,6 +1411,118 @@
         "range_ok": 0,
         "type_checked": 0,
         "type_ok": 0,
+        "untyped": 0
+      }
+    },
+    "KGGen context": {
+      "1_movie": {
+        "triples": 2261,
+        "in_vocabulary": 2261,
+        "domain_checked": 2261,
+        "domain_ok": 2133,
+        "range_checked": 1892,
+        "range_ok": 1662,
+        "type_checked": 2261,
+        "type_ok": 1922,
+        "untyped": 0
+      },
+      "2_music": {
+        "triples": 1604,
+        "in_vocabulary": 1604,
+        "domain_checked": 1604,
+        "domain_ok": 1481,
+        "range_checked": 793,
+        "range_ok": 742,
+        "type_checked": 1604,
+        "type_ok": 1432,
+        "untyped": 0
+      },
+      "3_sport": {
+        "triples": 982,
+        "in_vocabulary": 982,
+        "domain_checked": 982,
+        "domain_ok": 892,
+        "range_checked": 872,
+        "range_ok": 777,
+        "type_checked": 982,
+        "type_ok": 813,
+        "untyped": 0
+      },
+      "4_book": {
+        "triples": 1310,
+        "in_vocabulary": 1310,
+        "domain_checked": 1030,
+        "domain_ok": 757,
+        "range_checked": 865,
+        "range_ok": 799,
+        "type_checked": 1110,
+        "type_ok": 779,
+        "untyped": 0
+      },
+      "5_military": {
+        "triples": 361,
+        "in_vocabulary": 361,
+        "domain_checked": 359,
+        "domain_ok": 342,
+        "range_checked": 359,
+        "range_ok": 286,
+        "type_checked": 359,
+        "type_ok": 271,
+        "untyped": 0
+      },
+      "6_computer": {
+        "triples": 459,
+        "in_vocabulary": 459,
+        "domain_checked": 459,
+        "domain_ok": 399,
+        "range_checked": 382,
+        "range_ok": 315,
+        "type_checked": 459,
+        "type_ok": 336,
+        "untyped": 0
+      },
+      "7_space": {
+        "triples": 260,
+        "in_vocabulary": 260,
+        "domain_checked": 260,
+        "domain_ok": 256,
+        "range_checked": 258,
+        "range_ok": 190,
+        "type_checked": 260,
+        "type_ok": 188,
+        "untyped": 0
+      },
+      "8_politics": {
+        "triples": 316,
+        "in_vocabulary": 316,
+        "domain_checked": 316,
+        "domain_ok": 307,
+        "range_checked": 316,
+        "range_ok": 290,
+        "type_checked": 316,
+        "type_ok": 282,
+        "untyped": 0
+      },
+      "9_nature": {
+        "triples": 659,
+        "in_vocabulary": 659,
+        "domain_checked": 553,
+        "domain_ok": 527,
+        "range_checked": 553,
+        "range_ok": 469,
+        "type_checked": 553,
+        "type_ok": 450,
+        "untyped": 0
+      },
+      "10_culture": {
+        "triples": 119,
+        "in_vocabulary": 119,
+        "domain_checked": 119,
+        "domain_ok": 118,
+        "range_checked": 65,
+        "range_ok": 64,
+        "type_checked": 119,
+        "type_ok": 117,
         "untyped": 0
       }
     }

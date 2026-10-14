@@ -172,6 +172,12 @@
   "asteroid": [
    "Celestial bodies",
    "asteroid"
+  ],
+  "the asteroid": [
+   "Celestial bodies",
+   "asteroid",
+   "astronomical object type",
+   "outer space"
   ]
  },
  "ont_7_space_test_5": {
@@ -270,6 +276,9 @@
   ],
   "astronomers": [
    "human"
+  ],
+  "astronomers at the La Plata Astronomical Observatory": [
+   "human"
   ]
  },
  "ont_7_space_test_8": {
@@ -312,6 +321,9 @@
    "geographic region"
   ],
   "astronomers": [
+   "human"
+  ],
+  "astronomers at the Purple Mountain Observatory": [
    "human"
   ]
  },
@@ -365,6 +377,10 @@
    "geographic region"
   ],
   "the asteroid": [
+   "Celestial bodies",
+   "asteroid"
+  ],
+  "The asteroid": [
    "Celestial bodies",
    "asteroid"
   ]
@@ -575,6 +591,9 @@
    "human"
   ],
   "South Africa": [
+   "geographic region"
+  ],
+  "Netherlands": [
    "geographic region"
   ]
  },
@@ -1104,6 +1123,9 @@
   ],
   "staff members of the Pises Observatory": [
    "human"
+  ],
+  "France": [
+   "geographic region"
   ]
  },
  "ont_7_space_test_33": {
@@ -1266,6 +1288,10 @@
   ],
   "Takuo Kojima": [
    "human"
+  ],
+  "1988 BC": [
+   "Celestial bodies",
+   "asteroid"
   ]
  },
  "ont_7_space_test_37": {
@@ -1302,6 +1328,10 @@
   ],
   "astronomers": [
    "human"
+  ],
+  "The asteroid": [
+   "Celestial bodies",
+   "asteroid"
   ]
  },
  "ont_7_space_test_38": {
@@ -1624,6 +1654,10 @@
    "asteroid",
    "astronomical object type",
    "outer space"
+  ],
+  "The asteroid": [
+   "Celestial bodies",
+   "asteroid"
   ]
  },
  "ont_7_space_test_48": {
@@ -1825,6 +1859,9 @@
   ],
   "astronomers": [
    "human"
+  ],
+  "astronomers at the Purple Mountain Observatory": [
+   "human"
   ]
  },
  "ont_7_space_test_53": {
@@ -1888,6 +1925,14 @@
   "the asteroid": [
    "asteroid",
    "Celestial bodies"
+  ],
+  "Asteroid": [
+   "Celestial bodies",
+   "asteroid"
+  ],
+  "The asteroid": [
+   "Celestial bodies",
+   "asteroid"
   ]
  },
  "ont_7_space_test_54": {
@@ -2884,6 +2929,9 @@
   "spiral galaxy": [
    "astronomical object type",
    "spiral galaxy"
+  ],
+  "constellation Cetus": [
+   "constellation"
   ]
  },
  "ont_7_space_test_82": {
@@ -3204,6 +3252,9 @@
   "spiral galaxy": [
    "Celestial bodies",
    "spiral galaxy"
+  ],
+  "constellation Cetus": [
+   "constellation"
   ]
  },
  "ont_7_space_test_97": {
@@ -3417,6 +3468,9 @@
   "spiral galaxy": [
    "astronomical object type",
    "spiral galaxy"
+  ],
+  "constellation Cetus": [
+   "constellation"
   ]
  },
  "ont_7_space_test_104": {
@@ -3682,6 +3736,9 @@
    "Celestial bodies",
    "outer space",
    "spiral galaxy"
+  ],
+  "constellation of Cetus": [
+   "constellation"
   ]
  },
  "ont_7_space_test_116": {
@@ -3795,6 +3852,9 @@
   "spiral galaxy": [
    "astronomical object type",
    "spiral galaxy"
+  ],
+  "constellation Cetus": [
+   "constellation"
   ]
  },
  "ont_7_space_test_123": {
@@ -4073,6 +4133,9 @@
   "mission specialist": [],
   "three NASA Space Shuttle missions": [
    "space mission"
+  ],
+  "NASA Space Shuttle missions": [
+   "space mission"
   ]
  },
  "ont_7_space_test_135": {
@@ -4279,6 +4342,10 @@
   "first crewed test flight": [
    "space mission",
    "spaceflight"
+  ],
+  "cosmonaut": [
+   "astronaut",
+   "human"
   ]
  },
  "ont_7_space_test_141": {
@@ -4827,7 +4894,12 @@
   "July 15, 2001": [
    "calendar date"
   ],
-  "special contract": []
+  "special contract": [],
+  "Soyuz TM-34 concluded": [
+   "Spacecraft",
+   "space mission",
+   "spaceflight"
+  ]
  },
  "ont_7_space_test_159": {
   "Expedition 32": [
@@ -5045,6 +5117,9 @@
   ],
   "spacewalk": [
    "spaceflight"
+  ],
+  "China": [
+   "geographic region"
   ]
  },
  "ont_7_space_test_166": {
@@ -5084,7 +5159,10 @@
    "astronaut",
    "human"
   ],
-  "Soyuz programme": []
+  "Soyuz programme": [],
+  "Soviet Union": [
+   "geographic region"
+  ]
  },
  "ont_7_space_test_168": {
   "Apollo 13": [
@@ -5130,7 +5208,11 @@
    "astronaut",
    "human"
   ],
-  "Soyuz programme": []
+  "Soyuz programme": [],
+  "cosmonaut": [
+   "astronaut",
+   "human"
+  ]
  },
  "ont_7_space_test_170": {
   "Ronald McNair": [
@@ -5207,6 +5289,9 @@
   "mission specialist": [],
   "second flight": [
    "spaceflight"
+  ],
+  "mission STS-84": [
+   "space mission"
   ]
  },
  "ont_7_space_test_173": {
@@ -5241,7 +5326,11 @@
    "space mission"
   ],
   "pathologist": [],
-  "researcher": []
+  "researcher": [],
+  "NASA Space Shuttle mission STS-58": [
+   "space mission",
+   "spaceflight"
+  ]
  },
  "ont_7_space_test_174": {
   "Expedition 36": [
@@ -5416,6 +5505,9 @@
   ],
   "space": [
    "outer space"
+  ],
+  "Belgium": [
+   "geographic region"
   ]
  },
  "ont_7_space_test_179": {
@@ -5455,6 +5547,9 @@
   ],
   "Lunar Module Pilot": [],
   "the Moon": [
+   "Celestial bodies"
+  ],
+  "Moon": [
    "Celestial bodies"
   ]
  },
@@ -5642,7 +5737,10 @@
    "human"
   ],
   "Soyuz programme": [],
-  "flight engineer": []
+  "flight engineer": [],
+  "Soviet Union": [
+   "geographic region"
+  ]
  },
  "ont_7_space_test_187": {
   "Aleksandr Borisenko": [
@@ -6025,6 +6123,9 @@
   "the first woman to perform a spacewalk": [
    "astronaut",
    "human"
+  ],
+  "mission": [
+   "space mission"
   ]
  },
  "ont_7_space_test_197": {
@@ -6190,7 +6291,10 @@
   "Bahamas": [
    "geographic region"
   ],
-  "parachute": []
+  "parachute": [],
+  "Capsule": [
+   "Spacecraft"
+  ]
  },
  "ont_7_space_test_202": {
   "17 December 2010": [

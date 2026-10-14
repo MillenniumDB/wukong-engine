@@ -78,7 +78,8 @@
   "equal rights for African Americans": [],
   "the arts": [
    "art"
-  ]
+  ],
+  "equal rights for African Americans in the arts": []
  },
  "ont_10_culture_test_4": {
   "African Americans": [
@@ -229,6 +230,9 @@
   ],
   "New York City": [
    "geographical feature"
+  ],
+  "United States": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_10": {
@@ -265,6 +269,9 @@
    "human"
   ],
   "mixed-race ancestry": [
+   "heritage"
+  ],
+  "mixed-race": [
    "heritage"
   ]
  },
@@ -507,6 +514,9 @@
   ],
   "publisher": [
    "human"
+  ],
+  "reformed Armenian": [
+   "language"
   ]
  },
  "ont_10_culture_test_18": {
@@ -525,7 +535,8 @@
   "Reconstruction Era": [
    "history"
   ],
-  "United States Congress": []
+  "United States Congress": [],
+  "United States": []
  },
  "ont_10_culture_test_19": {
   "African Americans": [
@@ -661,7 +672,10 @@
    "ethnic group",
    "human"
   ],
-  "race": []
+  "race": [],
+  "his race": [
+   "ethnic group"
+  ]
  },
  "ont_10_culture_test_24": {
   "African American cuisine": [
@@ -782,6 +796,12 @@
   "poetry": [
    "art",
    "literature"
+  ],
+  "African American": [
+   "ethnic group"
+  ],
+  "poet": [
+   "human"
   ]
  },
  "ont_10_culture_test_28": {
@@ -940,7 +960,10 @@
    "geographical feature"
   ],
   "politician": [],
-  "social activist": []
+  "social activist": [],
+  "United States": [
+   "geographical feature"
+  ]
  },
  "ont_10_culture_test_31": {
   "African American": [
@@ -996,6 +1019,12 @@
   ],
   "southern United States": [
    "geographical feature"
+  ],
+  "late nineteenth century": [
+   "history"
+  ],
+  "movement": [
+   "history"
   ]
  },
  "ont_10_culture_test_32": {
@@ -1060,6 +1089,9 @@
    "human"
   ],
   "Oswald Myconius": [
+   "human"
+  ],
+  "Theodor Buchmann (Bibliander)": [
    "human"
   ]
  },
@@ -1172,6 +1204,12 @@
   ],
   "translation": [
    "literature"
+  ],
+  "Una ballata per l’Esperanto": [
+   "art",
+   "culture",
+   "festival",
+   "literature"
   ]
  },
  "ont_10_culture_test_35": {
@@ -1230,6 +1268,13 @@
   ],
   "writer": [
    "human"
+  ],
+  "Jesuit": [
+   "human",
+   "religion"
+  ],
+  "Society of Jesus": [
+   "religion"
   ]
  },
  "ont_10_culture_test_37": {
@@ -1365,6 +1410,9 @@
   ],
   "humanist": [
    "human"
+  ],
+  "Germany": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_40": {
@@ -1384,7 +1432,8 @@
   ],
   "Italian Renaissance humanist": [
    "human"
-  ]
+  ],
+  "25 July 1398": []
  },
  "ont_10_culture_test_41": {
   "Aleksandr Dulichenko": [
@@ -1415,6 +1464,9 @@
   ],
   "interlingual studies": [],
   "volume": [
+   "literature"
+  ],
+  "Festschrift": [
    "literature"
   ]
  },
@@ -1683,7 +1735,11 @@
   "translations": [
    "literature"
   ],
-  "1910": []
+  "1910": [],
+  "Edward Saxton Payson’s translations": [
+   "literature",
+   "art"
+  ]
  },
  "ont_10_culture_test_53": {
   "British": [
@@ -2167,6 +2223,9 @@
   ],
   "author": [
    "human"
+  ],
+  "Netherlands": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_69": {
@@ -2460,7 +2519,8 @@
   ],
   "nearly 40 languages": [
    "language"
-  ]
+  ],
+  "nearly 40": []
  },
  "ont_10_culture_test_80": {
   "Latin": [
@@ -2510,6 +2570,9 @@
   "poet": [
    "human",
    "literature"
+  ],
+  "Germany": [
+   "geographical feature"
   ]
  },
  "ont_10_culture_test_82": {
@@ -2581,7 +2644,8 @@
   "tales of King Arthur": [
    "literature",
    "tradition"
-  ]
+  ],
+  "c. 1095": []
  },
  "ont_10_culture_test_84": {
   "Esperanto": [
@@ -2653,6 +2717,14 @@
   ],
   "writer": [
    "human"
+  ],
+  "Nadia Hordijenko Andrianova (1921-1998)": [
+   "human",
+   "literature"
+  ],
+  "Ukraine": [
+   "culture",
+   "heritage"
   ]
  },
  "ont_10_culture_test_87": {
@@ -3022,6 +3094,9 @@
   "University of Copenhagen": [],
   "the journal": [
    "literature"
+  ],
+  "The journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_103": {
@@ -3047,6 +3122,9 @@
    "literature"
   ],
   "the journal": [
+   "literature"
+  ],
+  "journal": [
    "literature"
   ]
  },
@@ -3155,7 +3233,10 @@
   "Nelson Fausto": [
    "human"
   ],
-  "University of Washington": []
+  "University of Washington": [],
+  "The journal": [
+   "literature"
+  ]
  },
  "ont_10_culture_test_108": {
   "01 January 1958": [],
@@ -3238,6 +3319,9 @@
   "2009": [],
   "Dove Medical Press": [],
   "the journal": [
+   "literature"
+  ],
+  "The journal": [
    "literature"
   ]
  },
@@ -3389,7 +3473,10 @@
   ],
   "British Society of Toxicological Pathology": [],
   "European Society of Toxicologic Pathology": [],
-  "SAGE Publications": []
+  "SAGE Publications": [],
+  "It": [
+   "literature"
+  ]
  },
  "ont_10_culture_test_122": {
   "01 January 1981": [],
@@ -3739,6 +3826,9 @@
   "Dove Medical Press": [],
   "the journal": [
    "literature"
+  ],
+  "journal": [
+   "literature"
   ]
  },
  "ont_10_culture_test_142": {
@@ -3764,6 +3854,9 @@
   "2007": [],
   "Dove Medical Press": [],
   "journal": [
+   "literature"
+  ],
+  "the journal": [
    "literature"
   ]
  },
@@ -3970,7 +4063,9 @@
   ],
   "Friday, August 12": [],
   "third day": [],
-  "weekend of August 13-14": []
+  "weekend of August 13-14": [],
+  "1994": [],
+  "August 13-14": []
  },
  "ont_10_culture_test_153": {
   "00  2003": [],

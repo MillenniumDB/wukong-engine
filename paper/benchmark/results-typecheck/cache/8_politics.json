@@ -53,6 +53,10 @@
   ],
   "watchdogs": [
    "organization"
+  ],
+  "Egyptian government": [
+   "government",
+   "organization"
   ]
  },
  "ont_8_politics_test_2": {
@@ -85,6 +89,11 @@
    "head of government",
    "head of state",
    "president"
+  ],
+  "President of The Gambia": [
+   "position",
+   "president",
+   "head of state"
   ]
  },
  "ont_8_politics_test_3": {
@@ -161,6 +170,10 @@
    "position"
   ],
   "prime minister": [
+   "head of government",
+   "position"
+  ],
+  "Prime Minister of Cameroon": [
    "head of government",
    "position"
   ]
@@ -244,6 +257,30 @@
   ],
   "vice-president": [
    "position"
+  ],
+  "Acting President": [
+   "position",
+   "president",
+   "head of government",
+   "head of state"
+  ],
+  "Acting president": [
+   "position",
+   "president",
+   "head of government",
+   "head of state"
+  ],
+  "President": [
+   "position",
+   "president",
+   "head of government",
+   "head of state"
+  ],
+  "Vice President": [
+   "position"
+  ],
+  "Vice-president": [
+   "position"
   ]
  },
  "ont_8_politics_test_8": {
@@ -284,7 +321,11 @@
    "position",
    "president"
   ],
-  "20 January 2015": []
+  "20 January 2015": [],
+  "President": [
+   "position"
+  ],
+  "sixth": []
  },
  "ont_8_politics_test_9": {
   "Dmitry Medvedev": [
@@ -387,7 +428,13 @@
   "Latvian politician": [
    "human"
   ],
-  "September 13, 1939": []
+  "September 13, 1939": [],
+  "fifth": [],
+  "fifth President of Latvia": [
+   "head of state",
+   "human",
+   "president"
+  ]
  },
  "ont_8_politics_test_13": {
   "2013 general election": [
@@ -438,6 +485,11 @@
   "seven-year presidential term": [],
   "the country's institutions": [
    "organization"
+  ],
+  "President of Italy for a second term": [
+   "head of state",
+   "human",
+   "president"
   ]
  },
  "ont_8_politics_test_14": {
@@ -459,6 +511,9 @@
   "Afghanistan": [
    "country",
    "state"
+  ],
+  "politician": [
+   "human"
   ]
  },
  "ont_8_politics_test_15": {
@@ -497,7 +552,16 @@
    "head of government",
    "position"
   ],
-  "independence": []
+  "independence": [],
+  "President": [
+   "position"
+  ],
+  "Prime Minister": [
+   "position"
+  ],
+  "Prime Minister of Ghana": [
+   "position"
+  ]
  },
  "ont_8_politics_test_16": {
   "Nauru": [
@@ -612,6 +676,12 @@
   ],
   "June 2020": [],
   "ninth president of Burundi": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
+  ],
+  "ninth President of Burundi": [
    "head of government",
    "head of state",
    "position",
@@ -956,6 +1026,12 @@
    "head of state",
    "human",
    "president"
+  ],
+  "second President of Indonesia": [
+   "head of government",
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_28": {
@@ -1043,7 +1119,8 @@
    "head of state",
    "human",
    "president"
-  ]
+  ],
+  "sixth": []
  },
  "ont_8_politics_test_30": {
   "Arab Socialist Ba'ath Party": [
@@ -1105,7 +1182,10 @@
    "president",
    "position"
   ],
-  "resignation": []
+  "resignation": [],
+  "politician": [
+   "human"
+  ]
  },
  "ont_8_politics_test_32": {
   "Dominican Liberation Party": [
@@ -1275,7 +1355,27 @@
    "president"
   ],
   "1994": [],
-  "mainland sub-Saharan Africa": []
+  "mainland sub-Saharan Africa": [],
+  "President of South Africa": [
+   "head of state",
+   "position",
+   "president"
+  ],
+  "South Africa’s last apartheid-era president": [
+   "head of state",
+   "human",
+   "president"
+  ],
+  "first white president in mainland sub-Saharan Africa": [
+   "head of state",
+   "human",
+   "president"
+  ],
+  "last apartheid-era president": [
+   "head of state",
+   "human",
+   "president"
+  ]
  },
  "ont_8_politics_test_36": {
   "Arabic: FuÄd el-Mbaza; born 15 June 1933) is a Tunisian politician who was President of Tunisia from 15 January 2011 to 13 December 2011.\n\nOn 12 December 2011": [],
@@ -1365,7 +1465,8 @@
    "head of state",
    "position",
    "president"
-  ]
+  ],
+  "1948–1960": []
  },
  "ont_8_politics_test_38": {
   "Abdoulaye Wade": [
@@ -1808,7 +1909,10 @@
   ],
   "economic prosperity": [],
   "six-year terms": [],
-  "social reforms": []
+  "social reforms": [],
+  "Director-General of the Kuomintang": [
+   "position"
+  ]
  },
  "ont_8_politics_test_52": {
   "Ford": [
@@ -2375,7 +2479,8 @@
    "political ideology"
   ],
   "1964": [],
-  "1970": []
+  "1970": [],
+  "1964 to 1970": []
  },
  "ont_8_politics_test_64": {
   "Levy Mwanawasa": [
@@ -2489,6 +2594,19 @@
   ],
   "vice-president": [
    "position"
+  ],
+  "Acting President": [
+   "head of state",
+   "position",
+   "president"
+  ],
+  "Vice President": [
+   "position"
+  ],
+  "acting President of the Republic of China": [
+   "head of state",
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_66": {
@@ -2545,6 +2663,9 @@
   ],
   "March 2016": [],
   "academic": [
+   "human"
+  ],
+  "politician": [
    "human"
   ]
  },
@@ -2685,6 +2806,9 @@
   "West Germany": [
    "country",
    "state"
+  ],
+  "far-left": [
+   "political alignment"
   ]
  },
  "ont_8_politics_test_72": {
@@ -2714,6 +2838,10 @@
   "UK": [
    "country",
    "state"
+  ],
+  "1983": [],
+  "fellow of the Royal Society of Literature": [
+   "position"
   ]
  },
  "ont_8_politics_test_73": {
@@ -2906,6 +3034,9 @@
   ],
   "university professor": [
    "position"
+  ],
+  "anti-Nazi": [
+   "political alignment"
   ]
  },
  "ont_8_politics_test_80": {
@@ -2965,6 +3096,10 @@
    "organization"
   ],
   "foreign member": [
+   "position"
+  ],
+  "1866": [],
+  "foreign member of the Royal Swedish Academy of Sciences": [
    "position"
   ]
  },
@@ -3118,6 +3253,10 @@
   ],
   "MPS": [
    "organization"
+  ],
+  "President of Kaiser Wilhelm Society": [
+   "position",
+   "president"
   ]
  },
  "ont_8_politics_test_89": {
@@ -3174,6 +3313,9 @@
    "position"
   ],
   "honorary member of the International Olympic Committee": [
+   "position"
+  ],
+  "Chairman of Société Nationale des Eaux": [
    "position"
   ]
  },
@@ -3303,6 +3445,12 @@
   ],
   "military topographic service": [
    "organization"
+  ],
+  "head of the military topographic service": [
+   "position"
+  ],
+  "honorary member": [
+   "position"
   ]
  },
  "ont_8_politics_test_96": {
@@ -3461,6 +3609,10 @@
   ],
   "German musician": [
    "human"
+  ],
+  "Germany": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_103": {
@@ -3522,7 +3674,10 @@
    "political ideology"
   ],
   "1941": [],
-  "1962": []
+  "1962": [],
+  "first director of the European Southern Observatory": [
+   "human"
+  ]
  },
  "ont_8_politics_test_106": {
   "Erhard Heiden": [
@@ -3575,6 +3730,10 @@
   ],
   "Storm Battalion": [
    "organization"
+  ],
+  "German Workers’ Party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_107": {
@@ -3765,6 +3924,9 @@
   ],
   "SS": [
    "organization"
+  ],
+  "Reichsführer": [
+   "position"
   ]
  },
  "ont_8_politics_test_113": {
@@ -3777,7 +3939,10 @@
   "Slovenian society of natural history": [
    "organization"
   ],
-  "1940": []
+  "1940": [],
+  "Slovenian Society of Natural History": [
+   "organization"
+  ]
  },
  "ont_8_politics_test_114": {
   "Bruce Frederick Joseph Springsteen": [
@@ -3814,6 +3979,9 @@
   ],
   "songwriter": [
    "human"
+  ],
+  "leader of the E Street Band": [
+   "position"
   ]
  },
  "ont_8_politics_test_115": {
@@ -3878,6 +4046,9 @@
   ],
   "first female professor": [
    "position"
+  ],
+  "professor": [
+   "position"
   ]
  },
  "ont_8_politics_test_118": {
@@ -3908,6 +4079,9 @@
    "organization"
   ],
   "the Yardbirds": [
+   "organization"
+  ],
+  "The Yardbirds": [
    "organization"
   ]
  },
@@ -3969,6 +4143,12 @@
    "position"
   ],
   "SS": [
+   "organization"
+  ],
+  "Reichsführer of the Schutzstaffel": [
+   "position"
+  ],
+  "Schutzstaffel (SS)": [
    "organization"
   ]
  },
@@ -4241,6 +4421,9 @@
   "July 10, 1962": [],
   "former member of Finnish Parliament": [
    "position"
+  ],
+  "member of Finnish Parliament": [
+   "position"
   ]
  },
  "ont_8_politics_test_131": {
@@ -4273,6 +4456,9 @@
   ],
   "politician": [
    "human"
+  ],
+  "leader of the Pirate Party Germany": [
+   "position"
   ]
  },
  "ont_8_politics_test_132": {
@@ -4292,7 +4478,11 @@
   "mayor of Beerta": [
    "position"
   ],
-  "Beerta": []
+  "Beerta": [],
+  "1974": [],
+  "1982": [],
+  "1989": [],
+  "1990": []
  },
  "ont_8_politics_test_133": {
   "Argentine Chamber of Deputies": [
@@ -4313,6 +4503,9 @@
    "political party"
   ],
   "delegate_of_Radical_Republican_Party": [
+   "position"
+  ],
+  "delegate": [
    "position"
   ]
  },
@@ -4520,6 +4713,10 @@
   ],
   "politician": [
    "human"
+  ],
+  "mayor of Cincinnati": [
+   "head of government",
+   "position"
   ]
  },
  "ont_8_politics_test_141": {
@@ -4562,6 +4759,12 @@
   "April 21, 1955": [],
   "civil rights attorney": [
    "human"
+  ],
+  "2006": [],
+  "2010": [],
+  "United States": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_142": {
@@ -4597,7 +4800,10 @@
    "state"
   ],
   "2009": [],
-  "Saint-LÃ©onard-Est": []
+  "Saint-LÃ©onard-Est": [],
+  "Montreal city council member": [
+   "position"
+  ]
  },
  "ont_8_politics_test_143": {
   "Caroline Lucas": [
@@ -4666,7 +4872,10 @@
   "Public election": [
    "Public election"
   ],
-  "September 24, 2009": []
+  "September 24, 2009": [],
+  "leader of the Green Party of New Brunswick": [
+   "position"
+  ]
  },
  "ont_8_politics_test_146": {
   "Gilles Deguire": [
@@ -4691,6 +4900,12 @@
   ],
   "Sharon Labchuk": [
    "human"
+  ],
+  "first leader of the Green Party of Prince Edward Island": [
+   "human"
+  ],
+  "leader of the Green Party of Prince Edward Island": [
+   "position"
   ]
  },
  "ont_8_politics_test_148": {
@@ -4715,7 +4930,10 @@
    "position"
   ],
   "2017": [],
-  "2018": []
+  "2018": [],
+  "chairman of the Green League": [
+   "position"
+  ]
  },
  "ont_8_politics_test_150": {
   "Berend \"Bertus\" Brandsen": [
@@ -4756,6 +4974,14 @@
   "GreenLeft (GL)": [
    "organization",
    "political party"
+  ],
+  "Netherlands": [
+   "country",
+   "state"
+  ],
+  "politician": [
+   "human",
+   "position"
   ]
  },
  "ont_8_politics_test_151": {
@@ -4801,6 +5027,9 @@
   ],
   "vice-mayor": [
    "position"
+  ],
+  "member of the city council": [
+   "position"
   ]
  },
  "ont_8_politics_test_153": {
@@ -4824,6 +5053,10 @@
   ],
   "autonomous elections": [
    "Public election"
+  ],
+  "Canary Island's Tourism and Transportation": [
+   "government",
+   "organization"
   ]
  },
  "ont_8_politics_test_154": {
@@ -4862,6 +5095,10 @@
   ],
   "politician": [
    "human"
+  ],
+  "Finland": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_155": {
@@ -4977,6 +5214,10 @@
   "June 2014": [],
   "politician": [
    "human"
+  ],
+  "Germany": [
+   "country",
+   "state"
   ]
  },
  "ont_8_politics_test_160": {
@@ -4989,6 +5230,9 @@
   ],
   "20 January 1954": [],
   "deputy leader": [
+   "position"
+  ],
+  "deputy leader of the Green Party of England and Wales": [
    "position"
   ]
  },
@@ -5018,6 +5262,12 @@
   ],
   "New South Wales": [
    "state"
+  ],
+  "Australia": [
+   "country"
+  ],
+  "Councillor": [
+   "position"
   ]
  },
  "ont_8_politics_test_162": {
@@ -5075,7 +5325,13 @@
   "Mikkonen": [
    "human"
   ],
-  "2016-2019": []
+  "2016-2019": [],
+  "chairperson": [
+   "position"
+  ],
+  "chairperson of the Green League parliamentary group": [
+   "position"
+  ]
  },
  "ont_8_politics_test_164": {
   "2010 Colombian presidential election": [
@@ -5101,6 +5357,9 @@
   ],
   "presidency of Colombia": [
    "position"
+  ],
+  "fourth in the 2010 Colombian presidential election": [
+   "Public election"
   ]
  },
  "ont_8_politics_test_165": {
@@ -5152,6 +5411,14 @@
   ],
   "top two Greens candidates": [
    "human"
+  ],
+  "Alliance 90/The Greens": [
+   "organization",
+   "political party"
+  ],
+  "The Greens": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_167": {
@@ -5280,6 +5547,10 @@
    "political party"
   ],
   "pro-Albanian tradition": [
+   "political alignment",
+   "political ideology"
+  ],
+  "anti-revisionist Marxism-Leninism": [
    "political alignment",
    "political ideology"
   ]
@@ -5519,7 +5790,10 @@
   "state": [
    "state"
   ],
-  "illegal immigration": []
+  "illegal immigration": [],
+  "opposition to illegal immigration": [
+   "position"
+  ]
  },
  "ont_8_politics_test_175": {
   "Christian socialism": [
@@ -5544,6 +5818,9 @@
   "the party": [
    "organization",
    "political party"
+  ],
+  "Venetism": [
+   "political ideology"
   ]
  },
  "ont_8_politics_test_176": {
@@ -5606,7 +5883,8 @@
   "human": [
    "human"
   ],
-  "human rights": []
+  "human rights": [],
+  "human rights advocacy": []
  },
  "ont_8_politics_test_178": {
   "Carrie Lam": [
@@ -5776,6 +6054,10 @@
   ],
   "foreign policy": [
    "position"
+  ],
+  "foreign policy centred on nationalist principles": [
+   "political ideology",
+   "position"
   ]
  },
  "ont_8_politics_test_183": {
@@ -5853,7 +6135,8 @@
   "social goals of communism": [],
   "strong state": [
    "state"
-  ]
+  ],
+  "social and economic goals of communism": []
  },
  "ont_8_politics_test_185": {
   "Communism": [
@@ -6100,6 +6383,10 @@
   "the party": [
    "political party",
    "organization"
+  ],
+  "The party": [
+   "organization",
+   "political party"
   ]
  },
  "ont_8_politics_test_191": {
@@ -6222,6 +6509,17 @@
   "secular society": [],
   "secular state": [
    "state"
+  ],
+  "The party": [
+   "organization",
+   "political party"
+  ],
+  "secular state and society": [
+   "state"
+  ],
+  "secularist": [
+   "political alignment",
+   "political ideology"
   ]
  },
  "ont_8_politics_test_194": {
@@ -6495,6 +6793,9 @@
   ],
   "The federation": [
    "organization"
+  ],
+  "the federation": [
+   "organization"
   ]
  },
  "ont_8_politics_test_200": {
@@ -6566,7 +6867,8 @@
    "political ideology"
   ],
   "society": [],
-  "transition to socialism worldwide": []
+  "transition to socialism worldwide": [],
+  "democratically participate in a revolutionary transformation of society and its political structures, overcoming the capitalist system and constructing socialism in the Spanish State, as a contribution to the transition to socialism worldwide, with our goals set in the realization of the emancipating ideal of communism": []
  },
  "ont_8_politics_test_201": {
   "Federalism": [
@@ -6626,7 +6928,8 @@
   "the party": [
    "organization",
    "political party"
-  ]
+  ],
+  "no": []
  },
  "ont_8_politics_test_203": {
   "Green Party": [
@@ -6761,6 +7064,9 @@
   "the party": [
    "organization",
    "political party"
+  ],
+  "secularist": [
+   "political alignment"
   ]
  },
  "ont_8_politics_test_206": {
@@ -6965,7 +7271,11 @@
    "political ideology"
   ],
   "organization structure": [],
-  "program": []
+  "program": [],
+  "Prepeluh's Agrarian Labour Republican Party": [
+   "organization",
+   "political party"
+  ]
  },
  "ont_8_politics_test_211": {
   "Coalition for the Defence of the Republic": [
@@ -7006,6 +7316,12 @@
   "far-right political party": [
    "organization",
    "political party"
+  ],
+  "far-right Hutu Power political party": [
+   "political party",
+   "political alignment",
+   "political ideology",
+   "organization"
   ]
  },
  "ont_8_politics_test_212": {
