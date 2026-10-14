@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#25",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":53,\"col2\":67,\"col3\":\"Backcourt\",\"name_player\":\"Mark Radford\"},{\"col1\":5,\"col2\":23,\"col3\":null,\"name_player\":\"Ausar Thompson\"},{\"col1\":57,\"col2\":24,\"col3\":null,\"name_player\":\"Jabari Walker\"},{\"col1\":2,\"col2\":38,\"col3\":null,\"name_player\":\"Kevin Durant\"}]}",
+ "rows": [
+  {
+   "col1": 53,
+   "col2": 67,
+   "col3": "Backcourt",
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": 5,
+   "col2": 23,
+   "col3": null,
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": 57,
+   "col2": 24,
+   "col3": null,
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": 2,
+   "col2": 38,
+   "col3": null,
+   "name_player": "Kevin Durant"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "uid": "select_queries_city#1",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":351.5,\"col2\":\"Atlanta\",\"col3\":473000,\"name_city\":\"Atlanta\"},{\"col1\":null,\"col2\":\"Chicago\",\"col3\":670500,\"name_city\":\"Chicago\"}]}",
+ "rows": [
+  {
+   "col1": 351.5,
+   "col2": "Atlanta",
+   "col3": 473000,
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago",
+   "col3": 670500,
+   "name_city": "Chicago"
+  }
+ ],
+ "secs": 6.8
+}

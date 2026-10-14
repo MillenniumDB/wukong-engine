@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_player#15",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"American\",\"col3\":\"University of Connecticut\",\"name_player\":\"Andre Drummond\"},{\"col1\":0,\"col2\":\"American-Chinese\",\"col3\":\"UCLA\",\"name_player\":\"Kyle Anderson\"},{\"col1\":0,\"col2\":\"American\",\"col3\":\"University of Kentucky\",\"name_player\":\"Devin Booker\"},{\"col1\":0,\"col2\":\"American\",\"col3\":\"University of Georgia\",\"name_player\":\"Anthony Edwards\"},{\"col1\":0,\"col2\":\"Greek-Nigerian\",\"col3\":null,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":0,\"col2\":\"American\",\"col3\":\"Purdue\",\"name_player\":\"Jaden Ivey\"},{\"col1\":0,\"col2\":\"American\",\"col3\":\"Villanova University\",\"name_player\":\"Jalen Brunson\"},{\"col1\":1,\"col2\":\"American\",\"col3\":\"University of Texas at Austin\",\"name_player\":\"Kevin Durant\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Connecticut",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": 0,
+   "col2": "American-Chinese",
+   "col3": "UCLA",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "University of Kentucky",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "University of Georgia",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 0,
+   "col2": "Greek-Nigerian",
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Purdue",
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Villanova University",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Texas at Austin",
+   "name_player": "Kevin Durant"
+  }
+ ]
+}

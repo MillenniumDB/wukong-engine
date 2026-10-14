@@ -1,0 +1,74 @@
+{
+ "uid": "select_queries_manager#1",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Wes Edens\",\"col3\":2014,\"name_manager\":\"Wes Edens\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Marc Lasry\",\"col3\":2014,\"name_manager\":\"Marc Lasry\"},{\"col1\":\"Miami Heat\",\"col2\":\"Micky Arison\",\"col3\":null,\"name_manager\":\"Micky Arison\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Mark Cuban\",\"col3\":2000,\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Miriam Adelson\",\"col3\":2023,\"name_manager\":\"Miriam Adelson\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Patrick Dumont\",\"col3\":2023,\"name_manager\":\"Patrick Dumont\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Stan Kroenke\",\"col3\":2000,\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Joe Lacob\",\"col3\":2010,\"name_manager\":\"Joe Lacob\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Tom Gores\",\"col3\":2011,\"name_manager\":\"Tom Gores\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Joseph Tsai\",\"col3\":2019,\"name_manager\":\"Joseph Tsai\"},{\"col1\":\"Atlanta Hawks\",\"col2\":\"Tony Ressler\",\"col3\":2015,\"name_manager\":\"Tony Ressler\"}]}",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Wes Edens",
+   "col3": 2014,
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Marc Lasry",
+   "col3": 2014,
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": null,
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": 2000,
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Miriam Adelson",
+   "col3": 2023,
+   "name_manager": "Miriam Adelson"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Patrick Dumont",
+   "col3": 2023,
+   "name_manager": "Patrick Dumont"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Stan Kroenke",
+   "col3": 2000,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joe Lacob",
+   "col3": 2010,
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": 2011,
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": 2019,
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Tony Ressler",
+   "col3": 2015,
+   "name_manager": "Tony Ressler"
+  }
+ ],
+ "secs": 8.4
+}

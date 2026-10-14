@@ -1,0 +1,4071 @@
+[
+ {
+  "uid": "select_queries_city#1",
+  "type": "Select",
+  "file": "Select/select_queries_city.sql",
+  "n": 1,
+  "label": "select (city)",
+  "sql": "SELECT area, city_name, gdp FROM city;",
+  "output_columns": [
+   "area",
+   "city_name",
+   "gdp"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "area",
+   "city_name",
+   "gdp"
+  ],
+  "scorable": true,
+  "gold_rows": 29,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_manager#1",
+  "type": "Select",
+  "file": "Select/select_queries_manager.sql",
+  "n": 1,
+  "label": "select (manager)",
+  "sql": "SELECT nba_team, name, own_year FROM manager;",
+  "output_columns": [
+   "nba_team",
+   "name",
+   "own_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "nba_team",
+   "name",
+   "own_year"
+  ],
+  "scorable": true,
+  "gold_rows": 16,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#1",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 1,
+  "label": "select (player)",
+  "sql": "SELECT draft_pick FROM player;",
+  "output_columns": [
+   "draft_pick"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_pick"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#2",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 2,
+  "label": "select (player)",
+  "sql": "SELECT team, name, mvp_awards, birth_date FROM player;",
+  "output_columns": [
+   "team",
+   "name",
+   "mvp_awards",
+   "birth_date"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "name",
+   "mvp_awards",
+   "birth_date"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#3",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 3,
+  "label": "select (player)",
+  "sql": "SELECT olympic_gold_medals FROM player;",
+  "output_columns": [
+   "olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#4",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 4,
+  "label": "select (player)",
+  "sql": "SELECT nba_championships, name, fiba_world_cup FROM player;",
+  "output_columns": [
+   "nba_championships",
+   "name",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nba_championships",
+   "name",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#5",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 5,
+  "label": "select (player)",
+  "sql": "SELECT olympic_gold_medals, birth_date FROM player;",
+  "output_columns": [
+   "olympic_gold_medals",
+   "birth_date"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "birth_date"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_player#6",
+  "type": "Select",
+  "file": "Select/select_queries_player.sql",
+  "n": 6,
+  "label": "select (player)",
+  "sql": "SELECT fiba_world_cup, draft_pick, mvp_awards, name FROM player;",
+  "output_columns": [
+   "fiba_world_cup",
+   "draft_pick",
+   "mvp_awards",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "draft_pick",
+   "mvp_awards",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "select_queries_team#1",
+  "type": "Select",
+  "file": "Select/select_queries_team.sql",
+  "n": 1,
+  "label": "select (team)",
+  "sql": "SELECT ownership, team_name, championships, founded_year FROM team;",
+  "output_columns": [
+   "ownership",
+   "team_name",
+   "championships",
+   "founded_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "select_queries_team#2",
+  "type": "Select",
+  "file": "Select/select_queries_team.sql",
+  "n": 2,
+  "label": "select (team)",
+  "sql": "SELECT founded_year, location, team_name, championships FROM team;",
+  "output_columns": [
+   "founded_year",
+   "location",
+   "team_name",
+   "championships"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "filter_queries_city#1",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 1,
+  "label": "1 (city)",
+  "sql": "SELECT state_name, area, city_name FROM city WHERE area = 375.78;",
+  "output_columns": [
+   "state_name",
+   "area",
+   "city_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "state_name",
+   "area",
+   "city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_city#2",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 2,
+  "label": "2 (city)",
+  "sql": "SELECT state_name, area, city_name FROM city WHERE area <= 1314.80 AND population > '887642';",
+  "output_columns": [
+   "state_name",
+   "area",
+   "city_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "state_name",
+   "area",
+   "city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 5,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_city#3",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 3,
+  "label": "3 (city)",
+  "sql": "SELECT state_name, city_name, population FROM city WHERE state_name != 'Indiana' OR population >= '372,624';",
+  "output_columns": [
+   "state_name",
+   "city_name",
+   "population"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "filter_queries_city#4",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 4,
+  "label": "4 (city)",
+  "sql": "SELECT gdp, area, state_name FROM city WHERE area >= 976.15 AND state_name != 'Oregon' AND area = 375.78 AND population = '808988';",
+  "output_columns": [
+   "gdp",
+   "area",
+   "state_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "gdp",
+   "area",
+   "state_name"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_city#5",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 5,
+  "label": "5 (city)",
+  "sql": "SELECT gdp, state_name, population FROM city WHERE state_name != 'Ontario' OR city_name = 'Minneapolis' OR gdp != '689000' OR gdp != '344.9';",
+  "output_columns": [
+   "gdp",
+   "state_name",
+   "population"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "gdp",
+   "state_name",
+   "population"
+  ],
+  "scorable": true,
+  "gold_rows": 27,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_city#6",
+  "type": "Filter",
+  "file": "Filter/filter_queries_city.sql",
+  "n": 6,
+  "label": "6 (city)",
+  "sql": "SELECT population, state_name, city_name FROM city WHERE (state_name = 'Minnesota' AND population = '887642') OR (area >= 976.15 AND area >= 976.15);",
+  "output_columns": [
+   "population",
+   "state_name",
+   "city_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "city"
+  ],
+  "pred_columns": [
+   "population",
+   "state_name",
+   "city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 6,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_manager#1",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 1,
+  "label": "1 (manager)",
+  "sql": "SELECT age, nba_team, name FROM manager WHERE nba_team != 'Cleveland Cavaliers';",
+  "output_columns": [
+   "age",
+   "nba_team",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "age",
+   "nba_team",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 15,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_manager#2",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 2,
+  "label": "2 (manager)",
+  "sql": "SELECT age, nba_team, name FROM manager WHERE nba_team != 'Golden State Warriors' AND age >= 67;",
+  "output_columns": [
+   "age",
+   "nba_team",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "age",
+   "nba_team",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 9,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_manager#3",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 3,
+  "label": "3 (manager)",
+  "sql": "SELECT age, name, nationality FROM manager WHERE age < 65 OR nationality != 'Israeli-American';",
+  "output_columns": [
+   "age",
+   "name",
+   "nationality"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "age",
+   "name",
+   "nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 15,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_manager#4",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 4,
+  "label": "4 (manager)",
+  "sql": "SELECT own_year, nba_team, age FROM manager WHERE nba_team = 'Miami Heat' AND own_year >= 2008 AND nba_team = 'Philadelphia 76ers' AND nationality = 'Taiwanese-Canadian';",
+  "output_columns": [
+   "own_year",
+   "nba_team",
+   "age"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "own_year",
+   "nba_team",
+   "age"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_manager#5",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 5,
+  "label": "5 (manager)",
+  "sql": "SELECT own_year, age, nationality FROM manager WHERE age <= 76 OR name = 'Joseph Chung-Hsin Tsai' OR own_year > 2013 OR nationality = 'American';",
+  "output_columns": [
+   "own_year",
+   "age",
+   "nationality"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "own_year",
+   "age",
+   "nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 16,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_manager#6",
+  "type": "Filter",
+  "file": "Filter/filter_queries_manager.sql",
+  "n": 6,
+  "label": "6 (manager)",
+  "sql": "SELECT nationality, age, name FROM manager WHERE (age >= 65 AND age = 65) OR (nba_team != 'Indiana Pacers' AND nba_team != 'New Orleans Pelicans');",
+  "output_columns": [
+   "nationality",
+   "age",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "nationality",
+   "age",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 14,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#1",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 1,
+  "label": "1 (player)",
+  "sql": "SELECT mvp_awards, draft_pick, fiba_world_cup FROM player WHERE fiba_world_cup >= 0;",
+  "output_columns": [
+   "mvp_awards",
+   "draft_pick",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "mvp_awards",
+   "draft_pick",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 140,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#2",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 2,
+  "label": "1 (player)",
+  "sql": "SELECT position, nationality, age FROM player WHERE age < 78;",
+  "output_columns": [
+   "position",
+   "nationality",
+   "age"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "nationality",
+   "age"
+  ],
+  "scorable": true,
+  "gold_rows": 126,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#3",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 3,
+  "label": "1 (player)",
+  "sql": "SELECT mvp_awards, draft_pick, name FROM player WHERE mvp_awards >= 1;",
+  "output_columns": [
+   "mvp_awards",
+   "draft_pick",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "mvp_awards",
+   "draft_pick",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 17,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#4",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 4,
+  "label": "1 (player)",
+  "sql": "SELECT age, birth_date, team FROM player WHERE team = 'Cedevita Olimpija';",
+  "output_columns": [
+   "age",
+   "birth_date",
+   "team"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "age",
+   "birth_date",
+   "team"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#5",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 5,
+  "label": "1 (player)",
+  "sql": "SELECT fiba_world_cup, nba_championships, birth_date FROM player WHERE nba_championships = 0;",
+  "output_columns": [
+   "fiba_world_cup",
+   "nba_championships",
+   "birth_date"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "nba_championships",
+   "birth_date"
+  ],
+  "scorable": true,
+  "gold_rows": 107,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#6",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 6,
+  "label": "1 (player)",
+  "sql": "SELECT college, birth_date, draft_year FROM player WHERE birth_date = '1973/11/25';",
+  "output_columns": [
+   "college",
+   "birth_date",
+   "draft_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "college",
+   "birth_date",
+   "draft_year"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#7",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 7,
+  "label": "2 (player)",
+  "sql": "SELECT fiba_world_cup, draft_year, name FROM player WHERE draft_year <= 2018 AND fiba_world_cup > 0;",
+  "output_columns": [
+   "fiba_world_cup",
+   "draft_year",
+   "name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "draft_year",
+   "name"
+  ],
+  "scorable": true,
+  "gold_rows": 15,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#8",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 8,
+  "label": "2 (player)",
+  "sql": "SELECT position, nba_championships, fiba_world_cup FROM player WHERE fiba_world_cup > 0 AND nationality != 'Azerbaijani';",
+  "output_columns": [
+   "position",
+   "nba_championships",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "nba_championships",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 19,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#9",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 9,
+  "label": "2 (player)",
+  "sql": "SELECT draft_pick, nba_championships, team FROM player WHERE draft_pick < 24 AND draft_pick >= 10;",
+  "output_columns": [
+   "draft_pick",
+   "nba_championships",
+   "team"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_pick",
+   "nba_championships",
+   "team"
+  ],
+  "scorable": true,
+  "gold_rows": 28,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#10",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 10,
+  "label": "2 (player)",
+  "sql": "SELECT age, birth_date, college FROM player WHERE age > 78 AND mvp_awards > 0;",
+  "output_columns": [
+   "age",
+   "birth_date",
+   "college"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "age",
+   "birth_date",
+   "college"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_player#11",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 11,
+  "label": "2 (player)",
+  "sql": "SELECT fiba_world_cup, birth_date, nba_championships FROM player WHERE birth_date != '1959/6/10' AND birth_date != '1964/2/15';",
+  "output_columns": [
+   "fiba_world_cup",
+   "birth_date",
+   "nba_championships"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "birth_date",
+   "nba_championships"
+  ],
+  "scorable": true,
+  "gold_rows": 139,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#12",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 12,
+  "label": "2 (player)",
+  "sql": "SELECT olympic_gold_medals, position, birth_date FROM player WHERE olympic_gold_medals < 1 AND draft_pick = 24;",
+  "output_columns": [
+   "olympic_gold_medals",
+   "position",
+   "birth_date"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "position",
+   "birth_date"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#13",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 13,
+  "label": "3 (player)",
+  "sql": "SELECT team, nationality, mvp_awards FROM player WHERE mvp_awards < 1 OR birth_date = '1995/10/2';",
+  "output_columns": [
+   "team",
+   "nationality",
+   "mvp_awards"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "nationality",
+   "mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 124,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#14",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 14,
+  "label": "3 (player)",
+  "sql": "SELECT draft_year, age, fiba_world_cup FROM player WHERE draft_year <= 2018 OR olympic_gold_medals >= 0;",
+  "output_columns": [
+   "draft_year",
+   "age",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_year",
+   "age",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 140,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#15",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 15,
+  "label": "3 (player)",
+  "sql": "SELECT fiba_world_cup, nationality, college FROM player WHERE college = 'University of Connecticut' OR birth_date != '1971/12/3';",
+  "output_columns": [
+   "fiba_world_cup",
+   "nationality",
+   "college"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "nationality",
+   "college"
+  ],
+  "scorable": true,
+  "gold_rows": 140,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#16",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 16,
+  "label": "3 (player)",
+  "sql": "SELECT olympic_gold_medals, fiba_world_cup, birth_date FROM player WHERE birth_date = '1994/4/25' OR position != 'Frontcourt';",
+  "output_columns": [
+   "olympic_gold_medals",
+   "fiba_world_cup",
+   "birth_date"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "fiba_world_cup",
+   "birth_date"
+  ],
+  "scorable": true,
+  "gold_rows": 31,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#17",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 17,
+  "label": "3 (player)",
+  "sql": "SELECT college, draft_pick, fiba_world_cup FROM player WHERE draft_pick <= 10 OR college = 'Michigan State University';",
+  "output_columns": [
+   "college",
+   "draft_pick",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "college",
+   "draft_pick",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 57,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#18",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 18,
+  "label": "3 (player)",
+  "sql": "SELECT olympic_gold_medals, nba_championships, age FROM player WHERE olympic_gold_medals > 1 OR position != 'Frontcourt';",
+  "output_columns": [
+   "olympic_gold_medals",
+   "nba_championships",
+   "age"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "nba_championships",
+   "age"
+  ],
+  "scorable": true,
+  "gold_rows": 38,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#19",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 19,
+  "label": "4 (player)",
+  "sql": "SELECT fiba_world_cup, draft_pick, draft_year FROM player WHERE draft_pick >= 24 AND age >= 42 AND mvp_awards >= 0 AND mvp_awards < 1;",
+  "output_columns": [
+   "fiba_world_cup",
+   "draft_pick",
+   "draft_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "draft_pick",
+   "draft_year"
+  ],
+  "scorable": true,
+  "gold_rows": 12,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#20",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 20,
+  "label": "4 (player)",
+  "sql": "SELECT name, nba_championships, college FROM player WHERE nba_championships > 2 AND olympic_gold_medals >= 0 AND olympic_gold_medals != 1 AND name != 'Toby Kimball';",
+  "output_columns": [
+   "name",
+   "nba_championships",
+   "college"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "name",
+   "nba_championships",
+   "college"
+  ],
+  "scorable": true,
+  "gold_rows": 7,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#21",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 21,
+  "label": "4 (player)",
+  "sql": "SELECT age, olympic_gold_medals, mvp_awards FROM player WHERE olympic_gold_medals >= 1 AND college = 'University of Connecticut' AND draft_year > 2014 AND fiba_world_cup >= 0;",
+  "output_columns": [
+   "age",
+   "olympic_gold_medals",
+   "mvp_awards"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "age",
+   "olympic_gold_medals",
+   "mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_player#22",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 22,
+  "label": "4 (player)",
+  "sql": "SELECT draft_pick, olympic_gold_medals, position FROM player WHERE olympic_gold_medals > 0 AND birth_date != '1943/12/23' AND nba_championships < 2 AND birth_date = '1992/12/17';",
+  "output_columns": [
+   "draft_pick",
+   "olympic_gold_medals",
+   "position"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_pick",
+   "olympic_gold_medals",
+   "position"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_player#23",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 23,
+  "label": "4 (player)",
+  "sql": "SELECT fiba_world_cup, birth_date, draft_pick FROM player WHERE birth_date != '1950/1/29' AND college = 'Oregon State University' AND age != 42 AND name = 'Walter Berry';",
+  "output_columns": [
+   "fiba_world_cup",
+   "birth_date",
+   "draft_pick"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "fiba_world_cup",
+   "birth_date",
+   "draft_pick"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_player#24",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 24,
+  "label": "4 (player)",
+  "sql": "SELECT nationality, draft_pick, team FROM player WHERE nationality != 'German' AND olympic_gold_medals > 0 AND olympic_gold_medals != 0 AND mvp_awards = 0;",
+  "output_columns": [
+   "nationality",
+   "draft_pick",
+   "team"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "draft_pick",
+   "team"
+  ],
+  "scorable": true,
+  "gold_rows": 14,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#25",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 25,
+  "label": "5 (player)",
+  "sql": "SELECT draft_pick, age, position FROM player WHERE age <= 62 OR birth_date = '1997/8/7' OR college != 'Oregon State University' OR nba_championships = 2;",
+  "output_columns": [
+   "draft_pick",
+   "age",
+   "position"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_pick",
+   "age",
+   "position"
+  ],
+  "scorable": true,
+  "gold_rows": 134,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#26",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 26,
+  "label": "5 (player)",
+  "sql": "SELECT olympic_gold_medals, college, age FROM player WHERE age > 42 OR name != 'Fran Curran Francis Hugh Curran Sr.' OR name = 'Dewayne \"D. J.\" White, Jr.' OR fiba_world_cup = 1;",
+  "output_columns": [
+   "olympic_gold_medals",
+   "college",
+   "age"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "college",
+   "age"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#27",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 27,
+  "label": "5 (player)",
+  "sql": "SELECT nba_championships, name, olympic_gold_medals FROM player WHERE nba_championships = 0 OR team != 'Brooklyn Nets' OR nationality = 'French' OR team != 'Indiana Pacers';",
+  "output_columns": [
+   "nba_championships",
+   "name",
+   "olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nba_championships",
+   "name",
+   "olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#28",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 28,
+  "label": "5 (player)",
+  "sql": "SELECT draft_year, age, nationality FROM player WHERE age <= 78 OR team = 'Capitanes de Arecibo' OR mvp_awards = 0 OR olympic_gold_medals > 1;",
+  "output_columns": [
+   "draft_year",
+   "age",
+   "nationality"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "draft_year",
+   "age",
+   "nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#29",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 29,
+  "label": "5 (player)",
+  "sql": "SELECT olympic_gold_medals, age, team FROM player WHERE age >= 42 OR team != 'Philadelphia 76ers' OR nba_championships >= 0 OR nba_championships > 0;",
+  "output_columns": [
+   "olympic_gold_medals",
+   "age",
+   "team"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "olympic_gold_medals",
+   "age",
+   "team"
+  ],
+  "scorable": true,
+  "gold_rows": 141,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#30",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 30,
+  "label": "5 (player)",
+  "sql": "SELECT position, nationality, olympic_gold_medals FROM player WHERE position != 'Frontcourt' OR draft_pick > 10 OR olympic_gold_medals > 0 OR mvp_awards = 0;",
+  "output_columns": [
+   "position",
+   "nationality",
+   "olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "nationality",
+   "olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 139,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#31",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 31,
+  "label": "6 (player)",
+  "sql": "SELECT team, nationality, fiba_world_cup FROM player WHERE (nationality = 'Nigerian-American' AND position = 'Frontcourt') OR (draft_pick >= 24 AND draft_pick >= 24);",
+  "output_columns": [
+   "team",
+   "nationality",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "nationality",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 28,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#32",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 32,
+  "label": "6 (player)",
+  "sql": "SELECT nationality, olympic_gold_medals, fiba_world_cup FROM player WHERE (fiba_world_cup != 0 AND name = 'Erick Strickland') OR (birth_date != '1973/11/25' AND nba_championships >= 0);",
+  "output_columns": [
+   "nationality",
+   "olympic_gold_medals",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "olympic_gold_medals",
+   "fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 139,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#33",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 33,
+  "label": "6 (player)",
+  "sql": "SELECT college, age, position FROM player WHERE (age < 42 AND olympic_gold_medals <= 1) OR (team = 'Detroit Pistons' AND college = 'Temple University');",
+  "output_columns": [
+   "college",
+   "age",
+   "position"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "college",
+   "age",
+   "position"
+  ],
+  "scorable": true,
+  "gold_rows": 60,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#34",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 34,
+  "label": "6 (player)",
+  "sql": "SELECT nationality, name, draft_year FROM player WHERE (draft_year != 2018 AND nationality != 'German') OR (name = 'Donta Hall' AND nba_championships != 0);",
+  "output_columns": [
+   "nationality",
+   "name",
+   "draft_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "name",
+   "draft_year"
+  ],
+  "scorable": true,
+  "gold_rows": 110,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_player#35",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 35,
+  "label": "6 (player)",
+  "sql": "SELECT birth_date, olympic_gold_medals, mvp_awards FROM player WHERE (birth_date = '1973/11/25' AND olympic_gold_medals != 0) OR (team = 'San Antonio Spurs' AND nationality = 'Slovenian');",
+  "output_columns": [
+   "birth_date",
+   "olympic_gold_medals",
+   "mvp_awards"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "birth_date",
+   "olympic_gold_medals",
+   "mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_player#36",
+  "type": "Filter",
+  "file": "Filter/filter_queries_player.sql",
+  "n": 36,
+  "label": "6 (player)",
+  "sql": "SELECT nationality, birth_date, age FROM player WHERE (birth_date != '1994/6/6' AND nationality = 'Slovenian') OR (nba_championships <= 2 AND age > 78);",
+  "output_columns": [
+   "nationality",
+   "birth_date",
+   "age"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "birth_date",
+   "age"
+  ],
+  "scorable": true,
+  "gold_rows": 14,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#1",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 1,
+  "label": "1 (team)",
+  "sql": "SELECT founded_year, ownership, team_name FROM team WHERE ownership != 'William Chisholm';",
+  "output_columns": [
+   "founded_year",
+   "ownership",
+   "team_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "founded_year",
+   "ownership",
+   "team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 29,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#2",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 2,
+  "label": "1 (team)",
+  "sql": "SELECT ownership, championship, founded_year FROM team WHERE founded_year < 1989;",
+  "output_columns": [
+   "ownership",
+   "championship",
+   "founded_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "ownership",
+   "championship",
+   "founded_year"
+  ],
+  "scorable": true,
+  "gold_rows": 25,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#3",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 3,
+  "label": "2 (team)",
+  "sql": "SELECT founded_year, ownership, team_name FROM team WHERE ownership != 'Jim Morris' AND founded_year >= 1967;",
+  "output_columns": [
+   "founded_year",
+   "ownership",
+   "team_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "founded_year",
+   "ownership",
+   "team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 20,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#4",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 4,
+  "label": "2 (team)",
+  "sql": "SELECT championship, founded_year, location FROM team WHERE location = 'Brooklyn' AND location = 'Memphis';",
+  "output_columns": [
+   "championship",
+   "founded_year",
+   "location"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "championship",
+   "founded_year",
+   "location"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_team#5",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 5,
+  "label": "3 (team)",
+  "sql": "SELECT founded_year, team_name, location FROM team WHERE founded_year < 1949 OR location != 'Oklahoma City';",
+  "output_columns": [
+   "founded_year",
+   "team_name",
+   "location"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "founded_year",
+   "team_name",
+   "location"
+  ],
+  "scorable": true,
+  "gold_rows": 29,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#6",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 6,
+  "label": "3 (team)",
+  "sql": "SELECT ownership, founded_year, championship FROM team WHERE ownership != 'Herb Simon' OR championship = 3;",
+  "output_columns": [
+   "ownership",
+   "founded_year",
+   "championship"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "ownership",
+   "founded_year",
+   "championship"
+  ],
+  "scorable": true,
+  "gold_rows": 30,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#7",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 7,
+  "label": "4 (team)",
+  "sql": "SELECT championship, ownership, founded_year FROM team WHERE ownership = 'Paul Allen' AND championship >= 1 AND ownership = 'Professional Basketball Club LLC' AND location = 'Houston';",
+  "output_columns": [
+   "championship",
+   "ownership",
+   "founded_year"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "championship",
+   "ownership",
+   "founded_year"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_team#8",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 8,
+  "label": "4 (team)",
+  "sql": "SELECT team_name, championship, location FROM team WHERE championship > 6 AND championship >= 1 AND founded_year = 1989 AND championship <= 1;",
+  "output_columns": [
+   "team_name",
+   "championship",
+   "location"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "team_name",
+   "championship",
+   "location"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "filter_queries_team#9",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 9,
+  "label": "5 (team)",
+  "sql": "SELECT championship, founded_year, location FROM team WHERE founded_year <= 1978 OR team_name = 'Dallas Mavericks' OR championship > 3 OR location = 'Atlanta';",
+  "output_columns": [
+   "championship",
+   "founded_year",
+   "location"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "championship",
+   "founded_year",
+   "location"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#10",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 10,
+  "label": "5 (team)",
+  "sql": "SELECT team_name, founded_year, ownership FROM team WHERE founded_year > 1967 OR team_name != 'Charlotte Hornets' OR team_name = 'Detroit Pistons' OR founded_year >= 1989;",
+  "output_columns": [
+   "team_name",
+   "founded_year",
+   "ownership"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "team_name",
+   "founded_year",
+   "ownership"
+  ],
+  "scorable": true,
+  "gold_rows": 30,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#11",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 11,
+  "label": "6 (team)",
+  "sql": "SELECT location, founded_year, team_name FROM team WHERE (founded_year >= 1949 AND founded_year = 1949) OR (ownership != 'Ted Leonsis' AND ownership != 'Professional Basketball Club LLC');",
+  "output_columns": [
+   "location",
+   "founded_year",
+   "team_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "location",
+   "founded_year",
+   "team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 28,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "filter_queries_team#12",
+  "type": "Filter",
+  "file": "Filter/filter_queries_team.sql",
+  "n": 12,
+  "label": "6 (team)",
+  "sql": "SELECT location, founded_year, team_name FROM team WHERE (founded_year > 1989 AND ownership != 'Gabe Plotkin and Rick Schnall') OR (ownership = 'Atlanta Spirit LLC' AND founded_year = 1967);",
+  "output_columns": [
+   "location",
+   "founded_year",
+   "team_name"
+  ],
+  "primary_keys": [
+   "id"
+  ],
+  "query_type": "select_filter",
+  "tables": [
+   "team"
+  ],
+  "pred_columns": [
+   "location",
+   "founded_year",
+   "team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#1",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 1,
+  "label": "aggregation (player)",
+  "sql": "SELECT position, MIN(olympic_gold_medals) AS min_olympic_gold_medals FROM player GROUP BY position;",
+  "output_columns": [
+   "position",
+   "min_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "min_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#2",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 2,
+  "label": "aggregation (player)",
+  "sql": "SELECT nationality, COUNT(*) AS count_all FROM player GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#3",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 3,
+  "label": "aggregation (player)",
+  "sql": "SELECT position, AVG(age) AS avg_age FROM player GROUP BY position;",
+  "output_columns": [
+   "position",
+   "avg_age"
+  ],
+  "primary_keys": [
+   "position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "avg_age"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#4",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 4,
+  "label": "aggregation (player)",
+  "sql": "SELECT nationality, MAX(age) AS max_age FROM player GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "max_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "max_age"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#5",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 5,
+  "label": "aggregation (player)",
+  "sql": "SELECT nationality, COUNT(*) AS count_all FROM player GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#6",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 6,
+  "label": "aggregation (player)",
+  "sql": "SELECT nationality, MIN(age) AS min_age FROM player GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "min_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "min_age"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#7",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 7,
+  "label": "aggregation (player)",
+  "sql": "SELECT nationality, AVG(age) AS avg_age FROM player GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "avg_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "avg_age"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#8",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 8,
+  "label": "aggregation (manager)",
+  "sql": "SELECT nationality, MIN(age) AS min_age FROM manager GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "min_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "nationality",
+   "min_age"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#9",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 9,
+  "label": "aggregation (manager)",
+  "sql": "SELECT nationality, COUNT(*) AS count_all FROM manager GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "nationality",
+   "count_all"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "agg_queries#10",
+  "type": "Agg",
+  "file": "Agg/agg_queries.sql",
+  "n": 10,
+  "label": "aggregation (manager)",
+  "sql": "SELECT nationality, AVG(age) AS avg_age FROM manager GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "avg_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "manager"
+  ],
+  "pred_columns": [
+   "nationality",
+   "avg_age"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#1",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 1,
+  "label": "binary_join (player, team)",
+  "sql": "SELECT team.championships, team.location, player.age, player.olympic_gold_medals FROM player JOIN team ON player.team = team.team_name;",
+  "output_columns": [
+   "championships",
+   "location",
+   "age",
+   "olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#2",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 2,
+  "label": "binary_join (player, team)",
+  "sql": "SELECT team.founded_year, team.team_name, player.name, player.team FROM player JOIN team ON player.team = team.team_name;",
+  "output_columns": [
+   "founded_year",
+   "team_name",
+   "name",
+   "team"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "team.founded_year",
+   "team.team_name",
+   "player.name",
+   "player.team"
+  ],
+  "scorable": true,
+  "gold_rows": 90,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#3",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 3,
+  "label": "binary_join (player, team)",
+  "sql": "SELECT team.ownership, player.name, player.mvp_awards, team.championships FROM player JOIN team ON player.team = team.team_name;",
+  "output_columns": [
+   "ownership",
+   "name",
+   "mvp_awards",
+   "championships"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#4",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 4,
+  "label": "binary_join (player, team)",
+  "sql": "SELECT player.nationality, player.age, team.location, team.team_name FROM player JOIN team ON player.team = team.team_name;",
+  "output_columns": [
+   "nationality",
+   "age",
+   "location",
+   "team_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.nationality",
+   "player.age",
+   "team.location",
+   "team.team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 90,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#5",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 5,
+  "label": "binary_join (team, city)",
+  "sql": "SELECT city.city_name, city.population, team.founded_year, team.location FROM team JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "city_name",
+   "population",
+   "founded_year",
+   "location"
+  ],
+  "primary_keys": [
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "city"
+  ],
+  "pred_columns": [
+   "city.city_name",
+   "city.population",
+   "team.founded_year",
+   "team.location"
+  ],
+  "scorable": true,
+  "gold_rows": 29,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#6",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 6,
+  "label": "binary_join (team, city)",
+  "sql": "SELECT city.state_name, city.area, team.founded_year, team.championships FROM team JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "state_name",
+   "area",
+   "founded_year",
+   "championships"
+  ],
+  "primary_keys": [
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "city"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#7",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 7,
+  "label": "binary_join (team, manager)",
+  "sql": "SELECT manager.nba_team, team.location, team.founded_year, manager.name FROM team JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "nba_team",
+   "location",
+   "founded_year",
+   "name"
+  ],
+  "primary_keys": [
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "manager.nba_team",
+   "team.location",
+   "team.founded_year",
+   "manager.name"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#8",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 8,
+  "label": "binary_join (team, manager)",
+  "sql": "SELECT manager.name, manager.own_year, team.team_name, team.founded_year FROM team JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "name",
+   "own_year",
+   "team_name",
+   "founded_year"
+  ],
+  "primary_keys": [
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "manager.name",
+   "manager.own_year",
+   "team.team_name",
+   "team.founded_year"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#9",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 9,
+  "label": "binary_join (team, manager)",
+  "sql": "SELECT manager.nba_team, team.team_name, team.founded_year, manager.nationality FROM team JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "nba_team",
+   "team_name",
+   "founded_year",
+   "nationality"
+  ],
+  "primary_keys": [
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "manager.nba_team",
+   "team.team_name",
+   "team.founded_year",
+   "manager.nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#10",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 10,
+  "label": "binary_join (team, manager)",
+  "sql": "SELECT manager.nba_team, team.location, manager.name, team.team_name FROM team JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "nba_team",
+   "location",
+   "name",
+   "team_name"
+  ],
+  "primary_keys": [
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "manager.nba_team",
+   "team.location",
+   "manager.name",
+   "team.team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#11",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 1,
+  "label": "multi_table_join (player, team, city)",
+  "sql": "SELECT player.fiba_world_cup, player.name, team.team_name, team.ownership, city.state_name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "fiba_world_cup",
+   "name",
+   "team_name",
+   "ownership",
+   "state_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "city"
+  ],
+  "pred_columns": [
+   "player.fiba_world_cup",
+   "player.name",
+   "team.team_name",
+   "team.ownership",
+   "city.state_name"
+  ],
+  "scorable": true,
+  "gold_rows": 88,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#12",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 2,
+  "label": "multi_table_join (player, team, city)",
+  "sql": "SELECT city.state_name, player.name, player.college, team.founded_year, team.team_name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "state_name",
+   "name",
+   "college",
+   "founded_year",
+   "team_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "city"
+  ],
+  "pred_columns": [
+   "city.state_name",
+   "player.name",
+   "player.college",
+   "team.founded_year",
+   "team.team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 88,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#13",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 3,
+  "label": "multi_table_join (player, team, city)",
+  "sql": "SELECT city.population, player.position, city.city_name, team.founded_year, player.name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "population",
+   "position",
+   "city_name",
+   "founded_year",
+   "name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "city"
+  ],
+  "pred_columns": [
+   "city.population",
+   "player.position",
+   "city.city_name",
+   "team.founded_year",
+   "player.name"
+  ],
+  "scorable": true,
+  "gold_rows": 88,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#14",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 4,
+  "label": "multi_table_join (player, team, city)",
+  "sql": "SELECT team.championships, city.gdp, player.team, team.team_name, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "championships",
+   "gdp",
+   "team",
+   "team_name",
+   "city_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "city"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#15",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 5,
+  "label": "multi_table_join (player, team, manager)",
+  "sql": "SELECT manager.name, team.founded_year, team.location, manager.age, player.nationality FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "name",
+   "founded_year",
+   "location",
+   "age",
+   "nationality"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "manager.name",
+   "team.founded_year",
+   "team.location",
+   "manager.age",
+   "player.nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 12,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#16",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 6,
+  "label": "multi_table_join (player, team, manager)",
+  "sql": "SELECT player.college, manager.name, player.position, team.championships, player.fiba_world_cup FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "college",
+   "name",
+   "position",
+   "championships",
+   "fiba_world_cup"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#17",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 7,
+  "label": "multi_table_join (player, team, manager)",
+  "sql": "SELECT team.championships, manager.age, player.team, player.draft_year, player.age FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "championships",
+   "age",
+   "team",
+   "draft_year",
+   "age"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "join_queries#18",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 8,
+  "label": "multi_table_join (player, team, manager)",
+  "sql": "SELECT player.nationality, player.olympic_gold_medals, team.location, manager.nba_team, player.draft_pick FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;",
+  "output_columns": [
+   "nationality",
+   "olympic_gold_medals",
+   "location",
+   "nba_team",
+   "draft_pick"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager"
+  ],
+  "pred_columns": [
+   "player.nationality",
+   "player.olympic_gold_medals",
+   "team.location",
+   "manager.nba_team",
+   "player.draft_pick"
+  ],
+  "scorable": true,
+  "gold_rows": 12,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#19",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 9,
+  "label": "multi_table_join (player, team, city, manager)",
+  "sql": "SELECT city.state_name, player.olympic_gold_medals, team.team_name, player.college, manager.own_year FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "state_name",
+   "olympic_gold_medals",
+   "team_name",
+   "college",
+   "own_year"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "city.state_name",
+   "player.olympic_gold_medals",
+   "team.team_name",
+   "player.college",
+   "manager.own_year"
+  ],
+  "scorable": true,
+  "gold_rows": 12,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "join_queries#20",
+  "type": "Join",
+  "file": "Join/join_queries.sql",
+  "n": 10,
+  "label": "multi_table_join (player, team, city, manager)",
+  "sql": "SELECT team.championships, manager.nationality, city.population, player.nationality, player.college FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name;",
+  "output_columns": [
+   "championships",
+   "nationality",
+   "population",
+   "nationality",
+   "college"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": null,
+  "scorable": false,
+  "gold_rows": null,
+  "in_m1": false,
+  "exclusion": "benchmark gold SQL fails in its evaluator",
+  "oracle_f1": null
+ },
+ {
+  "uid": "mixed_queries_agg_join#1",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_agg_join.sql",
+  "n": 1,
+  "label": "agg1_join1 (player, team)",
+  "sql": "SELECT player.team, MIN(player.olympic_gold_medals) AS min_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "min_player_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "min_player_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 25,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_agg_join#2",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_agg_join.sql",
+  "n": 2,
+  "label": "agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT manager.nationality, MIN(city.population) AS min_city_population FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name GROUP BY manager.nationality;",
+  "output_columns": [
+   "nationality",
+   "min_city_population"
+  ],
+  "primary_keys": [
+   "manager.nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "manager.nationality",
+   "min_city_population"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#1",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 1,
+  "label": "filter1_agg1_join1 (player, team)",
+  "sql": "SELECT player.team, MIN(player.olympic_gold_medals) AS min_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name WHERE player.fiba_world_cup < 0 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "min_player_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "min_player_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#2",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 2,
+  "label": "filter1_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT player.position, MAX(team.championship) AS max_team_championship FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE city.state_name = 'Utah' GROUP BY player.position;",
+  "output_columns": [
+   "position",
+   "max_team_championship"
+  ],
+  "primary_keys": [
+   "player.position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.position",
+   "max_team_championship"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#3",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 3,
+  "label": "filter2_agg1_join1 (player, team)",
+  "sql": "SELECT player.team, AVG(player.mvp_awards) AS avg_player_mvp_awards FROM player JOIN team ON player.team = team.team_name WHERE player.college = 'Michigan State University' AND player.age <= 62 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "avg_player_mvp_awards"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "avg_player_mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#4",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 4,
+  "label": "filter2_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT player.team, MAX(player.olympic_gold_medals) AS max_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE city.state_name = 'Arizona' AND city.area >= 1314.80 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "max_player_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.team",
+   "max_player_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#5",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 5,
+  "label": "filter3_agg1_join1 (player, team)",
+  "sql": "SELECT player.team, AVG(player.fiba_world_cup) AS avg_player_fiba_world_cup FROM player JOIN team ON player.team = team.team_name WHERE player.nba_championships < 0 OR player.age >= 42 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "avg_player_fiba_world_cup"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "avg_player_fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 20,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#6",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 6,
+  "label": "filter3_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT player.position, AVG(player.age) AS avg_player_age FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.nba_championships <= 2 OR player.mvp_awards < 1 GROUP BY player.position;",
+  "output_columns": [
+   "position",
+   "avg_player_age"
+  ],
+  "primary_keys": [
+   "player.position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.position",
+   "avg_player_age"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#7",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 7,
+  "label": "filter4_agg1_join1 (player, team)",
+  "sql": "SELECT player.team, AVG(player.fiba_world_cup) AS avg_player_fiba_world_cup FROM player JOIN team ON player.team = team.team_name WHERE player.olympic_gold_medals = 0 AND player.position != 'Backcourt' AND team.founded_year != 1989 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "avg_player_fiba_world_cup"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "avg_player_fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 13,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#8",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 8,
+  "label": "filter4_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT player.position, AVG(city.area) AS avg_city_area FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE manager.age = 76 AND team.founded_year > 1989 AND team.team_name = 'Philadelphia 76ers' GROUP BY player.position;",
+  "output_columns": [
+   "position",
+   "avg_city_area"
+  ],
+  "primary_keys": [
+   "player.position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.position",
+   "avg_city_area"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#9",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 9,
+  "label": "filter5_agg1_join1 (player, team)",
+  "sql": "SELECT player.nationality, COUNT(player.nationality) AS count_player_nationality FROM player JOIN team ON player.team = team.team_name WHERE player.nationality = 'British' OR player.birth_date = '1972/3/6' OR player.age >= 42 GROUP BY player.nationality;",
+  "output_columns": [
+   "nationality",
+   "count_player_nationality"
+  ],
+  "primary_keys": [
+   "player.nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.nationality",
+   "count_player_nationality"
+  ],
+  "scorable": true,
+  "gold_rows": 6,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#10",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 10,
+  "label": "filter5_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT player.team, SUM(city.area) AS sum_city_area FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.draft_year <= 2005 OR player.position = 'Backcourt' OR player.draft_pick <= 41 GROUP BY player.team;",
+  "output_columns": [
+   "team",
+   "sum_city_area"
+  ],
+  "primary_keys": [
+   "player.team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.team",
+   "sum_city_area"
+  ],
+  "scorable": true,
+  "gold_rows": 2,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#11",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 11,
+  "label": "filter6_agg1_join1 (player, team)",
+  "sql": "SELECT player.position, SUM(player.mvp_awards) AS sum_player_mvp_awards FROM player JOIN team ON player.team = team.team_name WHERE (player.team != 'Houston Rockets' AND player.nba_championships > 2) OR (team.founded_year != 1949 AND team.championship != 1) GROUP BY player.position;",
+  "output_columns": [
+   "position",
+   "sum_player_mvp_awards"
+  ],
+  "primary_keys": [
+   "player.position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.position",
+   "sum_player_mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_join#12",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_join.sql",
+  "n": 12,
+  "label": "filter6_agg1_join2 (player, team, city, manager)",
+  "sql": "SELECT manager.nationality, MIN(player.olympic_gold_medals) AS min_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE (team.location = 'Brooklyn' AND player.nba_championships < 0) OR (player.team != 'Detroit Pistons' AND player.draft_pick != 41) GROUP BY manager.nationality;",
+  "output_columns": [
+   "nationality",
+   "min_player_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "manager.nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "manager.nationality",
+   "min_player_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#1",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 1,
+  "label": "filter1_agg1 (player)",
+  "sql": "SELECT team, MIN(olympic_gold_medals) AS min_olympic_gold_medals FROM player WHERE draft_pick < 3 GROUP BY team;",
+  "output_columns": [
+   "team",
+   "min_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "min_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 17,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#2",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 2,
+  "label": "filter2_agg1 (player)",
+  "sql": "SELECT nationality, SUM(olympic_gold_medals) AS sum_olympic_gold_medals FROM player WHERE nationality = 'Bahamian' AND olympic_gold_medals <= 0 GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "sum_olympic_gold_medals"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "sum_olympic_gold_medals"
+  ],
+  "scorable": true,
+  "gold_rows": 1,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#3",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 3,
+  "label": "filter3_agg1 (player)",
+  "sql": "SELECT nationality, COUNT(age) AS count_age FROM player WHERE name = 'Antonius Cleveland' OR nba_championships >= 0 GROUP BY nationality;",
+  "output_columns": [
+   "nationality",
+   "count_age"
+  ],
+  "primary_keys": [
+   "nationality"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "nationality",
+   "count_age"
+  ],
+  "scorable": true,
+  "gold_rows": 23,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#4",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 4,
+  "label": "filter4_agg1 (player)",
+  "sql": "SELECT position, MAX(mvp_awards) AS max_mvp_awards FROM player WHERE nba_championships = 0 AND draft_year > 2014 AND nba_championships != 2 GROUP BY position;",
+  "output_columns": [
+   "position",
+   "max_mvp_awards"
+  ],
+  "primary_keys": [
+   "position"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "position",
+   "max_mvp_awards"
+  ],
+  "scorable": true,
+  "gold_rows": 3,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#5",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 5,
+  "label": "filter5_agg1 (player)",
+  "sql": "SELECT team, AVG(fiba_world_cup) AS avg_fiba_world_cup FROM player WHERE team = 'Boston Celtics' OR nba_championships <= 0 OR fiba_world_cup < 0 GROUP BY team;",
+  "output_columns": [
+   "team",
+   "avg_fiba_world_cup"
+  ],
+  "primary_keys": [
+   "team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "avg_fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 63,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_agg_player#6",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_agg_player.sql",
+  "n": 6,
+  "label": "filter6_agg1 (player)",
+  "sql": "SELECT team, MIN(fiba_world_cup) AS min_fiba_world_cup FROM player WHERE (fiba_world_cup < 0 AND mvp_awards <= 0) OR (age < 78 AND fiba_world_cup >= 0) GROUP BY team;",
+  "output_columns": [
+   "team",
+   "min_fiba_world_cup"
+  ],
+  "primary_keys": [
+   "team"
+  ],
+  "query_type": "aggregation",
+  "tables": [
+   "player"
+  ],
+  "pred_columns": [
+   "team",
+   "min_fiba_world_cup"
+  ],
+  "scorable": true,
+  "gold_rows": 61,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#1",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 1,
+  "label": "filter1_join1 (player, team)",
+  "sql": "SELECT player.draft_pick, team.team_name, player.fiba_world_cup, team.location FROM player JOIN team ON player.team = team.team_name WHERE player.fiba_world_cup < 0;",
+  "output_columns": [
+   "draft_pick",
+   "team_name",
+   "fiba_world_cup",
+   "location"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.draft_pick",
+   "team.team_name",
+   "player.fiba_world_cup",
+   "team.location"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#2",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 2,
+  "label": "filter1_join2 (player, team, city, manager)",
+  "sql": "SELECT manager.age, team.founded_year, player.name, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.birth_date = '1994/2/2';",
+  "output_columns": [
+   "age",
+   "founded_year",
+   "name",
+   "city_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "manager.age",
+   "team.founded_year",
+   "player.name",
+   "city.city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#3",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 3,
+  "label": "filter2_join1 (player, team)",
+  "sql": "SELECT player.team, team.location, player.college, team.team_name FROM player JOIN team ON player.team = team.team_name WHERE player.nba_championships < 0 AND player.nationality != 'Dutch';",
+  "output_columns": [
+   "team",
+   "location",
+   "college",
+   "team_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.team",
+   "team.location",
+   "player.college",
+   "team.team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#4",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 4,
+  "label": "filter2_join2 (player, team, city, manager)",
+  "sql": "SELECT manager.age, city.area, team.location, player.team FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.college = 'Michigan State University' AND city.state_name != 'Ohio';",
+  "output_columns": [
+   "age",
+   "area",
+   "location",
+   "team"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "manager.age",
+   "city.area",
+   "team.location",
+   "player.team"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#5",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 5,
+  "label": "filter3_join1 (player, team)",
+  "sql": "SELECT player.mvp_awards, team.championship, player.draft_year, team.team_name FROM player JOIN team ON player.team = team.team_name WHERE team.location != 'Los Angeles' OR team.founded_year < 1967;",
+  "output_columns": [
+   "mvp_awards",
+   "championship",
+   "draft_year",
+   "team_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.mvp_awards",
+   "team.championship",
+   "player.draft_year",
+   "team.team_name"
+  ],
+  "scorable": true,
+  "gold_rows": 89,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#6",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 6,
+  "label": "filter3_join2 (player, team, city, manager)",
+  "sql": "SELECT manager.nba_team, team.ownership, player.fiba_world_cup, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE manager.age <= 65 OR player.olympic_gold_medals <= 1;",
+  "output_columns": [
+   "nba_team",
+   "ownership",
+   "fiba_world_cup",
+   "city_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "manager.nba_team",
+   "team.ownership",
+   "player.fiba_world_cup",
+   "city.city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 11,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#7",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 7,
+  "label": "filter4_join1 (player, team)",
+  "sql": "SELECT team.location, player.nba_championships, team.team_name, player.team FROM player JOIN team ON player.team = team.team_name WHERE player.nba_championships < 0 AND player.age >= 42 AND player.nationality = 'Slovenian';",
+  "output_columns": [
+   "location",
+   "nba_championships",
+   "team_name",
+   "team"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "team.location",
+   "player.nba_championships",
+   "team.team_name",
+   "player.team"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#8",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 8,
+  "label": "filter4_join2 (player, team, city, manager)",
+  "sql": "SELECT player.nationality, manager.nationality, city.population, team.championship FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.position != 'Backcourt' AND player.draft_year >= 2005 AND city.city_name != 'Minneapolis';",
+  "output_columns": [
+   "nationality",
+   "nationality",
+   "population",
+   "championship"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.nationality",
+   "manager.nationality",
+   "city.population",
+   "team.championship"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#9",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 9,
+  "label": "filter5_join1 (player, team)",
+  "sql": "SELECT player.name, player.position, team.championship, team.founded_year FROM player JOIN team ON player.team = team.team_name WHERE player.name = 'Kobe Bean Bryant' OR player.fiba_world_cup >= 0 OR team.championship != 3;",
+  "output_columns": [
+   "name",
+   "position",
+   "championship",
+   "founded_year"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "player.name",
+   "player.position",
+   "team.championship",
+   "team.founded_year"
+  ],
+  "scorable": true,
+  "gold_rows": 90,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#10",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 10,
+  "label": "filter5_join2 (player, team, city, manager)",
+  "sql": "SELECT player.position, manager.age, team.championship, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.olympic_gold_medals = 0 OR player.position != 'Backcourt' OR city.gdp = '252200';",
+  "output_columns": [
+   "position",
+   "age",
+   "championship",
+   "city_name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "player.position",
+   "manager.age",
+   "team.championship",
+   "city.city_name"
+  ],
+  "scorable": true,
+  "gold_rows": 9,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#11",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 11,
+  "label": "filter6_join1 (player, team)",
+  "sql": "SELECT team.location, player.draft_year, team.ownership, player.name FROM player JOIN team ON player.team = team.team_name WHERE (team.founded_year <= 1989 AND player.college = 'University of Connecticut') OR (player.fiba_world_cup >= 1 AND player.team != 'Milwaukee Bucks');",
+  "output_columns": [
+   "location",
+   "draft_year",
+   "ownership",
+   "name"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team"
+  ],
+  "pred_columns": [
+   "team.location",
+   "player.draft_year",
+   "team.ownership",
+   "player.name"
+  ],
+  "scorable": true,
+  "gold_rows": 16,
+  "in_m1": true,
+  "exclusion": null,
+  "oracle_f1": 1.0
+ },
+ {
+  "uid": "mixed_queries_filter_join#12",
+  "type": "Mixed",
+  "file": "Mixed/mixed_queries_filter_join.sql",
+  "n": 12,
+  "label": "filter6_join2 (player, team, city, manager)",
+  "sql": "SELECT team.team_name, city.area, player.position, manager.own_year FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE (player.mvp_awards <= 1 AND team.championship <= 1) OR (manager.nationality = 'Taiwanese-Canadian' AND player.mvp_awards < 0);",
+  "output_columns": [
+   "team_name",
+   "area",
+   "position",
+   "own_year"
+  ],
+  "primary_keys": [
+   "player.id",
+   "team.id",
+   "manager.id",
+   "city.id"
+  ],
+  "query_type": "join",
+  "tables": [
+   "player",
+   "team",
+   "manager",
+   "city"
+  ],
+  "pred_columns": [
+   "team.team_name",
+   "city.area",
+   "player.position",
+   "manager.own_year"
+  ],
+  "scorable": true,
+  "gold_rows": 0,
+  "in_m1": false,
+  "exclusion": "gold answer is empty (scores 0 for any answer)",
+  "oracle_f1": 0.0
+ }
+]

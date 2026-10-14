@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_team#11",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Minneapolis\",\"col2\":1989,\"col3\":\"Minnesota Timberwolves\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":\"Philadelphia\",\"col2\":null,\"col3\":\"Philadelphia 76ers\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Phoenix\",\"col2\":null,\"col3\":\"Phoenix Suns\",\"name_team\":\"Phoenix Suns\"},{\"col1\":\"Houston\",\"col2\":null,\"col3\":\"Houston Rockets\",\"name_team\":\"Houston Rockets\"},{\"col1\":\"Charlotte\",\"col2\":1988,\"col3\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Atlanta\",\"col2\":null,\"col3\":\"Atlanta Dream\",\"name_team\":\"Atlanta Dream\"}]}",
+ "rows": [
+  {
+   "col1": "Minneapolis",
+   "col2": 1989,
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": null,
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Houston",
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": 1988,
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": null,
+   "col3": "Atlanta Dream",
+   "name_team": "Atlanta Dream"
+  }
+ ]
+}

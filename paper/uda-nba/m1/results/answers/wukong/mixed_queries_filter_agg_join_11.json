@@ -1,0 +1,25 @@
+{
+ "uid": "mixed_queries_filter_agg_join#11",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "24"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "6"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "10"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND (((t.team_name <> 'Houston Rockets') AND CAST(p.nba_championships AS INT64) > 2) OR (t.founded_year <> '1949' AND t.championships <> '1')) RETURN p.position AS col1, SUM(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

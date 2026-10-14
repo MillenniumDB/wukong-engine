@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_player#28",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1996,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Kobe Bryant\"},{\"col1\":1997,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Tim Duncan\"},{\"col1\":2003,\"col2\":39,\"col3\":\"American\",\"name_player\":\"LeBron James\"},{\"col1\":2003,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Carmelo Anthony\"},{\"col1\":2007,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Kevin Durant\"},{\"col1\":2009,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Stephen Curry\"},{\"col1\":1992,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":2015,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Jahlil Okafor\"}]}",
+ "rows": [
+  {
+   "col1": 1996,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 1997,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 2003,
+   "col2": 39,
+   "col3": "American",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2003,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": 2007,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2009,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1992,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 2015,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Jahlil Okafor"
+  }
+ ]
+}

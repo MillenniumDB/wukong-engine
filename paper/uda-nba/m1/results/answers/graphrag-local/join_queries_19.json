@@ -1,0 +1,19 @@
+{
+ "uid": "join_queries#19",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"California\",\"col2\":1,\"col3\":\"Golden State Warriors\",\"col4\":\"Davidson College\",\"col5\":2010,\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\",\"name_city\":\"San Francisco\"}]}",
+ "rows": [
+  {
+   "col1": "California",
+   "col2": 1,
+   "col3": "Golden State Warriors",
+   "col4": "Davidson College",
+   "col5": 2010,
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  }
+ ],
+ "secs": 4.1
+}

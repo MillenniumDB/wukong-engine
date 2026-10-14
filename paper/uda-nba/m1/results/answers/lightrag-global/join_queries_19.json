@@ -1,0 +1,18 @@
+{
+ "uid": "join_queries#19",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Ohio\",\"col2\":3,\"col3\":\"Cleveland Cavaliers\",\"col4\":null,\"col5\":2005,\"name_player\":\"LeBron James\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\",\"name_city\":\"Cleveland\"}]}",
+ "rows": [
+  {
+   "col1": "Ohio",
+   "col2": 3,
+   "col3": "Cleveland Cavaliers",
+   "col4": null,
+   "col5": 2005,
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  }
+ ]
+}

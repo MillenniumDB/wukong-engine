@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_player#34",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":\"LeBron James\",\"col3\":2003,\"name_player\":\"LeBron James\"},{\"col1\":\"Nigerian-American\",\"col2\":\"Jahlil Okafor\",\"col3\":2015,\"name_player\":\"Jahlil Okafor\"},{\"col1\":\"American\",\"col2\":\"Anthony Edwards\",\"col3\":2020,\"name_player\":\"Anthony Edwards\"},{\"col1\":\"American\",\"col2\":\"Harrison Barnes\",\"col3\":2012,\"name_player\":\"Harrison Barnes\"},{\"col1\":\"American\",\"col2\":\"Paul George\",\"col3\":2010,\"name_player\":\"Paul George\"},{\"col1\":\"American\",\"col2\":\"Tim Duncan\",\"col3\":1997,\"name_player\":\"Tim Duncan\"},{\"col1\":\"American\",\"col2\":\"Derek Fisher\",\"col3\":1996,\"name_player\":\"Derek Fisher\"},{\"col1\":\"American\",\"col2\":\"Dan Anderson\",\"col3\":1974,\"name_player\":\"Dan Anderson\"},{\"col1\":\"American\",\"col2\":\"Ed Dahler\",\"col3\":1950,\"name_player\":\"Ed Dahler\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "LeBron James",
+   "col3": 2003,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": "Jahlil Okafor",
+   "col3": 2015,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Edwards",
+   "col3": 2020,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "American",
+   "col2": "Harrison Barnes",
+   "col3": 2012,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "American",
+   "col2": "Paul George",
+   "col3": 2010,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "American",
+   "col2": "Tim Duncan",
+   "col3": 1997,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": "American",
+   "col2": "Derek Fisher",
+   "col3": 1996,
+   "name_player": "Derek Fisher"
+  },
+  {
+   "col1": "American",
+   "col2": "Dan Anderson",
+   "col3": 1974,
+   "name_player": "Dan Anderson"
+  },
+  {
+   "col1": "American",
+   "col2": "Ed Dahler",
+   "col3": 1950,
+   "name_player": "Ed Dahler"
+  }
+ ]
+}

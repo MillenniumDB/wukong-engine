@@ -1,0 +1,11 @@
+{
+ "uid": "mixed_queries_filter_agg_join#11",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":4}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 4
+  }
+ ]
+}

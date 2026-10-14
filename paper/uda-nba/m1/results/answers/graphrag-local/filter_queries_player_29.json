@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_player#29",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":63,\"col3\":\"Los Angeles Lakers\",\"name_player\":\"Wilt Chamberlain\"},{\"col1\":null,\"col2\":84,\"col3\":null,\"name_player\":\"Billy Cunningham\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": 63,
+   "col3": "Los Angeles Lakers",
+   "name_player": "Wilt Chamberlain"
+  },
+  {
+   "col1": null,
+   "col2": 84,
+   "col3": null,
+   "name_player": "Billy Cunningham"
+  }
+ ],
+ "secs": 7.2
+}

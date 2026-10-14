@@ -1,0 +1,204 @@
+{
+ "uid": "filter_queries_manager#3",
+ "reply": "{\"rows\":[{\"col1\":66,\"col2\":\"Tony Ressler\",\"col3\":\"American\",\"name_manager\":\"Tony Ressler\"},{\"col1\":65,\"col2\":\"Wyc Grousbeck\",\"col3\":\"American\",\"name_manager\":\"Wyc Grousbeck\"},{\"col1\":62,\"col2\":\"Joseph Tsai\",\"col3\":\"Taiwanese-Canadian\",\"name_manager\":\"Joseph Tsai\"},{\"col1\":61,\"col2\":\"Rick Schnall\",\"col3\":\"American\",\"name_manager\":\"Rick Schnall\"},{\"col1\":48,\"col2\":\"Gabe Plotkin\",\"col3\":\"American\",\"name_manager\":\"Gabe Plotkin\"},{\"col1\":90,\"col2\":\"Jerry Reinsdorf\",\"col3\":\"American\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":64,\"col2\":\"Dan Gilbert\",\"col3\":\"American\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":62,\"col2\":\"Patrick Dumont\",\"col3\":\"American\",\"name_manager\":\"Patrick Dumont\"},{\"col1\":79,\"col2\":\"Stan Kroenke\",\"col3\":\"American\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":62,\"col2\":\"Tom Gores\",\"col3\":\"American\",\"name_manager\":\"Tom Gores\"},{\"col1\":70,\"col2\":\"Joe Lacob\",\"col3\":\"American\",\"name_manager\":\"Joe Lacob\"},{\"col1\":84,\"col2\":\"Peter Guber\",\"col3\":\"American\",\"name_manager\":\"Peter Guber\"},{\"col1\":69,\"col2\":\"Tilman Fertitta\",\"col3\":\"American\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":92,\"col2\":\"Herb Simon\",\"col3\":\"American\",\"name_manager\":\"Herb Simon\"},{\"col1\":70,\"col2\":\"Steve Ballmer\",\"col3\":\"American\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":64,\"col2\":\"Jeanie Buss\",\"col3\":\"American\",\"name_manager\":\"Jeanie Buss\"},{\"col1\":48,\"col2\":\"Robert Pera\",\"col3\":\"American\",\"name_manager\":\"Robert Pera\"},{\"col1\":65,\"col2\":\"Wes Edens\",\"col3\":\"American\",\"name_manager\":\"Wes Edens\"},{\"col1\":66,\"col2\":\"Marc Lasry\",\"col3\":\"Moroccan-American\",\"name_manager\":\"Marc Lasry\"},{\"col1\":85,\"col2\":\"Glen Taylor\",\"col3\":\"American\",\"name_manager\":\"Glen Taylor\"},{\"col1\":79,\"col2\":\"Gayle Benson\",\"col3\":\"American\",\"name_manager\":\"Gayle Benson\"},{\"col1\":71,\"col2\":\"James Dolan\",\"col3\":\"American\",\"name_manager\":\"James Dolan\"},{\"col1\":67,\"col2\":\"Clay Bennett\",\"col3\":\"American\",\"name_manager\":\"Clay Bennett\"},{\"col1\":71,\"col2\":\"Dan DeVos\",\"col3\":\"American\",\"name_manager\":\"Dan DeVos\"},{\"col1\":62,\"col2\":\"Josh Harris\",\"col3\":\"American\",\"name_manager\":\"Josh Harris\"},{\"col1\":57,\"col2\":\"David Blitzer\",\"col3\":\"American\",\"name_manager\":\"David Blitzer\"},{\"col1\":47,\"col2\":\"Mat Ishbia\",\"col3\":\"American\",\"name_manager\":\"Mat Ishbia\"},{\"col1\":67,\"col2\":\"Jody Allen\",\"col3\":\"American\",\"name_manager\":\"Jody Allen\"},{\"col1\":69,\"col2\":\"Vivek Ranadiv\u00e9\",\"col3\":\"Indian-American\",\"name_manager\":\"Vivek Ranadiv\u00e9\"},{\"col1\":79,\"col2\":\"Peter Holt\",\"col3\":\"American\",\"name_manager\":\"Peter Holt\"},{\"col1\":81,\"col2\":\"Larry Tanenbaum\",\"col3\":\"Canadian\",\"name_manager\":\"Larry Tanenbaum\"},{\"col1\":48,\"col2\":\"Ryan Smith\",\"col3\":\"American\",\"name_manager\":\"Ryan Smith\"},{\"col1\":69,\"col2\":\"Ted Leonsis\",\"col3\":\"American\",\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": 66,
+   "col2": "Tony Ressler",
+   "col3": "American",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": 65,
+   "col2": "Wyc Grousbeck",
+   "col3": "American",
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": 62,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": 61,
+   "col2": "Rick Schnall",
+   "col3": "American",
+   "name_manager": "Rick Schnall"
+  },
+  {
+   "col1": 48,
+   "col2": "Gabe Plotkin",
+   "col3": "American",
+   "name_manager": "Gabe Plotkin"
+  },
+  {
+   "col1": 90,
+   "col2": "Jerry Reinsdorf",
+   "col3": "American",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 62,
+   "col2": "Patrick Dumont",
+   "col3": "American",
+   "name_manager": "Patrick Dumont"
+  },
+  {
+   "col1": 79,
+   "col2": "Stan Kroenke",
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 62,
+   "col2": "Tom Gores",
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 70,
+   "col2": "Joe Lacob",
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 84,
+   "col2": "Peter Guber",
+   "col3": "American",
+   "name_manager": "Peter Guber"
+  },
+  {
+   "col1": 69,
+   "col2": "Tilman Fertitta",
+   "col3": "American",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 92,
+   "col2": "Herb Simon",
+   "col3": "American",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": 70,
+   "col2": "Steve Ballmer",
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 64,
+   "col2": "Jeanie Buss",
+   "col3": "American",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": 48,
+   "col2": "Robert Pera",
+   "col3": "American",
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": 65,
+   "col2": "Wes Edens",
+   "col3": "American",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": 66,
+   "col2": "Marc Lasry",
+   "col3": "Moroccan-American",
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": 85,
+   "col2": "Glen Taylor",
+   "col3": "American",
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Benson",
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 71,
+   "col2": "James Dolan",
+   "col3": "American",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": 67,
+   "col2": "Clay Bennett",
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 71,
+   "col2": "Dan DeVos",
+   "col3": "American",
+   "name_manager": "Dan DeVos"
+  },
+  {
+   "col1": 62,
+   "col2": "Josh Harris",
+   "col3": "American",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": 57,
+   "col2": "David Blitzer",
+   "col3": "American",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": 47,
+   "col2": "Mat Ishbia",
+   "col3": "American",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": 67,
+   "col2": "Jody Allen",
+   "col3": "American",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": 69,
+   "col2": "Vivek Ranadiv\u00e9",
+   "col3": "Indian-American",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": 79,
+   "col2": "Peter Holt",
+   "col3": "American",
+   "name_manager": "Peter Holt"
+  },
+  {
+   "col1": 81,
+   "col2": "Larry Tanenbaum",
+   "col3": "Canadian",
+   "name_manager": "Larry Tanenbaum"
+  },
+  {
+   "col1": 48,
+   "col2": "Ryan Smith",
+   "col3": "American",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": 69,
+   "col2": "Ted Leonsis",
+   "col3": "American",
+   "name_manager": "Ted Leonsis"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#2",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Jerry Buss\",\"col2\":17,\"col3\":1946,\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Dan Gilbert\",\"col2\":1,\"col3\":1970,\"name_team\":\"Cleveland Cavaliers\"}]}",
+ "rows": [
+  {
+   "col1": "Jerry Buss",
+   "col2": 17,
+   "col3": 1946,
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  }
+ ]
+}

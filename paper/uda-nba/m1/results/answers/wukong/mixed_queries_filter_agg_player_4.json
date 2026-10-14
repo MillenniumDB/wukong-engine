@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt']\n  AND CAST(p.nba_championships AS INT64) = 0\n  AND CAST(p.draft_year AS INT64) > 2014\n  AND CAST(p.nba_championships AS INT64) <> 2\nRETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE CAST(p.nba_championships AS INT64) = 0\n  AND CAST(p.draft_year AS INT64) > 2014\n  AND CAST(p.nba_championships AS INT64) <> 2\n  AND p.position IS NOT NULL\nWITH CASE\n  WHEN p.position IN ['Center', 'Forward', 'Power Forward', 'Small Forward', 'Center-Forward', 'Forward-Center'] THEN 'Frontcourt'\n  WHEN p.position IN ['Guard', 'Point Guard', 'Shooting Guard', 'Guard-Forward', 'Forward-Guard'] THEN 'Backcourt'\nEND AS position_group, p\nWHERE position_group IS NOT NULL\nRETURN position_group AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IS NOT NULL\n  AND CAST(p.nba_championships AS INT64) = 0\n  AND CAST(p.draft_year AS INT64) > 2014\nWITH CASE\n  WHEN LOWER(p.position) IN ['frontcourt', 'center', 'forward', 'power forward', 'small forward', 'center-forward', 'forward-center'] THEN 'Frontcourt'\n  WHEN LOWER(p.position) IN ['backcourt', 'guard', 'point guard', 'shooting guard', 'guard-forward', 'forward-guard'] THEN 'Backcourt'\nEND AS position_group, p\nWHERE position_group IS NOT NULL\nRETURN position_group AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt']\n  AND p.nba_championships = '0'\n  AND p.nba_championships <> '2'\n  AND p.draft_year > '2014'\nRETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

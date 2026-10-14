@@ -1,0 +1,103 @@
+{
+ "uid": "mixed_queries_filter_join#5",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":17,\"col3\":1996,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Kobe Bryant\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":3,\"col3\":1996,\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Allen Iverson\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":4,\"col2\":17,\"col3\":null,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":null,\"col2\":17,\"col3\":1982,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"James Worthy\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":17,\"col3\":null,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Shaquille O'Neal\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":null,\"col2\":17,\"col3\":null,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Anthony Davis\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":null,\"col2\":17,\"col3\":null,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"George Mikan\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":null,\"col3\":1995,\"col4\":\"Minnesota Timberwolves\",\"name_player\":\"Kevin Garnett\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1,\"col2\":1,\"col3\":1974,\"col4\":\"Portland Trail Blazers\",\"name_player\":\"Bill Walton\",\"name_team\":\"Portland Trail Blazers\"},{\"col1\":2,\"col2\":0,\"col3\":1996,\"col4\":\"Phoenix Suns\",\"name_player\":\"Steve Nash\",\"name_team\":\"Phoenix Suns\"},{\"col1\":null,\"col2\":null,\"col3\":2020,\"col4\":\"Minnesota Timberwolves\",\"name_player\":\"Anthony Edwards\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1,\"col2\":3,\"col3\":null,\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Julius Erving\",\"name_team\":\"Philadelphia 76ers\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1996,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Allen Iverson",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": null,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": 17,
+   "col3": 1982,
+   "col4": "Los Angeles Lakers",
+   "name_player": "James Worthy",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": null,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": 17,
+   "col3": null,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": 17,
+   "col3": null,
+   "col4": "Los Angeles Lakers",
+   "name_player": "George Mikan",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": 1995,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Kevin Garnett",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 1974,
+   "col4": "Portland Trail Blazers",
+   "name_player": "Bill Walton",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": 1996,
+   "col4": "Phoenix Suns",
+   "name_player": "Steve Nash",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 2020,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": null,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Julius Erving",
+   "name_team": "Philadelphia 76ers"
+  }
+ ]
+}

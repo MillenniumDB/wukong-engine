@@ -1,0 +1,11 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":4}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 4
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_manager#5",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":2011,\"col2\":59,\"col3\":\"American\",\"name_manager\":\"Josh Harris\"},{\"col1\":2011,\"col2\":62,\"col3\":\"American\",\"name_manager\":\"Tom Gores\"},{\"col1\":2018,\"col2\":77,\"col3\":\"American\",\"name_manager\":\"Gayle Benson\"},{\"col1\":2014,\"col2\":null,\"col3\":\"American\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":2000,\"col2\":null,\"col3\":\"American\",\"name_manager\":\"Stan Kroenke\"}]}",
+ "rows": [
+  {
+   "col1": 2011,
+   "col2": 59,
+   "col3": "American",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": 2011,
+   "col2": 62,
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 2018,
+   "col2": 77,
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 2014,
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 2000,
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  }
+ ]
+}

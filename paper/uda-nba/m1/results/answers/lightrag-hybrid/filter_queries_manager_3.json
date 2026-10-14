@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_manager#3",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":62,\"col2\":\"Joseph Chung-Hsin Tsai\",\"col3\":\"Taiwanese-Canadian\",\"name_manager\":\"Joseph Chung-Hsin Tsai\"},{\"col1\":62,\"col2\":\"Tom Gores\",\"col3\":\"American\",\"name_manager\":\"Tom Gores\"},{\"col1\":null,\"col2\":\"Steve Ballmer\",\"col3\":\"American\",\"name_manager\":\"Steve Ballmer\"}]}",
+ "rows": [
+  {
+   "col1": 62,
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": 62,
+   "col2": "Tom Gores",
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": null,
+   "col2": "Steve Ballmer",
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  }
+ ]
+}

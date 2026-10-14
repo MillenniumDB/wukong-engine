@@ -1,0 +1,243 @@
+{
+ "uid": "select_queries_player#1",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1,\"name_player\":\"LeBron James\"},{\"col1\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":1,\"name_player\":\"Victor Wembanyama\"},{\"col1\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"name_player\":\"Paolo Banchero\"},{\"col1\":1,\"name_player\":\"Zion Williamson\"},{\"col1\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1,\"name_player\":\"Cleveland Cavaliers' James\"},{\"col1\":2,\"name_player\":\"Lonzo Ball\"},{\"col1\":2,\"name_player\":\"D'Angelo Russell\"},{\"col1\":2,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"name_player\":\"Jalen Williams\"},{\"col1\":3,\"name_player\":\"Jayson Tatum\"},{\"col1\":3,\"name_player\":\"Joel Embiid\"},{\"col1\":3,\"name_player\":\"Carmelo Anthony\"},{\"col1\":3,\"name_player\":\"Jaylen Brown\"},{\"col1\":4,\"name_player\":\"Chris Bosh\"},{\"col1\":5,\"name_player\":\"Dwyane Wade\"},{\"col1\":5,\"name_player\":\"Jaden Ivey\"},{\"col1\":6,\"name_player\":\"Marcus Smart\"},{\"col1\":7,\"name_player\":\"Stephen Curry\"},{\"col1\":7,\"name_player\":\"Harrison Barnes\"},{\"col1\":7,\"name_player\":\"Devin Booker\"},{\"col1\":8,\"name_player\":\"Detlef Schrempf\"},{\"col1\":9,\"name_player\":\"Andre Drummond\"},{\"col1\":9,\"name_player\":\"Rui Hachimura\"},{\"col1\":9,\"name_player\":\"Dennis Smith Jr.\"},{\"col1\":10,\"name_player\":\"Paul George\"},{\"col1\":10,\"name_player\":\"Zach Collins\"},{\"col1\":10,\"name_player\":\"Cam Reddish\"},{\"col1\":10,\"name_player\":\"Bradley Beal\"},{\"col1\":11,\"name_player\":\"Myles Turner\"},{\"col1\":11,\"name_player\":\"Malik Monk\"},{\"col1\":12,\"name_player\":\"Jalen Williams\"},{\"col1\":12,\"name_player\":\"Joshua Primo\"},{\"col1\":13,\"name_player\":\"Zach LaVine\"},{\"col1\":13,\"name_player\":\"Tyler Herro\"},{\"col1\":14,\"name_player\":\"Bam Adebayo\"},{\"col1\":15,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":15,\"name_player\":\"Anthony Avent\"},{\"col1\":15,\"name_player\":\"Troy Brown\"},{\"col1\":16,\"name_player\":\"Chuma Okeke\"},{\"col1\":17,\"name_player\":\"Dennis Schr\u00f6der\"},{\"col1\":18,\"name_player\":\"Jaime Jaquez Jr.\"},{\"col1\":21,\"name_player\":\"Joseph Xavier Forte\"},{\"col1\":25,\"name_player\":\"Mark Price\"},{\"col1\":26,\"name_player\":\"Don Anielak\"},{\"col1\":29,\"name_player\":\"D. J. White\"},{\"col1\":30,\"name_player\":\"Kevon Looney\"},{\"col1\":30,\"name_player\":\"Kyle Anderson\"},{\"col1\":31,\"name_player\":\"Frank Jackson\"},{\"col1\":33,\"name_player\":\"Jalen Brunson\"},{\"col1\":35,\"name_player\":\"Greg Foster\"},{\"col1\":45,\"name_player\":\"Hamidou Diallo\"},{\"col1\":46,\"name_player\":\"Jordan Clarkson\"},{\"col1\":48,\"name_player\":\"Papanikolaou\"},{\"col1\":51,\"name_player\":\"Thanasis Antetokounmpo\"},{\"col1\":55,\"name_player\":\"Bronny James\"},{\"col1\":57,\"name_player\":\"Jabari Walker\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 1,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "name_player": "Paolo Banchero"
+  },
+  {
+   "col1": 1,
+   "name_player": "Zion Williamson"
+  },
+  {
+   "col1": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "name_player": "Cleveland Cavaliers' James"
+  },
+  {
+   "col1": 2,
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": 2,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "name_player": "Jalen Williams"
+  },
+  {
+   "col1": 3,
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": 3,
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 3,
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": 3,
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": 4,
+   "name_player": "Chris Bosh"
+  },
+  {
+   "col1": 5,
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": 5,
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": 6,
+   "name_player": "Marcus Smart"
+  },
+  {
+   "col1": 7,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 7,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": 7,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 8,
+   "name_player": "Detlef Schrempf"
+  },
+  {
+   "col1": 9,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": 9,
+   "name_player": "Rui Hachimura"
+  },
+  {
+   "col1": 9,
+   "name_player": "Dennis Smith Jr."
+  },
+  {
+   "col1": 10,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 10,
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": 10,
+   "name_player": "Cam Reddish"
+  },
+  {
+   "col1": 10,
+   "name_player": "Bradley Beal"
+  },
+  {
+   "col1": 11,
+   "name_player": "Myles Turner"
+  },
+  {
+   "col1": 11,
+   "name_player": "Malik Monk"
+  },
+  {
+   "col1": 12,
+   "name_player": "Jalen Williams"
+  },
+  {
+   "col1": 12,
+   "name_player": "Joshua Primo"
+  },
+  {
+   "col1": 13,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 13,
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": 14,
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": 15,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 15,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": 15,
+   "name_player": "Troy Brown"
+  },
+  {
+   "col1": 16,
+   "name_player": "Chuma Okeke"
+  },
+  {
+   "col1": 17,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 18,
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": 21,
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": 25,
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": 26,
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": 29,
+   "name_player": "D. J. White"
+  },
+  {
+   "col1": 30,
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": 30,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": 31,
+   "name_player": "Frank Jackson"
+  },
+  {
+   "col1": 33,
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": 35,
+   "name_player": "Greg Foster"
+  },
+  {
+   "col1": 45,
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": 46,
+   "name_player": "Jordan Clarkson"
+  },
+  {
+   "col1": 48,
+   "name_player": "Papanikolaou"
+  },
+  {
+   "col1": 51,
+   "name_player": "Thanasis Antetokounmpo"
+  },
+  {
+   "col1": 55,
+   "name_player": "Bronny James"
+  },
+  {
+   "col1": 57,
+   "name_player": "Jabari Walker"
+  }
+ ]
+}

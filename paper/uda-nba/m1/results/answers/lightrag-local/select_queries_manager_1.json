@@ -1,0 +1,61 @@
+{
+ "uid": "select_queries_manager#1",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Bob Short\",\"col3\":1957,\"name_manager\":\"Bob Short\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"Ted Stepien\",\"col3\":1980,\"name_manager\":\"Ted Stepien\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Red McCombs\",\"col3\":1978,\"name_manager\":\"Red McCombs\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Jerry Michael Reinsdorf\",\"col3\":1985,\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Joseph Steven Lacob\",\"col3\":2010,\"name_manager\":\"Joseph Steven Lacob\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Josh Harris\",\"col3\":2011,\"name_manager\":\"Josh Harris\"},{\"col1\":\"Memphis Grizzlies\",\"col2\":\"Robert J. Pera\",\"col3\":2012,\"name_manager\":\"Robert J. Pera\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Clayton Ike Bennett\",\"col3\":2006,\"name_manager\":\"Clayton Ike Bennett\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Bruce Ratner\",\"col3\":2004,\"name_manager\":\"Bruce Ratner\"}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Bob Short",
+   "col3": 1957,
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Ted Stepien",
+   "col3": 1980,
+   "name_manager": "Ted Stepien"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Red McCombs",
+   "col3": 1978,
+   "name_manager": "Red McCombs"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": 1985,
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Steven Lacob",
+   "col3": 2010,
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Josh Harris",
+   "col3": 2011,
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "Robert J. Pera",
+   "col3": 2012,
+   "name_manager": "Robert J. Pera"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": 2006,
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Bruce Ratner",
+   "col3": 2004,
+   "name_manager": "Bruce Ratner"
+  }
+ ]
+}

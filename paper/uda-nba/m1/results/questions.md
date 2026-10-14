@@ -1,0 +1,607 @@
+# M1 questions (generated once, same for every system)
+
+### select_queries_city#1 (Select)
+
+- SQL: `SELECT area, city_name, gdp FROM city;`
+- Question: What are the area in square kilometers, the name of the city, and the gross domestic product in millions for each city?
+- Columns: The city's area in square kilometers; The name of the city; The city's gross domestic product in millions
+
+### select_queries_manager#1 (Select)
+
+- SQL: `SELECT nba_team, name, own_year FROM manager;`
+- Question: What are the NBA team's names, the full names of their owners, and the years those owners acquired the teams?
+- Columns: The NBA team's name; The full name of the team owner; The year the owner acquired the team
+
+### select_queries_player#1 (Select)
+
+- SQL: `SELECT draft_pick FROM player;`
+- Question: What is the draft pick number for each NBA player?
+- Columns: the player's draft pick number
+
+### select_queries_player#2 (Select)
+
+- SQL: `SELECT team, name, mvp_awards, birth_date FROM player;`
+- Question: List every NBA player’s current team or last NBA team, full name, number of NBA MVP awards, and birth date.
+- Columns: the player’s current or last NBA team; the player’s full name; the number of NBA MVP awards; the player’s birth date
+
+### select_queries_player#3 (Select)
+
+- SQL: `SELECT olympic_gold_medals FROM player;`
+- Question: What is the number of Olympic gold medals for each player?
+- Columns: the number of Olympic gold medals
+
+### select_queries_player#4 (Select)
+
+- SQL: `SELECT nba_championships, name, fiba_world_cup FROM player;`
+- Question: Which NBA players have won each number of NBA championships, and what are their full names and numbers of FIBA World Cup titles?
+- Columns: The number of NBA championships; The player's full name; The number of FIBA World Cup titles
+
+### select_queries_player#5 (Select)
+
+- SQL: `SELECT olympic_gold_medals, birth_date FROM player;`
+- Question: What are the number of Olympic gold medals and the birth date for each NBA player?
+- Columns: The number of Olympic gold medals; The player's birth date
+
+### select_queries_player#6 (Select)
+
+- SQL: `SELECT fiba_world_cup, draft_pick, mvp_awards, name FROM player;`
+- Question: List every NBA player, including the number of FIBA World Cup titles they have won, the pick number at which they were selected in the NBA draft, the number of NBA MVP awards they have won, and their full name.
+- Columns: The number of FIBA World Cup titles; The NBA draft pick number; The number of NBA MVP awards; The player's full name
+
+### filter_queries_city#1 (Filter)
+
+- SQL: `SELECT state_name, area, city_name FROM city WHERE area = 375.78;`
+- Question: Which state is each city in, what is its area in square kilometers, and what is the city's name, for cities whose area is 375.78 square kilometers?
+- Columns: the name of the state; the area in square kilometers; the name of the city
+
+### filter_queries_city#2 (Filter)
+
+- SQL: `SELECT state_name, area, city_name FROM city WHERE area <= 1314.80 AND population > '887642';`
+- Question: Which cities have an area of at most 1314.80 square kilometers and a population greater than '887642'? For each matching city, provide the name of its state, its area in square kilometers, and the name of the city.
+- Columns: the name of the state; the area in square kilometers; the name of the city
+
+### filter_queries_city#5 (Filter)
+
+- SQL: `SELECT gdp, state_name, population FROM city WHERE state_name != 'Ontario' OR city_name = 'Minneapolis' OR gdp != '689000' OR gdp != '344.9';`
+- Question: What are the gross domestic product, state name, and population for each city where the state name is not 'Ontario' OR the city name is 'Minneapolis' OR the gross domestic product is not '689000' OR the gross domestic product is not '344.9'?
+- Columns: the city's gross domestic product in millions; the name of the state; the city's population
+
+### filter_queries_city#6 (Filter)
+
+- SQL: `SELECT population, state_name, city_name FROM city WHERE (state_name = 'Minnesota' AND population = '887642') OR (area >= 976.15 AND area >= 976.15);`
+- Question: Which cities have either a state name of 'Minnesota' and a population equal to '887642', or an area of at least 976.15 square kilometers and an area of at least 976.15 square kilometers?
+- Columns: the city's population; the name of the state; the name of the city
+
+### filter_queries_manager#1 (Filter)
+
+- SQL: `SELECT age, nba_team, name FROM manager WHERE nba_team != 'Cleveland Cavaliers';`
+- Question: What are the ages, team names, and full names of team owners whose team is not 'Cleveland Cavaliers'?
+- Columns: The team owner's age; The NBA team's name; The team owner's full name
+
+### filter_queries_manager#2 (Filter)
+
+- SQL: `SELECT age, nba_team, name FROM manager WHERE nba_team != 'Golden State Warriors' AND age >= 67;`
+- Question: Which team owners are at least 67 years old and own a team other than 'Golden State Warriors'?
+- Columns: The team owner's age; The name of the NBA team they own; The team owner's full name
+
+### filter_queries_manager#3 (Filter)
+
+- SQL: `SELECT age, name, nationality FROM manager WHERE age < 65 OR nationality != 'Israeli-American';`
+- Question: Which team owners are younger than 65 or have a nationality other than 'Israeli-American'?
+- Columns: The team owner's age; The team owner's full name; The team owner's nationality
+
+### filter_queries_manager#5 (Filter)
+
+- SQL: `SELECT own_year, age, nationality FROM manager WHERE age <= 76 OR name = 'Joseph Chung-Hsin Tsai' OR own_year > 2013 OR nationality = 'American';`
+- Question: Which team ownership year, owner age, and owner nationality should be listed for owners whose age is at most 76, or whose full name is 'Joseph Chung-Hsin Tsai', or whose team ownership year is greater than 2013, or whose nationality is 'American'?
+- Columns: the year the owner acquired the team; the age of the owner; the nationality of the owner
+
+### filter_queries_manager#6 (Filter)
+
+- SQL: `SELECT nationality, age, name FROM manager WHERE (age >= 65 AND age = 65) OR (nba_team != 'Indiana Pacers' AND nba_team != 'New Orleans Pelicans');`
+- Question: Which team owners have an age of at least 65 and exactly 65, or own a team other than 'Indiana Pacers' and other than 'New Orleans Pelicans'?
+- Columns: The owner's nationality; The owner's age; The owner's full name
+
+### filter_queries_player#1 (Filter)
+
+- SQL: `SELECT mvp_awards, draft_pick, fiba_world_cup FROM player WHERE fiba_world_cup >= 0;`
+- Question: Which players have at least 0 FIBA World Cup titles, and what are their number of NBA MVP awards, NBA draft pick number, and FIBA World Cup titles?
+- Columns: The number of NBA MVP awards; The NBA draft pick number; The number of FIBA World Cup titles
+
+### filter_queries_player#2 (Filter)
+
+- SQL: `SELECT position, nationality, age FROM player WHERE age < 78;`
+- Question: Which players have an age less than 78? For each such player, provide their primary position, nationality, and age.
+- Columns: the player's primary position; the player's nationality; the player's age
+
+### filter_queries_player#3 (Filter)
+
+- SQL: `SELECT mvp_awards, draft_pick, name FROM player WHERE mvp_awards >= 1;`
+- Question: Which NBA players have at least 1 NBA MVP award?
+- Columns: The number of NBA MVP awards; The draft pick number; The full name of the NBA player
+
+### filter_queries_player#4 (Filter)
+
+- SQL: `SELECT age, birth_date, team FROM player WHERE team = 'Cedevita Olimpija';`
+- Question: Which players are on the team 'Cedevita Olimpija', and what are their age, birth date, and team?
+- Columns: The player's age; The player's birth date; The player's team
+
+### filter_queries_player#5 (Filter)
+
+- SQL: `SELECT fiba_world_cup, nba_championships, birth_date FROM player WHERE nba_championships = 0;`
+- Question: Which players have exactly 0 NBA championships? For each such player, provide their number of FIBA World Cup titles, number of NBA championships, and birth date.
+- Columns: the number of FIBA World Cup titles; the number of NBA championships; the player's birth date
+
+### filter_queries_player#6 (Filter)
+
+- SQL: `SELECT college, birth_date, draft_year FROM player WHERE birth_date = '1973/11/25';`
+- Question: Which college did the player born on '1973/11/25' attend, what is their birth date, and in what year were they selected in the NBA draft?
+- Columns: the player's college; the player's birth date; the player's NBA draft year
+
+### filter_queries_player#7 (Filter)
+
+- SQL: `SELECT fiba_world_cup, draft_year, name FROM player WHERE draft_year <= 2018 AND fiba_world_cup > 0;`
+- Question: Which players were selected in the NBA draft in 2018 or earlier and have won more than 0 FIBA World Cup titles?
+- Columns: The number of FIBA World Cup titles; The NBA draft selection year; The player's full name
+
+### filter_queries_player#8 (Filter)
+
+- SQL: `SELECT position, nba_championships, fiba_world_cup FROM player WHERE fiba_world_cup > 0 AND nationality != 'Azerbaijani';`
+- Question: Which players have won more than 0 FIBA World Cup titles and are not Azerbaijani, and what are their primary playing position, number of NBA championships, and number of FIBA World Cup titles?
+- Columns: The player's primary playing position; The player's number of NBA championships; The player's number of FIBA World Cup titles
+
+### filter_queries_player#9 (Filter)
+
+- SQL: `SELECT draft_pick, nba_championships, team FROM player WHERE draft_pick < 24 AND draft_pick >= 10;`
+- Question: Which NBA players were selected with a draft pick number less than 24 and greater than or equal to 10?
+- Columns: the draft pick number; the number of NBA championships won; the team the player currently plays for or last played for
+
+### filter_queries_player#11 (Filter)
+
+- SQL: `SELECT fiba_world_cup, birth_date, nba_championships FROM player WHERE birth_date != '1959/6/10' AND birth_date != '1964/2/15';`
+- Question: Which players have a birth date other than '1959/6/10' and a birth date other than '1964/2/15'? For each such player, provide their number of FIBA World Cup titles, birth date, and number of NBA championships.
+- Columns: the number of FIBA World Cup titles; the player's birth date; the number of NBA championships
+
+### filter_queries_player#12 (Filter)
+
+- SQL: `SELECT olympic_gold_medals, position, birth_date FROM player WHERE olympic_gold_medals < 1 AND draft_pick = 24;`
+- Question: Which players have won fewer than 1 Olympic gold medal and were selected with draft pick 24? For each player, provide the number of Olympic gold medals, primary position, and birth date.
+- Columns: The number of Olympic gold medals; The player's primary position; The player's birth date
+
+### filter_queries_player#13 (Filter)
+
+- SQL: `SELECT team, nationality, mvp_awards FROM player WHERE mvp_awards < 1 OR birth_date = '1995/10/2';`
+- Question: Which players have fewer than 1 NBA MVP award or were born on '1995/10/2'? For each player, provide the team they currently play for or last played for, their nationality, and their number of NBA MVP awards.
+- Columns: the player's current or last NBA team; the player's nationality; the player's number of NBA MVP awards
+
+### filter_queries_player#14 (Filter)
+
+- SQL: `SELECT draft_year, age, fiba_world_cup FROM player WHERE draft_year <= 2018 OR olympic_gold_medals >= 0;`
+- Question: Which players were selected in the NBA draft in 2018 or earlier, or have at least 0 Olympic gold medals?
+- Columns: the NBA draft year; the player's age; the number of FIBA World Cup titles
+
+### filter_queries_player#15 (Filter)
+
+- SQL: `SELECT fiba_world_cup, nationality, college FROM player WHERE college = 'University of Connecticut' OR birth_date != '1971/12/3';`
+- Question: Which players attended 'University of Connecticut' or were not born on '1971/12/3', and what are their number of FIBA World Cup titles, nationality, and college?
+- Columns: The number of FIBA World Cup titles; The player's nationality; The player's college
+
+### filter_queries_player#16 (Filter)
+
+- SQL: `SELECT olympic_gold_medals, fiba_world_cup, birth_date FROM player WHERE birth_date = '1994/4/25' OR position != 'Frontcourt';`
+- Question: Which players were born on '1994/4/25' or do not play the 'Frontcourt' position? For each matching player, provide the number of Olympic gold medals, the number of FIBA World Cup titles, and their birth date.
+- Columns: The number of Olympic gold medals; The number of FIBA World Cup titles; The player's birth date
+
+### filter_queries_player#17 (Filter)
+
+- SQL: `SELECT college, draft_pick, fiba_world_cup FROM player WHERE draft_pick <= 10 OR college = 'Michigan State University';`
+- Question: Which players attended a college that was 'Michigan State University' or were selected with a draft pick number at most 10?
+- Columns: the college attended; the NBA draft pick number; the number of FIBA World Cup titles won
+
+### filter_queries_player#18 (Filter)
+
+- SQL: `SELECT olympic_gold_medals, nba_championships, age FROM player WHERE olympic_gold_medals > 1 OR position != 'Frontcourt';`
+- Question: Which players have more than 1 Olympic gold medal or play a position other than 'Frontcourt'? For each such player, provide the number of Olympic gold medals, the number of NBA championships, and the player's age.
+- Columns: The number of Olympic gold medals; The number of NBA championships; The player's age
+
+### filter_queries_player#19 (Filter)
+
+- SQL: `SELECT fiba_world_cup, draft_pick, draft_year FROM player WHERE draft_pick >= 24 AND age >= 42 AND mvp_awards >= 0 AND mvp_awards < 1;`
+- Question: Which players were selected with a draft pick number greater than or equal to 24, are at least 42 years old, have at least 0 NBA MVP awards, and have fewer than 1 NBA MVP award? For each such player, provide the number of FIBA World Cup titles, the NBA draft pick number, and the NBA draft year.
+- Columns: the number of FIBA World Cup titles; the NBA draft pick number; the NBA draft year
+
+### filter_queries_player#20 (Filter)
+
+- SQL: `SELECT name, nba_championships, college FROM player WHERE nba_championships > 2 AND olympic_gold_medals >= 0 AND olympic_gold_medals != 1 AND name != 'Toby Kimball';`
+- Question: Which NBA players have won more than 2 NBA championships, have at least 0 Olympic gold medals, have a number of Olympic gold medals other than 1, and are not named 'Toby Kimball'?
+- Columns: the full name of the NBA player; the number of NBA championships the player has won; the college the player attended
+
+### filter_queries_player#24 (Filter)
+
+- SQL: `SELECT nationality, draft_pick, team FROM player WHERE nationality != 'German' AND olympic_gold_medals > 0 AND olympic_gold_medals != 0 AND mvp_awards = 0;`
+- Question: Which players have a nationality other than 'German', have more than 0 Olympic gold medals, have a number of Olympic gold medals not equal to 0, and have exactly 0 NBA MVP awards? For each such player, provide their nationality, the number of their NBA draft pick, and the NBA team they currently play for or last played for.
+- Columns: The player's nationality; The player's NBA draft pick number; The NBA team the player currently plays for or last played for
+
+### filter_queries_player#25 (Filter)
+
+- SQL: `SELECT draft_pick, age, position FROM player WHERE age <= 62 OR birth_date = '1997/8/7' OR college != 'Oregon State University' OR nba_championships = 2;`
+- Question: Which players have a draft pick number at most 62, or were born on '1997/8/7', or attended a college other than 'Oregon State University', or have exactly 2 NBA championships? For each such player, provide the draft pick number, age, and primary position.
+- Columns: the draft pick number; the player's age; the player's primary position
+
+### filter_queries_player#26 (Filter)
+
+- SQL: `SELECT olympic_gold_medals, college, age FROM player WHERE age > 42 OR name != 'Fran Curran Francis Hugh Curran Sr.' OR name = 'Dewayne "D. J." White, Jr.' OR fiba_world_cup = 1;`
+- Question: Which players have more than 42 years of age, or whose full name is not 'Fran Curran Francis Hugh Curran Sr.', or whose full name is 'Dewayne "D. J." White, Jr.', or who have exactly 1 FIBA World Cup title?
+- Columns: the number of Olympic gold medals; the college attended; the age
+
+### filter_queries_player#27 (Filter)
+
+- SQL: `SELECT nba_championships, name, olympic_gold_medals FROM player WHERE nba_championships = 0 OR team != 'Brooklyn Nets' OR nationality = 'French' OR team != 'Indiana Pacers';`
+- Question: Which players have won exactly 0 NBA championships, or currently play for (or last played for) a team other than 'Brooklyn Nets', or are 'French', or currently play for (or last played for) a team other than 'Indiana Pacers'?
+- Columns: The number of NBA championships; The player's full name; The number of Olympic gold medals
+
+### filter_queries_player#28 (Filter)
+
+- SQL: `SELECT draft_year, age, nationality FROM player WHERE age <= 78 OR team = 'Capitanes de Arecibo' OR mvp_awards = 0 OR olympic_gold_medals > 1;`
+- Question: Which players have an age at most 78, or currently play for (or last played for) 'Capitanes de Arecibo', or have 0 NBA MVP awards, or have more than 1 Olympic gold medal?
+- Columns: The year the player was selected in the NBA draft; The player's age; The player's nationality
+
+### filter_queries_player#29 (Filter)
+
+- SQL: `SELECT olympic_gold_medals, age, team FROM player WHERE age >= 42 OR team != 'Philadelphia 76ers' OR nba_championships >= 0 OR nba_championships > 0;`
+- Question: Which players have at least 42 years of age, or currently play for (or last played for) a team other than 'Philadelphia 76ers', or have at least 0 NBA championships, or have more than 0 NBA championships?
+- Columns: The number of Olympic gold medals; The player's age; The team the player currently plays for or last played for
+
+### filter_queries_player#30 (Filter)
+
+- SQL: `SELECT position, nationality, olympic_gold_medals FROM player WHERE position != 'Frontcourt' OR draft_pick > 10 OR olympic_gold_medals > 0 OR mvp_awards = 0;`
+- Question: Which players have a primary position other than 'Frontcourt' or were selected after draft pick 10 or have won more than 0 Olympic gold medals or have won exactly 0 NBA MVP awards?
+- Columns: the player's primary position; the player's nationality; the player's number of Olympic gold medals
+
+### filter_queries_player#31 (Filter)
+
+- SQL: `SELECT team, nationality, fiba_world_cup FROM player WHERE (nationality = 'Nigerian-American' AND position = 'Frontcourt') OR (draft_pick >= 24 AND draft_pick >= 24);`
+- Question: Which players are either Nigerian-American and play in the 'Frontcourt' position, or were selected with a draft pick number greater than or equal to 24? For each matching player, provide the team they currently play for or last played for, their nationality, and the number of FIBA World Cup titles they have won.
+- Columns: the player's current or last NBA team; the player's nationality; the number of FIBA World Cup titles
+
+### filter_queries_player#32 (Filter)
+
+- SQL: `SELECT nationality, olympic_gold_medals, fiba_world_cup FROM player WHERE (fiba_world_cup != 0 AND name = 'Erick Strickland') OR (birth_date != '1973/11/25' AND nba_championships >= 0);`
+- Question: What are the nationality, number of Olympic gold medals, and number of FIBA World Cup titles for players where either the number of FIBA World Cup titles is not 0 and the full name is 'Erick Strickland', or the birth date is not '1973/11/25' and the number of NBA championships is at least 0?
+- Columns: The player's nationality; The player's number of Olympic gold medals; The player's number of FIBA World Cup titles
+
+### filter_queries_player#33 (Filter)
+
+- SQL: `SELECT college, age, position FROM player WHERE (age < 42 AND olympic_gold_medals <= 1) OR (team = 'Detroit Pistons' AND college = 'Temple University');`
+- Question: Which players have an age less than 42 and at most 1 Olympic gold medal, or play for 'Detroit Pistons' and attended 'Temple University'? For each qualifying player, provide the college attended, age, and primary position.
+- Columns: The college attended; The player's age; The player's primary position
+
+### filter_queries_player#34 (Filter)
+
+- SQL: `SELECT nationality, name, draft_year FROM player WHERE (draft_year != 2018 AND nationality != 'German') OR (name = 'Donta Hall' AND nba_championships != 0);`
+- Question: Which NBA players have a draft year other than 2018 and a nationality other than 'German', or are named 'Donta Hall' and have a number of NBA championships other than 0?
+- Columns: the player's nationality; the player's full name; the player's NBA draft year
+
+### filter_queries_player#36 (Filter)
+
+- SQL: `SELECT nationality, birth_date, age FROM player WHERE (birth_date != '1994/6/6' AND nationality = 'Slovenian') OR (nba_championships <= 2 AND age > 78);`
+- Question: Which players have a nationality of 'Slovenian' and a birth date not equal to '1994/6/6', or have no more than 2 NBA championships and are older than 78? For each matching player, provide their nationality, birth date, and age.
+- Columns: The player's nationality; The player's birth date; The player's age
+
+### filter_queries_team#1 (Filter)
+
+- SQL: `SELECT founded_year, ownership, team_name FROM team WHERE ownership != 'William Chisholm';`
+- Question: Which teams were founded in each year, along with their owner and full team name, excluding teams whose owner is not 'William Chisholm'?
+- Columns: the year the team was founded; the team's owner; the team's full name
+
+### filter_queries_team#2 (Filter)
+
+- SQL: `SELECT ownership, championship, founded_year FROM team WHERE founded_year < 1989;`
+- Question: Which teams have an owner, number of championships, and founding year for teams founded before 1989?
+- Columns: the team's owner; the team's number of championships; the team's founding year
+
+### filter_queries_team#3 (Filter)
+
+- SQL: `SELECT founded_year, ownership, team_name FROM team WHERE ownership != 'Jim Morris' AND founded_year >= 1967;`
+- Question: Which teams were founded in or after 1967 and are not owned by 'Jim Morris'?
+- Columns: the year the team was founded; the team's owner; the team's full name
+
+### filter_queries_team#5 (Filter)
+
+- SQL: `SELECT founded_year, team_name, location FROM team WHERE founded_year < 1949 OR location != 'Oklahoma City';`
+- Question: Which teams were founded before 1949 or are located somewhere other than 'Oklahoma City'? For each team, provide the year it was founded, its full name, and the latest city where it is located.
+- Columns: the year the team was founded; the team's full name; the latest city where the team is located
+
+### filter_queries_team#6 (Filter)
+
+- SQL: `SELECT ownership, founded_year, championship FROM team WHERE ownership != 'Herb Simon' OR championship = 3;`
+- Question: Which teams have an owner other than 'Herb Simon' or have exactly 3 championships?
+- Columns: the team owner's name; the year the team was founded; the number of championships
+
+### filter_queries_team#9 (Filter)
+
+- SQL: `SELECT championship, founded_year, location FROM team WHERE founded_year <= 1978 OR team_name = 'Dallas Mavericks' OR championship > 3 OR location = 'Atlanta';`
+- Question: Which teams have at most 1978 as their founding year, or are named 'Dallas Mavericks', or have won more than 3 championships, or are located in 'Atlanta'? For each matching team, provide its number of championships, founding year, and latest city.
+- Columns: The team's number of championships; The team's founding year; The team's latest city
+
+### filter_queries_team#10 (Filter)
+
+- SQL: `SELECT team_name, founded_year, ownership FROM team WHERE founded_year > 1967 OR team_name != 'Charlotte Hornets' OR team_name = 'Detroit Pistons' OR founded_year >= 1989;`
+- Question: Which teams have a founding year greater than 1967, or have a team name not equal to 'Charlotte Hornets', or have a team name equal to 'Detroit Pistons', or have a founding year at least 1989? For each qualifying team, provide its full team name, founding year, and owner's name.
+- Columns: the team's full name; the year the team was founded; the name of the team's owner
+
+### filter_queries_team#11 (Filter)
+
+- SQL: `SELECT location, founded_year, team_name FROM team WHERE (founded_year >= 1949 AND founded_year = 1949) OR (ownership != 'Ted Leonsis' AND ownership != 'Professional Basketball Club LLC');`
+- Question: Which teams were founded in or after 1949 and founded in 1949, or have an owner other than 'Ted Leonsis' and an owner other than 'Professional Basketball Club LLC'?
+- Columns: the team's city; the year the team was founded; the team's full name
+
+### filter_queries_team#12 (Filter)
+
+- SQL: `SELECT location, founded_year, team_name FROM team WHERE (founded_year > 1989 AND ownership != 'Gabe Plotkin and Rick Schnall') OR (ownership = 'Atlanta Spirit LLC' AND founded_year = 1967);`
+- Question: Which teams are located in a city and were founded after 1989, excluding teams owned by 'Gabe Plotkin and Rick Schnall', or are owned by 'Atlanta Spirit LLC' and were founded in 1967?
+- Columns: the city where the team is located; the year the team was founded; the full name of the team
+
+### agg_queries#1 (Agg)
+
+- SQL: `SELECT position, MIN(olympic_gold_medals) AS min_olympic_gold_medals FROM player GROUP BY position;`
+- Question: For each primary position on the team, what is the lowest number of Olympic gold medals won by a player?
+- Columns: The player's primary position on the team; The lowest number of Olympic gold medals
+
+### agg_queries#2 (Agg)
+
+- SQL: `SELECT nationality, COUNT(*) AS count_all FROM player GROUP BY nationality;`
+- Question: For each nationality, how many NBA players are there?
+- Columns: the nationality; the number of NBA players
+
+### agg_queries#3 (Agg)
+
+- SQL: `SELECT position, AVG(age) AS avg_age FROM player GROUP BY position;`
+- Question: For each primary playing position, what is the average player age?
+- Columns: the primary playing position; the average player age
+
+### agg_queries#4 (Agg)
+
+- SQL: `SELECT nationality, MAX(age) AS max_age FROM player GROUP BY nationality;`
+- Question: For each nationality, what is the highest player age?
+- Columns: The nationality; The highest player age
+
+### agg_queries#5 (Agg)
+
+- SQL: `SELECT nationality, COUNT(*) AS count_all FROM player GROUP BY nationality;`
+- Question: For each nationality, how many NBA players are there?
+- Columns: the nationality; the number of NBA players
+
+### agg_queries#6 (Agg)
+
+- SQL: `SELECT nationality, MIN(age) AS min_age FROM player GROUP BY nationality;`
+- Question: For each nationality, what is the youngest age among the players?
+- Columns: the nationality; the lowest age
+
+### agg_queries#7 (Agg)
+
+- SQL: `SELECT nationality, AVG(age) AS avg_age FROM player GROUP BY nationality;`
+- Question: For each nationality, what is the average age of the players?
+- Columns: the nationality; the average age
+
+### agg_queries#8 (Agg)
+
+- SQL: `SELECT nationality, MIN(age) AS min_age FROM manager GROUP BY nationality;`
+- Question: For each owner nationality, what is the lowest age of a team owner?
+- Columns: the owner nationality; the lowest team owner age
+
+### agg_queries#9 (Agg)
+
+- SQL: `SELECT nationality, COUNT(*) AS count_all FROM manager GROUP BY nationality;`
+- Question: For each owner nationality, how many team owners have that nationality?
+- Columns: The owner nationality; The number of team owners
+
+### agg_queries#10 (Agg)
+
+- SQL: `SELECT nationality, AVG(age) AS avg_age FROM manager GROUP BY nationality;`
+- Question: For each owner nationality, what is the average age of the team owners?
+- Columns: The owner nationality; The average age of the team owners
+
+### join_queries#2 (Join)
+
+- SQL: `SELECT team.founded_year, team.team_name, player.name, player.team FROM player JOIN team ON player.team = team.team_name;`
+- Question: Which team's founding year, full team name, full name of the player, and the team the player currently plays for or last played for should be listed for every player whose team matches a team name?
+- Columns: the team's founding year; the team's full name; the player's full name; the team the player currently plays for or last played for
+
+### join_queries#4 (Join)
+
+- SQL: `SELECT player.nationality, player.age, team.location, team.team_name FROM player JOIN team ON player.team = team.team_name;`
+- Question: What are the nationality and age of each player, along with the city where the team they currently play for (or last played for) is located and the full name of that team?
+- Columns: The player's nationality; The player's age; The city where the team is located; The full name of the team
+
+### join_queries#5 (Join)
+
+- SQL: `SELECT city.city_name, city.population, team.founded_year, team.location FROM team JOIN city ON team.location = city.city_name;`
+- Question: What are the city name, population, team founding year, and latest city where each team is located, for every team and its corresponding city?
+- Columns: the city name; the city population; the team founding year; the latest city where the team is located
+
+### join_queries#7 (Join)
+
+- SQL: `SELECT manager.nba_team, team.location, team.founded_year, manager.name FROM team JOIN manager ON team.ownership = manager.name;`
+- Question: Which team does each owner own, what city is that team located in, in what year was it founded, and what is the owner's full name?
+- Columns: the full name of the NBA team the owner owns; the latest city where the team is located; the year the team was founded; the owner's full name
+
+### join_queries#8 (Join)
+
+- SQL: `SELECT manager.name, manager.own_year, team.team_name, team.founded_year FROM team JOIN manager ON team.ownership = manager.name;`
+- Question: Which team owners, the years they acquired their teams, the full names of those teams, and the years those teams were founded are listed, matching each team with its owner?
+- Columns: the full name of the team owner; the year the owner acquired the team; the full name of the team; the year the team was founded
+
+### join_queries#9 (Join)
+
+- SQL: `SELECT manager.nba_team, team.team_name, team.founded_year, manager.nationality FROM team JOIN manager ON team.ownership = manager.name;`
+- Question: For each team owner, list the NBA team they own, the full name of the team, the year that team was founded, and the owner's nationality, including only cases where the team's owner name matches the owner's full name.
+- Columns: the NBA team the owner owns; the full name of the team; the year the team was founded; the owner's nationality
+
+### join_queries#10 (Join)
+
+- SQL: `SELECT manager.nba_team, team.location, manager.name, team.team_name FROM team JOIN manager ON team.ownership = manager.name;`
+- Question: Which NBA team does each owner own, the city where that team is located, the owner's full name, and the team's full name, for teams whose listed owner matches an owner's full name?
+- Columns: the NBA team the owner owns; the city where the team is located; the owner's full name; the team's full name
+
+### join_queries#11 (Join)
+
+- SQL: `SELECT player.fiba_world_cup, player.name, team.team_name, team.ownership, city.state_name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;`
+- Question: Which players have joined a team, along with the number of FIBA World Cup titles they have won, their full names, the full name of the team they currently play for or last played for, the name of the team's owner, and the state where the team's city is located?
+- Columns: The number of FIBA World Cup titles won; The player's full name; The full name of the player's current or last team; The name of the team's owner; The state where the team's city is located
+
+### join_queries#12 (Join)
+
+- SQL: `SELECT city.state_name, player.name, player.college, team.founded_year, team.team_name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;`
+- Question: Which state is each NBA player's team located in, along with the player's full name, the college they attended, the year their team was founded, and the full name of the team?
+- Columns: the state where the team is located; the player's full name; the college the player attended; the year the team was founded; the team's full name
+
+### join_queries#13 (Join)
+
+- SQL: `SELECT city.population, player.position, city.city_name, team.founded_year, player.name FROM player JOIN team ON player.team = team.team_name JOIN city ON team.location = city.city_name;`
+- Question: Which players, along with the population and name of the city where their team is located, the team's founding year, and their primary position, where the team the player currently plays for or last played for is located in that city?
+- Columns: the population of the city where the team is located; the player's primary position; the name of the city where the team is located; the year the team was founded; the full name of the NBA player
+
+### join_queries#15 (Join)
+
+- SQL: `SELECT manager.name, team.founded_year, team.location, manager.age, player.nationality FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;`
+- Question: For each team owner, what are the owner's full name, the year the team was founded, the city where the team is located, the owner's age, and the nationality of the player who currently plays for or last played for that team?
+- Columns: the team owner's full name; the year the team was founded; the city where the team is located; the team owner's age; the NBA player's nationality
+
+### join_queries#18 (Join)
+
+- SQL: `SELECT player.nationality, player.olympic_gold_medals, team.location, manager.nba_team, player.draft_pick FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name;`
+- Question: Which players are associated with their current or last NBA team, the city where that team is located, and the team owner who owns it?
+- Columns: the player's nationality; the player's number of Olympic gold medals; the city where the team is located; the NBA team the owner owns; the player's draft pick number
+
+### join_queries#19 (Join)
+
+- SQL: `SELECT city.state_name, player.olympic_gold_medals, team.team_name, player.college, manager.own_year FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name;`
+- Question: Which state is the team's city in, how many Olympic gold medals has the player won, what is the team name, which college did the player attend, and in what year did the owner acquire the team?
+- Columns: the state where the team's city is located; the number of Olympic gold medals won by the player; the full name of the team; the college attended by the player; the year the owner acquired the team
+
+### mixed_queries_agg_join#1 (Mixed)
+
+- SQL: `SELECT player.team, MIN(player.olympic_gold_medals) AS min_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name GROUP BY player.team;`
+- Question: For each NBA team the player currently plays for or last played for, what is the lowest number of Olympic gold medals won by any player on that team?
+- Columns: the NBA team name; the lowest number of Olympic gold medals
+
+### mixed_queries_agg_join#2 (Mixed)
+
+- SQL: `SELECT manager.nationality, MIN(city.population) AS min_city_population FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name GROUP BY manager.nationality;`
+- Question: For each team owner's nationality, what is the lowest population among the cities where their teams are located?
+- Columns: the team owner's nationality; the lowest city population
+
+### mixed_queries_filter_agg_join#3 (Mixed)
+
+- SQL: `SELECT player.team, AVG(player.mvp_awards) AS avg_player_mvp_awards FROM player JOIN team ON player.team = team.team_name WHERE player.college = 'Michigan State University' AND player.age <= 62 GROUP BY player.team;`
+- Question: For each team that the player currently plays for or last played for, among players who attended 'Michigan State University' and are at most 62 years old, what is the average number of NBA MVP awards?
+- Columns: the team name; the average number of NBA MVP awards
+
+### mixed_queries_filter_agg_join#5 (Mixed)
+
+- SQL: `SELECT player.team, AVG(player.fiba_world_cup) AS avg_player_fiba_world_cup FROM player JOIN team ON player.team = team.team_name WHERE player.nba_championships < 0 OR player.age >= 42 GROUP BY player.team;`
+- Question: For each team the player currently plays for or last played for, what is the average number of FIBA World Cup titles among players who have won fewer than 0 NBA championships or are at least 42 years old?
+- Columns: the team the player currently plays for or last played for; the average number of FIBA World Cup titles
+
+### mixed_queries_filter_agg_join#6 (Mixed)
+
+- SQL: `SELECT player.position, AVG(player.age) AS avg_player_age FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.nba_championships <= 2 OR player.mvp_awards < 1 GROUP BY player.position;`
+- Question: For each primary position category of the player, what is the average player age among players whose number of NBA championships is at most 2 or whose number of NBA MVP awards is less than 1?
+- Columns: the player's primary position; the average player age
+
+### mixed_queries_filter_agg_join#7 (Mixed)
+
+- SQL: `SELECT player.team, AVG(player.fiba_world_cup) AS avg_player_fiba_world_cup FROM player JOIN team ON player.team = team.team_name WHERE player.olympic_gold_medals = 0 AND player.position != 'Backcourt' AND team.founded_year != 1989 GROUP BY player.team;`
+- Question: For each team the player currently plays for or last played for, what is the average number of FIBA World Cup titles among players who have 0 Olympic gold medals, whose primary position is not 'Backcourt', and whose team was not founded in 1989?
+- Columns: the team the player currently plays for or last played for; the average number of FIBA World Cup titles
+
+### mixed_queries_filter_agg_join#9 (Mixed)
+
+- SQL: `SELECT player.nationality, COUNT(player.nationality) AS count_player_nationality FROM player JOIN team ON player.team = team.team_name WHERE player.nationality = 'British' OR player.birth_date = '1972/3/6' OR player.age >= 42 GROUP BY player.nationality;`
+- Question: For each nationality, count the players who are British, or whose birth date is '1972/3/6', or whose age is at least 42. Include only players who belong to a team.
+- Columns: the nationality; the count of players
+
+### mixed_queries_filter_agg_join#10 (Mixed)
+
+- SQL: `SELECT player.team, SUM(city.area) AS sum_city_area FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.draft_year <= 2005 OR player.position = 'Backcourt' OR player.draft_pick <= 41 GROUP BY player.team;`
+- Question: For each NBA team, find the team whose player has a draft year at most 2005, or a position of 'Backcourt', or a draft pick at most 41, considering only players whose team has an owner and is located in a city, and calculate the total area in square kilometers of those cities.
+- Columns: the NBA team name; the total city area in square kilometers
+
+### mixed_queries_filter_agg_join#11 (Mixed)
+
+- SQL: `SELECT player.position, SUM(player.mvp_awards) AS sum_player_mvp_awards FROM player JOIN team ON player.team = team.team_name WHERE (player.team != 'Houston Rockets' AND player.nba_championships > 2) OR (team.founded_year != 1949 AND team.championship != 1) GROUP BY player.position;`
+- Question: For each player's primary position, what is the sum of NBA MVP awards for players who either do not currently play for or last played for the 'Houston Rockets' and have more than 2 NBA championships, or whose team was not founded in 1949 and has a number of championships not equal to 1?
+- Columns: the player's primary position; the sum of NBA MVP awards
+
+### mixed_queries_filter_agg_join#12 (Mixed)
+
+- SQL: `SELECT manager.nationality, MIN(player.olympic_gold_medals) AS min_player_olympic_gold_medals FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE (team.location = 'Brooklyn' AND player.nba_championships < 0) OR (player.team != 'Detroit Pistons' AND player.draft_pick != 41) GROUP BY manager.nationality;`
+- Question: For each nationality of a team owner, considering NBA players, the teams they currently play for or last played for, the owners of those teams, and the cities where the teams are located, include players where either the team is located in 'Brooklyn' and the player has fewer than 0 NBA championships, or the player's team is not 'Detroit Pistons' and the player's draft pick is not 41. Return the owner's nationality and the lowest number of Olympic gold medals among those players.
+- Columns: the nationality of the team owner; the lowest number of Olympic gold medals
+
+### mixed_queries_filter_agg_player#1 (Mixed)
+
+- SQL: `SELECT team, MIN(olympic_gold_medals) AS min_olympic_gold_medals FROM player WHERE draft_pick < 3 GROUP BY team;`
+- Question: For each team the players currently play for or last played for, what is the lowest number of Olympic gold medals among players selected with a draft pick lower than 3?
+- Columns: the team the players currently play for or last played for; the lowest number of Olympic gold medals
+
+### mixed_queries_filter_agg_player#2 (Mixed)
+
+- SQL: `SELECT nationality, SUM(olympic_gold_medals) AS sum_olympic_gold_medals FROM player WHERE nationality = 'Bahamian' AND olympic_gold_medals <= 0 GROUP BY nationality;`
+- Question: For each nationality, what is the total number of Olympic gold medals among players whose nationality is 'Bahamian' and who have at most 0 Olympic gold medals?
+- Columns: the nationality; the total number of Olympic gold medals
+
+### mixed_queries_filter_agg_player#3 (Mixed)
+
+- SQL: `SELECT nationality, COUNT(age) AS count_age FROM player WHERE name = 'Antonius Cleveland' OR nba_championships >= 0 GROUP BY nationality;`
+- Question: For each nationality, count the players whose full name is 'Antonius Cleveland' or who have at least 0 NBA championships. The results should include the nationality and the count of players with a recorded age.
+- Columns: the nationality; the count of players with a recorded age
+
+### mixed_queries_filter_agg_player#4 (Mixed)
+
+- SQL: `SELECT position, MAX(mvp_awards) AS max_mvp_awards FROM player WHERE nba_championships = 0 AND draft_year > 2014 AND nba_championships != 2 GROUP BY position;`
+- Question: For each primary position on the team, among players with 0 NBA championships, who were drafted after '2014', and whose number of NBA championships is not equal to 2, what is the highest number of NBA MVP awards?
+- Columns: the player's primary position on the team; the highest number of NBA MVP awards
+
+### mixed_queries_filter_agg_player#5 (Mixed)
+
+- SQL: `SELECT team, AVG(fiba_world_cup) AS avg_fiba_world_cup FROM player WHERE team = 'Boston Celtics' OR nba_championships <= 0 OR fiba_world_cup < 0 GROUP BY team;`
+- Question: For each team, what is the team name and the average number of FIBA World Cup titles among players whose team is 'Boston Celtics' or who have at most 0 NBA championships or who have fewer than 0 FIBA World Cup titles?
+- Columns: the team name; the average number of FIBA World Cup titles
+
+### mixed_queries_filter_agg_player#6 (Mixed)
+
+- SQL: `SELECT team, MIN(fiba_world_cup) AS min_fiba_world_cup FROM player WHERE (fiba_world_cup < 0 AND mvp_awards <= 0) OR (age < 78 AND fiba_world_cup >= 0) GROUP BY team;`
+- Question: For each team the player currently plays for or last played for, find the lowest number of FIBA World Cup titles among players whose number of FIBA World Cup titles is less than 0 and who have at most 0 NBA MVP awards, or whose age is less than 78 and whose number of FIBA World Cup titles is at least 0.
+- Columns: the team the player currently plays for or last played for; the lowest number of FIBA World Cup titles
+
+### mixed_queries_filter_join#5 (Mixed)
+
+- SQL: `SELECT player.mvp_awards, team.championship, player.draft_year, team.team_name FROM player JOIN team ON player.team = team.team_name WHERE team.location != 'Los Angeles' OR team.founded_year < 1967;`
+- Question: Which players are on teams whose city is not 'Los Angeles' or that were founded before 1967? For each matching player and team, provide the number of NBA MVP awards, the team's number of championships, the player's draft year, and the full name of the team.
+- Columns: the number of NBA MVP awards; the team's number of championships; the player's draft year; the full name of the team
+
+### mixed_queries_filter_join#6 (Mixed)
+
+- SQL: `SELECT manager.nba_team, team.ownership, player.fiba_world_cup, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE manager.age <= 65 OR player.olympic_gold_medals <= 1;`
+- Question: Which NBA team does the owner own, what is the owner's name, how many FIBA World Cup titles has the player won, and what city is the team located in, for records where the owner is at most 65 years old or the player has at most 1 Olympic gold medal?
+- Columns: the NBA team the owner owns; the team's owner's name; the player's number of FIBA World Cup titles; the city's name
+
+### mixed_queries_filter_join#9 (Mixed)
+
+- SQL: `SELECT player.name, player.position, team.championship, team.founded_year FROM player JOIN team ON player.team = team.team_name WHERE player.name = 'Kobe Bean Bryant' OR player.fiba_world_cup >= 0 OR team.championship != 3;`
+- Question: What are the full name and primary position of each NBA player, along with the number of championships and founding year of the team the player currently plays for or last played for, where the player's full name is 'Kobe Bean Bryant' or the player has at least 0 FIBA World Cup titles or the team has a number of championships not equal to 3?
+- Columns: the player's full name; the player's primary position; the team's number of championships; the team's founding year
+
+### mixed_queries_filter_join#10 (Mixed)
+
+- SQL: `SELECT player.position, manager.age, team.championship, city.city_name FROM player JOIN team ON player.team = team.team_name JOIN manager ON team.ownership = manager.name JOIN city ON team.location = city.city_name WHERE player.olympic_gold_medals = 0 OR player.position != 'Backcourt' OR city.gdp = '252200';`
+- Question: Which players meet at least one of these conditions: they have 0 Olympic gold medals, their primary position is not 'Backcourt', or the gross domestic product of the city where their team is located is '252200'? For each such player, provide their primary position, the age of their team's owner, the number of championships their team has won, and the name of the city where their team is located.
+- Columns: the player's primary position; the age of the team owner; the number of championships the team has won; the name of the city where the team is located
+
+### mixed_queries_filter_join#11 (Mixed)
+
+- SQL: `SELECT team.location, player.draft_year, team.ownership, player.name FROM player JOIN team ON player.team = team.team_name WHERE (team.founded_year <= 1989 AND player.college = 'University of Connecticut') OR (player.fiba_world_cup >= 1 AND player.team != 'Milwaukee Bucks');`
+- Question: Which city is the team located in, what year was the player selected in the NBA draft, who owns the team, and what is the player's full name, for players who either belong to a team founded in 1989 or earlier and attended 'University of Connecticut', or have won at least 1 FIBA World Cup title and do not belong to 'Milwaukee Bucks'?
+- Columns: the city's name where the team is located; the player's NBA draft year; the team's owner's name; the player's full name

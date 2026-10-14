@@ -1,0 +1,25 @@
+{
+ "uid": "select_queries_city#1",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":1213.37,\"col2\":\"New York City\",\"col3\":1053000,\"name_city\":\"New York City\"},{\"col1\":232.1,\"col2\":\"Boston\",\"col3\":363000,\"name_city\":\"Boston\"},{\"col1\":369.72,\"col2\":\"Philadelphia\",\"col3\":479000,\"name_city\":\"Philadelphia\"}]}",
+ "rows": [
+  {
+   "col1": 1213.37,
+   "col2": "New York City",
+   "col3": 1053000,
+   "name_city": "New York City"
+  },
+  {
+   "col1": 232.1,
+   "col2": "Boston",
+   "col3": 363000,
+   "name_city": "Boston"
+  },
+  {
+   "col1": 369.72,
+   "col2": "Philadelphia",
+   "col3": 479000,
+   "name_city": "Philadelphia"
+  }
+ ]
+}

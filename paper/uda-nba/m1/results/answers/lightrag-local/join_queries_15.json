@@ -1,0 +1,27 @@
+{
+ "uid": "join_queries#15",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Jerry Reinsdorf\",\"col2\":null,\"col3\":null,\"col4\":90,\"col5\":null,\"name_player\":\"Michael Jordan\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Dan Gilbert\",\"col2\":null,\"col3\":null,\"col4\":null,\"col5\":null,\"name_player\":\"LeBron James\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"}]}",
+ "rows": [
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": null,
+   "col3": null,
+   "col4": 90,
+   "col5": null,
+   "name_player": "Michael Jordan",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "col5": null,
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  }
+ ]
+}

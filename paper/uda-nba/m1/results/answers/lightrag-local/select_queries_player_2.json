@@ -1,0 +1,42 @@
+{
+ "uid": "select_queries_player#2",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":\"LeBron James\",\"col3\":4,\"col4\":null,\"name_player\":\"LeBron James\"},{\"col1\":\"Washington Wizards\",\"col2\":\"Michael Jordan\",\"col3\":5,\"col4\":null,\"name_player\":\"Michael Jordan\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Kobe Bryant\",\"col3\":1,\"col4\":null,\"name_player\":\"Kobe Bryant\"},{\"col1\":null,\"col2\":\"Shaquille O'Neal\",\"col3\":1,\"col4\":null,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Kevin Durant\",\"col3\":1,\"col4\":null,\"name_player\":\"Kevin Durant\"}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "LeBron James",
+   "col3": 4,
+   "col4": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Michael Jordan",
+   "col3": 5,
+   "col4": null,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Kobe Bryant",
+   "col3": 1,
+   "col4": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": null,
+   "col2": "Shaquille O'Neal",
+   "col3": 1,
+   "col4": null,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Kevin Durant",
+   "col3": 1,
+   "col4": null,
+   "name_player": "Kevin Durant"
+  }
+ ]
+}

@@ -1,0 +1,258 @@
+{
+ "uid": "filter_queries_player#28",
+ "reply": "{\"rows\":[{\"col1\":2003,\"col2\":41,\"col3\":\"American\",\"name_player\":\"LeBron James\"},{\"col1\":2007,\"col2\":38,\"col3\":\"American\",\"name_player\":\"Kevin Durant\"},{\"col1\":2009,\"col2\":37,\"col3\":\"American\",\"name_player\":\"Stephen Curry\"},{\"col1\":2009,\"col2\":37,\"col3\":\"American\",\"name_player\":\"James Harden\"},{\"col1\":2008,\"col2\":37,\"col3\":\"American\",\"name_player\":\"Russell Westbrook\"},{\"col1\":2005,\"col2\":41,\"col3\":\"American\",\"name_player\":\"Chris Paul\"},{\"col1\":2003,\"col2\":42,\"col3\":\"American\",\"name_player\":\"Carmelo Anthony\"},{\"col1\":2004,\"col2\":40,\"col3\":\"American\",\"name_player\":\"Dwight Howard\"},{\"col1\":2011,\"col2\":34,\"col3\":\"American\",\"name_player\":\"Kyrie Irving\"},{\"col1\":2011,\"col2\":36,\"col3\":\"American\",\"name_player\":\"Klay Thompson\"},{\"col1\":2013,\"col2\":31,\"col3\":\"Greek\",\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":2014,\"col2\":31,\"col3\":\"Serbian\",\"name_player\":\"Nikola Joki\u0107\"},{\"col1\":2011,\"col2\":33,\"col3\":\"American\",\"name_player\":\"Kawhi Leonard\"},{\"col1\":2009,\"col2\":36,\"col3\":\"American\",\"name_player\":\"Blake Griffin\"},{\"col1\":2003,\"col2\":43,\"col3\":\"American\",\"name_player\":\"Dwyane Wade\"},{\"col1\":1996,\"col2\":47,\"col3\":\"American\",\"name_player\":\"Kobe Bryant\"},{\"col1\":1984,\"col2\":61,\"col3\":\"American\",\"name_player\":\"Michael Jordan\"},{\"col1\":1992,\"col2\":56,\"col3\":\"American\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1996,\"col2\":50,\"col3\":\"American\",\"name_player\":\"Allen Iverson\"},{\"col1\":1984,\"col2\":60,\"col3\":\"American\",\"name_player\":\"Hakeem Olajuwon\"},{\"col1\":1987,\"col2\":59,\"col3\":\"American\",\"name_player\":\"David Robinson\"},{\"col1\":1997,\"col2\":48,\"col3\":\"American\",\"name_player\":\"Tim Duncan\"},{\"col1\":1998,\"col2\":47,\"col3\":\"American\",\"name_player\":\"Paul Pierce\"},{\"col1\":1995,\"col2\":49,\"col3\":\"American\",\"name_player\":\"Kevin Garnett\"},{\"col1\":1985,\"col2\":63,\"col3\":\"American\",\"name_player\":\"Karl Malone\"},{\"col1\":1984,\"col2\":62,\"col3\":\"American\",\"name_player\":\"Charles Barkley\"},{\"col1\":1992,\"col2\":56,\"col3\":\"American\",\"name_player\":\"John Stockton\"},{\"col1\":1992,\"col2\":57,\"col3\":\"American\",\"name_player\":\"Gary Payton\"},{\"col1\":1996,\"col2\":52,\"col3\":\"American\",\"name_player\":\"Ray Allen\"},{\"col1\":1998,\"col2\":46,\"col3\":\"American\",\"name_player\":\"Vince Carter\"},{\"col1\":2001,\"col2\":44,\"col3\":\"German\",\"name_player\":\"Dirk Nowitzki\"},{\"col1\":1998,\"col2\":46,\"col3\":\"American\",\"name_player\":\"Pau Gasol\"},{\"col1\":2002,\"col2\":44,\"col3\":\"Argentine\",\"name_player\":\"Manu Gin\u00f3bili\"},{\"col1\":2003,\"col2\":42,\"col3\":\"American\",\"name_player\":\"Andre Iguodala\"},{\"col1\":2007,\"col2\":36,\"col3\":\"American\",\"name_player\":\"Al Horford\"},{\"col1\":2008,\"col2\":36,\"col3\":\"American\",\"name_player\":\"DeAndre Jordan\"},{\"col1\":2009,\"col2\":35,\"col3\":\"American\",\"name_player\":\"Jrue Holiday\"},{\"col1\":2012,\"col2\":30,\"col3\":\"American\",\"name_player\":\"Damian Lillard\"},{\"col1\":2015,\"col2\":29,\"col3\":\"American\",\"name_player\":\"Devin Booker\"},{\"col1\":2015,\"col2\":29,\"col3\":\"American\",\"name_player\":\"Karl-Anthony Towns\"},{\"col1\":2016,\"col2\":28,\"col3\":\"American\",\"name_player\":\"Jaylen Brown\"},{\"col1\":2017,\"col2\":27,\"col3\":\"American\",\"name_player\":\"Jayson Tatum\"}]}",
+ "rows": [
+  {
+   "col1": 2003,
+   "col2": 41,
+   "col3": "American",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2007,
+   "col2": 38,
+   "col3": "American",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2009,
+   "col2": 37,
+   "col3": "American",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2009,
+   "col2": 37,
+   "col3": "American",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": 2008,
+   "col2": 37,
+   "col3": "American",
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": 2005,
+   "col2": 41,
+   "col3": "American",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 2003,
+   "col2": 42,
+   "col3": "American",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": 2004,
+   "col2": 40,
+   "col3": "American",
+   "name_player": "Dwight Howard"
+  },
+  {
+   "col1": 2011,
+   "col2": 34,
+   "col3": "American",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2011,
+   "col2": 36,
+   "col3": "American",
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": 2013,
+   "col2": 31,
+   "col3": "Greek",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 2014,
+   "col2": 31,
+   "col3": "Serbian",
+   "name_player": "Nikola Joki\u0107"
+  },
+  {
+   "col1": 2011,
+   "col2": 33,
+   "col3": "American",
+   "name_player": "Kawhi Leonard"
+  },
+  {
+   "col1": 2009,
+   "col2": 36,
+   "col3": "American",
+   "name_player": "Blake Griffin"
+  },
+  {
+   "col1": 2003,
+   "col2": 43,
+   "col3": "American",
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": 1996,
+   "col2": 47,
+   "col3": "American",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 1984,
+   "col2": 61,
+   "col3": "American",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1992,
+   "col2": 56,
+   "col3": "American",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1996,
+   "col2": 50,
+   "col3": "American",
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": 1984,
+   "col2": 60,
+   "col3": "American",
+   "name_player": "Hakeem Olajuwon"
+  },
+  {
+   "col1": 1987,
+   "col2": 59,
+   "col3": "American",
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": 1997,
+   "col2": 48,
+   "col3": "American",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 1998,
+   "col2": 47,
+   "col3": "American",
+   "name_player": "Paul Pierce"
+  },
+  {
+   "col1": 1995,
+   "col2": 49,
+   "col3": "American",
+   "name_player": "Kevin Garnett"
+  },
+  {
+   "col1": 1985,
+   "col2": 63,
+   "col3": "American",
+   "name_player": "Karl Malone"
+  },
+  {
+   "col1": 1984,
+   "col2": 62,
+   "col3": "American",
+   "name_player": "Charles Barkley"
+  },
+  {
+   "col1": 1992,
+   "col2": 56,
+   "col3": "American",
+   "name_player": "John Stockton"
+  },
+  {
+   "col1": 1992,
+   "col2": 57,
+   "col3": "American",
+   "name_player": "Gary Payton"
+  },
+  {
+   "col1": 1996,
+   "col2": 52,
+   "col3": "American",
+   "name_player": "Ray Allen"
+  },
+  {
+   "col1": 1998,
+   "col2": 46,
+   "col3": "American",
+   "name_player": "Vince Carter"
+  },
+  {
+   "col1": 2001,
+   "col2": 44,
+   "col3": "German",
+   "name_player": "Dirk Nowitzki"
+  },
+  {
+   "col1": 1998,
+   "col2": 46,
+   "col3": "American",
+   "name_player": "Pau Gasol"
+  },
+  {
+   "col1": 2002,
+   "col2": 44,
+   "col3": "Argentine",
+   "name_player": "Manu Gin\u00f3bili"
+  },
+  {
+   "col1": 2003,
+   "col2": 42,
+   "col3": "American",
+   "name_player": "Andre Iguodala"
+  },
+  {
+   "col1": 2007,
+   "col2": 36,
+   "col3": "American",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": 2008,
+   "col2": 36,
+   "col3": "American",
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": 2009,
+   "col2": 35,
+   "col3": "American",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": 2012,
+   "col2": 30,
+   "col3": "American",
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": 2015,
+   "col2": 29,
+   "col3": "American",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 2015,
+   "col2": 29,
+   "col3": "American",
+   "name_player": "Karl-Anthony Towns"
+  },
+  {
+   "col1": 2016,
+   "col2": 28,
+   "col3": "American",
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": 2017,
+   "col2": 27,
+   "col3": "American",
+   "name_player": "Jayson Tatum"
+  }
+ ]
+}

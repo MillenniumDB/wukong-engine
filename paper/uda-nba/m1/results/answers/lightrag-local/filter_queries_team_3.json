@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#3",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":1989,\"col2\":\"DeVos family\",\"col3\":\"Orlando Magic\",\"name_team\":\"Orlando Magic\"},{\"col1\":1970,\"col2\":\"Dan Gilbert\",\"col3\":\"Cleveland Cavaliers\",\"name_team\":\"Cleveland Cavaliers\"}]}",
+ "rows": [
+  {
+   "col1": 1989,
+   "col2": "DeVos family",
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 1970,
+   "col2": "Dan Gilbert",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  }
+ ]
+}

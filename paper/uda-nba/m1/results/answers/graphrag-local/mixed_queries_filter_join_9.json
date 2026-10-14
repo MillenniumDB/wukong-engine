@@ -1,0 +1,16 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Kobe Bean Bryant\",\"col2\":\"Backcourt\",\"col3\":17,\"col4\":1947,\"name_player\":\"Kobe Bean Bryant\",\"name_team\":\"Los Angeles Lakers\"}]}",
+ "rows": [
+  {
+   "col1": "Kobe Bean Bryant",
+   "col2": "Backcourt",
+   "col3": 17,
+   "col4": 1947,
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  }
+ ],
+ "secs": 4.7
+}

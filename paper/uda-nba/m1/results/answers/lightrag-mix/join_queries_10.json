@@ -1,0 +1,95 @@
+{
+ "uid": "join_queries#10",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":null,\"col3\":\"Joseph Steven Lacob\",\"col4\":\"Golden State Warriors\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joseph Steven Lacob\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Detroit\",\"col3\":\"Tom Gores\",\"col4\":\"Detroit Pistons\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Oklahoma City\",\"col3\":\"Clay Bennett\",\"col4\":\"Oklahoma City Thunder\",\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clay Bennett\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Los Angeles\",\"col3\":\"Steve Ballmer\",\"col4\":\"Los Angeles Clippers\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Dallas\",\"col3\":\"Mark Cuban\",\"col4\":\"Dallas Mavericks\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Philadelphia\",\"col3\":\"Josh Harris\",\"col4\":\"Philadelphia 76ers\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Brooklyn\",\"col3\":\"Joseph Tsai\",\"col4\":\"Brooklyn Nets\",\"name_team\":\"Brooklyn Nets\",\"name_manager\":\"Joseph Tsai\"},{\"col1\":\"Washington Wizards\",\"col2\":\"Washington\",\"col3\":\"Abe Pollin\",\"col4\":\"Washington Wizards\",\"name_team\":\"Washington Wizards\",\"name_manager\":\"Abe Pollin\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Los Angeles\",\"col3\":\"Bob Short\",\"col4\":\"Los Angeles Lakers\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Bob Short\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"Cleveland\",\"col3\":\"Dan Gilbert\",\"col4\":\"Cleveland Cavaliers\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":\"Portland Trail Blazers\",\"col2\":\"Portland\",\"col3\":\"Vulcan Sports and Entertainment\",\"col4\":\"Portland Trail Blazers\",\"name_team\":\"Portland Trail Blazers\",\"name_manager\":\"Vulcan Sports and Entertainment\"}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": null,
+   "col3": "Joseph Steven Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Detroit",
+   "col3": "Tom Gores",
+   "col4": "Detroit Pistons",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Oklahoma City",
+   "col3": "Clay Bennett",
+   "col4": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Los Angeles",
+   "col3": "Steve Ballmer",
+   "col4": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dallas",
+   "col3": "Mark Cuban",
+   "col4": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia",
+   "col3": "Josh Harris",
+   "col4": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Brooklyn",
+   "col3": "Joseph Tsai",
+   "col4": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Washington",
+   "col3": "Abe Pollin",
+   "col4": "Washington Wizards",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Los Angeles",
+   "col3": "Bob Short",
+   "col4": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Cleveland",
+   "col3": "Dan Gilbert",
+   "col4": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Portland",
+   "col3": "Vulcan Sports and Entertainment",
+   "col4": "Portland Trail Blazers",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  }
+ ]
+}

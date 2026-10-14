@@ -1,0 +1,126 @@
+{
+ "uid": "filter_queries_team#3",
+ "reply": "{\"rows\":[{\"col1\":1967,\"col2\":\"Joseph Tsai\",\"col3\":\"Brooklyn Nets\",\"name_team\":\"Brooklyn Nets\"},{\"col1\":1967,\"col2\":\"Stan Kroenke\",\"col3\":\"Denver Nuggets\",\"name_team\":\"Denver Nuggets\"},{\"col1\":1967,\"col2\":\"Herb Simon\",\"col3\":\"Indiana Pacers\",\"name_team\":\"Indiana Pacers\"},{\"col1\":1967,\"col2\":\"Tilman Fertitta\",\"col3\":\"Houston Rockets\",\"name_team\":\"Houston Rockets\"},{\"col1\":1967,\"col2\":\"Clay Bennett\",\"col3\":\"Oklahoma City Thunder\",\"name_team\":\"Oklahoma City Thunder\"},{\"col1\":1967,\"col2\":\"Peter Holt\",\"col3\":\"San Antonio Spurs\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":1968,\"col2\":\"Wes Edens\",\"col3\":\"Milwaukee Bucks\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":1968,\"col2\":\"Mat Ishbia\",\"col3\":\"Phoenix Suns\",\"name_team\":\"Phoenix Suns\"},{\"col1\":1970,\"col2\":\"Dan Gilbert\",\"col3\":\"Cleveland Cavaliers\",\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":1970,\"col2\":\"Steve Ballmer\",\"col3\":\"Los Angeles Clippers\",\"name_team\":\"Los Angeles Clippers\"},{\"col1\":1970,\"col2\":\"Jody Allen\",\"col3\":\"Portland Trail Blazers\",\"name_team\":\"Portland Trail Blazers\"},{\"col1\":1974,\"col2\":\"Ryan Smith\",\"col3\":\"Utah Jazz\",\"name_team\":\"Utah Jazz\"},{\"col1\":1980,\"col2\":\"Patrick Dumont\",\"col3\":\"Dallas Mavericks\",\"name_team\":\"Dallas Mavericks\"},{\"col1\":1988,\"col2\":\"Rick Schnall\",\"col3\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":1988,\"col2\":\"Micky Arison\",\"col3\":\"Miami Heat\",\"name_team\":\"Miami Heat\"},{\"col1\":1989,\"col2\":\"Glen Taylor\",\"col3\":\"Minnesota Timberwolves\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1989,\"col2\":\"Dan DeVos\",\"col3\":\"Orlando Magic\",\"name_team\":\"Orlando Magic\"},{\"col1\":1995,\"col2\":\"Robert Pera\",\"col3\":\"Memphis Grizzlies\",\"name_team\":\"Memphis Grizzlies\"},{\"col1\":1995,\"col2\":\"Larry Tanenbaum\",\"col3\":\"Toronto Raptors\",\"name_team\":\"Toronto Raptors\"},{\"col1\":2002,\"col2\":\"Gayle Benson\",\"col3\":\"New Orleans Pelicans\",\"name_team\":\"New Orleans Pelicans\"}]}",
+ "rows": [
+  {
+   "col1": 1967,
+   "col2": "Joseph Tsai",
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1967,
+   "col2": "Stan Kroenke",
+   "col3": "Denver Nuggets",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 1967,
+   "col2": "Herb Simon",
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 1967,
+   "col2": "Tilman Fertitta",
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 1967,
+   "col2": "Clay Bennett",
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 1967,
+   "col2": "Peter Holt",
+   "col3": "San Antonio Spurs",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 1968,
+   "col2": "Wes Edens",
+   "col3": "Milwaukee Bucks",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 1968,
+   "col2": "Mat Ishbia",
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 1970,
+   "col2": "Dan Gilbert",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 1970,
+   "col2": "Steve Ballmer",
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 1970,
+   "col2": "Jody Allen",
+   "col3": "Portland Trail Blazers",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": 1974,
+   "col2": "Ryan Smith",
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 1980,
+   "col2": "Patrick Dumont",
+   "col3": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 1988,
+   "col2": "Rick Schnall",
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 1988,
+   "col2": "Micky Arison",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 1989,
+   "col2": "Glen Taylor",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1989,
+   "col2": "Dan DeVos",
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 1995,
+   "col2": "Robert Pera",
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 1995,
+   "col2": "Larry Tanenbaum",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 2002,
+   "col2": "Gayle Benson",
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "uid": "join_queries#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Denver\",\"col2\":715522,\"col3\":null,\"col4\":\"Denver\",\"name_team\":\"Denver Nuggets\",\"name_city\":\"Denver\"},{\"col1\":\"Philadelphia\",\"col2\":1603797,\"col3\":null,\"col4\":\"Philadelphia\",\"name_team\":\"Philadelphia 76ers\",\"name_city\":\"Philadelphia\"},{\"col1\":\"New York\",\"col2\":8804190,\"col3\":null,\"col4\":\"New York\",\"name_team\":\"New York Knicks\",\"name_city\":\"New York\"},{\"col1\":\"Seattle\",\"col2\":null,\"col3\":null,\"col4\":\"Oklahoma City\",\"name_team\":\"Seattle SuperSonics\",\"name_city\":\"Seattle\"}]}",
+ "rows": [
+  {
+   "col1": "Denver",
+   "col2": 715522,
+   "col3": null,
+   "col4": "Denver",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": 1603797,
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "New York",
+   "col2": 8804190,
+   "col3": null,
+   "col4": "New York",
+   "name_team": "New York Knicks",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Seattle",
+   "col2": null,
+   "col3": null,
+   "col4": "Oklahoma City",
+   "name_team": "Seattle SuperSonics",
+   "name_city": "Seattle"
+  }
+ ],
+ "secs": 9.2
+}

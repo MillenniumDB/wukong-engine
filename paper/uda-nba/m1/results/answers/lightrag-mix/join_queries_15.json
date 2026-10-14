@@ -1,0 +1,57 @@
+{
+ "uid": "join_queries#15",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Stan Kroenke\",\"col2\":null,\"col3\":\"Denver\",\"col4\":null,\"col5\":null,\"name_player\":null,\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Jerry Michael Reinsdorf\",\"col2\":null,\"col3\":\"Chicago\",\"col4\":88,\"col5\":null,\"name_player\":null,\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":\"Tom Gores\",\"col2\":null,\"col3\":\"Detroit\",\"col4\":null,\"col5\":null,\"name_player\":null,\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Daniel Gilbert\",\"col2\":1970,\"col3\":\"Cleveland\",\"col4\":62,\"col5\":null,\"name_player\":null,\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Daniel Gilbert\"},{\"col1\":\"Clayton Ike Bennett\",\"col2\":null,\"col3\":\"Oklahoma City\",\"col4\":null,\"col5\":null,\"name_player\":null,\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clayton Ike Bennett\"}]}",
+ "rows": [
+  {
+   "col1": "Stan Kroenke",
+   "col2": null,
+   "col3": "Denver",
+   "col4": null,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": null,
+   "col3": "Chicago",
+   "col4": 88,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": null,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Daniel Gilbert",
+   "col2": 1970,
+   "col3": "Cleveland",
+   "col4": 62,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": null,
+   "col3": "Oklahoma City",
+   "col4": null,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  }
+ ]
+}

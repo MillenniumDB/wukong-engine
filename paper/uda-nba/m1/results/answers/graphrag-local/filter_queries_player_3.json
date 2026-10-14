@@ -1,0 +1,188 @@
+{
+ "uid": "filter_queries_player#3",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":2,\"col2\":null,\"col3\":\"Giannis Antetokounmpo\",\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":3,\"col2\":null,\"col3\":\"Nikola Joki\u0107\",\"name_player\":\"Nikola Joki\u0107\"},{\"col1\":1,\"col2\":null,\"col3\":\"Joel Embiid\",\"name_player\":\"Joel Embiid\"},{\"col1\":2,\"col2\":null,\"col3\":\"Stephen Curry\",\"name_player\":\"Stephen Curry\"},{\"col1\":4,\"col2\":1,\"col3\":\"LeBron James\",\"name_player\":\"LeBron James\"},{\"col1\":5,\"col2\":null,\"col3\":\"Michael Jordan\",\"name_player\":\"Michael Jordan\"},{\"col1\":2,\"col2\":null,\"col3\":\"Tim Duncan\",\"name_player\":\"Tim Duncan\"},{\"col1\":2,\"col2\":null,\"col3\":\"Steve Nash\",\"name_player\":\"Steve Nash\"},{\"col1\":1,\"col2\":null,\"col3\":\"Bill Walton\",\"name_player\":\"Bill Walton\"},{\"col1\":1,\"col2\":null,\"col3\":\"Wes Unseld\",\"name_player\":\"Wes Unseld\"},{\"col1\":1,\"col2\":null,\"col3\":\"Bob McAdoo\",\"name_player\":\"Bob McAdoo\"},{\"col1\":2,\"col2\":null,\"col3\":\"Karl Malone\",\"name_player\":\"Karl Malone\"},{\"col1\":3,\"col2\":null,\"col3\":\"Moses Malone\",\"name_player\":\"Moses Malone\"},{\"col1\":1,\"col2\":null,\"col3\":\"David Robinson\",\"name_player\":\"David Robinson\"},{\"col1\":1,\"col2\":null,\"col3\":\"Kobe Bryant\",\"name_player\":\"Kobe Bryant\"},{\"col1\":1,\"col2\":1,\"col3\":\"Shaquille O'Neal\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1,\"col2\":null,\"col3\":\"James Harden\",\"name_player\":\"James Harden\"},{\"col1\":1,\"col2\":null,\"col3\":\"Kevin Durant\",\"name_player\":\"Kevin Durant\"},{\"col1\":1,\"col2\":null,\"col3\":\"Allen Iverson\",\"name_player\":\"Allen Iverson\"},{\"col1\":1,\"col2\":null,\"col3\":\"Charles Barkley\",\"name_player\":\"Charles Barkley\"},{\"col1\":3,\"col2\":null,\"col3\":\"Magic Johnson\",\"name_player\":\"Magic Johnson\"},{\"col1\":4,\"col2\":null,\"col3\":\"Wilt Chamberlain\",\"name_player\":\"Wilt Chamberlain\"},{\"col1\":1,\"col2\":null,\"col3\":\"Derrick Rose\",\"name_player\":\"Derrick Rose\"},{\"col1\":1,\"col2\":null,\"col3\":\"Kareem Abdul-Jabbar\",\"name_player\":\"Kareem Abdul-Jabbar\"},{\"col1\":1,\"col2\":null,\"col3\":\"Bob Cousy\",\"name_player\":\"Bob Cousy\"},{\"col1\":5,\"col2\":null,\"col3\":\"Bill Russell\",\"name_player\":\"Bill Russell\"},{\"col1\":1,\"col2\":null,\"col3\":\"Dave Cowens\",\"name_player\":\"Dave Cowens\"},{\"col1\":3,\"col2\":null,\"col3\":\"Larry Bird\",\"name_player\":\"Larry Bird\"},{\"col1\":1,\"col2\":null,\"col3\":\"Willis Reed\",\"name_player\":\"Willis Reed\"},{\"col1\":1,\"col2\":null,\"col3\":\"Dirk Nowitzki\",\"name_player\":\"Dirk Nowitzki\"}]}",
+ "rows": [
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Giannis Antetokounmpo",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 3,
+   "col2": null,
+   "col3": "Nikola Joki\u0107",
+   "name_player": "Nikola Joki\u0107"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Joel Embiid",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Stephen Curry",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 4,
+   "col2": 1,
+   "col3": "LeBron James",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 5,
+   "col2": null,
+   "col3": "Michael Jordan",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Tim Duncan",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Steve Nash",
+   "name_player": "Steve Nash"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Bill Walton",
+   "name_player": "Bill Walton"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Wes Unseld",
+   "name_player": "Wes Unseld"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Bob McAdoo",
+   "name_player": "Bob McAdoo"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Karl Malone",
+   "name_player": "Karl Malone"
+  },
+  {
+   "col1": 3,
+   "col2": null,
+   "col3": "Moses Malone",
+   "name_player": "Moses Malone"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "David Robinson",
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Kobe Bryant",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "James Harden",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Kevin Durant",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Allen Iverson",
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Charles Barkley",
+   "name_player": "Charles Barkley"
+  },
+  {
+   "col1": 3,
+   "col2": null,
+   "col3": "Magic Johnson",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": 4,
+   "col2": null,
+   "col3": "Wilt Chamberlain",
+   "name_player": "Wilt Chamberlain"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Derrick Rose",
+   "name_player": "Derrick Rose"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Kareem Abdul-Jabbar",
+   "name_player": "Kareem Abdul-Jabbar"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Bob Cousy",
+   "name_player": "Bob Cousy"
+  },
+  {
+   "col1": 5,
+   "col2": null,
+   "col3": "Bill Russell",
+   "name_player": "Bill Russell"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Dave Cowens",
+   "name_player": "Dave Cowens"
+  },
+  {
+   "col1": 3,
+   "col2": null,
+   "col3": "Larry Bird",
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Willis Reed",
+   "name_player": "Willis Reed"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Dirk Nowitzki",
+   "name_player": "Dirk Nowitzki"
+  }
+ ],
+ "secs": 16.5
+}

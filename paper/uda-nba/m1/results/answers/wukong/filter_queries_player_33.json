@@ -1,0 +1,103 @@
+{
+ "uid": "filter_queries_player#33",
+ "rows": [
+  {
+   "col1": "Fresno State",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "Duke",
+   "col2": 34,
+   "col3": "Backcourt",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "Davidson College",
+   "col2": 38,
+   "col3": "Backcourt",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": 22,
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": "North Carolina",
+   "col2": 34,
+   "col3": "Frontcourt",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "University of Georgia",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 31,
+   "col3": "Backcourt",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "North Carolina State University; University of Nevada, Reno",
+   "col2": 31,
+   "col3": "Frontcourt",
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": "Pepperdine University",
+   "col2": 38,
+   "col3": null,
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": "University of Kansas",
+   "col2": 32,
+   "col3": "Frontcourt",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Tyler Junior College and Marquette University",
+   "col2": 37,
+   "col3": "Frontcourt",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "Villanova Wildcats",
+   "col2": 40,
+   "col3": "Backcourt",
+   "name_player": "Kyle Lowry"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, CASE WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) > 14) THEN 2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - 1 ELSE 2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) END AS age, t\nWHERE age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1 AND (t.team_name = 'Detroit Pistons' OR p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, t,\n  2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) -\n  CASE\n    WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n      OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n    THEN 1 ELSE 0\n  END AS age\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "uid": "filter_queries_manager#1",
+ "reply": "{\"rows\":[{\"col1\":65,\"col2\":\"Atlanta Hawks\",\"col3\":\"Antony Ressler\",\"name_manager\":\"Antony Ressler\"},{\"col1\":65,\"col2\":\"Boston Celtics\",\"col3\":\"Wycliffe K. Grousbeck\",\"name_manager\":\"Wycliffe K. Grousbeck\"},{\"col1\":62,\"col2\":\"Brooklyn Nets\",\"col3\":\"Joseph Tsai\",\"name_manager\":\"Joseph Tsai\"},{\"col1\":60,\"col2\":\"Charlotte Hornets\",\"col3\":\"Richard Schnall\",\"name_manager\":\"Richard Schnall\"},{\"col1\":90,\"col2\":\"Chicago Bulls\",\"col3\":\"Jerry Reinsdorf\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":62,\"col2\":\"Dallas Mavericks\",\"col3\":\"Patrick Dumont\",\"name_manager\":\"Patrick Dumont\"},{\"col1\":79,\"col2\":\"Denver Nuggets\",\"col3\":\"Enos Stanley Kroenke\",\"name_manager\":\"Enos Stanley Kroenke\"},{\"col1\":62,\"col2\":\"Detroit Pistons\",\"col3\":\"Tom Gores\",\"name_manager\":\"Tom Gores\"},{\"col1\":70,\"col2\":\"Golden State Warriors\",\"col3\":\"Joseph Steven Lacob\",\"name_manager\":\"Joseph Steven Lacob\"},{\"col1\":69,\"col2\":\"Houston Rockets\",\"col3\":\"Tilman Joseph Fertitta\",\"name_manager\":\"Tilman Joseph Fertitta\"},{\"col1\":92,\"col2\":\"Indiana Pacers\",\"col3\":\"Herbert Simon\",\"name_manager\":\"Herbert Simon\"},{\"col1\":70,\"col2\":\"Los Angeles Clippers\",\"col3\":\"Steven Anthony Ballmer\",\"name_manager\":\"Steven Anthony Ballmer\"},{\"col1\":64,\"col2\":\"Los Angeles Lakers\",\"col3\":\"Jeanie Marie Buss\",\"name_manager\":\"Jeanie Marie Buss\"},{\"col1\":48,\"col2\":\"Memphis Grizzlies\",\"col3\":\"Robert J. Pera\",\"name_manager\":\"Robert J. Pera\"},{\"col1\":77,\"col2\":\"Miami Heat\",\"col3\":\"Micky Arison\",\"name_manager\":\"Micky Arison\"},{\"col1\":59,\"col2\":\"Milwaukee Bucks\",\"col3\":\"Wesley Robert Edens\",\"name_manager\":\"Wesley Robert Edens\"},{\"col1\":86,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Glen A. Taylor\",\"name_manager\":\"Glen A. Taylor\"},{\"col1\":78,\"col2\":\"New Orleans Pelicans\",\"col3\":\"Gayle Marie LaJaunie Benson\",\"name_manager\":\"Gayle Marie LaJaunie Benson\"},{\"col1\":71,\"col2\":\"New York Knicks\",\"col3\":\"James Lawrence Dolan\",\"name_manager\":\"James Lawrence Dolan\"},{\"col1\":67,\"col2\":\"Oklahoma City Thunder\",\"col3\":\"W. Clayton Bennett\",\"name_manager\":\"W. Clayton Bennett\"},{\"col1\":67,\"col2\":\"Orlando Magic\",\"col3\":\"Daniel DeVos\",\"name_manager\":\"Daniel DeVos\"},{\"col1\":62,\"col2\":\"Philadelphia 76ers\",\"col3\":\"Joshua Jordan Harris\",\"name_manager\":\"Joshua Jordan Harris\"},{\"col1\":47,\"col2\":\"Phoenix Suns\",\"col3\":\"Mathew Ishbia\",\"name_manager\":\"Mathew Ishbia\"},{\"col1\":67,\"col2\":\"Portland Trail Blazers\",\"col3\":\"Jody Allen\",\"name_manager\":\"Jody Allen\"},{\"col1\":69,\"col2\":\"Sacramento Kings\",\"col3\":\"Vivek Ranadiv\u00e9\",\"name_manager\":\"Vivek Ranadiv\u00e9\"},{\"col1\":79,\"col2\":\"San Antonio Spurs\",\"col3\":\"Peter M. Holt\",\"name_manager\":\"Peter M. Holt\"},{\"col1\":81,\"col2\":\"Toronto Raptors\",\"col3\":\"Larry Tanenbaum\",\"name_manager\":\"Larry Tanenbaum\"},{\"col1\":48,\"col2\":\"Utah Jazz\",\"col3\":\"Ryan Smith\",\"name_manager\":\"Ryan Smith\"},{\"col1\":69,\"col2\":\"Washington Wizards\",\"col3\":\"Theodore John Leonsis\",\"name_manager\":\"Theodore John Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": 65,
+   "col2": "Atlanta Hawks",
+   "col3": "Antony Ressler",
+   "name_manager": "Antony Ressler"
+  },
+  {
+   "col1": 65,
+   "col2": "Boston Celtics",
+   "col3": "Wycliffe K. Grousbeck",
+   "name_manager": "Wycliffe K. Grousbeck"
+  },
+  {
+   "col1": 62,
+   "col2": "Brooklyn Nets",
+   "col3": "Joseph Tsai",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": 60,
+   "col2": "Charlotte Hornets",
+   "col3": "Richard Schnall",
+   "name_manager": "Richard Schnall"
+  },
+  {
+   "col1": 90,
+   "col2": "Chicago Bulls",
+   "col3": "Jerry Reinsdorf",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 62,
+   "col2": "Dallas Mavericks",
+   "col3": "Patrick Dumont",
+   "name_manager": "Patrick Dumont"
+  },
+  {
+   "col1": 79,
+   "col2": "Denver Nuggets",
+   "col3": "Enos Stanley Kroenke",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": 62,
+   "col2": "Detroit Pistons",
+   "col3": "Tom Gores",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 70,
+   "col2": "Golden State Warriors",
+   "col3": "Joseph Steven Lacob",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": 69,
+   "col2": "Houston Rockets",
+   "col3": "Tilman Joseph Fertitta",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": 92,
+   "col2": "Indiana Pacers",
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 70,
+   "col2": "Los Angeles Clippers",
+   "col3": "Steven Anthony Ballmer",
+   "name_manager": "Steven Anthony Ballmer"
+  },
+  {
+   "col1": 64,
+   "col2": "Los Angeles Lakers",
+   "col3": "Jeanie Marie Buss",
+   "name_manager": "Jeanie Marie Buss"
+  },
+  {
+   "col1": 48,
+   "col2": "Memphis Grizzlies",
+   "col3": "Robert J. Pera",
+   "name_manager": "Robert J. Pera"
+  },
+  {
+   "col1": 77,
+   "col2": "Miami Heat",
+   "col3": "Micky Arison",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": 59,
+   "col2": "Milwaukee Bucks",
+   "col3": "Wesley Robert Edens",
+   "name_manager": "Wesley Robert Edens"
+  },
+  {
+   "col1": 86,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Glen A. Taylor",
+   "name_manager": "Glen A. Taylor"
+  },
+  {
+   "col1": 78,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Marie LaJaunie Benson",
+   "name_manager": "Gayle Marie LaJaunie Benson"
+  },
+  {
+   "col1": 71,
+   "col2": "New York Knicks",
+   "col3": "James Lawrence Dolan",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": 67,
+   "col2": "Oklahoma City Thunder",
+   "col3": "W. Clayton Bennett",
+   "name_manager": "W. Clayton Bennett"
+  },
+  {
+   "col1": 67,
+   "col2": "Orlando Magic",
+   "col3": "Daniel DeVos",
+   "name_manager": "Daniel DeVos"
+  },
+  {
+   "col1": 62,
+   "col2": "Philadelphia 76ers",
+   "col3": "Joshua Jordan Harris",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": 47,
+   "col2": "Phoenix Suns",
+   "col3": "Mathew Ishbia",
+   "name_manager": "Mathew Ishbia"
+  },
+  {
+   "col1": 67,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jody Allen",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": 69,
+   "col2": "Sacramento Kings",
+   "col3": "Vivek Ranadiv\u00e9",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": 79,
+   "col2": "San Antonio Spurs",
+   "col3": "Peter M. Holt",
+   "name_manager": "Peter M. Holt"
+  },
+  {
+   "col1": 81,
+   "col2": "Toronto Raptors",
+   "col3": "Larry Tanenbaum",
+   "name_manager": "Larry Tanenbaum"
+  },
+  {
+   "col1": 48,
+   "col2": "Utah Jazz",
+   "col3": "Ryan Smith",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": 69,
+   "col2": "Washington Wizards",
+   "col3": "Theodore John Leonsis",
+   "name_manager": "Theodore John Leonsis"
+  }
+ ]
+}

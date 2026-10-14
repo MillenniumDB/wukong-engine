@@ -1,0 +1,27 @@
+{
+ "uid": "join_queries#12",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"California\",\"col2\":\"Harrison Bryce Jordan Barnes\",\"col3\":\"North Carolina\",\"col4\":1946,\"col5\":\"Golden State Warriors\",\"name_player\":\"Harrison Bryce Jordan Barnes\",\"name_team\":\"Golden State Warriors\",\"name_city\":\"San Francisco\"},{\"col1\":\"Colorado\",\"col2\":\"David Thompson\",\"col3\":\"North Carolina State\",\"col4\":1967,\"col5\":\"Denver Nuggets\",\"name_player\":\"David Thompson\",\"name_team\":\"Denver Nuggets\",\"name_city\":\"Denver\"}]}",
+ "rows": [
+  {
+   "col1": "California",
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": "North Carolina",
+   "col4": 1946,
+   "col5": "Golden State Warriors",
+   "name_player": "Harrison Bryce Jordan Barnes",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Colorado",
+   "col2": "David Thompson",
+   "col3": "North Carolina State",
+   "col4": 1967,
+   "col5": "Denver Nuggets",
+   "name_player": "David Thompson",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  }
+ ]
+}

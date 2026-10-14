@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_manager#1",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"Philadelphia 76ers\",\"col3\":\"Josh Harris\",\"name_manager\":\"Josh Harris\"},{\"col1\":null,\"col2\":\"Philadelphia 76ers\",\"col3\":\"David Blitzer\",\"name_manager\":\"David Blitzer\"},{\"col1\":null,\"col2\":\"Denver Nuggets\",\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":null,\"col2\":\"Charlotte Hornets\",\"col3\":\"Michael Jordan\",\"name_manager\":\"Michael Jordan\"},{\"col1\":80,\"col2\":\"Los Angeles Lakers\",\"col3\":\"Jerry Buss\",\"name_manager\":\"Jerry Buss\"},{\"col1\":null,\"col2\":\"Los Angeles Lakers\",\"col3\":\"Jeanie Buss\",\"name_manager\":\"Jeanie Buss\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Josh Harris",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "David Blitzer",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Michael Jordan",
+   "name_manager": "Michael Jordan"
+  },
+  {
+   "col1": 80,
+   "col2": "Los Angeles Lakers",
+   "col3": "Jerry Buss",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Jeanie Buss",
+   "name_manager": "Jeanie Buss"
+  }
+ ]
+}

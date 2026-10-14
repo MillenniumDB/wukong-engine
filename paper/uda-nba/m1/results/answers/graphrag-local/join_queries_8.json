@@ -1,0 +1,24 @@
+{
+ "uid": "join_queries#8",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Stan Kroenke\",\"col2\":2000,\"col3\":\"Denver Nuggets\",\"col4\":null,\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Ted Leonsis\",\"col2\":2010,\"col3\":\"Washington Wizards\",\"col4\":null,\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": "Stan Kroenke",
+   "col2": 2000,
+   "col3": "Denver Nuggets",
+   "col4": null,
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": 2010,
+   "col3": "Washington Wizards",
+   "col4": null,
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  }
+ ],
+ "secs": 5.5
+}

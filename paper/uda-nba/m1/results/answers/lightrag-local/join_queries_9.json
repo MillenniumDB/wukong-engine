@@ -1,0 +1,39 @@
+{
+ "uid": "join_queries#9",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Philadelphia 76ers\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Phoenix Suns\",\"col3\":1968,\"col4\":\"American\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Jerry Colangelo\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Denver Nuggets\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Golden State Warriors\",\"col3\":null,\"col4\":\"American\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"}]}",
+ "rows": [
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia 76ers",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Phoenix Suns",
+   "col3": 1968,
+   "col4": "American",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Jerry Colangelo"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver Nuggets",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Golden State Warriors",
+   "col3": null,
+   "col4": "American",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  }
+ ]
+}

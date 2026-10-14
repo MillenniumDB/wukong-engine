@@ -1,0 +1,120 @@
+{
+ "uid": "select_queries_player#4",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"Chauncey Ray Billups\",\"col3\":1,\"name_player\":\"Chauncey Ray Billups\"},{\"col1\":1,\"col2\":\"Rajon Pierre Rondo\",\"col3\":1,\"name_player\":\"Rajon Pierre Rondo\"},{\"col1\":1,\"col2\":\"Tyson Cleotis Chandler\",\"col3\":1,\"name_player\":\"Tyson Cleotis Chandler\"},{\"col1\":1,\"col2\":\"Richard Allen Jefferson\",\"col3\":1,\"name_player\":\"Richard Allen Jefferson\"},{\"col1\":1,\"col2\":\"Andre Tyler Iguodala\",\"col3\":1,\"name_player\":\"Andre Tyler Iguodala\"},{\"col1\":1,\"col2\":\"Derrick Martell Rose\",\"col3\":1,\"name_player\":\"Derrick Martell Rose\"},{\"col1\":1,\"col2\":\"Kevin Wesley Love\",\"col3\":1,\"name_player\":\"Kevin Wesley Love\"},{\"col1\":1,\"col2\":\"James Edward Harden Jr.\",\"col3\":1,\"name_player\":\"James Edward Harden Jr.\"},{\"col1\":1,\"col2\":\"Kyrie Andrew Irving\",\"col3\":1,\"name_player\":\"Kyrie Andrew Irving\"},{\"col1\":1,\"col2\":\"Anthony Marshon Davis Jr.\",\"col3\":1,\"name_player\":\"Anthony Marshon Davis Jr.\"},{\"col1\":1,\"col2\":\"DeAndre Jordan\",\"col3\":1,\"name_player\":\"DeAndre Jordan\"},{\"col1\":1,\"col2\":\"Kyle Terrell Lowry\",\"col3\":1,\"name_player\":\"Kyle Terrell Lowry\"},{\"col1\":1,\"col2\":\"Harrison Bryce Jordan Barnes\",\"col3\":1,\"name_player\":\"Harrison Bryce Jordan Barnes\"},{\"col1\":1,\"col2\":\"DeMarcus Amir Cousins\",\"col3\":1,\"name_player\":\"DeMarcus Amir Cousins\"},{\"col1\":2,\"col2\":\"Kevin Wayne Durant\",\"col3\":1,\"name_player\":\"Kevin Wayne Durant\"},{\"col1\":2,\"col2\":\"Lamar Joseph Odom\",\"col3\":1,\"name_player\":\"Lamar Joseph Odom\"},{\"col1\":2,\"col2\":\"Pau Gasol S\u00e1ez\",\"col3\":1,\"name_player\":\"Pau Gasol S\u00e1ez\"},{\"col1\":4,\"col2\":\"Klay Alexander Thompson\",\"col3\":1,\"name_player\":\"Klay Alexander Thompson\"},{\"col1\":4,\"col2\":\"Draymond Jamal Green\",\"col3\":1,\"name_player\":\"Draymond Jamal Green\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "Chauncey Ray Billups",
+   "col3": 1,
+   "name_player": "Chauncey Ray Billups"
+  },
+  {
+   "col1": 1,
+   "col2": "Rajon Pierre Rondo",
+   "col3": 1,
+   "name_player": "Rajon Pierre Rondo"
+  },
+  {
+   "col1": 1,
+   "col2": "Tyson Cleotis Chandler",
+   "col3": 1,
+   "name_player": "Tyson Cleotis Chandler"
+  },
+  {
+   "col1": 1,
+   "col2": "Richard Allen Jefferson",
+   "col3": 1,
+   "name_player": "Richard Allen Jefferson"
+  },
+  {
+   "col1": 1,
+   "col2": "Andre Tyler Iguodala",
+   "col3": 1,
+   "name_player": "Andre Tyler Iguodala"
+  },
+  {
+   "col1": 1,
+   "col2": "Derrick Martell Rose",
+   "col3": 1,
+   "name_player": "Derrick Martell Rose"
+  },
+  {
+   "col1": 1,
+   "col2": "Kevin Wesley Love",
+   "col3": 1,
+   "name_player": "Kevin Wesley Love"
+  },
+  {
+   "col1": 1,
+   "col2": "James Edward Harden Jr.",
+   "col3": 1,
+   "name_player": "James Edward Harden Jr."
+  },
+  {
+   "col1": 1,
+   "col2": "Kyrie Andrew Irving",
+   "col3": 1,
+   "name_player": "Kyrie Andrew Irving"
+  },
+  {
+   "col1": 1,
+   "col2": "Anthony Marshon Davis Jr.",
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": 1,
+   "col2": "DeAndre Jordan",
+   "col3": 1,
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": 1,
+   "col2": "Kyle Terrell Lowry",
+   "col3": 1,
+   "name_player": "Kyle Terrell Lowry"
+  },
+  {
+   "col1": 1,
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": 1,
+   "name_player": "Harrison Bryce Jordan Barnes"
+  },
+  {
+   "col1": 1,
+   "col2": "DeMarcus Amir Cousins",
+   "col3": 1,
+   "name_player": "DeMarcus Amir Cousins"
+  },
+  {
+   "col1": 2,
+   "col2": "Kevin Wayne Durant",
+   "col3": 1,
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": 2,
+   "col2": "Lamar Joseph Odom",
+   "col3": 1,
+   "name_player": "Lamar Joseph Odom"
+  },
+  {
+   "col1": 2,
+   "col2": "Pau Gasol S\u00e1ez",
+   "col3": 1,
+   "name_player": "Pau Gasol S\u00e1ez"
+  },
+  {
+   "col1": 4,
+   "col2": "Klay Alexander Thompson",
+   "col3": 1,
+   "name_player": "Klay Alexander Thompson"
+  },
+  {
+   "col1": 4,
+   "col2": "Draymond Jamal Green",
+   "col3": 1,
+   "name_player": "Draymond Jamal Green"
+  }
+ ]
+}

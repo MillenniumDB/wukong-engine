@@ -1,0 +1,87 @@
+{
+ "uid": "join_queries#15",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Stan Kroenke\",\"col2\":1967,\"col3\":\"Denver\",\"col4\":79,\"col5\":null,\"name_player\":null,\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Clay Bennett\",\"col2\":1967,\"col3\":\"Oklahoma City\",\"col4\":66,\"col5\":null,\"name_player\":null,\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clay Bennett\"},{\"col1\":\"George Shinn\",\"col2\":1988,\"col3\":\"Charlotte\",\"col4\":null,\"col5\":null,\"name_player\":null,\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"George Shinn\"},{\"col1\":\"Gayle Benson\",\"col2\":2002,\"col3\":\"New Orleans\",\"col4\":79,\"col5\":null,\"name_player\":null,\"name_team\":\"New Orleans Pelicans\",\"name_manager\":\"Gayle Benson\"},{\"col1\":\"Marv Wolfenson\",\"col2\":1989,\"col3\":\"Minneapolis\",\"col4\":null,\"col5\":null,\"name_player\":\"Gary Trent\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Marv Wolfenson\"},{\"col1\":\"Harvey Ratner\",\"col2\":1989,\"col3\":\"Minneapolis\",\"col4\":null,\"col5\":null,\"name_player\":\"Gary Trent\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Harvey Ratner\"},{\"col1\":\"Karl Eller\",\"col2\":1968,\"col3\":\"Phoenix\",\"col4\":null,\"col5\":\"American\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Karl Eller\"},{\"col1\":\"Allan Slaight\",\"col2\":1995,\"col3\":\"Toronto\",\"col4\":null,\"col5\":null,\"name_player\":null,\"name_team\":\"Toronto Raptors\",\"name_manager\":\"Allan Slaight\"}]}",
+ "rows": [
+  {
+   "col1": "Stan Kroenke",
+   "col2": 1967,
+   "col3": "Denver",
+   "col4": 79,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": 1967,
+   "col3": "Oklahoma City",
+   "col4": 66,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "George Shinn",
+   "col2": 1988,
+   "col3": "Charlotte",
+   "col4": null,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Charlotte Hornets",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": "Gayle Benson",
+   "col2": 2002,
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": null,
+   "name_player": null,
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "Marv Wolfenson",
+   "col2": 1989,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gary Trent",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marv Wolfenson"
+  },
+  {
+   "col1": "Harvey Ratner",
+   "col2": 1989,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gary Trent",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Harvey Ratner"
+  },
+  {
+   "col1": "Karl Eller",
+   "col2": 1968,
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": "American",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": "Allan Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": null,
+   "name_team": "Toronto Raptors",
+   "name_manager": "Allan Slaight"
+  }
+ ]
+}

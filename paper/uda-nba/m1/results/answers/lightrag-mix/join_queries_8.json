@@ -1,0 +1,31 @@
+{
+ "uid": "join_queries#8",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Tom Gores\",\"col2\":2011,\"col3\":\"Detroit Pistons\",\"col4\":1937,\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":1985,\"col3\":\"Chicago Bulls\",\"col4\":1966,\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Jerry Buss\",\"col2\":1979,\"col3\":\"Los Angeles Lakers\",\"col4\":1947,\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jerry Buss\"}]}",
+ "rows": [
+  {
+   "col1": "Tom Gores",
+   "col2": 2011,
+   "col3": "Detroit Pistons",
+   "col4": 1937,
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1985,
+   "col3": "Chicago Bulls",
+   "col4": 1966,
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": 1979,
+   "col3": "Los Angeles Lakers",
+   "col4": 1947,
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  }
+ ]
+}

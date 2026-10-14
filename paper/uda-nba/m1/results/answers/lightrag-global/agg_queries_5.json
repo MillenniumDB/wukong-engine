@@ -1,0 +1,35 @@
+{
+ "uid": "agg_queries#5",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":8},{\"col1\":\"Australian\",\"col2\":1},{\"col1\":\"British\",\"col2\":1},{\"col1\":\"Cameroonian\",\"col2\":1},{\"col1\":\"Croatian\",\"col2\":1},{\"col1\":\"Dominican\",\"col2\":1},{\"col1\":\"German\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 8
+  },
+  {
+   "col1": "Australian",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Cameroonian",
+   "col2": 1
+  },
+  {
+   "col1": "Croatian",
+   "col2": 1
+  },
+  {
+   "col1": "Dominican",
+   "col2": 1
+  },
+  {
+   "col1": "German",
+   "col2": 1
+  }
+ ]
+}

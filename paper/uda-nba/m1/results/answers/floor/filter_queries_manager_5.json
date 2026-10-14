@@ -1,0 +1,180 @@
+{
+ "uid": "filter_queries_manager#5",
+ "reply": "{\"rows\":[{\"col1\":2015,\"col2\":65,\"col3\":\"American\",\"name_manager\":\"Tony Ressler\"},{\"col1\":2002,\"col2\":64,\"col3\":\"American\",\"name_manager\":\"Wyc Grousbeck\"},{\"col1\":2019,\"col2\":62,\"col3\":\"Taiwanese-Canadian\",\"name_manager\":\"Joseph Chung-Hsin Tsai\"},{\"col1\":2010,\"col2\":63,\"col3\":\"American\",\"name_manager\":\"Michael Jordan\"},{\"col1\":1985,\"col2\":90,\"col3\":\"American\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":2005,\"col2\":64,\"col3\":\"American\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":2000,\"col2\":68,\"col3\":\"American\",\"name_manager\":\"Mark Cuban\"},{\"col1\":2000,\"col2\":79,\"col3\":\"American\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":2011,\"col2\":61,\"col3\":\"American\",\"name_manager\":\"Tom Gores\"},{\"col1\":2010,\"col2\":69,\"col3\":\"American\",\"name_manager\":\"Joe Lacob\"},{\"col1\":2017,\"col2\":69,\"col3\":\"American\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":1983,\"col2\":90,\"col3\":\"American\",\"name_manager\":\"Herb Simon\"},{\"col1\":2014,\"col2\":70,\"col3\":\"American\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":2021,\"col2\":66,\"col3\":\"American\",\"name_manager\":\"Mark Walter\"},{\"col1\":2012,\"col2\":48,\"col3\":\"American\",\"name_manager\":\"Robert Pera\"},{\"col1\":1995,\"col2\":76,\"col3\":\"American\",\"name_manager\":\"Micky Arison\"},{\"col1\":2014,\"col2\":59,\"col3\":\"American\",\"name_manager\":\"Wes Edens\"},{\"col1\":2018,\"col2\":79,\"col3\":\"American\",\"name_manager\":\"Gayle Benson\"},{\"col1\":1999,\"col2\":71,\"col3\":\"American\",\"name_manager\":\"James Dolan\"},{\"col1\":2008,\"col2\":66,\"col3\":\"American\",\"name_manager\":\"Clay Bennett\"},{\"col1\":1991,\"col2\":69,\"col3\":\"American\",\"name_manager\":\"Dan DeVos\"},{\"col1\":2011,\"col2\":61,\"col3\":\"American\",\"name_manager\":\"Josh Harris\"},{\"col1\":2023,\"col2\":46,\"col3\":\"American\",\"name_manager\":\"Mat Ishbia\"},{\"col1\":2020,\"col2\":67,\"col3\":\"American\",\"name_manager\":\"Jody Allen\"},{\"col1\":2013,\"col2\":68,\"col3\":\"Indian-American\",\"name_manager\":\"Vivek Ranadive\"},{\"col1\":1994,\"col2\":85,\"col3\":\"American\",\"name_manager\":\"Glen Taylor\"},{\"col1\":1996,\"col2\":76,\"col3\":\"American\",\"name_manager\":\"Peter J. Holt\"},{\"col1\":2020,\"col2\":47,\"col3\":\"American\",\"name_manager\":\"Ryan Smith\"},{\"col1\":2010,\"col2\":69,\"col3\":\"American\",\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": 2015,
+   "col2": 65,
+   "col3": "American",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": 2002,
+   "col2": 64,
+   "col3": "American",
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": 2019,
+   "col2": 62,
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": 2010,
+   "col2": 63,
+   "col3": "American",
+   "name_manager": "Michael Jordan"
+  },
+  {
+   "col1": 1985,
+   "col2": 90,
+   "col3": "American",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 2005,
+   "col2": 64,
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 2000,
+   "col2": 68,
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 2000,
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 2011,
+   "col2": 61,
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 2010,
+   "col2": 69,
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 2017,
+   "col2": 69,
+   "col3": "American",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 1983,
+   "col2": 90,
+   "col3": "American",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": 2014,
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 2021,
+   "col2": 66,
+   "col3": "American",
+   "name_manager": "Mark Walter"
+  },
+  {
+   "col1": 2012,
+   "col2": 48,
+   "col3": "American",
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": 1995,
+   "col2": 76,
+   "col3": "American",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": 2014,
+   "col2": 59,
+   "col3": "American",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": 2018,
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 1999,
+   "col2": 71,
+   "col3": "American",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": 2008,
+   "col2": 66,
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 1991,
+   "col2": 69,
+   "col3": "American",
+   "name_manager": "Dan DeVos"
+  },
+  {
+   "col1": 2011,
+   "col2": 61,
+   "col3": "American",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": 2023,
+   "col2": 46,
+   "col3": "American",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": 2020,
+   "col2": 67,
+   "col3": "American",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": 2013,
+   "col2": 68,
+   "col3": "Indian-American",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": 1994,
+   "col2": 85,
+   "col3": "American",
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": 1996,
+   "col2": 76,
+   "col3": "American",
+   "name_manager": "Peter J. Holt"
+  },
+  {
+   "col1": 2020,
+   "col2": 47,
+   "col3": "American",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": 2010,
+   "col2": 69,
+   "col3": "American",
+   "name_manager": "Ted Leonsis"
+  }
+ ]
+}

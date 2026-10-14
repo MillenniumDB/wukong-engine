@@ -1,0 +1,14 @@
+{
+ "uid": "filter_queries_player#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":0,\"col3\":\"1993/9/15\",\"name_player\":\"Dennis Schr\u00f6der\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1993/9/15",
+   "name_player": "Dennis Schr\u00f6der"
+  }
+ ],
+ "secs": 13.7
+}

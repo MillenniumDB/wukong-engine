@@ -1,0 +1,80 @@
+{
+ "uid": "select_queries_player#4",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"Giannis Antetokounmpo\",\"col3\":0,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":5,\"col2\":\"Tim Duncan\",\"col3\":null,\"name_player\":\"Tim Duncan\"},{\"col1\":4,\"col2\":\"LeBron James\",\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":4,\"col2\":\"Stephen Curry\",\"col3\":2,\"name_player\":\"Stephen Curry\"},{\"col1\":4,\"col2\":\"Shaquille O'Neal\",\"col3\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":3,\"col2\":\"Kevon Looney\",\"col3\":null,\"name_player\":\"Kevon Looney\"},{\"col1\":1,\"col2\":\"Steve Smith\",\"col3\":1,\"name_player\":\"Steve Smith\"},{\"col1\":1,\"col2\":\"Anthony Davis\",\"col3\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"col2\":\"Kyrie Irving\",\"col3\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":2,\"col2\":\"Kevin Durant\",\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":1,\"col2\":\"Jayson Tatum\",\"col3\":null,\"name_player\":\"Jayson Tatum\"},{\"col1\":0,\"col2\":\"Dennis Schr\u00f6der\",\"col3\":1,\"name_player\":\"Dennis Schr\u00f6der\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "Giannis Antetokounmpo",
+   "col3": 0,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 5,
+   "col2": "Tim Duncan",
+   "col3": null,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 4,
+   "col2": "LeBron James",
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 4,
+   "col2": "Stephen Curry",
+   "col3": 2,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 4,
+   "col2": "Shaquille O'Neal",
+   "col3": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 3,
+   "col2": "Kevon Looney",
+   "col3": null,
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": 1,
+   "col2": "Steve Smith",
+   "col3": 1,
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": 1,
+   "col2": "Anthony Davis",
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "col2": "Kyrie Irving",
+   "col3": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2,
+   "col2": "Kevin Durant",
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1,
+   "col2": "Jayson Tatum",
+   "col3": null,
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": 0,
+   "col2": "Dennis Schr\u00f6der",
+   "col3": 1,
+   "name_player": "Dennis Schr\u00f6der"
+  }
+ ],
+ "secs": 9.0
+}

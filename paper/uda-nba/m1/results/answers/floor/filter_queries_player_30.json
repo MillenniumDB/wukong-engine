@@ -1,0 +1,120 @@
+{
+ "uid": "filter_queries_player#30",
+ "reply": "{\"rows\":[{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":2,\"name_player\":\"Michael Jordan\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":2,\"name_player\":\"LeBron James\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":2,\"name_player\":\"Kobe Bryant\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Stephen Curry\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Magic Johnson\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Oscar Robertson\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Jerry West\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Karl Malone\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Julius Erving\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":2,\"name_player\":\"Dwyane Wade\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Chris Paul\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"James Harden\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Russell Westbrook\"},{\"col1\":\"Frontcourt\",\"col2\":\"Serbian\",\"col3\":0,\"name_player\":\"Nikola Jokic\"},{\"col1\":\"Frontcourt\",\"col2\":\"Greek\",\"col3\":0,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":\"Backcourt\",\"col2\":\"Slovenian\",\"col3\":0,\"name_player\":\"Luka Doncic\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Kawhi Leonard\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Anthony Davis\"}]}",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 2,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 2,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 2,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Oscar Robertson"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jerry West"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Karl Malone"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Julius Erving"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 2,
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "James Harden"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Serbian",
+   "col3": 0,
+   "name_player": "Nikola Jokic"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Greek",
+   "col3": 0,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Slovenian",
+   "col3": 0,
+   "name_player": "Luka Doncic"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Kawhi Leonard"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Anthony Davis"
+  }
+ ]
+}

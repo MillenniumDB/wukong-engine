@@ -1,0 +1,306 @@
+{
+ "uid": "join_queries#15",
+ "reply": "{\"rows\":[{\"col1\":\"Tony Ressler\",\"col2\":1946,\"col3\":\"Atlanta\",\"col4\":65,\"col5\":\"American\",\"name_player\":\"Trae Young\",\"name_team\":\"Atlanta Hawks\",\"name_manager\":\"Tony Ressler\"},{\"col1\":\"Wyc Grousbeck\",\"col2\":1946,\"col3\":\"Boston\",\"col4\":64,\"col5\":\"American\",\"name_player\":\"Jayson Tatum\",\"name_team\":\"Boston Celtics\",\"name_manager\":\"Wyc Grousbeck\"},{\"col1\":\"Joe Lacob\",\"col2\":1946,\"col3\":\"San Francisco\",\"col4\":70,\"col5\":\"American\",\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":1966,\"col3\":\"Chicago\",\"col4\":90,\"col5\":\"American\",\"name_player\":\"Nikola Vu\u010devi\u0107\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Mark Cuban\",\"col2\":1980,\"col3\":\"Dallas\",\"col4\":68,\"col5\":\"Slovenian\",\"name_player\":\"Luka Don\u010di\u0107\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Stan Kroenke\",\"col2\":1967,\"col3\":\"Denver\",\"col4\":79,\"col5\":\"Serbian\",\"name_player\":\"Nikola Joki\u0107\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Tom Gores\",\"col2\":1941,\"col3\":\"Detroit\",\"col4\":61,\"col5\":\"American\",\"name_player\":\"Cade Cunningham\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Tilman Fertitta\",\"col2\":1967,\"col3\":\"Houston\",\"col4\":69,\"col5\":\"American\",\"name_player\":\"Jalen Green\",\"name_team\":\"Houston Rockets\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":\"Herb Simon\",\"col2\":1967,\"col3\":\"Indianapolis\",\"col4\":87,\"col5\":\"Cameroonian\",\"name_player\":\"Pascal Siakam\",\"name_team\":\"Indiana Pacers\",\"name_manager\":\"Herb Simon\"},{\"col1\":\"Steve Ballmer\",\"col2\":1970,\"col3\":\"Los Angeles\",\"col4\":70,\"col5\":\"American\",\"name_player\":\"Kawhi Leonard\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Mark Walter\",\"col2\":1947,\"col3\":\"Los Angeles\",\"col4\":66,\"col5\":\"American\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Mark Walter\"},{\"col1\":\"Micky Arison\",\"col2\":1988,\"col3\":\"Miami\",\"col4\":76,\"col5\":\"American\",\"name_player\":\"Bam Adebayo\",\"name_team\":\"Miami Heat\",\"name_manager\":\"Micky Arison\"},{\"col1\":\"Glen Taylor\",\"col2\":1989,\"col3\":\"Minneapolis\",\"col4\":85,\"col5\":\"American\",\"name_player\":\"Anthony Edwards\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Glen Taylor\"},{\"col1\":\"James Dolan\",\"col2\":1946,\"col3\":\"New York City\",\"col4\":71,\"col5\":\"American\",\"name_player\":\"Jalen Brunson\",\"name_team\":\"New York Knicks\",\"name_manager\":\"James Dolan\"},{\"col1\":\"Clay Bennett\",\"col2\":1967,\"col3\":\"Oklahoma City\",\"col4\":66,\"col5\":\"American\",\"name_player\":\"Shai Gilgeous-Alexander\",\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clay Bennett\"},{\"col1\":\"Josh Harris\",\"col2\":1946,\"col3\":\"Philadelphia\",\"col4\":61,\"col5\":\"American\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Robert Pera\",\"col2\":2001,\"col3\":\"Memphis\",\"col4\":48,\"col5\":\"American\",\"name_player\":\"Ja Morant\",\"name_team\":\"Memphis Grizzlies\",\"name_manager\":\"Robert Pera\"},{\"col1\":\"Vivek Ranadiv\u00e9\",\"col2\":1948,\"col3\":\"Sacramento\",\"col4\":68,\"col5\":\"American\",\"name_player\":\"Domantas Sabonis\",\"name_team\":\"Sacramento Kings\",\"name_manager\":\"Vivek Ranadiv\u00e9\"},{\"col1\":\"Peter Holt\",\"col2\":1967,\"col3\":\"San Antonio\",\"col4\":79,\"col5\":\"French\",\"name_player\":\"Victor Wembanyama\",\"name_team\":\"San Antonio Spurs\",\"name_manager\":\"Peter Holt\"},{\"col1\":\"Ryan Smith\",\"col2\":1974,\"col3\":\"Salt Lake City\",\"col4\":47,\"col5\":\"Finnish\",\"name_player\":\"Lauri Markkanen\",\"name_team\":\"Utah Jazz\",\"name_manager\":\"Ryan Smith\"},{\"col1\":\"Ted Leonsis\",\"col2\":1961,\"col3\":\"Washington\",\"col4\":69,\"col5\":\"American\",\"name_player\":\"Bub Carrington\",\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"},{\"col1\":\"Wes Edens\",\"col2\":1968,\"col3\":\"Milwaukee\",\"col4\":59,\"col5\":\"Greek\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\",\"name_manager\":\"Wes Edens\"},{\"col1\":\"Dan Gilbert\",\"col2\":1970,\"col3\":\"Cleveland\",\"col4\":63,\"col5\":\"American\",\"name_player\":\"Donovan Mitchell\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":\"Gabe Plotkin\",\"col2\":1988,\"col3\":\"Charlotte\",\"col4\":48,\"col5\":\"American\",\"name_player\":\"LaMelo Ball\",\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"Gabe Plotkin\"},{\"col1\":\"Dan DeVos\",\"col2\":1989,\"col3\":\"Orlando\",\"col4\":74,\"col5\":\"American\",\"name_player\":\"Paolo Banchero\",\"name_team\":\"Orlando Magic\",\"name_manager\":\"Dan DeVos\"},{\"col1\":\"Mat Ishbia\",\"col2\":1968,\"col3\":\"Phoenix\",\"col4\":46,\"col5\":\"American\",\"name_player\":\"Devin Booker\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Mat Ishbia\"},{\"col1\":\"Jody Allen\",\"col2\":1970,\"col3\":\"Portland\",\"col4\":66,\"col5\":\"American\",\"name_player\":\"Damian Lillard\",\"name_team\":\"Portland Trail Blazers\",\"name_manager\":\"Jody Allen\"},{\"col1\":\"Gayle Benson\",\"col2\":1988,\"col3\":\"New Orleans\",\"col4\":79,\"col5\":\"American\",\"name_player\":\"Zion Williamson\",\"name_team\":\"New Orleans Pelicans\",\"name_manager\":\"Gayle Benson\"},{\"col1\":\"Joseph Tsai\",\"col2\":1967,\"col3\":\"Brooklyn\",\"col4\":62,\"col5\":\"American\",\"name_player\":\"Mikal Bridges\",\"name_team\":\"Brooklyn Nets\",\"name_manager\":\"Joseph Tsai\"},{\"col1\":\"Patrick Dumont\",\"col2\":1974,\"col3\":\"Dallas\",\"col4\":62,\"col5\":\"Slovenian\",\"name_player\":\"Luka Don\u010di\u0107\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Patrick Dumont\"}]}",
+ "rows": [
+  {
+   "col1": "Tony Ressler",
+   "col2": 1946,
+   "col3": "Atlanta",
+   "col4": 65,
+   "col5": "American",
+   "name_player": "Trae Young",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": "Wyc Grousbeck",
+   "col2": 1946,
+   "col3": "Boston",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": "Joe Lacob",
+   "col2": 1946,
+   "col3": "San Francisco",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1966,
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": "American",
+   "name_player": "Nikola Vu\u010devi\u0107",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": 1980,
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "Slovenian",
+   "name_player": "Luka Don\u010di\u0107",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Stan Kroenke",
+   "col2": 1967,
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "Serbian",
+   "name_player": "Nikola Joki\u0107",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": 1941,
+   "col3": "Detroit",
+   "col4": 61,
+   "col5": "American",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tilman Fertitta",
+   "col2": 1967,
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Jalen Green",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Herb Simon",
+   "col2": 1967,
+   "col3": "Indianapolis",
+   "col4": 87,
+   "col5": "Cameroonian",
+   "name_player": "Pascal Siakam",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": 1970,
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Kawhi Leonard",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Mark Walter",
+   "col2": 1947,
+   "col3": "Los Angeles",
+   "col4": 66,
+   "col5": "American",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Mark Walter"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": 1988,
+   "col3": "Miami",
+   "col4": 76,
+   "col5": "American",
+   "name_player": "Bam Adebayo",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Glen Taylor",
+   "col2": 1989,
+   "col3": "Minneapolis",
+   "col4": 85,
+   "col5": "American",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": "James Dolan",
+   "col2": 1946,
+   "col3": "New York City",
+   "col4": 71,
+   "col5": "American",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": 1967,
+   "col3": "Oklahoma City",
+   "col4": 66,
+   "col5": "American",
+   "name_player": "Shai Gilgeous-Alexander",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Josh Harris",
+   "col2": 1946,
+   "col3": "Philadelphia",
+   "col4": 61,
+   "col5": "American",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Robert Pera",
+   "col2": 2001,
+   "col3": "Memphis",
+   "col4": 48,
+   "col5": "American",
+   "name_player": "Ja Morant",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": "Vivek Ranadiv\u00e9",
+   "col2": 1948,
+   "col3": "Sacramento",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Domantas Sabonis",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": "Peter Holt",
+   "col2": 1967,
+   "col3": "San Antonio",
+   "col4": 79,
+   "col5": "French",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter Holt"
+  },
+  {
+   "col1": "Ryan Smith",
+   "col2": 1974,
+   "col3": "Salt Lake City",
+   "col4": 47,
+   "col5": "Finnish",
+   "name_player": "Lauri Markkanen",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": 1961,
+   "col3": "Washington",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Bub Carrington",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Wes Edens",
+   "col2": 1968,
+   "col3": "Milwaukee",
+   "col4": 59,
+   "col5": "Greek",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1970,
+   "col3": "Cleveland",
+   "col4": 63,
+   "col5": "American",
+   "name_player": "Donovan Mitchell",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Gabe Plotkin",
+   "col2": 1988,
+   "col3": "Charlotte",
+   "col4": 48,
+   "col5": "American",
+   "name_player": "LaMelo Ball",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Gabe Plotkin"
+  },
+  {
+   "col1": "Dan DeVos",
+   "col2": 1989,
+   "col3": "Orlando",
+   "col4": 74,
+   "col5": "American",
+   "name_player": "Paolo Banchero",
+   "name_team": "Orlando Magic",
+   "name_manager": "Dan DeVos"
+  },
+  {
+   "col1": "Mat Ishbia",
+   "col2": 1968,
+   "col3": "Phoenix",
+   "col4": 46,
+   "col5": "American",
+   "name_player": "Devin Booker",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": 1970,
+   "col3": "Portland",
+   "col4": 66,
+   "col5": "American",
+   "name_player": "Damian Lillard",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Gayle Benson",
+   "col2": 1988,
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Zion Williamson",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "Joseph Tsai",
+   "col2": 1967,
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Mikal Bridges",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Patrick Dumont",
+   "col2": 1974,
+   "col3": "Dallas",
+   "col4": 62,
+   "col5": "Slovenian",
+   "name_player": "Luka Don\u010di\u0107",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Patrick Dumont"
+  }
+ ]
+}

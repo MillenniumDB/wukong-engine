@@ -1,0 +1,114 @@
+{
+ "uid": "filter_queries_player#36",
+ "reply": "{\"rows\":[{\"col1\":\"Slovenian\",\"col2\":\"1999/2/28\",\"col3\":27,\"name_player\":\"Luka Don\u010di\u0107\"},{\"col1\":\"Slovenian\",\"col2\":\"1986/5/6\",\"col3\":40,\"name_player\":\"Goran Dragi\u0107\"},{\"col1\":\"Slovenian\",\"col2\":\"1982/7/5\",\"col3\":44,\"name_player\":\"Beno Udrih\"},{\"col1\":\"Slovenian\",\"col2\":\"1976/5/30\",\"col3\":50,\"name_player\":\"Radoslav Nesterovi\u0107\"},{\"col1\":\"Slovenian\",\"col2\":\"1979/10/2\",\"col3\":47,\"name_player\":\"Primo\u017e Brezec\"},{\"col1\":\"Slovenian\",\"col2\":\"1980/7/3\",\"col3\":46,\"name_player\":\"Bo\u0161tjan Nachbar\"},{\"col1\":\"Slovenian\",\"col2\":\"1984/3/8\",\"col3\":42,\"name_player\":\"Sasha Vuja\u010di\u0107\"},{\"col1\":\"Slovenian\",\"col2\":\"1978/7/9\",\"col3\":48,\"name_player\":\"Jaka Lakovi\u010d\"},{\"col1\":\"Slovenian\",\"col2\":\"1983/8/14\",\"col3\":43,\"name_player\":\"Uro\u0161 Slokar\"},{\"col1\":\"Slovenian\",\"col2\":\"1977/5/4\",\"col3\":49,\"name_player\":\"Marko Mili\u010d\"},{\"col1\":\"Slovenian\",\"col2\":\"1989/6/22\",\"col3\":37,\"name_player\":\"Zoran Dragi\u0107\"},{\"col1\":\"Slovenian\",\"col2\":\"1997/4/10\",\"col3\":29,\"name_player\":\"Vlatko \u010can\u010dar\"},{\"col1\":\"American\",\"col2\":\"1932/12/12\",\"col3\":93,\"name_player\":\"Bob Pettit\"},{\"col1\":\"American\",\"col2\":\"1938/11/24\",\"col3\":87,\"name_player\":\"Oscar Robertson\"},{\"col1\":\"American\",\"col2\":\"1945/3/29\",\"col3\":81,\"name_player\":\"Walt Frazier\"},{\"col1\":\"American\",\"col2\":\"1940/3/30\",\"col3\":86,\"name_player\":\"Jerry Lucas\"},{\"col1\":\"American\",\"col2\":\"1937/1/20\",\"col3\":89,\"name_player\":\"Bailey Howell\"},{\"col1\":\"American\",\"col2\":\"1943/11/24\",\"col3\":82,\"name_player\":\"Dave Bing\"}]}",
+ "rows": [
+  {
+   "col1": "Slovenian",
+   "col2": "1999/2/28",
+   "col3": 27,
+   "name_player": "Luka Don\u010di\u0107"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1986/5/6",
+   "col3": 40,
+   "name_player": "Goran Dragi\u0107"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1982/7/5",
+   "col3": 44,
+   "name_player": "Beno Udrih"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1976/5/30",
+   "col3": 50,
+   "name_player": "Radoslav Nesterovi\u0107"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1979/10/2",
+   "col3": 47,
+   "name_player": "Primo\u017e Brezec"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1980/7/3",
+   "col3": 46,
+   "name_player": "Bo\u0161tjan Nachbar"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1984/3/8",
+   "col3": 42,
+   "name_player": "Sasha Vuja\u010di\u0107"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1978/7/9",
+   "col3": 48,
+   "name_player": "Jaka Lakovi\u010d"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1983/8/14",
+   "col3": 43,
+   "name_player": "Uro\u0161 Slokar"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1977/5/4",
+   "col3": 49,
+   "name_player": "Marko Mili\u010d"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1989/6/22",
+   "col3": 37,
+   "name_player": "Zoran Dragi\u0107"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1997/4/10",
+   "col3": 29,
+   "name_player": "Vlatko \u010can\u010dar"
+  },
+  {
+   "col1": "American",
+   "col2": "1932/12/12",
+   "col3": 93,
+   "name_player": "Bob Pettit"
+  },
+  {
+   "col1": "American",
+   "col2": "1938/11/24",
+   "col3": 87,
+   "name_player": "Oscar Robertson"
+  },
+  {
+   "col1": "American",
+   "col2": "1945/3/29",
+   "col3": 81,
+   "name_player": "Walt Frazier"
+  },
+  {
+   "col1": "American",
+   "col2": "1940/3/30",
+   "col3": 86,
+   "name_player": "Jerry Lucas"
+  },
+  {
+   "col1": "American",
+   "col2": "1937/1/20",
+   "col3": 89,
+   "name_player": "Bailey Howell"
+  },
+  {
+   "col1": "American",
+   "col2": "1943/11/24",
+   "col3": 82,
+   "name_player": "Dave Bing"
+  }
+ ]
+}

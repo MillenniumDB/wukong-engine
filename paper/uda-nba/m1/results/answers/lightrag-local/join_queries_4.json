@@ -1,0 +1,15 @@
+{
+ "uid": "join_queries#4",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":55,\"col3\":\"Los Angeles\",\"col4\":\"Los Angeles Clippers\",\"name_player\":\"Aaron Williams\",\"name_team\":\"Los Angeles Clippers\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 55,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers"
+  }
+ ]
+}

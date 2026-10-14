@@ -1,0 +1,31 @@
+{
+ "uid": "join_queries#2",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":null,\"col4\":\"Golden State Warriors\",\"name_player\":\"Fulks\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":null,\"col4\":\"Golden State Warriors\",\"name_player\":\"Johnston\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":null,\"col4\":\"Golden State Warriors\",\"name_player\":\"Gola\",\"name_team\":\"Golden State Warriors\"}]}",
+ "rows": [
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": null,
+   "col4": "Golden State Warriors",
+   "name_player": "Fulks",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": null,
+   "col4": "Golden State Warriors",
+   "name_player": "Johnston",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": null,
+   "col4": "Golden State Warriors",
+   "name_player": "Gola",
+   "name_team": "Golden State Warriors"
+  }
+ ]
+}

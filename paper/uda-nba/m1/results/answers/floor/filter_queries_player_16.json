@@ -1,0 +1,78 @@
+{
+ "uid": "filter_queries_player#16",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":2,\"col3\":\"1988/3/14\",\"name_player\":\"Stephen Curry\"},{\"col1\":1,\"col2\":1,\"col3\":\"1992/3/23\",\"name_player\":\"Kyrie Irving\"},{\"col1\":0,\"col2\":1,\"col3\":\"1989/8/26\",\"name_player\":\"James Harden\"},{\"col1\":1,\"col2\":1,\"col3\":\"1988/11/12\",\"name_player\":\"Russell Westbrook\"},{\"col1\":2,\"col2\":0,\"col3\":\"1985/5/6\",\"name_player\":\"Chris Paul\"},{\"col1\":1,\"col2\":0,\"col3\":\"1990/7/15\",\"name_player\":\"Damian Lillard\"},{\"col1\":1,\"col2\":0,\"col3\":\"1996/10/30\",\"name_player\":\"Devin Booker\"},{\"col1\":1,\"col2\":1,\"col3\":\"1990/2/8\",\"name_player\":\"Klay Thompson\"},{\"col1\":0,\"col2\":0,\"col3\":\"1999/2/28\",\"name_player\":\"Luka Don\u010di\u0107\"},{\"col1\":0,\"col2\":0,\"col3\":\"1998/9/19\",\"name_player\":\"Trae Young\"},{\"col1\":0,\"col2\":0,\"col3\":\"1999/8/10\",\"name_player\":\"Ja Morant\"},{\"col1\":0,\"col2\":0,\"col3\":\"1998/7/12\",\"name_player\":\"Shai Gilgeous-Alexander\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 2,
+   "col3": "1988/3/14",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": "1992/3/23",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": "1989/8/26",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": "1988/11/12",
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": "1985/5/6",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1990/7/15",
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1996/10/30",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": "1990/2/8",
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": "1999/2/28",
+   "name_player": "Luka Don\u010di\u0107"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": "1998/9/19",
+   "name_player": "Trae Young"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": "1999/8/10",
+   "name_player": "Ja Morant"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": "1998/7/12",
+   "name_player": "Shai Gilgeous-Alexander"
+  }
+ ]
+}

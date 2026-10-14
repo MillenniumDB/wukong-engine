@@ -1,0 +1,817 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": [
+  {
+   "col1": "29",
+   "col2": 40,
+   "col3": "Frontcourt",
+   "name_player": "D. J. White"
+  },
+  {
+   "col1": null,
+   "col2": 50,
+   "col3": "Backcourt",
+   "name_player": "Miles Simon"
+  },
+  {
+   "col1": "24",
+   "col2": 67,
+   "col3": "Frontcourt",
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": "7",
+   "col2": 38,
+   "col3": "Backcourt",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "14",
+   "col2": 29,
+   "col3": "Frontcourt",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": null,
+   "col2": 84,
+   "col3": "Frontcourt",
+   "name_player": "Toby Kimball"
+  },
+  {
+   "col1": "15",
+   "col2": 31,
+   "col3": "Frontcourt",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "7",
+   "col2": 34,
+   "col3": "Frontcourt",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": null,
+   "col2": 52,
+   "col3": "Frontcourt",
+   "name_player": "Derek Grimm"
+  },
+  {
+   "col1": "3",
+   "col2": 40,
+   "col3": "Frontcourt",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": 61,
+   "col3": null,
+   "name_player": "Tom Copa"
+  },
+  {
+   "col1": "3",
+   "col2": 28,
+   "col3": "Frontcourt",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "8",
+   "col2": 39,
+   "col3": "Frontcourt",
+   "name_player": "Brandan Wright"
+  },
+  {
+   "col1": "24",
+   "col2": 58,
+   "col3": "Frontcourt",
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": "13",
+   "col2": 89,
+   "col3": "Frontcourt",
+   "name_player": "Cal Ramsey"
+  },
+  {
+   "col1": "1",
+   "col2": 72,
+   "col3": null,
+   "name_player": "John Lucas II"
+  },
+  {
+   "col1": "35",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "5",
+   "col2": 76,
+   "col3": null,
+   "name_player": "Fred Boyd"
+  },
+  {
+   "col1": "35",
+   "col2": 97,
+   "col3": null,
+   "name_player": "Elmer Behnke"
+  },
+  {
+   "col1": "27",
+   "col2": 37,
+   "col3": "Backcourt",
+   "name_player": "Jordan Crawford"
+  },
+  {
+   "col1": null,
+   "col2": 37,
+   "col3": "Backcourt",
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": "17",
+   "col2": 33,
+   "col3": "Backcourt",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": null,
+   "col2": 51,
+   "col3": null,
+   "name_player": "Nate Huffman"
+  },
+  {
+   "col1": null,
+   "col2": 32,
+   "col3": null,
+   "name_player": "Duncan Robinson"
+  },
+  {
+   "col1": "10",
+   "col2": 28,
+   "col3": "Frontcourt",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "14",
+   "col2": 100,
+   "col3": null,
+   "name_player": "Ed Dahler"
+  },
+  {
+   "col1": "13",
+   "col2": 29,
+   "col3": "Backcourt",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "23",
+   "col2": 29,
+   "col3": null,
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": null,
+   "col2": 81,
+   "col3": "Frontcourt",
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": "26",
+   "col2": 95,
+   "col3": null,
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": null,
+   "col2": 54,
+   "col3": "Backcourt",
+   "name_player": "Askia Jones"
+  },
+  {
+   "col1": "45",
+   "col2": 28,
+   "col3": null,
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": "5",
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "48",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": "24",
+   "col2": 40,
+   "col3": "Backcourt",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": null,
+   "col2": 107,
+   "col3": "Backcourt",
+   "name_player": "Mickey Rottner"
+  },
+  {
+   "col1": "8",
+   "col2": 77,
+   "col3": "Frontcourt",
+   "name_player": "Darnell Hillman"
+  },
+  {
+   "col1": null,
+   "col2": 28,
+   "col3": null,
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": null,
+   "col2": 57,
+   "col3": "Backcourt",
+   "name_player": "Gerald Madkins"
+  },
+  {
+   "col1": "2",
+   "col2": 30,
+   "col3": "Backcourt",
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": null,
+   "col2": 82,
+   "col3": "Frontcourt",
+   "name_player": "Bill Hewitt"
+  },
+  {
+   "col1": "6",
+   "col2": 66,
+   "col3": "Backcourt",
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": "21",
+   "col2": 68,
+   "col3": "Frontcourt",
+   "name_player": "Monti Davis"
+  },
+  {
+   "col1": "9",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "4",
+   "col2": 41,
+   "col3": "Backcourt",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": null,
+   "col2": 95,
+   "col3": null,
+   "name_player": "Jim Brasco"
+  },
+  {
+   "col1": "8",
+   "col2": 54,
+   "col3": "Backcourt",
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": null,
+   "col2": 93,
+   "col3": "Frontcourt",
+   "name_player": "Dick Rosenthal"
+  },
+  {
+   "col1": "13",
+   "col2": 31,
+   "col3": "Backcourt",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": "7",
+   "col2": 24,
+   "col3": "Frontcourt",
+   "name_player": "Jonathan Kuminga"
+  },
+  {
+   "col1": "5",
+   "col2": 75,
+   "col3": "Frontcourt",
+   "name_player": "Kermit Washington"
+  },
+  {
+   "col1": null,
+   "col2": 96,
+   "col3": null,
+   "name_player": "Dick Surhoff"
+  },
+  {
+   "col1": null,
+   "col2": 55,
+   "col3": "Frontcourt",
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "57",
+   "col2": 32,
+   "col3": "Backcourt",
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": null,
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Drew Gordon"
+  },
+  {
+   "col1": "33",
+   "col2": 36,
+   "col3": "Backcourt",
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": "1",
+   "col2": 67,
+   "col3": "Backcourt",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "2",
+   "col2": 38,
+   "col3": null,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "5",
+   "col2": 23,
+   "col3": null,
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": "1",
+   "col2": 22,
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": null,
+   "col2": 32,
+   "col3": null,
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": "1",
+   "col2": 50,
+   "col3": "Frontcourt",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": null,
+   "col2": 90,
+   "col3": null,
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": null,
+   "col2": 42,
+   "col3": "Frontcourt",
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "11",
+   "col2": 67,
+   "col3": null,
+   "name_player": "Ken Green"
+  },
+  {
+   "col1": "30",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "30",
+   "col2": 30,
+   "col3": "Frontcourt",
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": "30",
+   "col2": 37,
+   "col3": "Frontcourt",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "13",
+   "col2": 26,
+   "col3": "Backcourt",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "1",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": "11",
+   "col2": 35,
+   "col3": "Backcourt",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": null,
+   "col2": 31,
+   "col3": "Backcourt",
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "3",
+   "col2": 29,
+   "col3": null,
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": "50",
+   "col2": 37,
+   "col3": "Frontcourt",
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": null,
+   "col2": 31,
+   "col3": "Frontcourt",
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": "22",
+   "col2": 42,
+   "col3": "Backcourt",
+   "name_player": "Jarrett Jack"
+  },
+  {
+   "col1": "1",
+   "col2": 34,
+   "col3": "Backcourt",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "40",
+   "col2": 59,
+   "col3": "Frontcourt",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": "2",
+   "col2": 28,
+   "col3": "Backcourt",
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": null,
+   "col2": 25,
+   "col3": null,
+   "name_player": "Max Fiedler"
+  },
+  {
+   "col1": "16",
+   "col2": 59,
+   "col3": "Frontcourt",
+   "name_player": "Derrick Chievous"
+  },
+  {
+   "col1": "6",
+   "col2": 62,
+   "col3": "Frontcourt",
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": "2",
+   "col2": 65,
+   "col3": "Backcourt",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": null,
+   "col2": 60,
+   "col3": "Backcourt",
+   "name_player": "Rod Strickland"
+  },
+  {
+   "col1": null,
+   "col2": 29,
+   "col3": null,
+   "name_player": "Donta Hall"
+  },
+  {
+   "col1": "3",
+   "col2": 30,
+   "col3": "Frontcourt",
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "5",
+   "col2": 57,
+   "col3": "Backcourt",
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": null,
+   "col2": 53,
+   "col3": null,
+   "name_player": "Rick Hughes"
+  },
+  {
+   "col1": null,
+   "col2": 104,
+   "col3": null,
+   "name_player": "Fran Curran"
+  },
+  {
+   "col1": null,
+   "col2": 54,
+   "col3": "Frontcourt",
+   "name_player": "Kurt Thomas"
+  },
+  {
+   "col1": "20",
+   "col2": 99,
+   "col3": "Frontcourt",
+   "name_player": "Harry Gallatin"
+  },
+  {
+   "col1": "1",
+   "col2": 31,
+   "col3": null,
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": "15",
+   "col2": 56,
+   "col3": null,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": null,
+   "col2": 79,
+   "col3": "Frontcourt",
+   "name_player": "Greg Fillmore"
+  },
+  {
+   "col1": "33",
+   "col2": 30,
+   "col3": "Backcourt",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": "4",
+   "col2": 53,
+   "col3": null,
+   "name_player": "Donyell Marshall"
+  },
+  {
+   "col1": "10",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "1",
+   "col2": 54,
+   "col3": "Frontcourt",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "2",
+   "col2": 60,
+   "col3": "Frontcourt",
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": "8",
+   "col2": 46,
+   "col3": "Backcourt",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "18",
+   "col2": 25,
+   "col3": "Frontcourt",
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": null,
+   "col2": 29,
+   "col3": null,
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": "1",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": null,
+   "col2": 76,
+   "col3": null,
+   "name_player": "Marv Roberts"
+  },
+  {
+   "col1": "6",
+   "col2": 33,
+   "col3": "Backcourt",
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": "169",
+   "col2": 74,
+   "col3": "Backcourt",
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": "21",
+   "col2": 45,
+   "col3": "Backcourt",
+   "name_player": "Joseph Forte"
+  },
+  {
+   "col1": null,
+   "col2": 101,
+   "col3": null,
+   "name_player": "Sid Tanenbaum"
+  },
+  {
+   "col1": "3",
+   "col2": 32,
+   "col3": "Frontcourt",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "14",
+   "col2": 62,
+   "col3": "Frontcourt",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": null,
+   "col2": 61,
+   "col3": "Backcourt",
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": "17",
+   "col2": 36,
+   "col3": "Backcourt",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "1",
+   "col2": 41,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": 52,
+   "col3": null,
+   "name_player": "Erick Strickland"
+  },
+  {
+   "col1": "50",
+   "col2": 61,
+   "col3": null,
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": "53",
+   "col2": 67,
+   "col3": null,
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": null,
+   "col2": 38,
+   "col3": null,
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": null,
+   "col2": 38,
+   "col3": null,
+   "name_player": "Ronald Moore"
+  },
+  {
+   "col1": "5",
+   "col2": 24,
+   "col3": null,
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": "10",
+   "col2": 82,
+   "col3": "Frontcourt",
+   "name_player": "Dave Lattin"
+  },
+  {
+   "col1": null,
+   "col2": 96,
+   "col3": "Frontcourt",
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": "13",
+   "col2": 48,
+   "col3": "Backcourt",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "57",
+   "col2": 26,
+   "col3": null,
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": null,
+   "col2": 30,
+   "col3": null,
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": "35",
+   "col2": 58,
+   "col3": "Frontcourt",
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": "16",
+   "col2": 52,
+   "col3": null,
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": "57",
+   "col2": 24,
+   "col3": null,
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": "25",
+   "col2": 62,
+   "col3": "Backcourt",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": "1",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": null,
+   "col2": 91,
+   "col3": "Backcourt",
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": "3",
+   "col2": 63,
+   "col3": null,
+   "name_player": "Michael Jordan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE) AS birth_date RETURN p.draft_pick AS col1, date_diff('year', birth_date, DATE '2026-10-14') - CASE WHEN strftime(birth_date, '%m-%d') > '10-14' THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <date_diff('year', birth_date, DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 442)\n\"MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, CAST(strptime(p.birth_date, '%Y/%m/%d') AS DAT",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE) AS bd WITH p, bd, date_diff('year', bd, DATE('2026-10-14')) AS age_years RETURN p.draft_pick AS col1, age_years AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, split(p.birth_date, '/') AS birth_parts WITH p, CAST(birth_parts[0] AS INT64) AS birth_year, CAST(birth_parts[1] AS INT64) AS birth_month, CAST(birth_parts[2] AS INT64) AS birth_day RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, CAST(regexp_extract(p.birth_date, '^([0-9]+)', 1) AS INT64) AS birth_year, CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)', 1) AS INT64) AS birth_month, CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64) AS birth_day RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 131
+  }
+ ]
+}

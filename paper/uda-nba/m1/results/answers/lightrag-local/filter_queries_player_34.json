@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#34",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":\"Ausar Thompson\",\"col3\":2023,\"name_player\":\"Ausar Thompson\"},{\"col1\":\"American\",\"col2\":\"Antonius Cleveland\",\"col3\":2017,\"name_player\":\"Antonius Cleveland\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "Ausar Thompson",
+   "col3": 2023,
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": "American",
+   "col2": "Antonius Cleveland",
+   "col3": 2017,
+   "name_player": "Antonius Cleveland"
+  }
+ ]
+}

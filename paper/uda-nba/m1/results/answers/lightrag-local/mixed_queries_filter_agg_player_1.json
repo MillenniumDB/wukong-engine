@@ -1,0 +1,15 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":null},{\"col1\":\"Los Angeles Lakers\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ]
+}

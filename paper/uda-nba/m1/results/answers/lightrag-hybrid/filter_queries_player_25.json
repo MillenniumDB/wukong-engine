@@ -1,0 +1,121 @@
+{
+ "uid": "filter_queries_player#25",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":53,\"col2\":67,\"col3\":null,\"name_player\":\"Mark Radford\"},{\"col1\":3,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Michael Jordan\"},{\"col1\":13,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Kobe Bryant\"},{\"col1\":2,\"col2\":38,\"col3\":null,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Lonzo Ball\"},{\"col1\":7,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Stephen Curry\"},{\"col1\":1,\"col2\":null,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":1,\"col2\":null,\"col3\":\"Frontcourt\",\"name_player\":\"Elgin Baylor\"},{\"col1\":1,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Anthony Edwards\"},{\"col1\":1,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Kyrie Irving\"},{\"col1\":1,\"col2\":null,\"col3\":\"Frontcourt\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Allen Iverson\"},{\"col1\":6,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Damian Lillard\"},{\"col1\":10,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"CJ McCollum\"},{\"col1\":21,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Nolan Smith\"},{\"col1\":51,\"col2\":null,\"col3\":\"Backcourt\",\"name_player\":\"Jon Diebler\"},{\"col1\":7,\"col2\":null,\"col3\":\"Frontcourt\",\"name_player\":\"Shaedon Sharpe\"},{\"col1\":57,\"col2\":null,\"col3\":\"Frontcourt\",\"name_player\":\"Jabari Walker\"},{\"col1\":23,\"col2\":null,\"col3\":\"Frontcourt\",\"name_player\":\"Rondae Hollis-Jefferson\"}]}",
+ "rows": [
+  {
+   "col1": 53,
+   "col2": 67,
+   "col3": null,
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": 3,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2,
+   "col2": 38,
+   "col3": null,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": 7,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Frontcourt",
+   "name_player": "Elgin Baylor"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Frontcourt",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": 6,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "CJ McCollum"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Nolan Smith"
+  },
+  {
+   "col1": 51,
+   "col2": null,
+   "col3": "Backcourt",
+   "name_player": "Jon Diebler"
+  },
+  {
+   "col1": 7,
+   "col2": null,
+   "col3": "Frontcourt",
+   "name_player": "Shaedon Sharpe"
+  },
+  {
+   "col1": 57,
+   "col2": null,
+   "col3": "Frontcourt",
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": "Frontcourt",
+   "name_player": "Rondae Hollis-Jefferson"
+  }
+ ]
+}

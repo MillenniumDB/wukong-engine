@@ -1,0 +1,15 @@
+{
+ "uid": "select_queries_player#6",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":0,\"col2\":15,\"col3\":2,\"col4\":\"Giannis Antetokounmpo\",\"name_player\":\"Giannis Antetokounmpo\"}]}",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": 15,
+   "col3": 2,
+   "col4": "Giannis Antetokounmpo",
+   "name_player": "Giannis Antetokounmpo"
+  }
+ ],
+ "secs": 6.8
+}

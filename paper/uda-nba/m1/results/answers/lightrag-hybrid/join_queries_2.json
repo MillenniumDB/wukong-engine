@@ -1,0 +1,47 @@
+{
+ "uid": "join_queries#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Joe Fulks\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Joe Fulks\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Neil Johnston\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Neil Johnston\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Tom Gola\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Tom Gola\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Kyle Anderson\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Kyle Anderson\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1989,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Gary Trent\",\"col4\":\"Minnesota Timberwolves\",\"name_player\":\"Gary Trent\",\"name_team\":\"Minnesota Timberwolves\"}]}",
+ "rows": [
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Joe Fulks",
+   "col4": "Golden State Warriors",
+   "name_player": "Joe Fulks",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Neil Johnston",
+   "col4": "Golden State Warriors",
+   "name_player": "Neil Johnston",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Tom Gola",
+   "col4": "Golden State Warriors",
+   "name_player": "Tom Gola",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Kyle Anderson",
+   "col4": "Golden State Warriors",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1989,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Gary Trent",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Gary Trent",
+   "name_team": "Minnesota Timberwolves"
+  }
+ ]
+}

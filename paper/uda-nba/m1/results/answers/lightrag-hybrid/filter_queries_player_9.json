@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#9",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":15,\"col2\":0,\"col3\":\"Los Angeles Clippers\",\"name_player\":\"Anthony Avent\"},{\"col1\":13,\"col2\":5,\"col3\":\"Los Angeles Lakers\",\"name_player\":\"Kobe Bryant\"},{\"col1\":10,\"col2\":0,\"col3\":\"Los Angeles Clippers\",\"name_player\":\"Paul George\"},{\"col1\":15,\"col2\":1,\"col3\":\"Milwaukee Bucks\",\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":13,\"col2\":0,\"col3\":\"Phoenix Suns\",\"name_player\":\"Devin Booker\"},{\"col1\":13,\"col2\":0,\"col3\":\"Miami Heat\",\"name_player\":\"Tyler Herro\"},{\"col1\":13,\"col2\":0,\"col3\":null,\"name_player\":\"Zach LaVine\"}]}",
+ "rows": [
+  {
+   "col1": 15,
+   "col2": 0,
+   "col3": "Los Angeles Clippers",
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": 13,
+   "col2": 5,
+   "col3": "Los Angeles Lakers",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 10,
+   "col2": 0,
+   "col3": "Los Angeles Clippers",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 15,
+   "col2": 1,
+   "col3": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 13,
+   "col2": 0,
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 13,
+   "col2": 0,
+   "col3": "Miami Heat",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": 13,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Zach LaVine"
+  }
+ ]
+}

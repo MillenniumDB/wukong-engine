@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#20",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"LeBron James\",\"col2\":4,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":\"Kobe Bryant\",\"col2\":5,\"col3\":null,\"name_player\":\"Kobe Bryant\"}]}",
+ "rows": [
+  {
+   "col1": "LeBron James",
+   "col2": 4,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Kobe Bryant",
+   "col2": 5,
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "uid": "agg_queries#9",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":2},{\"col1\":\"Greek\",\"col2\":1},{\"col1\":\"Nigerian\",\"col2\":1},{\"col1\":\"Italian\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 2
+  },
+  {
+   "col1": "Greek",
+   "col2": 1
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 1
+  },
+  {
+   "col1": "Italian",
+   "col2": 1
+  }
+ ]
+}

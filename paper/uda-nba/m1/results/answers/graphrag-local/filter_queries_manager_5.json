@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_manager#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":2017,\"col2\":null,\"col3\":\"Taiwanese-Canadian\",\"name_manager\":\"Joseph Chung-Hsin Tsai\"},{\"col1\":2011,\"col2\":null,\"col3\":\"American\",\"name_manager\":\"Joshua Jordan Harris\"}]}",
+ "rows": [
+  {
+   "col1": 2017,
+   "col2": null,
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": 2011,
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Joshua Jordan Harris"
+  }
+ ],
+ "secs": 8.7
+}

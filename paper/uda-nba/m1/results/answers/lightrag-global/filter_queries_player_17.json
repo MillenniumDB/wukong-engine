@@ -1,0 +1,73 @@
+{
+ "uid": "filter_queries_player#17",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Michigan State University\",\"col2\":35,\"col3\":null,\"name_player\":\"Draymond Green\"},{\"col1\":\"Michigan State University\",\"col2\":5,\"col3\":1,\"name_player\":\"Steve Smith\"},{\"col1\":\"University of North Carolina at Chapel Hill\",\"col2\":3,\"col3\":null,\"name_player\":\"Michael Jordan\"},{\"col1\":\"University of Connecticut\",\"col2\":9,\"col3\":1,\"name_player\":\"Andre Drummond\"},{\"col1\":\"Georgia\",\"col2\":1,\"col3\":0,\"name_player\":\"Anthony Edwards\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Cade Cunningham\"},{\"col1\":\"Purdue\",\"col2\":5,\"col3\":null,\"name_player\":\"Jaden Ivey\"},{\"col1\":\"Florida State\",\"col2\":4,\"col3\":null,\"name_player\":\"Scottie Barnes\"},{\"col1\":\"North Carolina State\",\"col2\":1,\"col3\":null,\"name_player\":\"David Thompson\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Blake Griffin\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"LeBron James\"}]}",
+ "rows": [
+  {
+   "col1": "Michigan State University",
+   "col2": 35,
+   "col3": null,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": 5,
+   "col3": 1,
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": "University of North Carolina at Chapel Hill",
+   "col2": 3,
+   "col3": null,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "University of Connecticut",
+   "col2": 9,
+   "col3": 1,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "Georgia",
+   "col2": 1,
+   "col3": 0,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": "Purdue",
+   "col2": 5,
+   "col3": null,
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": "Florida State",
+   "col2": 4,
+   "col3": null,
+   "name_player": "Scottie Barnes"
+  },
+  {
+   "col1": "North Carolina State",
+   "col2": 1,
+   "col3": null,
+   "name_player": "David Thompson"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Blake Griffin"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "LeBron James"
+  }
+ ]
+}

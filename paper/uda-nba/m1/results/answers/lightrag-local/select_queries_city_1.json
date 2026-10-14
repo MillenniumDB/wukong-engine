@@ -1,0 +1,13 @@
+{
+ "uid": "select_queries_city#1",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":1213.37,\"col2\":\"New York City\",\"col3\":1053000,\"name_city\":\"New York City\"}]}",
+ "rows": [
+  {
+   "col1": 1213.37,
+   "col2": "New York City",
+   "col3": 1053000,
+   "name_city": "New York City"
+  }
+ ]
+}

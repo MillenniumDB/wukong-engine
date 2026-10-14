@@ -1,0 +1,12 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"British\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "British",
+   "col2": 1
+  }
+ ],
+ "secs": 3.2
+}

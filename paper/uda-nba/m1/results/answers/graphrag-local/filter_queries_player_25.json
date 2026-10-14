@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_player#25",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":3,\"col2\":40,\"col3\":\"Frontcourt\",\"name_player\":\"Al Horford\"},{\"col1\":8,\"col2\":38,\"col3\":\"Frontcourt\",\"name_player\":\"Brandan Wright\"}]}",
+ "rows": [
+  {
+   "col1": 3,
+   "col2": 40,
+   "col3": "Frontcourt",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": 8,
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "Brandan Wright"
+  }
+ ],
+ "secs": 4.8
+}

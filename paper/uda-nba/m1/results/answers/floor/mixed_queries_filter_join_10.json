@@ -1,0 +1,96 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":64,\"col3\":17,\"col4\":\"Los Angeles\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jeanie Buss\",\"name_city\":\"Los Angeles\"},{\"col1\":\"Frontcourt\",\"col2\":79,\"col3\":1,\"col4\":\"Denver\",\"name_player\":\"Nikola Jokic\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\",\"name_city\":\"Denver\"},{\"col1\":\"Frontcourt\",\"col2\":64,\"col3\":2,\"col4\":\"Milwaukee\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\",\"name_manager\":\"Wes Edens\",\"name_city\":\"Milwaukee\"},{\"col1\":\"Frontcourt\",\"col2\":61,\"col3\":3,\"col4\":\"Philadelphia\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\",\"name_city\":\"Philadelphia\"},{\"col1\":\"Frontcourt\",\"col2\":65,\"col3\":18,\"col4\":\"Boston\",\"name_player\":\"Jayson Tatum\",\"name_team\":\"Boston Celtics\",\"name_manager\":\"Wyc Grousbeck\",\"name_city\":\"Boston\"},{\"col1\":\"Backcourt\",\"col2\":62,\"col3\":1,\"col4\":\"Dallas\",\"name_player\":\"Luka Doncic\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Patrick Dumont\",\"name_city\":\"Dallas\"},{\"col1\":\"Frontcourt\",\"col2\":70,\"col3\":0,\"col4\":\"Los Angeles\",\"name_player\":\"Kawhi Leonard\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\",\"name_city\":\"Los Angeles\"},{\"col1\":\"Frontcourt\",\"col2\":70,\"col3\":18,\"col4\":\"Los Angeles\",\"name_player\":\"Anthony Davis\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jeanie Buss\",\"name_city\":\"Los Angeles\"},{\"col1\":\"Frontcourt\",\"col2\":47,\"col3\":0,\"col4\":\"Phoenix\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Mat Ishbia\",\"name_city\":\"Phoenix\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 79,
+   "col3": 1,
+   "col4": "Denver",
+   "name_player": "Nikola Jokic",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 61,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 65,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Wyc Grousbeck",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 62,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Luka Doncic",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Patrick Dumont",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 0,
+   "col4": "Los Angeles",
+   "name_player": "Kawhi Leonard",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 18,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 47,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  }
+ ]
+}

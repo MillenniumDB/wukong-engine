@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_manager#6",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":88,\"col3\":\"Jerry Michael Reinsdorf\",\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Herbert Simon\",\"name_manager\":\"Herbert Simon\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Ted Turner\",\"name_manager\":\"Ted Turner\"},{\"col1\":null,\"col2\":null,\"col3\":\"Josh Harris\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"American\",\"col2\":62,\"col3\":\"Tom Gores\",\"name_manager\":\"Tom Gores\"},{\"col1\":null,\"col2\":null,\"col3\":\"Mark Walter\",\"name_manager\":\"Mark Walter\"},{\"col1\":null,\"col2\":null,\"col3\":\"Kelly Loeffler\",\"name_manager\":\"Kelly Loeffler\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 88,
+   "col3": "Jerry Michael Reinsdorf",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Ted Turner",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Josh Harris",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "American",
+   "col2": 62,
+   "col3": "Tom Gores",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Mark Walter",
+   "name_manager": "Mark Walter"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Kelly Loeffler",
+   "name_manager": "Kelly Loeffler"
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_team#6",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Harris Blitzer Sports & Entertainment\",\"col2\":1946,\"col3\":3,\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":1966,\"col3\":6,\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Herb Simon\",\"col2\":null,\"col3\":3,\"name_team\":\"Indiana Pacers\"},{\"col1\":\"Tilman Fertitta\",\"col2\":null,\"col3\":2,\"name_team\":\"Houston Rockets\"}]}",
+ "rows": [
+  {
+   "col1": "Harris Blitzer Sports & Entertainment",
+   "col2": 1946,
+   "col3": 3,
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1966,
+   "col3": 6,
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Herb Simon",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Tilman Fertitta",
+   "col2": null,
+   "col3": 2,
+   "name_team": "Houston Rockets"
+  }
+ ]
+}

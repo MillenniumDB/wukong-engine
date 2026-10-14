@@ -1,0 +1,42 @@
+{
+ "uid": "filter_queries_city#6",
+ "reply": "{\"rows\":[{\"col1\":2304580,\"col2\":\"Texas\",\"col3\":\"Houston\",\"name_city\":\"Houston\"},{\"col1\":3898747,\"col2\":\"California\",\"col3\":\"Los Angeles\",\"name_city\":\"Los Angeles\"},{\"col1\":8804190,\"col2\":\"New York\",\"col3\":\"New York City\",\"name_city\":\"New York City\"},{\"col1\":681054,\"col2\":\"Oklahoma\",\"col3\":\"Oklahoma City\",\"name_city\":\"Oklahoma City\"},{\"col1\":1608139,\"col2\":\"Arizona\",\"col3\":\"Phoenix\",\"name_city\":\"Phoenix\"},{\"col1\":1434625,\"col2\":\"Texas\",\"col3\":\"San Antonio\",\"name_city\":\"San Antonio\"}]}",
+ "rows": [
+  {
+   "col1": 2304580,
+   "col2": "Texas",
+   "col3": "Houston",
+   "name_city": "Houston"
+  },
+  {
+   "col1": 3898747,
+   "col2": "California",
+   "col3": "Los Angeles",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": 8804190,
+   "col2": "New York",
+   "col3": "New York City",
+   "name_city": "New York City"
+  },
+  {
+   "col1": 681054,
+   "col2": "Oklahoma",
+   "col3": "Oklahoma City",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": 1608139,
+   "col2": "Arizona",
+   "col3": "Phoenix",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": 1434625,
+   "col2": "Texas",
+   "col3": "San Antonio",
+   "name_city": "San Antonio"
+  }
+ ]
+}

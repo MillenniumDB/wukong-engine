@@ -1,0 +1,31 @@
+{
+ "uid": "join_queries#5",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Charlotte\",\"col2\":null,\"col3\":1988,\"col4\":\"Charlotte\",\"name_team\":\"Charlotte Hornets\",\"name_city\":\"Charlotte\"},{\"col1\":\"Cleveland\",\"col2\":372624,\"col3\":null,\"col4\":\"Cleveland\",\"name_team\":\"Cleveland Cavaliers\",\"name_city\":\"Cleveland\"},{\"col1\":\"Los Angeles\",\"col2\":null,\"col3\":null,\"col4\":\"Los Angeles\",\"name_team\":\"Los Angeles Clippers\",\"name_city\":\"Los Angeles\"}]}",
+ "rows": [
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": 1988,
+   "col4": "Charlotte",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": 372624,
+   "col3": null,
+   "col4": "Cleveland",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  }
+ ]
+}

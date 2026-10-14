@@ -1,0 +1,192 @@
+{
+ "uid": "select_queries_manager#1",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta Hawks\",\"col2\":\"Tony Ressler\",\"col3\":2015,\"name_manager\":\"Tony Ressler\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Wycliffe K. Grousbeck\",\"col3\":2002,\"name_manager\":\"Wycliffe K. Grousbeck\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Joseph Tsai\",\"col3\":2019,\"name_manager\":\"Joseph Tsai\"},{\"col1\":\"Charlotte Hornets\",\"col2\":\"Michael Jordan\",\"col3\":2010,\"name_manager\":\"Michael Jordan\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Jerry Reinsdorf\",\"col3\":1985,\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"Daniel Gilbert\",\"col3\":2005,\"name_manager\":\"Daniel Gilbert\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Mark Cuban\",\"col3\":2000,\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Stan Kroenke\",\"col3\":2000,\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Tom Gores\",\"col3\":2011,\"name_manager\":\"Tom Gores\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Joseph Lacob\",\"col3\":2010,\"name_manager\":\"Joseph Lacob\"},{\"col1\":\"Houston Rockets\",\"col2\":\"Tilman Fertitta\",\"col3\":2017,\"name_manager\":\"Tilman Fertitta\"},{\"col1\":\"Indiana Pacers\",\"col2\":\"Herbert Simon\",\"col3\":1983,\"name_manager\":\"Herbert Simon\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Steve Ballmer\",\"col3\":2014,\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Jerry Buss\",\"col3\":1979,\"name_manager\":\"Jerry Buss\"},{\"col1\":\"Memphis Grizzlies\",\"col2\":\"Robert Pera\",\"col3\":2012,\"name_manager\":\"Robert Pera\"},{\"col1\":\"Miami Heat\",\"col2\":\"Micky Arison\",\"col3\":1995,\"name_manager\":\"Micky Arison\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Marc Lasry\",\"col3\":2014,\"name_manager\":\"Marc Lasry\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Wesley Edens\",\"col3\":2014,\"name_manager\":\"Wesley Edens\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"Glen Taylor\",\"col3\":1994,\"name_manager\":\"Glen Taylor\"},{\"col1\":\"New Orleans Pelicans\",\"col2\":\"Gayle Benson\",\"col3\":2018,\"name_manager\":\"Gayle Benson\"},{\"col1\":\"New York Knicks\",\"col2\":\"James Dolan\",\"col3\":1999,\"name_manager\":\"James Dolan\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Clay Bennett\",\"col3\":2006,\"name_manager\":\"Clay Bennett\"},{\"col1\":\"Orlando Magic\",\"col2\":\"Richard DeVos\",\"col3\":1991,\"name_manager\":\"Richard DeVos\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Joshua Harris\",\"col3\":2011,\"name_manager\":\"Joshua Harris\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Robert Sarver\",\"col3\":2004,\"name_manager\":\"Robert Sarver\"},{\"col1\":\"Portland Trail Blazers\",\"col2\":\"Paul Allen\",\"col3\":1988,\"name_manager\":\"Paul Allen\"},{\"col1\":\"Sacramento Kings\",\"col2\":\"Vivek Ranadive\",\"col3\":2013,\"name_manager\":\"Vivek Ranadive\"},{\"col1\":\"San Antonio Spurs\",\"col2\":\"Peter Holt\",\"col3\":1996,\"name_manager\":\"Peter Holt\"},{\"col1\":\"Toronto Raptors\",\"col2\":\"Larry Tanenbaum\",\"col3\":1998,\"name_manager\":\"Larry Tanenbaum\"},{\"col1\":\"Utah Jazz\",\"col2\":\"Ryan Smith\",\"col3\":2020,\"name_manager\":\"Ryan Smith\"},{\"col1\":\"Washington Wizards\",\"col2\":\"Ted Leonsis\",\"col3\":2010,\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Tony Ressler",
+   "col3": 2015,
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Wycliffe K. Grousbeck",
+   "col3": 2002,
+   "name_manager": "Wycliffe K. Grousbeck"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": 2019,
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Michael Jordan",
+   "col3": 2010,
+   "name_manager": "Michael Jordan"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Reinsdorf",
+   "col3": 1985,
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": 2005,
+   "name_manager": "Daniel Gilbert"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": 2000,
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Stan Kroenke",
+   "col3": 2000,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": 2011,
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Lacob",
+   "col3": 2010,
+   "name_manager": "Joseph Lacob"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Fertitta",
+   "col3": 2017,
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": 1983,
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": 2014,
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Jerry Buss",
+   "col3": 1979,
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "Robert Pera",
+   "col3": 2012,
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": 1995,
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Marc Lasry",
+   "col3": 2014,
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Wesley Edens",
+   "col3": 2014,
+   "name_manager": "Wesley Edens"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Glen Taylor",
+   "col3": 1994,
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Benson",
+   "col3": 2018,
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "James Dolan",
+   "col3": 1999,
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clay Bennett",
+   "col3": 2006,
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "Richard DeVos",
+   "col3": 1991,
+   "name_manager": "Richard DeVos"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Harris",
+   "col3": 2011,
+   "name_manager": "Joshua Harris"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Robert Sarver",
+   "col3": 2004,
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Paul Allen",
+   "col3": 1988,
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Vivek Ranadive",
+   "col3": 2013,
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Peter Holt",
+   "col3": 1996,
+   "name_manager": "Peter Holt"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Larry Tanenbaum",
+   "col3": 1998,
+   "name_manager": "Larry Tanenbaum"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Ryan Smith",
+   "col3": 2020,
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Ted Leonsis",
+   "col3": 2010,
+   "name_manager": "Ted Leonsis"
+  }
+ ]
+}

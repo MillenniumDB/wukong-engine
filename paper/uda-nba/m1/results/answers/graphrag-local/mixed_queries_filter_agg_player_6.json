@@ -1,0 +1,12 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Milwaukee Bucks\",\"col2\":0}]}",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  }
+ ],
+ "secs": 4.9
+}

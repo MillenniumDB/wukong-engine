@@ -1,0 +1,95 @@
+{
+ "uid": "join_queries#7",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"Minneapolis\",\"col3\":1989,\"col4\":\"Marv Wolfenson\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Marv Wolfenson\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"Minneapolis\",\"col3\":1989,\"col4\":\"Harvey Ratner\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Harvey Ratner\"},{\"col1\":\"Charlotte Hornets\",\"col2\":\"Charlotte\",\"col3\":1988,\"col4\":\"George Shinn\",\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"George Shinn\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Phoenix\",\"col3\":null,\"col4\":\"Karl Eller\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Karl Eller\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Philadelphia\",\"col3\":null,\"col4\":\"Josh Harris\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Denver\",\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Chicago\",\"col3\":null,\"col4\":\"Jerry Reinsdorf\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"San Diego Rockets\",\"col2\":\"Houston\",\"col3\":1967,\"col4\":\"Robert Breitbard\",\"name_team\":\"San Diego Rockets\",\"name_manager\":\"Robert Breitbard\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Los Angeles\",\"col3\":null,\"col4\":\"Bob Short\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Bob Short\"},{\"col1\":\"New York Knicks\",\"col2\":\"New York City\",\"col3\":null,\"col4\":\"Edward S. Irish\",\"name_team\":\"New York Knicks\",\"name_manager\":\"Edward S. Irish\"},{\"col1\":\"San Antonio Spurs\",\"col2\":\"San Antonio\",\"col3\":null,\"col4\":\"Schaefer\",\"name_team\":\"San Antonio Spurs\",\"name_manager\":\"Schaefer\"}]}",
+ "rows": [
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Minneapolis",
+   "col3": 1989,
+   "col4": "Marv Wolfenson",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marv Wolfenson"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Minneapolis",
+   "col3": 1989,
+   "col4": "Harvey Ratner",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Harvey Ratner"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Charlotte",
+   "col3": 1988,
+   "col4": "George Shinn",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Phoenix",
+   "col3": null,
+   "col4": "Karl Eller",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia",
+   "col3": null,
+   "col4": "Josh Harris",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver",
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago",
+   "col3": null,
+   "col4": "Jerry Reinsdorf",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "San Diego Rockets",
+   "col2": "Houston",
+   "col3": 1967,
+   "col4": "Robert Breitbard",
+   "name_team": "San Diego Rockets",
+   "name_manager": "Robert Breitbard"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Los Angeles",
+   "col3": null,
+   "col4": "Bob Short",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "New York City",
+   "col3": null,
+   "col4": "Edward S. Irish",
+   "name_team": "New York Knicks",
+   "name_manager": "Edward S. Irish"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "San Antonio",
+   "col3": null,
+   "col4": "Schaefer",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Schaefer"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Dan Gilbert\",\"col2\":1,\"col3\":1970,\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":\"Harris Blitzer Sports & Entertainment\",\"col2\":3,\"col3\":1946,\"name_team\":\"Philadelphia 76ers\"}]}",
+ "rows": [
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Harris Blitzer Sports & Entertainment",
+   "col2": 3,
+   "col3": 1946,
+   "name_team": "Philadelphia 76ers"
+  }
+ ]
+}

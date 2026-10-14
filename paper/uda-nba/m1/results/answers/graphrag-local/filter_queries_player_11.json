@@ -1,0 +1,14 @@
+{
+ "uid": "filter_queries_player#11",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":0,\"col2\":\"1994/12/6\",\"col3\":1,\"name_player\":\"Giannis Antetokounmpo\"}]}",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": "1994/12/6",
+   "col3": 1,
+   "name_player": "Giannis Antetokounmpo"
+  }
+ ],
+ "secs": 5.4
+}

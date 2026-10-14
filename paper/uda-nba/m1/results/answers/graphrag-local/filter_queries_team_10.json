@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_team#10",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Charlotte Hornets\",\"col2\":1988,\"col3\":null,\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Detroit Pistons\",\"col2\":1937,\"col3\":\"Tom Gores\",\"name_team\":\"Detroit Pistons\"}]}",
+ "rows": [
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 1988,
+   "col3": null,
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 1937,
+   "col3": "Tom Gores",
+   "name_team": "Detroit Pistons"
+  }
+ ],
+ "secs": 4.5
+}

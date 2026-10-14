@@ -1,0 +1,37 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":null,\"col3\":null,\"col4\":\"Los Angeles\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":null,\"name_city\":\"Los Angeles\"},{\"col1\":\"Frontcourt\",\"col2\":null,\"col3\":null,\"col4\":\"Philadelphia\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":null,\"name_city\":\"Philadelphia\"},{\"col1\":\"Frontcourt\",\"col2\":null,\"col3\":null,\"col4\":\"Phoenix\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Mat Ishbia\",\"name_city\":\"Phoenix\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": null,
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": null,
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Phoenix",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  }
+ ]
+}

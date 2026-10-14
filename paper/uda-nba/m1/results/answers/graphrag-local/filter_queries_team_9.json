@@ -1,0 +1,14 @@
+{
+ "uid": "filter_queries_team#9",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":1980,\"col3\":\"Dallas\",\"name_team\":\"Dallas Mavericks\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 1980,
+   "col3": "Dallas",
+   "name_team": "Dallas Mavericks"
+  }
+ ],
+ "secs": 3.0
+}

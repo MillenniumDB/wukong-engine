@@ -1,0 +1,87 @@
+{
+ "uid": "join_queries#9",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Philadelphia 76ers\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Golden State Warriors\",\"col3\":null,\"col4\":\"American\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"},{\"col1\":\"Charlotte Hornets\",\"col2\":\"Charlotte Hornets\",\"col3\":1988,\"col4\":null,\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"George Shinn\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Dallas Mavericks\",\"col3\":null,\"col4\":null,\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Los Angeles Clippers\",\"col3\":null,\"col4\":null,\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"Cleveland Cavaliers\",\"col3\":1970,\"col4\":null,\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Chicago Bulls\",\"col3\":null,\"col4\":null,\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Los Angeles Lakers\",\"col3\":null,\"col4\":null,\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jerry Buss\"},{\"col1\":\"Washington Wizards\",\"col2\":\"Washington Wizards\",\"col3\":null,\"col4\":null,\"name_team\":\"Washington Wizards\",\"name_manager\":\"Abe Pollin\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Denver Nuggets\",\"col3\":1967,\"col4\":null,\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Ann Walton Kroenke\"}]}",
+ "rows": [
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia 76ers",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Golden State Warriors",
+   "col3": null,
+   "col4": "American",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Charlotte Hornets",
+   "col3": 1988,
+   "col4": null,
+   "name_team": "Charlotte Hornets",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dallas Mavericks",
+   "col3": null,
+   "col4": null,
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Los Angeles Clippers",
+   "col3": null,
+   "col4": null,
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Cleveland Cavaliers",
+   "col3": 1970,
+   "col4": null,
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago Bulls",
+   "col3": null,
+   "col4": null,
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Los Angeles Lakers",
+   "col3": null,
+   "col4": null,
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Washington Wizards",
+   "col3": null,
+   "col4": null,
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver Nuggets",
+   "col3": 1967,
+   "col4": null,
+   "name_team": "Denver Nuggets",
+   "name_manager": "Ann Walton Kroenke"
+  }
+ ]
+}

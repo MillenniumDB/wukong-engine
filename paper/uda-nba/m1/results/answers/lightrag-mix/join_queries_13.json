@@ -1,0 +1,47 @@
+{
+ "uid": "join_queries#13",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":null,\"col3\":\"Los Angeles\",\"col4\":null,\"col5\":\"Kobe Bryant\",\"name_player\":\"Kobe Bryant\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"},{\"col1\":null,\"col2\":null,\"col3\":\"Los Angeles\",\"col4\":null,\"col5\":\"LeBron James\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"},{\"col1\":null,\"col2\":null,\"col3\":\"Los Angeles\",\"col4\":null,\"col5\":\"Anthony Davis\",\"name_player\":\"Anthony Davis\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"},{\"col1\":null,\"col2\":\"Frontcourt\",\"col3\":\"Los Angeles\",\"col4\":null,\"col5\":\"Shaquille O'Neal\",\"name_player\":\"Shaquille O'Neal\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": "Kobe Bryant",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": "LeBron James",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  }
+ ]
+}

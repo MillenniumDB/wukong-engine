@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#19",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 AND p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 AND p.birth_date IS NOT NULL AND (CAST(split(p.birth_date, '/')[0] AS INT64) < 1984 OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1984 AND (CAST(split(p.birth_date, '/')[1] AS INT64) < 10 OR (CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) <= 14)))) RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 AND p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 AND p.birth_date IS NOT NULL AND DATE_DIFF('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) >= 42 RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 AND p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 AND p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR regexp_matches(p.birth_date, '^1984/(1|2|3|4|5|6|7|8|9)/') OR regexp_matches(p.birth_date, '^1984/10/([1-9]|1[0-4])$')) RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 AND p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 AND p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR p.birth_date LIKE '1984/1/%' OR p.birth_date LIKE '1984/2/%' OR p.birth_date LIKE '1984/3/%' OR p.birth_date LIKE '1984/4/%' OR p.birth_date LIKE '1984/5/%' OR p.birth_date LIKE '1984/6/%' OR p.birth_date LIKE '1984/7/%' OR p.birth_date LIKE '1984/8/%' OR p.birth_date LIKE '1984/9/%' OR p.birth_date LIKE '1984/10/1' OR p.birth_date LIKE '1984/10/2' OR p.birth_date LIKE '1984/10/3' OR p.birth_date LIKE '1984/10/4' OR p.birth_date LIKE '1984/10/5' OR p.birth_date LIKE '1984/10/6' OR p.birth_date LIKE '1984/10/7' OR p.birth_date LIKE '1984/10/8' OR p.birth_date LIKE '1984/10/9' OR p.birth_date LIKE '1984/10/10' OR p.birth_date LIKE '1984/10/11' OR p.birth_date LIKE '1984/10/12' OR p.birth_date LIKE '1984/10/13' OR p.birth_date LIKE '1984/10/14') RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 AND p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 AND p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 291)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24 ",
+   "rows": null
+  }
+ ]
+}

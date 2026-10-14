@@ -1,0 +1,169 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American-Chinese",
+   "col3": 0,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "American-Chinese",
+   "col3": 0,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American-Chinese",
+   "col3": 0,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "American-Chinese",
+   "col3": 0,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Caleb Martin"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2' OPTIONAL MATCH (p)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' RETURN t.team_name AS col1, p.nationality AS col2, CAST(p.mvp_awards AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 26
+  }
+ ]
+}

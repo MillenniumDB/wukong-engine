@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_team#3",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1967,\"col2\":\"Robert Breitbard\",\"col3\":\"San Diego Rockets\",\"name_team\":\"San Diego Rockets\"},{\"col1\":1968,\"col2\":\"Karl Eller\",\"col3\":\"Phoenix Suns\",\"name_team\":\"Phoenix Suns\"},{\"col1\":1988,\"col2\":\"George Shinn\",\"col3\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":1989,\"col2\":\"Marv Wolfenson and Harvey Ratner\",\"col3\":\"Minnesota Timberwolves\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1995,\"col2\":\"Allan Slaight\",\"col3\":\"Toronto Raptors\",\"name_team\":\"Toronto Raptors\"}]}",
+ "rows": [
+  {
+   "col1": 1967,
+   "col2": "Robert Breitbard",
+   "col3": "San Diego Rockets",
+   "name_team": "San Diego Rockets"
+  },
+  {
+   "col1": 1968,
+   "col2": "Karl Eller",
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 1988,
+   "col2": "George Shinn",
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 1989,
+   "col2": "Marv Wolfenson and Harvey Ratner",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1995,
+   "col2": "Allan Slaight",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+{
+ "uid": "filter_queries_team#10",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta Hawks\",\"col2\":1946,\"col3\":\"Tony Ressler\",\"name_team\":\"Atlanta Hawks\"},{\"col1\":\"Boston Celtics\",\"col2\":1946,\"col3\":\"Wycliffe K. Grousbeck\",\"name_team\":\"Boston Celtics\"},{\"col1\":\"Brooklyn Nets\",\"col2\":1967,\"col3\":\"Joseph Tsai\",\"name_team\":\"Brooklyn Nets\"},{\"col1\":\"Charlotte Hornets\",\"col2\":1988,\"col3\":\"Michael Jordan\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Chicago Bulls\",\"col2\":1966,\"col3\":\"Jerry Reinsdorf\",\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":1970,\"col3\":\"Dan Gilbert\",\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":\"Dallas Mavericks\",\"col2\":1980,\"col3\":\"Patrick Dumont\",\"name_team\":\"Dallas Mavericks\"},{\"col1\":\"Denver Nuggets\",\"col2\":1967,\"col3\":\"Stan Kroenke\",\"name_team\":\"Denver Nuggets\"},{\"col1\":\"Detroit Pistons\",\"col2\":1941,\"col3\":\"Tom Gores\",\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Golden State Warriors\",\"col2\":1946,\"col3\":\"Joe Lacob\",\"name_team\":\"Golden State Warriors\"},{\"col1\":\"Houston Rockets\",\"col2\":1967,\"col3\":\"Tilman Fertitta\",\"name_team\":\"Houston Rockets\"},{\"col1\":\"Indiana Pacers\",\"col2\":1967,\"col3\":\"Herb Simon\",\"name_team\":\"Indiana Pacers\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":1970,\"col3\":\"Steve Ballmer\",\"name_team\":\"Los Angeles Clippers\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":1947,\"col3\":\"Jeanie Buss\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Memphis Grizzlies\",\"col2\":1995,\"col3\":\"Robert Pera\",\"name_team\":\"Memphis Grizzlies\"},{\"col1\":\"Miami Heat\",\"col2\":1988,\"col3\":\"Micky Arison\",\"name_team\":\"Miami Heat\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":1968,\"col3\":\"Wes Edens and Jimmy Haslam\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":1989,\"col3\":\"Glen Taylor\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":\"New Orleans Pelicans\",\"col2\":2002,\"col3\":\"Gayle Benson\",\"name_team\":\"New Orleans Pelicans\"},{\"col1\":\"New York Knicks\",\"col2\":1946,\"col3\":\"James Dolan\",\"name_team\":\"New York Knicks\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":1967,\"col3\":\"Clayton Bennett\",\"name_team\":\"Oklahoma City Thunder\"},{\"col1\":\"Orlando Magic\",\"col2\":1989,\"col3\":\"Dan DeVos\",\"name_team\":\"Orlando Magic\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":1946,\"col3\":\"Josh Harris\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Phoenix Suns\",\"col2\":1968,\"col3\":\"Mat Ishbia\",\"name_team\":\"Phoenix Suns\"},{\"col1\":\"Portland Trail Blazers\",\"col2\":1970,\"col3\":\"Jody Allen\",\"name_team\":\"Portland Trail Blazers\"},{\"col1\":\"Sacramento Kings\",\"col2\":1923,\"col3\":\"Vivek Ranadive\",\"name_team\":\"Sacramento Kings\"},{\"col1\":\"San Antonio Spurs\",\"col2\":1967,\"col3\":\"Peter J. Holt\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Toronto Raptors\",\"col2\":1995,\"col3\":\"Larry Tanenbaum\",\"name_team\":\"Toronto Raptors\"},{\"col1\":\"Utah Jazz\",\"col2\":1974,\"col3\":\"Ryan Smith\",\"name_team\":\"Utah Jazz\"},{\"col1\":\"Washington Wizards\",\"col2\":1961,\"col3\":\"Ted Leonsis\",\"name_team\":\"Washington Wizards\"}]}",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 1946,
+   "col3": "Tony Ressler",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1946,
+   "col3": "Wycliffe K. Grousbeck",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 1967,
+   "col3": "Joseph Tsai",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 1988,
+   "col3": "Michael Jordan",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 1966,
+   "col3": "Jerry Reinsdorf",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 1970,
+   "col3": "Dan Gilbert",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1980,
+   "col3": "Patrick Dumont",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 1967,
+   "col3": "Stan Kroenke",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 1941,
+   "col3": "Tom Gores",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 1946,
+   "col3": "Joe Lacob",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 1967,
+   "col3": "Tilman Fertitta",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 1967,
+   "col3": "Herb Simon",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 1970,
+   "col3": "Steve Ballmer",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1947,
+   "col3": "Jeanie Buss",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 1995,
+   "col3": "Robert Pera",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1988,
+   "col3": "Micky Arison",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 1968,
+   "col3": "Wes Edens and Jimmy Haslam",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1989,
+   "col3": "Glen Taylor",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 2002,
+   "col3": "Gayle Benson",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 1946,
+   "col3": "James Dolan",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 1967,
+   "col3": "Clayton Bennett",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 1989,
+   "col3": "Dan DeVos",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 1946,
+   "col3": "Josh Harris",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 1968,
+   "col3": "Mat Ishbia",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 1970,
+   "col3": "Jody Allen",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 1923,
+   "col3": "Vivek Ranadive",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1967,
+   "col3": "Peter J. Holt",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 1995,
+   "col3": "Larry Tanenbaum",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 1974,
+   "col3": "Ryan Smith",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 1961,
+   "col3": "Ted Leonsis",
+   "name_team": "Washington Wizards"
+  }
+ ]
+}

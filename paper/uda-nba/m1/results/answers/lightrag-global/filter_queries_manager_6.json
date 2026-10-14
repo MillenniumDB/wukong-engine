@@ -1,0 +1,73 @@
+{
+ "uid": "filter_queries_manager#6",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":88,\"col3\":\"Jerry Michael Reinsdorf\",\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":null,\"col2\":null,\"col3\":\"Mark Walter\",\"name_manager\":\"Mark Walter\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Donald Sterling\",\"name_manager\":\"Donald Sterling\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Steve Ballmer\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"American\",\"col2\":85,\"col3\":\"Abe Pollin\",\"name_manager\":\"Abe Pollin\"},{\"col1\":null,\"col2\":null,\"col3\":null,\"name_manager\":\"Katz\"},{\"col1\":null,\"col2\":null,\"col3\":\"Harris\",\"name_manager\":\"Harris\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Herb Kohl\",\"name_manager\":\"Herb Kohl\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Ted Turner\",\"name_manager\":\"Ted Turner\"},{\"col1\":\"American\",\"col2\":62,\"col3\":\"Tom Gores\",\"name_manager\":\"Tom Gores\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 88,
+   "col3": "Jerry Michael Reinsdorf",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Mark Walter",
+   "name_manager": "Mark Walter"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Donald Sterling",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Steve Ballmer",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "American",
+   "col2": 85,
+   "col3": "Abe Pollin",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_manager": "Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Harris",
+   "name_manager": "Harris"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Herb Kohl",
+   "name_manager": "Herb Kohl"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Ted Turner",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": "American",
+   "col2": 62,
+   "col3": "Tom Gores",
+   "name_manager": "Tom Gores"
+  }
+ ]
+}

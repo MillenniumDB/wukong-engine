@@ -1,0 +1,12 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Boston Celtics\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "Boston Celtics",
+   "col2": null
+  }
+ ],
+ "secs": 3.6
+}

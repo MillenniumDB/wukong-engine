@@ -1,0 +1,26 @@
+{
+ "uid": "filter_queries_player#14",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":2013,\"col2\":null,\"col3\":null,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":2014,\"col2\":null,\"col3\":null,\"name_player\":\"Zach LaVine\"},{\"col1\":2009,\"col2\":null,\"col3\":null,\"name_player\":\"Jrue Holiday\"}]}",
+ "rows": [
+  {
+   "col1": 2013,
+   "col2": null,
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 2014,
+   "col2": null,
+   "col3": null,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 2009,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jrue Holiday"
+  }
+ ],
+ "secs": 6.0
+}

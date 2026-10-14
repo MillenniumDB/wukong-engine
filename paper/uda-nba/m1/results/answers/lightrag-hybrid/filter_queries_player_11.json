@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#11",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"1988/9/29\",\"col3\":2,\"name_player\":\"Kevin Durant\"},{\"col1\":null,\"col2\":\"2004/1/4\",\"col3\":null,\"name_player\":\"Victor Wembanyama\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "1988/9/29",
+   "col3": 2,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": "2004/1/4",
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  }
+ ]
+}

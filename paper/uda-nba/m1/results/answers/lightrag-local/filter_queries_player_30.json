@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#30",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":3,\"name_player\":\"LeBron James\"},{\"col1\":\"Frontcourt\",\"col2\":\"Chinese\",\"col3\":null,\"name_player\":\"Yao Ming\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":null,\"name_player\":\"Emeka Okafor\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":null,\"name_player\":\"Greg Oden\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":null,\"name_player\":\"James Worthy\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Chinese",
+   "col3": null,
+   "name_player": "Yao Ming"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Emeka Okafor"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Greg Oden"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": null,
+   "name_player": "James Worthy"
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta Hawks\",\"col2\":347.1},{\"col1\":\"Boston Celtics\",\"col2\":232.1},{\"col1\":\"Brooklyn Nets\",\"col2\":250.2},{\"col1\":\"Charlotte Hornets\",\"col2\":808.1},{\"col1\":\"Chicago Bulls\",\"col2\":606.1},{\"col1\":\"Cleveland Cavaliers\",\"col2\":213.6},{\"col1\":\"Dallas Mavericks\",\"col2\":999.3},{\"col1\":\"Denver Nuggets\",\"col2\":401.4},{\"col1\":\"Detroit Pistons\",\"col2\":370},{\"col1\":\"Golden State Warriors\",\"col2\":121.5},{\"col1\":\"Houston Rockets\",\"col2\":1739.3},{\"col1\":\"Indiana Pacers\",\"col2\":953},{\"col1\":\"Los Angeles Clippers\",\"col2\":1302},{\"col1\":\"Los Angeles Lakers\",\"col2\":1302},{\"col1\":\"Memphis Grizzlies\",\"col2\":785.3},{\"col1\":\"Miami Heat\",\"col2\":145.2},{\"col1\":\"Milwaukee Bucks\",\"col2\":250.7},{\"col1\":\"Minnesota Timberwolves\",\"col2\":148.9},{\"col1\":\"New Orleans Pelicans\",\"col2\":469},{\"col1\":\"New York Knicks\",\"col2\":1223.6},{\"col1\":\"Oklahoma City Thunder\",\"col2\":1606.7},{\"col1\":\"Orlando Magic\",\"col2\":308.4},{\"col1\":\"Philadelphia 76ers\",\"col2\":369.6},{\"col1\":\"Phoenix Suns\",\"col2\":1341.6},{\"col1\":\"Portland Trail Blazers\",\"col2\":376.5},{\"col1\":\"Sacramento Kings\",\"col2\":259.3},{\"col1\":\"San Antonio Spurs\",\"col2\":1306},{\"col1\":\"Toronto Raptors\",\"col2\":630.2},{\"col1\":\"Utah Jazz\",\"col2\":285.9},{\"col1\":\"Washington Wizards\",\"col2\":177}]}",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 347.1
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 232.1
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 250.2
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 808.1
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 606.1
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 213.6
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 999.3
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 401.4
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 370
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 121.5
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 1739.3
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 953
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 1302
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1302
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 785.3
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 145.2
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 250.7
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 148.9
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 469
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 1223.6
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 1606.7
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 308.4
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 369.6
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 1341.6
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 376.5
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 259.3
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1306
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 630.2
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 285.9
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 177
+  }
+ ]
+}

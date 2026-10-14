@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"French\",\"col3\":22,\"name_player\":\"Victor Wembanyama\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Backcourt\",\"col2\":\"Greek-American\",\"col3\":37,\"name_player\":\"Nick Calathes\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":55,\"name_player\":\"Aaron Williams\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":65,\"name_player\":\"Guy Rodgers\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":41,\"name_player\":\"Kobe Bryant\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "French",
+   "col3": 22,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Greek-American",
+   "col3": 37,
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 55,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 65,
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 41,
+   "name_player": "Kobe Bryant"
+  }
+ ]
+}

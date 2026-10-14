@@ -1,0 +1,27 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":null,\"col3\":null,\"col4\":\"Philadelphia\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":null,\"name_city\":\"Philadelphia\"},{\"col1\":\"Frontcourt\",\"col2\":70,\"col3\":7,\"col4\":\"San Francisco\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\",\"name_city\":\"San Francisco\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": null,
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  }
+ ]
+}

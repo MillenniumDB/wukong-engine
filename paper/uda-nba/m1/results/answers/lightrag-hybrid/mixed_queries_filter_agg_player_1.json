@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":0},{\"col1\":\"Phoenix Suns\",\"col2\":4},{\"col1\":\"Los Angeles Lakers\",\"col2\":2},{\"col1\":\"Boston Celtics\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 4
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 2
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  }
+ ]
+}

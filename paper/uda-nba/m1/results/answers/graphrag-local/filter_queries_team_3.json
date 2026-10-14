@@ -1,0 +1,26 @@
+{
+ "uid": "filter_queries_team#3",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":1967,\"col2\":null,\"col3\":\"Denver Nuggets\",\"name_team\":\"Denver Nuggets\"},{\"col1\":1967,\"col2\":null,\"col3\":\"Indiana Pacers\",\"name_team\":\"Indiana Pacers\"},{\"col1\":1967,\"col2\":null,\"col3\":\"Brooklyn Nets\",\"name_team\":\"Brooklyn Nets\"}]}",
+ "rows": [
+  {
+   "col1": 1967,
+   "col2": null,
+   "col3": "Denver Nuggets",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 1967,
+   "col2": null,
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 1967,
+   "col2": null,
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  }
+ ],
+ "secs": 7.7
+}

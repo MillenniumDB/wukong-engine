@@ -1,0 +1,986 @@
+{
+ "uid": "select_queries_player#6",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Phil Jackson",
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": "0",
+   "col2": "1",
+   "col3": null,
+   "col4": "Anthony Edwards",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": null,
+   "col2": "6",
+   "col3": null,
+   "col4": "William Bedford",
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": null,
+   "col2": "53",
+   "col3": null,
+   "col4": "Mark Radford",
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": "2",
+   "col4": "Tim Duncan",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Jack Parr",
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": null,
+   "col2": "21",
+   "col3": null,
+   "col4": "Joseph Forte",
+   "name_player": "Joseph Forte"
+  },
+  {
+   "col1": null,
+   "col2": "13",
+   "col3": "1",
+   "col4": "Kobe Bryant",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": null,
+   "col2": "30",
+   "col3": null,
+   "col4": "Kevon Looney",
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": null,
+   "col2": "3",
+   "col3": "1",
+   "col4": "Joel Embiid",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": null,
+   "col2": "11",
+   "col3": null,
+   "col4": "Michael Carter-Williams",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": null,
+   "col2": "50",
+   "col3": null,
+   "col4": "Lavoy Allen",
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Devontae Cacok",
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": null,
+   "col2": "24",
+   "col3": null,
+   "col4": "Kyle Lowry",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": null,
+   "col2": "10",
+   "col3": null,
+   "col4": "Paul George",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Eric Johnson Jones",
+   "name_player": "Eric Johnson Jones"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Austin Reaves",
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": null,
+   "col2": "2",
+   "col3": null,
+   "col4": "Rik Smits",
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Max Fiedler",
+   "name_player": "Max Fiedler"
+  },
+  {
+   "col1": null,
+   "col2": "2",
+   "col3": null,
+   "col4": "Isiah Thomas",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Marv Roberts",
+   "name_player": "Marv Roberts"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Antonius Cleveland",
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "4",
+   "col3": "0",
+   "col4": "Chris Paul",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Rod Strickland",
+   "name_player": "Rod Strickland"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Jim Brasco",
+   "name_player": "Jim Brasco"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Erazem Lorbek",
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": null,
+   "col2": "13",
+   "col3": null,
+   "col4": "Zach LaVine",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": "1",
+   "col2": "5",
+   "col3": null,
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "0",
+   "col2": "14",
+   "col3": null,
+   "col4": "Bam Adebayo",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Kurt Thomas",
+   "name_player": "Kurt Thomas"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Dan Anderson",
+   "name_player": "Dan Anderson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Aaron Williams",
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Vernon Maxwell",
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": "0",
+   "col2": "40",
+   "col3": null,
+   "col4": "Dino Ra\u0111a",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Bill Hewitt",
+   "name_player": "Bill Hewitt"
+  },
+  {
+   "col1": null,
+   "col2": "13",
+   "col3": null,
+   "col4": "Devin Booker",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": null,
+   "col2": "2",
+   "col3": "1",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Lamar Stevens",
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Leroy Chollet",
+   "name_player": "Leroy Chollet"
+  },
+  {
+   "col1": null,
+   "col2": "16",
+   "col3": null,
+   "col4": "Derrick Chievous",
+   "name_player": "Derrick Chievous"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": null,
+   "col4": "Victor Wembanyama",
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": null,
+   "col2": "10",
+   "col3": null,
+   "col4": "Dave Lattin",
+   "name_player": "Dave Lattin"
+  },
+  {
+   "col1": null,
+   "col2": "5",
+   "col3": null,
+   "col4": "Fred Boyd",
+   "name_player": "Fred Boyd"
+  },
+  {
+   "col1": null,
+   "col2": "3",
+   "col3": null,
+   "col4": "Jaylen Brown",
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": null,
+   "col2": "48",
+   "col3": null,
+   "col4": "Kostas Papanikolaou",
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": "4",
+   "col4": "LeBron James",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": "6",
+   "col3": null,
+   "col4": "Trent Tucker",
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Erick Strickland",
+   "name_player": "Erick Strickland"
+  },
+  {
+   "col1": null,
+   "col2": "3",
+   "col3": "5",
+   "col4": "Michael Jordan",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": null,
+   "col2": "8",
+   "col3": null,
+   "col4": "Brandan Wright",
+   "name_player": "Brandan Wright"
+  },
+  {
+   "col1": "1",
+   "col2": "9",
+   "col3": null,
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Ronald Moore",
+   "name_player": "Ronald Moore"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Donta Hall",
+   "name_player": "Donta Hall"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Askia Jones",
+   "name_player": "Askia Jones"
+  },
+  {
+   "col1": null,
+   "col2": "8",
+   "col3": null,
+   "col4": "Shawn Respert",
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": null,
+   "col2": "24",
+   "col3": null,
+   "col4": "Jay Vincent",
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": "2",
+   "col2": "7",
+   "col3": "2",
+   "col4": "Stephen Curry",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": "35",
+   "col3": null,
+   "col4": "Draymond Green",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": null,
+   "col2": "27",
+   "col3": null,
+   "col4": "Jordan Crawford",
+   "name_player": "Jordan Crawford"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Garfield Smith",
+   "name_player": "Garfield Smith"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": null,
+   "col4": "Andrew Wiggins",
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Nick Calathes",
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": "0",
+   "col2": "7",
+   "col3": "0",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": null,
+   "col2": "35",
+   "col3": null,
+   "col4": "Gregory Clinton Foster",
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Duncan Robinson",
+   "name_player": "Duncan Robinson"
+  },
+  {
+   "col1": null,
+   "col2": "4",
+   "col3": null,
+   "col4": "Donyell Marshall",
+   "name_player": "Donyell Marshall"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": "3",
+   "col4": "Magic Johnson",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Guy Rodgers",
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Garry Witts",
+   "name_player": "Garry Witts"
+  },
+  {
+   "col1": null,
+   "col2": "2",
+   "col3": null,
+   "col4": "Lonzo Ball",
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Tom Copa",
+   "name_player": "Tom Copa"
+  },
+  {
+   "col1": null,
+   "col2": "14",
+   "col3": null,
+   "col4": "Ed Dahler",
+   "name_player": "Ed Dahler"
+  },
+  {
+   "col1": null,
+   "col2": "8",
+   "col3": "0",
+   "col4": "Jamal Crawford",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": null,
+   "col2": "5",
+   "col3": null,
+   "col4": "Ausar Thompson",
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": null,
+   "col2": "24",
+   "col3": null,
+   "col4": "Dwayne Schintzius",
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": null,
+   "col2": "29",
+   "col3": null,
+   "col4": "D. J. White",
+   "name_player": "D. J. White"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Gene Dyker",
+   "name_player": "Gene Dyker"
+  },
+  {
+   "col1": "2",
+   "col2": "3",
+   "col3": null,
+   "col4": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "1",
+   "col2": "5",
+   "col3": null,
+   "col4": "Steve Smith",
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": null,
+   "col2": "6",
+   "col3": null,
+   "col4": "Buddy Hield",
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Dick Rosenthal",
+   "name_player": "Dick Rosenthal"
+  },
+  {
+   "col1": null,
+   "col2": "11",
+   "col3": null,
+   "col4": "Ken Green",
+   "name_player": "Ken Green"
+  },
+  {
+   "col1": "0",
+   "col2": "30",
+   "col3": "0",
+   "col4": "Kyle Anderson",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": null,
+   "col2": "30",
+   "col3": null,
+   "col4": "Jimmy Butler",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": null,
+   "col4": "Cade Cunningham",
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Dick Surhoff",
+   "name_player": "Dick Surhoff"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Brandon Goodwin",
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": null,
+   "col2": "57",
+   "col3": null,
+   "col4": "Nikola Radi\u010devi\u0107",
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Drew Gordon",
+   "name_player": "Drew Gordon"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Derek Grimm",
+   "name_player": "Derek Grimm"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Mickey Rottner",
+   "name_player": "Mickey Rottner"
+  },
+  {
+   "col1": null,
+   "col2": "2",
+   "col3": null,
+   "col4": "D'Angelo Russell",
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "David Michineau",
+   "name_player": "David Michineau"
+  },
+  {
+   "col1": null,
+   "col2": "3",
+   "col3": null,
+   "col4": "Jayson Tatum",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": null,
+   "col2": "23",
+   "col3": null,
+   "col4": "OG Anunoby",
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": null,
+   "col2": "13",
+   "col3": null,
+   "col4": "Cal Ramsey",
+   "name_player": "Cal Ramsey"
+  },
+  {
+   "col1": null,
+   "col2": "13",
+   "col3": null,
+   "col4": "Tyler Herro",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": null,
+   "col2": "7",
+   "col3": null,
+   "col4": "Jonathan Kuminga",
+   "name_player": "Jonathan Kuminga"
+  },
+  {
+   "col1": null,
+   "col2": "15",
+   "col3": "2",
+   "col4": "Giannis Antetokounmpo",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": null,
+   "col2": "20",
+   "col3": null,
+   "col4": "Harry Gallatin",
+   "name_player": "Harry Gallatin"
+  },
+  {
+   "col1": "1",
+   "col2": "17",
+   "col3": null,
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Greg Fillmore",
+   "name_player": "Greg Fillmore"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "0",
+   "col4": "Caleb Martin",
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": null,
+   "col2": "8",
+   "col3": null,
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Nate Huffman",
+   "name_player": "Nate Huffman"
+  },
+  {
+   "col1": null,
+   "col2": "57",
+   "col3": null,
+   "col4": "Jabari Walker",
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": "1",
+   "col2": "1",
+   "col3": null,
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Gerald Madkins",
+   "name_player": "Gerald Madkins"
+  },
+  {
+   "col1": null,
+   "col2": "18",
+   "col3": null,
+   "col4": "Jaime Jaquez Jr.",
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": "1",
+   "col2": "50",
+   "col3": null,
+   "col4": "Steve Kerr",
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": null,
+   "col2": "26",
+   "col3": null,
+   "col4": "Don Anielak",
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": "0",
+   "col2": "1",
+   "col3": null,
+   "col4": "John Lucas II",
+   "name_player": "John Lucas II"
+  },
+  {
+   "col1": "0",
+   "col2": null,
+   "col3": "0",
+   "col4": "Mychel Thompson",
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Miles Simon",
+   "name_player": "Miles Simon"
+  },
+  {
+   "col1": "0",
+   "col2": "45",
+   "col3": null,
+   "col4": "Hamidou Diallo",
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Rick Hughes",
+   "name_player": "Rick Hughes"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Jim Walsh",
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Toby Kimball",
+   "name_player": "Toby Kimball"
+  },
+  {
+   "col1": null,
+   "col2": "5",
+   "col3": null,
+   "col4": "Kermit Washington",
+   "name_player": "Kermit Washington"
+  },
+  {
+   "col1": null,
+   "col2": "35",
+   "col3": null,
+   "col4": "Elmer Behnke",
+   "name_player": "Elmer Behnke"
+  },
+  {
+   "col1": null,
+   "col2": "57",
+   "col3": null,
+   "col4": "Trayce Jackson-Davis",
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": null,
+   "col2": "14",
+   "col3": "0",
+   "col4": "Walter Berry",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": null,
+   "col2": "15",
+   "col3": null,
+   "col4": "Anthony Avent",
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": null,
+   "col2": "16",
+   "col3": null,
+   "col4": "Tony Delk",
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": null,
+   "col2": "33",
+   "col3": null,
+   "col4": "Jalen Brunson",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": null,
+   "col2": "10",
+   "col3": null,
+   "col4": "Zach Collins",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Stan Noszka",
+   "name_player": "Stan Noszka"
+  },
+  {
+   "col1": null,
+   "col2": "21",
+   "col3": null,
+   "col4": "Monti Davis",
+   "name_player": "Monti Davis"
+  },
+  {
+   "col1": null,
+   "col2": "5",
+   "col3": null,
+   "col4": "Jaden Ivey",
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": null,
+   "col2": "169",
+   "col3": null,
+   "col4": "Rod Derline",
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Sid Tanenbaum",
+   "name_player": "Sid Tanenbaum"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": "Fran Curran",
+   "name_player": "Fran Curran"
+  },
+  {
+   "col1": null,
+   "col2": "3",
+   "col3": null,
+   "col4": "Al Horford",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": "22",
+   "col3": null,
+   "col4": "Jarrett Jack",
+   "name_player": "Jarrett Jack"
+  },
+  {
+   "col1": "1",
+   "col2": "25",
+   "col3": null,
+   "col4": "Mark Price",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": null,
+   "col2": "17",
+   "col3": null,
+   "col4": "Jrue Holiday",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "1",
+   "col2": "1",
+   "col3": null,
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": null,
+   "col2": "33",
+   "col3": null,
+   "col4": "Carrick Felix",
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": null,
+   "col2": "1",
+   "col3": "1",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) RETURN DISTINCT p.fiba_world_cup AS col1, p.draft_pick AS col2, p.mvp_awards AS col3, p.name AS col4, p.name AS name_player",
+   "error": null,
+   "rows": 139
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+ "uid": "join_queries#7",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Detroit Pistons\",\"col2\":\"Detroit\",\"col3\":null,\"col4\":\"Tom Gores\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Denver\",\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Colorado Avalanche\",\"col2\":\"Denver\",\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Colorado Avalanche\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Colorado Rapids\",\"col2\":null,\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Colorado Rapids\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Los Angeles Rams\",\"col2\":\"Los Angeles\",\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Los Angeles Rams\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Chicago\",\"col3\":null,\"col4\":\"Jerry Michael Reinsdorf\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":\"Chicago White Sox\",\"col2\":\"Chicago\",\"col3\":null,\"col4\":\"Jerry Michael Reinsdorf\",\"name_team\":\"Chicago White Sox\",\"name_manager\":\"Jerry Michael Reinsdorf\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Philadelphia\",\"col3\":null,\"col4\":\"Josh Harris\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"New Jersey Devils\",\"col2\":\"New Jersey\",\"col3\":null,\"col4\":\"Josh Harris\",\"name_team\":\"New Jersey Devils\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Washington Commanders\",\"col2\":\"Washington\",\"col3\":null,\"col4\":\"Josh Harris\",\"name_team\":\"Washington Commanders\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Oklahoma City\",\"col3\":null,\"col4\":\"Clayton Ike Bennett\",\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clayton Ike Bennett\"},{\"col1\":\"Golden State Warriors\",\"col2\":null,\"col3\":null,\"col4\":\"Joseph Steven Lacob\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joseph Steven Lacob\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Brooklyn\",\"col3\":null,\"col4\":\"Joseph Chung-Hsin Tsai\",\"name_team\":\"Brooklyn Nets\",\"name_manager\":\"Joseph Chung-Hsin Tsai\"}]}",
+ "rows": [
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Detroit",
+   "col3": null,
+   "col4": "Tom Gores",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver",
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Colorado Avalanche",
+   "col2": "Denver",
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Colorado Avalanche",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Colorado Rapids",
+   "col2": null,
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Colorado Rapids",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Los Angeles Rams",
+   "col2": "Los Angeles",
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Los Angeles Rams",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago",
+   "col3": null,
+   "col4": "Jerry Michael Reinsdorf",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Chicago White Sox",
+   "col2": "Chicago",
+   "col3": null,
+   "col4": "Jerry Michael Reinsdorf",
+   "name_team": "Chicago White Sox",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia",
+   "col3": null,
+   "col4": "Josh Harris",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "New Jersey Devils",
+   "col2": "New Jersey",
+   "col3": null,
+   "col4": "Josh Harris",
+   "name_team": "New Jersey Devils",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Washington Commanders",
+   "col2": "Washington",
+   "col3": null,
+   "col4": "Josh Harris",
+   "name_team": "Washington Commanders",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Oklahoma City",
+   "col3": null,
+   "col4": "Clayton Ike Bennett",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null,
+   "col3": null,
+   "col4": "Joseph Steven Lacob",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Brooklyn",
+   "col3": null,
+   "col4": "Joseph Chung-Hsin Tsai",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  }
+ ]
+}

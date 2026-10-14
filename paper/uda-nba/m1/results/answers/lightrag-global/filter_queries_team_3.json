@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#3",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":1989,\"col2\":\"Marc Lore and Alex Rodriguez\",\"col3\":\"Minnesota Timberwolves\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1988,\"col2\":\"George Shinn\",\"col3\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\"}]}",
+ "rows": [
+  {
+   "col1": 1989,
+   "col2": "Marc Lore and Alex Rodriguez",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1988,
+   "col2": "George Shinn",
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  }
+ ]
+}

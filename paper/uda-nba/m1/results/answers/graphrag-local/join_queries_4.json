@@ -1,0 +1,40 @@
+{
+ "uid": "join_queries#4",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":24,\"col3\":\"Detroit\",\"col4\":\"Detroit Pistons\",\"name_player\":\"Jaden Edward Dhananjay Ivey\",\"name_team\":\"Detroit Pistons\"},{\"col1\":\"British\",\"col2\":29,\"col3\":null,\"col4\":null,\"name_player\":\"OG Anunoby\",\"name_team\":null},{\"col1\":\"French\",\"col2\":32,\"col3\":null,\"col4\":null,\"name_player\":\"David Michineau\",\"name_team\":null},{\"col1\":null,\"col2\":null,\"col3\":null,\"col4\":null,\"name_player\":null,\"name_team\":null}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 24,
+   "col3": "Detroit",
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "British",
+   "col2": 29,
+   "col3": null,
+   "col4": null,
+   "name_player": "OG Anunoby",
+   "name_team": null
+  },
+  {
+   "col1": "French",
+   "col2": 32,
+   "col3": null,
+   "col4": null,
+   "name_player": "David Michineau",
+   "name_team": null
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "name_player": null,
+   "name_team": null
+  }
+ ],
+ "secs": 9.4
+}

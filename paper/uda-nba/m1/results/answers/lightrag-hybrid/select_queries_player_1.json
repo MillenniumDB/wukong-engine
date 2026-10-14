@@ -1,0 +1,31 @@
+{
+ "uid": "select_queries_player#1",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":2,\"name_player\":\"Lonzo Ball\"},{\"col1\":1,\"name_player\":\"LeBron James\"},{\"col1\":7,\"name_player\":\"Harrison Barnes\"},{\"col1\":2,\"name_player\":\"Kevin Durant\"},{\"col1\":1,\"name_player\":\"Cade Cunningham\"},{\"col1\":15,\"name_player\":\"Anthony Avent\"}]}",
+ "rows": [
+  {
+   "col1": 2,
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": 1,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 7,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1,
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": 15,
+   "name_player": "Anthony Avent"
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "uid": "select_queries_player#3",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":3,\"name_player\":\"LeBron James\"},{\"col1\":2,\"name_player\":\"Chris Paul\"},{\"col1\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":2,\"name_player\":\"Kobe Bryant\"},{\"col1\":4,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"name_player\":\"Michael Jordan\"},{\"col1\":1,\"name_player\":\"Stephen Curry\"},{\"col1\":2,\"name_player\":\"Devin Booker\"},{\"col1\":2,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"name_player\":\"Paul George\"},{\"col1\":3,\"name_player\":\"Carmelo Anthony\"},{\"col1\":1,\"name_player\":\"Kevin Love\"},{\"col1\":1,\"name_player\":\"Kyle Lowry\"},{\"col1\":2,\"name_player\":\"Jayson Tatum\"},{\"col1\":2,\"name_player\":\"Bam Adebayo\"},{\"col1\":1,\"name_player\":\"Harrison Barnes\"},{\"col1\":2,\"name_player\":\"Jrue Holiday\"},{\"col1\":1,\"name_player\":\"Zach LaVine\"},{\"col1\":1,\"name_player\":\"Jimmy Butler\"},{\"col1\":1,\"name_player\":\"Anthony Edwards\"},{\"col1\":1,\"name_player\":\"Jim Walsh\"},{\"col1\":1,\"name_player\":\"Steven Delano Smith\"}]}",
+ "rows": [
+  {
+   "col1": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 4,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 2,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 3,
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": 2,
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": 2,
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": 1,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": 2,
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": 1,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 1,
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": 1,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 1,
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": 1,
+   "name_player": "Steven Delano Smith"
+  }
+ ]
+}

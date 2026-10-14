@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_city#5",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"Minnesota\",\"col3\":429954,\"name_city\":\"Minneapolis\"},{\"col1\":null,\"col2\":\"Michigan\",\"col3\":639111,\"name_city\":\"Detroit\"},{\"col1\":null,\"col2\":\"Texas\",\"col3\":1304379,\"name_city\":\"Dallas\"},{\"col1\":null,\"col2\":\"California\",\"col3\":null,\"name_city\":\"Los Angeles\"},{\"col1\":null,\"col2\":\"Canada\",\"col3\":2794356,\"name_city\":\"Toronto\"},{\"col1\":null,\"col2\":\"Wisconsin\",\"col3\":577222,\"name_city\":\"Milwaukee\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Minnesota",
+   "col3": 429954,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": 639111,
+   "name_city": "Detroit"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": 1304379,
+   "name_city": "Dallas"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": "Canada",
+   "col3": 2794356,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": "Wisconsin",
+   "col3": 577222,
+   "name_city": "Milwaukee"
+  }
+ ]
+}

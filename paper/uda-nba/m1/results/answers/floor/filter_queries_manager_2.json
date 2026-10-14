@@ -1,0 +1,96 @@
+{
+ "uid": "filter_queries_manager#2",
+ "reply": "{\"rows\":[{\"col1\":90,\"col2\":\"Chicago Bulls\",\"col3\":\"Jerry Reinsdorf\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":79,\"col2\":\"Denver Nuggets\",\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":69,\"col2\":\"Houston Rockets\",\"col3\":\"Tilman Fertitta\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":91,\"col2\":\"Indiana Pacers\",\"col3\":\"Herbert Simon\",\"name_manager\":\"Herbert Simon\"},{\"col1\":70,\"col2\":\"Los Angeles Clippers\",\"col3\":\"Steve Ballmer\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":77,\"col2\":\"Miami Heat\",\"col3\":\"Micky Arison\",\"name_manager\":\"Micky Arison\"},{\"col1\":85,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Glen Taylor\",\"name_manager\":\"Glen Taylor\"},{\"col1\":79,\"col2\":\"New Orleans Pelicans\",\"col3\":\"Gayle Benson\",\"name_manager\":\"Gayle Benson\"},{\"col1\":71,\"col2\":\"New York Knicks\",\"col3\":\"James Dolan\",\"name_manager\":\"James Dolan\"},{\"col1\":67,\"col2\":\"Oklahoma City Thunder\",\"col3\":\"Clay Bennett\",\"name_manager\":\"Clay Bennett\"},{\"col1\":71,\"col2\":\"Orlando Magic\",\"col3\":\"Dan DeVos\",\"name_manager\":\"Dan DeVos\"},{\"col1\":68,\"col2\":\"Sacramento Kings\",\"col3\":\"Vivek Ranadive\",\"name_manager\":\"Vivek Ranadive\"},{\"col1\":80,\"col2\":\"San Antonio Spurs\",\"col3\":\"Peter Holt\",\"name_manager\":\"Peter Holt\"},{\"col1\":80,\"col2\":\"Toronto Raptors\",\"col3\":\"Larry Tanenbaum\",\"name_manager\":\"Larry Tanenbaum\"},{\"col1\":69,\"col2\":\"Washington Wizards\",\"col3\":\"Ted Leonsis\",\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": 90,
+   "col2": "Chicago Bulls",
+   "col3": "Jerry Reinsdorf",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 79,
+   "col2": "Denver Nuggets",
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 69,
+   "col2": "Houston Rockets",
+   "col3": "Tilman Fertitta",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 91,
+   "col2": "Indiana Pacers",
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 70,
+   "col2": "Los Angeles Clippers",
+   "col3": "Steve Ballmer",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 77,
+   "col2": "Miami Heat",
+   "col3": "Micky Arison",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": 85,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Glen Taylor",
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": 79,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Benson",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 71,
+   "col2": "New York Knicks",
+   "col3": "James Dolan",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": 67,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Clay Bennett",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 71,
+   "col2": "Orlando Magic",
+   "col3": "Dan DeVos",
+   "name_manager": "Dan DeVos"
+  },
+  {
+   "col1": 68,
+   "col2": "Sacramento Kings",
+   "col3": "Vivek Ranadive",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": 80,
+   "col2": "San Antonio Spurs",
+   "col3": "Peter Holt",
+   "name_manager": "Peter Holt"
+  },
+  {
+   "col1": 80,
+   "col2": "Toronto Raptors",
+   "col3": "Larry Tanenbaum",
+   "name_manager": "Larry Tanenbaum"
+  },
+  {
+   "col1": 69,
+   "col2": "Washington Wizards",
+   "col3": "Ted Leonsis",
+   "name_manager": "Ted Leonsis"
+  }
+ ]
+}

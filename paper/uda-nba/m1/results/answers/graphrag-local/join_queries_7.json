@@ -1,0 +1,64 @@
+{
+ "uid": "join_queries#7",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"Cleveland\",\"col3\":1970,\"col4\":\"Daniel Gilbert\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Daniel Gilbert\"},{\"col1\":\"Detroit Pistons\",\"col2\":null,\"col3\":null,\"col4\":\"Tom Gores\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Chicago Bulls\",\"col2\":null,\"col3\":null,\"col4\":\"Jerry Reinsdorf\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Washington Wizards\",\"col2\":null,\"col3\":null,\"col4\":\"Ted Leonsis\",\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"},{\"col1\":\"Portland Trail Blazers\",\"col2\":null,\"col3\":null,\"col4\":\"Paul Allen\",\"name_team\":\"Portland Trail Blazers\",\"name_manager\":\"Paul Allen\"},{\"col1\":\"Denver Nuggets\",\"col2\":null,\"col3\":null,\"col4\":\"Stan Kroenke\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":null,\"col3\":null,\"col4\":\"Josh Harris\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"}]}",
+ "rows": [
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Cleveland",
+   "col3": 1970,
+   "col4": "Daniel Gilbert",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null,
+   "col3": null,
+   "col4": "Tom Gores",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null,
+   "col3": null,
+   "col4": "Jerry Reinsdorf",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null,
+   "col3": null,
+   "col4": "Ted Leonsis",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null,
+   "col3": null,
+   "col4": "Paul Allen",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": null,
+   "col3": null,
+   "col4": "Stan Kroenke",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null,
+   "col3": null,
+   "col4": "Josh Harris",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  }
+ ],
+ "secs": 8.4
+}

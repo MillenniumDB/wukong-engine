@@ -1,0 +1,17 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":\"Joe Lacob\",\"col3\":2,\"col4\":\"San Francisco\",\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\",\"name_city\":\"San Francisco\"}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joe Lacob",
+   "col3": 2,
+   "col4": "San Francisco",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  }
+ ]
+}

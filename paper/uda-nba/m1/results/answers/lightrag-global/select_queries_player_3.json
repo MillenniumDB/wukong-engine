@@ -1,0 +1,71 @@
+{
+ "uid": "select_queries_player#3",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":2,\"name_player\":\"Chris Paul\"},{\"col1\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":1,\"name_player\":\"Zach LaVine\"},{\"col1\":4,\"name_player\":\"Kevin Durant\"},{\"col1\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":2,\"name_player\":\"Kobe Bryant\"},{\"col1\":2,\"name_player\":\"Michael Jordan\"},{\"col1\":1,\"name_player\":\"Larry Bird\"},{\"col1\":3,\"name_player\":\"LeBron James\"},{\"col1\":2,\"name_player\":\"Devin Booker\"},{\"col1\":1,\"name_player\":\"Paul George\"},{\"col1\":1,\"name_player\":\"Stephen Curry\"},{\"col1\":1,\"name_player\":\"Jayson Tatum\"},{\"col1\":1,\"name_player\":\"Kevin Love\"},{\"col1\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"name_player\":\"Joel Embiid\"}]}",
+ "rows": [
+  {
+   "col1": 2,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 1,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 4,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1,
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 1,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 1,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1,
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "name_player": "Joel Embiid"
+  }
+ ]
+}

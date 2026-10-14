@@ -1,0 +1,96 @@
+{
+ "uid": "join_queries#11",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"Jalen Brunson\",\"col3\":\"New York Knicks\",\"col4\":\"James Dolan\",\"col5\":\"New York\",\"name_player\":\"Jalen Brunson\",\"name_team\":\"New York Knicks\",\"name_city\":\"New York\"},{\"col1\":1,\"col2\":\"Mikal Bridges\",\"col3\":\"New York Knicks\",\"col4\":\"James Dolan\",\"col5\":\"New York\",\"name_player\":\"Mikal Bridges\",\"name_team\":\"New York Knicks\",\"name_city\":\"New York\"},{\"col1\":1,\"col2\":\"Jaren Jackson Jr.\",\"col3\":\"Memphis Grizzlies\",\"col4\":\"Robert Pera\",\"col5\":\"Tennessee\",\"name_player\":\"Jaren Jackson Jr.\",\"name_team\":\"Memphis Grizzlies\",\"name_city\":\"Memphis\"},{\"col1\":1,\"col2\":\"Anthony Edwards\",\"col3\":\"Minnesota Timberwolves\",\"col4\":\"Glen Taylor\",\"col5\":\"Minnesota\",\"name_player\":\"Anthony Edwards\",\"name_team\":\"Minnesota Timberwolves\",\"name_city\":\"Minneapolis\"},{\"col1\":1,\"col2\":\"Tyrese Haliburton\",\"col3\":\"Indiana Pacers\",\"col4\":\"Herb Simon\",\"col5\":\"Indiana\",\"name_player\":\"Tyrese Haliburton\",\"name_team\":\"Indiana Pacers\",\"name_city\":\"Indianapolis\"},{\"col1\":1,\"col2\":\"Austin Reaves\",\"col3\":\"Los Angeles Lakers\",\"col4\":\"Jeanie Buss\",\"col5\":\"California\",\"name_player\":\"Austin Reaves\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"},{\"col1\":1,\"col2\":\"Cam Johnson\",\"col3\":\"Brooklyn Nets\",\"col4\":\"Joseph Tsai\",\"col5\":\"New York\",\"name_player\":\"Cam Johnson\",\"name_team\":\"Brooklyn Nets\",\"name_city\":\"New York\"},{\"col1\":1,\"col2\":\"Bobby Portis\",\"col3\":\"Milwaukee Bucks\",\"col4\":\"Wes Edens\",\"col5\":\"Wisconsin\",\"name_player\":\"Bobby Portis\",\"name_team\":\"Milwaukee Bucks\",\"name_city\":\"Milwaukee\"},{\"col1\":1,\"col2\":\"Walker Kessler\",\"col3\":\"Utah Jazz\",\"col4\":\"Ryan Smith\",\"col5\":\"Utah\",\"name_player\":\"Walker Kessler\",\"name_team\":\"Utah Jazz\",\"name_city\":\"Salt Lake City\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "Jalen Brunson",
+   "col3": "New York Knicks",
+   "col4": "James Dolan",
+   "col5": "New York",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks",
+   "name_city": "New York"
+  },
+  {
+   "col1": 1,
+   "col2": "Mikal Bridges",
+   "col3": "New York Knicks",
+   "col4": "James Dolan",
+   "col5": "New York",
+   "name_player": "Mikal Bridges",
+   "name_team": "New York Knicks",
+   "name_city": "New York"
+  },
+  {
+   "col1": 1,
+   "col2": "Jaren Jackson Jr.",
+   "col3": "Memphis Grizzlies",
+   "col4": "Robert Pera",
+   "col5": "Tennessee",
+   "name_player": "Jaren Jackson Jr.",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": 1,
+   "col2": "Anthony Edwards",
+   "col3": "Minnesota Timberwolves",
+   "col4": "Glen Taylor",
+   "col5": "Minnesota",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": 1,
+   "col2": "Tyrese Haliburton",
+   "col3": "Indiana Pacers",
+   "col4": "Herb Simon",
+   "col5": "Indiana",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": 1,
+   "col2": "Austin Reaves",
+   "col3": "Los Angeles Lakers",
+   "col4": "Jeanie Buss",
+   "col5": "California",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": 1,
+   "col2": "Cam Johnson",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Tsai",
+   "col5": "New York",
+   "name_player": "Cam Johnson",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York"
+  },
+  {
+   "col1": 1,
+   "col2": "Bobby Portis",
+   "col3": "Milwaukee Bucks",
+   "col4": "Wes Edens",
+   "col5": "Wisconsin",
+   "name_player": "Bobby Portis",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": 1,
+   "col2": "Walker Kessler",
+   "col3": "Utah Jazz",
+   "col4": "Ryan Smith",
+   "col5": "Utah",
+   "name_player": "Walker Kessler",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  }
+ ]
+}

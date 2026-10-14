@@ -1,0 +1,79 @@
+{
+ "uid": "filter_queries_player#14",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":2014,\"col2\":32,\"col3\":null,\"name_player\":\"Joel Embiid\"},{\"col1\":2013,\"col2\":null,\"col3\":null,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":1997,\"col2\":null,\"col3\":null,\"name_player\":\"Tim Duncan\"},{\"col1\":2014,\"col2\":31,\"col3\":null,\"name_player\":\"Zach LaVine\"},{\"col1\":2012,\"col2\":null,\"col3\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":2003,\"col2\":null,\"col3\":0,\"name_player\":\"LeBron James\"},{\"col1\":2007,\"col2\":null,\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":1992,\"col2\":null,\"col3\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":2008,\"col2\":38,\"col3\":1,\"name_player\":\"Kevin Love\"},{\"col1\":2009,\"col2\":null,\"col3\":1,\"name_player\":\"Stephen Curry\"},{\"col1\":2018,\"col2\":null,\"col3\":null,\"name_player\":\"Jalen Brunson\"},{\"col1\":2014,\"col2\":31,\"col3\":null,\"name_player\":\"Andrew Wiggins\"}]}",
+ "rows": [
+  {
+   "col1": 2014,
+   "col2": 32,
+   "col3": null,
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 2013,
+   "col2": null,
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 1997,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 2014,
+   "col2": 31,
+   "col3": null,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 2012,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 2003,
+   "col2": null,
+   "col3": 0,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2007,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1992,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 2008,
+   "col2": 38,
+   "col3": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 2009,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2018,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": 2014,
+   "col2": 31,
+   "col3": null,
+   "name_player": "Andrew Wiggins"
+  }
+ ]
+}

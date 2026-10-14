@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#2",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":55,\"name_player\":\"Aaron Williams\"},{\"col1\":\"Frontcourt\",\"col2\":\"Greek and Nigerian\",\"col3\":31,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":\"Backcourt\",\"col2\":\"Greek and American\",\"col3\":37,\"name_player\":\"Nick Calathes\"},{\"col1\":null,\"col2\":\"French\",\"col3\":32,\"name_player\":\"David Michineau\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 55,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Greek and Nigerian",
+   "col3": 31,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Greek and American",
+   "col3": 37,
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": 32,
+   "name_player": "David Michineau"
+  }
+ ]
+}

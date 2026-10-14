@@ -1,0 +1,26 @@
+{
+ "uid": "filter_queries_player#27",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":5,\"col2\":\"Tim Duncan\",\"col3\":0,\"name_player\":\"Tim Duncan\"},{\"col1\":3,\"col2\":\"Kevon Looney\",\"col3\":0,\"name_player\":\"Kevon Looney\"},{\"col1\":0,\"col2\":\"William Bedford\",\"col3\":0,\"name_player\":\"William Bedford\"}]}",
+ "rows": [
+  {
+   "col1": 5,
+   "col2": "Tim Duncan",
+   "col3": 0,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": 3,
+   "col2": "Kevon Looney",
+   "col3": 0,
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": 0,
+   "col2": "William Bedford",
+   "col3": 0,
+   "name_player": "William Bedford"
+  }
+ ],
+ "secs": 5.5
+}

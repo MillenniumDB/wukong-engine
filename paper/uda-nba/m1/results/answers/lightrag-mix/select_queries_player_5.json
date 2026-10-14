@@ -1,0 +1,17 @@
+{
+ "uid": "select_queries_player#5",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":2,\"col2\":\"1985/5/6\",\"name_player\":\"Chris Paul\"},{\"col1\":4,\"col2\":\"1988/9/29\",\"name_player\":\"Kevin Durant\"}]}",
+ "rows": [
+  {
+   "col1": 2,
+   "col2": "1985/5/6",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 4,
+   "col2": "1988/9/29",
+   "name_player": "Kevin Durant"
+  }
+ ]
+}

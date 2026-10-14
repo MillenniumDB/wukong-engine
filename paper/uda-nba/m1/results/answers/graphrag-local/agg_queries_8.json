@@ -1,0 +1,12 @@
+{
+ "uid": "agg_queries#8",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":35}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 35
+  }
+ ],
+ "secs": 5.5
+}

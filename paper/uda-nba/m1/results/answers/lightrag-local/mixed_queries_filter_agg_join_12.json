@@ -1,0 +1,11 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": 1
+  }
+ ]
+}

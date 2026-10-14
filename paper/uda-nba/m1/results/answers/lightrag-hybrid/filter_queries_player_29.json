@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#29",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":null,\"col3\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\"},{\"col1\":null,\"col2\":38,\"col3\":\"Phoenix Suns\",\"name_player\":\"Kevin Durant\"},{\"col1\":null,\"col2\":null,\"col3\":\"Philadelphia 76ers\",\"name_player\":\"Allen Iverson\"},{\"col1\":2,\"col2\":null,\"col3\":\"Los Angeles Lakers\",\"name_player\":\"Kobe Bryant\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": 38,
+   "col3": "Phoenix Suns",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_player": "Kobe Bryant"
+  }
+ ]
+}

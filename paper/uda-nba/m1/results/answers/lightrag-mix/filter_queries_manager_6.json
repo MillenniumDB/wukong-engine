@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_manager#6",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":91,\"col3\":\"Herbert Simon\",\"name_manager\":\"Herbert Simon\"},{\"col1\":\"American\",\"col2\":85,\"col3\":\"Abe Pollin\",\"name_manager\":\"Abe Pollin\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Jerry Reinsdorf\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":null,\"col2\":null,\"col3\":\"Mark Walter\",\"name_manager\":\"Mark Walter\"},{\"col1\":null,\"col2\":null,\"col3\":\"Donald Sterling\",\"name_manager\":\"Donald Sterling\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Steve Ballmer\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"American\",\"col2\":null,\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":null,\"col2\":null,\"col3\":\"Herb Kohl\",\"name_manager\":\"Herb Kohl\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 91,
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "American",
+   "col2": 85,
+   "col3": "Abe Pollin",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Jerry Reinsdorf",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Mark Walter",
+   "name_manager": "Mark Walter"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Donald Sterling",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Steve Ballmer",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Herb Kohl",
+   "name_manager": "Herb Kohl"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": [
+  {
+   "col1": "Slovenian",
+   "col2": "1984/2/21",
+   "col3": 42,
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "American",
+   "col2": "1935/9/1",
+   "col3": 91,
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": "American",
+   "col2": "1945/9/17",
+   "col3": 81,
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": "American",
+   "col2": "1925/3/5",
+   "col3": 101,
+   "name_player": "Leroy Chollet"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWITH DISTINCT p, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (CAST(p.nba_championships AS INT64) <= 2 AND birth < DATE('1948-10-14'))\nRETURN p.nationality AS col1,\n       p.birth_date AS col2,\n       DATE_DIFF('year', birth, DATE('2026-10-14')) AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year,\n  CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month,\n  CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day\nWITH p,\n  birth_year,\n  birth_month,\n  birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN p.nationality AS col1,\n       p.birth_date AS col2,\n       age AS col3,\n       p.name AS name_player",
+   "error": null,
+   "rows": 4
+  }
+ ]
+}

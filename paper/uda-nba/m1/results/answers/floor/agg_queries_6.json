@@ -1,0 +1,134 @@
+{
+ "uid": "agg_queries#6",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":19},{\"col1\":\"Australian\",\"col2\":23},{\"col1\":\"Brazilian\",\"col2\":24},{\"col1\":\"Canadian\",\"col2\":22},{\"col1\":\"Cameroonian\",\"col2\":22},{\"col1\":\"Chinese\",\"col2\":30},{\"col1\":\"Croatian\",\"col2\":32},{\"col1\":\"Czech\",\"col2\":26},{\"col1\":\"Dominican\",\"col2\":29},{\"col1\":\"French\",\"col2\":19},{\"col1\":\"Georgian\",\"col2\":27},{\"col1\":\"German\",\"col2\":25},{\"col1\":\"Greek\",\"col2\":31},{\"col1\":\"Israeli\",\"col2\":25},{\"col1\":\"Italian\",\"col2\":30},{\"col1\":\"Japanese\",\"col2\":25},{\"col1\":\"Latvian\",\"col2\":30},{\"col1\":\"Lithuanian\",\"col2\":34},{\"col1\":\"Montenegrin\",\"col2\":35},{\"col1\":\"Nigerian\",\"col2\":28},{\"col1\":\"Polish\",\"col2\":39},{\"col1\":\"Puerto Rican\",\"col2\":28},{\"col1\":\"Russian\",\"col2\":34},{\"col1\":\"Serbian\",\"col2\":23},{\"col1\":\"Slovenian\",\"col2\":27},{\"col1\":\"South Sudanese\",\"col2\":23},{\"col1\":\"Spanish\",\"col2\":25},{\"col1\":\"Swedish\",\"col2\":24},{\"col1\":\"Swiss\",\"col2\":32},{\"col1\":\"Turkish\",\"col2\":24},{\"col1\":\"Ukrainian\",\"col2\":38},{\"col1\":\"British\",\"col2\":29}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 19
+  },
+  {
+   "col1": "Australian",
+   "col2": 23
+  },
+  {
+   "col1": "Brazilian",
+   "col2": 24
+  },
+  {
+   "col1": "Canadian",
+   "col2": 22
+  },
+  {
+   "col1": "Cameroonian",
+   "col2": 22
+  },
+  {
+   "col1": "Chinese",
+   "col2": 30
+  },
+  {
+   "col1": "Croatian",
+   "col2": 32
+  },
+  {
+   "col1": "Czech",
+   "col2": 26
+  },
+  {
+   "col1": "Dominican",
+   "col2": 29
+  },
+  {
+   "col1": "French",
+   "col2": 19
+  },
+  {
+   "col1": "Georgian",
+   "col2": 27
+  },
+  {
+   "col1": "German",
+   "col2": 25
+  },
+  {
+   "col1": "Greek",
+   "col2": 31
+  },
+  {
+   "col1": "Israeli",
+   "col2": 25
+  },
+  {
+   "col1": "Italian",
+   "col2": 30
+  },
+  {
+   "col1": "Japanese",
+   "col2": 25
+  },
+  {
+   "col1": "Latvian",
+   "col2": 30
+  },
+  {
+   "col1": "Lithuanian",
+   "col2": 34
+  },
+  {
+   "col1": "Montenegrin",
+   "col2": 35
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 28
+  },
+  {
+   "col1": "Polish",
+   "col2": 39
+  },
+  {
+   "col1": "Puerto Rican",
+   "col2": 28
+  },
+  {
+   "col1": "Russian",
+   "col2": 34
+  },
+  {
+   "col1": "Serbian",
+   "col2": 23
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 27
+  },
+  {
+   "col1": "South Sudanese",
+   "col2": 23
+  },
+  {
+   "col1": "Spanish",
+   "col2": 25
+  },
+  {
+   "col1": "Swedish",
+   "col2": 24
+  },
+  {
+   "col1": "Swiss",
+   "col2": 32
+  },
+  {
+   "col1": "Turkish",
+   "col2": 24
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": 38
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  }
+ ]
+}

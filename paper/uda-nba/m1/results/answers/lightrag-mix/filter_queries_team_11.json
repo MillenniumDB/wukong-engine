@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_team#11",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Brooklyn\",\"col2\":1967,\"col3\":\"Brooklyn Nets\",\"name_team\":\"Brooklyn Nets\"},{\"col1\":\"Charlotte\",\"col2\":1988,\"col3\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Minneapolis\",\"col2\":1989,\"col3\":\"Minnesota Timberwolves\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":\"Toronto\",\"col2\":1995,\"col3\":\"Toronto Raptors\",\"name_team\":\"Toronto Raptors\"}]}",
+ "rows": [
+  {
+   "col1": "Brooklyn",
+   "col2": 1967,
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": 1988,
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": 1989,
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Toronto",
+   "col2": 1995,
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  }
+ ]
+}

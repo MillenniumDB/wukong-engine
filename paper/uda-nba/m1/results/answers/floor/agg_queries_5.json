@@ -1,0 +1,314 @@
+{
+ "uid": "agg_queries#5",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":4000},{\"col1\":\"Canadian\",\"col2\":64},{\"col1\":\"French\",\"col2\":45},{\"col1\":\"Australian\",\"col2\":35},{\"col1\":\"Brazilian\",\"col2\":31},{\"col1\":\"Spanish\",\"col2\":29},{\"col1\":\"Serbian\",\"col2\":26},{\"col1\":\"Argentine\",\"col2\":21},{\"col1\":\"German\",\"col2\":20},{\"col1\":\"Italian\",\"col2\":19},{\"col1\":\"Croatian\",\"col2\":15},{\"col1\":\"Lithuanian\",\"col2\":14},{\"col1\":\"Turkish\",\"col2\":13},{\"col1\":\"Slovenian\",\"col2\":12},{\"col1\":\"Nigerian\",\"col2\":11},{\"col1\":\"Greek\",\"col2\":10},{\"col1\":\"Russian\",\"col2\":9},{\"col1\":\"Puerto Rican\",\"col2\":8},{\"col1\":\"Latvian\",\"col2\":7},{\"col1\":\"Japanese\",\"col2\":6},{\"col1\":\"British\",\"col2\":6},{\"col1\":\"Cameroonian\",\"col2\":5},{\"col1\":\"Czech\",\"col2\":5},{\"col1\":\"Georgian\",\"col2\":4},{\"col1\":\"Israeli\",\"col2\":4},{\"col1\":\"Montenegrin\",\"col2\":4},{\"col1\":\"Polish\",\"col2\":4},{\"col1\":\"Senegalese\",\"col2\":4},{\"col1\":\"South Sudanese\",\"col2\":4},{\"col1\":\"Ukrainian\",\"col2\":4},{\"col1\":\"Congolese\",\"col2\":3},{\"col1\":\"Dominican\",\"col2\":3},{\"col1\":\"Venezuelan\",\"col2\":3},{\"col1\":\"Bosnian\",\"col2\":2},{\"col1\":\"Chinese\",\"col2\":2},{\"col1\":\"Cuban\",\"col2\":2},{\"col1\":\"Dutch\",\"col2\":2},{\"col1\":\"Gabonese\",\"col2\":2},{\"col1\":\"Ghanaian\",\"col2\":2},{\"col1\":\"Haitian\",\"col2\":2},{\"col1\":\"Jamaican\",\"col2\":2},{\"col1\":\"Malian\",\"col2\":2},{\"col1\":\"Mexican\",\"col2\":2},{\"col1\":\"New Zealander\",\"col2\":2},{\"col1\":\"Panamanian\",\"col2\":2},{\"col1\":\"Philippine\",\"col2\":2},{\"col1\":\"Romanian\",\"col2\":2},{\"col1\":\"Tunisian\",\"col2\":2},{\"col1\":\"Angolan\",\"col2\":1},{\"col1\":\"Austrian\",\"col2\":1},{\"col1\":\"Bahamaian\",\"col2\":1},{\"col1\":\"Belizean\",\"col2\":1},{\"col1\":\"Bermudian\",\"col2\":1},{\"col1\":\"Bissau-Guinean\",\"col2\":1},{\"col1\":\"British Virgin Islander\",\"col2\":1},{\"col1\":\"Cape Verdean\",\"col2\":1},{\"col1\":\"Chilean\",\"col2\":1},{\"col1\":\"Colombian\",\"col2\":1},{\"col1\":\"Congolese (Republic of the Congo)\",\"col2\":1},{\"col1\":\"Egyptian\",\"col2\":1},{\"col1\":\"Equatoguinean\",\"col2\":1},{\"col1\":\"Finnish\",\"col2\":1},{\"col1\":\"Guinean\",\"col2\":1},{\"col1\":\"Ivorian\",\"col2\":1},{\"col1\":\"Korean\",\"col2\":1},{\"col1\":\"Macedonian\",\"col2\":1},{\"col1\":\"Malaysian\",\"col2\":1},{\"col1\":\"Mozambican\",\"col2\":1},{\"col1\":\"Norwegian\",\"col2\":1},{\"col1\":\"Panamanian\",\"col2\":1},{\"col1\":\"Qatari\",\"col2\":1},{\"col1\":\"Saint Lucian\",\"col2\":1},{\"col1\":\"South African\",\"col2\":1},{\"col1\":\"Sudanese\",\"col2\":1},{\"col1\":\"Swiss\",\"col2\":1},{\"col1\":\"Taiwanese\",\"col2\":1},{\"col1\":\"Uruguayan\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 4000
+  },
+  {
+   "col1": "Canadian",
+   "col2": 64
+  },
+  {
+   "col1": "French",
+   "col2": 45
+  },
+  {
+   "col1": "Australian",
+   "col2": 35
+  },
+  {
+   "col1": "Brazilian",
+   "col2": 31
+  },
+  {
+   "col1": "Spanish",
+   "col2": 29
+  },
+  {
+   "col1": "Serbian",
+   "col2": 26
+  },
+  {
+   "col1": "Argentine",
+   "col2": 21
+  },
+  {
+   "col1": "German",
+   "col2": 20
+  },
+  {
+   "col1": "Italian",
+   "col2": 19
+  },
+  {
+   "col1": "Croatian",
+   "col2": 15
+  },
+  {
+   "col1": "Lithuanian",
+   "col2": 14
+  },
+  {
+   "col1": "Turkish",
+   "col2": 13
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 12
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 11
+  },
+  {
+   "col1": "Greek",
+   "col2": 10
+  },
+  {
+   "col1": "Russian",
+   "col2": 9
+  },
+  {
+   "col1": "Puerto Rican",
+   "col2": 8
+  },
+  {
+   "col1": "Latvian",
+   "col2": 7
+  },
+  {
+   "col1": "Japanese",
+   "col2": 6
+  },
+  {
+   "col1": "British",
+   "col2": 6
+  },
+  {
+   "col1": "Cameroonian",
+   "col2": 5
+  },
+  {
+   "col1": "Czech",
+   "col2": 5
+  },
+  {
+   "col1": "Georgian",
+   "col2": 4
+  },
+  {
+   "col1": "Israeli",
+   "col2": 4
+  },
+  {
+   "col1": "Montenegrin",
+   "col2": 4
+  },
+  {
+   "col1": "Polish",
+   "col2": 4
+  },
+  {
+   "col1": "Senegalese",
+   "col2": 4
+  },
+  {
+   "col1": "South Sudanese",
+   "col2": 4
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": 4
+  },
+  {
+   "col1": "Congolese",
+   "col2": 3
+  },
+  {
+   "col1": "Dominican",
+   "col2": 3
+  },
+  {
+   "col1": "Venezuelan",
+   "col2": 3
+  },
+  {
+   "col1": "Bosnian",
+   "col2": 2
+  },
+  {
+   "col1": "Chinese",
+   "col2": 2
+  },
+  {
+   "col1": "Cuban",
+   "col2": 2
+  },
+  {
+   "col1": "Dutch",
+   "col2": 2
+  },
+  {
+   "col1": "Gabonese",
+   "col2": 2
+  },
+  {
+   "col1": "Ghanaian",
+   "col2": 2
+  },
+  {
+   "col1": "Haitian",
+   "col2": 2
+  },
+  {
+   "col1": "Jamaican",
+   "col2": 2
+  },
+  {
+   "col1": "Malian",
+   "col2": 2
+  },
+  {
+   "col1": "Mexican",
+   "col2": 2
+  },
+  {
+   "col1": "New Zealander",
+   "col2": 2
+  },
+  {
+   "col1": "Panamanian",
+   "col2": 2
+  },
+  {
+   "col1": "Philippine",
+   "col2": 2
+  },
+  {
+   "col1": "Romanian",
+   "col2": 2
+  },
+  {
+   "col1": "Tunisian",
+   "col2": 2
+  },
+  {
+   "col1": "Angolan",
+   "col2": 1
+  },
+  {
+   "col1": "Austrian",
+   "col2": 1
+  },
+  {
+   "col1": "Bahamaian",
+   "col2": 1
+  },
+  {
+   "col1": "Belizean",
+   "col2": 1
+  },
+  {
+   "col1": "Bermudian",
+   "col2": 1
+  },
+  {
+   "col1": "Bissau-Guinean",
+   "col2": 1
+  },
+  {
+   "col1": "British Virgin Islander",
+   "col2": 1
+  },
+  {
+   "col1": "Cape Verdean",
+   "col2": 1
+  },
+  {
+   "col1": "Chilean",
+   "col2": 1
+  },
+  {
+   "col1": "Colombian",
+   "col2": 1
+  },
+  {
+   "col1": "Congolese (Republic of the Congo)",
+   "col2": 1
+  },
+  {
+   "col1": "Egyptian",
+   "col2": 1
+  },
+  {
+   "col1": "Equatoguinean",
+   "col2": 1
+  },
+  {
+   "col1": "Finnish",
+   "col2": 1
+  },
+  {
+   "col1": "Guinean",
+   "col2": 1
+  },
+  {
+   "col1": "Ivorian",
+   "col2": 1
+  },
+  {
+   "col1": "Korean",
+   "col2": 1
+  },
+  {
+   "col1": "Macedonian",
+   "col2": 1
+  },
+  {
+   "col1": "Malaysian",
+   "col2": 1
+  },
+  {
+   "col1": "Mozambican",
+   "col2": 1
+  },
+  {
+   "col1": "Norwegian",
+   "col2": 1
+  },
+  {
+   "col1": "Panamanian",
+   "col2": 1
+  },
+  {
+   "col1": "Qatari",
+   "col2": 1
+  },
+  {
+   "col1": "Saint Lucian",
+   "col2": 1
+  },
+  {
+   "col1": "South African",
+   "col2": 1
+  },
+  {
+   "col1": "Sudanese",
+   "col2": 1
+  },
+  {
+   "col1": "Swiss",
+   "col2": 1
+  },
+  {
+   "col1": "Taiwanese",
+   "col2": 1
+  },
+  {
+   "col1": "Uruguayan",
+   "col2": 1
+  }
+ ]
+}

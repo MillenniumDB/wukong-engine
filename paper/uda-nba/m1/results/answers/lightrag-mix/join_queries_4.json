@@ -1,0 +1,47 @@
+{
+ "uid": "join_queries#4",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Cameroonian-American\",\"col2\":32,\"col3\":\"Philadelphia\",\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"American\",\"col2\":28,\"col3\":\"Los Angeles\",\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Austin Reaves\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"French\",\"col2\":22,\"col3\":\"San Antonio\",\"col4\":\"San Antonio Spurs\",\"name_player\":\"Victor Wembanyama\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Croatian\",\"col2\":59,\"col3\":\"Boston\",\"col4\":\"Boston Celtics\",\"name_player\":\"Dino Ra\u0111a\",\"name_team\":\"Boston Celtics\"},{\"col1\":\"German\",\"col2\":null,\"col3\":\"Los Angeles\",\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Dennis Schr\u00f6der\",\"name_team\":\"Los Angeles Lakers\"}]}",
+ "rows": [
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "American",
+   "col2": 28,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "French",
+   "col2": 22,
+   "col3": "San Antonio",
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59,
+   "col3": "Boston",
+   "col4": "Boston Celtics",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "German",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  }
+ ]
+}

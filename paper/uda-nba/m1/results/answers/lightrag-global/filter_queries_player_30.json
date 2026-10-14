@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#30",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":3,\"name_player\":\"LeBron James\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":4,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Allen Iverson\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"James Worthy\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":2,\"name_player\":\"Kobe Bryant\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Stephen Curry\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 4,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "James Worthy"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 2,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Stephen Curry"
+  }
+ ]
+}

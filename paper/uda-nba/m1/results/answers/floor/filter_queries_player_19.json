@@ -1,0 +1,162 @@
+{
+ "uid": "filter_queries_player#19",
+ "reply": "{\"rows\":[{\"col1\":0,\"col2\":28,\"col3\":2001,\"name_player\":\"Tony Parker\"},{\"col1\":0,\"col2\":57,\"col3\":1999,\"name_player\":\"Manu Ginobili\"},{\"col1\":0,\"col2\":24,\"col3\":1999,\"name_player\":\"Andrei Kirilenko\"},{\"col1\":0,\"col2\":51,\"col3\":2003,\"name_player\":\"Kyle Korver\"},{\"col1\":1,\"col2\":46,\"col3\":2003,\"name_player\":\"Jos\u00e9 Calder\u00f3n\"},{\"col1\":0,\"col2\":24,\"col3\":1996,\"name_player\":\"Derek Fisher\"},{\"col1\":0,\"col2\":50,\"col3\":1988,\"name_player\":\"Steve Kerr\"},{\"col1\":0,\"col2\":27,\"col3\":1986,\"name_player\":\"Dennis Rodman\"},{\"col1\":1,\"col2\":25,\"col3\":1986,\"name_player\":\"Mark Price\"},{\"col1\":0,\"col2\":29,\"col3\":1990,\"name_player\":\"Toni Kuko\u010d\"},{\"col1\":1,\"col2\":46,\"col3\":1987,\"name_player\":\"\u0160ar\u016bnas Mar\u010diulionis\"},{\"col1\":1,\"col2\":26,\"col3\":1989,\"name_player\":\"Vlade Divac\"},{\"col1\":0,\"col2\":24,\"col3\":1986,\"name_player\":\"Arvydas Sabonis\"},{\"col1\":0,\"col2\":29,\"col3\":1993,\"name_player\":\"P. J. Brown\"},{\"col1\":0,\"col2\":24,\"col3\":1985,\"name_player\":\"Terry Porter\"},{\"col1\":0,\"col2\":65,\"col3\":1979,\"name_player\":\"Bill Laimbeer\"},{\"col1\":0,\"col2\":36,\"col3\":1978,\"name_player\":\"Maurice Cheeks\"},{\"col1\":0,\"col2\":29,\"col3\":1976,\"name_player\":\"Dennis Johnson\"},{\"col1\":0,\"col2\":31,\"col3\":1983,\"name_player\":\"Doc Rivers\"},{\"col1\":0,\"col2\":72,\"col3\":1982,\"name_player\":\"Mark Eaton\"},{\"col1\":0,\"col2\":31,\"col3\":1981,\"name_player\":\"Danny Ainge\"},{\"col1\":0,\"col2\":53,\"col3\":1988,\"name_player\":\"Anthony Mason\"},{\"col1\":0,\"col2\":48,\"col3\":1990,\"name_player\":\"Cedric Ceballos\"},{\"col1\":0,\"col2\":60,\"col3\":1989,\"name_player\":\"Dra\u017een Petrovi\u0107\"},{\"col1\":0,\"col2\":58,\"col3\":1980,\"name_player\":\"Kurt Rambis\"},{\"col1\":0,\"col2\":31,\"col3\":1985,\"name_player\":\"Manute Bol\"}]}",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": 28,
+   "col3": 2001,
+   "name_player": "Tony Parker"
+  },
+  {
+   "col1": 0,
+   "col2": 57,
+   "col3": 1999,
+   "name_player": "Manu Ginobili"
+  },
+  {
+   "col1": 0,
+   "col2": 24,
+   "col3": 1999,
+   "name_player": "Andrei Kirilenko"
+  },
+  {
+   "col1": 0,
+   "col2": 51,
+   "col3": 2003,
+   "name_player": "Kyle Korver"
+  },
+  {
+   "col1": 1,
+   "col2": 46,
+   "col3": 2003,
+   "name_player": "Jos\u00e9 Calder\u00f3n"
+  },
+  {
+   "col1": 0,
+   "col2": 24,
+   "col3": 1996,
+   "name_player": "Derek Fisher"
+  },
+  {
+   "col1": 0,
+   "col2": 50,
+   "col3": 1988,
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": 0,
+   "col2": 27,
+   "col3": 1986,
+   "name_player": "Dennis Rodman"
+  },
+  {
+   "col1": 1,
+   "col2": 25,
+   "col3": 1986,
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": 0,
+   "col2": 29,
+   "col3": 1990,
+   "name_player": "Toni Kuko\u010d"
+  },
+  {
+   "col1": 1,
+   "col2": 46,
+   "col3": 1987,
+   "name_player": "\u0160ar\u016bnas Mar\u010diulionis"
+  },
+  {
+   "col1": 1,
+   "col2": 26,
+   "col3": 1989,
+   "name_player": "Vlade Divac"
+  },
+  {
+   "col1": 0,
+   "col2": 24,
+   "col3": 1986,
+   "name_player": "Arvydas Sabonis"
+  },
+  {
+   "col1": 0,
+   "col2": 29,
+   "col3": 1993,
+   "name_player": "P. J. Brown"
+  },
+  {
+   "col1": 0,
+   "col2": 24,
+   "col3": 1985,
+   "name_player": "Terry Porter"
+  },
+  {
+   "col1": 0,
+   "col2": 65,
+   "col3": 1979,
+   "name_player": "Bill Laimbeer"
+  },
+  {
+   "col1": 0,
+   "col2": 36,
+   "col3": 1978,
+   "name_player": "Maurice Cheeks"
+  },
+  {
+   "col1": 0,
+   "col2": 29,
+   "col3": 1976,
+   "name_player": "Dennis Johnson"
+  },
+  {
+   "col1": 0,
+   "col2": 31,
+   "col3": 1983,
+   "name_player": "Doc Rivers"
+  },
+  {
+   "col1": 0,
+   "col2": 72,
+   "col3": 1982,
+   "name_player": "Mark Eaton"
+  },
+  {
+   "col1": 0,
+   "col2": 31,
+   "col3": 1981,
+   "name_player": "Danny Ainge"
+  },
+  {
+   "col1": 0,
+   "col2": 53,
+   "col3": 1988,
+   "name_player": "Anthony Mason"
+  },
+  {
+   "col1": 0,
+   "col2": 48,
+   "col3": 1990,
+   "name_player": "Cedric Ceballos"
+  },
+  {
+   "col1": 0,
+   "col2": 60,
+   "col3": 1989,
+   "name_player": "Dra\u017een Petrovi\u0107"
+  },
+  {
+   "col1": 0,
+   "col2": 58,
+   "col3": 1980,
+   "name_player": "Kurt Rambis"
+  },
+  {
+   "col1": 0,
+   "col2": 31,
+   "col3": 1985,
+   "name_player": "Manute Bol"
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_player#1",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":2,\"col2\":7,\"col3\":1,\"name_player\":\"Stephen Curry\"},{\"col1\":4,\"col2\":1,\"col3\":0,\"name_player\":\"LeBron James\"},{\"col1\":1,\"col2\":2,\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"col2\":15,\"col3\":0,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":0,\"col2\":3,\"col3\":0,\"name_player\":\"Michael Jordan\"},{\"col1\":1,\"col2\":13,\"col3\":0,\"name_player\":\"Kobe Bryant\"},{\"col1\":1,\"col2\":1,\"col3\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"col2\":1,\"col3\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":0,\"col2\":3,\"col3\":0,\"name_player\":\"Joel Embiid\"}]}",
+ "rows": [
+  {
+   "col1": 2,
+   "col2": 7,
+   "col3": 1,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 4,
+   "col2": 1,
+   "col3": 0,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 1,
+   "col2": 2,
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "col2": 15,
+   "col3": 0,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 0,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1,
+   "col2": 13,
+   "col3": 0,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 0,
+   "name_player": "Joel Embiid"
+  }
+ ]
+}

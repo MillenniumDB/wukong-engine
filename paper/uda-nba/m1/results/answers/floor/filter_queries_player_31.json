@@ -1,0 +1,126 @@
+{
+ "uid": "filter_queries_player#31",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Draymond Green\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Kyle Lowry\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Serbian\",\"col3\":0,\"name_player\":\"Nikola Jokic\"},{\"col1\":\"Indiana Pacers\",\"col2\":\"Cameroonian\",\"col3\":0,\"name_player\":\"Pascal Siakam\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"French\",\"col3\":0,\"name_player\":\"Rudy Gobert\"},{\"col1\":\"New York Knicks\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Jalen Brunson\"},{\"col1\":\"Houston Rockets\",\"col2\":\"Canadian\",\"col3\":0,\"name_player\":\"Dillon Brooks\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Nic Claxton\"},{\"col1\":\"Boston Celtics\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Derrick White\"},{\"col1\":\"New Orleans Pelicans\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Dejounte Murray\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Bahamian-American\",\"col3\":0,\"name_player\":\"Buddy Hield\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Norman Powell\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Kyle Kuzma\"},{\"col1\":\"Portland Trail Blazers\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Festus Ezeli\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Udoka Azubuike\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Chimezie Metu\"},{\"col1\":\"Toronto Raptors\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Jordan Nwora\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Semi Ojeleye\"},{\"col1\":\"Sacramento Kings\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"KZ Okpala\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Michael Olowokandi\"}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Serbian",
+   "col3": 0,
+   "name_player": "Nikola Jokic"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Cameroonian",
+   "col3": 0,
+   "name_player": "Pascal Siakam"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "French",
+   "col3": 0,
+   "name_player": "Rudy Gobert"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Canadian",
+   "col3": 0,
+   "name_player": "Dillon Brooks"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Nic Claxton"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Derrick White"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Dejounte Murray"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Bahamian-American",
+   "col3": 0,
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Norman Powell"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Kyle Kuzma"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Festus Ezeli"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Udoka Azubuike"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Chimezie Metu"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Jordan Nwora"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Semi Ojeleye"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "KZ Okpala"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Michael Olowokandi"
+  }
+ ]
+}

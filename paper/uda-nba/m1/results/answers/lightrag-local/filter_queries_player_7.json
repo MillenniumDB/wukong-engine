@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_player#7",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":2011,\"col3\":\"Kyrie Irving\",\"name_player\":\"Kyrie Irving\"},{\"col1\":2,\"col2\":2009,\"col3\":\"Stephen Curry\",\"name_player\":\"Stephen Curry\"},{\"col1\":1,\"col2\":2012,\"col3\":\"Anthony Davis\",\"name_player\":\"Anthony Davis\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 2011,
+   "col3": "Kyrie Irving",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2,
+   "col2": 2009,
+   "col3": "Stephen Curry",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1,
+   "col2": 2012,
+   "col3": "Anthony Davis",
+   "name_player": "Anthony Davis"
+  }
+ ]
+}

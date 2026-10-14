@@ -1,0 +1,39 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Kobe Bean Bryant\",\"col2\":\"Backcourt\",\"col3\":17,\"col4\":\"1946\",\"name_player\":\"Kobe Bean Bryant\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Tim Duncan\",\"col2\":\"Frontcourt\",\"col3\":5,\"col4\":null,\"name_player\":\"Tim Duncan\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Giannis Antetokounmpo\",\"col2\":\"Frontcourt\",\"col3\":1,\"col4\":\"1968\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Draymond Green\",\"col2\":\"Frontcourt\",\"col3\":null,\"col4\":null,\"name_player\":\"Draymond Green\",\"name_team\":\"Golden State Warriors\"}]}",
+ "rows": [
+  {
+   "col1": "Kobe Bean Bryant",
+   "col2": "Backcourt",
+   "col3": 17,
+   "col4": "1946",
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Tim Duncan",
+   "col2": "Frontcourt",
+   "col3": 5,
+   "col4": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Giannis Antetokounmpo",
+   "col2": "Frontcourt",
+   "col3": 1,
+   "col4": "1968",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Draymond Green",
+   "col2": "Frontcourt",
+   "col3": null,
+   "col4": null,
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors"
+  }
+ ]
+}

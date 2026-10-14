@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_team#6",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Herb Simon\",\"col2\":1967,\"col3\":3,\"name_team\":\"Indiana Pacers\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":null,\"col3\":6,\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Peter M. Holt\",\"col2\":1967,\"col3\":5,\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Jerry Buss\",\"col2\":null,\"col3\":5,\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Micky Arison\",\"col2\":1988,\"col3\":3,\"name_team\":\"Miami Heat\"}]}",
+ "rows": [
+  {
+   "col1": "Herb Simon",
+   "col2": 1967,
+   "col3": 3,
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": null,
+   "col3": 6,
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Peter M. Holt",
+   "col2": 1967,
+   "col3": 5,
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": 5,
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": 1988,
+   "col3": 3,
+   "name_team": "Miami Heat"
+  }
+ ]
+}

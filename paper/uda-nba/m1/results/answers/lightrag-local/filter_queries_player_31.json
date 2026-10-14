@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_player#31",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Capitanes de Arecibo\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Jahlil Okafor\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Turkish\",\"col3\":null,\"name_player\":\"Furkan Korkmaz\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":null,\"col3\":null,\"name_player\":\"MarJon Beauchamp\"}]}",
+ "rows": [
+  {
+   "col1": "Capitanes de Arecibo",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Turkish",
+   "col3": null,
+   "name_player": "Furkan Korkmaz"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null,
+   "col3": null,
+   "name_player": "MarJon Beauchamp"
+  }
+ ]
+}
