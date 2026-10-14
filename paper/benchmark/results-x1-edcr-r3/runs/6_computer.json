@@ -1,0 +1,23 @@
+{
+  "ontology": "6_computer",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-14T03:07:32+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 230,
+  "shards": 3,
+  "failed_shards": [],
+  "usage": {
+    "calls": 2376,
+    "failed_calls": 0,
+    "input_tokens": 1395678,
+    "cached_tokens": 49561,
+    "output_tokens": 162897,
+    "reasoning_tokens": 88857
+  },
+  "seconds": 8305,
+  "with_triples": 198,
+  "triples": 534
+}

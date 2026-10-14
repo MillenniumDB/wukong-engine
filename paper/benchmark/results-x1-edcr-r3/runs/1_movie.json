@@ -1,0 +1,23 @@
+{
+  "ontology": "1_movie",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-14T00:49:07+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 840,
+  "shards": 9,
+  "failed_shards": [],
+  "usage": {
+    "calls": 7945,
+    "failed_calls": 0,
+    "input_tokens": 5634791,
+    "cached_tokens": 180790,
+    "output_tokens": 630653,
+    "reasoning_tokens": 330177
+  },
+  "seconds": 0,
+  "with_triples": 802,
+  "triples": 2820
+}

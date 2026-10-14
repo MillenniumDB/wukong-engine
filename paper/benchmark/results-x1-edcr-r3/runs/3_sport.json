@@ -1,0 +1,23 @@
+{
+  "ontology": "3_sport",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-14T01:49:25+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 487,
+  "shards": 5,
+  "failed_shards": [],
+  "usage": {
+    "calls": 4998,
+    "failed_calls": 0,
+    "input_tokens": 3307951,
+    "cached_tokens": 27364,
+    "output_tokens": 358434,
+    "reasoning_tokens": 191612
+  },
+  "seconds": 3618,
+  "with_triples": 442,
+  "triples": 1247
+}
