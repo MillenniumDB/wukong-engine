@@ -141,11 +141,23 @@ def load_common(run):
     return nodes, edges, {}
 
 
+def load_triples(run):
+    """Untyped triple graphs (KGGen, EDC self-canonicalization) exported like the baselines: an
+    entity is a string, an edge a (subject, predicate, object) triple, kept as the edge's text."""
+    nodes, edges, _ = load_common(run)
+    for e in edges:
+        e['text'] = f"{nodes[e['src']]['name']} {e['label']} {nodes[e['dst']]['name']}"
+    return nodes, edges, {}
+
+
 def common_usage(run):
     """Calls and tokens from usage.jsonl (one line per LLM call), wall time from meta.json."""
     tot = Counter()
     for line in (RUNS / run / 'usage.jsonl').open():
         r = json.loads(line)
+        if r.get('stage', '').startswith('embed'):  # embedding calls (KGGen, EDC): not LLM calls
+            tot['embedding_input'] += r.get('input', 0)
+            continue
         tot['calls'] += 1
         tot['input'] += r.get('input', 0)
         tot['output'] += r.get('output', 0) - r.get('reasoning', 0)  # as in Wukong: output without reasoning
@@ -157,14 +169,17 @@ def common_usage(run):
 
 
 # graphs with typed nodes and edges: matched by type, scored on typed fields
-TYPED = ('Wukong', 'Neo4j', 'LlamaIndex', 'OntoGPT')
+TYPED = ('Wukong', 'Neo4j', 'LlamaIndex', 'OntoGPT', 'EDC-target')
 
 
 def typed(system):
     return system.startswith(TYPED)
 
 
-BASELINES = {'Neo4j-GraphRAG': 'neo4j-graphrag-full', 'LlamaIndex': 'llamaindex-full', 'OntoGPT': 'ontogpt-full'}
+BASELINES = {'Neo4j-GraphRAG': 'neo4j-graphrag-full', 'LlamaIndex': 'llamaindex-full', 'OntoGPT': 'ontogpt-full',
+             'EDC-target': 'edc-full/target'}
+# schema-free triple extractors with relation canonicalization (baselines/kggen_build.py, edc_build.py)
+TRIPLES = {'KGGen': 'kggen-full', 'EDC-self': 'edc-full/self'}
 
 # Wukong runs, by name. E1 reports Wukong-r1..r3: the full schema (workspace-x6-s4) on the current
 # engine, three runs (run_x6.sh). The others are kept for reference: Wukong-orig used the original
@@ -180,6 +195,9 @@ for _name, _run in WUKONG_RUNS.items():
 for _name, _run in BASELINES.items():
     if (RUNS / _run / 'graph/edges.jsonl').exists():
         SYSTEMS[_name] = lambda _run=_run: load_common(_run)
+for _name, _run in TRIPLES.items():
+    if (RUNS / _run / 'graph/edges.jsonl').exists():
+        SYSTEMS[_name] = lambda _run=_run: load_triples(_run)
 
 # --------------------------------------------------------------------- 1. structure
 
@@ -496,6 +514,8 @@ def main():
             s['usage'] = wukong_usage(WUKONG_RUNS[name])
         elif name in BASELINES:
             s['usage'] = common_usage(BASELINES[name])
+        elif name in TRIPLES:
+            s['usage'] = common_usage(TRIPLES[name])
         s['surface_duplicates'] = surface_duplicates(nodes)
         ent, facts = coverage(name, nodes, edges, gold)
         ent.to_csv(args.out / f'{name}_entities.csv', index=False)

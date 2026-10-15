@@ -4,7 +4,7 @@
     envs/graphrag/bin/python e1_table.py           # -> runs/e1/summary.csv, printed table
 
 Wukong is the full schema (workspace-x6-s4) on the current engine, three runs (Wukong-r1..r3):
-a cell shows the mean, with the range when the runs differ. LightRAG and GraphRAG ran once.
+a cell shows the mean, with the range when the runs differ. LightRAG, GraphRAG and KGGen ran once.
 """
 import json
 
@@ -17,7 +17,8 @@ R = json.loads((E1 / 'report.json').read_text())
 V = json.loads((E1 / 'relation_vocab.json').read_text())
 SYS = {'Wukong': (['Wukong-r1', 'Wukong-r2', 'Wukong-r3'], 'Wukong', 'Wukong'),   # (reports, vocab raw, vocab derived)
        'LightRAG': (['LightRAG'], 'LightRAG-keywords', 'LightRAG-derived'),
-       'GraphRAG': (['GraphRAG'], None, 'GraphRAG-derived')}
+       'GraphRAG': (['GraphRAG'], None, 'GraphRAG-derived'),
+       'KGGen': (['KGGen'], 'KGGen', 'KGGen-derived')}
 RELATIONS = {'plays_for', 'located_in', 'owned_by', 'owns'}
 
 
@@ -27,9 +28,10 @@ def metrics(rep):
     f = pd.read_csv(E1 / f'{rep}_facts.csv')
     ent = pd.read_csv(E1 / f'{rep}_entities.csv')
     att, rel = f[~f.fact.isin(RELATIONS)], f[f.fact.isin(RELATIONS)]
-    return {'nodes': r['nodes'], 'edges': r['edges'], 'types': r['entity_types'],
-            'types_once': r['entity_types_singleton'],
-            'props_per_node': r['typed_attribute_values'] / r['nodes'],
+    untyped = set(r['top_types']) == {''}  # KGGen: entities are bare strings
+    return {'nodes': r['nodes'], 'edges': r['edges'], 'types': 0 if untyped else r['entity_types'],
+            'types_once': 0 if untyped else r['entity_types_singleton'],
+            'untyped': untyped, 'props_per_node': r['typed_attribute_values'] / r['nodes'],
             'free_text_pct': 100 * r['nodes_with_description'] / r['nodes'],
             'entities': int(((ent.exact + ent.variants) > 0).sum()), 'entities_n': len(ent),
             'attrs': int(att.covered.sum()), 'attrs_n': len(att),
@@ -77,7 +79,7 @@ for name, (reps, raw, der) in SYS.items():
         ('Direction', 'Edges stored against their relation'): pct(back) + (' (undirected)' if name == 'LightRAG' else ''),
         ('Direction', 'Frequent labels used in both directions'): pct(both),
         ('Properties', 'Typed property values per node'): col('props_per_node', lambda x: f'{x:.1f}'),
-        ('Properties', 'Nodes described only by free text'): col('free_text_pct', pct),
+        ('Properties', 'Nodes described only by free text'): '– (bare strings)' if m[0]['untyped'] else col('free_text_pct', pct),
         ('Control: recall vs gold', 'Entities found'): f"{col('entities')}/{m[0]['entities_n']}",
         ('Control: recall vs gold', 'Attribute values found'): f"{col('attrs')}/{m[0]['attrs_n']}",
         ('Control: recall vs gold', 'Relations found'): f"{col('rels')}/{m[0]['rels_n']}",

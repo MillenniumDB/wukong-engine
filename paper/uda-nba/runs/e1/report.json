@@ -2128,5 +2128,183 @@
    "nba": "82/90"
   },
   "plays_for_current": 92
+ },
+ "KGGen": {
+  "nodes": 21429,
+  "edges": 20475,
+  "entity_types": 1,
+  "entity_types_singleton": 0,
+  "top_types": {
+   "": 21429
+  },
+  "edges_unlabeled": 0,
+  "relation_labels": 4496,
+  "relation_labels_singleton": 2982,
+  "edges_with_singleton_label": 2982,
+  "distinct_keywords": 4507,
+  "top_labels": {
+   "played as a": 754,
+   "won the": 590,
+   "is located in": 496,
+   "is home of": 378,
+   "played with and against": 363,
+   "includes": 325,
+   "was named a": 313,
+   "acquired": 268
+  },
+  "typed_attribute_values": 0,
+  "nodes_with_description": 0,
+  "median_node_description_chars": 0,
+  "edges_with_description": 20475,
+  "median_edge_description_chars": 48,
+  "isolated_nodes": 9251,
+  "degree_1_nodes": 7450,
+  "usage": {
+   "calls": 26025,
+   "input": 13815247,
+   "output": 1727795,
+   "reasoning": 0,
+   "embedding_input": 112406,
+   "wall_min": 228.2
+  },
+  "surface_duplicates": {
+   "groups": 12,
+   "nodes_in_groups": 24,
+   "examples": [
+    [
+     "Six-team trade",
+     "six-team trade"
+    ],
+    [
+     "Southeastern United States",
+     "southeastern United States"
+    ],
+    [
+     "captain of the NYU basketball team",
+     "the captain of the NYU basketball team"
+    ]
+   ]
+  },
+  "entity_coverage": {
+   "city": {
+    "n": 29,
+    "found": 29,
+    "found_exact": 25,
+    "with_aliases": 20,
+    "mean_nodes_when_found": 2.0
+   },
+   "owner": {
+    "n": 16,
+    "found": 16,
+    "found_exact": 16,
+    "with_aliases": 8,
+    "mean_nodes_when_found": 1.5
+   },
+   "player": {
+    "n": 141,
+    "found": 137,
+    "found_exact": 136,
+    "with_aliases": 72,
+    "mean_nodes_when_found": 1.55
+   },
+   "team": {
+    "n": 30,
+    "found": 30,
+    "found_exact": 30,
+    "with_aliases": 10,
+    "mean_nodes_when_found": 1.33
+   }
+  },
+  "fact_coverage": {
+   "city.area": {
+    "n": 23,
+    "covered": 0
+   },
+   "city.population": {
+    "n": 29,
+    "covered": 1
+   },
+   "city.state_name": {
+    "n": 28,
+    "covered": 28
+   },
+   "owner.nationality": {
+    "n": 16,
+    "covered": 2
+   },
+   "owner.own_year": {
+    "n": 14,
+    "covered": 4
+   },
+   "owner.owns": {
+    "n": 16,
+    "covered": 16
+   },
+   "player.birth_date": {
+    "n": 141,
+    "covered": 54
+   },
+   "player.college": {
+    "n": 123,
+    "covered": 104
+   },
+   "player.draft_pick": {
+    "n": 107,
+    "covered": 38
+   },
+   "player.draft_year": {
+    "n": 114,
+    "covered": 80
+   },
+   "player.fiba_world_cup": {
+    "n": 19,
+    "covered": 2
+   },
+   "player.mvp_awards": {
+    "n": 17,
+    "covered": 7
+   },
+   "player.nationality": {
+    "n": 139,
+    "covered": 98
+   },
+   "player.nba_championships": {
+    "n": 33,
+    "covered": 6
+   },
+   "player.olympic_gold_medals": {
+    "n": 26,
+    "covered": 1
+   },
+   "player.plays_for": {
+    "n": 139,
+    "covered": 118
+   },
+   "player.position": {
+    "n": 76,
+    "covered": 39
+   },
+   "team.championships": {
+    "n": 20,
+    "covered": 5
+   },
+   "team.founded_year": {
+    "n": 30,
+    "covered": 19
+   },
+   "team.located_in": {
+    "n": 30,
+    "covered": 25
+   },
+   "team.owned_by": {
+    "n": 35,
+    "covered": 29
+   }
+  },
+  "plays_for_split": {
+   "non_nba": "31/49",
+   "nba": "87/90"
+  },
+  "plays_for_current": "n/a"
  }
 }

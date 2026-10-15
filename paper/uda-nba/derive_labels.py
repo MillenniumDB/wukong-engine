@@ -39,7 +39,8 @@ Return JSON: {{"labels": [{{"id": <id>, "subject": "X" or "Y", "predicate": "<pr
 Items:
 {items}"""
 
-LOADERS = {'LightRAG': A.load_lightrag, 'GraphRAG': A.load_graphrag}
+LOADERS = {'LightRAG': A.load_lightrag, 'GraphRAG': A.load_graphrag,
+           **{n: (lambda r=r: A.load_triples(r)) for n, r in A.TRIPLES.items()}}
 
 
 async def label_batch(client, args, batch, out, usage, sem, lock):

@@ -8,5 +8,6 @@ runs/*
 runs/labels/*
 !runs/labels/LightRAG.jsonl
 !runs/labels/GraphRAG.jsonl
+!runs/labels/KGGen.jsonl
 runs/e1/Wukong_entities.csv
 runs/e1/Wukong_facts.csv

@@ -7,6 +7,8 @@ Labelings compared:
   LightRAG-keywords the keywords LightRAG attaches to each edge (sorted keyword set)
   LightRAG-derived  a predicate read from the edge description (derive_labels.py)
   GraphRAG-derived  same; GraphRAG edges have no label of their own
+  KGGen, EDC-self   the predicates of their triples, after their own canonicalization
+                    (KGGen deduplication, EDC self-canonicalization); -derived as above
 
 Synonym merging, generous to the baselines: labels are embedded (text-embedding-3-small) and
 merged greedily into the most frequent label within cosine >= t (leader clustering: each label
@@ -37,7 +39,12 @@ def labelings():
     out['Wukong'] = (edges, nodes)
     nodes, edges, _ = A.load_lightrag()
     out['LightRAG-keywords'] = (edges, nodes)
-    for system, load in (('LightRAG', A.load_lightrag), ('GraphRAG', A.load_graphrag)):
+    triples = [(n, lambda r=r: A.load_triples(r)) for n, r in A.TRIPLES.items()
+               if (A.RUNS / r / 'graph/edges.jsonl').exists() and (LABELS / f'{n}.jsonl').exists()]
+    for system, load in triples:  # their own predicates, as extracted (and canonicalized)
+        nodes, edges, _ = load()
+        out[system] = (edges, nodes)
+    for system, load in [('LightRAG', A.load_lightrag), ('GraphRAG', A.load_graphrag)] + triples:
         nodes, edges, _ = load()
         derived = {}
         for line in (LABELS / f'{system}.jsonl').open():
@@ -132,7 +139,7 @@ def stats(edges, nodes, label_of=lambda l: l):
             100 * sum(min(c['X'], c['Y']) >= 0.1 * sum(c.values()) for c in mixed) / len(mixed), 1)
     pair = defaultdict(Counter)
     for e in edges:
-        if e['label']:
+        if e['label'] and nodes[e['src']]['type'] and nodes[e['dst']]['type']:  # untyped graphs: no pairs
             a, b = sorted([nodes[e['src']]['type'], nodes[e['dst']]['type']])
             pair[(a, b)][label_of(e['label'])] += 1
     big = [len(c) for c in pair.values() if sum(c.values()) >= 100]

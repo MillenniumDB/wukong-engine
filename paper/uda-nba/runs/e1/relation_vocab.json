@@ -137,6 +137,113 @@
    }
   }
  },
+ "KGGen": {
+  "raw": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 4496,
+   "labels_cover_50": 92,
+   "labels_cover_90": 2449,
+   "edges_per_label": 4.6,
+   "singleton_labels_pct": 66.3,
+   "edges_with_singleton_label_pct": 14.6,
+   "top_label_share_pct": 3.7,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null
+  },
+  "merged_0.95": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 4480,
+   "labels_cover_50": 92,
+   "labels_cover_90": 2433,
+   "edges_per_label": 4.6,
+   "singleton_labels_pct": 66.2,
+   "edges_with_singleton_label_pct": 14.5,
+   "top_label_share_pct": 3.7,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "played as a",
+    "labels": 1,
+    "edges_pct": 3.7,
+    "members": [
+     "played as a"
+    ]
+   }
+  },
+  "merged_0.9": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 4281,
+   "labels_cover_50": 87,
+   "labels_cover_90": 2234,
+   "edges_per_label": 4.8,
+   "singleton_labels_pct": 65.0,
+   "edges_with_singleton_label_pct": 13.6,
+   "top_label_share_pct": 3.7,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "played as a",
+    "labels": 1,
+    "edges_pct": 3.7,
+    "members": [
+     "played as a"
+    ]
+   }
+  },
+  "merged_0.85": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 3991,
+   "labels_cover_50": 82,
+   "labels_cover_90": 1944,
+   "edges_per_label": 5.1,
+   "singleton_labels_pct": 63.6,
+   "edges_with_singleton_label_pct": 12.4,
+   "top_label_share_pct": 3.7,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "played as a",
+    "labels": 2,
+    "edges_pct": 3.7,
+    "members": [
+     "played as a",
+     "played as"
+    ]
+   }
+  },
+  "merged_0.8": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 3592,
+   "labels_cover_50": 71,
+   "labels_cover_90": 1545,
+   "edges_per_label": 5.7,
+   "singleton_labels_pct": 61.2,
+   "edges_with_singleton_label_pct": 10.7,
+   "top_label_share_pct": 3.7,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "played as a",
+    "labels": 3,
+    "edges_pct": 3.7,
+    "members": [
+     "played as a",
+     "played as",
+     "played primarily as"
+    ]
+   }
+  }
+ },
  "LightRAG-derived": {
   "raw": {
    "edges": 44040,
@@ -377,6 +484,131 @@
      "plays_at",
      "plays_on",
      "plays_under"
+    ]
+   }
+  }
+ },
+ "KGGen-derived": {
+  "raw": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 2946,
+   "labels_cover_50": 67,
+   "labels_cover_90": 1113,
+   "edges_per_label": 7.0,
+   "singleton_labels_pct": 55.0,
+   "edges_with_singleton_label_pct": 7.9,
+   "top_label_share_pct": 5.0,
+   "edges_stored_backwards_pct": 5.0,
+   "labels_10plus_both_directions_pct": 16.8,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null
+  },
+  "merged_0.95": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 2914,
+   "labels_cover_50": 66,
+   "labels_cover_90": 1094,
+   "edges_per_label": 7.0,
+   "singleton_labels_pct": 54.7,
+   "edges_with_singleton_label_pct": 7.8,
+   "top_label_share_pct": 5.0,
+   "edges_stored_backwards_pct": 5.0,
+   "labels_10plus_both_directions_pct": 16.8,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 1,
+    "edges_pct": 5.0,
+    "members": [
+     "plays_for"
+    ]
+   }
+  },
+  "merged_0.9": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 2671,
+   "labels_cover_50": 62,
+   "labels_cover_90": 957,
+   "edges_per_label": 7.7,
+   "singleton_labels_pct": 51.7,
+   "edges_with_singleton_label_pct": 6.7,
+   "top_label_share_pct": 5.0,
+   "edges_stored_backwards_pct": 5.0,
+   "labels_10plus_both_directions_pct": 16.6,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 1,
+    "edges_pct": 5.0,
+    "members": [
+     "plays_for"
+    ]
+   }
+  },
+  "merged_0.85": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 2306,
+   "labels_cover_50": 49,
+   "labels_cover_90": 738,
+   "edges_per_label": 8.9,
+   "singleton_labels_pct": 49.4,
+   "edges_with_singleton_label_pct": 5.6,
+   "top_label_share_pct": 8.0,
+   "edges_stored_backwards_pct": 5.0,
+   "labels_10plus_both_directions_pct": 17.8,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 3,
+    "edges_pct": 8.0,
+    "members": [
+     "plays_for",
+     "plays_in",
+     "plays_at"
+    ]
+   }
+  },
+  "merged_0.8": {
+   "edges": 20475,
+   "unlabeled_edges": 0,
+   "labels": 1991,
+   "labels_cover_50": 43,
+   "labels_cover_90": 580,
+   "edges_per_label": 10.3,
+   "singleton_labels_pct": 47.1,
+   "edges_with_singleton_label_pct": 4.6,
+   "top_label_share_pct": 10.2,
+   "edges_stored_backwards_pct": 5.0,
+   "labels_10plus_both_directions_pct": 19.3,
+   "type_pairs_100plus": 0,
+   "labels_per_type_pair_mean": null,
+   "labels_per_type_pair_max": null,
+   "largest_cluster": {
+    "leader": "plays_for",
+    "labels": 10,
+    "edges_pct": 10.2,
+    "members": [
+     "plays_for",
+     "plays_in",
+     "plays_against",
+     "plays_at",
+     "played_for",
+     "plays_as",
+     "plays_under",
+     "plays_from",
+     "plays_on",
+     "plays_before"
     ]
    }
   }
