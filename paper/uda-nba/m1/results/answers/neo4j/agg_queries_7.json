@@ -1,0 +1,119 @@
+{
+ "uid": "agg_queries#7",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 44.59122401847575
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 32.0
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 34.0
+  },
+  {
+   "col1": "Greek",
+   "col2": 36.0
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31.0
+  },
+  {
+   "col1": "French",
+   "col2": 23.25
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40.0
+  },
+  {
+   "col1": "British",
+   "col2": 29.0
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33.0
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32.0
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29.0
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42.0
+  },
+  {
+   "col1": "German",
+   "col2": 33.0
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60.0
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60.0
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25.0
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 55.0
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 31.0
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37.0
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32.0
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59.0
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, date_diff('day', DATE(p.birth_date), DATE(COALESCE(p.death_date, '2026/10/15'))) / 365.2425 AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, YEAR(DATE(COALESCE(p.death_date, '2026/10/15'))) - YEAR(DATE(p.birth_date)) AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function YEAR does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CAST(SUBSTRING(COALESCE(p.death_date, '2026/10/15'), 1, 4) AS INT64) - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CAST(REGEXP_EXTRACT(COALESCE(p.death_date, '2026/10/15'), '[0-9]{4}', 0) AS INT64) - CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

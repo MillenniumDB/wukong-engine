@@ -1,0 +1,21 @@
+{
+ "uid": "mixed_queries_filter_agg_player#3",
+ "rows": [
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "American",
+   "col2": 6
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL AND (p.name = 'Antonius Cleveland' OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) >= 0)) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "uid": "agg_queries#1",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 0
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.olympic_gold_medals IS NOT NULL RETURN p.position AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IS NOT NULL AND LOWER(p.position) IN ['frontcourt', 'backcourt'] RETURN CASE WHEN LOWER(p.position) = 'frontcourt' THEN 'Frontcourt' ELSE 'Backcourt' END AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IS NOT NULL AND p.olympic_gold_medals IS NOT NULL AND (LOWER(p.position) IN ['center', 'forward', 'power forward', 'small forward', 'power-forward', 'frontcourt', 'guard', 'point guard', 'shooting guard', 'combo guard', 'backcourt'] OR LOWER(p.position) CONTAINS 'forward' OR LOWER(p.position) CONTAINS 'center' OR LOWER(p.position) CONTAINS 'guard') WITH CASE WHEN LOWER(p.position) CONTAINS 'guard' OR LOWER(p.position) = 'backcourt' THEN 'Backcourt' ELSE 'Frontcourt' END AS position_group, CAST(p.olympic_gold_medals AS INT64) AS medals RETURN position_group AS col1, MIN(medals) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

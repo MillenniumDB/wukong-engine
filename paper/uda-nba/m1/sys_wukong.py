@@ -137,13 +137,13 @@ def run_cypher(conn: kuzu.Connection, cypher: str) -> tuple[list[dict] | None, s
         return None, str(e)[:500]
 
 
-def answer(client, conn, system: str, q: dict, query: dict) -> dict:
+def answer(client, conn, system: str, q: dict, query: dict, usage: str = 'wukong') -> dict:
     keys = '\n'.join(f'- "{k}": {m}' for k, m in answer_keys(query, q['meanings']))
     messages = [{'role': 'system', 'content': system},
                 {'role': 'user', 'content': f'{SCOPE}\n\nQuestion: {q["question"]}\n\nAnswer keys (RETURN columns):\n{keys}'}]
     rows, trace = None, []
     for attempt in range(ATTEMPTS):
-        reply = chat(client, messages, WORK / 'usage' / 'wukong.jsonl', 'agent', response_format={'type': 'json_object'})
+        reply = chat(client, messages, WORK / 'usage' / f'{usage}.jsonl', 'agent', response_format={'type': 'json_object'})
         try:
             cypher = json.loads(reply)['cypher']
         except (json.JSONDecodeError, KeyError, TypeError):

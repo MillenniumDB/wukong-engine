@@ -1,0 +1,173 @@
+{
+ "uid": "agg_queries#2",
+ "rows": [
+  {
+   "col1": "African-American",
+   "col2": 1
+  },
+  {
+   "col1": "American",
+   "col2": 125
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  },
+  {
+   "col1": "Argentine",
+   "col2": 1
+  },
+  {
+   "col1": "Australian",
+   "col2": 1
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 1
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 2
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Cameroonian",
+   "col2": 1
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 1
+  },
+  {
+   "col1": "Canadian",
+   "col2": 5
+  },
+  {
+   "col1": "Chinese",
+   "col2": 1
+  },
+  {
+   "col1": "Congolese",
+   "col2": 1
+  },
+  {
+   "col1": "Croatian",
+   "col2": 2
+  },
+  {
+   "col1": "Dominican",
+   "col2": 1
+  },
+  {
+   "col1": "Dutch",
+   "col2": 1
+  },
+  {
+   "col1": "French",
+   "col2": 6
+  },
+  {
+   "col1": "German",
+   "col2": 3
+  },
+  {
+   "col1": "Greek",
+   "col2": 1
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 1
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 1
+  },
+  {
+   "col1": "Iranian",
+   "col2": 2
+  },
+  {
+   "col1": "Israeli",
+   "col2": 1
+  },
+  {
+   "col1": "Japanese-American",
+   "col2": 1
+  },
+  {
+   "col1": "Latvian",
+   "col2": 1
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 1
+  },
+  {
+   "col1": "Montenegrin",
+   "col2": 1
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 1
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 1
+  },
+  {
+   "col1": "Russian",
+   "col2": 1
+  },
+  {
+   "col1": "Serbian",
+   "col2": 4
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 1
+  },
+  {
+   "col1": "Spanish",
+   "col2": 3
+  },
+  {
+   "col1": "Taiwanese-American",
+   "col2": 1
+  },
+  {
+   "col1": "Turkish",
+   "col2": 1
+  },
+  {
+   "col1": "U.S. Virgin Islander",
+   "col2": 1
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": 1
+  },
+  {
+   "col1": null,
+   "col2": 2002
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH p.nationality AS nationality, COUNT(DISTINCT p) AS player_count\nRETURN nationality AS col1, player_count AS col2\nORDER BY col1",
+   "error": null,
+   "rows": 40
+  }
+ ]
+}

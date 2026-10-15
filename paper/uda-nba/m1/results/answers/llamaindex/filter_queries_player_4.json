@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#4",
+ "rows": [
+  {
+   "col1": 32,
+   "col2": "25 April 1994",
+   "col3": "Cedevita Olimpija",
+   "name_player": "Nikola Radi\u010devi\u0107"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL RETURN CAST(date_part('year', DATE('2026-10-15')) - date_part('year', DATE(REPLACE(p.birth_date, '/', '-'))) - CASE WHEN date_part('month', DATE(REPLACE(p.birth_date, '/', '-'))) > date_part('month', DATE('2026-10-15')) OR (date_part('month', DATE(REPLACE(p.birth_date, '/', '-'))) = date_part('month', DATE('2026-10-15')) AND date_part('day', DATE(REPLACE(p.birth_date, '/', '-'))) > date_part('day', DATE('2026-10-15'))) THEN 1 ELSE 0 END AS INT64) AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL RETURN CAST(date_part('year', DATE('2026-10-15')) - date_part('year', DATE(p.birth_date)) - CASE WHEN date_part('month', DATE(p.birth_date)) > date_part('month', DATE('2026-10-15')) OR (date_part('month', DATE(p.birth_date)) = date_part('month', DATE('2026-10-15')) AND date_part('day', DATE(p.birth_date)) > date_part('day', DATE('2026-10-15'))) THEN 1 ELSE 0 END AS INT64) AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"25 April 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL WITH p, t, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS birth_date_parsed RETURN DISTINCT CAST(date_part('year', DATE('2026-10-15')) - date_part('year', birth_date_parsed) - CASE WHEN date_part('month', birth_date_parsed) > date_part('month', DATE('2026-10-15')) OR (date_part('month', birth_date_parsed) = date_part('month', DATE('2026-10-15')) AND date_part('day', birth_date_parsed) > date_part('day', DATE('2026-10-15'))) THEN 1 ELSE 0 END AS INT64) AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL WITH DISTINCT p, t, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE split_part(p.birth_date, ' ', 2) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 1) AS INT64) END AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

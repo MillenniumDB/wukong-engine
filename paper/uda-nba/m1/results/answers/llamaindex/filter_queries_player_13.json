@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Marvin Roberts"
+  },
+  {
+   "col1": "",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "James Patrick Walsh"
+  },
+  {
+   "col1": "",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Bobby Simmons"
+  },
+  {
+   "col1": "",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Jaren Jackson Jr."
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)\nWHERE (CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2')\n  AND (r.tenure = 'latest' OR (r.tenure = 'earlier' AND NOT EXISTS { MATCH (p)-[rl:PlaysFor]->(:Team) WHERE rl.tenure = 'latest' }))\nRETURN t.team_name AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2'\nOPTIONAL MATCH (p)-[rl:PlaysFor]->(tl:Team)\nWHERE rl.tenure = 'latest'\nOPTIONAL MATCH (p)-[re:PlaysFor]->(te:Team)\nWHERE re.tenure = 'earlier'\nWITH p, CASE WHEN tl IS NOT NULL THEN tl ELSE te END AS team\nRETURN team.team_name AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

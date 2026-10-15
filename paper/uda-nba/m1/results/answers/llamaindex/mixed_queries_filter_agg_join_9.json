@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor]->(:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(split(p.birth_date, '/')[0] AS INT64) < 1984 OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1984 AND (CAST(split(p.birth_date, '/')[1] AS INT64) < 10 OR (CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) <= 15))) WITH DISTINCT p RETURN p.nationality AS col1, COUNT(p) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor]->(:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= CAST('1984-10-15' AS DATE) WITH DISTINCT p RETURN p.nationality AS col1, COUNT(p) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor]->(:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR strptime(p.birth_date, '%Y/%m/%d') <= strptime('1984/10/15', '%Y/%m/%d') WITH DISTINCT p RETURN p.nationality AS col1, COUNT(p) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor]->(:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) < 1984 OR (CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) = 1984 AND (CAST(REGEXP_EXTRACT(p.birth_date, '^\\\\d{4}/(\\\\d+)', 1) AS INT64) < 10 OR (CAST(REGEXP_EXTRACT(p.birth_date, '^\\\\d{4}/(\\\\d+)', 1) AS INT64) = 10 AND CAST(REGEXP_EXTRACT(p.birth_date, '^\\\\d{4}/\\\\d+/(\\\\d+)', 1) AS INT64) <= 15))) WITH DISTINCT p RETURN p.nationality AS col1, COUNT(p) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  }
+ ]
+}

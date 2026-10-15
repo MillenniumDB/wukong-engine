@@ -1,0 +1,135 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Metropolitans 92",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 1
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 4
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 4
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 4
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 1
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "Washington Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 4
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:MentionedIn]->(pd:Document)\nMATCH (t)-[:MentionedIn]->(td:Document)\nWHERE CAST(p.draft_pick AS INT64) < 3\nWITH DISTINCT p, t\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"25th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:MentionedIn]->(pd:Document)\nMATCH (t)-[:MentionedIn]->(td:Document)\nWHERE REGEXP_MATCHES(p.draft_pick, '^[0-9]+')\n  AND CAST(REGEXP_EXTRACT(p.draft_pick, '^[0-9]+', 0) AS INT64) < 3\nWITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS medals\nRETURN t.team_name AS col1, medals AS col2",
+   "error": null,
+   "rows": 29
+  }
+ ]
+}

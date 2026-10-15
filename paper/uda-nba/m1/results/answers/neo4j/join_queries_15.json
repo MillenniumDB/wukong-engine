@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#15",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t) WHERE r.tenure = 'latest' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE date_diff('year', date(replace(o.birth_date, '/', '-')), date('2026-10-15')) END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t) WHERE r.tenure = 'latest' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 10, 1956\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t) WHERE r.tenure = 'latest' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL WHEN split_part(o.birth_date, ',', 2) <> '' THEN 2026 - CAST(TRIM(split_part(o.birth_date, ',', 2)) AS INT64) - CASE WHEN CASE split_part(TRIM(split_part(o.birth_date, ',', 1)), ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END > 10 OR (CASE split_part(TRIM(split_part(o.birth_date, ',', 1)), ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END = 10 AND CAST(split_part(TRIM(split_part(o.birth_date, ',', 1)), ' ', 2) AS INT64) > 15) THEN 1 ELSE 0 END ELSE 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"1962-01-17\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t) WHERE r.tenure = 'latest' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH o, t, c, p, CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}[-/]') THEN CAST(split_part(replace(o.birth_date, '/', '-'), '-', 1) AS INT64) WHEN regexp_matches(o.birth_date, '^[A-Za-z]+') THEN CAST(TRIM(split_part(o.birth_date, ',', 2)) AS INT64) ELSE NULL END AS birth_year, CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}[-/]') THEN CAST(split_part(replace(o.birth_date, '/', '-'), '-', 2) AS INT64) WHEN regexp_matches(o.birth_date, '^January') THEN 1 WHEN regexp_matches(o.birth_date, '^February') THEN 2 WHEN regexp_matches(o.birth_date, '^March') THEN 3 WHEN regexp_matches(o.birth_date, '^April') THEN 4 WHEN regexp_matches(o.birth_date, '^May') THEN 5 WHEN regexp_matches(o.birth_date, '^June') THEN 6 WHEN regexp_matches(o.birth_date, '^July') THEN 7 WHEN regexp_matches(o.birth_date, '^August') THEN 8 WHEN regexp_matches(o.birth_date, '^September') THEN 9 WHEN regexp_matches(o.birth_date, '^October') THEN 10 WHEN regexp_matches(o.birth_date, '^November') THEN 11 WHEN regexp_matches(o.birth_date, '^December') THEN 12 ELSE NULL END AS birth_month, CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}[-/]') THEN CAST(split_part(replace(o.birth_date, '/', '-'), '-', 3) AS INT64) WHEN regexp_matches(o.birth_date, '^[A-Za-z]+') THEN CAST(split_part(TRIM(split_part(o.birth_date, ',', 1)), ' ', 2) AS INT64) ELSE NULL END AS birth_day RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN birth_year IS NULL THEN NULL ELSE 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

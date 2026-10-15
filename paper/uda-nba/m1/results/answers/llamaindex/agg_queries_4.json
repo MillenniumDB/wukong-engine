@@ -1,0 +1,63 @@
+{
+ "uid": "agg_queries#4",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 92
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 55
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  },
+  {
+   "col1": "Canadian",
+   "col2": 75
+  },
+  {
+   "col1": "French",
+   "col2": 32
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p\nWITH p,\n     CAST(split(p.birth_date, '/')[0] AS INT64) AS birth_year,\n     CAST(split(p.birth_date, '/')[1] AS INT64) AS birth_month,\n     CAST(split(p.birth_date, '/')[2] AS INT64) AS birth_day,\n     CAST(split(coalesce(p.death_date, '2026/10/15'), '/')[0] AS INT64) AS end_year,\n     CAST(split(coalesce(p.death_date, '2026/10/15'), '/')[1] AS INT64) AS end_month,\n     CAST(split(coalesce(p.death_date, '2026/10/15'), '/')[2] AS INT64) AS end_day\nWITH p.nationality AS nationality,\n     end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MAX(age) AS col2\nORDER BY col1",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.birth_date IS NOT NULL\nWITH DISTINCT p\nWITH p.nationality AS nationality,\n     CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 1) AS INT64) - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 2) AS INT64) < CAST(split_part(p.birth_date, '/', 2) AS INT64) OR (CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 2) AS INT64) = CAST(split_part(p.birth_date, '/', 2) AS INT64) AND CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 3) AS INT64) < CAST(split_part(p.birth_date, '/', 3) AS INT64)) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MAX(age) AS col2\nORDER BY col1",
+   "error": "Conversion exception: Cast failed. Could not convert \"March 21, 2014\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL\nWITH DISTINCT p,\n     CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) END AS birth_year,\n     CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN p.birth_date LIKE '%January%' THEN 1 WHEN p.birth_date LIKE '%February%' THEN 2 WHEN p.birth_date LIKE '%March%' THEN 3 WHEN p.birth_date LIKE '%April%' THEN 4 WHEN p.birth_date LIKE '%May%' THEN 5 WHEN p.birth_date LIKE '%June%' THEN 6 WHEN p.birth_date LIKE '%July%' THEN 7 WHEN p.birth_date LIKE '%August%' THEN 8 WHEN p.birth_date LIKE '%September%' THEN 9 WHEN p.birth_date LIKE '%October%' THEN 10 WHEN p.birth_date LIKE '%November%' THEN 11 WHEN p.birth_date LIKE '%December%' THEN 12 END END AS birth_month,\n     CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(regexp_extract(p.birth_date, '^[A-Za-z]+ ([0-9]+),', 1) AS INT64) END AS birth_day,\n     CASE WHEN coalesce(p.death_date, '2026/10/15') CONTAINS '/' THEN CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 1) AS INT64) ELSE CAST(regexp_extract(coalesce(p.death_date, '2026/10/15'), '[0-9]{4}', 0) AS INT64) END AS end_year,\n     CASE WHEN coalesce(p.death_date, '2026/10/15') CONTAINS '/' THEN CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 2) AS INT64) ELSE CASE WHEN coalesce(p.death_date, '2026/10/15') LIKE '%January%' THEN 1 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%February%' THEN 2 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%March%' THEN 3 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%April%' THEN 4 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%May%' THEN 5 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%June%' THEN 6 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%July%' THEN 7 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%August%' THEN 8 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%September%' THEN 9 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%October%' THEN 10 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%November%' THEN 11 WHEN coalesce(p.death_date, '2026/10/15') LIKE '%December%' THEN 12 END END AS end_month,\n     CASE WHEN coalesce(p.death_date, '2026/10/15') CONTAINS '/' THEN CAST(split_part(coalesce(p.death_date, '2026/10/15'), '/', 3) AS INT64) ELSE CAST(regexp_extract(coalesce(p.death_date, '2026/10/15'), '^[A-Za-z]+ ([0-9]+),', 1) AS INT64) END AS end_day\nWITH p.nationality AS nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MAX(age) AS col2\nORDER BY col1",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 5, offset: 122)\n\"     CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN p.birth_date LIKE '%January%' THEN 1 WHEN p.birth_date LIKE '%February%' THEN 2 WHEN p.birth_date LIKE '%March%' THEN 3 WHEN p.birth_date LIKE '%April%' THEN 4 WHEN p.birth_date ",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL\nWITH DISTINCT p\nWITH p.nationality AS nationality,\n     CAST(regexp_extract(coalesce(p.death_date, '2026/10/15'), '[0-9]{4}', 0) AS INT64) - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age\nRETURN nationality AS col1, MAX(age) AS col2\nORDER BY col1",
+   "error": null,
+   "rows": 8
+  }
+ ]
+}

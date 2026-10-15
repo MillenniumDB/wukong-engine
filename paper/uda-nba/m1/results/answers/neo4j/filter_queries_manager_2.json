@@ -1,0 +1,97 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": [
+  {
+   "col1": 92,
+   "col2": "Indiana Pacers",
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 68,
+   "col2": "Dallas Mavericks",
+   "col3": "Mark Cuban",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 79,
+   "col2": "Denver Nuggets",
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 67,
+   "col2": "San Antonio Spurs",
+   "col3": "Clayton Ike Bennett",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": 79,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Benson",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 77,
+   "col2": "Miami Heat",
+   "col3": "Micky Arison",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": 90,
+   "col2": "Chicago Bulls",
+   "col3": "Jerry Reinsdorf",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 70,
+   "col2": "Boston Celtics",
+   "col3": "Joe Lacob",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 70,
+   "col2": "Los Angeles Clippers",
+   "col3": "Steve Ballmer",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 69,
+   "col2": "Houston Rockets",
+   "col3": "Tilman Fertitta",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 99,
+   "col2": "Indiana Pacers",
+   "col3": "Melvin Simon",
+   "name_manager": "Melvin Simon"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Golden State Warriors'\n  AND o.birth_date IS NOT NULL\n  AND CAST(o.birth_date AS DATE) <= DATE('1959-10-15')\n  AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) }\nRETURN date_diff('year', CAST(o.birth_date AS DATE), DATE('2026-10-15')) AS col1,\n       t.team_name AS col2,\n       o.name AS col3,\n       o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Golden State Warriors'\n  AND o.birth_date IS NOT NULL\n  AND (\n    2026 - CAST(date_part('year', CAST(o.birth_date AS DATE)) AS INT64)\n    - CASE\n        WHEN date_part('month', CAST(o.birth_date AS DATE)) > 10\n          OR (date_part('month', CAST(o.birth_date AS DATE)) = 10\n              AND date_part('day', CAST(o.birth_date AS DATE)) > 15)\n        THEN 1\n        ELSE 0\n      END\n  ) >= 67\n  AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) }\nRETURN 2026 - CAST(date_part('year', CAST(o.birth_date AS DATE)) AS INT64)\n       - CASE\n           WHEN date_part('month', CAST(o.birth_date AS DATE)) > 10\n             OR (date_part('month', CAST(o.birth_date AS DATE)) = 10\n                 AND date_part('day', CAST(o.birth_date AS DATE)) > 15)\n           THEN 1\n           ELSE 0\n         END AS col1,\n       t.team_name AS col2,\n       o.name AS col3,\n       o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 1964\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Golden State Warriors'\n  AND o.birth_date IS NOT NULL\n  AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) }\n  AND (\n    2026 - CAST(regexp_extract(o.birth_date, '([0-9]{4})', 1) AS INT64)\n    - CASE\n        WHEN CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 2) AS INT64) > 10\n          OR (CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 2) AS INT64) = 10\n              AND CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 3) AS INT64) > 15)\n        THEN 1\n        ELSE 0\n      END\n  ) >= 67\nRETURN 2026 - CAST(regexp_extract(o.birth_date, '([0-9]{4})', 1) AS INT64)\n       - CASE\n           WHEN CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 2) AS INT64) > 10\n             OR (CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 2) AS INT64) = 10\n                 AND CAST(regexp_extract(o.birth_date, '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})', 3) AS INT64) > 15)\n           THEN 1\n           ELSE 0\n         END AS col1,\n       t.team_name AS col2,\n       o.name AS col3,\n       o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Golden State Warriors'\n  AND o.birth_date IS NOT NULL\n  AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) }\n  AND (\n    2026 - CAST(regexp_extract(o.birth_date, '([0-9]{4})', 1) AS INT64)\n    - CASE\n        WHEN (\n          CASE\n            WHEN regexp_matches(o.birth_date, '^[0-9]{4}/')\n            THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64)\n            WHEN lower(o.birth_date) CONTAINS 'january' THEN 1\n            WHEN lower(o.birth_date) CONTAINS 'february' THEN 2\n            WHEN lower(o.birth_date) CONTAINS 'march' THEN 3\n            WHEN lower(o.birth_date) CONTAINS 'april' THEN 4\n            WHEN lower(o.birth_date) CONTAINS 'may' THEN 5\n            WHEN lower(o.birth_date) CONTAINS 'june' THEN 6\n            WHEN lower(o.birth_date) CONTAINS 'july' THEN 7\n            WHEN lower(o.birth_date) CONTAINS 'august' THEN 8\n            WHEN lower(o.birth_date) CONTAINS 'september' THEN 9\n            WHEN lower(o.birth_date) CONTAINS 'october' THEN 10\n            WHEN lower(o.birth_date) CONTAINS 'november' THEN 11\n            WHEN lower(o.birth_date) CONTAINS 'december' THEN 12\n            ELSE 1\n          END\n        ) > 10\n        OR (\n          (\n            CASE\n              WHEN regexp_matches(o.birth_date, '^[0-9]{4}/') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64)\n              WHEN lower(o.birth_date) CONTAINS 'january' THEN 1\n              WHEN lower(o.birth_date) CONTAINS 'february' THEN 2\n              WHEN lower(o.birth_date) CONTAINS 'march' THEN 3\n              WHEN lower(o.birth_date) CONTAINS 'april' THEN 4\n              WHEN lower(o.birth_date) CONTAINS 'may' THEN 5\n              WHEN lower(o.birth_date) CONTAINS 'june' THEN 6\n              WHEN lower(o.birth_date) CONTAINS 'july' THEN 7\n              WHEN lower(o.birth_date) CONTAINS 'august' THEN 8\n              WHEN lower(o.birth_date) CONTAINS 'september' THEN 9\n              WHEN lower(o.birth_date) CONTAINS 'october' THEN 10\n              WHEN lower(o.birth_date) CONTAINS 'november' THEN 11\n              WHEN lower(o.birth_date) CONTAINS 'december' THEN 12\n              ELSE 1\n            END\n          ) = 10\n          AND CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}/') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64) ELSE 1 END > 15\n        ) THEN 1 ELSE 0\n      END\n  ) >= 67\nRETURN 2026 - CAST(regexp_extract(o.birth_date, '([0-9]{4})', 1) AS INT64) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 11
+  }
+ ]
+}

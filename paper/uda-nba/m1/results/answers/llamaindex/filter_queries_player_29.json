@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#29",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH DISTINCT p, t\nWHERE date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-15')) >= 42\n   OR t.team_name <> 'Philadelphia 76ers'\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1,\n       date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-15')) AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH DISTINCT p, t,\n     (2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64)\n      - CASE\n          WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n            OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10\n                AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15)\n          THEN 1 ELSE 0\n        END) AS player_age\nWHERE player_age >= 42\n   OR t.team_name <> 'Philadelphia 76ers'\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1,\n       player_age AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH DISTINCT p, t,\n     CASE\n       WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d')\n       ELSE strptime(p.birth_date, '%B %d, %Y')\n     END AS birth_date\nWITH p, t,\n     (2026 - date_part('year', birth_date)\n      - CASE\n          WHEN date_part('month', birth_date) > 10\n            OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 15)\n          THEN 1 ELSE 0\n        END) AS player_age\nWHERE player_age >= 42\n   OR t.team_name <> 'Philadelphia 76ers'\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1,\n       player_age AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH DISTINCT p, t,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64)\n       ELSE CAST(TRIM(SPLIT_PART(p.birth_date, ',', 2)) AS INT64) END AS birth_year,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64)\n       WHEN p.birth_date CONTAINS 'January' THEN 1\n       WHEN p.birth_date CONTAINS 'February' THEN 2\n       WHEN p.birth_date CONTAINS 'March' THEN 3\n       WHEN p.birth_date CONTAINS 'April' THEN 4\n       WHEN p.birth_date CONTAINS 'May' THEN 5\n       WHEN p.birth_date CONTAINS 'June' THEN 6\n       WHEN p.birth_date CONTAINS 'July' THEN 7\n       WHEN p.birth_date CONTAINS 'August' THEN 8\n       WHEN p.birth_date CONTAINS 'September' THEN 9\n       WHEN p.birth_date CONTAINS 'October' THEN 10\n       WHEN p.birth_date CONTAINS 'November' THEN 11\n       WHEN p.birth_date CONTAINS 'December' THEN 12 END AS birth_month,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64)\n       ELSE CAST(TRIM(SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 2)) AS INT64) END AS birth_day\nWITH p, t, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS player_age\nWHERE player_age >= 42\n   OR t.team_name <> 'Philadelphia 76ers'\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1,\n       player_age AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

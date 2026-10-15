@@ -1,0 +1,1891 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "rows": [
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Harrison Bryce Jordan Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Jalen Marquis Brunson",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "1",
+   "col4": "Dallas",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Erick Strickland",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Zachary Thomas LaVine",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "1",
+   "col4": "Chicago",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Jamal Crawford",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "William Severlyn Hewitt",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Guy William Rodgers",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Trent Tucker",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "0",
+   "col4": "Chicago",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Aaron Williams",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "0",
+   "col4": "Denver",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Harrison Bryce Jordan Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "1",
+   "col4": "San Antonio",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "San Antonio",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "1",
+   "col4": "Philadelphia",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Thomas \u201cToby\u201d Kimball",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "0",
+   "col4": "Philadelphia",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "1",
+   "col4": "Detroit",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "William Severlyn Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Marvin Roberts",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Andrew Christian Wiggins",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Daniel Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "0",
+   "col4": "New Orleans",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Inglewood",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "0",
+   "col4": "Los Angeles",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Erazem Lorbek",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "0",
+   "col4": "Indianapolis",
+   "name_player": "Erick Strickland",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "1",
+   "col4": "Houston",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Thomas James Copa",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "0",
+   "col4": "Houston",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "0",
+   "col4": "Miami",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "1",
+   "col4": "Oklahoma City",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "0",
+   "col4": "Oklahoma City",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(dp:Document), (t:Team)-[:ExtractedFrom]->(dt:Document), (c:City)-[:ExtractedFrom]->(dc:Document), (o:Owner)-[:ExtractedFrom]->(do:Document), (p)-[:PlaysFor]->(t), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c) WHERE (o.birth_date IS NOT NULL AND (CAST(split(o.birth_date, '/')[1] AS INT64) > 1961 OR (CAST(split(o.birth_date, '/')[1] AS INT64) = 1961 AND (CAST(split(o.birth_date, '/')[2] AS INT64) > 10 OR (CAST(split(o.birth_date, '/')[2] AS INT64) = 10 AND CAST(split(o.birth_date, '/')[3] AS INT64) >= 15))))) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c) WHERE (o.birth_date IS NOT NULL AND CAST(REPLACE(o.birth_date, '/', '-') AS DATE) >= CAST('1960-10-15' AS DATE)) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c) WHERE (o.birth_date IS NOT NULL AND CAST(REGEXP_REPLACE(o.birth_date, '/', '-') AS DATE) >= CAST('1960-10-15' AS DATE)) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"July 31, 1958\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c) WHERE (o.birth_date IS NOT NULL AND CAST(REGEXP_EXTRACT(o.birth_date, '[0-9]{4}', 0) AS INT64) >= 1960) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": null,
+   "rows": 186
+  }
+ ]
+}

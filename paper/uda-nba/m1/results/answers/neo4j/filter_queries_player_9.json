@@ -1,0 +1,781 @@
+{
+ "uid": "filter_queries_player#9",
+ "rows": [
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "David Lattin"
+  },
+  {
+   "col1": 13,
+   "col2": 5,
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 17,
+   "col2": 2,
+   "col3": "Boston Celtics",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Austin Rivers"
+  },
+  {
+   "col1": 11,
+   "col2": 0,
+   "col3": "Phoenix Suns",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": 11,
+   "col2": 0,
+   "col3": "New Orleans Pelicans",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_player": "Kawhi Leonard"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": null,
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": "Cleveland Cavaliers",
+   "name_player": "Donovan Mitchell"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kenneth \"Apple\" Green"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Horace Grant"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": null,
+   "name_player": "John Salley"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Shane Larkin"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": null,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jarrett Jack"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_player": "Spencer Hawes"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Miami Heat",
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "Philadelphia Warriors",
+   "name_player": "Ed Dahler"
+  },
+  {
+   "col1": 12,
+   "col2": null,
+   "col3": "Boston Celtics",
+   "name_player": "Gerald Henderson"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": null,
+   "name_player": "Joe Dumars"
+  },
+  {
+   "col1": 14,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Clyde Drexler"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": null,
+   "name_player": "Myles Turner"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": null,
+   "name_player": "Justin Jackson"
+  },
+  {
+   "col1": 10,
+   "col2": 2,
+   "col3": null,
+   "name_player": "Andrew Bynum"
+  },
+  {
+   "col1": 14,
+   "col2": 0,
+   "col3": "Houston Rockets",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Calvin Ramsey"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": null,
+   "name_player": "Derrick Joseph Chievous"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": null,
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": null,
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Garfield Smith"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Toronto Raptors",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 15,
+   "col2": 1,
+   "col3": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": null,
+   "name_player": "Monti Davis"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": null,
+   "name_player": "Rodney Stuckey"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": null,
+   "name_player": "Omri Casspi"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": null,
+   "name_player": "Terry Rozier"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "CJ McCollum"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Markieff Morris"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Paul Pierce"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": null,
+   "name_player": "Harry Giles"
+  },
+  {
+   "col1": 23,
+   "col2": 1,
+   "col3": "New York Knicks",
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": 12,
+   "col2": null,
+   "col3": "Dallas Mavericks",
+   "name_player": "Dereck Lively II"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_player": "JJ Redick"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "JJ Redick"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Stewart"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": null,
+   "name_player": "Justin Patton"
+  },
+  {
+   "col1": 12,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dario \u0160ari\u0107"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_player": "JaVale McGee"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Phoenix Suns",
+   "name_player": "JaVale McGee"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Denver Nuggets",
+   "name_player": "JaVale McGee"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Charlotte Hornets",
+   "name_player": "Malik Monk"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_player": "Malik Monk"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Vancouver Grizzlies",
+   "name_player": "Nick Anderson"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_player": "Moses Moody"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mikal Bridges"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Eddie Jones"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": "Denver Nuggets",
+   "name_player": "Julius Hodge"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kendall Marshall"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": "Atlanta Hawks",
+   "name_player": "John Jenkins"
+  },
+  {
+   "col1": 19,
+   "col2": null,
+   "col3": "Atlanta Hawks",
+   "name_player": "John Collins"
+  },
+  {
+   "col1": 19,
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_player": "Kevin Huerter"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Cam Reddish"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Atlanta Hawks",
+   "name_player": "Cam Reddish"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": null,
+   "name_player": "James Young"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": null,
+   "name_player": "Romeo Langford"
+  },
+  {
+   "col1": 12,
+   "col2": null,
+   "col3": null,
+   "name_player": "Muggsy Bogues"
+  },
+  {
+   "col1": 12,
+   "col2": null,
+   "col3": "Charlotte Hornets",
+   "name_player": "P. J. Washington"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mark Williams"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Indiana Pacers",
+   "name_player": "Doug McDermott"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_player": "Doug McDermott"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Chicago Bulls",
+   "name_player": "Doug McDermott"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Dallas Mavericks",
+   "name_player": "Doug McDermott"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "Oklahoma City Thunder",
+   "name_player": "Cameron Payne"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_player": "Chandler Hutchison"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Chicago Bulls",
+   "name_player": "Dalen Terry"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kiki VanDeWeghe"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Derek Harper"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Oklahoma City Thunder",
+   "name_player": "Cason Wallace"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_player": "Quentin Richardson"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Quentin Richardson"
+  },
+  {
+   "col1": 18,
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_player": "Ty Lawson"
+  },
+  {
+   "col1": 14,
+   "col2": 1,
+   "col3": "Denver Nuggets",
+   "name_player": "Michael Porter Jr."
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Anthony Randolph"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_player": "Anthony Randolph"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_player": "Tari Eason"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_player": "Cam Whitemore"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": "Indiana Pacers",
+   "name_player": "Solomon Hill"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Solomon Hill"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_player": "Chris Duarte"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Jackson"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": null,
+   "name_player": "Al Thornton"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Johnny Davis"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_player": "Walker Kessler"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Elfrid Payton"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_player": "Elfrid Payton"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": null,
+   "name_player": "Terrance Ferguson"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": null,
+   "name_player": "Eric Maynor"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": "Oklahoma City Thunder",
+   "name_player": "Mitch McGary"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Fran V\u00e1zquez"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": "Lakeland Magic",
+   "name_player": "Chuma Okeke"
+  },
+  {
+   "col1": 16,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Chuma Okeke"
+  },
+  {
+   "col1": 15,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Cole Anthony"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_player": "Jett Howard"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": null,
+   "name_player": "V\u00edctor Claver"
+  },
+  {
+   "col1": 21,
+   "col2": null,
+   "col3": "Portland Trail Blazers",
+   "name_player": "Nolan Smith"
+  },
+  {
+   "col1": 11,
+   "col2": null,
+   "col3": "Portland Trail Blazers",
+   "name_player": "Meyers Leonard"
+  },
+  {
+   "col1": 10,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ed Pinckney"
+  },
+  {
+   "col1": 17,
+   "col2": null,
+   "col3": null,
+   "name_player": "Harold Pressley"
+  },
+  {
+   "col1": 13,
+   "col2": null,
+   "col3": null,
+   "name_player": "Georgios Papagiannis"
+  },
+  {
+   "col1": 22,
+   "col2": null,
+   "col3": null,
+   "name_player": "Malachi Richardson"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_player": "James Anderson"
+  },
+  {
+   "col1": 20,
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_player": "Malaki Branham"
+  },
+  {
+   "col1": 23,
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_player": "Rodney Hood"
+  },
+  {
+   "col1": 14,
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_player": "Ochai Agbaji"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)\nWHERE CAST(p.draft_pick AS INT64) < 24\n  AND CAST(p.draft_pick AS INT64) >= 10\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\nOPTIONAL MATCH (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)\nRETURN CAST(p.draft_pick AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)\nWHERE CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) < 24\n  AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) >= 10\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nRETURN CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) AS col1,\n       CAST(p.nba_championships AS INT64) AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)\nWHERE regexp_matches(p.draft_pick, '[0-9]+')\n  AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) < 24\n  AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) >= 10\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nRETURN CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) AS col1,\n       CAST(p.nba_championships AS INT64) AS col2,\n       t.team_name AS col3,\n       p.name AS name_player",
+   "error": null,
+   "rows": 126
+  }
+ ]
+}

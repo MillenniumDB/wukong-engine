@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (strptime(p.birth_date, '%Y/%m/%d') > strptime('1948/10/15', '%Y/%m/%d') AND CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(REPLACE(p.birth_date, '/', '-') AS DATE) > DATE('1948-10-15') AND CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) > 1948 OR p.birth_date STARTS WITH '1948/11' OR p.birth_date STARTS WITH '1948/12' OR p.birth_date IN ['1948/10/16','1948/10/17','1948/10/18','1948/10/19','1948/10/20','1948/10/21','1948/10/22','1948/10/23','1948/10/24','1948/10/25','1948/10/26','1948/10/27','1948/10/28','1948/10/29','1948/10/30','1948/10/31']) AND CAST(p.fiba_world_cup AS INT64) >= 0) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (((p.birth_date STARTS WITH '19' OR p.birth_date STARTS WITH '20') AND p.birth_date >= '1949/' AND p.birth_date < '2027/') OR p.birth_date STARTS WITH '1948/11' OR p.birth_date STARTS WITH '1948/12' OR p.birth_date IN ['1948/10/16','1948/10/17','1948/10/18','1948/10/19','1948/10/20','1948/10/21','1948/10/22','1948/10/23','1948/10/24','1948/10/25','1948/10/26','1948/10/27','1948/10/28','1948/10/29','1948/10/30','1948/10/31']) AND CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (((p.birth_date STARTS WITH '19' OR p.birth_date STARTS WITH '20') AND p.birth_date >= '1949/' AND p.birth_date < '2027/') OR p.birth_date STARTS WITH '1948/11' OR p.birth_date STARTS WITH '1948/12' OR p.birth_date IN ['1948/10/16','1948/10/17','19",
+   "rows": null
+  }
+ ]
+}

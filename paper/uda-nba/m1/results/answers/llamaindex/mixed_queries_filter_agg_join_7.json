@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE CAST(p.olympic_gold_medals AS INT64) = 0\n  AND p.position <> 'Backcourt'\n  AND CAST(t.founded_year AS INT64) <> 1989\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\nRETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND CAST(p.olympic_gold_medals AS INT64) = 0\n  AND (p.position IS NULL OR p.position <> 'Backcourt')\n  AND (t.founded_year IS NULL OR CAST(t.founded_year AS INT64) <> 1989)\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\nRETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND p.olympic_gold_medals = '0'\n  AND p.position IS NOT NULL\n  AND p.position <> 'Backcourt'\n  AND t.founded_year IS NOT NULL\n  AND t.founded_year <> '1989'\nWITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_titles\nRETURN t.team_name AS col1, avg_titles AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE (r.tenure = 'latest' OR r.tenure = 'current' OR r.tenure IS NULL)\n  AND p.olympic_gold_medals = '0'\n  AND p.position IS NOT NULL\n  AND p.position <> 'Backcourt'\n  AND t.founded_year IS NOT NULL\n  AND t.founded_year <> '1989'\nWITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_titles\nRETURN t.team_name AS col1, avg_titles AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

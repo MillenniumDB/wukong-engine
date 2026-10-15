@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND (((CAST(p.fiba_world_cup AS INT64) < 0) AND (CAST(p.mvp_awards AS INT64) <= 0)) OR ((date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-15' AS DATE)) < 78) AND (CAST(p.fiba_world_cup AS INT64) >= 0))) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND (((CAST(p.fiba_world_cup AS INT64) < 0) AND (CAST(p.mvp_awards AS INT64) <= 0)) OR ((CAST(p.birth_date AS DATE) > CAST('1948-10-15' AS DATE)) AND (CAST(p.fiba_world_cup AS INT64) >= 0))) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"2015-16 Most Improved Player\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND (((TRY_CAST(p.fiba_world_cup AS INT64) < 0) AND (TRY_CAST(p.mvp_awards AS INT64) <= 0)) OR ((TRY_CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) > 1948 OR (TRY_CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1948 AND (TRY_CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (TRY_CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND TRY_CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15)))) AND TRY_CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(TRY_CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND (((TRY_CAST(p.fiba_world_cup AS>: expected rule oC_SingleQuery (line: 1, offset: 165)\n\"MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND (((TRY_CAST(p.fiba_world_cup AS INT64) < 0) AND (TRY_CAST(p.mvp_awards AS INT64) <= 0)) OR ((TRY_CAST(SPLIT_",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND p.fiba_world_cup =~ '^-?[0-9]+$' AND p.mvp_awards =~ '^-?[0-9]+$' AND (((CAST(p.fiba_world_cup AS INT64) < 0) AND (CAST(p.mvp_awards AS INT64) <= 0)) OR ((CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) > 1948 OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1948 AND (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15)))) AND CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"August 10, 1993\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "uid": "agg_queries#5",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 51
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  },
+  {
+   "col1": "Argentine",
+   "col2": 1
+  },
+  {
+   "col1": "Argentinian",
+   "col2": 1
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Canadian",
+   "col2": 2
+  },
+  {
+   "col1": "Chinese",
+   "col2": 2
+  },
+  {
+   "col1": "Croatian",
+   "col2": 3
+  },
+  {
+   "col1": "French",
+   "col2": 4
+  },
+  {
+   "col1": "Greek",
+   "col2": 2
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 1
+  },
+  {
+   "col1": "Iranian",
+   "col2": 2
+  },
+  {
+   "col1": "Israeli",
+   "col2": 1
+  },
+  {
+   "col1": "Japanese",
+   "col2": 1
+  },
+  {
+   "col1": "Japanese-American",
+   "col2": 1
+  },
+  {
+   "col1": "Latvian",
+   "col2": 1
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 1
+  },
+  {
+   "col1": "Russian",
+   "col2": 1
+  },
+  {
+   "col1": "Serbian",
+   "col2": 4
+  },
+  {
+   "col1": "Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "Taiwanese",
+   "col2": 1
+  },
+  {
+   "col1": "Turkish",
+   "col2": 2
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL RETURN p.nationality AS col1, COUNT(p) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 25
+  }
+ ]
+}

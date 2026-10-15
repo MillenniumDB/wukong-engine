@@ -1,0 +1,1773 @@
+{
+ "uid": "join_queries#11",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Karl Eller",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Robert Sarver",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": "Maryland",
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": "Maryland",
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Wyc Grousbeck",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "World B. Free",
+   "col3": "San Diego Clippers",
+   "col4": "Donald Sterling",
+   "col5": null,
+   "name_player": "World B. Free",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Randy Smith",
+   "col3": "San Diego Clippers",
+   "col4": "Donald Sterling",
+   "col5": null,
+   "name_player": "Randy Smith",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Marvin Meyer",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": "Maryland",
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": "Maryland",
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": "Maryland",
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "H. Irving Grousbeck",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Scott Lloyd",
+   "col3": "San Diego Clippers",
+   "col4": "Donald Sterling",
+   "col5": null,
+   "name_player": "Scott Lloyd",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Larry Fitzgerald",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Don Diamond",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": "Maryland",
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": "Maryland",
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": "Maryland",
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Steve Pagliuca",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Irv Levin",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Larry Fitzgerald",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Don Diamond",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Donald Pitt",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Don Gaston",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "World B. Free",
+   "col3": "San Diego Clippers",
+   "col4": "Irv Levin",
+   "col5": null,
+   "name_player": "World B. Free",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Marvin Meyer",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Bhavik Darji",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Donald Pitt",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Bhavik Darji",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "John Y. Brown Jr.",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "John Y. Brown, Jr.",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Mat Ishbia",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Mat Ishbia",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": "Maryland",
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Sebastian Telfair",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Robert Sarver",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Jerry Colangelo",
+   "col5": "Arizona",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": "Maryland",
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Paul Allen",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Greg Oden",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": "Maryland",
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Joe Lacob",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Boston Basketball Partners L.L.C.",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Swen Nater",
+   "col3": "San Diego Clippers",
+   "col4": "Irv Levin",
+   "col5": null,
+   "name_player": "Swen Nater",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Scott Lloyd",
+   "col3": "San Diego Clippers",
+   "col4": "Irv Levin",
+   "col5": null,
+   "name_player": "Scott Lloyd",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Jody Allen",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Jeff McInnis",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": "Maryland",
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Bradley Beal",
+   "col3": "Washington Wizards",
+   "col4": "Abe Pollin",
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Harry Mangurian",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Bonzi Wells",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment",
+   "col5": "Oregon",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Sports and Entertainment (VSE)",
+   "col5": "Oregon",
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Larry Weinberg",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Darius Miles",
+   "col3": "Portland Trail Blazers",
+   "col4": "Vulcan Inc.",
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Jerry Colangelo",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Amar'e Stoudemire",
+   "col3": "Phoenix Suns",
+   "col4": "Karl Eller",
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix metropolitan area"
+  },
+  {
+   "col1": null,
+   "col2": "Gilbert Arenas",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Irene Pollin",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Caron Butler",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Antawn Jamison",
+   "col3": "Washington Wizards",
+   "col4": "Ted Leonsis",
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Wycliffe Grousbeck",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Stanley M. Noszka",
+   "col3": "Boston Celtics",
+   "col4": "Paul Gaston",
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Swen Nater",
+   "col3": "San Diego Clippers",
+   "col4": "Donald Sterling",
+   "col5": null,
+   "name_player": "Swen Nater",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": null,
+   "col2": "Randy Smith",
+   "col3": "San Diego Clippers",
+   "col4": "Irv Levin",
+   "col5": null,
+   "name_player": "Randy Smith",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) RETURN DISTINCT CAST(p.fiba_world_cup AS INT64) AS col1, p.name AS col2, t.team_name AS col3, o.name AS col4, c.state_name AS col5, p.name AS name_player, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 176
+  }
+ ]
+}

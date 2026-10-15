@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-15')) >= 42 RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= DATE('1984-10-15') RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 15))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ',', 2) AS INT64) END) < 1984 OR ((CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ',', 2) AS INT64) END) = 1984 AND (CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 WHEN p.birth_date CONTAINS 'December' THEN 12 END END) < 10 OR ((CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 WHEN p.birth_date CONTAINS 'December' THEN 12 END END) = 10 AND (CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(split_part(p.birth_date, ',', 1), ' ', 2) AS INT64) END) <= 15))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ',', 2) AS INT64) END) < 1984 OR ((CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ',', 2)",
+   "rows": null
+  }
+ ]
+}

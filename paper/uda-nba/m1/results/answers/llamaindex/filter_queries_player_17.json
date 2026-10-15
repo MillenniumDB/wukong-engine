@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_player#17",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "9th overall",
+   "col3": null,
+   "name_player": "Stacey Augmon"
+  },
+  {
+   "col1": null,
+   "col2": "5th overall",
+   "col3": null,
+   "name_player": "Mario Hezonja"
+  },
+  {
+   "col1": null,
+   "col2": "10th overall",
+   "col3": null,
+   "name_player": "Elfrid Payton"
+  },
+  {
+   "col1": null,
+   "col2": "6th overall",
+   "col3": null,
+   "name_player": "Mohamed Bamba"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": "24",
+   "col3": null,
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": "Kansas State University",
+   "col2": "10th round",
+   "col3": null,
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": "Davidson",
+   "col2": "7th overall",
+   "col3": null,
+   "name_player": "Curry"
+  },
+  {
+   "col1": null,
+   "col2": "4th overall",
+   "col3": null,
+   "name_player": "Aaron Gordon"
+  },
+  {
+   "col1": "University of Minnesota",
+   "col2": "6th overall",
+   "col3": null,
+   "name_player": "Trent Tucker"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.college = 'Michigan State University' OR CAST(p.draft_pick AS INT64) <= 10) RETURN DISTINCT p.college AS col1, p.draft_pick AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"57th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.college = 'Michigan State University' OR (p.draft_pick IS NOT NULL AND REGEXP_MATCHES(p.draft_pick, '[0-9]+') AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) <= 10) RETURN DISTINCT p.college AS col1, p.draft_pick AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.college = 'Michigan State University' OR CASE WHEN p.draft_pick IS NOT NULL AND REGEXP_MATCHES(p.draft_pick, '[0-9]+') THEN CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) ELSE NULL END <= 10 RETURN DISTINCT p.college AS col1, p.draft_pick AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.college = 'Michigan State University' OR REGEXP_MATCHES(p.draft_pick, '^(1st|2nd|3rd|4th|5th|6th|7th|8th|9th|10th)( |$)') RETURN DISTINCT p.college AS col1, p.draft_pick AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

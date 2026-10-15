@@ -1,0 +1,859 @@
+{
+ "uid": "select_queries_player#4",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": "Antonius Cleveland",
+   "col3": 0,
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": 0,
+   "col2": "Jay Fletcher Vincent",
+   "col3": 0,
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": null,
+   "col2": "Nikola Radi\u010devi\u0107",
+   "col3": 0,
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": 0,
+   "col2": "Fran Curran",
+   "col3": 0,
+   "name_player": "Fran Curran"
+  },
+  {
+   "col1": 0,
+   "col2": "Mark Price",
+   "col3": 1,
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": 0,
+   "col2": "David Michineau",
+   "col3": 0,
+   "name_player": "David Michineau"
+  },
+  {
+   "col1": 0,
+   "col2": "Donta Hall",
+   "col3": 0,
+   "name_player": "Donta Hall"
+  },
+  {
+   "col1": 0,
+   "col2": "Erick Strickland",
+   "col3": 0,
+   "name_player": "Erick Strickland"
+  },
+  {
+   "col1": 0,
+   "col2": "David Lattin",
+   "col3": 0,
+   "name_player": "David Lattin"
+  },
+  {
+   "col1": 2,
+   "col2": "Thomas \u201cToby\u201d Kimball",
+   "col3": 0,
+   "name_player": "Thomas \u201cToby\u201d Kimball"
+  },
+  {
+   "col1": 0,
+   "col2": "William Derek Grimm",
+   "col3": 0,
+   "name_player": "William Derek Grimm"
+  },
+  {
+   "col1": 1,
+   "col2": "Anthony Marshon Davis Jr.",
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": 0,
+   "col2": "Brandan Keith Wright",
+   "col3": 0,
+   "name_player": "Brandan Keith Wright"
+  },
+  {
+   "col1": 0,
+   "col2": "Askia Rahman Jones",
+   "col3": 0,
+   "name_player": "Askia Rahman Jones"
+  },
+  {
+   "col1": 0,
+   "col2": "Carrick Felix",
+   "col3": 0,
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": 0,
+   "col2": "Mychel Thompson",
+   "col3": 0,
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": 0,
+   "col2": "Marvin Roberts",
+   "col3": 0,
+   "name_player": "Marvin Roberts"
+  },
+  {
+   "col1": 0,
+   "col2": "Kenneth Apple Green",
+   "col3": 0,
+   "name_player": "Kenneth Apple Green"
+  },
+  {
+   "col1": 0,
+   "col2": "Gerald Madkins Jr.",
+   "col3": 0,
+   "name_player": "Gerald Madkins Jr."
+  },
+  {
+   "col1": 0,
+   "col2": "Don Anielak",
+   "col3": 0,
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": 1,
+   "col2": "Philip Douglas Jackson",
+   "col3": 0,
+   "name_player": "Philip Douglas Jackson"
+  },
+  {
+   "col1": 0,
+   "col2": "Anthony Avent",
+   "col3": 0,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": 0,
+   "col2": "Drew Edward Gordon",
+   "col3": 0,
+   "name_player": "Drew Edward Gordon"
+  },
+  {
+   "col1": 0,
+   "col2": "Jarrett Matthew Jack",
+   "col3": 0,
+   "name_player": "Jarrett Matthew Jack"
+  },
+  {
+   "col1": 0,
+   "col2": "Rick Hughes",
+   "col3": 0,
+   "name_player": "Rick Hughes"
+  },
+  {
+   "col1": 0,
+   "col2": "Lavoy Allen",
+   "col3": 0,
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": 0,
+   "col2": "Edward Dahler Jr.",
+   "col3": 0,
+   "name_player": "Edward Dahler Jr."
+  },
+  {
+   "col1": 5,
+   "col2": "Earvin Magic Johnson Jr.",
+   "col3": 0,
+   "name_player": "Earvin Magic Johnson Jr."
+  },
+  {
+   "col1": 0,
+   "col2": "Stanley M. Noszka",
+   "col3": 0,
+   "name_player": "Stanley M. Noszka"
+  },
+  {
+   "col1": 2,
+   "col2": "Isiah Lord Thomas III",
+   "col3": 0,
+   "name_player": "Isiah Lord Thomas III"
+  },
+  {
+   "col1": 0,
+   "col2": "Dan Anderson",
+   "col3": 0,
+   "name_player": "Dan Anderson"
+  },
+  {
+   "col1": 0,
+   "col2": "Jahlil Obika Okafor",
+   "col3": 0,
+   "name_player": "Jahlil Obika Okafor"
+  },
+  {
+   "col1": 1,
+   "col2": "Trent Tucker",
+   "col3": 0,
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": 0,
+   "col2": "Dwayne Kenneth Schintzius",
+   "col3": 0,
+   "name_player": "Dwayne Kenneth Schintzius"
+  },
+  {
+   "col1": 0,
+   "col2": "Miles Julian Simon",
+   "col3": 0,
+   "name_player": "Miles Julian Simon"
+  },
+  {
+   "col1": 0,
+   "col2": "Guy William Rodgers",
+   "col3": 0,
+   "name_player": "Guy William Rodgers"
+  },
+  {
+   "col1": 2,
+   "col2": "Vernon Maxwell",
+   "col3": 0,
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": 5,
+   "col2": "Timothy Theodore Duncan",
+   "col3": 0,
+   "name_player": "Timothy Theodore Duncan"
+  },
+  {
+   "col1": 0,
+   "col2": "Walter Berry",
+   "col3": 0,
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": 0,
+   "col2": "James Patrick Walsh",
+   "col3": 0,
+   "name_player": "James Patrick Walsh"
+  },
+  {
+   "col1": 0,
+   "col2": "Tony Lorenzo Delk",
+   "col3": 0,
+   "name_player": "Tony Lorenzo Delk"
+  },
+  {
+   "col1": 0,
+   "col2": "Calvin Ramsey",
+   "col3": 0,
+   "name_player": "Calvin Ramsey"
+  },
+  {
+   "col1": 0,
+   "col2": "Gene Dyker",
+   "col3": 0,
+   "name_player": "Gene Dyker"
+  },
+  {
+   "col1": 0,
+   "col2": "Derrick Joseph Chievous",
+   "col3": 0,
+   "name_player": "Derrick Joseph Chievous"
+  },
+  {
+   "col1": 0,
+   "col2": "Rik Smits",
+   "col3": 0,
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": 0,
+   "col2": "Anthony Edwards",
+   "col3": 0,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 0,
+   "col2": "Harry Junior Gallatin",
+   "col3": 0,
+   "name_player": "Harry Junior Gallatin"
+  },
+  {
+   "col1": 0,
+   "col2": "James J. Brasco",
+   "col3": 0,
+   "name_player": "James J. Brasco"
+  },
+  {
+   "col1": 0,
+   "col2": "Darnell Hillman",
+   "col3": 0,
+   "name_player": "Darnell Hillman"
+  },
+  {
+   "col1": null,
+   "col2": "Larry Clark Robinson",
+   "col3": 0,
+   "name_player": "Larry Clark Robinson"
+  },
+  {
+   "col1": 0,
+   "col2": "Nicholas William Calathes",
+   "col3": 0,
+   "name_player": "Nicholas William Calathes"
+  },
+  {
+   "col1": 0,
+   "col2": "Rod Derline",
+   "col3": 0,
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": 0,
+   "col2": "Kurt Vincent Thomas",
+   "col3": 0,
+   "name_player": "Kurt Vincent Thomas"
+  },
+  {
+   "col1": 2,
+   "col2": "Kevin Wayne Durant",
+   "col3": 1,
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": 0,
+   "col2": "Aaron Williams",
+   "col3": 0,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": 0,
+   "col2": "Nathaniel Thomas Huffman",
+   "col3": 0,
+   "name_player": "Nathaniel Thomas Huffman"
+  },
+  {
+   "col1": 0,
+   "col2": "Freddie L. Boyd",
+   "col3": 0,
+   "name_player": "Freddie L. Boyd"
+  },
+  {
+   "col1": 1,
+   "col2": "William Bedford",
+   "col3": 0,
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": 1,
+   "col2": "Steven Delano Smith",
+   "col3": 1,
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": 0,
+   "col2": "Shawn Christopher Respert",
+   "col3": 0,
+   "name_player": "Shawn Christopher Respert"
+  },
+  {
+   "col1": 0,
+   "col2": "Rod Strickland",
+   "col3": 0,
+   "name_player": "Rod Strickland"
+  },
+  {
+   "col1": 0,
+   "col2": "Elmer H. Behnke",
+   "col3": 0,
+   "name_player": "Elmer H. Behnke"
+  },
+  {
+   "col1": 0,
+   "col2": "Lamar Brandon Stevens",
+   "col3": 0,
+   "name_player": "Lamar Brandon Stevens"
+  },
+  {
+   "col1": 0,
+   "col2": "Ronald Moore",
+   "col3": 0,
+   "name_player": "Ronald Moore"
+  },
+  {
+   "col1": 0,
+   "col2": "Erazem Lorbek",
+   "col3": 0,
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": 0,
+   "col2": "Marvin Mickey Rottner",
+   "col3": 0,
+   "name_player": "Marvin Mickey Rottner"
+  },
+  {
+   "col1": 0,
+   "col2": "Hamidou Diallo",
+   "col3": 0,
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": 0,
+   "col2": "Dewayne D. J. White, Jr.",
+   "col3": 0,
+   "name_player": "Dewayne D. J. White, Jr."
+  },
+  {
+   "col1": 9,
+   "col2": "Stephen Douglas Kerr",
+   "col3": 1,
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": 1,
+   "col2": "Gregory Clinton Foster",
+   "col3": 0,
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": 0,
+   "col2": "William Severlyn Hewitt",
+   "col3": 0,
+   "name_player": "William Severlyn Hewitt"
+  },
+  {
+   "col1": 0,
+   "col2": "Joseph Xavier Forte",
+   "col3": 0,
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": 0,
+   "col2": "Dino Ra\u0111a",
+   "col3": 0,
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": 0,
+   "col2": "Mark Jeffrey Radford",
+   "col3": 0,
+   "name_player": "Mark Jeffrey Radford"
+  },
+  {
+   "col1": 0,
+   "col2": "Kostas Papanikolaou",
+   "col3": 0,
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": 0,
+   "col2": "Garry Witts",
+   "col3": 0,
+   "name_player": "Garry Witts"
+  },
+  {
+   "col1": 0,
+   "col2": "Jabari Dominic Walker",
+   "col3": 0,
+   "name_player": "Jabari Dominic Walker"
+  },
+  {
+   "col1": 0,
+   "col2": "Devontae Calvin Cacok",
+   "col3": 0,
+   "name_player": "Devontae Calvin Cacok"
+  },
+  {
+   "col1": 0,
+   "col2": "Brandon Goodwin",
+   "col3": 0,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": 0,
+   "col2": "Richard Anthony Rosenthal",
+   "col3": 0,
+   "name_player": "Richard Anthony Rosenthal"
+  },
+  {
+   "col1": 0,
+   "col2": "Jamal Crawford",
+   "col3": 0,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": 0,
+   "col2": "Jordan Lee Crawford",
+   "col3": 0,
+   "name_player": "Jordan Lee Crawford"
+  },
+  {
+   "col1": 0,
+   "col2": "Thomas James Copa",
+   "col3": 0,
+   "name_player": "Thomas James Copa"
+  },
+  {
+   "col1": 0,
+   "col2": "Kermit Alan Washington",
+   "col3": 0,
+   "name_player": "Kermit Alan Washington"
+  },
+  {
+   "col1": 0,
+   "col2": "Donyell Lamar Marshall",
+   "col3": 0,
+   "name_player": "Donyell Lamar Marshall"
+  },
+  {
+   "col1": 0,
+   "col2": "Wayne Lavern Robinson",
+   "col3": 0,
+   "name_player": "Wayne Lavern Robinson"
+  },
+  {
+   "col1": 0,
+   "col2": "Greg Fillmore",
+   "col3": 0,
+   "name_player": "Greg Fillmore"
+  },
+  {
+   "col1": 0,
+   "col2": "John Harding Lucas II",
+   "col3": 0,
+   "name_player": "John Harding Lucas II"
+  },
+  {
+   "col1": 0,
+   "col2": "Dick Surhoff",
+   "col3": 0,
+   "name_player": "Dick Surhoff"
+  },
+  {
+   "col1": 1,
+   "col2": "Garfield Smith",
+   "col3": 0,
+   "name_player": "Garfield Smith"
+  },
+  {
+   "col1": 0,
+   "col2": "Leroy Patrick Chollet",
+   "col3": 0,
+   "name_player": "Leroy Patrick Chollet"
+  },
+  {
+   "col1": 0,
+   "col2": "Michael Carter-Williams",
+   "col3": 0,
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": 0,
+   "col2": "Dennis Schr\u00f6der",
+   "col3": 1,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 0,
+   "col2": "Jack Parr",
+   "col3": 0,
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": 0,
+   "col2": "DaMon William Monti Davis",
+   "col3": 0,
+   "name_player": "DaMon William Monti Davis"
+  },
+  {
+   "col1": 0,
+   "col2": "Eric Johnson Jones",
+   "col3": 0,
+   "name_player": "Eric Johnson Jones"
+  },
+  {
+   "col1": 0,
+   "col2": "Sidney Harold Tanenbaum",
+   "col3": 0,
+   "name_player": "Sidney Harold Tanenbaum"
+  },
+  {
+   "col1": 0,
+   "col2": "Trayce Jackson-Davis",
+   "col3": 0,
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": 0,
+   "col2": "Andre Jamal Drummond",
+   "col3": 1,
+   "name_player": "Andre Jamal Drummond"
+  },
+  {
+   "col1": 0,
+   "col2": "Chavano Rainer Buddy Hield",
+   "col3": 0,
+   "name_player": "Chavano Rainer Buddy Hield"
+  },
+  {
+   "col1": 0,
+   "col2": "D'Angelo Russell",
+   "col3": 0,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": 0,
+   "col2": "Joel Hans Embiid",
+   "col3": 0,
+   "name_player": "Joel Hans Embiid"
+  },
+  {
+   "col1": 0,
+   "col2": "Paul Clifton Anthony George",
+   "col3": 0,
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": 1,
+   "col2": "Kyrie Andrew Irving",
+   "col3": 1,
+   "name_player": "Kyrie Andrew Irving"
+  },
+  {
+   "col1": 1,
+   "col2": "Jayson Christopher Tatum",
+   "col3": 0,
+   "name_player": "Jayson Christopher Tatum"
+  },
+  {
+   "col1": 0,
+   "col2": "Caleb Martin",
+   "col3": 0,
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": 1,
+   "col2": "Andrew Christian Wiggins",
+   "col3": 0,
+   "name_player": "Andrew Christian Wiggins"
+  },
+  {
+   "col1": 0,
+   "col2": "Max Berning Fiedler",
+   "col3": 0,
+   "name_player": "Max Berning Fiedler"
+  },
+  {
+   "col1": 1,
+   "col2": "Ogugua OG Anunoby Jr.",
+   "col3": 0,
+   "name_player": "Ogugua OG Anunoby Jr."
+  },
+  {
+   "col1": 1,
+   "col2": "Jaylen Marselles Brown",
+   "col3": 0,
+   "name_player": "Jaylen Marselles Brown"
+  },
+  {
+   "col1": null,
+   "col2": "Victor Wembanyama",
+   "col3": 0,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": 2,
+   "col2": "Jrue Randall Holiday",
+   "col3": 0,
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": 0,
+   "col2": "Austin Tyler Reaves",
+   "col3": 0,
+   "name_player": "Austin Tyler Reaves"
+  },
+  {
+   "col1": 1,
+   "col2": "Kevin Wesley Love",
+   "col3": 1,
+   "name_player": "Kevin Wesley Love"
+  },
+  {
+   "col1": null,
+   "col2": "Giannis Sina Ugo Antetokounmpo",
+   "col3": 0,
+   "name_player": "Giannis Sina Ugo Antetokounmpo"
+  },
+  {
+   "col1": 4,
+   "col2": "Wardell Stephen Curry II",
+   "col3": 2,
+   "name_player": "Wardell Stephen Curry II"
+  },
+  {
+   "col1": 1,
+   "col2": "Alfred Joel Horford Reynoso",
+   "col3": 0,
+   "name_player": "Alfred Joel Horford Reynoso"
+  },
+  {
+   "col1": 0,
+   "col2": "Tyler Christopher Herro",
+   "col3": 0,
+   "name_player": "Tyler Christopher Herro"
+  },
+  {
+   "col1": 0,
+   "col2": "Duncan McBryde Robinson",
+   "col3": 0,
+   "name_player": "Duncan McBryde Robinson"
+  },
+  {
+   "col1": 0,
+   "col2": "Kyle Forman Anderson",
+   "col3": 0,
+   "name_player": "Kyle Forman Anderson"
+  },
+  {
+   "col1": 0,
+   "col2": "Cade Parker Cunningham",
+   "col3": 0,
+   "name_player": "Cade Parker Cunningham"
+  },
+  {
+   "col1": 4,
+   "col2": "LeBron Raymone James Sr.",
+   "col3": 0,
+   "name_player": "LeBron Raymone James Sr."
+  },
+  {
+   "col1": 0,
+   "col2": "Jimmy Butler III",
+   "col3": 0,
+   "name_player": "Jimmy Butler III"
+  },
+  {
+   "col1": 3,
+   "col2": "Kevon Grant Looney",
+   "col3": 0,
+   "name_player": "Kevon Grant Looney"
+  },
+  {
+   "col1": 0,
+   "col2": "Zachary Thomas LaVine",
+   "col3": 0,
+   "name_player": "Zachary Thomas LaVine"
+  },
+  {
+   "col1": 0,
+   "col2": "Jaden Edward Dhananjay Ivey",
+   "col3": 0,
+   "name_player": "Jaden Edward Dhananjay Ivey"
+  },
+  {
+   "col1": 1,
+   "col2": "Kyle Terrell Lowry",
+   "col3": 0,
+   "name_player": "Kyle Terrell Lowry"
+  },
+  {
+   "col1": 6,
+   "col2": "Michael Jeffrey Jordan",
+   "col3": 0,
+   "name_player": "Michael Jeffrey Jordan"
+  },
+  {
+   "col1": 0,
+   "col2": "Devin Armani Booker",
+   "col3": 0,
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": 4,
+   "col2": "Draymond Jamal Green",
+   "col3": 0,
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": 0,
+   "col2": "Zach Collins",
+   "col3": 0,
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": 1,
+   "col2": "Jonathan Malangu Kuminga",
+   "col3": 0,
+   "name_player": "Jonathan Malangu Kuminga"
+  },
+  {
+   "col1": 0,
+   "col2": "Lonzo Anderson Ball",
+   "col3": 0,
+   "name_player": "Lonzo Anderson Ball"
+  },
+  {
+   "col1": 0,
+   "col2": "Jaime Jaquez Jr.",
+   "col3": 0,
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": null,
+   "col2": "Ausar XLNC Thompson",
+   "col3": 0,
+   "name_player": "Ausar XLNC Thompson"
+  },
+  {
+   "col1": 0,
+   "col2": "Jalen Marquis Brunson",
+   "col3": 0,
+   "name_player": "Jalen Marquis Brunson"
+  },
+  {
+   "col1": 4,
+   "col2": "Shaquille Rashaun O'Neal",
+   "col3": 1,
+   "name_player": "Shaquille Rashaun O'Neal"
+  },
+  {
+   "col1": 5,
+   "col2": "Kobe Bean Bryant",
+   "col3": 0,
+   "name_player": "Kobe Bean Bryant"
+  },
+  {
+   "col1": 0,
+   "col2": "Christopher Emmanuel Paul",
+   "col3": 0,
+   "name_player": "Christopher Emmanuel Paul"
+  },
+  {
+   "col1": 1,
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": 0,
+   "name_player": "Harrison Bryce Jordan Barnes"
+  },
+  {
+   "col1": 0,
+   "col2": "Edrice Femi Bam Adebayo",
+   "col3": 0,
+   "name_player": "Edrice Femi Bam Adebayo"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) RETURN CAST(p.nba_championships AS INT64) AS col1, p.name AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 141
+  }
+ ]
+}

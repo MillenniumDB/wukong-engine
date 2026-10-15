@@ -1,0 +1,217 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "George Shinn",
+   "col3": "American",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": null,
+   "col2": "Gabe Plotkin",
+   "col3": "American",
+   "name_manager": "Gabe Plotkin"
+  },
+  {
+   "col1": null,
+   "col2": "Alexander Julian",
+   "col3": "American",
+   "name_manager": "Alexander Julian"
+  },
+  {
+   "col1": null,
+   "col2": "Vivek Ranadiv\u00e9",
+   "col3": "Indian-American",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Benson",
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": null,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": 67,
+   "col2": "Clayton Ike Bennett",
+   "col3": "American",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": null,
+   "col2": "Robert Sarver",
+   "col3": "American",
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": null,
+   "col2": "Michael Jordan",
+   "col3": "American",
+   "name_manager": "Michael Jordan"
+  },
+  {
+   "col1": null,
+   "col2": "Abe Pollin",
+   "col3": "American",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": null,
+   "col2": "Rick Schnall",
+   "col3": "American",
+   "name_manager": "Rick Schnall"
+  },
+  {
+   "col1": null,
+   "col2": "Tony Ressler",
+   "col3": "American",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": 79,
+   "col2": "Stan Kroenke",
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 70,
+   "col2": "Joe Lacob",
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 69,
+   "col2": "Tilman Fertitta",
+   "col3": "American",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 68,
+   "col2": "Mark Cuban",
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 62,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": null,
+   "col2": "Paul Allen",
+   "col3": "American",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": "OG Anunoby",
+   "col3": "British",
+   "name_manager": "OG Anunoby"
+  },
+  {
+   "col1": null,
+   "col2": "Robert L. Johnson",
+   "col3": "American",
+   "name_manager": "Robert L. Johnson"
+  },
+  {
+   "col1": 62,
+   "col2": "Tom Gores",
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": null,
+   "col2": "Ryan Smith",
+   "col3": "American",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": 90,
+   "col2": "Jerry Reinsdorf",
+   "col3": "American",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 70,
+   "col2": "Steve Ballmer",
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 62,
+   "col2": "Josh Harris",
+   "col3": "American",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": "Dwyane Wade",
+   "col3": "American",
+   "name_manager": "Dwyane Wade"
+  },
+  {
+   "col1": 92,
+   "col2": "Herbert Simon",
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": null,
+   "col2": "Ann Walton Kroenke",
+   "col3": "American",
+   "name_manager": "Ann Walton Kroenke"
+  },
+  {
+   "col1": null,
+   "col2": "Daniel Sundheim",
+   "col3": "American",
+   "name_manager": "Daniel Sundheim"
+  },
+  {
+   "col1": null,
+   "col2": "Robert J. Pera",
+   "col3": "American",
+   "name_manager": "Robert J. Pera"
+  },
+  {
+   "col1": null,
+   "col2": "Herb Kohl",
+   "col3": "American",
+   "name_manager": "Herb Kohl"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner) WHERE (o.birth_date IS NOT NULL AND date_diff('year', CAST(o.birth_date AS DATE), DATE('2026-10-15')) < 65) OR o.nationality <> 'Israeli-American' RETURN date_diff('year', CAST(o.birth_date AS DATE), DATE('2026-10-15')) AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document) WHERE o.birth_date IS NOT NULL AND (CAST(date_part('year', CAST('2026-10-15' AS DATE)) AS INT64) - CAST(date_part('year', CAST(o.birth_date AS DATE)) AS INT64) - CASE WHEN CAST(date_part('month', CAST(o.birth_date AS DATE)) AS INT64) > 10 OR (CAST(date_part('month', CAST(o.birth_date AS DATE)) AS INT64) = 10 AND CAST(date_part('day', CAST(o.birth_date AS DATE)) AS INT64) > 15) THEN 1 ELSE 0 END) < 65 OR o.nationality <> 'Israeli-American' RETURN (CAST(date_part('year', CAST('2026-10-15' AS DATE)) AS INT64) - CAST(date_part('year', CAST(o.birth_date AS DATE)) AS INT64) - CASE WHEN CAST(date_part('month', CAST(o.birth_date AS DATE)) AS INT64) > 10 OR (CAST(date_part('month', CAST(o.birth_date AS DATE)) AS INT64) = 10 AND CAST(date_part('day', CAST(o.birth_date AS DATE)) AS INT64) > 15) THEN 1 ELSE 0 END) AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 1964\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document) WITH DISTINCT o, 2026 - CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS age WHERE age < 65 OR o.nationality <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 32
+  }
+ ]
+}

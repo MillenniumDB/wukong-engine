@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#26",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-15') - CASE WHEN strftime(CAST(p.birth_date AS DATE), '%m-%d') > '10-15' THEN 1 ELSE 0 END) > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR p.fiba_world_cup = '1' RETURN p.olympic_gold_medals AS col1, p.college AS col2, date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-15') - CASE WHEN strftime(CAST(p.birth_date AS DATE), '%m-%d') > '10-15' THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-15'>: expected rule oC_SingleQuery (line: 1, offset: 104)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-15') - CASE WHEN strftime(CAST(p.birth_date AS DATE), '%m-%d') > '10-15' THEN 1 ELSE 0 END) > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-15' AS DATE)) > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR p.fiba_world_cup = '1' RETURN p.olympic_gold_medals AS col1, p.college AS col2, date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-15' AS DATE)) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WHERE (2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END) > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR p.fiba_world_cup = '1' RETURN p.olympic_gold_medals AS col1, p.college AS col2, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date WHERE date_part('year', CAST('2026-10-15' AS DATE)) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 15) THEN 1 ELSE 0 END > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR p.fiba_world_cup = '1' RETURN p.olympic_gold_medals AS col1, p.college AS col2, date_part('year', CAST('2026-10-15' AS DATE)) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 15) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

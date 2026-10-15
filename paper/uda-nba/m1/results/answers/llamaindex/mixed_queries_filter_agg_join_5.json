@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR date_diff('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE('2026-10-15')) >= 42) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR DATE(REPLACE(p.birth_date, '/', '-')) <= DATE('1984-10-15')) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) <= 15)))) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END) < 1984 OR ((CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END) = 1984 AND (CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END) < 10 OR ((CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END) = 10 AND (CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 2) AS INT64) END) <= 15)))) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END) < 1984 OR ((CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PAR",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND date(p.birth_date) <= date('1964-10-15') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 10, 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END <= DATE('2026-10-15') - INTERVAL 62 YEARS WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END <= DATE('2026-10-15') - INTERVAL 62>: expected rule oC_SingleQuery (line: 1, offset: 361)\n\"MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]-",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END <= DATE('1964-10-15') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(RIGHT(p.birth_date, 4) AS INT64) END <= 1964 WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

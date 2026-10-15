@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND ((p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND DATE_DIFF('year', STRPTIME(p.birth_date, '%Y/%m/%d'), DATE('2026-10-15')) > 78)) RETURN p.nationality AS col1, p.birth_date AS col2, DATE_DIFF('year', STRPTIME(p.birth_date, '%Y/%m/%d'), DATE('2026-10-15')) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND ((p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND (2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END) > 78)) RETURN p.nationality AS col1, p.birth_date AS col2, (2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p, CASE WHEN p.birth_date LIKE '%/%' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %-d, %Y') END AS bd WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND bd < DATE('1948-10-15')) RETURN p.nationality AS col1, p.birth_date AS col2, (2026 - EXTRACT(YEAR FROM bd) - CASE WHEN EXTRACT(MONTH FROM bd) > 10 OR (EXTRACT(MONTH FROM bd) = 10 AND EXTRACT(DAY FROM bd) > 15) THEN 1 ELSE 0 END) AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 103)\n\"MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p, CASE WHEN p.birth_date LIKE '%/%' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %-d, %Y') END AS bd WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND bd < DATE('1948-10-15')) RETURN p.nationality AS col1, p.bir",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p, (CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %-d, %Y') END) AS bd WITH p, bd WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND bd < DATE('1948-10-15')) RETURN p.nationality AS col1, p.birth_date AS col2, (2026 - EXTRACT(YEAR FROM bd) - CASE WHEN EXTRACT(MONTH FROM bd) > 10 OR (EXTRACT(MONTH FROM bd) = 10 AND EXTRACT(DAY FROM bd) > 15) THEN 1 ELSE 0 END) AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <(2026 - EXTRACT(YEAR FROM>: expected rule oC_ProjectionItem (line: 1, offset: 434)\n\"MATCH (p:Player) WHERE EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p, (CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %-d, %Y') END) AS bd WITH p, bd WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND bd < DATE('1948-10-15')) RETURN p.nationality A",
+   "rows": null
+  }
+ ]
+}

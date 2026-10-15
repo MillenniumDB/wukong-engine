@@ -16,6 +16,9 @@ box "M1".
 | LightRAG mix | 0.13 | 0.15 | 0.42 | 0.06 | 0.23 | **0.18** | $2.69 (4 modes) |
 | LightRAG, best mode per type | 0.14 | 0.16 | 0.42 | 0.06 | 0.23 | **0.18** | |
 | GraphRAG local | 0.09 | 0.07 | 0.21 | 0.03 | 0.15 | **0.10** | ~$0.29 |
+| Neo4j-GraphRAG + Cypher agent | 0.05 | 0.13 | 0.57 | 0.02 | 0.17 | **0.16** | $0.21 |
+| LlamaIndex + Cypher agent | 0.04 | 0.06 | 0.36 | 0.01 | 0.04 | **0.08** | $0.21 |
+| OntoGPT + Cypher agent | 0.64 | 0.29 | 0.49 | 0.19 | 0.32 | **0.33** | $0.17 |
 | Wukong + Cypher agent | 0.49 | 0.42 | 0.90 | 0.28 | 0.36 | **0.44** | $0.14 |
 
 Questions: 101 of the 132 (Select 8, Filter 49, Agg 10, Join 13, Mixed 21). Excluded: 10 whose gold SQL fails on the
@@ -36,6 +39,30 @@ answers from memory (NBA is public knowledge), so it beats both RAG systems; on 
 Calls and tokens (all of M1, pilots included): Wukong 187 calls, 0.19M input; LightRAG 804 calls, 12.1M input (4
 modes); GraphRAG 9,015 calls, 13.5M input, of which 8,790 calls and $3.60 were the global-search pilot (3 questions).
 Total M1 spend $6.95 (cap $15).
+
+## Schema-based extractors + Cypher (added 2026-10-15)
+
+The graphs that Neo4j's `neo4j-graphrag`, LlamaIndex's `SchemaLLMPathExtractor` and OntoGPT's SPIRES built from the
+same extraction schema (`../baselines/*_build.py`; Wukong's s4 = `workspace-v1`), queried by Wukong's agent
+(`sys_typed.py`): same prompt, same schema text, same 4 attempts, loaded into Kuzu the same way (one table per type,
+every value a string, missing or empty values null). Only the link from entities to articles differs, as each tool
+records it: OntoGPT's root object per article is its subject (`ExtractedFrom`, as Wukong's); neo4j-graphrag and
+LlamaIndex record only the chunk an entity came from (`MentionedIn`, not necessarily the subject; OntoGPT gets it too).
+Properties a tool filled outside the schema are kept and listed. Edges whose endpoint types do not match the
+relationship type are not loaded (LlamaIndex 62, OntoGPT 9).
+
+What breaks them: values not in a queryable form (dates as "February 2, 1994", "808988 (2023)", "367.9square
+miles", "Not drafted"), so the agent's casts fail (no rows on 23-27 questions, Wukong 2); no article subject in
+neo4j-graphrag and LlamaIndex, so set questions return every mentioned player (Neo4j: 2,184 Player nodes, one join
+answer of 356,535 rows); and duplicate nodes. OntoGPT, with subjects and one object per article, is closest to Wukong
+and better on Select (0.64 vs 0.49).
+
+Run on Juan's laptop (env `../envs/m1-harness`: kuzu 0.11.3, duckdb 1.3.2), scored there against the current
+Bench-U (BIT-DataLab/Bench-U `f2da981`). Re-scoring the systems above on that machine changes 0-6 questions per
+system (`filter_queries_city#2,#5,#6`, `join_queries#5,#13`, `mixed_queries_agg_join#2`; Wukong 0.434 instead of
+0.44), the same questions for every system: the city gold differs from the copy used on the iMac. The earlier rows are
+left as scored there. The three agents were interrupted once by a sleep and resumed; the interrupted questions'
+calls stay in their usage logs.
 
 ## Fairness
 
@@ -60,7 +87,7 @@ Total M1 spend $6.95 (cap $15).
 
 ## Files
 
-- `common.py` (shared rules), `translate.py`, `sys_floor.py`, `sys_wukong.py`, `sys_lightrag.py`, `sys_graphrag.py`,
+- `common.py` (shared rules), `translate.py`, `sys_floor.py`, `sys_wukong.py`, `sys_typed.py`, `sys_lightrag.py`, `sys_graphrag.py`,
   `score.py`, `table.py`, `oracle.py`, `run_m1.sh` (the run, with a budget watchdog).
 - `results/`: `questions.{json,md}`, `queries.json` (uids, inclusion, oracle F1), `answers/<system>/`,
   `scores/<system>.json`, `usage/`, `m1_table.{md,tex}`, `wukong_system_prompt.txt`, `excluded/` (GraphRAG global

@@ -15,9 +15,11 @@ from common import WORK, cost  # noqa: E402
 TYPES = ('Select', 'Filter', 'Agg', 'Join', 'Mixed')
 LABELS = {'floor': 'LLM alone (floor)', 'wukong': 'Wukong + Cypher agent', 'graphrag-local': 'GraphRAG local',
           'lightrag-local': 'LightRAG local', 'lightrag-global': 'LightRAG global',
-          'lightrag-hybrid': 'LightRAG hybrid', 'lightrag-mix': 'LightRAG mix'}
+          'lightrag-hybrid': 'LightRAG hybrid', 'lightrag-mix': 'LightRAG mix',
+          'neo4j': 'Neo4j-GraphRAG + Cypher agent', 'llamaindex': 'LlamaIndex + Cypher agent',
+          'ontogpt': 'OntoGPT + Cypher agent'}
 ORDER = ('floor', 'lightrag-local', 'lightrag-global', 'lightrag-hybrid', 'lightrag-mix', 'lightrag-best',
-         'graphrag-local', 'wukong')
+         'graphrag-local', 'neo4j', 'llamaindex', 'ontogpt', 'wukong')
 
 
 def main() -> int:

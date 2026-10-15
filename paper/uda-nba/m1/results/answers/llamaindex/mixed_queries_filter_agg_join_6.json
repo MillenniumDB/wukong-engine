@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL WITH DISTINCT p WITH p.position AS col1, AVG(DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), CURRENT_DATE())) AS col2 RETURN col1 AS col1, col2 AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, CAST(SPLIT(p.birth_date, '/')[0] AS INT64) AS birth_year, CAST(SPLIT(p.birth_date, '/')[1] AS INT64) AS birth_month, CAST(SPLIT(p.birth_date, '/')[2] AS INT64) AS birth_day WITH p.position AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS age RETURN col1 AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) AS birth_year WITH p.position AS col1, 2026 - birth_year AS age RETURN col1 AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year WITH p.position AS col1, 2026 - birth_year AS age RETURN col1 AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Janu\" to INT64.",
+   "rows": null
+  }
+ ]
+}

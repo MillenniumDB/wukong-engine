@@ -1,0 +1,83 @@
+{
+ "uid": "agg_queries#6",
+ "rows": [
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  },
+  {
+   "col1": "German",
+   "col2": 33
+  },
+  {
+   "col1": "American",
+   "col2": 24
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  },
+  {
+   "col1": "Greek",
+   "col2": 36
+  },
+  {
+   "col1": "French",
+   "col2": 32
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15') -\n     CASE\n       WHEN date_part('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 10\n         OR (date_part('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) = 10\n             AND date_part('day', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 15)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15'>: expected rule oC_ProjectionItem (line: 4, offset: 75)\n\"     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15') -\"\n                                                                            ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST('2026-10-15' AS DATE)) -\n     CASE\n       WHEN date_part('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 10\n         OR (date_part('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) = 10\n             AND date_part('day', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 15)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) -\n     CASE\n       WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n         OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10\n             AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 15)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) -\n     CASE\n       WHEN (\n         CASE\n           WHEN regexp_matches(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64)\n           WHEN p.birth_date STARTS WITH 'January' THEN 1\n           WHEN p.birth_date STARTS WITH 'February' THEN 2\n           WHEN p.birth_date STARTS WITH 'March' THEN 3\n           WHEN p.birth_date STARTS WITH 'April' THEN 4\n           WHEN p.birth_date STARTS WITH 'May' THEN 5\n           WHEN p.birth_date STARTS WITH 'June' THEN 6\n           WHEN p.birth_date STARTS WITH 'July' THEN 7\n           WHEN p.birth_date STARTS WITH 'August' THEN 8\n           WHEN p.birth_date STARTS WITH 'September' THEN 9\n           WHEN p.birth_date STARTS WITH 'October' THEN 10\n           WHEN p.birth_date STARTS WITH 'November' THEN 11\n           WHEN p.birth_date STARTS WITH 'December' THEN 12\n         END\n       ) > 10\n       OR (\n         (\n           CASE\n             WHEN regexp_matches(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64)\n             WHEN p.birth_date STARTS WITH 'January' THEN 1\n             WHEN p.birth_date STARTS WITH 'February' THEN 2\n             WHEN p.birth_date STARTS WITH 'March' THEN 3\n             WHEN p.birth_date STARTS WITH 'April' THEN 4\n             WHEN p.birth_date STARTS WITH 'May' THEN 5\n             WHEN p.birth_date STARTS WITH 'June' THEN 6\n             WHEN p.birth_date STARTS WITH 'July' THEN 7\n             WHEN p.birth_date STARTS WITH 'August' THEN 8\n             WHEN p.birth_date STARTS WITH 'September' THEN 9\n             WHEN p.birth_date STARTS WITH 'October' THEN 10\n             WHEN p.birth_date STARTS WITH 'November' THEN 11\n             WHEN p.birth_date STARTS WITH 'December' THEN 12\n           END\n         ) = 10\n         AND CAST(regexp_extract(p.birth_date, '[0-9]{1,2}', 0) AS INT64) > 15\n       ) THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": null,
+   "rows": 13
+  }
+ ]
+}
