@@ -13,10 +13,13 @@ Content against gold (the 216 subject entities; matching as in e1_analysis.py):
                 955. Schema-free graphs have no fields: recall is whether the value appears in the text of the
                 matched nodes or their edges (an upper bound), and precision is undefined.
   relations     the 148 gold relations between gold entities (player's team, team's city, team's owners), found
-                if an edge of the right type joins the matched nodes (any edge, for schema-free graphs). Gold has
-                one team per player, so edge precision is measured on the current team only: of the teams
-                marked as a player's current one (the s5 field for Wukong, PlaysFor tenure 'latest' for the
-                others), the fraction that is the gold team.
+                if an edge of the right type joins the matched nodes (any edge, for schema-free graphs), and split
+                if stored as more than one edge (as an entity split over several nodes).
+  single-valued the benchmark defines a player's team as the current one and a team's location as the latest
+                city, so these 119 gold relations have one value: precision over the values a typed graph marks
+                (current team: Player.current_team for Wukong s5, PlaysFor edges whose tenure says current for
+                the others, read leniently since neo4j-graphrag and LlamaIndex had no slot for the closed set;
+                city: every LocatedIn edge of the team), recall over the 119 facts.
 
 Schema conformance (typed graphs, against the schema they were built from, with Player.current_team for s5):
   edges         the endpoint types are those the relationship type declares
@@ -233,6 +236,73 @@ def hallucination(nodes: dict, docs: dict, typed: bool) -> dict:
     return out
 
 
+TARGET = {'plays_for': 'team', 'located_in': 'city', 'owned_by': 'owner', 'owns': 'team'}
+LABEL = {'plays_for': 'PlaysFor', 'located_in': 'LocatedIn', 'owned_by': 'Owns', 'owns': 'Owns'}
+CURRENT = re.compile(r'\b(latest|current|yes|true)\b', re.I)
+NOT_CURRENT = re.compile(r'\b(not|no|former|earlier|false|historical)\b', re.I)
+
+
+def is_current(tenure) -> bool:
+    """A PlaysFor edge marks the current team: OntoGPT and Wukong use the schema's value 'latest'; neo4j-graphrag
+    and LlamaIndex had no slot for the closed set and wrote free text ('latest NBA team', 'true', 'yes')."""
+    t = str(tenure or '')
+    return bool(CURRENT.search(t)) and not NOT_CURRENT.search(t)
+
+
+def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bool, field_team: bool) -> dict:
+    """Relations between gold entities: found, and split (stored as several edges, mirroring an entity stored
+    as several nodes). Single-valued relations (the benchmark defines a player's team as the current one and a
+    team's location as the latest city): precision over the values a typed graph marks (the current team: the
+    Player.current_team field for Wukong s5, PlaysFor edges marked current for the others; the city: every
+    LocatedIn edge of the team), recall over the 119 gold facts."""
+    m = A.Matcher(matcher_name, nodes)
+    matched = {(e['kind'], e['id']): set().union(*m.match(e)) for e in gold}
+    names = {(e['kind'], n): e for e in gold for n in e['names']}
+    adj = defaultdict(list)
+    for e in edges:
+        adj[e['src']].append(e)
+        adj[e['dst']].append(e)
+    found = split = split_pairs = 0
+    n_rel = 0
+    fv = {'pred': 0, 'right': 0, 'gold': 0, 'hit': 0}
+    for g in gold:
+        src = matched[(g['kind'], g['id'])]
+        for r, ts in g['rels'].items():
+            for t in ts:
+                te = names.get((TARGET[r], A.norm(t))) if t else None
+                if te is None:
+                    continue
+                dst = matched[(TARGET[r], te['id'])]
+                hits = {id(x): x for i in src for x in adj[i] if (x['src'] in dst or x['dst'] in dst)
+                        and (not typed or x['label'] == LABEL[r])}.values()
+                n_rel += 1
+                found += bool(hits)
+                split += len(hits) > 1
+                split_pairs += len({(x['src'], x['dst']) for x in hits}) > 1
+                if not typed or r not in ('plays_for', 'located_in'):
+                    continue
+                fv['gold'] += 1
+                if r == 'plays_for' and field_team:
+                    vals = {A.norm(nodes[i]['attrs']['current_team']) for i in src if nodes[i]['attrs'].get('current_team')}
+                    fv['pred'] += len(vals)
+                    fv['right'] += len(vals & set(te['names']))
+                    fv['hit'] += bool(vals & set(te['names']))
+                    continue
+                marked = {x['dst'] if x['src'] in src else x['src'] for i in src for x in adj[i]
+                          if x['label'] == LABEL[r] and (r == 'located_in' or is_current(x['props'].get('tenure')))}
+                fv['pred'] += len(marked)
+                fv['right'] += len(marked & dst)
+                fv['hit'] += bool(marked & dst)
+    out = {'rel_found': found, 'rel_gold': n_rel, 'rel_split': split, 'rel_split_pairs': split_pairs}
+    if typed:
+        p = fv['right'] / fv['pred'] if fv['pred'] else 0.0
+        rc = fv['hit'] / fv['gold']
+        out |= {'sv_precision': round(100 * p, 1), 'sv_recall': round(100 * rc, 1),
+                'sv_f1': round(100 * 2 * p * rc / (p + rc), 1) if p + rc else 0.0, 'sv_gold': fv['gold'],
+                'sv_marked': fv['pred']}
+    return out
+
+
 def gold_typed(run, gold, load, usage) -> dict:
     r = X.score_run(run, gold, load=load, usage=usage)
     correct = r['attr_filled'] - r['attr_wrong']
@@ -265,20 +335,23 @@ def main() -> None:
         types = {i: n['type'] for i, n in nodes.items()}
         ndocs, _ = wukong_docs(run)
         rows.append({'system': 'Wukong s5', 'run': run, **gold_typed(run, gold, A.load_wukong, A.wukong_usage),
+                     **relations('Wukong', nodes, edges, gold, typed=True, field_team=True),
                      **conformance(nodes, [(e['src'], e['dst'], e['label'], e['props']) for e in edges], types),
                      **hallucination(nodes, with_own_articles('Wukong', nodes, ndocs, gold), typed=True)})
     for name, run in TYPED.items():
         raw_n = [json.loads(line) for line in (A.RUNS / run / 'graph' / 'nodes.jsonl').open()]
         raw_e = [json.loads(line) for line in (A.RUNS / run / 'graph' / 'edges.jsonl').open()]
-        nodes, _, _ = A.load_common(run)
+        nodes, edges, _ = A.load_common(run)
         types = {n['id']: n['type'] for n in raw_n}
         rows.append({'system': name, 'run': run, **gold_typed(run, gold, A.load_common, A.common_usage),
+                     **relations('Wukong', nodes, edges, gold, typed=True, field_team=False),
                      **conformance(nodes, [(e['src'], e['dst'], e['label'], e.get('props', {})) for e in raw_e], types),
                      **hallucination(nodes, with_own_articles('Wukong', nodes, common_docs(name, run, raw_n), gold),
                                      typed=True)})
     for name in UNTYPED:
-        nodes, _, _ = A.SYSTEMS[name]()
+        nodes, edges, _ = A.SYSTEMS[name]()
         rows.append({'system': name, 'run': name, **gold_untyped(name),
+                     **relations(name, nodes, edges, gold, typed=False, field_team=False),
                      **hallucination(nodes, with_own_articles(name, nodes, untyped_docs(name, nodes), gold),
                                      typed=False)})
     df = pd.DataFrame(rows)
@@ -306,9 +379,9 @@ def write_tex(df: pd.DataFrame) -> None:
     for s in order:
         lines.append(' & '.join([label.get(s, s),
                                  cell(s, 'entities_found'), cell(s, 'entities_split'),
+                                 cell(s, 'rel_found'), cell(s, 'rel_split'),
                                  cell(s, 'attr_precision'), cell(s, 'attr_recall'), cell(s, 'attr_f1'),
-                                 cell(s, 'attr_exact_recall'),
-                                 cell(s, 'rel_found'), cell(s, 'current_team_found'), cell(s, 'current_team_precision'),
+                                 cell(s, 'sv_precision'), cell(s, 'sv_recall'), cell(s, 'sv_f1'),
                                  cell(s, 'edges_conforming_pct', '{:.1f}'), cell(s, 'constrained_conforming_pct'),
                                  cell(s, 'entities_unsupported_pct', '{:.1f}'), cell(s, 'values_unsupported_pct', '{:.1f}')]) + r' \\')
         if s == 'OntoGPT':
