@@ -31,6 +31,10 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 packages = [{ include = "wukong_engine", from = "src" }]
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.17.1"
+pyright = "^1.1.414"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["wukong_engine"]
