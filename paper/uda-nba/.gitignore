@@ -4,6 +4,7 @@ envs/
 runs/*
 !runs/e1/
 !runs/x6/
+!runs/quality/
 !runs/labels/
 runs/labels/*
 !runs/labels/LightRAG.jsonl
