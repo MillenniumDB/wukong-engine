@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_team#2",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Wes Edens and Marc Lasry\",\"col2\":2,\"col3\":1968,\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Dan Gilbert\",\"col2\":1,\"col3\":1970,\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":\"Jerry Buss\",\"col2\":17,\"col3\":1946,\"name_team\":\"Los Angeles Lakers\"}]}",
+ "rows": [
+  {
+   "col1": "Wes Edens and Marc Lasry",
+   "col2": 2,
+   "col3": 1968,
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": 17,
+   "col3": 1946,
+   "name_team": "Los Angeles Lakers"
+  }
+ ]
+}

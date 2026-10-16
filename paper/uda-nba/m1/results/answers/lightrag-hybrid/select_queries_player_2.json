@@ -1,0 +1,28 @@
+{
+ "uid": "select_queries_player#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":\"LeBron James\",\"col3\":4,\"col4\":\"1984/12/30\",\"name_player\":\"LeBron James\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Kevin Durant\",\"col3\":1,\"col4\":null,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Giannis Antetokounmpo\",\"col3\":2,\"col4\":null,\"name_player\":\"Giannis Antetokounmpo\"}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "LeBron James",
+   "col3": 4,
+   "col4": "1984/12/30",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Kevin Durant",
+   "col3": 1,
+   "col4": null,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Giannis Antetokounmpo",
+   "col3": 2,
+   "col4": null,
+   "name_player": "Giannis Antetokounmpo"
+  }
+ ]
+}

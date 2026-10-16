@@ -1,0 +1,21 @@
+{
+ "uid": "agg_queries#1",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 0
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.olympic_gold_medals IS NOT NULL\nRETURN p.position AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2\nORDER BY col1",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

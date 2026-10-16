@@ -1,0 +1,95 @@
+{
+ "uid": "select_queries_player#3",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":3,\"name_player\":\"LeBron James\"},{\"col1\":4,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"name_player\":\"Kobe Bryant\"},{\"col1\":2,\"name_player\":\"Michael Jordan\"},{\"col1\":1,\"name_player\":\"Stephen Curry\"},{\"col1\":2,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":2,\"name_player\":\"Chris Paul\"},{\"col1\":1,\"name_player\":\"Kevin Love\"},{\"col1\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":2,\"name_player\":\"Devin Booker\"},{\"col1\":2,\"name_player\":\"Jrue Holiday\"},{\"col1\":2,\"name_player\":\"Bam Adebayo\"},{\"col1\":2,\"name_player\":\"Draymond Green\"},{\"col1\":1,\"name_player\":\"Paul George\"},{\"col1\":1,\"name_player\":\"Kyle Lowry\"},{\"col1\":1,\"name_player\":\"Zach LaVine\"},{\"col1\":1,\"name_player\":\"Larry Bird\"},{\"col1\":1,\"name_player\":\"Anthony Edwards\"},{\"col1\":1,\"name_player\":\"Jim Walsh\"},{\"col1\":1,\"name_player\":\"Joel Embiid\"},{\"col1\":1,\"name_player\":\"Harrison Barnes\"}]}",
+ "rows": [
+  {
+   "col1": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 4,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 2,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 2,
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": 2,
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": 2,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": 1,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 1,
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": 1,
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 1,
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": 1,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 1,
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": 1,
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 1,
+   "name_player": "Harrison Barnes"
+  }
+ ]
+}

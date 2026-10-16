@@ -1,0 +1,18 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":0},{\"col1\":\"Canadian\",\"col2\":0},{\"col1\":\"Indian-American\",\"col2\":0}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 0
+  },
+  {
+   "col1": "Canadian",
+   "col2": 0
+  },
+  {
+   "col1": "Indian-American",
+   "col2": 0
+  }
+ ]
+}

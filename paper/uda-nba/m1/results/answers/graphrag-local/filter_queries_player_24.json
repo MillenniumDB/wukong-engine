@@ -1,0 +1,14 @@
+{
+ "uid": "filter_queries_player#24",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":10,\"col3\":\"Philadelphia 76ers\",\"name_player\":\"Paul George\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 10,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Paul George"
+  }
+ ],
+ "secs": 4.6
+}

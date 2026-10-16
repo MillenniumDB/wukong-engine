@@ -1,0 +1,15 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Denver Nuggets\",\"col2\":null},{\"col1\":\"New Orleans Hornets\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": null
+  }
+ ]
+}

@@ -1,0 +1,174 @@
+{
+ "uid": "filter_queries_city#5",
+ "reply": "{\"rows\":[{\"col1\":473200,\"col2\":\"Georgia\",\"col3\":498715,\"name_city\":\"Atlanta\"},{\"col1\":604000,\"col2\":\"Massachusetts\",\"col3\":650706,\"name_city\":\"Boston\"},{\"col1\":199000,\"col2\":\"North Carolina\",\"col3\":874579,\"name_city\":\"Charlotte\"},{\"col1\":763000,\"col2\":\"Illinois\",\"col3\":2746388,\"name_city\":\"Chicago\"},{\"col1\":142700,\"col2\":\"Ohio\",\"col3\":372624,\"name_city\":\"Cleveland\"},{\"col1\":744700,\"col2\":\"Texas\",\"col3\":1304379,\"name_city\":\"Dallas\"},{\"col1\":276500,\"col2\":\"Colorado\",\"col3\":715522,\"name_city\":\"Denver\"},{\"col1\":276600,\"col2\":\"Michigan\",\"col3\":633218,\"name_city\":\"Detroit\"},{\"col1\":1060000,\"col2\":\"California\",\"col3\":808437,\"name_city\":\"San Francisco\"},{\"col1\":537000,\"col2\":\"Texas\",\"col3\":2304580,\"name_city\":\"Houston\"},{\"col1\":156700,\"col2\":\"Indiana\",\"col3\":887642,\"name_city\":\"Indianapolis\"},{\"col1\":1001600,\"col2\":\"California\",\"col3\":3898747,\"name_city\":\"Los Angeles\"},{\"col1\":85400,\"col2\":\"Tennessee\",\"col3\":633104,\"name_city\":\"Memphis\"},{\"col1\":344.9,\"col2\":\"Florida\",\"col3\":449514,\"name_city\":\"Miami\"},{\"col1\":260000,\"col2\":\"Wisconsin\",\"col3\":577222,\"name_city\":\"Milwaukee\"},{\"col1\":260000,\"col2\":\"Minnesota\",\"col3\":425336,\"name_city\":\"Minneapolis\"},{\"col1\":85200,\"col2\":\"Louisiana\",\"col3\":383997,\"name_city\":\"New Orleans\"},{\"col1\":1992600,\"col2\":\"New York\",\"col3\":8804190,\"name_city\":\"New York City\"},{\"col1\":96300,\"col2\":\"Oklahoma\",\"col3\":681054,\"name_city\":\"Oklahoma City\"},{\"col1\":169700,\"col2\":\"Florida\",\"col3\":307573,\"name_city\":\"Orlando\"},{\"col1\":479000,\"col2\":\"Pennsylvania\",\"col3\":1603797,\"name_city\":\"Philadelphia\"},{\"col1\":347300,\"col2\":\"Arizona\",\"col3\":1608139,\"name_city\":\"Phoenix\"},{\"col1\":206700,\"col2\":\"Oregon\",\"col3\":652503,\"name_city\":\"Portland\"},{\"col1\":157100,\"col2\":\"California\",\"col3\":524943,\"name_city\":\"Sacramento\"},{\"col1\":146500,\"col2\":\"Texas\",\"col3\":1434625,\"name_city\":\"San Antonio\"},{\"col1\":689000,\"col2\":\"Ontario\",\"col3\":2794356,\"name_city\":\"Toronto\"},{\"col1\":139000,\"col2\":\"Utah\",\"col3\":199723,\"name_city\":\"Salt Lake City\"},{\"col1\":714000,\"col2\":\"District of Columbia\",\"col3\":689545,\"name_city\":\"Washington, D.C.\"}]}",
+ "rows": [
+  {
+   "col1": 473200,
+   "col2": "Georgia",
+   "col3": 498715,
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": 604000,
+   "col2": "Massachusetts",
+   "col3": 650706,
+   "name_city": "Boston"
+  },
+  {
+   "col1": 199000,
+   "col2": "North Carolina",
+   "col3": 874579,
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": 763000,
+   "col2": "Illinois",
+   "col3": 2746388,
+   "name_city": "Chicago"
+  },
+  {
+   "col1": 142700,
+   "col2": "Ohio",
+   "col3": 372624,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": 744700,
+   "col2": "Texas",
+   "col3": 1304379,
+   "name_city": "Dallas"
+  },
+  {
+   "col1": 276500,
+   "col2": "Colorado",
+   "col3": 715522,
+   "name_city": "Denver"
+  },
+  {
+   "col1": 276600,
+   "col2": "Michigan",
+   "col3": 633218,
+   "name_city": "Detroit"
+  },
+  {
+   "col1": 1060000,
+   "col2": "California",
+   "col3": 808437,
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": 537000,
+   "col2": "Texas",
+   "col3": 2304580,
+   "name_city": "Houston"
+  },
+  {
+   "col1": 156700,
+   "col2": "Indiana",
+   "col3": 887642,
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": 1001600,
+   "col2": "California",
+   "col3": 3898747,
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": 85400,
+   "col2": "Tennessee",
+   "col3": 633104,
+   "name_city": "Memphis"
+  },
+  {
+   "col1": 344.9,
+   "col2": "Florida",
+   "col3": 449514,
+   "name_city": "Miami"
+  },
+  {
+   "col1": 260000,
+   "col2": "Wisconsin",
+   "col3": 577222,
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": 260000,
+   "col2": "Minnesota",
+   "col3": 425336,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": 85200,
+   "col2": "Louisiana",
+   "col3": 383997,
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": 1992600,
+   "col2": "New York",
+   "col3": 8804190,
+   "name_city": "New York City"
+  },
+  {
+   "col1": 96300,
+   "col2": "Oklahoma",
+   "col3": 681054,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": 169700,
+   "col2": "Florida",
+   "col3": 307573,
+   "name_city": "Orlando"
+  },
+  {
+   "col1": 479000,
+   "col2": "Pennsylvania",
+   "col3": 1603797,
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": 347300,
+   "col2": "Arizona",
+   "col3": 1608139,
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": 206700,
+   "col2": "Oregon",
+   "col3": 652503,
+   "name_city": "Portland"
+  },
+  {
+   "col1": 157100,
+   "col2": "California",
+   "col3": 524943,
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": 146500,
+   "col2": "Texas",
+   "col3": 1434625,
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": 689000,
+   "col2": "Ontario",
+   "col3": 2794356,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": 139000,
+   "col2": "Utah",
+   "col3": 199723,
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": 714000,
+   "col2": "District of Columbia",
+   "col3": 689545,
+   "name_city": "Washington, D.C."
+  }
+ ]
+}

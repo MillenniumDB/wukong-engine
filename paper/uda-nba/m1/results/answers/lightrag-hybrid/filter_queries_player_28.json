@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#28",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":2003,\"col2\":41,\"col3\":\"American\",\"name_player\":\"LeBron James\"},{\"col1\":2007,\"col2\":38,\"col3\":\"American\",\"name_player\":\"Kevin Durant\"},{\"col1\":1996,\"col2\":41,\"col3\":\"American\",\"name_player\":\"Kobe Bryant\"},{\"col1\":2003,\"col2\":42,\"col3\":\"American\",\"name_player\":\"Carmelo Anthony\"},{\"col1\":null,\"col2\":null,\"col3\":null,\"name_player\":\"Jahlil Okafor\"}]}",
+ "rows": [
+  {
+   "col1": 2003,
+   "col2": 41,
+   "col3": "American",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2007,
+   "col2": 38,
+   "col3": "American",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1996,
+   "col2": 41,
+   "col3": "American",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2003,
+   "col2": 42,
+   "col3": "American",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jahlil Okafor"
+  }
+ ]
+}

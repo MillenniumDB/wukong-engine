@@ -60,6 +60,7 @@ class EntityExtractionStore(Protocol):
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Update the status of a job and its associated extractions upon completion/termination.
 
@@ -69,6 +70,7 @@ class EntityExtractionStore(Protocol):
             metrics: Token usage of the job, or None if unavailable.
             error: Error message to record for a failed job, or None.
             retry_policy: How the extractions of a failed job are retried. If None, they aren't retried.
+            raw_response: LLM response exactly as received, stored on the job. If None, none is stored.
 
         Raises:
             ValueError: If ``status`` is neither completed nor failed.

@@ -1,0 +1,13 @@
+{
+ "uid": "filter_queries_team#12",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Toronto\",\"col2\":1995,\"col3\":\"Toronto Raptors\",\"name_team\":\"Toronto Raptors\"}]}",
+ "rows": [
+  {
+   "col1": "Toronto",
+   "col2": 1995,
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  }
+ ]
+}

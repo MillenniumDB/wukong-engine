@@ -1,0 +1,55 @@
+{
+ "uid": "select_queries_player#1",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":15,\"name_player\":\"Anthony Avent\"},{\"col1\":2,\"name_player\":\"Lonzo Ball\"},{\"col1\":7,\"name_player\":\"Harrison Barnes\"},{\"col1\":9,\"name_player\":\"Andre Drummond\"},{\"col1\":2,\"name_player\":\"Kevin Durant\"},{\"col1\":30,\"name_player\":\"Kyle Anderson\"},{\"col1\":2,\"name_player\":\"D'Angelo Russell\"},{\"col1\":11,\"name_player\":\"Michael Carter-Williams\"},{\"col1\":1,\"name_player\":\"Victor Wembanyama\"},{\"col1\":55,\"name_player\":\"Bronny James\"},{\"col1\":51,\"name_player\":\"Thanasis Antetokounmpo\"},{\"col1\":29,\"name_player\":\"D. J. White\"}]}",
+ "rows": [
+  {
+   "col1": 15,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": 2,
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": 7,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": 9,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": 2,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 30,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": 2,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": 11,
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": 1,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": 55,
+   "name_player": "Bronny James"
+  },
+  {
+   "col1": 51,
+   "name_player": "Thanasis Antetokounmpo"
+  },
+  {
+   "col1": 29,
+   "name_player": "D. J. White"
+  }
+ ]
+}

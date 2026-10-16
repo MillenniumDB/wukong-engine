@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": [
+  {
+   "col1": "1.2 million (estimated, 2005)",
+   "col2": "Texas",
+   "col3": "San Antonio",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1,662,607 as of 2024",
+   "col2": "Arizona",
+   "col3": "Phoenix",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "1,304,379",
+   "col2": "Texas",
+   "col3": "Dallas",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "3,820,914 (2023)",
+   "col2": "California",
+   "col3": "Los Angeles",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "2,314,157 in 2023",
+   "col2": "Texas",
+   "col3": "Houston",
+   "name_city": "Houston"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(c.area AS DOUBLE) >= 976.15 AND CAST(c.area AS DOUBLE) >= 976.15) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 385.8 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 >= 976.15 AND CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 >= 976.15) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(REGEXP_EXTRACT(c.area, '[0-9.]+', 0) AS DOUBLE) * 2.58999 >= 976.15 AND CAST(REGEXP_EXTRACT(c.area, '[0-9.]+', 0) AS DOUBLE) * 2.58999 >= 976.15) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

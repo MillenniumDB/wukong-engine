@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":6},{\"col1\":\"Croatian\",\"col2\":1},{\"col1\":\"Cameroonian-American\",\"col2\":1},{\"col1\":\"American-Spanish\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 6
+  },
+  {
+   "col1": "Croatian",
+   "col2": 1
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  }
+ ]
+}

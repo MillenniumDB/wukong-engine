@@ -71,6 +71,7 @@ class RelationshipExtractionStore(Protocol):
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Update the status of a job and its associated extractions upon completion/termination.
 
@@ -83,6 +84,7 @@ class RelationshipExtractionStore(Protocol):
             metrics: Token usage of the job, if available.
             error: Error message stored on the job and, on failure, on its extractions.
             retry_policy: Retry policy applied to the extractions on failure. If None, no retry is done.
+            raw_response: LLM response exactly as received, stored on the job. If None, none is stored.
 
         Raises:
             ValueError: If ``status`` is neither COMPLETED nor FAILED.

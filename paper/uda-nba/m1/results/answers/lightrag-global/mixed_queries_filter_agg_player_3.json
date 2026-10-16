@@ -1,0 +1,19 @@
+{
+ "uid": "mixed_queries_filter_agg_player#3",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":5},{\"col1\":\"Greek\",\"col2\":1},{\"col1\":\"Nigerian\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 5
+  },
+  {
+   "col1": "Greek",
+   "col2": 1
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 1
+  }
+ ]
+}

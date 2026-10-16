@@ -1,0 +1,118 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "reply": "{\"rows\":[{\"col1\":\"Portland\",\"col2\":2024,\"col3\":\"Jody Allen\",\"col4\":\"Donovan Clingan\",\"name_player\":\"Donovan Clingan\",\"name_team\":\"Portland Trail Blazers\"},{\"col1\":\"San Antonio\",\"col2\":2024,\"col3\":\"Peter J. Holt\",\"col4\":\"Stephon Castle\",\"name_player\":\"Stephon Castle\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Philadelphia\",\"col2\":2012,\"col3\":\"Josh Harris\",\"col4\":\"Andre Drummond\",\"name_player\":\"Andre Drummond\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Charlotte\",\"col2\":2021,\"col3\":\"Rick Schnall\",\"col4\":\"James Bouknight\",\"name_player\":\"James Bouknight\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Chicago\",\"col2\":2023,\"col3\":\"Jerry Reinsdorf\",\"col4\":\"Adama Sanogo\",\"name_player\":\"Adama Sanogo\",\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Golden State\",\"col2\":2009,\"col3\":\"Joe Lacob\",\"col4\":\"Stephen Curry\",\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\"},{\"col1\":\"Golden State\",\"col2\":2011,\"col3\":\"Joe Lacob\",\"col4\":\"Klay Alexander Thompson\",\"name_player\":\"Klay Alexander Thompson\",\"name_team\":\"Golden State Warriors\"},{\"col1\":\"Phoenix\",\"col2\":2007,\"col3\":\"Mat Ishbia\",\"col4\":\"Kevin Wayne Durant\",\"name_player\":\"Kevin Wayne Durant\",\"name_team\":\"Phoenix Suns\"},{\"col1\":\"Dallas\",\"col2\":2011,\"col3\":\"Patrick Dumont\",\"col4\":\"Kyrie Andrew Irving\",\"name_player\":\"Kyrie Andrew Irving\",\"name_team\":\"Dallas Mavericks\"},{\"col1\":\"Los Angeles\",\"col2\":2009,\"col3\":\"Steve Ballmer\",\"col4\":\"James Edward Harden Jr.\",\"name_player\":\"James Edward Harden Jr.\",\"name_team\":\"Los Angeles Clippers\"},{\"col1\":\"Los Angeles\",\"col2\":2012,\"col3\":\"Jeanie Buss\",\"col4\":\"Anthony Marshon Davis Jr.\",\"name_player\":\"Anthony Marshon Davis Jr.\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Orlando\",\"col2\":2021,\"col3\":\"Dan DeVos\",\"col4\":\"Franz Jacob Wagner\",\"name_player\":\"Franz Jacob Wagner\",\"name_team\":\"Orlando Magic\"},{\"col1\":\"Orlando\",\"col2\":2018,\"col3\":\"Dan DeVos\",\"col4\":\"Moritz Wagner\",\"name_player\":\"Moritz Wagner\",\"name_team\":\"Orlando Magic\"},{\"col1\":\"Toronto\",\"col2\":2013,\"col3\":\"Larry Tanenbaum\",\"col4\":\"Dennis Mike Schr\u00f6der\",\"name_player\":\"Dennis Mike Schr\u00f6der\",\"name_team\":\"Toronto Raptors\"}]}",
+ "rows": [
+  {
+   "col1": "Portland",
+   "col2": 2024,
+   "col3": "Jody Allen",
+   "col4": "Donovan Clingan",
+   "name_player": "Donovan Clingan",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": 2024,
+   "col3": "Peter J. Holt",
+   "col4": "Stephon Castle",
+   "name_player": "Stephon Castle",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": 2012,
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": 2021,
+   "col3": "Rick Schnall",
+   "col4": "James Bouknight",
+   "name_player": "James Bouknight",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Chicago",
+   "col2": 2023,
+   "col3": "Jerry Reinsdorf",
+   "col4": "Adama Sanogo",
+   "name_player": "Adama Sanogo",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Golden State",
+   "col2": 2009,
+   "col3": "Joe Lacob",
+   "col4": "Stephen Curry",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": 2011,
+   "col3": "Joe Lacob",
+   "col4": "Klay Alexander Thompson",
+   "name_player": "Klay Alexander Thompson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": 2007,
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Dallas",
+   "col2": 2011,
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Andrew Irving",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": 2009,
+   "col3": "Steve Ballmer",
+   "col4": "James Edward Harden Jr.",
+   "name_player": "James Edward Harden Jr.",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": 2012,
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Orlando",
+   "col2": 2021,
+   "col3": "Dan DeVos",
+   "col4": "Franz Jacob Wagner",
+   "name_player": "Franz Jacob Wagner",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Orlando",
+   "col2": 2018,
+   "col3": "Dan DeVos",
+   "col4": "Moritz Wagner",
+   "name_player": "Moritz Wagner",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Toronto",
+   "col2": 2013,
+   "col3": "Larry Tanenbaum",
+   "col4": "Dennis Mike Schr\u00f6der",
+   "name_player": "Dennis Mike Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  }
+ ]
+}

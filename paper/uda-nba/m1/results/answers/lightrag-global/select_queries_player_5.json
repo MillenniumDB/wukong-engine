@@ -1,0 +1,57 @@
+{
+ "uid": "select_queries_player#5",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":null,\"name_player\":\"Larry Bird\"},{\"col1\":2,\"col2\":null,\"name_player\":\"Kobe Bryant\"},{\"col1\":2,\"col2\":\"1985/5/6\",\"name_player\":\"Chris Paul\"},{\"col1\":4,\"col2\":\"1988/9/29\",\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"col2\":null,\"name_player\":\"Devin Booker\"},{\"col1\":1,\"col2\":null,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":3,\"col2\":\"1984/12/30\",\"name_player\":\"LeBron James\"},{\"col1\":2,\"col2\":\"1963/2/17\",\"name_player\":\"Michael Jordan\"},{\"col1\":1,\"col2\":null,\"name_player\":\"Stephen Curry\"},{\"col1\":1,\"col2\":\"1992/3/23\",\"name_player\":\"Kyrie Irving\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": null,
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2,
+   "col2": "1985/5/6",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 4,
+   "col2": "1988/9/29",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 3,
+   "col2": "1984/12/30",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2,
+   "col2": "1963/2/17",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 1,
+   "col2": "1992/3/23",
+   "name_player": "Kyrie Irving"
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+  "ontology": "1_movie",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:36:39+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 840,
+  "failed": 0,
+  "with_triples": 835,
+  "triples": 4577,
+  "distinct_predicates": 1288,
+  "distinct_predicates_in_ontology": 1,
+  "triples_with_ontology_predicate": 4,
+  "top_predicates": [
+    [
+      "is_a",
+      381
+    ],
+    [
+      "was_released_in",
+      236
+    ],
+    [
+      "stars",
+      185
+    ],
+    [
+      "was_directed_by",
+      150
+    ],
+    [
+      "was_written_by",
+      119
+    ],
+    [
+      "won",
+      119
+    ],
+    [
+      "was_produced_by",
+      83
+    ],
+    [
+      "was_nominated_for",
+      74
+    ],
+    [
+      "directed_by",
+      57
+    ],
+    [
+      "is_located_in",
+      49
+    ],
+    [
+      "is_an",
+      41
+    ],
+    [
+      "features",
+      39
+    ],
+    [
+      "also_known_as",
+      38
+    ],
+    [
+      "is_based_on",
+      36
+    ],
+    [
+      "is",
+      36
+    ]
+  ],
+  "usage": {
+    "calls": 1681,
+    "input_tokens": 618947,
+    "cached_tokens": 0,
+    "output_tokens": 236090,
+    "reasoning_tokens": 47372
+  },
+  "seconds": 288
+}

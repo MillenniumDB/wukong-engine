@@ -1,0 +1,85 @@
+{
+  "ontology": "1_movie",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:03:11+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Movie Ontology\". Use only these relations, written exactly as given: director (film -> human); screenwriter (film -> human); genre (film -> genre); based on (film -> written work); cast member (film -> human); award received (film -> award); production company (film -> film production company); country of origin (film -> country); publication date (film -> value); characters (film -> film character); narrative location (film -> city); filming location (film -> city); main subject (film -> value); nominated for (film -> award); cost (film -> value).",
+  "sentences": 840,
+  "failed": 0,
+  "with_triples": 697,
+  "triples": 2261,
+  "distinct_predicates": 15,
+  "distinct_predicates_in_ontology": 15,
+  "triples_with_ontology_predicate": 2261,
+  "top_predicates": [
+    [
+      "cast_member",
+      322
+    ],
+    [
+      "publication_date",
+      285
+    ],
+    [
+      "director",
+      262
+    ],
+    [
+      "genre",
+      232
+    ],
+    [
+      "production_company",
+      172
+    ],
+    [
+      "screenwriter",
+      170
+    ],
+    [
+      "award_received",
+      146
+    ],
+    [
+      "characters",
+      138
+    ],
+    [
+      "country_of_origin",
+      128
+    ],
+    [
+      "based_on",
+      101
+    ],
+    [
+      "main_subject",
+      83
+    ],
+    [
+      "filming_location",
+      79
+    ],
+    [
+      "nominated_for",
+      73
+    ],
+    [
+      "narrative_location",
+      69
+    ],
+    [
+      "cost",
+      1
+    ]
+  ],
+  "usage": {
+    "calls": 1680,
+    "input_tokens": 725899,
+    "cached_tokens": 0,
+    "output_tokens": 187643,
+    "reasoning_tokens": 69321
+  },
+  "seconds": 289
+}

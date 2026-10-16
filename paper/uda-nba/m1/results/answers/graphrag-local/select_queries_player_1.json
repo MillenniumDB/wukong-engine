@@ -1,0 +1,12 @@
+{
+ "uid": "select_queries_player#1",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":17,\"name_player\":\"Jrue Holiday\"}]}",
+ "rows": [
+  {
+   "col1": 17,
+   "name_player": "Jrue Holiday"
+  }
+ ],
+ "secs": 5.4
+}

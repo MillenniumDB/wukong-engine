@@ -11,6 +11,7 @@ MIN_RECOMMENDED_TARGET_TOKENS = 100
 MAX_RECOMMENDED_TARGET_TOKENS = 2000
 MAX_ALLOWED_TARGET_TOKENS = 5000
 MAX_ALLOWED_MAX_TOKENS = 10000
+DEFAULT_DOCUMENT_PREFIX_TOKENS = 8000
 
 
 @dataclass(frozen=True, slots=True)
@@ -23,15 +24,21 @@ class ChunkingConfig:
             (15% of it but at least 20, then capped at a third of the target and at 200).
         max_tokens: Hard upper bound on chunk size, in tokens. If None, it is derived as 130% of
             ``target_tokens``, capped at ``MAX_ALLOWED_MAX_TOKENS``.
+        document_prefix_tokens: Tokens of a document read by document-level extraction, which sees the start of the
+            document rather than a chunk of it.
     """
 
     target_tokens: int = 800
     overlap_tokens: int | None = None
     max_tokens: int | None = None
+    document_prefix_tokens: int = DEFAULT_DOCUMENT_PREFIX_TOKENS
 
     def __str__(self) -> str:
         """User-friendly string representation of the chunking configuration."""
-        return f'Target Tokens: {self.target_tokens}\nOverlap Tokens: {self.overlap_tokens}'
+        return (
+            f'Target Tokens: {self.target_tokens}\nOverlap Tokens: {self.overlap_tokens}'
+            f'\nDocument Prefix Tokens: {self.document_prefix_tokens}'
+        )
 
     def __post_init__(self) -> None:
         """Validate chunking configuration invariants and fill in derived token budgets.
@@ -64,10 +71,13 @@ class ChunkingConfig:
         Logs a warning when ``target_tokens`` is valid but outside the recommended range.
 
         Raises:
-            ValueError: If ``target_tokens`` is not positive or exceeds ``MAX_ALLOWED_TARGET_TOKENS``.
+            ValueError: If ``target_tokens`` is not positive or exceeds ``MAX_ALLOWED_TARGET_TOKENS``, or
+                ``document_prefix_tokens`` is not positive.
         """
         if self.target_tokens <= 0 or self.target_tokens > MAX_ALLOWED_TARGET_TOKENS:
             raise ValueError(f'target_tokens must be > 0 and <= {MAX_ALLOWED_TARGET_TOKENS}')
+        if self.document_prefix_tokens <= 0:
+            raise ValueError('document_prefix_tokens must be > 0')
         if self.target_tokens < MIN_RECOMMENDED_TARGET_TOKENS or self.target_tokens > MAX_RECOMMENDED_TARGET_TOKENS:
             logger.warning(
                 f'{self.target_tokens} target tokens is outside the recommended range of '

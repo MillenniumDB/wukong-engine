@@ -1,0 +1,10 @@
+occupation,"occupation of a person. See also ""field of work"" (Property:P101), ""position held"" (Property:P39). Not for groups of people. There, use ""field of work"" (Property:P101), ""industry"" (Property:P452), ""members have occupation"" (Property:P3989) (subject: human; object: athlete)"
+sport,sport that the subject participates or participated in or is associated with (subject: sports competition; object: sport)
+member of sports team,sports teams or clubs that the subject represents or represented (subject: human; object: sports club)
+country for sport,country a person or a team represents when playing a sport (subject: human; object: country)
+sports season of league or competition,"property that shows the competition of which the item is a season. Use P5138 for ""season of club or team"" (subject: sports season; object: a value)"
+coach of sports team,sports club or team for which this person is or was on-field manager or coach (subject: human; object: sports club)
+league,"league or competition in which team or player has played, or in which an event occurs (subject: human; object: professional sports league)"
+home venue,city or town where an organization's headquarters is or has been situated. Use P276 qualifier for specific building (subject: sports club; object: a value)
+country of origin,"country of origin of this item (creative work, food, phrase, product, etc.) (subject: sport; object: country)"
+competition class,"official classification by a regulating body under which the subject (events, teams, participants, or equipment) qualifies for inclusion (subject: sports organization; object: a value)"

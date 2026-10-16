@@ -1,0 +1,66 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "reply": "{\"rows\":[{\"col1\":\"Washington Bullets\",\"col2\":0},{\"col1\":\"Charlotte Hornets\",\"col2\":0},{\"col1\":\"Toronto Raptors\",\"col2\":0},{\"col1\":\"Cleveland Cavaliers\",\"col2\":0},{\"col1\":\"Atlanta Hawks\",\"col2\":0},{\"col1\":\"Seattle SuperSonics\",\"col2\":0},{\"col1\":\"Oklahoma City Thunder\",\"col2\":0},{\"col1\":\"Golden State Warriors\",\"col2\":0},{\"col1\":\"Orlando Magic\",\"col2\":0},{\"col1\":\"Sacramento Kings\",\"col2\":0},{\"col1\":\"Minnesota Timberwolves\",\"col2\":0},{\"col1\":\"Utah Jazz\",\"col2\":0},{\"col1\":\"Memphis Grizzlies\",\"col2\":0},{\"col1\":\"Charlotte Bobcats\",\"col2\":0},{\"col1\":\"Denver Nuggets\",\"col2\":0}]}",
+ "rows": [
+  {
+   "col1": "Washington Bullets",
+   "col2": 0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 0
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 0
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 0
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 0
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": 0
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 0
+  }
+ ]
+}

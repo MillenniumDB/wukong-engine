@@ -1,0 +1,14 @@
+data/
+envs/
+# runs are too large for git; only the derived results behind the report are versioned
+runs/*
+!runs/e1/
+!runs/x6/
+!runs/quality/
+!runs/labels/
+runs/labels/*
+!runs/labels/LightRAG.jsonl
+!runs/labels/GraphRAG.jsonl
+!runs/labels/KGGen.jsonl
+runs/e1/Wukong_entities.csv
+runs/e1/Wukong_facts.csv

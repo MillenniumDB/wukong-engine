@@ -1,0 +1,41 @@
+{
+  "ontology": "6_computer",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:15:54+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Computer Ontology\". Use only these relations, written exactly as given: developer (software -> value); creator (application -> human); platform (software -> computer); operating system (computer model -> operating system).",
+  "sentences": 230,
+  "failed": 0,
+  "with_triples": 168,
+  "triples": 459,
+  "distinct_predicates": 4,
+  "distinct_predicates_in_ontology": 4,
+  "triples_with_ontology_predicate": 459,
+  "top_predicates": [
+    [
+      "platform",
+      267
+    ],
+    [
+      "creator",
+      87
+    ],
+    [
+      "developer",
+      77
+    ],
+    [
+      "operating_system",
+      28
+    ]
+  ],
+  "usage": {
+    "calls": 460,
+    "input_tokens": 179187,
+    "cached_tokens": 0,
+    "output_tokens": 46207,
+    "reasoning_tokens": 19964
+  },
+  "seconds": 77
+}

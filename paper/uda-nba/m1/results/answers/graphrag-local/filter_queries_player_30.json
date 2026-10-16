@@ -1,0 +1,14 @@
+{
+ "uid": "filter_queries_player#30",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":3,\"name_player\":\"LeBron James\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 3,
+   "name_player": "LeBron James"
+  }
+ ],
+ "secs": 4.8
+}

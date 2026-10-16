@@ -7,6 +7,7 @@ from wukong_engine.app.data_extraction.elements import (
     BatchCursor,
     ExtractionBatch,
     ExtractionJob,
+    Rejection,
     RelationshipExtractionRequestContext,
     RelationshipExtractionRequestObjects,
 )
@@ -64,14 +65,18 @@ class ExtractionRepository(Protocol):
         self,
         job: ExtractionJob,
         results: tuple[object, ...],
+        rejections: tuple[Rejection, ...] = (),
         usage_metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Persist the results of a completed extraction job and mark it as completed.
 
         Args:
             job: Job whose results are being persisted.
             results: Extracted objects to upsert and link to the job's source context.
+            rejections: Objects discarded and values unset while materializing the results, recorded on the job.
             usage_metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received, stored on the job, if available.
         """
         ...
 
@@ -81,6 +86,7 @@ class ExtractionRepository(Protocol):
         retry_policy: JobRetryPolicy | None = None,
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Terminate an extraction job and mark it as failed.
 
@@ -90,6 +96,7 @@ class ExtractionRepository(Protocol):
                 with no retry.
             error: Error message to record on the job, if any.
             metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received (e.g. one that couldn't be decoded), if any.
         """
         ...
 
@@ -288,19 +295,29 @@ class EntityExtractionRepository(ExtractionRepository):
         self,
         job: ExtractionJob,
         results: tuple[Entity, ...],
+        rejections: tuple[Rejection, ...] = (),
         usage_metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Persist the results of a completed extraction job and mark it as completed.
 
         Args:
             job: Job whose results are being persisted.
             results: Extracted entities to upsert and link to the job's source context.
+            rejections: Objects discarded and values unset while materializing the results, recorded on the job.
             usage_metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received, stored on the job, if available.
         """
         with self._uow as tx:
             tx.entities.bulk_upsert_entities(results)
             tx.entities.link_entities_to_source_context(results, job.context_ref)
-            tx.extraction.entities.update_job_status(job, JobStatus.COMPLETED, metrics=usage_metrics)
+            tx.extraction.entities.update_job_status(
+                job,
+                JobStatus.COMPLETED,
+                metrics=usage_metrics,
+                raw_response=raw_response,
+            )
+            tx.extraction.record_rejections(job, rejections)
 
     def fail_job(
         self,
@@ -308,6 +325,7 @@ class EntityExtractionRepository(ExtractionRepository):
         retry_policy: JobRetryPolicy | None = None,
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Terminate an extraction job and mark it as failed.
 
@@ -317,6 +335,7 @@ class EntityExtractionRepository(ExtractionRepository):
                 with no retry.
             error: Error message to record on the job, if any.
             metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received (e.g. one that couldn't be decoded), if any.
         """
         with self._uow as tx:
             tx.extraction.entities.update_job_status(
@@ -325,6 +344,7 @@ class EntityExtractionRepository(ExtractionRepository):
                 metrics=metrics,
                 error=error,
                 retry_policy=retry_policy,
+                raw_response=raw_response,
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Document | Chunk:
@@ -638,19 +658,29 @@ class RelationshipExtractionRepository(ExtractionRepository):
         self,
         job: ExtractionJob,
         results: tuple[Relationship, ...],
+        rejections: tuple[Rejection, ...] = (),
         usage_metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Persist the results of a completed extraction job and mark it as completed.
 
         Args:
             job: Job whose results are being persisted.
             results: Extracted relationships to upsert and link to the job's source context.
+            rejections: Objects discarded and values unset while materializing the results, recorded on the job.
             usage_metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received, stored on the job, if available.
         """
         with self._uow as tx:
             tx.relationships.bulk_upsert_relationships(results)
             tx.relationships.link_relationships_to_source_context(results, job.context_ref)
-            tx.extraction.relationships.update_job_status(job, JobStatus.COMPLETED, metrics=usage_metrics)
+            tx.extraction.relationships.update_job_status(
+                job,
+                JobStatus.COMPLETED,
+                metrics=usage_metrics,
+                raw_response=raw_response,
+            )
+            tx.extraction.record_rejections(job, rejections)
 
     def fail_job(
         self,
@@ -658,6 +688,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
         retry_policy: JobRetryPolicy | None = None,
         error: str | None = None,
         metrics: TokenUsageMetrics | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Terminate an extraction job and mark it as failed.
 
@@ -667,6 +698,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 with no retry.
             error: Error message to record on the job, if any.
             metrics: Token usage recorded for the job, if available.
+            raw_response: LLM response exactly as received (e.g. one that couldn't be decoded), if any.
         """
         with self._uow as tx:
             tx.extraction.relationships.update_job_status(
@@ -675,6 +707,7 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 metrics=metrics,
                 error=error,
                 retry_policy=retry_policy,
+                raw_response=raw_response,
             )
 
     def get_job_source_context(self, job: ExtractionJob) -> Chunk:

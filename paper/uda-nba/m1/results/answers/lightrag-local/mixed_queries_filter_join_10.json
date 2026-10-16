@@ -1,0 +1,17 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":null,\"col3\":17,\"col4\":\"Los Angeles\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":null,\"name_city\":\"Los Angeles\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": null,
+   "name_city": "Los Angeles"
+  }
+ ]
+}

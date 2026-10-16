@@ -173,6 +173,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         metrics: TokenUsageMetrics | None = None,
         error: str | None = None,
         retry_policy: JobRetryPolicy | None = None,
+        raw_response: str | None = None,
     ) -> None:
         """Update the status of a job and its associated extractions upon completion/termination.
 
@@ -186,6 +187,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             metrics: Token usage of the job. If None, token columns are cleared.
             error: Error message stored on the job and, on failure, on its extractions.
             retry_policy: Retry policy applied to the extractions on failure. If None, no retry is done.
+            raw_response: LLM response exactly as received, stored on the job. If None, none is stored.
 
         Raises:
             ValueError: If ``status`` is neither COMPLETED nor FAILED.
@@ -206,7 +208,8 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 cache_write_tokens = ?,
                 output_tokens = ?,
                 reasoning_tokens = ?,
-                error = ?
+                error = ?,
+                raw_response = ?
             WHERE
                 job_id = ? AND
                 job_type = ? AND
@@ -221,6 +224,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 metrics.output_tokens if metrics else None,
                 metrics.reasoning_tokens if metrics else None,
                 error,
+                raw_response,
                 job.id.instance.bytes,
                 EXTRACTION_JOB_TYPE,
                 JobStatus.IN_PROGRESS.value,

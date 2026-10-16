@@ -1,0 +1,24 @@
+{
+  "ontology": "10_culture",
+  "system": "prompting baseline (benchmark prompts, example removed)",
+  "recorded_at": "2026-10-09T16:10:14+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": true
+  },
+  "prompts_file_sha256": "c85d58711000f046780f68cc16e8fb8064f665c9c72e4ffb446d0a2993725c5c",
+  "prompts": 159,
+  "failed": 0,
+  "with_triples": 108,
+  "triples": 146,
+  "usage": {
+    "input_tokens": 31232,
+    "cached_tokens": 0,
+    "output_tokens": 23233,
+    "reasoning_tokens": 20301
+  },
+  "seconds": 36
+}

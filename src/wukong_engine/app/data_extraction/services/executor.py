@@ -113,6 +113,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         )
 
         # Execute LLM request and handle response
+        response = None
         try:
             response = await self._llm_client.generate(llm_request)
             data = json.loads(response.content)
@@ -120,6 +121,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 status=JobStatus.COMPLETED,
                 data=data,
                 metrics=TokenUsageMetrics.from_usage(response.metrics),
+                raw_response=response.content,
             )
         except LLMTransientError as exc:
             return ExtractionResult(
@@ -142,6 +144,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 error=f'Failed LLM response decoding ({exc})',
                 error_severity=ErrorSeverity.RECOVERABLE,
                 retry_policy=JobRetryPolicy.IMMEDIATE,
+                raw_response=response.content if response else None,
             )
         except (LLMConfigurationError, LLMInternalError) as exc:
             return ExtractionResult(

@@ -1,0 +1,87 @@
+{
+ "uid": "join_queries#10",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Los Angeles\",\"col3\":\"Bob Short\",\"col4\":\"Los Angeles Lakers\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Bob Short\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Oklahoma City\",\"col3\":\"Clay Bennett\",\"col4\":\"Oklahoma City Thunder\",\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clay Bennett\"},{\"col1\":\"Golden State Warriors\",\"col2\":null,\"col3\":\"Joe Lacob\",\"col4\":\"Golden State Warriors\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Los Angeles\",\"col3\":\"Steve Ballmer\",\"col4\":\"Los Angeles Clippers\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Dallas\",\"col3\":\"Mark Cuban\",\"col4\":\"Dallas Mavericks\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Mark Cuban\"},{\"col1\":\"Washington Wizards\",\"col2\":null,\"col3\":\"Abe Pollin\",\"col4\":\"Washington Wizards\",\"name_team\":\"Washington Wizards\",\"name_manager\":\"Abe Pollin\"},{\"col1\":\"Brooklyn Nets\",\"col2\":\"Brooklyn\",\"col3\":\"Mikhail Prokhorov\",\"col4\":\"Brooklyn Nets\",\"name_team\":\"Brooklyn Nets\",\"name_manager\":\"Mikhail Prokhorov\"},{\"col1\":\"Sacramento Kings\",\"col2\":\"Sacramento\",\"col3\":\"Vivek Ranadive\",\"col4\":\"Sacramento Kings\",\"name_team\":\"Sacramento Kings\",\"name_manager\":\"Vivek Ranadive\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Chicago\",\"col3\":\"Jerry Reinsdorf\",\"col4\":\"Chicago Bulls\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Charlotte Hornets\",\"col2\":\"Charlotte\",\"col3\":\"Michael Jordan\",\"col4\":\"Charlotte Hornets\",\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"Michael Jordan\"}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Los Angeles",
+   "col3": "Bob Short",
+   "col4": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Oklahoma City",
+   "col3": "Clay Bennett",
+   "col4": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null,
+   "col3": "Joe Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Los Angeles",
+   "col3": "Steve Ballmer",
+   "col4": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dallas",
+   "col3": "Mark Cuban",
+   "col4": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null,
+   "col3": "Abe Pollin",
+   "col4": "Washington Wizards",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Brooklyn",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Sacramento",
+   "col3": "Vivek Ranadive",
+   "col4": "Sacramento Kings",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago",
+   "col3": "Jerry Reinsdorf",
+   "col4": "Chicago Bulls",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Charlotte",
+   "col3": "Michael Jordan",
+   "col4": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Michael Jordan"
+  }
+ ]
+}

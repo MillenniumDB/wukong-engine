@@ -1,0 +1,10 @@
+system,run,entities_found,entities_split,attr_precision,attr_recall,attr_f1,attr_exact_recall,rel_found,rel_gold,current_team_found,current_team_precision,rel_split,rel_split_pairs,sv_precision,sv_recall,sv_f1,sv_gold,sv_marked,edges_conforming_pct,values_conforming_pct,constrained_values,constrained_conforming_pct,entities_checked,entities_unsupported_pct,nodes_without_provenance,values_checked,values_unsupported_pct
+Wukong s5,x6-s5-r1,214,8,97.8,91.4,94.5,91.4,137,148,78.0,89.7,14,9,78.1,89.9,83.6,119.0,137.0,100.0,100.0,3872.0,100.0,2152,0.1,0,1086.0,0.3
+Wukong s5,x6-s5-r2,214,7,97.7,91.4,94.4,91.4,136,148,77.0,91.7,15,9,79.7,89.1,84.1,119.0,133.0,100.0,100.0,3725.0,100.0,2118,0.3,0,1081.0,0.4
+Wukong s5,x6-s5-r3,214,9,97.5,90.7,94.0,90.7,136,148,77.0,89.5,19,13,77.9,89.1,83.1,119.0,136.0,100.0,100.0,3775.0,100.0,2131,0.0,0,1075.0,0.2
+Neo4j-GraphRAG,neo4j-graphrag-full,211,40,97.5,85.5,91.1,61.7,141,148,45.0,66.2,24,24,60.9,82.4,70.0,119.0,161.0,100.0,60.8,6303.0,40.0,2790,0.6,0,2329.0,1.0
+LlamaIndex,llamaindex-full,212,23,96.9,35.6,52.1,25.3,142,148,1.0,100.0,13,13,63.7,78.2,70.2,119.0,146.0,98.3,68.6,2098.0,39.2,2403,1.2,0,1223.0,1.7
+OntoGPT,ontogpt-full,213,60,93.2,80.6,86.5,64.7,139,148,82.0,27.1,36,34,30.7,92.4,46.1,119.0,358.0,99.6,91.0,3723.0,89.8,1665,0.5,0,1029.0,7.8
+LightRAG,LightRAG,214,83,,74.8,,,144,148,,,35,35,,,,,,,,,,34162,1.2,0,,
+GraphRAG,GraphRAG,214,74,,76.3,,,141,148,,,70,70,,,,,,,,,,37917,4.4,0,,
+KGGen,KGGen,212,110,,51.1,,,140,148,,,121,70,,,,,,,,,,21214,1.5,215,,

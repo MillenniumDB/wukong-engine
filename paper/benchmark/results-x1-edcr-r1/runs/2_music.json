@@ -1,0 +1,23 @@
+{
+  "ontology": "2_music",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-13T14:21:50+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 675,
+  "shards": 7,
+  "failed_shards": [],
+  "usage": {
+    "calls": 6294,
+    "failed_calls": 0,
+    "input_tokens": 4564742,
+    "cached_tokens": 111516,
+    "output_tokens": 489445,
+    "reasoning_tokens": 274235
+  },
+  "seconds": 0,
+  "with_triples": 650,
+  "triples": 1959
+}

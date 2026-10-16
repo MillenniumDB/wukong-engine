@@ -1,0 +1,70 @@
+{
+ "uid": "mixed_queries_filter_join#5",
+ "reply": "{\"rows\":[{\"col1\":3,\"col2\":1,\"col3\":2014,\"col4\":\"Denver Nuggets\",\"name_player\":\"Nikola Jokic\",\"name_team\":\"Denver Nuggets\"},{\"col1\":2,\"col2\":2,\"col3\":2013,\"col4\":\"Milwaukee Bucks\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":1,\"col2\":3,\"col3\":2014,\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":2,\"col2\":7,\"col3\":2009,\"col4\":\"Golden State Warriors\",\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1,\"col2\":0,\"col3\":2007,\"col4\":\"Phoenix Suns\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\"},{\"col1\":4,\"col2\":17,\"col3\":2003,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":2,\"col3\":2008,\"col4\":\"Denver Nuggets\",\"name_player\":\"Russell Westbrook\",\"name_team\":\"Denver Nuggets\"},{\"col1\":1,\"col2\":2,\"col3\":2018,\"col4\":\"Oklahoma City Thunder\",\"name_player\":\"Shai Gilgeous-Alexander\",\"name_team\":\"Oklahoma City Thunder\"}]}",
+ "rows": [
+  {
+   "col1": 3,
+   "col2": 1,
+   "col3": 2014,
+   "col4": "Denver Nuggets",
+   "name_player": "Nikola Jokic",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 2,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 2014,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 2,
+   "col2": 7,
+   "col3": 2009,
+   "col4": "Golden State Warriors",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Phoenix Suns",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": 2003,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 2,
+   "col3": 2008,
+   "col4": "Denver Nuggets",
+   "name_player": "Russell Westbrook",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 1,
+   "col2": 2,
+   "col3": 2018,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Shai Gilgeous-Alexander",
+   "name_team": "Oklahoma City Thunder"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#6",
+ "rows": [
+  {
+   "col1": "University of Nebraska",
+   "col2": "1973/11/25",
+   "col3": null,
+   "name_player": "Erick Strickland"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.birth_date = '1973/11/25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

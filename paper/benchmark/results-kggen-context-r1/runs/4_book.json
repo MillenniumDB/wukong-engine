@@ -1,0 +1,73 @@
+{
+  "ontology": "4_book",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:13:21+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Book Ontology\". Use only these relations, written exactly as given: illustrator (any -> human); followed by (any -> value); publication date (book -> value); author (book -> human); publisher (book -> publisher); characters (literary work -> fictional character); editor (trade magazine -> human); place of publication (any -> value); narrative location (literary work -> territory); genre (literary work -> literary genre); language of work or name (literary work -> language); depicts (any -> value).",
+  "sentences": 550,
+  "failed": 0,
+  "with_triples": 472,
+  "triples": 1310,
+  "distinct_predicates": 12,
+  "distinct_predicates_in_ontology": 12,
+  "triples_with_ontology_predicate": 1310,
+  "top_predicates": [
+    [
+      "author",
+      247
+    ],
+    [
+      "publication_date",
+      245
+    ],
+    [
+      "genre",
+      133
+    ],
+    [
+      "characters",
+      108
+    ],
+    [
+      "publisher",
+      103
+    ],
+    [
+      "depicts",
+      97
+    ],
+    [
+      "narrative_location",
+      84
+    ],
+    [
+      "illustrator",
+      80
+    ],
+    [
+      "followed_by",
+      76
+    ],
+    [
+      "editor",
+      74
+    ],
+    [
+      "language_of_work_or_name",
+      36
+    ],
+    [
+      "place_of_publication",
+      27
+    ]
+  ],
+  "usage": {
+    "calls": 1101,
+    "input_tokens": 464092,
+    "cached_tokens": 0,
+    "output_tokens": 128217,
+    "reasoning_tokens": 57553
+  },
+  "seconds": 195
+}

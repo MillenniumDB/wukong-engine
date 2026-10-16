@@ -1,0 +1,47 @@
+{
+ "uid": "join_queries#8",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Jerry Reinsdorf\",\"col2\":1985,\"col3\":\"Chicago Bulls\",\"col4\":1966,\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Jerry Buss\",\"col2\":1979,\"col3\":\"Los Angeles Lakers\",\"col4\":1947,\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jerry Buss\"},{\"col1\":\"Bill Davidson\",\"col2\":1974,\"col3\":\"Detroit Pistons\",\"col4\":1937,\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Bill Davidson\"},{\"col1\":\"Ted Leonsis\",\"col2\":2010,\"col3\":\"Washington Wizards\",\"col4\":1961,\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"},{\"col1\":\"Dan Gilbert\",\"col2\":2005,\"col3\":\"Cleveland Cavaliers\",\"col4\":1970,\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"}]}",
+ "rows": [
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1985,
+   "col3": "Chicago Bulls",
+   "col4": 1966,
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": 1979,
+   "col3": "Los Angeles Lakers",
+   "col4": 1947,
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Bill Davidson",
+   "col2": 1974,
+   "col3": "Detroit Pistons",
+   "col4": 1937,
+   "name_team": "Detroit Pistons",
+   "name_manager": "Bill Davidson"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": 2010,
+   "col3": "Washington Wizards",
+   "col4": 1961,
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": 2005,
+   "col3": "Cleveland Cavaliers",
+   "col4": 1970,
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  }
+ ]
+}

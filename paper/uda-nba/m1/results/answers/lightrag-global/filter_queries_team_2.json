@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_team#2",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Bill Davidson\",\"col2\":3,\"col3\":1937,\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Peter A. Tyrrell\",\"col2\":7,\"col3\":1946,\"name_team\":\"Golden State Warriors\"},{\"col1\":\"Herb Kohl\",\"col2\":2,\"col3\":1968,\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Dick Klein\",\"col2\":6,\"col3\":1966,\"name_team\":\"Chicago Bulls\"}]}",
+ "rows": [
+  {
+   "col1": "Bill Davidson",
+   "col2": 3,
+   "col3": 1937,
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Peter A. Tyrrell",
+   "col2": 7,
+   "col3": 1946,
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Herb Kohl",
+   "col2": 2,
+   "col3": 1968,
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Dick Klein",
+   "col2": 6,
+   "col3": 1966,
+   "name_team": "Chicago Bulls"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#7",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CASE WHEN p.death_date IS NULL THEN date_diff('day', DATE(REPLACE(p.birth_date, '/', '-')), DATE('2026-10-15')) / 365.2425 ELSE date_diff('day', DATE(REPLACE(p.birth_date, '/', '-')), DATE(REPLACE(p.death_date, '/', '-'))) / 365.2425 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, list_extract(split(p.birth_date, '/'), 0) AS birth_year, list_extract(split(p.birth_date, '/'), 1) AS birth_month, list_extract(split(p.birth_date, '/'), 2) AS birth_day, CASE WHEN p.death_date IS NULL THEN '2026/10/15' ELSE p.death_date END AS end_date WITH p.nationality AS nationality, CAST(list_extract(split(end_date, '/'), 0) AS INT64) - CAST(birth_year AS INT64) - CASE WHEN CAST(list_extract(split(end_date, '/'), 1) AS INT64) < CAST(birth_month AS INT64) OR (CAST(list_extract(split(end_date, '/'), 1) AS INT64) = CAST(birth_month AS INT64) AND CAST(list_extract(split(end_date, '/'), 2) AS INT64) < CAST(birth_day AS INT64)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, CASE WHEN p.death_date IS NULL THEN '2026/10/15' ELSE p.death_date END AS end_date WITH p.nationality AS nationality, CAST(regexp_extract(end_date, '^([0-9]+)/', 1) AS INT64) - CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) - CASE WHEN CAST(regexp_extract(end_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) < CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) OR (CAST(regexp_extract(end_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) = CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) AND CAST(regexp_extract(end_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64) < CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND p.birth_date <> '' WITH p.nationality AS nationality, CAST(regexp_extract(CASE WHEN p.death_date IS NULL OR p.death_date = '' THEN '2026/10/15' ELSE p.death_date END, '^([0-9]{4})/', 1) AS INT64) - CAST(regexp_extract(p.birth_date, '^([0-9]{4})/', 1) AS INT64) AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

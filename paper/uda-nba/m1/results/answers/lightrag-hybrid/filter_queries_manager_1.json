@@ -1,0 +1,73 @@
+{
+ "uid": "filter_queries_manager#1",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":70,\"col2\":\"Golden State Warriors\",\"col3\":\"Joe Lacob\",\"name_manager\":\"Joe Lacob\"},{\"col1\":null,\"col2\":\"Denver Nuggets\",\"col3\":\"Stan Kroenke\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":null,\"col2\":\"Toronto Raptors\",\"col3\":\"Allan Slaight\",\"name_manager\":\"Allan Slaight\"},{\"col1\":null,\"col2\":\"New Orleans Pelicans\",\"col3\":\"Gayle Benson\",\"name_manager\":\"Gayle Benson\"},{\"col1\":null,\"col2\":\"Los Angeles Lakers\",\"col3\":\"Jeanie Buss\",\"name_manager\":\"Jeanie Buss\"},{\"col1\":null,\"col2\":\"Washington Wizards\",\"col3\":\"Abe Pollin\",\"name_manager\":\"Abe Pollin\"},{\"col1\":null,\"col2\":\"Phoenix Suns\",\"col3\":\"Karl Eller\",\"name_manager\":\"Karl Eller\"},{\"col1\":null,\"col2\":\"Phoenix Suns\",\"col3\":\"Sam Garvin\",\"name_manager\":\"Sam Garvin\"},{\"col1\":null,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Marc Lore\",\"name_manager\":\"Marc Lore\"},{\"col1\":null,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Alex Rodriguez\",\"name_manager\":\"Alex Rodriguez\"},{\"col1\":null,\"col2\":\"Golden State Warriors\",\"col3\":\"Dan Finane\",\"name_manager\":\"Dan Finane\"}]}",
+ "rows": [
+  {
+   "col1": 70,
+   "col2": "Golden State Warriors",
+   "col3": "Joe Lacob",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Raptors",
+   "col3": "Allan Slaight",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Benson",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Jeanie Buss",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Abe Pollin",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Karl Eller",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Sam Garvin",
+   "name_manager": "Sam Garvin"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Marc Lore",
+   "name_manager": "Marc Lore"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Alex Rodriguez",
+   "name_manager": "Alex Rodriguez"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Dan Finane",
+   "name_manager": "Dan Finane"
+  }
+ ]
+}

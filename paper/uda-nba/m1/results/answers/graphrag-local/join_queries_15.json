@@ -1,0 +1,18 @@
+{
+ "uid": "join_queries#15",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Tom Gores\",\"col2\":null,\"col3\":\"Detroit\",\"col4\":62,\"col5\":\"American\",\"name_player\":\"Jaden Edward Dhananjay Ivey\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"}]}",
+ "rows": [
+  {
+   "col1": "Tom Gores",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  }
+ ],
+ "secs": 5.8
+}

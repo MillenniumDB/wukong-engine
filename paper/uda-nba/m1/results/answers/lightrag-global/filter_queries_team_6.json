@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_team#6",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Jerry Reinsdorf\",\"col2\":1966,\"col3\":6,\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Ted Turner\",\"col2\":1946,\"col3\":1,\"name_team\":\"Atlanta Hawks\"},{\"col1\":\"Tom Gores\",\"col2\":null,\"col3\":3,\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Mark Cuban\",\"col2\":1980,\"col3\":1,\"name_team\":\"Dallas Mavericks\"},{\"col1\":\"Stan Kroenke\",\"col2\":1967,\"col3\":1,\"name_team\":\"Denver Nuggets\"},{\"col1\":\"Steve Ballmer\",\"col2\":null,\"col3\":0,\"name_team\":\"Los Angeles Clippers\"},{\"col1\":\"Charlie Thomas\",\"col2\":1967,\"col3\":2,\"name_team\":\"Houston Rockets\"},{\"col1\":\"Mark Walter\",\"col2\":1883,\"col3\":null,\"name_team\":\"Los Angeles Dodgers\"}]}",
+ "rows": [
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1966,
+   "col3": 6,
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": 1946,
+   "col3": 1,
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": 1980,
+   "col3": 1,
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Stan Kroenke",
+   "col2": 1967,
+   "col3": 1,
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": null,
+   "col3": 0,
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Charlie Thomas",
+   "col2": 1967,
+   "col3": 2,
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Mark Walter",
+   "col2": 1883,
+   "col3": null,
+   "name_team": "Los Angeles Dodgers"
+  }
+ ]
+}

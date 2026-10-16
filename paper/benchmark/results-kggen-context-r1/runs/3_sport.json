@@ -1,0 +1,65 @@
+{
+  "ontology": "3_sport",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:10:06+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Sports Ontology\". Use only these relations, written exactly as given: occupation (human -> athlete); sport (sports competition -> sport); member of sports team (human -> sports club); country for sport (human -> country); sports season of league or competition (sports season -> value); coach of sports team (human -> sports club); league (human -> professional sports league); home venue (sports club -> value); country of origin (sport -> country); league (human -> value); competition class (sports organization -> value).",
+  "sentences": 487,
+  "failed": 0,
+  "with_triples": 398,
+  "triples": 982,
+  "distinct_predicates": 10,
+  "distinct_predicates_in_ontology": 10,
+  "triples_with_ontology_predicate": 982,
+  "top_predicates": [
+    [
+      "member_of_sports_team",
+      294
+    ],
+    [
+      "occupation",
+      168
+    ],
+    [
+      "country_for_sport",
+      141
+    ],
+    [
+      "league",
+      134
+    ],
+    [
+      "sports_season_of_league_or_competition",
+      87
+    ],
+    [
+      "sport",
+      72
+    ],
+    [
+      "coach_of_sports_team",
+      58
+    ],
+    [
+      "home_venue",
+      12
+    ],
+    [
+      "country_of_origin",
+      9
+    ],
+    [
+      "competition_class",
+      7
+    ]
+  ],
+  "usage": {
+    "calls": 974,
+    "input_tokens": 409980,
+    "cached_tokens": 0,
+    "output_tokens": 120993,
+    "reasoning_tokens": 61342
+  },
+  "seconds": 180
+}

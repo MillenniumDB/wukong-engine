@@ -1,0 +1,91 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": 67,
+   "col2": "Clay Bennett",
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 67,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": null,
+   "col2": "Mikhail Prokhorov",
+   "col3": "Russian",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": 92,
+   "col2": "Herb Simon",
+   "col3": "American",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": 62,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": 70,
+   "col2": "Joe Lacob",
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 71,
+   "col2": "James Lawrence Dolan",
+   "col3": "American",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": null,
+   "col2": "Ann Walton Kroenke",
+   "col3": "American",
+   "name_manager": "Ann Walton Kroenke"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Benson",
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document)\nWITH o, 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN DISTINCT age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 1964\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  2026 - CASE\n    WHEN o.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64)\n    WHEN o.birth_date CONTAINS ' ' THEN CAST(SPLIT_PART(o.birth_date, ' ', 2) AS INT64)\n    ELSE CAST(o.birth_date AS INT64)\n  END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"1962-01-17\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  2026 - CASE\n    WHEN o.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64)\n    WHEN o.birth_date CONTAINS '-' THEN CAST(SPLIT_PART(o.birth_date, '-', 1) AS INT64)\n    WHEN o.birth_date CONTAINS ' ' THEN CAST(SPLIT_PART(o.birth_date, ' ', 2) AS INT64)\n    ELSE CAST(o.birth_date AS INT64)\n  END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"10,\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    WHEN o.birth_date CONTAINS ',' THEN 2026 - CAST(TRIM(SPLIT_PART(o.birth_date, ',', 2)) AS INT64)\n    WHEN o.birth_date CONTAINS '/' THEN 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64)\n    WHEN o.birth_date CONTAINS '-' THEN 2026 - CAST(SPLIT_PART(o.birth_date, '-', 1) AS INT64)\n    WHEN o.birth_date CONTAINS ' ' THEN 2026 - CAST(SPLIT_PART(o.birth_date, ' ', 2) AS INT64)\n    ELSE 2026 - CAST(o.birth_date AS INT64)\n  END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 10
+  }
+ ]
+}

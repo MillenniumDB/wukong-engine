@@ -1,0 +1,18 @@
+{
+ "uid": "join_queries#19",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Colorado\",\"col2\":3,\"col3\":\"Denver Nuggets\",\"col4\":null,\"col5\":\"2000\",\"name_player\":\"LeBron Raymone James Sr.\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\",\"name_city\":\"Denver\"}]}",
+ "rows": [
+  {
+   "col1": "Colorado",
+   "col2": 3,
+   "col3": "Denver Nuggets",
+   "col4": null,
+   "col5": "2000",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke",
+   "name_city": "Denver"
+  }
+ ]
+}

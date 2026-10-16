@@ -1,0 +1,15 @@
+{
+ "uid": "agg_queries#1",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":1},{\"col1\":\"Backcourt\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 1
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 1
+  }
+ ]
+}

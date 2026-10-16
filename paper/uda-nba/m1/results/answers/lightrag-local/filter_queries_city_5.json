@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_city#5",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"Ontario\",\"col3\":2794356,\"name_city\":\"Toronto\"},{\"col1\":323900,\"col2\":\"Minnesota\",\"col3\":429954,\"name_city\":\"Minneapolis\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Ontario",
+   "col3": 2794356,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": 323900,
+   "col2": "Minnesota",
+   "col3": 429954,
+   "name_city": "Minneapolis"
+  }
+ ]
+}

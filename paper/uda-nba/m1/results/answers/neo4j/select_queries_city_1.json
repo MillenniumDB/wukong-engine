@@ -1,0 +1,529 @@
+{
+ "uid": "select_queries_city#1",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Akron",
+   "col3": null,
+   "name_city": "Akron"
+  },
+  {
+   "col1": null,
+   "col2": "Albuquerque",
+   "col3": null,
+   "name_city": "Albuquerque"
+  },
+  {
+   "col1": 347.05866,
+   "col2": "Atlanta",
+   "col3": 473000.0,
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": null,
+   "col2": "Auburn Hills",
+   "col3": null,
+   "name_city": "Auburn Hills"
+  },
+  {
+   "col1": null,
+   "col2": "Austin",
+   "col3": null,
+   "name_city": "Austin"
+  },
+  {
+   "col1": null,
+   "col2": "Baltimore",
+   "col3": null,
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": 125.35551599999998,
+   "col2": "Boston",
+   "col3": null,
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn",
+   "col3": null,
+   "name_city": "Brooklyn"
+  },
+  {
+   "col1": null,
+   "col2": "Buffalo",
+   "col3": null,
+   "name_city": "Buffalo"
+  },
+  {
+   "col1": null,
+   "col2": "Calgary",
+   "col3": null,
+   "name_city": "Calgary"
+  },
+  {
+   "col1": null,
+   "col2": "Camden",
+   "col3": null,
+   "name_city": "Camden"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte",
+   "col3": null,
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago",
+   "col3": 689000.0,
+   "name_city": "Chicago"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati",
+   "col3": null,
+   "name_city": "Cincinnati"
+  },
+  {
+   "col1": 213.59647529999998,
+   "col2": "Cleveland",
+   "col3": 138300.0,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": null,
+   "col2": "College Park",
+   "col3": null,
+   "name_city": "College Park"
+  },
+  {
+   "col1": 999.218142,
+   "col2": "Dallas",
+   "col3": null,
+   "name_city": "Dallas"
+  },
+  {
+   "col1": null,
+   "col2": "Daly City",
+   "col3": null,
+   "name_city": "Daly City"
+  },
+  {
+   "col1": 40.07403115,
+   "col2": "Denver",
+   "col3": 157600.0,
+   "name_city": "Denver"
+  },
+  {
+   "col1": 370.0318713,
+   "col2": "Detroit",
+   "col3": null,
+   "name_city": "Detroit"
+  },
+  {
+   "col1": null,
+   "col2": "East Rutherford",
+   "col3": null,
+   "name_city": "East Rutherford"
+  },
+  {
+   "col1": null,
+   "col2": "Edina",
+   "col3": null,
+   "name_city": "Edina"
+  },
+  {
+   "col1": null,
+   "col2": "Edmonton",
+   "col3": null,
+   "name_city": "Edmonton"
+  },
+  {
+   "col1": null,
+   "col2": "Fort Wayne",
+   "col3": null,
+   "name_city": "Fort Wayne"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State",
+   "col3": null,
+   "name_city": "Golden State"
+  },
+  {
+   "col1": null,
+   "col2": "Greater Los Angeles",
+   "col3": null,
+   "name_city": "Greater Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": "Hamilton",
+   "col3": null,
+   "name_city": "Hamilton"
+  },
+  {
+   "col1": null,
+   "col2": "Hershey",
+   "col3": null,
+   "name_city": "Hershey"
+  },
+  {
+   "col1": 1658.6295959999998,
+   "col2": "Houston",
+   "col3": null,
+   "name_city": "Houston"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana",
+   "col3": null,
+   "name_city": "Indiana"
+  },
+  {
+   "col1": 953.11632,
+   "col2": "Indianapolis",
+   "col3": 2.9e-05,
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": null,
+   "col2": "Inglewood",
+   "col3": null,
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City",
+   "col3": null,
+   "name_city": "Kansas City"
+  },
+  {
+   "col1": null,
+   "col2": "Lakeland",
+   "col3": null,
+   "name_city": "Lakeland"
+  },
+  {
+   "col1": null,
+   "col2": "Landover",
+   "col3": null,
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Las Vegas",
+   "col3": null,
+   "name_city": "Las Vegas"
+  },
+  {
+   "col1": null,
+   "col2": "Long Beach",
+   "col3": null,
+   "name_city": "Long Beach"
+  },
+  {
+   "col1": 1214.7053099999998,
+   "col2": "Los Angeles",
+   "col3": 1000000.0,
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": "Louisville",
+   "col3": null,
+   "name_city": "Louisville"
+  },
+  {
+   "col1": null,
+   "col2": "Madison Square Garden",
+   "col3": null,
+   "name_city": "Madison Square Garden"
+  },
+  {
+   "col1": null,
+   "col2": "Manhattan",
+   "col3": null,
+   "name_city": "Manhattan"
+  },
+  {
+   "col1": 839.15676,
+   "col2": "Memphis",
+   "col3": null,
+   "name_city": "Memphis"
+  },
+  {
+   "col1": null,
+   "col2": "Miami",
+   "col3": 344900.0,
+   "name_city": "Miami"
+  },
+  {
+   "col1": 250.71103199999996,
+   "col2": "Milwaukee",
+   "col3": 102000.0,
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": null,
+   "col2": "Minneapolis",
+   "col3": 323900.0,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota",
+   "col3": null,
+   "name_city": "Minnesota"
+  },
+  {
+   "col1": null,
+   "col2": "Moline",
+   "col3": null,
+   "name_city": "Moline"
+  },
+  {
+   "col1": null,
+   "col2": "Montreal",
+   "col3": null,
+   "name_city": "Montreal"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey",
+   "col3": null,
+   "name_city": "New Jersey"
+  },
+  {
+   "col1": 906.4965,
+   "col2": "New Orleans",
+   "col3": null,
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "New York"
+  },
+  {
+   "col1": null,
+   "col2": "New York City",
+   "col3": null,
+   "name_city": "New York City"
+  },
+  {
+   "col1": null,
+   "col2": "Newark",
+   "col3": null,
+   "name_city": "Newark"
+  },
+  {
+   "col1": null,
+   "col2": "Norfolk",
+   "col3": null,
+   "name_city": "Norfolk"
+  },
+  {
+   "col1": null,
+   "col2": "Oakland",
+   "col3": null,
+   "name_city": "Oakland"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City",
+   "col3": 43100.0,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": null,
+   "col2": "Omaha",
+   "col3": null,
+   "name_city": "Omaha"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando",
+   "col3": null,
+   "name_city": "Orlando"
+  },
+  {
+   "col1": null,
+   "col2": "Ottawa",
+   "col3": null,
+   "name_city": "Ottawa"
+  },
+  {
+   "col1": 369.6174729,
+   "col2": "Philadelphia",
+   "col3": 518500.0,
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": 1341.3558209999999,
+   "col2": "Phoenix",
+   "col3": 362000.0,
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Pontiac",
+   "col3": null,
+   "name_city": "Pontiac"
+  },
+  {
+   "col1": 375.7816491,
+   "col2": "Portland",
+   "col3": 5e-05,
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Rochester",
+   "col3": null,
+   "name_city": "Rochester"
+  },
+  {
+   "col1": 259.257999,
+   "col2": "Sacramento",
+   "col3": null,
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": "Salt Lake City",
+   "col3": null,
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": 1205.381346,
+   "col2": "San Antonio",
+   "col3": null,
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego",
+   "col3": null,
+   "name_city": "San Diego"
+  },
+  {
+   "col1": 121.47053099999998,
+   "col2": "San Francisco",
+   "col3": 252200.0,
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": null,
+   "col2": "San Jose",
+   "col3": null,
+   "name_city": "San Jose"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle",
+   "col3": null,
+   "name_city": "Seattle"
+  },
+  {
+   "col1": null,
+   "col2": "Sheboygan",
+   "col3": null,
+   "name_city": "Sheboygan"
+  },
+  {
+   "col1": null,
+   "col2": "St. Louis",
+   "col3": null,
+   "name_city": "St. Louis"
+  },
+  {
+   "col1": null,
+   "col2": "Stanford",
+   "col3": null,
+   "name_city": "Stanford"
+  },
+  {
+   "col1": null,
+   "col2": "Syracuse",
+   "col3": null,
+   "name_city": "Syracuse"
+  },
+  {
+   "col1": null,
+   "col2": "Tampa Bay",
+   "col3": null,
+   "name_city": "Tampa Bay"
+  },
+  {
+   "col1": 630.1445669999999,
+   "col2": "Toronto",
+   "col3": null,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": "Tri-Cities",
+   "col3": null,
+   "name_city": "Tri-Cities"
+  },
+  {
+   "col1": null,
+   "col2": "Utah",
+   "col3": null,
+   "name_city": "Utah"
+  },
+  {
+   "col1": null,
+   "col2": "Vancouver",
+   "col3": null,
+   "name_city": "Vancouver"
+  },
+  {
+   "col1": null,
+   "col2": "Waco",
+   "col3": null,
+   "name_city": "Waco"
+  },
+  {
+   "col1": null,
+   "col2": "Washington",
+   "col3": null,
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Washington, D.C.",
+   "col3": null,
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Winnipeg",
+   "col3": null,
+   "name_city": "Winnipeg"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH DISTINCT c RETURN CAST(c.area AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CAST(c.gdp AS DOUBLE) / 1000000 AS col3, c.city_name AS name_city ORDER BY col2",
+   "error": "Conversion exception: Cast failed. 46.9 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH DISTINCT c, regexp_replace(c.area, '[^0-9.]', '') AS area_value, regexp_replace(c.gdp, '[^0-9.]', '') AS gdp_value, LOWER(c.gdp) AS gdp_text RETURN CAST(area_value AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN CONTAINS(gdp_text, 'trillion') THEN CAST(gdp_value AS DOUBLE) * 1000000 WHEN CONTAINS(gdp_text, 'billion') THEN CAST(gdp_value AS DOUBLE) * 1000 WHEN CONTAINS(gdp_text, 'million') THEN CAST(gdp_value AS DOUBLE) ELSE CAST(gdp_value AS DOUBLE) / 1000000 END AS col3, c.city_name AS name_city ORDER BY col2",
+   "error": "Conversion exception: Cast failed. 99025 acres (400.739 km\u00b2) is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH DISTINCT c, LOWER(c.area) AS area_text, LOWER(c.gdp) AS gdp_text, regexp_extract(regexp_replace(c.area, ',', ''), '[0-9]+(\\\\.[0-9]+)?', 0) AS area_value, regexp_extract(regexp_replace(c.gdp, ',', ''), '[0-9]+(\\\\.[0-9]+)?', 0) AS gdp_value RETURN CASE WHEN CONTAINS(area_text, 'acre') THEN CAST(area_value AS DOUBLE) * 0.000404686 WHEN CONTAINS(area_text, 'km') THEN CAST(area_value AS DOUBLE) ELSE CAST(area_value AS DOUBLE) * 2.58999 END AS col1, c.city_name AS col2, CASE WHEN CONTAINS(gdp_text, 'trillion') THEN CAST(gdp_value AS DOUBLE) * 1000000 WHEN CONTAINS(gdp_text, 'billion') THEN CAST(gdp_value AS DOUBLE) * 1000 WHEN CONTAINS(gdp_text, 'million') THEN CAST(gdp_value AS DOUBLE) ELSE CAST(gdp_value AS DOUBLE) / 1000000 END AS col3, c.city_name AS name_city ORDER BY col2",
+   "error": null,
+   "rows": 84
+  }
+ ]
+}

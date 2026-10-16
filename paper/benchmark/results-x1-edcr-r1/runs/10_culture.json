@@ -1,0 +1,23 @@
+{
+  "ontology": "10_culture",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-13T18:41:11+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 159,
+  "shards": 2,
+  "failed_shards": [],
+  "usage": {
+    "calls": 1897,
+    "failed_calls": 0,
+    "input_tokens": 1161157,
+    "cached_tokens": 34132,
+    "output_tokens": 123712,
+    "reasoning_tokens": 70254
+  },
+  "seconds": 15561,
+  "with_triples": 122,
+  "triples": 164
+}

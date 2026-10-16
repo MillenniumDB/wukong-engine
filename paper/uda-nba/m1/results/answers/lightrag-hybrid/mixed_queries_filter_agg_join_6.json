@@ -1,0 +1,15 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":null},{\"col1\":\"Backcourt\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null
+  }
+ ]
+}

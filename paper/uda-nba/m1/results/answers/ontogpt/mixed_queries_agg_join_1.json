@@ -1,0 +1,125 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 0
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 0
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "San Francisco Golden State Warriors",
+   "col2": 0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 0
+  },
+  {
+   "col1": "Washington, D.C. Wizards",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 0
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND EXISTS { MATCH (p)-[:ExtractedFrom]->(:Document) }\n  AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) }\nWITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS lowest_medals\nRETURN t.team_name AS col1, lowest_medals AS col2",
+   "error": null,
+   "rows": 28
+  }
+ ]
+}

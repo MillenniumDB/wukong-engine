@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": [
+  {
+   "col1": 91,
+   "col2": "Indiana Pacers",
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 70,
+   "col2": "Los Angeles Clippers",
+   "col3": "Steven Anthony Ballmer",
+   "name_manager": "Steven Anthony Ballmer"
+  },
+  {
+   "col1": 79,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Marie LaJaunie Bird Benson",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": 79,
+   "col2": "Denver Nuggets",
+   "col3": "Stan Kroenke",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 90,
+   "col2": "Chicago Bulls",
+   "col3": "Jerry Michael Reinsdorf",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": 68,
+   "col2": "Dallas Mavericks",
+   "col3": "Mark Cuban",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 77,
+   "col2": "Miami Heat",
+   "col3": "Micky Arison",
+   "name_manager": "Micky Arison"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND o.birth_date IS NOT NULL WITH o, t, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date WITH o, t, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) * 100 + DATE_PART('day', birth_date) > 1014 THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND o.birth_date IS NOT NULL WITH o, t, CAST(split_part(o.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(o.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(o.birth_date, '/', 3) AS INT64) AS birth_day WITH o, t, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

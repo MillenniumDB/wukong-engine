@@ -1,0 +1,19 @@
+{
+ "uid": "mixed_queries_agg_join#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":372624},{\"col1\":null,\"col2\":874579},{\"col1\":null,\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": 372624
+  },
+  {
+   "col1": null,
+   "col2": 874579
+  },
+  {
+   "col1": null,
+   "col2": null
+  }
+ ]
+}

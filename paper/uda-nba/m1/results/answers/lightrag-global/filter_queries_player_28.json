@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#28",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":2003,\"col2\":41,\"col3\":\"American\",\"name_player\":\"LeBron James\"},{\"col1\":2007,\"col2\":38,\"col3\":\"American\",\"name_player\":\"Kevin Durant\"}]}",
+ "rows": [
+  {
+   "col1": 2003,
+   "col2": 41,
+   "col3": "American",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2007,
+   "col2": 38,
+   "col3": "American",
+   "name_player": "Kevin Durant"
+  }
+ ]
+}

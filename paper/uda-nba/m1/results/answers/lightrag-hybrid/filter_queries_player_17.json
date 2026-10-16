@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_player#17",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Michigan State University\",\"col2\":1,\"col3\":null,\"name_player\":\"Magic Johnson\"},{\"col1\":\"Michigan State University\",\"col2\":35,\"col3\":null,\"name_player\":\"Draymond Green\"},{\"col1\":\"Davidson College\",\"col2\":7,\"col3\":null,\"name_player\":\"Stephen Curry\"},{\"col1\":null,\"col2\":10,\"col3\":null,\"name_player\":\"Paul George\"},{\"col1\":\"Purdue\",\"col2\":5,\"col3\":null,\"name_player\":\"Jaden Ivey\"},{\"col1\":\"Florida State\",\"col2\":4,\"col3\":null,\"name_player\":\"Scottie Barnes\"},{\"col1\":\"North Carolina State\",\"col2\":1,\"col3\":null,\"name_player\":\"David Thompson\"},{\"col1\":\"Ohio State\",\"col2\":2,\"col3\":null,\"name_player\":\"D'Angelo Russell\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":null,\"col2\":3,\"col3\":null,\"name_player\":\"Al Horford\"}]}",
+ "rows": [
+  {
+   "col1": "Michigan State University",
+   "col2": 1,
+   "col3": null,
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": 35,
+   "col3": null,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "Davidson College",
+   "col2": 7,
+   "col3": null,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": 10,
+   "col3": null,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "Purdue",
+   "col2": 5,
+   "col3": null,
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": "Florida State",
+   "col2": 4,
+   "col3": null,
+   "name_player": "Scottie Barnes"
+  },
+  {
+   "col1": "North Carolina State",
+   "col2": 1,
+   "col3": null,
+   "name_player": "David Thompson"
+  },
+  {
+   "col1": "Ohio State",
+   "col2": 2,
+   "col3": null,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": 3,
+   "col3": null,
+   "name_player": "Al Horford"
+  }
+ ]
+}

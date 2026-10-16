@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_manager#5",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":2019,\"col2\":62,\"col3\":\"Taiwanese-Canadian\",\"name_manager\":\"Joseph Chung-Hsin Tsai\"},{\"col1\":1985,\"col2\":88,\"col3\":\"American\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":2010,\"col2\":70,\"col3\":\"American\",\"name_manager\":\"Joe Lacob\"},{\"col1\":2023,\"col2\":59,\"col3\":\"American\",\"name_manager\":\"Josh Harris\"},{\"col1\":2000,\"col2\":null,\"col3\":\"American\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":2006,\"col2\":66,\"col3\":\"American\",\"name_manager\":\"Clay Bennett\"},{\"col1\":2023,\"col2\":43,\"col3\":null,\"name_manager\":\"Mat Ishbia\"},{\"col1\":2023,\"col2\":null,\"col3\":null,\"name_manager\":\"Patrick Dumont\"}]}",
+ "rows": [
+  {
+   "col1": 2019,
+   "col2": 62,
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": 1985,
+   "col2": 88,
+   "col3": "American",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": 2010,
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 2023,
+   "col2": 59,
+   "col3": "American",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": 2000,
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": 2006,
+   "col2": 66,
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 2023,
+   "col2": 43,
+   "col3": null,
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": 2023,
+   "col2": null,
+   "col3": null,
+   "name_manager": "Patrick Dumont"
+  }
+ ]
+}

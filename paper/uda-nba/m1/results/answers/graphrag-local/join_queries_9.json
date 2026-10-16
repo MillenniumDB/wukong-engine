@@ -1,0 +1,24 @@
+{
+ "uid": "join_queries#9",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Boston Celtics\",\"col2\":\"Boston Celtics\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Boston Celtics\",\"name_manager\":\"John Y. Brown Jr.\"},{\"col1\":\"Charlotte Hornets\",\"col2\":\"Charlotte Hornets\",\"col3\":1988,\"col4\":\"American\",\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"George Shinn\"}]}",
+ "rows": [
+  {
+   "col1": "Boston Celtics",
+   "col2": "Boston Celtics",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Boston Celtics",
+   "name_manager": "John Y. Brown Jr."
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Charlotte Hornets",
+   "col3": 1988,
+   "col4": "American",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "George Shinn"
+  }
+ ],
+ "secs": 7.9
+}

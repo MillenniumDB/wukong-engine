@@ -1,0 +1,29 @@
+{
+ "uid": "select_queries_player#2",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":\"LeBron Raymone James Sr.\",\"col3\":4,\"col4\":\"1984/12/30\",\"name_player\":\"LeBron Raymone James Sr.\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Shaquille Rashaun O'Neal\",\"col3\":1,\"col4\":\"1972/3/6\",\"name_player\":\"Shaquille Rashaun O'Neal\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Earvin Johnson Jr.\",\"col3\":3,\"col4\":\"1959/8/14\",\"name_player\":\"Earvin Johnson Jr.\"}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "LeBron Raymone James Sr.",
+   "col3": 4,
+   "col4": "1984/12/30",
+   "name_player": "LeBron Raymone James Sr."
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Shaquille Rashaun O'Neal",
+   "col3": 1,
+   "col4": "1972/3/6",
+   "name_player": "Shaquille Rashaun O'Neal"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Earvin Johnson Jr.",
+   "col3": 3,
+   "col4": "1959/8/14",
+   "name_player": "Earvin Johnson Jr."
+  }
+ ],
+ "secs": 10.3
+}

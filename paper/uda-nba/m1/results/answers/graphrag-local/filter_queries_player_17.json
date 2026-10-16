@@ -1,0 +1,26 @@
+{
+ "uid": "filter_queries_player#17",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Michigan State University\",\"col2\":35,\"col3\":null,\"name_player\":\"Draymond Green\"},{\"col1\":\"Florida\",\"col2\":3,\"col3\":null,\"name_player\":\"Al Horford\"},{\"col1\":\"Michigan State University\",\"col2\":1,\"col3\":null,\"name_player\":\"Magic Johnson\"}]}",
+ "rows": [
+  {
+   "col1": "Michigan State University",
+   "col2": 35,
+   "col3": null,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "Florida",
+   "col2": 3,
+   "col3": null,
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": 1,
+   "col3": null,
+   "name_player": "Magic Johnson"
+  }
+ ],
+ "secs": 6.3
+}

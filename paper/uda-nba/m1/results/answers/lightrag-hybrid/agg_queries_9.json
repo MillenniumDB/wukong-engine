@@ -1,0 +1,15 @@
+{
+ "uid": "agg_queries#9",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":5},{\"col1\":\"Israeli-American\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 5
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 1
+  }
+ ]
+}

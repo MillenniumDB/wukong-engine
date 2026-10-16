@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_team#6",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Kelly Loeffler\",\"col2\":null,\"col3\":null,\"name_team\":\"Atlanta Dream\"},{\"col1\":\"Ted Turner\",\"col2\":null,\"col3\":1,\"name_team\":\"Atlanta Hawks\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":1966,\"col3\":6,\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Mark Cuban\",\"col2\":null,\"col3\":1,\"name_team\":\"Dallas Mavericks\"},{\"col1\":\"Tom Gores\",\"col2\":null,\"col3\":3,\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Stan Kroenke\",\"col2\":null,\"col3\":1,\"name_team\":\"Denver Nuggets\"},{\"col1\":\"Micky Arison\",\"col2\":null,\"col3\":3,\"name_team\":\"Miami Heat\"},{\"col1\":\"Katz\",\"col2\":null,\"col3\":3,\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Herb Simon\",\"col2\":null,\"col3\":3,\"name_team\":\"Indiana Pacers\"}]}",
+ "rows": [
+  {
+   "col1": "Kelly Loeffler",
+   "col2": null,
+   "col3": null,
+   "name_team": "Atlanta Dream"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": null,
+   "col3": 1,
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1966,
+   "col3": 6,
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": null,
+   "col3": 1,
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Stan Kroenke",
+   "col2": null,
+   "col3": 1,
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Katz",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Herb Simon",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Indiana Pacers"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "uid": "filter_queries_player#2",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"Greek-Nigerian\",\"col3\":31,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":\"Backcourt\",\"col2\":\"German\",\"col3\":33,\"name_player\":\"Dennis Schr\u00f6der\"},{\"col1\":\"Frontcourt\",\"col2\":\"British\",\"col3\":29,\"name_player\":\"OG Anunoby\"},{\"col1\":\"Backcourt\",\"col2\":\"Greek-American\",\"col3\":37,\"name_player\":\"Nick Calathes\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "Greek-Nigerian",
+   "col3": 31,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "German",
+   "col3": 33,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "British",
+   "col3": 29,
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Greek-American",
+   "col3": 37,
+   "name_player": "Nick Calathes"
+  }
+ ],
+ "secs": 8.9
+}

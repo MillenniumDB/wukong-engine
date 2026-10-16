@@ -1,0 +1,127 @@
+{
+  "ontology": "2_music",
+  "workspace": "x2r2_props_2_music",
+  "recorded_at": "2026-10-08T18:03:05+00:00",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "c1f61e78b4dea989aa8c2381492965183ee7b198",
+    "uncommitted_changes": false
+  },
+  "config_file": "config/default.toml",
+  "config": {
+    "pipeline": {
+      "ingest_documents": true,
+      "extract_entities": true,
+      "extract_relationships": true,
+      "export_knowledge": true
+    },
+    "llm": {
+      "model": "gpt-5.6-luna",
+      "execution_mode": "real-time",
+      "max_concurrency": 15,
+      "reasoning_effort": "low"
+    },
+    "chunking": {
+      "target_tokens": 800,
+      "overlap_tokens": 120,
+      "document_prefix_tokens": 8000
+    },
+    "export": {
+      "format": "mdb"
+    }
+  },
+  "definitions": {
+    "knowledge_model.json": "e53e9c32872fcab53ae5ff7caa05f73a261189a0ab7c9949704e6fe413be2b0e",
+    "document_collections.json": "f7bc2a960542f74d7cc7b2bd5997d02a71c5a9733892eaa13e73deae2b2ae352",
+    "text2kg_mapping.json": "6be257f614638d339c015098fd7f5b2789748f20c573829763c405c8eb5dde0e"
+  },
+  "usage": {
+    "documents": 630,
+    "chunks": 630,
+    "total": {
+      "jobs": 1008,
+      "failed": 0,
+      "input_tokens": 234932,
+      "cached_tokens": 1099628,
+      "cache_write_tokens": 3502,
+      "output_tokens": 63165,
+      "reasoning_tokens": 74903
+    },
+    "by_job": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 630,
+        "failed": 0,
+        "input_tokens": 30071,
+        "cached_tokens": 1099628,
+        "cache_write_tokens": 3502,
+        "output_tokens": 42478,
+        "reasoning_tokens": 54808
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 378,
+        "failed": 0,
+        "input_tokens": 204861,
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "output_tokens": 20687,
+        "reasoning_tokens": 20095
+      }
+    ],
+    "started": "2026-10-08T17:43:44.897000+00:00",
+    "finished": "2026-10-08T17:46:59.039000+00:00",
+    "seconds": 194
+  },
+  "validation": {
+    "returned": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 1741
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 687
+      }
+    ],
+    "discarded": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Language",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      },
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "MusicGenre",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      },
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "MusicalWork",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      },
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Voice",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      }
+    ],
+    "unset": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_team#12",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta\",\"col2\":1999,\"col3\":\"Atlanta Thrashers\",\"name_team\":\"Atlanta Thrashers\"},{\"col1\":\"Atlanta\",\"col2\":2017,\"col3\":\"Atlanta United FC\",\"name_team\":\"Atlanta United FC\"}]}",
+ "rows": [
+  {
+   "col1": "Atlanta",
+   "col2": 1999,
+   "col3": "Atlanta Thrashers",
+   "name_team": "Atlanta Thrashers"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": 2017,
+   "col3": "Atlanta United FC",
+   "name_team": "Atlanta United FC"
+  }
+ ],
+ "secs": 7.7
+}

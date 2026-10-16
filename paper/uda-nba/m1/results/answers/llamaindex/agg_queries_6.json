@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p WITH p.nationality AS nationality, date_diff('year', CAST(replace(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15') AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(replace(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15'>: expected rule oC_ProjectionItem (line: 1, offset: 227)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p WITH p.nationality AS nationality, date_diff('year', CAST(replace(p.birth_date, '/', '-') AS DATE), DATE '2026-10-15') AS age RETURN nationality AS col1, MIN(age) AS col2\"\n                                ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p.nationality AS nationality, p.birth_date AS birth_date WITH nationality, 2026 - CAST(split_part(birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p.nationality AS nationality, p.birth_date AS birth_date WITH nationality, birth_date, CASE WHEN contains(birth_date, '/') THEN CAST(split_part(birth_date, '/', 1) AS INT64) ELSE CAST(trim(split_part(birth_date, ',', 2)) AS INT64) END AS birth_year, CASE WHEN contains(birth_date, '/') THEN CAST(split_part(birth_date, '/', 2) AS INT64) ELSE CASE WHEN starts_with(birth_date, 'January') THEN 1 WHEN starts_with(birth_date, 'February') THEN 2 WHEN starts_with(birth_date, 'March') THEN 3 WHEN starts_with(birth_date, 'April') THEN 4 WHEN starts_with(birth_date, 'May') THEN 5 WHEN starts_with(birth_date, 'June') THEN 6 WHEN starts_with(birth_date, 'July') THEN 7 WHEN starts_with(birth_date, 'August') THEN 8 WHEN starts_with(birth_date, 'September') THEN 9 WHEN starts_with(birth_date, 'October') THEN 10 WHEN starts_with(birth_date, 'November') THEN 11 WHEN starts_with(birth_date, 'December') THEN 12 END END AS birth_month, CASE WHEN contains(birth_date, '/') THEN CAST(split_part(birth_date, '/', 3) AS INT64) ELSE CAST(split_part(trim(split_part(birth_date, ',', 1)), ' ', 2) AS INT64) END AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p.nationality AS nationality, p.birth_date AS birth_date WITH nationality, birth_date, CASE WHEN contains(birth_date, '/') THEN CAST(regexp_extract(birth_date, '^([0-9]{4})/', 1) AS INT64) ELSE CAST(regexp_extract(birth_date, '([0-9]{4})$', 1) AS INT64) END AS birth_year, CASE WHEN contains(birth_date, '/') THEN CAST(regexp_extract(birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) ELSE CASE WHEN starts_with(birth_date, 'January') THEN 1 WHEN starts_with(birth_date, 'February') THEN 2 WHEN starts_with(birth_date, 'March') THEN 3 WHEN starts_with(birth_date, 'April') THEN 4 WHEN starts_with(birth_date, 'May') THEN 5 WHEN starts_with(birth_date, 'June') THEN 6 WHEN starts_with(birth_date, 'July') THEN 7 WHEN starts_with(birth_date, 'August') THEN 8 WHEN starts_with(birth_date, 'September') THEN 9 WHEN starts_with(birth_date, 'October') THEN 10 WHEN starts_with(birth_date, 'November') THEN 11 ELSE 12 END END AS birth_month, CASE WHEN contains(birth_date, '/') THEN CAST(regexp_extract(birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) ELSE CAST(regexp_extract(birth_date, ' ([0-9]{1,2}),', 1) AS INT64) END AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,276 @@
+{
+ "uid": "filter_queries_player#20",
+ "reply": "{\"rows\":[{\"col1\":\"George Mikan\",\"col2\":5,\"col3\":\"DePaul University\",\"name_player\":\"George Mikan\"},{\"col1\":\"Jim Pollard\",\"col2\":5,\"col3\":\"Stanford University\",\"name_player\":\"Jim Pollard\"},{\"col1\":\"Vern Mikkelsen\",\"col2\":4,\"col3\":\"Hamline University\",\"name_player\":\"Vern Mikkelsen\"},{\"col1\":\"Sam Jones\",\"col2\":10,\"col3\":\"North Carolina Central University\",\"name_player\":\"Sam Jones\"},{\"col1\":\"Tom Heinsohn\",\"col2\":8,\"col3\":\"College of the Holy Cross\",\"name_player\":\"Tom Heinsohn\"},{\"col1\":\"Satch Sanders\",\"col2\":8,\"col3\":\"New York University\",\"name_player\":\"Satch Sanders\"},{\"col1\":\"Frank Ramsey\",\"col2\":7,\"col3\":\"University of Kentucky\",\"name_player\":\"Frank Ramsey\"},{\"col1\":\"Robert Horry\",\"col2\":7,\"col3\":\"University of Alabama\",\"name_player\":\"Robert Horry\"},{\"col1\":\"Kareem Abdul-Jabbar\",\"col2\":6,\"col3\":\"University of California, Los Angeles\",\"name_player\":\"Kareem Abdul-Jabbar\"},{\"col1\":\"Michael Jordan\",\"col2\":6,\"col3\":\"University of North Carolina at Chapel Hill\",\"name_player\":\"Michael Jordan\"},{\"col1\":\"Scottie Pippen\",\"col2\":6,\"col3\":\"University of Central Arkansas\",\"name_player\":\"Scottie Pippen\"},{\"col1\":\"Bob McAdoo\",\"col2\":5,\"col3\":\"University of North Carolina at Chapel Hill\",\"name_player\":\"Bob McAdoo\"},{\"col1\":\"Dennis Rodman\",\"col2\":5,\"col3\":\"Southeastern Oklahoma State University\",\"name_player\":\"Dennis Rodman\"},{\"col1\":\"Ron Harper\",\"col2\":5,\"col3\":\"Miami University\",\"name_player\":\"Ron Harper\"},{\"col1\":\"Derek Fisher\",\"col2\":5,\"col3\":\"University of Arkansas at Little Rock\",\"name_player\":\"Derek Fisher\"},{\"col1\":\"Steve Kerr\",\"col2\":5,\"col3\":\"University of Arizona\",\"name_player\":\"Steve Kerr\"},{\"col1\":\"Tim Duncan\",\"col2\":5,\"col3\":\"Wake Forest University\",\"name_player\":\"Tim Duncan\"},{\"col1\":\"Kobe Bryant\",\"col2\":5,\"col3\":null,\"name_player\":\"Kobe Bryant\"},{\"col1\":\"Byron Scott\",\"col2\":3,\"col3\":\"Arizona State University\",\"name_player\":\"Byron Scott\"},{\"col1\":\"James Worthy\",\"col2\":3,\"col3\":\"University of North Carolina at Chapel Hill\",\"name_player\":\"James Worthy\"},{\"col1\":\"John Salley\",\"col2\":4,\"col3\":\"Georgia Institute of Technology\",\"name_player\":\"John Salley\"},{\"col1\":\"Horace Grant\",\"col2\":4,\"col3\":\"Clemson University\",\"name_player\":\"Horace Grant\"},{\"col1\":\"Tony Parker\",\"col2\":4,\"col3\":null,\"name_player\":\"Tony Parker\"},{\"col1\":\"Robert Parish\",\"col2\":4,\"col3\":\"Centenary College\",\"name_player\":\"Robert Parish\"},{\"col1\":\"Will Perdue\",\"col2\":4,\"col3\":\"Vanderbilt University\",\"name_player\":\"Will Perdue\"},{\"col1\":\"James Edwards\",\"col2\":3,\"col3\":\"University of Washington\",\"name_player\":\"James Edwards\"},{\"col1\":\"B. J. Armstrong\",\"col2\":3,\"col3\":\"University of Iowa\",\"name_player\":\"B. J. Armstrong\"},{\"col1\":\"Bill Cartwright\",\"col2\":3,\"col3\":\"University of San Francisco\",\"name_player\":\"Bill Cartwright\"},{\"col1\":\"John Paxson\",\"col2\":3,\"col3\":\"University of Notre Dame\",\"name_player\":\"John Paxson\"},{\"col1\":\"Luc Longley\",\"col2\":3,\"col3\":\"University of New Mexico\",\"name_player\":\"Luc Longley\"},{\"col1\":\"A. C. Green\",\"col2\":3,\"col3\":\"Oregon State University\",\"name_player\":\"A. C. Green\"},{\"col1\":\"Jamaal Wilkes\",\"col2\":4,\"col3\":\"University of California, Los Angeles\",\"name_player\":\"Jamaal Wilkes\"},{\"col1\":\"Kurt Rambis\",\"col2\":4,\"col3\":\"Santa Clara University\",\"name_player\":\"Kurt Rambis\"},{\"col1\":\"Michael Cooper\",\"col2\":5,\"col3\":\"University of New Mexico\",\"name_player\":\"Michael Cooper\"},{\"col1\":\"Rick Fox\",\"col2\":3,\"col3\":\"University of North Carolina at Chapel Hill\",\"name_player\":\"Rick Fox\"},{\"col1\":\"Brian Shaw\",\"col2\":3,\"col3\":\"University of California, Santa Barbara\",\"name_player\":\"Brian Shaw\"},{\"col1\":\"Randy Brown\",\"col2\":3,\"col3\":\"New Mexico State University\",\"name_player\":\"Randy Brown\"},{\"col1\":\"Bill Wennington\",\"col2\":3,\"col3\":\"St. John's University\",\"name_player\":\"Bill Wennington\"},{\"col1\":\"Jud Buechler\",\"col2\":3,\"col3\":\"University of Arizona\",\"name_player\":\"Jud Buechler\"},{\"col1\":\"Dennis Johnson\",\"col2\":3,\"col3\":\"Pepperdine University\",\"name_player\":\"Dennis Johnson\"},{\"col1\":\"Kevin McHale\",\"col2\":3,\"col3\":\"University of Minnesota\",\"name_player\":\"Kevin McHale\"},{\"col1\":\"Shaun Livingston\",\"col2\":3,\"col3\":null,\"name_player\":\"Shaun Livingston\"},{\"col1\":\"Patrick McCaw\",\"col2\":3,\"col3\":\"University of Nevada, Las Vegas\",\"name_player\":\"Patrick McCaw\"},{\"col1\":\"Udonis Haslem\",\"col2\":3,\"col3\":\"University of Florida\",\"name_player\":\"Udonis Haslem\"},{\"col1\":\"LeBron James\",\"col2\":4,\"col3\":\"St. Vincent\u2013St. Mary High School\",\"name_player\":\"LeBron James\"}]}",
+ "rows": [
+  {
+   "col1": "George Mikan",
+   "col2": 5,
+   "col3": "DePaul University",
+   "name_player": "George Mikan"
+  },
+  {
+   "col1": "Jim Pollard",
+   "col2": 5,
+   "col3": "Stanford University",
+   "name_player": "Jim Pollard"
+  },
+  {
+   "col1": "Vern Mikkelsen",
+   "col2": 4,
+   "col3": "Hamline University",
+   "name_player": "Vern Mikkelsen"
+  },
+  {
+   "col1": "Sam Jones",
+   "col2": 10,
+   "col3": "North Carolina Central University",
+   "name_player": "Sam Jones"
+  },
+  {
+   "col1": "Tom Heinsohn",
+   "col2": 8,
+   "col3": "College of the Holy Cross",
+   "name_player": "Tom Heinsohn"
+  },
+  {
+   "col1": "Satch Sanders",
+   "col2": 8,
+   "col3": "New York University",
+   "name_player": "Satch Sanders"
+  },
+  {
+   "col1": "Frank Ramsey",
+   "col2": 7,
+   "col3": "University of Kentucky",
+   "name_player": "Frank Ramsey"
+  },
+  {
+   "col1": "Robert Horry",
+   "col2": 7,
+   "col3": "University of Alabama",
+   "name_player": "Robert Horry"
+  },
+  {
+   "col1": "Kareem Abdul-Jabbar",
+   "col2": 6,
+   "col3": "University of California, Los Angeles",
+   "name_player": "Kareem Abdul-Jabbar"
+  },
+  {
+   "col1": "Michael Jordan",
+   "col2": 6,
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Scottie Pippen",
+   "col2": 6,
+   "col3": "University of Central Arkansas",
+   "name_player": "Scottie Pippen"
+  },
+  {
+   "col1": "Bob McAdoo",
+   "col2": 5,
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Bob McAdoo"
+  },
+  {
+   "col1": "Dennis Rodman",
+   "col2": 5,
+   "col3": "Southeastern Oklahoma State University",
+   "name_player": "Dennis Rodman"
+  },
+  {
+   "col1": "Ron Harper",
+   "col2": 5,
+   "col3": "Miami University",
+   "name_player": "Ron Harper"
+  },
+  {
+   "col1": "Derek Fisher",
+   "col2": 5,
+   "col3": "University of Arkansas at Little Rock",
+   "name_player": "Derek Fisher"
+  },
+  {
+   "col1": "Steve Kerr",
+   "col2": 5,
+   "col3": "University of Arizona",
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": "Tim Duncan",
+   "col2": 5,
+   "col3": "Wake Forest University",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": "Kobe Bryant",
+   "col2": 5,
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Byron Scott",
+   "col2": 3,
+   "col3": "Arizona State University",
+   "name_player": "Byron Scott"
+  },
+  {
+   "col1": "James Worthy",
+   "col2": 3,
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "James Worthy"
+  },
+  {
+   "col1": "John Salley",
+   "col2": 4,
+   "col3": "Georgia Institute of Technology",
+   "name_player": "John Salley"
+  },
+  {
+   "col1": "Horace Grant",
+   "col2": 4,
+   "col3": "Clemson University",
+   "name_player": "Horace Grant"
+  },
+  {
+   "col1": "Tony Parker",
+   "col2": 4,
+   "col3": null,
+   "name_player": "Tony Parker"
+  },
+  {
+   "col1": "Robert Parish",
+   "col2": 4,
+   "col3": "Centenary College",
+   "name_player": "Robert Parish"
+  },
+  {
+   "col1": "Will Perdue",
+   "col2": 4,
+   "col3": "Vanderbilt University",
+   "name_player": "Will Perdue"
+  },
+  {
+   "col1": "James Edwards",
+   "col2": 3,
+   "col3": "University of Washington",
+   "name_player": "James Edwards"
+  },
+  {
+   "col1": "B. J. Armstrong",
+   "col2": 3,
+   "col3": "University of Iowa",
+   "name_player": "B. J. Armstrong"
+  },
+  {
+   "col1": "Bill Cartwright",
+   "col2": 3,
+   "col3": "University of San Francisco",
+   "name_player": "Bill Cartwright"
+  },
+  {
+   "col1": "John Paxson",
+   "col2": 3,
+   "col3": "University of Notre Dame",
+   "name_player": "John Paxson"
+  },
+  {
+   "col1": "Luc Longley",
+   "col2": 3,
+   "col3": "University of New Mexico",
+   "name_player": "Luc Longley"
+  },
+  {
+   "col1": "A. C. Green",
+   "col2": 3,
+   "col3": "Oregon State University",
+   "name_player": "A. C. Green"
+  },
+  {
+   "col1": "Jamaal Wilkes",
+   "col2": 4,
+   "col3": "University of California, Los Angeles",
+   "name_player": "Jamaal Wilkes"
+  },
+  {
+   "col1": "Kurt Rambis",
+   "col2": 4,
+   "col3": "Santa Clara University",
+   "name_player": "Kurt Rambis"
+  },
+  {
+   "col1": "Michael Cooper",
+   "col2": 5,
+   "col3": "University of New Mexico",
+   "name_player": "Michael Cooper"
+  },
+  {
+   "col1": "Rick Fox",
+   "col2": 3,
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Rick Fox"
+  },
+  {
+   "col1": "Brian Shaw",
+   "col2": 3,
+   "col3": "University of California, Santa Barbara",
+   "name_player": "Brian Shaw"
+  },
+  {
+   "col1": "Randy Brown",
+   "col2": 3,
+   "col3": "New Mexico State University",
+   "name_player": "Randy Brown"
+  },
+  {
+   "col1": "Bill Wennington",
+   "col2": 3,
+   "col3": "St. John's University",
+   "name_player": "Bill Wennington"
+  },
+  {
+   "col1": "Jud Buechler",
+   "col2": 3,
+   "col3": "University of Arizona",
+   "name_player": "Jud Buechler"
+  },
+  {
+   "col1": "Dennis Johnson",
+   "col2": 3,
+   "col3": "Pepperdine University",
+   "name_player": "Dennis Johnson"
+  },
+  {
+   "col1": "Kevin McHale",
+   "col2": 3,
+   "col3": "University of Minnesota",
+   "name_player": "Kevin McHale"
+  },
+  {
+   "col1": "Shaun Livingston",
+   "col2": 3,
+   "col3": null,
+   "name_player": "Shaun Livingston"
+  },
+  {
+   "col1": "Patrick McCaw",
+   "col2": 3,
+   "col3": "University of Nevada, Las Vegas",
+   "name_player": "Patrick McCaw"
+  },
+  {
+   "col1": "Udonis Haslem",
+   "col2": 3,
+   "col3": "University of Florida",
+   "name_player": "Udonis Haslem"
+  },
+  {
+   "col1": "LeBron James",
+   "col2": 4,
+   "col3": "St. Vincent\u2013St. Mary High School",
+   "name_player": "LeBron James"
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "uid": "filter_queries_player#2",
+ "reply": "{\"rows\":[{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":63,\"name_player\":\"Michael Jordan\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":41,\"name_player\":\"LeBron James\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":54,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":67,\"name_player\":\"Magic Johnson\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":69,\"name_player\":\"Larry Bird\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":38,\"name_player\":\"Stephen Curry\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":50,\"name_player\":\"Tim Duncan\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":50,\"name_player\":\"Kevin Garnett\"},{\"col1\":\"Frontcourt\",\"col2\":\"Germany\",\"col3\":48,\"name_player\":\"Dirk Nowitzki\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":44,\"name_player\":\"Dwyane Wade\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":51,\"name_player\":\"Allen Iverson\"},{\"col1\":\"Backcourt\",\"col2\":\"Canada\",\"col3\":52,\"name_player\":\"Steve Nash\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":64,\"name_player\":\"John Stockton\"},{\"col1\":\"Frontcourt\",\"col2\":\"Nigeria\",\"col3\":63,\"name_player\":\"Hakeem Olajuwon\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":64,\"name_player\":\"Patrick Ewing\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":63,\"name_player\":\"Charles Barkley\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":61,\"name_player\":\"David Robinson\"},{\"col1\":\"Frontcourt\",\"col2\":\"United States\",\"col3\":71,\"name_player\":\"Bill Walton\"},{\"col1\":\"Backcourt\",\"col2\":\"United States\",\"col3\":40,\"name_player\":\"Pete Maravich\"}]}",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 63,
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 41,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 54,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 67,
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 69,
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 38,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 50,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 50,
+   "name_player": "Kevin Garnett"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Germany",
+   "col3": 48,
+   "name_player": "Dirk Nowitzki"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 44,
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 51,
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Canada",
+   "col3": 52,
+   "name_player": "Steve Nash"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 64,
+   "name_player": "John Stockton"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Nigeria",
+   "col3": 63,
+   "name_player": "Hakeem Olajuwon"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 64,
+   "name_player": "Patrick Ewing"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 63,
+   "name_player": "Charles Barkley"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 61,
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "United States",
+   "col3": 71,
+   "name_player": "Bill Walton"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "United States",
+   "col3": 40,
+   "name_player": "Pete Maravich"
+  }
+ ]
+}

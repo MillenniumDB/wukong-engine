@@ -1,0 +1,14 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":31.4},{\"col1\":\"Backcourt\",\"col2\":30.8}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 31.4
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 30.8
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_team#5",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1967,\"col2\":\"Houston Rockets\",\"col3\":\"Houston\",\"name_team\":\"Houston Rockets\"},{\"col1\":1967,\"col2\":\"Denver Nuggets\",\"col3\":\"Denver\",\"name_team\":\"Denver Nuggets\"},{\"col1\":1970,\"col2\":\"Cleveland Cavaliers\",\"col3\":\"Cleveland\",\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":1989,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Minneapolis\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":null,\"col2\":\"Los Angeles Clippers\",\"col3\":\"Los Angeles\",\"name_team\":\"Los Angeles Clippers\"},{\"col1\":null,\"col2\":\"Philadelphia Warriors\",\"col3\":\"San Francisco\",\"name_team\":\"Philadelphia Warriors\"},{\"col1\":null,\"col2\":\"Hawks\",\"col3\":\"Atlanta\",\"name_team\":\"Hawks\"}]}",
+ "rows": [
+  {
+   "col1": 1967,
+   "col2": "Houston Rockets",
+   "col3": "Houston",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 1967,
+   "col2": "Denver Nuggets",
+   "col3": "Denver",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 1970,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 1989,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Warriors",
+   "col3": "San Francisco",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Hawks",
+   "col3": "Atlanta",
+   "name_team": "Hawks"
+  }
+ ]
+}

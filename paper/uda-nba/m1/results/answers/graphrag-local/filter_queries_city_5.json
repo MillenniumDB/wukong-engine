@@ -1,0 +1,38 @@
+{
+ "uid": "filter_queries_city#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":670500,\"col2\":\"Illinois\",\"col3\":null,\"name_city\":\"Chicago\"},{\"col1\":157600,\"col2\":\"Colorado\",\"col3\":715522,\"name_city\":\"Denver\"},{\"col1\":null,\"col2\":\"Ontario\",\"col3\":null,\"name_city\":\"Toronto\"},{\"col1\":null,\"col2\":\"Minnesota\",\"col3\":429954,\"name_city\":\"Minneapolis\"},{\"col1\":184400,\"col2\":\"Indiana\",\"col3\":null,\"name_city\":\"Indianapolis\"}]}",
+ "rows": [
+  {
+   "col1": 670500,
+   "col2": "Illinois",
+   "col3": null,
+   "name_city": "Chicago"
+  },
+  {
+   "col1": 157600,
+   "col2": "Colorado",
+   "col3": 715522,
+   "name_city": "Denver"
+  },
+  {
+   "col1": null,
+   "col2": "Ontario",
+   "col3": null,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota",
+   "col3": 429954,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": 184400,
+   "col2": "Indiana",
+   "col3": null,
+   "name_city": "Indianapolis"
+  }
+ ],
+ "secs": 8.7
+}

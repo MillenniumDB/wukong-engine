@@ -1,0 +1,55 @@
+{
+ "uid": "join_queries#2",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":1989,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Gary Trent\",\"col4\":null,\"name_player\":\"Gary Trent\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1967,\"col2\":\"Indiana Pacers\",\"col3\":\"Paul George\",\"col4\":\"Los Angeles Clippers\",\"name_player\":\"Paul George\",\"name_team\":\"Indiana Pacers\"},{\"col1\":1989,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Anthony Edwards\",\"col4\":\"Minnesota Timberwolves\",\"name_player\":\"Anthony Edwards\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Klay Thompson\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Klay Thompson\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1970,\"col2\":\"Cleveland Cavaliers\",\"col3\":\"LeBron James\",\"col4\":\"Cleveland Cavaliers\",\"name_player\":\"LeBron James\",\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":1946,\"col2\":\"Golden State Warriors\",\"col3\":\"Kevin Durant\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Golden State Warriors\"}]}",
+ "rows": [
+  {
+   "col1": 1989,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Gary Trent",
+   "col4": null,
+   "name_player": "Gary Trent",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1967,
+   "col2": "Indiana Pacers",
+   "col3": "Paul George",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 1989,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Anthony Edwards",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Klay Thompson",
+   "col4": "Golden State Warriors",
+   "name_player": "Klay Thompson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1970,
+   "col2": "Cleveland Cavaliers",
+   "col3": "LeBron James",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 1946,
+   "col2": "Golden State Warriors",
+   "col3": "Kevin Durant",
+   "col4": "Golden State Warriors",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "uid": "join_queries#11",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"Jalen Brunson\",\"col3\":\"New York Knicks\",\"col4\":null,\"col5\":null,\"name_player\":\"Jalen Brunson\",\"name_team\":\"New York Knicks\",\"name_city\":\"New York\"},{\"col1\":1,\"col2\":\"Dennis Schr\u00f6der\",\"col3\":\"FC Germania Bleckenstedt\",\"col4\":null,\"col5\":null,\"name_player\":\"Dennis Schr\u00f6der\",\"name_team\":\"FC Germania Bleckenstedt\",\"name_city\":null},{\"col1\":null,\"col2\":\"Max Berning Fiedler\",\"col3\":\"Philadelphia 76ers\",\"col4\":null,\"col5\":null,\"name_player\":\"Max Berning Fiedler\",\"name_team\":\"Philadelphia 76ers\",\"name_city\":\"Philadelphia\"},{\"col1\":null,\"col2\":\"Dewayne \\\"D. J.\\\" White, Jr.\",\"col3\":\"Tofa\u015f\",\"col4\":null,\"col5\":null,\"name_player\":\"Dewayne \\\"D. J.\\\" White, Jr.\",\"name_team\":\"Tofa\u015f\",\"name_city\":null}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Jalen Brunson",
+   "col3": "New York Knicks",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks",
+   "name_city": "New York"
+  },
+  {
+   "col1": 1,
+   "col2": "Dennis Schr\u00f6der",
+   "col3": "FC Germania Bleckenstedt",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "FC Germania Bleckenstedt",
+   "name_city": null
+  },
+  {
+   "col1": null,
+   "col2": "Max Berning Fiedler",
+   "col3": "Philadelphia 76ers",
+   "col4": null,
+   "col5": null,
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": null,
+   "col2": "Dewayne \"D. J.\" White, Jr.",
+   "col3": "Tofa\u015f",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dewayne \"D. J.\" White, Jr.",
+   "name_team": "Tofa\u015f",
+   "name_city": null
+  }
+ ]
+}

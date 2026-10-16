@@ -1,0 +1,85 @@
+{
+  "ontology": "2_music",
+  "system": "KGGen (plain)",
+  "recorded_at": "2026-10-09T17:40:16+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "",
+  "sentences": 675,
+  "failed": 0,
+  "with_triples": 667,
+  "triples": 3396,
+  "distinct_predicates": 1017,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_a",
+      245
+    ],
+    [
+      "was_released_in",
+      173
+    ],
+    [
+      "is_an",
+      118
+    ],
+    [
+      "was_written_by",
+      105
+    ],
+    [
+      "was_released_on",
+      90
+    ],
+    [
+      "is_a_song_by",
+      64
+    ],
+    [
+      "was_produced_by",
+      56
+    ],
+    [
+      "was_a",
+      53
+    ],
+    [
+      "was_released_by",
+      49
+    ],
+    [
+      "was_composed_by",
+      40
+    ],
+    [
+      "includes",
+      40
+    ],
+    [
+      "is_scored_for",
+      34
+    ],
+    [
+      "is",
+      33
+    ],
+    [
+      "is_also_known_as",
+      29
+    ],
+    [
+      "is_the",
+      27
+    ]
+  ],
+  "usage": {
+    "calls": 1350,
+    "input_tokens": 492151,
+    "cached_tokens": 0,
+    "output_tokens": 174633,
+    "reasoning_tokens": 35003
+  },
+  "seconds": 218
+}

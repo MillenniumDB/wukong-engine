@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p MATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' RETURN p.nationality AS col1, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-15')) AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p MATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' WITH p, t, c, 2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) > 15) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p MATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' AND p.birth_date IS NOT NULL AND p.birth_date <> '' WITH p, t, c, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"September 19, 1920\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p MATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' AND p.birth_date IS NOT NULL AND p.birth_date <> '' WITH p, t, c, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE WHEN split_part(p.birth_date, ' ', 1) = 'January' THEN 1 WHEN split_part(p.birth_date, ' ', 1) = 'February' THEN 2 WHEN split_part(p.birth_date, ' ', 1) = 'March' THEN 3 WHEN split_part(p.birth_date, ' ', 1) = 'April' THEN 4 WHEN split_part(p.birth_date, ' ', 1) = 'May' THEN 5 WHEN split_part(p.birth_date, ' ', 1) = 'June' THEN 6 WHEN split_part(p.birth_date, ' ', 1) = 'July' THEN 7 WHEN split_part(p.birth_date, ' ', 1) = 'August' THEN 8 WHEN split_part(p.birth_date, ' ', 1) = 'September' THEN 9 WHEN split_part(p.birth_date, ' ', 1) = 'October' THEN 10 WHEN split_part(p.birth_date, ' ', 1) = 'November' THEN 11 WHEN split_part(p.birth_date, ' ', 1) = 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(split_part(p.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day WITH p, t, c, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 15) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 232)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p MATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' AND p.birth_date IS NOT NULL AND p.birth_date <> '' WITH p, t, c, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.b",
+   "rows": null
+  }
+ ]
+}

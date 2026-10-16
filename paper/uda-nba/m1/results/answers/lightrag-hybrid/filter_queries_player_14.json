@@ -1,0 +1,79 @@
+{
+ "uid": "filter_queries_player#14",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":2003,\"col2\":null,\"col3\":0,\"name_player\":\"LeBron James\"},{\"col1\":2015,\"col2\":30,\"col3\":null,\"name_player\":\"Jahlil Okafor\"},{\"col1\":2014,\"col2\":31,\"col3\":null,\"name_player\":\"Andrew Wiggins\"},{\"col1\":1992,\"col2\":null,\"col3\":1,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":2007,\"col2\":null,\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":2009,\"col2\":null,\"col3\":2,\"name_player\":\"Stephen Curry\"},{\"col1\":2014,\"col2\":32,\"col3\":null,\"name_player\":\"Joel Embiid\"},{\"col1\":2012,\"col2\":null,\"col3\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":2011,\"col2\":null,\"col3\":1,\"name_player\":\"Kyrie Irving\"},{\"col1\":2010,\"col2\":null,\"col3\":null,\"name_player\":\"Paul George\"},{\"col1\":2013,\"col2\":null,\"col3\":null,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":2017,\"col2\":null,\"col3\":null,\"name_player\":\"Jayson Tatum\"}]}",
+ "rows": [
+  {
+   "col1": 2003,
+   "col2": null,
+   "col3": 0,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2015,
+   "col2": 30,
+   "col3": null,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": 2014,
+   "col2": 31,
+   "col3": null,
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": 1992,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 2007,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2009,
+   "col2": null,
+   "col3": 2,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2014,
+   "col2": 32,
+   "col3": null,
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 2012,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 2011,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 2010,
+   "col2": null,
+   "col3": null,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": 2013,
+   "col2": null,
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 2017,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jayson Tatum"
+  }
+ ]
+}

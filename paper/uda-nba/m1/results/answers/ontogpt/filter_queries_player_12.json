@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#12",
+ "rows": [
+  {
+   "col1": "0",
+   "col2": "Frontcourt",
+   "col3": "June 10, 1959",
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": "0",
+   "col2": "Frontcourt",
+   "col3": "October 14, 1968",
+   "name_player": "Dwayne Kenneth Schintzius"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CAST(p.draft_pick AS INT64) = 24 RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_pick = '24' AND p.olympic_gold_medals = '0' RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

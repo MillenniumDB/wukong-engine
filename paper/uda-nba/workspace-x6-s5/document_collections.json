@@ -1,0 +1,8 @@
+{
+    "collections": {
+        "players": {"sources": [{"root": "player/player", "mode": "directory"}]},
+        "teams": {"sources": [{"root": "team/team", "mode": "directory"}]},
+        "cities": {"sources": [{"root": "city/city", "mode": "directory"}]},
+        "owners": {"sources": [{"root": "owner/owner", "mode": "directory"}]}
+    }
+}

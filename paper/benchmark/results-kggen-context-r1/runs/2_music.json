@@ -1,0 +1,77 @@
+{
+  "ontology": "2_music",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:07:06+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Music Ontology\". Use only these relations, written exactly as given: composer (musical work -> human); part of (musical work -> album); lyrics by (musical work -> human); publication date (musical work -> value); language of work or name (musical work -> language); voice type (human -> voice); instrumentation (musical work -> value); tracklist (album -> musical work); genre (musical work -> music genre); performer (musical work -> value); producer (album -> value); nominated for (album -> award ); record label (album -> value).",
+  "sentences": 675,
+  "failed": 0,
+  "with_triples": 591,
+  "triples": 1604,
+  "distinct_predicates": 13,
+  "distinct_predicates_in_ontology": 13,
+  "triples_with_ontology_predicate": 1604,
+  "top_predicates": [
+    [
+      "composer",
+      313
+    ],
+    [
+      "publication_date",
+      246
+    ],
+    [
+      "performer",
+      238
+    ],
+    [
+      "part_of",
+      162
+    ],
+    [
+      "instrumentation",
+      161
+    ],
+    [
+      "tracklist",
+      117
+    ],
+    [
+      "record_label",
+      97
+    ],
+    [
+      "genre",
+      87
+    ],
+    [
+      "producer",
+      69
+    ],
+    [
+      "voice_type",
+      54
+    ],
+    [
+      "lyrics_by",
+      27
+    ],
+    [
+      "language_of_work_or_name",
+      21
+    ],
+    [
+      "nominated_for",
+      12
+    ]
+  ],
+  "usage": {
+    "calls": 1351,
+    "input_tokens": 579333,
+    "cached_tokens": 0,
+    "output_tokens": 152216,
+    "reasoning_tokens": 65759
+  },
+  "seconds": 235
+}

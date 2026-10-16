@@ -1,0 +1,1903 @@
+{
+ "uid": "join_queries#11",
+ "rows": [
+  {
+   "col1": "0",
+   "col2": "Thomas \u201cToby\u201d Kimball",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Thomas \u201cToby\u201d Kimball",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Max Berning Fiedler",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1",
+   "col2": "Kevin Wesley Love",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Kyle Terrell Lowry",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Harrison Bryce Jordan Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Mychel Thompson",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Jay Fletcher Vincent",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Vernon Maxwell",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "1",
+   "col2": "Steven Delano Smith",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "David Michineau",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Donyell Lamar Marshall",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "1",
+   "col2": "Andre Jamal Drummond",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Chavano Rainer Buddy Hield",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "1",
+   "col2": "Kyrie Andrew Irving",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "1",
+   "col2": "Anthony Marshon Davis Jr.",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Brandan Keith Wright",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Drew Edward Gordon",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Dwayne Kenneth Schintzius",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Kurt Vincent Thomas",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Thomas James Copa",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Thomas James Copa",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Michael Carter-Williams",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1",
+   "col2": "Andre Jamal Drummond",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Joel Hans Embiid",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Lonzo Anderson Ball",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Jahlil Obika Okafor",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "0",
+   "col2": "Trent Tucker",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Trent Tucker",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Vernon Maxwell",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "William Bedford",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "William Severlyn Hewitt",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "William Severlyn Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Kostas Papanikolaou",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "D'Angelo Russell",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jrue Randall Holiday",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Alfred Joel Horford Reynoso",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Brandan Keith Wright",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Christopher Emmanuel Paul",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Christopher Emmanuel Paul",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "0",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Nikola Radi\u010devi\u0107",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "Nikola Radi\u010devi\u0107",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Guy William Rodgers",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Guy William Rodgers",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Tony Lorenzo Delk",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "David Michineau",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "0",
+   "col2": "Dewayne D. J. White, Jr.",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Donta Hall",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Kostas Papanikolaou",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Jamal Crawford",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Thomas James Copa",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Antonius Cleveland",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Jrue Randall Holiday",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "1",
+   "col2": "Kevin Wesley Love",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Tyler Christopher Herro",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Duncan McBryde Robinson",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Jimmy Butler III",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "1",
+   "col2": "Shaquille Rashaun O'Neal",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Christopher Emmanuel Paul",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Christopher Emmanuel Paul",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Gerald Madkins Jr.",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Jay Fletcher Vincent",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Jay Fletcher Vincent",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Anthony Avent",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Jahlil Obika Okafor",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Darnell Hillman",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Kurt Vincent Thomas",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Kurt Vincent Thomas",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Aaron Williams",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Rod Strickland",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Rod Strickland",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Dewayne D. J. White, Jr.",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "1",
+   "col2": "Stephen Douglas Kerr",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "William Severlyn Hewitt",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "William Severlyn Hewitt",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Devontae Calvin Cacok",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Erick Strickland",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Erick Strickland",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "John Harding Lucas II",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1",
+   "col2": "Dennis Schr\u00f6der",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Antonius Cleveland",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Caleb Martin",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Andrew Christian Wiggins",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Andrew Christian Wiggins",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Victor Wembanyama",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Jrue Randall Holiday",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Jimmy Butler III",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Kyle Terrell Lowry",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Rick Hughes",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Isiah Lord Thomas III",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Dwayne Kenneth Schintzius",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Vernon Maxwell",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Tony Lorenzo Delk",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "1",
+   "col2": "Mark Price",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Lamar Brandon Stevens",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Erazem Lorbek",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Gregory Clinton Foster",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Devontae Calvin Cacok",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Erick Strickland",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Erick Strickland",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Jamal Crawford",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Donyell Lamar Marshall",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Alfred Joel Horford Reynoso",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "1",
+   "col2": "Anthony Marshon Davis Jr.",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "0",
+   "col2": "Cade Parker Cunningham",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Jimmy Butler III",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Lonzo Anderson Ball",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "0",
+   "col2": "Jaime Jaquez Jr.",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "1",
+   "col2": "Shaquille Rashaun O'Neal",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Harrison Bryce Jordan Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Drew Edward Gordon",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jahlil Obika Okafor",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Dwayne Kenneth Schintzius",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Darnell Hillman",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "Kurt Vincent Thomas",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "1",
+   "col2": "Kevin Wayne Durant",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "David Michineau",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "David Michineau",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Hamidou Diallo",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "1",
+   "col2": "Stephen Douglas Kerr",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Brandon Goodwin",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "Donyell Lamar Marshall",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Michael Carter-Williams",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Michael Carter-Williams",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "1",
+   "col2": "Andre Jamal Drummond",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1",
+   "col2": "Kyrie Andrew Irving",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Caleb Martin",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "LeBron Raymone James Sr.",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "LeBron Raymone James Sr.",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Zachary Thomas LaVine",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Zachary Thomas LaVine",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Zach Collins",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Jalen Marquis Brunson",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Jalen Marquis Brunson",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Edrice Femi Bam Adebayo",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Edrice Femi Bam Adebayo",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Gerald Madkins Jr.",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Jay Fletcher Vincent",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "Lavoy Allen",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Trent Tucker",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Derrick Joseph Chievous",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Derrick Joseph Chievous",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Rik Smits",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Harry Junior Gallatin",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Aaron Williams",
+   "col3": "Denver Nuggets",
+   "col4": "Enos Stanley Kroenke",
+   "col5": "Colorado",
+   "name_player": "Aaron Williams",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "0",
+   "col2": "Freddie L. Boyd",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "William Bedford",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Rod Strickland",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "1",
+   "col2": "Stephen Douglas Kerr",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Donta Hall",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Jamal Crawford",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Jamal Crawford",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "1",
+   "col2": "Dennis Schr\u00f6der",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "DaMon William Monti Davis",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "DaMon William Monti Davis",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Chavano Rainer Buddy Hield",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Chavano Rainer Buddy Hield",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "1",
+   "col2": "Kyrie Andrew Irving",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jaden Edward Dhananjay Ivey",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Kyle Terrell Lowry",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "Michael Jeffrey Jordan",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Michael Jeffrey Jordan",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "0",
+   "col2": "Lonzo Anderson Ball",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Christopher Emmanuel Paul",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Carrick Felix",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Marvin Roberts",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Marvin Roberts",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Anthony Avent",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Walter Berry",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "0",
+   "col2": "Walter Berry",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Aaron Williams",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Shawn Christopher Respert",
+   "col3": "Dallas Mavericks",
+   "col4": "Mark Cuban",
+   "col5": "Texas",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "0",
+   "col2": "Hamidou Diallo",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jamal Crawford",
+   "col3": "Brooklyn Nets",
+   "col4": "Joseph Chung-Hsin Tsai",
+   "col5": "New York",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "0",
+   "col2": "Jordan Lee Crawford",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "John Harding Lucas II",
+   "col3": "Houston Rockets",
+   "col4": "Tilman Joseph Fertitta",
+   "col5": "Texas",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "1",
+   "col2": "Andre Jamal Drummond",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Chavano Rainer Buddy Hield",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Kyle Forman Anderson",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "0",
+   "col2": "Ausar XLNC Thompson",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Lavoy Allen",
+   "col3": "Philadelphia 76ers",
+   "col4": "Joshua Jordan Harris",
+   "col5": "Pennsylvania",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "0",
+   "col2": "Jahlil Obika Okafor",
+   "col3": "Detroit Pistons",
+   "col4": "Tom Gores",
+   "col5": "Michigan",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "0",
+   "col2": "Jahlil Obika Okafor",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Oklahoma",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "0",
+   "col2": "Dwayne Kenneth Schintzius",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "0",
+   "col2": "Timothy Theodore Duncan",
+   "col3": "San Antonio Spurs",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Texas",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1",
+   "col2": "Kevin Wayne Durant",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "1",
+   "col2": "Steven Delano Smith",
+   "col3": "Miami Heat",
+   "col4": "Micky Arison",
+   "col5": "Florida",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "0",
+   "col2": "David Michineau",
+   "col3": "Los Angeles Clippers",
+   "col4": "Steve Ballmer",
+   "col5": "California",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "0",
+   "col2": "Lamar Brandon Stevens",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Erazem Lorbek",
+   "col3": "Indiana Pacers",
+   "col4": "Herbert Simon",
+   "col5": "Indiana",
+   "name_player": "Erazem Lorbek",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "0",
+   "col2": "Brandon Goodwin",
+   "col3": "Cleveland Cavaliers",
+   "col4": "Daniel Gilbert",
+   "col5": "Ohio",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "0",
+   "col2": "Jordan Lee Crawford",
+   "col3": "New Orleans Pelicans",
+   "col4": "Gayle Marie LaJaunie Bird Benson",
+   "col5": "Louisiana",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "1",
+   "col2": "Dennis Schr\u00f6der",
+   "col3": "Oklahoma City Thunder",
+   "col4": "Clayton Ike Bennett",
+   "col5": "Oklahoma",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "1",
+   "col2": "Andre Jamal Drummond",
+   "col3": "Chicago Bulls",
+   "col4": "Jerry Michael Reinsdorf",
+   "col5": "Illinois",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pl:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:ExtractedFrom]->(dp:Document), (t)-[:ExtractedFrom]->(dt:Document), (c)-[:ExtractedFrom]->(dc:Document), (o)-[:ExtractedFrom]->(do:Document) WHERE pl.tenure = 'latest' RETURN DISTINCT p.fiba_world_cup AS col1, p.name AS col2, t.team_name AS col3, o.name AS col4, c.state_name AS col5, p.name AS name_player, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 189
+  }
+ ]
+}

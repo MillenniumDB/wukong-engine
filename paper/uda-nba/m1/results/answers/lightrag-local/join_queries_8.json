@@ -1,0 +1,23 @@
+{
+ "uid": "join_queries#8",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Josh Harris\",\"col2\":2011,\"col3\":\"Philadelphia 76ers\",\"col4\":1946,\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"John Y. Brown, Jr.\",\"col2\":1976,\"col3\":\"Los Angeles Clippers\",\"col4\":1970,\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"John Y. Brown, Jr.\"}]}",
+ "rows": [
+  {
+   "col1": "Josh Harris",
+   "col2": 2011,
+   "col3": "Philadelphia 76ers",
+   "col4": 1946,
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "John Y. Brown, Jr.",
+   "col2": 1976,
+   "col3": "Los Angeles Clippers",
+   "col4": 1970,
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "John Y. Brown, Jr."
+  }
+ ]
+}

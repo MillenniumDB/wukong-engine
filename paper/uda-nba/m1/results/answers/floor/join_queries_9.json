@@ -1,0 +1,246 @@
+{
+ "uid": "join_queries#9",
+ "reply": "{\"rows\":[{\"col1\":\"Hawks\",\"col2\":\"Atlanta Hawks\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Atlanta Hawks\",\"name_manager\":\"Tony Ressler\"},{\"col1\":\"Celtics\",\"col2\":\"Boston Celtics\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Boston Celtics\",\"name_manager\":\"Wyc Grousbeck\"},{\"col1\":\"Nets\",\"col2\":\"Brooklyn Nets\",\"col3\":1967,\"col4\":\"Canadian\",\"name_team\":\"Brooklyn Nets\",\"name_manager\":\"Joseph Tsai\"},{\"col1\":\"Hornets\",\"col2\":\"Charlotte Hornets\",\"col3\":1988,\"col4\":\"American\",\"name_team\":\"Charlotte Hornets\",\"name_manager\":\"Rick Schnall\"},{\"col1\":\"Bulls\",\"col2\":\"Chicago Bulls\",\"col3\":1966,\"col4\":\"American\",\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Cavaliers\",\"col2\":\"Cleveland Cavaliers\",\"col3\":1970,\"col4\":\"American\",\"name_team\":\"Cleveland Cavaliers\",\"name_manager\":\"Dan Gilbert\"},{\"col1\":\"Mavericks\",\"col2\":\"Dallas Mavericks\",\"col3\":1980,\"col4\":\"American\",\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Patrick Dumont\"},{\"col1\":\"Nuggets\",\"col2\":\"Denver Nuggets\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\"},{\"col1\":\"Pistons\",\"col2\":\"Detroit Pistons\",\"col3\":1941,\"col4\":\"American\",\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Tom Gores\"},{\"col1\":\"Warriors\",\"col2\":\"Golden State Warriors\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"},{\"col1\":\"Rockets\",\"col2\":\"Houston Rockets\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"Houston Rockets\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":\"Pacers\",\"col2\":\"Indiana Pacers\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"Indiana Pacers\",\"name_manager\":\"Herb Simon\"},{\"col1\":\"Clippers\",\"col2\":\"Los Angeles Clippers\",\"col3\":1970,\"col4\":\"American\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\"},{\"col1\":\"Lakers\",\"col2\":\"Los Angeles Lakers\",\"col3\":1947,\"col4\":\"American\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jeanie Buss\"},{\"col1\":\"Grizzlies\",\"col2\":\"Memphis Grizzlies\",\"col3\":1995,\"col4\":\"American\",\"name_team\":\"Memphis Grizzlies\",\"name_manager\":\"Robert Pera\"},{\"col1\":\"Heat\",\"col2\":\"Miami Heat\",\"col3\":1988,\"col4\":\"American\",\"name_team\":\"Miami Heat\",\"name_manager\":\"Micky Arison\"},{\"col1\":\"Bucks\",\"col2\":\"Milwaukee Bucks\",\"col3\":1968,\"col4\":\"American\",\"name_team\":\"Milwaukee Bucks\",\"name_manager\":\"Wes Edens\"},{\"col1\":\"Timberwolves\",\"col2\":\"Minnesota Timberwolves\",\"col3\":1989,\"col4\":\"American\",\"name_team\":\"Minnesota Timberwolves\",\"name_manager\":\"Glen Taylor\"},{\"col1\":\"Pelicans\",\"col2\":\"New Orleans Pelicans\",\"col3\":2002,\"col4\":\"American\",\"name_team\":\"New Orleans Pelicans\",\"name_manager\":\"Gayle Benson\"},{\"col1\":\"Knicks\",\"col2\":\"New York Knicks\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"New York Knicks\",\"name_manager\":\"James Dolan\"},{\"col1\":\"Thunder\",\"col2\":\"Oklahoma City Thunder\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"Oklahoma City Thunder\",\"name_manager\":\"Clay Bennett\"},{\"col1\":\"Magic\",\"col2\":\"Orlando Magic\",\"col3\":1989,\"col4\":\"American\",\"name_team\":\"Orlando Magic\",\"name_manager\":\"Dan DeVos\"},{\"col1\":\"76ers\",\"col2\":\"Philadelphia 76ers\",\"col3\":1946,\"col4\":\"American\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Suns\",\"col2\":\"Phoenix Suns\",\"col3\":1968,\"col4\":\"American\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Mat Ishbia\"},{\"col1\":\"Trail Blazers\",\"col2\":\"Portland Trail Blazers\",\"col3\":1970,\"col4\":\"American\",\"name_team\":\"Portland Trail Blazers\",\"name_manager\":\"Jody Allen\"},{\"col1\":\"Kings\",\"col2\":\"Sacramento Kings\",\"col3\":1923,\"col4\":\"Indian-American\",\"name_team\":\"Sacramento Kings\",\"name_manager\":\"Vivek Ranadiv\u00e9\"},{\"col1\":\"Spurs\",\"col2\":\"San Antonio Spurs\",\"col3\":1967,\"col4\":\"American\",\"name_team\":\"San Antonio Spurs\",\"name_manager\":\"Peter Holt\"},{\"col1\":\"Raptors\",\"col2\":\"Toronto Raptors\",\"col3\":1995,\"col4\":\"Canadian\",\"name_team\":\"Toronto Raptors\",\"name_manager\":\"Larry Tanenbaum\"},{\"col1\":\"Jazz\",\"col2\":\"Utah Jazz\",\"col3\":1974,\"col4\":\"American\",\"name_team\":\"Utah Jazz\",\"name_manager\":\"Ryan Smith\"},{\"col1\":\"Wizards\",\"col2\":\"Washington Wizards\",\"col3\":1961,\"col4\":\"American\",\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"}]}",
+ "rows": [
+  {
+   "col1": "Hawks",
+   "col2": "Atlanta Hawks",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": "Celtics",
+   "col2": "Boston Celtics",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Boston Celtics",
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Brooklyn Nets",
+   "col3": 1967,
+   "col4": "Canadian",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Hornets",
+   "col2": "Charlotte Hornets",
+   "col3": 1988,
+   "col4": "American",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Rick Schnall"
+  },
+  {
+   "col1": "Bulls",
+   "col2": "Chicago Bulls",
+   "col3": 1966,
+   "col4": "American",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Cavaliers",
+   "col2": "Cleveland Cavaliers",
+   "col3": 1970,
+   "col4": "American",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Mavericks",
+   "col2": "Dallas Mavericks",
+   "col3": 1980,
+   "col4": "American",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Patrick Dumont"
+  },
+  {
+   "col1": "Nuggets",
+   "col2": "Denver Nuggets",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Pistons",
+   "col2": "Detroit Pistons",
+   "col3": 1941,
+   "col4": "American",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Warriors",
+   "col2": "Golden State Warriors",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Rockets",
+   "col2": "Houston Rockets",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Pacers",
+   "col2": "Indiana Pacers",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": "Clippers",
+   "col2": "Los Angeles Clippers",
+   "col3": 1970,
+   "col4": "American",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Lakers",
+   "col2": "Los Angeles Lakers",
+   "col3": 1947,
+   "col4": "American",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Grizzlies",
+   "col2": "Memphis Grizzlies",
+   "col3": 1995,
+   "col4": "American",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": "Heat",
+   "col2": "Miami Heat",
+   "col3": 1988,
+   "col4": "American",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Bucks",
+   "col2": "Milwaukee Bucks",
+   "col3": 1968,
+   "col4": "American",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": "Timberwolves",
+   "col2": "Minnesota Timberwolves",
+   "col3": 1989,
+   "col4": "American",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": "Pelicans",
+   "col2": "New Orleans Pelicans",
+   "col3": 2002,
+   "col4": "American",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "Knicks",
+   "col2": "New York Knicks",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Thunder",
+   "col2": "Oklahoma City Thunder",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Magic",
+   "col2": "Orlando Magic",
+   "col3": 1989,
+   "col4": "American",
+   "name_team": "Orlando Magic",
+   "name_manager": "Dan DeVos"
+  },
+  {
+   "col1": "76ers",
+   "col2": "Philadelphia 76ers",
+   "col3": 1946,
+   "col4": "American",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Suns",
+   "col2": "Phoenix Suns",
+   "col3": 1968,
+   "col4": "American",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Trail Blazers",
+   "col2": "Portland Trail Blazers",
+   "col3": 1970,
+   "col4": "American",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Kings",
+   "col2": "Sacramento Kings",
+   "col3": 1923,
+   "col4": "Indian-American",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": "Spurs",
+   "col2": "San Antonio Spurs",
+   "col3": 1967,
+   "col4": "American",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter Holt"
+  },
+  {
+   "col1": "Raptors",
+   "col2": "Toronto Raptors",
+   "col3": 1995,
+   "col4": "Canadian",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Larry Tanenbaum"
+  },
+  {
+   "col1": "Jazz",
+   "col2": "Utah Jazz",
+   "col3": 1974,
+   "col4": "American",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Wizards",
+   "col2": "Washington Wizards",
+   "col3": 1961,
+   "col4": "American",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  }
+ ]
+}

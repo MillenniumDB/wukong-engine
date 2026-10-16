@@ -1,0 +1,31 @@
+{
+ "uid": "join_queries#4",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Cameroonian-American\",\"col2\":32,\"col3\":\"Philadelphia\",\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"French\",\"col2\":22,\"col3\":\"San Antonio\",\"col4\":\"San Antonio Spurs\",\"name_player\":\"Victor Wembanyama\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"American\",\"col2\":52,\"col3\":\"Sacramento\",\"col4\":\"Sacramento Kings\",\"name_player\":\"Derek Grimm\",\"name_team\":\"Sacramento Kings\"}]}",
+ "rows": [
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "French",
+   "col2": 22,
+   "col3": "San Antonio",
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "American",
+   "col2": 52,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings"
+  }
+ ]
+}

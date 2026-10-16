@@ -1,0 +1,24 @@
+{
+ "uid": "filter_queries_team#12",
+ "reply": "{\"rows\":[{\"col1\":\"Toronto\",\"col2\":1995,\"col3\":\"Toronto Raptors\",\"name_team\":\"Toronto Raptors\"},{\"col1\":\"Memphis\",\"col2\":1995,\"col3\":\"Memphis Grizzlies\",\"name_team\":\"Memphis Grizzlies\"},{\"col1\":\"New Orleans\",\"col2\":2002,\"col3\":\"New Orleans Pelicans\",\"name_team\":\"New Orleans Pelicans\"}]}",
+ "rows": [
+  {
+   "col1": "Toronto",
+   "col2": 1995,
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Memphis",
+   "col2": 1995,
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": 2002,
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  }
+ ]
+}

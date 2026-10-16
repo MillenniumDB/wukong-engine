@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_player#34",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Greek-Nigerian\",\"col2\":\"Giannis Antetokounmpo\",\"col3\":2013,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":\"American\",\"col2\":\"Jrue Holiday\",\"col3\":2009,\"name_player\":\"Jrue Holiday\"}]}",
+ "rows": [
+  {
+   "col1": "Greek-Nigerian",
+   "col2": "Giannis Antetokounmpo",
+   "col3": 2013,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "American",
+   "col2": "Jrue Holiday",
+   "col3": 2009,
+   "name_player": "Jrue Holiday"
+  }
+ ],
+ "secs": 4.5
+}

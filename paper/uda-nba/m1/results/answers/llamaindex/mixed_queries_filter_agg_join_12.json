@@ -1,0 +1,17 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document), (o)-[:MentionedIn]->(od:Document) WHERE pf.tenure = 'latest' AND ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(p.draft_pick AS INT64) <> 41)) WITH DISTINCT o.nationality AS nationality, p.olympic_gold_medals AS olympic_gold_medals WITH nationality, MIN(CAST(olympic_gold_medals AS INT64)) AS lowest_medals RETURN nationality AS col1, lowest_medals AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

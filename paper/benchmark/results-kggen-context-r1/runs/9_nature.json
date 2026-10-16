@@ -1,0 +1,73 @@
+{
+  "ontology": "9_nature",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:20:51+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Nature Ontology\". Use only these relations, written exactly as given: parent taxon (taxon -> taxon); mountain range (mountain -> mountain range); parent peak (mountain -> mountain); taxon common name (any -> value); tributary (watercourse -> watercourse); origin of the watercourse (watercourse -> body of water); mouth of the watercourse (watercourse -> watercourse); IUCN conservation status (taxon -> conservation status); taxon synonym (taxon -> synonym); reservoir created (dam -> reservoir); drainage basin (watercourse -> drainage basin); mountains classification (cycling race -> human); Habitat (taxon -> body of water).",
+  "sentences": 474,
+  "failed": 0,
+  "with_triples": 372,
+  "triples": 659,
+  "distinct_predicates": 12,
+  "distinct_predicates_in_ontology": 12,
+  "triples_with_ontology_predicate": 659,
+  "top_predicates": [
+    [
+      "taxon_common_name",
+      106
+    ],
+    [
+      "tributary",
+      104
+    ],
+    [
+      "parent_taxon",
+      100
+    ],
+    [
+      "mountain_range",
+      86
+    ],
+    [
+      "mouth_of_the_watercourse",
+      59
+    ],
+    [
+      "reservoir_created",
+      51
+    ],
+    [
+      "origin_of_the_watercourse",
+      48
+    ],
+    [
+      "taxon_synonym",
+      38
+    ],
+    [
+      "Habitat",
+      24
+    ],
+    [
+      "drainage_basin",
+      18
+    ],
+    [
+      "parent_peak",
+      17
+    ],
+    [
+      "mountains_classification",
+      8
+    ]
+  ],
+  "usage": {
+    "calls": 948,
+    "input_tokens": 416174,
+    "cached_tokens": 0,
+    "output_tokens": 88892,
+    "reasoning_tokens": 40855
+  },
+  "seconds": 155
+}

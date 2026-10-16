@@ -1,0 +1,32 @@
+{
+ "uid": "filter_queries_team#6",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Herb Simon\",\"col2\":null,\"col3\":3,\"name_team\":\"Indiana Pacers\"},{\"col1\":\"Bill Davidson\",\"col2\":null,\"col3\":3,\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Micky Arison\",\"col2\":null,\"col3\":3,\"name_team\":\"Miami Heat\"},{\"col1\":null,\"col2\":null,\"col3\":3,\"name_team\":\"Golden State Warriors\"}]}",
+ "rows": [
+  {
+   "col1": "Herb Simon",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Bill Davidson",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": null,
+   "col3": 3,
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 3,
+   "name_team": "Golden State Warriors"
+  }
+ ],
+ "secs": 5.6
+}

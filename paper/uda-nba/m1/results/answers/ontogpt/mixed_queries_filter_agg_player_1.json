@@ -1,0 +1,87 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 4
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 1
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "San Francisco Golden State Warriors",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE CAST(p.draft_pick AS INT64) < 3 RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE regexp_matches(p.draft_pick, '^[0-9]+$') AND CAST(p.draft_pick AS INT64) < 3 RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 17
+  }
+ ]
+}

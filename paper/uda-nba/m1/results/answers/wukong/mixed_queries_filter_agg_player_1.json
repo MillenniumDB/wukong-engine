@@ -1,0 +1,81 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 4
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 1
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 4
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 2
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 1
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE CAST(p.draft_pick AS INT64) < 3 RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 17
+  }
+ ]
+}

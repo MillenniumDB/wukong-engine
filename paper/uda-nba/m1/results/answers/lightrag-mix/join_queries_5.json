@@ -1,0 +1,63 @@
+{
+ "uid": "join_queries#5",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Charlotte\",\"col2\":null,\"col3\":1988,\"col4\":\"Charlotte\",\"name_team\":\"Charlotte Hornets\",\"name_city\":\"Charlotte\"},{\"col1\":\"Charlotte\",\"col2\":null,\"col3\":2019,\"col4\":\"Charlotte\",\"name_team\":\"Charlotte FC\",\"name_city\":\"Charlotte\"},{\"col1\":\"Charlotte\",\"col2\":null,\"col3\":1995,\"col4\":\"Charlotte\",\"name_team\":\"Carolina Panthers\",\"name_city\":\"Charlotte\"},{\"col1\":\"Cleveland\",\"col2\":null,\"col3\":null,\"col4\":\"Cleveland\",\"name_team\":\"Cleveland Cavaliers\",\"name_city\":\"Cleveland\"},{\"col1\":\"Denver\",\"col2\":null,\"col3\":1967,\"col4\":\"Denver\",\"name_team\":\"Denver Nuggets\",\"name_city\":\"Denver\"},{\"col1\":\"Detroit\",\"col2\":null,\"col3\":2012,\"col4\":\"Detroit\",\"name_team\":\"Detroit City FC\",\"name_city\":\"Detroit\"},{\"col1\":\"Los Angeles\",\"col2\":null,\"col3\":null,\"col4\":\"Los Angeles\",\"name_team\":\"Los Angeles Clippers\",\"name_city\":\"Los Angeles\"}]}",
+ "rows": [
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": 1988,
+   "col4": "Charlotte",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": 2019,
+   "col4": "Charlotte",
+   "name_team": "Charlotte FC",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": 1995,
+   "col4": "Charlotte",
+   "name_team": "Carolina Panthers",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": null,
+   "col3": null,
+   "col4": "Cleveland",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": 1967,
+   "col4": "Denver",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Detroit",
+   "col2": null,
+   "col3": 2012,
+   "col4": "Detroit",
+   "name_team": "Detroit City FC",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+ "uid": "filter_queries_player#26",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"University of Notre Dame\",\"col3\":null,\"name_player\":\"Fran Curran\"},{\"col1\":null,\"col2\":\"Indiana University\",\"col3\":40,\"name_player\":\"Dewayne \\\"D. J.\\\" White, Jr.\"},{\"col1\":1,\"col2\":null,\"col3\":33,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"col2\":\"University of Texas at Austin\",\"col3\":37,\"name_player\":\"Kevin Durant\"},{\"col1\":0,\"col2\":\"University of Georgia\",\"col3\":25,\"name_player\":\"Anthony Edwards\"},{\"col1\":0,\"col2\":\"University of California, Los Angeles\",\"col3\":33,\"name_player\":\"Kyle Anderson\"},{\"col1\":0,\"col2\":\"University of Kansas\",\"col3\":32,\"name_player\":\"Joel Embiid\"},{\"col1\":0,\"col2\":\"Purdue University\",\"col3\":24,\"name_player\":\"Jaden Ivey\"},{\"col1\":0,\"col2\":\"University of Wisconsin\u2013Madison\",\"col3\":36,\"name_player\":\"Frank Kaminsky\"},{\"col1\":0,\"col2\":\"University of California, Los Angeles\",\"col3\":22,\"name_player\":\"Lonzo Ball\"},{\"col1\":0,\"col2\":\"University of Texas at Austin\",\"col3\":42,\"name_player\":\"LaMarcus Aldridge\"},{\"col1\":0,\"col2\":\"Wake Forest University\",\"col3\":40,\"name_player\":\"Chris Paul\"},{\"col1\":0,\"col2\":\"University of Kentucky\",\"col3\":36,\"name_player\":\"DeMarcus Cousins\"},{\"col1\":0,\"col2\":\"Duke University\",\"col3\":30,\"name_player\":\"Jahlil Okafor\"},{\"col1\":0,\"col2\":\"Oklahoma State University\",\"col3\":25,\"name_player\":\"Cade Cunningham\"},{\"col1\":0,\"col2\":\"University of California, Los Angeles\",\"col3\":39,\"name_player\":\"Kevin Love\"},{\"col1\":0,\"col2\":\"University of North Carolina\",\"col3\":40,\"name_player\":\"Tyler Hansbrough\"},{\"col1\":0,\"col2\":\"University of Notre Dame\",\"col3\":82,\"name_player\":\"Francis Hugh Curran Sr.\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "University of Notre Dame",
+   "col3": null,
+   "name_player": "Fran Curran"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana University",
+   "col3": 40,
+   "name_player": "Dewayne \"D. J.\" White, Jr."
+  },
+  {
+   "col1": 1,
+   "col2": null,
+   "col3": 33,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "col2": "University of Texas at Austin",
+   "col3": 37,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Georgia",
+   "col3": 25,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 0,
+   "col2": "University of California, Los Angeles",
+   "col3": 33,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Kansas",
+   "col3": 32,
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 0,
+   "col2": "Purdue University",
+   "col3": 24,
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Wisconsin\u2013Madison",
+   "col3": 36,
+   "name_player": "Frank Kaminsky"
+  },
+  {
+   "col1": 0,
+   "col2": "University of California, Los Angeles",
+   "col3": 22,
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Texas at Austin",
+   "col3": 42,
+   "name_player": "LaMarcus Aldridge"
+  },
+  {
+   "col1": 0,
+   "col2": "Wake Forest University",
+   "col3": 40,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Kentucky",
+   "col3": 36,
+   "name_player": "DeMarcus Cousins"
+  },
+  {
+   "col1": 0,
+   "col2": "Duke University",
+   "col3": 30,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": 0,
+   "col2": "Oklahoma State University",
+   "col3": 25,
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": 0,
+   "col2": "University of California, Los Angeles",
+   "col3": 39,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 0,
+   "col2": "University of North Carolina",
+   "col3": 40,
+   "name_player": "Tyler Hansbrough"
+  },
+  {
+   "col1": 0,
+   "col2": "University of Notre Dame",
+   "col3": 82,
+   "name_player": "Francis Hugh Curran Sr."
+  }
+ ]
+}

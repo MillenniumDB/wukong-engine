@@ -1,0 +1,15 @@
+{
+ "uid": "agg_queries#3",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":34},{\"col1\":\"Backcourt\",\"col2\":38.67}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 34
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 38.67
+  }
+ ]
+}

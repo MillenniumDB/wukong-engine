@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR CAST(p.draft_pick AS INT64) >= 24\nMATCH (p)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR (p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) >= 24)\nMATCH (p)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR (regexp_matches(p.draft_pick, '^[0-9]+$') AND CAST(p.draft_pick AS INT64) >= 24)\nMATCH (p)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR TRY_CAST(p.draft_pick AS INT64) >= 24\nMATCH (p)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR TRY_CAST(p.draft_pick AS>: expected rule oC_SingleQuery (line: 3, offset: 28)\n\"   OR TRY_CAST(p.draft_pick AS INT64) >= 24\"\n                             ^^",
+   "rows": null
+  }
+ ]
+}

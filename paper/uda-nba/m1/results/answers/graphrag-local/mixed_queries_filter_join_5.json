@@ -1,0 +1,16 @@
+{
+ "uid": "mixed_queries_filter_join#5",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":4,\"col2\":17,\"col3\":null,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\"}]}",
+ "rows": [
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": null,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  }
+ ],
+ "secs": 5.7
+}

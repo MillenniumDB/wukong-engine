@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#34",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Nigerian-American\",\"col2\":\"Jahlil Obika Okafor\",\"col3\":2015,\"name_player\":\"Jahlil Obika Okafor\"},{\"col1\":\"American\",\"col2\":\"Anthony Edwards\",\"col3\":2020,\"name_player\":\"Anthony Edwards\"},{\"col1\":\"American\",\"col2\":\"Draymond Jamal Green\",\"col3\":2012,\"name_player\":\"Draymond Jamal Green\"},{\"col1\":\"American\",\"col2\":\"Wardell Stephen Curry II\",\"col3\":2009,\"name_player\":\"Wardell Stephen Curry II\"},{\"col1\":\"American\",\"col2\":\"LeBron James\",\"col3\":2003,\"name_player\":\"LeBron James\"},{\"col1\":\"American\",\"col2\":\"Tim Duncan\",\"col3\":1997,\"name_player\":\"Tim Duncan\"},{\"col1\":\"American\",\"col2\":\"Antonius Cleveland\",\"col3\":2017,\"name_player\":\"Antonius Cleveland\"}]}",
+ "rows": [
+  {
+   "col1": "Nigerian-American",
+   "col2": "Jahlil Obika Okafor",
+   "col3": 2015,
+   "name_player": "Jahlil Obika Okafor"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Edwards",
+   "col3": 2020,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "American",
+   "col2": "Draymond Jamal Green",
+   "col3": 2012,
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": "American",
+   "col2": "Wardell Stephen Curry II",
+   "col3": 2009,
+   "name_player": "Wardell Stephen Curry II"
+  },
+  {
+   "col1": "American",
+   "col2": "LeBron James",
+   "col3": 2003,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "American",
+   "col2": "Tim Duncan",
+   "col3": 1997,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": "American",
+   "col2": "Antonius Cleveland",
+   "col3": 2017,
+   "name_player": "Antonius Cleveland"
+  }
+ ]
+}

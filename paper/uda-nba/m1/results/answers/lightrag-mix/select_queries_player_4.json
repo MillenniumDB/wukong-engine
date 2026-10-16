@@ -1,0 +1,25 @@
+{
+ "uid": "select_queries_player#4",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":\"Anthony Davis\",\"col3\":1,\"name_player\":\"Anthony Davis\"},{\"col1\":2,\"col2\":\"Kevin Durant\",\"col3\":1,\"name_player\":\"Kevin Durant\"},{\"col1\":null,\"col2\":\"Stephen Curry\",\"col3\":2,\"name_player\":\"Stephen Curry\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "Anthony Davis",
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 2,
+   "col2": "Kevin Durant",
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": "Stephen Curry",
+   "col3": 2,
+   "name_player": "Stephen Curry"
+  }
+ ]
+}

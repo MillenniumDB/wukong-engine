@@ -1,0 +1,85 @@
+{
+  "ontology": "9_nature",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T18:15:04+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Nature Ontology\". Use only these relations, written exactly as given: parent taxon (taxon -> taxon); mountain range (mountain -> mountain range); parent peak (mountain -> mountain); taxon common name (any -> value); tributary (watercourse -> watercourse); origin of the watercourse (watercourse -> body of water); mouth of the watercourse (watercourse -> watercourse); IUCN conservation status (taxon -> conservation status); taxon synonym (taxon -> synonym); reservoir created (dam -> reservoir); drainage basin (watercourse -> drainage basin); mountains classification (cycling race -> human); Habitat (taxon -> body of water).",
+  "sentences": 474,
+  "failed": 0,
+  "with_triples": 468,
+  "triples": 2142,
+  "distinct_predicates": 742,
+  "distinct_predicates_in_ontology": 0,
+  "triples_with_ontology_predicate": 0,
+  "top_predicates": [
+    [
+      "is_located_in",
+      150
+    ],
+    [
+      "is_a",
+      90
+    ],
+    [
+      "is_in",
+      58
+    ],
+    [
+      "located_in",
+      38
+    ],
+    [
+      "won",
+      37
+    ],
+    [
+      "has_elevation",
+      35
+    ],
+    [
+      "flows_through",
+      32
+    ],
+    [
+      "is_also_known_as",
+      30
+    ],
+    [
+      "has_scientific_name",
+      27
+    ],
+    [
+      "is_part_of",
+      26
+    ],
+    [
+      "flows_into",
+      23
+    ],
+    [
+      "belongs_to_family",
+      21
+    ],
+    [
+      "is_native_to",
+      21
+    ],
+    [
+      "is",
+      20
+    ],
+    [
+      "is_a_tributary_of",
+      20
+    ]
+  ],
+  "usage": {
+    "calls": 948,
+    "input_tokens": 346881,
+    "cached_tokens": 0,
+    "output_tokens": 112571,
+    "reasoning_tokens": 21931
+  },
+  "seconds": 148
+}

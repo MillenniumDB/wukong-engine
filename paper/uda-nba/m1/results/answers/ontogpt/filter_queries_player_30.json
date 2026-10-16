@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#30",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.position <> 'Frontcourt' OR CAST(p.draft_pick AS INT64) > 10 OR CAST(p.olympic_gold_medals AS INT64) > 0 OR CAST(p.mvp_awards AS INT64) = 0 RETURN p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.position <> 'Frontcourt' OR CASE WHEN p.draft_pick = 'Undrafted' OR p.draft_pick IS NULL THEN 0 ELSE CAST(p.draft_pick AS INT64) END > 10 OR CASE WHEN p.olympic_gold_medals IS NULL THEN 0 ELSE CAST(p.olympic_gold_medals AS INT64) END > 0 OR CASE WHEN p.mvp_awards IS NULL THEN 0 ELSE CAST(p.mvp_awards AS INT64) END = 0 RETURN p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.position <> 'Frontcourt' OR TRY_CAST(p.draft_pick AS INT64) > 10 OR TRY_CAST(p.olympic_gold_medals AS INT64) > 0 OR TRY_CAST(p.mvp_awards AS INT64) = 0 RETURN p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.position <> 'Frontcourt' OR TRY_CAST(p.draft_pick AS>: expected rule oC_SingleQuery (line: 1, offset: 105)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.position <> 'Frontcourt' OR TRY_CAST(p.draft_pick AS INT64) > 10 OR TRY_CAST(p.olympic_gold_medals AS INT64) > 0 OR TRY_CAST(p.mvp_awards AS INT64) = 0 RETURN p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_p",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.position <> 'Frontcourt' OR CAST(NULLIF(p.draft_pick, 'Undrafted') AS INT64) > 10 OR CAST(p.olympic_gold_medals AS INT64) > 0 OR CAST(p.mvp_awards AS INT64) = 0 RETURN p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Not drafted\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,286 @@
+{
+ "uid": "select_queries_player#2",
+ "reply": "{\"rows\":[{\"col1\":\"St. Louis Hawks\",\"col2\":\"Bob Pettit\",\"col3\":2,\"col4\":\"1932/12/12\",\"name_player\":\"Bob Pettit\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Bill Russell\",\"col3\":5,\"col4\":\"1934/2/12\",\"name_player\":\"Bill Russell\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Kareem Abdul-Jabbar\",\"col3\":6,\"col4\":\"1947/4/16\",\"name_player\":\"Kareem Abdul-Jabbar\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Magic Johnson\",\"col3\":3,\"col4\":\"1959/8/14\",\"name_player\":\"Magic Johnson\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Michael Jordan\",\"col3\":5,\"col4\":\"1963/2/17\",\"name_player\":\"Michael Jordan\"},{\"col1\":\"Houston Rockets\",\"col2\":\"Hakeem Olajuwon\",\"col3\":1,\"col4\":\"1963/1/21\",\"name_player\":\"Hakeem Olajuwon\"},{\"col1\":\"San Antonio Spurs\",\"col2\":\"David Robinson\",\"col3\":1,\"col4\":\"1965/8/6\",\"name_player\":\"David Robinson\"},{\"col1\":\"Utah Jazz\",\"col2\":\"Karl Malone\",\"col3\":2,\"col4\":\"1963/7/24\",\"name_player\":\"Karl Malone\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Charles Barkley\",\"col3\":1,\"col4\":\"1963/2/20\",\"name_player\":\"Charles Barkley\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Larry Bird\",\"col3\":3,\"col4\":\"1956/12/7\",\"name_player\":\"Larry Bird\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Moses Malone\",\"col3\":3,\"col4\":\"1955/3/23\",\"name_player\":\"Moses Malone\"},{\"col1\":\"Chicago Bulls\",\"col2\":\"Derrick Rose\",\"col3\":1,\"col4\":\"1988/10/4\",\"name_player\":\"Derrick Rose\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"Kevin Garnett\",\"col3\":1,\"col4\":\"1976/5/19\",\"name_player\":\"Kevin Garnett\"},{\"col1\":\"San Antonio Spurs\",\"col2\":\"Tim Duncan\",\"col3\":2,\"col4\":\"1976/4/25\",\"name_player\":\"Tim Duncan\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Steve Nash\",\"col3\":2,\"col4\":\"1974/2/7\",\"name_player\":\"Steve Nash\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Dirk Nowitzki\",\"col3\":1,\"col4\":\"1978/6/19\",\"name_player\":\"Dirk Nowitzki\"},{\"col1\":\"Cleveland Cavaliers\",\"col2\":\"LeBron James\",\"col3\":4,\"col4\":\"1984/12/30\",\"name_player\":\"LeBron James\"},{\"col1\":\"Oklahoma City Thunder\",\"col2\":\"Russell Westbrook\",\"col3\":1,\"col4\":\"1988/11/12\",\"name_player\":\"Russell Westbrook\"},{\"col1\":\"Houston Rockets\",\"col2\":\"James Harden\",\"col3\":1,\"col4\":\"1989/8/26\",\"name_player\":\"James Harden\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Stephen Curry\",\"col3\":2,\"col4\":\"1988/3/14\",\"name_player\":\"Stephen Curry\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"Kevin Durant\",\"col3\":1,\"col4\":\"1988/9/29\",\"name_player\":\"Kevin Durant\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Giannis Antetokounmpo\",\"col3\":2,\"col4\":\"1994/12/6\",\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Nikola Jokic\",\"col3\":3,\"col4\":\"1995/2/19\",\"name_player\":\"Nikola Jokic\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Joel Embiid\",\"col3\":1,\"col4\":\"1994/3/16\",\"name_player\":\"Joel Embiid\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Wilt Chamberlain\",\"col3\":4,\"col4\":\"1936/8/21\",\"name_player\":\"Wilt Chamberlain\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Dave Cowens\",\"col3\":1,\"col4\":\"1948/10/25\",\"name_player\":\"Dave Cowens\"},{\"col1\":\"New York Knicks\",\"col2\":\"Willis Reed\",\"col3\":1,\"col4\":\"1942/6/25\",\"name_player\":\"Willis Reed\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Bob McAdoo\",\"col3\":1,\"col4\":\"1951/9/25\",\"name_player\":\"Bob McAdoo\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Julius Erving\",\"col3\":1,\"col4\":\"1950/2/22\",\"name_player\":\"Julius Erving\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Isiah Thomas\",\"col3\":0,\"col4\":\"1961/4/30\",\"name_player\":\"Isiah Thomas\"},{\"col1\":\"Detroit Pistons\",\"col2\":\"Bill Walton\",\"col3\":1,\"col4\":\"1952/11/5\",\"name_player\":\"Bill Walton\"},{\"col1\":\"Houston Rockets\",\"col2\":\"Yao Ming\",\"col3\":0,\"col4\":\"1980/9/12\",\"name_player\":\"Yao Ming\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Shaquille O'Neal\",\"col3\":1,\"col4\":\"1972/3/6\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Kobe Bryant\",\"col3\":1,\"col4\":\"1978/8/23\",\"name_player\":\"Kobe Bryant\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Kawhi Leonard\",\"col3\":0,\"col4\":\"1991/6/29\",\"name_player\":\"Kawhi Leonard\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Anthony Davis\",\"col3\":0,\"col4\":\"1993/3/11\",\"name_player\":\"Anthony Davis\"},{\"col1\":\"Miami Heat\",\"col2\":\"Jimmy Butler\",\"col3\":0,\"col4\":\"1989/9/14\",\"name_player\":\"Jimmy Butler\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Jayson Tatum\",\"col3\":0,\"col4\":\"1998/3/3\",\"name_player\":\"Jayson Tatum\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":\"Anthony Edwards\",\"col3\":0,\"col4\":\"2001/8/5\",\"name_player\":\"Anthony Edwards\"},{\"col1\":\"Dallas Mavericks\",\"col2\":\"Luka Doncic\",\"col3\":0,\"col4\":\"1999/2/28\",\"name_player\":\"Luka Doncic\"}]}",
+ "rows": [
+  {
+   "col1": "St. Louis Hawks",
+   "col2": "Bob Pettit",
+   "col3": 2,
+   "col4": "1932/12/12",
+   "name_player": "Bob Pettit"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Bill Russell",
+   "col3": 5,
+   "col4": "1934/2/12",
+   "name_player": "Bill Russell"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Kareem Abdul-Jabbar",
+   "col3": 6,
+   "col4": "1947/4/16",
+   "name_player": "Kareem Abdul-Jabbar"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Magic Johnson",
+   "col3": 3,
+   "col4": "1959/8/14",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Michael Jordan",
+   "col3": 5,
+   "col4": "1963/2/17",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Hakeem Olajuwon",
+   "col3": 1,
+   "col4": "1963/1/21",
+   "name_player": "Hakeem Olajuwon"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "David Robinson",
+   "col3": 1,
+   "col4": "1965/8/6",
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Karl Malone",
+   "col3": 2,
+   "col4": "1963/7/24",
+   "name_player": "Karl Malone"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Charles Barkley",
+   "col3": 1,
+   "col4": "1963/2/20",
+   "name_player": "Charles Barkley"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Larry Bird",
+   "col3": 3,
+   "col4": "1956/12/7",
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Moses Malone",
+   "col3": 3,
+   "col4": "1955/3/23",
+   "name_player": "Moses Malone"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Derrick Rose",
+   "col3": 1,
+   "col4": "1988/10/4",
+   "name_player": "Derrick Rose"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Kevin Garnett",
+   "col3": 1,
+   "col4": "1976/5/19",
+   "name_player": "Kevin Garnett"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Tim Duncan",
+   "col3": 2,
+   "col4": "1976/4/25",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Steve Nash",
+   "col3": 2,
+   "col4": "1974/2/7",
+   "name_player": "Steve Nash"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dirk Nowitzki",
+   "col3": 1,
+   "col4": "1978/6/19",
+   "name_player": "Dirk Nowitzki"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "LeBron James",
+   "col3": 4,
+   "col4": "1984/12/30",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Russell Westbrook",
+   "col3": 1,
+   "col4": "1988/11/12",
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "James Harden",
+   "col3": 1,
+   "col4": "1989/8/26",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Stephen Curry",
+   "col3": 2,
+   "col4": "1988/3/14",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Kevin Durant",
+   "col3": 1,
+   "col4": "1988/9/29",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Giannis Antetokounmpo",
+   "col3": 2,
+   "col4": "1994/12/6",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Nikola Jokic",
+   "col3": 3,
+   "col4": "1995/2/19",
+   "name_player": "Nikola Jokic"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joel Embiid",
+   "col3": 1,
+   "col4": "1994/3/16",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Wilt Chamberlain",
+   "col3": 4,
+   "col4": "1936/8/21",
+   "name_player": "Wilt Chamberlain"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Dave Cowens",
+   "col3": 1,
+   "col4": "1948/10/25",
+   "name_player": "Dave Cowens"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "Willis Reed",
+   "col3": 1,
+   "col4": "1942/6/25",
+   "name_player": "Willis Reed"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Bob McAdoo",
+   "col3": 1,
+   "col4": "1951/9/25",
+   "name_player": "Bob McAdoo"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Julius Erving",
+   "col3": 1,
+   "col4": "1950/2/22",
+   "name_player": "Julius Erving"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Isiah Thomas",
+   "col3": 0,
+   "col4": "1961/4/30",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Bill Walton",
+   "col3": 1,
+   "col4": "1952/11/5",
+   "name_player": "Bill Walton"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Yao Ming",
+   "col3": 0,
+   "col4": "1980/9/12",
+   "name_player": "Yao Ming"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Shaquille O'Neal",
+   "col3": 1,
+   "col4": "1972/3/6",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Kobe Bryant",
+   "col3": 1,
+   "col4": "1978/8/23",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Kawhi Leonard",
+   "col3": 0,
+   "col4": "1991/6/29",
+   "name_player": "Kawhi Leonard"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Anthony Davis",
+   "col3": 0,
+   "col4": "1993/3/11",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Jimmy Butler",
+   "col3": 0,
+   "col4": "1989/9/14",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Jayson Tatum",
+   "col3": 0,
+   "col4": "1998/3/3",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Anthony Edwards",
+   "col3": 0,
+   "col4": "2001/8/5",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Luka Doncic",
+   "col3": 0,
+   "col4": "1999/2/28",
+   "name_player": "Luka Doncic"
+  }
+ ]
+}

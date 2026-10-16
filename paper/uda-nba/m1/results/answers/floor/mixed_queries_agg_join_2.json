@@ -1,0 +1,18 @@
+{
+ "uid": "mixed_queries_agg_join#2",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":307573},{\"col1\":\"Taiwanese\",\"col2\":2736074},{\"col1\":\"Canadian\",\"col2\":2736074}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 307573
+  },
+  {
+   "col1": "Taiwanese",
+   "col2": 2736074
+  },
+  {
+   "col1": "Canadian",
+   "col2": 2736074
+  }
+ ]
+}

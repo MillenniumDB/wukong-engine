@@ -1,0 +1,13 @@
+parent taxon,closest parent taxon of the taxon in question (subject: taxon; object: taxon)
+mountain range,range or subrange to which the geographical item belongs (subject: mountain; object: mountain range)
+parent peak,"higher peak whose territory this peak resides in, where the territory is defined by a contour line through a key col, which can be selected based on several competing approaches (subject: mountain; object: mountain)"
+taxon common name,common or vernacular name of a biological taxon (subject: any entity; object: a value)
+tributary,watercourse that flows into an other one (for lake inflows use P200) (subject: watercourse; object: watercourse)
+origin of the watercourse,"main source of a river, stream or lake (subject: watercourse; object: body of water)"
+mouth of the watercourse,the body of water to which the watercourse drains (subject: watercourse; object: watercourse)
+IUCN conservation status,conservation status assigned by the International Union for Conservation of Nature (subject: taxon; object: conservation status)
+taxon synonym,name listed as synonym of this item's taxon name (subject: taxon; object: synonym)
+reservoir created,reservoir created upstream of a dam by this dam (subject: dam; object: reservoir)
+drainage basin,"area where precipitation collects and drains off into a common outlet, such as into a river, bay, or other body of water (subject: watercourse; object: drainage basin)"
+mountains classification,person ranked for this cycling stage or race (subject: cycling race; object: human)
+Habitat,"the natural environment in which an organism lives, or the physical environment that surrounds a species population (subject: taxon; object: body of water)"

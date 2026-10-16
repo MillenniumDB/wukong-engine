@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#1",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE c.area IS NOT NULL AND ROUND(CAST(c.area AS DOUBLE) * 2.58999, 2) = 375.78 RETURN c.state_name AS col1, ROUND(CAST(c.area AS DOUBLE) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS(CAST(c.area AS DOUBLE) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, 375.78 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS(CAST(c.area AS DOUBLE) - 375.78) < 0.01 RETURN c.state_name AS col1, CAST(c.area AS DOUBLE) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area CONTAINS '145.09' RETURN c.state_name AS col1, 375.78 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

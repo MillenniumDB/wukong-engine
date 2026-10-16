@@ -1,0 +1,111 @@
+{
+  "ontology": "2_music",
+  "workspace": "x2r3_tekgen_2_music",
+  "recorded_at": "2026-10-08T18:28:05+00:00",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "c1f61e78b4dea989aa8c2381492965183ee7b198",
+    "uncommitted_changes": false
+  },
+  "config_file": "config/default.toml",
+  "config": {
+    "pipeline": {
+      "ingest_documents": true,
+      "extract_entities": true,
+      "extract_relationships": true,
+      "export_knowledge": true
+    },
+    "llm": {
+      "model": "gpt-5.6-luna",
+      "execution_mode": "real-time",
+      "max_concurrency": 15,
+      "reasoning_effort": "low"
+    },
+    "chunking": {
+      "target_tokens": 800,
+      "overlap_tokens": 120,
+      "document_prefix_tokens": 8000
+    },
+    "export": {
+      "format": "mdb"
+    }
+  },
+  "definitions": {
+    "knowledge_model.json": "dd17870fa047b79132151f24acf36430adaa8c034dc94365c849467dcc830482",
+    "document_collections.json": "f7bc2a960542f74d7cc7b2bd5997d02a71c5a9733892eaa13e73deae2b2ae352",
+    "text2kg_mapping.json": "468ffeb16853ddbe957ae19f075fa20d1717e6e6a9dc0689030a88a282e12315"
+  },
+  "usage": {
+    "documents": 630,
+    "chunks": 630,
+    "total": {
+      "jobs": 1120,
+      "failed": 0,
+      "input_tokens": 348233,
+      "cached_tokens": 693566,
+      "cache_write_tokens": 5436,
+      "output_tokens": 68375,
+      "reasoning_tokens": 113854
+    },
+    "by_job": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 630,
+        "failed": 0,
+        "input_tokens": 30071,
+        "cached_tokens": 688446,
+        "cache_write_tokens": 3294,
+        "output_tokens": 39909,
+        "reasoning_tokens": 76627
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "jobs": 490,
+        "failed": 0,
+        "input_tokens": 318162,
+        "cached_tokens": 5120,
+        "cache_write_tokens": 2142,
+        "output_tokens": 28466,
+        "reasoning_tokens": 37227
+      }
+    ],
+    "started": "2026-10-08T18:08:17.899000+00:00",
+    "finished": "2026-10-08T18:12:18.951000+00:00",
+    "seconds": 241
+  },
+  "validation": {
+    "returned": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 2360
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "objects": 959
+      }
+    ],
+    "discarded": [
+      {
+        "job_type": "ENTITY_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Human",
+        "field": "name",
+        "reason": "MISSING_VALUE",
+        "count": 1
+      },
+      {
+        "job_type": "RELATIONSHIP_EXTRACTION",
+        "context_level": "CHUNK",
+        "type": "Performer",
+        "field": null,
+        "reason": "INVALID_ENDPOINT",
+        "count": 9
+      }
+    ],
+    "unset": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team) WHERE EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } WITH o, r, CASE WHEN CAST(split(o.birth_date, '/')[1] AS INT64) < 10 OR (CAST(split(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(o.birth_date, '/')[2] AS INT64) <= 15) THEN 2026 - CAST(split(o.birth_date, '/')[0] AS INT64) ELSE 2026 - CAST(split(o.birth_date, '/')[0] AS INT64) - 1 END AS owner_age WHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team) WHERE EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } WITH o, r, CASE WHEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/', 0) AS INT64) IS NULL THEN NULL WHEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/', 0) AS INT64) < 2026 THEN 2026 - CAST(regexp_extract(o.birth_date, '^[0-9]{4}', 0) AS INT64) - CASE WHEN CAST(regexp_extract(o.birth_date, '/([0-9]{1,2})/', 1) AS INT64) > 10 OR (CAST(regexp_extract(o.birth_date, '/([0-9]{1,2})/', 1) AS INT64) = 10 AND CAST(regexp_extract(o.birth_date, '/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64) > 15) THEN 1 ELSE 0 END ELSE NULL END AS owner_age WHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team) WHERE EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } WITH o, r, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-15') AS owner_age WHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-15'>: expected rule oC_ProjectionItem (line: 1, offset: 152)\n\"MATCH (o:Owner)-[r:Owns]->(t:Team) WHERE EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } WITH o, r, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-15') AS owner_age WHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, owner_age ",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team) WHERE EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } WITH o, r, CASE WHEN o.birth_date IS NULL OR o.birth_date = '' THEN NULL ELSE 2026 - CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) END AS owner_age WHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"Janu\" to INT64.",
+   "rows": null
+  }
+ ]
+}

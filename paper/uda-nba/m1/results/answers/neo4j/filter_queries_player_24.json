@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.olympic_gold_medals AS INT64) <> 0 AND CAST(p.mvp_awards AS INT64) = 0 AND r.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, CAST(p.draft_pick AS INT64) AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"2015-16 Most Improved Player\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE p.nationality <> 'German' AND TRY_CAST(p.olympic_gold_medals AS INT64) > 0 AND p.mvp_awards = '0' AND r.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, TRY_CAST(p.draft_pick AS INT64) AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE p.nationality <> 'German' AND TRY_CAST(p.olympic_gold_medals AS>: expected rule oC_SingleQuery (line: 1, offset: 141)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE p.nationality <> 'German' AND TRY_CAST(p.olympic_gold_medals AS INT64) > 0 AND p.mvp_awards = '0' AND r.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, TRY_CAST(p.draft_pick AS IN",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND p.mvp_awards = '0' AND r.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE p.nationality IS NOT NULL AND p.nationality <> 'German' AND p.olympic_gold_medals IS NOT NULL AND p.olympic_gold_medals <> '0' AND p.mvp_awards = '0' AND r.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

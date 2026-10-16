@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#30",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":3,\"name_player\":\"LeBron James\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":4,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":0,\"name_player\":\"Paul George\"},{\"col1\":\"Frontcourt\",\"col2\":\"Chinese\",\"col3\":0,\"name_player\":\"Yao Ming\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":1,\"name_player\":\"Charles Barkley\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 3,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 4,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 0,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Chinese",
+   "col3": 0,
+   "name_player": "Yao Ming"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 1,
+   "name_player": "Charles Barkley"
+  }
+ ]
+}

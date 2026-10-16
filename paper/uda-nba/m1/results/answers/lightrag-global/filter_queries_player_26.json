@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_player#26",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":4,\"col2\":\"University of Texas\",\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"col2\":null,\"col3\":null,\"name_player\":\"Anthony Davis\"},{\"col1\":0,\"col2\":null,\"col3\":null,\"name_player\":\"Tim Duncan\"}]}",
+ "rows": [
+  {
+   "col1": 4,
+   "col2": "University of Texas",
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "col2": null,
+   "col3": null,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tim Duncan"
+  }
+ ]
+}

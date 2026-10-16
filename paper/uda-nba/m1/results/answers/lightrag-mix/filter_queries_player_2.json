@@ -1,0 +1,91 @@
+{
+ "uid": "filter_queries_player#2",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"American\",\"col3\":53,\"name_player\":\"Rick Hughes\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":55,\"name_player\":\"Aaron Williams\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":65,\"name_player\":\"Guy Rodgers\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":62,\"name_player\":\"Walter Berry\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":62,\"name_player\":\"William Bedford\"},{\"col1\":null,\"col2\":\"American\",\"col3\":67,\"name_player\":\"Ken Green\"},{\"col1\":\"Backcourt\",\"col2\":\"Greek-American\",\"col3\":37,\"name_player\":\"Nick Calathes\"},{\"col1\":null,\"col2\":\"American\",\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":41,\"name_player\":\"LeBron James\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":29,\"name_player\":\"Devin Booker\"},{\"col1\":null,\"col2\":\"American\",\"col3\":36,\"name_player\":\"Paul George\"},{\"col1\":null,\"col2\":\"American\",\"col3\":38,\"name_player\":\"Kevin Love\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":38,\"name_player\":\"Stephen Curry\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":48,\"name_player\":\"Kobe Bryant\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": 53,
+   "name_player": "Rick Hughes"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 55,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 65,
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 62,
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 62,
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": 67,
+   "name_player": "Ken Green"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Greek-American",
+   "col3": 37,
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 41,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 29,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": 36,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 48,
+   "name_player": "Kobe Bryant"
+  }
+ ]
+}

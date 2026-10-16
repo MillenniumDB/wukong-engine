@@ -1,0 +1,192 @@
+{
+ "uid": "filter_queries_player#5",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":0,\"col3\":\"1960/1/12\",\"name_player\":\"Dominique Wilkins\"},{\"col1\":1,\"col2\":0,\"col3\":\"1965/8/24\",\"name_player\":\"Reggie Miller\"},{\"col1\":1,\"col2\":0,\"col3\":\"1969/11/26\",\"name_player\":\"Shawn Kemp\"},{\"col1\":1,\"col2\":0,\"col3\":\"1964/2/15\",\"name_player\":\"Mark Price\"},{\"col1\":1,\"col2\":0,\"col3\":\"1966/3/4\",\"name_player\":\"Kevin Johnson\"},{\"col1\":1,\"col2\":0,\"col3\":\"1965/9/9\",\"name_player\":\"Dan Majerle\"},{\"col1\":1,\"col2\":0,\"col3\":\"1965/1/9\",\"name_player\":\"Muggsy Bogues\"},{\"col1\":1,\"col2\":0,\"col3\":\"1966/1/8\",\"name_player\":\"Willie Anderson\"},{\"col1\":1,\"col2\":0,\"col3\":\"1964/10/22\",\"name_player\":\"Dra\u017een Petrovi\u0107\"},{\"col1\":2,\"col2\":0,\"col3\":\"1968/2/3\",\"name_player\":\"Vlade Divac\"},{\"col1\":1,\"col2\":0,\"col3\":\"1967/4/24\",\"name_player\":\"Dino Ra\u0111a\"},{\"col1\":1,\"col2\":0,\"col3\":\"1977/6/9\",\"name_player\":\"Peja Stojakovi\u0107\"},{\"col1\":1,\"col2\":0,\"col3\":\"1977/12/19\",\"name_player\":\"Jorge Garbajosa\"},{\"col1\":1,\"col2\":0,\"col3\":\"1981/9/28\",\"name_player\":\"Jos\u00e9 Calder\u00f3n\"},{\"col1\":1,\"col2\":0,\"col3\":\"1980/6/13\",\"name_player\":\"Juan Carlos Navarro\"},{\"col1\":2,\"col2\":0,\"col3\":\"1985/4/4\",\"name_player\":\"Rudy Fern\u00e1ndez\"},{\"col1\":1,\"col2\":0,\"col3\":\"1986/6/12\",\"name_player\":\"Sergio Rodr\u00edguez\"},{\"col1\":2,\"col2\":0,\"col3\":\"1990/2/21\",\"name_player\":\"Ricky Rubio\"},{\"col1\":1,\"col2\":0,\"col3\":\"1989/11/19\",\"name_player\":\"Kenneth Faried\"},{\"col1\":1,\"col2\":0,\"col3\":\"1989/8/7\",\"name_player\":\"DeMar DeRozan\"},{\"col1\":1,\"col2\":0,\"col3\":\"1988/12/25\",\"name_player\":\"Eric Gordon\"},{\"col1\":1,\"col2\":0,\"col3\":\"1986/8/17\",\"name_player\":\"Rudy Gay\"},{\"col1\":1,\"col2\":0,\"col3\":\"1983/4/20\",\"name_player\":\"Danny Granger\"},{\"col1\":1,\"col2\":0,\"col3\":\"1995/9/28\",\"name_player\":\"Juancho Hernang\u00f3mez\"},{\"col1\":1,\"col2\":0,\"col3\":\"1994/5/27\",\"name_player\":\"Willy Hernang\u00f3mez\"},{\"col1\":1,\"col2\":0,\"col3\":\"1993/9/15\",\"name_player\":\"Dennis Schr\u00f6der\"},{\"col1\":1,\"col2\":0,\"col3\":\"2001/8/27\",\"name_player\":\"Franz Wagner\"},{\"col1\":1,\"col2\":0,\"col3\":\"1997/4/26\",\"name_player\":\"Moritz Wagner\"},{\"col1\":1,\"col2\":0,\"col3\":\"1999/11/8\",\"name_player\":\"Isaac Bonga\"},{\"col1\":1,\"col2\":0,\"col3\":\"1978/10/12\",\"name_player\":\"Marko Jari\u0107\"},{\"col1\":1,\"col2\":0,\"col3\":\"1972/4/9\",\"name_player\":\"\u017deljko Rebra\u010da\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1960/1/12",
+   "name_player": "Dominique Wilkins"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1965/8/24",
+   "name_player": "Reggie Miller"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1969/11/26",
+   "name_player": "Shawn Kemp"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1964/2/15",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1966/3/4",
+   "name_player": "Kevin Johnson"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1965/9/9",
+   "name_player": "Dan Majerle"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1965/1/9",
+   "name_player": "Muggsy Bogues"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1966/1/8",
+   "name_player": "Willie Anderson"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1964/10/22",
+   "name_player": "Dra\u017een Petrovi\u0107"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": "1968/2/3",
+   "name_player": "Vlade Divac"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1967/4/24",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1977/6/9",
+   "name_player": "Peja Stojakovi\u0107"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1977/12/19",
+   "name_player": "Jorge Garbajosa"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1981/9/28",
+   "name_player": "Jos\u00e9 Calder\u00f3n"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1980/6/13",
+   "name_player": "Juan Carlos Navarro"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": "1985/4/4",
+   "name_player": "Rudy Fern\u00e1ndez"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1986/6/12",
+   "name_player": "Sergio Rodr\u00edguez"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": "1990/2/21",
+   "name_player": "Ricky Rubio"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1989/11/19",
+   "name_player": "Kenneth Faried"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1989/8/7",
+   "name_player": "DeMar DeRozan"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1988/12/25",
+   "name_player": "Eric Gordon"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1986/8/17",
+   "name_player": "Rudy Gay"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1983/4/20",
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1995/9/28",
+   "name_player": "Juancho Hernang\u00f3mez"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1994/5/27",
+   "name_player": "Willy Hernang\u00f3mez"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1993/9/15",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "2001/8/27",
+   "name_player": "Franz Wagner"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1997/4/26",
+   "name_player": "Moritz Wagner"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1999/11/8",
+   "name_player": "Isaac Bonga"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1978/10/12",
+   "name_player": "Marko Jari\u0107"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": "1972/4/9",
+   "name_player": "\u017deljko Rebra\u010da"
+  }
+ ]
+}

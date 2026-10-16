@@ -1,0 +1,61 @@
+{
+  "ontology": "8_politics",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-13T14:18:16+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Politics Ontology\". Use only these relations, written exactly as given: head of state (country -> human); head of government (country -> human); position held (human -> president); Member of (human -> organization); political alignment (political party -> political alignment); member of political party (human -> political party); elected in (human -> Public election); candidacy in election (human -> Public election); political ideology (political party -> political ideology).",
+  "sentences": 214,
+  "failed": 0,
+  "with_triples": 182,
+  "triples": 316,
+  "distinct_predicates": 9,
+  "distinct_predicates_in_ontology": 9,
+  "triples_with_ontology_predicate": 316,
+  "top_predicates": [
+    [
+      "Member_of",
+      88
+    ],
+    [
+      "position_held",
+      78
+    ],
+    [
+      "political_ideology",
+      63
+    ],
+    [
+      "head_of_state",
+      41
+    ],
+    [
+      "member_of_political_party",
+      22
+    ],
+    [
+      "elected_in",
+      10
+    ],
+    [
+      "political_alignment",
+      7
+    ],
+    [
+      "candidacy_in_election",
+      5
+    ],
+    [
+      "head_of_government",
+      2
+    ]
+  ],
+  "usage": {
+    "calls": 428,
+    "input_tokens": 179831,
+    "cached_tokens": 0,
+    "output_tokens": 43171,
+    "reasoning_tokens": 19872
+  },
+  "seconds": 70
+}

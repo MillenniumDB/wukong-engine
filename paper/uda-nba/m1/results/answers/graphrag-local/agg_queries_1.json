@@ -1,0 +1,16 @@
+{
+ "uid": "agg_queries#1",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":2},{\"col1\":\"Backcourt\",\"col2\":1}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 2
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 1
+  }
+ ],
+ "secs": 4.6
+}

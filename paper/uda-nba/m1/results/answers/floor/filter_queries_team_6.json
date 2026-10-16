@@ -1,0 +1,186 @@
+{
+ "uid": "filter_queries_team#6",
+ "reply": "{\"rows\":[{\"col1\":\"Tony Ressler\",\"col2\":1946,\"col3\":1,\"name_team\":\"Atlanta Hawks\"},{\"col1\":\"Wycliffe K. Grousbeck\",\"col2\":1946,\"col3\":18,\"name_team\":\"Boston Celtics\"},{\"col1\":\"Joseph Tsai\",\"col2\":1967,\"col3\":2,\"name_team\":\"Brooklyn Nets\"},{\"col1\":\"Michael Jordan\",\"col2\":1988,\"col3\":0,\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Jerry Reinsdorf\",\"col2\":1966,\"col3\":6,\"name_team\":\"Chicago Bulls\"},{\"col1\":\"Dan Gilbert\",\"col2\":1970,\"col3\":1,\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":\"Mark Cuban\",\"col2\":1980,\"col3\":1,\"name_team\":\"Dallas Mavericks\"},{\"col1\":\"Stan Kroenke\",\"col2\":1967,\"col3\":1,\"name_team\":\"Denver Nuggets\"},{\"col1\":\"Tom Gores\",\"col2\":1941,\"col3\":3,\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Joe Lacob and Peter Guber\",\"col2\":1946,\"col3\":7,\"name_team\":\"Golden State Warriors\"},{\"col1\":\"Tilman Fertitta\",\"col2\":1967,\"col3\":2,\"name_team\":\"Houston Rockets\"},{\"col1\":\"Herb Simon\",\"col2\":1967,\"col3\":3,\"name_team\":\"Indiana Pacers\"},{\"col1\":\"Steve Ballmer\",\"col2\":1970,\"col3\":0,\"name_team\":\"Los Angeles Clippers\"},{\"col1\":\"Jeanie Buss\",\"col2\":1947,\"col3\":17,\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Robert Pera\",\"col2\":1995,\"col3\":0,\"name_team\":\"Memphis Grizzlies\"},{\"col1\":\"Micky Arison\",\"col2\":1988,\"col3\":3,\"name_team\":\"Miami Heat\"},{\"col1\":\"Wes Edens and Marc Lasry\",\"col2\":1968,\"col3\":2,\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Glen Taylor\",\"col2\":1989,\"col3\":0,\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":\"Gayle Benson\",\"col2\":2002,\"col3\":0,\"name_team\":\"New Orleans Pelicans\"},{\"col1\":\"James Dolan\",\"col2\":1946,\"col3\":2,\"name_team\":\"New York Knicks\"},{\"col1\":\"Clay Bennett\",\"col2\":1967,\"col3\":1,\"name_team\":\"Oklahoma City Thunder\"},{\"col1\":\"Dan DeVos\",\"col2\":1989,\"col3\":0,\"name_team\":\"Orlando Magic\"},{\"col1\":\"Josh Harris\",\"col2\":1946,\"col3\":3,\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Robert Sarver\",\"col2\":1968,\"col3\":0,\"name_team\":\"Phoenix Suns\"},{\"col1\":\"Jody Allen\",\"col2\":1970,\"col3\":0,\"name_team\":\"Portland Trail Blazers\"},{\"col1\":\"Vivek Ranadiv\u00e9\",\"col2\":1945,\"col3\":1,\"name_team\":\"Sacramento Kings\"},{\"col1\":\"Peter J. Holt\",\"col2\":1967,\"col3\":5,\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Larry Tanenbaum\",\"col2\":1995,\"col3\":1,\"name_team\":\"Toronto Raptors\"},{\"col1\":\"Ryan Smith\",\"col2\":1974,\"col3\":0,\"name_team\":\"Utah Jazz\"},{\"col1\":\"Ted Leonsis\",\"col2\":1961,\"col3\":1,\"name_team\":\"Washington Wizards\"}]}",
+ "rows": [
+  {
+   "col1": "Tony Ressler",
+   "col2": 1946,
+   "col3": 1,
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Wycliffe K. Grousbeck",
+   "col2": 1946,
+   "col3": 18,
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Joseph Tsai",
+   "col2": 1967,
+   "col3": 2,
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Michael Jordan",
+   "col2": 1988,
+   "col3": 0,
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1966,
+   "col3": 6,
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1970,
+   "col3": 1,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": 1980,
+   "col3": 1,
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Stan Kroenke",
+   "col2": 1967,
+   "col3": 1,
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": 1941,
+   "col3": 3,
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Joe Lacob and Peter Guber",
+   "col2": 1946,
+   "col3": 7,
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Tilman Fertitta",
+   "col2": 1967,
+   "col3": 2,
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Herb Simon",
+   "col2": 1967,
+   "col3": 3,
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": 1970,
+   "col3": 0,
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": 1947,
+   "col3": 17,
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Robert Pera",
+   "col2": 1995,
+   "col3": 0,
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": 1988,
+   "col3": 3,
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Wes Edens and Marc Lasry",
+   "col2": 1968,
+   "col3": 2,
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Glen Taylor",
+   "col2": 1989,
+   "col3": 0,
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Gayle Benson",
+   "col2": 2002,
+   "col3": 0,
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "James Dolan",
+   "col2": 1946,
+   "col3": 2,
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": 1967,
+   "col3": 1,
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Dan DeVos",
+   "col2": 1989,
+   "col3": 0,
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Josh Harris",
+   "col2": 1946,
+   "col3": 3,
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Robert Sarver",
+   "col2": 1968,
+   "col3": 0,
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": 1970,
+   "col3": 0,
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Vivek Ranadiv\u00e9",
+   "col2": 1945,
+   "col3": 1,
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Peter J. Holt",
+   "col2": 1967,
+   "col3": 5,
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Larry Tanenbaum",
+   "col2": 1995,
+   "col3": 1,
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Ryan Smith",
+   "col2": 1974,
+   "col3": 0,
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": 1961,
+   "col3": 1,
+   "name_team": "Washington Wizards"
+  }
+ ]
+}

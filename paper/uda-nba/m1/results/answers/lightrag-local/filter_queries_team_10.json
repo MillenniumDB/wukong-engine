@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#10",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Detroit Pistons\",\"col2\":1937,\"col3\":\"Bill Davidson\",\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Charlotte Bobcats\",\"col2\":2004,\"col3\":\"Michael Jordan\",\"name_team\":\"Charlotte Bobcats\"}]}",
+ "rows": [
+  {
+   "col1": "Detroit Pistons",
+   "col2": 1937,
+   "col3": "Bill Davidson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": 2004,
+   "col3": "Michael Jordan",
+   "name_team": "Charlotte Bobcats"
+  }
+ ]
+}

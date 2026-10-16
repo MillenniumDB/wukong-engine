@@ -1,0 +1,234 @@
+{
+ "uid": "filter_queries_player#24",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":1,\"col3\":\"Orlando Magic\",\"name_player\":\"Patrick Ewing\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Chicago Bulls\",\"name_player\":\"Scottie Pippen\"},{\"col1\":\"American\",\"col2\":16,\"col3\":\"Utah Jazz\",\"name_player\":\"John Stockton\"},{\"col1\":\"American\",\"col2\":14,\"col3\":\"Houston Rockets\",\"name_player\":\"Clyde Drexler\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Miami Heat\",\"name_player\":\"Christian Laettner\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Detroit Pistons\",\"name_player\":\"Grant Hill\"},{\"col1\":\"American\",\"col2\":2,\"col3\":\"New York Knicks\",\"name_player\":\"Jason Kidd\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Miami Heat\",\"name_player\":\"Ray Allen\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Atlanta Hawks\",\"name_player\":\"Vince Carter\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Detroit Pistons\",\"name_player\":\"Chauncey Billups\"},{\"col1\":\"American\",\"col2\":6,\"col3\":\"Miami Heat\",\"name_player\":\"Shane Battier\"},{\"col1\":\"American\",\"col2\":23,\"col3\":\"Memphis Grizzlies\",\"name_player\":\"Tayshaun Prince\"},{\"col1\":\"American\",\"col2\":43,\"col3\":\"Phoenix Suns\",\"name_player\":\"Michael Redd\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Los Angeles Lakers\",\"name_player\":\"Carmelo Anthony\"},{\"col1\":\"American\",\"col2\":4,\"col3\":\"San Antonio Spurs\",\"name_player\":\"Chris Paul\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Chicago Bulls\",\"name_player\":\"Dwyane Wade\"},{\"col1\":\"American\",\"col2\":9,\"col3\":\"Golden State Warriors\",\"name_player\":\"Andre Iguodala\"},{\"col1\":\"American\",\"col2\":35,\"col3\":\"Golden State Warriors\",\"name_player\":\"Draymond Green\"},{\"col1\":\"American\",\"col2\":35,\"col3\":\"Denver Nuggets\",\"name_player\":\"DeAndre Jordan\"},{\"col1\":\"American\",\"col2\":13,\"col3\":\"Phoenix Suns\",\"name_player\":\"Devin Booker\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Boston Celtics\",\"name_player\":\"Jayson Tatum\"},{\"col1\":\"American\",\"col2\":6,\"col3\":\"Milwaukee Bucks\",\"name_player\":\"Damian Lillard\"},{\"col1\":\"American\",\"col2\":11,\"col3\":\"Dallas Mavericks\",\"name_player\":\"Klay Thompson\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Miami Heat\",\"name_player\":\"Kevin Love\"},{\"col1\":\"American\",\"col2\":10,\"col3\":\"Philadelphia 76ers\",\"name_player\":\"Paul George\"},{\"col1\":\"American\",\"col2\":24,\"col3\":\"Philadelphia 76ers\",\"name_player\":\"Kyle Lowry\"},{\"col1\":\"American\",\"col2\":1,\"col3\":\"Dallas Mavericks\",\"name_player\":\"Anthony Davis\"},{\"col1\":\"American\",\"col2\":1,\"col3\":\"Dallas Mavericks\",\"name_player\":\"Kyrie Irving\"},{\"col1\":\"American\",\"col2\":30,\"col3\":\"Golden State Warriors\",\"name_player\":\"Jimmy Butler\"},{\"col1\":\"American\",\"col2\":3,\"col3\":\"Los Angeles Clippers\",\"name_player\":\"Bradley Beal\"},{\"col1\":\"American\",\"col2\":17,\"col3\":\"Boston Celtics\",\"name_player\":\"Jrue Holiday\"},{\"col1\":\"Argentine\",\"col2\":57,\"col3\":\"San Antonio Spurs\",\"name_player\":\"Manu Ginobili\"},{\"col1\":\"American\",\"col2\":9,\"col3\":\"Sacramento Kings\",\"name_player\":\"DeMar DeRozan\"},{\"col1\":\"American\",\"col2\":7,\"col3\":\"Sacramento Kings\",\"name_player\":\"Harrison Barnes\"},{\"col1\":\"American\",\"col2\":5,\"col3\":\"Denver Nuggets\",\"name_player\":\"DeMarcus Cousins\"},{\"col1\":\"American\",\"col2\":9,\"col3\":\"Dallas Mavericks\",\"name_player\":\"Kemba Walker\"},{\"col1\":\"American\",\"col2\":10,\"col3\":\"Milwaukee Bucks\",\"name_player\":\"Brook Lopez\"},{\"col1\":\"American\",\"col2\":7,\"col3\":\"Phoenix Suns\",\"name_player\":\"Eric Gordon\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 1,
+   "col3": "Orlando Magic",
+   "name_player": "Patrick Ewing"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Chicago Bulls",
+   "name_player": "Scottie Pippen"
+  },
+  {
+   "col1": "American",
+   "col2": 16,
+   "col3": "Utah Jazz",
+   "name_player": "John Stockton"
+  },
+  {
+   "col1": "American",
+   "col2": 14,
+   "col3": "Houston Rockets",
+   "name_player": "Clyde Drexler"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Miami Heat",
+   "name_player": "Christian Laettner"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Detroit Pistons",
+   "name_player": "Grant Hill"
+  },
+  {
+   "col1": "American",
+   "col2": 2,
+   "col3": "New York Knicks",
+   "name_player": "Jason Kidd"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Miami Heat",
+   "name_player": "Ray Allen"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Atlanta Hawks",
+   "name_player": "Vince Carter"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Detroit Pistons",
+   "name_player": "Chauncey Billups"
+  },
+  {
+   "col1": "American",
+   "col2": 6,
+   "col3": "Miami Heat",
+   "name_player": "Shane Battier"
+  },
+  {
+   "col1": "American",
+   "col2": 23,
+   "col3": "Memphis Grizzlies",
+   "name_player": "Tayshaun Prince"
+  },
+  {
+   "col1": "American",
+   "col2": 43,
+   "col3": "Phoenix Suns",
+   "name_player": "Michael Redd"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Los Angeles Lakers",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": "American",
+   "col2": 4,
+   "col3": "San Antonio Spurs",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Chicago Bulls",
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": "American",
+   "col2": 9,
+   "col3": "Golden State Warriors",
+   "name_player": "Andre Iguodala"
+  },
+  {
+   "col1": "American",
+   "col2": 35,
+   "col3": "Golden State Warriors",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "American",
+   "col2": 35,
+   "col3": "Denver Nuggets",
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": "American",
+   "col2": 13,
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Boston Celtics",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "American",
+   "col2": 6,
+   "col3": "Milwaukee Bucks",
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": "American",
+   "col2": 11,
+   "col3": "Dallas Mavericks",
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Miami Heat",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "American",
+   "col2": 10,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "American",
+   "col2": 24,
+   "col3": "Philadelphia 76ers",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": "American",
+   "col2": 1,
+   "col3": "Dallas Mavericks",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "American",
+   "col2": 1,
+   "col3": "Dallas Mavericks",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "American",
+   "col2": 30,
+   "col3": "Golden State Warriors",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "American",
+   "col2": 3,
+   "col3": "Los Angeles Clippers",
+   "name_player": "Bradley Beal"
+  },
+  {
+   "col1": "American",
+   "col2": 17,
+   "col3": "Boston Celtics",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "Argentine",
+   "col2": 57,
+   "col3": "San Antonio Spurs",
+   "name_player": "Manu Ginobili"
+  },
+  {
+   "col1": "American",
+   "col2": 9,
+   "col3": "Sacramento Kings",
+   "name_player": "DeMar DeRozan"
+  },
+  {
+   "col1": "American",
+   "col2": 7,
+   "col3": "Sacramento Kings",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "American",
+   "col2": 5,
+   "col3": "Denver Nuggets",
+   "name_player": "DeMarcus Cousins"
+  },
+  {
+   "col1": "American",
+   "col2": 9,
+   "col3": "Dallas Mavericks",
+   "name_player": "Kemba Walker"
+  },
+  {
+   "col1": "American",
+   "col2": 10,
+   "col3": "Milwaukee Bucks",
+   "name_player": "Brook Lopez"
+  },
+  {
+   "col1": "American",
+   "col2": 7,
+   "col3": "Phoenix Suns",
+   "name_player": "Eric Gordon"
+  }
+ ]
+}

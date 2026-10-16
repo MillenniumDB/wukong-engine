@@ -1,0 +1,25 @@
+{
+ "uid": "filter_queries_player#33",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Wake Forest University\",\"col2\":41,\"col3\":\"Backcourt\",\"name_player\":\"Chris Paul\"},{\"col1\":\"University of Kansas\",\"col2\":32,\"col3\":\"Frontcourt\",\"name_player\":\"Joel Embiid\"},{\"col1\":\"UCLA\",\"col2\":38,\"col3\":\"Frontcourt\",\"name_player\":\"Kevin Love\"}]}",
+ "rows": [
+  {
+   "col1": "Wake Forest University",
+   "col2": 41,
+   "col3": "Backcourt",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "University of Kansas",
+   "col2": 32,
+   "col3": "Frontcourt",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "Kevin Love"
+  }
+ ]
+}

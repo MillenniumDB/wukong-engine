@@ -1,0 +1,32 @@
+{
+ "uid": "filter_queries_player#33",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Oklahoma State University\",\"col2\":25,\"col3\":\"Backcourt\",\"name_player\":\"Cade Cunningham\"},{\"col1\":\"University of Connecticut\",\"col2\":33,\"col3\":\"Frontcourt\",\"name_player\":\"Andre Drummond\"},{\"col1\":\"Villanova University\",\"col2\":30,\"col3\":\"Backcourt\",\"name_player\":\"Jalen Brunson\"},{\"col1\":\"Temple University\",\"col2\":37,\"col3\":\"Frontcourt\",\"name_player\":\"Lavoy Allen\"}]}",
+ "rows": [
+  {
+   "col1": "Oklahoma State University",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": "University of Connecticut",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "Villanova University",
+   "col2": 30,
+   "col3": "Backcourt",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": "Temple University",
+   "col2": 37,
+   "col3": "Frontcourt",
+   "name_player": "Lavoy Allen"
+  }
+ ],
+ "secs": 7.5
+}

@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_team#10",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"Detroit Pistons\",\"col2\":1937,\"col3\":\"Bill Davidson\",\"name_team\":\"Detroit Pistons\"},{\"col1\":\"Charlotte Hornets\",\"col2\":1988,\"col3\":\"Gabe Plotkin and Rick Schnall\",\"name_team\":\"Charlotte Hornets\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":null,\"col3\":\"Katz\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"Charlotte Bobcats\",\"col2\":2004,\"col3\":\"Michael Jordan\",\"name_team\":\"Charlotte Bobcats\"},{\"col1\":\"Phoenix Suns\",\"col2\":null,\"col3\":\"Karl Eller\",\"name_team\":\"Phoenix Suns\"},{\"col1\":\"Toronto Raptors\",\"col2\":1995,\"col3\":\"Allan Slaight\",\"name_team\":\"Toronto Raptors\"},{\"col1\":\"Minnesota Timberwolves\",\"col2\":1989,\"col3\":\"Marv Wolfenson and Harvey Ratner\",\"name_team\":\"Minnesota Timberwolves\"}]}",
+ "rows": [
+  {
+   "col1": "Detroit Pistons",
+   "col2": 1937,
+   "col3": "Bill Davidson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 1988,
+   "col3": "Gabe Plotkin and Rick Schnall",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null,
+   "col3": "Katz",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": 2004,
+   "col3": "Michael Jordan",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null,
+   "col3": "Karl Eller",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 1995,
+   "col3": "Allan Slaight",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1989,
+   "col3": "Marv Wolfenson and Harvey Ratner",
+   "name_team": "Minnesota Timberwolves"
+  }
+ ]
+}

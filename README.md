@@ -223,6 +223,11 @@ The engine does not track prices, since they change over time. The cost of a run
 
 The same counts are also stored per extraction job in the staging database, in the `input_tokens`, `cached_tokens`, `cache_write_tokens`, `output_tokens` and `reasoning_tokens` columns of the `extraction_jobs` table.
 
+The staging database also keeps what is needed to audit a run without re-running it:
+
+- the `raw_response` column of `extraction_jobs` holds each job's **LLM response exactly as received**, including responses that could not be decoded;
+- the `extraction_rejections` table counts, per job, what validation **rejected** while turning the response into knowledge objects. A row of scope `OBJECT` is an entity or relationship that was discarded, and a row of scope `VALUE` is an invalid optional value that was unset in an object that was kept. Each row carries the reason (e.g. `MISSING_VALUE`, `REGEX_MISMATCH`, `UNRESOLVED_ENDPOINT`), the type name as returned by the **LLM**, and the field involved, if any.
+
 ### Engine Configuration
 
 The engine configuration is a **TOML** file, optionally provided with the `--config` option. If none is given, the engine uses `config/default.toml`, which runs the entire pipeline with the recommended values.

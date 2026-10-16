@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#18",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) > 1) OR (p.position IS NOT NULL AND p.position <> 'Frontcourt') RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-15')) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) > 1) OR (p.position IS NOT NULL AND p.position <> 'Frontcourt') RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, 2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) > 15) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) > 1) OR (p.position IS NOT NULL AND p.position <> 'Frontcourt') RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS bd WHERE COALESCE(TRY_CAST(p.olympic_gold_medals AS INT64), 0) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt') RETURN COALESCE(TRY_CAST(p.olympic_gold_medals AS INT64), 0) AS col1, COALESCE(TRY_CAST(p.nba_championships AS INT64), 0) AS col2, date_part('year', DATE('2026-10-15')) - date_part('year', bd) - CASE WHEN date_part('month', DATE('2026-10-15')) < date_part('month', bd) OR (date_part('month', DATE('2026-10-15')) = date_part('month', bd) AND date_part('day', DATE('2026-10-15')) < date_part('day', bd)) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <COALESCE(TRY_CAST(p.olympic_gold_medals AS>: expected rule oC_ComparisonExpression (line: 1, offset: 229)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS bd WHERE COALESCE(TRY_CAST(p.olympic_gold_medals AS INT64), 0) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt') RETURN COALESCE(TRY_CAST(p.olympic_gold_medals AS INT6",
+   "rows": null
+  }
+ ]
+}

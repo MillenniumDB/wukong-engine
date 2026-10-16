@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#20",
+ "rows": [
+  {
+   "col1": "Kobe Bryant",
+   "col2": "5",
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Draymond Green",
+   "col2": "4",
+   "col3": "Michigan State Spartans",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "LeBron James",
+   "col2": "4",
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Michael Jordan",
+   "col2": "6",
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Michael Jordan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) <> 1 AND p.name <> 'Toby Kimball' RETURN p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 4
+  }
+ ]
+}

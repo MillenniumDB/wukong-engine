@@ -1,0 +1,18 @@
+{
+ "uid": "join_queries#12",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Massachusetts\",\"col2\":\"Jaylen Brown\",\"col3\":\"University of California, Berkeley\",\"col4\":1946,\"col5\":\"Boston Celtics\",\"name_player\":\"Jaylen Brown\",\"name_team\":\"Boston Celtics\",\"name_city\":\"Boston\"}]}",
+ "rows": [
+  {
+   "col1": "Massachusetts",
+   "col2": "Jaylen Brown",
+   "col3": "University of California, Berkeley",
+   "col4": 1946,
+   "col5": "Boston Celtics",
+   "name_player": "Jaylen Brown",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  }
+ ],
+ "secs": 3.8
+}

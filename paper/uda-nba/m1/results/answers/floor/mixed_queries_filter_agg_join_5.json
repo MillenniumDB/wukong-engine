@@ -1,0 +1,54 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta Hawks\",\"col2\":0},{\"col1\":\"Miami Heat\",\"col2\":0.25},{\"col1\":\"Phoenix Suns\",\"col2\":0},{\"col1\":\"Milwaukee Bucks\",\"col2\":1},{\"col1\":\"Los Angeles Lakers\",\"col2\":1},{\"col1\":\"Charlotte Hornets\",\"col2\":0},{\"col1\":\"San Antonio Spurs\",\"col2\":0},{\"col1\":\"Dallas Mavericks\",\"col2\":0},{\"col1\":\"Boston Celtics\",\"col2\":0.5},{\"col1\":\"Minnesota Timberwolves\",\"col2\":0},{\"col1\":\"New York Knicks\",\"col2\":1},{\"col1\":\"Houston Rockets\",\"col2\":0}]}",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0.25
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.5
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 1
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0
+  }
+ ]
+}

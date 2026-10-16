@@ -1,0 +1,47 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Kobe Bean Bryant\",\"col2\":\"Backcourt\",\"col3\":17,\"col4\":null,\"name_player\":\"Kobe Bean Bryant\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"LeBron Raymone James Sr.\",\"col2\":\"Frontcourt\",\"col3\":17,\"col4\":null,\"name_player\":\"LeBron Raymone James Sr.\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"Giannis Sina Ugo Antetokounmpo\",\"col2\":\"Frontcourt\",\"col3\":2,\"col4\":1968,\"name_player\":\"Giannis Sina Ugo Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"Tim Duncan\",\"col2\":\"Frontcourt\",\"col3\":5,\"col4\":null,\"name_player\":\"Tim Duncan\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"Manu Gin\u00f3bili\",\"col2\":\"Backcourt\",\"col3\":5,\"col4\":null,\"name_player\":\"Manu Gin\u00f3bili\",\"name_team\":\"San Antonio Spurs\"}]}",
+ "rows": [
+  {
+   "col1": "Kobe Bean Bryant",
+   "col2": "Backcourt",
+   "col3": 17,
+   "col4": null,
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "LeBron Raymone James Sr.",
+   "col2": "Frontcourt",
+   "col3": 17,
+   "col4": null,
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Giannis Sina Ugo Antetokounmpo",
+   "col2": "Frontcourt",
+   "col3": 2,
+   "col4": 1968,
+   "name_player": "Giannis Sina Ugo Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Tim Duncan",
+   "col2": "Frontcourt",
+   "col3": 5,
+   "col4": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Manu Gin\u00f3bili",
+   "col2": "Backcourt",
+   "col3": 5,
+   "col4": null,
+   "name_player": "Manu Gin\u00f3bili",
+   "name_team": "San Antonio Spurs"
+  }
+ ]
+}

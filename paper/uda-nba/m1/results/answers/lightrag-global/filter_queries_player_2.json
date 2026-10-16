@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_player#2",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Frontcourt\",\"col2\":\"French\",\"col3\":22,\"name_player\":\"Victor Wembanyama\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":38,\"name_player\":\"Kevin Love\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":54,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":29,\"name_player\":\"Devin Booker\"},{\"col1\":\"Backcourt\",\"col2\":\"Spanish\",\"col3\":35,\"name_player\":\"Ricky Rubio\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":55,\"name_player\":\"Aaron Williams\"},{\"col1\":\"Frontcourt\",\"col2\":\"American-Spanish\",\"col3\":60,\"name_player\":\"Eric Johnson Jones\"},{\"col1\":\"Frontcourt\",\"col2\":\"American\",\"col3\":62,\"name_player\":\"William Bedford\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":48,\"name_player\":\"Kobe Bryant\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":36,\"name_player\":\"Jrue Holiday\"},{\"col1\":\"Backcourt\",\"col2\":\"American\",\"col3\":36,\"name_player\":\"Carrick Felix\"},{\"col1\":\"Frontcourt\",\"col2\":\"Croatian\",\"col3\":59,\"name_player\":\"Dino Ra\u0111a\"}]}",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": "French",
+   "col3": 22,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 38,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 54,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 29,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "Spanish",
+   "col3": 35,
+   "name_player": "Ricky Rubio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 55,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American-Spanish",
+   "col3": 60,
+   "name_player": "Eric Johnson Jones"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "American",
+   "col3": 62,
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 48,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 36,
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": "American",
+   "col3": 36,
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": "Croatian",
+   "col3": 59,
+   "name_player": "Dino Ra\u0111a"
+  }
+ ]
+}

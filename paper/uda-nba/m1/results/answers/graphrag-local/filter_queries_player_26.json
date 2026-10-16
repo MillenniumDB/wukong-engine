@@ -1,0 +1,20 @@
+{
+ "uid": "filter_queries_player#26",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":0,\"col2\":\"University of Notre Dame\",\"col3\":82,\"name_player\":\"Francis Hugh Curran Sr.\"},{\"col1\":null,\"col2\":null,\"col3\":null,\"name_player\":\"Dewayne \u201cD. J.\u201d White, Jr.\"}]}",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": "University of Notre Dame",
+   "col3": 82,
+   "name_player": "Francis Hugh Curran Sr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dewayne \u201cD. J.\u201d White, Jr."
+  }
+ ],
+ "secs": 7.7
+}

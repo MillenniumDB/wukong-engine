@@ -1,0 +1,24 @@
+{
+  "ontology": "9_nature",
+  "system": "prompting baseline (benchmark prompts)",
+  "recorded_at": "2026-10-09T14:38:24+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": false
+  },
+  "prompts_file_sha256": "bf12bb148632b85f714bea7286a8732732846c5a2a06e1fa96bf078f48aa1aa1",
+  "prompts": 474,
+  "failed": 0,
+  "with_triples": 445,
+  "triples": 585,
+  "usage": {
+    "input_tokens": 148828,
+    "cached_tokens": 0,
+    "output_tokens": 63299,
+    "reasoning_tokens": 52890
+  },
+  "seconds": 89
+}

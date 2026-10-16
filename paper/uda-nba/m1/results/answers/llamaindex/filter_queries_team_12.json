@@ -1,0 +1,145 @@
+{
+ "uid": "filter_queries_team#12",
+ "rows": [
+  {
+   "col1": "Phoenix",
+   "col2": "1997",
+   "col3": "Phoenix Mercury",
+   "name_team": "Phoenix Mercury"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1993",
+   "col3": "Colorado Rockies",
+   "name_team": "Colorado Rockies"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2006",
+   "col3": "Denver Outlaws",
+   "name_team": "Denver Outlaws"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2018",
+   "col3": "Denver Bandits",
+   "name_team": "Denver Bandits"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2017",
+   "col3": "Boston Uprising",
+   "name_team": "Boston Uprising"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "2014",
+   "col3": "Indy Eleven",
+   "name_team": "Indy Eleven"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "2014",
+   "col3": "Indy Fuel",
+   "name_team": "Indy Fuel"
+  },
+  {
+   "col1": "Allen",
+   "col2": "2009",
+   "col3": "Allen Americans",
+   "name_team": "Allen Americans"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2017",
+   "col3": "San Francisco Shock",
+   "name_team": "San Francisco Shock"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1997",
+   "col3": "Chicago Fire FC",
+   "name_team": "Chicago Fire FC"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1997",
+   "col3": "Chicago Fire",
+   "name_team": "Chicago Fire"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "2018",
+   "col3": "Utah Warriors",
+   "name_team": "Utah Warriors"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "2006",
+   "col3": "Utah Blaze",
+   "name_team": "Utah Blaze"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "2019",
+   "col3": "Salt Lake Stallions",
+   "name_team": "Salt Lake Stallions"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "1994",
+   "col3": "Salt Lake Bees",
+   "name_team": "Salt Lake Bees"
+  },
+  {
+   "col1": "West Valley City",
+   "col2": "2005",
+   "col3": "Utah Grizzlies",
+   "name_team": "Utah Grizzlies"
+  },
+  {
+   "col1": "Houston",
+   "col2": "2006",
+   "col3": "Houston Dynamo",
+   "name_team": "Houston Dynamo"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2012",
+   "col3": "Detroit City FC",
+   "name_team": "Detroit City FC"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "1995",
+   "col3": "Carolina Panthers",
+   "name_team": "Carolina Panthers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2022",
+   "col3": "Charlotte FC",
+   "name_team": "Charlotte FC"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2017",
+   "col3": "Atlanta United FC",
+   "name_team": "Atlanta United FC"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1999",
+   "col3": "Atlanta Thrashers",
+   "name_team": "Atlanta Thrashers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:LocatedIn]->(c:City)\nWHERE EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND (\n    (CAST(t.founded_year AS INT64) > 1989\n     AND NOT EXISTS {\n       MATCH (o:Owner)-[:Owns]->(t)\n       WHERE o.name = 'Gabe Plotkin and Rick Schnall'\n     })\n    OR\n    (CAST(t.founded_year AS INT64) = 1967\n     AND EXISTS {\n       MATCH (o:Owner)-[:Owns]->(t)\n       WHERE o.name = 'Atlanta Spirit LLC'\n     })\n  )\nRETURN c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

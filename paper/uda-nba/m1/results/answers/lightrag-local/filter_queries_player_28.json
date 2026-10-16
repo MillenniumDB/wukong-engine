@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#28",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":2003,\"col2\":null,\"col3\":\"American\",\"name_player\":\"Carmelo Anthony\"},{\"col1\":null,\"col2\":null,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":2007,\"col2\":null,\"col3\":null,\"name_player\":\"Kevin Durant\"},{\"col1\":1992,\"col2\":54,\"col3\":\"American\",\"name_player\":\"Shaquille O'Neal\"}]}",
+ "rows": [
+  {
+   "col1": 2003,
+   "col2": null,
+   "col3": "American",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2007,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1992,
+   "col2": 54,
+   "col3": "American",
+   "name_player": "Shaquille O'Neal"
+  }
+ ]
+}

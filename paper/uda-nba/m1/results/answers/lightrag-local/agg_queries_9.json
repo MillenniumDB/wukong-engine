@@ -1,0 +1,11 @@
+{
+ "uid": "agg_queries#9",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":4}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 4
+  }
+ ]
+}

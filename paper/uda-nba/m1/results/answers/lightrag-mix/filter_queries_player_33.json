@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#33",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"University of Kansas\",\"col2\":32,\"col3\":\"Frontcourt\",\"name_player\":\"Joel Embiid\"},{\"col1\":\"Wake Forest University\",\"col2\":41,\"col3\":\"Backcourt\",\"name_player\":\"Chris Paul\"},{\"col1\":\"Villanova University\",\"col2\":30,\"col3\":\"Backcourt\",\"name_player\":\"Jalen Brunson\"},{\"col1\":\"University of Connecticut\",\"col2\":33,\"col3\":\"Frontcourt\",\"name_player\":\"Andre Drummond\"},{\"col1\":\"Fresno State\",\"col2\":36,\"col3\":\"Frontcourt\",\"name_player\":\"Paul George\"},{\"col1\":\"Duke University\",\"col2\":30,\"col3\":\"Frontcourt\",\"name_player\":\"Jahlil Okafor\"}]}",
+ "rows": [
+  {
+   "col1": "University of Kansas",
+   "col2": 32,
+   "col3": "Frontcourt",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "Wake Forest University",
+   "col2": 41,
+   "col3": "Backcourt",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Villanova University",
+   "col2": 30,
+   "col3": "Backcourt",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": "University of Connecticut",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "Fresno State",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "Duke University",
+   "col2": 30,
+   "col3": "Frontcourt",
+   "name_player": "Jahlil Okafor"
+  }
+ ]
+}

@@ -1,0 +1,139 @@
+{
+ "uid": "select_queries_player#2",
+ "rows": [
+  {
+   "col1": "Washington Wizards",
+   "col2": "Caron Butler",
+   "col3": null,
+   "col4": null,
+   "name_player": "Caron Butler"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Bonzi Wells",
+   "col3": null,
+   "col4": null,
+   "name_player": "Bonzi Wells"
+  },
+  {
+   "col1": "Lokomotiv Kuban",
+   "col2": "Antonius Cleveland",
+   "col3": null,
+   "col4": "February 2, 1994",
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": "Scott Lloyd",
+   "col3": null,
+   "col4": null,
+   "name_player": "Scott Lloyd"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Darius Miles",
+   "col3": null,
+   "col4": null,
+   "name_player": "Darius Miles"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Greg Oden",
+   "col3": null,
+   "col4": null,
+   "name_player": "Greg Oden"
+  },
+  {
+   "col1": "Debreceni EAC",
+   "col2": "Ronald Moore",
+   "col3": null,
+   "col4": null,
+   "name_player": "Ronald Moore"
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": "Randy Smith",
+   "col3": null,
+   "col4": null,
+   "name_player": "Randy Smith"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Bradley Beal",
+   "col3": null,
+   "col4": null,
+   "name_player": "Bradley Beal"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Sebastian Telfair",
+   "col3": null,
+   "col4": null,
+   "name_player": "Sebastian Telfair"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Stanley M. Noszka",
+   "col3": null,
+   "col4": "September 19, 1920",
+   "name_player": "Stanley M. Noszka"
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": "Swen Nater",
+   "col3": null,
+   "col4": null,
+   "name_player": "Swen Nater"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Antawn Jamison",
+   "col3": null,
+   "col4": null,
+   "name_player": "Antawn Jamison"
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": "World B. Free",
+   "col3": null,
+   "col4": null,
+   "name_player": "World B. Free"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Gilbert Arenas",
+   "col3": null,
+   "col4": null,
+   "name_player": "Gilbert Arenas"
+  },
+  {
+   "col1": "Olympiacos",
+   "col2": "Kostas Papanikolaou",
+   "col3": null,
+   "col4": null,
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Amar'e Stoudemire",
+   "col3": null,
+   "col4": null,
+   "name_player": "Amar'e Stoudemire"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Jeff McInnis",
+   "col3": null,
+   "col4": null,
+   "name_player": "Jeff McInnis"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nRETURN t.team_name AS col1, p.name AS col2, p.mvp_awards AS col3, p.birth_date AS col4, p.name AS name_player",
+   "error": null,
+   "rows": 18
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":0},{\"col1\":\"Phoenix Suns\",\"col2\":0}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  }
+ ],
+ "secs": 5.9
+}

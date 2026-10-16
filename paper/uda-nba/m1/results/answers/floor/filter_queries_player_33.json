@@ -1,0 +1,96 @@
+{
+ "uid": "filter_queries_player#33",
+ "reply": "{\"rows\":[{\"col1\":\"Wake Forest\",\"col2\":41,\"col3\":\"Backcourt\",\"name_player\":\"Chris Paul\"},{\"col1\":\"UCLA\",\"col2\":37,\"col3\":\"Backcourt\",\"name_player\":\"Russell Westbrook\"},{\"col1\":\"UCLA\",\"col2\":38,\"col3\":\"Frontcourt\",\"name_player\":\"Kevin Love\"},{\"col1\":\"Texas A&M\",\"col2\":38,\"col3\":\"Frontcourt\",\"name_player\":\"DeAndre Jordan\"},{\"col1\":\"Duke\",\"col2\":34,\"col3\":\"Backcourt\",\"name_player\":\"Kyrie Irving\"},{\"col1\":\"Arizona State\",\"col2\":36,\"col3\":\"Backcourt\",\"name_player\":\"James Harden\"},{\"col1\":\"Kentucky\",\"col2\":33,\"col3\":\"Frontcourt\",\"name_player\":\"Anthony Davis\"},{\"col1\":\"Davidson\",\"col2\":38,\"col3\":\"Backcourt\",\"name_player\":\"Stephen Curry\"},{\"col1\":\"Duke\",\"col2\":28,\"col3\":\"Frontcourt\",\"name_player\":\"Jayson Tatum\"},{\"col1\":\"Kentucky\",\"col2\":29,\"col3\":\"Frontcourt\",\"name_player\":\"Bam Adebayo\"},{\"col1\":\"UCLA\",\"col2\":36,\"col3\":\"Backcourt\",\"name_player\":\"Jrue Holiday\"},{\"col1\":\"Kentucky\",\"col2\":29,\"col3\":\"Backcourt\",\"name_player\":\"Devin Booker\"},{\"col1\":\"Georgia\",\"col2\":25,\"col3\":\"Backcourt\",\"name_player\":\"Anthony Edwards\"},{\"col1\":\"Colorado\",\"col2\":32,\"col3\":\"Backcourt\",\"name_player\":\"Derrick White\"},{\"col1\":\"Iowa State\",\"col2\":26,\"col3\":\"Backcourt\",\"name_player\":\"Tyrese Haliburton\"}]}",
+ "rows": [
+  {
+   "col1": "Wake Forest",
+   "col2": 41,
+   "col3": "Backcourt",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 37,
+   "col3": "Backcourt",
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Texas A&M",
+   "col2": 38,
+   "col3": "Frontcourt",
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": "Duke",
+   "col2": 34,
+   "col3": "Backcourt",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "Arizona State",
+   "col2": 36,
+   "col3": "Backcourt",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": "Kentucky",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "Davidson",
+   "col2": 38,
+   "col3": "Backcourt",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Duke",
+   "col2": 28,
+   "col3": "Frontcourt",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "Kentucky",
+   "col2": 29,
+   "col3": "Frontcourt",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 36,
+   "col3": "Backcourt",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "Kentucky",
+   "col2": 29,
+   "col3": "Backcourt",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "Georgia",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "Colorado",
+   "col2": 32,
+   "col3": "Backcourt",
+   "name_player": "Derrick White"
+  },
+  {
+   "col1": "Iowa State",
+   "col2": 26,
+   "col3": "Backcourt",
+   "name_player": "Tyrese Haliburton"
+  }
+ ]
+}

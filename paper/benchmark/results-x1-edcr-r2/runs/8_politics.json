@@ -1,0 +1,23 @@
+{
+  "ontology": "8_politics",
+  "system": "EDC+R (target schema, one refinement round)",
+  "recorded_at": "2026-10-13T23:40:42+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "few_shot_examples": "wiki-nre",
+  "sentences": 214,
+  "shards": 3,
+  "failed_shards": [],
+  "usage": {
+    "calls": 2337,
+    "failed_calls": 0,
+    "input_tokens": 1466492,
+    "cached_tokens": 23927,
+    "output_tokens": 174816,
+    "reasoning_tokens": 102646
+  },
+  "seconds": 10199,
+  "with_triples": 196,
+  "triples": 394
+}

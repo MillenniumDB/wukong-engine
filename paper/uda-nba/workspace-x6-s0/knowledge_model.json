@@ -1,0 +1,221 @@
+{
+    "extraction_config": {
+        "llm": {
+            "language": "en"
+        }
+    },
+    "entity_types": {
+        "Player": {
+            "description": "A basketball player who has played in the NBA.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "Full name of the player.",
+                    "required": true
+                },
+                "birth_date": {
+                    "data_type": "string",
+                    "description": "Birth date of the player."
+                },
+                "death_date": {
+                    "data_type": "string",
+                    "description": "Date of death of the player, if the player has died."
+                },
+                "nationality": {
+                    "data_type": "string",
+                    "description": "Nationality of the player, as a demonym."
+                },
+                "position": {
+                    "data_type": "string",
+                    "description": "The player's primary position."
+                },
+                "draft_pick": {
+                    "data_type": "string",
+                    "description": "Overall pick number at which the player was selected in the NBA draft."
+                },
+                "draft_year": {
+                    "data_type": "string",
+                    "description": "Year in which the player was selected in the NBA draft."
+                },
+                "college": {
+                    "data_type": "string",
+                    "description": "The college the player attended, if any."
+                },
+                "nba_championships": {
+                    "data_type": "string",
+                    "description": "Number of NBA championships the player has won."
+                },
+                "mvp_awards": {
+                    "data_type": "string",
+                    "description": "Number of NBA Most Valuable Player awards the player has won."
+                },
+                "olympic_gold_medals": {
+                    "data_type": "string",
+                    "description": "Number of Olympic gold medals the player has won."
+                },
+                "fiba_world_cup": {
+                    "data_type": "string",
+                    "description": "Number of FIBA World Cup titles the player has won."
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "players",
+                    "teams",
+                    "cities",
+                    "owners"
+                ]
+            }
+        },
+        "Team": {
+            "description": "An NBA franchise, current or defunct.",
+            "primary_key": "team_name",
+            "deduplication": "primary_key",
+            "fields": {
+                "team_name": {
+                    "data_type": "string",
+                    "description": "Full name of the team: location and nickname.",
+                    "required": true
+                },
+                "founded_year": {
+                    "data_type": "string",
+                    "description": "Year in which the franchise was founded."
+                },
+                "championships": {
+                    "data_type": "string",
+                    "description": "Number of NBA championships the franchise has won."
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "players",
+                    "teams",
+                    "cities",
+                    "owners"
+                ]
+            }
+        },
+        "City": {
+            "description": "A city that hosts an NBA team.",
+            "primary_key": "city_name",
+            "deduplication": "primary_key",
+            "fields": {
+                "city_name": {
+                    "data_type": "string",
+                    "description": "Name of the city, without the state.",
+                    "required": true
+                },
+                "state_name": {
+                    "data_type": "string",
+                    "description": "The US state (or Canadian province) the city is in."
+                },
+                "population": {
+                    "data_type": "string",
+                    "description": "Population of the city proper, from the most recent figure given."
+                },
+                "area": {
+                    "data_type": "string",
+                    "description": "Total area of the city in square miles."
+                },
+                "gdp": {
+                    "data_type": "string",
+                    "description": "Gross domestic product of the city or its metropolitan area, as stated."
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "players",
+                    "teams",
+                    "cities",
+                    "owners"
+                ]
+            }
+        },
+        "Owner": {
+            "description": "A person or organization that owns an NBA team.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "Full name of the owner.",
+                    "required": true
+                },
+                "birth_date": {
+                    "data_type": "string",
+                    "description": "Birth date of the owner, if a person."
+                },
+                "nationality": {
+                    "data_type": "string",
+                    "description": "Nationality of the owner, as a demonym."
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "players",
+                    "teams",
+                    "cities",
+                    "owners"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "PlaysFor": {
+            "description": "A player playing, or having played, for an NBA team.",
+            "endpoints": {
+                "Player": {
+                    "Team": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "fields": {
+                "tenure": {
+                    "data_type": "string",
+                    "description": "Whether this is the player's latest NBA team."
+                }
+            },
+            "deduplication": "none"
+        },
+        "LocatedIn": {
+            "description": "An NBA team being based in a city.",
+            "endpoints": {
+                "Team": {
+                    "City": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "none"
+        },
+        "Owns": {
+            "description": "A person or organization owning an NBA team.",
+            "endpoints": {
+                "Owner": {
+                    "Team": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "fields": {
+                "since_year": {
+                    "data_type": "string",
+                    "description": "Year in which the owner acquired the team."
+                }
+            },
+            "deduplication": "none"
+        }
+    }
+}

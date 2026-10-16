@@ -1,0 +1,28 @@
+{
+ "uid": "join_queries#11",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":0,\"col2\":\"Giannis Antetokounmpo\",\"col3\":\"Milwaukee Bucks\",\"col4\":null,\"col5\":\"Wisconsin\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\",\"name_city\":\"Milwaukee\"},{\"col1\":1,\"col2\":\"Dennis Schr\u00f6der\",\"col3\":\"Brooklyn Nets\",\"col4\":null,\"col5\":\"New York\",\"name_player\":\"Dennis Schr\u00f6der\",\"name_team\":\"Brooklyn Nets\",\"name_city\":\"Brooklyn\"}]}",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": "Giannis Antetokounmpo",
+   "col3": "Milwaukee Bucks",
+   "col4": null,
+   "col5": "Wisconsin",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": 1,
+   "col2": "Dennis Schr\u00f6der",
+   "col3": "Brooklyn Nets",
+   "col4": null,
+   "col5": "New York",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_city": "Brooklyn"
+  }
+ ],
+ "secs": 6.5
+}

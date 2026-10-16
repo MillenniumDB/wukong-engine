@@ -1,0 +1,39 @@
+{
+ "uid": "agg_queries#3",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 58.55555555555556
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 73.27777777777777
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH DISTINCT p MATCH (p)-[:MentionedIn]->(:Document) WITH p.position AS position, AVG(CAST(date_diff('day', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-15')) AS DOUBLE) / 365.2425) AS average_age RETURN position AS col1, average_age AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH DISTINCT p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WITH p.position AS position, 2026 - birth_year - CASE WHEN birth_month * 100 + birth_day > 1015 THEN 1 ELSE 0 END AS age RETURN position AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE p.birth_date IS NOT NULL AND p.position IS NOT NULL WITH p, CASE WHEN lower(p.position) IN ['frontcourt', 'forward', 'center', 'power forward', 'small forward'] THEN 'Frontcourt' WHEN lower(p.position) IN ['backcourt', 'guard', 'point guard', 'shooting guard'] THEN 'Backcourt' ELSE p.position END AS position, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WITH position, 2026 - birth_year - CASE WHEN birth_month * 100 + birth_day > 1015 THEN 1 ELSE 0 END AS age WHERE position IN ['Frontcourt', 'Backcourt'] RETURN position AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.position IS NOT NULL WITH DISTINCT p, CASE WHEN lower(p.position) CONTAINS 'forward' OR lower(p.position) CONTAINS 'center' THEN 'Frontcourt' WHEN lower(p.position) CONTAINS 'guard' THEN 'Backcourt' ELSE p.position END AS position, CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) AS birth_year WITH position, 2026 - birth_year AS age WHERE position IN ['Frontcourt', 'Backcourt'] RETURN position AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

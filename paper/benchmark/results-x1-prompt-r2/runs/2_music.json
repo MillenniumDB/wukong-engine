@@ -1,0 +1,24 @@
+{
+  "ontology": "2_music",
+  "system": "prompting baseline (benchmark prompts)",
+  "recorded_at": "2026-10-09T14:43:38+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": false
+  },
+  "prompts_file_sha256": "feb29280873a2e3f672fb710475218d6720194c3ff806396fbf3b23e91275564",
+  "prompts": 675,
+  "failed": 0,
+  "with_triples": 657,
+  "triples": 1201,
+  "usage": {
+    "input_tokens": 185588,
+    "cached_tokens": 0,
+    "output_tokens": 93473,
+    "reasoning_tokens": 75527
+  },
+  "seconds": 135
+}

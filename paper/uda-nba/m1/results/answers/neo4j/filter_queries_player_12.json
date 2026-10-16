@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#12",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CAST(p.draft_pick AS INT64) = 24 RETURN DISTINCT p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) = 24 RETURN DISTINCT p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CASE WHEN REGEXP_MATCHES(p.draft_pick, '[0-9]+') THEN CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+', 0) AS INT64) ELSE NULL END = 24 RETURN DISTINCT p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.olympic_gold_medals = '0' AND (p.draft_pick = '24' OR p.draft_pick = '24th overall') RETURN DISTINCT p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

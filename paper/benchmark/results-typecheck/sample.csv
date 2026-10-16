@@ -1,0 +1,61 @@
+system,ontology,sentence,subject,relation,object,subject types (judge),declared domain,object types (judge),declared range,type conformant
+Vicuna-13B,1_movie,ont_1_movie_test_830,The Abyss,nominated_for,Academy Award for Best Director,film,film,award|film award,award,yes
+EDC,2_music,ont_2_music_test_573,100th Window,producer,Neil Davidge,album|music|musical work,album,composer|human|record producer,,yes
+EDC,2_music,ont_2_music_test_98,Carrying a Torch,composer,Van Morrison,composed musical work|music|musical work,musical work,composer|human,human,yes
+Alpaca-LoRA-13B,1_movie,ont_1_movie_test_776,Shooting Dogs,genre,genre,film,film,genre,genre,yes
+EDC+R,9_nature,ont_9_nature_test_98,Mount Yake,mountain_range,Hida Mountains,geographical feature|mountain,mountain,geographical feature|mountain range,mountain range,yes
+EDC+R,1_movie,ont_1_movie_test_263,the film,cast_member,Charles Fleischer,film,film,human,human,yes
+Vicuna-13B,1_movie,ont_1_movie_test_741,Kissed,cast_member,Molly Parker,film,film,human,human,yes
+Vicuna-13B,3_sport,ont_3_sport_test_338,Paulo Ferreira,league,Primeira Liga,athlete|human|sportsperson,human,professional sports league|sporting event|sports competition,professional sports league,yes
+Vicuna-13B,2_music,ont_2_music_test_359,Jewish Cycle,nominated_for, award,musical work,album,award,award,no
+Alpaca-LoRA-13B,8_politics,ont_8_politics_test_199,National Democratic Party of Japan,Member_of_political_party,Democrat International,organization|political party,human,organization,political party,no
+Prompting (luna),1_movie,ont_1_movie_test_694,the film,filming_location,New York City,film,film,city,city,yes
+Gold standard,2_music,ont_2_music_test_172,Love Takes Time,publication date,11 September 1990,composed musical work|music|musical work,musical work,,,yes
+Prompting (luna),4_book,ont_4_book_test_193,How to Talk to Girls at Parties,genre,science fiction short story,intellectual work|literary work,literary work,literary genre,literary genre,yes
+Prompting (luna),5_military,ont_5_military_test_57,Aharon Haliva,military_rank,Aluf,human|military personnel,human,military rank|rank,military rank,yes
+Wukong props,5_military,ont_5_military_test_125,Josef Miner,military_casualty_classification,killed in action,human|military personnel,human,military casualty classification,military casualty classification,yes
+Vicuna-13B,6_computer,ont_6_computer_test_139,Impossible Mission,platform,Commodore VIC-20,application|software,software,computer|computer hardware|computer model,computer,yes
+Prompting (luna),1_movie,ont_1_movie_test_130,Premutos: The Fallen Angel,cast_member,Olaf Ittenbach,film,film,human,human,yes
+EDC+R,1_movie,ont_1_movie_test_502,Crossfire Hurricane,screenwriter,Brett Morgen,film,film,human,human,yes
+Gold standard,2_music,ont_2_music_test_514,( You Drive Me ) Crazy,publication date,20 September 1999,composed musical work|musical work,musical work,,,yes
+EDC+R,1_movie,ont_1_movie_test_5,Looney Tunes: Back in Action,country_of_origin,United States,film,film,country,country,yes
+Wukong primary,2_music,ont_2_music_test_92,No Reflection,part_of,Born Villain,composed musical work|music|musical work,musical work,album,album,yes
+Wukong arm B,1_movie,ont_1_movie_test_414,A Monster in Paris,production_company,Walking The Dog,film,film,film production company,film production company,yes
+Gold standard,4_book,ont_4_book_test_467,The Alternate Asimovs,genre,Anthology,book|intellectual work|literary work|publication,literary work,book|intellectual work|literary work|publication,literary genre,no
+Alpaca-LoRA-13B,4_book,ont_4_book_test_308,The A.B.C. Murders,characters,fictional character,book|intellectual work|literary work|publication,literary work,,fictional character,no
+Vicuna-13B,1_movie,ont_1_movie_test_634,film,production_company,Focus Features,film,film,film production company,film production company,yes
+EDC+R,3_sport,ont_3_sport_test_331,Salomon Kalou,member_of_sports_team,Chelsea,athlete|human|sportsperson,human,sports club|sports organization|team,sports club,yes
+EDC,5_military,ont_5_military_test_209,Abhay,designed_by,India,military equipment|military vehicle,military equipment,country,organization,no
+Wukong props,1_movie,ont_1_movie_test_179,Vampire in Brooklyn,publication_date,01 January 1995,film,film,,,yes
+Prompting (luna),2_music,ont_2_music_test_367,Andante and Finale,instrumentation,piano,composed musical work|music|musical work,musical work,,,yes
+Wukong primary,3_sport,ont_3_sport_test_173,Shizuka Yamamoto,occupation,Shizuka Yamamoto,athlete|human|sportsperson,human,athlete|human|sportsperson,athlete,yes
+Wukong arm B,4_book,ont_4_book_test_136,The Cambridge Guide to Women's Writing in English,publisher,Cambridge University Press,book|intellectual work|publication,book,publisher,publisher,yes
+Alpaca-LoRA-13B,4_book,ont_4_book_test_528,Alma Redemptoris Mater,language_of_work_or_name,Ecclesiastical Latin,intellectual work|literary work,literary work,language,language,yes
+Wukong primary,1_movie,ont_1_movie_test_224,Band of Robbers,genre,comedy,film,film,film genre|genre,genre,yes
+Gold standard,2_music,ont_2_music_test_518,By the Way,record label,Warner Bros. Records,album|music|musical work,album,music industry,,yes
+Alpaca-LoRA-13B,4_book,ont_4_book_test_490,Minister Jade,author,Steve Bialik,book|intellectual work|literary work|publication,book,author|human|writer,human,yes
+KGGen context,1_movie,ont_1_movie_test_282,The film,cast_member,David Cross,film,film,human,human,yes
+KGGen context,4_book,ont_4_book_test_163,Duden,language_of_work_or_name,German language,book|intellectual work|publication,literary work,language,language,no
+KGGen context,1_movie,ont_1_movie_test_741,Kissed,main_subject,necrophilia,film,film,,,yes
+Gold standard,2_music,ont_2_music_test_374,Please Please Me,record label,Parlophone,composed musical work|music|musical work,album,music industry,,no
+Wukong props,1_movie,ont_1_movie_test_252,Batman Begins,cast_member,Christian Bale,film,film,human,human,yes
+Vicuna-13B,1_movie,ont_1_movie_test_764,The_Killer_Inside_Me,production_company,Element_Pictures,film,film,film production company,film production company,yes
+Alpaca-LoRA-13B,1_movie,ont_1_movie_test_130,Premutos: The Fallen Angel,production_company,director(Olaf Ittenbach,film,film,,film production company,no
+Prompting (luna),2_music,ont_2_music_test_84,Cose della vita,performer,Eros Ramazzotti,composed musical work|music|musical work,musical work,composer|human,,yes
+EDC,2_music,ont_2_music_test_178,Almost Cut My Hair,composer,David Crosby,composed musical work|music|musical work,musical work,composer|human,human,yes
+KGGen context,1_movie,ont_1_movie_test_832,Inglourious Basterds,cast_member,Waltz,film,film,human,human,yes
+Wukong arm B,2_music,ont_2_music_test_363,"Overture, Scherzo and Finale",language_of_work_or_name,German,composed musical work|music|musical work,musical work,language,language,yes
+Alpaca-LoRA-13B,2_music,ont_2_music_test_357,AprÃ¨s une lecture du Dante: Fantasia quasi Sonata,instrumentation,piano,composed musical work|music|musical work,musical work,,,yes
+EDC+R,2_music,ont_2_music_test_98,Carrying a Torch,publication_date,1991,composed musical work|music|musical work,musical work,,,yes
+Wukong arm B,1_movie,ont_1_movie_test_476,Game Over : Kasparov and the Machine,production_company,National Film Board of Canada,film,film,film organization|film production company,film production company,yes
+Gold standard,1_movie,ont_1_movie_test_240,Barbie in the Nutcracker,based on,The Nutcracker and the Mouse King,film,film,written work,written work,yes
+EDC+R,2_music,ont_2_music_test_625,Allen,record_label,London Records,human,album,music industry,,no
+Prompting (luna),9_nature,ont_9_nature_test_463,1956 Tour de Suisse,mountains_classification_,Rolf Maurer,cycling race,cycling race,human,human,yes
+Prompting (luna),1_movie,ont_1_movie_test_166,Doctor Shameless,based_on,eroge,film,film,genre,written work,no
+Prompting (luna),6_computer,ont_6_computer_test_50,PDP-8,operating_system,PDP-8 Disk Monitor,computer|computer hardware|computer model,computer model,operating system|software,operating system,yes
+Alpaca-LoRA-13B,2_music,ont_2_music_test_497,human,voice_type,voice,human,human,voice,voice,yes
+Wukong primary,8_politics,ont_8_politics_test_213,Democratic Progressive Party,political_ideology,anti-communism,organization|political party,political party,political ideology,political ideology,yes
+Prompting (luna),5_military,ont_5_military_test_164,John Basilone,military_casualty_classification_,killed in action,human|military personnel,human,military casualty classification,military casualty classification,yes
+Alpaca-LoRA-13B,1_movie,ont_1_movie_test_167,Frankenhooker,director,Frank Henenlotter,film,film,human,human,yes
+Prompting (luna),3_sport,ont_3_sport_test_6,Veli Paloheimo,occupation,tennis player,athlete|human|sportsperson,human,athlete|human|sportsperson,athlete,yes
+EDC+R,3_sport,ont_3_sport_test_424,Charlie Austin,member_of_sports_team,Southampton,athlete|human|sportsperson,human,sports club|sports team season|team,sports club,yes

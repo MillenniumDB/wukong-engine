@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#34",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":\"Anthony Edwards\",\"col3\":2020,\"name_player\":\"Anthony Edwards\"},{\"col1\":\"American\",\"col2\":\"LeBron James\",\"col3\":2003,\"name_player\":\"LeBron James\"},{\"col1\":\"American\",\"col2\":\"George Mikan\",\"col3\":1947,\"name_player\":\"George Mikan\"},{\"col1\":\"American\",\"col2\":\"Harrison Bryce Jordan Barnes\",\"col3\":2012,\"name_player\":\"Harrison Bryce Jordan Barnes\"},{\"col1\":\"American\",\"col2\":\"Antonius Cleveland\",\"col3\":2017,\"name_player\":\"Antonius Cleveland\"},{\"col1\":\"American\",\"col2\":\"Kevin Wayne Durant\",\"col3\":2007,\"name_player\":\"Kevin Wayne Durant\"}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "Anthony Edwards",
+   "col3": 2020,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "American",
+   "col2": "LeBron James",
+   "col3": 2003,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "American",
+   "col2": "George Mikan",
+   "col3": 1947,
+   "name_player": "George Mikan"
+  },
+  {
+   "col1": "American",
+   "col2": "Harrison Bryce Jordan Barnes",
+   "col3": 2012,
+   "name_player": "Harrison Bryce Jordan Barnes"
+  },
+  {
+   "col1": "American",
+   "col2": "Antonius Cleveland",
+   "col3": 2017,
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": "American",
+   "col2": "Kevin Wayne Durant",
+   "col3": 2007,
+   "name_player": "Kevin Wayne Durant"
+  }
+ ]
+}

@@ -1,0 +1,6975 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Marc Lasry",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Herb Kohl",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Jamie Dinan",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Inglewood",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 17,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Donald Sterling",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Irv Levin",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steven Anthony Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Bam Adebayo",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Jimmy Butler",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": 3,
+   "col4": "Miami",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "George Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "George Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "George Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "George Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Gordon Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Gordon Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Gordon Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Gordon Gund",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Myles Garrett",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Myles Garrett",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Myles Garrett",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Myles Garrett",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jesse Itzler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jesse Itzler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jesse Itzler",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Rick Schnall",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Rick Schnall",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Rick Schnall",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Grant Hill",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Grant Hill",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Grant Hill",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Sara Blakely",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Sara Blakely",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Sara Blakely",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Steven Price",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Steven Price",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Steven Price",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jami Gertz",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jami Gertz",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Jami Gertz",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Al Horford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Atlanta",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jason Levien",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Adam Aron",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Marc Leder",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Jada Pinkett Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Art Wrubel",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Heller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment (HBSE)",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Martin Geller",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Spectacor",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "James Lassiter",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Will Smith",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr.",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Erick Thohir",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Michael Rubin",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Oklahoma City",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Professional Basketball Club LLC",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 66,
+   "col3": 1,
+   "col4": "Oklahoma City",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Oklahoma City",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Denver",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Bill Ringsby",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Denver",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "COMSAT",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 79,
+   "col3": 1,
+   "col4": "Denver",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Gregg Lukenbill",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Cincinnati Gardens management",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Thomas Woods",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Shaquille O'Neal",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Max Jacobs",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Sacramento",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Jeremy Jacobs",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 6,
+   "col4": "Chicago",
+   "name_player": "Kurt Thomas",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 6,
+   "col4": "Chicago",
+   "name_player": "Jimmy Butler",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 90,
+   "col3": 6,
+   "col4": "Chicago",
+   "name_player": "Kurt Thomas",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 90,
+   "col3": 6,
+   "col4": "Chicago",
+   "name_player": "Jimmy Butler",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Robert L. Johnson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Charlotte",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Robert L. Johnson",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Gabe Plotkin",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Charlotte",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Gabe Plotkin",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Rick Schnall",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Charlotte",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Rick Schnall",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Michael Jordan",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Charlotte",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Michael Jordan",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Nelly",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Charlotte",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_manager": "Nelly",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Kurt Thomas",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Kermit Washington",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Jamal Crawford",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Kurt Thomas",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Kermit Washington",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Portland",
+   "name_player": "Jamal Crawford",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herb Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herb Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herb Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Charlie Thomas",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Charlie Thomas",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Charlie Thomas",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Leslie Alexander",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Leslie Alexander",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Leslie Alexander",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Gavin",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Gavin",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Gavin",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Kenneth Schnitzer",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Kenneth Schnitzer",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Kenneth Schnitzer",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "George Maloof",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "George Maloof",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "George Maloof",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Texas Sports Investments",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Texas Sports Investments",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Texas Sports Investments",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Sidney Shlenker",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Sidney Shlenker",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Sidney Shlenker",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 2,
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kyle Anderson",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Alex Rodriguez",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Alex Rodriguez",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jimmy Butler",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Alex Rodriguez",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jamal Crawford",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Alex Rodriguez",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kyle Anderson",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jimmy Butler",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jamal Crawford",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Glen Taylor",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kyle Anderson",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marc Lore",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marc Lore",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jimmy Butler",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marc Lore",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_player": "Jamal Crawford",
+   "name_team": "Minnesota Timberwolves",
+   "name_manager": "Marc Lore",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Al Horford",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Kermit Washington",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Brandan Wright",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C.",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Al Horford",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Kermit Washington",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Brandan Wright",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Al Horford",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Kermit Washington",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 18,
+   "col4": "Boston",
+   "name_player": "Brandan Wright",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New York City",
+   "name_player": "Andre Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New York City",
+   "name_player": "Drew Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New York City",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Kyle Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Red McCombs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Kyle Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter M. Holt",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Kyle Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "John Schaefer",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Kyle Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 5,
+   "col4": "San Antonio",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Angelo Drossos",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Memphis",
+   "name_player": "Kyle Anderson",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert Pera",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Memphis",
+   "name_player": "Brandan Wright",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert Pera",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Memphis",
+   "name_player": "Kyle Anderson",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert J. Pera",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "Memphis",
+   "name_player": "Brandan Wright",
+   "name_team": "Memphis Grizzlies",
+   "name_manager": "Robert J. Pera",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Jahlil Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Tom Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Tom Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Jahlil Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "NBA",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "NBA",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 79,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Jahlil Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 79,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Jahlil Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": null,
+   "col4": "New Orleans",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Detroit",
+   "name_player": "Andre Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Bill Davidson",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 3,
+   "col4": "Detroit",
+   "name_player": "Harry Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Bill Davidson",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 62,
+   "col3": 3,
+   "col4": "Detroit",
+   "name_player": "Andre Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 62,
+   "col3": 3,
+   "col4": "Detroit",
+   "name_player": "Harry Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Toronto",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Sports & Entertainment (MLSE)",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Toronto",
+   "name_player": "Aaron Williams",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Sports & Entertainment (MLSE)",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Toronto",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Toronto",
+   "name_player": "Aaron Williams",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Justin",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Kurt Thomas",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Justin",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Dave Lattin",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Justin",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Justin",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Kurt Thomas",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Dave Lattin",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Kurt Thomas",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Dave Lattin",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Kurt Thomas",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Dave Lattin",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "H. Ross Perot, Jr.",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 68,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Miriam Adelson",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Donald Carter",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 1,
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Patrick Dumont",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Marty Glick",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Harry Tsao",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Paul Schaeffer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jim Fitzgerald",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dan Finane",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Fred Harman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "John Walecka",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chamath Palihapitiya",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Craig R. Johnson",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Erika Glazer",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Franklin Mieuli",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Vivek Ranadiv\u00e9",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bob Piccinini",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Jeffrey A. Miller",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Peter Guber",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Dennis Wong",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Nick Swinmurn",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Larry Bowman",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chris Cohan",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "David Scially",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Danny German",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Bruce Karsh",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Chad Hurley",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": 7,
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(cd:Document), (o:Owner)-[:Owns]->(t)-[:ExtractedFrom]->(od:Document) WHERE p.olympic_gold_medals = '0' OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 412)\n\"MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(cd:Document), (o:Owner)-[:Owns]->(t)-[:ExtractedFrom]->(od:Document) WHERE p.olympic_gold_medals = '0' OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.po",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t)-[:ExtractedFrom]->(:Document) WHERE p.olympic_gold_medals = '0' OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, 2026 - CAST(substr(o.birth_date, 1, 4) AS INT64) - CASE WHEN CAST(substr(o.birth_date, 6, 2) AS INT64) > 10 OR (CAST(substr(o.birth_date, 6, 2) AS INT64) = 10 AND CAST(substr(o.birth_date, 9, 2) AS INT64) > 14) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"3/\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t)-[:ExtractedFrom]->(:Document) WHERE p.olympic_gold_medals = '0' OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": null,
+   "rows": 695
+  }
+ ]
+}

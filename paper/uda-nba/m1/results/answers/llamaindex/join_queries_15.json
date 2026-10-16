@@ -1,0 +1,1785 @@
+{
+ "uid": "join_queries#15",
+ "rows": [
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Larry Weinberg",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment (VSE)",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)"
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Inc.",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc."
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Vulcan Sports and Entertainment",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Jody Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Portland",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Salem",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": null,
+   "col5": null,
+   "name_player": "Darius Miles",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Mat Ishbia",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Mat Ishbia",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Larry Fitzgerald",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald"
+  },
+  {
+   "col1": "Larry Fitzgerald",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald"
+  },
+  {
+   "col1": "Jerry Colangelo",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Jerry Colangelo"
+  },
+  {
+   "col1": "Jerry Colangelo",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Jerry Colangelo"
+  },
+  {
+   "col1": "Marvin Meyer",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Marvin Meyer"
+  },
+  {
+   "col1": "Marvin Meyer",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Marvin Meyer"
+  },
+  {
+   "col1": "Bhavik Darji",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Bhavik Darji"
+  },
+  {
+   "col1": "Bhavik Darji",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Bhavik Darji"
+  },
+  {
+   "col1": "Don Diamond",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Don Diamond"
+  },
+  {
+   "col1": "Don Diamond",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Don Diamond"
+  },
+  {
+   "col1": "Donald Pitt",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Donald Pitt"
+  },
+  {
+   "col1": "Donald Pitt",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Donald Pitt"
+  },
+  {
+   "col1": "Karl Eller",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": "Karl Eller",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": "Robert Sarver",
+   "col2": "1968",
+   "col3": "Phoenix",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": "Robert Sarver",
+   "col2": "1968",
+   "col3": "Phoenix metropolitan area",
+   "col4": null,
+   "col5": null,
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Irene Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Washington",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Baltimore",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": null,
+   "col3": "Landover",
+   "col4": null,
+   "col5": null,
+   "name_player": "Antawn Jamison",
+   "name_team": "Washington Wizards",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "John Y. Brown, Jr.",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "John Y. Brown, Jr."
+  },
+  {
+   "col1": "Steve Pagliuca",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Steve Pagliuca"
+  },
+  {
+   "col1": "Wycliffe Grousbeck",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Wycliffe Grousbeck"
+  },
+  {
+   "col1": "H. Irving Grousbeck",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "H. Irving Grousbeck"
+  },
+  {
+   "col1": "Boston Basketball Partners L.L.C.",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Boston Basketball Partners L.L.C."
+  },
+  {
+   "col1": "Paul Gaston",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Paul Gaston"
+  },
+  {
+   "col1": "Don Gaston",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Don Gaston"
+  },
+  {
+   "col1": "Harry Mangurian",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Harry Mangurian"
+  },
+  {
+   "col1": "John Y. Brown Jr.",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "John Y. Brown Jr."
+  },
+  {
+   "col1": "Irv Levin",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Wyc Grousbeck",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": "Joe Lacob",
+   "col2": null,
+   "col3": "Boston",
+   "col4": 1956,
+   "col5": null,
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Donald Sterling",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "World B. Free",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "Donald Sterling",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Scott Lloyd",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "Donald Sterling",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Swen Nater",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "Donald Sterling",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Randy Smith",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "Irv Levin",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "World B. Free",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Irv Levin",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Scott Lloyd",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Irv Levin",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Swen Nater",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Irv Levin",
+   "col2": null,
+   "col3": "San Diego",
+   "col4": null,
+   "col5": null,
+   "name_player": "Randy Smith",
+   "name_team": "San Diego Clippers",
+   "name_manager": "Irv Levin"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE CAST('2026' AS INT64) - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 10, 1956\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL WHEN o.birth_date CONTAINS ',' THEN CAST('2026' AS INT64) - CAST(TRIM(SPLIT_PART(o.birth_date, ',', 2)) AS INT64) - CASE WHEN CASE LOWER(SPLIT_PART(o.birth_date, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END > 10 OR (CASE LOWER(SPLIT_PART(o.birth_date, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END = 10 AND CAST(REPLACE(SPLIT_PART(SPLIT_PART(o.birth_date, ' ', 2), ',', 1), ' ', '') AS INT64) > 15) THEN 1 ELSE 0 END ELSE CAST('2026' AS INT64) - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL WHEN o.birth_date CONTAINS ',' THEN CAST(SPLIT_PART(o.birth_date, ',', 2) AS INT64) - CASE WHEN CASE LOWER(SPLIT_PART(o.birth_date, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END > 10 OR (CASE LOWER(SPLIT_PART(o.birth_date, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END = 10 AND CAST(SPLIT_PART(SPLIT_PART(o.birth_date, ' ', 2), ',', 1) AS INT64) > 15) THEN 1 ELSE 0 END ELSE CAST('2026' AS INT64) - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 176
+  }
+ ]
+}

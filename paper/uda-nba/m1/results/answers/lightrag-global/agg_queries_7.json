@@ -1,0 +1,31 @@
+{
+ "uid": "agg_queries#7",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Greek\",\"col2\":31},{\"col1\":\"Nigerian\",\"col2\":31},{\"col1\":\"French\",\"col2\":22},{\"col1\":\"Dominican\",\"col2\":40},{\"col1\":\"American\",\"col2\":38},{\"col1\":\"Croatian\",\"col2\":59}]}",
+ "rows": [
+  {
+   "col1": "Greek",
+   "col2": 31
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "French",
+   "col2": 22
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "American",
+   "col2": 38
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  }
+ ]
+}

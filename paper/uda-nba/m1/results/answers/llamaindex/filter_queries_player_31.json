@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) >= 24) OPTIONAL MATCH (p)-[rl:PlaysFor]->(tl:Team) WHERE rl.tenure = 'latest' OPTIONAL MATCH (p)-[re:PlaysFor]->(te:Team) WHERE re.tenure = 'earlier' WITH p, COALESCE(tl.team_name, te.team_name) AS current_or_last_team RETURN current_or_last_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"57th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR (p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '[0-9]+') AND CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) >= 24) OPTIONAL MATCH (p)-[rl:PlaysFor]->(tl:Team) WHERE rl.tenure = 'latest' OPTIONAL MATCH (p)-[re:PlaysFor]->(te:Team) WHERE re.tenure = 'earlier' WITH p, COALESCE(tl.team_name, te.team_name) AS current_or_last_team RETURN current_or_last_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"57h overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR (p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '[0-9]+') AND CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) >= 24) OPTIONAL MATCH (p)-[rl:PlaysFor]->(tl:Team) WHERE rl.tenure = 'latest' OPTIONAL MATCH (p)-[re:PlaysFor]->(te:Team) WHERE re.tenure = 'earlier' WITH p, COALESCE(tl.team_name, te.team_name) AS current_or_last_team RETURN current_or_last_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR (CASE WHEN regexp_matches(p.draft_pick, '^[0-9]+') THEN CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64) ELSE 0 END >= 24) OPTIONAL MATCH (p)-[rl:PlaysFor]->(tl:Team) WHERE rl.tenure = 'latest' OPTIONAL MATCH (p)-[re:PlaysFor]->(te:Team) WHERE re.tenure = 'earlier' WITH p, COALESCE(tl.team_name, te.team_name) AS current_or_last_team RETURN current_or_last_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

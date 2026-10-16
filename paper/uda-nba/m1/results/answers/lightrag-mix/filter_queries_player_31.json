@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#31",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Atlanta Hawks\",\"col2\":\"Nigerian-American\",\"col3\":0,\"name_player\":\"Jahlil Okafor\"},{\"col1\":\"Golden State Warriors\",\"col2\":\"American-Chinese\",\"col3\":0,\"name_player\":\"Kyle Anderson\"}]}",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Nigerian-American",
+   "col3": 0,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American-Chinese",
+   "col3": 0,
+   "name_player": "Kyle Anderson"
+  }
+ ]
+}

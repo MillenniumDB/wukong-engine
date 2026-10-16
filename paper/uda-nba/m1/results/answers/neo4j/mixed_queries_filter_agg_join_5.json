@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(str_split(p.birth_date, '/')[0] AS INT64) < 1984 OR (CAST(str_split(p.birth_date, '/')[0] AS INT64) = 1984 AND (CAST(str_split(p.birth_date, '/')[1] AS INT64) < 10 OR (CAST(str_split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(str_split(p.birth_date, '/')[2] AS INT64) <= 15)))) WITH t, p RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Runtime exception: List extract takes 1-based position.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(str_split(p.birth_date, '/')[1] AS INT64) < 1984 OR (CAST(str_split(p.birth_date, '/')[1] AS INT64) = 1984 AND (CAST(str_split(p.birth_date, '/')[2] AS INT64) < 10 OR (CAST(str_split(p.birth_date, '/')[2] AS INT64) = 10 AND CAST(str_split(p.birth_date, '/')[3] AS INT64) <= 15)))) WITH t, p RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END) <= CAST('1984-10-15' AS DATE)) WITH t, p RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR (CASE WHEN p.birth_date CONTAINS '/' THEN CAST(str_split(p.birth_date, '/')[1] AS INT64) ELSE CAST(str_split(p.birth_date, ',')[2] AS INT64) END) <= 1984) WITH t, p RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Runtime exception: list_extract(list, index): index=2 is out of range.",
+   "rows": null
+  }
+ ]
+}

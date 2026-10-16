@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#18",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":3,\"col2\":4,\"col3\":41,\"name_player\":\"LeBron James\"},{\"col1\":4,\"col2\":2,\"col3\":38,\"name_player\":\"Kevin Durant\"},{\"col1\":2,\"col2\":5,\"col3\":41,\"name_player\":\"Kobe Bryant\"},{\"col1\":2,\"col2\":1,\"col3\":33,\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"col2\":4,\"col3\":38,\"name_player\":\"Stephen Curry\"}]}",
+ "rows": [
+  {
+   "col1": 3,
+   "col2": 4,
+   "col3": 41,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 4,
+   "col2": 2,
+   "col3": 38,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 2,
+   "col2": 5,
+   "col3": 41,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 2,
+   "col2": 1,
+   "col3": 33,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "col2": 4,
+   "col3": 38,
+   "name_player": "Stephen Curry"
+  }
+ ]
+}

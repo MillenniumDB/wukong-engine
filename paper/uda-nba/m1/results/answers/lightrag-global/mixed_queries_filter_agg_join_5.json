@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":null},{\"col1\":\"Washington Wizards\",\"col2\":null},{\"col1\":\"Houston Rockets\",\"col2\":null},{\"col1\":\"San Antonio Spurs\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": null
+  }
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":\"Joe Lacob\",\"col3\":0,\"col4\":\"San Francisco\",\"name_player\":\"Stephen Curry\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\",\"name_city\":\"San Francisco\"},{\"col1\":\"Denver Nuggets\",\"col2\":\"Stan Kroenke\",\"col3\":0,\"col4\":\"Denver\",\"name_player\":\"Nikola Jokic\",\"name_team\":\"Denver Nuggets\",\"name_manager\":\"Stan Kroenke\",\"name_city\":\"Denver\"},{\"col1\":\"Milwaukee Bucks\",\"col2\":\"Wes Edens\",\"col3\":0,\"col4\":\"Milwaukee\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\",\"name_manager\":\"Wes Edens\",\"name_city\":\"Milwaukee\"},{\"col1\":\"Philadelphia 76ers\",\"col2\":\"Josh Harris\",\"col3\":0,\"col4\":\"Philadelphia\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\",\"name_city\":\"Philadelphia\"},{\"col1\":\"Boston Celtics\",\"col2\":\"Bill Chisholm\",\"col3\":0,\"col4\":\"Boston\",\"name_player\":\"Jayson Tatum\",\"name_team\":\"Boston Celtics\",\"name_manager\":\"Bill Chisholm\",\"name_city\":\"Boston\"},{\"col1\":\"Los Angeles Lakers\",\"col2\":\"Mark Walter\",\"col3\":0,\"col4\":\"Los Angeles\",\"name_player\":\"Anthony Davis\",\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Mark Walter\",\"name_city\":\"Los Angeles\"},{\"col1\":\"Los Angeles Clippers\",\"col2\":\"Steve Ballmer\",\"col3\":0,\"col4\":\"Los Angeles\",\"name_player\":\"James Harden\",\"name_team\":\"Los Angeles Clippers\",\"name_manager\":\"Steve Ballmer\",\"name_city\":\"Los Angeles\"},{\"col1\":\"Phoenix Suns\",\"col2\":\"Mat Ishbia\",\"col3\":0,\"col4\":\"Phoenix\",\"name_player\":\"Devin Booker\",\"name_team\":\"Phoenix Suns\",\"name_manager\":\"Mat Ishbia\",\"name_city\":\"Phoenix\"},{\"col1\":\"New York Knicks\",\"col2\":\"James Dolan\",\"col3\":0,\"col4\":\"New York City\",\"name_player\":\"Jalen Brunson\",\"name_team\":\"New York Knicks\",\"name_manager\":\"James Dolan\",\"name_city\":\"New York City\"},{\"col1\":\"San Antonio Spurs\",\"col2\":\"Peter J. Holt\",\"col3\":0,\"col4\":\"San Antonio\",\"name_player\":\"Victor Wembanyama\",\"name_team\":\"San Antonio Spurs\",\"name_manager\":\"Peter J. Holt\",\"name_city\":\"San Antonio\"}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joe Lacob",
+   "col3": 0,
+   "col4": "San Francisco",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Stan Kroenke",
+   "col3": 0,
+   "col4": "Denver",
+   "name_player": "Nikola Jokic",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Stan Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Wes Edens",
+   "col3": 0,
+   "col4": "Milwaukee",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Josh Harris",
+   "col3": 0,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Bill Chisholm",
+   "col3": 0,
+   "col4": "Boston",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_manager": "Bill Chisholm",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Mark Walter",
+   "col3": 0,
+   "col4": "Los Angeles",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Mark Walter",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": 0,
+   "col4": "Los Angeles",
+   "name_player": "James Harden",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Mat Ishbia",
+   "col3": 0,
+   "col4": "Phoenix",
+   "name_player": "Devin Booker",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "James Dolan",
+   "col3": 0,
+   "col4": "New York City",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Peter J. Holt",
+   "col3": 0,
+   "col4": "San Antonio",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Peter J. Holt",
+   "name_city": "San Antonio"
+  }
+ ]
+}

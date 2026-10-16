@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#16",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":null,\"col3\":null,\"name_player\":\"Chris Paul\"},{\"col1\":2,\"col2\":0,\"col3\":null,\"name_player\":\"Kobe Bryant\"},{\"col1\":1,\"col2\":2,\"col3\":null,\"name_player\":\"Stephen Curry\"},{\"col1\":3,\"col2\":0,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":4,\"col2\":1,\"col3\":null,\"name_player\":\"Kevin Durant\"},{\"col1\":0,\"col2\":0,\"col3\":\"1988/9/7\",\"name_player\":\"Kevin Love\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": 2,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 1,
+   "col2": 2,
+   "col3": null,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 3,
+   "col2": 0,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 4,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": "1988/9/7",
+   "name_player": "Kevin Love"
+  }
+ ]
+}

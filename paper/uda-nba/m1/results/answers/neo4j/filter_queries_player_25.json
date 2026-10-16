@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWITH DISTINCT p\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nRETURN p.draft_pick AS col1,\n       (2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END) AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"45th\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWITH DISTINCT p\nWHERE (p.draft_pick IS NOT NULL AND CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nRETURN p.draft_pick AS col1,\n       2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"4h overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWITH DISTINCT p\nWHERE (p.draft_pick IS NOT NULL AND CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(regexp_extract(p.nba_championships, '[0-9]+', 0) AS INT64) = 2)\nRETURN p.draft_pick AS col1,\n       2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWITH DISTINCT p\nWHERE (TRY_CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (TRY_CAST(regexp_extract(p.nba_championships, '[0-9]+', 0) AS INT64) = 2)\nRETURN p.draft_pick AS col1,\n       CASE\n         WHEN p.birth_date IS NULL THEN NULL\n         ELSE 2026 - TRY_CAST(split_part(p.birth_date, '/', 1) AS INT64)\n              - CASE\n                  WHEN TRY_CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n                    OR (TRY_CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n                        AND TRY_CAST(split_part(p.birth_date, '/', 3) AS INT64) > 15)\n                  THEN 1 ELSE 0\n                END\n       END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Parser exception: Invalid input <(TRY_CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS>: expected rule oC_ComparisonExpression (line: 3, offset: 58)\n\"WHERE (TRY_CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) <= 62)\"\n                                                           ^^",
+   "rows": null
+  }
+ ]
+}

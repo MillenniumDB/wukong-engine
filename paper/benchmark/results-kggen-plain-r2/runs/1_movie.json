@@ -1,0 +1,85 @@
+{
+  "ontology": "1_movie",
+  "system": "KGGen (context)",
+  "recorded_at": "2026-10-09T17:58:41+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "context": "Sentences from Wikipedia about the domain \"Movie Ontology\". Use only these relations, written exactly as given: director (film -> human); screenwriter (film -> human); genre (film -> genre); based on (film -> written work); cast member (film -> human); award received (film -> award); production company (film -> film production company); country of origin (film -> country); publication date (film -> value); characters (film -> film character); narrative location (film -> city); filming location (film -> city); main subject (film -> value); nominated for (film -> award); cost (film -> value).",
+  "sentences": 840,
+  "failed": 0,
+  "with_triples": 836,
+  "triples": 4621,
+  "distinct_predicates": 1295,
+  "distinct_predicates_in_ontology": 3,
+  "triples_with_ontology_predicate": 10,
+  "top_predicates": [
+    [
+      "is_a",
+      386
+    ],
+    [
+      "was_released_in",
+      242
+    ],
+    [
+      "stars",
+      172
+    ],
+    [
+      "was_directed_by",
+      160
+    ],
+    [
+      "was_written_by",
+      127
+    ],
+    [
+      "won",
+      116
+    ],
+    [
+      "was_produced_by",
+      86
+    ],
+    [
+      "was_nominated_for",
+      71
+    ],
+    [
+      "is_located_in",
+      62
+    ],
+    [
+      "directed_by",
+      49
+    ],
+    [
+      "is",
+      41
+    ],
+    [
+      "also_known_as",
+      38
+    ],
+    [
+      "is_an",
+      36
+    ],
+    [
+      "co-starred_with",
+      36
+    ],
+    [
+      "is_also_known_as",
+      34
+    ]
+  ],
+  "usage": {
+    "calls": 1682,
+    "input_tokens": 619261,
+    "cached_tokens": 0,
+    "output_tokens": 233918,
+    "reasoning_tokens": 43636
+  },
+  "seconds": 271
+}

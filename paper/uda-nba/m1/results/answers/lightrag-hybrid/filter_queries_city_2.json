@@ -1,0 +1,13 @@
+{
+ "uid": "filter_queries_city#2",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"New York\",\"col2\":1213.37,\"col3\":\"New York City\",\"name_city\":\"New York City\"}]}",
+ "rows": [
+  {
+   "col1": "New York",
+   "col2": 1213.37,
+   "col3": "New York City",
+   "name_city": "New York City"
+  }
+ ]
+}

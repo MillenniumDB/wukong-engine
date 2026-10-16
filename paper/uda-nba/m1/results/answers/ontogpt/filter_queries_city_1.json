@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE ROUND(CAST(c.area AS DOUBLE) * 2.58998811, 2) = 375.78 RETURN c.state_name AS col1, ROUND(CAST(c.area AS DOUBLE) * 2.58998811, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE ROUND(CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58998811, 2) = 375.78 RETURN c.state_name AS col1, ROUND(CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58998811, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE ROUND(CAST(SPLIT(c.area, ' ')[0] AS DOUBLE) * 2.58998811, 2) = 375.78 RETURN c.state_name AS col1, ROUND(CAST(SPLIT(c.area, ' ')[0] AS DOUBLE) * 2.58998811, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE ROUND(CAST(SUBSTRING(c.area, 1, LENGTH(c.area) - 13) AS DOUBLE) * 2.58998811, 2) = 375.78 RETURN c.state_name AS col1, ROUND(CAST(SUBSTRING(c.area, 1, LENGTH(c.area) - 13) AS DOUBLE) * 2.58998811, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Binder exception: Function LENGTH did not receive correct arguments:\nActual:   (STRING)\nExpected: (RECURSIVE_REL)\n\n",
+   "rows": null
+  }
+ ]
+}

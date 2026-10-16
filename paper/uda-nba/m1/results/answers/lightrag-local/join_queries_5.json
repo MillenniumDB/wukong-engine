@@ -1,0 +1,103 @@
+{
+ "uid": "join_queries#5",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"New York City\",\"col2\":null,\"col3\":null,\"col4\":\"New York City\",\"name_team\":\"New York Knicks\",\"name_city\":\"New York City\"},{\"col1\":\"New York City\",\"col2\":null,\"col3\":null,\"col4\":\"New York City\",\"name_team\":\"Brooklyn Nets\",\"name_city\":\"New York City\"},{\"col1\":\"Chicago\",\"col2\":2746388,\"col3\":1966,\"col4\":\"Chicago\",\"name_team\":\"Chicago Bulls\",\"name_city\":\"Chicago\"},{\"col1\":\"Philadelphia\",\"col2\":1603797,\"col3\":null,\"col4\":\"Philadelphia\",\"name_team\":\"Philadelphia 76ers\",\"name_city\":\"Philadelphia\"},{\"col1\":\"Philadelphia\",\"col2\":1603797,\"col3\":1946,\"col4\":\"San Francisco Bay Area\",\"name_team\":\"Golden State Warriors\",\"name_city\":\"Philadelphia\"},{\"col1\":\"Detroit\",\"col2\":null,\"col3\":null,\"col4\":\"Detroit\",\"name_team\":\"Detroit Pistons\",\"name_city\":\"Detroit\"},{\"col1\":\"Cleveland\",\"col2\":372624,\"col3\":null,\"col4\":\"Cleveland\",\"name_team\":\"Cleveland Cavaliers\",\"name_city\":\"Cleveland\"},{\"col1\":\"Denver\",\"col2\":715522,\"col3\":1967,\"col4\":\"Denver\",\"name_team\":\"Denver Nuggets\",\"name_city\":\"Denver\"},{\"col1\":\"Salt Lake City\",\"col2\":null,\"col3\":1979,\"col4\":\"Salt Lake City\",\"name_team\":\"Utah Jazz\",\"name_city\":\"Salt Lake City\"},{\"col1\":\"Phoenix\",\"col2\":null,\"col3\":1968,\"col4\":\"Phoenix\",\"name_team\":\"Phoenix Suns\",\"name_city\":\"Phoenix\"},{\"col1\":\"Denver\",\"col2\":715522,\"col3\":null,\"col4\":\"Denver\",\"name_team\":\"Colorado Avalanche\",\"name_city\":\"Quebec City\"},{\"col1\":\"Atlanta\",\"col2\":null,\"col3\":null,\"col4\":\"Atlanta\",\"name_team\":\"Atlanta Hawks\",\"name_city\":\"Atlanta\"}]}",
+ "rows": [
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": null,
+   "col4": "New York City",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": null,
+   "col4": "New York City",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Chicago",
+   "col2": 2746388,
+   "col3": 1966,
+   "col4": "Chicago",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": 1603797,
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": 1603797,
+   "col3": 1946,
+   "col4": "San Francisco Bay Area",
+   "name_team": "Golden State Warriors",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Detroit",
+   "col2": null,
+   "col3": null,
+   "col4": "Detroit",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": 372624,
+   "col3": null,
+   "col4": "Cleveland",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Denver",
+   "col2": 715522,
+   "col3": 1967,
+   "col4": "Denver",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": null,
+   "col3": 1979,
+   "col4": "Salt Lake City",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": null,
+   "col3": 1968,
+   "col4": "Phoenix",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Denver",
+   "col2": 715522,
+   "col3": null,
+   "col4": "Denver",
+   "name_team": "Colorado Avalanche",
+   "name_city": "Quebec City"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": null,
+   "col3": null,
+   "col4": "Atlanta",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  }
+ ]
+}

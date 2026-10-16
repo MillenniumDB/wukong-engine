@@ -1,0 +1,16 @@
+{
+ "uid": "join_queries#10",
+ "method": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Golden State Warriors\",\"col2\":\"San Francisco\",\"col3\":\"Joe Lacob\",\"col4\":\"Golden State Warriors\",\"name_team\":\"Golden State Warriors\",\"name_manager\":\"Joe Lacob\"}]}",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": "San Francisco",
+   "col3": "Joe Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  }
+ ],
+ "secs": 5.1
+}

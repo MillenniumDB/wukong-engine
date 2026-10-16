@@ -1,0 +1,79 @@
+{
+ "uid": "join_queries#8",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Jerry Reinsdorf\",\"col2\":1985,\"col3\":\"Chicago Bulls\",\"col4\":1966,\"name_team\":\"Chicago Bulls\",\"name_manager\":\"Jerry Reinsdorf\"},{\"col1\":\"Jerry Buss\",\"col2\":1979,\"col3\":\"Los Angeles Lakers\",\"col4\":1946,\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Jerry Buss\"},{\"col1\":\"Bob Short\",\"col2\":1957,\"col3\":\"Los Angeles Lakers\",\"col4\":1946,\"name_team\":\"Los Angeles Lakers\",\"name_manager\":\"Bob Short\"},{\"col1\":\"Bill Davidson\",\"col2\":1974,\"col3\":\"Detroit Pistons\",\"col4\":1937,\"name_team\":\"Detroit Pistons\",\"name_manager\":\"Bill Davidson\"},{\"col1\":\"Ted Leonsis\",\"col2\":2010,\"col3\":\"Washington Wizards\",\"col4\":1961,\"name_team\":\"Washington Wizards\",\"name_manager\":\"Ted Leonsis\"},{\"col1\":\"Tilman Fertitta\",\"col2\":2017,\"col3\":\"Houston Rockets\",\"col4\":null,\"name_team\":\"Houston Rockets\",\"name_manager\":\"Tilman Fertitta\"},{\"col1\":\"Josh Harris\",\"col2\":2011,\"col3\":\"Philadelphia 76ers\",\"col4\":null,\"name_team\":\"Philadelphia 76ers\",\"name_manager\":\"Josh Harris\"},{\"col1\":\"Ted Turner\",\"col2\":1977,\"col3\":\"St. Louis Hawks\",\"col4\":null,\"name_team\":\"St. Louis Hawks\",\"name_manager\":\"Ted Turner\"},{\"col1\":\"Mark Cuban\",\"col2\":2000,\"col3\":\"Dallas Mavericks\",\"col4\":null,\"name_team\":\"Dallas Mavericks\",\"name_manager\":\"Mark Cuban\"}]}",
+ "rows": [
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": 1985,
+   "col3": "Chicago Bulls",
+   "col4": 1966,
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": 1979,
+   "col3": "Los Angeles Lakers",
+   "col4": 1946,
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": 1957,
+   "col3": "Los Angeles Lakers",
+   "col4": 1946,
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Bill Davidson",
+   "col2": 1974,
+   "col3": "Detroit Pistons",
+   "col4": 1937,
+   "name_team": "Detroit Pistons",
+   "name_manager": "Bill Davidson"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": 2010,
+   "col3": "Washington Wizards",
+   "col4": 1961,
+   "name_team": "Washington Wizards",
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Tilman Fertitta",
+   "col2": 2017,
+   "col3": "Houston Rockets",
+   "col4": null,
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Josh Harris",
+   "col2": 2011,
+   "col3": "Philadelphia 76ers",
+   "col4": null,
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": 1977,
+   "col3": "St. Louis Hawks",
+   "col4": null,
+   "name_team": "St. Louis Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": 2000,
+   "col3": "Dallas Mavericks",
+   "col4": null,
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  }
+ ]
+}

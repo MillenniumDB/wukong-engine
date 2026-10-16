@@ -1,0 +1,63 @@
+{
+ "uid": "mixed_queries_filter_join#5",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":7,\"col3\":2007,\"col4\":\"Golden State Warriors\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Golden State Warriors\"},{\"col1\":1,\"col2\":0,\"col3\":2007,\"col4\":\"Phoenix Suns\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\"},{\"col1\":4,\"col2\":1,\"col3\":2003,\"col4\":\"Cleveland Cavaliers\",\"name_player\":\"LeBron James\",\"name_team\":\"Cleveland Cavaliers\"},{\"col1\":4,\"col2\":17,\"col3\":2003,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":17,\"col3\":1992,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Shaquille O'Neal\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":3,\"col2\":17,\"col3\":1979,\"col4\":\"Los Angeles Lakers\",\"name_player\":\"Magic Johnson\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1,\"col2\":3,\"col3\":1996,\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Allen Iverson\",\"name_team\":\"Philadelphia 76ers\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 7,
+   "col3": 2007,
+   "col4": "Golden State Warriors",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Phoenix Suns",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 4,
+   "col2": 1,
+   "col3": 2003,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": 2003,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1992,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 3,
+   "col2": 17,
+   "col3": 1979,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Magic Johnson",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Allen Iverson",
+   "name_team": "Philadelphia 76ers"
+  }
+ ]
+}

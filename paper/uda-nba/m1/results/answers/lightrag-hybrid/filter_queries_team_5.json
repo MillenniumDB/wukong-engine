@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_team#5",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":1946,\"col2\":\"Los Angeles Lakers\",\"col3\":\"Los Angeles\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":1970,\"col2\":\"Los Angeles Clippers\",\"col3\":\"Los Angeles\",\"name_team\":\"Los Angeles Clippers\"},{\"col1\":1967,\"col2\":\"San Antonio Spurs\",\"col3\":\"San Antonio\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":1989,\"col2\":\"Minnesota Timberwolves\",\"col3\":\"Minneapolis\",\"name_team\":\"Minnesota Timberwolves\"},{\"col1\":null,\"col2\":\"Atlanta Hawks\",\"col3\":\"Atlanta\",\"name_team\":\"Atlanta Hawks\"},{\"col1\":1946,\"col2\":\"Philadelphia Warriors\",\"col3\":\"San Francisco\",\"name_team\":\"Philadelphia Warriors\"},{\"col1\":1946,\"col2\":\"San Francisco Warriors\",\"col3\":\"San Francisco\",\"name_team\":\"San Francisco Warriors\"},{\"col1\":null,\"col2\":\"Houston Rockets\",\"col3\":\"Houston\",\"name_team\":\"Houston Rockets\"},{\"col1\":null,\"col2\":\"Denver Nuggets\",\"col3\":\"Denver\",\"name_team\":\"Denver Nuggets\"}]}",
+ "rows": [
+  {
+   "col1": 1946,
+   "col2": "Los Angeles Lakers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1970,
+   "col2": "Los Angeles Clippers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 1967,
+   "col2": "San Antonio Spurs",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 1989,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Atlanta Hawks",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 1946,
+   "col2": "Philadelphia Warriors",
+   "col3": "San Francisco",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": 1946,
+   "col2": "San Francisco Warriors",
+   "col3": "San Francisco",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Houston",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Denver",
+   "name_team": "Denver Nuggets"
+  }
+ ]
+}

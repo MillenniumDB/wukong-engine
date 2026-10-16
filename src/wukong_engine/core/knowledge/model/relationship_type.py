@@ -27,6 +27,8 @@ class RelationshipType:
         identity_policy: Policy used to deduplicate relationships of this type.
         fields: Field definitions, keyed by field name.
         default_merge_strategy: Merge strategy for fields that don't define their own.
+        irreflexive: Whether an entity can never be related to itself by this type. Self-loops are allowed by default,
+            since some relationships are legitimately reflexive (e.g. a taxonomy's subclass relation).
     """
 
     name: RelationshipTypeName
@@ -37,6 +39,7 @@ class RelationshipType:
     identity_policy: RelationshipIdentityPolicy
     fields: MappingProxyType[FieldName, RelationshipField]
     default_merge_strategy: MergeStrategy
+    irreflexive: bool = False
 
     # Private index for fast retrieval of fields by retrieval mode
     _fields_index: MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]] = field(
@@ -51,6 +54,7 @@ class RelationshipType:
         lines.append(f'  • Description: {self.description}')
         lines.append(f'  • Primary Key: {self.primary_key or "NONE"}')
         lines.append(f'  • Identity Policy (Deduplication): {self.identity_policy.value}')
+        lines.append(f'  • Irreflexive: {"YES" if self.irreflexive else "NO"}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
         return '\n'.join(lines)
@@ -61,6 +65,7 @@ class RelationshipType:
             'name': str(self.name),
             'description': self.description,
             'primary_key': str(self.primary_key) if self.primary_key else None,
+            'irreflexive': self.irreflexive,
             'fields': [json.loads(repr(field)) for field in self.fields.values()],
         }
         return json.dumps(rel_info)

@@ -1,0 +1,24 @@
+{
+  "ontology": "5_military",
+  "system": "prompting baseline (benchmark prompts)",
+  "recorded_at": "2026-10-09T14:35:04+00:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "engine": {
+    "version": "0.5.0",
+    "commit": "dc1c99ee8928445d528e2e72ab657c107a138dc1",
+    "uncommitted_changes": false
+  },
+  "prompts_file_sha256": "3dbef1780d07b5e7aced1004409a84ec9cf3ff39e50667304af6bc4559866aaf",
+  "prompts": 230,
+  "failed": 0,
+  "with_triples": 223,
+  "triples": 333,
+  "usage": {
+    "input_tokens": 63076,
+    "cached_tokens": 0,
+    "output_tokens": 25213,
+    "reasoning_tokens": 18869
+  },
+  "seconds": 40
+}

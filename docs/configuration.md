@@ -85,12 +85,13 @@ The `[llm]` section controls the language model used for extraction.
 | `model`           | The model to use. Only OpenAI models are currently supported.                                    | `string`  | `"gpt-5.6-luna"` |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
+| `reasoning_effort` | Reasoning effort requested for every extraction call, entities and relationships alike: `"none"`, `"low"`, `"medium"`, `"high"`, `"extreme"` (alias `"xhigh"`) or `"max"`. Ignored by non-reasoning models. | `string` | `"low"` |
 
 **Supported models:**
 
 | Model            | Notes                                                    |
 | ---------------- | -------------------------------------------------------- |
-| `"gpt-5.6-luna"` | Reasoning model, runs at `low` effort. Balanced default. |
+| `"gpt-5.6-luna"` | Reasoning model; effort set by `reasoning_effort`. Balanced default. |
 | `"gpt-4.1-mini"` | Non-reasoning. Cheaper, lower quality.                   |
 
 **Execution modes:**
@@ -101,6 +102,8 @@ The `[llm]` section controls the language model used for extraction.
 | `"batch"`       | `"batched"`, `"async"`, `"asynchronous"`, `"queue"`, `"queued"`, `"deferred"` | Requests are grouped and submitted to the provider's asynchronous batch interface. Substantially cheaper per token, in exchange for a delayed, best-effort turnaround. |
 
 Both modes share the same work plan, validation and identity logic, so you can prototype interactively on a subset and then run the full corpus in batch mode by changing nothing but this key. In batch mode a run may be submitted in one session and collected in another.
+
+`reasoning_effort` trades cost for quality: reasoning tokens are billed as output, so higher effort makes every call more expensive. It is part of the configuration of a run, so when comparing systems on the same model, give them the same effort or report each one's.
 
 `max_concurrency` only applies to real-time mode, and the binding constraint is the provider's rate limits rather than local resources. Reference values for OpenAI usage tiers with mini models:
 
@@ -116,12 +119,15 @@ Both modes share the same work plan, validation and identity logic, so you can p
 
 ## ✂️ Chunking
 
-The `[chunking]` section controls how documents are segmented into the text chunks that chunk-level extraction reads.
+The `[chunking]` section controls how much text each extraction reads: how documents are segmented into the chunks that chunk-level extraction reads, and how much of a document document-level extraction reads.
 
 | Key              | Description                                                                                 |   Type    | Default  |
 | ---------------- | ----------------------------------------------------------------------------------------------- | :-------: | -------- |
 | `target_tokens`  | The size each chunk aims for. Must be in `[1, 5000]`; the recommended range is `[100, 2000]`, and a value outside it logs a warning. | `integer` | `800`    |
 | `overlap_tokens` | Tokens shared between consecutive chunks. Must be in `[0, target_tokens - 1]`.              | `integer` | derived  |
+| `document_prefix_tokens` | Tokens of a document that document-level extraction reads, from its start. Must be positive. Text beyond it is not seen at document level (chunk-level extraction still covers the whole document). | `integer` | `8000` |
+
+Document-level extraction identifies the single entity a document **is** (see [Context Levels](knowledge-model.md#-context-levels)), so it reads the start of the document, where that entity is usually introduced, rather than a chunk. Raise `document_prefix_tokens` when the information a document-level entity needs appears later in the document; every document-level request grows accordingly.
 
 When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum per chunk, derived as `min(1.3 × target_tokens, 10000)`, which is not user-configurable.
 

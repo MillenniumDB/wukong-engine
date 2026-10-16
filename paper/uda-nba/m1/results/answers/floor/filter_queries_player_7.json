@@ -1,0 +1,336 @@
+{
+ "uid": "filter_queries_player#7",
+ "reply": "{\"rows\":[{\"col1\":1,\"col2\":2007,\"col3\":\"Kevin Durant\",\"name_player\":\"Kevin Durant\"},{\"col1\":1,\"col2\":2008,\"col3\":\"Russell Westbrook\",\"name_player\":\"Russell Westbrook\"},{\"col1\":1,\"col2\":2008,\"col3\":\"Derrick Rose\",\"name_player\":\"Derrick Rose\"},{\"col1\":1,\"col2\":2008,\"col3\":\"Eric Gordon\",\"name_player\":\"Eric Gordon\"},{\"col1\":1,\"col2\":2004,\"col3\":\"Andre Iguodala\",\"name_player\":\"Andre Iguodala\"},{\"col1\":1,\"col2\":2008,\"col3\":\"Kevin Love\",\"name_player\":\"Kevin Love\"},{\"col1\":1,\"col2\":1999,\"col3\":\"Lamar Odom\",\"name_player\":\"Lamar Odom\"},{\"col1\":1,\"col2\":2001,\"col3\":\"Tyson Chandler\",\"name_player\":\"Tyson Chandler\"},{\"col1\":1,\"col2\":1997,\"col3\":\"Chauncey Billups\",\"name_player\":\"Chauncey Billups\"},{\"col1\":1,\"col2\":2005,\"col3\":\"Danny Granger\",\"name_player\":\"Danny Granger\"},{\"col1\":1,\"col2\":2006,\"col3\":\"Rudy Gay\",\"name_player\":\"Rudy Gay\"},{\"col1\":1,\"col2\":2011,\"col3\":\"Kyrie Irving\",\"name_player\":\"Kyrie Irving\"},{\"col1\":1,\"col2\":2009,\"col3\":\"James Harden\",\"name_player\":\"James Harden\"},{\"col1\":1,\"col2\":2011,\"col3\":\"Klay Thompson\",\"name_player\":\"Klay Thompson\"},{\"col1\":1,\"col2\":2008,\"col3\":\"DeAndre Jordan\",\"name_player\":\"DeAndre Jordan\"},{\"col1\":1,\"col2\":2012,\"col3\":\"Anthony Davis\",\"name_player\":\"Anthony Davis\"},{\"col1\":1,\"col2\":2011,\"col3\":\"Kenneth Faried\",\"name_player\":\"Kenneth Faried\"},{\"col1\":1,\"col2\":2012,\"col3\":\"Andre Drummond\",\"name_player\":\"Andre Drummond\"},{\"col1\":1,\"col2\":2010,\"col3\":\"DeMarcus Cousins\",\"name_player\":\"DeMarcus Cousins\"},{\"col1\":1,\"col2\":2009,\"col3\":\"DeMar DeRozan\",\"name_player\":\"DeMar DeRozan\"},{\"col1\":1,\"col2\":2011,\"col3\":\"Chandler Parsons\",\"name_player\":\"Chandler Parsons\"},{\"col1\":1,\"col2\":2001,\"col3\":\"Pau Gasol\",\"name_player\":\"Pau Gasol\"},{\"col1\":2,\"col2\":2007,\"col3\":\"Marc Gasol\",\"name_player\":\"Marc Gasol\"},{\"col1\":1,\"col2\":2009,\"col3\":\"Ricky Rubio\",\"name_player\":\"Ricky Rubio\"},{\"col1\":2,\"col2\":2007,\"col3\":\"Rudy Fern\u00e1ndez\",\"name_player\":\"Rudy Fern\u00e1ndez\"},{\"col1\":1,\"col2\":2003,\"col3\":\"Jos\u00e9 Calder\u00f3n\",\"name_player\":\"Jos\u00e9 Calder\u00f3n\"},{\"col1\":1,\"col2\":2002,\"col3\":\"Jorge Garbajosa\",\"name_player\":\"Jorge Garbajosa\"},{\"col1\":1,\"col2\":2002,\"col3\":\"Juan Carlos Navarro\",\"name_player\":\"Juan Carlos Navarro\"},{\"col1\":1,\"col2\":2006,\"col3\":\"Sergio Rodr\u00edguez\",\"name_player\":\"Sergio Rodr\u00edguez\"},{\"col1\":1,\"col2\":2013,\"col3\":\"Dennis Schr\u00f6der\",\"name_player\":\"Dennis Schr\u00f6der\"},{\"col1\":1,\"col2\":2018,\"col3\":\"Moritz Wagner\",\"name_player\":\"Moritz Wagner\"},{\"col1\":3,\"col2\":1989,\"col3\":\"Vlade Divac\",\"name_player\":\"Vlade Divac\"},{\"col1\":2,\"col2\":1996,\"col3\":\"Peja Stojakovi\u0107\",\"name_player\":\"Peja Stojakovi\u0107\"},{\"col1\":2,\"col2\":2000,\"col3\":\"Marko Jari\u0107\",\"name_player\":\"Marko Jari\u0107\"},{\"col1\":2,\"col2\":1997,\"col3\":\"Predrag Drobnjak\",\"name_player\":\"Predrag Drobnjak\"},{\"col1\":1,\"col2\":2001,\"col3\":\"Vladimir Radmanovi\u0107\",\"name_player\":\"Vladimir Radmanovi\u0107\"},{\"col1\":1,\"col2\":1994,\"col3\":\"\u017deljko Rebra\u010da\",\"name_player\":\"\u017deljko Rebra\u010da\"},{\"col1\":1,\"col2\":1989,\"col3\":\"Dra\u017een Petrovi\u0107\",\"name_player\":\"Dra\u017een Petrovi\u0107\"},{\"col1\":1,\"col2\":1990,\"col3\":\"Toni Kuko\u010d\",\"name_player\":\"Toni Kuko\u010d\"},{\"col1\":1,\"col2\":1989,\"col3\":\"Dino Ra\u0111a\",\"name_player\":\"Dino Ra\u0111a\"},{\"col1\":1,\"col2\":1987,\"col3\":\"David Robinson\",\"name_player\":\"David Robinson\"},{\"col1\":1,\"col2\":1986,\"col3\":\"Rony Seikaly\",\"name_player\":\"Rony Seikaly\"},{\"col1\":1,\"col2\":1986,\"col3\":\"Arvydas Sabonis\",\"name_player\":\"Arvydas Sabonis\"},{\"col1\":1,\"col2\":1987,\"col3\":\"\u0160ar\u016bnas Mar\u010diulionis\",\"name_player\":\"\u0160ar\u016bnas Mar\u010diulionis\"},{\"col1\":1,\"col2\":1992,\"col3\":\"Shaquille O'Neal\",\"name_player\":\"Shaquille O'Neal\"},{\"col1\":1,\"col2\":1985,\"col3\":\"Joe Dumars\",\"name_player\":\"Joe Dumars\"},{\"col1\":1,\"col2\":1987,\"col3\":\"Reggie Miller\",\"name_player\":\"Reggie Miller\"},{\"col1\":1,\"col2\":1982,\"col3\":\"Dominique Wilkins\",\"name_player\":\"Dominique Wilkins\"},{\"col1\":1,\"col2\":1990,\"col3\":\"Derrick Coleman\",\"name_player\":\"Derrick Coleman\"},{\"col1\":1,\"col2\":1992,\"col3\":\"Alonzo Mourning\",\"name_player\":\"Alonzo Mourning\"},{\"col1\":1,\"col2\":1991,\"col3\":\"Larry Johnson\",\"name_player\":\"Larry Johnson\"},{\"col1\":1,\"col2\":1987,\"col3\":\"Kevin Johnson\",\"name_player\":\"Kevin Johnson\"},{\"col1\":1,\"col2\":1987,\"col3\":\"Steve Smith\",\"name_player\":\"Steve Smith\"},{\"col1\":1,\"col2\":1988,\"col3\":\"Dan Majerle\",\"name_player\":\"Dan Majerle\"},{\"col1\":1,\"col2\":1986,\"col3\":\"Mark Price\",\"name_player\":\"Mark Price\"}]}",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 2007,
+   "col3": "Kevin Durant",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 1,
+   "col2": 2008,
+   "col3": "Russell Westbrook",
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": 1,
+   "col2": 2008,
+   "col3": "Derrick Rose",
+   "name_player": "Derrick Rose"
+  },
+  {
+   "col1": 1,
+   "col2": 2008,
+   "col3": "Eric Gordon",
+   "name_player": "Eric Gordon"
+  },
+  {
+   "col1": 1,
+   "col2": 2004,
+   "col3": "Andre Iguodala",
+   "name_player": "Andre Iguodala"
+  },
+  {
+   "col1": 1,
+   "col2": 2008,
+   "col3": "Kevin Love",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": 1,
+   "col2": 1999,
+   "col3": "Lamar Odom",
+   "name_player": "Lamar Odom"
+  },
+  {
+   "col1": 1,
+   "col2": 2001,
+   "col3": "Tyson Chandler",
+   "name_player": "Tyson Chandler"
+  },
+  {
+   "col1": 1,
+   "col2": 1997,
+   "col3": "Chauncey Billups",
+   "name_player": "Chauncey Billups"
+  },
+  {
+   "col1": 1,
+   "col2": 2005,
+   "col3": "Danny Granger",
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": 1,
+   "col2": 2006,
+   "col3": "Rudy Gay",
+   "name_player": "Rudy Gay"
+  },
+  {
+   "col1": 1,
+   "col2": 2011,
+   "col3": "Kyrie Irving",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 1,
+   "col2": 2009,
+   "col3": "James Harden",
+   "name_player": "James Harden"
+  },
+  {
+   "col1": 1,
+   "col2": 2011,
+   "col3": "Klay Thompson",
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": 1,
+   "col2": 2008,
+   "col3": "DeAndre Jordan",
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": 1,
+   "col2": 2012,
+   "col3": "Anthony Davis",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": 1,
+   "col2": 2011,
+   "col3": "Kenneth Faried",
+   "name_player": "Kenneth Faried"
+  },
+  {
+   "col1": 1,
+   "col2": 2012,
+   "col3": "Andre Drummond",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": 1,
+   "col2": 2010,
+   "col3": "DeMarcus Cousins",
+   "name_player": "DeMarcus Cousins"
+  },
+  {
+   "col1": 1,
+   "col2": 2009,
+   "col3": "DeMar DeRozan",
+   "name_player": "DeMar DeRozan"
+  },
+  {
+   "col1": 1,
+   "col2": 2011,
+   "col3": "Chandler Parsons",
+   "name_player": "Chandler Parsons"
+  },
+  {
+   "col1": 1,
+   "col2": 2001,
+   "col3": "Pau Gasol",
+   "name_player": "Pau Gasol"
+  },
+  {
+   "col1": 2,
+   "col2": 2007,
+   "col3": "Marc Gasol",
+   "name_player": "Marc Gasol"
+  },
+  {
+   "col1": 1,
+   "col2": 2009,
+   "col3": "Ricky Rubio",
+   "name_player": "Ricky Rubio"
+  },
+  {
+   "col1": 2,
+   "col2": 2007,
+   "col3": "Rudy Fern\u00e1ndez",
+   "name_player": "Rudy Fern\u00e1ndez"
+  },
+  {
+   "col1": 1,
+   "col2": 2003,
+   "col3": "Jos\u00e9 Calder\u00f3n",
+   "name_player": "Jos\u00e9 Calder\u00f3n"
+  },
+  {
+   "col1": 1,
+   "col2": 2002,
+   "col3": "Jorge Garbajosa",
+   "name_player": "Jorge Garbajosa"
+  },
+  {
+   "col1": 1,
+   "col2": 2002,
+   "col3": "Juan Carlos Navarro",
+   "name_player": "Juan Carlos Navarro"
+  },
+  {
+   "col1": 1,
+   "col2": 2006,
+   "col3": "Sergio Rodr\u00edguez",
+   "name_player": "Sergio Rodr\u00edguez"
+  },
+  {
+   "col1": 1,
+   "col2": 2013,
+   "col3": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": 1,
+   "col2": 2018,
+   "col3": "Moritz Wagner",
+   "name_player": "Moritz Wagner"
+  },
+  {
+   "col1": 3,
+   "col2": 1989,
+   "col3": "Vlade Divac",
+   "name_player": "Vlade Divac"
+  },
+  {
+   "col1": 2,
+   "col2": 1996,
+   "col3": "Peja Stojakovi\u0107",
+   "name_player": "Peja Stojakovi\u0107"
+  },
+  {
+   "col1": 2,
+   "col2": 2000,
+   "col3": "Marko Jari\u0107",
+   "name_player": "Marko Jari\u0107"
+  },
+  {
+   "col1": 2,
+   "col2": 1997,
+   "col3": "Predrag Drobnjak",
+   "name_player": "Predrag Drobnjak"
+  },
+  {
+   "col1": 1,
+   "col2": 2001,
+   "col3": "Vladimir Radmanovi\u0107",
+   "name_player": "Vladimir Radmanovi\u0107"
+  },
+  {
+   "col1": 1,
+   "col2": 1994,
+   "col3": "\u017deljko Rebra\u010da",
+   "name_player": "\u017deljko Rebra\u010da"
+  },
+  {
+   "col1": 1,
+   "col2": 1989,
+   "col3": "Dra\u017een Petrovi\u0107",
+   "name_player": "Dra\u017een Petrovi\u0107"
+  },
+  {
+   "col1": 1,
+   "col2": 1990,
+   "col3": "Toni Kuko\u010d",
+   "name_player": "Toni Kuko\u010d"
+  },
+  {
+   "col1": 1,
+   "col2": 1989,
+   "col3": "Dino Ra\u0111a",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": 1,
+   "col2": 1987,
+   "col3": "David Robinson",
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": 1,
+   "col2": 1986,
+   "col3": "Rony Seikaly",
+   "name_player": "Rony Seikaly"
+  },
+  {
+   "col1": 1,
+   "col2": 1986,
+   "col3": "Arvydas Sabonis",
+   "name_player": "Arvydas Sabonis"
+  },
+  {
+   "col1": 1,
+   "col2": 1987,
+   "col3": "\u0160ar\u016bnas Mar\u010diulionis",
+   "name_player": "\u0160ar\u016bnas Mar\u010diulionis"
+  },
+  {
+   "col1": 1,
+   "col2": 1992,
+   "col3": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "col2": 1985,
+   "col3": "Joe Dumars",
+   "name_player": "Joe Dumars"
+  },
+  {
+   "col1": 1,
+   "col2": 1987,
+   "col3": "Reggie Miller",
+   "name_player": "Reggie Miller"
+  },
+  {
+   "col1": 1,
+   "col2": 1982,
+   "col3": "Dominique Wilkins",
+   "name_player": "Dominique Wilkins"
+  },
+  {
+   "col1": 1,
+   "col2": 1990,
+   "col3": "Derrick Coleman",
+   "name_player": "Derrick Coleman"
+  },
+  {
+   "col1": 1,
+   "col2": 1992,
+   "col3": "Alonzo Mourning",
+   "name_player": "Alonzo Mourning"
+  },
+  {
+   "col1": 1,
+   "col2": 1991,
+   "col3": "Larry Johnson",
+   "name_player": "Larry Johnson"
+  },
+  {
+   "col1": 1,
+   "col2": 1987,
+   "col3": "Kevin Johnson",
+   "name_player": "Kevin Johnson"
+  },
+  {
+   "col1": 1,
+   "col2": 1987,
+   "col3": "Steve Smith",
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": 1,
+   "col2": 1988,
+   "col3": "Dan Majerle",
+   "name_player": "Dan Majerle"
+  },
+  {
+   "col1": 1,
+   "col2": 1986,
+   "col3": "Mark Price",
+   "name_player": "Mark Price"
+  }
+ ]
+}

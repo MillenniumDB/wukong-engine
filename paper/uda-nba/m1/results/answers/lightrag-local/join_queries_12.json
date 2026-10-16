@@ -1,0 +1,17 @@
+{
+ "uid": "join_queries#12",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"California\",\"col2\":\"Kobe Bryant\",\"col3\":null,\"col4\":null,\"col5\":\"Los Angeles Lakers\",\"name_player\":\"Kobe Bryant\",\"name_team\":\"Los Angeles Lakers\",\"name_city\":\"Los Angeles\"}]}",
+ "rows": [
+  {
+   "col1": "California",
+   "col2": "Kobe Bryant",
+   "col3": null,
+   "col4": null,
+   "col5": "Los Angeles Lakers",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  }
+ ]
+}

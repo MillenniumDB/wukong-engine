@@ -1,0 +1,43 @@
+{
+ "uid": "agg_queries#7",
+ "mode": "hybrid",
+ "reply": "{\"rows\":[{\"col1\":\"American\",\"col2\":50},{\"col1\":\"Chinese\",\"col2\":null},{\"col1\":\"Croatian\",\"col2\":59},{\"col1\":\"Dutch\",\"col2\":60},{\"col1\":\"French\",\"col2\":22},{\"col1\":\"German\",\"col2\":null},{\"col1\":\"Greek\",\"col2\":34.67},{\"col1\":\"Nigerian\",\"col2\":31},{\"col1\":\"Slovenian\",\"col2\":null}]}",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 50
+  },
+  {
+   "col1": "Chinese",
+   "col2": null
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60
+  },
+  {
+   "col1": "French",
+   "col2": 22
+  },
+  {
+   "col1": "German",
+   "col2": null
+  },
+  {
+   "col1": "Greek",
+   "col2": 34.67
+  },
+  {
+   "col1": "Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "Slovenian",
+   "col2": null
+  }
+ ]
+}

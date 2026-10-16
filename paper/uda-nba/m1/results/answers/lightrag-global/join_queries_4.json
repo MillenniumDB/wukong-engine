@@ -1,0 +1,119 @@
+{
+ "uid": "join_queries#4",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":\"Cameroonian-American\",\"col2\":32,\"col3\":\"Philadelphia\",\"col4\":\"Philadelphia 76ers\",\"name_player\":\"Joel Embiid\",\"name_team\":\"Philadelphia 76ers\"},{\"col1\":\"American\",\"col2\":38,\"col3\":\"Phoenix\",\"col4\":\"Phoenix Suns\",\"name_player\":\"Kevin Durant\",\"name_team\":\"Phoenix Suns\"},{\"col1\":\"French\",\"col2\":22,\"col3\":\"San Antonio\",\"col4\":\"San Antonio Spurs\",\"name_player\":\"Victor Wembanyama\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"American\",\"col2\":54,\"col3\":\"Boston\",\"col4\":\"Boston Celtics\",\"name_player\":\"Shaquille O'Neal\",\"name_team\":\"Boston Celtics\"},{\"col1\":\"Croatian\",\"col2\":59,\"col3\":\"Boston\",\"col4\":\"Boston Celtics\",\"name_player\":\"Dino Ra\u0111a\",\"name_team\":\"Boston Celtics\"},{\"col1\":\"American-Chinese\",\"col2\":33,\"col3\":\"San Francisco\",\"col4\":\"Golden State Warriors\",\"name_player\":\"Kyle Anderson\",\"name_team\":\"Golden State Warriors\"},{\"col1\":\"American\",\"col2\":41,\"col3\":\"San Antonio\",\"col4\":\"San Antonio Spurs\",\"name_player\":\"Chris Paul\",\"name_team\":\"San Antonio Spurs\"},{\"col1\":\"American\",\"col2\":32,\"col3\":\"Tel Aviv\",\"col4\":\"Maccabi Tel Aviv\",\"name_player\":\"Antonius Cleveland\",\"name_team\":\"Maccabi Tel Aviv\"},{\"col1\":\"German\",\"col2\":33,\"col3\":\"Brooklyn\",\"col4\":\"Brooklyn Nets\",\"name_player\":\"Dennis Schr\u00f6der\",\"name_team\":\"Brooklyn Nets\"},{\"col1\":\"Greek\",\"col2\":31,\"col3\":\"Milwaukee\",\"col4\":\"Milwaukee Bucks\",\"name_player\":\"Giannis Antetokounmpo\",\"name_team\":\"Milwaukee Bucks\"},{\"col1\":\"American\",\"col2\":25,\"col3\":\"Detroit\",\"col4\":\"Detroit Pistons\",\"name_player\":\"Cade Cunningham\",\"name_team\":\"Detroit Pistons\"},{\"col1\":\"American\",\"col2\":40,\"col3\":\"Bursa\",\"col4\":\"Tofa\u015f\",\"name_player\":\"D. J. White\",\"name_team\":\"Tofa\u015f\"},{\"col1\":\"American\",\"col2\":41,\"col3\":\"Los Angeles\",\"col4\":\"Los Angeles Lakers\",\"name_player\":\"LeBron James\",\"name_team\":\"Los Angeles Lakers\"},{\"col1\":\"American-Greek\",\"col2\":37,\"col3\":\"Monaco\",\"col4\":\"AS Monaco\",\"name_player\":\"Nick Calathes\",\"name_team\":\"AS Monaco\"}]}",
+ "rows": [
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "American",
+   "col2": 38,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "French",
+   "col2": 22,
+   "col3": "San Antonio",
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "American",
+   "col2": 54,
+   "col3": "Boston",
+   "col4": "Boston Celtics",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59,
+   "col3": "Boston",
+   "col4": "Boston Celtics",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33,
+   "col3": "San Francisco",
+   "col4": "Golden State Warriors",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "American",
+   "col2": 41,
+   "col3": "San Antonio",
+   "col4": "San Antonio Spurs",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "American",
+   "col2": 32,
+   "col3": "Tel Aviv",
+   "col4": "Maccabi Tel Aviv",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Maccabi Tel Aviv"
+  },
+  {
+   "col1": "German",
+   "col2": 33,
+   "col3": "Brooklyn",
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Greek",
+   "col2": 31,
+   "col3": "Milwaukee",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "American",
+   "col2": 25,
+   "col3": "Detroit",
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "American",
+   "col2": 40,
+   "col3": "Bursa",
+   "col4": "Tofa\u015f",
+   "name_player": "D. J. White",
+   "name_team": "Tofa\u015f"
+  },
+  {
+   "col1": "American",
+   "col2": 41,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "American-Greek",
+   "col2": 37,
+   "col3": "Monaco",
+   "col4": "AS Monaco",
+   "name_player": "Nick Calathes",
+   "name_team": "AS Monaco"
+  }
+ ]
+}

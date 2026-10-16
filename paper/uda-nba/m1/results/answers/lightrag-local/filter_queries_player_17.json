@@ -1,0 +1,115 @@
+{
+ "uid": "filter_queries_player#17",
+ "mode": "local",
+ "reply": "{\"rows\":[{\"col1\":\"Michigan State University\",\"col2\":35,\"col3\":null,\"name_player\":\"Draymond Jamal Green\"},{\"col1\":\"Michigan State University\",\"col2\":null,\"col3\":null,\"name_player\":\"Erazem Lorbek\"},{\"col1\":\"Michigan State University\",\"col2\":null,\"col3\":null,\"name_player\":\"Jay Vincent\"},{\"col1\":\"Michigan State University\",\"col2\":null,\"col3\":null,\"name_player\":\"Steven Delano Smith\"},{\"col1\":\"Michigan State University\",\"col2\":1,\"col3\":null,\"name_player\":\"Earvin Johnson Jr.\"},{\"col1\":null,\"col2\":3,\"col3\":null,\"name_player\":\"Al Horford\"},{\"col1\":null,\"col2\":7,\"col3\":null,\"name_player\":\"Stephen Curry\"},{\"col1\":null,\"col2\":10,\"col3\":null,\"name_player\":\"Paul George\"},{\"col1\":null,\"col2\":2,\"col3\":null,\"name_player\":\"D'Angelo Russell\"},{\"col1\":null,\"col2\":10,\"col3\":null,\"name_player\":\"Zach Collins\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Victor Wembanyama\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Shaquille O'Neal\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Glenn Robinson\"},{\"col1\":null,\"col2\":9,\"col3\":null,\"name_player\":\"Dirk Nowitzki\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"LeBron James\"},{\"col1\":null,\"col2\":1,\"col3\":null,\"name_player\":\"Kyrie Irving\"},{\"col1\":null,\"col2\":9,\"col3\":null,\"name_player\":\"Andre Drummond\"},{\"col1\":null,\"col2\":5,\"col3\":null,\"name_player\":\"Ausar Thompson\"}]}",
+ "rows": [
+  {
+   "col1": "Michigan State University",
+   "col2": 35,
+   "col3": null,
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": null,
+   "col3": null,
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": null,
+   "col3": null,
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "Michigan State University",
+   "col2": 1,
+   "col3": null,
+   "name_player": "Earvin Johnson Jr."
+  },
+  {
+   "col1": null,
+   "col2": 3,
+   "col3": null,
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": 7,
+   "col3": null,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": 10,
+   "col3": null,
+   "name_player": "Paul George"
+  },
+  {
+   "col1": null,
+   "col2": 2,
+   "col3": null,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": null,
+   "col2": 10,
+   "col3": null,
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Glenn Robinson"
+  },
+  {
+   "col1": null,
+   "col2": 9,
+   "col3": null,
+   "name_player": "Dirk Nowitzki"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": null,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": null,
+   "col2": 9,
+   "col3": null,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": 5,
+   "col3": null,
+   "name_player": "Ausar Thompson"
+  }
+ ]
+}

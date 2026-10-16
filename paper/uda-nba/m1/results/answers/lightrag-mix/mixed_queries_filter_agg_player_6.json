@@ -1,0 +1,31 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "mode": "mix",
+ "reply": "{\"rows\":[{\"col1\":\"Los Angeles Lakers\",\"col2\":0},{\"col1\":\"Phoenix Suns\",\"col2\":1},{\"col1\":\"Milwaukee Bucks\",\"col2\":0},{\"col1\":\"Dallas Mavericks\",\"col2\":1},{\"col1\":\"Miami Heat\",\"col2\":1},{\"col1\":\"Golden State Warriors\",\"col2\":2}]}",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 1
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 2
+  }
+ ]
+}

@@ -171,21 +171,34 @@ interpreter path will not resolve.
 | File | Role |
 |---|---|
 | `text2kg_setup.py` | Compile ontologies into workspaces and sentence documents (§2); `--permissive-endpoints` and `--entity-examples` select the ablation arms (§10) |
-| `run_benchmark.sh` | Drive extraction, conversion, evaluation, baseline re-scoring and the summary |
+| `run_benchmark.sh` | Drive extraction, run records, conversion, evaluation, baseline re-scoring and the summary |
+| `text2kg_record.py` | Write each run's record (jobs, tokens, timing, engine commit, config, definition hashes, and the objects discarded and values unset by validation) and archive its staging database and log |
 | `text2kg_export.py` | Convert a workspace's staging database into benchmark system output (§4) |
 | `text2kg_eval.py` | Write the evaluator config and invoke the benchmark's `run_eval.py` (§5) |
 | `text2kg_report.py` | Regenerate every table in §6 from the results on disk; `--benchmark` adds the recall-by-object-type table (§7.5) |
 | `text2kg_diagnose.py` | Reachability, the macro F1 ceiling and the data artifacts (§7.2, §8); needs the eval venv |
 | `text2kg_rescore.py` | Corrected benchmark copies and cross-system re-scoring, for [`benchmark-adjusted.md`](benchmark-adjusted.md) only |
 
-`run_benchmark.sh` reads `PREFIX` and `RESULTS` from the environment, which is
+`run_benchmark.sh` reads `PREFIX`, `RESULTS` and `CONFIG` (the engine config,
+`config/default.toml` by default) from the environment, which is
 how an ablation arm runs against its own workspaces without touching the primary
 results (§10). Passing ontology names as arguments restricts extraction,
 conversion and evaluation to those ontologies.
 
 Results land in `paper/benchmark/results/`: `wukong/` (converted system output),
-`eval/` (per-sentence and averaged metrics), `baselines/` (both baselines
-re-scored under this harness) and `logs/` (one engine log per ontology).
+`eval/` (per-sentence and averaged metrics), `runs/` (one run record per
+ontology), `baselines/` (both baselines re-scored under this harness), `logs/`
+(one engine log per ontology) and `archive/` (compressed copies of each staging
+database and log). Only `wukong/`, `eval/` and `runs/` are tracked.
+
+The run records are what makes cost and token figures traceable: staging
+databases are not tracked, so before this step the figures in §6.4 and §9.3
+existed only on the machine that ran them. `text2kg_report.py` reads the
+records, falling back to the staging databases for older runs. A run is
+recorded once, so re-invoking `run_benchmark.sh` does not duplicate it; if a
+workspace is extracted again into the same `RESULTS`, recording stops with an
+error rather than mixing two runs. Give each repetition its own `PREFIX` and
+`RESULTS`. Back up `archive/` outside the repository.
 
 ### Configuration
 

@@ -1,0 +1,199 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": [
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc.",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc.",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Inc.",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment (VSE)",
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Portland",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Salem",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg",
+   "name_city": "Salem"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "col4": "Tualatin",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg",
+   "name_city": "Tualatin"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(pd:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document), (o)-[:MentionedIn]->(od:Document) WHERE pf.tenure = 'latest' AND (CAST(p.olympic_gold_medals AS INT64) = 0 OR COALESCE(p.position, '') <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, date_diff('year', CAST(o.birth_date AS DATE), CAST('2026-10-15' AS DATE)) AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND (CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, (2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 15) THEN 1 ELSE 0 END) AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": null,
+   "rows": 18
+  }
+ ]
+}

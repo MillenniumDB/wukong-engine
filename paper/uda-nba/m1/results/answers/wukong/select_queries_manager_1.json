@@ -1,0 +1,103 @@
+{
+ "uid": "select_queries_manager#1",
+ "rows": [
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": "2019",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "1983",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Fertitta",
+   "col3": "2017",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steven Anthony Ballmer",
+   "col3": "2014",
+   "name_manager": "Steven Anthony Ballmer"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "2011",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "2005",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "2018",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "2006",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Stan Kroenke",
+   "col3": "2000",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "1985",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Steven Lacob",
+   "col3": "2010",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "2000",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1995",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "2011",
+   "name_manager": "Joshua Jordan Harris"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o:Owner)-[:ExtractedFrom]->(:Document) RETURN t.team_name AS col1, o.name AS col2, o.since_year AS col3, o.name AS name_manager",
+   "error": "Binder exception: Cannot find property since_year for o.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (o:Owner)-[r:Owns]->(t), (o:Owner)-[:ExtractedFrom]->(:Document) RETURN t.team_name AS col1, o.name AS col2, r.since_year AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

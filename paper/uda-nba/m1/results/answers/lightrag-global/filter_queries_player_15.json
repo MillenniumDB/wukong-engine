@@ -1,0 +1,97 @@
+{
+ "uid": "filter_queries_player#15",
+ "mode": "global",
+ "reply": "{\"rows\":[{\"col1\":null,\"col2\":\"French\",\"col3\":null,\"name_player\":\"Victor Wembanyama\"},{\"col1\":null,\"col2\":\"Greek-Nigerian\",\"col3\":null,\"name_player\":\"Giannis Antetokounmpo\"},{\"col1\":null,\"col2\":\"American\",\"col3\":\"Purdue\",\"name_player\":\"Jaden Ivey\"},{\"col1\":null,\"col2\":\"American\",\"col3\":\"Wichita State and Oklahoma\",\"name_player\":\"Austin Reaves\"},{\"col1\":null,\"col2\":\"American-Chinese\",\"col3\":\"UCLA\",\"name_player\":\"Kyle Anderson\"},{\"col1\":null,\"col2\":\"American\",\"col3\":\"Kentucky\",\"name_player\":\"Devin Booker\"},{\"col1\":null,\"col2\":\"American\",\"col3\":\"Michigan State University\",\"name_player\":\"Draymond Green\"},{\"col1\":null,\"col2\":\"Cameroonian-American\",\"col3\":\"University of Kansas\",\"name_player\":\"Joel Embiid\"},{\"col1\":null,\"col2\":\"American\",\"col3\":\"Villanova University\",\"name_player\":\"Jalen Brunson\"},{\"col1\":1,\"col2\":\"American\",\"col3\":\"Duke University\",\"name_player\":\"Kyrie Irving\"},{\"col1\":null,\"col2\":\"American\",\"col3\":null,\"name_player\":\"Anthony Edwards\"},{\"col1\":1,\"col2\":\"American\",\"col3\":\"University of Connecticut\",\"name_player\":\"Andre Drummond\"},{\"col1\":null,\"col2\":\"Dominican-American\",\"col3\":\"University of Florida\",\"name_player\":\"Al Horford\"},{\"col1\":null,\"col2\":\"American\",\"col3\":null,\"name_player\":\"Jayson Tatum\"},{\"col1\":null,\"col2\":\"American-Mexican\",\"col3\":\"UCLA\",\"name_player\":\"Jaime Jaquez Jr.\"}]}",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": null,
+   "col2": "Greek-Nigerian",
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Purdue",
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Wichita State and Oklahoma",
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": null,
+   "col2": "American-Chinese",
+   "col3": "UCLA",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Kentucky",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Michigan State University",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": null,
+   "col2": "Cameroonian-American",
+   "col3": "University of Kansas",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Villanova University",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Duke University",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Connecticut",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": "Dominican-American",
+   "col3": "University of Florida",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": null,
+   "col2": "American-Mexican",
+   "col3": "UCLA",
+   "name_player": "Jaime Jaquez Jr."
+  }
+ ]
+}
