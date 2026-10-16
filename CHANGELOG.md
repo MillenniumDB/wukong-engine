@@ -9,25 +9,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
+- [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
+  - [🐛 Fixed](#-fixed)
+  - [🛠️ Build](#️-build)
+  - [📝 Documentation](#-documentation)
 - [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
-  - [🐛 Fixed](#-fixed)
+  - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance)
-  - [📝 Documentation](#-documentation)
+  - [📝 Documentation](#-documentation-1)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed-1)
-  - [🐛 Fixed](#-fixed-1)
+  - [🐛 Fixed](#-fixed-2)
   - [⚡ Performance](#-performance-1)
-  - [📝 Documentation](#-documentation-1)
+  - [📝 Documentation](#-documentation-2)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
   - [✨ Added](#-added-2)
-  - [🛠️ Build](#️-build)
-  - [📝 Documentation](#-documentation-2)
+  - [🛠️ Build](#️-build-1)
+  - [📝 Documentation](#-documentation-3)
 
 ## [Unreleased]
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## [0.5.1] - 2026-10-16
+
+### 🐛 Fixed
+
+- `requirements.txt` had drifted from `poetry.lock`, so the **Docker** image was installed with an outdated dependency set. It is now regenerated from the lockfile.
+- The `reset` **CLI** subcommand, which is not implemented yet, silently exited with success. It now reports that it is not implemented and exits with status 1.
+
+### 🛠️ Build
+
+- **Ruff** and **Pyright** are now pinned as **Poetry** development dependencies, so the editor and the command line use the same versions.
+- Ignored the **Ruff** rules `COM812`, which conflicts with the formatter, and `FIX002`, so TODO comments are allowed.
+- Removed the obsolete `reportShadowedImports` **Pyright** setting.
+
+### 📝 Documentation
+
+- Updated the **Development Guidelines** with the command-line linting and type checking workflow, how to keep `requirements.txt` in sync, and the testing policy.
+- Added a `CLAUDE.md` with project context for **Claude Code**.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
