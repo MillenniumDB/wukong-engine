@@ -43,6 +43,7 @@ include = ["wukong_engine"]
 [tool.ruff]
 line-length = 120
 indent-width = 4
+extend-exclude = ["paper"] # Research material, with scripts that have their own dependencies and known violations
 
 [tool.ruff.lint]
 select = ["ALL"] # Select all rules as a base
