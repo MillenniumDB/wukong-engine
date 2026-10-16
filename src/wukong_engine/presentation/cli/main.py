@@ -139,16 +139,17 @@ def handle_run(args: argparse.Namespace) -> None:
         sys.exit(1)
 
 
-# TODO: New command for 'wukong reset <workspace>' that resets everything
-def handle_reset(args: argparse.Namespace) -> None:
+# TODO(BFFV): Implement 'wukong reset <workspace>', which also needs the workspace argument in its parser
+def handle_reset(_args: argparse.Namespace) -> None:
     """Execute the reset command.
 
-    Not implemented yet: the command currently does nothing.
+    Not implemented yet: reports so and exits the process with status 1.
 
     Args:
-        args: Parsed command-line arguments.
+        _args: Parsed command-line arguments.
     """
-    # reset_state(workspace=args.workspace)
+    print('The reset command is not implemented yet', file=sys.stderr)
+    sys.exit(1)
 
 
 def main() -> None:

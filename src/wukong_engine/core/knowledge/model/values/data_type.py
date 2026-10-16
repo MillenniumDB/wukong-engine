@@ -15,6 +15,4 @@ class DataType(Enum):
     """
 
     STRING = 'string'
-    # INTEGER = 'integer'
-    # FLOAT = 'float'
-    # BOOLEAN = 'boolean'
+    # TODO(BFFV): Add INTEGER, FLOAT and BOOLEAN data types

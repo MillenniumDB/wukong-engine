@@ -233,7 +233,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         self._repository = repository
         self._pk_normalizer = pk_normalizer
 
-    def materialize(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> tuple[Relationship, ...]:
+    def materialize(
+        self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel
+    ) -> tuple[Relationship, ...]:
         """Materialize the extraction result into relationship instances.
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the

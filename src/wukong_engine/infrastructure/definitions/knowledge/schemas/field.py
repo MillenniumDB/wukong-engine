@@ -35,13 +35,8 @@ class _FieldSchema(BaseModel):
         'str': DataType.STRING,
         'string': DataType.STRING,
         'text': DataType.STRING,
-        # 'int': DataType.INTEGER,
-        # 'integer': DataType.INTEGER,
-        # 'number': DataType.INTEGER,
-        # 'float': DataType.FLOAT,
-        # 'double': DataType.FLOAT,
-        # 'bool': DataType.BOOLEAN,
-        # 'boolean': DataType.BOOLEAN,
+        # TODO(BFFV): Add aliases for INTEGER ("int", "integer", "number"), FLOAT ("float", "double") and BOOLEAN
+        # ("bool", "boolean") once those data types exist
     }
 
     # Mapping of various string representations to MergeStrategy members
