@@ -76,12 +76,7 @@ def _data_type_to_json(data_type: DataType) -> str:
     match data_type:
         case DataType.STRING:
             return 'string'
-        # case DataType.INTEGER:
-        #     return 'integer'
-        # case DataType.FLOAT:
-        #     return 'number'
-        # case DataType.BOOLEAN:
-        #     return 'boolean'
+        # TODO(BFFV): Map INTEGER to "integer", FLOAT to "number" and BOOLEAN to "boolean" once those data types exist
 
 
 class ExtractionRequestBuilder(Protocol):

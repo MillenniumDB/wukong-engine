@@ -52,7 +52,15 @@ For a detailed description of the entire project structure and its components, r
 
 The project follows multiple code style conventions and practices to ensure code quality, extensibility and maintainability. The following tools are used to enforce these standards.
 
-**Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
+Both tools are declared as **development dependencies** in `pyproject.toml`, so `poetry install` sets them up at the versions pinned in `poetry.lock`. They can be run from the command line through **Poetry**:
+
+```sh
+poetry run ruff check src     # Lint
+poetry run ruff format src    # Format
+poetry run pyright src        # Type check
+```
+
+**Ruff**: A fast linter and formatter that supports multiple **Python** code style rules. The recommended way of using this tool is through the [Ruff VS Code Extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides real-time linting and formatting. With the project's **Poetry** environment selected as the interpreter, the extension uses the **Ruff** version installed there instead of its bundled one, so the editor and the command line always agree. The specific configuration used in the project is defined in the `pyproject.toml` file, which will be automatically detected and applied by the tool. If using **VS Code**, add the following fields to your `settings.json` to make sure that **Ruff** is properly configured:
 
 ```json
 "editor.formatOnSave": true,
@@ -72,7 +80,9 @@ The project follows multiple code style conventions and practices to ensure code
 "ruff.configurationPreference": "filesystemFirst",
 ```
 
-**Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool.
+**Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool. Note that **Pylance** bundles its own **Pyright** version, which may differ slightly from the one pinned for the command line.
+
+> 🧹 The **Ruff** configuration selects `ALL` rules, and the `ignore` list holds the rules that were deliberately disabled for the project. New code is expected to pass this configuration as-is, so avoid `# noqa` comments and discuss changes to the `ignore` list before making them.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -102,7 +112,15 @@ def my_function(param1: int, param2: str) -> bool:
 
 ## 🧪 Testing
 
-Currently, the project **does not implement** testing functionalities. For now, making sure that the code works well with the provided **example data directory** is sufficient. The example directory is located at `data/example/`.
+Currently, the project **does not have** a test suite. The baseline check for any change is an end-to-end run over the provided **example**, made up of the workspace in `workspaces/example/` and the corpus in `data/example/`:
+
+```sh
+poetry run wukong run workspaces/example data/example
+```
+
+> 💸 This run calls the configured **LLM** provider, so it requires a valid `.env` file and incurs API costs.
+
+Adding automated tests is welcome wherever they provide real value, such as for **domain logic, parsing, normalization and serialization**, which can be tested without calling an **LLM**. Tests should be written with [pytest](https://docs.pytest.org/) inside the `tests/` directory, and **pytest** should be added as a development dependency along with the first test.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -274,6 +292,16 @@ The following files are key to this setup:
 - **Dependencies/Packaging:** `pyproject.toml`
 - **Poetry Lockfile:** `poetry.lock`
 - **Pip-compatible Lockfile:** `requirements.txt`
+
+Runtime dependencies belong to the main dependency group, while development tools (linters, type checkers, test frameworks) belong to the `dev` group.
+
+The **Docker** image installs dependencies from `requirements.txt` rather than through **Poetry**, so this file must be regenerated whenever the runtime dependencies change:
+
+```sh
+poetry export -f requirements.txt --without-hashes -o requirements.txt
+```
+
+> 📦 The export only includes the main dependency group, so development tools never end up in the **Docker** image.
 
 ### Containerization
 

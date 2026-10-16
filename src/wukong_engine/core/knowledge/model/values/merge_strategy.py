@@ -17,6 +17,4 @@ class MergeStrategy(Enum):
     REPLACE = 'replace'
     LONGEST = 'longest'
     SHORTEST = 'shortest'
-    # MAX = 'max'  # MAX: For numeric fields, take the maximum value
-    # MIN = 'min'  # MIN: For numeric fields, take the minimum value
-    # UNION = 'union'  # UNION: For list fields, combine unique values from both
+    # TODO(BFFV): Add MAX and MIN for numeric fields, and UNION (combine unique values) for list fields

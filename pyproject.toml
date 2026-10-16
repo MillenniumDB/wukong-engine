@@ -31,6 +31,10 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 packages = [{ include = "wukong_engine", from = "src" }]
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.17.1"
+pyright = "^1.1.414"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["wukong_engine"]
@@ -55,11 +59,13 @@ ignore = [
     "TRY003", # Allow long custom exception messages
     "TRY400", # Allow logging exceptions without a traceback
     "TD003",  # Allow TODO comments without an issue link
+    "FIX002", # Allow TODO comments to remain in the code
     "T201",   # Allow print statements (intended for CLI output)
     "TC001",  # Allow imports that are only used in type annotations
     "TC002",  # Allow imports that are only used in type annotations
     "TC003",  # Allow imports that are only used in type annotations
     "CPY001", # Ignore copyright header checks
+    "COM812", # Conflicts with the formatter, which already handles trailing commas
 ]
 unfixable = ["F401"] # Do not auto-fix unused imports
 
@@ -89,7 +95,6 @@ reportAssertAlwaysTrue = false
 reportDuplicateImport = false
 reportPrivateUsage = false
 reportRedeclaration = false
-reportShadowedImports = false
 reportUndefinedVariable = false
 reportUnnecessaryCast = false
 reportUnsupportedDunderAll = false

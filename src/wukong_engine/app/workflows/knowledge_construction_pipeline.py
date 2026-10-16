@@ -120,7 +120,9 @@ class KnowledgeConstructionPipeline:
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         document_registry.validate_collections(frozenset(unique_collections))
-        logger.info(f'Knowledge Model obtained successfully from "{workspace.paths.knowledge_model}"\n\n{knowledge_model}')
+        logger.info(
+            f'Knowledge Model obtained successfully from "{workspace.paths.knowledge_model}"\n\n{knowledge_model}'
+        )
 
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
