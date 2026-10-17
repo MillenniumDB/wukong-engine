@@ -6,7 +6,8 @@ Systems: Wukong with the revised full schema (workspace-x6-s5, three runs), the 
 (neo4j-graphrag, LlamaIndex, OntoGPT) and the schema-free graphs (LightRAG, GraphRAG, KGGen).
 
 Content against gold (the 216 subject entities; matching as in e1_analysis.py):
-  entities      found, and split (matched by more than one node)
+  entities      found, and split (matched by more than one node). As P/R/F1 of resolution: recall = found /
+                216, precision = found / distinct nodes matched to gold entities (one node per entity is 100%)
   attributes    typed graphs: a gold attribute is filled if a matched node has the field; correct if the value
                 equals the gold value in any form (x6_analysis.lenient_equal); exact if in the gold's form, so a
                 query can compare it. Precision = correct / filled; recall = correct / 955; exact recall = exact /
@@ -14,7 +15,8 @@ Content against gold (the 216 subject entities; matching as in e1_analysis.py):
                 matched nodes or their edges (an upper bound), and precision is undefined.
   relations     the 148 gold relations between gold entities (player's team, team's city, team's owners), found
                 if an edge of the right type joins the matched nodes (any edge, for schema-free graphs), and split
-                if stored as more than one edge (as an entity split over several nodes).
+                if stored as more than one edge (as an entity split over several nodes). As P/R/F1: recall =
+                found / 148, precision = found / edges matched to them (summed over gold relations).
   single-valued the benchmark defines a player's team as the current one and a team's location as the latest
                 city, so these 119 gold relations have one value: precision over the values a typed graph marks
                 (current team: Player.current_team for Wukong s5, PlaysFor edges whose tenure says current for
@@ -263,7 +265,9 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
         adj[e['src']].append(e)
         adj[e['dst']].append(e)
     found = split = split_pairs = 0
-    n_rel = 0
+    n_rel = rel_edges = 0
+    ent_found = sum(bool(v) for v in matched.values())
+    ent_nodes = len(set().union(*matched.values()))
     fv = {'pred': 0, 'right': 0, 'gold': 0, 'hit': 0}
     for g in gold:
         src = matched[(g['kind'], g['id'])]
@@ -277,6 +281,7 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
                         and (not typed or x['label'] == LABEL[r])}.values()
                 n_rel += 1
                 found += bool(hits)
+                rel_edges += len(hits)
                 split += len(hits) > 1
                 split_pairs += len({(x['src'], x['dst']) for x in hits}) > 1
                 if not typed or r not in ('plays_for', 'located_in'):
@@ -293,7 +298,12 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
                 fv['pred'] += len(marked)
                 fv['right'] += len(marked & dst)
                 fv['hit'] += bool(marked & dst)
-    out = {'rel_found': found, 'rel_gold': n_rel, 'rel_split': split, 'rel_split_pairs': split_pairs}
+    prf = lambda p, r: (round(100 * p, 1), round(100 * r, 1), round(100 * 2 * p * r / (p + r), 1) if p + r else 0.0)  # noqa: E731
+    ep, er, ef = prf(ent_found / ent_nodes if ent_nodes else 0.0, ent_found / len(gold))
+    rp, rr, rf = prf(found / rel_edges if rel_edges else 0.0, found / n_rel)
+    out = {'rel_found': found, 'rel_gold': n_rel, 'rel_split': split, 'rel_split_pairs': split_pairs,
+           'ent_matched_nodes': ent_nodes, 'ent_precision': ep, 'ent_recall': er, 'ent_f1': ef,
+           'rel_edges': rel_edges, 'rel_precision': rp, 'rel_recall': rr, 'rel_f1': rf}
     if typed:
         p = fv['right'] / fv['pred'] if fv['pred'] else 0.0
         rc = fv['hit'] / fv['gold']
@@ -378,8 +388,8 @@ def write_tex(df: pd.DataFrame) -> None:
     lines = []
     for s in order:
         lines.append(' & '.join([label.get(s, s),
-                                 cell(s, 'entities_found'), cell(s, 'entities_split'),
-                                 cell(s, 'rel_found'), cell(s, 'rel_split'),
+                                 cell(s, 'ent_precision'), cell(s, 'ent_recall'), cell(s, 'ent_f1'),
+                                 cell(s, 'rel_precision'), cell(s, 'rel_recall'), cell(s, 'rel_f1'),
                                  cell(s, 'attr_precision'), cell(s, 'attr_recall'), cell(s, 'attr_f1'),
                                  cell(s, 'sv_precision'), cell(s, 'sv_recall'), cell(s, 'sv_f1'),
                                  cell(s, 'edges_conforming_pct', '{:.1f}'), cell(s, 'constrained_conforming_pct'),
