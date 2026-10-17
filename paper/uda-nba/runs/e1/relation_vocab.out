@@ -1,0 +1,95 @@
+
+== raw
+                                              Wukong   LightRAG-keywords               KGGen    LightRAG-derived    GraphRAG-derived       KGGen-derived
+labels                                             3               25151                4496                4388                4428                2946
+edges_per_label                               1094.7                 1.8                 4.6                10.0                12.2                 7.0
+singleton_labels_pct                             0.0                78.6                66.3                55.8                51.8                55.0
+edges_with_singleton_label_pct                   0.0                44.9                14.6                 5.6                 4.3                 7.9
+labels_cover_50                                    1                4262                  92                  51                  47                  67
+labels_cover_90                                    1               20747                2449                1079                 936                1113
+top_label_share_pct                             94.4                 0.5                 3.7                 4.3                 4.8                 5.0
+labels_per_type_pair_mean                        1.0              1019.7                None               310.1               735.6                None
+labels_per_type_pair_max                           1                5792                None                 852                1014                None
+unlabeled_edges                                    0                   0                   0                   0                   0                   0
+edges_stored_backwards_pct                                                                                  47.8                16.2                 5.0
+labels_10plus_both_directions_pct                                                                            85.3                55.5                16.8
+
+== merged_0.95
+                                              Wukong   LightRAG-keywords               KGGen    LightRAG-derived    GraphRAG-derived       KGGen-derived
+labels                                                             24739                4480                4358                4387                2914
+edges_per_label                                                      1.8                 4.6                10.1                12.3                 7.0
+singleton_labels_pct                                                77.7                66.2                55.6                51.5                54.7
+edges_with_singleton_label_pct                                      43.7                14.5                 5.5                 4.2                 7.8
+labels_cover_50                                                     4113                  92                  50                  47                  66
+labels_cover_90                                                    20335                2433                1064                 928                1094
+top_label_share_pct                                                  0.5                 3.7                 4.3                 4.8                 5.0
+labels_per_type_pair_mean                                         1007.6                None               308.9               731.4                None
+labels_per_type_pair_max                                            5678                None                 846                1012                None
+unlabeled_edges                                                        0                   0                   0                   0                   0
+edges_stored_backwards_pct                                                                                  47.8                16.2                 5.0
+labels_10plus_both_directions_pct                                                                            85.8                55.6                16.8
+   LightRAG-keywords: largest cluster 'authorship,publication' (1 labels, 0.5% of edges): ['authorship,publication']
+   KGGen: largest cluster 'played as a' (1 labels, 3.7% of edges): ['played as a']
+   LightRAG-derived: largest cluster 'located_in' (1 labels, 4.3% of edges): ['located_in']
+   GraphRAG-derived: largest cluster 'located_in' (1 labels, 4.8% of edges): ['located_in']
+   KGGen-derived: largest cluster 'plays_for' (1 labels, 5.0% of edges): ['plays_for']
+
+== merged_0.9
+                                              Wukong   LightRAG-keywords               KGGen    LightRAG-derived    GraphRAG-derived       KGGen-derived
+labels                                                             22779                4281                4012                4038                2671
+edges_per_label                                                      1.9                 4.8                11.0                13.3                 7.7
+singleton_labels_pct                                                74.9                65.0                53.9                50.0                51.7
+edges_with_singleton_label_pct                                      38.7                13.6                 4.9                 3.7                 6.7
+labels_cover_50                                                     3240                  87                  49                  45                  62
+labels_cover_90                                                    18375                2234                 939                 817                 957
+top_label_share_pct                                                  0.5                 3.7                 4.3                 4.8                 5.0
+labels_per_type_pair_mean                                          950.2                None               298.8               700.6                None
+labels_per_type_pair_max                                            5208                None                 800                 966                None
+unlabeled_edges                                                        0                   0                   0                   0                   0
+edges_stored_backwards_pct                                                                                  47.8                16.2                 5.0
+labels_10plus_both_directions_pct                                                                            86.9                55.6                16.6
+   LightRAG-keywords: largest cluster 'authorship,publication' (1 labels, 0.5% of edges): ['authorship,publication']
+   KGGen: largest cluster 'played as a' (1 labels, 3.7% of edges): ['played as a']
+   LightRAG-derived: largest cluster 'located_in' (1 labels, 4.3% of edges): ['located_in']
+   GraphRAG-derived: largest cluster 'located_in' (1 labels, 4.8% of edges): ['located_in']
+   KGGen-derived: largest cluster 'plays_for' (1 labels, 5.0% of edges): ['plays_for']
+
+== merged_0.85
+                                              Wukong   LightRAG-keywords               KGGen    LightRAG-derived    GraphRAG-derived       KGGen-derived
+labels                                                             19480                3991                3488                3477                2306
+edges_per_label                                                      2.3                 5.1                12.6                15.5                 8.9
+singleton_labels_pct                                                69.9                63.6                51.6                47.7                49.4
+edges_with_singleton_label_pct                                      30.9                12.4                 4.1                 3.1                 5.6
+labels_cover_50                                                     2128                  82                  41                  36                  49
+labels_cover_90                                                    15076                1944                 738                 633                 738
+top_label_share_pct                                                  0.7                 3.7                 5.3                 7.2                 8.0
+labels_per_type_pair_mean                                          852.7                None               279.1               640.1                None
+labels_per_type_pair_max                                            4397                None                 729                 881                None
+unlabeled_edges                                                        0                   0                   0                   0                   0
+edges_stored_backwards_pct                                                                                  47.8                16.2                 5.0
+labels_10plus_both_directions_pct                                                                            88.5                58.4                17.8
+   LightRAG-keywords: largest cluster 'authorship,publication' (8 labels, 0.7% of edges): ['authorship,publication', 'authorship', 'authorship,book', 'author,authorship,publication', 'authorship,research', 'authorship,scholarship', 'authorship,book,co-authored,publication', 'authorship,blog publishing']
+   KGGen: largest cluster 'played as a' (2 labels, 3.7% of edges): ['played as a', 'played as']
+   LightRAG-derived: largest cluster 'plays_for' (3 labels, 5.3% of edges): ['plays_for', 'plays_in', 'plays_at']
+   GraphRAG-derived: largest cluster 'plays_for' (3 labels, 7.2% of edges): ['plays_for', 'plays_in', 'plays_at']
+   KGGen-derived: largest cluster 'plays_for' (3 labels, 8.0% of edges): ['plays_for', 'plays_in', 'plays_at']
+
+== merged_0.8
+                                              Wukong   LightRAG-keywords               KGGen    LightRAG-derived    GraphRAG-derived       KGGen-derived
+labels                                                             15573                3592                3013                2971                1991
+edges_per_label                                                      2.8                 5.7                14.6                18.1                10.3
+singleton_labels_pct                                                63.4                61.2                48.2                44.7                47.1
+edges_with_singleton_label_pct                                      22.4                10.7                 3.3                 2.5                 4.6
+labels_cover_50                                                     1246                  71                  38                  34                  43
+labels_cover_90                                                    11169                1545                 599                 508                 580
+top_label_share_pct                                                  0.8                 3.7                 7.1                 8.9                10.2
+labels_per_type_pair_mean                                          741.6                None               262.6               585.1                None
+labels_per_type_pair_max                                            3499                None                 678                 813                None
+unlabeled_edges                                                        0                   0                   0                   0                   0
+edges_stored_backwards_pct                                                                                  47.8                16.2                 5.0
+labels_10plus_both_directions_pct                                                                            90.1                60.6                19.3
+   LightRAG-keywords: largest cluster 'authorship,publication' (21 labels, 0.8% of edges): ['authorship,publication', 'authorship', 'author,publication', 'authorship,book', 'authorship,subject', 'authorship,biography', 'authorship,contribution', 'authorship,journalism,publication']
+   KGGen: largest cluster 'played as a' (3 labels, 3.7% of edges): ['played as a', 'played as', 'played primarily as']
+   LightRAG-derived: largest cluster 'plays_for' (8 labels, 7.1% of edges): ['plays_for', 'plays_against', 'plays_in', 'plays_at', 'played_for', 'plays_on', 'plays_as', 'plays_under']
+   GraphRAG-derived: largest cluster 'plays_for' (6 labels, 8.9% of edges): ['plays_for', 'plays_in', 'plays_against', 'plays_at', 'plays_on', 'plays_under']
+   KGGen-derived: largest cluster 'plays_for' (10 labels, 10.2% of edges): ['plays_for', 'plays_in', 'plays_against', 'plays_at', 'played_for', 'plays_as', 'plays_under', 'plays_from']

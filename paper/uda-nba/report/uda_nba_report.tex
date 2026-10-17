@@ -44,9 +44,11 @@ Three studies on the same corpus, with the same language model:
 
 \paragraph{\wk.} Engine at commit \code{baeeb13}, chunks of 800 tokens with 120 overlap, document
 level reading the first 8000 tokens of each document, export to Neo4j CSV
-(\code{x6-config.toml}). The full schema (\code{workspace-x6-s4/}) has four entity types (Player,
-Team, City, Owner) with typed fields and three relationship types (PlaysFor, with a
-\code{tenure} field; LocatedIn; Owns, with a \code{since\_year} field). Each \wk{} configuration
+(\code{x6-config.toml}). The schema used for every result outside the ablation is the revised
+full schema (\code{workspace-x6-s5/}, variant s5 of Section~\ref{sec:x6}): four entity types
+(Player, with a document-level \code{current\_team} field; Team; City; Owner) with typed fields and
+three relationship types (PlaysFor, with a \code{tenure} field; LocatedIn; Owns, with a
+\code{since\_year} field). Each \wk{} configuration
 was run three times; tables give the mean and, where runs differ, the range.
 
 \paragraph{Schema hygiene.} The first version of the schema (\code{workspace/}) used example values
@@ -69,7 +71,7 @@ schema-based extractors) must also have the right type (\code{e1\_analysis.py}).
 
 \paragraph{Systems.}
 \begin{itemize}
-  \item \textbf{\wk}, full schema, three runs.
+  \item \textbf{\wk}, revised full schema (s5), three runs.
   \item \textbf{LightRAG} 1.5.7, default extraction, chunks of 1200 tokens with 100 overlap,
     16 concurrent LLM calls (\code{lightrag\_build.py}).
   \item \textbf{GraphRAG} 3.2.0, standard indexing with its default entity types
@@ -99,7 +101,7 @@ wall times are indicative.
 \toprule
  & LLM calls & Input tokens & Output tokens & Wall time \\
 \midrule
-\wk{} & 4,443 & 6.5M & 1.1M & 18 min \\
+\wk{} & 4,447 & 6.4M & 1.1M & 18 min \\
 LightRAG & 6,341 & 17.3M & 7.8M & 92 min \\
 GraphRAG & 24,965 & 35.3M & 15.1M & 101 min \\
 KGGen & 26,025 & 13.8M & 1.7M & 228 min \\
@@ -172,8 +174,8 @@ GraphRAG and KGGen if any edge joins them.
 \toprule
  & & \wk & LightRAG & GraphRAG & KGGen \\
 \midrule
-Size & Nodes & 2,129 & 34,162 & 37,917 & 21,429 \\
- & Edges & 3,339 & 44,040 & 53,891 & 20,475 \\
+Size & Nodes & 2,134 & 34,162 & 37,917 & 21,429 \\
+ & Edges & 3,212 & 44,040 & 53,891 & 20,475 \\
 \midrule
 Node vocabulary & Node types & 4 & 14 & 99 & none \\
  & Node types used once & 0 & 1 & 94 & -- \\
@@ -196,14 +198,14 @@ Direction & Edges stored against their relation & 0\% & 48\%$^{a}$ & 16\% & 5\% 
 Properties & Typed property values per node & 1.5 & 0 & 0 & 0 \\
  & Nodes described only by free text & 0\% & 100\% & 100\% & --$^{d}$ \\
 \midrule
-Control: & Entities found & 213/216 & 214/216 & 214/216 & 212/216 \\
-recall vs.\ gold & Attribute values found$^{b}$ & 865/955 & 714/955 & 729/955 & 488/955 \\
- & Relations found$^{c}$ & 169/220 & 195/220 & 192/220 & 188/220 \\
+Control: & Entities found & 214/216 & 214/216 & 214/216 & 212/216 \\
+recall vs.\ gold & Attribute values found$^{b}$ & 871/955 & 714/955 & 729/955 & 488/955 \\
+ & Relations found$^{c}$ & 171/220 & 195/220 & 192/220 & 188/220 \\
 \bottomrule
 \end{tabular}
-\caption{E1: structure of the four graphs. \wk{} values are means of three runs, which range
-2,114--2,137 nodes, 3,278--3,390 edges, 213--214 entities, 864--867 attribute values and 168--170
-relations. For \wk{} the derived and merged rows repeat its own labels. $^{a}$LightRAG's graph is
+\caption{E1: structure of the four graphs. \wk{} (schema s5) values are means of three runs,
+which range 2,118--2,152 nodes, 3,161--3,284 edges, 866--873 attribute values and 170--172
+relations, and find the same 214 entities. For \wk{} the derived and merged rows repeat its own labels. $^{a}$LightRAG's graph is
 undirected. $^{b}$For LightRAG, GraphRAG and KGGen, a value counts if it appears in their text
 (upper bound). $^{c}$For LightRAG, GraphRAG and KGGen, any edge between the two entities counts,
 whatever relation it describes; most of their extra relations are players' teams outside the NBA,
@@ -230,6 +232,7 @@ properties nor descriptions.}
 \end{itemize}
 
 \section{X6: coupling ablation}
+\label{sec:x6}
 
 \paragraph{Variants.} Every key of the full schema belongs to exactly one family; variant
 s$k$ keeps the core and the first $k$ families (\code{make\_coupling\_variants.py}, which checks that

@@ -3,7 +3,7 @@
     envs/graphrag/bin/python e1_analysis.py && envs/graphrag/bin/python relation_vocab.py
     envs/graphrag/bin/python e1_table.py           # -> runs/e1/summary.csv, printed table
 
-Wukong is the full schema (workspace-x6-s4) on the current engine, three runs (Wukong-r1..r3):
+Wukong is the revised full schema (workspace-x6-s5) on the current engine, three runs (Wukong-r1..r3):
 a cell shows the mean, with the range when the runs differ. LightRAG, GraphRAG and KGGen ran once.
 """
 import json

@@ -1,15 +1,15 @@
 {
  "Wukong": {
   "raw": {
-   "edges": 3390,
+   "edges": 3284,
    "unlabeled_edges": 0,
    "labels": 3,
    "labels_cover_50": 1,
    "labels_cover_90": 1,
-   "edges_per_label": 1130.0,
+   "edges_per_label": 1094.7,
    "singleton_labels_pct": 0.0,
    "edges_with_singleton_label_pct": 0.0,
-   "top_label_share_pct": 94.0,
+   "top_label_share_pct": 94.4,
    "type_pairs_100plus": 2,
    "labels_per_type_pair_mean": 1.0,
    "labels_per_type_pair_max": 1

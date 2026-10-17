@@ -1064,7 +1064,7 @@
   },
   "plays_for_current": 93
  },
- "Wukong-r1": {
+ "Wukong-s4-r1": {
   "nodes": 2137,
   "edges": 3390,
   "entity_types": 4,
@@ -1243,7 +1243,7 @@
   },
   "plays_for_current": 95
  },
- "Wukong-r2": {
+ "Wukong-s4-r2": {
   "nodes": 2114,
   "edges": 3278,
   "entity_types": 4,
@@ -1422,7 +1422,7 @@
   },
   "plays_for_current": 93
  },
- "Wukong-r3": {
+ "Wukong-s4-r3": {
   "nodes": 2136,
   "edges": 3349,
   "entity_types": 4,
@@ -1600,6 +1600,543 @@
    "nba": "80/90"
   },
   "plays_for_current": 94
+ },
+ "Wukong-r1": {
+  "nodes": 2152,
+  "edges": 3284,
+  "entity_types": 4,
+  "entity_types_singleton": 0,
+  "top_types": {
+   "Player": 1765,
+   "Owner": 226,
+   "Team": 94,
+   "City": 67
+  },
+  "edges_unlabeled": 0,
+  "relation_labels": 3,
+  "relation_labels_singleton": 0,
+  "edges_with_singleton_label": 0,
+  "distinct_keywords": null,
+  "top_labels": {
+   "PlaysFor": 3101,
+   "Owns": 128,
+   "LocatedIn": 55
+  },
+  "typed_attribute_values": 3281,
+  "nodes_with_description": 0,
+  "median_node_description_chars": 0,
+  "edges_with_description": 0,
+  "median_edge_description_chars": 0,
+  "isolated_nodes": 524,
+  "degree_1_nodes": 860,
+  "Chunk": 2564,
+  "Document": 216,
+  "ChunkOf": 2564,
+  "ExtractedFrom": 13894,
+  "usage": {
+   "calls": 4445,
+   "input": 6374756,
+   "output": 400760,
+   "reasoning": 708227,
+   "wall_min": 18.2
+  },
+  "surface_duplicates": {
+   "groups": 17,
+   "nodes_in_groups": 34,
+   "examples": [
+    [
+     "P. J. Washington",
+     "P.J. Washington"
+    ],
+    [
+     "Shaquille O'Neal",
+     "Shaquille O'Neal"
+    ],
+    [
+     "T. J. Warren",
+     "T.J. Warren"
+    ]
+   ]
+  },
+  "entity_coverage": {
+   "city": {
+    "n": 29,
+    "found": 29,
+    "found_exact": 29,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   },
+   "owner": {
+    "n": 16,
+    "found": 16,
+    "found_exact": 16,
+    "with_aliases": 5,
+    "mean_nodes_when_found": 1.31
+   },
+   "player": {
+    "n": 141,
+    "found": 139,
+    "found_exact": 139,
+    "with_aliases": 3,
+    "mean_nodes_when_found": 1.03
+   },
+   "team": {
+    "n": 30,
+    "found": 30,
+    "found_exact": 30,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   }
+  },
+  "fact_coverage": {
+   "city.area": {
+    "n": 23,
+    "covered": 18
+   },
+   "city.population": {
+    "n": 29,
+    "covered": 27
+   },
+   "city.state_name": {
+    "n": 28,
+    "covered": 28
+   },
+   "owner.nationality": {
+    "n": 16,
+    "covered": 15
+   },
+   "owner.own_year": {
+    "n": 14,
+    "covered": 12
+   },
+   "owner.owns": {
+    "n": 16,
+    "covered": 14
+   },
+   "player.birth_date": {
+    "n": 141,
+    "covered": 139
+   },
+   "player.college": {
+    "n": 123,
+    "covered": 111
+   },
+   "player.draft_pick": {
+    "n": 107,
+    "covered": 90
+   },
+   "player.draft_year": {
+    "n": 114,
+    "covered": 108
+   },
+   "player.fiba_world_cup": {
+    "n": 19,
+    "covered": 13
+   },
+   "player.mvp_awards": {
+    "n": 17,
+    "covered": 10
+   },
+   "player.nationality": {
+    "n": 139,
+    "covered": 135
+   },
+   "player.nba_championships": {
+    "n": 33,
+    "covered": 30
+   },
+   "player.olympic_gold_medals": {
+    "n": 26,
+    "covered": 25
+   },
+   "player.plays_for": {
+    "n": 139,
+    "covered": 98
+   },
+   "player.position": {
+    "n": 76,
+    "covered": 63
+   },
+   "team.championships": {
+    "n": 20,
+    "covered": 20
+   },
+   "team.founded_year": {
+    "n": 30,
+    "covered": 29
+   },
+   "team.located_in": {
+    "n": 30,
+    "covered": 30
+   },
+   "team.owned_by": {
+    "n": 35,
+    "covered": 28
+   }
+  },
+  "plays_for_split": {
+   "non_nba": "16/49",
+   "nba": "82/90"
+  },
+  "plays_for_current": 95
+ },
+ "Wukong-r2": {
+  "nodes": 2118,
+  "edges": 3161,
+  "entity_types": 4,
+  "entity_types_singleton": 0,
+  "top_types": {
+   "Player": 1754,
+   "Owner": 216,
+   "Team": 84,
+   "City": 64
+  },
+  "edges_unlabeled": 0,
+  "relation_labels": 3,
+  "relation_labels_singleton": 0,
+  "edges_with_singleton_label": 0,
+  "distinct_keywords": null,
+  "top_labels": {
+   "PlaysFor": 2978,
+   "Owns": 128,
+   "LocatedIn": 55
+  },
+  "typed_attribute_values": 3220,
+  "nodes_with_description": 0,
+  "median_node_description_chars": 0,
+  "edges_with_description": 0,
+  "median_edge_description_chars": 0,
+  "isolated_nodes": 536,
+  "degree_1_nodes": 851,
+  "Chunk": 2564,
+  "Document": 216,
+  "ChunkOf": 2564,
+  "ExtractedFrom": 13866,
+  "usage": {
+   "calls": 4448,
+   "input": 6372017,
+   "output": 396069,
+   "reasoning": 717837,
+   "wall_min": 44.4
+  },
+  "surface_duplicates": {
+   "groups": 17,
+   "nodes_in_groups": 34,
+   "examples": [
+    [
+     "P. J. Washington",
+     "P.J. Washington"
+    ],
+    [
+     "Shaquille O'Neal",
+     "Shaquille O'Neal"
+    ],
+    [
+     "T. J. Warren",
+     "T.J. Warren"
+    ]
+   ]
+  },
+  "entity_coverage": {
+   "city": {
+    "n": 29,
+    "found": 29,
+    "found_exact": 29,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   },
+   "owner": {
+    "n": 16,
+    "found": 16,
+    "found_exact": 16,
+    "with_aliases": 5,
+    "mean_nodes_when_found": 1.31
+   },
+   "player": {
+    "n": 141,
+    "found": 139,
+    "found_exact": 139,
+    "with_aliases": 2,
+    "mean_nodes_when_found": 1.01
+   },
+   "team": {
+    "n": 30,
+    "found": 30,
+    "found_exact": 30,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   }
+  },
+  "fact_coverage": {
+   "city.area": {
+    "n": 23,
+    "covered": 18
+   },
+   "city.population": {
+    "n": 29,
+    "covered": 27
+   },
+   "city.state_name": {
+    "n": 28,
+    "covered": 28
+   },
+   "owner.nationality": {
+    "n": 16,
+    "covered": 15
+   },
+   "owner.own_year": {
+    "n": 14,
+    "covered": 12
+   },
+   "owner.owns": {
+    "n": 16,
+    "covered": 14
+   },
+   "player.birth_date": {
+    "n": 141,
+    "covered": 139
+   },
+   "player.college": {
+    "n": 123,
+    "covered": 111
+   },
+   "player.draft_pick": {
+    "n": 107,
+    "covered": 90
+   },
+   "player.draft_year": {
+    "n": 114,
+    "covered": 110
+   },
+   "player.fiba_world_cup": {
+    "n": 19,
+    "covered": 12
+   },
+   "player.mvp_awards": {
+    "n": 17,
+    "covered": 10
+   },
+   "player.nationality": {
+    "n": 139,
+    "covered": 135
+   },
+   "player.nba_championships": {
+    "n": 33,
+    "covered": 29
+   },
+   "player.olympic_gold_medals": {
+    "n": 26,
+    "covered": 25
+   },
+   "player.plays_for": {
+    "n": 139,
+    "covered": 99
+   },
+   "player.position": {
+    "n": 76,
+    "covered": 64
+   },
+   "team.championships": {
+    "n": 20,
+    "covered": 20
+   },
+   "team.founded_year": {
+    "n": 30,
+    "covered": 28
+   },
+   "team.located_in": {
+    "n": 30,
+    "covered": 30
+   },
+   "team.owned_by": {
+    "n": 35,
+    "covered": 29
+   }
+  },
+  "plays_for_split": {
+   "non_nba": "18/49",
+   "nba": "81/90"
+  },
+  "plays_for_current": 96
+ },
+ "Wukong-r3": {
+  "nodes": 2131,
+  "edges": 3191,
+  "entity_types": 4,
+  "entity_types_singleton": 0,
+  "top_types": {
+   "Player": 1762,
+   "Owner": 226,
+   "Team": 76,
+   "City": 67
+  },
+  "edges_unlabeled": 0,
+  "relation_labels": 3,
+  "relation_labels_singleton": 0,
+  "edges_with_singleton_label": 0,
+  "distinct_keywords": null,
+  "top_labels": {
+   "PlaysFor": 3005,
+   "Owns": 129,
+   "LocatedIn": 57
+  },
+  "typed_attribute_values": 3238,
+  "nodes_with_description": 0,
+  "median_node_description_chars": 0,
+  "edges_with_description": 0,
+  "median_edge_description_chars": 0,
+  "isolated_nodes": 519,
+  "degree_1_nodes": 863,
+  "Chunk": 2564,
+  "Document": 216,
+  "ChunkOf": 2564,
+  "ExtractedFrom": 13864,
+  "usage": {
+   "calls": 4447,
+   "input": 6370757,
+   "output": 395893,
+   "reasoning": 715227,
+   "wall_min": 18.4
+  },
+  "surface_duplicates": {
+   "groups": 16,
+   "nodes_in_groups": 32,
+   "examples": [
+    [
+     "P. J. Washington",
+     "P.J. Washington"
+    ],
+    [
+     "Shaquille O'Neal",
+     "Shaquille O'Neal"
+    ],
+    [
+     "T. J. Warren",
+     "T.J. Warren"
+    ]
+   ]
+  },
+  "entity_coverage": {
+   "city": {
+    "n": 29,
+    "found": 29,
+    "found_exact": 29,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   },
+   "owner": {
+    "n": 16,
+    "found": 16,
+    "found_exact": 16,
+    "with_aliases": 7,
+    "mean_nodes_when_found": 1.44
+   },
+   "player": {
+    "n": 141,
+    "found": 139,
+    "found_exact": 139,
+    "with_aliases": 2,
+    "mean_nodes_when_found": 1.01
+   },
+   "team": {
+    "n": 30,
+    "found": 30,
+    "found_exact": 30,
+    "with_aliases": 0,
+    "mean_nodes_when_found": 1.0
+   }
+  },
+  "fact_coverage": {
+   "city.area": {
+    "n": 23,
+    "covered": 18
+   },
+   "city.population": {
+    "n": 29,
+    "covered": 28
+   },
+   "city.state_name": {
+    "n": 28,
+    "covered": 28
+   },
+   "owner.nationality": {
+    "n": 16,
+    "covered": 15
+   },
+   "owner.own_year": {
+    "n": 14,
+    "covered": 13
+   },
+   "owner.owns": {
+    "n": 16,
+    "covered": 15
+   },
+   "player.birth_date": {
+    "n": 141,
+    "covered": 139
+   },
+   "player.college": {
+    "n": 123,
+    "covered": 109
+   },
+   "player.draft_pick": {
+    "n": 107,
+    "covered": 89
+   },
+   "player.draft_year": {
+    "n": 114,
+    "covered": 108
+   },
+   "player.fiba_world_cup": {
+    "n": 19,
+    "covered": 11
+   },
+   "player.mvp_awards": {
+    "n": 17,
+    "covered": 10
+   },
+   "player.nationality": {
+    "n": 139,
+    "covered": 135
+   },
+   "player.nba_championships": {
+    "n": 33,
+    "covered": 29
+   },
+   "player.olympic_gold_medals": {
+    "n": 26,
+    "covered": 25
+   },
+   "player.plays_for": {
+    "n": 139,
+    "covered": 98
+   },
+   "player.position": {
+    "n": 76,
+    "covered": 63
+   },
+   "team.championships": {
+    "n": 20,
+    "covered": 19
+   },
+   "team.founded_year": {
+    "n": 30,
+    "covered": 27
+   },
+   "team.located_in": {
+    "n": 30,
+    "covered": 30
+   },
+   "team.owned_by": {
+    "n": 35,
+    "covered": 29
+   }
+  },
+  "plays_for_split": {
+   "non_nba": "18/49",
+   "nba": "80/90"
+  },
+  "plays_for_current": 95
  },
  "Neo4j-GraphRAG": {
   "nodes": 2790,
