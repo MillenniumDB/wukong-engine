@@ -1,71 +1,92 @@
-# To do: question answering (M1) with Wukong on schema s5, and one gold copy for every system
+# To do: everything on schema s5, and one gold copy for question answering
 
 Written on 2026-10-19 for Juan (or his Claude). Delete this file when it is done.
 
-**Cost: about $0.15 in total.** Only one new run is needed: Wukong on one s5 graph, through the same 101 questions.
-Nothing else is run again. The other nine systems (LLM alone, LightRAG's four modes, GraphRAG, Neo4j, LlamaIndex,
-OntoGPT) are only re-scored from their committed answers, which makes no LLM calls. Extra Wukong runs (r2, r3) are
-optional, at about $0.15 each.
+## Decided (Sebastián and Juan, Oct 19)
 
-## Why
+1. **Every NBA result uses s5.** s4 is the full NBA schema, written before any result. s5 is s4 plus one field added
+   after seeing s4's results: `Player.current_team`, read once from the player's own article. The paper says so.
+2. **The three schema-based tools are rebuilt from s5 too** (Neo4j-GraphRAG, LlamaIndex, OntoGPT), so they get the same
+   schema as Wukong. Today they are built from `workspace-v1`, which is s4.
+3. **Question answering (M1) is scored against Bench-U `f2da981` for every system.**
+   - It is the latest version, and its gold tables are the ones in `uda-nba-share.zip`, which E1 and X6 use.
+   - The rows scored on the iMac used an older copy, whose city answers differ.
 
-- **Wrong schema.** M1 is the question-answering experiment of the paper's Section 4.4 ("Downstream tasks", label
-  `sec:downstream`). Its Wukong row was run on the **s4** graph, E1 run 1 in `uda-nba-share.zip`
-  (`wukong-e1-r1`). Every other NBA result in the paper now uses **s5** (commit `908d19c`).
-  - **s4** is the full NBA schema, written before any result.
-  - **s5** is s4 plus one field added after seeing s4's results: `Player.current_team`, read once from the player's
-    own article.
-- **The decision.** Sebastián and Juan decided on Oct 19 to re-run M1's Wukong row on s5.
-- **Two gold copies.** The M1 table also mixes two copies of the UDA-Bench gold tables.
-  - The rows scored on the iMac (LLM alone, LightRAG, GraphRAG, Wukong) used an older clone.
-  - Juan's rows (Neo4j, LlamaIndex, OntoGPT) used Bench-U `f2da981`.
-  - `f2da981` is the latest version. Its `Query/Player/city.csv` is identical to the zip's `data/ground_truth/city.csv`,
-    which E1 and X6 use.
-- **The fix.** Score every system against Bench-U `f2da981`.
+## Cost: about $7–8 in total
 
-## Steps
+| What | Runs | Cost |
+|---|---|---|
+| Rebuild Neo4j-GraphRAG, LlamaIndex and OntoGPT with s5 | one build each | ~$2–3, ~$2–3, ~$1–1.5 |
+| Their question-answering runs | one each, 101 questions | ~$0.20 each |
+| Wukong's question-answering run on s5 | one | ~$0.15 |
+| LLM alone, LightRAG (4 modes), GraphRAG | not re-run, only re-scored | $0 |
 
-1. **Environment.** Use the M1 harness environment you used for the schema-based extractors (`envs/m1-harness`:
-   Python 3.12, kuzu 0.11.3, duckdb 1.3.2). Set these variables:
-   - `M1_ROOT` to your M1 folder (it holds `work/`; the committed `results/` has `questions.json`, `queries.json`
-     and `titles.json`);
-   - `UDA_BENCH` to a Bench-U checkout at `f2da981`;
-   - `OPENAI_API_KEY`.
-2. **Check the gold.** Run `python oracle.py`. Every included question should still score 1.000, and 101 questions
-   should be included. If the count changes, note which questions and why.
-3. **Point `sys_wukong.py` at an s5 run.** Today it is hard-wired to s4: `RUN = SHARE / 'wukong-e1-r1'` and
-   `DB = WORK / 'kuzu' / 'wukong.kz'`.
-   - Add `--run DIR` (default unchanged) and `--name NAME` (default `wukong`).
-   - Use `NAME` for the Kuzu database (`WORK / 'kuzu' / f'{NAME}.kz'`), the answers folder (`WORK / 'answers' /
-     NAME`), the usage log (pass `usage=NAME` to `answer()`) and the saved system prompt.
-   - The schema shown to the agent already comes from `RUN / 'knowledge_model.json'`, so the s5 run gives it
-     `current_team`.
-   - **Use a name without a hyphen**, e.g. `wukong_s5`. `score.py` finds the usage log as
-     `system.split("-")[0]`, so `wukong-s5` would read the s4 log.
-4. **Run it.** For example:
-   `python sys_wukong.py --run <your x6-s5-r1 workspace> --name wukong_s5 --reload`
-   - The workspace needs `knowledge_model.json` and `exports/neo4j/`.
-   - It costs about $0.15: the s4 run made 187 calls in total.
-   - Optional, only if you want a mean like the NBA quality table: also r2 and r3 (`wukong_s5_r2`,
-     `wukong_s5_r3`). No other system needs more runs.
-5. **Re-score and rebuild the table.** Run `python score.py` (all systems), then `python table.py`. This writes
-   `work/m1_table.{md,tex}`.
-   Then run `python paired.py --base wukong_s5` for the per-question comparison: the mean difference with its
-   95% confidence interval, and wins, ties and losses against each system. The README and the paper quote these.
-6. **Commit to `paper-experiments`** (gitmoji `⚗️ feat(paper): ...`), in the same layout as the existing results in
-   `results/`:
-   - the new answers, scores and usage log;
-   - the updated `m1_table.*`;
-   - `README.md`, with the table now on s5 and on `f2da981`. Keep the s4 row as a labelled extra line, and update the
-     caveat paragraph about the two gold copies.
-7. **Paper (Overleaf), Section 4.4:**
-   - fill in `[TABLE: ...]` and `[RESULTS: ...]`;
-   - replace the ToDo asking which Wukong graph is used: say it is s5, and that s5 was revised after seeing s4's
-     results, as the other NBA sections should also say.
-8. **Plan (Overleaf):** in `experiments-plan.tex`, "What is missing", mark the M1 row done.
+The build costs are estimated from the output tokens in the report; input tokens were not recorded. No system needs
+three runs. Wukong's s5 graphs already exist (`x6-s5-r1..r3`); extra Wukong question-answering runs (r2, r3) are
+optional, at ~$0.15 each.
 
-## Open question for Juan (do not change without agreeing)
+## Steps (from `paper/uda-nba/`)
 
-Neo4j-GraphRAG, LlamaIndex and OntoGPT were built from `workspace-v1`, which is s4 (no `current_team` field). With
-Wukong on s5, Wukong gets a field the other tools never received. This affects both the NBA quality table and M1.
-Either give them s5 too, or say in the paper that they received the schema before the revision.
+### A. Rebuild the three graphs with s5
+
+1. `baselines/neo4j_graphrag_build.py` and `baselines/llamaindex_build.py` read the schema from a hard-coded
+   `KM_PATH = HERE / 'workspace-v1' / 'knowledge_model.json'`. Add a `--schema PATH` option (default unchanged), as
+   `baselines/ontogpt_build.py` already has.
+2. Build into **new** folders, so that the s4 graphs stay as they are:
+
+   ```
+   envs/neo4j-graphrag/bin/python baselines/neo4j_graphrag_build.py --data data/docs \
+       --schema workspace-x6-s5/knowledge_model.json --out runs/neo4j-graphrag-s5-full
+   envs/llamaindex/bin/python baselines/llamaindex_build.py --data data/docs \
+       --schema workspace-x6-s5/knowledge_model.json --out runs/llamaindex-s5-full
+   envs/ontogpt/bin/python baselines/ontogpt_build.py --data data/docs \
+       --schema workspace-x6-s5/knowledge_model.json --out runs/ontogpt-s5-full
+   ```
+
+3. Check each tool's `mapping.md` to see where `current_team` landed. It should become a Player property.
+   - Neo4j-GraphRAG and LlamaIndex have no slot for "read at document level", so for them it is extracted like any
+     other field (from chunks).
+   - In OntoGPT it is a slot of the Player root class, which reads the whole article.
+
+### B. NBA quality table (paper Section 4.3)
+
+4. In `nba_quality.py`, point `TYPED` to the `-s5-full` folders and run it again.
+5. Update `report/nba_quality_table.tex` and the quality table in the paper.
+
+### C. Question answering (M1, paper Section 4.4), in `m1/`
+
+6. **Environment:** use the M1 harness environment (`envs/m1-harness`: Python 3.12, kuzu 0.11.3, duckdb 1.3.2). Set
+   `M1_ROOT` to the M1 folder, `UDA_BENCH` to a Bench-U checkout at `f2da981`, and `OPENAI_API_KEY`.
+7. **Check the gold:** run `python oracle.py`. 101 questions should be included, and each should score 1.000. If the
+   count changes, note which questions and why.
+8. **Wukong.** `sys_wukong.py` is hard-wired to s4: `RUN = SHARE / 'wukong-e1-r1'`, `DB = WORK / 'kuzu' /
+   'wukong.kz'`.
+   - Add `--run DIR` and `--name NAME` (defaults unchanged), and use `NAME` for the Kuzu database, the answers folder,
+     the usage log (`answer(..., usage=NAME)`) and the saved system prompt.
+   - The agent's schema already comes from `RUN / 'knowledge_model.json'`.
+   - Run: `python sys_wukong.py --run <runs/x6-s5-r1> --name wukong_s5 --reload`.
+9. **The three tools.** In `sys_typed.py`, both the agent's schema (`KM = ... 'workspace-v1' ...`) and the graph
+   folders (`GRAPHS`) point to s4.
+   - Add s5 entries that read `workspace-x6-s5/knowledge_model.json` and the `-s5-full` folders, named `neo4j_s5`,
+     `llamaindex_s5` and `ontogpt_s5`.
+   - Then run each with `--reload`.
+10. **Names without hyphens:** `score.py` finds a system's usage log as `system.split("-")[0]`, so a name like
+    `wukong-s5` would read the s4 log.
+11. **Re-score and compare:**
+    - run `python score.py` (all systems, against `f2da981`), then `python table.py`;
+    - then `python paired.py --base wukong_s5`, for the per-question comparison: mean difference with its 95%
+      confidence interval, and wins, ties and losses against each system.
+12. **Commit to `paper-experiments`** (gitmoji `⚗️ feat(paper): ...`), in the layout of `results/`:
+    - the new answers, scores and usage logs;
+    - `m1_table.*`;
+    - `README.md`, with the table on s5 and `f2da981`. Keep the s4 rows as labelled extra lines, and update the
+      caveat about the two gold copies.
+
+### D. Paper (Overleaf) and plan
+
+13. **Setup (Section 4.1):** say that every NBA system receives s5, and that s5 added the current team after seeing
+    s4's results.
+14. **Section 4.3:** use the regenerated quality table.
+15. **Section 4.4:** fill in `[TABLE: ...]` and `[RESULTS: ...]`, and replace the ToDo about which Wukong graph is
+    used.
+16. **Plan:** in `experiments-plan.tex`, "What is missing", mark the M1 and X6 rows done.
