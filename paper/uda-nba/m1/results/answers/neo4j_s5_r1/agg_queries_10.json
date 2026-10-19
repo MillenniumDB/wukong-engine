@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH o.nationality AS nationality, DATE(REPLACE(o.birth_date, '/', '-')) AS birth_date, DATE('2026-10-14') AS today WITH nationality, DATE_DIFF('year', birth_date, today) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth_date) OR (DATE_PART('month', today) = DATE_PART('month', birth_date) AND DATE_PART('day', today) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH o.nationality AS nationality, CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 1964\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH o.nationality AS nationality, o.birth_date AS birth_date WITH nationality, CASE WHEN birth_date CONTAINS ' ' THEN CAST(SPLIT_PART(birth_date, ' ', 2) AS INT64) ELSE CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) END AS birth_year, CASE WHEN birth_date CONTAINS ' ' THEN CASE SPLIT_PART(birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 1 END ELSE CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) END AS birth_month, CASE WHEN birth_date CONTAINS ' ' THEN 1 ELSE CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) END AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"1962-01-17\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH o.nationality AS nationality, o.birth_date AS birth_date WITH nationality, CASE WHEN birth_date CONTAINS '-' THEN CAST(SPLIT_PART(birth_date, '-', 1) AS INT64) WHEN birth_date CONTAINS ' ' THEN CAST(SPLIT_PART(birth_date, ' ', 2) AS INT64) ELSE CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) END AS birth_year, CASE WHEN birth_date CONTAINS '-' THEN CAST(SPLIT_PART(birth_date, '-', 2) AS INT64) WHEN birth_date CONTAINS ' ' THEN CASE SPLIT_PART(birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 1 END ELSE CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) END AS birth_month, CASE WHEN birth_date CONTAINS '-' THEN CAST(SPLIT_PART(birth_date, '-', 3) AS INT64) WHEN birth_date CONTAINS ' ' THEN 1 ELSE CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) END AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"01\" to INT64.",
+   "rows": null
+  }
+ ]
+}

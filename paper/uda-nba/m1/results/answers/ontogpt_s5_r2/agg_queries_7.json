@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#7",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, AVG(CAST(DATE_DIFF('year', STRPTIME(p.birth_date, '%Y/%m/%d'), COALESCE(STRPTIME(p.death_date, '%Y/%m/%d'), CAST('2026-10-14' AS DATE))) AS DOUBLE)) AS average_age RETURN nationality AS col1, average_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) AS birth_day, SPLIT_PART(COALESCE(p.death_date, '2026/10/14'), '/', 1) AS end_year_s, SPLIT_PART(COALESCE(p.death_date, '2026/10/14'), '/', 2) AS end_month_s, SPLIT_PART(COALESCE(p.death_date, '2026/10/14'), '/', 3) AS end_day_s WITH nationality, birth_year, birth_month, birth_day, CAST(end_year_s AS INT64) AS end_year, CAST(end_month_s AS INT64) AS end_month, CAST(end_day_s AS INT64) AS end_day WITH nationality, CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN end_year - birth_year - 1 ELSE end_year - birth_year END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END AS birth_date, CASE WHEN p.death_date IS NULL THEN STRPTIME('October 14, 2026', '%B %d, %Y') WHEN p.death_date CONTAINS '/' THEN STRPTIME(p.death_date, '%Y/%m/%d') ELSE STRPTIME(p.death_date, '%B %d, %Y') END AS end_date WITH nationality, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', end_date) = DATE_PART('month', birth_date) AND DATE_PART('day', end_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day, CASE WHEN p.death_date IS NULL THEN 2026 WHEN p.death_date CONTAINS '/' THEN CAST(SPLIT_PART(p.death_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.death_date, ' ', 3) AS INT64) END AS end_year, CASE WHEN p.death_date IS NULL THEN 10 WHEN p.death_date CONTAINS '/' THEN CAST(SPLIT_PART(p.death_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.death_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS end_month, CASE WHEN p.death_date IS NULL THEN 14 WHEN p.death_date CONTAINS '/' THEN CAST(SPLIT_PART(p.death_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.death_date, ' ', 2), ',', 1) AS INT64) END AS end_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"April\" to INT64.",
+   "rows": null
+  }
+ ]
+}

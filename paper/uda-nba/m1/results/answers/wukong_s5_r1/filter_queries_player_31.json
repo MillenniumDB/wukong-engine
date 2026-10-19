@@ -1,0 +1,169 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": [
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": "American",
+   "col3": null,
+   "name_player": "D. J. White"
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American-Chinese",
+   "col3": null,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": null,
+   "col3": null,
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Croatian",
+   "col3": "0",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jordan Crawford"
+  },
+  {
+   "col1": null,
+   "col2": "Serbian",
+   "col3": null,
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": null,
+   "col2": "Greek",
+   "col3": null,
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": "Milwaukee Hawks",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Elmer Behnke"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Nigerian-American",
+   "col3": "1",
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jay Vincent"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(p.draft_pick AS INT64) >= 24 RETURN p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 26
+  }
+ ]
+}

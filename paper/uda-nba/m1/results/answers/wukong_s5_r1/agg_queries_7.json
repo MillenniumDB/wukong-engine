@@ -1,0 +1,113 @@
+{
+ "uid": "agg_queries#7",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 53.95575221238938
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33.0
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60.0
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54.0
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29.0
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33.0
+  },
+  {
+   "col1": "British",
+   "col2": 29.0
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32.0
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31.0
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24.0
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59.0
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40.0
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60.0
+  },
+  {
+   "col1": "French",
+   "col2": 27.0
+  },
+  {
+   "col1": "German",
+   "col2": 33.0
+  },
+  {
+   "col1": "Greek",
+   "col2": 36.0
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31.0
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37.0
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25.0
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30.0
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32.0
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL\nWITH p.nationality AS nationality,\n     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\nRETURN nationality AS col1, AVG(age) AS col2\nORDER BY col1",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 4, offset: 75)\n\"     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\"\n                                                                            ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL\nWITH p.nationality AS nationality,\n     date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) AS age\nRETURN nationality AS col1, AVG(age) AS col2\nORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL\nWITH p.nationality AS nationality,\n     2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) -\n     CASE\n       WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n         OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, AVG(age) AS col2\nORDER BY col1",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#18",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt') RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_diff('year', date(p.birth_date), date('2026-10-14')) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt' RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_part('year', date('2026-10-14')) - date_part('year', date(p.birth_date)) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %d, %Y') END AS bd WHERE CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt' RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_part('year', date('2026-10-14')) - date_part('year', bd) - CASE WHEN date_part('month', bd) > 10 OR (date_part('month', bd) = 10 AND date_part('day', bd) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 0) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CASE WHEN split_part(p.birth_date, ' ', 0) = 'January' THEN 1 WHEN split_part(p.birth_date, ' ', 0) = 'February' THEN 2 WHEN split_part(p.birth_date, ' ', 0) = 'March' THEN 3 WHEN split_part(p.birth_date, ' ', 0) = 'April' THEN 4 WHEN split_part(p.birth_date, ' ', 0) = 'May' THEN 5 WHEN split_part(p.birth_date, ' ', 0) = 'June' THEN 6 WHEN split_part(p.birth_date, ' ', 0) = 'July' THEN 7 WHEN split_part(p.birth_date, ' ', 0) = 'August' THEN 8 WHEN split_part(p.birth_date, ' ', 0) = 'September' THEN 9 WHEN split_part(p.birth_date, ' ', 0) = 'October' THEN 10 WHEN split_part(p.birth_date, ' ', 0) = 'November' THEN 11 WHEN split_part(p.birth_date, ' ', 0) = 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CAST(REPLACE(split_part(p.birth_date, ' ', 1), ',', '') AS INT64) END AS birth_day WHERE CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt' RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

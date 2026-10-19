@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#12",
+ "rows": [
+  {
+   "col1": "Atlanta",
+   "col2": "2017",
+   "col3": "Atlanta United FC",
+   "name_team": "Atlanta United FC"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:LocatedIn]->(c:City), (t)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (o:Owner)-[:Owns]->(t)\nWITH t, c, collect(o.name) AS owner_names\nWHERE (CAST(t.founded_year AS INT64) > 1989 AND NOT ('Gabe Plotkin and Rick Schnall' IN owner_names))\n   OR (CAST(t.founded_year AS INT64) = 1967 AND 'Atlanta Spirit LLC' IN owner_names)\nRETURN c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

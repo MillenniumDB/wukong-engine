@@ -1,0 +1,83 @@
+{
+ "uid": "join_queries#13",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "1974",
+   "col5": "Eric Johnson Jones",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "1974",
+   "col5": "Eric Johnson Jones",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_city": "Utah"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Bruce Brown",
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Jordan Nwora",
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "RJ Barrett",
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Immanuel Quickley",
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Orlando",
+   "col4": null,
+   "col5": "Jeff Turner",
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' AND p.current_team = t.team_name RETURN c.population AS col1, p.position AS col2, c.city_name AS col3, t.founded_year AS col4, p.name AS col5, p.name AS name_player, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

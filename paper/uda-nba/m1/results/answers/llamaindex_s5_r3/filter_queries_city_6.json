@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(c.area AS DOUBLE) >= 976.15 AND CAST(c.area AS DOUBLE) >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE (c.state_name = 'Minnesota' AND CAST(REPLACE(c.population, ',', '') AS INT64) = 887642) OR (CAST(c.area AS DOUBLE) >= 976.15 / 2.58999) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR CAST(c.area AS DOUBLE) >= (976.15 / 2.58999) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR CAST(c.area AS DOUBLE) >= (976.15 / 2.58999) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

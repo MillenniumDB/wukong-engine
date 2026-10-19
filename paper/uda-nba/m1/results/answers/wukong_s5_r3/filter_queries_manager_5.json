@@ -1,0 +1,115 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": [
+  {
+   "col1": "2011",
+   "col2": 62,
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "2014",
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "2005",
+   "col2": 64,
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "2018",
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "2006",
+   "col2": 66,
+   "col3": "American",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "2000",
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "1985",
+   "col2": 90,
+   "col3": "American",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "2017",
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "2010",
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "2000",
+   "col2": 68,
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "2019",
+   "col2": null,
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "2011",
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "1991",
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "1983",
+   "col2": 91,
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": null,
+   "col2": 91,
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team)\nWITH o, r, strptime(o.birth_date, '%Y/%m/%d') AS birth_date, strptime('2026/10/14', '%Y/%m/%d') AS today\nWITH o, r, date_diff('year', birth_date, today) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team)\nWITH o, r, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date, CAST('2026-10-14' AS DATE) AS today\nWITH o, r, date_diff('year', birth_date, today) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team)\nWITH o, r,\n  CAST(split_part(o.birth_date, '/', 1) AS INT64) AS birth_year,\n  CAST(split_part(o.birth_date, '/', 2) AS INT64) AS birth_month,\n  CAST(split_part(o.birth_date, '/', 3) AS INT64) AS birth_day\nWITH o, r,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

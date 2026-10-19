@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#29",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[latest:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) AS age WHERE age >= 42 OR (t IS NOT NULL AND t.team_name <> 'Philadelphia 76ers') OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, CAST(p.birth_date AS DATE) AS birth_date WITH p, t, date_part('year', birth_date) AS birth_year, date_part('month', birth_date) AS birth_month, date_part('day', birth_date) AS birth_day, date_part('year', DATE('2026-10-14')) AS current_year, date_part('month', DATE('2026-10-14')) AS current_month, date_part('day', DATE('2026-10-14')) AS current_day WITH p, t, current_year - birth_year - CASE WHEN birth_month > current_month OR (birth_month = current_month AND birth_day > current_day) THEN 1 ELSE 0 END AS age WHERE age >= 42 OR (t IS NOT NULL AND t.team_name <> 'Philadelphia 76ers') OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, CASE WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %-d, %Y') END AS birth_date WITH p, t, DATE_PART('year', birth_date) AS birth_year, DATE_PART('month', birth_date) AS birth_month, DATE_PART('day', birth_date) AS birth_day, 2026 AS current_year, 10 AS current_month, 14 AS current_day WITH p, t, current_year - birth_year - CASE WHEN birth_month > current_month OR (birth_month = current_month AND birth_day > current_day) THEN 1 ELSE 0 END AS age WHERE age >= 42 OR (t IS NOT NULL AND t.team_name <> 'Philadelphia 76ers') OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, REPLACE(p.birth_date, ',', '') AS bd WITH p, t, CASE WHEN bd CONTAINS '/' THEN CAST(SPLIT_PART(bd, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(bd, ' ', 3) AS INT64) END AS birth_year, CASE WHEN bd CONTAINS '/' THEN CAST(SPLIT_PART(bd, '/', 2) AS INT64) ELSE CASE SPLIT_PART(bd, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN bd CONTAINS '/' THEN CAST(SPLIT_PART(bd, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(bd, ' ', 2) AS INT64) END AS birth_day WITH p, t, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age WHERE age >= 42 OR (t IS NOT NULL AND t.team_name <> 'Philadelphia 76ers') OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

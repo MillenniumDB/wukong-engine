@@ -1,0 +1,2063 @@
+{
+ "uid": "join_queries#13",
+ "rows": [
+  {
+   "col1": "577222",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "1968",
+   "col5": "John Lucas II",
+   "name_player": "John Lucas II",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Frontcourt",
+   "col3": "Houston",
+   "col4": "1967",
+   "col5": "Kostas Papanikolaou",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "2746388",
+   "col2": "Frontcourt",
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Jimmy Butler",
+   "name_player": "Jimmy Butler",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "681054",
+   "col2": "Backcourt",
+   "col3": "Oklahoma City",
+   "col4": "1967",
+   "col5": "Chris Paul",
+   "name_player": "Chris Paul",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Kevon Looney",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Brandan Wright",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Kobe Bryant",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": "Frontcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Jay Vincent",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": "Frontcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "LeBron James",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Frontcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Zach Collins",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "307573",
+   "col2": null,
+   "col3": "Orlando",
+   "col4": "1989",
+   "col5": "Donta Hall",
+   "name_player": "Donta Hall",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "307573",
+   "col2": "Backcourt",
+   "col3": "Orlando",
+   "col4": "1989",
+   "col5": "Mark Price",
+   "name_player": "Mark Price",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "1662607",
+   "col2": "Frontcourt",
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Dave Lattin",
+   "name_player": "Dave Lattin",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "691531",
+   "col2": "Backcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Dwayne Schintzius",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Kobe Bryant",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Jay Vincent",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Jalen Brunson",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Frontcourt",
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Kurt Thomas",
+   "name_player": "Kurt Thomas",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "D'Angelo Russell",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1970",
+   "col5": "Chris Paul",
+   "name_player": "Chris Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1970",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Drew Gordon",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "577222",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "1968",
+   "col5": "Erick Strickland",
+   "name_player": "Erick Strickland",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Backcourt",
+   "col3": "Houston",
+   "col4": "1967",
+   "col5": "Rod Strickland",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "639111",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Ausar Thompson",
+   "name_player": "Ausar Thompson",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "652503",
+   "col2": "Backcourt",
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Rod Strickland",
+   "name_player": "Rod Strickland",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "633104",
+   "col2": null,
+   "col3": "Memphis",
+   "col4": "1995",
+   "col5": "Lamar Stevens",
+   "name_player": "Lamar Stevens",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "880621",
+   "col2": "Frontcourt",
+   "col3": "Indianapolis",
+   "col4": "1967",
+   "col5": "Paul George",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "2746388",
+   "col2": null,
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Steve Kerr",
+   "name_player": "Steve Kerr",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "372624",
+   "col2": "Backcourt",
+   "col3": "Cleveland",
+   "col4": null,
+   "col5": "Mychel Thompson",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "808988",
+   "col2": null,
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": null,
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Trayce Jackson-Davis",
+   "name_player": "Trayce Jackson-Davis",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "442241",
+   "col2": "Frontcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Jaime Jaquez Jr.",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "429954",
+   "col2": "Frontcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Marv Roberts",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "498715",
+   "col2": "Backcourt",
+   "col3": "Atlanta",
+   "col4": "1946",
+   "col5": "Brandon Goodwin",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Frontcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Tim Duncan",
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Frontcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "William Bedford",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "689545",
+   "col2": "Backcourt",
+   "col3": "Washington, D.C.",
+   "col4": "1961",
+   "col5": "Carrick Felix",
+   "name_player": "Carrick Felix",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": "1662607",
+   "col2": "Backcourt",
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Chris Paul",
+   "name_player": "Chris Paul",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "3820914",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Marv Roberts",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1970",
+   "col5": "Chris Paul",
+   "name_player": "Chris Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Michael Jordan",
+   "name_player": "Michael Jordan",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "David Michineau",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "107762",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "LeBron James",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Joel Embiid",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1603797",
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Lavoy Allen",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "383997",
+   "col2": "Backcourt",
+   "col3": "New Orleans",
+   "col4": "2002",
+   "col5": "Jordan Crawford",
+   "name_player": "Jordan Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "383997",
+   "col2": "Frontcourt",
+   "col3": "New Orleans",
+   "col4": "2002",
+   "col5": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Frontcourt",
+   "col3": "Houston",
+   "col4": "1967",
+   "col5": "Brandan Wright",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "715522",
+   "col2": "Frontcourt",
+   "col3": "Denver",
+   "col4": "1967",
+   "col5": "Kostas Papanikolaou",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "639111",
+   "col2": "Backcourt",
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Cade Cunningham",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "639111",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Jaden Ivey",
+   "name_player": "Jaden Ivey",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "874579",
+   "col2": "Frontcourt",
+   "col3": "Charlotte",
+   "col4": "1988",
+   "col5": "D. J. White",
+   "name_player": "D. J. White",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "2746388",
+   "col2": "Backcourt",
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Michael Carter-Williams",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "372624",
+   "col2": "Frontcourt",
+   "col3": "Cleveland",
+   "col4": null,
+   "col5": "D. J. White",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "808988",
+   "col2": null,
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Andrew Wiggins",
+   "name_player": "Andrew Wiggins",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "442241",
+   "col2": "Backcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Steve Smith",
+   "name_player": "Steve Smith",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Magic Johnson",
+   "name_player": "Magic Johnson",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Devontae Cacok",
+   "name_player": "Devontae Cacok",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "498715",
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "1946",
+   "col5": "Antonius Cleveland",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "689545",
+   "col2": "Backcourt",
+   "col3": "Washington, D.C.",
+   "col4": "1961",
+   "col5": "Jordan Crawford",
+   "name_player": "Jordan Crawford",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": "307573",
+   "col2": "Backcourt",
+   "col3": "Orlando",
+   "col4": "1989",
+   "col5": "Michael Carter-Williams",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "1662607",
+   "col2": "Frontcourt",
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Kurt Thomas",
+   "name_player": "Kurt Thomas",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Frontcourt",
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Greg Fillmore",
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Frontcourt",
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "107762",
+   "col2": "Frontcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Marv Roberts",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Al Horford",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Caleb Martin",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "1603797",
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Max Fiedler",
+   "name_player": "Max Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "577222",
+   "col2": "Frontcourt",
+   "col3": "Milwaukee",
+   "col4": "1968",
+   "col5": "Giannis Antetokounmpo",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "2794356",
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Donyell Marshall",
+   "name_player": "Donyell Marshall",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "639111",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Tony Delk",
+   "name_player": "Tony Delk",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "652503",
+   "col2": null,
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Dan Anderson",
+   "name_player": "Dan Anderson",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "524943",
+   "col2": "Frontcourt",
+   "col3": "Sacramento",
+   "col4": "1923",
+   "col5": "Derek Grimm",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "880621",
+   "col2": "Frontcourt",
+   "col3": "Indianapolis",
+   "col4": "1967",
+   "col5": "Rik Smits",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "880621",
+   "col2": "Backcourt",
+   "col3": "Indianapolis",
+   "col4": "1967",
+   "col5": "Buddy Hield",
+   "name_player": "Buddy Hield",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "2746388",
+   "col2": "Frontcourt",
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Bill Hewitt",
+   "name_player": "Bill Hewitt",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "681054",
+   "col2": null,
+   "col3": "Oklahoma City",
+   "col4": "1967",
+   "col5": "Hamidou Diallo",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "372624",
+   "col2": "Backcourt",
+   "col3": "Cleveland",
+   "col4": null,
+   "col5": "Brandon Goodwin",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Jordan Crawford",
+   "name_player": "Jordan Crawford",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "Austin Reaves",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "498715",
+   "col2": "Frontcourt",
+   "col3": "Atlanta",
+   "col4": "1946",
+   "col5": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "498715",
+   "col2": "Backcourt",
+   "col3": "Atlanta",
+   "col4": "1946",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Backcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Steve Smith",
+   "name_player": "Steve Smith",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1434625",
+   "col2": null,
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Tom Copa",
+   "name_player": "Tom Copa",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1434625",
+   "col2": null,
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Victor Wembanyama",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "307573",
+   "col2": "Backcourt",
+   "col3": "Orlando",
+   "col4": "1989",
+   "col5": "Miles Simon",
+   "name_player": "Miles Simon",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "1662607",
+   "col2": "Backcourt",
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Devin Booker",
+   "name_player": "Devin Booker",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "1662607",
+   "col2": "Frontcourt",
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "691531",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Jaylen Brown",
+   "name_player": "Jaylen Brown",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "691531",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Stan Noszka",
+   "name_player": "Stan Noszka",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Magic Johnson",
+   "name_player": "Magic Johnson",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": "1970",
+   "col5": "Aaron Williams",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Don Anielak",
+   "name_player": "Don Anielak",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "OG Anunoby",
+   "name_player": "OG Anunoby",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Backcourt",
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Jalen Brunson",
+   "name_player": "Jalen Brunson",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "107762",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "1970",
+   "col5": "Anthony Avent",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "577222",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "1968",
+   "col5": "Guy Rodgers",
+   "name_player": "Guy Rodgers",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "2794356",
+   "col2": null,
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Nate Huffman",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "2794356",
+   "col2": "Frontcourt",
+   "col3": "Toronto",
+   "col4": "1995",
+   "col5": "Greg Foster",
+   "name_player": "Greg Foster",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Backcourt",
+   "col3": "Houston",
+   "col4": "1967",
+   "col5": "Kyle Lowry",
+   "name_player": "Kyle Lowry",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "639111",
+   "col2": "Backcourt",
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Isiah Thomas",
+   "name_player": "Isiah Thomas",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "652503",
+   "col2": "Backcourt",
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Steve Smith",
+   "name_player": "Steve Smith",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "652503",
+   "col2": null,
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Jabari Walker",
+   "name_player": "Jabari Walker",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "874579",
+   "col2": "Backcourt",
+   "col3": "Charlotte",
+   "col4": "1988",
+   "col5": "Michael Carter-Williams",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "633104",
+   "col2": "Backcourt",
+   "col3": "Memphis",
+   "col4": "1995",
+   "col5": "Nick Calathes",
+   "name_player": "Nick Calathes",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "681054",
+   "col2": null,
+   "col3": "Oklahoma City",
+   "col4": "1967",
+   "col5": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "681054",
+   "col2": "Backcourt",
+   "col3": "Oklahoma City",
+   "col4": "1967",
+   "col5": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Jarrett Jack",
+   "name_player": "Jarrett Jack",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Stephen Curry",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "200133",
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "1974",
+   "col5": "Eric Johnson",
+   "name_player": "Eric Johnson",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": "442241",
+   "col2": "Backcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Tyler Herro",
+   "name_player": "Tyler Herro",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "689545",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": "1961",
+   "col5": "Hamidou Diallo",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "691531",
+   "col2": "Backcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Jrue Holiday",
+   "name_player": "Jrue Holiday",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Jayson Tatum",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "3820914",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "LeBron James",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Austin Reaves",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "1299544",
+   "col2": null,
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Tony Delk",
+   "name_player": "Tony Delk",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Kobe Bryant",
+   "name_player": "Kobe Bryant",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Frontcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Jay Vincent",
+   "name_player": "Jay Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Frontcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "D'Angelo Russell",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Devontae Cacok",
+   "name_player": "Devontae Cacok",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Frontcourt",
+   "col3": "Inglewood",
+   "col4": "1970",
+   "col5": "Aaron Williams",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Paul George",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "577222",
+   "col2": "Backcourt",
+   "col3": "Milwaukee",
+   "col4": "1946",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "652503",
+   "col2": "Frontcourt",
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Kurt Thomas",
+   "name_player": "Kurt Thomas",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "633104",
+   "col2": "Frontcourt",
+   "col3": "Memphis",
+   "col4": "1995",
+   "col5": "Brandan Wright",
+   "name_player": "Brandan Wright",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "2746388",
+   "col2": null,
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Michael Jordan",
+   "name_player": "Michael Jordan",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "681054",
+   "col2": "Frontcourt",
+   "col3": "Oklahoma City",
+   "col4": "1967",
+   "col5": "Paul George",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "442241",
+   "col2": "Frontcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Jimmy Butler",
+   "name_player": "Jimmy Butler",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "442241",
+   "col2": null,
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Duncan Robinson",
+   "name_player": "Duncan Robinson",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1946",
+   "col5": "D'Angelo Russell",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1989",
+   "col5": "Anthony Edwards",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "1434625",
+   "col2": null,
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Devontae Cacok",
+   "name_player": "Devontae Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "689545",
+   "col2": null,
+   "col3": "Washington, D.C.",
+   "col4": "1961",
+   "col5": "Michael Jordan",
+   "name_player": "Michael Jordan",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Dino Ra\u0111a",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Magic Johnson",
+   "name_player": "Magic Johnson",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "107762",
+   "col2": "Frontcourt",
+   "col3": "Inglewood",
+   "col4": "1970",
+   "col5": "Paul George",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Backcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Kyle Lowry",
+   "name_player": "Kyle Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "577222",
+   "col2": "Frontcourt",
+   "col3": "Milwaukee",
+   "col4": "1946",
+   "col5": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "577222",
+   "col2": "Backcourt",
+   "col3": "Milwaukee",
+   "col4": "1946",
+   "col5": "Brandon Goodwin",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "524943",
+   "col2": "Backcourt",
+   "col3": "Sacramento",
+   "col4": "1923",
+   "col5": "Buddy Hield",
+   "name_player": "Buddy Hield",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Jonathan Kuminga",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "1434625",
+   "col2": null,
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Steve Kerr",
+   "name_player": "Steve Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Al Horford",
+   "name_player": "Al Horford",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "652503",
+   "col2": "Backcourt",
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "372624",
+   "col2": null,
+   "col3": "Cleveland",
+   "col4": null,
+   "col5": "LeBron James",
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Gerald Madkins",
+   "name_player": "Gerald Madkins",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Frontcourt",
+   "col3": "Los Angeles",
+   "col4": "1970",
+   "col5": "Paul George",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1970",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Frontcourt",
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Jay Vincent",
+   "name_player": "Jay Vincent",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "1299544",
+   "col2": null,
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Rick Hughes",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Frontcourt",
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Monti Davis",
+   "name_player": "Monti Davis",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "107762",
+   "col2": "Backcourt",
+   "col3": "Inglewood",
+   "col4": "1946",
+   "col5": "Austin Reaves",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "383997",
+   "col2": "Backcourt",
+   "col3": "New Orleans",
+   "col4": "2002",
+   "col5": "Jarrett Jack",
+   "name_player": "Jarrett Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "639111",
+   "col2": null,
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Donta Hall",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "652503",
+   "col2": "Frontcourt",
+   "col3": "Portland",
+   "col4": "1970",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "880621",
+   "col2": null,
+   "col3": "Indianapolis",
+   "col4": "1967",
+   "col5": "Lavoy Allen",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "2746388",
+   "col2": null,
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Zach LaVine",
+   "name_player": "Zach LaVine",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "2746388",
+   "col2": "Backcourt",
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Trent Tucker",
+   "name_player": "Trent Tucker",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Draymond Green",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Frontcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Kyle Anderson",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "808988",
+   "col2": "Backcourt",
+   "col3": "San Francisco",
+   "col4": "1946",
+   "col5": "Buddy Hield",
+   "name_player": "Buddy Hield",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "442241",
+   "col2": "Frontcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Bam Adebayo",
+   "name_player": "Bam Adebayo",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "442241",
+   "col2": null,
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "442241",
+   "col2": "Backcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Kyle Lowry",
+   "name_player": "Kyle Lowry",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "442241",
+   "col2": "Frontcourt",
+   "col3": "Miami",
+   "col4": null,
+   "col5": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "429954",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "1989",
+   "col5": "Andrew Wiggins",
+   "name_player": "Andrew Wiggins",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Frontcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "1662607",
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "691531",
+   "col2": "Frontcourt",
+   "col3": "Boston",
+   "col4": "1946",
+   "col5": "Kermit Washington",
+   "name_player": "Kermit Washington",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "3820914",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "Devontae Cacok",
+   "name_player": "Devontae Cacok",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "3820914",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "1970",
+   "col5": "Anthony Avent",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "8258035",
+   "col2": null,
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Ken Green",
+   "name_player": "Ken Green",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Backcourt",
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Nikola Radi\u010devi\u0107",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Frontcourt",
+   "col3": "New York City",
+   "col4": "1946",
+   "col5": "Phil Jackson",
+   "name_player": "Phil Jackson",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "8258035",
+   "col2": "Frontcourt",
+   "col3": "New York City",
+   "col4": "1967",
+   "col5": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "1603797",
+   "col2": "Frontcourt",
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "383997",
+   "col2": "Backcourt",
+   "col3": "New Orleans",
+   "col4": "2002",
+   "col5": "Lonzo Ball",
+   "name_player": "Lonzo Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "577222",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "1946",
+   "col5": "Antonius Cleveland",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Frontcourt",
+   "col3": "Houston",
+   "col4": "1967",
+   "col5": "Walter Berry",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "639111",
+   "col2": "Frontcourt",
+   "col3": "Detroit",
+   "col4": "1937",
+   "col5": "Harry Gallatin",
+   "name_player": "Harry Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "2746388",
+   "col2": "Backcourt",
+   "col3": "Chicago",
+   "col4": "1966",
+   "col5": "Lonzo Ball",
+   "name_player": "Lonzo Ball",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "429954",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "1989",
+   "col5": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "429954",
+   "col2": "Backcourt",
+   "col3": "Minneapolis",
+   "col4": "1989",
+   "col5": "Askia Jones",
+   "name_player": "Askia Jones",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Backcourt",
+   "col3": "San Antonio",
+   "col4": "1973",
+   "col5": "Chris Paul",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "3820914",
+   "col2": "Backcourt",
+   "col3": "Los Angeles",
+   "col4": "1946",
+   "col5": "D'Angelo Russell",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Backcourt",
+   "col3": "Dallas",
+   "col4": "1980",
+   "col5": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "1603797",
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "1946",
+   "col5": "Donyell Marshall",
+   "name_player": "Donyell Marshall",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (t)-[:ExtractedFrom]->(:Document), (c)-[:ExtractedFrom]->(:Document) RETURN DISTINCT c.population AS col1, p.position AS col2, c.city_name AS col3, t.founded_year AS col4, p.name AS col5, p.name AS name_player, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 205
+  }
+ ]
+}

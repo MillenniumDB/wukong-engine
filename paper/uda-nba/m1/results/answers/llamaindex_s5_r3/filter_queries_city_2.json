@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#2",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE CAST(c.area AS DOUBLE) * 2.589988110336 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN DISTINCT c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.589988110336 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE CAST(REPLACE(c.area, ',', '') AS DOUBLE) * 2.589988110336 <= 1314.80 AND CAST(REPLACE(c.population, ',', '') AS INT64) > 887642 RETURN DISTINCT c.state_name AS col1, CAST(REPLACE(c.area, ',', '') AS DOUBLE) * 2.589988110336 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE CAST(c.area AS DOUBLE) * 2.589988110336 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN DISTINCT c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.589988110336 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE CAST(c.area AS DOUBLE) <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN DISTINCT c.state_name AS col1, CAST(c.area AS DOUBLE) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "uid": "agg_queries#10",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 72.41666666666667
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 77.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH DISTINCT o RETURN o.nationality AS col1, AVG(CAST(date_diff('day', CAST(o.birth_date AS DATE), DATE('2026-10-14')) AS DOUBLE) / 365.2425) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH DISTINCT o, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date WITH o.nationality AS nationality, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH DISTINCT o, CAST(o.birth_date AS DATE) AS birth_date WITH o.nationality AS nationality, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"July 31, 1958\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH DISTINCT o, CAST(regexp_extract(o.birth_date, '\\\\d{4}', 0) AS INT64) AS birth_year WITH o.nationality AS nationality, 2026 - birth_year AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

@@ -1,0 +1,841 @@
+{
+ "uid": "filter_queries_player#15",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Duke University",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Brandan Wright"
+  },
+  {
+   "col1": null,
+   "col2": "British",
+   "col3": "Indiana University",
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Michigan",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Rice",
+   "name_player": "Max Fiedler"
+  },
+  {
+   "col1": null,
+   "col2": "Mexican-American",
+   "col3": "University of California, Los Angeles",
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Penn State",
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Stan Noszka"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Arizona",
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Texas Christian University",
+   "name_player": "Kurt Thomas"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Bradley University",
+   "name_player": "Elmer Behnke"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Oklahoma State",
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Indiana",
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Long Island and John Marshall College",
+   "name_player": "Dick Surhoff"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Syracuse Orange",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": null,
+   "col2": "Greek and Nigerian",
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Central Michigan University",
+   "name_player": "Nate Huffman"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Colorado",
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Georgia Tech",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Williams College and Michigan",
+   "name_player": "Duncan Robinson"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Villanova University",
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Florida",
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Michigan State",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": null,
+   "col2": "American-Spanish",
+   "col3": null,
+   "name_player": "Eric Johnson Jones"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Louisiana State University",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Texas Western College",
+   "name_player": "David Lattin"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Northeast Missouri State Teachers' College",
+   "name_player": "Harry Gallatin"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Indiana University and Xavier University",
+   "name_player": "Jordan Crawford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Garfield Smith"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of California, Berkeley",
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Xavier University",
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "St. John's University",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": null,
+   "col2": "Canadian",
+   "col3": "Kansas Jayhawks",
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": null,
+   "col2": "Serbian",
+   "col3": null,
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": null,
+   "col2": "Greek-American",
+   "col3": "University of Florida",
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": 1,
+   "col2": "German",
+   "col3": null,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of New Mexico",
+   "name_player": "Drew Gordon"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Duquesne",
+   "name_player": "Ed Dahler"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Nebraska",
+   "name_player": "Erick Strickland"
+  },
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": null,
+   "name_player": "David Michineau"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Kentucky Wildcats",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": null,
+   "col2": "Congolese",
+   "col3": null,
+   "name_player": "Jonathan Kuminga"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Oregon State University",
+   "name_player": "Fred Boyd"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "American University",
+   "name_player": "Kermit Washington"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Arizona",
+   "name_player": "Miles Simon"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "New York University",
+   "name_player": "Jim Brasco"
+  },
+  {
+   "col1": null,
+   "col2": "Azerbaijani",
+   "col3": "Alabama Crimson Tide",
+   "name_player": "Donta Hall"
+  },
+  {
+   "col1": null,
+   "col2": "Nigerian-American",
+   "col3": "Duke",
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Michigan State",
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Michigan State",
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Michigan State University",
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Southwest Missouri State University",
+   "name_player": "Don Anielak"
+  },
+  {
+   "col1": 0,
+   "col2": "French",
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Indiana University",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "UCLA and UTEP",
+   "name_player": "Greg Foster"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "University of Maryland, College Park",
+   "name_player": "John Lucas II"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Pepperdine University",
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Utah State University",
+   "name_player": "Marv Roberts"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Tennessee State University",
+   "name_player": "Monti Davis"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Connecticut",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Siena",
+   "name_player": "Ronald Moore"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Purdue Boilermakers",
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Southeast Missouri State University",
+   "name_player": "Antonius Cleveland"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Wake Forest University",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "DePaul University",
+   "name_player": "Rod Strickland"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Seton Hall University",
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": null,
+   "col2": "Greek",
+   "col3": null,
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Temple University",
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Cheyney University of Pennsylvania",
+   "name_player": "Greg Fillmore"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "North Carolina",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "NC State University and Nevada",
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Missouri",
+   "name_player": "Derek Grimm"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "UNC Wilmington",
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "UCF and Florida Gulf Coast",
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Dan Anderson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Seattle University",
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Joseph Forte"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Notre Dame",
+   "name_player": "Dick Rosenthal"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "New York University",
+   "name_player": "Sid Tanenbaum"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Thomas More College",
+   "name_player": "Rick Hughes"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Stanford University",
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": null,
+   "col2": "Slovenian",
+   "col3": "Michigan State University",
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Notre Dame",
+   "name_player": "Fran Curran"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Kentucky Wildcats",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Temple University",
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Wichita State; Oklahoma",
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of California, Los Angeles (UCLA)",
+   "name_player": "Gerald Madkins"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Ohio State Buckeyes",
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": null,
+   "col2": "Dutch",
+   "col3": "Marist College",
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "University of Texas at Austin",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of North Carolina at Chapel Hill",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "UCLA",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "UCLA",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Pan American University",
+   "name_player": "Ken Green"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Kentucky",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": null,
+   "col2": "American-Chinese",
+   "col3": "UCLA",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of California, Los Angeles (UCLA)",
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Michigan State",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Marquette University",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Kentucky",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Connecticut",
+   "name_player": "Toby Kimball"
+  },
+  {
+   "col1": null,
+   "col2": "Cameroonian-American",
+   "col3": "University of Kansas",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Southern California",
+   "name_player": "Bill Hewitt"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Garry Witts"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of California, Los Angeles (UCLA)",
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Marquette",
+   "name_player": "Tom Copa"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Minnesota",
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Leroy Chollet"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Missouri",
+   "name_player": "Derrick Chievous"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Florida",
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Indiana Hoosiers",
+   "name_player": "D. J. White"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of North Dakota",
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Georgia Bulldogs",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "NYU",
+   "name_player": "Cal Ramsey"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Memphis State University",
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Gene Dyker"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Oregon State University",
+   "name_player": "Mark Radford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "UCLA",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "University of Connecticut",
+   "name_player": "Donyell Marshall"
+  },
+  {
+   "col1": 1,
+   "col2": "American",
+   "col3": "Duke Blue Devils",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": 0,
+   "col2": "Croatian",
+   "col3": null,
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Gonzaga Bulldogs",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Fresno State",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Arizona State",
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": 0,
+   "col2": "American",
+   "col3": "Kentucky Wildcats",
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": null,
+   "col2": "Bahamian",
+   "col3": "Oklahoma Sooners",
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": 2,
+   "col2": "American",
+   "col3": "Davidson College",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Wake Forest University",
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Kansas State University",
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Villanova",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Kentucky",
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": null,
+   "col2": "Dominican",
+   "col3": "University of Florida",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Loyola University in Chicago",
+   "name_player": "Mickey Rottner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "San Jose State University",
+   "name_player": "Darnell Hillman"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "Georgia Tech",
+   "name_player": "Jarrett Jack"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.college = 'University of Connecticut' OR p.birth_date <> '1971/12/3' RETURN CAST(p.fiba_world_cup AS INT64) AS col1, p.nationality AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 138
+  }
+ ]
+}

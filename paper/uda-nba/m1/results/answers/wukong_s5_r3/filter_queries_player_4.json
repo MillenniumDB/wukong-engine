@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document), (p)-[:PlaysFor]->(t:Team)\nWHERE t.team_name = 'Cedevita Olimpija'\nRETURN CASE WHEN p.birth_date IS NULL THEN NULL ELSE CAST(split(p.birth_date, '/')[0] AS INT64) END AS \"col1\", p.birth_date AS \"col2\", t.team_name AS \"col3\", p.name AS \"name_player\"",
+   "error": "Parser exception: mismatched input '\"col1\"' expecting {ADD, ALTER, AS, ATTACH, BEGIN, BY, CALL, CHECKPOINT, COMMENT, COMMIT, CONTAINS, COPY, COUNT, CYCLE, DATABASE, DELETE, DETACH, DROP, EXPLAIN, EXPORT, EXTENSION, FROM, FORCE, GRAPH, IMPORT, IF, INCREMENT, IS, KEY, LIMIT, LOAD, LOGICAL, MATCH, MAXVALUE, MERGE, MINVALUE, NO, NODE, PROJECT, READ, REL, RENAME, RETURN, ROLLBACK, SEQUENCE, SET, START, STRUCT, TO, TRANSACTION, TYPE, UNINSTALL, UPDATE, USE, WRITE, YIELD, USER, DECIMAL, L_SKIP, HexLett",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team)\nWHERE t.team_name = 'Cedevita Olimpija'\nRETURN date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-14' AS DATE)) AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team)\nWHERE t.team_name = 'Cedevita Olimpija'\nWITH p, t, CAST(p.birth_date AS DATE) AS birth, CAST('2026-10-14' AS DATE) AS today\nRETURN CAST(date_part('year', today) AS INT64) - CAST(date_part('year', birth) AS INT64) - CASE WHEN date_part('month', today) < date_part('month', birth) OR (date_part('month', today) = date_part('month', birth) AND date_part('day', today) < date_part('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.current_team = 'Cedevita Olimpija'\nWITH p, CAST(split(p.birth_date, '/')[0] AS INT64) AS by, CAST(split(p.birth_date, '/')[1] AS INT64) AS bm, CAST(split(p.birth_date, '/')[2] AS INT64) AS bd\nRETURN 2026 - by - CASE WHEN bm > 10 OR (bm = 10 AND bd > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "uid": "agg_queries#4",
+ "rows": [
+  {
+   "col1": "Greek",
+   "col2": 37
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31
+  },
+  {
+   "col1": "American",
+   "col2": 92
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "French",
+   "col2": 34
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "British",
+   "col2": 31
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "Serbian",
+   "col2": 67
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  },
+  {
+   "col1": "German",
+   "col2": 35
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "Dutch",
+   "col2": 59
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 33
+  },
+  {
+   "col1": "Croatian",
+   "col2": 45
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p, MAX(DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-')))) AS player_age WITH p.nationality AS nationality, MAX(player_age) AS highest_age RETURN nationality AS col1, highest_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p, COALESCE(p.death_date, '2026/10/14') AS end_date WITH p.nationality AS nationality, CAST(SPLIT_PART(end_date, '/', 1) AS INT64) - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(end_date, '/', 2) AS INT64) < CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) OR (CAST(SPLIT_PART(end_date, '/', 2) AS INT64) = CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AND CAST(SPLIT_PART(end_date, '/', 3) AS INT64) < CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64)) THEN 1 ELSE 0 END AS player_age RETURN nationality AS col1, MAX(player_age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p, COALESCE(p.death_date, 'October 14, 2026') AS end_date WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(regexp_extract(p.birth_date, '^([A-Za-z]+) [0-9]{1,2}, ([0-9]{4})$', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE regexp_extract(p.birth_date, '^([A-Za-z]+) [0-9]{1,2}, [0-9]{4}$', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(regexp_extract(p.birth_date, '^[A-Za-z]+ ([0-9]{1,2}), [0-9]{4}$', 1) AS INT64) END AS birth_day, CASE WHEN end_date CONTAINS '/' THEN CAST(SPLIT_PART(end_date, '/', 1) AS INT64) ELSE CAST(regexp_extract(end_date, '^([A-Za-z]+) [0-9]{1,2}, ([0-9]{4})$', 2) AS INT64) END AS end_year, CASE WHEN end_date CONTAINS '/' THEN CAST(SPLIT_PART(end_date, '/', 2) AS INT64) ELSE CASE regexp_extract(end_date, '^([A-Za-z]+) [0-9]{1,2}, [0-9]{4}$', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS end_month, CASE WHEN end_date CONTAINS '/' THEN CAST(SPLIT_PART(end_date, '/', 3) AS INT64) ELSE CAST(regexp_extract(end_date, '^[A-Za-z]+ ([0-9]{1,2}), [0-9]{4}$', 1) AS INT64) END AS end_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS player_age RETURN nationality AS col1, MAX(player_age) AS col2",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

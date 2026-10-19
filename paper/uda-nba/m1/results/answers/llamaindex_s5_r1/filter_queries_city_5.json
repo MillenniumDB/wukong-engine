@@ -1,0 +1,145 @@
+{
+ "uid": "filter_queries_city#5",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Uniondale"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Brooklyn"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": null,
+   "name_city": "East Lansing"
+  },
+  {
+   "col1": null,
+   "col2": "British Columbia",
+   "col3": null,
+   "name_city": "Vancouver"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma",
+   "col3": null,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": null,
+   "name_city": "Allen"
+  },
+  {
+   "col1": null,
+   "col2": "Wisconsin",
+   "col3": null,
+   "name_city": "Sheboygan"
+  },
+  {
+   "col1": null,
+   "col2": "Louisiana",
+   "col3": null,
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": null,
+   "col2": "Florida",
+   "col3": null,
+   "name_city": "Miami"
+  },
+  {
+   "col1": null,
+   "col2": "North Carolina",
+   "col3": null,
+   "name_city": "Winston-Salem"
+  },
+  {
+   "col1": null,
+   "col2": "Pennsylvania",
+   "col3": null,
+   "name_city": "Hershey"
+  },
+  {
+   "col1": null,
+   "col2": "Maryland",
+   "col3": null,
+   "name_city": "Landover"
+  },
+  {
+   "col1": null,
+   "col2": "Wisconsin",
+   "col3": null,
+   "name_city": "Franklin"
+  },
+  {
+   "col1": null,
+   "col2": "Illinois",
+   "col3": null,
+   "name_city": "Bridgeview"
+  },
+  {
+   "col1": null,
+   "col2": "Ohio",
+   "col3": null,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": null,
+   "col2": "Utah",
+   "col3": null,
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": null,
+   "col2": "Maryland",
+   "col3": null,
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": null,
+   "name_city": "Grand Rapids"
+  },
+  {
+   "col1": null,
+   "col2": "Florida",
+   "col3": null,
+   "name_city": "Orlando"
+  },
+  {
+   "col1": null,
+   "col2": "Georgia",
+   "col3": null,
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": null,
+   "col2": "Pennsylvania",
+   "col3": null,
+   "name_city": "Chester"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_city": "Minneapolis"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE c.state_name <> 'Ontario' OR c.city_name = 'Minneapolis' OR c.gdp <> '689000' OR c.gdp <> '344.9' RETURN DISTINCT c.gdp AS col1, c.state_name AS col2, c.population AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

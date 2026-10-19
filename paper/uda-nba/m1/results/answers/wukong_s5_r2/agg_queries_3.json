@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#3",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL\nWITH p, CASE WHEN p.death_date IS NULL THEN DATE '2026-10-14' ELSE strptime(p.death_date, '%Y/%m/%d') END AS end_date\nRETURN p.position AS col1, AVG(date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), end_date) / 365.2425) AS col2\nORDER BY col1",
+   "error": "Parser exception: Invalid input <CASE WHEN p.death_date IS NULL THEN DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 49)\n\"WITH p, CASE WHEN p.death_date IS NULL THEN DATE '2026-10-14' ELSE strptime(p.death_date, '%Y/%m/%d') END AS end_date\"\n                                                  ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL\nWITH p, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE strptime(p.death_date, '%Y/%m/%d') END AS end_date\nRETURN p.position AS col1, AVG(date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), end_date) / 365.2425) AS col2\nORDER BY col1",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL\nWITH p, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REPLACE(p.death_date, '/', '-')) END AS end_date\nRETURN p.position AS col1, AVG(date_diff('day', DATE(REPLACE(p.birth_date, '/', '-')), end_date) / 365.2425) AS col2\nORDER BY col1",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL\nWITH p,\n  DATE(SUBSTRING(p.birth_date, 0, 4) || '-' || SUBSTRING(p.birth_date, 5, 1) || '-' || SUBSTRING(p.birth_date, 7, 2)) AS birth_date,\n  CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(SUBSTRING(p.death_date, 0, 4) || '-' || SUBSTRING(p.death_date, 5, 1) || '-' || SUBSTRING(p.death_date, 7, 2)) END AS end_date\nRETURN p.position AS col1, AVG(date_diff('day', birth_date, end_date) / 365.2425) AS col2\nORDER BY col1",
+   "error": "Parser exception: Invalid input <DATE(SUBSTRING(p.birth_date, 0, 4) ||>: expected rule oC_ProjectionItem (line: 4, offset: 38)\n\"  DATE(SUBSTRING(p.birth_date, 0, 4) || '-' || SUBSTRING(p.birth_date, 5, 1) || '-' || SUBSTRING(p.birth_date, 7, 2)) AS birth_date,\"\n                                       ^",
+   "rows": null
+  }
+ ]
+}

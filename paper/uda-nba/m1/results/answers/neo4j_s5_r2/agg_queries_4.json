@@ -1,0 +1,123 @@
+{
+ "uid": "agg_queries#4",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 92
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60
+  },
+  {
+   "col1": "French",
+   "col2": 32
+  },
+  {
+   "col1": "German",
+   "col2": 33
+  },
+  {
+   "col1": "Greek",
+   "col2": 36
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  },
+  {
+   "col1": null,
+   "col2": 79
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, MAX(DATE_DIFF('year', DATE(p.birth_date), COALESCE(DATE(p.death_date), DATE('2026-10-14')))) AS highest_age RETURN nationality AS col1, highest_age AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, DATE(p.birth_date) AS birth_date, COALESCE(DATE(p.death_date), DATE('2026-10-14')) AS end_date WITH nationality, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', end_date) = DATE_PART('month', birth_date) AND DATE_PART('day', end_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN DATE(STRPTIME(p.birth_date, '%Y/%m/%d')) ELSE DATE(STRPTIME(p.birth_date, '%B %-d, %Y')) END AS birth_date, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') WHEN p.death_date CONTAINS '/' THEN DATE(STRPTIME(p.death_date, '%Y/%m/%d')) ELSE DATE(STRPTIME(p.death_date, '%B %-d, %Y')) END AS end_date WITH nationality, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', end_date) = DATE_PART('month', birth_date) AND DATE_PART('day', end_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.birth_date, '^([0-9]{4})', 1) AS INT64) ELSE CAST(REGEXP_EXTRACT(p.birth_date, '([0-9]{4})$', 1) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.birth_date, '^[0-9]{4}/([0-9]{1,2})', 1) AS INT64) ELSE CASE WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 WHEN p.birth_date CONTAINS 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.birth_date, '/([0-9]{1,2})$', 1) AS INT64) ELSE CAST(REGEXP_EXTRACT(p.birth_date, ' ([0-9]{1,2}),', 1) AS INT64) END AS birth_day, CASE WHEN p.death_date IS NULL THEN 2026 ELSE CASE WHEN p.death_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.death_date, '^([0-9]{4})', 1) AS INT64) ELSE CAST(REGEXP_EXTRACT(p.death_date, '([0-9]{4})$', 1) AS INT64) END END AS end_year, CASE WHEN p.death_date IS NULL THEN 10 ELSE CASE WHEN p.death_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.death_date, '^[0-9]{4}/([0-9]{1,2})', 1) AS INT64) ELSE CASE WHEN p.death_date CONTAINS 'January' THEN 1 WHEN p.death_date CONTAINS 'February' THEN 2 WHEN p.death_date CONTAINS 'March' THEN 3 WHEN p.death_date CONTAINS 'April' THEN 4 WHEN p.death_date CONTAINS 'May' THEN 5 WHEN p.death_date CONTAINS 'June' THEN 6 WHEN p.death_date CONTAINS 'July' THEN 7 WHEN p.death_date CONTAINS 'August' THEN 8 WHEN p.death_date CONTAINS 'September' THEN 9 WHEN p.death_date CONTAINS 'October' THEN 10 WHEN p.death_date CONTAINS 'November' THEN 11 WHEN p.death_date CONTAINS 'December' THEN 12 END END END AS end_month, CASE WHEN p.death_date IS NULL THEN 14 ELSE CASE WHEN p.death_date CONTAINS '/' THEN CAST(REGEXP_EXTRACT(p.death_date, '/([0-9]{1,2})$', 1) AS INT64) ELSE CAST(REGEXP_EXTRACT(p.death_date, ' ([0-9]{1,2}),', 1) AS INT64) END END AS end_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 23
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_diff('year', date(replace(o.birth_date, '/', '-')), date('2026-10-14')) AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_part('year', date('2026-10-14')) - date_part('year', date(replace(o.birth_date, '/', '-'))) - CASE WHEN date_part('month', date(replace(o.birth_date, '/', '-'))) > date_part('month', date('2026-10-14')) OR (date_part('month', date(replace(o.birth_date, '/', '-'))) = date_part('month', date('2026-10-14')) AND date_part('day', date(replace(o.birth_date, '/', '-'))) > date_part('day', date('2026-10-14'))) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_part('year', date('2026-10-14')) - date_part('year', date(o.birth_date)) - CASE WHEN date_part('month', date(o.birth_date)) > date_part('month', date('2026-10-14')) OR (date_part('month', date(o.birth_date)) = date_part('month', date('2026-10-14')) AND date_part('day', date(o.birth_date)) > date_part('day', date('2026-10-14'))) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 1964\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, CASE WHEN o.birth_date STARTS WITH 'January' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-01-01') WHEN o.birth_date STARTS WITH 'February' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-02-01') WHEN o.birth_date STARTS WITH 'March' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-03-01') WHEN o.birth_date STARTS WITH 'April' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-04-01') WHEN o.birth_date STARTS WITH 'May' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-05-01') WHEN o.birth_date STARTS WITH 'June' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-06-01') WHEN o.birth_date STARTS WITH 'July' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-07-01') WHEN o.birth_date STARTS WITH 'August' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-08-01') WHEN o.birth_date STARTS WITH 'September' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-09-01') WHEN o.birth_date STARTS WITH 'October' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-10-01') WHEN o.birth_date STARTS WITH 'November' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-11-01') WHEN o.birth_date STARTS WITH 'December' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-12-01') ELSE date(o.birth_date) END AS birth_date WITH nationality, date_part('year', date('2026-10-14')) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN o.birth_date STARTS WITH 'January' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) ||>: expected rule oC_ProjectionItem (line: 1, offset: 240)\n\"MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, CASE WHEN o.birth_date STARTS WITH 'January' THEN date(regexp_extract(o.birth_date, '[0-9]{4}', 0) || '-01-01') WHEN o.birth_date STARTS WITH 'February' THEN date(rege",
+   "rows": null
+  }
+ ]
+}

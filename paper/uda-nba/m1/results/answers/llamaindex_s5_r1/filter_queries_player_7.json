@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#7",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_year AS INT64) <= 2018 AND CAST(p.fiba_world_cup AS INT64) > 0 RETURN DISTINCT CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_year AS INT64) <= 2018 AND p.fiba_world_cup IS NOT NULL AND p.fiba_world_cup <> '0' RETURN DISTINCT p.fiba_world_cup AS col1, p.draft_year AS col2, p.name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE CAST(p.draft_year AS INT64) <= 2018 AND CAST(p.fiba_world_cup AS INT64) > 0 RETURN DISTINCT CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player) WHERE p.draft_year =~ '^(19[0-9][0-9]|200[0-9]|201[0-8])$' AND p.fiba_world_cup =~ '^[1-9][0-9]*$' RETURN DISTINCT p.fiba_world_cup AS col1, p.draft_year AS col2, p.name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

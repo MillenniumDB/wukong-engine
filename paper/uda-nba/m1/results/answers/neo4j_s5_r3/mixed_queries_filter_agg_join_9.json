@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR CAST(split(p.birth_date, '/')[0] AS INT64) < 1984\n   OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1984 AND CAST(split(p.birth_date, '/')[1] AS INT64) < 10)\n   OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1984 AND CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) <= 14)\nWITH DISTINCT p\nRETURN p.nationality AS col1, COUNT(*) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= DATE('1984-10-14')\nWITH DISTINCT p\nRETURN p.nationality AS col1, COUNT(*) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR STRPTIME(p.birth_date, '%Y/%m/%d') <= DATE('1984-10-14')\nWITH DISTINCT p\nRETURN p.nationality AS col1, COUNT(*) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) < 1984\n   OR (\n        CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) = 1984\n        AND CAST(SUBSTRING(p.birth_date, 5, 2) AS INT64) < 10\n      )\n   OR (\n        CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) = 1984\n        AND CAST(SUBSTRING(p.birth_date, 5, 2) AS INT64) = 10\n        AND CAST(SUBSTRING(p.birth_date, 8, 2) AS INT64) <= 14\n      )\nWITH DISTINCT p\nRETURN p.nationality AS col1, COUNT(*) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

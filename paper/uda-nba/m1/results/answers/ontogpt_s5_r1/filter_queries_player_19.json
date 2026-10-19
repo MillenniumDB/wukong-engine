@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#19",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND date(str_replace(p.birth_date, '/', '-')) <= date('1984-10-14') AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STR_REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND strptime(p.birth_date, '%Y/%m/%d') <= strptime('1984/10/14', '%Y/%m/%d') AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) <= 1983 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CASE WHEN p.draft_pick = 'Undrafted' THEN NULL ELSE CAST(p.draft_pick AS INT64) END >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) <= 1983 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  }
+ ]
+}

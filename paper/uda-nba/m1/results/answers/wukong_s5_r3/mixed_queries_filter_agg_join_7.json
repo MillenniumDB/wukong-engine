@@ -1,0 +1,29 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t) WHERE r.tenure = 'latest' AND CAST(p.olympic_gold_medals AS INT64) = 0 AND p.position <> 'Backcourt' AND t.founded_year <> '1989' RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 4
+  }
+ ]
+}

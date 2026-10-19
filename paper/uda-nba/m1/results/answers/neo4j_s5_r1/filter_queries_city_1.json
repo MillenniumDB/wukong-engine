@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE c.area IS NOT NULL AND ABS(CAST(c.area AS DOUBLE) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, ROUND(CAST(c.area AS DOUBLE) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 385.8 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS(CAST(REPLACE(REPLACE(c.area, ' square miles', ''), ',', '') AS DOUBLE) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, ROUND(CAST(REPLACE(REPLACE(c.area, ' square miles', ''), ',', '') AS DOUBLE) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS(CAST(SPLIT_PART(c.area, ' ', 1) AS DOUBLE) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, ROUND(CAST(SPLIT_PART(c.area, ' ', 1) AS DOUBLE) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 99,025 is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS((CASE WHEN c.area LIKE '%,%' THEN CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 1), ' ', 1) AS DOUBLE) * 1000 + CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 2), ' ', 1) AS DOUBLE) ELSE CAST(SPLIT_PART(c.area, ' ', 1) AS DOUBLE) END) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, ROUND((CASE WHEN c.area LIKE '%,%' THEN CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 1), ' ', 1) AS DOUBLE) * 1000 + CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 2), ' ', 1) AS DOUBLE) ELSE CAST(SPLIT_PART(c.area, ' ', 1) AS DOUBLE) END) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS((CASE WHEN c.area LIKE>: expected rule oC_SingleQuery (line: 1, offset: 94)\n\"MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.area IS NOT NULL AND ABS((CASE WHEN c.area LIKE '%,%' THEN CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 1), ' ', 1) AS DOUBLE) * 1000 + CAST(SPLIT_PART(SPLIT_PART(c.area, ',', 2), ' ', 1) AS DOUBLE) ELSE CAST(SPLIT_PART(c.area, ' ', 1) AS DOUBLE) END) * 2.58999 - 375.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_player#8",
+ "rows": [
+  {
+   "col1": "Point guard",
+   "col2": 4,
+   "col3": 2,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "Power forward and center",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": 1,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": 1,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": 2,
+   "col3": 1,
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.fiba_world_cup AS INT64) > 0 AND p.nationality <> 'Azerbaijani' RETURN DISTINCT p.position AS col1, CAST(p.nba_championships AS INT64) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

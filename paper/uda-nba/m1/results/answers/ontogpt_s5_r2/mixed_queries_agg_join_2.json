@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_agg_join#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(:Team)-[:LocatedIn]->(c:City) RETURN o.nationality AS col1, MIN(CAST(c.population AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"372,624\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(:Team)-[:LocatedIn]->(c:City) RETURN o.nationality AS col1, MIN(CAST(REPLACE(c.population, ',', '') AS INT64)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(:Team)-[:LocatedIn]->(c:City) RETURN o.nationality AS col1, MIN(CAST(REGEXP_REPLACE(c.population, ',', '') AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"1299,544\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(:Team)-[:LocatedIn]->(c:City) RETURN o.nationality AS col1, MIN(CAST(REGEXP_REPLACE(c.population, '[,]', '') AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"1299,544\" to INT64.",
+   "rows": null
+  }
+ ]
+}

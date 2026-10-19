@@ -1,0 +1,561 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "rows": [
+  {
+   "col1": "Kevon Looney",
+   "col2": "Center",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andris Biedri\u0146\u0161",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Andris Biedri\u0146\u0161",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Jonas Valan\u010di\u016bnas",
+   "col2": "centre",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jonas Valan\u010di\u016bnas",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "RJ Barrett",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Mychel Thompson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Leroy Patrick Chollet",
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "name_player": "Leroy Patrick Chollet",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": "Sidney Harold Tanenbaum",
+   "col2": "Guard/forward",
+   "col3": null,
+   "col4": null,
+   "name_player": "Sidney Harold Tanenbaum",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": "Jordan Crawford",
+   "col2": "guard",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Jordan Crawford",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Festus Ezeli",
+   "col2": "center",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Festus Ezeli",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ognjen Kuzmic",
+   "col2": "center",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Ognjen Kuzmic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Nemanja Nedovic",
+   "col2": "combo-guard",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Nemanja Nedovic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Nico Mannion",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Nico Mannion",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andrew Wiggins",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Andrew Wiggins",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Hamed Haddadi",
+   "col2": "centre",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Hamed Haddadi",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Donovan Mitchell",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Donovan Mitchell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Alex Sarr",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Alex Sarr",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Steven Delano Smith",
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Joe Barry Carroll",
+   "col2": "center",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Joe Barry Carroll",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Reggie Williams",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Reggie Williams",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Goran Dragi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Goran Dragi\u0107",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Richard Hamilton",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Richard Hamilton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Johnny Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Johnny Davis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Josh Howard",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Josh Howard",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Gary Neal",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Gary Neal",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Shawn Respert",
+   "col2": "Guard",
+   "col3": null,
+   "col4": null,
+   "name_player": "Shawn Respert",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "James Wiseman",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "James Wiseman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Anthony Randolph",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Anthony Randolph",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Reggie Evans",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Reggie Evans",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Norman Powell",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Norman Powell",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Sebastian Telfair",
+   "col2": "guard",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Deni Avdija",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Deni Avdija",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Leonard",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Leonard",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Darnell Hillman",
+   "col2": "Forward",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Bob Pettit",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Bob Pettit",
+   "name_team": "St. Louis Hawks"
+  },
+  {
+   "col1": "Stephen Curry",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Marc Gasol",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Marc Gasol",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Immanuel Quickley",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Louis Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Louis Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Kristaps Porzingis",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kristaps Porzingis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nate Huffman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Greg Foster",
+   "col2": "Center\u2013power forward",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Greg Foster",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Brandan Wright",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ekpe Udoh",
+   "col2": "Power forward",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Ekpe Udoh",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chris Babb",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Chris Babb",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Damon Stoudamire",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Damon Stoudamire",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Delon Wright",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Delon Wright",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Rod Strickland",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Rod Strickland",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Cassius Winston",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Cassius Winston",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Dell Curry",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Dell Curry",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Derrick Chievous",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Luke Walton",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Luke Walton",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Eric Paschall",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Eric Paschall",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Moses Moody",
+   "col2": "guard",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Moses Moody",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ralph Sampson",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Ralph Sampson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Alen Smailagi\u0107",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Alen Smailagi\u0107",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Bruce Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Jordan Nwora",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Kira Lewis Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Kira Lewis Jr.",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Spencer Dinwiddie",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Spencer Dinwiddie",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mitch Richmond",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Mitch Richmond",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Davis Bertans",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Davis Bertans",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Purvis Short",
+   "col2": "forward",
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Purvis Short",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Damion Lee",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Damion Lee",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Trayce Jackson-Davis",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Trayce Jackson-Davis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Dwane Casey",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Dwane Casey",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Marcus Camby",
+   "col2": "Centre",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Marcus Camby",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Chris Paul",
+   "col2": null,
+   "col3": "4 during Joe Lacob's tenure",
+   "col4": null,
+   "name_player": "Chris Paul",
+   "name_team": "Golden State Warriors"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) <> 3 RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.current_team = t.team_name AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) <> 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"4 during Joe Lacob's tenure\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.current_team = t.team_name AND (p.name = 'Kobe Bean Bryant' OR CAST(REGEXP_EXTRACT(p.fiba_world_cup, '[0-9]+', 0) AS INT64) >= 0 OR CAST(REGEXP_EXTRACT(t.championships, '[0-9]+', 0) AS INT64) <> 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 67
+  }
+ ]
+}

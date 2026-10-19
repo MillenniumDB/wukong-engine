@@ -1,0 +1,4101 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Joseph Tsai",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Jay-Z",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Arthur J. Brown",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Roy Boe",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Alan N. Cohen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Joseph Taub",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Community Youth Organization",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "YankeeNets",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "YankeeNets",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Bruce Ratner",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Will Pan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Don Nelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Don Nelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mavericks owner Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Mavericks owner Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Fred Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Fred Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Fred Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Fred Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Zollner",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Bill Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Bill Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Bill Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Bill Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Karen Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Karen Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Karen Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Karen Davidson",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Tom Gores",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Tom Gores",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Tom Gores",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Tom Gores",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Arn Tellum",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Arn Tellum",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Arn Tellum",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Arn Tellum",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Olympia Entertainment",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Olympia Entertainment",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Olympia Entertainment",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Olympia Entertainment",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Richard Tinkham",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Richard Tinkham",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Richard Tinkham",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "John DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "John DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "John DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Chuck DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Chuck DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Chuck DeVoe",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Lyn Treece",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Lyn Treece",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Lyn Treece",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Chuck Barnes",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Chuck Barnes",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Chuck Barnes",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Bob Collins",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Bob Collins",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Bob Collins",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Jack Ramsay",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Jack Ramsay",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Jack Ramsay",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "George Irvine",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "George Irvine",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "George Irvine",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Bob Hill",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Bob Hill",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Bob Hill",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Dick Versace",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Dick Versace",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Dick Versace",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Mel Daniels",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Mel Daniels",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Mel Daniels",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Herb Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Herb Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Herb Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Lakers six children trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Lakers six children trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Micky Arison",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "1992",
+   "col3": "Micky Arison",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1992",
+   "col3": "Micky Arison",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "New York",
+   "col2": "1992",
+   "col3": "Micky Arison",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1992",
+   "col3": "Micky Arison",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Pat Riley",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "1992",
+   "col3": "Pat Riley",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1992",
+   "col3": "Pat Riley",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "New York",
+   "col2": "1992",
+   "col3": "Pat Riley",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1992",
+   "col3": "Pat Riley",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1992",
+   "col3": "Danny Ainge",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Danny Ainge",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Danny Ainge",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1992",
+   "col3": "Danny Ainge",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Glen Taylor",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Glen Taylor",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Glen Taylor",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Glen Taylor",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Glen Taylor",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Harvey Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Harvey Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Harvey Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Harvey Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Harvey Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Marv Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Marv Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Marv Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Marv Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Marv Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Ratner",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Wolfenson",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Marc Lore",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Marc Lore",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Marc Lore",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Marc Lore",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Marc Lore",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Alex Rodriguez",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Alex Rodriguez",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Alex Rodriguez",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Alex Rodriguez",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Alex Rodriguez",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2008",
+   "col3": "Michael Bloomberg",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2008",
+   "col3": "Michael Bloomberg",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston",
+   "col2": "2008",
+   "col3": "Michael Bloomberg",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2008",
+   "col3": "Michael Bloomberg",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "2008",
+   "col3": "Michael Bloomberg",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Gayle Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Sarver-led investment group",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Sarver-led investment group",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Sarver-led investment group",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Sarver-led investment group",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "United Wholesale Mortgage",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "United Wholesale Mortgage",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "United Wholesale Mortgage",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "United Wholesale Mortgage",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "2004",
+   "col3": "Platinum Equity",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York",
+   "col2": "2004",
+   "col3": "Platinum Equity",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2004",
+   "col3": "Platinum Equity",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2004",
+   "col3": "Platinum Equity",
+   "col4": "Ben Gordon",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2013",
+   "col3": "Joe Tsai",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Herbert Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "Herbert Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Herbert Simon",
+   "col4": "Tyrese Haliburton",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE r.tenure = 'latest' AND (((CAST(t.founded_year AS INT64) <= 1989) AND p.college = 'University of Connecticut') OR ((CAST(p.fiba_world_cup AS INT64) >= 1) AND t.team_name <> 'Milwaukee Bucks')) RETURN c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 511
+  }
+ ]
+}

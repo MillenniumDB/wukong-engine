@@ -1,0 +1,197 @@
+{
+ "uid": "join_queries#10",
+ "rows": [
+  {
+   "col1": "Houston Rockets",
+   "col2": "Houston",
+   "col3": "Tilman Fertitta",
+   "col4": "Houston Rockets",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver",
+   "col3": "Enos Stanley Kroenke",
+   "col4": "Denver Nuggets",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Detroit",
+   "col3": "Tom Gores",
+   "col4": "Detroit Pistons",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Pontiac",
+   "col3": "Tom Gores",
+   "col4": "Detroit Pistons",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Syracuse",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Indianapolis",
+   "col3": "Herbert Simon",
+   "col4": "Indiana Pacers",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago",
+   "col3": "Jerry Michael Reinsdorf",
+   "col4": "Chicago Bulls",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Oakland",
+   "col3": "Joseph Steven Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Oklahoma City",
+   "col3": "Clayton Ike Bennett",
+   "col4": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Cleveland",
+   "col3": "Dan Gilbert",
+   "col4": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "San Francisco",
+   "col3": "Joseph Steven Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Miami",
+   "col3": "Micky Arison",
+   "col4": "Miami Heat",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Auburn Hills",
+   "col3": "Tom Gores",
+   "col4": "Detroit Pistons",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "San Jose",
+   "col3": "Joseph Steven Lacob",
+   "col4": "Golden State Warriors",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "San Diego",
+   "col3": "Tilman Fertitta",
+   "col4": "Houston Rockets",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "San Diego",
+   "col3": "Steve Ballmer",
+   "col4": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Brooklyn",
+   "col3": "Joseph Tsai",
+   "col4": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Los Angeles",
+   "col3": "Steve Ballmer",
+   "col4": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "New York City",
+   "col3": "Joseph Tsai",
+   "col4": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dallas",
+   "col3": "Mark Cuban",
+   "col4": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Inglewood",
+   "col3": "Steve Ballmer",
+   "col4": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "New Orleans",
+   "col3": "Gayle Benson",
+   "col4": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Benson"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c:City) WHERE o.name = o.name AND t.team_name = t.team_name RETURN t.team_name AS col1, c.city_name AS col2, o.name AS col3, t.team_name AS col4, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 23
+  }
+ ]
+}

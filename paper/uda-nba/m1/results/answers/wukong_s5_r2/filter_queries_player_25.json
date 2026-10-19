@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, strptime(p.birth_date, '%Y/%m/%d') AS birth\nWHERE (CAST(p.draft_pick AS INT64) <= 62\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR CAST(p.nba_championships AS INT64) = 2)\nRETURN p.draft_pick AS col1,\n       date_diff('year', birth, strptime('2026/10/14', '%Y/%m/%d')) -\n       CASE WHEN date_part('month', birth) > 10\n                  OR (date_part('month', birth) = 10 AND date_part('day', birth) > 14)\n            THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth\nWHERE CAST(p.draft_pick AS INT64) <= 62\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR CAST(p.nba_championships AS INT64) = 2\nRETURN p.draft_pick AS col1,\n       date_diff('year', birth, DATE '2026-10-14') -\n       CASE WHEN date_part('month', birth) > 10\n                  OR (date_part('month', birth) = 10 AND date_part('day', birth) > 14)\n            THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Parser exception: Invalid input <date_diff('year', birth, DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 8, offset: 37)\n\"       date_diff('year', birth, DATE '2026-10-14') -\"\n                                      ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth\nWHERE CAST(p.draft_pick AS INT64) <= 62\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR CAST(p.nba_championships AS INT64) = 2\nRETURN p.draft_pick AS col1,\n       DATE_DIFF('year', birth, CAST('2026-10-14' AS DATE)) -\n       CASE WHEN DATE_PART('month', birth) > 10\n                  OR (DATE_PART('month', birth) = 10 AND DATE_PART('day', birth) > 14)\n            THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, SPLIT(p.birth_date, '/') AS parts\nWHERE CAST(p.draft_pick AS INT64) <= 62\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR CAST(p.nba_championships AS INT64) = 2\nRETURN p.draft_pick AS col1,\n       2026 - CAST(parts[0] AS INT64) -\n       CASE WHEN CAST(parts[1] AS INT64) > 10\n                  OR (CAST(parts[1] AS INT64) = 10 AND CAST(parts[2] AS INT64) > 14)\n            THEN 1 ELSE 0 END AS col2,\n       p.position AS col3,\n       p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  }
+ ]
+}

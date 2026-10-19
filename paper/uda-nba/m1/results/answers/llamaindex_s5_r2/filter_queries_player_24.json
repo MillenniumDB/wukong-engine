@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "13",
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Booker"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.olympic_gold_medals AS INT64) <> 0 AND CAST(p.mvp_awards AS INT64) = 0 RETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

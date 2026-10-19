@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team {team_name: 'Cedevita Olimpija'}) MATCH (p)-[:ExtractedFrom]->(:Document) MATCH (t)-[:ExtractedFrom]->(:Document) WITH DISTINCT p, t, DATE(p.birth_date) AS birth, DATE('2026-10-14') AS today RETURN date_part('year', today) - date_part('year', birth) - CASE WHEN date_part('month', today) < date_part('month', birth) OR (date_part('month', today) = date_part('month', birth) AND date_part('day', today) < date_part('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) MATCH (p)-[:ExtractedFrom]->(:Document) WITH DISTINCT p, t, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth, DATE('2026-10-14') AS today RETURN DATE_DIFF('year', birth, today) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth) OR (DATE_PART('month', today) = DATE_PART('month', birth) AND DATE_PART('day', today) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) MATCH (p)-[:ExtractedFrom]->(:Document) WITH DISTINCT p, t, DATE(p.birth_date) AS birth, DATE('2026-10-14') AS today RETURN DATE_PART('year', today) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth) OR (DATE_PART('month', today) = DATE_PART('month', birth) AND DATE_PART('day', today) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) MATCH (p)-[:ExtractedFrom]->(:Document) WITH DISTINCT p, t, CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year, CAST(SUBSTRING(p.birth_date, 6, 1 + CASE WHEN SUBSTRING(p.birth_date, 7, 1) <> '/' THEN 1 ELSE 0 END) AS INT64) AS birth_month, CAST(SUBSTRING(p.birth_date, 8 + CASE WHEN SUBSTRING(p.birth_date, 7, 1) <> '/' THEN 1 ELSE 0 END, 2) AS INT64) AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

@@ -13,6 +13,7 @@ as the committed results/scores.
 import argparse
 import json
 import random
+import re
 import statistics as st
 import sys
 from pathlib import Path
@@ -23,8 +24,17 @@ TIE = 0.005  # scores equal to two decimals count as a tie
 
 
 def load(folder: Path) -> dict[str, dict[str, float]]:
-    """Per-question macro F1 of every system in a scores folder."""
-    return {p.stem: {u: r['macro_f1'] for u, r in json.loads(p.read_text()).items()} for p in sorted(folder.glob('*.json'))}
+    """Per-question macro F1 of every system in a scores folder. A system run several times (<name>_r1, _r2, ...)
+    also appears as <name>, with each question's score averaged over its runs."""
+    out = {p.stem: {u: r['macro_f1'] for u, r in json.loads(p.read_text()).items()} for p in sorted(folder.glob('*.json'))}
+    runs = {}
+    for s in out:
+        m = re.fullmatch(r'(.+)_r\d+', s)
+        if m:
+            runs.setdefault(m.group(1), []).append(out[s])
+    for g, rs in runs.items():
+        out[g] = {u: st.mean(r[u] for r in rs) for u in set.intersection(*(set(r) for r in rs))}
+    return out
 
 
 def compare(a: dict[str, float], b: dict[str, float]) -> tuple[float, float, float, int, int, int, int]:

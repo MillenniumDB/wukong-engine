@@ -1,0 +1,65 @@
+{
+ "uid": "join_queries#4",
+ "rows": [
+  {
+   "col1": null,
+   "col2": 79,
+   "col3": "New York City",
+   "col4": "New York Knicks",
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": 79,
+   "col3": "New York",
+   "col4": "New York Knicks",
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": 79,
+   "col3": "Manhattan",
+   "col4": "New York Knicks",
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH DISTINCT p, t, c, date_diff('year', DATE(p.birth_date), DATE('2026-10-14')) - CASE WHEN date_part('month', DATE(p.birth_date)) > 10 OR (date_part('month', DATE(p.birth_date)) = 10 AND date_part('day', DATE(p.birth_date)) > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH DISTINCT p, t, c, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WITH p, t, c, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"March 7, 1947\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH DISTINCT p, t, c, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(TRIM(split_part(p.birth_date, ',', 2)) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE LOWER(split_part(TRIM(split_part(p.birth_date, ',', 1)), ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(TRIM(split_part(p.birth_date, ',', 1)), ' ', 2) AS INT64) END AS birth_day WITH p, t, c, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

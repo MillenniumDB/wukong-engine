@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) > 14)))) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) MATCH (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE (o.birth_date IS NOT NULL AND CAST(REPLACE(o.birth_date, '/', '-') AS DATE) >= CAST('1960-10-14' AS DATE)) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) MATCH (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) >= 14)))) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) MATCH (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do_:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) > 14)))) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do_:Document) WHERE (o.birth_date IS NOT NULL AND (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) > 1960 OR (CAST(SPLIT(o.birth_date, '/')[0] AS INT64) = 1960 AND (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64)",
+   "rows": null
+  }
+ ]
+}

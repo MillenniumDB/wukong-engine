@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_diff('year', date(replace(o.birth_date, '/', '-')), date('2026-10-14')) AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"1962-01-17\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, replace(o.birth_date, '-', '/') AS birth_date WITH nationality, 2026 - CAST(split_part(birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, o.birth_date AS birth_date WITH nationality, 2026 - CAST(CASE WHEN contains(birth_date, '-') THEN split_part(birth_date, '-', 1) ELSE split_part(birth_date, '/', 1) END AS INT64) - CASE WHEN CAST(CASE WHEN contains(birth_date, '-') THEN split_part(birth_date, '-', 2) ELSE split_part(birth_date, '/', 2) END AS INT64) > 10 OR (CAST(CASE WHEN contains(birth_date, '-') THEN split_part(birth_date, '-', 2) ELSE split_part(birth_date, '/', 2) END AS INT64) = 10 AND CAST(CASE WHEN contains(birth_date, '-') THEN split_part(birth_date, '-', 3) ELSE split_part(birth_date, '/', 3) END AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"01\" to INT64.",
+   "rows": null
+  }
+ ]
+}

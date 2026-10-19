@@ -1,0 +1,73 @@
+{
+ "uid": "filter_queries_player#3",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": "2",
+   "col3": "Kevin Durant",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": 5,
+   "col2": "3",
+   "col3": "Michael Jordan",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": 2,
+   "col2": "7",
+   "col3": "Stephen Curry",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": 2,
+   "col2": "15",
+   "col3": "Giannis Antetokounmpo",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": 1,
+   "col2": "1",
+   "col3": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": 1,
+   "col2": "3",
+   "col3": "Joel Embiid",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": 1,
+   "col2": "13",
+   "col3": "Kobe Bryant",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": 3,
+   "col2": "1",
+   "col3": "Magic Johnson",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": 4,
+   "col2": "1",
+   "col3": "LeBron James",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": 2,
+   "col2": "1",
+   "col3": "Tim Duncan",
+   "name_player": "Tim Duncan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.mvp_awards AS INT64) >= 1 RETURN DISTINCT CAST(p.mvp_awards AS INT64) AS col1, p.draft_pick AS col2, p.name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 10
+  }
+ ]
+}

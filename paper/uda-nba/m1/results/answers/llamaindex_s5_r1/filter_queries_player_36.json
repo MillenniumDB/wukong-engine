@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND date_diff('year', date(REPLACE(p.birth_date, '/', '-')), date('2026-10-14')) > 78) WITH DISTINCT p RETURN p.nationality AS col1, p.birth_date AS col2, CAST(date_diff('year', date(REPLACE(p.birth_date, '/', '-')), date('2026-10-14')) AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, 2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78) RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ', ', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(p.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND (2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END) > 78) RETURN p.nationality AS col1, p.birth_date AS col2, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 2) AS INT64) END AS birth_day WITH p, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78) RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

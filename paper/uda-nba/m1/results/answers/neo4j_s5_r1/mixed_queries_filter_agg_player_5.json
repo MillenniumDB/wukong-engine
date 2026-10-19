@@ -1,0 +1,169 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Buffalo Braves",
+   "col2": null
+  },
+  {
+   "col1": "Metropolitans 92",
+   "col2": null
+  },
+  {
+   "col1": "Youngstown Bears",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Stags",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 1.0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1.0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0.5
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": null
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": null
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1.0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Kentucky Wildcats",
+   "col2": 1.0
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 1.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1.0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 1.0
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 1.0
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 1.0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 1.0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": 1.0
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 1.0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0.5
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null
+  },
+  {
+   "col1": "Pittsburgh Ironmen",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor]->(t) WHERE p.current_team = 'Boston Celtics' OR CAST(p.nba_championships AS INT64) <= 0 OR CAST(p.fiba_world_cup AS INT64) < 0 WITH DISTINCT t, p RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 39
+  }
+ ]
+}

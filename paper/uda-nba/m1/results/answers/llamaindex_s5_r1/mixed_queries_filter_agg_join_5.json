@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:MentionedIn]->(:Document) WITH DISTINCT t, p WHERE CAST(p.nba_championships AS INT64) < 0 OR CAST(list_extract(split(p.birth_date, '/'), 0) AS INT64) < 1984 OR (CAST(list_extract(split(p.birth_date, '/'), 0) AS INT64) = 1984 AND (CAST(list_extract(split(p.birth_date, '/'), 1) AS INT64) < 10 OR (CAST(list_extract(split(p.birth_date, '/'), 1) AS INT64) = 10 AND CAST(list_extract(split(p.birth_date, '/'), 2) AS INT64) <= 14))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:MentionedIn]->(:Document) WITH DISTINCT t, p WHERE CAST(p.nba_championships AS INT64) < 0 OR date_diff('year', CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE), DATE '2026-10-14') >= 42 RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE), DATE '2026-10-14'>: expected rule oC_ComparisonExpression (line: 1, offset: 264)\n\"MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:MentionedIn]->(:Document) WITH DISTINCT t, p WHERE CAST(p.nba_championships AS INT64) < 0 OR date_diff('year', CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE), DATE '2026-10-14') >= 42 RETURN t.team_name AS col1, AVG(C",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:MentionedIn]->(:Document) WITH DISTINCT t, p WHERE CAST(p.nba_championships AS INT64) < 0 OR CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) < 1984 OR (CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) = 1984 AND (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) < 10 OR (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) = 10 AND CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)$', 1) AS INT64) <= 14))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:MentionedIn]->(:Document) WITH DISTINCT t, p WITH t, p, CAST(NULLIF(regexp_extract(p.birth_date, '^([0-9]+)/', 1), '') AS INT64) AS birth_year, CAST(NULLIF(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1), '') AS INT64) AS birth_month, CAST(NULLIF(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)$', 1), '') AS INT64) AS birth_day WHERE CAST(p.nba_championships AS INT64) < 0 OR birth_year < 1984 OR (birth_year = 1984 AND (birth_month < 10 OR (birth_month = 10 AND birth_day <= 14))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

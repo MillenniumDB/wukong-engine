@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     CASE\n       WHEN p.death_date IS NOT NULL\n       THEN DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE(REPLACE(p.death_date, '/', '-')))\n       ELSE DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE('2026-10-14'))\n     END AS age\nRETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     DATE(REPLACE(p.birth_date, '/', '-')) AS birth_date,\n     CASE WHEN p.death_date IS NULL\n          THEN DATE('2026-10-14')\n          ELSE DATE(REPLACE(p.death_date, '/', '-'))\n     END AS end_date\nWITH nationality,\n     CAST(date_part('year', end_date) AS INT64) - CAST(date_part('year', birth_date) AS INT64)\n     - CASE\n         WHEN date_part('month', end_date) < date_part('month', birth_date)\n              OR (date_part('month', end_date) = date_part('month', birth_date)\n                  AND date_part('day', end_date) < date_part('day', birth_date))\n         THEN 1 ELSE 0\n       END AS age\nRETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     CAST(SPLIT(p.birth_date, '/')[0] AS INT64) AS birth_year,\n     CAST(SPLIT(p.birth_date, '/')[1] AS INT64) AS birth_month,\n     CAST(SPLIT(p.birth_date, '/')[2] AS INT64) AS birth_day,\n     CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(SPLIT(p.death_date, '/')[0] AS INT64) END AS end_year,\n     CASE WHEN p.death_date IS NULL THEN 10 ELSE CAST(SPLIT(p.death_date, '/')[1] AS INT64) END AS end_month,\n     CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(SPLIT(p.death_date, '/')[2] AS INT64) END AS end_day\nWITH nationality,\n     end_year - birth_year - CASE\n       WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL\nWITH p.nationality AS nationality,\n     CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year,\n     CASE WHEN p.death_date IS NULL\n          THEN 2026\n          ELSE CAST(SUBSTRING(p.death_date, 1, 4) AS INT64)\n     END AS end_year\nRETURN nationality AS col1, MAX(end_year - birth_year) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June\" to INT64.",
+   "rows": null
+  }
+ ]
+}

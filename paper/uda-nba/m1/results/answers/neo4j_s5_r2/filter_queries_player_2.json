@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REPLACE(p.death_date, '/', '-')) END AS reference_date, DATE(REPLACE(p.birth_date, '/', '-')) AS birth_date WITH p, DATE_DIFF('year', birth_date, reference_date) - CASE WHEN MONTH(reference_date) < MONTH(birth_date) OR (MONTH(reference_date) = MONTH(birth_date) AND DAY(reference_date) < DAY(birth_date)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth_date, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE STRPTIME(p.death_date, '%Y/%m/%d') END AS reference_date WITH p, birth_date, reference_date, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', reference_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', reference_date) = DATE_PART('month', birth_date) AND DATE_PART('day', reference_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CAST(SPLIT_PART(p.birth_date, '/', 1) || '-' || SPLIT_PART(p.birth_date, '/', 2) || '-' || SPLIT_PART(p.birth_date, '/', 3) AS DATE) AS birth_date, CASE WHEN p.death_date IS NULL THEN CAST('2026-10-14' AS DATE) ELSE CAST(SPLIT_PART(p.death_date, '/', 1) || '-' || SPLIT_PART(p.death_date, '/', 2) || '-' || SPLIT_PART(p.death_date, '/', 3) AS DATE) END AS reference_date WITH p, birth_date, reference_date, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', reference_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', reference_date) = DATE_PART('month', birth_date) AND DATE_PART('day', reference_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CAST(SPLIT_PART(p.birth_date, '/', 1) ||>: expected rule oC_ProjectionItem (line: 1, offset: 101)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CAST(SPLIT_PART(p.birth_date, '/', 1) || '-' || SPLIT_PART(p.birth_date, '/', 2) || '-' || SPLIT_PART(p.birth_date, '/', 3) AS DATE) AS birth_date, CASE WHEN p.death_date IS NULL THEN CAST('2026-10-14' AS DATE) ELSE CAST(SPLIT_PART(p.death_date, '/', 1) || '-' || SPLIT_PART(p.death_date, '/', 2) || '-' ||",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, DATE(CONCAT(SPLIT_PART(p.birth_date, '/', 1), '-', SPLIT_PART(p.birth_date, '/', 2), '-', SPLIT_PART(p.birth_date, '/', 3))) AS birth_date, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(CONCAT(SPLIT_PART(p.death_date, '/', 1), '-', SPLIT_PART(p.death_date, '/', 2), '-', SPLIT_PART(p.death_date, '/', 3))) END AS reference_date WITH p, birth_date, reference_date, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', reference_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', reference_date) = DATE_PART('month', birth_date) AND DATE_PART('day', reference_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994--\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

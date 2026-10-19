@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (CAST(p.draft_pick AS INT64) <= 62 OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR CAST(p.nba_championships AS INT64) = 2) RETURN p.draft_pick AS col1, DATE_DIFF('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (CAST(p.draft_pick AS INT64) <= 62 OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR CAST(p.nba_championships AS INT64) = 2) WITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date RETURN p.draft_pick AS col1, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > DATE_PART('month', DATE('2026-10-14')) OR (DATE_PART('month', birth_date) = DATE_PART('month', DATE('2026-10-14')) AND DATE_PART('day', birth_date) > DATE_PART('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE (CAST(p.draft_pick AS INT64) <= 62 OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR CAST(p.nba_championships AS INT64) = 2) WITH p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE ((p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR CAST(p.nba_championships AS INT64) = 2) WITH p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  }
+ ]
+}

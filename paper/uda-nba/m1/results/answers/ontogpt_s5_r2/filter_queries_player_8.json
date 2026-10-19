@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#8",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 2,
+   "col3": 1,
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Kyrie Andrew Irving"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE CAST(p.fiba_world_cup AS INT64) > 0\n  AND p.nationality <> 'Azerbaijani'\nRETURN p.position AS col1,\n       CAST(p.nba_championships AS INT64) AS col2,\n       CAST(p.fiba_world_cup AS INT64) AS col3,\n       p.name AS name_player",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

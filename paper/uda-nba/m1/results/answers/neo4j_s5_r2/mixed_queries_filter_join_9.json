@@ -1,0 +1,7957 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "rows": [
+  {
+   "col1": "Nicolas Batum",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Nicolas Batum",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "CJ McCollum",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "CJ McCollum",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Steve Francis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Steve Francis",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Damon Stoudamire",
+   "col2": "point guard",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Damon Stoudamire",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Patrick Baldwin Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Patrick Baldwin Jr.",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Gerald Wallace",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Gerald Wallace",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Jeremy Lin",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jeremy Lin",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Buddy Hield",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Buddy Hield",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Olivier-Maxence Prosper",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Olivier-Maxence Prosper",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Antawn Jamison",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Antawn Jamison",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sasha Danilovi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Sasha Danilovi\u0107",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oliver Miller",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Oliver Miller",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Juwan Howard",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Juwan Howard",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Monta Ellis",
+   "col2": "off-guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Monta Ellis",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Tyson Chandler",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Tyson Chandler",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Lloyd Pierce",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Lloyd Pierce",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Thabo Sefolosha",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Thabo Sefolosha",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "DeShawn Stevenson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "DeShawn Stevenson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "John Jenkins",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "John Jenkins",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Devin Harris",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Devin Harris",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Isaiah Rider",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Isaiah Rider",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jim Jackson",
+   "col2": "guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jim Jackson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Ayo Dosunmu",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Ayo Dosunmu",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tony Snell",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Tony Snell",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Ronnie Brewer",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Ronnie Brewer",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Drew Gooden",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Drew Gooden",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Thabo Sefolosha",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Thabo Sefolosha",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Aaron Brooks",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Aaron Brooks",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Toni Kuko\u010d",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Toni Kuko\u010d",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Keith Bogans",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Keith Bogans",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "V\u00edt Krej\u010d\u00ed",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "V\u00edt Krej\u010d\u00ed",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Isaiah Hartenstein",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Isaiah Hartenstein",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Ryan Gomes",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Ryan Gomes",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Elvin Hayes",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Elvin Hayes",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Walter Sharpe",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Walter Sharpe",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "LaPhonso Ellis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "LaPhonso Ellis",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "TR Dunn",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "TR Dunn",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Chauncey Billups",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Chauncey Billups",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Antonio McDyess",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Antonio McDyess",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Raymond Felton",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Raymond Felton",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Nikola Jokic",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nikola Jokic",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "James Anderson",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "James Anderson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Jack McClinton",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Jack McClinton",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Glenn Robinson",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Glenn Robinson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Thaddeus Young",
+   "col2": "Small forward",
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Thaddeus Young",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Nick Van Exel",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Nick Van Exel",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "David West",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "David West",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Andre Drummond",
+   "col2": "Center",
+   "col3": "3",
+   "col4": "1946",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Metta World Peace",
+   "col2": "Forward",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Metta World Peace",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Jordan Clarkson",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jordan Clarkson",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Kwame Brown",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kwame Brown",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Montrezl Harrell",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Montrezl Harrell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Chris Mihm",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Chris Mihm",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Russell Westbrook",
+   "col2": "point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Russell Westbrook",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Lamar Odom",
+   "col2": "Small forward",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Lamar Odom",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Allonzo Trier",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Allonzo Trier",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Kevin Knox II",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Kevin Knox II",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Michael Beasley",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Michael Beasley",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Bojan Bogdanovic",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Bojan Bogdanovic",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Kelenna Azubuike",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Kelenna Azubuike",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Anthony Carter",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Anthony Carter",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Antonio Davis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Antonio Davis",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Andrea Bargnani",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Andrea Bargnani",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jason Kidd",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jason Kidd",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Stephon Marbury",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Stephon Marbury",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Mychel Thompson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Mychel Thompson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Baron Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Baron Davis",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Mo Bamba",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Mo Bamba",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Melvin Frazier",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Melvin Frazier",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Von Wafer",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Von Wafer",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Johnny Davis",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Johnny Davis",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Anfernee \"Penny\" Hardaway",
+   "col2": "Guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Anfernee \"Penny\" Hardaway",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Matt Barnes",
+   "col2": "small forward",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Matt Barnes",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Aaron Gordon",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Aaron Gordon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Channing Frye",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Channing Frye",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Oshae Brissett",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Oshae Brissett",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Enes Kanter",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Enes Kanter",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Tremont Waters",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Tremont Waters",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Carsen Edwards",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Carsen Edwards",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Doc Rivers",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Doc Rivers",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Moe Wagner",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Moe Wagner",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Moses Brown",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Moses Brown",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Al Jefferson",
+   "col2": "center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Al Jefferson",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Jermaine O'Neal",
+   "col2": "Center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jermaine O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Nik Stauskas",
+   "col2": null,
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Nik Stauskas",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Hamed Haddadi",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Hamed Haddadi",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Gregory Clinton Foster",
+   "col2": "Center-Power Forward",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Ernie Grunfeld",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Ernie Grunfeld",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "O. J. Mayo",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "O. J. Mayo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Oscar Robertson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Oscar Robertson",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Josh Jackson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Josh Jackson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Dragan Bender",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Dragan Bender",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Oliver",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Oliver",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "John Shumate",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "John Shumate",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "P. J. Tucker",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "P. J. Tucker",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jeff Hornacek",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jeff Hornacek",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Markieff Morris",
+   "col2": "power forward",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Markieff Morris",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Rodney Rogers",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Rodney Rogers",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kurt Rambis",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Kurt Rambis",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Davion Mitchell",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Davion Mitchell",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Willie Cauley-Stein",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Willie Cauley-Stein",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Quincy Acy",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Quincy Acy",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Kosta Koufos",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kosta Koufos",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ty Lawson",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ty Lawson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Kevin Huerter",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Caron Butler",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Caron Butler",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Juan Toscano-Anderson",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Juan Toscano-Anderson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Talen Horton-Tucker",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Talen Horton-Tucker",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Paul Millsap",
+   "col2": "Power forward",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Paul Millsap",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Stanley Johnson",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Stanley Johnson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Derek Fisher",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Derek Fisher",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Kevin Love",
+   "col2": null,
+   "col3": null,
+   "col4": "1989",
+   "name_player": "Kevin Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chris Quinn",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Chris Quinn",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Antoine Walker",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Antoine Walker",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Dominic McGuire",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Dominic McGuire",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Darius Songaila",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Darius Songaila",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Randy Foye",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Randy Foye",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "James Singleton",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "James Singleton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mike Miller",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Mike Miller",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Gilbert Arenas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Gilbert Arenas",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Austin Rivers",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Austin Rivers",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Calvin Booth",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Calvin Booth",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Brandon Knight",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Brandon Knight",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Kenneth Faried",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Kenneth Faried",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Joel Przybilla",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Joel Przybilla",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Terry Porter",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Terry Porter",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Alen Smailagi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Alen Smailagi\u0107",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Otto Porter Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Otto Porter Jr.",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ognjen Kuzmic",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Ognjen Kuzmic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "John Lucas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "John Lucas",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Raja Bell",
+   "col2": "guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Raja Bell",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Boris Diaw",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Boris Diaw",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Antoine Rigaudeau",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Antoine Rigaudeau",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Larkin",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Larkin",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Jos\u00e9 Calder\u00f3n",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Jos\u00e9 Calder\u00f3n",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Jordan Bone",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jordan Bone",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Anthony Johnson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Anthony Johnson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Peja Stojakovi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Peja Stojakovi\u0107",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jordan Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jordan Williams",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jordan Farmar",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jordan Farmar",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Luol Deng",
+   "col2": "forward",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Luol Deng",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "DeMar DeRozan",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "DeMar DeRozan",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Chet Holmgren",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Chet Holmgren",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Deonte Burton",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Deonte Burton",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Hasheem Thabeet",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Hasheem Thabeet",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Kendrick Perkins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kendrick Perkins",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Derek Fisher",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Derek Fisher",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Harvey Grant",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Harvey Grant",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Kosta Koufos",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kosta Koufos",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "JaVale McGee",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "JaVale McGee",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Michael Porter Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Michael Porter Jr.",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Keldon Johnson",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Keldon Johnson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Patty Mills",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Patty Mills",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Pau Gasol",
+   "col2": "Center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Pau Gasol",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Renaldo Balkman",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Renaldo Balkman",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Kiki Vandeweghe",
+   "col2": "Forward",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Kiki Vandeweghe",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Corey Brewer",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Corey Brewer",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Al Harrington",
+   "col2": "forward",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Al Harrington",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Khem Birch",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Khem Birch",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Gustavo Ayon",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Gustavo Ayon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Bo Outlaw",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Bo Outlaw",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Evan Fournier",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Evan Fournier",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Tyronn Lue",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Tyronn Lue",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Danny Ainge",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Danny Ainge",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Charlie Scott",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Charlie Scott",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Robert Williams III",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Robert Williams III",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Gordon Hayward",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Gordon Hayward",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Rick Fox",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Rick Fox",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Kevin McHale",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kevin McHale",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Kevin Durant",
+   "col2": "Small forward",
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Patrick Patterson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Patrick Patterson",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Charlie Villanueva",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Charlie Villanueva",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Landry Fields",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Landry Fields",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Serge Ibaka",
+   "col2": "forward",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Serge Ibaka",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Danny Green",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Danny Green",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Hakeem Olajuwon",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Hakeem Olajuwon",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Corey Maggette",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Corey Maggette",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Bobby Portis",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Bobby Portis",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Alex Oriakhi",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Alex Oriakhi",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Micka\u00ebl Pi\u00e9trus",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Micka\u00ebl Pi\u00e9trus",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Antonio McDyess",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Antonio McDyess",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jason Thompson",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Jason Thompson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Leon Wood",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Leon Wood",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Kevin Martin",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Maurice Harkless",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Maurice Harkless",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Lionel Simmons",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Lionel Simmons",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Garrett Temple",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Garrett Temple",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Gordan Giricek",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Gordan Giricek",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Williams",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Tyler Herro",
+   "col2": "Point guard / shooting guard",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Tyler Herro",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Troy Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Troy Brown",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Spencer Dinwiddie",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Spencer Dinwiddie",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Tari Eason",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Tari Eason",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "James Ennis III",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "James Ennis III",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Jalen Green",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Jalen Green",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Rick Barry",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Rick Barry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Ryan Anderson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Ryan Anderson",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Marreese Speights",
+   "col2": "Forward-center",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Marreese Speights",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chris Babb",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Chris Babb",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Anthony Morrow",
+   "col2": "Shooting guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Anthony Morrow",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Moses Moody",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Moses Moody",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Leandro Barbosa",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Leandro Barbosa",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Davis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Bubba Wells",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Bubba Wells",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Mike James",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Mike James",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Alexis Ajin\u00e7a",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Alexis Ajin\u00e7a",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Calvin Booth",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Calvin Booth",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Shawn Bradley",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Shawn Bradley",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Fred Roberts",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Fred Roberts",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dereck Lively II",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Dereck Lively II",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Caron Butler",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Caron Butler",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Shane Larkin",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Shane Larkin",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "A.C. Green",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "A.C. Green",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Seth Curry",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Seth Curry",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Kyrie Irving",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Tyrone Corbin",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Tyrone Corbin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Marcos Louzada Silva",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Marcos Louzada Silva",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Lorenzen Wright",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Lorenzen Wright",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Kenny Smith",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Kenny Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jock Landale",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jock Landale",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Bimbo Coles",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Bimbo Coles",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Alan Henderson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Alan Henderson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tyronn Lue",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Tyronn Lue",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Omari Spellman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Omari Spellman",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Dejounte Murray",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Dejounte Murray",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Lou Williams",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Lou Williams",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Torrey Craig",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Torrey Craig",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Jevon Carter",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Jevon Carter",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Julian Phillips",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Julian Phillips",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tomas Satoransky",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Tomas Satoransky",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Al-Farouq Aminu",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Al-Farouq Aminu",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Doug McDermott",
+   "col2": "Small forward",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Doug McDermott",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Joe Smith",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Joe Smith",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Nikola Topic",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nikola Topic",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Jalen Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Jalen Williams",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Timoth\u00e9 Luwawu-Cabarrot",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Timoth\u00e9 Luwawu-Cabarrot",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Perry Jones III",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Perry Jones III",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Davis Bertans",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Davis Bertans",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Marquese Chriss",
+   "col2": "power forward",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Marquese Chriss",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Trey Burke",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Trey Burke",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Vasilije Mici\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Vasilije Mici\u0107",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Th\u00e9o Maledon",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Th\u00e9o Maledon",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Raymond Felton",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Raymond Felton",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Jerami Grant",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Jerami Grant",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Linas Kleiza",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Linas Kleiza",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Mahmoud Abdul-Rauf",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Mahmoud Abdul-Rauf",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Bill Hanzlik",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Bill Hanzlik",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Nen\u00ea",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nen\u00ea",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Al Harrington",
+   "col2": "forward",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Al Harrington",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Malaki Branham",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Malaki Branham",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Stephen Jackson",
+   "col2": "forward/guard",
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Stephen Jackson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "DeMar DeRozan",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "DeMar DeRozan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Jordan Hill",
+   "col2": "Forward",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jordan Hill",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Dennis Schr\u00f6der",
+   "col2": "Point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Magic Johnson",
+   "col2": "Point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Magic Johnson",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Earvin \"Magic\" Johnson Jr.",
+   "col2": "Point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Earvin \"Magic\" Johnson Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Rui Hachimura",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Rui Hachimura",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Anfernee Hardaway",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Anfernee Hardaway",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Immanuel Quickley",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Immanuel Quickley",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Mario Hezonja",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Mario Hezonja",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Frank Ntilikina",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Frank Ntilikina",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Bo Kimble",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Bo Kimble",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Bobby Portis",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Bobby Portis",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Mike Bibby",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Mike Bibby",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jalen Brunson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Emmanuel Mudiay",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Emmanuel Mudiay",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Louis Labeyrie",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Louis Labeyrie",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jos\u00e9 Calder\u00f3n",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jos\u00e9 Calder\u00f3n",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Joakim Noah",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Joakim Noah",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "James Chones",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "James Chones",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Lamar Stevens",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Lamar Stevens",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Matt Harpring",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Matt Harpring",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Drew Gooden",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Drew Gooden",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Markelle Fultz",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Markelle Fultz",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Keith Bogans",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Keith Bogans",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Glen Davis",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Glen Davis",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Dee Brown",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Dee Brown",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Landry Shamet",
+   "col2": null,
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Landry Shamet",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Johnson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Johnson",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Dennis Schr\u00f6der",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Joe Johnson",
+   "col2": "shooting guard",
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Joe Johnson",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "PJ Tucker",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "PJ Tucker",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Mike James",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Mike James",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Jonas Valanciunas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jonas Valanciunas",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Nate Huffman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Zaza Pachulia",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Zaza Pachulia",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Guy Rodgers",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Guy Rodgers",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Damian Lillard",
+   "col2": "point guard",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Damian Lillard",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Alec Brown",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Alec Brown",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Andrew Lang",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Andrew Lang",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Tyler Ennis",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Tyler Ennis",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Wesley Johnson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Wesley Johnson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Marquese Chriss",
+   "col2": "power forward",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Marquese Chriss",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Marcin Gortat",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Marcin Gortat",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Aaron Brooks",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Aaron Brooks",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Cheick Diallo",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Cheick Diallo",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jared Dudley",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jared Dudley",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Vince Carter",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Vince Carter",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Greg Kite",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Greg Kite",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Bill Wennington",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Bill Wennington",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Harry Giles",
+   "col2": "Center",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Harry Giles",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Walker Kessler",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Walker Kessler",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Neto",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Neto",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Marvin Williams",
+   "col2": "Small forward",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Marvin Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Jeremy Evans",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Jeremy Evans",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Mike Conley Jr.",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Mike Conley Jr.",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Trey Lyles",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Trey Lyles",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Walt Williams",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Walt Williams",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "KZ Okpala",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "KZ Okpala",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Nene",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Nene",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Ronny Turiaf",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Ronny Turiaf",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Loy Vaught",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Loy Vaught",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mike Muscala",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Mike Muscala",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "JaVale McGee",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "JaVale McGee",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mike Scott",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Mike Scott",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Josh Christopher",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Josh Christopher",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Iman Shumpert",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Iman Shumpert",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Austin Rivers",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Austin Rivers",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Chris Paul",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Chris Paul",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Dante Cunningham",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Dante Cunningham",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Acie Law",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Acie Law",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Trayce Jackson-Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Trayce Jackson-Davis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Toney Douglas",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Toney Douglas",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Matt Barnes",
+   "col2": "small forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Matt Barnes",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andre Iguodala",
+   "col2": "Guard-forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Andre Iguodala",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chandler Parsons",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Chandler Parsons",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Sam Perkins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Sam Perkins",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Steve Nash",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Steve Nash",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Jalen Johnson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jalen Johnson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "John Collins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Johan Petro",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Johan Petro",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Sonny Weems",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Sonny Weems",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "J. R. Smith",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "J. R. Smith",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Thaddeus Young",
+   "col2": "Small forward",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Thaddeus Young",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Ben Wallace",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Ben Wallace",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Gordon Hayward",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Gordon Hayward",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Sterling Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Sterling Brown",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Rudy Gobert",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Rudy Gobert",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Jarred Vanderbilt",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Jarred Vanderbilt",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Arron Afflalo",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Arron Afflalo",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "J. R. Smith",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "J. R. Smith",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Aaron Gordon",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Aaron Gordon",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Nazr Mohammed",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Nazr Mohammed",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Rudy Gay",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Rudy Gay",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Vladimir Radmanovi\u0107",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Vladimir Radmanovi\u0107",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Kent Bazemore",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kent Bazemore",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Norm Nixon",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Norm Nixon",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Solomon Hill",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Solomon Hill",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Derek Harper",
+   "col2": "Guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Derek Harper",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Eddy Curry",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Eddy Curry",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jarrett Matthew Jack",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Bobby Wanzer",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Bobby Wanzer",
+   "name_team": "Rochester Royals"
+  },
+  {
+   "col1": "Cole Anthony",
+   "col2": "point guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Cole Anthony",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "John Weisbrod",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "John Weisbrod",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Bismack Biyombo",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Bismack Biyombo",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Jeff Green",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jeff Green",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Maurice Harkless",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Maurice Harkless",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Juwan Howard",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Juwan Howard",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Leon Powe",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Leon Powe",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Maceo Baston",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Maceo Baston",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Mark Jackson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Mark Jackson",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Rasho Nesterovi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Rasho Nesterovi\u0107",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Shaun Livingston",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Shaun Livingston",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Bryn Forbes",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Bryn Forbes",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Samuel Dalembert",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Samuel Dalembert",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Roy Hibbert",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Roy Hibbert",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Frank Kaminsky",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Frank Kaminsky",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Tim Perry",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Tim Perry",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Danny Manning",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Danny Manning",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jason Kidd",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jason Kidd",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Frank Mason III",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Frank Mason III",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Georgios Papagiannis",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Georgios Papagiannis",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Harold Pressley",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Harold Pressley",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Derrick Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Derrick Williams",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Matt Barnes",
+   "col2": "small forward",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Matt Barnes",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Nik Stauskas",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Nik Stauskas",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Matt Harpring",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Matt Harpring",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Lauri Markkanen",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Lauri Markkanen",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Ronnie Brewer",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Ronnie Brewer",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Collin Sexton",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Collin Sexton",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Kendrick Nunn",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Kendrick Nunn",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Kyle Lowry",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Kyle Lowry",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "A.J. Price",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "A.J. Price",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Fenny Falmagne",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Fenny Falmagne",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Fabricio Oberto",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Fabricio Oberto",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Javaris Crittenton",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Javaris Crittenton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Kris Humphries",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Kris Humphries",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nene",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Nene",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Aaron Brooks",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Aaron Brooks",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Alperen \u015eeng\u00fcn",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Alperen \u015eeng\u00fcn",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "John Wall",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "John Wall",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Devin Armani Booker",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Devin Armani Booker",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Buck Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Buck Williams",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Kiki Vandeweghe",
+   "col2": "Forward",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Kiki Vandeweghe",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Biedri\u0146\u0161",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Biedri\u0146\u0161",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Josh Powell",
+   "col2": "forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Josh Powell",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "James Wiseman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "James Wiseman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Kyle Anderson",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Kyle Anderson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Greg Smith",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Greg Smith",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "James Donaldson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "James Donaldson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Elton Brand",
+   "col2": "power forward",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Elton Brand",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Anthony Morrow",
+   "col2": "Shooting guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Anthony Morrow",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Darren Collison",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Darren Collison",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Kristaps Porzingis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Kristaps Porzingis",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "P.J. Washington",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "P.J. Washington",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Roy Tarpley",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Roy Tarpley",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Stephen Jackson",
+   "col2": "forward/guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Stephen Jackson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Kris Dunn",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Kris Dunn",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jeremy Tyler",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jeremy Tyler",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Cameron Payne",
+   "col2": "Point guard",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Cameron Payne",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Cameron Bairstow",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Cameron Bairstow",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Viktor Khryapa",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Viktor Khryapa",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tim Thomas",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Tim Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Travis Best",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Travis Best",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Garrett Temple",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Garrett Temple",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Lonzo Ball",
+   "col2": "Point guard",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Lonzo Ball",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Carmelo Anthony",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Carmelo Anthony",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Patrick Beverley",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Patrick Beverley",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Andr\u00e9 Roberson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Andr\u00e9 Roberson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Morris Peterson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Morris Peterson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Abdel Nader",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Abdel Nader",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Cheikh Samb",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Cheikh Samb",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Dale Ellis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Dale Ellis",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Bryant Stith",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Bryant Stith",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Dikembe Mutombo",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Dikembe Mutombo",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Jeff Ayres",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Jeff Ayres",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Doug McDermott",
+   "col2": "Small forward",
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Doug McDermott",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Jarred Vanderbilt",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jarred Vanderbilt",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Jeremy Lin",
+   "col2": "Point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jeremy Lin",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Jordan Farmar",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jordan Farmar",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Washington",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Earvin \"Magic\" Johnson",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Earvin \"Magic\" Johnson",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Carmelo Anthony",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Carmelo Anthony",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Damyean Dotson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Damyean Dotson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Chris Smith",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Chris Smith",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "James White",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "James White",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Ronny Turiaf",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Ronny Turiaf",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Enes Kanter",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Enes Kanter",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Charles Smith",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Charles Smith",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Kurt Thomas",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Kurt Thomas",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Dan Dickau",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Dan Dickau",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Zach Randolph",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Zach Randolph",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "DeAndre Jordan",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "DeAndre Jordan",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "James Harden",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "James Harden",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Damian Lillard",
+   "col2": "point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Damian Lillard",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jim Chones",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Jim Chones",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Evan Mobley",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Evan Mobley",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Zydrunas Ilgauskas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Zydrunas Ilgauskas",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "George Hill",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "George Hill",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Chuma Okeke",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Chuma Okeke",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Darrell Armstrong",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Darrell Armstrong",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Jerian Grant",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jerian Grant",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Dwayne Bacon",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Dwayne Bacon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Doc Rivers",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Doc Rivers",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Al Harrington",
+   "col2": "forward",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Al Harrington",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Ryan Anderson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Ryan Anderson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Marquis Daniels",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Marquis Daniels",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "David Lee",
+   "col2": "Forward",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "David Lee",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Al Horford",
+   "col2": "center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Al Horford",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Daniel Theis",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Daniel Theis",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Rasheed Wallace",
+   "col2": "Center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Rasheed Wallace",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Jrue Holiday",
+   "col2": "point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Jrue Holiday",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Trevor Booker",
+   "col2": null,
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Trevor Booker",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Uro\u0161 Slokar",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Uro\u0161 Slokar",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Sebastian Telfair",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Jeremy Lin",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jeremy Lin",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Greivis V\u00e1squez",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Greivis V\u00e1squez",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Tyrese Haliburton",
+   "col2": null,
+   "col3": "3",
+   "col4": "1967",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Earl Boykins",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Earl Boykins",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Khris Middleton",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Khris Middleton",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Eric Bledsoe",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Eric Bledsoe",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Spencer Hawes",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Spencer Hawes",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Kurt Thomas",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Kurt Thomas",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Bogdan Bogdanovi\u0107",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Bogdan Bogdanovi\u0107",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Tyrone Corbin",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Tyrone Corbin",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "De'Anthony Melton",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "De'Anthony Melton",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Alex Len",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Alex Len",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kendall Marshall",
+   "col2": "point guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Kendall Marshall",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Marcus Banks",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Marcus Banks",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Mikal Bridges",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Mikal Bridges",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kevin Wayne Durant",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sam Cassell",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Sam Cassell",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Steve Nash",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Steve Nash",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Austin Rivers",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Austin Rivers",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Ben McLemore",
+   "col2": "Shooting guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ben McLemore",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ryan Hollins",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ryan Hollins",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Chris Duarte",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Chris Duarte",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Rudy Gay",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Rudy Gay",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Justin Jackson",
+   "col2": "Forward",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Justin Jackson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "DeMar DeRozan",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "DeMar DeRozan",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Chris Webber",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Chris Webber",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Marcus Thornton",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Marcus Thornton",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Rajon Rondo",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Rajon Rondo",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ronnie Price",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Ronnie Price",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Andrei Kirilenko",
+   "col2": "forward",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Andrei Kirilenko",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Damian Jones",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Damian Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Gary Payton",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Gary Payton",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Alex Sarr",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Alex Sarr",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Cassius Winston",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Cassius Winston",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Thomas Bryant",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Thomas Bryant",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Wesley Johnson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Wesley Johnson",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Richaun Holmes",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Richaun Holmes",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Davis Bertans",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Davis Bertans",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mike James",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Mike James",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Daniel Gafford",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Daniel Gafford",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Oleksiy Pecherov",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Oleksiy Pecherov",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Alston",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Alston",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Dillon Brooks",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Dillon Brooks",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Isaiah Stewart",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Isaiah Stewart",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Victor Oladipo",
+   "col2": "Shooting guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Victor Oladipo",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Lou Williams",
+   "col2": "Guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Lou Williams",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Rod Strickland",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Dikembe Mutombo",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Dikembe Mutombo",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Tony Parker",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Tony Parker",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Patrick Beverley",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Patrick Beverley",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "V\u00edctor Claver",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "V\u00edctor Claver",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Rudy Fern\u00e1ndez",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Rudy Fern\u00e1ndez",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Andre Miller",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Andre Miller",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Matisse Thybulle",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Matisse Thybulle",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Robert Covington",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Robert Covington",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Scoot Henderson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Scoot Henderson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Channing Frye",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Channing Frye",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Chris Hunter",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Chris Hunter",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Speedy Claxton",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Speedy Claxton",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Al Harrington",
+   "col2": "forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Al Harrington",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Christian Wood",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Christian Wood",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Josh Howard",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Josh Howard",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Martin M\u00fc\u00fcrsepp",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Martin M\u00fc\u00fcrsepp",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Doug McDermott",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Doug McDermott",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Ji\u0159\u00ed Welsch",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Ji\u0159\u00ed Welsch",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Vince Carter",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Vince Carter",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Michael Finley",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Michael Finley",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Raymond Felton",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Raymond Felton",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Cam Reddish",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Cam Reddish",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "DeAndre Hunter",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "DeAndre Hunter",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Horford",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Horford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Zaccharie Risacher",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Zaccharie Risacher",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jamal Crawford",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Vince Carter",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Vince Carter",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Mike Scott",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Mike Scott",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Patrick Williams",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Patrick Williams",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Coby White",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Coby White",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Shannon Brown",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Shannon Brown",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Cedric Simmons",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Cedric Simmons",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tyrus Thomas",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Tyrus Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Larry Hughes",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Larry Hughes",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Kyle Korver",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Kyle Korver",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Patrick Patterson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Patrick Patterson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Paul George",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Nerlens Noel",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nerlens Noel",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Kemba Walker",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kemba Walker",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Ty Lawson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Ty Lawson",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Kenyon Martin",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kenyon Martin",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Shelden Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Shelden Williams",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Paul Millsap",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Paul Millsap",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Nick Van Exel",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nick Van Exel",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Joshua Primo",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Joshua Primo",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Jakob P\u00f6ltl",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Jakob P\u00f6ltl",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Brent Barry",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Brent Barry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Dante Cunningham",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Dante Cunningham",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Sean Elliott",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Sean Elliott",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Mychal Thompson",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Mychal Thompson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Chris Paul",
+   "col2": "Point guard",
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Alex Caruso",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Alex Caruso",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Mark Madsen",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Mark Madsen",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Isaiah Thomas",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Isaiah Thomas",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Patrick Beverley",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Patrick Beverley",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "LeBron James",
+   "col2": "Small forward / Power forward",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "LeBron James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Ognjen Jaramaz",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Ognjen Jaramaz",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Mitchell Robinson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Mitchell Robinson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Anthony Randolph",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Anthony Randolph",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Brandon Jennings",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Brandon Jennings",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Pablo Prigioni",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Pablo Prigioni",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Mardy Collins",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Mardy Collins",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jerian Grant",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jerian Grant",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Taj Gibson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Taj Gibson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Cam Reddish",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Cam Reddish",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Shelden Williams",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Shelden Williams",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Chauncey Billups",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Chauncey Billups",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Baron Davis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Baron Davis",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Danilo Gallinari",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Danilo Gallinari",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Wayne Ellington",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Wayne Ellington",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Kenneth \"Apple\" Green",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Kenneth \"Apple\" Green",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Larry Nance Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Larry Nance Jr.",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Bobby Smith",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Bobby Smith",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Austin Carr",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Austin Carr",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Jordan Clarkson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Jordan Clarkson",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Donovan Mitchell",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Donovan Mitchell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Mohamed Bamba",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Mohamed Bamba",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Adreian Payne",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Adreian Payne",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "E'Twaun Moore",
+   "col2": "Guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "E'Twaun Moore",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Andrew Nicholson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Andrew Nicholson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Pat Garrity",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Pat Garrity",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Ish Smith",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Ish Smith",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Javonte Green",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Javonte Green",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Kenny Anderson",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kenny Anderson",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Jeremy Lin",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Jeremy Lin",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Jakob P\u00f6ltl",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jakob P\u00f6ltl",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Chuck Hayes",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Chuck Hayes",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Marco Belinelli",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Marco Belinelli",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Rudy Gay",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Rudy Gay",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Devean George",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Devean George",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Michael Beasley",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Michael Beasley",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Brandon Jennings",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Brandon Jennings",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "John Salmons",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "John Salmons",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Elfrid Payton",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Elfrid Payton",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "JaVale McGee",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "JaVale McGee",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Penny Hardaway",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Penny Hardaway",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Aron Baynes",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Aron Baynes",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jusuf Nurkic",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jusuf Nurkic",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Ryan Anderson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Ryan Anderson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kevin Durant",
+   "col2": "Small forward",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Marvin Bagley III",
+   "col2": "Center",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Marvin Bagley III",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Aaron Gray",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Aaron Gray",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Carl Landry",
+   "col2": "Forward",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Carl Landry",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Olden Polynice",
+   "col2": "Center",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Olden Polynice",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Jason Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Jason Williams",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Skal Labissiere",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Skal Labissiere",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Darren Collison",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Darren Collison",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Zach Randolph",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Zach Randolph",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Brad Miller",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Brad Miller",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Mehmet Okur",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Mehmet Okur",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Earl Watson",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Earl Watson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Jimmy Butler III",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Goran Dragic",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Goran Dragic",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Aaron Holiday",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Aaron Holiday",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Bradley Beal",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Dee Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Dee Brown",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Dante Exum",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Dante Exum",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Kevin Martin",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Kevin Martin",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Carl Landry",
+   "col2": "Forward",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Carl Landry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Marquese Chriss",
+   "col2": "power forward",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Marquese Chriss",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Steve Francis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Steve Francis",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "George King",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "George King",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": "Cliff Robinson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Cliff Robinson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Gerald Wallace",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Gerald Wallace",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Steve Blake",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Steve Blake",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Corey Maggette",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Corey Maggette",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Derek Fisher",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Derek Fisher",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andy Rautins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Andy Rautins",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Yogi Ferrell",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Yogi Ferrell",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Wang Zhizhi",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Wang Zhizhi",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Daniel Gafford",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Daniel Gafford",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "George McCloud",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "George McCloud",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Samuel Dalembert",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Samuel Dalembert",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Nikola Miroti\u0107",
+   "col2": "Power forward",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Nikola Miroti\u0107",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Tre Mann",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Tre Mann",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Grant Jerrett",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Grant Jerrett",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Wayne Cooper",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Wayne Cooper",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Harrison Barnes",
+   "col2": "Small forward",
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Danny Green",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Danny Green",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Kareem Abdul-Jabbar",
+   "col2": "Center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kareem Abdul-Jabbar",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Noah Vonleh",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Noah Vonleh",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Isiah Thomas",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Isiah Thomas",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Brandon Goodwin",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Jonathon Simmons",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jonathon Simmons",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Mario Hezonja",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Mario Hezonja",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Rajon Rondo",
+   "col2": "Guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Rajon Rondo",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Tony Snell",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Tony Snell",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Joe Alexander",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Joe Alexander",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Garfield Heard",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Garfield Heard",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Tyson Chandler",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Tyson Chandler",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Dave Joerger",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Dave Joerger",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ray McCallum Jr.",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ray McCallum Jr.",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Anthony Tolliver",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Anthony Tolliver",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Bogdan Bogdanovic",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Bogdan Bogdanovic",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Anthony Davis",
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Dee Brown",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Dee Brown",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Ennis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Ennis",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Brian Grant",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Brian Grant",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Jamal Mashburn",
+   "col2": "forward",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Jamal Mashburn",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Chucky Atkins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Chucky Atkins",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Courtney Alexander",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Courtney Alexander",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Hubert Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Hubert Davis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Danilo Gallinari",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Danilo Gallinari",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Rodions Kurucs",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Rodions Kurucs",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Nen\u00ea Hilario",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Nen\u00ea Hilario",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Greg Smith",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Greg Smith",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Clint Capela",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Clint Capela",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Danny Green",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Danny Green",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Kawhi Leonard",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Kawhi Leonard",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Jerome Kersey",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Jerome Kersey",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Steve Johnson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Steve Johnson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Sean Marks",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Sean Marks",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Danny Ainge",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Danny Ainge",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "World B. Free",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "World B. Free",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Nemanja Bjelica",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Nemanja Bjelica",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Nico Mannion",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Nico Mannion",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Louis Amundson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Louis Amundson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ekpe Udoh",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Ekpe Udoh",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Reggie Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Reggie Williams",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Anthony Tolliver",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Anthony Tolliver",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Kermit Washington",
+   "col2": "forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Danny Fortson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Danny Fortson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Tariq Abdul-Wahad",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Tariq Abdul-Wahad",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Loren Meyer",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Loren Meyer",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Grant Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Grant Williams",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dennis Rodman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Dennis Rodman",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Klay Thompson",
+   "col2": "Shooting guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Klay Thompson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Marco Belinelli",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Marco Belinelli",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Alex Len",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Alex Len",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Marco Bellinelli",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Marco Bellinelli",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Clint Capela",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Clint Capela",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Dahntay Jones",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Dahntay Jones",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Dalen Terry",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Dalen Terry",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Alex Caruso",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Alex Caruso",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Troy Brown Jr.",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Troy Brown Jr.",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Wendell Carter Jr.",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Wendell Carter Jr.",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Michael Sweetney",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Michael Sweetney",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Kurt Vincent Thomas",
+   "col2": "Power forward-center",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Dillon Jones",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Dillon Jones",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Kevin Martin",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kevin Martin",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "DeAndre Liggins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "DeAndre Liggins",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Donovan Mitchell",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Donovan Mitchell",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Bruce Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Bruce Brown",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Kentavious Caldwell-Pope",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Kentavious Caldwell-Pope",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Steve Blake",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Steve Blake",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Jalen Rose",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Jalen Rose",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Nikola Joki\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Nikola Joki\u0107",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Allen Iverson",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Allen Iverson",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Timofey Mozgov",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Timofey Mozgov",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Jeremy Sochan",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Jeremy Sochan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Quincy Pondexter",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Quincy Pondexter",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Al-Farouq Aminu",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Al-Farouq Aminu",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Laron Profit",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Laron Profit",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Kentavious Caldwell-Pope",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kentavious Caldwell-Pope",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Malik Beasley",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Malik Beasley",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "MarShon Brooks",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "MarShon Brooks",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "D'Angelo Russell",
+   "col2": "Point guard",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Austin Reaves",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Anthony Marshon Davis Jr.",
+   "col2": "Power forward and center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Elfrid Payton",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Elfrid Payton",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Ramon Sessions",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Ramon Sessions",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Metta World Peace",
+   "col2": "Forward",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Metta World Peace",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Tom Thibodeau",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Tom Thibodeau",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jerome James",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jerome James",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Thanasis Antetokounmpo",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Cleanthony Early",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Cleanthony Early",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "C. J. Miles",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "C. J. Miles",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Dick Snyder",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Dick Snyder",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Ricky Rubio",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Ricky Rubio",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Gary Clark",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Gary Clark",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Terrence Ross",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Terrence Ross",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Kyle O'Quinn",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Kyle O'Quinn",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Earl Clark",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Earl Clark",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Gordan Giricek",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Gordan Giricek",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Michael Doleac",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Michael Doleac",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Quentin Richardson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Quentin Richardson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Gilbert Arenas",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Gilbert Arenas",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Jason Richardson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jason Richardson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Kristaps Porzi\u0146\u0123is",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kristaps Porzi\u0146\u0123is",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Timofey Mozgov",
+   "col2": "Center",
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "Timofey Mozgov",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "James Harden",
+   "col2": null,
+   "col3": "0",
+   "col4": "1967",
+   "name_player": "James Harden",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Jos\u00e9 Calderon",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Jos\u00e9 Calderon",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Joey Graham",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Joey Graham",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Eric Williams",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Eric Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Marc Gasol",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Marc Gasol",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "DeMar DeRozan",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "DeMar DeRozan",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Marques Johnson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Marques Johnson",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Lloyd Pierce",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Lloyd Pierce",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Greg Monroe",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Greg Monroe",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Malcolm Brogdon",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Malcolm Brogdon",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "John Harding Lucas II",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Bruce Bowen",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Bruce Bowen",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Thanasis Antetokounmpo",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Kareem Abdul-Jabbar",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Kareem Abdul-Jabbar",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Neal Walk",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Neal Walk",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Gus Johnson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Gus Johnson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Torrey Craig",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Torrey Craig",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Shawn Christopher Respert",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "T. J. Warren",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "T. J. Warren",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jermaine O'Neal",
+   "col2": "Center",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jermaine O'Neal",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Ricky Rubio",
+   "col2": "Guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Ricky Rubio",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Isaiah Cousins",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Isaiah Cousins",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Mikki Moore",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Mikki Moore",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Langston Galloway",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Langston Galloway",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ralph Sampson",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ralph Sampson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Spencer Hawes",
+   "col2": "Center",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Vince Carter",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Vince Carter",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Kyrylo Fesenko",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Kyrylo Fesenko",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Leandro Bolmaro",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Leandro Bolmaro",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Joe Ingles",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Joe Ingles",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Enes Kanter",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Enes Kanter",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Gordon Hayward",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Gordon Hayward",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Carlos Boozer",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Carlos Boozer",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Jason Williams",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Jason Williams",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Toney Douglas",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Toney Douglas",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Kevin Willis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Kevin Willis",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Brian Keefe",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Brian Keefe",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Wes Unseld Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Wes Unseld Jr.",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "V\u00edt Krej\u010d\u00ed",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "V\u00edt Krej\u010d\u00ed",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Quinton Ross",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Quinton Ross",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Chandler Hutchison",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Chandler Hutchison",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nen\u00ea",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Nen\u00ea",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Kristaps Porzingis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Kristaps Porzingis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Marcus Banks",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Marcus Banks",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Tyus Jones",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Tyus Jones",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Rui Hachimura",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Rui Hachimura",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Kevin Porter Jr.",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Kevin Porter Jr.",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Dwight Howard",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Dwight Howard",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Spencer Haywood",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Spencer Haywood",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "Tom Chambers",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Tom Chambers",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "Wesley Matthews",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Wesley Matthews",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Brian Grant",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Brian Grant",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Dale Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Dale Davis",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "LaMarcus Aldridge",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "LaMarcus Aldridge",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Nemanja Nedovic",
+   "col2": "Combo guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Nemanja Nedovic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Festus Ezeli",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Festus Ezeli",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Jackson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Jackson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andrew Christian Wiggins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Andrew Christian Wiggins",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Mookie Blaylock",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Mookie Blaylock",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Steph Curry",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Steph Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Pat Garrity",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Pat Garrity",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Jaden Hardy",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Jaden Hardy",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Eduardo N\u00e1jera",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Eduardo N\u00e1jera",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Gary Trent",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Gary Trent",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Chris Gatling",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Chris Gatling",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Tony Dumas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Tony Dumas",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Al-Farouq Aminu",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Al-Farouq Aminu",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Marquis Daniels",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Marquis Daniels",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Delonte West",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Delonte West",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Morrow",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Morrow",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Richard Jefferson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Richard Jefferson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Jerry Stackhouse",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Jerry Stackhouse",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Nerlens Noel",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Nerlens Noel",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Luka Don\u010di\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Luka Don\u010di\u0107",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Lamar Odom",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Lamar Odom",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Bogdan Bogdanovic",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Bogdan Bogdanovic",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Miles Plumlee",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Miles Plumlee",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Trae Young",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Trae Young",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Grant Long",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Grant Long",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Otto Porter Jr.",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Otto Porter Jr.",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Taj Gibson",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Taj Gibson",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "P.J. Brown",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "P.J. Brown",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Brian Scalabrine",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Brian Scalabrine",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "John Paxson",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "John Paxson",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Trent Tucker",
+   "col2": "Shooting guard",
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Trent Tucker",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Daniel Orton",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Daniel Orton",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Cason Wallace",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Cason Wallace",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Josh Giddey",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Josh Giddey",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Alex Caruso",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Alex Caruso",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Terrance Ferguson",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Terrance Ferguson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Jeremy Lamb",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Jeremy Lamb",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Wes Unseld",
+   "col2": "Center",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Wes Unseld",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Wilson Chandler",
+   "col2": "Swingman",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Wilson Chandler",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Anthony Carter",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Anthony Carter",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Calvin Natt",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Calvin Natt",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Danilo Gallinari",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Danilo Gallinari",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Blake Wesley",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Blake Wesley",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Nando de Colo",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Nando de Colo",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Antoine Carr",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Antoine Carr",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Terry Cummings",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Terry Cummings",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Kostas Antetokounmpo",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Kyle Kuzma",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Kyle Kuzma",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Dwight Howard",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Dwight Howard",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Steve Novak",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Steve Novak",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Evan Fournier",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Evan Fournier",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Michael Sweetney",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Michael Sweetney",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Tim Thomas",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Tim Thomas",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jeremy Lin",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Jeremy Lin",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "OG Anunoby",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "OG Anunoby",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Antonio McDyess",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Antonio McDyess",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Samuel Dalembert",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Samuel Dalembert",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Shane Larkin",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Shane Larkin",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Derrick Joseph Chievous",
+   "col2": "Small forward",
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Nate Thurmond",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Nate Thurmond",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Jarell Martin",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jarell Martin",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Shelvin Mack",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Shelvin Mack",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Jonathan Isaac",
+   "col2": "Forward",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jonathan Isaac",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Christian Eyenga",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Christian Eyenga",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Brandon Bass",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Brandon Bass",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "John Gabriel",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "John Gabriel",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Elfrid Payton",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Elfrid Payton",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Josh McRoberts",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Josh McRoberts",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Arron Afflalo",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Arron Afflalo",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "D. J. Augustin",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "D. J. Augustin",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "James Ennis",
+   "col2": "Small forward",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "James Ennis",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Glen Davis",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Glen Davis",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Jason Williams",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Jason Williams",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Chris Duhon",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Chris Duhon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Luke Kornet",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Luke Kornet",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Marcus Smart",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Marcus Smart",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Reggie Lewis",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Reggie Lewis",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Christian Koloko",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Christian Koloko",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "David Meyers",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "David Meyers",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Michael Ruffin",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Michael Ruffin",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Erick Strickland",
+   "col2": "Guard",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Erick Strickland",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Ty Jerome",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Ty Jerome",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Mark West",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Mark West",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Ricky Sobers",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Ricky Sobers",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Danny Ainge",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Danny Ainge",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Dario \u0160ari\u0107",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Dario \u0160ari\u0107",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Shawn Marion",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Shawn Marion",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Cameron Johnson",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Cameron Johnson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Malachi Richardson",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Malachi Richardson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Dont\u00e9 Greene",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Dont\u00e9 Greene",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Bogdan Bogdanovi\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Bogdan Bogdanovi\u0107",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Beno Udrih",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Beno Udrih",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Arron Afflalo",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Arron Afflalo",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ochai Agbaji",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Ochai Agbaji",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Kevin Murphy",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Kevin Murphy",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Francisco Elson",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Francisco Elson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Carlos Arroyo",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Carlos Arroyo",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Alec Burks",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Alec Burks",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Dante Exum",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Dante Exum",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Andris Biedri\u0146\u0161",
+   "col2": "center",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Andris Biedri\u0146\u0161",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Adrian Dantley",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Adrian Dantley",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Raulzinho Neto",
+   "col2": "Point guard",
+   "col3": "0",
+   "col4": null,
+   "name_player": "Raulzinho Neto",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Richard Jefferson",
+   "col2": null,
+   "col3": "0",
+   "col4": null,
+   "name_player": "Richard Jefferson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "P.J. Tucker",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "P.J. Tucker",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Ricky Davis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Ricky Davis",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Nikola Jovi\u0107",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Nikola Jovi\u0107",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Shaquille O'Neal",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Admiral Schofield",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Admiral Schofield",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Scott Brooks",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Scott Brooks",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Otis Thorpe",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Otis Thorpe",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Josh Howard",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Josh Howard",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Etan Thomas",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Etan Thomas",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Jordan Poole",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Jordan Poole",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Bobby Portis",
+   "col2": "Center",
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Bobby Portis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Hamidou Diallo",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "DeJuan Blair",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "DeJuan Blair",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Jabari Parker",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Jabari Parker",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Russell Westbrook",
+   "col2": "point guard",
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Russell Westbrook",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Cam Whitmore",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Cam Whitmore",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Amen Thompson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Amen Thompson",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Patrick Patterson",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Patrick Patterson",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Boban Marjanovi\u0107",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Boban Marjanovi\u0107",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Yao Ming",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Yao Ming",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Ron Artest",
+   "col2": "Forward",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Ron Artest",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Russell Westbrook",
+   "col2": "point guard",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Russell Westbrook",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "DeMarcus Cousins",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "DeMarcus Cousins",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Ellis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Ellis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "\u0160ar\u016bnas Jasikevi\u010dius",
+   "col2": "guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "\u0160ar\u016bnas Jasikevi\u010dius",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Kevon Looney",
+   "col2": "Power forward",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chris Kaman",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Chris Kaman",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Obinna Ekezie",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Obinna Ekezie",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Samaki Walker",
+   "col2": null,
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Samaki Walker",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Devin Harris",
+   "col2": "Point guard",
+   "col3": "1",
+   "col4": "1980",
+   "name_player": "Devin Harris",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "DeMarre Carroll",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "DeMarre Carroll",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Mike Budenholzer",
+   "col2": null,
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Mike Budenholzer",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Rajon Rondo",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": "1946",
+   "name_player": "Rajon Rondo",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "C.J. Watson",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "C.J. Watson",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "James Johnson",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "James Johnson",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Adrian Griffin",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Adrian Griffin",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Jordan Crawford",
+   "col2": null,
+   "col3": "6",
+   "col4": "1966",
+   "name_player": "Jordan Crawford",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Cassius Winston",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Cassius Winston",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Andy Rautins",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Andy Rautins",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Fat Lever",
+   "col2": null,
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Fat Lever",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Roger Mason",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Roger Mason",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Marco Belinelli",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Marco Belinelli",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Bryn Forbes",
+   "col2": null,
+   "col3": "5",
+   "col4": "1967",
+   "name_player": "Bryn Forbes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Bronny James",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Bronny James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Iggy Brazdeikis",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Iggy Brazdeikis",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Courtney Lee",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Courtney Lee",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Doc Rivers",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Doc Rivers",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "David Lee",
+   "col2": "Forward",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "David Lee",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Rasheed Wallace",
+   "col2": "Center",
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Rasheed Wallace",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Fred Jones",
+   "col2": null,
+   "col3": "2",
+   "col4": "1946",
+   "name_player": "Fred Jones",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Lamond Murray",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Lamond Murray",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Darius Garland",
+   "col2": null,
+   "col3": "1",
+   "col4": "1970",
+   "name_player": "Darius Garland",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Marreese Speights",
+   "col2": "Forward-center",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Marreese Speights",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Timofey Mozgov",
+   "col2": "Center",
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Timofey Mozgov",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Ben Wallace",
+   "col2": null,
+   "col3": "0",
+   "col4": "1989",
+   "name_player": "Ben Wallace",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Paul Westphal",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Paul Westphal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Romeo Langford",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Romeo Langford",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Derrick White",
+   "col2": null,
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Derrick White",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Shaquille O'Neal",
+   "col2": "Center",
+   "col3": "17",
+   "col4": "1946",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Roko Uki\u0107",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "Roko Uki\u0107",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "John Salmons",
+   "col2": null,
+   "col3": "1",
+   "col4": "1995",
+   "name_player": "John Salmons",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Thon Maker",
+   "col2": null,
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Thon Maker",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Jason Kidd",
+   "col2": "Point guard",
+   "col3": "2",
+   "col4": "1968",
+   "name_player": "Jason Kidd",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Jalen Lecque",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Jalen Lecque",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Connie Hawkins",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Connie Hawkins",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kelly Oubre",
+   "col2": null,
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Kelly Oubre",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Tyler Ulis",
+   "col2": "point guard",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Tyler Ulis",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Charles Barkley",
+   "col2": "Power forward",
+   "col3": "0",
+   "col4": "1968",
+   "name_player": "Charles Barkley",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jon Brockman",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Jon Brockman",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Mahmoud Abdul-Rauf",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Mahmoud Abdul-Rauf",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Ramon Sessions",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Ramon Sessions",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Justin Holiday",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Justin Holiday",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Andre Iguodala",
+   "col2": "Guard-forward",
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Andre Iguodala",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Jae Crowder",
+   "col2": null,
+   "col3": "2",
+   "col4": "1988",
+   "name_player": "Jae Crowder",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Juan Dixon",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Juan Dixon",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Strickland",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Strickland",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Rashard Lewis",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Rashard Lewis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mitch Richmond",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Mitch Richmond",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nick Young",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Nick Young",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Christian Laettner",
+   "col2": null,
+   "col3": "1",
+   "col4": "1961",
+   "name_player": "Christian Laettner",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Danuel House",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Danuel House",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Marcus Morris",
+   "col2": null,
+   "col3": "2",
+   "col4": "1967",
+   "name_player": "Marcus Morris",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Russell Westbrook",
+   "col2": "point guard",
+   "col3": "1",
+   "col4": "1967",
+   "name_player": "Russell Westbrook",
+   "name_team": "Seattle SuperSonics"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(pd:Document), (p)-[r:PlaysFor]->(t:Team)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) <> 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 993
+  }
+ ]
+}

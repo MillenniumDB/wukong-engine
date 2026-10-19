@@ -1,0 +1,61 @@
+{
+ "uid": "agg_queries#5",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 62
+  },
+  {
+   "col1": "Serbian",
+   "col2": 1
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "Congolese",
+   "col2": 1
+  },
+  {
+   "col1": "Greek",
+   "col2": 3
+  },
+  {
+   "col1": "Canadian",
+   "col2": 1
+  },
+  {
+   "col1": "French",
+   "col2": 2
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Dominican",
+   "col2": 1
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 1
+  },
+  {
+   "col1": "Dutch",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": null,
+   "rows": 12
+  }
+ ]
+}

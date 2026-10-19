@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE pf.tenure = 'latest' RETURN p.nationality AS col1, DATE_DIFF('year', STRPTIME(p.birth_date, '%Y/%m/%d'), STRPTIME(COALESCE(p.death_date, '2026/10/14'), '%Y/%m/%d')) AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE pf.tenure = 'latest' WITH p, t, c, STRPTIME(COALESCE(p.death_date, '2026/10/14'), '%Y/%m/%d') AS reference_date, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth_date RETURN p.nationality AS col1, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > DATE_PART('month', reference_date) OR (DATE_PART('month', birth_date) = DATE_PART('month', reference_date) AND DATE_PART('day', birth_date) > DATE_PART('day', reference_date)) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE pf.tenure = 'latest' WITH p, t, c, CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE) AS reference_date, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date RETURN p.nationality AS col1, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > DATE_PART('month', reference_date) OR (DATE_PART('month', birth_date) = DATE_PART('month', reference_date) AND DATE_PART('day', birth_date) > DATE_PART('day', reference_date)) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE pf.tenure = 'latest' WITH p, t, c, CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year, CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) AS birth_month, CAST(SUBSTRING(p.birth_date, 9, 2) AS INT64) AS birth_day, CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(SUBSTRING(p.death_date, 1, 4) AS INT64) END AS reference_year, CASE WHEN p.death_date IS NULL THEN 10 ELSE CAST(SUBSTRING(p.death_date, 6, 2) AS INT64) END AS reference_month, CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(SUBSTRING(p.death_date, 9, 2) AS INT64) END AS reference_day RETURN p.nationality AS col1, reference_year - birth_year - CASE WHEN birth_month > reference_month OR (birth_month = reference_month AND birth_day > reference_day) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  }
+ ]
+}

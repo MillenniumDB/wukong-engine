@@ -1,0 +1,2797 @@
+{
+ "uid": "filter_queries_player#30",
+ "rows": [
+  {
+   "col1": "Point guard",
+   "col2": "Serbian",
+   "col3": null,
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Michael Kidd-Gilchrist"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Al Jefferson"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "DeMar DeRozan"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "Canadian",
+   "col3": null,
+   "name_player": "Steve Nash"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Robert Parish"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Marvin \"Mickey\" Rottner"
+  },
+  {
+   "col1": "Small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Reggie Lewis"
+  },
+  {
+   "col1": null,
+   "col2": "Israeli",
+   "col3": null,
+   "name_player": "Omri Casspi"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Gilbert Arenas"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "John Jenkins"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Olden Polynice"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Will Perdue"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Lauri Markkanen"
+  },
+  {
+   "col1": "guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Derek Harper"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mike Taylor"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ivica Zubac"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Terrance Ferguson"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "E'Twaun Moore"
+  },
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": null,
+   "name_player": "Nando de Colo"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kareem Abdul-Jabbar"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Jrue Holiday"
+  },
+  {
+   "col1": "Guard-forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Andre Iguodala"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Magic Johnson"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "John Salley"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Raymond Felton"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Michael Cooper"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Joe Dumars"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Justin Jackson"
+  },
+  {
+   "col1": "Shooting guard/small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "George Gervin"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "Greek-American",
+   "col3": null,
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Rod Derline"
+  },
+  {
+   "col1": "Guard",
+   "col2": "African-American",
+   "col3": null,
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Allen Iverson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Harry Giles"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Bronny James"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "David Lee"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevin Huerter"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Robin Lopez"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Cameron Payne"
+  },
+  {
+   "col1": "guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Rolando Blackman"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kurt Nimphius"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jaden Hardy"
+  },
+  {
+   "col1": "Combo guard",
+   "col2": "Serbian",
+   "col3": null,
+   "name_player": "Nemanja Nedovic"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Cam Whitmore"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Richard"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Grant Jerrett"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Josh Huestis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Caleb Houstan"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Frank Mason III"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jack McClinton"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Erick Strickland"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "David Lattin"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Doron Lamb"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Karl Malone"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Wilt Chamberlain"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Mike Scott"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": null,
+   "name_player": "Rudy Gobert"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyson Chandler"
+  },
+  {
+   "col1": "shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Joe Johnson"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Draymond Green"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Marc Gasol"
+  },
+  {
+   "col1": "Center",
+   "col2": "Cameroonian-American",
+   "col3": "1",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Donovan Mitchell"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American-Venezuelan",
+   "col3": null,
+   "name_player": "Askia Rahman Jones"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jarrett Matthew Jack"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Julius Erving"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "John Stockton"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Tim Hardaway"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dakari Johnson"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jalen Brunson"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Joe Smith"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Rasheed Wallace"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Bill Russell"
+  },
+  {
+   "col1": "forward",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": "center",
+   "col2": "Dutch",
+   "col3": null,
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Harry Gallatin"
+  },
+  {
+   "col1": "Power forward-center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kurt Vincent Thomas"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "Greek",
+   "col3": null,
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Danny Granger"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Desmond Bane"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Terry Porter"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "Slovenian",
+   "col3": null,
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Victor Oladipo"
+  },
+  {
+   "col1": "Guard",
+   "col2": "Bahamian",
+   "col3": null,
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jordan Clarkson"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "Greek and Nigerian",
+   "col3": null,
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jason Kidd"
+  },
+  {
+   "col1": null,
+   "col2": "British",
+   "col3": null,
+   "name_player": "Ogugua \"OG\" Anunoby Jr."
+  },
+  {
+   "col1": "Forward",
+   "col2": "British",
+   "col3": null,
+   "name_player": "OG Anunoby"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dereck Lively II"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chauncey Billups"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "JJ Redick"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": "guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jalen Rose"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Jimmy Butler III"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kevon Grant Looney"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Lonzo Anderson Ball"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Markelle Fultz"
+  },
+  {
+   "col1": "Center",
+   "col2": "Ukrainian",
+   "col3": null,
+   "name_player": "Alex Len"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "M. L. Carr"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kendall Gill"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Matt Geiger"
+  },
+  {
+   "col1": "power forward/center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Cody Zeller"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Samaki Walker"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Martin M\u00fc\u00fcrsepp"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Olivier-Maxence Prosper"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ty Lawson"
+  },
+  {
+   "col1": "Head coach",
+   "col2": null,
+   "col3": null,
+   "name_player": "Gene Shue"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Joe Barry Carroll"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Anthony Tolliver"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Copeland"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Craig Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Rodrigue Beaubois"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Perry Jones III"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevin Hervey"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyler Harvey"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Paul Westphal"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ricky Sobers"
+  },
+  {
+   "col1": "Center-power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Alec Brown"
+  },
+  {
+   "col1": "Forward-center",
+   "col2": "Croatian",
+   "col3": null,
+   "name_player": "Dragan Bender"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jon Diebler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Harold Pressley"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ben McLemore"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Georgios Papagiannis"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "LaMarcus Aldridge"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Webber"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevin McHale"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kawhi Leonard"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jerian Grant"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Drew Gordon"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Earvin \"Magic\" Johnson Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Clyde Drexler"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Al Harrington"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Myles Turner"
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Alex English"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Andrew Bynum"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kurt Thomas"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Sam Cassell"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "Center",
+   "col2": "Dominican",
+   "col3": null,
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Thomas"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Toney Douglas"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Roy Tarpley"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Domantas Sabonis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Omari Spellman"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "Congolese",
+   "col3": null,
+   "name_player": "Jonathan Kuminga"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Marvin Williams"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American-Chinese",
+   "col3": null,
+   "name_player": "Kyle Forman Anderson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Stewart"
+  },
+  {
+   "col1": null,
+   "col2": "Croatian",
+   "col3": null,
+   "name_player": "Dario \u0160ari\u0107"
+  },
+  {
+   "col1": "small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Grant Hill"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Charles Oakley"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Brandon Knight"
+  },
+  {
+   "col1": "Small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "James Ennis"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Nate Archibald"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Khalid Reeves"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Sonny Weems"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kiki VanDeWeghe"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ed O'Bannon"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Marquese Chriss"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Mitch Richmond"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "C. J. Watson"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ish Smith"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "Canadian",
+   "col3": null,
+   "name_player": "Tyler Ennis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Loukas Mavrokefalidis"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Eddie House"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Chuma Okeke"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Cole Anthony"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "JP Tokoto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Meyers Leonard"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jeremy Evans"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Shaquille Rashaun O'Neal"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": "1",
+   "name_player": "Larry Bird"
+  },
+  {
+   "col1": "Power forward/center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Thomas Kimball"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Bob McAdoo"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Emeka Okafor"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Gerald Madkins"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Philip Douglas Jackson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Cleanthony Early"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dennis Rodman"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Aaron Gordon"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyler Ulis"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Timothy Theodore Duncan"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Larry Johnson"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jamal Murray"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Kermit Alan Washington"
+  },
+  {
+   "col1": "forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "DaMon William \"Monti\" Davis"
+  },
+  {
+   "col1": "Guard/forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Sidney Harold Tanenbaum"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Steven Adams"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Purvis Short"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Eric Williams"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "R.J. Hunter"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Dwayne Bacon"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Bill Cartwright"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Stacey King"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Luol Deng"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Cameron Bairstow"
+  },
+  {
+   "col1": "Forward",
+   "col2": "German",
+   "col3": null,
+   "name_player": "Detlef Schrempf"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "James Donaldson"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Robert Pack"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Dan Issel"
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kiki Vandeweghe"
+  },
+  {
+   "col1": "power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Calvin Natt"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Randy Foye"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Rodney Stuckey"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Reggie Jackson"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Eric Floyd"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Moses Moody"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Solomon Hill"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mitchell Robinson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tony Wroten"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ognjen Jaramaz"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Neal Walk"
+  },
+  {
+   "col1": "Forward-center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Steve Johnson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jabari Walker"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Udoka Azubuike"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Patrick Ewing"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American",
+   "col3": "4",
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Hassan Whiteside"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Glen Rice"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Lonzo Ball"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Tim Duncan"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Tyreke Evans"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "DeAndre Jordan"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Horace Grant"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tim Hardaway Jr."
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "James Worthy"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Tracy McGrady"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jermaine O'Neal"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Dwayne Kenneth Schintzius"
+  },
+  {
+   "col1": "Off-guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Latrell Sprewell"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Calvin Ramsey"
+  },
+  {
+   "col1": "forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Eugene Walter Dyker"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Leroy Chollet"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": "Shooting guard and small forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jaylen Marselles Brown"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Deron Williams"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevon Looney"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "JaVale McGee"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Charlie Scott"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Malik Monk"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Markieff Morris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "P. J. Washington"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mark Williams"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Wayne Cooper"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mont\u00e9 Morris"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ognjen Kuzmic"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Wong"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Andr\u00e9 Roberson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Devon Hall"
+  },
+  {
+   "col1": "Forward/Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "John Shumate"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Richard Dumas"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Buck Williams"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyshawn Taylor"
+  },
+  {
+   "col1": "Small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Luc Richard Mbah a Moute"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Malachi Richardson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Elijah Hughes"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ochai Agbaji"
+  },
+  {
+   "col1": "Small forward; power forward",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "Power forward/Center",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Sam Bowie"
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Mark Aguirre"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Marcus Thornton"
+  },
+  {
+   "col1": "shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Lance Stephenson"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "Spanish",
+   "col3": null,
+   "name_player": "Ricky Rubio"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Emmanuel Mudiay"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Guy William Rodgers"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jerry West"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Michael Finley"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "DeJuan Blair"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "4",
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": "Power forward and center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Aaron Williams"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Dikembe Mutombo"
+  },
+  {
+   "col1": "small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Stephen Jackson"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Dewayne \"D. J.\" White, Jr."
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Andrew Bogut"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "William Severlyn Hewitt"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Nate Robinson"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kermit Washington"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Gregory Paul Fillmore"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "German",
+   "col3": null,
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Fat Lever"
+  },
+  {
+   "col1": "Center",
+   "col2": "Chinese",
+   "col3": null,
+   "name_player": "Yao Ming"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Luis Scola"
+  },
+  {
+   "col1": "Small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Mullin"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Paul Millsap"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Festus Ezeli"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Shawn Bradley"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ty Jerome"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Raulzinho Neto"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jeffery Taylor"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Doug McDermott"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Oliver Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Bobby Jones"
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "LaPhonso Ellis"
+  },
+  {
+   "col1": "guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Bryant Stith"
+  },
+  {
+   "col1": "Center-forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "JJ Hickson"
+  },
+  {
+   "col1": "Head coach",
+   "col2": null,
+   "col3": null,
+   "name_player": "Al Attles"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Cory Joseph"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Marcus Landry"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Sergio Rodr\u00edguez"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Damyean Dotson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Byron Mullens"
+  },
+  {
+   "col1": null,
+   "col2": "Iranian",
+   "col3": null,
+   "name_player": "Arsalan Kazemi"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "Serbian",
+   "col3": null,
+   "name_player": "Bogdan Bogdanovi\u0107"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Joel Freeland"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Michael Jackson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Isaiah Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "James Anderson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Rodney Hood"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "William Derek Grimm"
+  },
+  {
+   "col1": "Power forward and center",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "David Robinson"
+  },
+  {
+   "col1": "small forward",
+   "col2": "American",
+   "col3": "1",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Russell Westbrook"
+  },
+  {
+   "col1": "Small Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "shooting guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Donald Robert Anielak"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "A.C. Green"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Shane Larkin"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Thanasis Antetokounmpo"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": "3",
+   "name_player": "Carmelo Anthony"
+  },
+  {
+   "col1": "Small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Scottie Pippen"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Edward Dahler Jr."
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Byron Scott"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jared Jeffries"
+  },
+  {
+   "col1": "Center",
+   "col2": "Nigerian-American",
+   "col3": null,
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "Canadian",
+   "col3": null,
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Manu Gin\u00f3bili"
+  },
+  {
+   "col1": "Power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Derrick Joseph Chievous"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Elvin Hayes"
+  },
+  {
+   "col1": "Point forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ben Simmons"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Elmer H. Behnke"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Hamidou Diallo"
+  },
+  {
+   "col1": "small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Shawn Marion"
+  },
+  {
+   "col1": "Center\u2013power forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": "Center",
+   "col2": "Croatian",
+   "col3": null,
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Nick Anderson"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jordan Lee Crawford"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Bill Walton"
+  },
+  {
+   "col1": null,
+   "col2": "Chinese",
+   "col3": null,
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "small forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Paul Pierce"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kostas Antetokounmpo"
+  },
+  {
+   "col1": null,
+   "col2": "Mexican-American",
+   "col3": null,
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Skal Labissiere"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ramon Sessions"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Len Bias"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Cedric Maxwell"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Ford"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Rick Robey"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Muggsy Bogues"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Dennis Smith Jr."
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "B. J. Armstrong"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "1",
+   "name_player": "Andr\u00e9s Nocioni"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Larry Nance Jr."
+  },
+  {
+   "col1": "forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Popeye Jones"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Sasha Danilovi\u0107"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jarrett Jack"
+  },
+  {
+   "col1": "Swingman",
+   "col2": null,
+   "col3": null,
+   "name_player": "Wilson Chandler"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Billy Owens"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Chris Hunter"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ekpe Udoh"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Derrick Williams"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mitch McGary"
+  },
+  {
+   "col1": null,
+   "col2": "French",
+   "col3": null,
+   "name_player": "Timoth\u00e9 Luwawu-Cabarrot"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Romero Osby"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Roy Devyn Marble"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Garfield Heard"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "V\u00edctor Claver"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Nolan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ricky Berry"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Ray McCallum Jr."
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Will Barton"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": "Center",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Gerald Henderson"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Darnell Hillman"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Serge Ibaka"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": null,
+   "name_player": "Mark Jeffrey Radford"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Jabari Dominic Walker"
+  },
+  {
+   "col1": "Forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Richard Anthony Rosenthal"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Timofey Mozgov"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Terry Rozier"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Frank Jackson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Arron Afflalo"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Vlatko \u010can\u010dar"
+  },
+  {
+   "col1": "Guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Micheal Ray Richardson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Anthony Randolph"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Carl Landry"
+  },
+  {
+   "col1": "Forward-center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Marreese Speights"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Nico Mannion"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tari Eason"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Ben Sheppard"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Mojave King"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Al Thornton"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Walker Kessler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jett Howard"
+  },
+  {
+   "col1": null,
+   "col2": "Turkish",
+   "col3": null,
+   "name_player": "Furkan Korkmaz"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Alvan Adams"
+  },
+  {
+   "col1": "Point guard",
+   "col2": null,
+   "col3": null,
+   "name_player": "Kendall Marshall"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Wes Unseld"
+  },
+  {
+   "col1": "Point guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "Guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Miles Julian Simon"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Alonzo Mourning"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "T. J. Warren"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Robert Reid"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Dave Cowens"
+  },
+  {
+   "col1": "Small forward",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": "Point guard and shooting guard",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "Forward-center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Sam Perkins"
+  },
+  {
+   "col1": null,
+   "col2": "American",
+   "col3": "2",
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": "Forward-center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Amar'e Stoudemire"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jordan Mickey"
+  },
+  {
+   "col1": "center",
+   "col2": null,
+   "col3": null,
+   "name_player": "Luke Ridnour"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Julius Hodge"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyler Lydon"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Michael Porter Jr."
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Mickey Johnson"
+  },
+  {
+   "col1": null,
+   "col2": "Latvian",
+   "col3": null,
+   "name_player": "Andris Biedri\u0146\u0161"
+  },
+  {
+   "col1": "Forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Jordan Hill"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Vinny Del Negro"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Pierre Jackson"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Eric Maynor"
+  },
+  {
+   "col1": "Power forward",
+   "col2": null,
+   "col3": null,
+   "name_player": "Alex Oriakhi"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Kevin Murphy"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_player": "Jarnell Stokes"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position <> 'Frontcourt' OR CAST(p.draft_pick AS INT64) > 10 OR CAST(p.olympic_gold_medals AS INT64) > 0 OR CAST(p.mvp_awards AS INT64) = 0 RETURN DISTINCT p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position <> 'Frontcourt' OR (p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) > 10) OR CAST(p.olympic_gold_medals AS INT64) > 0 OR CAST(p.mvp_awards AS INT64) = 0 RETURN DISTINCT p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position <> 'Frontcourt' OR CASE WHEN p.draft_pick = 'Undrafted' THEN 0 ELSE CAST(p.draft_pick AS INT64) END > 10 OR CAST(p.olympic_gold_medals AS INT64) > 0 OR p.mvp_awards = '0' RETURN DISTINCT p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position <> 'Frontcourt' OR p.draft_pick IN ['11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60'] OR p.olympic_gold_medals IN ['1','2','3','4','5','6','7','8','9','10'] OR p.mvp_awards = '0' RETURN DISTINCT p.position AS col1, p.nationality AS col2, p.olympic_gold_medals AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 461
+  }
+ ]
+}

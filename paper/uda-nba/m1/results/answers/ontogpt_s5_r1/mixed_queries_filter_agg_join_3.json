@@ -1,0 +1,57 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0.0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0.0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0.0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND date(p.birth_date) >= date('1963-10-15')\n  AND date(p.birth_date) <= date('2026-10-14')\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 10, 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND CASE\n        WHEN p.birth_date CONTAINS '/' THEN CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE)\n        ELSE CAST(strptime(p.birth_date, '%B %d, %Y') AS DATE)\n      END >= date('1963-10-15')\n  AND CASE\n        WHEN p.birth_date CONTAINS '/' THEN CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE)\n        ELSE CAST(strptime(p.birth_date, '%B %d, %Y') AS DATE)\n      END <= date('2026-10-14')\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND (\n    CASE\n      WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64)\n      ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64)\n    END > 1963\n    OR (\n      CASE\n        WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64)\n        ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64)\n      END = 1963\n      AND (\n        CASE\n          WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64)\n          ELSE CASE split_part(p.birth_date, ' ', 1)\n            WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n            WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n            WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n            WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n          END\n        END > 10\n        OR (\n          CASE\n            WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64)\n            ELSE CASE split_part(p.birth_date, ' ', 1)\n              WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n              WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n              WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n              WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n            END\n          END = 10\n          AND CAST(split_part(split_part(p.birth_date, ' ', 2), ',', 1) AS INT64) >= 15\n        )\n      )\n    )\n  )\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 8
+  }
+ ]
+}

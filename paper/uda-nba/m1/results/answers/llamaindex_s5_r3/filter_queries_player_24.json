@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.olympic_gold_medals AS INT64) <> 0 AND CAST(p.mvp_awards AS INT64) = 0 RETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.mvp_awards AS INT64) = 0 RETURN p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.nationality <> 'German' AND p.olympic_gold_medals IS NOT NULL AND p.olympic_gold_medals <> '0' AND p.mvp_awards = '0' RETURN p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE p.nationality IS NOT NULL AND p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS DOUBLE) > 0 AND CAST(p.mvp_awards AS DOUBLE) = 0 AND r.tenure = 'latest' RETURN p.nationality AS col1, p.draft_pick AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

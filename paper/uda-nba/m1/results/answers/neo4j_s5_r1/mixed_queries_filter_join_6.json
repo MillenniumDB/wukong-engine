@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document), (o)-[:MentionedIn]->(od:Document) WHERE (strptime(o.birth_date, '%Y/%m/%d') >= strptime('1960/10/15', '%Y/%m/%d') OR CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((CAST(split(o.birth_date, '/')[0] AS INT64) > 1960) OR (CAST(split(o.birth_date, '/')[0] AS INT64) = 1960 AND CAST(split(o.birth_date, '/')[1] AS INT64) > 10) OR (CAST(split(o.birth_date, '/')[0] AS INT64) = 1960 AND CAST(split(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(o.birth_date, '/')[2] AS INT64) >= 15) OR CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE CAST(REPLACE(o.birth_date, '/', '-') AS DATE) >= CAST('1960-10-15' AS DATE) OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE CAST(o.birth_date[0..4] AS INT64) >= 1961 OR (o.birth_date[0..7] = '1960/10' AND CAST(o.birth_date[8..10] AS INT64) >= 15) OR o.birth_date[0..7] = '1960/11' OR o.birth_date[0..7] = '1960/12' OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE CAST(o.birth_date[0..>: expected rule oC_SingleQuery (line: 1, offset: 243)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:Mention",
+   "rows": null
+  }
+ ]
+}

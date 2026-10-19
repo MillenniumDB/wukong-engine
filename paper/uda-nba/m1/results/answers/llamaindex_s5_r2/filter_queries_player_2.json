@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL WITH p, date_diff('year', DATE(REPLACE(p.birth_date, '/', '-')), CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REPLACE(p.death_date, '/', '-')) END) AS age WHERE age < 78 RETURN DISTINCT p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL WITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE CAST(REPLACE(p.death_date, '/', '-') AS DATE) END AS end_date WITH p, birth, end_date, date_part('year', end_date) - date_part('year', birth) - CASE WHEN date_part('month', end_date) < date_part('month', birth) OR (date_part('month', end_date) = date_part('month', birth) AND date_part('day', end_date) < date_part('day', birth)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL WITH p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS by, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS bm, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS bd, CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(split_part(p.death_date, '/', 1) AS INT64) END AS ey, CASE WHEN p.death_date IS NULL THEN 10 ELSE CAST(split_part(p.death_date, '/', 2) AS INT64) END AS em, CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(split_part(p.death_date, '/', 3) AS INT64) END AS ed WITH p, ey - by - CASE WHEN em < bm OR (em = bm AND ed < bd) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL WITH p, CASE WHEN contains(p.birth_date, '/') THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS birth_date, CASE WHEN p.death_date IS NULL THEN strptime('2026/10/14', '%Y/%m/%d') WHEN contains(p.death_date, '/') THEN strptime(p.death_date, '%Y/%m/%d') ELSE strptime(p.death_date, '%d %B %Y') END AS end_date WITH p, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age WHERE age < 78 RETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

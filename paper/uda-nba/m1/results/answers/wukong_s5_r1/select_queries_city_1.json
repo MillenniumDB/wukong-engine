@@ -1,0 +1,193 @@
+{
+ "uid": "select_queries_city#1",
+ "rows": [
+  {
+   "col1": 250.71103199999996,
+   "col2": "Milwaukee",
+   "col3": 102000.0,
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": 630.1445669999999,
+   "col2": "Toronto",
+   "col3": null,
+   "name_city": "Toronto"
+  },
+  {
+   "col1": 1650.8596259999997,
+   "col2": "Houston",
+   "col3": null,
+   "name_city": "Houston"
+  },
+  {
+   "col1": null,
+   "col2": "Denver",
+   "col3": 157600.0,
+   "name_city": "Denver"
+  },
+  {
+   "col1": 370.0318713,
+   "col2": "Detroit",
+   "col3": null,
+   "name_city": "Detroit"
+  },
+  {
+   "col1": 375.7816491,
+   "col2": "Portland",
+   "col3": null,
+   "name_city": "Portland"
+  },
+  {
+   "col1": 259.257999,
+   "col2": "Sacramento",
+   "col3": null,
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": 808.07688,
+   "col2": "Charlotte",
+   "col3": null,
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": 839.15676,
+   "col2": "Memphis",
+   "col3": null,
+   "name_city": "Memphis"
+  },
+  {
+   "col1": 952.8573209999998,
+   "col2": "Indianapolis",
+   "col3": null,
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago",
+   "col3": 689000.0,
+   "name_city": "Chicago"
+  },
+  {
+   "col1": 1606.6743966,
+   "col2": "Oklahoma City",
+   "col3": 73800.0,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": 213.59647529999998,
+   "col2": "Cleveland",
+   "col3": 138300.0,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": 121.47053099999998,
+   "col2": "San Francisco",
+   "col3": 252200.0,
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": 285.934896,
+   "col2": "Salt Lake City",
+   "col3": null,
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": null,
+   "col2": "Miami",
+   "col3": null,
+   "name_city": "Miami"
+  },
+  {
+   "col1": 152.80940999999999,
+   "col2": "Minneapolis",
+   "col3": null,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": 347.05866,
+   "col2": "Atlanta",
+   "col3": 473000.0,
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": 1205.381346,
+   "col2": "San Antonio",
+   "col3": 121000.0,
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": 176.9999166,
+   "col2": "Washington, D.C.",
+   "col3": null,
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": null,
+   "col2": "Orlando",
+   "col3": null,
+   "name_city": "Orlando"
+  },
+  {
+   "col1": 1341.3558209999999,
+   "col2": "Phoenix",
+   "col3": 362000.0,
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": 232.14080369999996,
+   "col2": "Boston",
+   "col3": null,
+   "name_city": "Boston"
+  },
+  {
+   "col1": 1301.9879729999998,
+   "col2": "Los Angeles",
+   "col3": 1000000.0,
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": 1213.3688751599998,
+   "col2": "New York City",
+   "col3": 2160000.0,
+   "name_city": "New York City"
+  },
+  {
+   "col1": 999.218142,
+   "col2": "Dallas",
+   "col3": null,
+   "name_city": "Dallas"
+  },
+  {
+   "col1": 23.568908999999998,
+   "col2": "Inglewood",
+   "col3": null,
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": 369.6174729,
+   "col2": "Philadelphia",
+   "col3": 518500.0,
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans",
+   "col3": null,
+   "name_city": "New Orleans"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) RETURN CAST(c.area AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CAST(c.gdp AS DOUBLE) / 1000000.0 AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. over $102 billion in 2020 is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(c.area AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN c.gdp CONTAINS 'trillion' THEN CAST(regexp_extract(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) * 1000000.0 WHEN c.gdp CONTAINS 'billion' THEN CAST(regexp_extract(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) * 1000.0 WHEN c.gdp CONTAINS 'million' THEN CAST(regexp_extract(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) ELSE NULL END AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 29
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "rows": [
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0.0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Maccabi Tel Aviv",
+   "col2": null
+  },
+  {
+   "col1": "Canisius College basketball team",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0.0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Elmira Colonels",
+   "col2": null
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0.0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0.0
+  },
+  {
+   "col1": "Idaho Stampede",
+   "col2": null
+  },
+  {
+   "col1": "Loyola Wolf Pack",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 0.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0.0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.0
+  },
+  {
+   "col1": "Panathinaikos",
+   "col2": 0.0
+  },
+  {
+   "col1": "Baloncesto Fuenlabrada",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": null
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[r:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document) WHERE r.tenure = 'latest' AND (p.current_team = 'Boston Celtics' OR CAST(p.nba_championships AS INT64) <= 0 OR CAST(p.fiba_world_cup AS INT64) < 0) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document) WHERE t.team_name = 'Boston Celtics' OR CAST(p.nba_championships AS INT64) <= 0 OR CAST(p.fiba_world_cup AS INT64) < 0 RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 25
+  }
+ ]
+}

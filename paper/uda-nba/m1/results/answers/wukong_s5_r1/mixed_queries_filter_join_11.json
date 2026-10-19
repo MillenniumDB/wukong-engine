@@ -1,0 +1,149 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Detroit",
+   "col2": "2012",
+   "col3": "Tom Gores",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2022",
+   "col3": "Tom Gores",
+   "col4": "Jaden Ivey",
+   "name_player": "Jaden Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "2021",
+   "col3": "Tom Gores",
+   "col4": "Cade Cunningham",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "2008",
+   "col3": "Dan Gilbert",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1986",
+   "col3": "Dan Gilbert",
+   "col4": "Mark Price",
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Joseph Steven Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2009",
+   "col3": "Joseph Steven Lacob",
+   "col4": "Stephen Curry",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2008",
+   "col3": "Micky Arison",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1991",
+   "col3": "Micky Arison",
+   "col4": "Steve Smith",
+   "name_player": "Steve Smith",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Joseph Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2012",
+   "col3": "Joseph Tsai",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2013",
+   "col3": "Joseph Tsai",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2015",
+   "col3": "Joseph Tsai",
+   "col4": "Jahlil Okafor",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1994",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Donyell Marshall",
+   "name_player": "Donyell Marshall",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document), (c)-[:ExtractedFrom]->(:Document), (o)-[:ExtractedFrom]->(:Document) WHERE ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 17
+  }
+ ]
+}

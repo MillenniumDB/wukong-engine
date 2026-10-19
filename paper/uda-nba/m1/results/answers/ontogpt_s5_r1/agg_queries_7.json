@@ -1,0 +1,83 @@
+{
+ "uid": "agg_queries#7",
+ "rows": [
+  {
+   "col1": "Serbian",
+   "col2": 32.0
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29.0
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60.0
+  },
+  {
+   "col1": "Greek",
+   "col2": 35.0
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31.0
+  },
+  {
+   "col1": "American",
+   "col2": 52.17741935483871
+  },
+  {
+   "col1": "French",
+   "col2": 27.0
+  },
+  {
+   "col1": "British",
+   "col2": 29.0
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40.0
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33.0
+  },
+  {
+   "col1": null,
+   "col2": 49.52307692307692
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60.0
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.death_date IS NOT NULL THEN date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) ELSE date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN p.death_date IS NOT NULL THEN date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) ELSE date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 307)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.death_date IS NOT NULL THEN date_diff('year', strptime(p.birth_date, '%Y/%m/%",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.death_date IS NULL THEN 2026 - CAST(substr(p.birth_date, 0, 4) AS INT64) ELSE CAST(substr(p.death_date, 0, 4) AS INT64) - CAST(substr(p.birth_date, 0, 4) AS INT64) END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND p.birth_date <> '' WITH p.nationality AS nationality, CASE WHEN p.death_date IS NULL OR p.death_date = '' THEN 2026 - CAST(substr(p.birth_date, 1, 4) AS INT64) ELSE CAST(substr(p.death_date, 1, 4) AS INT64) - CAST(substr(p.birth_date, 1, 4) AS INT64) END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND regexp_matches(p.birth_date, '.*[0-9]{4}.*') WITH p.nationality AS nationality, CASE WHEN p.death_date IS NULL OR NOT regexp_matches(p.death_date, '.*[0-9]{4}.*') THEN 2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) ELSE CAST(regexp_extract(p.death_date, '[0-9]{4}', 0) AS INT64) - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) END AS age RETURN nationality AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 13
+  }
+ ]
+}

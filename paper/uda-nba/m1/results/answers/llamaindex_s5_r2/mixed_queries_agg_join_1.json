@@ -1,0 +1,45 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Debreceni EAC",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team) RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 8
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#18",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt')) AND p.birth_date IS NOT NULL WITH p, date(p.birth_date) AS birth_date, date('2026-10-14') AS reference_date RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_diff('year', birth_date, reference_date) - CASE WHEN date_part('month', birth_date) > date_part('month', reference_date) OR (date_part('month', birth_date) = date_part('month', reference_date) AND date_part('day', birth_date) > date_part('day', reference_date)) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt')) AND p.birth_date IS NOT NULL WITH p, date(p.birth_date) AS birth_date, date('2026-10-14') AS reference_date RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_part('year', reference_date) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > date_part('month', reference_date) OR (date_part('month', birth_date) = date_part('month', reference_date) AND date_part('day', birth_date) > date_part('day', reference_date)) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"25 April 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt')) AND p.birth_date IS NOT NULL WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS birth_date WITH p, birth_date, strptime('2026-10-14', '%Y-%m-%d') AS reference_date RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, date_part('year', reference_date) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > date_part('month', reference_date) OR (date_part('month', birth_date) = date_part('month', reference_date) AND date_part('day', birth_date) > date_part('day', reference_date)) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR (p.position IS NOT NULL AND p.position <> 'Frontcourt')) AND p.birth_date IS NOT NULL WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE split_part(p.birth_date, ' ', 2) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 1) AS INT64) END AS birth_day RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"December\" to INT64.",
+   "rows": null
+  }
+ ]
+}

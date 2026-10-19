@@ -1,0 +1,671 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "rows": [
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "1",
+   "col4": "Detroit",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Michael Jordan",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": null,
+   "col4": "Chicago",
+   "name_player": "Zach LaVine",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "0",
+   "col4": "Cleveland",
+   "name_player": "Lamar Stevens",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Jarrett Jack",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Gerald Madkins",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Donyell Marshall",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Steven Lacob",
+   "col3": "0",
+   "col4": "San Francisco",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": null,
+   "col4": "Miami",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Kermit Washington",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Fertitta",
+   "col3": null,
+   "col4": "Houston",
+   "name_player": "Kyle Lowry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": null,
+   "col4": "Chicago",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Kevin Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Kyle Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "1",
+   "col4": "Chicago",
+   "name_player": "Andre Drummond",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "1",
+   "col4": "Oklahoma City",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Kyle Lowry",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "D. J. White",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Kyrie Irving",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": null,
+   "col4": "Miami",
+   "name_player": "Kyle Lowry",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": null,
+   "col4": "Miami",
+   "name_player": "Jimmy Butler",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": null,
+   "col4": "Dallas",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "1",
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Harry Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "LeBron James",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Steven Lacob",
+   "col3": "2",
+   "col4": "San Francisco",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Andre Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "1",
+   "col4": "Dallas",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "1",
+   "col4": "Detroit",
+   "name_player": "Andre Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Ausar Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Tony Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Kermit Washington",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Devontae Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "0",
+   "col4": "Detroit",
+   "name_player": "Isiah Thomas",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "1",
+   "col4": "Detroit",
+   "name_player": "Jaden Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Steve Kerr",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Andre Drummond",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": "1",
+   "col4": "New York City",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Fertitta",
+   "col3": "1",
+   "col4": "Houston",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": null,
+   "col4": "Detroit",
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Jimmy Butler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": null,
+   "col4": "Oklahoma City",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "1",
+   "col4": "Detroit",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joseph Steven Lacob",
+   "col3": null,
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": null,
+   "col4": "Chicago",
+   "name_player": "Jimmy Butler",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1",
+   "col4": "Miami",
+   "name_player": "Steve Smith",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "0",
+   "col4": "Dallas",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor]->(t:Team), (t)-[:ExtractedFrom]->(td:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(od:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(cd:Document) WHERE DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) <= 65 OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team), (t)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE STRPTIME(o.birth_date, '%Y/%m/%d') <= STRPTIME('1961/10/14', '%Y/%m/%d') OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team), (t)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE DATE(REPLACE(o.birth_date, '/', '-')) >= DATE('1960-10-14') OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team), (t)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE (CAST(split_part(o.birth_date, '/', 1) AS INT64) > 1960 OR (CAST(split_part(o.birth_date, '/', 1) AS INT64) = 1960 AND (CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) >= 14)))) OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN DISTINCT t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": null,
+   "rows": 64
+  }
+ ]
+}

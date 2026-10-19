@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "James Garner",
+   "col3": "American",
+   "name_manager": "James Garner"
+  },
+  {
+   "col1": 67,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": 92,
+   "col2": "Herb Simon",
+   "col3": "American",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": 67,
+   "col2": "Clay Bennett",
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": 71,
+   "col2": "James Lawrence Dolan",
+   "col3": "American",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": null,
+   "col2": "Mikhail Prokhorov",
+   "col3": "Russian",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 70,
+   "col2": "Joe Lacob",
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 62,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": null,
+   "col2": "Will Pan",
+   "col3": "American",
+   "name_manager": "Will Pan"
+  },
+  {
+   "col1": null,
+   "col2": "Stan Kroenke",
+   "col3": "German",
+   "name_manager": "Stan Kroenke"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    WHEN date_part('month', CAST(o.birth_date AS DATE)) > 10 OR (date_part('month', CAST(o.birth_date AS DATE)) = 10 AND date_part('day', CAST(o.birth_date AS DATE)) > 14)\n      THEN 2026 - date_part('year', CAST(o.birth_date AS DATE)) - 1\n    ELSE 2026 - date_part('year', CAST(o.birth_date AS DATE))\n  END AS owner_age\nWHERE (o.birth_date IS NOT NULL AND CAST(o.birth_date AS DATE) > CAST('1961-10-14' AS DATE)) OR o.nationality <> 'Israeli-American'\nRETURN owner_age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 1964\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS birth_year,\n  CASE\n    WHEN regexp_matches(o.birth_date, '.*/[0-9]{1,2}/.*') THEN CAST(regexp_extract(o.birth_date, '/([0-9]{1,2})/', 1) AS INT64)\n    WHEN regexp_matches(o.birth_date, 'January.*') THEN 1\n    WHEN regexp_matches(o.birth_date, 'February.*') THEN 2\n    WHEN regexp_matches(o.birth_date, 'March.*') THEN 3\n    WHEN regexp_matches(o.birth_date, 'April.*') THEN 4\n    WHEN regexp_matches(o.birth_date, 'May.*') THEN 5\n    WHEN regexp_matches(o.birth_date, 'June.*') THEN 6\n    WHEN regexp_matches(o.birth_date, 'July.*') THEN 7\n    WHEN regexp_matches(o.birth_date, 'August.*') THEN 8\n    WHEN regexp_matches(o.birth_date, 'September.*') THEN 9\n    WHEN regexp_matches(o.birth_date, 'October.*') THEN 10\n    WHEN regexp_matches(o.birth_date, 'November.*') THEN 11\n    WHEN regexp_matches(o.birth_date, 'December.*') THEN 12\n    ELSE 1\n  END AS birth_month,\n  CASE\n    WHEN regexp_matches(o.birth_date, '.*/[0-9]{1,2}/[0-9]{1,2}') THEN CAST(regexp_extract(o.birth_date, '/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64)\n    ELSE 1\n  END AS birth_day\nWITH o, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE (owner_age < 65) OR (o.nationality IS NOT NULL AND o.nationality <> 'Israeli-American')\nRETURN owner_age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 11
+  }
+ ]
+}

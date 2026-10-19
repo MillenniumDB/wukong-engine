@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL WITH DISTINCT p MATCH (p)-[:MentionedIn]->(d2:Document) WITH p.position AS position, AVG(CAST(date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) AS DOUBLE)) AS avg_age RETURN position AS col1, avg_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL WITH DISTINCT p, 2026 - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) - CASE WHEN CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) > 10 OR (CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) = 10 AND CAST(SUBSTRING(p.birth_date, 9, 2) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Marc\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL AND p.birth_date =~ '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$' WITH DISTINCT p, 2026 - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) - CASE WHEN CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) > 10 OR (CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) = 10 AND CAST(SUBSTRING(p.birth_date, 9, 2) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (TRY_CAST(p.nba_championships AS INT64) <= 2 OR TRY_CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL WITH DISTINCT p, TRY_CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year, TRY_CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) AS birth_month, TRY_CAST(SUBSTRING(p.birth_date, 9, 2) AS INT64) AS birth_day WITH p, birth_year, birth_month, birth_day WHERE birth_year IS NOT NULL AND birth_month IS NOT NULL AND birth_day IS NOT NULL WITH p, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (TRY_CAST(p.nba_championships AS>: expected rule oC_SingleQuery (line: 1, offset: 81)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (TRY_CAST(p.nba_championships AS INT64) <= 2 OR TRY_CAST(p.mvp_awards AS INT64) < 1) AND p.birth_date IS NOT NULL WITH DISTINCT p, TRY_CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year, TRY_CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) AS birth_month, TRY_CAST(SUBSTRING",
+   "rows": null
+  }
+ ]
+}

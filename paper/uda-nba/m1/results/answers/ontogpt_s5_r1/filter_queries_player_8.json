@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#8",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 5,
+   "col3": 1,
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 0,
+   "col3": 1,
+   "name_player": "Andre Jamal Drummond"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 4,
+   "col3": 1,
+   "name_player": "Shaquille Rashaun O'Neal"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.fiba_world_cup AS INT64) > 0 AND p.nationality <> 'Azerbaijani' RETURN p.position AS col1, CAST(p.nba_championships AS INT64) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

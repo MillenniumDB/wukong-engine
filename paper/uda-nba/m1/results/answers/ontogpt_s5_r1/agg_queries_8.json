@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWITH o.nationality AS nationality,\n     CAST(STRFTIME(STRPTIME(o.birth_date, '%Y/%m/%d'), '%Y') AS INT64) AS birth_year,\n     STRFTIME(STRPTIME(o.birth_date, '%Y/%m/%d'), '%m-%d') AS birth_month_day\nWITH nationality,\n     MIN(2026 - birth_year - CASE WHEN birth_month_day > '10-14' THEN 1 ELSE 0 END) AS lowest_age\nRETURN nationality AS col1, lowest_age AS col2",
+   "error": "Catalog exception: function STRFTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWITH o.nationality AS nationality, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date\nRETURN nationality AS col1, MIN(DATE_DIFF('year', birth_date, CAST('2026-10-14' AS DATE))) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality, SPLIT(o.birth_date, '/') AS parts\nWITH nationality,\n     2026 - CAST(parts[0] AS INT64) - CASE\n       WHEN CAST(parts[1] AS INT64) > 10 OR (CAST(parts[1] AS INT64) = 10 AND CAST(parts[2] AS INT64) > 14) THEN 1\n       ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     CAST(REGEXP_EXTRACT(o.birth_date, '^([0-9]{4})/', 1) AS INT64) AS birth_year,\n     CAST(REGEXP_EXTRACT(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) AS birth_month,\n     CAST(REGEXP_EXTRACT(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) AS birth_day\nWITH nationality,\n     2026 - birth_year - CASE\n       WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1\n       ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

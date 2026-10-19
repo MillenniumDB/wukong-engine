@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.nationality <> 'German'\n  AND CAST(p.olympic_gold_medals AS INT64) > 0\n  AND CAST(p.olympic_gold_medals AS INT64) <> 0\n  AND CAST(p.mvp_awards AS INT64) = 0\nRETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"at least 4\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.nationality <> 'German'\n  AND CASE\n        WHEN regexp_matches(p.olympic_gold_medals, '^[0-9]+$') THEN CAST(p.olympic_gold_medals AS INT64)\n        WHEN regexp_matches(p.olympic_gold_medals, '^at least [0-9]+$') THEN CAST(REPLACE(p.olympic_gold_medals, 'at least ', '') AS INT64)\n        ELSE 0\n      END > 0\n  AND CASE\n        WHEN regexp_matches(p.mvp_awards, '^[0-9]+$') THEN CAST(p.mvp_awards AS INT64)\n        ELSE 0\n      END = 0\nRETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.nationality <> 'German'\n  AND CASE\n        WHEN regexp_matches(p.olympic_gold_medals, '^[0-9]+$') THEN CAST(p.olympic_gold_medals AS INT64)\n        WHEN regexp_matches(p.olympic_gold_medals, '^at least [0-9]+$') THEN 1\n        ELSE 0\n      END > 0\n  AND CASE\n        WHEN regexp_matches(p.mvp_awards, '^[0-9]+$') THEN CAST(p.mvp_awards AS INT64)\n        ELSE 0\n      END = 0\nRETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"at least 4\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE p.nationality <> 'German'\n  AND regexp_matches(p.olympic_gold_medals, '^(at least [1-9][0-9]*|[1-9][0-9]*)$')\n  AND p.mvp_awards = '0'\nRETURN DISTINCT p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

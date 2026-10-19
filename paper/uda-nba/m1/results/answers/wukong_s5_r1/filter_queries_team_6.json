@@ -1,0 +1,691 @@
+{
+ "uid": "filter_queries_team#6",
+ "rows": [
+  {
+   "col1": "Marc Lasry",
+   "col2": "1968",
+   "col3": "2",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Herb Kohl",
+   "col2": "1968",
+   "col3": "2",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Jamie Dinan",
+   "col2": "1968",
+   "col3": "2",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Wes Edens",
+   "col2": "1968",
+   "col3": "2",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "1946",
+   "col3": "2",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": "1946",
+   "col3": "17",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": "1946",
+   "col3": "17",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": "1946",
+   "col3": "17",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": "1946",
+   "col3": "17",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "1970",
+   "col3": null,
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": null,
+   "col3": "3",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "1",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Tony Ressler",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jesse Itzler",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Rick Schnall",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Bruce Levenson",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta Spirit LLC",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Grant Hill",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Sara Blakely",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Steven Price",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Jami Gertz",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": "1946",
+   "col3": "1",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Comcast Corporation",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Harris Blitzer Sports & Entertainment",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "David Blitzer",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Comcast Spectacor",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Harold Katz",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Josh Harris",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Ed Snider",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Irv Kosloff",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Ike Richman",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Fitz Eugene Dixon Jr.",
+   "col2": "1946",
+   "col3": "3",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Professional Basketball Club LLC",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Bill Ringsby",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Liberty Media",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "COMSAT",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Stan Kroenke",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "1",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Gregg Lukenbill",
+   "col2": "1923",
+   "col3": "1",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Cincinnati Gardens management",
+   "col2": "1923",
+   "col3": "1",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Thomas Woods",
+   "col2": "1923",
+   "col3": "1",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Vivek Ranadiv\u00e9",
+   "col2": "1923",
+   "col3": "1",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Joseph Benvenuti",
+   "col2": "1923",
+   "col3": "1",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Jerry Reinsdorf",
+   "col2": "1966",
+   "col3": "6",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "6",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "1988",
+   "col3": null,
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "1989",
+   "col3": null,
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "VSE",
+   "col2": "1970",
+   "col3": "1",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Paul Allen",
+   "col2": "1970",
+   "col3": "1",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Herb Simon",
+   "col2": "1967",
+   "col3": "3",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "3",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Charlie Thomas",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Leslie Alexander",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Gavin",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Kenneth Schnitzer",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "George Maloof",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Texas Sports Investments",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Sidney Shlenker",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Tilman Fertitta",
+   "col2": "1967",
+   "col3": "2",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "1989",
+   "col3": null,
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Boston Basketball Partners L.L.C.",
+   "col2": "1946",
+   "col3": "18",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Paul Gaston",
+   "col2": "1946",
+   "col3": "18",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "John Y. Brown, Jr.",
+   "col2": "1946",
+   "col3": "18",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Don Gaston",
+   "col2": "1946",
+   "col3": "18",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Ratner group",
+   "col2": "1967",
+   "col3": "0",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Joseph Tsai",
+   "col2": "1967",
+   "col3": "0",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Red McCombs",
+   "col2": "1967",
+   "col3": "5",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Peter M. Holt",
+   "col2": "1967",
+   "col3": "5",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "John Schaefer",
+   "col2": "1967",
+   "col3": "5",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Angelo Drossos",
+   "col2": "1967",
+   "col3": "5",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "1995",
+   "col3": null,
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "1974",
+   "col3": null,
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "2002",
+   "col3": null,
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Bill Davidson",
+   "col2": "1937",
+   "col3": "3",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "3",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Maple Leaf Sports & Entertainment (MLSE)",
+   "col2": "1995",
+   "col3": "1",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Robert Sarver",
+   "col2": "1968",
+   "col3": "0",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Mat Ishbia",
+   "col2": "1968",
+   "col3": "0",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "H. Ross Perot, Jr.",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Miriam Adelson",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Donald Carter",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Patrick Dumont",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Mary Stanton",
+   "col2": "1980",
+   "col3": "1",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Marty Glick",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Harry Tsao",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Paul Schaeffer",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Fred Harman",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Joseph Steven Lacob",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "John Walecka",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chamath Palihapitiya",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Craig R. Johnson",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Erika Glazer",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Franklin Mieuli",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Vivek Ranadiv\u00e9",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Bob Piccinini",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Jeffrey A. Miller",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Peter Guber",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Dennis Wong",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Nick Swinmurn",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Larry Bowman",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chris Cohan",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "David Scially",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Danny German",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Bruce Karsh",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chad Hurley",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Joe Lacob",
+   "col2": "1946",
+   "col3": "7",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Ted Leonsis",
+   "col2": "1961",
+   "col3": "1",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Irene",
+   "col2": "1961",
+   "col3": "1",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Abe Pollin",
+   "col2": "1961",
+   "col3": "1",
+   "name_team": "Washington Wizards"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o:Owner)-[:Owns]->(t)\nWHERE (o.name IS NOT NULL AND o.name <> 'Herb Simon') OR CAST(t.championships AS INT64) = 3\nRETURN o.name AS col1, t.founded_year AS col2, t.championships AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 113
+  }
+ ]
+}

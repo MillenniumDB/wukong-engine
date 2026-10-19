@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document), (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' RETURN p.nationality AS col1, CAST(date_part('year', date('2026-10-14')) AS INT64) - CAST(date_part('year', date(p.birth_date)) AS INT64) - CASE WHEN CAST(date_part('month', date(p.birth_date)) AS INT64) > 10 OR (CAST(date_part('month', date(p.birth_date)) AS INT64) = 10 AND CAST(date_part('day', date(p.birth_date)) AS INT64) > 14) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 6, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' WITH p, t, c, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date WITH p, t, c, birth_date, CAST(date_part('year', date('2026-10-14')) AS INT64) - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' WITH p, t, c, CASE WHEN p.birth_date CONTAINS '/' THEN date(concat(split_part(p.birth_date, '/', 0), '-', lpad(split_part(p.birth_date, '/', 1), 2, '0'), '-', lpad(split_part(p.birth_date, '/', 2), 2, '0'))) ELSE date(concat(trim(split_part(p.birth_date, ',', 1)), '-', CASE lower(split_part(p.birth_date, ' ', 0)) WHEN 'january' THEN '01' WHEN 'february' THEN '02' WHEN 'march' THEN '03' WHEN 'april' THEN '04' WHEN 'may' THEN '05' WHEN 'june' THEN '06' WHEN 'july' THEN '07' WHEN 'august' THEN '08' WHEN 'september' THEN '09' WHEN 'october' THEN '10' WHEN 'november' THEN '11' WHEN 'december' THEN '12' END, '-', lpad(replace(split_part(p.birth_date, ' ', 1), ',', ''), 2, '0'))) END AS birth_date WITH p, t, c, birth_date, CAST(date_part('year', date('2026-10-14')) AS INT64) - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City) WHERE r.tenure = 'latest' WITH p, t, c, CASE WHEN p.birth_date CONTAINS '/' THEN date(concat(split_part(p.birth_date, '/', 0), '-', lpad(split_part(p.birth_date, '/', 1), 2, '0'), '-', lpad(split_part(p.birth_date, '/', 2), 2, '0'))) ELSE date(concat(trim(split_part(p.birth_date, ',', 1)), '-', CASE lower(split_part(p.birth_date, ' ', 0)) WHEN 'january' THEN '01' WHEN 'february' THEN '02' WHEN 'march' THEN '03' WHEN 'april' THEN '04' WHEN 'may' THEN '05' WHEN 'june' THEN '06' WHEN 'july' THEN '07' WHEN 'august' THEN '08' WHEN 'september' THEN '09' WHEN 'october' THEN '10' WHEN 'november' THEN '11' WHEN 'december' THEN '12' END, '-', lpad(split_part(split_part(p.birth_date, ' ', 1), ',', 0), 2, '0'))) END AS birth_date WITH p, t, c, birth_date, CAST(date_part('year', date('2026-10-14')) AS INT64) - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 6--00\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

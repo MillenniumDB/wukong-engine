@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, date_diff('year', DATE(REPLACE(o.birth_date, '/', '-')), DATE('2026-10-14')) AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, CASE WHEN o.birth_date IS NULL THEN NULL ELSE DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', DATE(REPLACE(o.birth_date, '/', '-'))) - CASE WHEN DATE_PART('month', DATE('2026-10-14')) < DATE_PART('month', DATE(REPLACE(o.birth_date, '/', '-'))) OR (DATE_PART('month', DATE('2026-10-14')) = DATE_PART('month', DATE(REPLACE(o.birth_date, '/', '-'))) AND DATE_PART('day', DATE('2026-10-14')) < DATE_PART('day', DATE(REPLACE(o.birth_date, '/', '-')))) THEN 1 ELSE 0 END END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, CASE WHEN o.birth_date IS NULL THEN NULL ELSE DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', STRPTIME(o.birth_date, '%Y/%m/%d')) - CASE WHEN DATE_PART('month', DATE('2026-10-14')) < DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) OR (DATE_PART('month', DATE('2026-10-14')) = DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) AND DATE_PART('day', DATE('2026-10-14')) < DATE_PART('day', STRPTIME(o.birth_date, '%Y/%m/%d'))) THEN 1 ELSE 0 END END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200') RETURN p.position AS col1, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN 10 < CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) OR (10 = CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) AND 14 < CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64)) THEN 1 ELSE 0 END END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"July 31, 1958\" to INT64.",
+   "rows": null
+  }
+ ]
+}

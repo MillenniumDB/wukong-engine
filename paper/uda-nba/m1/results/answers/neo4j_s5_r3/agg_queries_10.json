@@ -1,0 +1,41 @@
+{
+ "uid": "agg_queries#10",
+ "rows": [
+  {
+   "col1": "Israeli-American",
+   "col2": 77.0
+  },
+  {
+   "col1": "American",
+   "col2": 74.0
+  },
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": 62.0
+  },
+  {
+   "col1": null,
+   "col2": 99.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document) WHERE o.birth_date IS NOT NULL WITH DISTINCT o MATCH (o)-[:MentionedIn]->(d:Document) RETURN o.nationality AS col1, AVG(CAST(date_diff('day', CAST(o.birth_date AS DATE), DATE('2026-10-14')) AS DOUBLE) / 365.2425) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH DISTINCT o, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN o.nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL WITH DISTINCT o, 2026 - CAST(regexp_extract(o.birth_date, '([0-9]{4})$', 1) AS INT64) - CASE WHEN (CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) WHEN regexp_matches(o.birth_date, '^January') OR regexp_matches(o.birth_date, '^February') OR regexp_matches(o.birth_date, '^March') OR regexp_matches(o.birth_date, '^April') OR regexp_matches(o.birth_date, '^May') OR regexp_matches(o.birth_date, '^June') OR regexp_matches(o.birth_date, '^July') OR regexp_matches(o.birth_date, '^August') OR regexp_matches(o.birth_date, '^September') OR regexp_matches(o.birth_date, '^October') OR regexp_matches(o.birth_date, '^November') OR regexp_matches(o.birth_date, '^December') THEN CASE WHEN regexp_matches(o.birth_date, '^January') THEN 1 WHEN regexp_matches(o.birth_date, '^February') THEN 2 WHEN regexp_matches(o.birth_date, '^March') THEN 3 WHEN regexp_matches(o.birth_date, '^April') THEN 4 WHEN regexp_matches(o.birth_date, '^May') THEN 5 WHEN regexp_matches(o.birth_date, '^June') THEN 6 WHEN regexp_matches(o.birth_date, '^July') THEN 7 WHEN regexp_matches(o.birth_date, '^August') THEN 8 WHEN regexp_matches(o.birth_date, '^September') THEN 9 WHEN regexp_matches(o.birth_date, '^October') THEN 10 WHEN regexp_matches(o.birth_date, '^November') THEN 11 ELSE 12 END END) > 10 OR ((CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) ELSE CASE WHEN regexp_matches(o.birth_date, '^January') THEN 1 WHEN regexp_matches(o.birth_date, '^February') THEN 2 WHEN regexp_matches(o.birth_date, '^March') THEN 3 WHEN regexp_matches(o.birth_date, '^April') THEN 4 WHEN regexp_matches(o.birth_date, '^May') THEN 5 WHEN regexp_matches(o.birth_date, '^June') THEN 6 WHEN regexp_matches(o.birth_date, '^July') THEN 7 WHEN regexp_matches(o.birth_date, '^August') THEN 8 WHEN regexp_matches(o.birth_date, '^September') THEN 9 WHEN regexp_matches(o.birth_date, '^October') THEN 10 WHEN regexp_matches(o.birth_date, '^November') THEN 11 ELSE 12 END END) = 10 AND CAST(CASE WHEN o.birth_date CONTAINS '/' THEN split_part(o.birth_date, '/', 3) ELSE regexp_extract(o.birth_date, '([0-9]{1,2}),', 1) END AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN o.nationality AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 4
+  }
+ ]
+}

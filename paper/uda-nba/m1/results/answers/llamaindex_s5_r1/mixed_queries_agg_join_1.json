@@ -1,0 +1,41 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Lokomotiv Kuban",
+   "col2": null
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": null
+  },
+  {
+   "col1": "LDLC ASVEL",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' WITH DISTINCT t, p RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

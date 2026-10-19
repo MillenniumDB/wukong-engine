@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(d:Document), (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') >= 67 RETURN DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <MATCH (o:Owner)-[:MentionedIn]->(d:Document), (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 176)\n\"MATCH (o:Owner)-[:MentionedIn]->(d:Document), (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') >= 67 RETURN DATE_DIFF('year', ST",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) MATCH (o)-[:Owns]->(t:Team) WHERE t.team_name <> 'Golden State Warriors' AND DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), CAST('2026-10-14' AS DATE)) >= 67 RETURN DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), CAST('2026-10-14' AS DATE)) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) MATCH (o)-[:Owns]->(t:Team) WITH o, t, DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', STRPTIME(o.birth_date, '%Y/%m/%d')) - CASE WHEN DATE_PART('month', CAST('2026-10-14' AS DATE)) < DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) OR (DATE_PART('month', CAST('2026-10-14' AS DATE)) = DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) AND DATE_PART('day', CAST('2026-10-14' AS DATE)) < DATE_PART('day', STRPTIME(o.birth_date, '%Y/%m/%d'))) THEN 1 ELSE 0 END AS age WHERE t.team_name <> 'Golden State Warriors' AND age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) MATCH (o)-[:Owns]->(t:Team) WITH o, t, CAST('2026-10-14' AS DATE) AS today, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date WHERE t.team_name <> 'Golden State Warriors' WITH o, t, DATE_PART('year', today) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth_date) OR (DATE_PART('month', today) = DATE_PART('month', birth_date) AND DATE_PART('day', today) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

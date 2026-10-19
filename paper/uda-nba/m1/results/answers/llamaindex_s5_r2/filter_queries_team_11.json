@@ -1,0 +1,697 @@
+{
+ "uid": "filter_queries_team#11",
+ "rows": [
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Chicago Bulls",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Baltimore Bullets",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Rams",
+   "name_team": "Los Angeles Rams"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Guerrillas",
+   "name_team": "Los Angeles Guerrillas"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "New York Liberty",
+   "name_team": "New York Liberty"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": null,
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": null,
+   "col3": "San Antonio Spurs",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Athens",
+   "col2": null,
+   "col3": "Panathinaikos",
+   "name_team": "Panathinaikos"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Minneapolis Lakers",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": null,
+   "col3": "St. Louis Hawks",
+   "name_team": "St. Louis Hawks"
+  },
+  {
+   "col1": "Seattle",
+   "col2": null,
+   "col3": "Seattle SuperSonics",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "Manhattan",
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Independence",
+   "col2": null,
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Baltimore",
+   "col2": null,
+   "col3": "Baltimore Bullets",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": "Alexandria",
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Commerce City",
+   "col2": null,
+   "col3": "Colorado Rapids",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": "Grand Rapids",
+   "col2": null,
+   "col3": "Grand Rapids Rampage",
+   "name_team": "Grand Rapids Rampage"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": null,
+   "col3": "Washington Mystics",
+   "name_team": "Washington Mystics"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": null,
+   "col3": "Cleveland Monsters",
+   "name_team": "Cleveland Monsters"
+  },
+  {
+   "col1": "Boston",
+   "col2": null,
+   "col3": "Boston Celtics",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1946",
+   "col3": "Atlanta Hawks",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Seattle",
+   "col2": null,
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Denver Nuggets",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Colorado Avalanche",
+   "name_team": "Colorado Avalanche"
+  },
+  {
+   "col1": "Miami",
+   "col2": null,
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "San Diego Rockets",
+   "name_team": "San Diego Rockets"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "San Diego Seals",
+   "name_team": "San Diego Seals"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": "1946",
+   "col3": "Buffalo Bisons",
+   "name_team": "Buffalo Bisons"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Anaheim",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Los Angeles Rams",
+   "name_team": "Los Angeles Rams"
+  },
+  {
+   "col1": "College Park",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Colorado",
+   "col2": null,
+   "col3": "Colorado Rapids",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans Saints",
+   "name_team": "New Orleans Saints"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Houston",
+   "col2": null,
+   "col3": "Houston Texans",
+   "name_team": "Houston Texans"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2016",
+   "col3": "San Antonio FC",
+   "name_team": "San Antonio FC"
+  },
+  {
+   "col1": "Orlando",
+   "col2": null,
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Pontiac",
+   "col2": null,
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Auburn Hills",
+   "col2": null,
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Cincinnati",
+   "col2": null,
+   "col3": "Cincinnati Royals",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Chicago Blackhawks",
+   "name_team": "Chicago Blackhawks"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Indiana Fever",
+   "name_team": "Indiana Fever"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Gladiators",
+   "name_team": "Los Angeles Gladiators"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "New York Rangers",
+   "name_team": "New York Rangers"
+  },
+  {
+   "col1": "Houston",
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Houston",
+   "col2": null,
+   "col3": "Clutch Gaming",
+   "name_team": "Clutch Gaming"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "1997",
+   "col3": "Phoenix Mercury",
+   "name_team": "Phoenix Mercury"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Jersey",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Denver Rockets",
+   "name_team": "Denver Rockets"
+  },
+  {
+   "col1": "Miami",
+   "col2": null,
+   "col3": "Miami Dolphins",
+   "name_team": "Miami Dolphins"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1946",
+   "col3": "Atlanta Hawks",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": null,
+   "col3": "Buffalo Braves",
+   "name_team": "Buffalo Braves"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": null,
+   "col3": "Utah Hockey Club",
+   "name_team": "Utah Hockey Club"
+  },
+  {
+   "col1": "Newark",
+   "col2": null,
+   "col3": "New Jersey Devils",
+   "name_team": "New Jersey Devils"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Grand Rapids",
+   "col2": null,
+   "col3": "Grand Rapids Griffins",
+   "name_team": "Grand Rapids Griffins"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles FC",
+   "name_team": "Los Angeles FC"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "San Diego Clippers",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": "Portland",
+   "col2": null,
+   "col3": "Portland Trail Blazers",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Philadelphia Warriors",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": "Moline",
+   "col2": null,
+   "col3": "Tri-Cities Blackhawks",
+   "name_team": "Tri-Cities Blackhawks"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "New York Liberty",
+   "name_team": "New York Liberty"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": null,
+   "col3": "Cleveland Guardians",
+   "name_team": "Cleveland Guardians"
+  },
+  {
+   "col1": "Boston",
+   "col2": null,
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Detroit",
+   "col2": null,
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "New Jersey",
+   "col2": null,
+   "col3": "New Jersey Devils",
+   "name_team": "New Jersey Devils"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": null,
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Colorado Mammoth",
+   "name_team": "Colorado Mammoth"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1946",
+   "col3": "San Francisco Warriors",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": null,
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Landover",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Landover",
+   "col2": null,
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": "Charlotte Bobcats",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": "Dallas",
+   "col2": null,
+   "col3": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Rochester",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": null,
+   "col3": "Phoenix Coyotes",
+   "name_team": "Phoenix Coyotes"
+  },
+  {
+   "col1": "Memphis",
+   "col2": null,
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Syracuse",
+   "col2": null,
+   "col3": "Syracuse Nationals",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": null,
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Chicago White Sox",
+   "name_team": "Chicago White Sox"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": null,
+   "col3": "Washington Commanders",
+   "name_team": "Washington Commanders"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": null,
+   "col3": "Milwaukee Bucks",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Utah",
+   "col2": "1974",
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "1974",
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": null,
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Colorado Rapids",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": null,
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Vancouver",
+   "col2": null,
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Cincinnati",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(d:Document), (t)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE ((CAST(t.founded_year AS INT64) >= 1949 AND CAST(t.founded_year AS INT64) = 1949) OR (o.name <> 'Ted Leonsis' AND o.name <> 'Professional Basketball Club LLC')) RETURN DISTINCT c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 114
+  }
+ ]
+}

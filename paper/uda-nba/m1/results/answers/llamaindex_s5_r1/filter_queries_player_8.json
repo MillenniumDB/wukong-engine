@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_player#8",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Schr\u00f6der"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.fiba_world_cup AS INT64) > 0 AND p.nationality <> 'Azerbaijani' RETURN DISTINCT p.position AS col1, CAST(p.nba_championships AS INT64) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

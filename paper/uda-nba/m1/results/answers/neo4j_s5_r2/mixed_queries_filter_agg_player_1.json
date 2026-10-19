@@ -1,0 +1,57 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [
+  {
+   "col1": "Phoenix Suns",
+   "col2": 4
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 4
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 1
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL WITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS min_medals RETURN t.team_name AS col1, min_medals AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"45th\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE p.draft_pick IS NOT NULL AND CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL WITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS min_medals RETURN t.team_name AS col1, min_medals AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"45h\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '^[0-9]+') AND CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL WITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS min_medals RETURN t.team_name AS col1, min_medals AS col2",
+   "error": null,
+   "rows": 8
+  }
+ ]
+}

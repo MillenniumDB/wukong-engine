@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team)\nWITH o, r, date_diff('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) AS age\nWHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team)\nWITH o, r,\n  CAST(regexp_extract(o.birth_date, '^([0-9]{4})', 1) AS INT64) AS birth_year,\n  CAST(regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) AS birth_month,\n  CAST(regexp_extract(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64) AS birth_day\nWITH o, r,\n  CASE\n    WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14)\n      THEN 2026 - birth_year - 1\n    ELSE 2026 - birth_year\n  END AS age\nWHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(:Team), (o)-[:ExtractedFrom]->(:Document)\nWITH o, r,\n  regexp_extract(o.birth_date, '^([0-9]{4})', 1) AS by,\n  regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS bm,\n  regexp_extract(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})', 1) AS bd\nWITH o, r,\n  CASE\n    WHEN by = '' OR bm = '' OR bd = '' THEN NULL\n    WHEN CAST(bm AS INT64) > 10 OR (CAST(bm AS INT64) = 10 AND CAST(bd AS INT64) > 14)\n      THEN 2026 - CAST(by AS INT64) - 1\n    ELSE 2026 - CAST(by AS INT64)\n  END AS age\nWHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"Unknown\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(:Team), (o)-[:ExtractedFrom]->(:Document)\nWITH o, r,\n  CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') THEN CAST(regexp_extract(o.birth_date, '^([0-9]{4})/', 1) AS INT64) ELSE NULL END AS birth_year,\n  CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) ELSE NULL END AS birth_month,\n  CASE WHEN regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) ELSE NULL END AS birth_day,\n  CASE WHEN regexp_matches(r.since_year, '^[0-9]{4}$') THEN CAST(r.since_year AS INT64) ELSE NULL END AS ownership_year\nWITH o, r, ownership_year,\n  CASE\n    WHEN birth_year IS NULL OR birth_month IS NULL OR birth_day IS NULL THEN NULL\n    WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 2026 - birth_year - 1\n    ELSE 2026 - birth_year\n  END AS age\nWHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR ownership_year > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"Unknown\" to INT64.",
+   "rows": null
+  }
+ ]
+}

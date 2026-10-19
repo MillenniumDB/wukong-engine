@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN p.birth_date IS NULL THEN NULL\n    ELSE DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE('2026-10-14')) -\n      CASE\n        WHEN DATE_PART('month', DATE(REPLACE(p.birth_date, '/', '-'))) > 10\n          OR (DATE_PART('month', DATE(REPLACE(p.birth_date, '/', '-'))) = 10 AND DATE_PART('day', DATE(REPLACE(p.birth_date, '/', '-'))) > 14)\n        THEN 1\n        ELSE 0\n      END\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN p.birth_date IS NULL THEN NULL\n    ELSE 2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) -\n      CASE\n        WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n          OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14)\n        THEN 1\n        ELSE 0\n      END\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 17, 1930\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN p.birth_date IS NULL THEN NULL\n    ELSE CASE\n      WHEN DATE_PART('month', CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE STRPTIME(p.birth_date, '%B %d, %Y') END) > 10\n        OR (DATE_PART('month', CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE STRPTIME(p.birth_date, '%B %d, %Y') END) = 10\n          AND DATE_PART('day', CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE STRPTIME(p.birth_date, '%B %d, %Y') END) > 14)\n      THEN 2026 - DATE_PART('year', CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE STRPTIME(p.birth_date, '%B %d, %Y') END) - 1\n      ELSE 2026 - DATE_PART('year', CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE STRPTIME(p.birth_date, '%B %d, %Y') END)\n    END\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN p.birth_date IS NULL THEN NULL\n    WHEN p.birth_date CONTAINS '/' THEN\n      2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) -\n      CASE\n        WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n          OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10\n            AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14)\n        THEN 1 ELSE 0\n      END\n    ELSE\n      2026 - DATE_PART('year', STRPTIME(p.birth_date, '%B %d, %Y')) -\n      CASE\n        WHEN DATE_PART('month', STRPTIME(p.birth_date, '%B %d, %Y')) > 10\n          OR (DATE_PART('month', STRPTIME(p.birth_date, '%B %d, %Y')) = 10\n            AND DATE_PART('day', STRPTIME(p.birth_date, '%B %d, %Y')) > 14)\n        THEN 1 ELSE 0\n      END\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

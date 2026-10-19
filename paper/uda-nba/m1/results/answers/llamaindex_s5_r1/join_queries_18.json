@@ -1,0 +1,1383 @@
+{
+ "uid": "join_queries#18",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Dyal Capital"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Justin Ishbia"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Corporation"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Dyal Capital"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Jerry Colangelo"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "George Mikan"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "George Mikan"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Comcast Corporation"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Irv Kosloff"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Dyal Capital"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Time Warner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "George Mikan"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Sarver-led investment group"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Time Warner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ike Richman"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Dyal Capital"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "George Mikan"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Larry Fitzgerald"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "33",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "10",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "George Mikan"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": "23",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Dyal Capital"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "col5": null,
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": "American",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": "24",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document), (o)-[:MentionedIn]->(od:Document) WHERE pf.tenure = 'latest' RETURN DISTINCT p.nationality AS col1, p.olympic_gold_medals AS col2, c.city_name AS col3, t.team_name AS col4, p.draft_pick AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 137
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 2
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document)\nWHERE CAST(p.draft_pick AS INT64) < 3\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"1st overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document)\nWHERE p.draft_pick IN ['1st overall', '2nd overall']\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

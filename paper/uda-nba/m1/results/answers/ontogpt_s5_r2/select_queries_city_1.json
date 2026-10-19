@@ -1,0 +1,30 @@
+{
+ "uid": "select_queries_city#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(c.area AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CAST(c.gdp AS DOUBLE) / 1000000.0 AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(REGEXP_REPLACE(c.area, '[^0-9.]', '') AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN LOWER(c.gdp) CONTAINS 'trillion' THEN CAST(REGEXP_REPLACE(c.gdp, '[^0-9.]', '') AS DOUBLE) * 1000000.0 WHEN LOWER(c.gdp) CONTAINS 'billion' THEN CAST(REGEXP_REPLACE(c.gdp, '[^0-9.]', '') AS DOUBLE) * 1000.0 ELSE CAST(REGEXP_REPLACE(c.gdp, '[^0-9.]', '') AS DOUBLE) END AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(REGEXP_EXTRACT(c.area, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN LOWER(c.gdp) CONTAINS 'trillion' THEN CAST(REGEXP_EXTRACT(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) * 1000000.0 WHEN LOWER(c.gdp) CONTAINS 'billion' THEN CAST(REGEXP_EXTRACT(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) * 1000.0 ELSE CAST(REGEXP_EXTRACT(c.gdp, '[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) END AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed.  is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WITH c, TRIM(REPLACE(REPLACE(c.area, ' square miles', ''), 'square miles', '')) AS area_value, TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LOWER(c.gdp), '$', ''), ',', ''), ' billion', ''), 'billion', ''), ' million', '')) AS gdp_value, LOWER(c.gdp) AS gdp_text RETURN CAST(area_value AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN gdp_text CONTAINS 'trillion' THEN CAST(REPLACE(REPLACE(REPLACE(REPLACE(gdp_value, ' trillion', ''), 'trillion', ''), ' million', ''), 'million', '') AS DOUBLE) * 1000000.0 WHEN gdp_text CONTAINS 'billion' THEN CAST(gdp_value AS DOUBLE) * 1000.0 ELSE CAST(REPLACE(REPLACE(gdp_value, ' million', ''), 'million', '') AS DOUBLE) END AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

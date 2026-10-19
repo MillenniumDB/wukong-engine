@@ -1,0 +1,127 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "Orlando Magic",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Domantas Sabonis"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Deandre Ayton"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Victor Oladipo"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Brandon Roy"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Rudy Gobert"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Ben Wallace"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Scottie Barnes"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Marc Gasol"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Dwyane Wade"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "0",
+   "name_player": "Paolo Banchero"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Damian Lillard"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Chris Bosh"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "French",
+   "col3": "0",
+   "name_player": "Tony Parker"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null,
+   "col3": "0",
+   "name_player": "David Lee"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "0",
+   "name_player": "Don MacLean"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Jamal Crawford"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2' RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"at least 4\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.mvp_awards = '0' OR p.birth_date = '1995/10/2' RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 18
+  }
+ ]
+}

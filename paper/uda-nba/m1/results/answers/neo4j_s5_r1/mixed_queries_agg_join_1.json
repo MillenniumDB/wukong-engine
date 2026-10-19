@@ -1,0 +1,197 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 3
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 4
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 3
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 2
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "San Francisco Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Dakota Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Vancouver Grizzlies",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 2
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 2
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Hawks",
+   "col2": null
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null
+  },
+  {
+   "col1": "Bucker Bologna",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 4
+  },
+  {
+   "col1": "Kansas City Kings",
+   "col2": null
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 1
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": null
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document)\nMATCH (p:Player)-[r:PlaysFor]->(t)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 46
+  }
+ ]
+}

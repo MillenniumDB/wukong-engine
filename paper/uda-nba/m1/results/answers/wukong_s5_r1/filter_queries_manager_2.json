@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": [
+  {
+   "col1": 70,
+   "col2": "Los Angeles Clippers",
+   "col3": "Steve Ballmer",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 77,
+   "col2": "Miami Heat",
+   "col3": "Micky Arison",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": 91,
+   "col2": "Indiana Pacers",
+   "col3": "Herbert Simon",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 68,
+   "col2": "Dallas Mavericks",
+   "col3": "Mark Cuban",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 79,
+   "col2": "Denver Nuggets",
+   "col3": "Enos Stanley Kroenke",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": 79,
+   "col2": "New Orleans Pelicans",
+   "col3": "Gayle Benson",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 90,
+   "col2": "Chicago Bulls",
+   "col3": "Jerry Michael Reinsdorf",
+   "name_manager": "Jerry Michael Reinsdorf"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:ExtractedFrom]->(od:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE t.team_name <> 'Golden State Warriors' AND o.birth_date IS NOT NULL WITH o, t, CAST(SPLIT(o.birth_date, '/')[0] AS INT64) AS by, CAST(SPLIT(o.birth_date, '/')[1] AS INT64) AS bm, CAST(SPLIT(o.birth_date, '/')[2] AS INT64) AS bd WITH o, t, 2026 - by - CASE WHEN bm > 10 OR (bm = 10 AND bd > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE t.team_name <> 'Golden State Warriors' AND o.birth_date IS NOT NULL WITH o, t, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS dob WITH o, t, 2026 - CAST(DATE_PART('year', dob) AS INT64) - CASE WHEN DATE_PART('month', dob) > 10 OR (DATE_PART('month', dob) = 10 AND DATE_PART('day', dob) > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE t.team_name <> 'Golden State Warriors' AND o.birth_date IS NOT NULL WITH o, t, CAST(regexp_extract(o.birth_date, '^([0-9]+)/([0-9]+)/([0-9]+)$', 1) AS INT64) AS by, CAST(regexp_extract(o.birth_date, '^([0-9]+)/([0-9]+)/([0-9]+)$', 2) AS INT64) AS bm, CAST(regexp_extract(o.birth_date, '^([0-9]+)/([0-9]+)/([0-9]+)$', 3) AS INT64) AS bd WITH o, t, 2026 - by - CASE WHEN bm > 10 OR (bm = 10 AND bd > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

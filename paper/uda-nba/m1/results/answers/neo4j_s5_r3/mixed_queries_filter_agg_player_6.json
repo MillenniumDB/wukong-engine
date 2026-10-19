@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (strptime(p.birth_date, '%Y/%m/%d') > strptime('1948/10/14', '%Y/%m/%d') AND CAST(p.fiba_world_cup AS INT64) >= 0)) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1948 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1948 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14))) AND CAST(p.fiba_world_cup AS INT64) >= 0) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1948 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1948 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_par",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(split(p.birth_date, '/')[0] AS INT64) > 1948 OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1948 AND (CAST(split(p.birth_date, '/')[1] AS INT64) > 10 OR (CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) > 14))) AND CAST(p.fiba_world_cup AS INT64) >= 0) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(split(p.birth_date, '/')[0] AS INT64) > 1948 OR (CAST(split(p.birth_date, '/')[0] AS INT64) = 1948 AND (CAST(split(p.birth_date, '/')[1] AS INT64) > 10 OR (CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) > 14))) AND CAST(p.fiba_world_cup AS INT64) >= 0) RETURN>: ex",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND ((CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) < 1948 OR (CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) = 1948 AND (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) < 10 OR (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) = 10 AND CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64) <= 14)))) AND CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) > 1948 OR (CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) = 1948 AND (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) > 10 OR (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) = 10 AND CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64) > 14)))) AND CAST(p.fiba_world_cup AS INT64) >= 0) MATCH (p)-[:MentionedIn]->(pd:Document) MATCH (t)-[:MentionedIn]->(td:Document) RETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND ((CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) < 1948 OR (CAST(regexp_extract(p.birth_date, '^([0-9]+)/', 1) AS INT64) = 1948 AND (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) < 10 OR (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/', 1) AS INT64) = 10 AND CAST(regexp_extract(p.birth_date, '^[0-9]+/[0-9]+/([0-9]+)', 1) AS INT64) <= 14)))) AND CAST(p.f",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) RETURN p.position AS col1, AVG(DATE_DIFF('year', CAST(p.birth_date AS DATE), DATE '2026-10-14')) AS col2",
+   "error": "Parser exception: Invalid input <AVG(DATE_DIFF('year', CAST(p.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 310)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) RETURN p.position AS col1, AVG(DATE_DIFF('year', CAST(p.birth_date AS DATE), DATE '2026-10-14')) AS col2\"\n       ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) RETURN p.position AS col1, AVG(DATE_DIFF('year', CAST(p.birth_date AS DATE), CAST('2026-10-14' AS DATE))) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) RETURN p.position AS col1, AVG(CAST(SUBSTRING('2026-10-14', 1, 4) AS INT64) - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) WITH p.position AS position, 2026 - CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age RETURN position AS col1, AVG(age) AS col2 GROUP BY position",
+   "error": "Parser exception: Invalid input < GROUP>: expected rule ku_Statements (line: 1, offset: 372)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND ((p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) <= 2) OR (p.mvp_awards IS NOT NULL AND CAST(p.mvp_awards AS INT64) < 1)) WITH p.position AS position, 2026 - CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age RETURN position AS col1, AVG(age) AS col2 GROUP BY position\"\n               ",
+   "rows": null
+  }
+ ]
+}

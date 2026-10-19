@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_team#2",
+ "rows": [
+  {
+   "col1": "Dan Gilbert",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Ted Stepien",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "George and Gordon Gund",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "George Gund",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Gordon Gund",
+   "col2": 1,
+   "col3": 1970,
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Syed Kazmi",
+   "col2": null,
+   "col3": 1938,
+   "name_team": "United Cab"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:MentionedIn]->(d:Document) WHERE CAST(t.founded_year AS INT64) < 1989 RETURN o.name AS col1, CAST(t.championships AS INT64) AS col2, CAST(t.founded_year AS INT64) AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 6
+  }
+ ]
+}

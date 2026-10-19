@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#33",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team {team_name: 'Detroit Pistons'})\nWITH p, t, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth\nWITH p, t, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', birth) > 10 OR (DATE_PART('month', birth) = 10 AND DATE_PART('day', birth) > 14) THEN 1 ELSE 0 END AS age\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t IS NOT NULL AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team {team_name: 'Detroit Pistons'})\nWITH p, t, DATE(REPLACE(p.birth_date, '/', '-')) AS birth_date\nWITH p, t, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > 10 OR (DATE_PART('month', birth_date) = 10 AND DATE_PART('day', birth_date) > 14) THEN 1 ELSE 0 END AS age\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t IS NOT NULL AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team {team_name: 'Detroit Pistons'})\nWITH p, t,\n  2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE\n    WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n      OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14)\n    THEN 1 ELSE 0 END AS age\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t IS NOT NULL AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team {team_name: 'Detroit Pistons'})\nWITH p, t,\n  CASE\n    WHEN p.birth_date LIKE '%/%' THEN 2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE\n      WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END\n    ELSE 2026 - CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) - CASE\n      WHEN CASE SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 1)\n        WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END > 10\n        OR (CASE SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 1)\n          WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END = 10 AND CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 2) AS INT64) > 14) THEN 1 ELSE 0 END\n  END AS age\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t IS NOT NULL AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE\n    WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 5, offset: 22)\n\"    WHEN p.birth_date LIKE '%/%' THEN 2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE\"\n                       ^^^^",
+   "rows": null
+  }
+ ]
+}

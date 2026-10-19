@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#7",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p RETURN p.nationality AS col1, AVG(date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14'))) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p, CAST(split_part(p.birth_date, '/', 0) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_day WITH p.nationality AS nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL AND regexp_matches(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') WITH DISTINCT p, CAST(regexp_extract(p.birth_date, '^([0-9]{4})/', 1) AS INT64) AS birth_year, CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) AS birth_month, CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) AS birth_day WITH p.nationality AS nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH DISTINCT p, split_part(p.birth_date, '/', 1) AS birth_year_text, split_part(p.birth_date, '/', 2) AS birth_month_text, split_part(p.birth_date, '/', 3) AS birth_day_text WHERE birth_year_text <> '' AND birth_month_text <> '' AND birth_day_text <> '' WITH p.nationality AS nationality, 2026 - CAST(birth_year_text AS INT64) - CASE WHEN CAST(birth_month_text AS INT64) > 10 OR (CAST(birth_month_text AS INT64) = 10 AND CAST(birth_day_text AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

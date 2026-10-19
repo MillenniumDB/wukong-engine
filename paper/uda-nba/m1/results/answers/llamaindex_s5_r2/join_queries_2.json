@@ -1,0 +1,5533 @@
+{
+ "uid": "join_queries#2",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Derek Grimm",
+   "col4": "Sacramento Kings",
+   "name_player": "Derek Grimm",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Kyle Korver",
+   "col4": "Chicago Bulls",
+   "name_player": "Kyle Korver",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Raymond Felton",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Raymond Felton",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Kristaps Porzi\u0146\u0123is",
+   "col4": "Boston Celtics",
+   "name_player": "Kristaps Porzi\u0146\u0123is",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Tony Smith",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Tony Smith",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Daniel Edward Anderson",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Daniel Edward Anderson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Guy Rodgers",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Guy Rodgers",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Syracuse Nationals",
+   "col3": "Cal Ramsey",
+   "col4": "Syracuse Nationals",
+   "name_player": "Cal Ramsey",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Victor Wembanyama",
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "William Bedford",
+   "col4": "San Antonio Spurs",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Stags",
+   "col3": "Marvin \"Mickey\" Rottner",
+   "col4": "Chicago Stags",
+   "name_player": "Marvin \"Mickey\" Rottner",
+   "name_team": "Chicago Stags"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Gregory Clinton Foster",
+   "col4": "Toronto Raptors",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Dino Ra\u0111a",
+   "col4": "Boston Celtics",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Clippers",
+   "col3": "Kermit Washington",
+   "col4": "San Diego Clippers",
+   "name_player": "Kermit Washington",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Kunnert",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Kunnert",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Swen Nater",
+   "col4": "San Antonio Spurs",
+   "name_player": "Swen Nater",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "John Lucas II",
+   "col4": "Houston Rockets",
+   "name_player": "John Lucas II",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Kyle Kuzma",
+   "col4": "Washington Wizards",
+   "name_player": "Kyle Kuzma",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Zion Williamson",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Zion Williamson",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Kristaps Porzingis",
+   "col4": "Washington Wizards",
+   "name_player": "Kristaps Porzingis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Jalen Brunson",
+   "col4": "New York Knicks",
+   "name_player": "Jalen Brunson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Austin Reaves",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Austin Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Bronny James",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Bronny James",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Mookie Blaylock",
+   "col4": "Atlanta Hawks",
+   "name_player": "Mookie Blaylock",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Jeremy Tyler",
+   "col4": "Golden State Warriors",
+   "name_player": "Jeremy Tyler",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Red Auerbach",
+   "col4": "Boston Celtics",
+   "name_player": "Red Auerbach",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Dick Harter",
+   "col4": "Charlotte Hornets",
+   "name_player": "Dick Harter",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Frank Jackson",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Frank Jackson",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Artis Gilmore",
+   "col4": "Chicago Bulls",
+   "name_player": "Artis Gilmore",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Will Perdue",
+   "col4": "Chicago Bulls",
+   "name_player": "Will Perdue",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Jay Williams",
+   "col4": "Chicago Bulls",
+   "name_player": "Jay Williams",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Joffrey Lauvergne",
+   "col4": "Chicago Bulls",
+   "name_player": "Joffrey Lauvergne",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Chandler Parsons",
+   "col4": "Dallas Mavericks",
+   "name_player": "Chandler Parsons",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Olivier-Maxence Prosper",
+   "col4": "Dallas Mavericks",
+   "name_player": "Olivier-Maxence Prosper",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Bobby Jones",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Bobby Jones",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Stanley Johnson",
+   "col4": "Detroit Pistons",
+   "name_player": "Stanley Johnson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Paul Arizin",
+   "col4": "Golden State Warriors",
+   "name_player": "Paul Arizin",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Mike Dunleavy Jr.",
+   "col4": "Indiana Pacers",
+   "name_player": "Mike Dunleavy Jr.",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Kevin Martin",
+   "col4": "Sacramento Kings",
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "George McGinnis",
+   "col4": "Philadelphia 76ers",
+   "name_player": "George McGinnis",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Don Buse",
+   "col4": "Kansas City Kings",
+   "name_player": "Don Buse",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Andrew Nembhard",
+   "col4": "Indiana Pacers",
+   "name_player": "Andrew Nembhard",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Paul Davis",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Paul Davis",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Josh Christopher",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Josh Christopher",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Khris Middleton",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Khris Middleton",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Brandon Jennings",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Brandon Jennings",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Eric Bledsoe",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Eric Bledsoe",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "P. J. Tucker",
+   "col4": "Milwaukee Bucks",
+   "name_player": "P. J. Tucker",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Trenton Hassell",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Trenton Hassell",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Cameron Johnson",
+   "col4": "Phoenix Suns",
+   "name_player": "Cameron Johnson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Herb Jones",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Herb Jones",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Wataru Misaka",
+   "col4": "New York Knicks",
+   "name_player": "Wataru Misaka",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Immanuel Quickley",
+   "col4": "Toronto Raptors",
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Isaiah Hartenstein",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Isaiah Hartenstein",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Nick Collison",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Nick Collison",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Doug Christie",
+   "col4": "Orlando Magic",
+   "name_player": "Doug Christie",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "JJ Redick",
+   "col4": "Orlando Magic",
+   "name_player": "JJ Redick",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Caleb Houstan",
+   "col4": "Orlando Magic",
+   "name_player": "Caleb Houstan",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Jett Howard",
+   "col4": "Orlando Magic",
+   "name_player": "Jett Howard",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Lucious Jackson",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Lucious Jackson",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Maurice Cheeks",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Maurice Cheeks",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Dick Van Arsdale",
+   "col4": "Phoenix Suns",
+   "name_player": "Dick Van Arsdale",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Paul Westphal",
+   "col4": "Phoenix Suns",
+   "name_player": "Paul Westphal",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "T. J. Warren",
+   "col4": "Phoenix Suns",
+   "name_player": "T. J. Warren",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Kelly Oubre Jr.",
+   "col4": "Washington Wizards",
+   "name_player": "Kelly Oubre Jr.",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Rudy Fern\u00e1ndez",
+   "col4": "Dallas Mavericks",
+   "name_player": "Rudy Fern\u00e1ndez",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Anfernee Simons",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Anfernee Simons",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Deni Avdija",
+   "col4": "Washington Wizards",
+   "name_player": "Deni Avdija",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Vinny Del Negro",
+   "col4": "Sacramento Kings",
+   "name_player": "Vinny Del Negro",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Harold Pressley",
+   "col4": "Sacramento Kings",
+   "name_player": "Harold Pressley",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Hassan Whiteside",
+   "col4": "Sacramento Kings",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Marvin Bagley III",
+   "col4": "Sacramento Kings",
+   "name_player": "Marvin Bagley III",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Patty Mills",
+   "col4": "San Antonio Spurs",
+   "name_player": "Patty Mills",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Anthony Parker",
+   "col4": "Toronto Raptors",
+   "name_player": "Anthony Parker",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Malachi Flynn",
+   "col4": "New York Knicks",
+   "name_player": "Malachi Flynn",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Francisco Elson",
+   "col4": "Utah Jazz",
+   "name_player": "Francisco Elson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "C. J. Miles",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "C. J. Miles",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Rodney Hood",
+   "col4": "Utah Jazz",
+   "name_player": "Rodney Hood",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Jared Jeffries",
+   "col4": "Washington Wizards",
+   "name_player": "Jared Jeffries",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Davis Bertans",
+   "col4": "Washington Wizards",
+   "name_player": "Davis Bertans",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Jazz",
+   "col3": "Thomas Kimball",
+   "col4": "New Orleans Jazz",
+   "name_player": "Thomas Kimball",
+   "name_team": "New Orleans Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Anthony Davis",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Stephen Curry",
+   "col4": "Golden State Warriors",
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Russell Westbrook",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Russell Westbrook",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Jimmy Butler",
+   "col4": "Miami Heat",
+   "name_player": "Jimmy Butler",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Mychal Thompson",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Mychal Thompson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Donald Robert Anielak",
+   "col4": "New York Knicks",
+   "name_player": "Donald Robert Anielak",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Robert Horry",
+   "col4": "San Antonio Spurs",
+   "name_player": "Robert Horry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Rick Hughes",
+   "col4": "Dallas Mavericks",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Kevin McHale",
+   "col4": "Boston Celtics",
+   "name_player": "Kevin McHale",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Dennis Rodman",
+   "col4": "Chicago Bulls",
+   "name_player": "Dennis Rodman",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Scottie Pippen",
+   "col4": "Chicago Bulls",
+   "name_player": "Scottie Pippen",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Grayson Allen",
+   "col4": "Phoenix Suns",
+   "name_player": "Grayson Allen",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Miles Julian Simon",
+   "col4": "Orlando Magic",
+   "name_player": "Miles Julian Simon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Vernon Maxwell",
+   "col4": "Houston Rockets",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Ben Wallace",
+   "col4": "Orlando Magic",
+   "name_player": "Ben Wallace",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "LaMarcus Aldridge",
+   "col4": "San Antonio Spurs",
+   "name_player": "LaMarcus Aldridge",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Warriors",
+   "col3": "James Patrick Walsh",
+   "col4": "Philadelphia Warriors",
+   "name_player": "James Patrick Walsh",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Jayson Tatum",
+   "col4": "Boston Celtics",
+   "name_player": "Jayson Tatum",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Jazz",
+   "col3": "Fred Boyd",
+   "col4": "New Orleans Jazz",
+   "name_player": "Fred Boyd",
+   "name_team": "New Orleans Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Tomjanovich",
+   "col4": "Houston Rockets",
+   "name_player": "Tomjanovich",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Eric Johnson Jones",
+   "col4": "Utah Jazz",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Tyrese Haliburton",
+   "col4": "Indiana Pacers",
+   "name_player": "Tyrese Haliburton",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Gordon Hayward",
+   "col4": "Boston Celtics",
+   "name_player": "Gordon Hayward",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Donovan Mitchell",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Donovan Mitchell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Dell Curry",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Dell Curry",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Seth Curry",
+   "col4": "Dallas Mavericks",
+   "name_player": "Seth Curry",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Jaime Jaquez Jr.",
+   "col4": "Miami Heat",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Marko Jari\u0107",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Marko Jari\u0107",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Metta World Peace",
+   "col4": "New York Knicks",
+   "name_player": "Metta World Peace",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "CJ McCollum",
+   "col4": "New Orleans Pelicans",
+   "name_player": "CJ McCollum",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Eric Gordon",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Eric Gordon",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Shareef Abdur-Rahim",
+   "col4": "Atlanta Hawks",
+   "name_player": "Shareef Abdur-Rahim",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Marvin Williams",
+   "col4": "Charlotte Hornets",
+   "name_player": "Marvin Williams",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Shelden Williams",
+   "col4": "Atlanta Hawks",
+   "name_player": "Shelden Williams",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "John Collins",
+   "col4": "Atlanta Hawks",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Jo Jo White",
+   "col4": "Boston Celtics",
+   "name_player": "Jo Jo White",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Bobcats",
+   "col3": "Al Jefferson",
+   "col4": "Charlotte Bobcats",
+   "name_player": "Al Jefferson",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Ime Udoka",
+   "col4": "Boston Celtics",
+   "name_player": "Ime Udoka",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Matt Geiger",
+   "col4": "Charlotte Hornets",
+   "name_player": "Matt Geiger",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Thabo Sefolosha",
+   "col4": "Chicago Bulls",
+   "name_player": "Thabo Sefolosha",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Taj Gibson",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Taj Gibson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Campy Russell",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Campy Russell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Cason Wallace",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Cason Wallace",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Grant Williams",
+   "col4": "Dallas Mavericks",
+   "name_player": "Grant Williams",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Nen\u00ea",
+   "col4": "Washington Wizards",
+   "name_player": "Nen\u00ea",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Adrian Dantley",
+   "col4": "Utah Jazz",
+   "name_player": "Adrian Dantley",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Vernon Macklin",
+   "col4": "Detroit Pistons",
+   "name_player": "Vernon Macklin",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Warriors",
+   "col3": "Joe Fulks",
+   "col4": "Philadelphia Warriors",
+   "name_player": "Joe Fulks",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Eric Floyd",
+   "col4": "Houston Rockets",
+   "name_player": "Eric Floyd",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Latrell Sprewell",
+   "col4": "New York Knicks",
+   "name_player": "Latrell Sprewell",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Jason Richardson",
+   "col4": "Orlando Magic",
+   "name_player": "Jason Richardson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Baron Davis",
+   "col4": "Charlotte Hornets",
+   "name_player": "Baron Davis",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Festus Ezeli",
+   "col4": "Golden State Warriors",
+   "name_player": "Festus Ezeli",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Cam Whitmore",
+   "col4": "Houston Rockets",
+   "name_player": "Cam Whitmore",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Sebastian Telfair",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Sebastian Telfair",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Tyrone Hill",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Tyrone Hill",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Walker Kessler",
+   "col4": "Utah Jazz",
+   "name_player": "Walker Kessler",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Nickeil Alexander-Walker",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Nickeil Alexander-Walker",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Iman Shumpert",
+   "col4": "New York Knicks",
+   "name_player": "Iman Shumpert",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Ognjen Jaramaz",
+   "col4": "New York Knicks",
+   "name_player": "Ognjen Jaramaz",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Kevin Knox II",
+   "col4": "New York Knicks",
+   "name_player": "Kevin Knox II",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Mikal Bridges",
+   "col4": "Phoenix Suns",
+   "name_player": "Mikal Bridges",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Jalen McDaniels",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jalen McDaniels",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Rodrigue Beaubois",
+   "col4": "Dallas Mavericks",
+   "name_player": "Rodrigue Beaubois",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Rafer Alston",
+   "col4": "Houston Rockets",
+   "name_player": "Rafer Alston",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Gustavo Ay\u00f3n",
+   "col4": "Orlando Magic",
+   "name_player": "Gustavo Ay\u00f3n",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Chuma Okeke",
+   "col4": "Orlando Magic",
+   "name_player": "Chuma Okeke",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Archie Clark",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Archie Clark",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Hersey Hawkins",
+   "col4": "Charlotte Hornets",
+   "name_player": "Hersey Hawkins",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Royal Ivey",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Royal Ivey",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Alvan Adams",
+   "col4": "Phoenix Suns",
+   "name_player": "Alvan Adams",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Tom Chambers",
+   "col4": "Phoenix Suns",
+   "name_player": "Tom Chambers",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Alex Oriakhi",
+   "col4": "Phoenix Suns",
+   "name_player": "Alex Oriakhi",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Bogdan Bogdanovi\u0107",
+   "col4": "Phoenix Suns",
+   "name_player": "Bogdan Bogdanovi\u0107",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Greg Oden",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "LaRue Martin",
+   "col4": "Portland Trail Blazers",
+   "name_player": "LaRue Martin",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Michael Holton",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Michael Holton",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati Royals",
+   "col3": "Wayne Embry",
+   "col4": "Cincinnati Royals",
+   "name_player": "Wayne Embry",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "LaSalle Thompson",
+   "col4": "Sacramento Kings",
+   "name_player": "LaSalle Thompson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Joe Kleine",
+   "col4": "Sacramento Kings",
+   "name_player": "Joe Kleine",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Michael Jackson",
+   "col4": "Sacramento Kings",
+   "name_player": "Michael Jackson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Ed Pinckney",
+   "col4": "Sacramento Kings",
+   "name_player": "Ed Pinckney",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Harry Giles",
+   "col4": "Sacramento Kings",
+   "name_player": "Harry Giles",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Ochai Agbaji",
+   "col4": "Utah Jazz",
+   "name_player": "Ochai Agbaji",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Ray Allen",
+   "col4": "Miami Heat",
+   "name_player": "Ray Allen",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Rochester Royals",
+   "col3": "Fran Curran",
+   "col4": "Rochester Royals",
+   "name_player": "Fran Curran",
+   "name_team": "Rochester Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Bursaspor Basketbol",
+   "col3": "David Michineau",
+   "col4": "Bursaspor Basketbol",
+   "name_player": "David Michineau",
+   "name_team": "Bursaspor Basketbol"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "David Lattin",
+   "col4": "Phoenix Suns",
+   "name_player": "David Lattin",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Tyreke Evans",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Tyreke Evans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Askia Rahman Jones",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Askia Rahman Jones",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Carrick Felix",
+   "col4": "Washington Wizards",
+   "name_player": "Carrick Felix",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Ken Green",
+   "col4": "New York Knicks",
+   "name_player": "Ken Green",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Gerald Madkins",
+   "col4": "Golden State Warriors",
+   "name_player": "Gerald Madkins",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Phil Jackson",
+   "col4": "New York Knicks",
+   "name_player": "Phil Jackson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Michael Jordan",
+   "col4": "Chicago Bulls",
+   "name_player": "Michael Jordan",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Cedric Ceballos",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Cedric Ceballos",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Dakari Johnson",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dakari Johnson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Chris Paul",
+   "col4": "Golden State Warriors",
+   "name_player": "Chris Paul",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Hawks",
+   "col3": "Gene Dyker",
+   "col4": "Milwaukee Hawks",
+   "name_player": "Gene Dyker",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Hawks",
+   "col3": "James J. Brasco",
+   "col4": "Milwaukee Hawks",
+   "name_player": "James J. Brasco",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Bam Adebayo",
+   "col4": "Miami Heat",
+   "name_player": "Bam Adebayo",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn Nets",
+   "col3": "Ben Simmons",
+   "col4": "Brooklyn Nets",
+   "name_player": "Ben Simmons",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Jabari Smith Jr.",
+   "col4": "Houston Rockets",
+   "name_player": "Jabari Smith Jr.",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jabari Walker",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Jabari Walker",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Thomas James Copa",
+   "col4": "San Antonio Spurs",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Brook Lopez",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Brook Lopez",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Max Berning Fiedler",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Dereck Lively II",
+   "col4": "Dallas Mavericks",
+   "name_player": "Dereck Lively II",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Tobias Harris",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Tobias Harris",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Nets",
+   "col3": "Sam Bowie",
+   "col4": "New Jersey Nets",
+   "name_player": "Sam Bowie",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Alan Henderson",
+   "col4": "Atlanta Hawks",
+   "name_player": "Alan Henderson",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Mike Bibby",
+   "col4": "Atlanta Hawks",
+   "name_player": "Mike Bibby",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Bogdan Bogdanovic",
+   "col4": "Atlanta Hawks",
+   "name_player": "Bogdan Bogdanovic",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Cedric Maxwell",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Cedric Maxwell",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Eric Williams",
+   "col4": "Toronto Raptors",
+   "name_player": "Eric Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Muggsy Bogues",
+   "col4": "Washington Bullets",
+   "name_player": "Muggsy Bogues",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "P. J. Washington",
+   "col4": "Charlotte Hornets",
+   "name_player": "P. J. Washington",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "LaMelo Ball",
+   "col4": "Charlotte Hornets",
+   "name_player": "LaMelo Ball",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Chet Walker",
+   "col4": "Chicago Bulls",
+   "name_player": "Chet Walker",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Viktor Khryapa",
+   "col4": "Chicago Bulls",
+   "name_player": "Viktor Khryapa",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "P.J. Brown",
+   "col4": "Chicago Bulls",
+   "name_player": "P.J. Brown",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Ronnie Brewer",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Ronnie Brewer",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Alex Caruso",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Alex Caruso",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Juwan Howard",
+   "col4": "Dallas Mavericks",
+   "name_player": "Juwan Howard",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Alexis Ajin\u00e7a",
+   "col4": "Dallas Mavericks",
+   "name_player": "Alexis Ajin\u00e7a",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Jaden Hardy",
+   "col4": "Dallas Mavericks",
+   "name_player": "Jaden Hardy",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Richaun Holmes",
+   "col4": "Dallas Mavericks",
+   "name_player": "Richaun Holmes",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Don Nelson",
+   "col4": "Dallas Mavericks",
+   "name_player": "Don Nelson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Julius Hodge",
+   "col4": "Denver Nuggets",
+   "name_player": "Julius Hodge",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Charlie Villanueva",
+   "col4": "Toronto Raptors",
+   "name_player": "Charlie Villanueva",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Jalen Duren",
+   "col4": "Detroit Pistons",
+   "name_player": "Jalen Duren",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Andris Biedri\u0146\u0161",
+   "col4": "Golden State Warriors",
+   "name_player": "Andris Biedri\u0146\u0161",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Reggie Williams",
+   "col4": "Golden State Warriors",
+   "name_player": "Reggie Williams",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Ekpe Udoh",
+   "col4": "Golden State Warriors",
+   "name_player": "Ekpe Udoh",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Moses Malone",
+   "col4": "Washington Bullets",
+   "name_player": "Moses Malone",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "James Ennis III",
+   "col4": "Houston Rockets",
+   "name_player": "James Ennis III",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Mark Jackson",
+   "col4": "New York Knicks",
+   "name_player": "Mark Jackson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Maceo Baston",
+   "col4": "Indiana Pacers",
+   "name_player": "Maceo Baston",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Leandro Barbosa",
+   "col4": "Phoenix Suns",
+   "name_player": "Leandro Barbosa",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Solomon Hill",
+   "col4": "Indiana Pacers",
+   "name_player": "Solomon Hill",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Marques Johnson",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Marques Johnson",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Jamario Moon",
+   "col4": "Toronto Raptors",
+   "name_player": "Jamario Moon",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Ryan Hollins",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Ryan Hollins",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Larry Nance Jr.",
+   "col4": "Atlanta Hawks",
+   "name_player": "Larry Nance Jr.",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Bonzi Wells",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Damon Stoudamire",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Damon Stoudamire",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "MarJon Beauchamp",
+   "col4": "Milwaukee Bucks",
+   "name_player": "MarJon Beauchamp",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Bobby Portis Jr.",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Bobby Portis Jr.",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Dyson Daniels",
+   "col4": "Atlanta Hawks",
+   "name_player": "Dyson Daniels",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Andrea Bargnani",
+   "col4": "Toronto Raptors",
+   "name_player": "Andrea Bargnani",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Byron Mullens",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Byron Mullens",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Perry Jones III",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Perry Jones III",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Stan Van Gundy",
+   "col4": "Orlando Magic",
+   "name_player": "Stan Van Gundy",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Franz Wagner",
+   "col4": "Orlando Magic",
+   "name_player": "Franz Wagner",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Reggie Evans",
+   "col4": "Toronto Raptors",
+   "name_player": "Reggie Evans",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Timoth\u00e9 Luwawu-Cabarrot",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Timoth\u00e9 Luwawu-Cabarrot",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Tyrese Maxey",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Deandre Ayton",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Deandre Ayton",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Josh Jackson",
+   "col4": "Phoenix Suns",
+   "name_player": "Josh Jackson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Brian Grant",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Brian Grant",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jeff McInnis",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jon Diebler",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Jon Diebler",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Shaedon Sharpe",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Shaedon Sharpe",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Otis Birdsong",
+   "col4": "Kansas City Kings",
+   "name_player": "Otis Birdsong",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Reggie King",
+   "col4": "Kansas City Kings",
+   "name_player": "Reggie King",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Grant",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Grant",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Spencer Hawes",
+   "col4": "Sacramento Kings",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Thomas Robinson",
+   "col4": "Houston Rockets",
+   "name_player": "Thomas Robinson",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Nando de Colo",
+   "col4": "San Antonio Spurs",
+   "name_player": "Nando de Colo",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Terrence Ross",
+   "col4": "Toronto Raptors",
+   "name_player": "Terrence Ross",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Austin Daye",
+   "col4": "Toronto Raptors",
+   "name_player": "Austin Daye",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Precious Achiuwa",
+   "col4": "New York Knicks",
+   "name_player": "Precious Achiuwa",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Wes Unseld",
+   "col4": "Washington Bullets",
+   "name_player": "Wes Unseld",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Alex Sarr",
+   "col4": "Washington Wizards",
+   "name_player": "Alex Sarr",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Cassius Winston",
+   "col4": "Washington Wizards",
+   "name_player": "Cassius Winston",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Jrue Holiday",
+   "col4": "Boston Celtics",
+   "name_player": "Jrue Holiday",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Damian Lillard",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Damian Lillard",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Kevin Johnson",
+   "col4": "Phoenix Suns",
+   "name_player": "Kevin Johnson",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Giannis Antetokounmpo",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Trae Young",
+   "col4": "Atlanta Hawks",
+   "name_player": "Trae Young",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Lauri Markkanen",
+   "col4": "Utah Jazz",
+   "name_player": "Lauri Markkanen",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "James Wiseman",
+   "col4": "Golden State Warriors",
+   "name_player": "James Wiseman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Dikembe Mutombo",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Dikembe Mutombo",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Rasheed Wallace",
+   "col4": "Washington Bullets",
+   "name_player": "Rasheed Wallace",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Wallace",
+   "col4": "Detroit Pistons",
+   "name_player": "Wallace",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Mike Scott",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Mike Scott",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "John Havlicek",
+   "col4": "Boston Celtics",
+   "name_player": "John Havlicek",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Alonzo Mourning",
+   "col4": "Miami Heat",
+   "name_player": "Alonzo Mourning",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Dwayne Bacon",
+   "col4": "Charlotte Hornets",
+   "name_player": "Dwayne Bacon",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Brandon Miller",
+   "col4": "Charlotte Hornets",
+   "name_player": "Brandon Miller",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Olden Polynice",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Olden Polynice",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Tyrus Thomas",
+   "col4": "Chicago Bulls",
+   "name_player": "Tyrus Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Dalen Terry",
+   "col4": "Chicago Bulls",
+   "name_player": "Dalen Terry",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Jamal Murray",
+   "col4": "Denver Nuggets",
+   "name_player": "Jamal Murray",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Antonio McDyess",
+   "col4": "San Antonio Spurs",
+   "name_player": "Antonio McDyess",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Brandon Knight",
+   "col4": "Phoenix Suns",
+   "name_player": "Brandon Knight",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Al Attles",
+   "col4": "Golden State Warriors",
+   "name_player": "Al Attles",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Moses Moody",
+   "col4": "Golden State Warriors",
+   "name_player": "Moses Moody",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Domantas Sabonis",
+   "col4": "Sacramento Kings",
+   "name_player": "Domantas Sabonis",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Tom Owens",
+   "col4": "Indiana Pacers",
+   "name_player": "Tom Owens",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Clark Kellogg",
+   "col4": "Indiana Pacers",
+   "name_player": "Clark Kellogg",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Ben Sheppard",
+   "col4": "Indiana Pacers",
+   "name_player": "Ben Sheppard",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Chris Copeland",
+   "col4": "Indiana Pacers",
+   "name_player": "Chris Copeland",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Rodney Rogers",
+   "col4": "Phoenix Suns",
+   "name_player": "Rodney Rogers",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Brandon Clarke",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Brandon Clarke",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Leo Gottlieb",
+   "col4": "New York Knicks",
+   "name_player": "Leo Gottlieb",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Jeff Turner",
+   "col4": "Orlando Magic",
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Jerry Chambers",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jerry Chambers",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Marquese Chriss",
+   "col4": "Phoenix Suns",
+   "name_player": "Marquese Chriss",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Phil Ford",
+   "col4": "Kansas City Kings",
+   "name_player": "Phil Ford",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Rafael Ara\u00fajo",
+   "col4": "Toronto Raptors",
+   "name_player": "Rafael Ara\u00fajo",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Jarred Vanderbilt",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jarred Vanderbilt",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Will Barton",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Will Barton",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Kyrie Irving",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Kyrie Irving",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Rui Hachimura",
+   "col4": "Washington Wizards",
+   "name_player": "Rui Hachimura",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Drew Edward Gordon",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Richard Jefferson",
+   "col4": "San Antonio Spurs",
+   "name_player": "Richard Jefferson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "DeJuan Blair",
+   "col4": "San Antonio Spurs",
+   "name_player": "DeJuan Blair",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Nate Huffman",
+   "col4": "Toronto Raptors",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Hamidou Diallo",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Hawks",
+   "col3": "Dick Surhoff",
+   "col4": "Milwaukee Hawks",
+   "name_player": "Dick Surhoff",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Paul George",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Scoot Henderson",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Scoot Henderson",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Nikola Joki\u0107",
+   "col4": "Denver Nuggets",
+   "name_player": "Nikola Joki\u0107",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Jordan Poole",
+   "col4": "Washington Wizards",
+   "name_player": "Jordan Poole",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Kevon Looney",
+   "col4": "Golden State Warriors",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Goran Dragi\u0107",
+   "col4": "Toronto Raptors",
+   "name_player": "Goran Dragi\u0107",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Emmanuel Mudiay",
+   "col4": "New York Knicks",
+   "name_player": "Emmanuel Mudiay",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Dave Cowens",
+   "col4": "Boston Celtics",
+   "name_player": "Dave Cowens",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Patrick Williams",
+   "col4": "Chicago Bulls",
+   "name_player": "Patrick Williams",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "P.J. Washington",
+   "col4": "Dallas Mavericks",
+   "name_player": "P.J. Washington",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Arron Afflalo",
+   "col4": "Detroit Pistons",
+   "name_player": "Arron Afflalo",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Kyle Singler",
+   "col4": "Detroit Pistons",
+   "name_player": "Kyle Singler",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Elvin Hayes",
+   "col4": "Houston Rockets",
+   "name_player": "Elvin Hayes",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Nene",
+   "col4": "Washington Wizards",
+   "name_player": "Nene",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Tari Eason",
+   "col4": "Houston Rockets",
+   "name_player": "Tari Eason",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Wesley Matthews",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Wesley Matthews",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Mojave King",
+   "col4": "Indiana Pacers",
+   "name_player": "Mojave King",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Hasheem Thabeet",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Hasheem Thabeet",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Hamed Haddadi",
+   "col4": "Toronto Raptors",
+   "name_player": "Hamed Haddadi",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Troy Hudson",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Troy Hudson",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Alen Smailagi\u0107",
+   "col4": "Golden State Warriors",
+   "name_player": "Alen Smailagi\u0107",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Allan Houston",
+   "col4": "New York Knicks",
+   "name_player": "Allan Houston",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Eric Maynor",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Eric Maynor",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jerami Grant",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Jerami Grant",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Jalen Williams",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Jalen Williams",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Billy Cunningham",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Billy Cunningham",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Darrall Imhoff",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Darrall Imhoff",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Matisse Thybulle",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Matisse Thybulle",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "De'Anthony Melton",
+   "col4": "Philadelphia 76ers",
+   "name_player": "De'Anthony Melton",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Dan Majerle",
+   "col4": "Phoenix Suns",
+   "name_player": "Dan Majerle",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Scott Wedman",
+   "col4": "Kansas City Kings",
+   "name_player": "Scott Wedman",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Delon Wright",
+   "col4": "Toronto Raptors",
+   "name_player": "Delon Wright",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Blue Edwards",
+   "col4": "Utah Jazz",
+   "name_player": "Blue Edwards",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Jarnell Stokes",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Jarnell Stokes",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Tracy Murray",
+   "col4": "Washington Bullets",
+   "name_player": "Tracy Murray",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Cleanthony Early",
+   "col4": "New York Knicks",
+   "name_player": "Cleanthony Early",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "John Salley",
+   "col4": "Detroit Pistons",
+   "name_player": "John Salley",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Shawn Respert",
+   "col4": "Phoenix Suns",
+   "name_player": "Shawn Respert",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Rod Strickland",
+   "col4": "Washington Bullets",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Byron Scott",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Byron Scott",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Kent Benson",
+   "col4": "Detroit Pistons",
+   "name_player": "Kent Benson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Baltimore Bullets",
+   "col3": "Sidney Harold Tanenbaum",
+   "col4": "Baltimore Bullets",
+   "name_player": "Sidney Harold Tanenbaum",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Jaylen Brown",
+   "col4": "Boston Celtics",
+   "name_player": "Jaylen Brown",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Jalen Green",
+   "col4": "Houston Rockets",
+   "name_player": "Jalen Green",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Dwight Howard",
+   "col4": "Washington Wizards",
+   "name_player": "Dwight Howard",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Blake Griffin",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Blake Griffin",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "DeAndre Hunter",
+   "col4": "Atlanta Hawks",
+   "name_player": "DeAndre Hunter",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Otto Porter",
+   "col4": "Washington Wizards",
+   "name_player": "Otto Porter",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Gerald Wallace",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Gerald Wallace",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Bobcats",
+   "col3": "Primo\u017e Brezec",
+   "col4": "Charlotte Bobcats",
+   "name_player": "Primo\u017e Brezec",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Reggie Theus",
+   "col4": "Chicago Bulls",
+   "name_player": "Reggie Theus",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Norm Van Lier",
+   "col4": "Chicago Bulls",
+   "name_player": "Norm Van Lier",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Elton Brand",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Elton Brand",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Daniel Gafford",
+   "col4": "Dallas Mavericks",
+   "name_player": "Daniel Gafford",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Austin Carr",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Austin Carr",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Avery Johnson",
+   "col4": "San Antonio Spurs",
+   "name_player": "Avery Johnson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Spencer Dinwiddie",
+   "col4": "Washington Wizards",
+   "name_player": "Spencer Dinwiddie",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Raja Bell",
+   "col4": "Utah Jazz",
+   "name_player": "Raja Bell",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Andre Miller",
+   "col4": "Denver Nuggets",
+   "name_player": "Andre Miller",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Nemanja Nedovic",
+   "col4": "Golden State Warriors",
+   "name_player": "Nemanja Nedovic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Nico Mannion",
+   "col4": "Golden State Warriors",
+   "name_player": "Nico Mannion",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Eric Paschall",
+   "col4": "Golden State Warriors",
+   "name_player": "Eric Paschall",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Damion Lee",
+   "col4": "Golden State Warriors",
+   "name_player": "Damion Lee",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Rudy Tomjanovich",
+   "col4": "Houston Rockets",
+   "name_player": "Rudy Tomjanovich",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Kenny Smith",
+   "col4": "Houston Rockets",
+   "name_player": "Kenny Smith",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Aaron Nesmith",
+   "col4": "Indiana Pacers",
+   "name_player": "Aaron Nesmith",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Mo Williams",
+   "col4": "Utah Jazz",
+   "name_player": "Mo Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Clyde Lovellette",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Clyde Lovellette",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Ernie Grunfeld",
+   "col4": "Kansas City Kings",
+   "name_player": "Ernie Grunfeld",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Micka\u00ebl Pi\u00e9trus",
+   "col4": "Phoenix Suns",
+   "name_player": "Micka\u00ebl Pi\u00e9trus",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Syracuse Nationals",
+   "col3": "Alex Groza",
+   "col4": "Syracuse Nationals",
+   "name_player": "Alex Groza",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Eric Snow",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Eric Snow",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Alec Brown",
+   "col4": "Phoenix Suns",
+   "name_player": "Alec Brown",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Abdel Nader",
+   "col4": "Phoenix Suns",
+   "name_player": "Abdel Nader",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Toumani Camara",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Toumani Camara",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati Royals",
+   "col3": "Maurice Stokes",
+   "col4": "Cincinnati Royals",
+   "name_player": "Maurice Stokes",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Sam Lacey",
+   "col4": "Kansas City Kings",
+   "name_player": "Sam Lacey",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Brad Lohaus",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Brad Lohaus",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Jeremy Evans",
+   "col4": "Utah Jazz",
+   "name_player": "Jeremy Evans",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Udoka Azubuike",
+   "col4": "Utah Jazz",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Collin Sexton",
+   "col4": "Utah Jazz",
+   "name_player": "Collin Sexton",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Robert Pack",
+   "col4": "Washington Bullets",
+   "name_player": "Robert Pack",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Kevin Durant",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Kevin Durant",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Ricky Rubio",
+   "col4": "Utah Jazz",
+   "name_player": "Ricky Rubio",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Lamar Odom",
+   "col4": "Miami Heat",
+   "name_player": "Lamar Odom",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Jos\u00e9 Calder\u00f3n",
+   "col4": "Toronto Raptors",
+   "name_player": "Jos\u00e9 Calder\u00f3n",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Robert Parish",
+   "col4": "Boston Celtics",
+   "name_player": "Robert Parish",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Elden Campbell",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Elden Campbell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Kurt Rambis",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kurt Rambis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Stanley M. Noszka",
+   "col4": "Boston Celtics",
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Rick Mahorn",
+   "col4": "Detroit Pistons",
+   "name_player": "Rick Mahorn",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Trent Tucker",
+   "col4": "Chicago Bulls",
+   "name_player": "Trent Tucker",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Eric Schintzius",
+   "col4": "Boston Celtics",
+   "name_player": "Eric Schintzius",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Rik Smits",
+   "col4": "Indiana Pacers",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Darnell Hillman",
+   "col4": "Golden State Warriors",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "AS Monaco",
+   "col3": "Nick Calathes",
+   "col4": "AS Monaco",
+   "name_player": "Nick Calathes",
+   "name_team": "AS Monaco"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Aaron Williams",
+   "col4": "Toronto Raptors",
+   "name_player": "Aaron Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Debreceni EAC",
+   "col3": "Moore",
+   "col4": "Debreceni EAC",
+   "name_player": "Moore",
+   "name_team": "Debreceni EAC"
+  },
+  {
+   "col1": null,
+   "col2": "Tofa\u015f",
+   "col3": "James White",
+   "col4": "Tofa\u015f",
+   "name_player": "James White",
+   "name_team": "Tofa\u015f"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Bill Hewitt",
+   "col4": "Chicago Bulls",
+   "name_player": "Bill Hewitt",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Fort Wayne Pistons",
+   "col3": "Dick Rosenthal",
+   "col4": "Fort Wayne Pistons",
+   "name_player": "Dick Rosenthal",
+   "name_team": "Fort Wayne Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Pat Washington",
+   "col4": "Golden State Warriors",
+   "name_player": "Pat Washington",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "T. J. Ford",
+   "col4": "Toronto Raptors",
+   "name_player": "T. J. Ford",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Shai Gilgeous-Alexander",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Shai Gilgeous-Alexander",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Trayce Jackson-Davis",
+   "col4": "Golden State Warriors",
+   "name_player": "Trayce Jackson-Davis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Karl-Anthony Towns",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Karl-Anthony Towns",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Al Horford",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Rudy Gay",
+   "col4": "Sacramento Kings",
+   "name_player": "Rudy Gay",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Zach Collins",
+   "col4": "San Antonio Spurs",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Brandon Ingram",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Brandon Ingram",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Ben Gordon",
+   "col4": "Detroit Pistons",
+   "name_player": "Ben Gordon",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Kirk Hinrich",
+   "col4": "Washington Wizards",
+   "name_player": "Kirk Hinrich",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Paul Millsap",
+   "col4": "Atlanta Hawks",
+   "name_player": "Paul Millsap",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Tom Heinsohn",
+   "col4": "Boston Celtics",
+   "name_player": "Tom Heinsohn",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Romeo Langford",
+   "col4": "Boston Celtics",
+   "name_player": "Romeo Langford",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Doc Rivers",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Doc Rivers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Bobcats",
+   "col3": "Sean May",
+   "col4": "Charlotte Bobcats",
+   "name_player": "Sean May",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Stacey King",
+   "col4": "Chicago Bulls",
+   "name_player": "Stacey King",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Ron Artest",
+   "col4": "Houston Rockets",
+   "name_player": "Ron Artest",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Richard Hamilton",
+   "col4": "Washington Wizards",
+   "name_player": "Richard Hamilton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Doug McDermott",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Doug McDermott",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Justin Holiday",
+   "col4": "New York Knicks",
+   "name_player": "Justin Holiday",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Julian Phillips",
+   "col4": "Chicago Bulls",
+   "name_player": "Julian Phillips",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Roy Tarpley",
+   "col4": "Dallas Mavericks",
+   "name_player": "Roy Tarpley",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Amar'e Stoudemire",
+   "col4": "New York Knicks",
+   "name_player": "Amar'e Stoudemire",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Alex English",
+   "col4": "Denver Nuggets",
+   "name_player": "Alex English",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Chris Webber",
+   "col4": "Sacramento Kings",
+   "name_player": "Chris Webber",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Ognjen Kuzmic",
+   "col4": "Golden State Warriors",
+   "name_player": "Ognjen Kuzmic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Mario Elie",
+   "col4": "Houston Rockets",
+   "name_player": "Mario Elie",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Steve Francis",
+   "col4": "New York Knicks",
+   "name_player": "Steve Francis",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Aaron Brooks",
+   "col4": "Houston Rockets",
+   "name_player": "Aaron Brooks",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Nene Hilario",
+   "col4": "Houston Rockets",
+   "name_player": "Nene Hilario",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Bennedict Mathurin",
+   "col4": "Indiana Pacers",
+   "name_player": "Bennedict Mathurin",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Ivica Zubac",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Ivica Zubac",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Jaren Jackson Jr.",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Jaren Jackson Jr.",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Tyler Ennis",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Tyler Ennis",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Tony Snell",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Tony Snell",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Michael Beasley",
+   "col4": "New York Knicks",
+   "name_player": "Michael Beasley",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Jabari Parker",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Jabari Parker",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Hugo Besson",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Hugo Besson",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Fred Hoiberg",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Fred Hoiberg",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Leandro Bolmaro",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Leandro Bolmaro",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Jaden McDaniels",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Jaden McDaniels",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Jordan Bone",
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Bone",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Darko Mili\u010di\u0107",
+   "col4": "Orlando Magic",
+   "name_player": "Darko Mili\u010di\u0107",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Dennis Scott",
+   "col4": "Orlando Magic",
+   "name_player": "Dennis Scott",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Kyle O'Quinn",
+   "col4": "Orlando Magic",
+   "name_player": "Kyle O'Quinn",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Paolo Banchero",
+   "col4": "Orlando Magic",
+   "name_player": "Paolo Banchero",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Theo Ratliff",
+   "col4": "Atlanta Hawks",
+   "name_player": "Theo Ratliff",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Boban Marjanovi\u0107",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Boban Marjanovi\u0107",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Alex Len",
+   "col4": "Phoenix Suns",
+   "name_player": "Alex Len",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Dragan Bender",
+   "col4": "Phoenix Suns",
+   "name_player": "Dragan Bender",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Arvydas Sabonis",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Arvydas Sabonis",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Nolan Smith",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Nolan Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Larry Staverman",
+   "col4": "Kansas City Kings",
+   "name_player": "Larry Staverman",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Richmond",
+   "col4": "Washington Wizards",
+   "name_player": "Richmond",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Corliss Williamson",
+   "col4": "Toronto Raptors",
+   "name_player": "Corliss Williamson",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Davion Mitchell",
+   "col4": "Sacramento Kings",
+   "name_player": "Davion Mitchell",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "James Silas",
+   "col4": "San Antonio Spurs",
+   "name_player": "James Silas",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Dwane Casey",
+   "col4": "Toronto Raptors",
+   "name_player": "Dwane Casey",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Bargnani",
+   "col4": "New York Knicks",
+   "name_player": "Bargnani",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "John Drew",
+   "col4": "Utah Jazz",
+   "name_player": "John Drew",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Kelly Tripucka",
+   "col4": "Utah Jazz",
+   "name_player": "Kelly Tripucka",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Kevin Murphy",
+   "col4": "Utah Jazz",
+   "name_player": "Kevin Murphy",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Antonius Cleveland",
+   "col4": "Dallas Mavericks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "DeMarcus Cousins",
+   "col4": "New Orleans Pelicans",
+   "name_player": "DeMarcus Cousins",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "DeAndre Jordan",
+   "col4": "Los Angeles Clippers",
+   "name_player": "DeAndre Jordan",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Rudy Gobert",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Rudy Gobert",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Rajon Rondo",
+   "col4": "Boston Celtics",
+   "name_player": "Rajon Rondo",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Shane Larkin",
+   "col4": "Dallas Mavericks",
+   "name_player": "Shane Larkin",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Jerian Grant",
+   "col4": "New York Knicks",
+   "name_player": "Jerian Grant",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Anthony Avent",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Walter Berry",
+   "col4": "Houston Rockets",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Derrick Chievous",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Carmelo Anthony",
+   "col4": "Atlanta Hawks",
+   "name_player": "Carmelo Anthony",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Devin Booker",
+   "col4": "Phoenix Suns",
+   "name_player": "Devin Booker",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Steven Delano Smith",
+   "col4": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Joseph Xavier Forte",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Joseph Xavier Forte",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Garrett David Witts",
+   "col4": "Washington Bullets",
+   "name_player": "Garrett David Witts",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Virtus Bologna",
+   "col3": "Devontae Cacok",
+   "col4": "Virtus Bologna",
+   "name_player": "Devontae Cacok",
+   "name_team": "Virtus Bologna"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Nets",
+   "col3": "Maurice Lucas",
+   "col4": "New Jersey Nets",
+   "name_player": "Maurice Lucas",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati Royals",
+   "col3": "Jack Parr",
+   "col4": "Cincinnati Royals",
+   "name_player": "Jack Parr",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Joel Embiid",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Luka Don\u010di\u0107",
+   "col4": "Dallas Mavericks",
+   "name_player": "Luka Don\u010di\u0107",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Caleb Martin",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Shabazz Muhammad",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Shabazz Muhammad",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Cade Cunningham",
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Jordan Bell",
+   "col4": "Golden State Warriors",
+   "name_player": "Jordan Bell",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Norman Powell",
+   "col4": "Toronto Raptors",
+   "name_player": "Norman Powell",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "SCMU Craiova",
+   "col3": "Omari Gudul",
+   "col4": "SCMU Craiova",
+   "name_player": "Omari Gudul",
+   "name_team": "SCMU Craiova"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Amen Thompson",
+   "col4": "Houston Rockets",
+   "name_player": "Amen Thompson",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Glen Davis",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Glen Davis",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Zaccharie Risacher",
+   "col4": "Atlanta Hawks",
+   "name_player": "Zaccharie Risacher",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Raulzinho Neto",
+   "col4": "Utah Jazz",
+   "name_player": "Raulzinho Neto",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Kevin Huerter",
+   "col4": "Sacramento Kings",
+   "name_player": "Kevin Huerter",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Kevin Garnett",
+   "col4": "Boston Celtics",
+   "name_player": "Kevin Garnett",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Kendrick Perkins",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Kendrick Perkins",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Xavier Tillman",
+   "col4": "Boston Celtics",
+   "name_player": "Xavier Tillman",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Larry Johnson",
+   "col4": "New York Knicks",
+   "name_player": "Larry Johnson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Mark Williams",
+   "col4": "Charlotte Hornets",
+   "name_player": "Mark Williams",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "J.J. Barea",
+   "col4": "Dallas Mavericks",
+   "name_player": "J.J. Barea",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Darren Collison",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Darren Collison",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Dennis Smith Jr.",
+   "col4": "Dallas Mavericks",
+   "name_player": "Dennis Smith Jr.",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Christian Wood",
+   "col4": "Dallas Mavericks",
+   "name_player": "Christian Wood",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Tim Thomas",
+   "col4": "Chicago Bulls",
+   "name_player": "Tim Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Dale Ellis",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Dale Ellis",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Kentavious Caldwell-Pope",
+   "col4": "Washington Wizards",
+   "name_player": "Kentavious Caldwell-Pope",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Bruce Brown",
+   "col4": "Toronto Raptors",
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Greg Monroe",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Greg Monroe",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Ike Diogu",
+   "col4": "Indiana Pacers",
+   "name_player": "Ike Diogu",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Ralph Sampson",
+   "col4": "Golden State Warriors",
+   "name_player": "Ralph Sampson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Hornets",
+   "col3": "Ryan Anderson",
+   "col4": "New Orleans Hornets",
+   "name_player": "Ryan Anderson",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Dillon Brooks",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Dillon Brooks",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Davis",
+   "col4": "Indiana Pacers",
+   "name_player": "Davis",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Miles Plumlee",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Miles Plumlee",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Myles Turner",
+   "col4": "Indiana Pacers",
+   "name_player": "Myles Turner",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Obi Toppin",
+   "col4": "Indiana Pacers",
+   "name_player": "Obi Toppin",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Bobby Simmons",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Bobby Simmons",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Furkan Aldemir",
+   "col4": "Houston Rockets",
+   "name_player": "Furkan Aldemir",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Montrezl Harrell",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Montrezl Harrell",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Minneapolis Lakers",
+   "col3": "Herm Schaefer",
+   "col4": "Minneapolis Lakers",
+   "name_player": "Herm Schaefer",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Thomas Bryant",
+   "col4": "Washington Wizards",
+   "name_player": "Thomas Bryant",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Vin Baker",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Vin Baker",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Joe Alexander",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Joe Alexander",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Bryn Forbes",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Bryn Forbes",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Jon McGlocklin",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Jon McGlocklin",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Wally Szczerbiak",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Wally Szczerbiak",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Derrick Williams",
+   "col4": "Utah Jazz",
+   "name_player": "Derrick Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Naz Reid",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Naz Reid",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "Jaxson Hayes",
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jaxson Hayes",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "E.J. Liddell",
+   "col4": "Atlanta Hawks",
+   "name_player": "E.J. Liddell",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Earl Monroe",
+   "col4": "New York Knicks",
+   "name_player": "Earl Monroe",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "John Starks",
+   "col4": "Golden State Warriors",
+   "name_player": "John Starks",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Jerome James",
+   "col4": "New York Knicks",
+   "name_player": "Jerome James",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Michael Sweetney",
+   "col4": "Chicago Bulls",
+   "name_player": "Michael Sweetney",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Alec Burks",
+   "col4": "Utah Jazz",
+   "name_player": "Alec Burks",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Daniel Orton",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Daniel Orton",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Terrance Ferguson",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Terrance Ferguson",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Dillon Jones",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dillon Jones",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Darrell Armstrong",
+   "col4": "Orlando Magic",
+   "name_player": "Darrell Armstrong",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Andrew Nicholson",
+   "col4": "Orlando Magic",
+   "name_player": "Andrew Nicholson",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Cole Anthony",
+   "col4": "Orlando Magic",
+   "name_player": "Cole Anthony",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Anthony Black",
+   "col4": "Orlando Magic",
+   "name_player": "Anthony Black",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Syracuse Nationals",
+   "col3": "Ralph Beard",
+   "col4": "Syracuse Nationals",
+   "name_player": "Ralph Beard",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Hal Greer",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Hal Greer",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Doug Collins",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Doug Collins",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Furkan Korkmaz",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Furkan Korkmaz",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Bradley Beal",
+   "col4": "Washington Wizards",
+   "name_player": "Bradley Beal",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Earl Clark",
+   "col4": "Orlando Magic",
+   "name_player": "Earl Clark",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "V\u00edctor Claver",
+   "col4": "Portland Trail Blazers",
+   "name_player": "V\u00edctor Claver",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Jeff Withey",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Jeff Withey",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Donovan Clingan",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Donovan Clingan",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Jimmer Fredette",
+   "col4": "Sacramento Kings",
+   "name_player": "Jimmer Fredette",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Frank Mason III",
+   "col4": "Sacramento Kings",
+   "name_player": "Frank Mason III",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Mark Eaton",
+   "col4": "Utah Jazz",
+   "name_player": "Mark Eaton",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Darrell Griffith",
+   "col4": "Utah Jazz",
+   "name_player": "Darrell Griffith",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Jeff Wilkins",
+   "col4": "Utah Jazz",
+   "name_player": "Jeff Wilkins",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Tyrone Corbin",
+   "col4": "Utah Jazz",
+   "name_player": "Tyrone Corbin",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Mike Conley",
+   "col4": "Utah Jazz",
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Elijah Hughes",
+   "col4": "Utah Jazz",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Jeff Ruland",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jeff Ruland",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Gheorghe Mure\u0219an",
+   "col4": "Washington Bullets",
+   "name_player": "Gheorghe Mure\u0219an",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Calbert Cheaney",
+   "col4": "Washington Bullets",
+   "name_player": "Calbert Cheaney",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Cedevita Olimpija",
+   "col3": "Nikola Radi\u010devi\u0107",
+   "col4": "Cedevita Olimpija",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Cedevita Olimpija"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Draymond Green",
+   "col4": "Golden State Warriors",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Zach Randolph",
+   "col4": "Sacramento Kings",
+   "name_player": "Zach Randolph",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Glen Rice",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Glen Rice",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Tyson Chandler",
+   "col4": "Phoenix Suns",
+   "name_player": "Tyson Chandler",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Drew Gordon",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Warriors",
+   "col3": "Edward Dahler Jr.",
+   "col4": "Philadelphia Warriors",
+   "name_player": "Edward Dahler Jr.",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Karl Malone",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Karl Malone",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Michael Cooper",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Michael Cooper",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Anthony Edwards",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Andre Iguodala",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andre Iguodala",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Shaun Livingston",
+   "col4": "Washington Wizards",
+   "name_player": "Shaun Livingston",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Hawks",
+   "col3": "Elmer H. Behnke",
+   "col4": "Milwaukee Hawks",
+   "name_player": "Elmer H. Behnke",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Steve Kerr",
+   "col4": "Chicago Bulls",
+   "name_player": "Steve Kerr",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Reggie Lewis",
+   "col4": "Boston Celtics",
+   "name_player": "Reggie Lewis",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Clippers",
+   "col3": "Randy Smith",
+   "col4": "San Diego Clippers",
+   "name_player": "Randy Smith",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Elmira Colonels",
+   "col3": "Leroy Chollet",
+   "col4": "Elmira Colonels",
+   "name_player": "Leroy Chollet",
+   "name_team": "Elmira Colonels"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Dennis Schr\u00f6der",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "DaMon William \"Monti\" Davis",
+   "col4": "Dallas Mavericks",
+   "name_player": "DaMon William \"Monti\" Davis",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Buddy Hield",
+   "col4": "Sacramento Kings",
+   "name_player": "Buddy Hield",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Paul Pierce",
+   "col4": "Washington Wizards",
+   "name_player": "Paul Pierce",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Isaiah Thomas",
+   "col4": "Sacramento Kings",
+   "name_player": "Isaiah Thomas",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Victor Oladipo",
+   "col4": "Orlando Magic",
+   "name_player": "Victor Oladipo",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Jaden Ivey",
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Jusuf Nurki\u0107",
+   "col4": "Phoenix Suns",
+   "name_player": "Jusuf Nurki\u0107",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Ausar Thompson",
+   "col4": "Detroit Pistons",
+   "name_player": "Ausar Thompson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Harrison Barnes",
+   "col4": "San Antonio Spurs",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "James Ennis",
+   "col4": "Miami Heat",
+   "name_player": "James Ennis",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Markelle Fultz",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Markelle Fultz",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Enes Kanter",
+   "col4": "Utah Jazz",
+   "name_player": "Enes Kanter",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "K. C. Jones",
+   "col4": "Boston Celtics",
+   "name_player": "K. C. Jones",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Emeka Okafor",
+   "col4": "Washington Wizards",
+   "name_player": "Emeka Okafor",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Cody Zeller",
+   "col4": "Atlanta Hawks",
+   "name_player": "Cody Zeller",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Rodney Carney",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Rodney Carney",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "\u00d6mer A\u015f\u0131k",
+   "col4": "Houston Rockets",
+   "name_player": "\u00d6mer A\u015f\u0131k",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn Nets",
+   "col3": "C.J. Watson",
+   "col4": "Brooklyn Nets",
+   "name_player": "C.J. Watson",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Anthony Morrow",
+   "col4": "Chicago Bulls",
+   "name_player": "Anthony Morrow",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Ayo Dosunmu",
+   "col4": "Chicago Bulls",
+   "name_player": "Ayo Dosunmu",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Jim Chones",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Jim Chones",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Michael Porter Jr.",
+   "col4": "Denver Nuggets",
+   "name_player": "Michael Porter Jr.",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Malik Beasley",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Malik Beasley",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Rodney Stuckey",
+   "col4": "Detroit Pistons",
+   "name_player": "Rodney Stuckey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Nate Thurmond",
+   "col4": "Golden State Warriors",
+   "name_player": "Nate Thurmond",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Billy Knight",
+   "col4": "Indiana Pacers",
+   "name_player": "Billy Knight",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Isaiah Jackson",
+   "col4": "Indiana Pacers",
+   "name_player": "Isaiah Jackson",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Jordan Nwora",
+   "col4": "Toronto Raptors",
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Jarace Walker",
+   "col4": "Indiana Pacers",
+   "name_player": "Jarace Walker",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Isaiah Wong",
+   "col4": "Indiana Pacers",
+   "name_player": "Isaiah Wong",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Jalen Smith",
+   "col4": "Indiana Pacers",
+   "name_player": "Jalen Smith",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Michael Olowokandi",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Michael Olowokandi",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Corey Maggette",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Corey Maggette",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Darius Miles",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Darius Miles",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Mike Taylor",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Mike Taylor",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Minneapolis Lakers",
+   "col3": "Jim Pollard",
+   "col4": "Minneapolis Lakers",
+   "name_player": "Jim Pollard",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Robert Traylor",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Robert Traylor",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Thon Maker",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Thon Maker",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Gorgui Dieng",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Gorgui Dieng",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Pablo Prigioni",
+   "col4": "New York Knicks",
+   "name_player": "Pablo Prigioni",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "RJ Barrett",
+   "col4": "Toronto Raptors",
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Nikola Topic",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Nikola Topic",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Andrew Toney",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andrew Toney",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Kareem Rush",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Kareem Rush",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Josh Richardson",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Josh Richardson",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Gail Goodrich",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Gail Goodrich",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Qyntel Woods",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Qyntel Woods",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Meyers Leonard",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Meyers Leonard",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati Royals",
+   "col3": "Jack Twyman",
+   "col4": "Cincinnati Royals",
+   "name_player": "Jack Twyman",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Wayman Tisdale",
+   "col4": "Phoenix Suns",
+   "name_player": "Wayman Tisdale",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Mitch Richmond",
+   "col4": "Washington Wizards",
+   "name_player": "Mitch Richmond",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Justin Jackson",
+   "col4": "Sacramento Kings",
+   "name_player": "Justin Jackson",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "George Gervin",
+   "col4": "Chicago Bulls",
+   "name_player": "George Gervin",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Jack McClinton",
+   "col4": "San Antonio Spurs",
+   "name_player": "Jack McClinton",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Gary Neal",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Gary Neal",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Joey Graham",
+   "col4": "Toronto Raptors",
+   "name_player": "Joey Graham",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Nets",
+   "col3": "Deron Williams",
+   "col4": "New Jersey Nets",
+   "name_player": "Deron Williams",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Thurl Bailey",
+   "col4": "Utah Jazz",
+   "name_player": "Thurl Bailey",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Ra\u00fal L\u00f3pez",
+   "col4": "Utah Jazz",
+   "name_player": "Ra\u00fal L\u00f3pez",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Kyrylo Fesenko",
+   "col4": "Utah Jazz",
+   "name_player": "Kyrylo Fesenko",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Earl Watson",
+   "col4": "Utah Jazz",
+   "name_player": "Earl Watson",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Walt Bellamy",
+   "col4": "Washington Wizards",
+   "name_player": "Walt Bellamy",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "A.J. Price",
+   "col4": "Washington Wizards",
+   "name_player": "A.J. Price",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Troy Brown",
+   "col4": "Washington Wizards",
+   "name_player": "Troy Brown",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Mark Price",
+   "col4": "Washington Bullets",
+   "name_player": "Mark Price",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Marvin Roberts",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Marvin Roberts",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Thanasis Antetokounmpo",
+   "col4": "New York Knicks",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Nick Van Exel",
+   "col4": "San Antonio Spurs",
+   "name_player": "Nick Van Exel",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "Michael Finley",
+   "col4": "San Antonio Spurs",
+   "name_player": "Michael Finley",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Rod Derline",
+   "col4": "Seattle SuperSonics",
+   "name_player": "Rod Derline",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Lou Williams",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Lou Williams",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Lamar Stevens",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Lamar Stevens",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "OG Anunoby",
+   "col4": "New York Knicks",
+   "name_player": "OG Anunoby",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "John Jenkins",
+   "col4": "Atlanta Hawks",
+   "name_player": "John Jenkins",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Jeff Teague",
+   "col4": "Indiana Pacers",
+   "name_player": "Jeff Teague",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Brad Stevens",
+   "col4": "Boston Celtics",
+   "name_player": "Brad Stevens",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Khalid Reeves",
+   "col4": "Charlotte Hornets",
+   "name_player": "Khalid Reeves",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Drew Gooden",
+   "col4": "Orlando Magic",
+   "name_player": "Drew Gooden",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Carlos Boozer",
+   "col4": "Chicago Bulls",
+   "name_player": "Carlos Boozer",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Bobby Portis",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Bobby Portis",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Cameron Payne",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Cameron Payne",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Patrick Beverley",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Patrick Beverley",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Brad Sellers",
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Brad Sellers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Jim Jackson",
+   "col4": "Dallas Mavericks",
+   "name_player": "Jim Jackson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Josh Howard",
+   "col4": "Washington Wizards",
+   "name_player": "Josh Howard",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Dwight Powell",
+   "col4": "Dallas Mavericks",
+   "name_player": "Dwight Powell",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Anthony Johnson",
+   "col4": "Indiana Pacers",
+   "name_player": "Anthony Johnson",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Nathan Jawai",
+   "col4": "Toronto Raptors",
+   "name_player": "Nathan Jawai",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Malcolm Brogdon",
+   "col4": "Milwaukee Bucks",
+   "name_player": "Malcolm Brogdon",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Chris Duarte",
+   "col4": "Indiana Pacers",
+   "name_player": "Chris Duarte",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Bojan Bogdanovic",
+   "col4": "New York Knicks",
+   "name_player": "Bojan Bogdanovic",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Udonis Haslem",
+   "col4": "Miami Heat",
+   "name_player": "Udonis Haslem",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Al Thornton",
+   "col4": "Los Angeles Clippers",
+   "name_player": "Al Thornton",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Mike Conley Jr.",
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Mike Conley Jr.",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "DeMarre Carroll",
+   "col4": "Toronto Raptors",
+   "name_player": "DeMarre Carroll",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Desmond Bane",
+   "col4": "Memphis Grizzlies",
+   "name_player": "Desmond Bane",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Rashard Lewis",
+   "col4": "Washington Wizards",
+   "name_player": "Rashard Lewis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Carl Braun",
+   "col4": "New York Knicks",
+   "name_player": "Carl Braun",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Grant Jerrett",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Grant Jerrett",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Chet Holmgren",
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Chet Holmgren",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Jalen Suggs",
+   "col4": "Orlando Magic",
+   "name_player": "Jalen Suggs",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Dante Cunningham",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Dante Cunningham",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Dale Schlueter",
+   "col4": "Portland Trail Blazers",
+   "name_player": "Dale Schlueter",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Ricky Berry",
+   "col4": "Sacramento Kings",
+   "name_player": "Ricky Berry",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Lionel Simmons",
+   "col4": "Sacramento Kings",
+   "name_player": "Lionel Simmons",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Matt Harpring",
+   "col4": "Utah Jazz",
+   "name_player": "Matt Harpring",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "col4": "Washington Wizards",
+   "name_player": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "name_team": "Washington Wizards"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (t:Team)-[:MentionedIn]->(:Document) WHERE p.current_team = t.team_name RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, p.name AS col3, p.current_team AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 690
+  }
+ ]
+}

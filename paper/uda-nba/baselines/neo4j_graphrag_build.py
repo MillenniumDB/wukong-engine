@@ -367,12 +367,15 @@ def resolve(results: list[dict], km: dict):
 
 
 async def main() -> None:
+    global KM_PATH
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--data', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--doc-concurrency', type=int, default=8)
     ap.add_argument('--max-inflight', type=int, default=16)
+    ap.add_argument('--schema', type=Path, default=KM_PATH, help='knowledge_model.json to translate')
     args = ap.parse_args()
+    KM_PATH = args.schema.resolve()
     logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
     logging.getLogger('httpx').setLevel(logging.WARNING)
 

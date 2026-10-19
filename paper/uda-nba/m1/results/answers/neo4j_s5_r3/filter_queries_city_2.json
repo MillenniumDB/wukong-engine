@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE CAST(c.area AS DOUBLE) * 2.589988110336 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN DISTINCT c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.589988110336 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 99,025 acres (400.739 km\u00b2) is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH c, CASE WHEN c.area CONTAINS 'km\u00b2' THEN CAST(regexp_replace(regexp_extract(c.area, '([0-9]+\\\\.[0-9]+) km\u00b2', 1), ',', '') AS DOUBLE) ELSE CAST(regexp_replace(regexp_extract(c.area, '([0-9,]+(?:\\\\.[0-9]+)?)', 1), ',', '') AS DOUBLE) * 2.589988110336 END AS area_km2 WHERE area_km2 <= 1314.80 AND CAST(regexp_replace(c.population, ',', '') AS INT64) > 887642 RETURN c.state_name AS col1, area_km2 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"1304,379\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH c, CASE WHEN c.area CONTAINS 'km\u00b2' THEN CAST(replace(regexp_extract(c.area, '([0-9]+(?:\\\\.[0-9]+)?) km\u00b2', 1), ',', '') AS DOUBLE) ELSE CAST(replace(regexp_extract(c.area, '([0-9,]+(?:\\\\.[0-9]+)?)', 1), ',', '') AS DOUBLE) * 2.589988110336 END AS area_km2, CAST(replace(c.population, ',', '') AS INT64) AS population_num WHERE area_km2 <= 1314.80 AND population_num > 887642 RETURN c.state_name AS col1, area_km2 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WITH c, CASE WHEN c.area CONTAINS 'km\u00b2' THEN CAST(regexp_replace(regexp_extract(c.area, '([0-9]+(?:[.,][0-9]+)?) km\u00b2', 1), ',', '') AS DOUBLE) ELSE CAST(regexp_replace(regexp_extract(c.area, '([0-9]+(?:,[0-9]{3})*(?:\\\\.[0-9]+)?)', 1), ',', '') AS DOUBLE) * 2.589988110336 END AS area_km2, CAST(regexp_replace(c.population, '[,.]', '') AS INT64) AS population_num WHERE area_km2 <= 1314.80 AND population_num > 887642 RETURN c.state_name AS col1, area_km2 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"1304,379\" to INT64.",
+   "rows": null
+  }
+ ]
+}

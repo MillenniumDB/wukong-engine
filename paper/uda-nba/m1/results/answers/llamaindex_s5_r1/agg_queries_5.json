@@ -1,0 +1,109 @@
+{
+ "uid": "agg_queries#5",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 58
+  },
+  {
+   "col1": "American and Greek",
+   "col2": 1
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  },
+  {
+   "col1": "Argentinian",
+   "col2": 1
+  },
+  {
+   "col1": "Australian",
+   "col2": 2
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Canadian",
+   "col2": 3
+  },
+  {
+   "col1": "Chinese",
+   "col2": 2
+  },
+  {
+   "col1": "Croatian",
+   "col2": 2
+  },
+  {
+   "col1": "French",
+   "col2": 4
+  },
+  {
+   "col1": "German",
+   "col2": 1
+  },
+  {
+   "col1": "Greek",
+   "col2": 2
+  },
+  {
+   "col1": "Iranian",
+   "col2": 1
+  },
+  {
+   "col1": "Israeli",
+   "col2": 1
+  },
+  {
+   "col1": "Japanese",
+   "col2": 1
+  },
+  {
+   "col1": "Japanese-American",
+   "col2": 1
+  },
+  {
+   "col1": "Latvian",
+   "col2": 1
+  },
+  {
+   "col1": "Serbian",
+   "col2": 2
+  },
+  {
+   "col1": "Spanish",
+   "col2": 2
+  },
+  {
+   "col1": "Turkish",
+   "col2": 1
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL WITH DISTINCT p RETURN p.nationality AS col1, COUNT(*) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 24
+  }
+ ]
+}

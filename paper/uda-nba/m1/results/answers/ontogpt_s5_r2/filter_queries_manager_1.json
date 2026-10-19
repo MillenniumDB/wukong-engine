@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) } AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) } RETURN date_diff('year', CAST(o.birth_date AS DATE), CAST('2026-10-14' AS DATE)) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) } AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) } WITH o, t, CAST(o.birth_date AS DATE) AS birth, CAST('2026-10-14' AS DATE) AS today RETURN (DATE_PART('year', today) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth) OR (DATE_PART('month', today) = DATE_PART('month', birth) AND DATE_PART('day', today) < DATE_PART('day', birth)) THEN 1 ELSE 0 END) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 29, 1949\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) } AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) } WITH o, t, strptime(o.birth_date, '%B %d, %Y') AS birth, strptime('October 14, 2026', '%B %d, %Y') AS today RETURN (DATE_PART('year', today) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth) OR (DATE_PART('month', today) = DATE_PART('month', birth) AND DATE_PART('day', today) < DATE_PART('day', birth)) THEN 1 ELSE 0 END) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) } AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) } WITH o, t, CAST(split_part(o.birth_date, ' ', 3) AS INT64) AS birth_year, CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE NULL END AS birth_month, CAST(replace(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

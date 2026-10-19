@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_player#2",
+ "rows": [
+  {
+   "col1": "Bahamian",
+   "col2": "0"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality = 'Bahamian'\n  AND CAST(p.olympic_gold_medals AS INT64) <= 0\nRETURN p.nationality AS col1, SUM(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.nationality = 'Bahamian'\n  AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) <= 0\nRETURN p.nationality AS col1, SUM(COALESCE(CAST(p.olympic_gold_medals AS INT64), 0)) AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

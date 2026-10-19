@@ -1,0 +1,125 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1.0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 1.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1.0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.0
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 1.0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR date(REPLACE(p.birth_date, '/', '-')) <= date('1984-10-14') RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR strptime(p.birth_date, '%Y/%m/%d') <= DATE '1984-10-14' RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR strptime(p.birth_date, '%Y/%m/%d') <= DATE '1984-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 219)\n\"MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR strp",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 25
+  }
+ ]
+}

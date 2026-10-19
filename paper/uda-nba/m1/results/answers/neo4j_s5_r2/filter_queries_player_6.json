@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#6",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date = '1973/11/25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player) WHERE p.birth_date = '1973/11/25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE REPLACE(p.birth_date, '-', '/') = '1973/11/25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date LIKE '1973%11%25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 65)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.birth_date LIKE '1973%11%25' RETURN p.college AS col1, p.birth_date AS col2, p.draft_year AS col3, p.name AS name_player\"\n                                                                  ^^^^",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#1",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": 24,
+   "col3": 0,
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": 0,
+   "col2": 8,
+   "col3": 0,
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": 0,
+   "col2": 16,
+   "col3": 0,
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": 1,
+   "name_player": "Schr\u00f6der"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 0,
+   "name_player": "John Lucas II"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.fiba_world_cup AS INT64) >= 0 RETURN DISTINCT CAST(p.mvp_awards AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

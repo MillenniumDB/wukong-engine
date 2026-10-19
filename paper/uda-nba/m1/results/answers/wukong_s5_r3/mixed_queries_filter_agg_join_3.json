@@ -1,0 +1,27 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": [
+  {
+   "col1": "Dallas Mavericks",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND (\n    CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1964\n    OR (\n      CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1964\n      AND (\n        CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n        OR (\n          CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n          AND CAST(split_part(p.birth_date, '/', 3) AS INT64) >= 14\n        )\n      )\n    )\n  )\n  AND CAST(split_part(p.birth_date, '/', 1) AS INT64) <= 2026\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND (\n    CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1964\n    OR (\n      CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1964\n      AND (\n        CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10\n        OR (\n          CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n          AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14\n        )\n      )\n    )\n  )\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

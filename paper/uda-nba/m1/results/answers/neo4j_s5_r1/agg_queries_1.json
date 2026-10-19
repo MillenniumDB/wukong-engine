@@ -1,0 +1,33 @@
+{
+ "uid": "agg_queries#1",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 0
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.olympic_gold_medals IS NOT NULL RETURN p.position AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE LOWER(p.position) IN ['frontcourt', 'backcourt'] WITH CASE WHEN LOWER(p.position) = 'frontcourt' THEN 'Frontcourt' ELSE 'Backcourt' END AS position, CAST(p.olympic_gold_medals AS INT64) AS medals RETURN position AS col1, MIN(medals) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH CASE WHEN LOWER(p.position) IN ['center', 'forward', 'power forward', 'small forward', 'center-forward', 'frontcourt'] THEN 'Frontcourt' WHEN LOWER(p.position) IN ['guard', 'point guard', 'shooting guard', 'backcourt'] THEN 'Backcourt' ELSE NULL END AS position, COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) AS medals WHERE position IS NOT NULL RETURN position AS col1, MIN(medals) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+{
+ "uid": "filter_queries_player#9",
+ "rows": [
+  {
+   "col1": "10",
+   "col2": "0",
+   "col3": "Phoenix Suns",
+   "name_player": "Dave Lattin"
+  },
+  {
+   "col1": "17",
+   "col2": "2",
+   "col3": "New Jersey Nets",
+   "name_player": "Philip Douglas Jackson"
+  },
+  {
+   "col1": "15",
+   "col2": "0",
+   "col3": "Los Angeles Clippers",
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": "22",
+   "col2": "0",
+   "col3": "Detroit Pistons",
+   "name_player": "Jarrett Matthew Jack"
+  },
+  {
+   "col1": "14",
+   "col2": "0",
+   "col3": "Philadelphia Warriors",
+   "name_player": "Edward Dahler Jr."
+  },
+  {
+   "col1": "14",
+   "col2": "0",
+   "col3": "Houston Rockets",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": "16",
+   "col2": "0",
+   "col3": "Detroit Pistons",
+   "name_player": "Tony Lorenzo Delk"
+  },
+  {
+   "col1": "13",
+   "col2": "0",
+   "col3": "Syracuse Nationals",
+   "name_player": "Cal Ramsey"
+  },
+  {
+   "col1": "16",
+   "col2": "0",
+   "col3": "Cleveland Cavaliers",
+   "name_player": "Derrick Joseph Chievous"
+  },
+  {
+   "col1": "10",
+   "col2": "0",
+   "col3": "New York Knicks",
+   "name_player": "Kurt Vincent Thomas"
+  },
+  {
+   "col1": "19",
+   "col2": "0",
+   "col3": "Houston Rockets",
+   "name_player": "Rod Strickland"
+  },
+  {
+   "col1": "18",
+   "col2": "0",
+   "col3": "Chicago Bulls",
+   "name_player": "Bill Hewitt"
+  },
+  {
+   "col1": "21",
+   "col2": "0",
+   "col3": "Seattle SuperSonics",
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": "11",
+   "col2": "0",
+   "col3": "Orlando Magic",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": "17",
+   "col2": null,
+   "col3": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "21",
+   "col2": "0",
+   "col3": "Dallas Mavericks",
+   "name_player": "DaMon William Monti Davis"
+  },
+  {
+   "col1": "10",
+   "col2": "0",
+   "col3": "Philadelphia 76ers",
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": "23",
+   "col2": "1",
+   "col3": "New York Knicks",
+   "name_player": "Ogugua OG Anunoby Jr."
+  },
+  {
+   "col1": "17",
+   "col2": "2",
+   "col3": "Boston Celtics",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "15",
+   "col2": null,
+   "col3": "Milwaukee Bucks",
+   "name_player": "Giannis Sina Ugo Antetokounmpo"
+  },
+  {
+   "col1": "13",
+   "col2": "0",
+   "col3": "Miami Heat",
+   "name_player": "Tyler Christopher Herro"
+  },
+  {
+   "col1": "13",
+   "col2": "0",
+   "col3": "Chicago Bulls",
+   "name_player": "Zachary Thomas LaVine"
+  },
+  {
+   "col1": "13",
+   "col2": "0",
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": "10",
+   "col2": "0",
+   "col3": "San Antonio Spurs",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "18",
+   "col2": "0",
+   "col3": "Miami Heat",
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": "13",
+   "col2": "5",
+   "col3": "Los Angeles Lakers",
+   "name_player": "Kobe Bean Bryant"
+  },
+  {
+   "col1": "14",
+   "col2": "0",
+   "col3": "Miami Heat",
+   "name_player": "Edrice Femi Adebayo"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.draft_pick AS INT64) < 24 AND CAST(p.draft_pick AS INT64) >= 10 RETURN p.draft_pick AS col1, p.nba_championships AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE TRY_CAST(p.draft_pick AS INT64) < 24 AND TRY_CAST(p.draft_pick AS INT64) >= 10 RETURN p.draft_pick AS col1, p.nba_championships AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE TRY_CAST(p.draft_pick AS>: expected rule oC_SingleQuery (line: 1, offset: 76)\n\"MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE TRY_CAST(p.draft_pick AS INT64) < 24 AND TRY_CAST(p.draft_pick AS INT64) >= 10 RETURN p.draft_pick AS col1, p.nba_championships AS col2, p.current_team AS col3, p.name AS name_player\"\n                                                                             ^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) < 24 AND CAST(p.draft_pick AS INT64) >= 10 RETURN p.draft_pick AS col1, p.nba_championships AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Not stated\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE regexp_matches(p.draft_pick, '^[0-9]+$') AND CASE WHEN regexp_matches(p.draft_pick, '^[0-9]+$') THEN CAST(p.draft_pick AS INT64) ELSE NULL END < 24 AND CASE WHEN regexp_matches(p.draft_pick, '^[0-9]+$') THEN CAST(p.draft_pick AS INT64) ELSE NULL END >= 10 RETURN p.draft_pick AS col1, p.nba_championships AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 27
+  }
+ ]
+}

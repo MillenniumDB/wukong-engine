@@ -1,0 +1,117 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [
+  {
+   "col1": "Denver Nuggets",
+   "col2": 0.0
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0.0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0.0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0.0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0.0
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0.0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0.0
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 0.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 0.25
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 0.2
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0.0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 0.16666666666666666
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 0.0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0.0
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 0.0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.0
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 0.09090909090909091
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0.16666666666666666
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0.14285714285714285
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:ExtractedFrom]->(:Document)\nMATCH (t)-[:ExtractedFrom]->(:Document)\nWHERE CAST(p.olympic_gold_medals AS INT64) = 0\n  AND p.position <> 'Backcourt'\n  AND CAST(t.founded_year AS INT64) <> 1989\nRETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 26
+  }
+ ]
+}

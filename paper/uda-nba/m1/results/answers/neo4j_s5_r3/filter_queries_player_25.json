@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWITH DISTINCT p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS b\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH p, b,\n     date_diff('year', b, DATE('2026-10-14')) -\n     CASE WHEN date_part('month', b) > 10\n                OR (date_part('month', b) = 10 AND date_part('day', b) > 14)\n          THEN 1 ELSE 0 END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n     CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year,\n     CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month,\n     CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH p,\n     2026 - birth_year - CASE\n       WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1\n       ELSE 0\n     END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE date_part('year', strptime(p.birth_date, '%B %d, %Y')) END AS birth_year,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE date_part('month', strptime(p.birth_date, '%B %d, %Y')) END AS birth_month,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE date_part('day', strptime(p.birth_date, '%B %d, %Y')) END AS birth_day\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH p, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  COALESCE(TRY_CAST(split_part(p.birth_date, '/', 1) AS INT64), TRY_CAST(split_part(p.birth_date, ',', 2) AS INT64)) AS birth_year,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN TRY_CAST(split_part(p.birth_date, '/', 2) AS INT64)\n    WHEN p.birth_date CONTAINS 'January' THEN 1\n    WHEN p.birth_date CONTAINS 'February' THEN 2\n    WHEN p.birth_date CONTAINS 'March' THEN 3\n    WHEN p.birth_date CONTAINS 'April' THEN 4\n    WHEN p.birth_date CONTAINS 'May' THEN 5\n    WHEN p.birth_date CONTAINS 'June' THEN 6\n    WHEN p.birth_date CONTAINS 'July' THEN 7\n    WHEN p.birth_date CONTAINS 'August' THEN 8\n    WHEN p.birth_date CONTAINS 'September' THEN 9\n    WHEN p.birth_date CONTAINS 'October' THEN 10\n    WHEN p.birth_date CONTAINS 'November' THEN 11\n    WHEN p.birth_date CONTAINS 'December' THEN 12\n  END AS birth_month,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN TRY_CAST(split_part(p.birth_date, '/', 3) AS INT64)\n    ELSE TRY_CAST(split_part(split_part(p.birth_date, ',', 1), ' ', 2) AS INT64)\n  END AS birth_day\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH p, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <COALESCE(TRY_CAST(split_part(p.birth_date, '/', 1) AS>: expected rule oC_ProjectionItem (line: 3, offset: 53)\n\"  COALESCE(TRY_CAST(split_part(p.birth_date, '/', 1) AS INT64), TRY_CAST(split_part(p.birth_date, ',', 2) AS INT64)) AS birth_year,\"\n                                                      ^^",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "uid": "mixed_queries_filter_agg_player#4",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 AND CAST(p.draft_year AS INT64) > 2014 AND p.position IN ['Frontcourt', 'Backcourt'] RETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 AND CAST(p.draft_year AS INT64) > 2014 AND p.position IS NOT NULL WITH CASE WHEN p.position IN ['Center', 'Power Forward', 'Small Forward', 'Forward', 'Frontcourt'] THEN 'Frontcourt' WHEN p.position IN ['Point Guard', 'Shooting Guard', 'Guard', 'Backcourt'] THEN 'Backcourt' END AS position, CAST(p.mvp_awards AS INT64) AS mvp WHERE position IS NOT NULL RETURN position AS col1, MAX(mvp) AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

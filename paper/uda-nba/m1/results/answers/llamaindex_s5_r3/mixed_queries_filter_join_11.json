@@ -1,0 +1,1241 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "James Trindle",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Philip Anschutz",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Leo Ferris",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Mikhail Prokhorov",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Ratner",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Mikhail Prokhorov",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Bruce Ratner",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Chris Cohan",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Donald Sturm",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Joe Lacob",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Jay-Z",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Jay-Z",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Community Youth Organization",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Eddie Gottlieb",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Joe Lacob",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Ben Kerner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Philip Anschutz",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Ted Turner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Bob Short",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Carl Sanders",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Ratner",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Will Pan",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Bruce Ratner",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Peter Guber",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Peter Guber",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Atlanta Spirit LLC",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Tom Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Eddie Gottlieb",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Paul Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Bud Fischer",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Marty Marion",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Ann Walton Kroenke",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1991",
+   "col3": "Micky Arison",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Thomas Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Bruce Ratner",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Bruce Ratner",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "John Schaefer",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Chris Cohan",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Eddie Gottlieb",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Larry Weinberg",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Vulcan Sports and Entertainment",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Eddie Gottlieb",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Jerry Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Jeanie Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Tsai",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Ratner",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Community Youth Organization",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Joseph Tsai",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Red McCombs",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Dan Finnane",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Jerry Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1971",
+   "col3": "Herb Simon",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Community Youth Organization",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Community Youth Organization",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "COMSAT",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Jerry Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Tony Ressler",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Tom Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Will Pan",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Jim Fitzgerald",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "McCombs",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Tsai",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Joseph Tsai",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Chris Cohan",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Thomas Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Stan Kroenke",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Tualatin",
+   "col2": "1991",
+   "col3": "Paul Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Jim Fitzgerald",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Dan Finnane",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Jack Kent Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Tony Ressler",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Philip Anschutz",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Atlanta Spirit LLC",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Roy Boe",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Secaucus Seven",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Roy Boe",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Eddie Gottlieb",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Dan Finnane",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Atlanta Spirit LLC",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Carl Sanders",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Marty Marion",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Tsai",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Ted Turner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Frank Goldberg",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Ben Kerner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Mikhail Prokhorov",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Will Pan",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Secaucus Seven",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Roy Boe",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Clay Bennett",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Joe Lacob",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Ratner",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Chris Cohan",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Joe Lacob",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Jim Fitzgerald",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Jack Kent Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Bob Short",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Ted Turner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Mikhail Prokhorov",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Leo Ferris",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Jeanie Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Leo Ferris",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Secaucus Seven",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Peter M. Holt",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Nancy Laurie",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Red McCombs",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Jack Kent Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Joseph Tsai",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Bill Laurie",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Tualatin",
+   "col2": "1991",
+   "col3": "Jody Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Dan Finnane",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Jay-Z",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Tom Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tualatin",
+   "col2": "1991",
+   "col3": "Vulcan Sports and Entertainment",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Roy Boe",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1971",
+   "col3": "Herb Simon",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Bill Ringsby",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Jay-Z",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Angelo Drossos",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1971",
+   "col3": "Joe Lacob",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Jody Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Dan Finnane",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1971",
+   "col3": "Sidney Shlenker",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Carl Sanders",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Peter Guber",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Cooke",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Marty Marion",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1991",
+   "col3": "Ben Kerner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Joseph Tsai",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Will Pan",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Peter Guber",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Jeanie Buss",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "Secaucus Seven",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": null,
+   "col3": "Tsai",
+   "col4": "Dennis Schroder",
+   "name_player": "Dennis Schroder",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1971",
+   "col3": "Jim Fitzgerald",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1971",
+   "col3": "Jim Fitzgerald",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1971",
+   "col3": "Peter Guber",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Tony Ressler",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Thomas Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Bob Short",
+   "col4": "Schr\u00f6der",
+   "name_player": "Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Tualatin",
+   "col2": "1991",
+   "col3": "Larry Weinberg",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "1971",
+   "col3": "Chris Cohan",
+   "col4": "Darnell Hillman",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (c)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 152
+  }
+ ]
+}

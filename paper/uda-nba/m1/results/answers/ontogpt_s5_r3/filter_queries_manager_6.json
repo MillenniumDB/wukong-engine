@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') - CASE WHEN strftime(strptime(o.birth_date, '%Y/%m/%d'), '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age\nWHERE age = 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 70)\n\"WITH o, t, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') - CASE WHEN strftime(strptime(o.birth_date, '%Y/%m/%d'), '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age\"\n                                                                       ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, 2026 - CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) - CASE WHEN SUBSTRING(o.birth_date, 6, 5) > '10/14' THEN 1 ELSE 0 END AS age\nWHERE age >= 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"Janu\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS bd\nWITH o, t, 2026 - DATE_PART('year', bd) - CASE WHEN DATE_PART('month', bd) > 10 OR (DATE_PART('month', bd) = 10 AND DATE_PART('day', bd) > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <CASE WHEN o.birth_date LIKE>: expected rule oC_ProjectionItem (line: 3, offset: 34)\n\"WITH o, t, CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS bd\"\n                                   ^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, strptime(o.birth_date, '%B %d, %Y') AS bd\nWITH o, t, 2026 - DATE_PART('year', bd) - CASE WHEN DATE_PART('month', bd) > 10 OR (DATE_PART('month', bd) = 10 AND DATE_PART('day', bd) > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

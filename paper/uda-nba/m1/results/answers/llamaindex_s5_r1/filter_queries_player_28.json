@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#28",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date IS NULL THEN NULL\n    ELSE 2026 - CAST(split(p.birth_date, '/')[0] AS INT64)\n      - CASE\n          WHEN CAST(split(p.birth_date, '/')[1] AS INT64) < 10\n            OR (CAST(split(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(p.birth_date, '/')[2] AS INT64) <= 14)\n          THEN 0\n          ELSE 1\n        END\n  END AS age\nWHERE (age IS NOT NULL AND age <= 78)\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  2026 - DATE_PART('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) -\n  CASE\n    WHEN DATE_PART('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 10\n      OR (DATE_PART('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) = 10\n          AND DATE_PART('day', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > 14)\n    THEN 1\n    ELSE 0\n  END AS age\nWHERE (age IS NOT NULL AND age <= 78)\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  2026 - CAST(regexp_extract(p.birth_date, '^([0-9]+)', 1) AS INT64) -\n  CASE\n    WHEN CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)', 1) AS INT64) > 10\n      OR (CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)/([0-9]+)', 2) AS INT64) > 14\n          AND CAST(regexp_extract(p.birth_date, '^[0-9]+/([0-9]+)', 1) AS INT64) = 10)\n    THEN 1\n    ELSE 0\n  END AS age\nWHERE (age IS NOT NULL AND age <= 78)\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date IS NULL OR p.birth_date = '' THEN NULL\n    ELSE 2026 - CAST(regexp_extract(p.birth_date, '^([0-9]{4})', 1) AS INT64) -\n      CASE\n        WHEN CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})', 1) AS INT64) > 10\n          OR (\n            CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})', 1) AS INT64) = 10\n            AND CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64) > 14\n          )\n        THEN 1\n        ELSE 0\n      END\n  END AS age\nWHERE (age IS NOT NULL AND age <= 78)\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR (p.mvp_awards IS NOT NULL AND p.mvp_awards <> '' AND CAST(p.mvp_awards AS INT64) = 0)\n   OR (p.olympic_gold_medals IS NOT NULL AND p.olympic_gold_medals <> '' AND CAST(p.olympic_gold_medals AS INT64) > 1)\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

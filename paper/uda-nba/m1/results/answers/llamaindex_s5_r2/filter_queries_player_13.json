@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "Baltimore Bullets",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Sidney Harold Tanenbaum"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null,
+   "col3": "0",
+   "name_player": "LaMelo Ball"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Wayne Embry"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Devin Booker"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Gordon Hayward"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Maurice Stokes"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Lauri Markkanen"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Bobby Simmons"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": null,
+   "col3": "0",
+   "name_player": "Jack Twyman"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2' RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

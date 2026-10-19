@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND CAST(p.draft_year AS INT64) > 2014 AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 RETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.draft_year > '2014' AND p.nba_championships = '0' RETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND CAST(p.draft_year AS INT64) > 2014 AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 RETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_year AS INT64) > 2014 AND CAST(p.nba_championships AS INT64) = 0 AND p.position IN ['Forward', 'Center', 'Guard', 'F', 'G', 'C'] RETURN CASE WHEN p.position IN ['Forward', 'Center', 'F', 'C'] THEN 'Frontcourt' WHEN p.position IN ['Guard', 'G'] THEN 'Backcourt' END AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

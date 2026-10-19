@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o\nMATCH (o)-[r:Owns]->(:Team)\nWITH o, r, 2026 - CAST(split(o.birth_date, '/')[0] AS INT64) - CASE WHEN CAST(split(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(split(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(split(o.birth_date, '/')[2] AS INT64) > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o\nMATCH (o)-[r:Owns]->(:Team)\nWITH o, r, EXTRACT(YEAR FROM DATE '2026-10-14') - EXTRACT(YEAR FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN EXTRACT(MONTH FROM DATE '2026-10-14') < EXTRACT(MONTH FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) OR (EXTRACT(MONTH FROM DATE '2026-10-14') = EXTRACT(MONTH FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) AND EXTRACT(DAY FROM DATE '2026-10-14') < EXTRACT(DAY FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE))) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <EXTRACT(YEAR FROM>: expected rule oC_ProjectionItem (line: 4, offset: 24)\n\"WITH o, r, EXTRACT(YEAR FROM DATE '2026-10-14') - EXTRACT(YEAR FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN EXTRACT(MONTH FROM DATE '2026-10-14') < EXTRACT(MONTH FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) OR (EXTRACT(MONTH FROM DATE '2026-10-14') = EXTRACT(MONTH FROM CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) AND EXTRACT(DAY FROM DATE '2026-10-14') < EXTRACT",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o\nMATCH (o)-[r:Owns]->(:Team)\nWITH o, r, DATE_DIFF('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <DATE_DIFF('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 4, offset: 81)\n\"WITH o, r, DATE_DIFF('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS owner_age\"\n                                                                                  ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o\nMATCH (o)-[r:Owns]->(:Team)\nWITH o, r, DATE_DIFF('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) AS owner_age\nWHERE owner_age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American'\nRETURN r.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  }
+ ]
+}

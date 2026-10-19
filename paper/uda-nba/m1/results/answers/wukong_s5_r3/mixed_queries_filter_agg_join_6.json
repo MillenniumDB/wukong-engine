@@ -1,0 +1,29 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 46.92
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p, CASE WHEN p.death_date IS NOT NULL THEN date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) / 365.25 ELSE date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') / 365.25 END AS age RETURN p.position AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Parser exception: Invalid input <CASE WHEN p.death_date IS NOT NULL THEN date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) / 365.25 ELSE date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 395)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p, C",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p, CASE WHEN p.death_date IS NOT NULL THEN date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) / 365.25 ELSE date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), strptime('2026/10/14', '%Y/%m/%d')) / 365.25 END AS age RETURN p.position AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) AND p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p, CASE WHEN p.position IN ['Center', 'Power Forward', 'Small Forward', 'Forward'] THEN 'Frontcourt' ELSE 'Backcourt' END AS category, (CASE WHEN p.death_date IS NOT NULL THEN CAST(SUBSTRING(p.death_date, 1, 4) AS INT64) ELSE 2026 END) - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS age RETURN category AS col1, AVG(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

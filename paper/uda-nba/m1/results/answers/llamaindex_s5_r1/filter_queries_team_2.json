@@ -1,0 +1,121 @@
+{
+ "uid": "filter_queries_team#2",
+ "rows": [
+  {
+   "col1": "Robert Sarver",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Gabe Plotkin",
+   "col2": null,
+   "col3": "1988",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Rick Schnall",
+   "col2": null,
+   "col3": "1988",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Tom Cousins",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Carl Sanders",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta Spirit LLC",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Time Warner",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tony Ressler",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "George Shinn",
+   "col2": null,
+   "col3": "1988",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Cy Bahakel",
+   "col2": null,
+   "col3": "1988",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Karl Eller",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Jerry Colangelo",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Sarver-led investment group",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Larry Fitzgerald",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Mat Ishbia",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Justin Ishbia",
+   "col2": null,
+   "col3": "1968",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Arthur Blank",
+   "col2": null,
+   "col3": "1966",
+   "name_team": "Atlanta Falcons"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t) WHERE CAST(t.founded_year AS INT64) < 1989 RETURN o.name AS col1, t.championships AS col2, t.founded_year AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 18
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player), (t:Team)\nWHERE p.current_team = t.team_name\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n       OR (date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) < 78\n           AND CAST(p.fiba_world_cup AS INT64) >= 0))\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player), (t:Team)\nWHERE p.current_team = t.team_name\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n       OR (date_part('year', strptime(p.birth_date, '%Y/%m/%d')) > 1948\n           OR (date_part('year', strptime(p.birth_date, '%Y/%m/%d')) = 1948\n               AND (date_part('month', strptime(p.birth_date, '%Y/%m/%d')) > 10\n                    OR (date_part('month', strptime(p.birth_date, '%Y/%m/%d')) = 10\n                        AND date_part('day', strptime(p.birth_date, '%Y/%m/%d')) > 14)))\n           AND CAST(p.fiba_world_cup AS INT64) >= 0))\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2\nGROUP BY t.team_name",
+   "error": "Parser exception: Invalid input <\nGROUP>: expected rule ku_Statements (line: 13, offset: 0)\n\"GROUP BY t.team_name\"\n ^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player), (t:Team)\nWHERE p.current_team = t.team_name\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND (\n    (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n    OR\n    (\n      (\n        date_part('year', strptime(p.birth_date, '%Y/%m/%d')) > 1948\n        OR (\n          date_part('year', strptime(p.birth_date, '%Y/%m/%d')) = 1948\n          AND (\n            date_part('month', strptime(p.birth_date, '%Y/%m/%d')) > 10\n            OR (\n              date_part('month', strptime(p.birth_date, '%Y/%m/%d')) = 10\n              AND date_part('day', strptime(p.birth_date, '%Y/%m/%d')) > 14\n            )\n          )\n        )\n      )\n      AND CAST(p.fiba_world_cup AS INT64) >= 0\n    )\n  )\nWITH t.team_name AS team_name, MIN(CAST(p.fiba_world_cup AS INT64)) AS min_fiba\nRETURN team_name AS col1, min_fiba AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player), (t:Team)\nWHERE p.current_team = t.team_name\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND (\n    (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n    OR\n    (\n      (\n        CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1948\n        OR (\n          CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1948\n          AND (\n            CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n            OR (\n              CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n              AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14\n            )\n          )\n        )\n      )\n      AND CAST(p.fiba_world_cup AS INT64) >= 0\n    )\n  )\nWITH t.team_name AS team_name, MIN(CAST(p.fiba_world_cup AS INT64)) AS min_fiba\nRETURN team_name AS col1, min_fiba AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

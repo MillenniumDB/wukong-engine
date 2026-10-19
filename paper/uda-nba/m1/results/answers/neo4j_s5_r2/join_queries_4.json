@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) OPTIONAL MATCH (p)-[:MentionedIn]->(:Document) WITH DISTINCT p, t, c RETURN p.nationality AS col1, CASE WHEN p.birth_date IS NULL THEN NULL ELSE DATE_DIFF('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date, CAST('2026-10-14' AS DATE) AS today RETURN p.nationality AS col1, DATE_PART('year', today) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', today) < DATE_PART('month', birth_date) OR (DATE_PART('month', today) = DATE_PART('month', birth_date) AND DATE_PART('day', today) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN p.nationality AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"September 17, 1951\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CASE WHEN p.birth_date IS NULL THEN NULL WHEN CONTAINS(p.birth_date, '/') THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END AS birth_date RETURN p.nationality AS col1, CASE WHEN birth_date IS NULL THEN NULL ELSE 2026 - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > 10 OR (DATE_PART('month', birth_date) = 10 AND DATE_PART('day', birth_date) > 14) THEN 1 ELSE 0 END END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WITH o, t, 2026 - CAST(SPLIT(o.birth_date, '/')[0] AS INT64) - CASE WHEN CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10 OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) > 14) THEN 1 ELSE 0 END AS age WHERE age = 65 OR (t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans') RETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WITH o, t, DATE_DIFF('year', CAST(o.birth_date AS DATE), CAST('2026-10-14' AS DATE)) AS age WHERE age >= 65 OR t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans' RETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WITH o, t, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date WITH o, t, EXTRACT(YEAR FROM CAST('2026-10-14' AS DATE)) - EXTRACT(YEAR FROM birth_date) - CASE WHEN EXTRACT(MONTH FROM birth_date) > 10 OR (EXTRACT(MONTH FROM birth_date) = 10 AND EXTRACT(DAY FROM birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age = 65 OR (t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans') RETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <EXTRACT(YEAR FROM>: expected rule oC_ProjectionItem (line: 1, offset: 164)\n\"MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WITH o, t, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date WITH o, t, EXTRACT(YEAR FROM CAST('2026-10-14' AS DATE)) - EXTRACT(YEAR FROM birth_date) - CASE WHEN EXTRACT(MONTH FROM birth_date) > 10 OR (EXTRACT(MONTH FROM birth_date) = 10 AND EXTRACT(DAY FROM birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age ",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WITH o, t, DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10 OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10 AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14) THEN 1 ELSE 0 END AS age WHERE age >= 65 OR (t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans') RETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "uid": "mixed_queries_agg_join#2",
+ "rows": [
+  {
+   "col1": "Israeli-American",
+   "col2": null
+  },
+  {
+   "col1": "American",
+   "col2": null
+  },
+  {
+   "col1": "German",
+   "col2": null
+  },
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": null
+  },
+  {
+   "col1": null,
+   "col2": null
+  },
+  {
+   "col1": "Russian",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (o)-[:MentionedIn]->(od:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document) WITH o.nationality AS nationality, c.population AS population RETURN nationality AS col1, MIN(CAST(population AS INT64)) AS col2",
+   "error": null,
+   "rows": 6
+  }
+ ]
+}

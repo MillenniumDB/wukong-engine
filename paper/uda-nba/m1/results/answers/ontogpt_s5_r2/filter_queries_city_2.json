@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE CAST(c.area AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE CAST(regexp_replace(c.area, ' square miles', '') AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(regexp_replace(c.area, ' square miles', '') AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Not stated in the text is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE c.area <> 'Not stated in the text' AND CAST(regexp_replace(c.area, ' square miles', '') AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(regexp_replace(c.area, ' square miles', '') AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 243.3 sq mi is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE regexp_matches(c.area, '^[0-9]+(\\\\.[0-9]+)?') AND CAST(regexp_replace(c.area, '[^0-9.]', '') AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(regexp_replace(c.population, '[^0-9]', '') AS INT64) > 887642 RETURN c.state_name AS col1, CAST(regexp_replace(c.area, '[^0-9.]', '') AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80square miles is not in DOUBLE range.",
+   "rows": null
+  }
+ ]
+}

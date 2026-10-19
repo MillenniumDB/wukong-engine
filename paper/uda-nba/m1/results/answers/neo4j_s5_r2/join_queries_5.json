@@ -1,0 +1,1205 @@
+{
+ "uid": "join_queries#5",
+ "rows": [
+  {
+   "col1": "San Francisco",
+   "col2": "808,988 (2023)",
+   "col3": "1946",
+   "col4": "San Francisco",
+   "name_team": "Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": "1946",
+   "col4": "Oakland",
+   "name_team": "Golden State Warriors",
+   "name_city": "Oakland"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1,304,379",
+   "col3": "1980",
+   "col4": "Dallas",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "510,823",
+   "col3": "1946",
+   "col4": "Atlanta",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1966",
+   "col4": "Philadelphia",
+   "name_team": "Chicago Bulls",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "Washington Bullets",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "over 650,000",
+   "col3": "1946",
+   "col4": "San Antonio",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Orlando",
+   "col2": "307,573 (2020 census)",
+   "col3": "1989",
+   "col4": "Orlando",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1995",
+   "col4": "Sacramento",
+   "name_team": "Vancouver Grizzlies",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": null,
+   "col4": "Kansas City",
+   "name_team": "Kansas City Kings",
+   "name_city": "Kansas City"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": "1989",
+   "col4": "Minneapolis",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Washington",
+   "col2": "705,749",
+   "col3": null,
+   "col4": "Washington",
+   "name_team": "Washington Capitols",
+   "name_city": "Washington"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": null,
+   "col4": "Oakland",
+   "name_team": "Oakland Raiders",
+   "name_city": "Oakland"
+  },
+  {
+   "col1": "Orlando",
+   "col2": "307,573 (2020 census)",
+   "col3": "1946",
+   "col4": "Orlando",
+   "name_team": "Golden State Warriors",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "over 650,000",
+   "col3": "1967",
+   "col4": "San Antonio",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1946",
+   "col4": "New York",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1946",
+   "col4": "Sacramento",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1946",
+   "col4": "Chicago",
+   "name_team": "New York Knicks",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "New York Knicks",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2,794,356",
+   "col3": "1995",
+   "col4": "Toronto",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Vancouver",
+   "col2": null,
+   "col3": "1995",
+   "col4": "Vancouver",
+   "name_team": "Vancouver Grizzlies",
+   "name_city": "Vancouver"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "577,222",
+   "col3": "1968",
+   "col4": "Milwaukee",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "San Jose",
+   "col2": null,
+   "col3": null,
+   "col4": "San Jose",
+   "name_team": "San Francisco Warriors",
+   "name_city": "San Jose"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": null,
+   "col4": "New Orleans",
+   "name_team": "New Orleans Jazz",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1988",
+   "col4": "Philadelphia",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1988",
+   "col4": "New York",
+   "name_team": "Miami Heat",
+   "name_city": "New York"
+  },
+  {
+   "col1": "New Jersey",
+   "col2": null,
+   "col3": null,
+   "col4": "New Jersey",
+   "name_team": "New Jersey Nets",
+   "name_city": "New Jersey"
+  },
+  {
+   "col1": "Newark",
+   "col2": null,
+   "col3": null,
+   "col4": "Newark",
+   "name_team": "New Jersey Nets",
+   "name_city": "Newark"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "577,222",
+   "col3": null,
+   "col4": "Milwaukee",
+   "name_team": "Milwaukee Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": null,
+   "col4": "Chicago",
+   "name_team": "Chicago Stags",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Fort Wayne",
+   "col2": null,
+   "col3": null,
+   "col4": "Fort Wayne",
+   "name_team": "Fort Wayne Pistons",
+   "name_city": "Fort Wayne"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "over 650,000",
+   "col3": "1967",
+   "col4": "San Antonio",
+   "name_team": "Dallas Chaparrals",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Orem",
+   "col2": null,
+   "col3": null,
+   "col4": "Orem",
+   "name_team": "Utah Flash",
+   "name_city": "Orem"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1946",
+   "col4": "New York",
+   "name_team": "Golden State Warriors",
+   "name_city": "New York"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1946",
+   "col4": "New York",
+   "name_team": "Atlanta Hawks",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "107,762",
+   "col3": "1946",
+   "col4": "Inglewood",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1970",
+   "col4": "New York",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Vancouver",
+   "col2": null,
+   "col3": "1995",
+   "col4": "Vancouver",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Vancouver"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "874,579",
+   "col3": "2004",
+   "col4": "Charlotte",
+   "name_team": "Charlotte Bobcats",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Boston",
+   "col2": "675647",
+   "col3": "1946",
+   "col4": "Boston",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1946",
+   "col4": "Chicago",
+   "name_team": "Boston Celtics",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1967",
+   "col4": "New York",
+   "name_team": "Indiana Pacers",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1968",
+   "col4": "Philadelphia",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Daly City",
+   "col2": null,
+   "col3": null,
+   "col4": "Daly City",
+   "name_team": "San Francisco Warriors",
+   "name_city": "Daly City"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "681,054",
+   "col3": null,
+   "col4": "Oklahoma City",
+   "name_team": "New Orleans Hornets",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1989",
+   "col4": "Sacramento",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Boston",
+   "col2": "675647",
+   "col3": "1989",
+   "col4": "Boston",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "874,579",
+   "col3": "1988",
+   "col4": "Charlotte",
+   "name_team": "Miami Heat",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "887,642",
+   "col3": "1988",
+   "col4": "Indianapolis",
+   "name_team": "Miami Heat",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Boston",
+   "col2": "675647",
+   "col3": null,
+   "col4": "Boston",
+   "name_team": "New Jersey Nets",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": null,
+   "col4": "New Orleans",
+   "name_team": "New Orleans/Oklahoma City Hornets",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Austin",
+   "col2": null,
+   "col3": null,
+   "col4": "Austin",
+   "name_team": "Austin Spurs",
+   "name_city": "Austin"
+  },
+  {
+   "col1": "Moline",
+   "col2": null,
+   "col3": "1946",
+   "col4": "Moline",
+   "name_team": "Tri-Cities Blackhawks",
+   "name_city": "Moline"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914 (2023)",
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_team": "Minneapolis Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "639111",
+   "col3": "1946",
+   "col4": "Detroit",
+   "name_team": "Detroit Gems",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Portland",
+   "col2": "652,503",
+   "col3": "1970",
+   "col4": "Portland",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Golden State",
+   "col2": null,
+   "col3": "1946",
+   "col4": "Golden State",
+   "name_team": "Golden State Warriors",
+   "name_city": "Golden State"
+  },
+  {
+   "col1": "Miami",
+   "col2": "442,241",
+   "col3": "1946",
+   "col4": "Miami",
+   "name_team": "Golden State Warriors",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914 (2023)",
+   "col3": "1946",
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": "1946",
+   "col4": "Minneapolis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1970",
+   "col4": "Chicago",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Memphis",
+   "col2": "633,104",
+   "col3": "1995",
+   "col4": "Memphis",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Indiana",
+   "col2": null,
+   "col3": "1967",
+   "col4": "Indiana",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indiana"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "808,988 (2023)",
+   "col3": null,
+   "col4": "San Francisco",
+   "name_team": "San Francisco Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": null,
+   "col4": "Oakland",
+   "name_team": "San Francisco Warriors",
+   "name_city": "Oakland"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1968",
+   "col4": "Sacramento",
+   "name_team": "Phoenix Suns",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": null,
+   "col4": "Kansas City",
+   "name_team": "Sacramento Kings",
+   "name_city": "Kansas City"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": null,
+   "col4": "New Orleans",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "200,133 in 2020",
+   "col3": null,
+   "col4": "Salt Lake City",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914 (2023)",
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "107,762",
+   "col3": null,
+   "col4": "Inglewood",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1988",
+   "col4": "Chicago",
+   "name_team": "Miami Heat",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Washington",
+   "col2": "705,749",
+   "col3": "1961",
+   "col4": "Washington",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": "Orem",
+   "col2": null,
+   "col3": "1967",
+   "col4": "Orem",
+   "name_team": "Houston Rockets",
+   "name_city": "Orem"
+  },
+  {
+   "col1": "Seattle",
+   "col2": null,
+   "col3": "1967",
+   "col4": "Seattle",
+   "name_team": "Seattle SuperSonics",
+   "name_city": "Seattle"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1980",
+   "col4": "Sacramento",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Seattle",
+   "col2": null,
+   "col3": "1967",
+   "col4": "Seattle",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Seattle"
+  },
+  {
+   "col1": "Washington",
+   "col2": "705,749",
+   "col3": null,
+   "col4": "Washington",
+   "name_team": "Washington Bullets",
+   "name_city": "Washington"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1946",
+   "col4": "Chicago",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": "1937",
+   "col4": "Minneapolis",
+   "name_team": "Detroit Pistons",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1946",
+   "col4": "New York",
+   "name_team": "New York Knicks",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Miami",
+   "col2": "442,241",
+   "col3": "1989",
+   "col4": "Miami",
+   "name_team": "Orlando Magic",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "Boston Celtics",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Bay Lake",
+   "col2": null,
+   "col3": "1995",
+   "col4": "Bay Lake",
+   "name_team": "Toronto Raptors",
+   "name_city": "Bay Lake"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": null,
+   "col3": null,
+   "col4": "St. Louis",
+   "name_team": "Kansas City Kings",
+   "name_city": "St. Louis"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": null,
+   "col4": "New Orleans",
+   "name_team": "Utah Jazz",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Houston",
+   "col2": "2,314,157 (2023)",
+   "col3": "1967",
+   "col4": "Houston",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "1967",
+   "col4": "San Diego",
+   "name_team": "Houston Rockets",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "New Jersey Nets",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "Philadelphia Warriors",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Cincinnati",
+   "col2": null,
+   "col3": null,
+   "col4": "Cincinnati",
+   "name_team": "Cincinnati Royals",
+   "name_city": "Cincinnati"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": null,
+   "col4": "San Diego",
+   "name_team": "San Diego Clippers",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "San Diego Clippers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "London",
+   "col2": null,
+   "col3": null,
+   "col4": "London",
+   "name_team": "London Lions",
+   "name_city": "London"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": null,
+   "col4": "Minneapolis",
+   "name_team": "Minneapolis Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1,304,379",
+   "col3": "1967",
+   "col4": "Dallas",
+   "name_team": "Dallas Chaparrals",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Fort Wayne",
+   "col2": null,
+   "col3": "1937",
+   "col4": "Fort Wayne",
+   "name_team": "Fort Wayne Zollner Pistons",
+   "name_city": "Fort Wayne"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "887,642",
+   "col3": null,
+   "col4": "Indianapolis",
+   "name_team": "Indianapolis Olympians",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2,794,356",
+   "col3": null,
+   "col4": "Toronto",
+   "name_team": "Toronto Huskies",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "372624",
+   "col3": null,
+   "col4": "Cleveland",
+   "name_team": "Cleveland Rebels",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": null,
+   "col4": "Kansas City",
+   "name_team": "Kansas City\u2013Omaha Kings",
+   "name_city": "Kansas City"
+  },
+  {
+   "col1": "Omaha",
+   "col2": null,
+   "col3": null,
+   "col4": "Omaha",
+   "name_team": "Kansas City\u2013Omaha Kings",
+   "name_city": "Omaha"
+  },
+  {
+   "col1": "Denver",
+   "col2": "715,522",
+   "col3": "1967",
+   "col4": "Denver",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "New York City",
+   "col2": "Exceeded 8 million in the 2000 United States census",
+   "col3": "1946",
+   "col4": "New York City",
+   "name_team": "New York Knicks",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Rochester",
+   "col2": null,
+   "col3": null,
+   "col4": "Rochester",
+   "name_team": "Rochester Royals",
+   "name_city": "Rochester"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914 (2023)",
+   "col3": "1970",
+   "col4": "Los Angeles",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": null,
+   "col3": "1967",
+   "col4": "Brooklyn",
+   "name_team": "Brooklyn Nets",
+   "name_city": "Brooklyn"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": null,
+   "col4": "Philadelphia",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Miami",
+   "col2": "442,241",
+   "col3": "1988",
+   "col4": "Miami",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": null,
+   "col3": "1961",
+   "col4": "Washington, D.C.",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington, D.C."
+  },
+  {
+   "col1": "St. Louis",
+   "col2": null,
+   "col3": null,
+   "col4": "St. Louis",
+   "name_team": "St. Louis Hawks",
+   "name_city": "St. Louis"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "681,054",
+   "col3": null,
+   "col4": "Oklahoma City",
+   "name_team": "New Orleans/Oklahoma City Hornets",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": null,
+   "col3": "1970",
+   "col4": "Buffalo",
+   "name_team": "Buffalo Braves",
+   "name_city": "Buffalo"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1961",
+   "col4": "Chicago",
+   "name_team": "Chicago Packers",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "681,054",
+   "col3": "1967",
+   "col4": "Oklahoma City",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "639111",
+   "col3": "1937",
+   "col4": "Detroit",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1995",
+   "col4": "Sacramento",
+   "name_team": "Toronto Raptors",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "887,642",
+   "col3": "1967",
+   "col4": "Indianapolis",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "1,662,607 residents as of 2024",
+   "col3": "1968",
+   "col4": "Phoenix",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "1967",
+   "col4": "San Diego",
+   "name_team": "San Diego Rockets",
+   "name_city": "San Diego"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914 (2023)",
+   "col3": "1967",
+   "col4": "Los Angeles",
+   "name_team": "Seattle SuperSonics",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Baltimore",
+   "col2": null,
+   "col3": null,
+   "col4": "Baltimore",
+   "name_team": "Baltimore Bullets",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": "Baltimore",
+   "col2": null,
+   "col3": null,
+   "col4": "Baltimore",
+   "name_team": "Washington Bullets",
+   "name_city": "Baltimore"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "510,823",
+   "col3": "1937",
+   "col4": "Atlanta",
+   "name_team": "Detroit Pistons",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1937",
+   "col4": "New York",
+   "name_team": "Detroit Pistons",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "372624",
+   "col3": "1970",
+   "col4": "Cleveland",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1989",
+   "col4": "Sacramento",
+   "name_team": "Orlando Magic",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Tampa",
+   "col2": null,
+   "col3": "1995",
+   "col4": "Tampa",
+   "name_team": "Toronto Raptors",
+   "name_city": "Tampa"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "874,579",
+   "col3": "1988",
+   "col4": "Charlotte",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": null,
+   "col3": "1989",
+   "col4": "Minnesota",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minnesota"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": null,
+   "col4": "New York",
+   "name_team": "New Jersey Nets",
+   "name_city": "New York"
+  },
+  {
+   "col1": "East Rutherford",
+   "col2": null,
+   "col3": null,
+   "col4": "East Rutherford",
+   "name_team": "New Jersey Nets",
+   "name_city": "East Rutherford"
+  },
+  {
+   "col1": "Denver",
+   "col2": "715,522",
+   "col3": null,
+   "col4": "Denver",
+   "name_team": "Denver Rockets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Syracuse",
+   "col2": null,
+   "col3": "1946",
+   "col4": "Syracuse",
+   "name_team": "Syracuse Nationals",
+   "name_city": "Syracuse"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": null,
+   "col4": "New York",
+   "name_team": "New York Nets",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": null,
+   "col3": "1946",
+   "col4": "Buffalo",
+   "name_team": "Buffalo Bisons",
+   "name_city": "Buffalo"
+  },
+  {
+   "col1": "Washington",
+   "col2": "705,749",
+   "col3": null,
+   "col4": "Washington",
+   "name_team": "Capital Bullets",
+   "name_city": "Washington"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "Golden State Warriors",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1967",
+   "col4": "Chicago",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "372624",
+   "col3": "1946",
+   "col4": "Cleveland",
+   "name_team": "Boston Celtics",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1989",
+   "col4": "Chicago",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": "1966",
+   "col4": "Chicago",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797 in the 2020 census",
+   "col3": "1970",
+   "col4": "Philadelphia",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "New York",
+   "col2": "8,258,035",
+   "col3": "1995",
+   "col4": "New York",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "New York"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": null,
+   "col4": "Sacramento",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": null,
+   "col4": "New Orleans",
+   "name_team": "New Orleans Hornets",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": null,
+   "col4": "Sacramento",
+   "name_team": "Utah Jazz",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "3.6 million (1950 census)",
+   "col3": null,
+   "col4": "Chicago",
+   "name_team": "Chicago Zephyrs",
+   "name_city": "Chicago"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:LocatedIn]->(c:City), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document) RETURN DISTINCT c.city_name AS col1, c.population AS col2, t.founded_year AS col3, c.city_name AS col4, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 149
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": [
+  {
+   "col1": "1662607",
+   "col2": "Arizona",
+   "col3": "Phoenix",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "3820914",
+   "col2": "California",
+   "col3": "Los Angeles",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "1299544",
+   "col2": "Texas",
+   "col3": "Dallas",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "681054",
+   "col2": "Oklahoma",
+   "col3": "Oklahoma City",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "2314157",
+   "col2": "Texas",
+   "col3": "Houston",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "8258035",
+   "col2": "New York",
+   "col3": "New York City",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "1434625",
+   "col2": "Texas",
+   "col3": "San Antonio",
+   "name_city": "San Antonio"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(c.area AS DOUBLE) >= 976.15 AND CAST(c.area AS DOUBLE) >= 976.15) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE (c.state_name = 'Minnesota' AND CAST(c.population AS INT64) = 887642) OR (CAST(c.area AS DOUBLE) >= 377.28) RETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

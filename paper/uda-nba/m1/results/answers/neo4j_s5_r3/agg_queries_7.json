@@ -1,0 +1,113 @@
+{
+ "uid": "agg_queries#7",
+ "rows": [
+  {
+   "col1": "Greek",
+   "col2": 36.0
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31.0
+  },
+  {
+   "col1": "American",
+   "col2": 50.657407407407405
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 32.0
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 34.0
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40.0
+  },
+  {
+   "col1": "French",
+   "col2": 27.0
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33.0
+  },
+  {
+   "col1": "British",
+   "col2": 29.0
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32.0
+  },
+  {
+   "col1": "German",
+   "col2": 33.0
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29.0
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42.0
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60.0
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25.0
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60.0
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 55.0
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 31.0
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37.0
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32.0
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59.0
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH DISTINCT p, CAST(split(p.birth_date, '/')[0] AS INT64) AS birth_year, CAST(split(p.birth_date, '/')[1] AS INT64) AS birth_month, CAST(split(p.birth_date, '/')[2] AS INT64) AS birth_day WITH p.nationality AS nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH DISTINCT p.nationality AS nationality, p.birth_date AS birth_date, p.death_date AS death_date WITH nationality, CASE WHEN death_date IS NULL THEN 2026 - CAST(SUBSTRING(birth_date, 1, 4) AS INT64) - CASE WHEN CAST(SUBSTRING(birth_date, 6, 2) AS INT64) > 10 OR (CAST(SUBSTRING(birth_date, 6, 2) AS INT64) = 10 AND CAST(SUBSTRING(birth_date, 9, 2) AS INT64) > 14) THEN 1 ELSE 0 END ELSE CAST(SUBSTRING(death_date, 1, 4) AS INT64) - CAST(SUBSTRING(birth_date, 1, 4) AS INT64) - CASE WHEN CAST(SUBSTRING(death_date, 6, 2) AS INT64) < CAST(SUBSTRING(birth_date, 6, 2) AS INT64) OR (CAST(SUBSTRING(death_date, 6, 2) AS INT64) = CAST(SUBSTRING(birth_date, 6, 2) AS INT64) AND CAST(SUBSTRING(death_date, 9, 2) AS INT64) < CAST(SUBSTRING(birth_date, 9, 2) AS INT64)) THEN 1 ELSE 0 END END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Octo\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH DISTINCT p.nationality AS nationality, p.birth_date AS birth_date, p.death_date AS death_date WITH nationality, CASE WHEN death_date IS NULL THEN 2026 - CAST(regexp_extract(birth_date, '[0-9]{4}', 0) AS INT64) ELSE CAST(regexp_extract(death_date, '[0-9]{4}', 0) AS INT64) - CAST(regexp_extract(birth_date, '[0-9]{4}', 0) AS INT64) END AS age RETURN nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

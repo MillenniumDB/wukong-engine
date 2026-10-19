@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CAST(date_part('year', date('2026-10-14')) AS INT64) - CAST(date_part('year', date(replace(p.birth_date, '/', '-'))) AS INT64) - CASE WHEN CAST(date_part('month', date(replace(p.birth_date, '/', '-'))) AS INT64) * 100 + CAST(date_part('day', date(replace(p.birth_date, '/', '-'))) AS INT64) > 1014 THEN 1 ELSE 0 END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n    WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n      OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n    THEN 1 ELSE 0\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest'\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN contains(p.birth_date, '/') THEN\n      2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n        WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n          OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n        THEN 1 ELSE 0 END\n    ELSE\n      2026 - CAST(split_part(p.birth_date, ',', 2) AS INT64) - CASE\n        WHEN CASE split_part(p.birth_date, ' ', 1)\n          WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n          WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n          WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n          WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n        END > 10\n          OR (CASE split_part(p.birth_date, ' ', 1)\n            WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n            WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n            WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n            WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n          END = 10 AND CAST(split_part(split_part(p.birth_date, ' ', 2), ',', 1) AS INT64) > 14)\n        THEN 1 ELSE 0 END\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City)\nWHERE r.tenure = 'latest' AND p.birth_date IS NOT NULL\nWITH DISTINCT p, t, c,\n  CASE\n    WHEN contains(p.birth_date, '/') THEN\n      2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n        WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n          OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n        THEN 1 ELSE 0 END\n    WHEN contains(p.birth_date, ',') THEN\n      2026 - CAST(trim(split_part(p.birth_date, ',', 2)) AS INT64) - CASE\n        WHEN CASE split_part(p.birth_date, ' ', 1)\n          WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n          WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n          WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n          WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n          ELSE 0 END > 10\n          OR (CASE split_part(p.birth_date, ' ', 1)\n            WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n            WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n            WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n            WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n            ELSE 0 END = 10\n            AND CAST(split_part(split_part(p.birth_date, ' ', 2), ',', 1) AS INT64) > 14)\n        THEN 1 ELSE 0 END\n    ELSE 2026 - CAST(trim(p.birth_date) AS INT64)\n  END AS age\nRETURN p.nationality AS col1, age AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"31 July 1990\" to INT64.",
+   "rows": null
+  }
+ ]
+}

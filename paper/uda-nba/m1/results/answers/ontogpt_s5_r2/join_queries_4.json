@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL RETURN p.nationality AS col1, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE)) - CASE WHEN strftime(CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE), '%m-%d') < strftime(CAST(REPLACE(p.birth_date, '/', '-') AS DATE), '%m-%d') THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH p, t, c, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE) AS end_date RETURN p.nationality AS col1, DATE_PART('year', end_date) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth) OR (DATE_PART('month', end_date) = DATE_PART('month', birth) AND DATE_PART('day', end_date) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH p, t, c, CAST(split_part(p.birth_date, '/', 0) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_day, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 0) AS INT64) AS end_year, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 1) AS INT64) AS end_month, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 2) AS INT64) AS end_day RETURN p.nationality AS col1, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.birth_date IS NOT NULL WITH p, t, c, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 1) AS INT64) AS end_year, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 2) AS INT64) AS end_month, CAST(split_part(COALESCE(p.death_date, '2026/10/14'), '/', 3) AS INT64) AS end_day RETURN p.nationality AS col1, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 6, 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#19",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) >= 42 AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"24th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE regexp_matches(p.draft_pick, '[0-9]+') AND CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(NULLIF(p.mvp_awards, '') AS INT64) >= 0 AND CAST(NULLIF(p.mvp_awards, '') AS INT64) < 1 RETURN CAST(NULLIF(p.fiba_world_cup, '') AS INT64) AS col1, CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) AS col2, CAST(NULLIF(p.draft_year, '') AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  }
+ ]
+}

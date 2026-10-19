@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_city#1",
+ "rows": [
+  {
+   "col1": "Oregon",
+   "col2": 375.7816491,
+   "col3": "Portland",
+   "name_city": "Portland"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) WHERE ABS(CAST(c.area AS DOUBLE) * 2.58999 - 375.78) < 0.01 RETURN c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

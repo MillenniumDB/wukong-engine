@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 AND p.position <> 'Backcourt' AND CAST(t.founded_year AS INT64) <> 1989 WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE p.olympic_gold_medals = '0' AND p.position <> 'Backcourt' AND t.founded_year <> '1989' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE p.olympic_gold_medals = '0' AND (p.position IS NULL OR p.position <> 'Backcourt') AND (t.founded_year IS NULL OR t.founded_year <> '1989') WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE p.olympic_gold_medals = '0' AND p.position <> 'Backcourt' AND t.founded_year <> '1989' WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

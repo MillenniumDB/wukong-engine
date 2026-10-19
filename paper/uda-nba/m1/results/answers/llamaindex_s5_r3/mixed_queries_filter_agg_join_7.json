@@ -1,0 +1,43 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0.0
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": 0.0
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": 0.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 AND p.position <> 'Backcourt' AND CAST(t.founded_year AS INT64) <> 1989 RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(pd:Document), (t:Team)-[:MentionedIn]->(td:Document) WHERE p.current_team = t.team_name AND CAST(p.olympic_gold_medals AS INT64) = 0 AND p.position <> 'Backcourt' AND CAST(t.founded_year AS INT64) <> 1989 WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team) WHERE p.current_team = t.team_name AND CAST(p.olympic_gold_medals AS INT64) = 0 AND p.position IS NOT NULL AND p.position <> 'Backcourt' AND t.founded_year IS NOT NULL AND CAST(t.founded_year AS INT64) <> 1989 WITH t.team_name AS team, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_titles RETURN team AS col1, avg_titles AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE (pf.tenure = 'latest' OR p.current_team = t.team_name) AND CAST(p.olympic_gold_medals AS INT64) = 0 AND (p.position IS NULL OR p.position <> 'Backcourt') AND (t.founded_year IS NULL OR CAST(t.founded_year AS INT64) <> 1989) WITH t.team_name AS team, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_titles RETURN team AS col1, avg_titles AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

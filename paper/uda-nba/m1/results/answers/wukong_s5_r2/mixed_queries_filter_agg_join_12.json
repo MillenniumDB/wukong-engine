@@ -1,0 +1,25 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 0
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 1
+  },
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document), (c)-[:ExtractedFrom]->(cd:Document), (o)-[:ExtractedFrom]->(od:Document) WHERE pf.tenure = 'latest' AND ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(p.draft_pick AS INT64) <> 41)) RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

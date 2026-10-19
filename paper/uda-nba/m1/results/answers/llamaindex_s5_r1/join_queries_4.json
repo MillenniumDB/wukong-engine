@@ -1,0 +1,151 @@
+{
+ "uid": "join_queries#4",
+ "rows": [
+  {
+   "col1": "Israeli",
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "Phoenix Suns",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "American",
+   "col2": 67,
+   "col3": "Washington",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "American",
+   "col2": 67,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "American",
+   "col2": 67,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": "Sacramento Kings",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "American",
+   "col2": 67,
+   "col3": "Boston",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "American",
+   "col2": 67,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WHERE p.current_team = t.team_name WITH DISTINCT p, t, c RETURN p.nationality AS col1, date_diff('year', date(replace(p.birth_date, '/', '-')), date('2026-10-14')) AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN p.nationality AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day RETURN p.nationality AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 160)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date LIKE '%/%' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City) WITH DISTINCT p, t, c WITH p, t, c, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day WITH p, t, c, birth_year, birth_month, birth_day RETURN p.nationality AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, c.city_name AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

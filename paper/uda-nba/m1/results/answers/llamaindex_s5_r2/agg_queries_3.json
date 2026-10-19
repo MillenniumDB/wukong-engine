@@ -1,0 +1,87 @@
+{
+ "uid": "agg_queries#3",
+ "rows": [
+  {
+   "col1": "Linebacker",
+   "col2": 96.0
+  },
+  {
+   "col1": "Guard/forward",
+   "col2": 101.0
+  },
+  {
+   "col1": "point guard",
+   "col2": 32.0
+  },
+  {
+   "col1": "Center",
+   "col2": 73.0
+  },
+  {
+   "col1": "Power forward/center",
+   "col2": 84.0
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": 49.333333333333336
+  },
+  {
+   "col1": "Forward",
+   "col2": 81.625
+  },
+  {
+   "col1": "Guard",
+   "col2": 77.33333333333333
+  },
+  {
+   "col1": "Center\u2013power forward",
+   "col2": 58.0
+  },
+  {
+   "col1": "Defenceman",
+   "col2": 75.0
+  },
+  {
+   "col1": "Power forward",
+   "col2": 46.0
+  },
+  {
+   "col1": "Small forward",
+   "col2": 59.0
+  },
+  {
+   "col1": "center",
+   "col2": 79.0
+  },
+  {
+   "col1": "shooting guard",
+   "col2": 55.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p.position AS position, 2026 - CAST(date_part('year', CAST(p.birth_date AS DATE)) AS INT64) - CASE WHEN date_part('month', CAST(p.birth_date AS DATE)) > 10 OR (date_part('month', CAST(p.birth_date AS DATE)) = 10 AND date_part('day', CAST(p.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] WITH p.position AS position, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 181)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] WITH p.position AS position, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS age RETURN position AS col1, AVG(age) AS col2\"\n                                                                                            ",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p.position AS position, 2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IS NOT NULL AND p.birth_date IS NOT NULL WITH p.position AS position, 2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

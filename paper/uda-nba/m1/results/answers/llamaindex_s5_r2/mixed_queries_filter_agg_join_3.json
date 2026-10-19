@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND pf.tenure = 'latest' AND CAST(REPLACE(p.birth_date, '/', '-') AS DATE) >= DATE('1963-10-15') WITH t, p, DISTINCT p.mvp_awards AS mvp_awards RETURN t.team_name AS col1, AVG(CAST(mvp_awards AS DOUBLE)) AS col2",
+   "error": "Parser exception: mismatched input 'DISTINCT' expecting {'(', '[', '{', '$', ANY, ADD, ALL, ALTER, AS, ATTACH, BEGIN, BY, CALL, CASE, CAST, CHECKPOINT, COMMENT, COMMIT, CONTAINS, COPY, COUNT, CYCLE, DATABASE, DELETE, DETACH, DROP, EXISTS, EXPLAIN, EXPORT, EXTENSION, FALSE, FROM, FORCE, GRAPH, IMPORT, IF, INCREMENT, IS, KEY, LIMIT, LOAD, LOGICAL, MATCH, MAXVALUE, MERGE, MINVALUE, NO, NODE, NOT, NONE, NULL, PROJECT, READ, REL, RENAME, RETURN, ROLLBACK, SEQUENCE, SET, START, STRUCT, TO, TRANSACTION",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE p.college = 'Michigan State University' AND pf.tenure = 'latest' AND CAST(REPLACE(p.birth_date, '/', '-') AS DATE) >= DATE('1963-10-15') WITH DISTINCT t, p RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) WHERE pf.tenure = 'latest' AND p.college = 'Michigan State University' AND (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) > 1963 OR (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) = 1963 AND (CAST(SPLIT(p.birth_date, '/')[2] AS INT64) > 10 OR (CAST(SPLIT(p.birth_date, '/')[2] AS INT64) = 10 AND CAST(SPLIT(p.birth_date, '/')[3] AS INT64) >= 15)))) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND p.college = 'Michigan State University' AND CAST(p.birth_date AS DATE) <= DATE('1964-10-14') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

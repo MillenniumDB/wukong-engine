@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE CAST(c.area AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(c.area AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 145.09 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(c.population AS INT64) > 887642 RETURN c.state_name AS col1, CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"652,503\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 <= 1314.80 AND CAST(regexp_replace(c.population, ',', '') AS INT64) > 887642 RETURN c.state_name AS col1, CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"808988 (2023)\" to INT64.",
+   "rows": null
+  }
+ ]
+}

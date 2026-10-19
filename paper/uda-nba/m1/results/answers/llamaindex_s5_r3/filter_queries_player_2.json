@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CAST(STRPTIME(p.birth_date, '%Y/%m/%d') AS DATE) AS birth_date,\n  CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE CAST(STRPTIME(p.death_date, '%Y/%m/%d') AS DATE) END AS end_date\nWITH p,\n  DATE_DIFF('year', birth_date, end_date) - CASE WHEN DATE_PART('month', end_date) * 100 + DATE_PART('day', end_date) < DATE_PART('month', birth_date) * 100 + DATE_PART('day', birth_date) THEN 1 ELSE 0 END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CAST(p.birth_date AS DATE) AS birth_date,\n  CASE WHEN p.death_date IS NULL THEN CAST('2026-10-14' AS DATE) ELSE CAST(p.death_date AS DATE) END AS end_date\nWITH p,\n  DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE\n    WHEN DATE_PART('month', end_date) * 100 + DATE_PART('day', end_date) < DATE_PART('month', birth_date) * 100 + DATE_PART('day', birth_date) THEN 1\n    ELSE 0\n  END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 10, 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN CAST(p.birth_date AS DATE)\n    ELSE CAST(CONCAT(\n      RIGHT(p.birth_date, 4), '-',\n      CASE LEFT(p.birth_date, 3)\n        WHEN 'Jan' THEN '01' WHEN 'Feb' THEN '02' WHEN 'Mar' THEN '03'\n        WHEN 'Apr' THEN '04' WHEN 'May' THEN '05' WHEN 'Jun' THEN '06'\n        WHEN 'Jul' THEN '07' WHEN 'Aug' THEN '08' WHEN 'Sep' THEN '09'\n        WHEN 'Oct' THEN '10' WHEN 'Nov' THEN '11' WHEN 'Dec' THEN '12'\n      END, '-',\n      REPLACE(SPLIT_PART(p.birth_date, ' ', 2), ',', '')\n    ) AS DATE)\n  END AS birth_date,\n  CASE\n    WHEN p.death_date IS NULL THEN CAST('2026-10-14' AS DATE)\n    WHEN p.death_date CONTAINS '/' THEN CAST(p.death_date AS DATE)\n    ELSE CAST(CONCAT(\n      RIGHT(p.death_date, 4), '-',\n      CASE LEFT(p.death_date, 3)\n        WHEN 'Jan' THEN '01' WHEN 'Feb' THEN '02' WHEN 'Mar' THEN '03'\n        WHEN 'Apr' THEN '04' WHEN 'May' THEN '05' WHEN 'Jun' THEN '06'\n        WHEN 'Jul' THEN '07' WHEN 'Aug' THEN '08' WHEN 'Sep' THEN '09'\n        WHEN 'Oct' THEN '10' WHEN 'Nov' THEN '11' WHEN 'Dec' THEN '12'\n      END, '-',\n      REPLACE(SPLIT_PART(p.death_date, ' ', 2), ',', '')\n    ) AS DATE)\n  END AS end_date\nWITH p, birth_date, end_date,\n  DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE\n    WHEN DATE_PART('month', end_date) * 100 + DATE_PART('day', end_date) < DATE_PART('month', birth_date) * 100 + DATE_PART('day', birth_date) THEN 1\n    ELSE 0\n  END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/', 1) ELSE SPLIT_PART(p.birth_date, ',', 2) END AS by,\n  CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/', 2) ELSE CASE LEFT(p.birth_date, 3) WHEN 'Jan' THEN '1' WHEN 'Feb' THEN '2' WHEN 'Mar' THEN '3' WHEN 'Apr' THEN '4' WHEN 'May' THEN '5' WHEN 'Jun' THEN '6' WHEN 'Jul' THEN '7' WHEN 'Aug' THEN '8' WHEN 'Sep' THEN '9' WHEN 'Oct' THEN '10' WHEN 'Nov' THEN '11 WHEN 'Dec' THEN '12' END END AS bm,\n  CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/', 3) ELSE SPLIT_PART(SPLIT_PART(p.birth_date, ',', 1), ' ', 2) END AS bd,\n  CASE WHEN p.death_date IS NULL THEN '2026-10-14' ELSE CASE WHEN p.death_date CONTAINS '/' THEN CONCAT(SPLIT_PART(p.death_date, '/', 1), '-', SPLIT_PART(p.death_date, '/', 2), '-', SPLIT_PART(p.death_date, '/', 3)) ELSE CONCAT(SPLIT_PART(p.death_date, ',', 2), '-', CASE LEFT(p.death_date, 3) WHEN 'Jan' THEN '01' WHEN 'Feb' THEN '02' WHEN 'Mar' THEN '03' WHEN 'Apr' THEN '04' WHEN 'May' THEN '05' WHEN 'Jun' THEN '06' WHEN 'Jul' THEN '07' WHEN 'Aug' THEN '08' WHEN 'Sep' THEN '09' WHEN 'Oct' THEN '10' WHEN 'Nov' THEN '11' WHEN 'Dec' THEN '12' END, '-', SPLIT_PART(SPLIT_PART(p.death_date, ',', 1), ' ', 2)) END END AS death_s\nWITH p, CAST(CONCAT(by, '-', bm, '-', bd) AS DATE) AS birth_date, CAST(death_s AS DATE) AS end_date\nWITH p, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) * 100 + DATE_PART('day', end_date) < DATE_PART('month', birth_date) * 100 + DATE_PART('day', birth_date) THEN 1 ELSE 0 END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/', 2) ELSE CASE LEFT(p.birth_date, 3) WHEN 'Jan' THEN '1' WHEN 'Feb' THEN '2' WHEN 'Mar' THEN '3' WHEN 'Apr' THEN '4' WHEN 'May' THEN '5' WHEN 'Jun' THEN '6' WHEN 'Jul' THEN '7' WHEN 'Aug' THEN '8' WHEN 'Sep' THEN '9' WHEN 'Oct' THEN '10' WHEN 'Nov' THEN '11 WHEN 'Dec>: expected rule oC_ProjectionItem (line: 4, offset: 335)\n\"  CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/',",
+   "rows": null
+  }
+ ]
+}

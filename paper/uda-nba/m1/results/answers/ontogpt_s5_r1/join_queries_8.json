@@ -1,0 +1,157 @@
+{
+ "uid": "join_queries#8",
+ "rows": [
+  {
+   "col1": "Steve Ballmer",
+   "col2": "2014",
+   "col3": "Los Angeles Clippers",
+   "col4": "1970",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1983",
+   "col3": "Indiana Pacers",
+   "col4": "1967",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": "unknown",
+   "col3": "San Antonio Spurs",
+   "col4": "1967",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Daniel Gilbert",
+   "col2": "2005",
+   "col3": "Cleveland Cavaliers",
+   "col4": "1970",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Daniel Gilbert"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": "2006",
+   "col3": "Oklahoma City Thunder",
+   "col4": "1967",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1991",
+   "col3": "Orlando Magic",
+   "col4": "1989",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "Unknown",
+   "col3": "New Orleans Pelicans",
+   "col4": "2002",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "Unknown",
+   "col3": "Los Angeles Clippers",
+   "col4": "1970",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "2000",
+   "col3": "Denver Nuggets",
+   "col4": "1967",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "2011",
+   "col3": "Detroit Pistons",
+   "col4": "1937",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1995",
+   "col3": "Miami Heat",
+   "col4": "1988",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1985",
+   "col3": "Chicago Bulls",
+   "col4": "1966",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "2011",
+   "col3": "Philadelphia 76ers",
+   "col4": "1946",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "2017",
+   "col3": "Houston Rockets",
+   "col4": "1967",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "2000",
+   "col3": "Dallas Mavericks",
+   "col4": "1980",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Clay Bennett",
+   "col2": "Unknown",
+   "col3": "Oklahoma City Thunder",
+   "col4": "1967",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "2019",
+   "col3": "Brooklyn Nets",
+   "col4": "1967",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "James Lawrence Dolan",
+   "col2": "Unknown",
+   "col3": "New York Knicks",
+   "col4": "1946",
+   "name_team": "New York Knicks",
+   "name_manager": "James Lawrence Dolan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(t:Team)-[:ExtractedFrom]->(:Document) RETURN DISTINCT o.name AS col1, r.since_year AS col2, t.team_name AS col3, t.founded_year AS col4, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 18
+  }
+ ]
+}

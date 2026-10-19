@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#14",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p RETURN CAST(p.draft_year AS INT64) AS col1, date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p, CAST(p.birth_date AS DATE) AS birth_date, CAST('2026-10-14' AS DATE) AS today RETURN p.draft_year AS col1, date_part('year', today) - date_part('year', birth_date) - CASE WHEN date_part('month', today) < date_part('month', birth_date) OR (date_part('month', today) = date_part('month', birth_date) AND date_part('day', today) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p, CASE WHEN p.birth_date IS NULL THEN NULL WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date, CAST('2026-10-14' AS DATE) AS today RETURN p.draft_year AS col1, date_part('year', today) - date_part('year', birth_date) - CASE WHEN date_part('month', today) < date_part('month', birth_date) OR (date_part('month', today) = date_part('month', birth_date) AND date_part('day', today) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date IS NULL THEN NULL WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 280)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p, CASE WHEN p.birth_date IS NULL THEN NULL WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p WITH p, CASE WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date WITH p, date_part('year', CAST('2026-10-14' AS DATE)) - date_part('year', birth_date) - CASE WHEN date_part('month', CAST('2026-10-14' AS DATE)) < date_part('month', birth_date) OR (date_part('month', CAST('2026-10-14' AS DATE)) = date_part('month', birth_date) AND date_part('day', CAST('2026-10-14' AS DATE)) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN p.draft_year AS col1, age AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 251)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2018) OR (p.olympic_gold_medals IS NOT NULL AND CAST(p.olympic_gold_medals AS INT64) >= 0) WITH DISTINCT p WITH p, CASE WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date WITH p, date_part('",
+   "rows": null
+  }
+ ]
+}

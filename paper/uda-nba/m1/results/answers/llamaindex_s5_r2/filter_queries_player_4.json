@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#4",
+ "rows": [
+  {
+   "col1": 32,
+   "col2": "25 April 1994",
+   "col3": "Cedevita Olimpija",
+   "name_player": "Nikola Radi\u010devi\u0107"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, t, DATE(REPLACE(p.birth_date, '/', '-')) AS birth\nRETURN DATE_DIFF('year', birth, DATE('2026-10-14')) - CASE WHEN DATE_PART('month', birth) > 10 OR (DATE_PART('month', birth) = 10 AND DATE_PART('day', birth) > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document) WITH DISTINCT p, t, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, t,\n  CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 1) AS INT64) END AS birth_day,\n  CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE split_part(p.birth_date, ' ', 2) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month,\n  CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year\nRETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 3, offset: 25)\n\"  CASE WHEN p.birth_date LIKE '%/%' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 1) AS INT64) END AS birth_day,\"\n                          ^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}), (p)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, t,\n  CASE WHEN contains(p.birth_date, '/') THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 1) AS INT64) END AS birth_day,\n  CASE WHEN contains(p.birth_date, '/') THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE split_part(p.birth_date, ' ', 2) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month,\n  CASE WHEN contains(p.birth_date, '/') THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(p.birth_date, ' ', 3) AS INT64) END AS birth_year\nRETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

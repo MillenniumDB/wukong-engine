@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41 WITH DISTINCT t.team_name AS col1, c.area AS city_area RETURN col1 AS col1, SUM(CAST(city_area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE TRY_CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR TRY_CAST(p.draft_pick AS INT64) <= 41 WITH DISTINCT t.team_name AS col1, c.area AS city_area RETURN col1 AS col1, SUM(TRY_CAST(city_area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE TRY_CAST(p.draft_year AS>: expected rule oC_SingleQuery (line: 1, offset: 259)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedF",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE (p.draft_year =~ '^[0-9]+$' AND CAST(p.draft_year AS INT64) <= 2005) OR p.position = 'Backcourt' OR (p.draft_pick =~ '^[0-9]+$' AND CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t.team_name AS col1, c.area AS city_area RETURN col1 AS col1, CAST(city_area AS DOUBLE) * 2.589988110336 AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WITH p, t, c, CASE WHEN p.draft_year =~ '^[0-9]+$' THEN CAST(p.draft_year AS INT64) ELSE NULL END AS draft_year_num, CASE WHEN p.draft_pick =~ '^[0-9]+$' THEN CAST(p.draft_pick AS INT64) ELSE NULL END AS draft_pick_num WHERE draft_year_num <= 2005 OR p.position = 'Backcourt' OR draft_pick_num <= 41 WITH DISTINCT t.team_name AS col1, c.area AS city_area RETURN col1 AS col1, CAST(city_area AS DOUBLE) * 2.589988110336 AS col2",
+   "error": "Conversion exception: Cast failed. 385.8 square miles is not in DOUBLE range.",
+   "rows": null
+  }
+ ]
+}

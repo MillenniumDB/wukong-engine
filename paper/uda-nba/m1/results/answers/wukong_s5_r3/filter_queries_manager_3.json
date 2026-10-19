@@ -1,0 +1,109 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": 62,
+   "col2": "Tom Gores",
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 68,
+   "col2": "Mark Cuban",
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 71,
+   "col2": "James Lawrence Dolan",
+   "col3": "American",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": 70,
+   "col2": "Steve Ballmer",
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": null,
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "American",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": null,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": 79,
+   "col2": "Stan Kroenke",
+   "col3": "American",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": null,
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 70,
+   "col2": "Joseph Steven Lacob",
+   "col3": "American",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": 90,
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "American",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": 91,
+   "col2": "Herbert Simon",
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": 66,
+   "col2": "Clayton Ike Bennett",
+   "col3": "American",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": null,
+   "col2": "Joshua Jordan Harris",
+   "col3": "American",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "American",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT o, DATE(o.birth_date) AS bd\nWITH o, 2026 - YEAR(bd) - CASE WHEN MONTH(bd) > 10 OR (MONTH(bd) = 10 AND DAY(bd) > 14) THEN 1 ELSE 0 END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function YEAR does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT o, CAST(o.birth_date AS DATE) AS bd\nWITH o, 2026 - DATE_PART('year', bd) - CASE WHEN DATE_PART('month', bd) > 10 OR (DATE_PART('month', bd) = 10 AND DATE_PART('day', bd) > 14) THEN 1 ELSE 0 END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

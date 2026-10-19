@@ -168,25 +168,34 @@ def answer(client, conn, system: str, q: dict, query: dict, usage: str = 'wukong
 
 
 def main() -> int:
+    global RUN, DB
     ap = argparse.ArgumentParser()
     ap.add_argument('--pilot', action='store_true')
     ap.add_argument('--reload', action='store_true', help='rebuild the Kuzu database from the export')
+    ap.add_argument('--run', type=Path, help='another Wukong run directory (default: the share\'s E1 run 1)')
+    ap.add_argument('--name', default='wukong', help='system name: answers/<name>/, usage/<name>.jsonl')
+    ap.add_argument('--today', help='the date the agent is told (default: today)')
     args = ap.parse_args()
+    if args.run:
+        RUN = args.run
+    if args.name != 'wukong':
+        DB = WORK / 'kuzu' / args.name / 'graph.kz'
     km = json.loads((RUN / 'knowledge_model.json').read_text())
     conn = load_graph(km) if args.reload or not DB.exists() else kuzu.Connection(kuzu.Database(str(DB)))
-    system = SYSTEM.format(schema=schema_text(km), today=date.today().isoformat())
-    (WORK / 'wukong_system_prompt.txt').write_text(system)
+    system = SYSTEM.format(schema=schema_text(km), today=args.today or date.today().isoformat())
+    (WORK / f'{args.name}_system_prompt.txt').write_text(system)
     queries = {q['uid']: q for q in load_queries()}
     questions = load_questions()
     uids = pilot_uids(questions) if args.pilot else list(questions)
     client = OpenAI()
-    out = WORK / 'answers' / 'wukong'
+    out = WORK / 'answers' / args.name
     out.mkdir(parents=True, exist_ok=True)
     for u in uids:
         f = out / f'{u.replace("#", "_")}.json'
         if not f.exists():
-            f.write_text(json.dumps(answer(client, conn, system, questions[u], queries[u]), indent=1, default=str))
-    print(f'wukong: {len(uids)} questions answered')
+            f.write_text(json.dumps(answer(client, conn, system, questions[u], queries[u], usage=args.name),
+                                    indent=1, default=str))
+    print(f'{args.name}: {len(uids)} questions answered')
     return 0
 
 

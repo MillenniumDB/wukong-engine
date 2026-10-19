@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(p.draft_pick AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"24th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CASE WHEN p.draft_pick IS NOT NULL AND regexp_replace(p.draft_pick, '[^0-9].*', '') <> '' THEN CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) ELSE 0 END >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR TRY_CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR TRY_CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS>: expected rule oC_SingleQuery (line: 1, offset: 176)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR TRY_CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p",
+   "rows": null
+  }
+ ]
+}

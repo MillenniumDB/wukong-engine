@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Cleveland Cavaliers'\n  AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) }\nRETURN DISTINCT\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    ELSE 2026 - CAST(SPLIT(o.birth_date, '/')[0] AS INT64)\n      - CASE\n          WHEN CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10\n            OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) > 14)\n          THEN 1 ELSE 0\n        END\n  END AS col1,\n  t.team_name AS col2,\n  o.name AS col3,\n  o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Cleveland Cavaliers'\n  AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) }\nRETURN DISTINCT\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    ELSE date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14')\n  END AS col1,\n  t.team_name AS col2,\n  o.name AS col3,\n  o.name AS name_manager",
+   "error": "Parser exception: Invalid input <CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    ELSE date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 7, offset: 60)\n\"    ELSE date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14')\"\n                                                             ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Cleveland Cavaliers'\n  AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) }\nRETURN DISTINCT\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    ELSE date_diff('year', CAST(o.birth_date AS DATE), CAST('2026-10-14' AS DATE))\n  END AS col1,\n  t.team_name AS col2,\n  o.name AS col3,\n  o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)\nWHERE t.team_name <> 'Cleveland Cavaliers'\n  AND EXISTS { MATCH (o)-[:ExtractedFrom]->(:Document) }\nRETURN DISTINCT\n  CASE\n    WHEN o.birth_date IS NULL THEN NULL\n    ELSE 2026 - CAST(REGEXP_EXTRACT(o.birth_date, '^([^/]+)', 1) AS INT64)\n      - CASE\n          WHEN CAST(REGEXP_EXTRACT(o.birth_date, '^\\\\d+/([^/]+)', 1) AS INT64) > 10\n            OR (CAST(REGEXP_EXTRACT(o.birth_date, '^\\\\d+/([^/]+)', 1) AS INT64) = 10\n              AND CAST(REGEXP_EXTRACT(o.birth_date, '^\\\\d+/\\\\d+/([^/]+)', 1) AS INT64) > 14)\n          THEN 1 ELSE 0\n        END\n  END AS col1,\n  t.team_name AS col2,\n  o.name AS col3,\n  o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  }
+ ]
+}

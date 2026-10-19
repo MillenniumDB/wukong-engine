@@ -1,0 +1,205 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": 1
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 1
+  },
+  {
+   "col1": "Saski Baskonia",
+   "col2": null
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": 4
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 1
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": 1
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 1
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 1
+  },
+  {
+   "col1": "Washington Bullets",
+   "col2": 1
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 1
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 1
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 1
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 1
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 1
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 1
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 1
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 1
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 1
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 1
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans/Oklahoma City Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Buffalo Bisons",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": 1
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 1
+  },
+  {
+   "col1": "Tri-Cities Blackhawks",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Blue",
+   "col2": null
+  },
+  {
+   "col1": "Cairns Taipans",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 1
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0
+  },
+  {
+   "col1": "Rochester Royals",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 1
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 1
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 1
+  },
+  {
+   "col1": "Fort Wayne Zollner Pistons",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (t)-[:MentionedIn]->(td:Document), (p)-[:MentionedIn]->(pd:Document) WHERE r.tenure = 'latest' WITH DISTINCT t MATCH (q:Player)-[:PlaysFor]->(t), (q)-[:MentionedIn]->(qd:Document) WITH t, MIN(CAST(q.olympic_gold_medals AS INT64)) AS lowest_medals RETURN t.team_name AS col1, lowest_medals AS col2",
+   "error": null,
+   "rows": 48
+  }
+ ]
+}

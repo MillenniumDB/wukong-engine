@@ -1,0 +1,169 @@
+{
+ "uid": "filter_queries_city#5",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Arizona",
+   "col3": null,
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Nebraska",
+   "col3": null,
+   "name_city": "Omaha"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona",
+   "col3": null,
+   "name_city": "Chandler"
+  },
+  {
+   "col1": null,
+   "col2": "Lower Saxony",
+   "col3": null,
+   "name_city": "Braunschweig"
+  },
+  {
+   "col1": null,
+   "col2": "New Mexico",
+   "col3": null,
+   "name_city": "Albuquerque"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": null,
+   "name_city": "Allen"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma",
+   "col3": null,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": null,
+   "col2": "North Carolina",
+   "col3": null,
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon",
+   "col3": null,
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "Nayarit",
+   "col3": null,
+   "name_city": "Tepic"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona",
+   "col3": null,
+   "name_city": "Glendale"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey",
+   "col3": null,
+   "name_city": "Camden"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon",
+   "col3": null,
+   "name_city": "Tualatin"
+  },
+  {
+   "col1": null,
+   "col2": "Illinois",
+   "col3": null,
+   "name_city": "Bridgeview"
+  },
+  {
+   "col1": null,
+   "col2": "Utah",
+   "col3": null,
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": null,
+   "col2": "Ohio",
+   "col3": null,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado",
+   "col3": null,
+   "name_city": "Commerce City"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Queens"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana",
+   "col3": null,
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": null,
+   "col2": "Quebec",
+   "col3": null,
+   "name_city": "Sainte-Marthe"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon",
+   "col3": null,
+   "name_city": "Lake Oswego"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": null,
+   "col2": "Pennsylvania",
+   "col3": null,
+   "name_city": "Chester"
+  },
+  {
+   "col1": null,
+   "col2": "South Carolina",
+   "col3": null,
+   "name_city": "Fort Mill"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "The Bronx"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document) WHERE c.state_name <> 'Ontario' OR c.city_name = 'Minneapolis' OR c.gdp <> '689000' OR c.gdp <> '344.9' RETURN DISTINCT c.gdp AS col1, c.state_name AS col2, c.population AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 26
+  }
+ ]
+}

@@ -1,0 +1,1453 @@
+{
+ "uid": "join_queries#18",
+ "rows": [
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": "9",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Milwaukee Bucks",
+   "col5": "51",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Jim Fitzgerald"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Milwaukee Bucks",
+   "col5": "51",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Milwaukee Bucks",
+   "col5": "51",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Milwaukee Bucks",
+   "col5": "51",
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Herb Kohl"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Marty Marion"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Marty Marion"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Marty Marion"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": "Los Angeles Lakers",
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Cooke"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": "19",
+   "name_player": "John Collins",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": "Atlanta Hawks",
+   "col5": null,
+   "name_player": "Kevin Huerter",
+   "name_team": "Atlanta Hawks",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Bonzi Wells",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Oklahoma City",
+   "col4": "Oklahoma City Thunder",
+   "col5": null,
+   "name_player": "Nick Collison",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Seattle",
+   "col4": "Oklahoma City Thunder",
+   "col5": null,
+   "name_player": "Nick Collison",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": "Philadelphia 76ers",
+   "col5": null,
+   "name_player": "Tyrese Maxey",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": null,
+   "name_player": "Jeff McInnis",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Tualatin",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Portland",
+   "col4": "Portland Trail Blazers",
+   "col5": "1",
+   "name_player": "Greg Oden",
+   "name_team": "Portland Trail Blazers",
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": null,
+   "name_player": "Mike Conley",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": "27",
+   "name_player": "Udoka Azubuike",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Utah",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Salt Lake City",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "New Orleans",
+   "col4": "Utah Jazz",
+   "col5": "39",
+   "name_player": "Elijah Hughes",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' RETURN p.nationality AS col1, p.olympic_gold_medals AS col2, c.city_name AS col3, t.team_name AS col4, p.draft_pick AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 144
+  }
+ ]
+}

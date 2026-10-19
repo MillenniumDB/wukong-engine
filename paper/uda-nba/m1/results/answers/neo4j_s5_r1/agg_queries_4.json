@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CASE WHEN p.death_date IS NULL THEN date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) ELSE date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST(REPLACE(p.death_date, '/', '-') AS DATE)) END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, p.birth_date AS birth_date, COALESCE(p.death_date, '2026/10/14') AS end_date WITH nationality, CAST(SPLIT_PART(end_date, '/', 1) AS INT64) - CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(end_date, '/', 2) AS INT64) < CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) OR (CAST(SPLIT_PART(end_date, '/', 2) AS INT64) = CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) AND CAST(SPLIT_PART(end_date, '/', 3) AS INT64) < CAST(SPLIT_PART(birth_date, '/', 3) AS INT64)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"September 18, 2004\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, p.birth_date AS birth_date, COALESCE(p.death_date, '2026/10/14') AS end_date WITH nationality, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(end_date, ' ', 3) AS INT64) END AS end_year, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(end_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS end_month, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(end_date, ' ', 2), ',', '') AS INT64) END AS end_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, p.birth_date AS birth_date, COALESCE(p.death_date, '2026/10/14') AS end_date WITH nationality, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN CONTAINS(birth_date, '/') THEN CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(end_date, ' ', 3) AS INT64) END AS end_year, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(end_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS end_month, CASE WHEN CONTAINS(end_date, '/') THEN CAST(SPLIT_PART(end_date, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(end_date, ' ', 2), ',', 1) AS INT64) END AS end_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"April\" to INT64.",
+   "rows": null
+  }
+ ]
+}

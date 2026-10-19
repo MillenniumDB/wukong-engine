@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#5",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1980/3/20",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1991/10/10",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1935/9/1",
+   "name_player": "Guy Rodgers"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "1998/5/29",
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1966/8/23",
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1925/3/5",
+   "name_player": "Leroy Chollet"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.nba_championships AS INT64) = 0 RETURN p.fiba_world_cup AS col1, p.nba_championships AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 6
+  }
+ ]
+}

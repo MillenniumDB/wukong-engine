@@ -1,0 +1,17 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document) WHERE p.olympic_gold_medals = '0' AND p.position <> 'Backcourt' AND CAST(t.founded_year AS INT64) <> 1989 RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

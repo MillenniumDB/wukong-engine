@@ -1,0 +1,5333 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson Jr.",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Isiah Thomas",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Isiah Thomas",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Isiah Thomas",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "James Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "James Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "James Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Irv Levin",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "John Y. Brown, Jr.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Mark Cuban",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2008",
+   "col3": "Pat Riley",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2008",
+   "col3": "Pat Riley",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2008",
+   "col3": "Pat Riley",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Wyc Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "San Antonio Spurs ownership group",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "San Antonio Spurs ownership group",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Walter A. Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Walter A. Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Walter A. Brown",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Harry Mangurian",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Don Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Paul Gaston",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Boston Basketball Partners L.L.C.",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "H. Irving Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Wycliffe Grousbeck",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Steve Pagliuca",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Secaucus Seven",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Secaucus Seven",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Secaucus Seven",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Larry Bird",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Larry Bird",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Larry Bird",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Don Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "James Garner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Donald Carter",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "H. Ross Perot, Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Ross Perot's group",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Miriam Adelson",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Patrick Dumont",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Mary Stanton",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Red McCombs",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Red McCombs",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Jim Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Dan Finane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Dan Finnane",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Chris Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Cohan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Peter Guber",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Joe Lacob",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Joe Lacob",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Vivek Ranadiv\u00e9",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Erika Glazer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Fred Harman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Bob Piccinini",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Larry Bowman",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Danny German",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Marty Glick",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Chad Hurley",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Craig R. Johnson",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Bruce Karsh",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Jeffrey A. Miller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Paul Schaeffer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "David Scially",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Nick Swinmurn",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Harry Tsao",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "John Walecka",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Dennis Wong",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Chamath Palihapitiya",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "Golden State Warriors ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "San Francisco Bay Area",
+   "col2": "2007",
+   "col3": "FTX",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Jim Boylen",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Jim Boylen",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Jim Boylen",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Marty Marion",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Milton Fischman",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2008",
+   "col3": "Micky Arison",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2008",
+   "col3": "Micky Arison",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2008",
+   "col3": "Micky Arison",
+   "col4": "Kevin Love",
+   "name_player": "Kevin Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "Gayle Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Gayle Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Irish",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Irish",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Irish",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Scott Layden",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Scott Layden",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Scott Layden",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Donnie Walsh",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Donnie Walsh",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Donnie Walsh",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Glen Grunwald",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Glen Grunwald",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Glen Grunwald",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Clay Bennett",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Clay Bennett",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Clay Bennett",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Sam Garvin",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Sam Garvin",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Angelo Drossos",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Angelo Drossos",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "John Schaefer",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "John Schaefer",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Peter M. Holt",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "2012",
+   "col3": "Peter M. Holt",
+   "col4": "Harrison Barnes",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Philadelphia 76ers ownership",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Philadelphia 76ers ownership",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Philadelphia 76ers ownership",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Brooklyn Nets ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Brooklyn Nets ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Brooklyn Nets ownership",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1992",
+   "col3": "Boston Celtics ownership",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1992",
+   "col3": "Boston Celtics ownership",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1992",
+   "col3": "Boston Celtics ownership",
+   "col4": "Shaquille O'Neal",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "H. Ross Perot Jr.",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2011",
+   "col3": "Adelson and Dumont families",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Professional Basketball Club LLC",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Harris",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "2012",
+   "col3": "Blitzer",
+   "col4": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "James Lawrence Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "James Lawrence Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "James Lawrence Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1987",
+   "col3": "Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1987",
+   "col3": "Dolan",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "New York Knicks"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 665
+  }
+ ]
+}

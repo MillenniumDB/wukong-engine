@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWITH p,\n     CAST(split(p.birth_date, '/')[0] AS INT64) AS birth_year,\n     CAST(split(p.birth_date, '/')[1] AS INT64) AS birth_month,\n     CAST(split(p.birth_date, '/')[2] AS INT64) AS birth_day,\n     CAST(split(COALESCE(p.death_date, '2026/10/14'), '/')[0] AS INT64) AS end_year,\n     CAST(split(COALESCE(p.death_date, '2026/10/14'), '/')[1] AS INT64) AS end_month,\n     CAST(split(COALESCE(p.death_date, '2026/10/14'), '/')[2] AS INT64) AS end_day\nWITH p,\n     end_year - birth_year - CASE\n       WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1\n       ELSE 0\n     END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, DATE_DIFF('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE)) AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date, CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE) AS end_date\nWITH p, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', end_date) = DATE_PART('month', birth_date) AND DATE_PART('day', end_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(p.birth_date AS DATE) AS birth_date, CAST(COALESCE(p.death_date, '2026/10/14') AS DATE) AS end_date\nWITH p, DATE_PART('year', end_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', end_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', end_date) = DATE_PART('month', birth_date) AND DATE_PART('day', end_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS age\nWHERE age < 78\nRETURN p.position AS col1, p.nationality AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

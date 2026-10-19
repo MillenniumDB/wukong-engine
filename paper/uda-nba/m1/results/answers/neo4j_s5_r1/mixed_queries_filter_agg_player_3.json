@@ -1,0 +1,41 @@
+{
+ "uid": "mixed_queries_filter_agg_player#3",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 27
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 1
+  },
+  {
+   "col1": "Canadian",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "Dominican",
+   "col2": 1
+  },
+  {
+   "col1": "French",
+   "col2": 1
+  },
+  {
+   "col1": "Congolese",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.birth_date IS NOT NULL AND (p.name = 'Antonius Cleveland' OR CAST(p.nba_championships AS INT64) >= 0) WITH DISTINCT p WITH p.nationality AS nationality, COUNT(p) AS player_count RETURN nationality AS col1, player_count AS col2",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

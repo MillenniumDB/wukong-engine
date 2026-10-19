@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#2",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality = 'Bahamian' AND CAST(p.olympic_gold_medals AS INT64) <= 0 RETURN p.nationality AS col1, SUM(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality = 'Bahamian' AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) <= 0 RETURN p.nationality AS col1, SUM(COALESCE(CAST(p.olympic_gold_medals AS INT64), 0)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE p.nationality = 'Bahamian' AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) <= 0 RETURN p.nationality AS col1, SUM(COALESCE(CAST(p.olympic_gold_medals AS INT64), 0)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE lower(p.nationality) CONTAINS 'baham' AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) <= 0 RETURN p.nationality AS col1, SUM(COALESCE(CAST(p.olympic_gold_medals AS INT64), 0)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

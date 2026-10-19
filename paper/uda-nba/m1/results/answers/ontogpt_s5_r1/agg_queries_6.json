@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#6",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.birth_date IS NOT NULL AND p.nationality IS NOT NULL WITH p.nationality AS nationality, CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) AS birth_year, CAST(SUBSTRING(p.birth_date, 5, 2) AS INT64) AS birth_month, CAST(SUBSTRING(p.birth_date, 7, 2) AS INT64) AS birth_day WITH nationality, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL AND regexp_matches(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') WITH p.nationality AS nationality, CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$', 0) AS STRING) AS birth_date, CAST(regexp_extract(p.birth_date, '^([0-9]{4})/[0-9]{1,2}/[0-9]{1,2}$', 1) AS INT64) AS birth_year, CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})/[0-9]{1,2}$', 1) AS INT64) AS birth_month, CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date WITH nationality, DATE_DIFF('year', birth_date, DATE '2026-10-14') - CASE WHEN STRFTIME(birth_date, '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <DATE_DIFF('year', birth_date, DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 256)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date WITH nationality, DATE_DIFF('year', birth_date, DATE '2026-10-14') - CASE WHEN STRFTIME(birth_date, '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age RETURN nationa",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) AS birth_day WITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) >= 42) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR STRPTIME(REPLACE(p.birth_date, '/', '-'), '%Y-%m-%d') <= CAST('1984-10-14' AS DATE)) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= CAST('1984-10-14' AS DATE)) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(pd:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE pf.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(p.birth_date AS DATE) <= CAST('1984-10-14' AS DATE)) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

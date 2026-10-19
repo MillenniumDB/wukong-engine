@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p RETURN p.draft_pick AS col1, DATE_DIFF('year', DATE(p.birth_date), DATE('2026-10-14')) AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) WITH DISTINCT p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"45th\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN regexp_matches(p.draft_pick, '[0-9]+') THEN CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) ELSE NULL END AS pick_num, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WHERE (pick_num IS NOT NULL AND pick_num <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '[0-9]+') THEN CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) ELSE NULL END AS pick_num, CASE WHEN regexp_matches(p.birth_date, '^[0-9]{4}/') THEN CAST(regexp_extract(p.birth_date, '^([0-9]{4})/', 1) AS INT64) WHEN regexp_matches(p.birth_date, '^[A-Za-z]+ [0-9]+, [0-9]{4}$') THEN CAST(regexp_extract(p.birth_date, '([0-9]{4})$', 1) AS INT64) ELSE NULL END AS birth_year, CASE WHEN regexp_matches(p.birth_date, '^[0-9]{4}/') THEN CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) WHEN regexp_matches(p.birth_date, '^January ') THEN 1 WHEN regexp_matches(p.birth_date, '^February ') THEN 2 WHEN regexp_matches(p.birth_date, '^March ') THEN 3 WHEN regexp_matches(p.birth_date, '^April ') THEN 4 WHEN regexp_matches(p.birth_date, '^May ') THEN 5 WHEN regexp_matches(p.birth_date, '^June ') THEN 6 WHEN regexp_matches(p.birth_date, '^July ') THEN 7 WHEN regexp_matches(p.birth_date, '^August ') THEN 8 WHEN regexp_matches(p.birth_date, '^September ') THEN 9 WHEN regexp_matches(p.birth_date, '^October ') THEN 10 WHEN regexp_matches(p.birth_date, '^November ') THEN 11 WHEN regexp_matches(p.birth_date, '^December ') THEN 12 ELSE NULL END AS birth_month, CASE WHEN regexp_matches(p.birth_date, '^[0-9]{4}/') THEN CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})', 1) AS INT64) WHEN regexp_matches(p.birth_date, '^[A-Za-z]+ ') THEN CAST(regexp_extract(p.birth_date, '^[A-Za-z]+ ([0-9]{1,2}),', 1) AS INT64) ELSE NULL END AS birth_day WHERE (pick_num IS NOT NULL AND pick_num <= 62) OR p.birth_date = '1997/8/7' OR (p.college IS NOT NULL AND p.college <> 'Oregon State University') OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2) RETURN p.draft_pick AS col1, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"45h\" to INT64.",
+   "rows": null
+  }
+ ]
+}

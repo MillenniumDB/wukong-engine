@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "1925/3/5",
+   "col3": 101,
+   "name_player": "Leroy Chollet"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1984/2/21",
+   "col3": 42,
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "American",
+   "col2": "1945/9/17",
+   "col3": 81,
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": "American",
+   "col2": "1935/9/1",
+   "col3": 91,
+   "name_player": "Guy Rodgers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND DATE(p.birth_date) < DATE('1948-10-14')) RETURN DISTINCT p.nationality AS col1, p.birth_date AS col2, DATE_DIFF('year', DATE(p.birth_date), DATE('2026-10-14')) - CASE WHEN DATE_PART('month', DATE(p.birth_date)) > 10 OR (DATE_PART('month', DATE(p.birth_date)) = 10 AND DATE_PART('day', DATE(p.birth_date)) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND DATE(p.birth_date) < DATE('1948-10-14')) RETURN DISTINCT p.nationality AS col1, p.birth_date AS col2, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', DATE(p.birth_date)) - CASE WHEN DATE_PART('month', DATE('2026-10-14')) < DATE_PART('month', DATE(p.birth_date)) OR (DATE_PART('month', DATE('2026-10-14')) = DATE_PART('month', DATE(p.birth_date)) AND DATE_PART('day', DATE('2026-10-14')) < DATE_PART('day', DATE(p.birth_date))) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 4
+  }
+ ]
+}

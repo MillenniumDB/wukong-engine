@@ -1,0 +1,41 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": [
+  {
+   "col1": null,
+   "col2": 4
+  },
+  {
+   "col1": "Dutch",
+   "col2": 1
+  },
+  {
+   "col1": "American",
+   "col2": 61
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  },
+  {
+   "col1": "Croatian",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14))) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

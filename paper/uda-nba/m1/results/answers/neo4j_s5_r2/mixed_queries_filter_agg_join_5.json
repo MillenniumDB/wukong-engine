@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= CAST('1984-10-14' AS DATE))) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND strptime(p.birth_date, '%Y/%m/%d') <= strptime('1984/10/14', '%Y/%m/%d'))) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND (CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) <= 14)))))) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } WITH p, t, CASE WHEN CONTAINS(p.birth_date, ',') THEN CAST(SPLIT_PART(p.birth_date, ',', 2) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) END AS birth_year, CASE WHEN CONTAINS(p.birth_date, ',') THEN CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END ELSE CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) END AS birth_month, CASE WHEN CONTAINS(p.birth_date, ',') THEN CAST(SPLIT_PART(SPLIT_PART(p.birth_date, ' ', 2), ',', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) END AS birth_day WHERE CAST(p.nba_championships AS INT64) < 0 OR birth_year < 1984 OR (birth_year = 1984 AND (birth_month < 10 OR (birth_month = 10 AND birth_day <= 14))) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"15 September 1993\" to INT64.",
+   "rows": null
+  }
+ ]
+}

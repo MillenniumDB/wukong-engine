@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_player#5",
+ "rows": [
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Tyrese Haliburton"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Scottie Barnes"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": "January 20, 2000",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": null,
+   "name_player": "David Lee"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Rudy Gobert"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": "March 10, 1995",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Deandre Ayton"
+  },
+  {
+   "col1": null,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Brandon Roy"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": null,
+   "name_player": "Reggie Miller"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) = 0 RETURN DISTINCT CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

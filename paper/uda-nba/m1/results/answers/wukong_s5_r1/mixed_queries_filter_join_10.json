@@ -1,0 +1,425 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "2",
+   "col4": "Houston",
+   "name_player": "Brandan Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "2",
+   "col4": "Houston",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "2",
+   "col4": "Houston",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 79,
+   "col3": "1",
+   "col4": "Denver",
+   "name_player": "Kostas Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke",
+   "name_city": "Denver"
+  },
+  {
+   "col1": null,
+   "col2": 62,
+   "col3": "3",
+   "col4": "Detroit",
+   "name_player": "Ausar Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 62,
+   "col3": "3",
+   "col4": "Detroit",
+   "name_player": "Isiah Thomas",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 62,
+   "col3": "3",
+   "col4": "Detroit",
+   "name_player": "Andre Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 62,
+   "col3": "3",
+   "col4": "Detroit",
+   "name_player": "Harry Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": "3",
+   "col4": "Indianapolis",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": "3",
+   "col4": "Indianapolis",
+   "name_player": "Paul George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 91,
+   "col3": "3",
+   "col4": "Indianapolis",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 90,
+   "col3": "6",
+   "col4": "Chicago",
+   "name_player": "Bill Hewitt",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 90,
+   "col3": "6",
+   "col4": "Chicago",
+   "name_player": "Jimmy Butler",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 66,
+   "col3": "1",
+   "col4": "Oklahoma City",
+   "name_player": "Paul George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 64,
+   "col3": "1",
+   "col4": "Cleveland",
+   "name_player": "Shaquille O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Brandan Wright",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Draymond Green",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": "7",
+   "col4": "San Francisco",
+   "name_player": "Kermit Washington",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joseph Steven Lacob",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": "3",
+   "col4": "Miami",
+   "name_player": "Jimmy Butler",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 77,
+   "col3": "3",
+   "col4": "Miami",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Los Angeles",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Andre Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Backcourt",
+   "col2": null,
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "0",
+   "col4": "New York City",
+   "name_player": "Jahlil Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 68,
+   "col3": "1",
+   "col4": "Dallas",
+   "name_player": "Monti Davis",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Dwayne Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Paul George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 70,
+   "col3": null,
+   "col4": "Inglewood",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Joel Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Drew Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Paul George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": null,
+   "col3": "3",
+   "col4": "Philadelphia",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris",
+   "name_city": "Philadelphia"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (t)-[:ExtractedFrom]->(:Document), (c)-[:ExtractedFrom]->(:Document), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, DATE_DIFF('year', DATE(REPLACE(o.birth_date, '/', '-')), DATE('2026-10-14')) AS col2, t.championships AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (t)-[:ExtractedFrom]->(:Document), (c)-[:ExtractedFrom]->(:Document), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, date_part('year', DATE('2026-10-14')) - date_part('year', DATE(REPLACE(o.birth_date, '/', '-'))) - CASE WHEN date_part('month', DATE('2026-10-14')) < date_part('month', DATE(REPLACE(o.birth_date, '/', '-'))) OR (date_part('month', DATE('2026-10-14')) = date_part('month', DATE(REPLACE(o.birth_date, '/', '-'))) AND date_part('day', DATE('2026-10-14')) < date_part('day', DATE(REPLACE(o.birth_date, '/', '-')))) THEN 1 ELSE 0 END AS col2, t.championships AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (t)-[:ExtractedFrom]->(:Document), (c)-[:ExtractedFrom]->(:Document), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' RETURN p.position AS col1, 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS col2, t.championships AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": null,
+   "rows": 40
+  }
+ ]
+}

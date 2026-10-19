@@ -1,0 +1,111 @@
+{
+ "uid": "agg_queries#6",
+ "rows": [
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32
+  },
+  {
+   "col1": "German",
+   "col2": 33
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  },
+  {
+   "col1": "French",
+   "col2": 22
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "Greek",
+   "col2": 36
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": null,
+   "col2": 74
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  },
+  {
+   "col1": "American",
+   "col2": 23
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p.nationality AS nationality, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date\nWITH nationality, DATE_DIFF('year', birth_date, DATE('2026-10-14')) - CASE WHEN DATE_PART('month', birth_date) > 10 OR (DATE_PART('month', birth_date) = 10 AND DATE_PART('day', birth_date) > 14) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p.nationality AS nationality,\n     2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": null,
+   "rows": 23
+  }
+ ]
+}

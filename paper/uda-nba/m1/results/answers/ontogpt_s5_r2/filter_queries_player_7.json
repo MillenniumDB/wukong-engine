@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#7",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.draft_year AS INT64) <= 2018 AND CAST(p.fiba_world_cup AS INT64) > 0 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.draft_year <> 'Undrafted' AND CAST(p.draft_year AS INT64) <= 2018 AND CAST(p.fiba_world_cup AS INT64) > 0 RETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Not stated\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CASE WHEN regexp_matches(p.draft_year, '^[0-9]+$') THEN CAST(p.draft_year AS INT64) ELSE NULL END <= 2018 AND CASE WHEN regexp_matches(p.fiba_world_cup, '^[0-9]+$') THEN CAST(p.fiba_world_cup AS INT64) ELSE NULL END > 0 RETURN CASE WHEN regexp_matches(p.fiba_world_cup, '^[0-9]+$') THEN CAST(p.fiba_world_cup AS INT64) ELSE NULL END AS col1, CASE WHEN regexp_matches(p.draft_year, '^[0-9]+$') THEN CAST(p.draft_year AS INT64) ELSE NULL END AS col2, p.name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE TRY_CAST(p.draft_year AS INT64) <= 2018 AND TRY_CAST(p.fiba_world_cup AS INT64) > 0 RETURN TRY_CAST(p.fiba_world_cup AS INT64) AS col1, TRY_CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE TRY_CAST(p.draft_year AS>: expected rule oC_SingleQuery (line: 1, offset: 75)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE TRY_CAST(p.draft_year AS INT64) <= 2018 AND TRY_CAST(p.fiba_world_cup AS INT64) > 0 RETURN TRY_CAST(p.fiba_world_cup AS INT64) AS col1, TRY_CAST(p.draft_year AS INT64) AS col2, p.name AS col3, p.name AS name_player\"\n                                                                  ",
+   "rows": null
+  }
+ ]
+}

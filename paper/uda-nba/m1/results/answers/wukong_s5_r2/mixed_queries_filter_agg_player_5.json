@@ -1,0 +1,133 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "rows": [
+  {
+   "col1": "New York Knicks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0.75
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 1.0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0.6666666666666666
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0.0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0.0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0.5
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0.3333333333333333
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 1.0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0.6666666666666666
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0.42857142857142855
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0.5
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0.42857142857142855
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 0.7142857142857143
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 1.0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 1.0
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 1.0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 0.8888888888888888
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1.0
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 0.3333333333333333
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.8333333333333334
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0.75
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(td:Document), (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor]->(t)\nOPTIONAL MATCH (p)-[:PlaysFor]->(b:Team {team_name: 'Boston Celtics'})\nWHERE b.team_name = 'Boston Celtics'\n   OR CAST(p.nba_championships AS INT64) <= 0\n   OR CAST(p.fiba_world_cup AS INT64) < 0\nRETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 30
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#20",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) <> 1 AND p.name <> 'Toby Kimball' RETURN DISTINCT p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) != 1 AND p.name != 'Toby Kimball' RETURN p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": "Parser exception: Unknown operation '!=' (you probably meant to use '<>', which is the operator for inequality testing.) (line: 1, offset: 149)\n\"MATCH (p:Player) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) != 1 AND p.name != 'Toby Kimball' RETURN p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player\"\n                                                                              ",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) <> 1 AND p.name <> 'Toby Kimball' RETURN p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) <> 1 AND p.name <> 'Toby Kimball' RETURN p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

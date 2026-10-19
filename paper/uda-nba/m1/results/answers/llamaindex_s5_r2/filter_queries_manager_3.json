@@ -1,0 +1,121 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": null,
+   "col2": "Will Pan",
+   "col3": "American",
+   "name_manager": "Will Pan"
+  },
+  {
+   "col1": 70,
+   "col2": "Joe Lacob",
+   "col3": "American",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Benson",
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 92,
+   "col2": "Herb Simon",
+   "col3": "American",
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": 67,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": 67,
+   "col2": "Clay Bennett",
+   "col3": "American",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": null,
+   "col2": "Allan Slaight",
+   "col3": "Canadian",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": null,
+   "col2": "David Peterson",
+   "col3": "Canadian",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": null,
+   "col2": "Phil Granovsky",
+   "col3": "Canadian",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": 62,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": null,
+   "col2": "John Bitove",
+   "col3": "Canadian",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": 71,
+   "col2": "James Lawrence Dolan",
+   "col3": "American",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": null,
+   "col2": "Arnold Heft",
+   "col3": "American",
+   "name_manager": "Arnold Heft"
+  },
+  {
+   "col1": null,
+   "col2": "James Garner",
+   "col3": "American",
+   "name_manager": "James Garner"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o, date_diff('year', DATE(o.birth_date), DATE('2026-10-14')) AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CAST(date_part('year', DATE('2026-10-14')) AS INT64) - CAST(date_part('year', DATE(o.birth_date)) AS INT64) - CASE\n    WHEN CAST(date_part('month', DATE(o.birth_date)) AS INT64) > CAST(date_part('month', DATE('2026-10-14')) AS INT64)\n      OR (CAST(date_part('month', DATE(o.birth_date)) AS INT64) = CAST(date_part('month', DATE('2026-10-14')) AS INT64)\n        AND CAST(date_part('day', DATE(o.birth_date)) AS INT64) > CAST(date_part('day', DATE('2026-10-14')) AS INT64))\n    THEN 1 ELSE 0\n  END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 1964\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS birth_year,\n  CASE\n    WHEN lower(o.birth_date) CONTAINS 'january' THEN 1\n    WHEN lower(o.birth_date) CONTAINS 'february' THEN 2\n    WHEN lower(o.birth_date) CONTAINS 'march' THEN 3\n    WHEN lower(o.birth_date) CONTAINS 'april' THEN 4\n    WHEN lower(o.birth_date) CONTAINS 'may' THEN 5\n    WHEN lower(o.birth_date) CONTAINS 'june' THEN 6\n    WHEN lower(o.birth_date) CONTAINS 'july' THEN 7\n    WHEN lower(o.birth_date) CONTAINS 'august' THEN 8\n    WHEN lower(o.birth_date) CONTAINS 'september' THEN 9\n    WHEN lower(o.birth_date) CONTAINS 'october' THEN 10\n    WHEN lower(o.birth_date) CONTAINS 'november' THEN 11\n    WHEN lower(o.birth_date) CONTAINS 'december' THEN 12\n    ELSE CAST(split_part(o.birth_date, '/', 2) AS INT64)\n  END AS birth_month,\n  CASE\n    WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 3) AS INT64)\n    ELSE 1\n  END AS birth_day\nWITH o, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS birth_year,\n  CASE\n    WHEN regexp_matches(lower(o.birth_date), 'january') THEN 1\n    WHEN regexp_matches(lower(o.birth_date), 'february') THEN 2\n    WHEN regexp_matches(lower(o.birth_date), 'march') THEN 3\n    WHEN regexp_matches(lower(o.birth_date), 'april') THEN 4\n    WHEN regexp_matches(lower(o.birth_date), 'may') THEN 5\n    WHEN regexp_matches(lower(o.birth_date), 'june') THEN 6\n    WHEN regexp_matches(lower(o.birth_date), 'july') THEN 7\n    WHEN regexp_matches(lower(o.birth_date), 'august') THEN 8\n    WHEN regexp_matches(lower(o.birth_date), 'september') THEN 9\n    WHEN regexp_matches(lower(o.birth_date), 'october') THEN 10\n    WHEN regexp_matches(lower(o.birth_date), 'november') THEN 11\n    WHEN regexp_matches(lower(o.birth_date), 'december') THEN 12\n    WHEN regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64)\n    ELSE 1\n  END AS birth_month,\n  CASE\n    WHEN regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') THEN CAST(regexp_extract(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64)\n    ELSE 1\n  END AS birth_day\nWITH o, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE age < 65 OR o.nationality <> 'Israeli-American'\nRETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

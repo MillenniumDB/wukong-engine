@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, AVG(CAST(date_diff('year', date(replace(o.birth_date, '/', '-')), date('2026-10-14')) AS DOUBLE)) AS avg_age RETURN nationality AS col1, avg_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, AVG(2026 - CAST(DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) AS INT64) - CASE WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10 OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10 AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14) THEN 1 ELSE 0 END) AS avg_age RETURN nationality AS col1, avg_age AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, AVG(2026 - CAST(DATE_PART('year', CAST(o.birth_date AS DATE)) AS INT64) - CASE WHEN DATE_PART('month', CAST(o.birth_date AS DATE)) > 10 OR (DATE_PART('month', CAST(o.birth_date AS DATE)) = 10 AND DATE_PART('day', CAST(o.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END) AS avg_age RETURN nationality AS col1, avg_age AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"July 31, 1958\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, CASE WHEN o.birth_date LIKE '%,%' THEN STRPTIME(o.birth_date, '%B %d, %Y') ELSE STRPTIME(o.birth_date, '%Y/%m/%d') END AS birth_date WITH nationality, AVG(2026 - CAST(DATE_PART('year', birth_date) AS INT64) - CASE WHEN DATE_PART('month', birth_date) > 10 OR (DATE_PART('month', birth_date) = 10 AND DATE_PART('day', birth_date) > 14) THEN 1 ELSE 0 END) AS avg_age RETURN nationality AS col1, avg_age AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN o.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 165)\n\"MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, CASE WHEN o.birth_date LIKE '%,%' THEN STRPTIME(o.birth_date, '%B %d, %Y') ELSE STRPTIME(o.birth_date, '%Y/%m/%d') END AS birth_date WITH nationality, AVG(2026 - CAST(DATE_PART('year', birth_date) AS INT64) - CASE WHEN DATE_PART('month', b",
+   "rows": null
+  }
+ ]
+}

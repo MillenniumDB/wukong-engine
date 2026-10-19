@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)\nWITH o, t, CAST(o.birth_date AS STRING) AS birth_date\nWITH o, t, 2026 - CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 67 AND t.team_name <> 'Golden State Warriors'\nRETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)\nWITH o, t, o.birth_date AS b\nWITH o, t,\n  CASE WHEN b LIKE '%/%' THEN CAST(SPLIT_PART(b, '/', 1) AS INT64) ELSE CAST(TRIM(SPLIT_PART(b, ',', 2)) AS INT64) END AS birth_year,\n  CASE WHEN b LIKE '%/%' THEN CAST(SPLIT_PART(b, '/', 2) AS INT64) ELSE CASE LOWER(SPLIT_PART(b, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END END AS birth_month,\n  CASE WHEN b LIKE '%/%' THEN CAST(SPLIT_PART(b, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(b, ' ', 2), ',', '') AS INT64) END AS birth_day\nWITH o, t, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age >= 67 AND t.team_name <> 'Golden State Warriors'\nRETURN owner_age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <CASE WHEN b LIKE>: expected rule oC_ProjectionItem (line: 4, offset: 14)\n\"  CASE WHEN b LIKE '%/%' THEN CAST(SPLIT_PART(b, '/', 1) AS INT64) ELSE CAST(TRIM(SPLIT_PART(b, ',', 2)) AS INT64) END AS birth_year,\"\n               ^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)\nWITH o, t, o.birth_date AS b\nWITH o, t,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 1) AS INT64) ELSE CAST(TRIM(SPLIT_PART(b, ',', 2)) AS INT64) END AS birth_year,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 2) AS INT64) ELSE CASE LOWER(SPLIT_PART(b, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END END AS birth_month,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(b, ' ', 2), ',', '') AS INT64) END AS birth_day\nWITH o, t, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age >= 67 AND t.team_name <> 'Golden State Warriors'\nRETURN owner_age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)\nWITH o, t, o.birth_date AS b\nWITH o, t,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 1) AS INT64) ELSE CAST(TRIM(SPLIT_PART(b, ',', 2)) AS INT64) END AS birth_year,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 2) AS INT64) ELSE CASE LOWER(SPLIT_PART(b, ' ', 1)) WHEN 'january' THEN 1 WHEN 'february' THEN 2 WHEN 'march' THEN 3 WHEN 'april' THEN 4 WHEN 'may' THEN 5 WHEN 'june' THEN 6 WHEN 'july' THEN 7 WHEN 'august' THEN 8 WHEN 'september' THEN 9 WHEN 'october' THEN 10 WHEN 'november' THEN 11 WHEN 'december' THEN 12 END END AS birth_month,\n  CASE WHEN REGEXP_MATCHES(b, '^[0-9]{4}/') THEN CAST(SPLIT_PART(b, '/', 3) AS INT64) ELSE CAST(SPLIT_PART(SPLIT_PART(b, ' ', 2), ',', 1) AS INT64) END AS birth_day\nWITH o, t, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age >= 67 AND t.team_name <> 'Golden State Warriors'\nRETURN owner_age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

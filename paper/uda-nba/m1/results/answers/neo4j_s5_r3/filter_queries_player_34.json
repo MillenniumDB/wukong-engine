@@ -1,0 +1,787 @@
+{
+ "uid": "filter_queries_player#34",
+ "rows": [
+  {
+   "col1": "French",
+   "col2": "David Michineau",
+   "col3": "2016",
+   "name_player": "David Michineau"
+  },
+  {
+   "col1": "American",
+   "col2": "Chris Paul",
+   "col3": "2005",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "American",
+   "col2": "Kyrie Irving",
+   "col3": "2011",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "Bahamian",
+   "col2": "Mychal Thompson",
+   "col3": "1978",
+   "name_player": "Mychal Thompson"
+  },
+  {
+   "col1": "American",
+   "col2": "Kenneth \"Apple\" Green",
+   "col3": "1981",
+   "name_player": "Kenneth \"Apple\" Green"
+  },
+  {
+   "col1": "American",
+   "col2": "Tony Delk",
+   "col3": "1996",
+   "name_player": "Tony Delk"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Edwards",
+   "col3": "2020",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "Greek-American",
+   "col2": "Nick Calathes",
+   "col3": "2009",
+   "name_player": "Nick Calathes"
+  },
+  {
+   "col1": "American",
+   "col2": "Kevin Wayne Durant",
+   "col3": "2007",
+   "name_player": "Kevin Wayne Durant"
+  },
+  {
+   "col1": "American",
+   "col2": "Shawn Respert",
+   "col3": "1995",
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": "American",
+   "col2": "Mark Jeffrey Radford",
+   "col3": "1981",
+   "name_player": "Mark Jeffrey Radford"
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": "Joel Hans Embiid",
+   "col3": "2014",
+   "name_player": "Joel Hans Embiid"
+  },
+  {
+   "col1": "American",
+   "col2": "Tyler Herro",
+   "col3": "2019",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "American",
+   "col2": "Jimmy Butler III",
+   "col3": "2011",
+   "name_player": "Jimmy Butler III"
+  },
+  {
+   "col1": "Serbian",
+   "col2": "Bogdan Bogdanovi\u0107",
+   "col3": "2014",
+   "name_player": "Bogdan Bogdanovi\u0107"
+  },
+  {
+   "col1": "French",
+   "col2": "Alex Sarr",
+   "col3": "2024",
+   "name_player": "Alex Sarr"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Davis",
+   "col3": "2012",
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "American",
+   "col2": "Kobe Bryant",
+   "col3": "1996",
+   "name_player": "Kobe Bryant"
+  },
+  {
+   "col1": "American",
+   "col2": "Brandan Keith Wright",
+   "col3": "2007",
+   "name_player": "Brandan Keith Wright"
+  },
+  {
+   "col1": "American",
+   "col2": "Daniel Edward Anderson",
+   "col3": "1974",
+   "name_player": "Daniel Edward Anderson"
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": "Jahlil Okafor",
+   "col3": "2015",
+   "name_player": "Jahlil Okafor"
+  },
+  {
+   "col1": "American",
+   "col2": "Kurt Thomas",
+   "col3": "1995",
+   "name_player": "Kurt Thomas"
+  },
+  {
+   "col1": "American",
+   "col2": "Calvin Ramsey",
+   "col3": "1959",
+   "name_player": "Calvin Ramsey"
+  },
+  {
+   "col1": "American",
+   "col2": "Freddie L. Boyd",
+   "col3": "1972",
+   "name_player": "Freddie L. Boyd"
+  },
+  {
+   "col1": "American",
+   "col2": "Stephen Douglas Kerr",
+   "col3": "1988",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "Gregory Clinton Foster",
+   "col3": "1990",
+   "name_player": "Gregory Clinton Foster"
+  },
+  {
+   "col1": "American",
+   "col2": "Joseph Xavier Forte",
+   "col3": "2001",
+   "name_player": "Joseph Xavier Forte"
+  },
+  {
+   "col1": "Croatian",
+   "col2": "Dino Ra\u0111a",
+   "col3": "1989",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": "American",
+   "col2": "Devontae Cacok",
+   "col3": "2019",
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": "American",
+   "col2": "Richard Anthony Rosenthal",
+   "col3": "1954",
+   "name_player": "Richard Anthony Rosenthal"
+  },
+  {
+   "col1": "American",
+   "col2": "Kermit Alan Washington",
+   "col3": "1973",
+   "name_player": "Kermit Alan Washington"
+  },
+  {
+   "col1": "American",
+   "col2": "Donyell Lamar Marshall",
+   "col3": "1994",
+   "name_player": "Donyell Lamar Marshall"
+  },
+  {
+   "col1": "American",
+   "col2": "John Harding Lucas II",
+   "col3": "1976",
+   "name_player": "John Harding Lucas II"
+  },
+  {
+   "col1": "American",
+   "col2": "Michael Carter-Williams",
+   "col3": "2013",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": "Congolese",
+   "col2": "Jonathan Kuminga",
+   "col3": "2021",
+   "name_player": "Jonathan Kuminga"
+  },
+  {
+   "col1": "American",
+   "col2": "Shaquille Rashaun O'Neal",
+   "col3": "1992",
+   "name_player": "Shaquille Rashaun O'Neal"
+  },
+  {
+   "col1": "Serbian",
+   "col2": "Nemanja Nedovic",
+   "col3": "2013",
+   "name_player": "Nemanja Nedovic"
+  },
+  {
+   "col1": "Turkish",
+   "col2": "Furkan Korkmaz",
+   "col3": "2016",
+   "name_player": "Furkan Korkmaz"
+  },
+  {
+   "col1": "American",
+   "col2": "Jay Fletcher Vincent",
+   "col3": "1981",
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": "Serbian",
+   "col2": "Nikola Radi\u010devi\u0107",
+   "col3": "2015",
+   "name_player": "Nikola Radi\u010devi\u0107"
+  },
+  {
+   "col1": "American",
+   "col2": "LeBron James",
+   "col3": "2003",
+   "name_player": "LeBron James"
+  },
+  {
+   "col1": "French",
+   "col2": "Victor Wembanyama",
+   "col3": "2023",
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": "American",
+   "col2": "Kyle Lowry",
+   "col3": "2006",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": "American",
+   "col2": "Klay Thompson",
+   "col3": "2011",
+   "name_player": "Klay Thompson"
+  },
+  {
+   "col1": "American",
+   "col2": "Marvin Roberts",
+   "col3": "1971",
+   "name_player": "Marvin Roberts"
+  },
+  {
+   "col1": "American",
+   "col2": "D'Angelo Russell",
+   "col3": "2015",
+   "name_player": "D'Angelo Russell"
+  },
+  {
+   "col1": "American",
+   "col2": "Jaylen Marselles Brown",
+   "col3": "2016",
+   "name_player": "Jaylen Marselles Brown"
+  },
+  {
+   "col1": "American",
+   "col2": "Jrue Randall Holiday",
+   "col3": "2009",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "Kevon Grant Looney",
+   "col3": "2015",
+   "name_player": "Kevon Grant Looney"
+  },
+  {
+   "col1": "Ukrainian",
+   "col2": "Alex Len",
+   "col3": "2013",
+   "name_player": "Alex Len"
+  },
+  {
+   "col1": "Australian",
+   "col2": "Dante Exum",
+   "col3": "2014",
+   "name_player": "Dante Exum"
+  },
+  {
+   "col1": "Spanish",
+   "col2": "Pau Gasol",
+   "col3": "2001",
+   "name_player": "Pau Gasol"
+  },
+  {
+   "col1": "American",
+   "col2": "Earvin \"Magic\" Johnson Jr.",
+   "col3": "1979",
+   "name_player": "Earvin \"Magic\" Johnson Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "Gene Dyker",
+   "col3": "1953",
+   "name_player": "Gene Dyker"
+  },
+  {
+   "col1": "Dutch",
+   "col2": "Rik Smits",
+   "col3": "1988",
+   "name_player": "Rik Smits"
+  },
+  {
+   "col1": "American",
+   "col2": "William Bedford",
+   "col3": "1986",
+   "name_player": "William Bedford"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "Erazem Lorbek",
+   "col3": "2005",
+   "name_player": "Erazem Lorbek"
+  },
+  {
+   "col1": "American",
+   "col2": "Jabari Dominic Walker",
+   "col3": "2022",
+   "name_player": "Jabari Dominic Walker"
+  },
+  {
+   "col1": "American",
+   "col2": "Kevin Wesley Love",
+   "col3": "2008",
+   "name_player": "Kevin Wesley Love"
+  },
+  {
+   "col1": "American",
+   "col2": "Jaden Ivey",
+   "col3": "2022",
+   "name_player": "Jaden Ivey"
+  },
+  {
+   "col1": "American",
+   "col2": "Mark Price",
+   "col3": "1986",
+   "name_player": "Mark Price"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Marshon Davis Jr.",
+   "col3": "2012",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "Shaquille O'Neal",
+   "col3": "1992",
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "American",
+   "col2": "Michael Jordan",
+   "col3": "1984",
+   "name_player": "Michael Jordan"
+  },
+  {
+   "col1": "American",
+   "col2": "Mychel Thompson",
+   "col3": "2011",
+   "name_player": "Mychel Thompson"
+  },
+  {
+   "col1": "American",
+   "col2": "Jarrett Matthew Jack",
+   "col3": "2005",
+   "name_player": "Jarrett Matthew Jack"
+  },
+  {
+   "col1": "American",
+   "col2": "Edward Dahler Jr.",
+   "col3": "1950",
+   "name_player": "Edward Dahler Jr."
+  },
+  {
+   "col1": "Canadian",
+   "col2": "Andrew Wiggins",
+   "col3": "2014",
+   "name_player": "Andrew Wiggins"
+  },
+  {
+   "col1": "American",
+   "col2": "Derrick Joseph Chievous",
+   "col3": "1988",
+   "name_player": "Derrick Joseph Chievous"
+  },
+  {
+   "col1": "American",
+   "col2": "Jordan Lee Crawford",
+   "col3": "2010",
+   "name_player": "Jordan Lee Crawford"
+  },
+  {
+   "col1": "American",
+   "col2": "Bam Adebayo",
+   "col3": "2017",
+   "name_player": "Bam Adebayo"
+  },
+  {
+   "col1": "Dominican",
+   "col2": "Al Horford",
+   "col3": "2007",
+   "name_player": "Al Horford"
+  },
+  {
+   "col1": "Canadian",
+   "col2": "Andrew Christian Wiggins",
+   "col3": "2014",
+   "name_player": "Andrew Christian Wiggins"
+  },
+  {
+   "col1": "Canadian",
+   "col2": "Anthony Bennett",
+   "col3": "2013",
+   "name_player": "Anthony Bennett"
+  },
+  {
+   "col1": "British",
+   "col2": "Ogugua \"OG\" Anunoby Jr.",
+   "col3": "2017",
+   "name_player": "Ogugua \"OG\" Anunoby Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "Austin Reaves",
+   "col3": "2021",
+   "name_player": "Austin Reaves"
+  },
+  {
+   "col1": "American",
+   "col2": "Devin Armani Booker",
+   "col3": "2015",
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": "French",
+   "col2": "Nando de Colo",
+   "col3": "2009",
+   "name_player": "Nando de Colo"
+  },
+  {
+   "col1": "American",
+   "col2": "Harrison Barnes",
+   "col3": "2012",
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "American",
+   "col2": "Stephen Curry",
+   "col3": "2009",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Latvian",
+   "col2": "Kristaps Porzi\u0146\u0123is",
+   "col3": "2015",
+   "name_player": "Kristaps Porzi\u0146\u0123is"
+  },
+  {
+   "col1": "American",
+   "col2": "Lavoy Allen",
+   "col3": "2011",
+   "name_player": "Lavoy Allen"
+  },
+  {
+   "col1": "American",
+   "col2": "Guy William Rodgers",
+   "col3": "1958",
+   "name_player": "Guy William Rodgers"
+  },
+  {
+   "col1": "Argentinian",
+   "col2": "Manu Gin\u00f3bili",
+   "col3": "1999",
+   "name_player": "Manu Gin\u00f3bili"
+  },
+  {
+   "col1": "Greek",
+   "col2": "Kostas Papanikolaou",
+   "col3": "2012",
+   "name_player": "Kostas Papanikolaou"
+  },
+  {
+   "col1": "American",
+   "col2": "Elmer H. Behnke",
+   "col3": "1951",
+   "name_player": "Elmer H. Behnke"
+  },
+  {
+   "col1": "American",
+   "col2": "Zach LaVine",
+   "col3": "2014",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": "American",
+   "col2": "DaMon William \"Monti\" Davis",
+   "col3": "1980",
+   "name_player": "DaMon William \"Monti\" Davis"
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": "Giannis Antetokounmpo",
+   "col3": "2013",
+   "name_player": "Giannis Antetokounmpo"
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": "Kyle Anderson",
+   "col3": "2014",
+   "name_player": "Kyle Anderson"
+  },
+  {
+   "col1": "American",
+   "col2": "Zach Collins",
+   "col3": "2017",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": "Jaime Jaquez Jr.",
+   "col3": "2023",
+   "name_player": "Jaime Jaquez Jr."
+  },
+  {
+   "col1": "Canadian",
+   "col2": "Tyler Ennis",
+   "col3": "2014",
+   "name_player": "Tyler Ennis"
+  },
+  {
+   "col1": "Israeli",
+   "col2": "Omri Casspi",
+   "col3": "2009",
+   "name_player": "Omri Casspi"
+  },
+  {
+   "col1": "Iranian",
+   "col2": "Arsalan Kazemi",
+   "col3": "2013",
+   "name_player": "Arsalan Kazemi"
+  },
+  {
+   "col1": "Greek",
+   "col2": "Georgios Papagiannis",
+   "col3": "2016",
+   "name_player": "Georgios Papagiannis"
+  },
+  {
+   "col1": "Cameroonian",
+   "col2": "Joel Embiid",
+   "col3": "2014",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "American",
+   "col2": "Carrick Felix",
+   "col3": "2013",
+   "name_player": "Carrick Felix"
+  },
+  {
+   "col1": "American",
+   "col2": "Anthony Avent",
+   "col3": "1991",
+   "name_player": "Anthony Avent"
+  },
+  {
+   "col1": "French",
+   "col2": "Tony Parker",
+   "col3": "2001",
+   "name_player": "Tony Parker"
+  },
+  {
+   "col1": "American",
+   "col2": "Walter Berry",
+   "col3": "1986",
+   "name_player": "Walter Berry"
+  },
+  {
+   "col1": "American",
+   "col2": "Jaylen Brown",
+   "col3": "2016",
+   "name_player": "Jaylen Brown"
+  },
+  {
+   "col1": "American",
+   "col2": "Draymond Jamal Green",
+   "col3": "2012",
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": "American",
+   "col2": "Lonzo Anderson Ball",
+   "col3": "2017",
+   "name_player": "Lonzo Anderson Ball"
+  },
+  {
+   "col1": "American",
+   "col2": "Isiah Lord Thomas III",
+   "col3": "1981",
+   "name_player": "Isiah Lord Thomas III"
+  },
+  {
+   "col1": "American",
+   "col2": "Timothy Theodore Duncan",
+   "col3": "1997",
+   "name_player": "Timothy Theodore Duncan"
+  },
+  {
+   "col1": "American",
+   "col2": "Dick Surhoff",
+   "col3": "1952",
+   "name_player": "Dick Surhoff"
+  },
+  {
+   "col1": "American",
+   "col2": "Trayce Jackson-Davis",
+   "col3": "2023",
+   "name_player": "Trayce Jackson-Davis"
+  },
+  {
+   "col1": "American",
+   "col2": "Ausar XLNC Thompson",
+   "col3": "2023",
+   "name_player": "Ausar XLNC Thompson"
+  },
+  {
+   "col1": "French",
+   "col2": "Timoth\u00e9 Luwawu-Cabarrot",
+   "col3": "2016",
+   "name_player": "Timoth\u00e9 Luwawu-Cabarrot"
+  },
+  {
+   "col1": "Japanese",
+   "col2": "Rui Hachimura",
+   "col3": "2019",
+   "name_player": "Rui Hachimura"
+  },
+  {
+   "col1": "American",
+   "col2": "Trent Tucker",
+   "col3": "1982",
+   "name_player": "Trent Tucker"
+  },
+  {
+   "col1": "American",
+   "col2": "Dwayne Schintzius",
+   "col3": "1990",
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": "American",
+   "col2": "Harry Gallatin",
+   "col3": "1949",
+   "name_player": "Harry Gallatin"
+  },
+  {
+   "col1": "American",
+   "col2": "James J. Brasco",
+   "col3": "1952",
+   "name_player": "James J. Brasco"
+  },
+  {
+   "col1": "American",
+   "col2": "Steven Delano Smith",
+   "col3": "1991",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "Jamal Crawford",
+   "col3": "2000",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "American",
+   "col2": "Paul Clifton Anthony George",
+   "col3": "2010",
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": "American",
+   "col2": "Caleb Martin",
+   "col3": "2019",
+   "name_player": "Caleb Martin"
+  },
+  {
+   "col1": "American",
+   "col2": "Cade Cunningham",
+   "col3": "2021",
+   "name_player": "Cade Cunningham"
+  },
+  {
+   "col1": "American",
+   "col2": "David Lattin",
+   "col3": "1967",
+   "name_player": "David Lattin"
+  },
+  {
+   "col1": "American",
+   "col2": "Andre Drummond",
+   "col3": "2012",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "American",
+   "col2": "Jayson Tatum",
+   "col3": "2017",
+   "name_player": "Jayson Tatum"
+  },
+  {
+   "col1": "American",
+   "col2": "Donald Robert Anielak",
+   "col3": "1954",
+   "name_player": "Donald Robert Anielak"
+  },
+  {
+   "col1": "American",
+   "col2": "Vernon Maxwell",
+   "col3": "1988",
+   "name_player": "Vernon Maxwell"
+  },
+  {
+   "col1": "American",
+   "col2": "Jack Parr",
+   "col3": "1958",
+   "name_player": "Jack Parr"
+  },
+  {
+   "col1": "American",
+   "col2": "Andre Jamal Drummond",
+   "col3": "2012",
+   "name_player": "Andre Jamal Drummond"
+  },
+  {
+   "col1": "Bahamian",
+   "col2": "Buddy Hield",
+   "col3": "2016",
+   "name_player": "Buddy Hield"
+  },
+  {
+   "col1": "Croatian",
+   "col2": "Dario \u0160ari\u0107",
+   "col3": "2014",
+   "name_player": "Dario \u0160ari\u0107"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.draft_year AS INT64) <> 2018 AND p.nationality <> 'German') OR (p.name = 'Donta Hall' AND CAST(p.nba_championships AS INT64) <> 0) RETURN DISTINCT p.nationality AS col1, p.name AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 129
+  }
+ ]
+}

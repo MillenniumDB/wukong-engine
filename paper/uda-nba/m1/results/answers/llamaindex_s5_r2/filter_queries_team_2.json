@@ -1,0 +1,91 @@
+{
+ "uid": "filter_queries_team#2",
+ "rows": [
+  {
+   "col1": "Leo Ferris",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Buffalo Bisons"
+  },
+  {
+   "col1": "Thomas Cousins",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Carl Sanders",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tom Cousins",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Ted Turner",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta Spirit LLC",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Tony Ressler",
+   "col2": null,
+   "col3": "1946",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Franklin Mieuli",
+   "col2": "2",
+   "col3": "1946",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "Larry H. Miller",
+   "col2": null,
+   "col3": "1974",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Battistone",
+   "col2": null,
+   "col3": "1974",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Larry Miller",
+   "col2": null,
+   "col3": "1974",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Ryan Smith",
+   "col2": null,
+   "col3": "1974",
+   "name_team": "Utah Jazz"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:MentionedIn]->(d:Document) WHERE CAST(t.founded_year AS INT64) < 1989 RETURN o.name AS col1, t.championships AS col2, t.founded_year AS col3, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:MentionedIn]->(d:Document) WHERE t.founded_year =~ '^[0-9]{4}$' AND CAST(t.founded_year AS INT64) < 1989 RETURN o.name AS col1, t.championships AS col2, t.founded_year AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 12
+  }
+ ]
+}

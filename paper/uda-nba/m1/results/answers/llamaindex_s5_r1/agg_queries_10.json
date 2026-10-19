@@ -1,0 +1,37 @@
+{
+ "uid": "agg_queries#10",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 72.0
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 77.0
+  },
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": 62.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH DISTINCT o RETURN o.nationality AS col1, AVG(CAST(date_diff('year', date(replace(o.birth_date, '/', '-')), CASE WHEN o.death_date IS NULL THEN date('2026-10-14') ELSE date(replace(o.death_date, '/', '-')) END) AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH DISTINCT o, CAST(split_part(o.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(o.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(o.birth_date, '/', 3) AS INT64) AS birth_day, CASE WHEN o.death_date IS NULL THEN 2026 ELSE CAST(split_part(o.death_date, '/', 1) AS INT64) END AS end_year, CASE WHEN o.death_date IS NULL THEN 10 ELSE CAST(split_part(o.death_date, '/', 2) AS INT64) END AS end_month, CASE WHEN o.death_date IS NULL THEN 14 ELSE CAST(split_part(o.death_date, '/', 3) AS INT64) END AS end_day WITH o, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN o.nationality AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 1964\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH DISTINCT o, CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS birth_year, CASE WHEN o.death_date IS NULL THEN 2026 ELSE CAST(regexp_extract(o.death_date, '[0-9]{4}', 0) AS INT64) END AS end_year RETURN o.nationality AS col1, AVG(CAST(end_year - birth_year AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

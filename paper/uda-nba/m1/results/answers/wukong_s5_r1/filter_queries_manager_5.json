@@ -1,0 +1,103 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": [
+  {
+   "col1": "2019",
+   "col2": null,
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "1983",
+   "col2": 91,
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": null,
+   "col2": 91,
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "2017",
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": null,
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "2018",
+   "col2": 79,
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "2015",
+   "col2": 62,
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "2014",
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "2005",
+   "col2": 64,
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "2006",
+   "col2": 66,
+   "col3": "American",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "1985",
+   "col2": 90,
+   "col3": "American",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "2010",
+   "col2": 70,
+   "col3": "American",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": "2000",
+   "col2": 68,
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "2011",
+   "col2": null,
+   "col3": "American",
+   "name_manager": "Joshua Jordan Harris"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(d:Document), (o)-[owns:Owns]->(t:Team)\nWHERE date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), date('2026-10-14')) <= 76\n   OR o.name = 'Joseph Chung-Hsin Tsai'\n   OR CAST(owns.since_year AS INT64) > 2013\n   OR o.nationality = 'American'\nRETURN owns.since_year AS col1, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), date('2026-10-14')) AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[owns:Owns]->(:Team)\nWITH o, owns,\n     CAST(split_part(o.birth_date, '/', 1) AS INT64) AS birth_year,\n     CAST(split_part(o.birth_date, '/', 2) AS INT64) AS birth_month,\n     CAST(split_part(o.birth_date, '/', 3) AS INT64) AS birth_day\nWITH o, owns,\n     2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS owner_age\nWHERE owner_age <= 76\n   OR o.name = 'Joseph Chung-Hsin Tsai'\n   OR CAST(owns.since_year AS INT64) > 2013\n   OR o.nationality = 'American'\nRETURN owns.since_year AS col1, owner_age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

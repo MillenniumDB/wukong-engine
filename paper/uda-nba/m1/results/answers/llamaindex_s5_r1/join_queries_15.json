@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#15",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City)\nOPTIONAL MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t)\nRETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE date_diff('year', date(o.birth_date), date('2026-10-14')) END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City)\nOPTIONAL MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t)\nRETURN o.name AS col1,\n       t.founded_year AS col2,\n       c.city_name AS col3,\n       CASE\n         WHEN o.birth_date IS NULL THEN NULL\n         ELSE CAST('2026' AS INT64) - CAST(split_part(o.birth_date, '/', 1) AS INT64)\n              - CASE\n                  WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10\n                       OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10\n                           AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14)\n                  THEN 1\n                  ELSE 0\n                END\n       END AS col4,\n       p.nationality AS col5,\n       p.name AS name_player,\n       t.team_name AS name_team,\n       o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"1962-01-17\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City)\nOPTIONAL MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t)\nWITH o, t, c, p, replace(o.birth_date, '-', '/') AS birth\nRETURN o.name AS col1,\n       t.founded_year AS col2,\n       c.city_name AS col3,\n       CASE\n         WHEN o.birth_date IS NULL THEN NULL\n         ELSE 2026 - CAST(split_part(birth, '/', 1) AS INT64)\n              - CASE\n                  WHEN CAST(split_part(birth, '/', 2) AS INT64) > 10\n                       OR (CAST(split_part(birth, '/', 2) AS INT64) = 10\n                           AND CAST(split_part(birth, '/', 3) AS INT64) > 14)\n                  THEN 1\n                  ELSE 0\n                END\n       END AS col4,\n       p.nationality AS col5,\n       p.name AS name_player,\n       t.team_name AS name_team,\n       o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City)\nOPTIONAL MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t)\nRETURN o.name AS col1,\n       t.founded_year AS col2,\n       c.city_name AS col3,\n       CASE\n         WHEN o.birth_date IS NULL THEN NULL\n         WHEN o.birth_date LIKE '%-%' THEN\n           2026 - CAST(split_part(o.birth_date, '-', 1) AS INT64)\n           - CASE\n               WHEN CAST(split_part(o.birth_date, '-', 2) AS INT64) > 10\n                    OR (CAST(split_part(o.birth_date, '-', 2) AS INT64) = 10\n                        AND CAST(split_part(o.birth_date, '-', 3) AS INT64) > 14)\n               THEN 1 ELSE 0\n             END\n         ELSE\n           2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64)\n           - CASE\n               WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10\n                    OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10\n                        AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14)\n               THEN 1 ELSE 0\n             END\n       END AS col4,\n       p.nationality AS col5,\n       p.name AS name_player,\n       t.team_name AS name_team,\n       o.name AS name_manager",
+   "error": "Parser exception: Invalid input <CASE\n         WHEN o.birth_date IS NULL THEN NULL\n         WHEN o.birth_date LIKE>: expected rule oC_ProjectionItem (line: 8, offset: 27)\n\"         WHEN o.birth_date LIKE '%-%' THEN\"\n                            ^^^^",
+   "rows": null
+  }
+ ]
+}

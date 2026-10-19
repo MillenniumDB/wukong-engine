@@ -1,0 +1,27 @@
+{
+ "uid": "agg_queries#3",
+ "rows": [
+  {
+   "col1": "Frontcourt",
+   "col2": 53.53061224489796
+  },
+  {
+   "col1": "Backcourt",
+   "col2": 46.31707317073171
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, DATE_DIFF('year', DATE(REPLACE(p.birth_date, '/', '-')), DATE('2026-10-14')) AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

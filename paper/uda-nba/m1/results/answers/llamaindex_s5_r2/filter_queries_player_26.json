@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#26",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, date_diff('year', CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE), DATE('2026-10-14')) AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - CASE\n    WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10\n      OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) >= 14)\n    THEN 1 ELSE 0 END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date IS NOT NULL AND p.birth_date <> '' THEN\n      2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - CASE\n        WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10\n          OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) >= 14)\n        THEN 1 ELSE 0 END\n    ELSE NULL\n  END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR (p.fiba_world_cup IS NOT NULL AND p.fiba_world_cup <> '' AND CAST(p.fiba_world_cup AS INT64) = 1)\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date IS NOT NULL AND p.birth_date <> '' THEN\n      2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n        WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n          OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) >= 14)\n        THEN 1 ELSE 0 END\n    ELSE NULL\n  END AS age,\n  CASE\n    WHEN p.fiba_world_cup IS NOT NULL AND p.fiba_world_cup <> ''\n    THEN CAST(p.fiba_world_cup AS INT64)\n    ELSE NULL\n  END AS fiba_titles\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR fiba_titles = 1\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

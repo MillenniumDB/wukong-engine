@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document)\nWHERE (c.state_name = 'Minnesota' AND c.population = '887642')\n   OR (CAST(c.area AS DOUBLE) >= 976.15 / 2.58999 AND CAST(c.area AS DOUBLE) >= 976.15 / 2.58999)\nRETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 99,025 acres (400.739 km\u00b2) is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document)\nWHERE (c.state_name = 'Minnesota' AND c.population = '887642')\n   OR (\n     CASE\n       WHEN regexp_matches(c.area, '[0-9,.]+\\\\s*km')\n       THEN CAST(REPLACE(regexp_extract(c.area, '([0-9,.]+)\\\\s*km', 1), ',', '') AS DOUBLE)\n       ELSE NULL\n     END >= 976.15\n   )\nRETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document)\nWHERE (c.state_name = 'Minnesota' AND c.population = '887642')\n   OR CASE\n        WHEN regexp_matches(c.area, '[0-9]+(\\\\.[0-9]+)?\\\\s*km')\n          THEN CAST(regexp_extract(c.area, '([0-9]+(\\\\.[0-9]+)?)\\\\s*km', 1) AS DOUBLE) >= 976.15\n        WHEN regexp_matches(c.area, '[0-9,.]+\\\\s*(square miles|sq mi|mi\u00b2)')\n          THEN CAST(regexp_replace(regexp_extract(c.area, '([0-9,.]+)\\\\s*(square miles|sq mi|mi\u00b2)', 1), ',', '') AS DOUBLE) * 2.58999 >= 976.15\n        ELSE FALSE\n      END\nRETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed.  is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(:Document)\nWHERE (c.state_name = 'Minnesota' AND c.population = '887642')\n   OR COALESCE(TRY_CAST(regexp_extract(c.area, '([0-9]+[.]?[0-9]*)[ ]*km', 1) AS DOUBLE), 0.0) >= 976.15\n   OR COALESCE(TRY_CAST(regexp_replace(regexp_extract(c.area, '([0-9,.]+)[ ]*(square miles|sq mi|mi\u00b2)', 1), ',', '') AS DOUBLE), 0.0) * 2.58999 >= 976.15\nRETURN DISTINCT c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (c:City)-[:MentionedIn]->(:Document)\nWHERE (c.state_name = 'Minnesota' AND c.population = '887642')\n   OR COALESCE(TRY_CAST(regexp_extract(c.area, '([0-9]+[.]?[0-9]*)[ ]*km', 1) AS>: expected rule oC_SingleQuery (line: 3, offset: 78)\n\"   OR COALESCE(TRY_CAST(regexp_extract(c.area, '([0-9]+[.]?[0-9]*)[ ]*km', 1) AS DOUBLE), 0.0) >= 976.15\"\n                                                                               ^^",
+   "rows": null
+  }
+ ]
+}

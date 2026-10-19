@@ -1,0 +1,157 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "5",
+   "col3": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "San Antonio Spurs",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "5",
+   "col3": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "17",
+   "col3": "Philadelphia 76ers",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "10",
+   "col3": "Philadelphia 76ers",
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "Los Angeles Lakers",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Cleveland Cavaliers",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Orlando Magic",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "17",
+   "col3": "New Orleans Pelicans",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "New Orleans Pelicans",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "10",
+   "col3": "Los Angeles Clippers",
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": "American",
+   "col2": "17",
+   "col3": "Boston Celtics",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "3",
+   "col3": "Boston Celtics",
+   "name_player": "Jayson Christopher Tatum"
+  },
+  {
+   "col1": "American",
+   "col2": "10",
+   "col3": "Indiana Pacers",
+   "name_player": "Paul Clifton Anthony George"
+  },
+  {
+   "col1": "American",
+   "col2": "17",
+   "col3": "Milwaukee Bucks",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Phoenix Suns",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "New Orleans Hornets",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "Minnesota Timberwolves",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "American",
+   "col2": "5",
+   "col3": "Miami Heat",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "17",
+   "col3": "Portland Trail Blazers",
+   "name_player": "Jrue Randall Holiday"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Portland Trail Blazers",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "5",
+   "col3": "Portland Trail Blazers",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Chicago Bulls",
+   "name_player": "Stephen Douglas Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "10",
+   "col3": "Oklahoma City Thunder",
+   "name_player": "Paul Clifton Anthony George"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.olympic_gold_medals AS INT64) <> 0 AND CAST(p.mvp_awards AS INT64) = 0 RETURN p.nationality AS col1, p.draft_pick AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 24
+  }
+ ]
+}

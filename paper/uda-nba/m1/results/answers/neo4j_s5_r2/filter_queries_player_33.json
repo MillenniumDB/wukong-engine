@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#33",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, DATE_DIFF('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH DISTINCT p, age, t\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University')\nRETURN p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date\nWITH p,\n     date_part('year', CAST('2026-10-14' AS DATE)) - date_part('year', birth_date) -\n     CASE\n       WHEN date_part('month', birth_date) > date_part('month', CAST('2026-10-14' AS DATE))\n         OR (date_part('month', birth_date) = date_part('month', CAST('2026-10-14' AS DATE))\n             AND date_part('day', birth_date) > date_part('day', CAST('2026-10-14' AS DATE)))\n       THEN 1 ELSE 0\n     END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, CAST(p.birth_date AS DATE) AS birth_date\nWITH p,\n     date_part('year', CAST('2026-10-14' AS DATE)) - date_part('year', birth_date) -\n     CASE\n       WHEN date_part('month', birth_date) > date_part('month', CAST('2026-10-14' AS DATE))\n         OR (date_part('month', birth_date) = date_part('month', CAST('2026-10-14' AS DATE))\n             AND date_part('day', birth_date) > date_part('day', CAST('2026-10-14' AS DATE)))\n       THEN 1 ELSE 0\n     END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d')\n    ELSE STRPTIME(p.birth_date, '%B %d, %Y')\n  END AS birth_date\nWITH p,\n  date_part('year', CAST('2026-10-14' AS DATE)) - date_part('year', birth_date) -\n  CASE\n    WHEN date_part('month', birth_date) > date_part('month', CAST('2026-10-14' AS DATE))\n      OR (date_part('month', birth_date) = date_part('month', CAST('2026-10-14' AS DATE))\n          AND date_part('day', birth_date) > date_part('day', CAST('2026-10-14' AS DATE)))\n    THEN 1 ELSE 0\n  END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1)\n   OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University')\nRETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

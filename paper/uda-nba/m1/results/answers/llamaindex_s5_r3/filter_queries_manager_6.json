@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o,\n  CAST(SPLIT(o.birth_date, '/')[0] AS INT64) AS birth_year,\n  CAST(SPLIT(o.birth_date, '/')[1] AS INT64) AS birth_month,\n  CAST(SPLIT(o.birth_date, '/')[2] AS INT64) AS birth_day\nWITH o,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE (age >= 65 AND age = 65)\n   OR EXISTS {\n     MATCH (o)-[:Owns]->(t:Team)\n     WHERE t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans'\n   }\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o, STRING_SPLIT(o.birth_date, '/') AS parts\nWITH o,\n  2026 - CAST(parts[0] AS INT64) - CASE\n    WHEN CAST(parts[1] AS INT64) > 10 OR (CAST(parts[1] AS INT64) = 10 AND CAST(parts[2] AS INT64) > 14)\n    THEN 1 ELSE 0\n  END AS age\nWHERE age >= 65\n   OR EXISTS {\n     MATCH (o)-[:Owns]->(t:Team)\n     WHERE t.team_name <> 'Indiana Pacers'\n       AND t.team_name <> 'New Orleans Pelicans'\n   }\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Runtime exception: List extract takes 1-based position.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o, STRING_SPLIT(o.birth_date, '/') AS parts\nWITH o,\n  2026 - CAST(parts[1] AS INT64) - CASE\n    WHEN CAST(parts[2] AS INT64) > 10\n      OR (CAST(parts[2] AS INT64) = 10 AND CAST(parts[3] AS INT64) > 14)\n    THEN 1 ELSE 0\n  END AS age\nWHERE (age >= 65 AND age = 65)\n   OR EXISTS {\n     MATCH (o)-[:Owns]->(t:Team)\n     WHERE t.team_name <> 'Indiana Pacers'\n       AND t.team_name <> 'New Orleans Pelicans'\n   }\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 1964\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:MentionedIn]->(:Document)\nWITH DISTINCT o, STRING_SPLIT(o.birth_date, '/') AS slash_parts, STRING_SPLIT(o.birth_date, ' ') AS word_parts\nWITH o,\n  CASE WHEN o.birth_date CONTAINS '/' THEN CAST(slash_parts[1] AS INT64) ELSE CAST(word_parts[2] AS INT64) END AS birth_year,\n  CASE WHEN o.birth_date CONTAINS '/' THEN CAST(slash_parts[2] AS INT64) ELSE CASE word_parts[1]\n    WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4\n    WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8\n    WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n  END END AS birth_month,\n  CASE WHEN o.birth_date CONTAINS '/' THEN CAST(slash_parts[3] AS INT64) ELSE 1 END AS birth_day\nWITH o, 2026 - birth_year - CASE\n  WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0\nEND AS age\nWHERE (age >= 65 AND age = 65)\n   OR EXISTS {\n     MATCH (o)-[:Owns]->(t:Team)\n     WHERE t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans'\n   }\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"10,\" to INT64.",
+   "rows": null
+  }
+ ]
+}

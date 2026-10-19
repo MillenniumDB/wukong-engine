@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#18",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt') WITH DISTINCT p RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, CAST('2026' AS INT64) - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"October 14, 1968\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt') WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(CONCAT(SPLIT_PART(p.birth_date, '/', 1), '-', SPLIT_PART(p.birth_date, '/', 2), '-', SPLIT_PART(p.birth_date, '/', 3)) AS DATE) ELSE CAST(strptime(p.birth_date, '%B %d, %Y') AS DATE) END AS birthdate RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, DATE_PART('year', DATE '2026-10-14') - DATE_PART('year', birthdate) - CASE WHEN DATE_PART('month', birthdate) > 10 OR (DATE_PART('month', birthdate) = 10 AND DATE_PART('day', birthdate) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <DATE_PART('year', DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 508)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt') WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(CONCAT(SPLIT_PART(p.birth_date, '/', 1), '-', SPLIT_PART(p.birth_date, '/', 2), '-', SPLIT_PART(p.birth_date, '/', 3)) AS DATE) ELSE CAST(strptime(p.birth_date, '%B %d, %Y') AS DATE) EN",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt' WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(SPLIT_PART(p.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day WITH p, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.olympic_gold_medals AS INT64) > 1 OR p.position <> 'Frontcourt' WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) ELSE CAST(SPLIT_PART(p.birth_date, ' ', 3) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) ELSE CASE SPLIT_PART(p.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) ELSE CAST(SUBSTRING(SPLIT_PART(p.birth_date, ' ', 2), 1, 2) AS INT64) END AS birth_day WITH p, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, CAST(p.nba_championships AS INT64) AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"7,\" to INT64.",
+   "rows": null
+  }
+ ]
+}

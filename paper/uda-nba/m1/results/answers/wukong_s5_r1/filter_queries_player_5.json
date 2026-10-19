@@ -1,0 +1,67 @@
+{
+ "uid": "filter_queries_player#5",
+ "rows": [
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "1997/7/9",
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "2003/1/30",
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1925/3/5",
+   "name_player": "Leroy Chollet"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "2000/1/20",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "1997/11/19",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "1",
+   "col2": "0",
+   "col3": "1993/8/10",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "1985/5/6",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "1996/10/8",
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "1935/9/1",
+   "name_player": "Guy Rodgers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.nba_championships AS INT64) = 0 RETURN p.fiba_world_cup AS col1, p.nba_championships AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

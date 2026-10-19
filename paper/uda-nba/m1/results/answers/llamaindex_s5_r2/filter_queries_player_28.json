@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#28",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, date_diff('year', DATE(p.birth_date), DATE('2026-10-14')) AS age, t WHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t IS NOT NULL AND t.team_name = 'Capitanes de Arecibo') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1 RETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, date_part('year', DATE('2026-10-14')) - date_part('year', DATE(p.birth_date)) - CASE WHEN date_part('month', DATE('2026-10-14')) * 100 + date_part('day', DATE('2026-10-14')) < date_part('month', DATE(p.birth_date)) * 100 + date_part('day', DATE(p.birth_date)) THEN 1 ELSE 0 END AS age WHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t IS NOT NULL AND t.team_name = 'Capitanes de Arecibo') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1 RETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"25 April 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS birth_date WITH p, t, date_part('year', DATE('2026-10-14')) - date_part('year', birth_date) - CASE WHEN date_part('month', DATE('2026-10-14')) * 100 + date_part('day', DATE('2026-10-14')) < date_part('month', birth_date) * 100 + date_part('day', birth_date) THEN 1 ELSE 0 END AS age WHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t IS NOT NULL AND t.team_name = 'Capitanes de Arecibo') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1 RETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team) WITH DISTINCT p, t, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) ELSE CAST(SUBSTRING(p.birth_date, 8, 4) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) ELSE CASE WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 WHEN p.birth_date CONTAINS 'December' THEN 12 END END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(SUBSTRING(p.birth_date, 9, 2) AS INT64) ELSE CAST(SUBSTRING(p.birth_date, 1, 2) AS INT64) END AS birth_day WITH p, t, birth_year, birth_month, birth_day, 2026 - birth_year - CASE WHEN 10 * 100 + 14 < birth_month * 100 + birth_day THEN 1 ELSE 0 END AS age WHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t IS NOT NULL AND t.team_name = 'Capitanes de Arecibo') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1 RETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"l 19\" to INT64.",
+   "rows": null
+  }
+ ]
+}

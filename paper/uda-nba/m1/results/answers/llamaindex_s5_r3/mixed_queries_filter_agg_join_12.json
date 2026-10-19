@@ -1,0 +1,39 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "rows": [
+  {
+   "col1": "Israeli-American",
+   "col2": 1
+  },
+  {
+   "col1": null,
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document), (o)-[:MentionedIn]->(od:Document) WHERE pf.tenure = 'latest' AND ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(p.draft_pick AS INT64) <> 41)) WITH DISTINCT o.nationality AS nationality, p WHERE p.olympic_gold_medals IS NOT NULL RETURN nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (c)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND ((c.city_name = 'Brooklyn' AND COALESCE(CAST(p.nba_championships AS INT64), 0) < 0) OR (t.team_name <> 'Detroit Pistons' AND COALESCE(CAST(p.draft_pick AS INT64), -1) <> 41)) WITH o.nationality AS nationality, p.olympic_gold_medals AS medals WHERE medals IS NOT NULL RETURN nationality AS col1, MIN(CAST(medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE (pf.tenure = 'latest' OR pf.tenure IS NULL) AND ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(p.draft_pick AS INT64) <> 41)) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (c)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"33rd overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE (pf.tenure = 'latest' OR pf.tenure IS NULL) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (c)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND p.draft_pick <> '41' AND p.draft_pick <> '41st overall')) AND p.olympic_gold_medals IS NOT NULL RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

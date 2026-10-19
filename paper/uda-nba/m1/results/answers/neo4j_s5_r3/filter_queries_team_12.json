@@ -1,0 +1,43 @@
+{
+ "uid": "filter_queries_team#12",
+ "rows": [
+  {
+   "col1": "Charlotte",
+   "col2": "2004",
+   "col3": "Charlotte Bobcats",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2002",
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2002",
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Memphis",
+   "col2": "1995",
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:LocatedIn]->(c:City), (t)-[:MentionedIn]->(d:Document)\nOPTIONAL MATCH (o:Owner)-[:Owns]->(t)\nWITH t, c, collect(DISTINCT o.name) AS owner_names\nWHERE ((CAST(t.founded_year AS INT64) > 1989 AND NOT 'Gabe Plotkin and Rick Schnall' IN owner_names) OR ('Atlanta Spirit LLC' IN owner_names AND CAST(t.founded_year AS INT64) = 1967))\nRETURN c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

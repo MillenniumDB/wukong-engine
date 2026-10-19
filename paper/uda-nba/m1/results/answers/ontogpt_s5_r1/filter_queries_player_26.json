@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#26",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWITH DISTINCT p, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR p.fiba_world_cup = '1'\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 2, offset: 87)\n\"WITH DISTINCT p, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\"\n                                                                                        ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR p.fiba_world_cup = '1'\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth\nWITH p, 2026 - CAST(strftime(birth, '%Y') AS INT64) - CASE WHEN CAST(strftime(birth, '%m') AS INT64) > 10 OR (CAST(strftime(birth, '%m') AS INT64) = 10 AND CAST(strftime(birth, '%d') AS INT64) > 14) THEN 1 ELSE 0 END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR p.fiba_world_cup = '1'\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, strptime(p.birth_date, '%Y/%m/%d') AS birth\nWITH p, 2026 - CAST(date_part('year', birth) AS INT64) - CASE WHEN CAST(date_part('month', birth) AS INT64) > 10 OR (CAST(date_part('month', birth) AS INT64) = 10 AND CAST(date_part('day', birth) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR p.fiba_world_cup = '1'\nRETURN p.olympic_gold_medals AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

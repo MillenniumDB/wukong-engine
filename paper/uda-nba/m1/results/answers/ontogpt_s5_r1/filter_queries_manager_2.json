@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nMATCH (o)-[:Owns]->(t:Team)\nWITH o, t,\n     2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) -\n     CASE\n       WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10\n         OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10\n             AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nWHERE age >= 67\n  AND t.team_name <> 'Golden State Warriors'\nRETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"July 31, 1958\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nMATCH (o)-[:Owns]->(t:Team)\nWITH o, t,\n     STRPTIME(o.birth_date,\n       CASE WHEN CONTAINS(o.birth_date, '/') THEN '%Y/%m/%d' ELSE '%B %d, %Y' END\n     ) AS birth_date\nWITH o, t,\n     2026 - DATE_PART('year', birth_date) -\n     CASE\n       WHEN DATE_PART('month', birth_date) > 10\n         OR (DATE_PART('month', birth_date) = 10 AND DATE_PART('day', birth_date) > 14)\n       THEN 1 ELSE 0\n     END AS age\nWHERE age >= 67 AND t.team_name <> 'Golden State Warriors'\nRETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nMATCH (o)-[:Owns]->(t:Team)\nWHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors'\nWITH o, t,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64)\n       ELSE CAST(SPLIT_PART(o.birth_date, ' ', 3) AS INT64)\n  END AS birth_year,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64)\n       ELSE CASE\n         WHEN STARTS_WITH(o.birth_date, 'January') THEN 1\n         WHEN STARTS_WITH(o.birth_date, 'February') THEN 2\n         WHEN STARTS_WITH(o.birth_date, 'March') THEN 3\n         WHEN STARTS_WITH(o.birth_date, 'April') THEN 4\n         WHEN STARTS_WITH(o.birth_date, 'May') THEN 5\n         WHEN STARTS_WITH(o.birth_date, 'June') THEN 6\n         WHEN STARTS_WITH(o.birth_date, 'July') THEN 7\n         WHEN STARTS_WITH(o.birth_date, 'August') THEN 8\n         WHEN STARTS_WITH(o.birth_date, 'September') THEN 9\n         WHEN STARTS_WITH(o.birth_date, 'October') THEN 10\n         WHEN STARTS_WITH(o.birth_date, 'November') THEN 11\n         WHEN STARTS_WITH(o.birth_date, 'December') THEN 12\n       END\n  END AS birth_month,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64)\n       ELSE CAST(REPLACE(SPLIT_PART(o.birth_date, ' ', 2), ',', '') AS INT64)\n  END AS birth_day\nWITH o, t, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 67\nRETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nMATCH (o)-[:Owns]->(t:Team)\nWHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors'\nWITH o, t,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64)\n       ELSE CAST(SPLIT_PART(o.birth_date, ' ', 3) AS INT64)\n  END AS birth_year,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64)\n       ELSE CASE\n         WHEN STARTS_WITH(o.birth_date, 'January') THEN 1\n         WHEN STARTS_WITH(o.birth_date, 'February') THEN 2\n         WHEN STARTS_WITH(o.birth_date, 'March') THEN 3\n         WHEN STARTS_WITH(o.birth_date, 'April') THEN 4\n         WHEN STARTS_WITH(o.birth_date, 'May') THEN 5\n         WHEN STARTS_WITH(o.birth_date, 'June') THEN 6\n         WHEN STARTS_WITH(o.birth_date, 'July') THEN 7\n         WHEN STARTS_WITH(o.birth_date, 'August') THEN 8\n         WHEN STARTS_WITH(o.birth_date, 'September') THEN 9\n         WHEN STARTS_WITH(o.birth_date, 'October') THEN 10\n         WHEN STARTS_WITH(o.birth_date, 'November') THEN 11\n         WHEN STARTS_WITH(o.birth_date, 'December') THEN 12\n       END\n  END AS birth_month,\n  CASE WHEN CONTAINS(o.birth_date, '/')\n       THEN CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64)\n       ELSE CAST(SPLIT_PART(SPLIT_PART(o.birth_date, ' ', 2), ',', 1) AS INT64)\n  END AS birth_day\nWITH o, t, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 67\nRETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

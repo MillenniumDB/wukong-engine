@@ -1,0 +1,77 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "rows": [
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 1.0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0.75
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 1.0
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 1.0
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)<-[:PlaysFor]-(p:Player)\nWHERE EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND (t.team_name = 'Boston Celtics'\n       OR CAST(p.nba_championships AS INT64) <= 0\n       OR CAST(p.fiba_world_cup AS INT64) < 0)\nWITH DISTINCT t.team_name AS team_name, p\nRETURN team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 16
+  }
+ ]
+}

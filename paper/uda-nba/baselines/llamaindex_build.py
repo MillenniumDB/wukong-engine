@@ -296,13 +296,16 @@ def list_docs(data: Path) -> list[tuple[str, Path]]:
 
 
 def main() -> None:
+    global KM_PATH
     ap = argparse.ArgumentParser()
     ap.add_argument('--data', type=Path, required=True, help='dir with {player,team,city,owner}/{type}/N.txt')
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--model', default='gpt-5.6-luna')
     ap.add_argument('--reasoning-effort', default='low')
     ap.add_argument('--num-workers', type=int, default=16, help='concurrent extraction calls')
+    ap.add_argument('--schema', type=Path, default=KM_PATH, help='knowledge_model.json to translate')
     args = ap.parse_args()
+    KM_PATH = args.schema.resolve()
 
     out = args.out
     (out / 'graph').mkdir(parents=True, exist_ok=True)

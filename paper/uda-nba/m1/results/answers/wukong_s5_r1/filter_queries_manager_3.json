@@ -1,0 +1,109 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Joshua Jordan Harris",
+   "col3": "American",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": 70,
+   "col2": "Joseph Steven Lacob",
+   "col3": "American",
+   "name_manager": "Joseph Steven Lacob"
+  },
+  {
+   "col1": null,
+   "col2": "Joseph Tsai",
+   "col3": "Taiwanese-Canadian",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": 79,
+   "col2": "Enos Stanley Kroenke",
+   "col3": "American",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": 62,
+   "col2": "Tom Gores",
+   "col3": "American",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": 70,
+   "col2": "Steve Ballmer",
+   "col3": "American",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": 91,
+   "col2": "Herbert Simon",
+   "col3": "American",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": null,
+   "col2": "Tilman Fertitta",
+   "col3": "American",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": 79,
+   "col2": "Gayle Benson",
+   "col3": "American",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": 64,
+   "col2": "Dan Gilbert",
+   "col3": "American",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": 71,
+   "col2": "James Lawrence Dolan",
+   "col3": "American",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": 68,
+   "col2": "Mark Cuban",
+   "col3": "American",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": 66,
+   "col2": "Clayton Ike Bennett",
+   "col3": "American",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": null,
+   "col2": "Daniel G. DeVos",
+   "col3": "American",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": 90,
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "American",
+   "name_manager": "Jerry Michael Reinsdorf"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WITH DISTINCT o, DATE_DIFF('year', DATE(o.birth_date), DATE('2026-10-14')) AS age WHERE age < 65 OR o.nationality <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WITH DISTINCT o, DATE(o.birth_date) AS birth_date, DATE('2026-10-14') AS today WITH o, date_part('year', today) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > date_part('month', today) OR (date_part('month', birth_date) = date_part('month', today) AND date_part('day', birth_date) > date_part('day', today)) THEN 1 ELSE 0 END AS age WHERE age < 65 OR o.nationality <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

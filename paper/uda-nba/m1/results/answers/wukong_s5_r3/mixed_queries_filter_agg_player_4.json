@@ -1,0 +1,17 @@
+{
+ "uid": "mixed_queries_filter_agg_player#4",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.draft_year AS INT64) > 2014 AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 RETURN p.position AS col1, MAX(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player) WITH p.nationality AS nationality, MIN(date_diff('year', DATE(p.birth_date), CASE WHEN p.death_date IS NULL THEN current_date() ELSE DATE(p.death_date) END)) AS lowest_age RETURN nationality AS col1, lowest_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, strptime(p.birth_date, '%Y/%m/%d') AS birth, CASE WHEN p.death_date IS NULL THEN strptime('2026/10/14', '%Y/%m/%d') ELSE strptime(p.death_date, '%Y/%m/%d') END AS ending WITH p.nationality AS nationality, date_part('year', ending) - date_part('year', birth) - CASE WHEN date_part('month', ending) < date_part('month', birth) OR (date_part('month', ending) = date_part('month', birth) AND date_part('day', ending) < date_part('day', birth)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS by, CAST(SUBSTRING(p.birth_date, 6, 2) AS INT64) AS bm, CAST(SUBSTRING(p.birth_date, 8, 2) AS INT64) AS bd, CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(SUBSTRING(p.death_date, 1, 4) AS INT64) END AS ey, CASE WHEN p.death_date IS NULL THEN 10 ELSE CAST(SUBSTRING(p.death_date, 6, 2) AS INT64) END AS em, CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(SUBSTRING(p.death_date, 8, 2) AS INT64) END AS ed WITH p.nationality AS nationality, ey - by - CASE WHEN em < bm OR (em = bm AND ed < bd) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS by, CASE SUBSTRING(SPLIT_PART(p.birth_date, '/', 2), 1, 3) WHEN 'Jan' THEN 1 WHEN 'Feb' THEN 2 WHEN 'Mar' THEN 3 WHEN 'Apr' THEN 4 WHEN 'May' THEN 5 WHEN 'Jun' THEN 6 WHEN 'Jul' THEN 7 WHEN 'Aug' THEN 8 WHEN 'Sep' THEN 9 WHEN 'Oct' THEN 10 WHEN 'Nov' THEN 11 WHEN 'Dec' THEN 12 ELSE CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) END AS bm, CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) AS bd, CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(SPLIT_PART(p.death_date, '/', 1) AS INT64) END AS ey, CASE WHEN p.death_date IS NULL THEN 10 ELSE CASE SUBSTRING(SPLIT_PART(p.death_date, '/', 2), 1, 3) WHEN 'Jan' THEN 1 WHEN 'Feb' THEN 2 WHEN 'Mar' THEN 3 WHEN 'Apr' THEN 4 WHEN 'May' THEN 5 WHEN 'Jun' THEN 6 WHEN 'Jul' THEN 7 WHEN 'Aug' THEN 8 WHEN 'Sep' THEN 9 WHEN 'Oct' THEN 10 WHEN 'Nov' THEN 11 WHEN 'Dec' THEN 12 ELSE CAST(SPLIT_PART(p.death_date, '/', 2) AS INT64) END END AS em, CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(SPLIT_PART(p.death_date, '/', 3) AS INT64) END AS ed WITH p.nationality AS nationality, ey - by - CASE WHEN em < bm OR (em = bm AND ed < bd) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

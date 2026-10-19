@@ -1,0 +1,1591 @@
+{
+ "uid": "select_queries_manager#1",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Carl Sanders",
+   "col3": "1968",
+   "name_manager": "Carl Sanders"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Atlanta Spirit LLC",
+   "col3": "2004",
+   "name_manager": "Atlanta Spirit LLC"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Dan Finnane",
+   "col3": "1986",
+   "name_manager": "Dan Finnane"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Joe Lacob",
+   "col3": "2010",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Chamath Palihapitiya",
+   "col3": null,
+   "name_manager": "Chamath Palihapitiya"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Wirtz family",
+   "col3": "1977",
+   "name_manager": "Wirtz family"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clay Bennett",
+   "col3": null,
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Red McCombs",
+   "col3": "1978",
+   "name_manager": "Red McCombs"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Donald Sturm",
+   "col3": null,
+   "name_manager": "Donald Sturm"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Buss",
+   "col3": null,
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "Bob Vander Weide",
+   "col3": "2005",
+   "name_manager": "Bob Vander Weide"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Fred Zollner",
+   "col3": null,
+   "name_manager": "Fred Zollner"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "David Peterson",
+   "col3": "1993",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "James Lawrence Dolan",
+   "col3": null,
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Boston Basketball Partners L.L.C.",
+   "col3": "2003",
+   "name_manager": "Boston Basketball Partners L.L.C."
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Jim Fitzgerald",
+   "col3": "1976",
+   "name_manager": "Jim Fitzgerald"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Marc Lore",
+   "col3": "2021",
+   "name_manager": "Marc Lore"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Kenneth Schnitzer",
+   "col3": null,
+   "name_manager": "Kenneth Schnitzer"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steve Ballmer",
+   "col3": "2014",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": "Will Pan",
+   "col3": null,
+   "name_manager": "Will Pan"
+  },
+  {
+   "col1": "Denver Rockets",
+   "col2": "Bill Ringsby",
+   "col3": "1967",
+   "name_manager": "Bill Ringsby"
+  },
+  {
+   "col1": "New York Liberty",
+   "col2": "James Dolan",
+   "col3": null,
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": "Howard Schultz",
+   "col3": null,
+   "name_manager": "Howard Schultz"
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": "Clay Bennett",
+   "col3": "2006",
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Panathinaikos",
+   "col2": "Thanasis Giannakopoulos",
+   "col3": null,
+   "name_manager": "Thanasis Giannakopoulos"
+  },
+  {
+   "col1": "St. Louis Hawks",
+   "col2": "Kerner",
+   "col3": null,
+   "name_manager": "Kerner"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": "Johnson",
+   "col3": "2003",
+   "name_manager": "Johnson"
+  },
+  {
+   "col1": "Buffalo Braves",
+   "col2": "John Y. Brown Jr.",
+   "col3": "1978",
+   "name_manager": "John Y. Brown Jr."
+  },
+  {
+   "col1": "Nets",
+   "col2": "Secaucus Seven",
+   "col3": "1978",
+   "name_manager": "Secaucus Seven"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Bruce Ratner",
+   "col3": "2004",
+   "name_manager": "Bruce Ratner"
+  },
+  {
+   "col1": "Washington Mystics",
+   "col2": "Ted Leonsis",
+   "col3": null,
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "San Antonio FC",
+   "col2": "Spurs Sports and Entertainment",
+   "col3": "2015",
+   "name_manager": "Spurs Sports and Entertainment"
+  },
+  {
+   "col1": "Microsoft",
+   "col2": "Steve Ballmer",
+   "col3": "1981",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Las Vegas Desert Dogs",
+   "col2": "Joe Tsai",
+   "col3": null,
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Kroenke Sports & Entertainment",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Thomas Cousins",
+   "col3": "1968",
+   "name_manager": "Thomas Cousins"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Tom Cousins",
+   "col3": "1968",
+   "name_manager": "Tom Cousins"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Don Carter",
+   "col3": null,
+   "name_manager": "Don Carter"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Cynthia Marshall",
+   "col3": null,
+   "name_manager": "Cynthia Marshall"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Larry Weinberg",
+   "col3": null,
+   "name_manager": "Larry Weinberg"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Peter Guber",
+   "col3": "2010",
+   "name_manager": "Peter Guber"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Frank Goldberg",
+   "col3": "1972",
+   "name_manager": "Frank Goldberg"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Stan Kroenke",
+   "col3": "2000",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Ann Walton Kroenke",
+   "col3": "2015",
+   "name_manager": "Ann Walton Kroenke"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Harold Katz",
+   "col3": "1981",
+   "name_manager": "Harold Katz"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Ed Snider",
+   "col3": "1996",
+   "name_manager": "Ed Snider"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Jeanie Buss",
+   "col3": "2017",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": null,
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Jay-Z",
+   "col3": "2003",
+   "name_manager": "Jay-Z"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "Ned Irish",
+   "col3": "1946",
+   "name_manager": "Ned Irish"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Don Gaston",
+   "col3": null,
+   "name_manager": "Don Gaston"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Marc Lasry",
+   "col3": "2014",
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Robert Sarver",
+   "col3": "2004",
+   "name_manager": "Robert Sarver"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Justin Ishbia",
+   "col3": "2023",
+   "name_manager": "Justin Ishbia"
+  },
+  {
+   "col1": "San Diego Rockets",
+   "col2": "Robert Breitbard",
+   "col3": "1967",
+   "name_manager": "Robert Breitbard"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Joseph Benvenuti",
+   "col3": "1983",
+   "name_manager": "Joseph Benvenuti"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Maloof family",
+   "col3": null,
+   "name_manager": "Maloof family"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Alex Rodriguez",
+   "col3": "2021",
+   "name_manager": "Alex Rodriguez"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "George Maloof",
+   "col3": "1979",
+   "name_manager": "George Maloof"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Larry H. Miller",
+   "col3": "1985",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Larry Miller",
+   "col3": null,
+   "name_manager": "Larry Miller"
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": "Ratner",
+   "col3": null,
+   "name_manager": "Ratner"
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": "Peter A. Tyrrell",
+   "col3": "1946",
+   "name_manager": "Peter A. Tyrrell"
+  },
+  {
+   "col1": "76ers",
+   "col2": "Josh Harris",
+   "col3": null,
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": "Louis Jacobs",
+   "col3": null,
+   "name_manager": "Louis Jacobs"
+  },
+  {
+   "col1": "Panathinaikos",
+   "col2": "Pavlos Giannakopoulos",
+   "col3": null,
+   "name_manager": "Pavlos Giannakopoulos"
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": "Arnold Heft",
+   "col3": "1964",
+   "name_manager": "Arnold Heft"
+  },
+  {
+   "col1": "Colorado Mammoth",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Miami Dolphins",
+   "col2": "Stephen Ross",
+   "col3": "2019",
+   "name_manager": "Stephen Ross"
+  },
+  {
+   "col1": "New Orleans Saints",
+   "col2": "Gayle Benson",
+   "col3": "2018",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "Cleveland Monsters",
+   "col2": "Dan Gilbert",
+   "col3": "2006",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Las Vegas Desert Dogs",
+   "col2": "Steve Nash",
+   "col3": null,
+   "name_manager": "Steve Nash"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Ted Turner",
+   "col3": "1977",
+   "name_manager": "Ted Turner"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": null,
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "H. Ross Perot Jr.",
+   "col3": null,
+   "name_manager": "H. Ross Perot Jr."
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Paul Allen",
+   "col3": "1988",
+   "name_manager": "Paul Allen"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Dick Klein",
+   "col3": null,
+   "name_manager": "Dick Klein"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Professional Basketball Club LLC",
+   "col3": null,
+   "name_manager": "Professional Basketball Club LLC"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clay Bennett",
+   "col3": null,
+   "name_manager": "Clay Bennett"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Mikhail Prokhorov",
+   "col3": "2010",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Allan Slaight",
+   "col3": "1993",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herb Simon",
+   "col3": null,
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Donald Pitt",
+   "col3": "1968",
+   "name_manager": "Donald Pitt"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Shaquille O'Neal",
+   "col3": null,
+   "name_manager": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Gregg Lukenbill",
+   "col3": "1983",
+   "name_manager": "Gregg Lukenbill"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Chris Hansen",
+   "col3": "2013",
+   "name_manager": "Chris Hansen"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Tom Benson",
+   "col3": null,
+   "name_manager": "Tom Benson"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "Robert J. Pera",
+   "col3": "2012",
+   "name_manager": "Robert J. Pera"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Ted Leonsis",
+   "col3": null,
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1995",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": "Eddie Gottlieb",
+   "col3": "1951",
+   "name_manager": "Eddie Gottlieb"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": "Thomas Woods",
+   "col3": "1958",
+   "name_manager": "Thomas Woods"
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": "Biasone",
+   "col3": null,
+   "name_manager": "Biasone"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": "Robert L. Johnson",
+   "col3": null,
+   "name_manager": "Robert L. Johnson"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": "Nelly",
+   "col3": "2003",
+   "name_manager": "Nelly"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Arthur J. Brown",
+   "col3": "1967",
+   "name_manager": "Arthur J. Brown"
+  },
+  {
+   "col1": "Colorado Avalanche",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Colorado Rapids",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Grand Rapids Rampage",
+   "col2": "Daniel G. DeVos",
+   "col3": null,
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Professional Futsal League",
+   "col2": "Mark Cuban",
+   "col3": "2016",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Arsenal Holdings plc",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "Daniel G. DeVos",
+   "col3": "1991",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joe Tsai",
+   "col3": "2019",
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Harry Mangurian",
+   "col3": "1979",
+   "name_manager": "Harry Mangurian"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "John Y. Brown, Jr.",
+   "col3": null,
+   "name_manager": "John Y. Brown, Jr."
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Jamie Dinan",
+   "col3": null,
+   "name_manager": "Jamie Dinan"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Texas Sports Investments",
+   "col3": "1971",
+   "name_manager": "Texas Sports Investments"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Fertitta",
+   "col3": "2017",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Shinn",
+   "col3": null,
+   "name_manager": "Shinn"
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": "Jay-Z",
+   "col3": "2003",
+   "name_manager": "Jay-Z"
+  },
+  {
+   "col1": "Washington Commanders",
+   "col2": "Josh Harris",
+   "col3": "2023",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Chicago White Sox",
+   "col2": "Reinsdorf",
+   "col3": null,
+   "name_manager": "Reinsdorf"
+  },
+  {
+   "col1": "Indiana Fever",
+   "col2": "Herb Simon",
+   "col3": null,
+   "name_manager": "Herb Simon"
+  },
+  {
+   "col1": "Houston Texans",
+   "col2": "Tilman Fertitta",
+   "col3": null,
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Penguins",
+   "col2": "Ronald Burkle",
+   "col3": null,
+   "name_manager": "Ronald Burkle"
+  },
+  {
+   "col1": "St. Louis Rams",
+   "col2": "Stan Kroenke",
+   "col3": "2010",
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Crystal Palace",
+   "col2": "Josh Harris",
+   "col3": null,
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Delaware Blue Coats",
+   "col2": "Josh Harris",
+   "col3": null,
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "James Garner",
+   "col3": null,
+   "name_manager": "James Garner"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Philip Anschutz",
+   "col3": "1998",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Ted Stepien",
+   "col3": null,
+   "name_manager": "Ted Stepien"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "2011",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Tsai",
+   "col3": null,
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Maple Leaf Gardens Ltd.",
+   "col3": "1998",
+   "name_manager": "Maple Leaf Gardens Ltd."
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Vivek Ranadiv\u00e9",
+   "col3": "2013",
+   "name_manager": "Vivek Ranadiv\u00e9"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Michael Bloomberg",
+   "col3": null,
+   "name_manager": "Michael Bloomberg"
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "Robert Pera",
+   "col3": null,
+   "name_manager": "Robert Pera"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Abe Pollin",
+   "col3": null,
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "New York Liberty",
+   "col2": "Joe Tsai",
+   "col3": "2019",
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Community Youth Organization",
+   "col3": "1998",
+   "name_manager": "Community Youth Organization"
+  },
+  {
+   "col1": "Tampa Bay Lightning",
+   "col2": "Bill Davidson",
+   "col3": null,
+   "name_manager": "Bill Davidson"
+  },
+  {
+   "col1": "Washington Mystics",
+   "col2": "Lincoln Holdings",
+   "col3": "2005",
+   "name_manager": "Lincoln Holdings"
+  },
+  {
+   "col1": "Las Vegas Desert Dogs",
+   "col2": "Joseph Tsai",
+   "col3": null,
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Jim Fitzgerald",
+   "col3": "1986",
+   "name_manager": "Jim Fitzgerald"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Earvin \u201cMagic\u201d Johnson",
+   "col3": "1994",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Bob Short",
+   "col3": null,
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Max Winter",
+   "col3": null,
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Myles Garrett",
+   "col3": "2023",
+   "name_manager": "Myles Garrett"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "Richard DeVos",
+   "col3": "1991",
+   "name_manager": "Richard DeVos"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Phil Granovsky",
+   "col3": "1993",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Herb Kohl",
+   "col3": null,
+   "name_manager": "Herb Kohl"
+  },
+  {
+   "col1": "San Francisco Warriors",
+   "col2": "Franklin Mieuli",
+   "col3": "1962",
+   "name_manager": "Franklin Mieuli"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Karl Eller",
+   "col3": "1968",
+   "name_manager": "Karl Eller"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Larry Fitzgerald",
+   "col3": "2020",
+   "name_manager": "Larry Fitzgerald"
+  },
+  {
+   "col1": "San Diego Rockets",
+   "col2": "Breitbard",
+   "col3": null,
+   "name_manager": "Breitbard"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Benson",
+   "col3": "2018",
+   "name_manager": "Gayle Benson"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Donald Sterling",
+   "col3": null,
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "New Jersey Nets",
+   "col2": "Mikhail Prokhorov",
+   "col3": "2010",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": "Irv Kosloff",
+   "col3": "1963",
+   "name_manager": "Irv Kosloff"
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": "Bob Johnson",
+   "col3": null,
+   "name_manager": "Bob Johnson"
+  },
+  {
+   "col1": "Buffalo Braves",
+   "col2": "John Y. Brown, Jr.",
+   "col3": "1978",
+   "name_manager": "John Y. Brown, Jr."
+  },
+  {
+   "col1": "Chicago White Sox",
+   "col2": "Jerry Reinsdorf",
+   "col3": null,
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Los Angeles Raiders",
+   "col2": "Al Davis",
+   "col3": null,
+   "name_manager": "Al Davis"
+  },
+  {
+   "col1": "United Cab",
+   "col2": "Syed Kazmi",
+   "col3": null,
+   "name_manager": "Syed Kazmi"
+  },
+  {
+   "col1": "The District Detroit",
+   "col2": "Olympia Entertainment Inc.",
+   "col3": null,
+   "name_manager": "Olympia Entertainment Inc."
+  },
+  {
+   "col1": "New York Rangers",
+   "col2": "James Lawrence Dolan",
+   "col3": null,
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": "Clutch Gaming",
+   "col2": "Tilman Fertitta",
+   "col3": null,
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "San Diego Seals",
+   "col2": "Joe Tsai",
+   "col3": null,
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Phoenix Coyotes",
+   "col2": "Jerry Reinsdorf",
+   "col3": null,
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Arsenal W.F.C.",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Arsenal",
+   "col2": "Kroenke",
+   "col3": null,
+   "name_manager": "Kroenke"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Miriam Adelson",
+   "col3": "2023",
+   "name_manager": "Miriam Adelson"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mary Stanton",
+   "col3": null,
+   "name_manager": "Mary Stanton"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Vulcan Sports and Entertainment",
+   "col3": null,
+   "name_manager": "Vulcan Sports and Entertainment"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Reinsdorf",
+   "col3": null,
+   "name_manager": "Jerry Reinsdorf"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "McCombs",
+   "col3": "1985",
+   "name_manager": "McCombs"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Sidney Shlenker",
+   "col3": "1985",
+   "name_manager": "Sidney Shlenker"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Bill Laurie",
+   "col3": null,
+   "name_manager": "Bill Laurie"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Nancy Laurie",
+   "col3": null,
+   "name_manager": "Nancy Laurie"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Peter M. Holt",
+   "col3": "1993",
+   "name_manager": "Peter M. Holt"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Harris",
+   "col3": "2011",
+   "name_manager": "Harris"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Jerry Buss",
+   "col3": null,
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Jack Kent Cooke",
+   "col3": null,
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "George Gund",
+   "col3": null,
+   "name_manager": "George Gund"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Bill Davidson",
+   "col3": "1974",
+   "name_manager": "Bill Davidson"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Platinum Equity",
+   "col3": "2011",
+   "name_manager": "Platinum Equity"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Paul Gaston",
+   "col3": null,
+   "name_manager": "Paul Gaston"
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": "Wes Edens",
+   "col3": "2014",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Jerry Colangelo",
+   "col3": "1987",
+   "name_manager": "Jerry Colangelo"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Raj Bhathal",
+   "col3": "2013",
+   "name_manager": "Raj Bhathal"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "George Shinn",
+   "col3": "2002",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": "Glen Taylor",
+   "col3": null,
+   "name_manager": "Glen Taylor"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Gabe Plotkin",
+   "col3": "2019",
+   "name_manager": "Gabe Plotkin"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Rick Schnall",
+   "col3": "2023",
+   "name_manager": "Rick Schnall"
+  },
+  {
+   "col1": "New Jersey Devils",
+   "col2": "David Blitzer",
+   "col3": null,
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": "Abe Pollin",
+   "col3": "1964",
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Jay-Z",
+   "col3": "2003",
+   "name_manager": "Jay-Z"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Will Pan",
+   "col3": null,
+   "name_manager": "Will Pan"
+  },
+  {
+   "col1": "Minneapolis Lakers",
+   "col2": "Benjamin Berger",
+   "col3": "1947",
+   "name_manager": "Benjamin Berger"
+  },
+  {
+   "col1": "Minneapolis Lakers",
+   "col2": "Morris Chalfen",
+   "col3": "1947",
+   "name_manager": "Morris Chalfen"
+  },
+  {
+   "col1": "Washington Capitals",
+   "col2": "Ted Leonsis",
+   "col3": null,
+   "name_manager": "Ted Leonsis"
+  },
+  {
+   "col1": "Cleveland Guardians",
+   "col2": "Larry Dolan",
+   "col3": null,
+   "name_manager": "Larry Dolan"
+  },
+  {
+   "col1": "New York Rangers",
+   "col2": "James Dolan",
+   "col3": null,
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Grand Rapids Griffins",
+   "col2": "Daniel G. DeVos",
+   "col3": null,
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Arsenal F.C.",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Los Angeles Gladiators",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Los Angeles Guerrillas",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "Pittsburgh Steelers",
+   "col2": "Josh Harris",
+   "col3": null,
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": "Tony Ressler",
+   "col3": "2015",
+   "name_manager": "Tony Ressler"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Donald Carter",
+   "col3": null,
+   "name_manager": "Donald Carter"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Ross Perot Jr.",
+   "col3": null,
+   "name_manager": "Ross Perot Jr."
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dumont family",
+   "col3": "2023",
+   "name_manager": "Dumont family"
+  },
+  {
+   "col1": "Washington Bullets",
+   "col2": "Abe Pollin",
+   "col3": null,
+   "name_manager": "Abe Pollin"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Red McCombs",
+   "col3": "1988",
+   "name_manager": "Red McCombs"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Fitz Eugene Dixon Jr.",
+   "col3": "1976",
+   "name_manager": "Fitz Eugene Dixon Jr."
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Comcast-Spectacor",
+   "col3": null,
+   "name_manager": "Comcast-Spectacor"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Patrick Soon-Shiong",
+   "col3": "2010",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "Rich DeVos",
+   "col3": null,
+   "name_manager": "Rich DeVos"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Bruce Ratner",
+   "col3": null,
+   "name_manager": "Bruce Ratner"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Slaight",
+   "col3": "1996",
+   "name_manager": "Slaight"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "James Dolan",
+   "col3": null,
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Charlie Thomas",
+   "col3": "1982",
+   "name_manager": "Charlie Thomas"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Sidney Shlenker",
+   "col3": "1982",
+   "name_manager": "Sidney Shlenker"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "George Shinn",
+   "col3": "1988",
+   "name_manager": "George Shinn"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Battistone",
+   "col3": null,
+   "name_manager": "Battistone"
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": "Irene Pollin",
+   "col3": null,
+   "name_manager": "Irene Pollin"
+  },
+  {
+   "col1": "Los Angeles FC",
+   "col2": "Joe Tsai",
+   "col3": null,
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "New Jersey Devils",
+   "col2": "Josh Harris",
+   "col3": "2013",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "San Diego Clippers",
+   "col2": "Donald Sterling",
+   "col3": "1981",
+   "name_manager": "Donald Sterling"
+  },
+  {
+   "col1": "Nets",
+   "col2": "Roy Boe",
+   "col3": "1968",
+   "name_manager": "Roy Boe"
+  },
+  {
+   "col1": "Los Angeles Rams",
+   "col2": "Stan Kroenke",
+   "col3": null,
+   "name_manager": "Stan Kroenke"
+  },
+  {
+   "col1": "San Diego Seals",
+   "col2": "Joseph Tsai",
+   "col3": null,
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Las Vegas Desert Dogs",
+   "col2": "Wayne Gretzky",
+   "col3": null,
+   "name_manager": "Wayne Gretzky"
+  },
+  {
+   "col1": "Las Vegas Desert Dogs",
+   "col2": "Dustin Johnson",
+   "col3": null,
+   "name_manager": "Dustin Johnson"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Patrick Dumont",
+   "col3": "2023",
+   "name_manager": "Patrick Dumont"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Reinsdorf",
+   "col3": "1985",
+   "name_manager": "Reinsdorf"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Bud Fischer",
+   "col3": "1972",
+   "name_manager": "Bud Fischer"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Gordon Gund",
+   "col3": null,
+   "name_manager": "Gordon Gund"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "John Bitove",
+   "col3": "1993",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": "Bank of Nova Scotia",
+   "col3": "1993",
+   "name_manager": "Bank of Nova Scotia"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Walter A. Brown",
+   "col3": "1946",
+   "name_manager": "Walter A. Brown"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Irv Levin",
+   "col3": "1978",
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Joe Lacob",
+   "col3": "2006",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": "Mat Ishbia",
+   "col3": "2023",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Gavin Maloof",
+   "col3": "1980",
+   "name_manager": "Gavin Maloof"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Leslie Alexander",
+   "col3": "1993",
+   "name_manager": "Leslie Alexander"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": "Jeremy Jacobs",
+   "col3": "1968",
+   "name_manager": "Jeremy Jacobs"
+  },
+  {
+   "col1": "Penguins",
+   "col2": "Mario Lemieux",
+   "col3": null,
+   "name_manager": "Mario Lemieux"
+  },
+  {
+   "col1": "Pittsburgh Steelers",
+   "col2": "David Blitzer",
+   "col3": null,
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": "Jody Allen",
+   "col3": null,
+   "name_manager": "Jody Allen"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Chris Cohan",
+   "col3": "1995",
+   "name_manager": "Chris Cohan"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Harris Blitzer Sports & Entertainment",
+   "col3": "2011",
+   "name_manager": "Harris Blitzer Sports & Entertainment"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Josh Harris",
+   "col3": "2011",
+   "name_manager": "Josh Harris"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "David Blitzer",
+   "col3": "2011",
+   "name_manager": "David Blitzer"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "Berger and Chalfen",
+   "col3": "1947",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Wyc Grousbeck",
+   "col3": null,
+   "name_manager": "Wyc Grousbeck"
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": "Vivek Ranadive",
+   "col3": null,
+   "name_manager": "Vivek Ranadive"
+  },
+  {
+   "col1": "Hornets",
+   "col2": "Tom Benson",
+   "col3": "2012",
+   "name_manager": "Tom Benson"
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": "Cy Bahakel",
+   "col3": null,
+   "name_manager": "Cy Bahakel"
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": "Ryan Smith",
+   "col3": "2020",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Kentucky Colonels",
+   "col2": "John Y. Brown, Jr.",
+   "col3": null,
+   "name_manager": "John Y. Brown, Jr."
+  },
+  {
+   "col1": "New York Liberty",
+   "col2": "Joseph Tsai",
+   "col3": "2019",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": "Max Jacobs",
+   "col3": "1968",
+   "name_manager": "Max Jacobs"
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": "Ike Richman",
+   "col3": "1963",
+   "name_manager": "Ike Richman"
+  },
+  {
+   "col1": "New Jersey Devils",
+   "col2": "Harris",
+   "col3": "2013",
+   "name_manager": "Harris"
+  },
+  {
+   "col1": "Buffalo Braves",
+   "col2": "Irv Levin",
+   "col3": null,
+   "name_manager": "Irv Levin"
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": "Earl Foreman",
+   "col3": "1964",
+   "name_manager": "Earl Foreman"
+  },
+  {
+   "col1": "Phoenix Mercury",
+   "col2": "Mat Ishbia",
+   "col3": "2023",
+   "name_manager": "Mat Ishbia"
+  },
+  {
+   "col1": "Buffalo Bisons",
+   "col2": "Leo Ferris",
+   "col3": null,
+   "name_manager": "Leo Ferris"
+  },
+  {
+   "col1": "Tri-Cities Blackhawks",
+   "col2": "Ben Kerner",
+   "col3": null,
+   "name_manager": "Ben Kerner"
+  },
+  {
+   "col1": "Chicago Blackhawks",
+   "col2": "William Wirtz",
+   "col3": null,
+   "name_manager": "William Wirtz"
+  },
+  {
+   "col1": "Utah Hockey Club",
+   "col2": "Smith Entertainment Group",
+   "col3": null,
+   "name_manager": "Smith Entertainment Group"
+  },
+  {
+   "col1": "Chickasaw Ordnance Works",
+   "col2": "DuPont",
+   "col3": "1941",
+   "name_manager": "DuPont"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(team_doc:Document), (o:Owner)-[r:Owns]->(t), (o)-[:MentionedIn]->(owner_doc:Document) RETURN DISTINCT t.team_name AS col1, o.name AS col2, r.since_year AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 263
+  }
+ ]
+}

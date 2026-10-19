@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#2",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(d:Document), (o)-[:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors' AND date(o.birth_date) <= date('1959-10-14') RETURN date_diff('year', date(o.birth_date), date('2026-10-14')) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors' WITH o, t, date(o.birth_date) AS birth_date WITH o, t, date_part('year', date('2026-10-14')) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"c. 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors' AND regexp_matches(o.birth_date, '^[0-9]{4}[/\\\\-][0-9]{1,2}[/\\\\-][0-9]{1,2}$') WITH o, t, date(replace(o.birth_date, '/', '-')) AS birth_date WITH o, t, date_part('year', date('2026-10-14')) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL AND t.team_name <> 'Golden State Warriors' AND regexp_matches(o.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') WITH o, t, strptime(o.birth_date, '%Y/%m/%d') AS birth_date WITH o, t, date_part('year', date('2026-10-14')) - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age >= 67 RETURN age AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

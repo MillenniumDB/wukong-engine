@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_player#12",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": "center",
+   "col3": "October 14, 1968",
+   "name_player": "Dwayne Kenneth Schintzius"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "Byron Mullens"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "Timoth\u00e9 Luwawu-Cabarrot"
+  },
+  {
+   "col1": 0,
+   "col2": "Forward",
+   "col3": null,
+   "name_player": "Jay Vincent"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "Olivier-Maxence Prosper"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "MarJon Beauchamp"
+  },
+  {
+   "col1": 0,
+   "col2": "Forward",
+   "col3": "June 10, 1959",
+   "name_player": "Jay Fletcher Vincent"
+  },
+  {
+   "col1": 0,
+   "col2": "Center",
+   "col3": null,
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": 0,
+   "col2": null,
+   "col3": null,
+   "name_player": "Tyler Lydon"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CAST(p.draft_pick AS INT64) = 24 RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"45th\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) < 1 AND CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) = 24 RETURN DISTINCT CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) <> '' AND regexp_extract(p.draft_pick, '[0-9]+', 0) = '24' AND CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) < 1 RETURN DISTINCT CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE regexp_extract(p.draft_pick, '[0-9]+', 0) = '24' AND CASE WHEN p.olympic_gold_medals IS NULL OR regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) = '' THEN 0 ELSE CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) END < 1 RETURN DISTINCT CASE WHEN p.olympic_gold_medals IS NULL OR regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) = '' THEN 0 ELSE CAST(regexp_extract(p.olympic_gold_medals, '[0-9]+', 0) AS INT64) END AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 9
+  }
+ ]
+}

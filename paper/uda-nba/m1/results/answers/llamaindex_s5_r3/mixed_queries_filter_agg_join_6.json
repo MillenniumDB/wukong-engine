@@ -1,0 +1,71 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": [
+  {
+   "col1": "Center",
+   "col2": 63.0
+  },
+  {
+   "col1": "point guard",
+   "col2": null
+  },
+  {
+   "col1": "Point guard",
+   "col2": 91.0
+  },
+  {
+   "col1": "swingman",
+   "col2": null
+  },
+  {
+   "col1": "Guard/forward",
+   "col2": 101.0
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": 67.0
+  },
+  {
+   "col1": "Center\u2013power forward",
+   "col2": 58.0
+  },
+  {
+   "col1": "Forward",
+   "col2": null
+  },
+  {
+   "col1": "Guard",
+   "col2": 54.0
+  },
+  {
+   "col1": null,
+   "col2": 62.333333333333336
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p WHERE CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1 WITH p, date_diff('year', date(replace(p.birth_date, '/', '-')), date('2026-10-14')) AS age RETURN p.position AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1 WITH p, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) * 100 + CAST(split_part(p.birth_date, '/', 3) AS INT64) > 10 * 100 + 14 THEN 1 ELSE 0 END AS age RETURN p.position AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"December 20, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p, CASE WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %d, %Y') END AS birth_date WITH p, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age RETURN p.position AS col1, AVG(age) AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 167)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p, CASE WHEN p.birth_date LIKE '%/%' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %d, %Y') END AS birth_date WITH p, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN date_part('month', birth_date) >",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p, 2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age RETURN p.position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 10
+  }
+ ]
+}

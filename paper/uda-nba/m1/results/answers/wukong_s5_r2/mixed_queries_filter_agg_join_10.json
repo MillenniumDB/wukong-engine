@@ -1,0 +1,69 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": [
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 4.357152576
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 7.661713708800001
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 35.841992832
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 57.63147183360001
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 59.216397696
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 34.179028416
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 43.52358779136
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 13.273057324800002
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 13.258192838400001
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 47.547775872
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(td:Document), (p:Player)-[:ExtractedFrom]->(pd:Document), (o:Owner)-[:ExtractedFrom]->(od:Document), (c:City)-[:ExtractedFrom]->(cd:Document), (p)-[:PlaysFor]->(t), (o)-[:Owns]->(t), (t)-[:LocatedIn]->(c) WHERE CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41 RETURN t.team_name AS col1, SUM(DISTINCT CAST(c.area AS DOUBLE) * 0.09290304) AS col2",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

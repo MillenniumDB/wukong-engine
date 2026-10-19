@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp = '252200' RETURN DISTINCT p.position AS col1, date_diff('year', CAST(o.birth_date AS DATE), DATE('2026-10-14')) - CASE WHEN date_part('month', CAST(o.birth_date AS DATE)) > 10 OR (date_part('month', CAST(o.birth_date AS DATE)) = 10 AND date_part('day', CAST(o.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp = '252200' RETURN DISTINCT p.position AS col1, date_part('year', DATE('2026-10-14')) - date_part('year', CAST(o.birth_date AS DATE)) - CASE WHEN date_part('month', CAST(o.birth_date AS DATE)) > date_part('month', DATE('2026-10-14')) OR (date_part('month', CAST(o.birth_date AS DATE)) = date_part('month', DATE('2026-10-14')) AND date_part('day', CAST(o.birth_date AS DATE)) > date_part('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 10, 1956\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp = '252200' RETURN DISTINCT p.position AS col1, date_part('year', DATE('2026-10-14')) - date_part('year', CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END) - CASE WHEN date_part('month', CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END) > date_part('month', DATE('2026-10-14')) OR (date_part('month', CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END) = date_part('month', DATE('2026-10-14')) AND date_part('day', CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END) > date_part('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <date_part('year', DATE('2026-10-14')) - date_part('year', CASE WHEN o.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 451)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp ",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp = '252200' WITH p, t, c, o, CASE WHEN o.birth_date LIKE '%/%' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS bd RETURN DISTINCT p.position AS col1, (date_part('year', DATE('2026-10-14')) - date_part('year', bd) - CASE WHEN date_part('month', bd) > date_part('month', DATE('2026-10-14')) OR (date_part('month', bd) = date_part('month', DATE('2026-10-14')) AND date_part('day', bd) > date_part('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END) AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <CASE WHEN o.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 374)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) MATCH (p)-[:MentionedIn]->(:Document) MATCH (t)-[:MentionedIn]->(:Document) MATCH (c)-[:MentionedIn]->(:Document) MATCH (o)-[:MentionedIn]->(:Document) WHERE p.position <> 'Backcourt' OR CAST(p.olympic_gold_medals AS INT64) = 0 OR c.gdp = '252200' WITH p, t, c, o, CASE WHEN o.birth_date LIKE '%",
+   "rows": null
+  }
+ ]
+}

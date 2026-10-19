@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#15",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"July 31, 1958\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) WITH o, t, c, p, CASE WHEN o.birth_date CONTAINS '/' THEN STRPTIME(o.birth_date, '%Y/%m/%d') ELSE STRPTIME(o.birth_date, '%B %d, %Y') END AS birth_date RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, DATE_DIFF('year', birth_date, DATE '2026-10-14') - CASE WHEN STRFTIME(birth_date, '%m-%d') > '10-14' THEN 1 ELSE 0 END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <DATE_DIFF('year', birth_date, DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 465)\n\"MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) WITH o, t, c, p, CASE WHEN o.birth_date CONTAINS '/' THEN STRPTIME(o.birth_date, '%Y/%m/%d') ELSE STRPTIME(o.birth_date, '%B %d, %Y') END AS birth_date",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) WITH o, t, c, p, CASE WHEN o.birth_date CONTAINS '/' THEN STRPTIME(o.birth_date, '%Y/%m/%d') ELSE STRPTIME(o.birth_date, '%B %d, %Y') END AS bd RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, 2026 - CAST(STRFTIME(bd, '%Y') AS INT64) - CASE WHEN CAST(STRFTIME(bd, '%m') AS INT64) > 10 OR (CAST(STRFTIME(bd, '%m') AS INT64) = 10 AND CAST(STRFTIME(bd, '%d') AS INT64) > 14) THEN 1 ELSE 0 END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) WITH o, t, c, p, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(o.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) ELSE CASE WHEN o.birth_date CONTAINS 'January' THEN 1 WHEN o.birth_date CONTAINS 'February' THEN 2 WHEN o.birth_date CONTAINS 'March' THEN 3 WHEN o.birth_date CONTAINS 'April' THEN 4 WHEN o.birth_date CONTAINS 'May' THEN 5 WHEN o.birth_date CONTAINS 'June' THEN 6 WHEN o.birth_date CONTAINS 'July' THEN 7 WHEN o.birth_date CONTAINS 'August' THEN 8 WHEN o.birth_date CONTAINS 'September' THEN 9 WHEN o.birth_date CONTAINS 'October' THEN 10 WHEN o.birth_date CONTAINS 'November' THEN 11 WHEN o.birth_date CONTAINS 'December' THEN 12 END END AS birth_month, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

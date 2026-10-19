@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND p.position IN ['Frontcourt', 'Backcourt'] AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 AND CAST(p.draft_year AS INT64) > 2014 WITH p.position AS position, MAX(CAST(p.mvp_awards AS INT64)) AS max_mvp RETURN position AS col1, max_mvp AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 AND CAST(p.draft_year AS INT64) > 2014 WITH CASE WHEN p.position IN ['Guard', 'Point Guard', 'Shooting Guard', 'Backcourt'] THEN 'Backcourt' WHEN p.position IN ['Forward', 'Small Forward', 'Power Forward', 'Center', 'Frontcourt'] THEN 'Frontcourt' ELSE NULL END AS position, CAST(p.mvp_awards AS INT64) AS mvp WHERE position IS NOT NULL WITH position, MAX(mvp) AS max_mvp RETURN position AS col1, max_mvp AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND CAST(p.nba_championships AS INT64) = 0 AND CAST(p.nba_championships AS INT64) <> 2 AND CAST(p.draft_year AS INT64) > 2014 WITH p.position AS position, MAX(CAST(p.mvp_awards AS INT64)) AS max_mvp RETURN position AS col1, max_mvp AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p:Player)-[:PlaysFor]->(t:Team) WHERE p.nba_championships = '0' AND CAST(p.draft_year AS INT64) > 2014 WITH CASE WHEN p.position IN ['Guard', 'Point Guard', 'Shooting Guard', 'Backcourt'] THEN 'Backcourt' WHEN p.position IN ['Forward', 'Small Forward', 'Power Forward', 'Center', 'Frontcourt'] THEN 'Frontcourt' ELSE p.position END AS position, CAST(p.mvp_awards AS INT64) AS mvp WHERE position IN ['Frontcourt', 'Backcourt'] WITH position, MAX(mvp) AS max_mvp RETURN position AS col1, max_mvp AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

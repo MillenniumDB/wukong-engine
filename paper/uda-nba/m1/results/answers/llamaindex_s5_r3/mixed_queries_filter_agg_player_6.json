@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(pd:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14') < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS team, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_titles RETURN team AS col1, lowest_titles AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(pd:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 268)\n\"MATCH (p:Player)-[:MentionedIn]->(pd:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(td:Document) WHERE pf.tenure = 'latest",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-14' AS DATE)) < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS team, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_titles RETURN team AS col1, lowest_titles AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(p.birth_date AS DATE) > CAST('1948-10-14' AS DATE) AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS team, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_titles RETURN team AS col1, lowest_titles AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 10, 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CASE WHEN p.birth_date LIKE '%/%' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END > STRPTIME('1948-10-14', '%Y-%m-%d') AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS team, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_titles RETURN team AS col1, lowest_titles AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CASE WHEN p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 236)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document), (p)-[pf:PlaysFor]->(t:Team)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 ",
+   "rows": null
+  }
+ ]
+}

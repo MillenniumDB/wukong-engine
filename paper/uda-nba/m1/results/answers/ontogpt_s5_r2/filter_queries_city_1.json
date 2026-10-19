@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_city#1",
+ "rows": [
+  {
+   "col1": "Oregon",
+   "col2": 375.78,
+   "col3": "Portland",
+   "name_city": "Portland"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE CAST(c.area AS DOUBLE) * 2.58999 >= 375.775 AND CAST(c.area AS DOUBLE) * 2.58999 < 375.785 RETURN c.state_name AS col1, ROUND(CAST(c.area AS DOUBLE) * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WITH c, CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) AS area_sq_miles WHERE area_sq_miles * 2.58999 >= 375.775 AND area_sq_miles * 2.58999 < 375.785 RETURN c.state_name AS col1, ROUND(area_sq_miles * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WITH c, CAST(SPLIT(c.area, ' ')[0] AS DOUBLE) AS area_sq_miles WHERE area_sq_miles * 2.58999 >= 375.775 AND area_sq_miles * 2.58999 < 375.785 RETURN c.state_name AS col1, ROUND(area_sq_miles * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WITH c, CAST(regexp_extract(c.area, '^[0-9]+(\\\\.[0-9]+)?', 0) AS DOUBLE) AS area_sq_miles WHERE area_sq_miles * 2.58999 >= 375.775 AND area_sq_miles * 2.58999 < 375.785 RETURN c.state_name AS col1, ROUND(area_sq_miles * 2.58999, 2) AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

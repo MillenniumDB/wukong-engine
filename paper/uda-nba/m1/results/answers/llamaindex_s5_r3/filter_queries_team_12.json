@@ -1,0 +1,19 @@
+{
+ "uid": "filter_queries_team#12",
+ "rows": [
+  {
+   "col1": "Toronto",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:LocatedIn]->(c:City), (t)-[:MentionedIn]->(:Document)\nOPTIONAL MATCH (o:Owner)-[:Owns]->(t)\nWITH t, c, collect(o.name) AS owners\nWHERE (CAST(t.founded_year AS INT64) > 1989 AND NOT ('Gabe Plotkin and Rick Schnall' IN owners))\n   OR (CAST(t.founded_year AS INT64) = 1967 AND 'Atlanta Spirit LLC' IN owners)\nRETURN DISTINCT c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

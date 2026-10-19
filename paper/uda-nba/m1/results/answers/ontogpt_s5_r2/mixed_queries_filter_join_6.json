@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)<-[:Owns]-(o:Owner), (t)-[:LocatedIn]->(c:City), (p)-[:ExtractedFrom]->(pdoc:Document), (t)-[:ExtractedFrom]->(tdoc:Document), (o)-[:ExtractedFrom]->(odoc:Document), (c)-[:ExtractedFrom]->(cdoc:Document) WHERE DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') <= 65 OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)<-[:Owns]-(o:Owner), (t)-[:LocatedIn]->(c:City), (p)-[:ExtractedFrom]->(pdoc:Document), (t)-[:ExtractedFrom]->(tdoc:Document), (o)-[:ExtractedFrom]->(odoc:Document), (c)-[:ExtractedFrom]->(cdoc:Document) WHERE DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 307)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team)<-[:Owns]-(o:Owner), (t)-[:LocatedIn]->(c:City), (p)-[",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team) MATCH (o:Owner)-[:Owns]->(t) MATCH (t)-[:LocatedIn]->(c:City) MATCH (p)-[:ExtractedFrom]->(:Document) MATCH (t)-[:ExtractedFrom]->(:Document) MATCH (o)-[:ExtractedFrom]->(:Document) MATCH (c)-[:ExtractedFrom]->(:Document) WHERE (pf.tenure = 'latest' AND (DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) <= 65 OR CAST(p.olympic_gold_medals AS INT64) <= 1)) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team) MATCH (o:Owner)-[:Owns]->(t) MATCH (t)-[:LocatedIn]->(c:City) MATCH (p)-[:ExtractedFrom]->(:Document) MATCH (t)-[:ExtractedFrom]->(:Document) MATCH (o)-[:ExtractedFrom]->(:Document) MATCH (c)-[:ExtractedFrom]->(:Document) WHERE (DATE_PART('year', STRPTIME(o.birth_date, '%Y/%m/%d')) > 1961 OR (DATE_PART('year', STRPTIME(o.birth_date, '%Y/%m/%d')) = 1961) OR (DATE_PART('year', STRPTIME(o.birth_date, '%Y/%m/%d')) = 1960 AND (DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) > 10 OR (DATE_PART('month', STRPTIME(o.birth_date, '%Y/%m/%d')) = 10 AND DATE_PART('day', STRPTIME(o.birth_date, '%Y/%m/%d')) >= 15))) OR CAST(p.olympic_gold_medals AS INT64) <= 1) RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team) MATCH (o:Owner)-[:Owns]->(t) MATCH (t)-[:LocatedIn]->(c:City) MATCH (p)-[:ExtractedFrom]->(:Document) MATCH (t)-[:ExtractedFrom]->(:Document) MATCH (o)-[:ExtractedFrom]->(:Document) MATCH (c)-[:ExtractedFrom]->(:Document) WHERE CAST(REPLACE(o.birth_date, '/', '-') AS DATE) >= DATE '1960-10-15' OR CAST(p.olympic_gold_medals AS INT64) <= 1 RETURN t.team_name AS col1, o.name AS col2, p.fiba_world_cup AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team) MATCH (o:Owner)-[:Owns]->(t) MATCH (t)-[:LocatedIn]->(c:City) MATCH (p)-[:ExtractedFrom]->(:Document) MATCH (t)-[:ExtractedFrom]->(:Document) MATCH (o)-[:ExtractedFrom]->(:Document) MATCH (c)-[:ExtractedFrom]->(:Document) WHERE CAST(REPLACE(o.birth_date, '/', '-') AS DATE) >= DATE '1960-10-15'>: expected rule oC_SingleQuery (line: 1, offset: 321)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team) MATCH (o:Owner)-[:Owns]->(t) MATCH (t)-",
+   "rows": null
+  }
+ ]
+}

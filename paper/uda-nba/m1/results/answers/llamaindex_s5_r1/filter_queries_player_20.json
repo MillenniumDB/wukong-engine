@@ -1,0 +1,37 @@
+{
+ "uid": "filter_queries_player#20",
+ "rows": [
+  {
+   "col1": "Bob Cousy",
+   "col2": "6",
+   "col3": "Holy Cross",
+   "name_player": "Bob Cousy"
+  },
+  {
+   "col1": "Phil Jackson",
+   "col2": "11",
+   "col3": null,
+   "name_player": "Phil Jackson"
+  },
+  {
+   "col1": "Michael Jordan",
+   "col2": "6",
+   "col3": null,
+   "name_player": "Michael Jordan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.nba_championships AS INT64) > 2 AND CAST(p.olympic_gold_medals AS INT64) >= 0 AND CAST(p.olympic_gold_medals AS INT64) <> 1 AND p.name <> 'Toby Kimball' RETURN DISTINCT p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.nba_championships AS INT64) > 2 AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) >= 0 AND COALESCE(CAST(p.olympic_gold_medals AS INT64), 0) <> 1 AND p.name <> 'Toby Kimball' RETURN DISTINCT p.name AS col1, p.nba_championships AS col2, p.college AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

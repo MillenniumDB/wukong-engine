@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#19",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) >= 42 AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND strptime(p.birth_date, '%Y/%m/%d') <= strptime('1984/10/14', '%Y/%m/%d') AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.draft_pick AS INT64) >= 24 AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE regexp_matches(p.draft_pick, '^[0-9]+$') AND CAST(p.draft_pick AS INT64) >= 24 AND regexp_matches(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$') AND (CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14)))) AND regexp_matches(p.mvp_awards, '^[0-9]+$') AND CAST(p.mvp_awards AS INT64) >= 0 AND CAST(p.mvp_awards AS INT64) < 1 WITH DISTINCT p RETURN p.fiba_world_cup AS col1, p.draft_pick AS col2, p.draft_year AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

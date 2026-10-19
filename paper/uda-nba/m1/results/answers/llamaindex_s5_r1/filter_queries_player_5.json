@@ -1,0 +1,55 @@
+{
+ "uid": "filter_queries_player#5",
+ "rows": [
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "October 14, 1968",
+   "name_player": "Dwayne Schintzius"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "August 29, 1930",
+   "name_player": "Jim Walsh"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "March 5, 1925",
+   "name_player": "Leroy Patrick Chollet"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "February 6, 1972",
+   "name_player": "Shawn Respert"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": "April 2, 1975",
+   "name_player": "Nate Huffman"
+  },
+  {
+   "col1": null,
+   "col2": "0",
+   "col3": null,
+   "name_player": "Patrick Ewing"
+  },
+  {
+   "col1": "0",
+   "col2": "0",
+   "col3": "January 28, 1974",
+   "name_player": "Tony Delk"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.nba_championships AS INT64) = 0 RETURN DISTINCT p.fiba_world_cup AS col1, p.nba_championships AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

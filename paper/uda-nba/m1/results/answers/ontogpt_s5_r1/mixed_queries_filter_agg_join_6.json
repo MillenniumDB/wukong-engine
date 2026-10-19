@@ -1,0 +1,33 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": [
+  {
+   "col1": "Backcourt",
+   "col2": 54.32786885245902
+  },
+  {
+   "col1": "Frontcourt",
+   "col2": 50.46478873239437
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IS NOT NULL\n  AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1)\nRETURN p.position AS col1, AVG(CAST(date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <AVG(CAST(date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 4, offset: 95)\n\"RETURN p.position AS col1, AVG(CAST(date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS DOUBLE)) AS col2\"\n                                                                                                ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IS NOT NULL\n  AND p.birth_date IS NOT NULL\n  AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1)\nRETURN p.position AS col1, AVG(CAST('2026' AS INT64) - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.position IS NOT NULL\n  AND p.birth_date IS NOT NULL\n  AND (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1)\nRETURN p.position AS col1, AVG(CAST('2026' AS INT64) - CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{4}', 0) AS INT64)) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

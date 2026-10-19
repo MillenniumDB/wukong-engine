@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#12",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.olympic_gold_medals AS INT64) < 1 AND CAST(p.draft_pick AS INT64) = 24 RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"57th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE p.draft_pick = '24th overall' AND CAST(p.olympic_gold_medals AS INT64) < 1 RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE regexp_matches(p.draft_pick, '^24([^0-9]|$)') AND CAST(p.olympic_gold_medals AS INT64) < 1 RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE regexp_matches(p.draft_pick, '(^|[^0-9])24([^0-9]|$)') AND regexp_matches(p.olympic_gold_medals, '^0([^0-9]|$)') RETURN p.olympic_gold_medals AS col1, p.position AS col2, p.birth_date AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

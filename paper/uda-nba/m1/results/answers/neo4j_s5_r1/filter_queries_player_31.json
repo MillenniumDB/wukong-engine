@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(p.draft_pick AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(CASE WHEN p.draft_pick = 'Undrafted' THEN NULL ELSE p.draft_pick END AS INT64) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR (regexp_matches(p.draft_pick, '^[0-9]+') AND CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64) >= 24) RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR COALESCE(TRY_CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64), 0) >= 24 RETURN DISTINCT p.current_team AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR COALESCE(TRY_CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS>: expected rule oC_SingleQuery (line: 1, offset: 184)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR COALESCE(TRY_CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64), 0) >= 24 RETURN DISTINCT p.cur",
+   "rows": null
+  }
+ ]
+}

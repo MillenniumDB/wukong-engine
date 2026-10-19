@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)\nWHERE pf.tenure = 'latest'\n  AND CAST(p.draft_pick AS INT64) < 3\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"24th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)\nWHERE pf.tenure = 'latest'\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND CAST(regexp_extract(p.draft_pick, '[0-9]+', 0) AS INT64) < 3\nRETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)\nWHERE pf.tenure = 'latest'\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND regexp_matches(p.draft_pick, '^[0-9]+')\n  AND regexp_matches(p.olympic_gold_medals, '^[0-9]+')\n  AND CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64) < 3\nRETURN t.team_name AS col1, MIN(CAST(regexp_extract(p.olympic_gold_medals, '^[0-9]+', 0) AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)\nWHERE pf.tenure = 'latest'\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND CASE\n        WHEN regexp_matches(p.draft_pick, '^[0-9]+')\n        THEN CAST(regexp_extract(p.draft_pick, '^[0-9]+', 0) AS INT64)\n        ELSE NULL\n      END < 3\nRETURN t.team_name AS col1,\n       MIN(CASE\n             WHEN regexp_matches(p.olympic_gold_medals, '^[0-9]+')\n             THEN CAST(regexp_extract(p.olympic_gold_medals, '^[0-9]+', 0) AS INT64)\n             ELSE NULL\n           END) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#29",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') >= 42 OR p.current_team <> 'Philadelphia 76ers' OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0) RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 112)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE '2026-10-14') >= 42 OR p.current_team <> 'Philadelphia 76ers' OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0) RETURN DISTINCT CAST(p.olym",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) >= 42 OR p.current_team <> 'Philadelphia 76ers' OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0) RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END >= 42 OR p.current_team <> 'Philadelphia 76ers' OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0) RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 April 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS bd WHERE (date_part('year', DATE '2026-10-14') - date_part('year', bd) - CASE WHEN date_part('month', DATE '2026-10-14') < date_part('month', bd) OR (date_part('month', DATE '2026-10-14') = date_part('month', bd) AND date_part('day', DATE '2026-10-14') < date_part('day', bd)) THEN 1 ELSE 0 END >= 42 OR p.current_team <> 'Philadelphia 76ers' OR CAST(p.nba_championships AS INT64) >= 0 OR CAST(p.nba_championships AS INT64) > 0) RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, date_part('year', DATE '2026-10-14') - date_part('year', bd) - CASE WHEN date_part('month', DATE '2026-10-14') < date_part('month', bd) OR (date_part('month', DATE '2026-10-14') = date_part('month', bd) AND date_part('day', DATE '2026-10-14') < date_part('day', bd)) THEN 1 ELSE 0 END AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <(date_part('year', DATE '2026-10-14'>: expected rule oC_ComparisonExpression (line: 1, offset: 210)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%d %B %Y') END AS bd WHERE (date_part('year', DATE '2026-10-14') - date_part('year', bd) - CASE WHEN date_part('month', DATE '2026-10-14') < date_part('month', bd) OR (date_part('month', DATE '2026-10-14') =",
+   "rows": null
+  }
+ ]
+}

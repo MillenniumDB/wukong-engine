@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND DATE(p.birth_date) >= DATE('1963-10-15') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"June 10, 1959\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND (CASE WHEN p.birth_date LIKE '%,%' THEN STRPTIME(p.birth_date, '%B %d, %Y') ELSE STRPTIME(p.birth_date, '%Y/%m/%d') END) >= STRPTIME('1963-10-15', '%Y-%m-%d') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND (CASE WHEN p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 230)\n\"MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document) WHERE p.college = 'Michigan State University' AND ",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND IF(p.birth_date CONTAINS '/', STRPTIME(p.birth_date, '%Y/%m/%d'), STRPTIME(p.birth_date, '%B %-d, %Y')) <= STRPTIME('1963-10-14', '%Y-%m-%d') WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function IF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE p.college = 'Michigan State University' AND p.birth_date IS NOT NULL AND ((p.birth_date CONTAINS '/' AND STRPTIME(p.birth_date, '%Y/%m/%d') <= STRPTIME('1964-10-14', '%Y-%m-%d')) OR (p.birth_date CONTAINS ',' AND STRPTIME(p.birth_date, '%B %d, %Y') <= STRPTIME('1964-10-14', '%Y-%m-%d'))) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

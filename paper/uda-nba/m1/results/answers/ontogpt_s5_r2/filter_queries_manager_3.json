@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#3",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(d:Document) WITH DISTINCT o, date_diff('year', DATE(o.birth_date), DATE('2026-10-14')) AS age WHERE age < 65 OR COALESCE(o.nationality, '') <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WITH DISTINCT o, DATE(REPLACE(o.birth_date, '/', '-')) AS birthdate WITH o, CASE WHEN DATE_PART('month', birthdate) > 10 OR (DATE_PART('month', birthdate) = 10 AND DATE_PART('day', birthdate) > 14) THEN 2026 - DATE_PART('year', birthdate) - 1 ELSE 2026 - DATE_PART('year', birthdate) END AS age WHERE age < 65 OR COALESCE(o.nationality, '') <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WITH DISTINCT o, DATE(o.birth_date) AS birthdate WITH o, CASE WHEN DATE_PART('month', birthdate) > 10 OR (DATE_PART('month', birthdate) = 10 AND DATE_PART('day', birthdate) > 14) THEN 2026 - DATE_PART('year', birthdate) - 1 ELSE 2026 - DATE_PART('year', birthdate) END AS age WHERE age < 65 OR COALESCE(o.nationality, '') <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 17, 1962\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WITH DISTINCT o, CASE WHEN o.birth_date CONTAINS '/' THEN STRPTIME(o.birth_date, '%Y/%m/%d') ELSE STRPTIME(o.birth_date, '%B %d, %Y') END AS birthdate WITH o, CASE WHEN DATE_PART('month', birthdate) > 10 OR (DATE_PART('month', birthdate) = 10 AND DATE_PART('day', birthdate) > 14) THEN 2026 - DATE_PART('year', birthdate) - 1 ELSE 2026 - DATE_PART('year', birthdate) END AS age WHERE age < 65 OR COALESCE(o.nationality, '') <> 'Israeli-American' RETURN age AS col1, o.name AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

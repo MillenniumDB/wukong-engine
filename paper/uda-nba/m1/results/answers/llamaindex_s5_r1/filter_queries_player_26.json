@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#26",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE CAST(p.fiba_world_cup AS INT64) = 1 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR (date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) - CASE WHEN date_part('month', CAST(p.birth_date AS DATE)) > 10 OR (date_part('month', CAST(p.birth_date AS DATE)) = 10 AND date_part('day', CAST(p.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END) > 42 RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) - CASE WHEN date_part('month', CAST(p.birth_date AS DATE)) > 10 OR (date_part('month', CAST(p.birth_date AS DATE)) = 10 AND date_part('day', CAST(p.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR CAST(p.fiba_world_cup AS INT64) = 1 OR (2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END) > 42 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, 2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(p.birth_date AS DATE) ELSE CAST(strptime(p.birth_date, '%B %-d, %Y') AS DATE) END AS birth_date WHERE p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR CAST(p.fiba_world_cup AS INT64) = 1 OR (2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END) > 42 RETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(trim(split_part(p.birth_date, ',', 2)) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) WHEN p.birth_date LIKE 'January%' THEN 1 WHEN p.birth_date LIKE 'February%' THEN 2 WHEN p.birth_date LIKE 'March%' THEN 3 WHEN p.birth_date LIKE 'April%' THEN 4 WHEN p.birth_date LIKE 'May%' THEN 5 WHEN p.birth_date LIKE 'June%' THEN 6 WHEN p.birth_date LIKE 'July%' THEN 7 WHEN p.birth_date LIKE 'August%' THEN 8 WHEN p.birth_date LIKE 'September%' THEN 9 WHEN p.birth_date LIKE 'October%' THEN 10 WHEN p.birth_date LIKE 'November%' THEN 11 WHEN p.birth_date LIKE 'December%' THEN 12 END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(split_part(p.birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day WHERE p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR CAST(p.fiba_world_cup AS INT64) = 1 OR 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END > 42 RETURN DISTINCT CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 327)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WITH p, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(trim(split_part(p.birth_date, ',', 2)) AS INT64) END AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2",
+   "rows": null
+  }
+ ]
+}

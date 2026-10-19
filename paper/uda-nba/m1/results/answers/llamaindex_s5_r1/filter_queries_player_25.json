@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#25",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document)\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH DISTINCT p,\n     2026 - CAST(list_extract(split(p.birth_date, '/'), 0) AS INT64)\n       - CASE\n           WHEN CAST(list_extract(split(p.birth_date, '/'), 1) AS INT64) > 10\n             OR (CAST(list_extract(split(p.birth_date, '/'), 1) AS INT64) = 10\n                 AND CAST(list_extract(split(p.birth_date, '/'), 2) AS INT64) > 14)\n           THEN 1 ELSE 0\n         END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH DISTINCT p,\n     DATE_DIFF(\n       'year',\n       CAST(REPLACE(p.birth_date, '/', '-') AS DATE),\n       CAST('2026-10-14' AS DATE)\n     ) AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH DISTINCT p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth\nWITH p,\n     DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', birth)\n     - CASE\n         WHEN DATE_PART('month', birth) > DATE_PART('month', CAST('2026-10-14' AS DATE))\n           OR (DATE_PART('month', birth) = DATE_PART('month', CAST('2026-10-14' AS DATE))\n               AND DATE_PART('day', birth) > DATE_PART('day', CAST('2026-10-14' AS DATE)))\n         THEN 1 ELSE 0\n       END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWHERE (p.draft_pick IS NOT NULL AND CAST(p.draft_pick AS INT64) <= 62)\n   OR p.birth_date = '1997/8/7'\n   OR (p.college IS NOT NULL AND p.college <> 'Oregon State University')\n   OR (p.nba_championships IS NOT NULL AND CAST(p.nba_championships AS INT64) = 2)\nWITH DISTINCT p,\n  2026 - CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64)\n  - CASE\n      WHEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) > 10\n        OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10\n            AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) > 14)\n      THEN 1 ELSE 0\n    END AS age\nRETURN p.draft_pick AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  }
+ ]
+}

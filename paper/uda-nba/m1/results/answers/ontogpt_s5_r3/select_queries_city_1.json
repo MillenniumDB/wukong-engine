@@ -1,0 +1,30 @@
+{
+ "uid": "select_queries_city#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(c.area AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CAST(c.gdp AS DOUBLE) / 1000000 AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(REPLACE(REPLACE(c.area, ' square miles', ''), ',', '') AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN LOWER(c.gdp) CONTAINS 'trillion' THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(c.gdp), '$', ''), ' trillion', ''), ',', '') AS DOUBLE) * 1000000 WHEN LOWER(c.gdp) CONTAINS 'billion' THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(c.gdp), '$', ''), ' billion', ''), ',', '') AS DOUBLE) * 1000 WHEN LOWER(c.gdp) CONTAINS 'million' THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(c.gdp), '$', ''), ' million', ''), ',', '') AS DOUBLE) ELSE CAST(REPLACE(REPLACE(c.gdp, '$', ''), ',', '') AS DOUBLE) / 1000000 END AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(regexp_replace(c.area, '[^0-9.]', '') AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN CONTAINS(LOWER(c.gdp), 'trillion') THEN CAST(regexp_replace(c.gdp, '[^0-9.]', '') AS DOUBLE) * 1000000 WHEN CONTAINS(LOWER(c.gdp), 'billion') THEN CAST(regexp_replace(c.gdp, '[^0-9.]', '') AS DOUBLE) * 1000 WHEN CONTAINS(LOWER(c.gdp), 'million') THEN CAST(regexp_replace(c.gdp, '[^0-9.]', '') AS DOUBLE) ELSE CAST(regexp_replace(c.gdp, '[^0-9.]', '') AS DOUBLE) / 1000000 END AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(:Document) RETURN CAST(regexp_extract(c.area, '([0-9]+[.]?[0-9]*)', 1) AS DOUBLE) * 2.58999 AS col1, c.city_name AS col2, CASE WHEN CONTAINS(LOWER(c.gdp), 'trillion') THEN CAST(regexp_extract(c.gdp, '([0-9]+[.]?[0-9]*)', 1) AS DOUBLE) * 1000000 WHEN CONTAINS(LOWER(c.gdp), 'billion') THEN CAST(regexp_extract(c.gdp, '([0-9]+[.]?[0-9]*)', 1) AS DOUBLE) * 1000 WHEN CONTAINS(LOWER(c.gdp), 'million') THEN CAST(regexp_extract(c.gdp, '([0-9]+[.]?[0-9]*)', 1) AS DOUBLE) ELSE CAST(regexp_extract(c.gdp, '([0-9]+[.]?[0-9]*)', 1) AS DOUBLE) / 1000000 END AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed.  is not in DOUBLE range.",
+   "rows": null
+  }
+ ]
+}

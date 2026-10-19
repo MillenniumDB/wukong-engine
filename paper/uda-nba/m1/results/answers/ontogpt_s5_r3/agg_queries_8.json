@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     DATE_DIFF('year', STRPTIME(o.birth_date, '%Y/%m/%d'), STRPTIME(COALESCE(o.death_date, '2026/10/14'), '%Y/%m/%d')) AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     CASE WHEN o.birth_date CONTAINS '/' THEN STRPTIME(o.birth_date, '%Y/%m/%d') ELSE STRPTIME(o.birth_date, '%B %d, %Y') END AS birth_date\nWITH nationality,\n     2026 - CAST(DATE_PART('year', birth_date) AS INT64) - CASE\n       WHEN CAST(DATE_PART('month', birth_date) AS INT64) > 10\n         OR (CAST(DATE_PART('month', birth_date) AS INT64) = 10 AND CAST(DATE_PART('day', birth_date) AS INT64) > 14)\n       THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(o.birth_date, ' ', 3) AS INT64) END AS birth_year,\n     CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64)\n          WHEN o.birth_date CONTAINS 'January' THEN 1\n          WHEN o.birth_date CONTAINS 'February' THEN 2\n          WHEN o.birth_date CONTAINS 'March' THEN 3\n          WHEN o.birth_date CONTAINS 'April' THEN 4\n          WHEN o.birth_date CONTAINS 'May' THEN 5\n          WHEN o.birth_date CONTAINS 'June' THEN 6\n          WHEN o.birth_date CONTAINS 'July' THEN 7\n          WHEN o.birth_date CONTAINS 'August' THEN 8\n          WHEN o.birth_date CONTAINS 'September' THEN 9\n          WHEN o.birth_date CONTAINS 'October' THEN 10\n          WHEN o.birth_date CONTAINS 'November' THEN 11\n          WHEN o.birth_date CONTAINS 'December' THEN 12 END AS birth_month,\n     CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 3) AS INT64) ELSE CAST(REPLACE(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day\nWITH nationality, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

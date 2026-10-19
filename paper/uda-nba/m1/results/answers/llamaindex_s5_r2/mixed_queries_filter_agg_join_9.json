@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND (CAST(SPLIT(p.birth_date, '/')[0] AS INT64) < 1984 OR (CAST(SPLIT(p.birth_date, '/')[0] AS INT64) = 1984 AND (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) < 10 OR (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(p.birth_date, '/')[2] AS INT64) <= 14))))) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= CAST('1984-10-14' AS DATE)) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE) <= CAST('1984-10-14' AS DATE)) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR p.birth_date LIKE '1984/1/%' OR p.birth_date LIKE '1984/2/%' OR p.birth_date LIKE '1984/3/%' OR p.birth_date LIKE '1984/4/%' OR p.birth_date LIKE '1984/5/%' OR p.birth_date LIKE '1984/6/%' OR p.birth_date LIKE '1984/7/%' OR p.birth_date LIKE '1984/8/%' OR p.birth_date LIKE '1984/9/%' OR p.birth_date = '1984/10/1' OR p.birth_date = '1984/10/2' OR p.birth_date = '1984/10/3' OR p.birth_date = '1984/10/4' OR p.birth_date = '1984/10/5' OR p.birth_date = '1984/10/6' OR p.birth_date = '1984/10/7' OR p.birth_date = '1984/10/8' OR p.birth_date = '1984/10/9' OR p.birth_date = '1984/10/10' OR p.birth_date = '1984/10/11' OR p.birth_date = '1984/10/12' OR p.birth_date = '1984/10/13' OR p.birth_date = '1984/10/14'))) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 207)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(d:Document) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR (p.birth_date IS NOT NULL AND (p.birth_date < '1984/' OR p.birt",
+   "rows": null
+  }
+ ]
+}

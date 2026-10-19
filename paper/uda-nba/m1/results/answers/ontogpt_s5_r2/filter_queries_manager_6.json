@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14') - CASE WHEN strftime(CAST(o.birth_date AS DATE), '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age\nWHERE age = 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 62)\n\"WITH o, t, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14') - CASE WHEN strftime(CAST(o.birth_date AS DATE), '%m-%d') > '10-14' THEN 1 ELSE 0 END AS age\"\n                                                               ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t, date_diff('year', CAST(o.birth_date AS DATE), CAST('2026-10-14' AS DATE)) AS age\nWHERE age = 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t,\n     2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) -\n     CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR\n               (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14)\n          THEN 1 ELSE 0 END AS age\nWHERE age = 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (o)-[:Owns]->(t:Team)\nWITH o, t,\n     2026 - CAST(split_part(o.birth_date, ' ', 3) AS INT64) -\n     CASE\n       WHEN CASE split_part(o.birth_date, ' ', 1)\n              WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n              WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n              WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n              WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n            END > 10\n         OR (CASE split_part(o.birth_date, ' ', 1)\n               WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3\n               WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6\n               WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9\n               WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n             END = 10 AND CAST(REPLACE(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nWHERE age >= 65 OR (t.team_name IS NOT NULL AND t.team_name <> 'Indiana Pacers' AND t.team_name <> 'New Orleans Pelicans')\nRETURN DISTINCT o.nationality AS col1, age AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

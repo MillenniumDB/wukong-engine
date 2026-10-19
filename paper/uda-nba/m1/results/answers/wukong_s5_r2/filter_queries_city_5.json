@@ -1,0 +1,175 @@
+{
+ "uid": "filter_queries_city#5",
+ "rows": [
+  {
+   "col1": "over $102 billion in 2020",
+   "col2": "Wisconsin",
+   "col3": "577222",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": "2314157",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "$157.6 billion in 2010",
+   "col2": "Colorado",
+   "col3": "715522",
+   "name_city": "Denver"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": "639111",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon",
+   "col3": "652503",
+   "name_city": "Portland"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": "524943",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": "North Carolina",
+   "col3": "874579",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": null,
+   "col2": "Tennessee",
+   "col3": "633104",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana",
+   "col3": "880621",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "$689 billion in 2018",
+   "col2": "Illinois",
+   "col3": "2746388",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "$73.8 billion",
+   "col2": "Oklahoma",
+   "col3": "681054",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "$138.3 billion in 2022",
+   "col2": "Ohio",
+   "col3": "372624",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "$252.2 billion",
+   "col2": "California",
+   "col3": "808988",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": null,
+   "col2": "Utah",
+   "col3": "200133",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": null,
+   "col2": "Florida",
+   "col3": "442241",
+   "name_city": "Miami"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota",
+   "col3": "429954",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "$473 billion in 2021",
+   "col2": "Georgia",
+   "col3": "498715",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "approximately $121 billion in 2018",
+   "col2": "Texas",
+   "col3": "1434625",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": "Florida",
+   "col3": "307573",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "over $362 billion",
+   "col2": "Arizona",
+   "col3": "1662607",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "Massachusetts",
+   "col3": "691531",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "over $1.0 trillion",
+   "col2": "California",
+   "col3": "3820914",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "over US$2.16 trillion",
+   "col2": "New York",
+   "col3": "8258035",
+   "name_city": "New York City"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": "1299544",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": "107762",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "US$518.5 billion",
+   "col2": "Pennsylvania",
+   "col3": "1603797",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": null,
+   "col2": "Louisiana",
+   "col3": "383997",
+   "name_city": "New Orleans"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE c.state_name <> 'Ontario' OR c.city_name = 'Minneapolis' OR c.gdp <> '689000' OR c.gdp <> '344.9' RETURN c.gdp AS col1, c.state_name AS col2, c.population AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 27
+  }
+ ]
+}

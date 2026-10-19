@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_player#8",
+ "rows": [
+  {
+   "col1": "Small forward",
+   "col2": 2,
+   "col3": 1,
+   "name_player": "Kevin Durant"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Steve Smith"
+  },
+  {
+   "col1": null,
+   "col2": 5,
+   "col3": 1,
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": "Point guard",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": null,
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Point guard",
+   "col2": 4,
+   "col3": 2,
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "Power forward/Center",
+   "col2": 0,
+   "col3": 1,
+   "name_player": "Anthony Davis"
+  },
+  {
+   "col1": "Center",
+   "col2": 4,
+   "col3": 1,
+   "name_player": "Shaquille O'Neal"
+  },
+  {
+   "col1": "Power forward and center",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "small forward",
+   "col2": 1,
+   "col3": 1,
+   "name_player": "Harrison Barnes"
+  },
+  {
+   "col1": "Center",
+   "col2": null,
+   "col3": 1,
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": null,
+   "col2": 2,
+   "col3": 1,
+   "name_player": "Kevin Wayne Durant"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE CAST(p.fiba_world_cup AS INT64) > 0 AND p.nationality <> 'Azerbaijani' RETURN DISTINCT p.position AS col1, CAST(p.nba_championships AS INT64) AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 12
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "uid": "agg_queries#4",
+ "rows": [
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "French",
+   "col2": 32
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31
+  },
+  {
+   "col1": "Greek",
+   "col2": 36
+  },
+  {
+   "col1": "American",
+   "col2": 92
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32
+  },
+  {
+   "col1": "German",
+   "col2": 33
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": null,
+   "col2": 79
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WITH p.nationality AS nationality, date_diff('year', date(REPLACE(p.birth_date, '/', '-')), CASE WHEN p.death_date IS NULL THEN date('2026-10-14') ELSE date(REPLACE(p.death_date, '/', '-')) END) AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, date(REPLACE(p.birth_date, '/', '-')) AS birth_date, CASE WHEN p.death_date IS NULL THEN date('2026-10-14') ELSE date(REPLACE(p.death_date, '/', '-')) END AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, date(regexp_replace(p.birth_date, '/', '-')) AS birth_date, CASE WHEN p.death_date IS NULL THEN date('2026-10-14') ELSE date(regexp_replace(p.death_date, '/', '-')) END AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"1998-3/3\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, date(regexp_replace(regexp_replace(p.birth_date, '/', '-'), '/', '-')) AS birth_date, CASE WHEN p.death_date IS NULL THEN date('2026-10-14') ELSE date(regexp_replace(regexp_replace(p.death_date, '/', '-'), '/', '-')) END AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2",
+   "error": null,
+   "rows": 23
+  }
+ ]
+}

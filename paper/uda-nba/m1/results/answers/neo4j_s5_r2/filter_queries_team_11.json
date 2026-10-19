@@ -1,0 +1,907 @@
+{
+ "uid": "filter_queries_team#11",
+ "rows": [
+  {
+   "col1": "New York",
+   "col2": "1946",
+   "col3": "Atlanta Hawks",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1967",
+   "col3": "San Antonio Spurs",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "New York",
+   "col2": "1946",
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Orlando",
+   "col2": "1989",
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Memphis",
+   "col2": "1995",
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1946",
+   "col3": "Boston Celtics",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1946",
+   "col3": "Boston Celtics",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Rochester",
+   "col2": null,
+   "col3": "Rochester Royals",
+   "name_team": "Rochester Royals"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": null,
+   "col3": "Milwaukee Hawks",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": "Orlando",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Denver",
+   "col2": "1967",
+   "col3": "Denver Nuggets",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "1937",
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "New York City",
+   "col2": "1946",
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "New York",
+   "col2": "1970",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1989",
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "New York",
+   "col2": "1967",
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "1968",
+   "col3": "Milwaukee Bucks",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": null,
+   "col3": "Sacramento Kings",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": "Minnesota",
+   "col2": "1989",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1995",
+   "col3": "Vancouver Grizzlies",
+   "name_team": "Vancouver Grizzlies"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "1967",
+   "col3": "Seattle SuperSonics",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "Syracuse",
+   "col2": "1946",
+   "col3": "Syracuse Nationals",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": "Daly City",
+   "col2": null,
+   "col3": "San Francisco Warriors",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "San Jose",
+   "col2": null,
+   "col3": "San Francisco Warriors",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": null,
+   "col3": "Kansas City Kings",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans Jazz",
+   "name_team": "New Orleans Jazz"
+  },
+  {
+   "col1": "New York",
+   "col2": "1946",
+   "col3": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1970",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "1970",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": null,
+   "col3": "New Orleans Hornets",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1988",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1988",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Washington, D.C.",
+   "col2": "1961",
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Seattle",
+   "col2": "1967",
+   "col3": "Seattle SuperSonics",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": null,
+   "col3": "New Orleans/Oklahoma City Hornets",
+   "name_team": "New Orleans/Oklahoma City Hornets"
+  },
+  {
+   "col1": "San Diego",
+   "col2": null,
+   "col3": "San Diego Clippers",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": "Austin",
+   "col2": null,
+   "col3": "Austin Spurs",
+   "name_team": "Austin Spurs"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Philadelphia Warriors",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "New York Nets",
+   "name_team": "New York Nets"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "Capital Bullets",
+   "name_team": "Capital Bullets"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1966",
+   "col3": "Chicago Bulls",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Vancouver",
+   "col2": "1995",
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1967",
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans Pelicans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Boston",
+   "col2": "1989",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1989",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "New York",
+   "col2": "1988",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Houston",
+   "col2": "1967",
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "Orem",
+   "col2": "1967",
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": null,
+   "col3": "St. Louis Hawks",
+   "name_team": "St. Louis Hawks"
+  },
+  {
+   "col1": "Baltimore",
+   "col2": null,
+   "col3": "Baltimore Bullets",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": null,
+   "col3": "Minneapolis Lakers",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": "Omaha",
+   "col2": null,
+   "col3": "Kansas City\u2013Omaha Kings",
+   "name_team": "Kansas City\u2013Omaha Kings"
+  },
+  {
+   "col1": "Fort Wayne",
+   "col2": "1937",
+   "col3": "Fort Wayne Zollner Pistons",
+   "name_team": "Fort Wayne Zollner Pistons"
+  },
+  {
+   "col1": "Oakland",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "1967",
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Tampa",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "1968",
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Vancouver",
+   "col2": "1995",
+   "col3": "Vancouver Grizzlies",
+   "name_team": "Vancouver Grizzlies"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1988",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "San Diego",
+   "col2": "1967",
+   "col3": "Houston Rockets",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": "East Rutherford",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Cincinnati",
+   "col2": null,
+   "col3": "Cincinnati Royals",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": null,
+   "col3": "San Francisco Warriors",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "1988",
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": "San Francisco Warriors",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": "Washington",
+   "col2": null,
+   "col3": "Washington Capitols",
+   "name_team": "Washington Capitols"
+  },
+  {
+   "col1": "Oakland",
+   "col2": null,
+   "col3": "Oakland Raiders",
+   "name_team": "Oakland Raiders"
+  },
+  {
+   "col1": "Golden State",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "New York",
+   "col2": "1937",
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1946",
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Bay Lake",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "New York",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Fort Wayne",
+   "col2": null,
+   "col3": "Fort Wayne Pistons",
+   "name_team": "Fort Wayne Pistons"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": "Kansas City Kings",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1967",
+   "col3": "Dallas Chaparrals",
+   "name_team": "Dallas Chaparrals"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "1946",
+   "col3": "Detroit Gems",
+   "name_team": "Detroit Gems"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": null,
+   "col3": "Cleveland Rebels",
+   "name_team": "Cleveland Rebels"
+  },
+  {
+   "col1": "Toronto",
+   "col2": null,
+   "col3": "Toronto Huskies",
+   "name_team": "Toronto Huskies"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1970",
+   "col3": "Portland Trail Blazers",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1980",
+   "col3": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1967",
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Seattle",
+   "col2": "1967",
+   "col3": "Oklahoma City Thunder",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1946",
+   "col3": "Philadelphia 76ers",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1937",
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1970",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2004",
+   "col3": "Charlotte Bobcats",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1946",
+   "col3": "Boston Celtics",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "1967",
+   "col3": "Brooklyn Nets",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1968",
+   "col3": "Milwaukee Bucks",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1989",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "1988",
+   "col3": "Miami Heat",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Boston",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": "1970",
+   "col3": "Buffalo Braves",
+   "name_team": "Buffalo Braves"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "San Diego Clippers",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": "Buffalo",
+   "col2": "1946",
+   "col3": "Buffalo Bisons",
+   "name_team": "Buffalo Bisons"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": null,
+   "col3": "Indianapolis Olympians",
+   "name_team": "Indianapolis Olympians"
+  },
+  {
+   "col1": "San Diego",
+   "col2": "1967",
+   "col3": "San Diego Rockets",
+   "name_team": "San Diego Rockets"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1961",
+   "col3": "Chicago Packers",
+   "name_team": "Chicago Packers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1946",
+   "col3": "Golden State Warriors",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1970",
+   "col3": "Cleveland Cavaliers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1995",
+   "col3": "Memphis Grizzlies",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "1946",
+   "col3": "Boston Celtics",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans Hornets",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": null,
+   "col3": "Minneapolis Lakers",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": "Kansas City",
+   "col2": null,
+   "col3": "Kansas City\u2013Omaha Kings",
+   "name_team": "Kansas City\u2013Omaha Kings"
+  },
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Chicago Stags",
+   "name_team": "Chicago Stags"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1980",
+   "col3": "Dallas Mavericks",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1946",
+   "col3": "Atlanta Hawks",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1966",
+   "col3": "Chicago Bulls",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": "Baltimore",
+   "col2": null,
+   "col3": "Washington Bullets",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1946",
+   "col3": "Los Angeles Lakers",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "1937",
+   "col3": "Detroit Pistons",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "1946",
+   "col3": "New York Knicks",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1989",
+   "col3": "Orlando Magic",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1995",
+   "col3": "Toronto Raptors",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1967",
+   "col3": "Indiana Pacers",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "1968",
+   "col3": "Phoenix Suns",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1988",
+   "col3": "Charlotte Hornets",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": null,
+   "col3": "Utah Jazz",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": null,
+   "col3": "Los Angeles Clippers",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "1989",
+   "col3": "Minnesota Timberwolves",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "Washington",
+   "col2": "1961",
+   "col3": "Washington Wizards",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "New Jersey",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "Newark",
+   "col2": null,
+   "col3": "New Jersey Nets",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": null,
+   "col3": "New Orleans/Oklahoma City Hornets",
+   "name_team": "New Orleans/Oklahoma City Hornets"
+  },
+  {
+   "col1": "Moline",
+   "col2": "1946",
+   "col3": "Tri-Cities Blackhawks",
+   "name_team": "Tri-Cities Blackhawks"
+  },
+  {
+   "col1": "Chicago",
+   "col2": null,
+   "col3": "Chicago Zephyrs",
+   "name_team": "Chicago Zephyrs"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1967",
+   "col3": "Dallas Chaparrals",
+   "name_team": "Dallas Chaparrals"
+  },
+  {
+   "col1": "Denver",
+   "col2": null,
+   "col3": "Denver Rockets",
+   "name_team": "Denver Rockets"
+  },
+  {
+   "col1": "London",
+   "col2": null,
+   "col3": "London Lions",
+   "name_team": "London Lions"
+  },
+  {
+   "col1": "Orem",
+   "col2": null,
+   "col3": "Utah Flash",
+   "name_team": "Utah Flash"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City)\nOPTIONAL MATCH (t)<-[:Owns]-(o1:Owner)\nOPTIONAL MATCH (t)<-[:Owns]-(o2:Owner)\nWHERE ((CAST(t.founded_year AS INT64) >= 1949 AND CAST(t.founded_year AS INT64) = 1949) OR (o1.name IS NOT NULL AND o1.name <> 'Ted Leonsis' AND o2.name IS NOT NULL AND o2.name <> 'Professional Basketball Club LLC'))\nRETURN DISTINCT c.city_name AS col1, t.founded_year AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 149
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "uid": "mixed_queries_agg_join#1",
+ "rows": [
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 1
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (current:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:MentionedIn]->(:Document)\nMATCH (p:Player)-[:PlaysFor]->(t)-[:MentionedIn]->(:Document)\nWHERE p.olympic_gold_medals IS NOT NULL\nWITH t, MIN(CAST(p.olympic_gold_medals AS INT64)) AS lowest_medals\nRETURN t.team_name AS col1, lowest_medals AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

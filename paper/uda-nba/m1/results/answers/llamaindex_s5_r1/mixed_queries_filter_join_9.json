@@ -1,0 +1,513 @@
+{
+ "uid": "mixed_queries_filter_join#9",
+ "rows": [
+  {
+   "col1": "Andrew Wiggins",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Andrew Wiggins",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Brad Sellers",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Brad Sellers",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "JaVale McGee",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "JaVale McGee",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nico Mannion",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Nico Mannion",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Tyronn Lue",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Tyronn Lue",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Malcolm Lee",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Malcolm Lee",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Troy Brown Jr.",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Troy Brown Jr.",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Stephen Curry",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Stephen Curry",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Tony Delk",
+   "col2": null,
+   "col3": null,
+   "col4": null,
+   "name_player": "Tony Delk",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "Trayce Jackson-Davis",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Trayce Jackson-Davis",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Richard Hamilton",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Richard Hamilton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Brendan Haywood",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Brendan Haywood",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Kendall Marshall",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kendall Marshall",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Nene",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Nene",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Johnny Davis",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Johnny Davis",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Kyrie Irving",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kyrie Irving",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Rui Hachimura",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Rui Hachimura",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Carrick Felix",
+   "col2": "Shooting guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Richard Jefferson",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Richard Jefferson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Andrew Bogut",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Andrew Bogut",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Donovan Mitchell",
+   "col2": "Guard",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Donovan Mitchell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Zaza Pachulia",
+   "col2": "center",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Zaza Pachulia",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Donte DiVincenzo",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Donte DiVincenzo",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Kyle Forman Anderson",
+   "col2": "Small forward",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Caron Butler",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Caron Butler",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Andris Biedri\u0146\u0161",
+   "col2": "Center",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Andris Biedri\u0146\u0161",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Eric Paschall",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Eric Paschall",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Drew Gooden",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Drew Gooden",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Admiral Schofield",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Admiral Schofield",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Shaun Livingston",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Shaun Livingston",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Jim Chones",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Jim Chones",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Carlos Rogers",
+   "col2": "Power forward",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Carlos Rogers",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Mike James",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Mike James",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Shannon Brown",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Shannon Brown",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Klay Thompson",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Klay Thompson",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Darnell Hillman",
+   "col2": "Forward",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Darnell Hillman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Kirk Hinrich",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Kirk Hinrich",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Austin Carr",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Austin Carr",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Ognjen Kuzmic",
+   "col2": "center",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Ognjen Kuzmic",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Damion Lee",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Damion Lee",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Martell Webster",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Martell Webster",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Alex Sarr",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Alex Sarr",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "James Wiseman",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "James Wiseman",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Anthony Randolph",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Anthony Randolph",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Moses Moody",
+   "col2": "guard",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Moses Moody",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Chris Paul",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Chris Paul",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Derrick Chievous",
+   "col2": "small forward",
+   "col3": "1",
+   "col4": null,
+   "name_player": "Derrick Chievous",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Festus Ezeli",
+   "col2": "center",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Festus Ezeli",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Jonathan Kuminga",
+   "col2": null,
+   "col3": "4",
+   "col4": null,
+   "name_player": "Jonathan Kuminga",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "John Wall",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "John Wall",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Dwayne Schintzius",
+   "col2": "Center",
+   "col3": null,
+   "col4": null,
+   "name_player": "Dwayne Schintzius",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Dell Curry",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Dell Curry",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Shawn Respert",
+   "col2": null,
+   "col3": null,
+   "col4": "1968",
+   "name_player": "Shawn Respert",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Kevon Looney",
+   "col2": "center",
+   "col3": "4",
+   "col4": null,
+   "name_player": "Kevon Looney",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": "Larry Nance",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Larry Nance",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Campy Russell",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Campy Russell",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Javaris Crittenton",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Javaris Crittenton",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Mark Price",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Brad Daugherty",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Brad Daugherty",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "Nen\u00ea",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Nen\u00ea",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "col2": null,
+   "col3": "1",
+   "col4": null,
+   "name_player": "Tom\u00e1\u0161 Satoransk\u00fd",
+   "name_team": "Washington Wizards"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document) WHERE r.tenure = 'latest' AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) != 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Parser exception: Unknown operation '!=' (you probably meant to use '<>', which is the operator for inequality testing.) (line: 1, offset: 243)\n\"MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document) WHERE r.tenure = 'latest' AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) != 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.nam",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document) WHERE r.tenure = 'latest' AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) <> 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(dp:Document), (t:Team)-[:MentionedIn]->(dt:Document) WHERE p.current_team = t.team_name AND (p.name = 'Kobe Bean Bryant' OR CAST(p.fiba_world_cup AS INT64) >= 0 OR CAST(t.championships AS INT64) <> 3) RETURN DISTINCT p.name AS col1, p.position AS col2, t.championships AS col3, t.founded_year AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 61
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "join_queries#15",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (p:Player)-[r:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN DISTINCT o.name AS col1, t.founded_year AS col2, c.city_name AS col3, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), date('2026-10-14')) - CASE WHEN strftime(strptime(o.birth_date, '%Y/%m/%d'), '%m-%d') > '10-14' THEN 1 ELSE 0 END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (p:Player)-[r:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN DISTINCT o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE CAST('2026' AS INT64) - CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) - CASE WHEN SUBSTRING(o.birth_date, 6, 5) > '10/14' THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"July\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (p:Player)-[r:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN DISTINCT o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CASE WHEN CONTAINS(o.birth_date, '/') THEN CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) ELSE CAST(RIGHT(o.birth_date, 4) AS INT64) END - CASE WHEN CONTAINS(o.birth_date, '/') THEN CASE WHEN CAST(SUBSTRING(o.birth_date, 6, 1) AS INT64) > 10 OR (CAST(SUBSTRING(o.birth_date, 6, 1) AS INT64) = 10 AND CAST(SUBSTRING(o.birth_date, 8, 1) AS INT64) > 14) THEN 1 ELSE 0 END ELSE CASE WHEN (STARTS_WITH(o.birth_date, 'November') OR STARTS_WITH(o.birth_date, 'December')) OR (STARTS_WITH(o.birth_date, 'October') AND CAST(REPLACE(SPLIT_PART(o.birth_date, ' ', 2), ',', '') AS INT64) > 14) THEN 1 ELSE 0 END END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (p:Player)-[r:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' RETURN DISTINCT o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CASE WHEN STARTS_WITH(o.birth_date, '19') OR STARTS_WITH(o.birth_date, '20') THEN CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) ELSE CAST(RIGHT(o.birth_date, 4) AS INT64) END - CASE WHEN STARTS_WITH(o.birth_date, '19') OR STARTS_WITH(o.birth_date, '20') THEN CASE WHEN CAST(SUBSTRING(o.birth_date, 6, 1) AS INT64) > 10 OR (CAST(SUBSTRING(o.birth_date, 6, 1) AS INT64) = 10 AND (CAST(SUBSTRING(o.birth_date, 8, 1) AS INT64) > 1 OR (CAST(SUBSTRING(o.birth_date, 8, 1) AS INT64) = 1 AND CAST(SUBSTRING(o.birth_date, 9, 1) AS INT64) > 4))) THEN 1 ELSE 0 END ELSE CASE WHEN STARTS_WITH(o.birth_date, 'November') OR STARTS_WITH(o.birth_date, 'December') OR STARTS_WITH(o.birth_date, 'October 15') OR STARTS_WITH(o.birth_date, 'October 16') OR STARTS_WITH(o.birth_date, 'October 17') OR STARTS_WITH(o.birth_date, 'October 18') OR STARTS_WITH(o.birth_date, 'October 19') OR STARTS_WITH(o.birth_date, 'October 20') OR STARTS_WITH(o.birth_date, 'October 21') OR STARTS_WITH(o.birth_date, 'October 22') OR STARTS_WITH(o.birth_date, 'October 23') OR STARTS_WITH(o.birth_date, 'October 24') OR STARTS_WITH(o.birth_date, 'October 25') OR STARTS_WITH(o.birth_date, 'October 26') OR STARTS_WITH(o.birth_date, 'October 27') OR STARTS_WITH(o.birth_date, 'October 28') OR STARTS_WITH(o.birth_date, 'October 29') OR STARTS_WITH(o.birth_date, 'October 30') OR STARTS_WITH(o.birth_date, 'October 31') THEN 1 ELSE 0 END END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"-\" to INT64.",
+   "rows": null
+  }
+ ]
+}

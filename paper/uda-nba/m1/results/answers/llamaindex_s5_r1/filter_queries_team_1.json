@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_team#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t) WHERE o.name = 'William Chisholm' RETURN DISTINCT t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team ORDER BY CAST(t.founded_year AS INT64)",
+   "error": "Binder exception: Variable t is not in scope.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document)\nMATCH (o:Owner)-[:Owns]->(t)\nWHERE o.name = 'William Chisholm'\nRETURN DISTINCT t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team\nORDER BY CAST(t.founded_year AS INT64)",
+   "error": "Binder exception: Variable t is not in scope.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:MentionedIn]->(d:Document) WHERE o.name = 'William Chisholm' RETURN DISTINCT t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team ORDER BY CAST(t.founded_year AS INT64)",
+   "error": "Binder exception: Variable t is not in scope.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (owner:Owner)-[:Owns]->(team:Team)-[:MentionedIn]->(article:Document) WHERE owner.name = 'William Chisholm' RETURN DISTINCT team.founded_year AS col1, owner.name AS col2, team.team_name AS col3, team.team_name AS name_team ORDER BY CAST(team.founded_year AS INT64)",
+   "error": "Binder exception: Variable team is not in scope.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH o, t, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date, CAST('2026-10-14' AS DATE) AS current_date RETURN DATE_DIFF('year', birth_date, current_date) - CASE WHEN DATE_PART('month', current_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', current_date) = DATE_PART('month', birth_date) AND DATE_PART('day', current_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH o, t, STRPTIME(o.birth_date, '%Y/%m/%d') AS birth_date, STRPTIME('2026/10/14', '%Y/%m/%d') AS current_date RETURN DATE_DIFF('year', birth_date, current_date) - CASE WHEN DATE_PART('month', current_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', current_date) = DATE_PART('month', birth_date) AND DATE_PART('day', current_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH o, t, CAST(o.birth_date AS DATE) AS birth_date, CAST('2026/10/14' AS DATE) AS current_date RETURN DATE_DIFF('year', birth_date, current_date) - CASE WHEN DATE_PART('month', current_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', current_date) = DATE_PART('month', birth_date) AND DATE_PART('day', current_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE t.team_name <> 'Cleveland Cavaliers' AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } WITH o, t, CAST(o.birth_date AS DATE) AS birth_date, CAST('2026/10/14' AS DATE) AS current_date WITH o, t, birth_date, current_date, DATE_PART('year', current_date) - DATE_PART('year', birth_date) AS year_age RETURN year_age - CASE WHEN DATE_PART('month', current_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', current_date) = DATE_PART('month', birth_date) AND DATE_PART('day', current_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 17, 1963\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

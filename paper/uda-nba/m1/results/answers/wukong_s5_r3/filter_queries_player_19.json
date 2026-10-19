@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#19",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWHERE CAST(p.draft_pick AS INT64) >= 24\n  AND CAST(p.mvp_awards AS INT64) >= 0\n  AND CAST(p.mvp_awards AS INT64) < 1\n  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1984-10-14'\nRETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWHERE CAST(p.draft_pick AS INT64) >= 24\n  AND CAST(p.mvp_awards AS INT64) >= 0\n  AND CAST(p.mvp_awards AS INT64) < 1\n  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1984-10-14'>: expected rule oC_SingleQuery (line: 5, offset: 49)\n\"  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1984-10-14'\"\n                                                  ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWHERE CAST(p.draft_pick AS INT64) >= 24\n  AND CAST(p.mvp_awards AS INT64) >= 0\n  AND CAST(p.mvp_awards AS INT64) < 1\n  AND strptime(p.birth_date, '%Y/%m/%d') <= strptime('1984/10/14', '%Y/%m/%d')\nRETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWHERE CAST(p.draft_pick AS INT64) >= 24\n  AND CAST(p.mvp_awards AS INT64) >= 0\n  AND CAST(p.mvp_awards AS INT64) < 1\n  AND (\n    CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984\n    OR (\n      CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984\n      AND (\n        CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10\n        OR (\n          CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n          AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14\n        )\n      )\n    )\n  )\nRETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nWHERE CAST(p.draft_pick AS INT64) >= 24\n  AND CAST(p.mvp_awards AS INT64) >= 0\n  AND CAST(p.mvp_awards AS INT64) < 1\n  AND CAST(replace(p.birth_date, '/', '') AS INT64) <= 19841014\nRETURN CAST(p.fiba_world_cup AS INT64) AS col1, CAST(p.draft_pick AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

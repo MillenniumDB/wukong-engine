@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL\nWITH o.nationality AS nationality, date_diff('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\nRETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 105)\n\"WITH o.nationality AS nationality, date_diff('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age\"\n                                                                                                          ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(SPLIT(o.birth_date, '/')[0] AS INT64) - CASE\n       WHEN CAST(SPLIT(o.birth_date, '/')[1] AS INT64) > 10\n         OR (CAST(SPLIT(o.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(o.birth_date, '/')[2] AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(SUBSTRING(o.birth_date, 0, 4) AS INT64) AS age\nRETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) - CASE\n       WHEN CAST(SUBSTRING(o.birth_date, 6, 2) AS INT64) > 10\n         OR (CAST(SUBSTRING(o.birth_date, 6, 2) AS INT64) = 10 AND CAST(SUBSTRING(o.birth_date, 9, 2) AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"7/\" to INT64.",
+   "rows": null
+  }
+ ]
+}

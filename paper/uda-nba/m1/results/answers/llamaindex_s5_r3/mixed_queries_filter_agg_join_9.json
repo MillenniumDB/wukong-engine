@@ -1,0 +1,43 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 43
+  },
+  {
+   "col1": "Canadian",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": null,
+   "col2": 3
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[:PlaysFor]->(t:Team) WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14))) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document), (p)-[:PlaysFor]->(t:Team) WITH p, regexp_extract(p.birth_date, '([0-9]{4})', 1) AS birth_year, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(regexp_extract(p.birth_date, '^[0-9]{4}/([0-9]{1,2})/', 1) AS INT64) WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 WHEN p.birth_date CONTAINS 'December' THEN 12 ELSE NULL END AS birth_month, CASE WHEN p.birth_date CONTAINS '/' THEN CAST(regexp_extract(p.birth_date, '^[0-9]{4}/[0-9]{1,2}/([0-9]{1,2})$', 1) AS INT64) ELSE CAST(regexp_extract(p.birth_date, ' ([0-9]{1,2}),', 1) AS INT64) END AS birth_day WHERE p.nationality = 'British' OR p.birth_date = '1972/3/6' OR CAST(birth_year AS INT64) < 1984 OR (CAST(birth_year AS INT64) = 1984 AND (birth_month < 10 OR (birth_month = 10 AND birth_day <= 14))) RETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": null,
+   "rows": 6
+  }
+ ]
+}

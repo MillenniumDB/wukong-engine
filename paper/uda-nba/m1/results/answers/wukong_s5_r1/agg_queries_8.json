@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     date_diff('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), CAST('2026-10-14' AS DATE)) AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(date_part('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) AS INT64)\n     - CASE\n         WHEN date_part('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10\n              OR (date_part('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10\n                  AND date_part('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14)\n         THEN 1 ELSE 0\n       END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     STRFTIME(CAST('2026-10-14' AS DATE), '%Y')::INT64 - STRFTIME(STRPTIME(o.birth_date, '%Y/%m/%d'), '%Y')::INT64\n     - CASE\n         WHEN STRFTIME(STRPTIME(o.birth_date, '%Y/%m/%d'), '%m-%d') > '10-14' THEN 1\n         ELSE 0\n       END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: mismatched input ':' expecting {CALL, CREATE, DELETE, DETACH, LOAD, MATCH, MERGE, OPTIONAL, RETURN, SET, UNWIND, WITH, SP} (line: 4, offset: 47)\n\"     STRFTIME(CAST('2026-10-14' AS DATE), '%Y')::INT64 - STRFTIME(STRPTIME(o.birth_date, '%Y/%m/%d'), '%Y')::INT64\"\n                                                ^",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(date_part('year', STRPTIME(o.birth_date, '%Y/%m/%d')) AS INT64)\n     - CASE\n         WHEN CAST(date_part('month', STRPTIME(o.birth_date, '%Y/%m/%d')) AS INT64) > 10\n              OR (CAST(date_part('month', STRPTIME(o.birth_date, '%Y/%m/%d')) AS INT64) = 10\n                  AND CAST(date_part('day', STRPTIME(o.birth_date, '%Y/%m/%d')) AS INT64) > 14)\n         THEN 1 ELSE 0\n       END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

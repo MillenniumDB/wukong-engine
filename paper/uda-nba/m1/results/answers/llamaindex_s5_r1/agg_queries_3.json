@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#3",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REPLACE(p.death_date, '/', '-')) END AS reference_date, DATE(REPLACE(p.birth_date, '/', '-')) AS birth_date RETURN position AS col1, AVG(DATE_DIFF('year', birth_date, reference_date)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, STRPTIME(p.birth_date, '%Y/%m/%d') AS birth_date, CASE WHEN p.death_date IS NULL THEN STRPTIME('2026/10/14', '%Y/%m/%d') ELSE STRPTIME(p.death_date, '%Y/%m/%d') END AS reference_date RETURN position AS col1, AVG(DATE_DIFF('year', birth_date, reference_date)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, CAST(SPLIT_PART(CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END, '/', 0) AS INT64) AS ref_year, CAST(SPLIT_PART(CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END, '/', 1) AS INT64) AS ref_month, CAST(SPLIT_PART(CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END, '/', 2) AS INT64) AS ref_day, CAST(SPLIT_PART(p.birth_date, '/', 0) AS INT64) AS birth_year, CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) AS birth_month, CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) AS birth_day WITH position, ref_year - birth_year - CASE WHEN ref_month < birth_month OR (ref_month = birth_month AND ref_day < birth_day) THEN 1 ELSE 0 END AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.position IN ['Frontcourt', 'Backcourt'] AND p.birth_date IS NOT NULL WITH p.position AS position, CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END AS end_date, p.birth_date AS birth_date WITH position, CAST(SPLIT_PART(end_date, '/', 1) AS INT64) AS ref_year, CAST(SPLIT_PART(end_date, '/', 2) AS INT64) AS ref_month, CAST(SPLIT_PART(end_date, '/', 3) AS INT64) AS ref_day, CAST(SPLIT_PART(birth_date, '/', 1) AS INT64) AS birth_year, CAST(SPLIT_PART(birth_date, '/', 2) AS INT64) AS birth_month, CAST(SPLIT_PART(birth_date, '/', 3) AS INT64) AS birth_day WITH position, ref_year - birth_year - CASE WHEN ref_month < birth_month OR (ref_month = birth_month AND ref_day < birth_day) THEN 1 ELSE 0 END AS age RETURN position AS col1, AVG(age) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

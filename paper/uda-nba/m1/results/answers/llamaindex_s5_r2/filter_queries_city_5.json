@@ -1,0 +1,217 @@
+{
+ "uid": "filter_queries_city#5",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Syracuse"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Manhattan"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Anaheim"
+  },
+  {
+   "col1": null,
+   "col2": "Louisiana",
+   "col3": null,
+   "name_city": "Lake Charles"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": null,
+   "name_city": "Lansing"
+  },
+  {
+   "col1": null,
+   "col2": "Virginia",
+   "col3": null,
+   "name_city": "Alexandria"
+  },
+  {
+   "col1": null,
+   "col2": "North Carolina",
+   "col3": null,
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": null,
+   "name_city": "Allen"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma",
+   "col3": null,
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": null,
+   "col2": "Wisconsin",
+   "col3": null,
+   "name_city": "Sheboygan"
+  },
+  {
+   "col1": null,
+   "col2": "Illinois",
+   "col3": null,
+   "name_city": "Moline"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey",
+   "col3": null,
+   "name_city": "Atlantic City"
+  },
+  {
+   "col1": null,
+   "col2": "Louisiana",
+   "col3": null,
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": null,
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": null,
+   "col2": "Florida",
+   "col3": null,
+   "name_city": "Miami"
+  },
+  {
+   "col1": null,
+   "col2": "Massachusetts",
+   "col3": null,
+   "name_city": "Williamstown"
+  },
+  {
+   "col1": null,
+   "col2": "Washington",
+   "col3": null,
+   "name_city": "Seattle"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Redondo Beach"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Calabasas"
+  },
+  {
+   "col1": null,
+   "col2": "Illinois",
+   "col3": null,
+   "name_city": "Bridgeview"
+  },
+  {
+   "col1": null,
+   "col2": "Ohio",
+   "col3": null,
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": null,
+   "col2": "Texas",
+   "col3": null,
+   "name_city": "Dallas"
+  },
+  {
+   "col1": null,
+   "col2": "Pennsylvania",
+   "col3": null,
+   "name_city": "Ardmore"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Thousand Oaks"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": null,
+   "name_city": "Grand Rapids"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan",
+   "col3": null,
+   "name_city": "Detroit"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon",
+   "col3": null,
+   "name_city": "Lake Oswego"
+  },
+  {
+   "col1": null,
+   "col2": "New York",
+   "col3": null,
+   "name_city": "Poughkeepsie"
+  },
+  {
+   "col1": null,
+   "col2": "California",
+   "col3": null,
+   "name_city": "Newport Beach"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana",
+   "col3": null,
+   "name_city": "Terre Haute"
+  },
+  {
+   "col1": null,
+   "col2": "Missouri",
+   "col3": null,
+   "name_city": "Poplar Bluff"
+  },
+  {
+   "col1": null,
+   "col2": "Utah",
+   "col3": null,
+   "name_city": "West Valley City"
+  },
+  {
+   "col1": null,
+   "col2": "Nevada",
+   "col3": null,
+   "name_city": "Laughlin"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": null,
+   "name_city": "Minneapolis"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE c.state_name <> 'Ontario' OR c.city_name = 'Minneapolis' OR c.gdp <> '689000' OR c.gdp <> '344.9' RETURN DISTINCT c.gdp AS col1, c.state_name AS col2, c.population AS col3, c.city_name AS name_city",
+   "error": null,
+   "rows": 34
+  }
+ ]
+}

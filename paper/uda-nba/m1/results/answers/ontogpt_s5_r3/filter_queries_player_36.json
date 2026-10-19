@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-14' AS DATE)) - CASE WHEN date_part('month', CAST(p.birth_date AS DATE)) > 10 OR (date_part('month', CAST(p.birth_date AS DATE)) = 10 AND date_part('day', CAST(p.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) - CASE WHEN DATE_PART('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > DATE_PART('month', CAST('2026-10-14' AS DATE)) OR (DATE_PART('month', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) = DATE_PART('month', CAST('2026-10-14' AS DATE)) AND DATE_PART('day', CAST(REPLACE(p.birth_date, '/', '-') AS DATE)) > DATE_PART('day', CAST('2026-10-14' AS DATE))) THEN 1 ELSE 0 END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', CAST(p.birth_date AS DATE)) - CASE WHEN DATE_PART('month', CAST(p.birth_date AS DATE)) > DATE_PART('month', CAST('2026-10-14' AS DATE)) OR (DATE_PART('month', CAST(p.birth_date AS DATE)) = DATE_PART('month', CAST('2026-10-14' AS DATE)) AND DATE_PART('day', CAST(p.birth_date AS DATE)) > DATE_PART('day', CAST('2026-10-14' AS DATE))) THEN 1 ELSE 0 END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  CAST(CASE\n    WHEN REGEXP_MATCHES(p.birth_date, '^[0-9]{4}/') THEN STRPTIME(p.birth_date, '%Y/%m/%d')\n    ELSE STRPTIME(p.birth_date, '%B %d, %Y')\n  END AS DATE) AS birth_date_value\nWITH p,\n  DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', birth_date_value) - CASE\n    WHEN DATE_PART('month', birth_date_value) > DATE_PART('month', CAST('2026-10-14' AS DATE))\n      OR (DATE_PART('month', birth_date_value) = DATE_PART('month', CAST('2026-10-14' AS DATE))\n        AND DATE_PART('day', birth_date_value) > DATE_PART('day', CAST('2026-10-14' AS DATE)))\n    THEN 1 ELSE 0\n  END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

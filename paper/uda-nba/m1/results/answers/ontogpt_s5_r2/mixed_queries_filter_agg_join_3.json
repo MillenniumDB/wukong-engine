@@ -1,0 +1,51 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": [
+  {
+   "col1": "Denver Nuggets",
+   "col2": 0.0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0.0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0.0
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 1.5
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1964-10-14'\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1964-10-14'>: expected rule oC_SingleQuery (line: 4, offset: 49)\n\"  AND strptime(p.birth_date, '%Y/%m/%d') <= DATE '1964-10-14'\"\n                                                  ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND strptime(p.birth_date, '%Y/%m/%d') >= strptime('1963/10/15', '%Y/%m/%d')\n  AND strptime(p.birth_date, '%Y/%m/%d') <= strptime('2026/10/14', '%Y/%m/%d')\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND (\n    CAST(split_part(p.birth_date, '/', 1) AS INT64) < 1964\n    OR (\n      CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1964\n      AND (\n        CAST(split_part(p.birth_date, '/', 2) AS INT64) < 10\n        OR (\n          CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n          AND CAST(split_part(p.birth_date, '/', 3) AS INT64) <= 14\n        )\n      )\n    )\n  )\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.college = 'Michigan State University'\n  AND p.birth_date IS NOT NULL\n  AND CAST(regexp_extract(p.birth_date, '([0-9]{4})', 1) AS INT64) <= 1964\nMATCH (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE r.tenure = 'latest'\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

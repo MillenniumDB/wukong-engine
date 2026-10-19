@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(c.area AS DOUBLE) >= 976.15 AND CAST(c.area AS DOUBLE) >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 96.80 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 >= 976.15 AND CAST(REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(list_extract(SPLIT(c.area, ' '), 0) AS DOUBLE) * 2.58999 >= 976.15 AND CAST(list_extract(SPLIT(c.area, ' '), 0) AS DOUBLE) * 2.58999 >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:ExtractedFrom]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 >= 976.15 AND CAST(split_part(c.area, ' ', 1) AS DOUBLE) * 2.58999 >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Not is not in DOUBLE range.",
+   "rows": null
+  }
+ ]
+}

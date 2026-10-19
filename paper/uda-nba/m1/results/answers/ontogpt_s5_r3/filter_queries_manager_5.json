@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(d:Document), (o)-[r:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL WITH o, r, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14') AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 164)\n\"MATCH (o:Owner)-[:ExtractedFrom]->(d:Document), (o)-[r:Owns]->(t:Team) WHERE o.birth_date IS NOT NULL WITH o, r, date_diff('year', CAST(o.birth_date AS DATE), DATE '2026-10-14') AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team) WITH o, r, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team) WITH o, r, CASE WHEN contains(o.birth_date, '/') THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS birth_date WITH o, r, 2026 - date_part('year', birth_date) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[r:Owns]->(:Team) WITH o, r, CASE WHEN contains(o.birth_date, '/') THEN CAST(split_part(o.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(o.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN contains(o.birth_date, '/') THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) ELSE CASE WHEN contains(o.birth_date, 'January') THEN 1 WHEN contains(o.birth_date, 'February') THEN 2 WHEN contains(o.birth_date, 'March') THEN 3 WHEN contains(o.birth_date, 'April') THEN 4 WHEN contains(o.birth_date, 'May') THEN 5 WHEN contains(o.birth_date, 'June') THEN 6 WHEN contains(o.birth_date, 'July') THEN 7 WHEN contains(o.birth_date, 'August') THEN 8 WHEN contains(o.birth_date, 'September') THEN 9 WHEN contains(o.birth_date, 'October') THEN 10 WHEN contains(o.birth_date, 'November') THEN 11 WHEN contains(o.birth_date, 'December') THEN 12 END END AS birth_month, CASE WHEN contains(o.birth_date, '/') THEN CAST(split_part(o.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(split_part(o.birth_date, ',', 1), ' ', 2) AS INT64) END AS birth_day WITH o, r, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"N/A\" to INT64.",
+   "rows": null
+  }
+ ]
+}

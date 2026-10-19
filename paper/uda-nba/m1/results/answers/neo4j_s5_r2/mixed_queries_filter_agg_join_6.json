@@ -1,0 +1,79 @@
+{
+ "uid": "mixed_queries_filter_agg_join#6",
+ "rows": [
+  {
+   "col1": "Point guard",
+   "col2": 35.5
+  },
+  {
+   "col1": "point guard",
+   "col2": 36.0
+  },
+  {
+   "col1": "Center-Power Forward",
+   "col2": 58.0
+  },
+  {
+   "col1": "Center",
+   "col2": 63.0
+  },
+  {
+   "col1": "Power forward and center",
+   "col2": 33.0
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": 64.0
+  },
+  {
+   "col1": "Point guard / shooting guard",
+   "col2": 26.0
+  },
+  {
+   "col1": null,
+   "col2": 42.25
+  },
+  {
+   "col1": "Power forward",
+   "col2": 47.0
+  },
+  {
+   "col1": "Small forward",
+   "col2": 29.0
+  },
+  {
+   "col1": "Shooting guard / small forward",
+   "col2": 30.0
+  },
+  {
+   "col1": "center",
+   "col2": 40.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, date_diff('year', date(replace(p.birth_date, '/', '-')), DATE '2026-10-14') AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', date(replace(p.birth_date, '/', '-')), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 207)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, date_diff('year', date(replace(p.birth_date, '/', '-')), DATE '2026-10-14') AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2\"\n                                             ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE (CAST(p.nba_championships AS INT64) <= 2 OR CAST(p.mvp_awards AS INT64) < 1) WITH DISTINCT p, 2026 - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"at least 4\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE p.nba_championships IN ['0', '1', '2'] OR p.mvp_awards IN ['0', 'none', 'None'] WITH DISTINCT p, 2026 - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS age RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Marc\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WHERE (regexp_matches(p.nba_championships, '.*[0-9]+.*') AND CAST(regexp_extract(p.nba_championships, '[0-9]+', 0) AS INT64) <= 2) OR p.mvp_awards IN ['0', 'none', 'None'] WITH DISTINCT p, 2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) AS age WHERE regexp_matches(p.birth_date, '.*[0-9]{4}.*') RETURN p.position AS col1, AVG(CAST(age AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 12
+  }
+ ]
+}

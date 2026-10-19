@@ -92,7 +92,7 @@
   "parsed": true,
   "rows": 1,
   "unmatched_names": 0,
-  "macro_f1": 0.22222222222222224,
+  "macro_f1": 0.0,
   "eval_error": null
  },
  "filter_queries_city#5": {
@@ -100,7 +100,7 @@
   "parsed": true,
   "rows": 6,
   "unmatched_names": 0,
-  "macro_f1": 0.1818181818181818,
+  "macro_f1": 0.1414141414141414,
   "eval_error": null
  },
  "filter_queries_city#6": {

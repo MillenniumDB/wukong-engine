@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#31",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt') OR CAST(p.draft_pick AS INT64) >= 24\nRETURN COALESCE(t.team_name, p.current_team) AS col1, p.nationality AS col2, CAST(p.fiba_world_cup AS INT64) AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR (p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) >= 24)\nRETURN COALESCE(t.team_name, p.current_team) AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR (p.draft_pick =~ '^[0-9]+$' AND CAST(p.draft_pick AS INT64) >= 24)\nRETURN COALESCE(t.team_name, p.current_team) AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE (p.nationality = 'Nigerian-American' AND p.position = 'Frontcourt')\n   OR CASE WHEN p.draft_pick =~ '^[0-9]+$' THEN CAST(p.draft_pick AS INT64) ELSE 0 END >= 24\nRETURN COALESCE(t.team_name, p.current_team) AS col1, p.nationality AS col2, p.fiba_world_cup AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  }
+ ]
+}

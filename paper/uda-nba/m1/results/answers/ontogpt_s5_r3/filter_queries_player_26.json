@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#26",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n    WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n      OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n    THEN 1 ELSE 0\n  END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d')\n    ELSE STRPTIME(p.birth_date, '%B %d, %Y')\n  END AS birth\nWITH p,\n  DATE_PART('year', DATE '2026-10-14') - DATE_PART('year', birth) - CASE\n    WHEN DATE_PART('month', birth) > DATE_PART('month', DATE '2026-10-14')\n      OR (DATE_PART('month', birth) = DATE_PART('month', DATE '2026-10-14')\n          AND DATE_PART('day', birth) > DATE_PART('day', DATE '2026-10-14'))\n    THEN 1 ELSE 0\n  END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <DATE_PART('year', DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 8, offset: 25)\n\"  DATE_PART('year', DATE '2026-10-14') - DATE_PART('year', birth) - CASE\"\n                          ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN STRPTIME(p.birth_date, '%Y/%m/%d')\n    ELSE STRPTIME(p.birth_date, '%B %d, %Y')\n  END AS birth,\n  STRPTIME('2026-10-14', '%Y-%m-%d') AS today\nWITH p,\n  DATE_PART('year', today) - DATE_PART('year', birth) - CASE\n    WHEN DATE_PART('month', birth) > DATE_PART('month', today)\n      OR (DATE_PART('month', birth) = DATE_PART('month', today)\n          AND DATE_PART('day', birth) > DATE_PART('day', today))\n    THEN 1 ELSE 0\n  END AS age\nWHERE age > 42\n   OR p.name <> 'Fran Curran Francis Hugh Curran Sr.'\n   OR p.name = 'Dewayne \"D. J.\" White, Jr.'\n   OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH DISTINCT p,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(p.birth_date, ',', 2) AS INT64) END AS birth_year,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 2) AS INT64) ELSE CASE\n    WHEN p.birth_date CONTAINS 'January' THEN 1 WHEN p.birth_date CONTAINS 'February' THEN 2 WHEN p.birth_date CONTAINS 'March' THEN 3 WHEN p.birth_date CONTAINS 'April' THEN 4 WHEN p.birth_date CONTAINS 'May' THEN 5 WHEN p.birth_date CONTAINS 'June' THEN 6 WHEN p.birth_date CONTAINS 'July' THEN 7 WHEN p.birth_date CONTAINS 'August' THEN 8 WHEN p.birth_date CONTAINS 'September' THEN 9 WHEN p.birth_date CONTAINS 'October' THEN 10 WHEN p.birth_date CONTAINS 'November' THEN 11 ELSE 12 END END AS birth_month,\n  CASE WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(split_part(p.birth_date, ' ', 2), ',', 1) AS INT64) END AS birth_day\nWITH p, birth_year, birth_month, birth_day,\n  2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age\nWHERE age > 42 OR p.name <> 'Fran Curran Francis Hugh Curran Sr.' OR p.name = 'Dewayne \"D. J.\" White, Jr.' OR CAST(p.fiba_world_cup AS INT64) = 1\nRETURN CAST(p.olympic_gold_medals AS INT64) AS col1, p.college AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

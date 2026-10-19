@@ -1,0 +1,125 @@
+{
+ "uid": "join_queries#9",
+ "rows": [
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Indiana Pacers",
+   "col3": "1967",
+   "col4": "American",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Houston Rockets",
+   "col3": "1967",
+   "col4": "American",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Fertitta"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Denver Nuggets",
+   "col3": "1967",
+   "col4": "American",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Detroit Pistons",
+   "col3": "1937",
+   "col4": "American",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Los Angeles Clippers",
+   "col3": "1970",
+   "col4": "American",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Cleveland Cavaliers",
+   "col3": null,
+   "col4": "American",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "New Orleans Pelicans",
+   "col3": "2002",
+   "col4": "American",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Oklahoma City Thunder",
+   "col3": "1967",
+   "col4": "American",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Dallas Mavericks",
+   "col3": "1980",
+   "col4": "American",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Miami Heat",
+   "col3": null,
+   "col4": "Israeli-American",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Philadelphia 76ers",
+   "col3": "1946",
+   "col4": "American",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": "Golden State Warriors",
+   "col3": "1946",
+   "col4": "American",
+   "name_team": "Golden State Warriors",
+   "name_manager": "Joe Lacob"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Brooklyn Nets",
+   "col3": "1967",
+   "col4": "Taiwanese-Canadian",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Chicago Bulls",
+   "col3": "1966",
+   "col4": "American",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:ExtractedFrom]->(od:Document), (t)-[:ExtractedFrom]->(td:Document) WHERE o.name IS NOT NULL AND t.team_name IS NOT NULL RETURN t.team_name AS col1, t.team_name AS col2, t.founded_year AS col3, o.nationality AS col4, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 14
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#4",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REPLACE(p.death_date, '/', '-')) END AS end_date WITH p.nationality AS nationality, MAX(date_diff('year', DATE(REPLACE(p.birth_date, '/', '-')), end_date)) AS highest_age RETURN nationality AS col1, highest_age AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') ELSE DATE(REGEXP_REPLACE(p.death_date, '/', '-')) END AS end_date WITH p.nationality AS nationality, MAX(DATE_DIFF('year', DATE(REGEXP_REPLACE(p.birth_date, '/', '-')), end_date)) AS highest_age RETURN nationality AS col1, highest_age AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END AS end_date WITH p.nationality AS nationality, MAX(CAST(split_part(end_date, '/', 1) AS INT64) - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(end_date, '/', 2) AS INT64) < CAST(split_part(p.birth_date, '/', 2) AS INT64) OR (CAST(split_part(end_date, '/', 2) AS INT64) = CAST(split_part(p.birth_date, '/', 2) AS INT64) AND CAST(split_part(end_date, '/', 3) AS INT64) < CAST(split_part(p.birth_date, '/', 3) AS INT64)) THEN 1 ELSE 0 END) AS highest_age RETURN nationality AS col1, highest_age AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"March 21, 2014\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CASE WHEN p.birth_date LIKE '%/%' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END AS birth_date, CASE WHEN p.death_date IS NULL THEN STRPTIME('2026/10/14', '%Y/%m/%d') WHEN p.death_date LIKE '%/%' THEN STRPTIME(p.death_date, '%Y/%m/%d') ELSE STRPTIME(p.death_date, '%B %d, %Y') END AS end_date WITH p.nationality AS nationality, MAX(YEAR(end_date) - YEAR(birth_date) - CASE WHEN MONTH(end_date) < MONTH(birth_date) OR (MONTH(end_date) = MONTH(birth_date) AND DAY(end_date) < DAY(birth_date)) THEN 1 ELSE 0 END) AS highest_age RETURN nationality AS col1, highest_age AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date LIKE>: expected rule oC_ProjectionItem (line: 1, offset: 85)\n\"MATCH (p:Player)-[:MentionedIn]->(:Document) WITH DISTINCT p, CASE WHEN p.birth_date LIKE '%/%' THEN STRPTIME(p.birth_date, '%Y/%m/%d') ELSE STRPTIME(p.birth_date, '%B %d, %Y') END AS birth_date, CASE WHEN p.death_date IS NULL THEN STRPTIME('2026/10/14', '%Y/%m/%d') WHEN p.death_date LIKE '%/%' THEN STRPTIME(p.death_date, '%Y/%m/%d') ELSE STRPTIME(p.death_date, '%B %d, %Y') END A",
+   "rows": null
+  }
+ ]
+}

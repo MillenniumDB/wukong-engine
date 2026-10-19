@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#29",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH p, t, CAST(date_diff('day', CAST(p.birth_date AS DATE), DATE '2026-10-14') / 365.2425 AS INT64) AS age\nWHERE age >= 42\n   OR (t.team_name IS NOT NULL AND t.team_name <> 'Philadelphia 76ers')\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN p.olympic_gold_medals AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <CAST(date_diff('day', CAST(p.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 66)\n\"WITH p, t, CAST(date_diff('day', CAST(p.birth_date AS DATE), DATE '2026-10-14') / 365.2425 AS INT64) AS age\"\n                                                                   ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH p, t, CAST(date_diff('year', CAST(p.birth_date AS DATE), DATE('2026-10-14')) AS INT64) AS age\nWHERE age >= 42\n   OR (t.team_name IS NOT NULL AND t.team_name <> 'Philadelphia 76ers')\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN p.olympic_gold_medals AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH p, t, 2026 - CAST(date_part('year', CAST(p.birth_date AS DATE)) AS INT64) - CASE WHEN date_part('month', CAST(p.birth_date AS DATE)) > 10 OR (date_part('month', CAST(p.birth_date AS DATE)) = 10 AND date_part('day', CAST(p.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 42\n   OR (t.team_name IS NOT NULL AND t.team_name <> 'Philadelphia 76ers')\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN p.olympic_gold_medals AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nWITH p, t, CASE WHEN p.birth_date CONTAINS ',' THEN strptime(p.birth_date, '%B %d, %Y') ELSE strptime(p.birth_date, '%Y/%m/%d') END AS birth_date\nWITH p, t, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN date_part('month', birth_date) > 10 OR (date_part('month', birth_date) = 10 AND date_part('day', birth_date) > 14) THEN 1 ELSE 0 END AS age\nWHERE age >= 42\n   OR (t.team_name IS NOT NULL AND t.team_name <> 'Philadelphia 76ers')\n   OR CAST(p.nba_championships AS INT64) >= 0\n   OR CAST(p.nba_championships AS INT64) > 0\nRETURN p.olympic_gold_medals AS col1, age AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

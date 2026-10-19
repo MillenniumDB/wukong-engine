@@ -1,0 +1,53 @@
+{
+ "uid": "mixed_queries_filter_agg_join#9",
+ "rows": [
+  {
+   "col1": "American-Spanish",
+   "col2": 1
+  },
+  {
+   "col1": "British",
+   "col2": 1
+  },
+  {
+   "col1": "American",
+   "col2": 62
+  },
+  {
+   "col1": null,
+   "col2": 4
+  },
+  {
+   "col1": "Dutch",
+   "col2": 1
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 1
+  },
+  {
+   "col1": "Croatian",
+   "col2": 1
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR CAST(REPLACE(p.birth_date, '/', '-') AS DATE) <= DATE('1984-10-14')\nRETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR STRPTIME(p.birth_date, '%Y/%m/%d') <= DATE('2024-10-14')\nRETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(:Team)\nWHERE p.nationality = 'British'\n   OR p.birth_date = '1972/3/6'\n   OR CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) < 1984\n   OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1984 AND CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) < 10)\n   OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1984 AND CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) <= 14)\nRETURN p.nationality AS col1, COUNT(DISTINCT p) AS col2",
+   "error": null,
+   "rows": 7
+  }
+ ]
+}

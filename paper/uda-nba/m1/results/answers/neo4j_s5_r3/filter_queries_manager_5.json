@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team), (o)-[:MentionedIn]->(d:Document) WITH DISTINCT o, r, date_diff('year', CAST(o.birth_date AS DATE), DATE('2026-10-14')) - CASE WHEN date_part('month', CAST(o.birth_date AS DATE)) > 10 OR (date_part('month', CAST(o.birth_date AS DATE)) = 10 AND date_part('day', CAST(o.birth_date AS DATE)) > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team), (o)-[:MentionedIn]->(d:Document) WITH DISTINCT o, r, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team), (o)-[:MentionedIn]->(d:Document) WITH DISTINCT o, r, date_part('year', DATE('2026-10-14')) - date_part('year', strptime(o.birth_date, '%B %d, %Y')) - CASE WHEN date_part('month', strptime(o.birth_date, '%B %d, %Y')) > 10 OR (date_part('month', strptime(o.birth_date, '%B %d, %Y')) = 10 AND date_part('day', strptime(o.birth_date, '%B %d, %Y')) > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[r:Owns]->(t:Team), (o)-[:MentionedIn]->(d:Document) WITH DISTINCT o, r, 2026 - CAST(split_part(o.birth_date, ' ', 3) AS INT64) - CASE WHEN CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END > 10 OR (CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END = 10 AND CAST(replace(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) > 14) THEN 1 ELSE 0 END AS age WHERE age <= 76 OR o.name = 'Joseph Chung-Hsin Tsai' OR CAST(r.since_year AS INT64) > 2013 OR o.nationality = 'American' RETURN r.since_year AS col1, age AS col2, o.nationality AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

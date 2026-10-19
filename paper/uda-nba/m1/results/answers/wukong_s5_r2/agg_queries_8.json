@@ -1,0 +1,37 @@
+{
+ "uid": "agg_queries#8",
+ "rows": [
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": 62
+  },
+  {
+   "col1": "American",
+   "col2": 62
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 77
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWITH o.nationality AS nationality,\n     DATE_PART('year', DATE '2026-10-14') - DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10 OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10 AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14) THEN 1 ELSE 0 END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <DATE_PART('year', DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 3, offset: 28)\n\"     DATE_PART('year', DATE '2026-10-14') - DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10 OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10 AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14) THEN 1 ELSE 0 END AS age\"\n       ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     DATE_PART('year', CAST('2026-10-14' AS DATE)) - DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE\n       WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 10\n         OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = 10\n             AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > 14)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document)\nWHERE o.birth_date IS NOT NULL\nWITH o.nationality AS nationality,\n     2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE\n       WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10\n         OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10\n             AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nRETURN nationality AS col1, MIN(age) AS col2",
+   "error": null,
+   "rows": 3
+  }
+ ]
+}

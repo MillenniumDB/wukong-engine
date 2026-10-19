@@ -1,0 +1,49 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Jamal Crawford"
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Michael Carter-Williams"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "German",
+   "col3": "0",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Austin Reaves"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2' RETURN p.current_team AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 6
+  }
+ ]
+}

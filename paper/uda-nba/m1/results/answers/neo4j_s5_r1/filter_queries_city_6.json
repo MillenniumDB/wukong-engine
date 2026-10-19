@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_city#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR CAST(c.area AS DOUBLE) >= 976.15 RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 385.8 square miles is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CAST(REGEXP_REPLACE(c.area, ' square miles', '') AS DOUBLE) * 2.58999 >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. 99,025 acres (400.739 km\u00b2), including 1,057 acres (4.276 km\u00b2) of water is not in DOUBLE range.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CASE WHEN regexp_matches(c.area, '.*km\u00b2.*') THEN TRY_CAST(REPLACE(regexp_extract(c.area, '\\\\(([0-9,.]+) km\u00b2\\\\)', 1), ',', '') AS DOUBLE) WHEN regexp_matches(c.area, '.*square miles.*') THEN TRY_CAST(REPLACE(regexp_extract(c.area, '^([0-9,.]+) square miles', 1), ',', '') AS DOUBLE) * 2.58999 ELSE NULL END >= 976.15) RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Parser exception: Invalid input <MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CASE WHEN regexp_matches(c.area, '.*km\u00b2.*') THEN TRY_CAST(REPLACE(regexp_extract(c.area, '\\\\(([0-9,.]+) km\u00b2\\\\)', 1), ',', '') AS>: expected rule oC_SingleQuery (line: 1, offset: 237)\n\"MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR (CASE WHEN regexp_matches(c.area, '.*km\u00b2.*') THEN TRY_CAST(REP",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (c:City)-[:MentionedIn]->(d:Document) WHERE (c.state_name = 'Minnesota' AND c.population = '887642') OR CAST(REPLACE(CASE WHEN c.area CONTAINS 'km\u00b2' THEN REGEXP_REPLACE(c.area, '.*\\\\(([0-9,.]+) km\u00b2\\\\).*', '\\\\1') WHEN c.area CONTAINS 'square miles' THEN REGEXP_REPLACE(c.area, ' square miles.*', '') ELSE '0' END, ',', '') AS DOUBLE) >= 377.22 RETURN c.population AS col1, c.state_name AS col2, c.city_name AS col3, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(:Document) WHERE CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41 WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"24th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(:Document) WHERE CAST(REGEXP_REPLACE(p.draft_year, '[^0-9].*', '') AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(REGEXP_REPLACE(p.draft_pick, '[^0-9].*', '') AS INT64) <= 41 WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(:Document) WHERE (p.draft_year IS NOT NULL AND regexp_matches(p.draft_year, '^[0-9]+') AND CAST(regexp_replace(p.draft_year, '[^0-9].*', '') AS INT64) <= 2005) OR p.position = 'Backcourt' OR (p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '^[0-9]+') AND CAST(regexp_replace(p.draft_pick, '[^0-9].*', '') AS INT64) <= 41) WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(:Document) WHERE CASE WHEN p.draft_year IS NOT NULL AND regexp_matches(p.draft_year, '^[0-9]+') THEN CAST(regexp_extract(p.draft_year, '^[0-9]+') AS INT64) <= 2005 ELSE FALSE END OR p.position = 'Backcourt' OR CASE WHEN p.draft_pick IS NOT NULL AND regexp_matches(p.draft_pick, '^[0-9]+') THEN CAST(regexp_extract(p.draft_pick, '^[0-9]+') AS INT64) <= 41 ELSE FALSE END WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

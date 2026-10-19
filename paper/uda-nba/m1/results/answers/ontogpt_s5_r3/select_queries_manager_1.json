@@ -1,0 +1,109 @@
+{
+ "uid": "select_queries_manager#1",
+ "rows": [
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "Dan Gilbert",
+   "col3": "2005",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": "Mark Cuban",
+   "col3": "2000",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "Tom Gores",
+   "col3": "2011",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "1995",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "Micky Arison",
+   "col3": "Unknown",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": "Steven Anthony Ballmer",
+   "col3": "2014",
+   "name_manager": "Steven Anthony Ballmer"
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": "Tilman Joseph Fertitta",
+   "col3": "2017",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": "Joseph Chung-Hsin Tsai",
+   "col3": "2019",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": "Clayton Ike Bennett",
+   "col3": "Unknown",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "Clayton Ike Bennett",
+   "col3": "1996",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": "Herbert Simon",
+   "col3": "1983",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": "Jerry Michael Reinsdorf",
+   "col3": "Unknown",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": "Gayle Marie LaJaunie Bird Benson",
+   "col3": "Unknown",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": "Enos Stanley Kroenke",
+   "col3": "2000",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "Joshua Jordan Harris",
+   "col3": "2011",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": "James Lawrence Dolan",
+   "col3": "Unknown",
+   "name_manager": "James Lawrence Dolan"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (o:Owner)-[r:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) RETURN t.team_name AS col1, o.name AS col2, r.since_year AS col3, o.name AS name_manager",
+   "error": null,
+   "rows": 16
+  }
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": [
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": null
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Baltimore Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Bullets",
+   "col2": null
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": null
+  },
+  {
+   "col1": "San Francisco Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Cincinnati Royals",
+   "col2": null
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": null
+  },
+  {
+   "col1": "Nets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": null
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": null
+  },
+  {
+   "col1": "Charlotte Bobcats",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": null
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do:Document) WHERE (CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE)) * 0.386102 AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE (CASE WHEN p.draft_year =~ '^[0-9]+$' THEN CAST(p.draft_year AS INT64) ELSE NULL END <= 2005 OR p.position = 'Backcourt' OR CASE WHEN p.draft_pick =~ '^[0-9]+$' THEN CAST(p.draft_pick AS INT64) ELSE NULL END <= 41) WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, CAST(SUM(CAST(area AS DOUBLE)) * 0.386102 AS DOUBLE) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE (TRY_CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR TRY_CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t.team_name AS team_name, c.city_name AS city_name, c.area AS area RETURN team_name AS col1, SUM(TRY_CAST(area AS DOUBLE)) * 0.386102 AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE (TRY_CAST(p.draft_year AS>: expected rule oC_SingleQuery (line: 1, offset: 247)\n\"MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:Men",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE (p.draft_year =~ '^[0-9]{4}$' AND p.draft_year <= '2005' OR p.position = 'Backcourt' OR p.draft_pick IN ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41']) WITH DISTINCT t.team_name AS team_name, c.area AS area RETURN team_name AS col1, SUM(CAST(area AS DOUBLE)) * 0.386102 AS col2",
+   "error": null,
+   "rows": 40
+  }
+ ]
+}

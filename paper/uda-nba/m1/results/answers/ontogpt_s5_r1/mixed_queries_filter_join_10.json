@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (p)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(od:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' WITH p, t, c, o, CAST(REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date, DATE('2026-10-14') AS reference_date RETURN p.position AS col1, DATE_DIFF('year', birth_date, reference_date) - CASE WHEN STRFTIME(reference_date, '%m-%d') < STRFTIME(birth_date, '%m-%d') THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' WITH p, t, c, o, CAST(REGEXP_REPLACE(o.birth_date, '/', '-') AS DATE) AS birth_date, DATE('2026-10-14') AS reference_date RETURN p.position AS col1, DATE_DIFF('year', birth_date, reference_date) - CASE WHEN STRFTIME(reference_date, '%m-%d') < STRFTIME(birth_date, '%m-%d') THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' WITH p, t, c, o, STRPTIME(o.birth_date, '%Y/%m/%d') AS birth_date, DATE('2026-10-14') AS reference_date RETURN p.position AS col1, DATE_PART('year', reference_date) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', reference_date) < DATE_PART('month', birth_date) OR (DATE_PART('month', reference_date) = DATE_PART('month', birth_date) AND DATE_PART('day', reference_date) < DATE_PART('day', birth_date)) THEN 1 ELSE 0 END AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(:Document), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document) WHERE CAST(p.olympic_gold_medals AS INT64) = 0 OR p.position <> 'Backcourt' OR c.gdp = '252200' WITH p, t, c, o, 2026 - CAST(SUBSTRING(o.birth_date, 1, 4) AS INT64) - CASE WHEN CAST(SUBSTRING(o.birth_date, 6, 2) AS INT64) > 10 OR (CAST(SUBSTRING(o.birth_date, 6, 2) AS INT64) = 10 AND CAST(SUBSTRING(o.birth_date, 9, 2) AS INT64) > 14) THEN 1 ELSE 0 END AS owner_age RETURN p.position AS col1, owner_age AS col2, CAST(t.championships AS INT64) AS col3, c.city_name AS col4, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager, c.city_name AS name_city",
+   "error": "Conversion exception: Cast failed. Could not convert \"July\" to INT64.",
+   "rows": null
+  }
+ ]
+}

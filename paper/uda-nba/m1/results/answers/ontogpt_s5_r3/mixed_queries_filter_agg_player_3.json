@@ -1,0 +1,77 @@
+{
+ "uid": "mixed_queries_filter_agg_player#3",
+ "rows": [
+  {
+   "col1": "American-Venezuelan",
+   "col2": "1"
+  },
+  {
+   "col1": "American",
+   "col2": "62"
+  },
+  {
+   "col1": "Canadian",
+   "col2": "1"
+  },
+  {
+   "col1": "French",
+   "col2": "2"
+  },
+  {
+   "col1": "British",
+   "col2": "1"
+  },
+  {
+   "col1": "Dominican",
+   "col2": "1"
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": "1"
+  },
+  {
+   "col1": "Serbian",
+   "col2": "1"
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": "1"
+  },
+  {
+   "col1": "Slovenian",
+   "col2": "1"
+  },
+  {
+   "col1": "German",
+   "col2": "1"
+  },
+  {
+   "col1": null,
+   "col2": "55"
+  },
+  {
+   "col1": "Dutch",
+   "col2": "1"
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": "1"
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": "1"
+  },
+  {
+   "col1": "Congolese",
+   "col2": "1"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWHERE p.name = 'Antonius Cleveland' OR CAST(p.nba_championships AS INT64) >= 0\nWITH p.nationality AS nationality, p\nRETURN nationality AS col1, SUM(CASE WHEN p.birth_date IS NOT NULL THEN 1 ELSE 0 END) AS col2",
+   "error": null,
+   "rows": 16
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "uid": "agg_queries#4",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 92
+  },
+  {
+   "col1": "American-Chinese",
+   "col2": 33
+  },
+  {
+   "col1": "American-Spanish",
+   "col2": 60
+  },
+  {
+   "col1": "American-Venezuelan",
+   "col2": 54
+  },
+  {
+   "col1": "Azerbaijani",
+   "col2": 29
+  },
+  {
+   "col1": "Bahamian",
+   "col2": 33
+  },
+  {
+   "col1": "British",
+   "col2": 29
+  },
+  {
+   "col1": "Cameroonian-American",
+   "col2": 32
+  },
+  {
+   "col1": "Canadian",
+   "col2": 31
+  },
+  {
+   "col1": "Congolese",
+   "col2": 24
+  },
+  {
+   "col1": "Croatian",
+   "col2": 59
+  },
+  {
+   "col1": "Dominican",
+   "col2": 40
+  },
+  {
+   "col1": "Dutch",
+   "col2": 60
+  },
+  {
+   "col1": "French",
+   "col2": 32
+  },
+  {
+   "col1": "German",
+   "col2": 33
+  },
+  {
+   "col1": "Greek",
+   "col2": 36
+  },
+  {
+   "col1": "Greek and Nigerian",
+   "col2": 31
+  },
+  {
+   "col1": "Greek-American",
+   "col2": 37
+  },
+  {
+   "col1": "Mexican-American",
+   "col2": 25
+  },
+  {
+   "col1": "Nigerian-American",
+   "col2": 30
+  },
+  {
+   "col1": "Serbian",
+   "col2": 32
+  },
+  {
+   "col1": "Slovenian",
+   "col2": 42
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), strptime(CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END, '%Y/%m/%d')) AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, p.birth_date AS birth_date, CASE WHEN p.death_date IS NULL THEN '2026/10/14' ELSE p.death_date END AS end_date WITH nationality, CAST(split_part(end_date, '/', 0) AS INT64) AS end_year, CAST(split_part(end_date, '/', 1) AS INT64) AS end_month, CAST(split_part(end_date, '/', 2) AS INT64) AS end_day, CAST(split_part(birth_date, '/', 0) AS INT64) AS birth_year, CAST(split_part(birth_date, '/', 1) AS INT64) AS birth_month, CAST(split_part(birth_date, '/', 2) AS INT64) AS birth_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality IS NOT NULL AND p.birth_date IS NOT NULL WITH p.nationality AS nationality, p.birth_date AS birth_date, CASE WHEN p.death_date IS NULL OR p.death_date = '' THEN '2026/10/14' ELSE p.death_date END AS end_date WITH nationality, CAST(split_part(end_date, '/', 1) AS INT64) AS end_year, CAST(split_part(end_date, '/', 2) AS INT64) AS end_month, CAST(split_part(end_date, '/', 3) AS INT64) AS end_day, CAST(split_part(birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(birth_date, '/', 3) AS INT64) AS birth_day WITH nationality, end_year - birth_year - CASE WHEN end_month < birth_month OR (end_month = birth_month AND end_day < birth_day) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MAX(age) AS col2 ORDER BY col1",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

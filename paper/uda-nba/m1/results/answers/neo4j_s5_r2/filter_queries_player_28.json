@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#28",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p, date(replace(p.birth_date, '/', '-')) AS birth_date, date('2026-10-14') AS reference_date\nWITH p,\n     date_part('year', reference_date) - date_part('year', birth_date) - CASE\n       WHEN date_part('month', reference_date) < date_part('month', birth_date)\n         OR (date_part('month', reference_date) = date_part('month', birth_date)\n             AND date_part('day', reference_date) < date_part('day', birth_date))\n       THEN 1 ELSE 0\n     END AS age\nWHERE age <= 78\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n     2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE\n       WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n         OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n             AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n       THEN 1 ELSE 0\n     END AS age\nWHERE age <= 78\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE WHEN contains(p.birth_date, ',')\n    THEN date_part('year', strptime(p.birth_date, '%B %d, %Y'))\n    ELSE CAST(split_part(p.birth_date, '/', 1) AS INT64)\n  END AS birth_year,\n  CASE WHEN contains(p.birth_date, ',')\n    THEN date_part('month', strptime(p.birth_date, '%B %d, %Y'))\n    ELSE CAST(split_part(p.birth_date, '/', 2) AS INT64)\n  END AS birth_month,\n  CASE WHEN contains(p.birth_date, ',')\n    THEN date_part('day', strptime(p.birth_date, '%B %d, %Y'))\n    ELSE CAST(split_part(p.birth_date, '/', 3) AS INT64)\n  END AS birth_day\nWITH p,\n  2026 - birth_year - CASE\n    WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14)\n    THEN 1 ELSE 0\n  END AS age\nWHERE age <= 78\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nWITH DISTINCT p,\n  CASE\n    WHEN contains(p.birth_date, ',') THEN CAST(split_part(p.birth_date, ' ', 3) AS INT64)\n    ELSE CAST(split_part(p.birth_date, '/', 1) AS INT64)\n  END AS birth_year,\n  CASE\n    WHEN contains(p.birth_date, ',') THEN CASE split_part(p.birth_date, ' ', 1)\n      WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4\n      WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8\n      WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12\n    END\n    ELSE CAST(split_part(p.birth_date, '/', 2) AS INT64)\n  END AS birth_month,\n  CASE\n    WHEN contains(p.birth_date, ',') THEN CAST(rtrim(split_part(p.birth_date, ' ', 2), ',') AS INT64)\n    ELSE CAST(split_part(p.birth_date, '/', 3) AS INT64)\n  END AS birth_day\nWITH p, 2026 - birth_year - CASE\n  WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0\nEND AS age\nWHERE age <= 78\n   OR p.current_team = 'Capitanes de Arecibo'\n   OR CAST(p.mvp_awards AS INT64) = 0\n   OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Binder exception: Function RTRIM did not receive correct arguments:\nActual:   (STRING,STRING)\nExpected: (STRING) -> STRING\n\n",
+   "rows": null
+  }
+ ]
+}

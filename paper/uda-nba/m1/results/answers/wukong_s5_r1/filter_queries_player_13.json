@@ -1,0 +1,73 @@
+{
+ "uid": "filter_queries_player#13",
+ "rows": [
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Tyler Herro"
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": "American",
+   "col3": null,
+   "name_player": "Brandon Goodwin"
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": "Croatian",
+   "col3": "0",
+   "name_player": "Dino Ra\u0111a"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Isiah Thomas"
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Chris Paul"
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": "American",
+   "col3": "0",
+   "name_player": "Devontae Cacok"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document) WHERE CAST(p.mvp_awards AS INT64) < 1 OR p.birth_date = '1995/10/2' RETURN p.current_team AS col1, p.nationality AS col2, p.mvp_awards AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 10
+  }
+ ]
+}

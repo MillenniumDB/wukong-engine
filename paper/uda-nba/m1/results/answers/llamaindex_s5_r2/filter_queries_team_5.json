@@ -1,0 +1,2647 @@
+{
+ "uid": "filter_queries_team#5",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Portland Trail Blazers",
+   "col3": "Portland",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Spurs",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia 76ers",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Bucks",
+   "col3": "Milwaukee",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Vancouver",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "St. Louis Blues",
+   "col3": "St. Louis",
+   "name_team": "St. Louis Blues"
+  },
+  {
+   "col1": null,
+   "col2": "NRG Esports",
+   "col3": "San Francisco",
+   "name_team": "NRG Esports"
+  },
+  {
+   "col1": "1946",
+   "col2": "Buffalo Bisons",
+   "col3": "Buffalo",
+   "name_team": "Buffalo Bisons"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Blackhawks",
+   "col3": "Chicago",
+   "name_team": "Chicago Blackhawks"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Huskies",
+   "col3": "Toronto",
+   "name_team": "Toronto Huskies"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado Mammoth",
+   "col3": "Denver",
+   "name_team": "Colorado Mammoth"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Stars",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Stars"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Twins",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Twins"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Renegades",
+   "col3": "Orlando",
+   "name_team": "Orlando Renegades"
+  },
+  {
+   "col1": "2005",
+   "col2": "Utah Grizzlies",
+   "col3": "West Valley City",
+   "name_team": "Utah Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Salt City Derby Girls",
+   "col3": "Salt Lake City",
+   "name_team": "Salt City Derby Girls"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Rising FC",
+   "col3": "Phoenix",
+   "name_team": "Phoenix Rising FC"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Indians",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Indians"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Tigers",
+   "col3": "Detroit",
+   "name_team": "Detroit Tigers"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Independence",
+   "col3": "Charlotte",
+   "name_team": "Charlotte Independence"
+  },
+  {
+   "col1": null,
+   "col2": "Golden Nugget Las Vegas",
+   "col3": "Las Vegas",
+   "name_team": "Golden Nugget Las Vegas"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Nuggets",
+   "col3": "Denver",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Independence",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": "1995",
+   "col2": "Toronto Raptors",
+   "col3": "Toronto",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City Kings",
+   "col3": "Kansas City",
+   "name_team": "Kansas City Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Kansas City",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Cincinnati",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "Houston",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "San Diego",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Commanders",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Commanders"
+  },
+  {
+   "col1": null,
+   "col2": "New York Liberty",
+   "col3": "New York",
+   "name_team": "New York Liberty"
+  },
+  {
+   "col1": null,
+   "col2": "Vanderbilt Commodores",
+   "col3": "Nashville",
+   "name_team": "Vanderbilt Commodores"
+  },
+  {
+   "col1": null,
+   "col2": "San Jose Sharks",
+   "col3": "San Jose",
+   "name_team": "San Jose Sharks"
+  },
+  {
+   "col1": null,
+   "col2": "Buffalo Braves",
+   "col3": "Buffalo",
+   "name_team": "Buffalo Braves"
+  },
+  {
+   "col1": null,
+   "col2": "Elmira Colonels",
+   "col3": "Elmira",
+   "name_team": "Elmira Colonels"
+  },
+  {
+   "col1": null,
+   "col2": "U.S. national basketball team",
+   "col3": "Caracas",
+   "name_team": "U.S. national basketball team"
+  },
+  {
+   "col1": "Before 2006",
+   "col2": "Chicago Sky",
+   "col3": "Chicago",
+   "name_team": "Chicago Sky"
+  },
+  {
+   "col1": "2018",
+   "col2": "Mamba Sports Academy",
+   "col3": "Calabasas",
+   "name_team": "Mamba Sports Academy"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Oilers",
+   "col3": "Houston",
+   "name_team": "Houston Oilers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Capitals",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Capitals"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado Rapids",
+   "col3": "Colorado",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": null,
+   "col2": "Trinity Tigers",
+   "col3": "San Antonio",
+   "name_team": "Trinity Tigers"
+  },
+  {
+   "col1": null,
+   "col2": "Florida International University Panthers",
+   "col3": "Miami",
+   "name_team": "Florida International University Panthers"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Thorns",
+   "col3": "Portland",
+   "name_team": "Portland Thorns"
+  },
+  {
+   "col1": "2017",
+   "col2": "San Francisco Shock",
+   "col3": "San Francisco",
+   "name_team": "San Francisco Shock"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Grays",
+   "col3": "Philadelphia",
+   "name_team": "Washington Grays"
+  },
+  {
+   "col1": null,
+   "col2": "Oakland Athletics",
+   "col3": "Philadelphia",
+   "name_team": "Oakland Athletics"
+  },
+  {
+   "col1": null,
+   "col2": "NOLA Gold",
+   "col3": "New Orleans",
+   "name_team": "NOLA Gold"
+  },
+  {
+   "col1": "1997",
+   "col2": "Chicago Fire FC",
+   "col3": "Chicago",
+   "name_team": "Chicago Fire FC"
+  },
+  {
+   "col1": null,
+   "col2": "Northwestern Wildcats",
+   "col3": "Chicago",
+   "name_team": "Northwestern Wildcats"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Solar Bears",
+   "col3": "Orlando",
+   "name_team": "Orlando Solar Bears"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Starzz",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Starzz"
+  },
+  {
+   "col1": null,
+   "col2": "Wasatch Roller Derby",
+   "col3": "Salt Lake City",
+   "name_team": "Wasatch Roller Derby"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Blue Jays",
+   "col3": "Toronto",
+   "name_team": "Toronto Blue Jays"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona Coyotes",
+   "col3": "Phoenix",
+   "name_team": "Arizona Coyotes"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Texans",
+   "col3": "Houston",
+   "name_team": "Houston Texans"
+  },
+  {
+   "col1": null,
+   "col2": "Church Without Walls",
+   "col3": "Houston",
+   "name_team": "Church Without Walls"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento State Hornets",
+   "col3": "Sacramento",
+   "name_team": "Sacramento State Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Heatwave",
+   "col3": "Sacramento",
+   "name_team": "Sacramento Heatwave"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Knights",
+   "col3": "Charlotte",
+   "name_team": "Charlotte Knights"
+  },
+  {
+   "col1": null,
+   "col2": "Atlanta Housing Authority",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Housing Authority"
+  },
+  {
+   "col1": "1972",
+   "col2": "Atlanta Flames",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Flames"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "St. Louis",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Rochester Royals",
+   "col3": "Rochester",
+   "name_team": "Rochester Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Cavaliers",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Detroit",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Auburn Hills",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Rockets",
+   "col3": "San Diego",
+   "name_team": "San Diego Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Pelicans",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": null,
+   "col2": "Perspectives High School",
+   "col3": "Chicago",
+   "name_team": "Perspectives High School"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Rockets",
+   "col3": "San Diego",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "Charlotte",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Washington",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Heat",
+   "col3": "Miami",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": null,
+   "col2": "Cincinnati Royals",
+   "col3": "Cincinnati",
+   "name_team": "Cincinnati Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Stags",
+   "col3": "Chicago",
+   "name_team": "Chicago Stags"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Tropics",
+   "col3": "Miami",
+   "name_team": "Miami Tropics"
+  },
+  {
+   "col1": null,
+   "col2": "Baltimore Bullets",
+   "col3": "Chicago",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": "2017",
+   "col2": "Las Vegas Aces",
+   "col3": "Las Vegas",
+   "name_team": "Las Vegas Aces"
+  },
+  {
+   "col1": null,
+   "col2": "Marist Red Foxes",
+   "col3": "Poughkeepsie",
+   "name_team": "Marist Red Foxes"
+  },
+  {
+   "col1": null,
+   "col2": "UCF Knights",
+   "col3": "Orlando",
+   "name_team": "UCF Knights"
+  },
+  {
+   "col1": null,
+   "col2": "Poplar Bluff High School",
+   "col3": "Poplar Bluff",
+   "name_team": "Poplar Bluff High School"
+  },
+  {
+   "col1": null,
+   "col2": "Robert G. Cole High School varsity basketball team",
+   "col3": "San Antonio",
+   "name_team": "Robert G. Cole High School varsity basketball team"
+  },
+  {
+   "col1": "2018",
+   "col2": "Mamba Sports Academy",
+   "col3": "Redondo Beach",
+   "name_team": "Mamba Sports Academy"
+  },
+  {
+   "col1": null,
+   "col2": "North Carolina Tar Heels",
+   "col3": "Chapel Hill",
+   "name_team": "North Carolina Tar Heels"
+  },
+  {
+   "col1": null,
+   "col2": "Blackhawks",
+   "col3": "Tri-Cities",
+   "name_team": "Blackhawks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Fever",
+   "col3": "Indianapolis",
+   "name_team": "Indiana Fever"
+  },
+  {
+   "col1": null,
+   "col2": "Ontario Clippers",
+   "col3": "Ontario",
+   "name_team": "Ontario Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Clippers' G League team",
+   "col3": "Ontario",
+   "name_team": "Clippers' G League team"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Broncos",
+   "col3": "Denver",
+   "name_team": "Denver Broncos"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Stars",
+   "col3": "Dallas",
+   "name_team": "Dallas Stars"
+  },
+  {
+   "col1": null,
+   "col2": "Texas Rangers",
+   "col3": "Arlington",
+   "name_team": "Texas Rangers"
+  },
+  {
+   "col1": null,
+   "col2": "FC Dallas",
+   "col3": "Frisco",
+   "name_team": "FC Dallas"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Baptist University Patriots baseball team",
+   "col3": "Dallas",
+   "name_team": "Dallas Baptist University Patriots baseball team"
+  },
+  {
+   "col1": null,
+   "col2": "University of North Texas Mean Green",
+   "col3": "Denton",
+   "name_team": "University of North Texas Mean Green"
+  },
+  {
+   "col1": "2020",
+   "col2": "San Antonio Brahmas",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Brahmas"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Vikings",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Vikings"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Hurricanes",
+   "col3": "Miami",
+   "name_team": "Miami Hurricanes"
+  },
+  {
+   "col1": null,
+   "col2": "University of Miami Hurricanes",
+   "col3": "Miami",
+   "name_team": "University of Miami Hurricanes"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Thorns FC",
+   "col3": "Portland",
+   "name_team": "Portland Thorns FC"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Spinners",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Spinners"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Phoenix",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Blaze",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Blaze"
+  },
+  {
+   "col1": null,
+   "col2": "NOLA Gold",
+   "col3": "Metairie",
+   "name_team": "NOLA Gold"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Fire",
+   "col3": "Chicago",
+   "name_team": "Chicago Fire"
+  },
+  {
+   "col1": null,
+   "col2": "Real Salt Lake",
+   "col3": "Salt Lake City",
+   "name_team": "Real Salt Lake"
+  },
+  {
+   "col1": "2018",
+   "col2": "Utah Warriors",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Warriors"
+  },
+  {
+   "col1": "1994",
+   "col2": "Salt Lake Bees",
+   "col3": "Salt Lake City",
+   "name_team": "Salt Lake Bees"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Rock",
+   "col3": "Toronto",
+   "name_team": "Toronto Rock"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona Coyotes",
+   "col3": "Glendale",
+   "name_team": "Arizona Coyotes"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Kastles",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Kastles"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Barons",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Barons"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Browns",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Browns"
+  },
+  {
+   "col1": null,
+   "col2": "First Baptist Church",
+   "col3": "Houston",
+   "name_team": "First Baptist Church"
+  },
+  {
+   "col1": null,
+   "col2": "Co-Cathedral of the Sacred Heart",
+   "col3": "Houston",
+   "name_team": "Co-Cathedral of the Sacred Heart"
+  },
+  {
+   "col1": "2012",
+   "col2": "Detroit City FC",
+   "col3": "Detroit",
+   "name_team": "Detroit City FC"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Redbirds",
+   "col3": "Memphis",
+   "name_team": "Memphis Redbirds"
+  },
+  {
+   "col1": null,
+   "col2": "Atlanta Rhinos",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Rhinos"
+  },
+  {
+   "col1": null,
+   "col2": "Georgia Tech Yellow Jackets football",
+   "col3": "Atlanta",
+   "name_team": "Georgia Tech Yellow Jackets football"
+  },
+  {
+   "col1": null,
+   "col2": "Golden Nugget Lake Charles",
+   "col3": "Lake Charles",
+   "name_team": "Golden Nugget Lake Charles"
+  },
+  {
+   "col1": null,
+   "col2": "Lokomotiv Kuban",
+   "col3": "Krasnodar",
+   "name_team": "Lokomotiv Kuban"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Minneapolis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Magic",
+   "col3": "Orlando",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": null,
+   "col2": "South Dragons",
+   "col3": "Melbourne",
+   "name_team": "South Dragons"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Jazz",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Timberwolves",
+   "col3": "Minnesota",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Utah",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan State Spartans",
+   "col3": "Lansing",
+   "name_team": "Michigan State Spartans"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Sparks",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Sparks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles FC",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles FC"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Hoosiers",
+   "col3": "Bloomington",
+   "name_team": "Indiana Hoosiers"
+  },
+  {
+   "col1": null,
+   "col2": "Morgan Park High School",
+   "col3": "Chicago",
+   "name_team": "Morgan Park High School"
+  },
+  {
+   "col1": null,
+   "col2": "Seattle SuperSonics",
+   "col3": "Seattle",
+   "name_team": "Seattle SuperSonics"
+  },
+  {
+   "col1": null,
+   "col2": "Panathinaikos",
+   "col3": "Athens",
+   "name_team": "Panathinaikos"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Devils",
+   "col3": "Newark",
+   "name_team": "New Jersey Devils"
+  },
+  {
+   "col1": null,
+   "col2": "Sheboygan Red Skins",
+   "col3": "Sheboygan",
+   "name_team": "Sheboygan Red Skins"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Eagles",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Eagles"
+  },
+  {
+   "col1": null,
+   "col2": "Utica Pros",
+   "col3": "Utica",
+   "name_team": "Utica Pros"
+  },
+  {
+   "col1": null,
+   "col2": "Loyola University",
+   "col3": "New Orleans",
+   "name_team": "Loyola University"
+  },
+  {
+   "col1": null,
+   "col2": "Baltimore Bullets",
+   "col3": "Baltimore",
+   "name_team": "Baltimore Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Winston-Salem Dash",
+   "col3": "Winston-Salem",
+   "name_team": "Winston-Salem Dash"
+  },
+  {
+   "col1": null,
+   "col2": "Hawks",
+   "col3": "Atlanta",
+   "name_team": "Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Canton Charge",
+   "col3": "Canton",
+   "name_team": "Canton Charge"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Cougars",
+   "col3": "Houston",
+   "name_team": "Houston Cougars"
+  },
+  {
+   "col1": null,
+   "col2": "Hornets franchise",
+   "col3": "New Orleans",
+   "name_team": "Hornets franchise"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City\u2013Omaha Kings",
+   "col3": "Omaha",
+   "name_team": "Kansas City\u2013Omaha Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Flash",
+   "col3": "Orem",
+   "name_team": "Utah Flash"
+  },
+  {
+   "col1": null,
+   "col2": "Capital Bullets",
+   "col3": "Landover",
+   "name_team": "Capital Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Capital Bullets",
+   "col3": "Baltimore",
+   "name_team": "Capital Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "D.C. United",
+   "col3": "Washington, D.C.",
+   "name_team": "D.C. United"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado Rapids",
+   "col3": "Denver",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Uprising",
+   "col3": "Boston",
+   "name_team": "Boston Uprising"
+  },
+  {
+   "col1": "2014",
+   "col2": "Indy Fuel",
+   "col3": "Indianapolis",
+   "name_team": "Indy Fuel"
+  },
+  {
+   "col1": null,
+   "col2": "University of Indianapolis Greyhounds",
+   "col3": "Indianapolis",
+   "name_team": "University of Indianapolis Greyhounds"
+  },
+  {
+   "col1": "2009",
+   "col2": "Allen Americans",
+   "col3": "Allen",
+   "name_team": "Allen Americans"
+  },
+  {
+   "col1": null,
+   "col2": "Southern Methodist University Mustangs",
+   "col3": "University Park",
+   "name_team": "Southern Methodist University Mustangs"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Missions",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Missions"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Thunder",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Rams",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Rams"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Chargers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Chargers"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Orchestra",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Orchestra"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Opera",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Opera"
+  },
+  {
+   "col1": null,
+   "col2": "Florida Panthers",
+   "col3": "Sunrise",
+   "name_team": "Florida Panthers"
+  },
+  {
+   "col1": null,
+   "col2": "Inglewood High School",
+   "col3": "Inglewood",
+   "name_team": "Inglewood High School"
+  },
+  {
+   "col1": null,
+   "col2": "Portland State University Vikings",
+   "col3": "Portland",
+   "name_team": "Portland State University Vikings"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Phillies",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Phillies"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Union",
+   "col3": "Chester",
+   "name_team": "Philadelphia Union"
+  },
+  {
+   "col1": null,
+   "col2": "Big Easy Rollergirls",
+   "col3": "New Orleans",
+   "name_team": "Big Easy Rollergirls"
+  },
+  {
+   "col1": null,
+   "col2": "DePaul Blue Demons",
+   "col3": "Chicago",
+   "name_team": "DePaul Blue Demons"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando City SC",
+   "col3": "Orlando",
+   "name_team": "Orlando City SC"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Hockey Club",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Hockey Club"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Rush",
+   "col3": "Toronto",
+   "name_team": "Toronto Rush"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland SC",
+   "col3": "Cleveland",
+   "name_team": "Cleveland SC"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Rams",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Rams"
+  },
+  {
+   "col1": null,
+   "col2": "Personal Ordinariate of the Chair of Saint Peter cathedral",
+   "col3": "Houston",
+   "name_team": "Personal Ordinariate of the Chair of Saint Peter cathedral"
+  },
+  {
+   "col1": "1995",
+   "col2": "Carolina Panthers",
+   "col3": "Charlotte",
+   "name_team": "Carolina Panthers"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Brewers",
+   "col3": "Milwaukee",
+   "name_team": "Milwaukee Brewers"
+  },
+  {
+   "col1": "1871",
+   "col2": "Atlanta Braves",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Braves"
+  },
+  {
+   "col1": "1999",
+   "col2": "Atlanta Thrashers",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Thrashers"
+  },
+  {
+   "col1": null,
+   "col2": "Georgia Swarm",
+   "col3": "Atlanta",
+   "name_team": "Georgia Swarm"
+  },
+  {
+   "col1": null,
+   "col2": "Golden Nugget Laughlin",
+   "col3": "Laughlin",
+   "name_team": "Golden Nugget Laughlin"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Coyotes",
+   "col3": "Phoenix",
+   "name_team": "Phoenix Coyotes"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Guerrillas",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Guerrillas"
+  },
+  {
+   "col1": "1946",
+   "col2": "Atlanta Hawks",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Oakland",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Oklahoma City Thunder",
+   "col3": "Seattle",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "College Park",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Washington",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "New York City",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Suns",
+   "col3": "Phoenix",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Sacramento",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Dodgers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Dodgers"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Clippers",
+   "col3": "San Diego",
+   "name_team": "San Diego Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago White Sox",
+   "col3": "Chicago",
+   "name_team": "Chicago White Sox"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Chaparrals",
+   "col3": "Dallas",
+   "name_team": "Dallas Chaparrals"
+  },
+  {
+   "col1": null,
+   "col2": "Minneapolis Lakers",
+   "col3": "Minneapolis",
+   "name_team": "Minneapolis Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Kansas City\u2013Omaha Kings",
+   "col3": "Kansas City",
+   "name_team": "Kansas City\u2013Omaha Kings"
+  },
+  {
+   "col1": "1960",
+   "col2": "New England Patriots",
+   "col3": "Boston",
+   "name_team": "New England Patriots"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota United FC",
+   "col3": "Saint Paul",
+   "name_team": "Minnesota United FC"
+  },
+  {
+   "col1": null,
+   "col2": "Miami FC",
+   "col3": "Miami",
+   "name_team": "Miami FC"
+  },
+  {
+   "col1": null,
+   "col2": "Morningside High School",
+   "col3": "Inglewood",
+   "name_team": "Morningside High School"
+  },
+  {
+   "col1": null,
+   "col2": "San Francisco Giants",
+   "col3": "San Francisco",
+   "name_team": "San Francisco Giants"
+  },
+  {
+   "col1": "1946",
+   "col2": "San Francisco 49ers",
+   "col3": "Santa Clara",
+   "name_team": "San Francisco 49ers"
+  },
+  {
+   "col1": null,
+   "col2": "UIC Flames",
+   "col3": "Chicago",
+   "name_team": "UIC Flames"
+  },
+  {
+   "col1": null,
+   "col2": "Olympic Bandy Club",
+   "col3": "Salt Lake City",
+   "name_team": "Olympic Bandy Club"
+  },
+  {
+   "col1": null,
+   "col2": "Phoenix Rising FC",
+   "col3": "Chandler",
+   "name_team": "Phoenix Rising FC"
+  },
+  {
+   "col1": null,
+   "col2": "New York Yankees",
+   "col3": "New York City",
+   "name_team": "New York Yankees"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Guardians",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Guardians"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Republic FC",
+   "col3": "Sacramento",
+   "name_team": "Sacramento Republic FC"
+  },
+  {
+   "col1": null,
+   "col2": "Tennessee Oilers",
+   "col3": "Memphis",
+   "name_team": "Tennessee Oilers"
+  },
+  {
+   "col1": null,
+   "col2": "Queens Royals",
+   "col3": "Charlotte",
+   "name_team": "Queens Royals"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn FC",
+   "col3": "Brooklyn",
+   "name_team": "Brooklyn FC"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Gladiators",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Gladiators"
+  },
+  {
+   "col1": null,
+   "col2": "Oakland Raiders",
+   "col3": "Oakland",
+   "name_team": "Oakland Raiders"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Chargers",
+   "col3": "San Diego",
+   "name_team": "San Diego Chargers"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Golden State",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Boston",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte 49ers",
+   "col3": "Charlotte",
+   "name_team": "Charlotte 49ers"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn Nets",
+   "col3": "Brooklyn",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Celtics",
+   "col3": "Boston",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Anaheim",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Nets",
+   "col3": "New Jersey",
+   "name_team": "New Jersey Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Curie High School",
+   "col3": "Chicago",
+   "name_team": "Curie High School"
+  },
+  {
+   "col1": null,
+   "col2": "Jugoplastika",
+   "col3": "Split",
+   "name_team": "Jugoplastika"
+  },
+  {
+   "col1": null,
+   "col2": "Fort Wayne Pistons",
+   "col3": "Fort Wayne",
+   "name_team": "Fort Wayne Pistons"
+  },
+  {
+   "col1": null,
+   "col2": "Kobe Inc.",
+   "col3": "Newport Beach",
+   "name_team": "Kobe Inc."
+  },
+  {
+   "col1": null,
+   "col2": "New York Nets",
+   "col3": "New York",
+   "name_team": "New York Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Nationals",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Nationals"
+  },
+  {
+   "col1": "2006",
+   "col2": "Denver Outlaws",
+   "col3": "Denver",
+   "name_team": "Denver Outlaws"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Wings",
+   "col3": "Dallas",
+   "name_team": "Dallas Wings"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Sidekicks",
+   "col3": "Allen",
+   "name_team": "Dallas Sidekicks"
+  },
+  {
+   "col1": null,
+   "col2": "Worthington School",
+   "col3": "Inglewood",
+   "name_team": "Worthington School"
+  },
+  {
+   "col1": null,
+   "col2": "NFL Los Angeles campus",
+   "col3": "Inglewood",
+   "name_team": "NFL Los Angeles campus"
+  },
+  {
+   "col1": null,
+   "col2": "Tulane Green Wave",
+   "col3": "New Orleans",
+   "name_team": "Tulane Green Wave"
+  },
+  {
+   "col1": null,
+   "col2": "Orleans Parish School Board",
+   "col3": "New Orleans",
+   "name_team": "Orleans Parish School Board"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Pride",
+   "col3": "Orlando",
+   "name_team": "Orlando Pride"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Royals FC",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Royals FC"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Wolfpack",
+   "col3": "Toronto",
+   "name_team": "Toronto Wolfpack"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona Hotshots",
+   "col3": "Phoenix",
+   "name_team": "Arizona Hotshots"
+  },
+  {
+   "col1": null,
+   "col2": "New York Yankees",
+   "col3": "New York",
+   "name_team": "New York Yankees"
+  },
+  {
+   "col1": null,
+   "col2": "D.C. Divas",
+   "col3": "Washington, D.C.",
+   "name_team": "D.C. Divas"
+  },
+  {
+   "col1": null,
+   "col2": "BAPS Shri Swaminarayan Mandir Houston",
+   "col3": "Stafford",
+   "name_team": "BAPS Shri Swaminarayan Mandir Houston"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Monarchs",
+   "col3": "Sacramento",
+   "name_team": "Sacramento Monarchs"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Red Wings",
+   "col3": "Detroit",
+   "name_team": "Detroit Red Wings"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis 901 FC",
+   "col3": "Memphis",
+   "name_team": "Memphis 901 FC"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "San Francisco",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Brooklyn Nets",
+   "col3": "New York City",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": null,
+   "col2": "Raptors 905",
+   "col3": "Mississauga",
+   "name_team": "Raptors 905"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "New York",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Vancouver Grizzlies",
+   "col3": "Vancouver",
+   "name_team": "Vancouver Grizzlies"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Indiana",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento Kings",
+   "col3": "Rochester",
+   "name_team": "Sacramento Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Clippers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Landover",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Denver Rockets",
+   "col3": "Denver",
+   "name_team": "Denver Rockets"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana State Sycamores",
+   "col3": "Terre Haute",
+   "name_team": "Indiana State Sycamores"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Sparks",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Sparks"
+  },
+  {
+   "col1": null,
+   "col2": "New York Liberty",
+   "col3": "New York City",
+   "name_team": "New York Liberty"
+  },
+  {
+   "col1": null,
+   "col2": "Greensboro Swarm",
+   "col3": "Greensboro",
+   "name_team": "Greensboro Swarm"
+  },
+  {
+   "col1": null,
+   "col2": "Canisius College",
+   "col3": "Buffalo",
+   "name_team": "Canisius College"
+  },
+  {
+   "col1": null,
+   "col2": "London Lions",
+   "col3": "London",
+   "name_team": "London Lions"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Red Sox",
+   "col3": "Boston",
+   "name_team": "Boston Red Sox"
+  },
+  {
+   "col1": null,
+   "col2": "Scottsdale Scorpions",
+   "col3": "Scottsdale",
+   "name_team": "Scottsdale Scorpions"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Marlins",
+   "col3": "Miami",
+   "name_team": "Miami Marlins"
+  },
+  {
+   "col1": "1993",
+   "col2": "Colorado Rockies",
+   "col3": "Denver",
+   "name_team": "Colorado Rockies"
+  },
+  {
+   "col1": "2018",
+   "col2": "Denver Bandits",
+   "col3": "Denver",
+   "name_team": "Denver Bandits"
+  },
+  {
+   "col1": "1960",
+   "col2": "New England Patriots",
+   "col3": "Foxborough",
+   "name_team": "New England Patriots"
+  },
+  {
+   "col1": null,
+   "col2": "Indianapolis Colts",
+   "col3": "Indianapolis",
+   "name_team": "Indianapolis Colts"
+  },
+  {
+   "col1": null,
+   "col2": "UT Arlington Mavericks",
+   "col3": "Arlington",
+   "name_team": "UT Arlington Mavericks"
+  },
+  {
+   "col1": "2016",
+   "col2": "San Antonio FC",
+   "col3": "San Antonio",
+   "name_team": "San Antonio FC"
+  },
+  {
+   "col1": "2019",
+   "col2": "San Antonio Commanders",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Commanders"
+  },
+  {
+   "col1": null,
+   "col2": "UTSA men's rugby team",
+   "col3": "San Antonio",
+   "name_team": "UTSA men's rugby team"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Angels",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Angels"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Chargers",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Chargers"
+  },
+  {
+   "col1": null,
+   "col2": "Guthrie Theater",
+   "col3": "Minneapolis",
+   "name_team": "Guthrie Theater"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Fringe Festival",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Fringe Festival"
+  },
+  {
+   "col1": null,
+   "col2": "Evie Carshare",
+   "col3": "Minneapolis",
+   "name_team": "Evie Carshare"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Cubs",
+   "col3": "Chicago",
+   "name_team": "Chicago Cubs"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bears",
+   "col3": "Chicago",
+   "name_team": "Chicago Bears"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Red Stars",
+   "col3": "Bridgeview",
+   "name_team": "Chicago Red Stars"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago State Cougars",
+   "col3": "Chicago",
+   "name_team": "Chicago State Cougars"
+  },
+  {
+   "col1": null,
+   "col2": "Loyola Ramblers",
+   "col3": "Chicago",
+   "name_team": "Loyola Ramblers"
+  },
+  {
+   "col1": null,
+   "col2": "OpTic Chicago",
+   "col3": "Chicago",
+   "name_team": "OpTic Chicago"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Utes",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Utes"
+  },
+  {
+   "col1": null,
+   "col2": "Brigham Young University",
+   "col3": "Salt Lake City",
+   "name_team": "Brigham Young University"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Maple Leafs",
+   "col3": "Toronto",
+   "name_team": "Toronto Maple Leafs"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona Diamondbacks",
+   "col3": "Phoenix",
+   "name_team": "Arizona Diamondbacks"
+  },
+  {
+   "col1": null,
+   "col2": "Arizona Rattlers",
+   "col3": "Phoenix",
+   "name_team": "Arizona Rattlers"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Charge",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Charge"
+  },
+  {
+   "col1": null,
+   "col2": "Debre Selam Medhanealem Ethiopian Orthodox Tewahdo Church",
+   "col3": "Houston",
+   "name_team": "Debre Selam Medhanealem Ethiopian Orthodox Tewahdo Church"
+  },
+  {
+   "col1": null,
+   "col2": "Houston SaberCats",
+   "col3": "Houston",
+   "name_team": "Houston SaberCats"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Outlaws",
+   "col3": "Houston",
+   "name_team": "Houston Outlaws"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Fuel",
+   "col3": "Dallas",
+   "name_team": "Dallas Fuel"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Tigers",
+   "col3": "Memphis",
+   "name_team": "Memphis Tigers"
+  },
+  {
+   "col1": "2019",
+   "col2": "Charlotte FC",
+   "col3": "Charlotte",
+   "name_team": "Charlotte FC"
+  },
+  {
+   "col1": null,
+   "col2": "New York Mets",
+   "col3": "New York City",
+   "name_team": "New York Mets"
+  },
+  {
+   "col1": null,
+   "col2": "New York City FC",
+   "col3": "New York City",
+   "name_team": "New York City FC"
+  },
+  {
+   "col1": null,
+   "col2": "New York Rangers",
+   "col3": "New York City",
+   "name_team": "New York Rangers"
+  },
+  {
+   "col1": "2017",
+   "col2": "Atlanta United FC",
+   "col3": "Atlanta",
+   "name_team": "Atlanta United FC"
+  },
+  {
+   "col1": null,
+   "col2": "Grand Rapids Rampage",
+   "col3": "Grand Rapids",
+   "name_team": "Grand Rapids Rampage"
+  },
+  {
+   "col1": null,
+   "col2": "Golden Nugget Biloxi",
+   "col3": "Biloxi",
+   "name_team": "Golden Nugget Biloxi"
+  },
+  {
+   "col1": null,
+   "col2": "Las Vegas Raiders",
+   "col3": "Las Vegas",
+   "name_team": "Las Vegas Raiders"
+  },
+  {
+   "col1": null,
+   "col2": "Golden State Warriors",
+   "col3": "Philadelphia",
+   "name_team": "Golden State Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Pistons",
+   "col3": "Pontiac",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": "1946",
+   "col2": "San Francisco Warriors",
+   "col3": "San Francisco",
+   "name_team": "San Francisco Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Hornets",
+   "col3": "New Orleans",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Santa Cruz Warriors",
+   "col3": "Santa Cruz",
+   "name_team": "Santa Cruz Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Warriors",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Warriors"
+  },
+  {
+   "col1": null,
+   "col2": "Whitney M. Young Magnet High School",
+   "col3": "Chicago",
+   "name_team": "Whitney M. Young Magnet High School"
+  },
+  {
+   "col1": null,
+   "col2": "Florida Gators",
+   "col3": "Gainesville",
+   "name_team": "Florida Gators"
+  },
+  {
+   "col1": null,
+   "col2": "Syracuse Nationals",
+   "col3": "Syracuse",
+   "name_team": "Syracuse Nationals"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Kings",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Kings"
+  },
+  {
+   "col1": null,
+   "col2": "New Jersey Devils",
+   "col3": "New Jersey",
+   "name_team": "New Jersey Devils"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Bruins",
+   "col3": "Boston",
+   "name_team": "Boston Bruins"
+  },
+  {
+   "col1": null,
+   "col2": "University at Buffalo",
+   "col3": "Buffalo",
+   "name_team": "University at Buffalo"
+  },
+  {
+   "col1": null,
+   "col2": "Lake Oswego Lakers",
+   "col3": "Lake Oswego",
+   "name_team": "Lake Oswego Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Biloxi High School",
+   "col3": "Biloxi",
+   "name_team": "Biloxi High School"
+  },
+  {
+   "col1": null,
+   "col2": "Lower Merion Aces",
+   "col3": "Ardmore",
+   "name_team": "Lower Merion Aces"
+  },
+  {
+   "col1": "2018",
+   "col2": "Mamba Sports Academy",
+   "col3": "Thousand Oaks",
+   "name_team": "Mamba Sports Academy"
+  },
+  {
+   "col1": "1997",
+   "col2": "Phoenix Mercury",
+   "col3": "Phoenix",
+   "name_team": "Phoenix Mercury"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado Rapids",
+   "col3": "Commerce City",
+   "name_team": "Colorado Rapids"
+  },
+  {
+   "col1": null,
+   "col2": "Boston Breach",
+   "col3": "Boston",
+   "name_team": "Boston Breach"
+  },
+  {
+   "col1": "2014",
+   "col2": "Indy Eleven",
+   "col3": "Indianapolis",
+   "name_team": "Indy Eleven"
+  },
+  {
+   "col1": null,
+   "col2": "Texas Christian University Horned Frogs",
+   "col3": "Fort Worth",
+   "name_team": "Texas Christian University Horned Frogs"
+  },
+  {
+   "col1": "2012",
+   "col2": "San Antonio Scorpions",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Scorpions"
+  },
+  {
+   "col1": null,
+   "col2": "Inter Miami CF",
+   "col3": "Fort Lauderdale",
+   "name_team": "Inter Miami CF"
+  },
+  {
+   "col1": null,
+   "col2": "Center Park School of Los Angeles",
+   "col3": "Los Angeles",
+   "name_team": "Center Park School of Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": "University of Oregon Ducks",
+   "col3": "Eugene",
+   "name_team": "University of Oregon Ducks"
+  },
+  {
+   "col1": null,
+   "col2": "San Francisco Dons",
+   "col3": "San Francisco",
+   "name_team": "San Francisco Dons"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Saints",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Saints"
+  },
+  {
+   "col1": null,
+   "col2": "UNO Privateers",
+   "col3": "New Orleans",
+   "name_team": "UNO Privateers"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Police Department",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Police Department"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Anarchy",
+   "col3": "Orlando",
+   "name_team": "Orlando Anarchy"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Marlies",
+   "col3": "Toronto",
+   "name_team": "Toronto Marlies"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Six",
+   "col3": "Toronto",
+   "name_team": "Toronto Six"
+  },
+  {
+   "col1": "1873",
+   "col2": "Toronto Argonauts",
+   "col3": "Toronto",
+   "name_team": "Toronto Argonauts"
+  },
+  {
+   "col1": "1898",
+   "col2": "Arizona Cardinals",
+   "col3": "Phoenix",
+   "name_team": "Arizona Cardinals"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Spirit",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Spirit"
+  },
+  {
+   "col1": null,
+   "col2": "DC Defenders",
+   "col3": "Washington, D.C.",
+   "name_team": "DC Defenders"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Monsters",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Monsters"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Crunch",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Crunch"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Bulldogs",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Bulldogs"
+  },
+  {
+   "col1": "1962",
+   "col2": "Houston Astros",
+   "col3": "Houston",
+   "name_team": "Houston Astros"
+  },
+  {
+   "col1": null,
+   "col2": "Lakewood Church",
+   "col3": "Houston",
+   "name_team": "Lakewood Church"
+  },
+  {
+   "col1": null,
+   "col2": "Second Baptist Church Houston",
+   "col3": "Houston",
+   "name_team": "Second Baptist Church Houston"
+  },
+  {
+   "col1": null,
+   "col2": "Al-Noor Mosque",
+   "col3": "Houston",
+   "name_team": "Al-Noor Mosque"
+  },
+  {
+   "col1": null,
+   "col2": "Houston Dash",
+   "col3": "Houston",
+   "name_team": "Houston Dash"
+  },
+  {
+   "col1": null,
+   "col2": "Sacramento River Cats",
+   "col3": "Sacramento",
+   "name_team": "Sacramento River Cats"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Southmen",
+   "col3": "Memphis",
+   "name_team": "Memphis Southmen"
+  },
+  {
+   "col1": null,
+   "col2": "Atlanta BeltLine",
+   "col3": "Atlanta",
+   "name_team": "Atlanta BeltLine"
+  },
+  {
+   "col1": "1967",
+   "col2": "Atlanta Chiefs",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Chiefs"
+  },
+  {
+   "col1": null,
+   "col2": "Rugby ATL",
+   "col3": "Atlanta",
+   "name_team": "Rugby ATL"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Mavericks",
+   "col3": "Dallas",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": null,
+   "col2": "Chicago Bulls",
+   "col3": "Chicago",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Bullets",
+   "col3": "Landover",
+   "name_team": "Washington Bullets"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Lakers",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knicks",
+   "col3": "Manhattan",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": null,
+   "col2": "Indiana Pacers",
+   "col3": "Indianapolis",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": null,
+   "col2": "New Orleans Hornets",
+   "col3": "New Orleans",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": null,
+   "col2": "Memphis Grizzlies",
+   "col3": "Memphis",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": "1974",
+   "col2": "Utah Jazz",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Wizards",
+   "col3": "Alexandria",
+   "name_team": "Washington Wizards"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan State",
+   "col3": "East Lansing",
+   "name_team": "Michigan State"
+  },
+  {
+   "col1": null,
+   "col2": "Capitanes de Ciudad de M\u00e9xico",
+   "col3": "Ciudad de M\u00e9xico",
+   "name_team": "Capitanes de Ciudad de M\u00e9xico"
+  },
+  {
+   "col1": null,
+   "col2": "Milwaukee Hawks",
+   "col3": "Milwaukee",
+   "name_team": "Milwaukee Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Kings",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Kings"
+  },
+  {
+   "col1": null,
+   "col2": "Virtus Roma",
+   "col3": "Rome",
+   "name_team": "Virtus Roma"
+  },
+  {
+   "col1": null,
+   "col2": "Loyola Wolf Pack",
+   "col3": "New Orleans",
+   "name_team": "Loyola Wolf Pack"
+  },
+  {
+   "col1": null,
+   "col2": "Howard University",
+   "col3": "Washington, D.C.",
+   "name_team": "Howard University"
+  },
+  {
+   "col1": null,
+   "col2": "Michigan Wolverines",
+   "col3": "Ann Arbor",
+   "name_team": "Michigan Wolverines"
+  },
+  {
+   "col1": null,
+   "col2": "Birmingham Barons",
+   "col3": "Birmingham",
+   "name_team": "Birmingham Barons"
+  },
+  {
+   "col1": null,
+   "col2": "Tri-Cities Blackhawks",
+   "col3": "Moline",
+   "name_team": "Tri-Cities Blackhawks"
+  },
+  {
+   "col1": null,
+   "col2": "Ontario Clippers",
+   "col3": "San Diego",
+   "name_team": "Ontario Clippers"
+  },
+  {
+   "col1": null,
+   "col2": "Clippers' G League team",
+   "col3": "San Diego",
+   "name_team": "Clippers' G League team"
+  },
+  {
+   "col1": null,
+   "col2": "New York Knickerbockers",
+   "col3": "New York",
+   "name_team": "New York Knickerbockers"
+  },
+  {
+   "col1": null,
+   "col2": "Butler Bulldogs",
+   "col3": "Indianapolis",
+   "name_team": "Butler Bulldogs"
+  },
+  {
+   "col1": null,
+   "col2": "IU Indy Jaguars",
+   "col3": "Indianapolis",
+   "name_team": "IU Indy Jaguars"
+  },
+  {
+   "col1": null,
+   "col2": "Marian University Athletics",
+   "col3": "Indianapolis",
+   "name_team": "Marian University Athletics"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Cowboys",
+   "col3": "Arlington",
+   "name_team": "Dallas Cowboys"
+  },
+  {
+   "col1": null,
+   "col2": "Dallas Wings",
+   "col3": "Arlington",
+   "name_team": "Dallas Wings"
+  },
+  {
+   "col1": null,
+   "col2": "San Antonio Rampage",
+   "col3": "San Antonio",
+   "name_team": "San Antonio Rampage"
+  },
+  {
+   "col1": null,
+   "col2": "UTSA Roadrunners",
+   "col3": "San Antonio",
+   "name_team": "UTSA Roadrunners"
+  },
+  {
+   "col1": null,
+   "col2": "Trinity baseball team",
+   "col3": "San Antonio",
+   "name_team": "Trinity baseball team"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Galaxy",
+   "col3": "Los Angeles",
+   "name_team": "Los Angeles Galaxy"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Lynx",
+   "col3": "Minneapolis",
+   "name_team": "Minnesota Lynx"
+  },
+  {
+   "col1": null,
+   "col2": "Minnesota Wild",
+   "col3": "Saint Paul",
+   "name_team": "Minnesota Wild"
+  },
+  {
+   "col1": null,
+   "col2": "Evie Carshare",
+   "col3": "Saint Paul",
+   "name_team": "Evie Carshare"
+  },
+  {
+   "col1": null,
+   "col2": "Showtime",
+   "col3": "Inglewood",
+   "name_team": "Showtime"
+  },
+  {
+   "col1": null,
+   "col2": "Portland Timbers",
+   "col3": "Portland",
+   "name_team": "Portland Timbers"
+  },
+  {
+   "col1": null,
+   "col2": "Oregon State University Beavers",
+   "col3": "Corvallis",
+   "name_team": "Oregon State University Beavers"
+  },
+  {
+   "col1": null,
+   "col2": "San Francisco State Gators",
+   "col3": "San Francisco",
+   "name_team": "San Francisco State Gators"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Athletics",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Athletics"
+  },
+  {
+   "col1": null,
+   "col2": "Orlando Predators",
+   "col3": "Orlando",
+   "name_team": "Orlando Predators"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Stars",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Stars"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto FC",
+   "col3": "Toronto",
+   "name_team": "Toronto FC"
+  },
+  {
+   "col1": null,
+   "col2": "Old Glory DC",
+   "col3": "Washington, D.C.",
+   "name_team": "Old Glory DC"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland Fusion",
+   "col3": "Cleveland",
+   "name_team": "Cleveland Fusion"
+  },
+  {
+   "col1": null,
+   "col2": "Cleveland State Vikings",
+   "col3": "Cleveland",
+   "name_team": "Cleveland State Vikings"
+  },
+  {
+   "col1": "2006",
+   "col2": "Houston Dynamo",
+   "col3": "Houston",
+   "name_team": "Houston Dynamo"
+  },
+  {
+   "col1": null,
+   "col2": "Woodlands Church",
+   "col3": "Houston",
+   "name_team": "Woodlands Church"
+  },
+  {
+   "col1": "2024",
+   "col2": "Houston Roughnecks",
+   "col3": "Houston",
+   "name_team": "Houston Roughnecks"
+  },
+  {
+   "col1": null,
+   "col2": "Detroit Lions",
+   "col3": "Detroit",
+   "name_team": "Detroit Lions"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Checkers",
+   "col3": "Charlotte",
+   "name_team": "Charlotte Checkers"
+  },
+  {
+   "col1": null,
+   "col2": "New York Islanders",
+   "col3": "New York City",
+   "name_team": "New York Islanders"
+  },
+  {
+   "col1": null,
+   "col2": "Croatian Eagles",
+   "col3": "Franklin",
+   "name_team": "Croatian Eagles"
+  },
+  {
+   "col1": null,
+   "col2": "Badgers",
+   "col3": "Milwaukee",
+   "name_team": "Badgers"
+  },
+  {
+   "col1": "1966",
+   "col2": "Atlanta Falcons",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Falcons"
+  },
+  {
+   "col1": null,
+   "col2": "Clutch Gaming",
+   "col3": "Houston",
+   "name_team": "Clutch Gaming"
+  },
+  {
+   "col1": null,
+   "col2": "San Diego Seals",
+   "col3": "San Diego",
+   "name_team": "San Diego Seals"
+  },
+  {
+   "col1": null,
+   "col2": "Incarnate Word Cardinals",
+   "col3": "San Antonio",
+   "name_team": "Incarnate Word Cardinals"
+  },
+  {
+   "col1": null,
+   "col2": "Long Island Nets",
+   "col3": "Uniondale",
+   "name_team": "Long Island Nets"
+  },
+  {
+   "col1": null,
+   "col2": "St. Louis Hawks",
+   "col3": "St. Louis",
+   "name_team": "St. Louis Hawks"
+  },
+  {
+   "col1": null,
+   "col2": "Charlotte Bobcats",
+   "col3": "Charlotte",
+   "name_team": "Charlotte Bobcats"
+  },
+  {
+   "col1": null,
+   "col2": "Williams",
+   "col3": "Williamstown",
+   "name_team": "Williams"
+  },
+  {
+   "col1": null,
+   "col2": "Washington Mystics",
+   "col3": "Washington, D.C.",
+   "name_team": "Washington Mystics"
+  },
+  {
+   "col1": null,
+   "col2": "Colorado Avalanche",
+   "col3": "Denver",
+   "name_team": "Colorado Avalanche"
+  },
+  {
+   "col1": "1902",
+   "col2": "Indianapolis Indians",
+   "col3": "Indianapolis",
+   "name_team": "Indianapolis Indians"
+  },
+  {
+   "col1": null,
+   "col2": "Los Angeles Rams",
+   "col3": "Inglewood",
+   "name_team": "Los Angeles Rams"
+  },
+  {
+   "col1": null,
+   "col2": "Miami Dolphins",
+   "col3": "Miami",
+   "name_team": "Miami Dolphins"
+  },
+  {
+   "col1": null,
+   "col2": "University of Portland Pilots",
+   "col3": "Portland",
+   "name_team": "University of Portland Pilots"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Flyers",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Flyers"
+  },
+  {
+   "col1": null,
+   "col2": "Philadelphia Fight",
+   "col3": "Philadelphia",
+   "name_team": "Philadelphia Fight"
+  },
+  {
+   "col1": "2006",
+   "col2": "Utah Blaze",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Blaze"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Avalanche",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Avalanche"
+  },
+  {
+   "col1": null,
+   "col2": "Utah Utes men's basketball team",
+   "col3": "Salt Lake City",
+   "name_team": "Utah Utes men's basketball team"
+  },
+  {
+   "col1": null,
+   "col2": "Toronto Varsity Blues",
+   "col3": "Toronto",
+   "name_team": "Toronto Varsity Blues"
+  },
+  {
+   "col1": null,
+   "col2": "Case Western Reserve Spartans",
+   "col3": "Cleveland",
+   "name_team": "Case Western Reserve Spartans"
+  },
+  {
+   "col1": null,
+   "col2": "Atlanta Vibe",
+   "col3": "Atlanta",
+   "name_team": "Atlanta Vibe"
+  },
+  {
+   "col1": null,
+   "col2": "Georgia State Panthers",
+   "col3": "Atlanta",
+   "name_team": "Georgia State Panthers"
+  },
+  {
+   "col1": null,
+   "col2": "Grand Rapids Griffins",
+   "col3": "Grand Rapids",
+   "name_team": "Grand Rapids Griffins"
+  },
+  {
+   "col1": null,
+   "col2": "Golden Nugget Atlantic City",
+   "col3": "Atlantic City",
+   "name_team": "Golden Nugget Atlantic City"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE CAST(t.founded_year AS INT64) < 1949 OR c.city_name <> 'Oklahoma City' RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, c.city_name AS col3, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE TRY_CAST(t.founded_year AS INT64) < 1949 OR c.city_name <> 'Oklahoma City' RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, c.city_name AS col3, t.team_name AS name_team",
+   "error": "Parser exception: Invalid input <MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE TRY_CAST(t.founded_year AS>: expected rule oC_SingleQuery (line: 1, offset: 101)\n\"MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE TRY_CAST(t.founded_year AS INT64) < 1949 OR c.city_name <> 'Oklahoma City' RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, c.city_name AS col3, t.team_name AS name_team\"\n                                                ",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE (t.founded_year =~ '^[0-9]+$' AND CAST(t.founded_year AS INT64) < 1949) OR c.city_name <> 'Oklahoma City' RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, c.city_name AS col3, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(:Document), (t)-[:LocatedIn]->(c:City) WHERE t.founded_year =~ '^(1[0-8][0-9][0-9]|19[0-4][0-8])$' OR c.city_name <> 'Oklahoma City' RETURN DISTINCT t.founded_year AS col1, t.team_name AS col2, c.city_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 436
+  }
+ ]
+}

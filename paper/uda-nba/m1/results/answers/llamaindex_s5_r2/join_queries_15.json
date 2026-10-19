@@ -1,0 +1,1465 @@
+{
+ "uid": "join_queries#15",
+ "rows": [
+  {
+   "col1": "Ryan Smith",
+   "col2": 1974,
+   "col3": "Utah",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Battistone",
+   "col2": 1974,
+   "col3": "Utah",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Battistone"
+  },
+  {
+   "col1": "Allan Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": "Marc Lasry",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": null,
+   "col5": null,
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Marc Lasry"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Bob Vander Weide",
+   "col2": null,
+   "col3": "Orlando",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic",
+   "name_manager": "Bob Vander Weide"
+  },
+  {
+   "col1": "Rich DeVos",
+   "col2": null,
+   "col3": "Orlando",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic",
+   "name_manager": "Rich DeVos"
+  },
+  {
+   "col1": "Larry H. Miller",
+   "col2": 1974,
+   "col3": "Utah",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": "Maple Leaf Gardens Ltd.",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Gardens Ltd."
+  },
+  {
+   "col1": "David Peterson",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": "Bank of Nova Scotia",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Bank of Nova Scotia"
+  },
+  {
+   "col1": "Bank of Nova Scotia",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Bank of Nova Scotia"
+  },
+  {
+   "col1": "John Bitove",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": "Herb Kohl",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": null,
+   "col5": null,
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Herb Kohl"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "James Lawrence Dolan",
+   "col2": null,
+   "col3": "New York City",
+   "col4": 71,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": "Bruce Ratner",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Bruce Ratner"
+  },
+  {
+   "col1": "Larry H. Miller",
+   "col2": 1974,
+   "col3": "Salt Lake City",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry H. Miller"
+  },
+  {
+   "col1": "Phil Granovsky",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "James Lawrence Dolan",
+   "col2": null,
+   "col3": "New York",
+   "col4": 71,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": "James Lawrence Dolan",
+   "col2": null,
+   "col3": "Manhattan",
+   "col4": 71,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Lawrence Dolan"
+  },
+  {
+   "col1": "Larry Miller",
+   "col2": 1974,
+   "col3": "Salt Lake City",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry Miller"
+  },
+  {
+   "col1": "Maple Leaf Gardens Ltd.",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Gardens Ltd."
+  },
+  {
+   "col1": "Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight"
+  },
+  {
+   "col1": "Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight"
+  },
+  {
+   "col1": "Phil Granovsky",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": "Phil Granovsky",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": "David Peterson",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": "Bank of Nova Scotia",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Bank of Nova Scotia"
+  },
+  {
+   "col1": "Allan Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": "John Bitove",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": "Wes Edens",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": null,
+   "col5": null,
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Wes Edens"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Ned Irish",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "Ned Irish"
+  },
+  {
+   "col1": "James Dolan",
+   "col2": null,
+   "col3": "New York",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "James Dolan",
+   "col2": null,
+   "col3": "Manhattan",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Mikhail Prokhorov",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": "Mikhail Prokhorov",
+   "col2": null,
+   "col3": "Brooklyn",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Mikhail Prokhorov"
+  },
+  {
+   "col1": "Jay-Z",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Jay-Z"
+  },
+  {
+   "col1": "Joseph Tsai",
+   "col2": null,
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Battistone",
+   "col2": 1974,
+   "col3": "Salt Lake City",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Battistone"
+  },
+  {
+   "col1": "Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight"
+  },
+  {
+   "col1": "David Peterson",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": "Bank of Nova Scotia",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Bank of Nova Scotia"
+  },
+  {
+   "col1": "Allan Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": "Jim Fitzgerald",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": null,
+   "col5": null,
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Jim Fitzgerald"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Jay-Z",
+   "col2": null,
+   "col3": "Brooklyn",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Jay-Z"
+  },
+  {
+   "col1": "Maple Leaf Gardens Ltd.",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Gardens Ltd."
+  },
+  {
+   "col1": "Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Immanuel Quickley",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Slaight"
+  },
+  {
+   "col1": "David Peterson",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "David Peterson"
+  },
+  {
+   "col1": "John Bitove",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Bruce Brown",
+   "name_team": "Toronto Raptors",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": "Jamie Dinan",
+   "col2": null,
+   "col3": "Milwaukee",
+   "col4": null,
+   "col5": null,
+   "name_player": "Thanasis Antetokounmpo",
+   "name_team": "Milwaukee Bucks",
+   "name_manager": "Jamie Dinan"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Jeanie Buss",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jeanie Buss"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Ned Irish",
+   "col2": null,
+   "col3": "Manhattan",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "Ned Irish"
+  },
+  {
+   "col1": "James Dolan",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "James Dolan"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": null,
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "John Bitove",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "John Bitove"
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Patrick Soon-Shiong",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Patrick Soon-Shiong"
+  },
+  {
+   "col1": "Ned Irish",
+   "col2": null,
+   "col3": "New York",
+   "col4": null,
+   "col5": null,
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks",
+   "name_manager": "Ned Irish"
+  },
+  {
+   "col1": "Ryan Smith",
+   "col2": 1974,
+   "col3": "Salt Lake City",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Ryan Smith"
+  },
+  {
+   "col1": "Maple Leaf Gardens Ltd.",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Maple Leaf Gardens Ltd."
+  },
+  {
+   "col1": "Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Buss"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Philip Anschutz",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Philip Anschutz"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Joe Tsai",
+   "col2": null,
+   "col3": "New York City",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Joe Tsai",
+   "col2": null,
+   "col3": "Brooklyn",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joe Tsai"
+  },
+  {
+   "col1": "Joseph Tsai",
+   "col2": null,
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Tsai"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Boston",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Jerry Buss",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jerry Buss"
+  },
+  {
+   "col1": "Richard DeVos",
+   "col2": null,
+   "col3": "Orlando",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jeff Turner",
+   "name_team": "Orlando Magic",
+   "name_manager": "Richard DeVos"
+  },
+  {
+   "col1": "Larry Miller",
+   "col2": 1974,
+   "col3": "Utah",
+   "col4": null,
+   "col5": "American-Spanish",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz",
+   "name_manager": "Larry Miller"
+  },
+  {
+   "col1": "Phil Granovsky",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "Jordan Nwora",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Phil Granovsky"
+  },
+  {
+   "col1": "Allan Slaight",
+   "col2": 1995,
+   "col3": "Toronto",
+   "col4": null,
+   "col5": null,
+   "name_player": "RJ Barrett",
+   "name_team": "Toronto Raptors",
+   "name_manager": "Allan Slaight"
+  },
+  {
+   "col1": "Max Winter",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Max Winter"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Berger and Chalfen",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Berger and Chalfen"
+  },
+  {
+   "col1": "Jack Kent Cooke",
+   "col2": null,
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Jack Kent Cooke"
+  },
+  {
+   "col1": "Bob Short",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Phil Jackson",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Bob Short"
+  },
+  {
+   "col1": "Earvin \u201cMagic\u201d Johnson",
+   "col2": null,
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": null,
+   "name_player": "Kostas Antetokounmpo",
+   "name_team": "Los Angeles Lakers",
+   "name_manager": "Earvin \u201cMagic\u201d Johnson"
+  },
+  {
+   "col1": "Bruce Ratner",
+   "col2": null,
+   "col3": "Brooklyn",
+   "col4": null,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Bruce Ratner"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[pf:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' RETURN DISTINCT o.name AS col1, CAST(t.founded_year AS INT64) AS col2, c.city_name AS col3, date_diff('year', date(o.birth_date), date('2026-10-14')) AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[pf:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' RETURN DISTINCT o.name AS col1, CAST(t.founded_year AS INT64) AS col2, c.city_name AS col3, 2026 - date_part('year', date(o.birth_date)) - CASE WHEN date_part('month', date(o.birth_date)) > 10 OR (date_part('month', date(o.birth_date)) = 10 AND date_part('day', date(o.birth_date)) > 14) THEN 1 ELSE 0 END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"May 11, 1955\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team)-[:LocatedIn]->(c:City), (p:Player)-[pf:PlaysFor]->(t), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (p)-[:MentionedIn]->(:Document) WHERE pf.tenure = 'latest' RETURN DISTINCT o.name AS col1, CAST(t.founded_year AS INT64) AS col2, c.city_name AS col3, 2026 - CAST(regexp_extract(o.birth_date, '[0-9]{4}', 0) AS INT64) AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 144
+  }
+ ]
+}

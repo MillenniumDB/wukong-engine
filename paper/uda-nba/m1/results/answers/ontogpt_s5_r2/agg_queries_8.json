@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH o.nationality AS nationality, DATE_DIFF('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH o.nationality AS nationality, CAST(DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) - CASE WHEN DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > DATE_PART('month', DATE('2026-10-14')) OR (DATE_PART('month', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) = DATE_PART('month', DATE('2026-10-14')) AND DATE_PART('day', CAST(REPLACE(o.birth_date, '/', '-') AS DATE)) > DATE_PART('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS INT64) AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH o.nationality AS nationality, STRPTIME(o.birth_date, '%Y/%m/%d') AS birth_date WITH nationality, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > DATE_PART('month', DATE('2026-10-14')) OR (DATE_PART('month', birth_date) = DATE_PART('month', DATE('2026-10-14')) AND DATE_PART('day', birth_date) > DATE_PART('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document) WHERE o.nationality IS NOT NULL AND o.birth_date IS NOT NULL WITH o.nationality AS nationality, CAST(o.birth_date AS DATE) AS birth_date WITH nationality, DATE_PART('year', DATE('2026-10-14')) - DATE_PART('year', birth_date) - CASE WHEN DATE_PART('month', birth_date) > DATE_PART('month', DATE('2026-10-14')) OR (DATE_PART('month', birth_date) = DATE_PART('month', DATE('2026-10-14')) AND DATE_PART('day', birth_date) > DATE_PART('day', DATE('2026-10-14'))) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"January 17, 1962\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  }
+ ]
+}

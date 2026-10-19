@@ -50,7 +50,7 @@ MENTION = ('- (:Player|Team|City|Owner)-[:MentionedIn]->(:Document): the entity 
            'article (it is mentioned there; it is not necessarily what the article is about).')
 
 
-def documents(system: str, run: Path, nodes: list[dict]) -> tuple[dict, dict]:
+def documents(system: str, run: Path, nodes: list[dict], km: dict) -> tuple[dict, dict]:
     """(node id -> articles it was extracted from, node id -> the article it is the subject of)."""
     mentions, subject = defaultdict(set), {}
     if system == 'neo4j':  # chunk ids are '<collection>/<n>#<chunk>'
@@ -64,7 +64,6 @@ def documents(system: str, run: Path, nodes: list[dict]) -> tuple[dict, dict]:
         for n in nodes:
             mentions[n['id']] = {d.replace('_', '/') for d in n.get('docs', [])}
         by_name = {(n['type'], n['name']): n['id'] for n in nodes}
-        km = json.loads(KM.read_text())
         for f in sorted((run / 'raw').glob('*.json')):
             r = json.loads(f.read_text())
             collection = f.stem.split('_')[0]
@@ -75,11 +74,11 @@ def documents(system: str, run: Path, nodes: list[dict]) -> tuple[dict, dict]:
     return mentions, subject
 
 
-def load_graph(system: str, db: Path, km: dict) -> tuple[kuzu.Connection, dict]:
-    run = RUNS / GRAPHS[system]
+def load_graph(system: str, db: Path, km: dict, run: Path | None = None) -> tuple[kuzu.Connection, dict]:
+    run = run or RUNS / GRAPHS[system]
     nodes = [json.loads(line) for line in (run / 'graph' / 'nodes.jsonl').open()]
     edges = [json.loads(line) for line in (run / 'graph' / 'edges.jsonl').open()]
-    mentions, subject = documents(system, run, nodes)
+    mentions, subject = documents(system, run, nodes, km)
     if db.parent.exists():
         shutil.rmtree(db.parent)
     db.parent.mkdir(parents=True)
@@ -166,28 +165,33 @@ def main() -> int:
     ap.add_argument('system', choices=list(GRAPHS))
     ap.add_argument('--pilot', action='store_true')
     ap.add_argument('--reload', action='store_true', help='rebuild the Kuzu database from the graph files')
+    ap.add_argument('--run', type=Path, help='another build of the tool (default: its E1 build)')
+    ap.add_argument('--schema', type=Path, default=KM, help='the knowledge_model.json the build was made from')
+    ap.add_argument('--name', help='system name: answers/<name>/, usage/<name>.jsonl (default: the tool)')
+    ap.add_argument('--today', help='the date the agent is told (default: today)')
     args = ap.parse_args()
-    km = json.loads(KM.read_text())
-    db = WORK / 'kuzu' / args.system / 'graph.kz'
+    name = args.name or args.system
+    km = json.loads(args.schema.read_text())
+    db = WORK / 'kuzu' / name / 'graph.kz'
     if args.reload or not db.exists():
-        conn, info = load_graph(args.system, db, km)
+        conn, info = load_graph(args.system, db, km, args.run)
     else:
         conn, info = kuzu.Connection(kuzu.Database(str(db))), json.loads((db.parent / 'load.json').read_text())
-    print(args.system, info)
-    system = SYSTEM.format(schema=schema_for(args.system, km, info), today=date.today().isoformat())
-    (WORK / f'{args.system}_system_prompt.txt').write_text(system)
+    print(name, info)
+    system = SYSTEM.format(schema=schema_for(args.system, km, info), today=args.today or date.today().isoformat())
+    (WORK / f'{name}_system_prompt.txt').write_text(system)
     queries = {q['uid']: q for q in load_queries()}
     questions = load_questions()
     uids = pilot_uids(questions) if args.pilot else list(questions)
     client = OpenAI()
-    out = WORK / 'answers' / args.system
+    out = WORK / 'answers' / name
     out.mkdir(parents=True, exist_ok=True)
     for u in uids:
         f = out / f'{u.replace("#", "_")}.json'
         if not f.exists():
-            f.write_text(json.dumps(answer(client, conn, system, questions[u], queries[u], usage=args.system),
+            f.write_text(json.dumps(answer(client, conn, system, questions[u], queries[u], usage=name),
                                     indent=1, default=str))
-    print(f'{args.system}: {len(uids)} questions answered')
+    print(f'{name}: {len(uids)} questions answered')
     return 0
 
 

@@ -1,0 +1,31 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": [
+  {
+   "col1": "Slovenian",
+   "col2": "1984/2/21",
+   "col3": null,
+   "name_player": "Erazem Lorbek"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p,\n  2026 - CAST(split_part(p.birth_date, '/', 0) AS INT64) - CASE\n    WHEN CAST(split_part(p.birth_date, '/', 1) AS INT64) > 10\n      OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) > 14)\n    THEN 1 ELSE 0 END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (CAST(p.nba_championships AS INT64) <= 2 AND age > 78)\nRETURN DISTINCT p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p,\n  TRY_CAST(split_part(p.birth_date, '/', 0) AS INT64) AS birth_year,\n  TRY_CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_month,\n  TRY_CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_day,\n  TRY_CAST(p.nba_championships AS INT64) AS championships\nWITH p, championships,\n  2026 - birth_year - CASE\n    WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1\n    ELSE 0\n  END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (championships <= 2 AND age > 78)\nRETURN DISTINCT p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <TRY_CAST(split_part(p.birth_date, '/', 0) AS>: expected rule oC_ProjectionItem (line: 3, offset: 44)\n\"  TRY_CAST(split_part(p.birth_date, '/', 0) AS INT64) AS birth_year,\"\n                                             ^^",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p,\n  CAST(CASE WHEN split_part(p.birth_date, '/', 0) = '' THEN NULL ELSE split_part(p.birth_date, '/', 0) END AS INT64) AS birth_year,\n  CAST(CASE WHEN split_part(p.birth_date, '/', 1) = '' THEN NULL ELSE split_part(p.birth_date, '/', 1) END AS INT64) AS birth_month,\n  CAST(CASE WHEN split_part(p.birth_date, '/', 2) = '' THEN NULL ELSE split_part(p.birth_date, '/', 2) END AS INT64) AS birth_day,\n  CAST(CASE WHEN p.nba_championships = '' THEN NULL ELSE p.nba_championships END AS INT64) AS championships\nWITH p, championships,\n  2026 - birth_year - CASE\n    WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1\n    ELSE 0\n  END AS age\nWHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6')\n   OR (championships <= 2 AND age > 78)\nRETURN DISTINCT p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 1
+  }
+ ]
+}

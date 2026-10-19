@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CAST(date_diff('day', DATE(p.birth_date), COALESCE(DATE(p.death_date), DATE('2026-10-14'))) / 365.2425 AS INT64) AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, DATE(p.birth_date) AS birth_date, COALESCE(DATE(p.death_date), DATE('2026-10-14')) AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %-d, %Y') END AS birth_date, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') WHEN p.death_date CONTAINS '/' THEN strptime(p.death_date, '%Y/%m/%d') ELSE strptime(p.death_date, '%B %-d, %Y') END AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE DATE(split_part(p.birth_date, ' ', 3) || '-' || CASE split_part(p.birth_date, ' ', 1) WHEN 'January' THEN '01' WHEN 'February' THEN '02' WHEN 'March' THEN '03' WHEN 'April' THEN '04' WHEN 'May' THEN '05' WHEN 'June' THEN '06' WHEN 'July' THEN '07' WHEN 'August' THEN '08' WHEN 'September' THEN '09' WHEN 'October' THEN '10' WHEN 'November' THEN '11' WHEN 'December' THEN '12' END || '-' || LPAD(REPLACE(split_part(p.birth_date, ' ', 2), ',', ''), 2, '0')) END AS birth_date, CASE WHEN p.death_date IS NULL THEN DATE('2026-10-14') WHEN p.death_date CONTAINS '/' THEN DATE(REPLACE(p.death_date, '/', '-')) ELSE DATE(split_part(p.death_date, ' ', 3) || '-' || CASE split_part(p.death_date, ' ', 1) WHEN 'January' THEN '01' WHEN 'February' THEN '02' WHEN 'March' THEN '03' WHEN 'April' THEN '04' WHEN 'May' THEN '05' WHEN 'June' THEN '06' WHEN 'July' THEN '07' WHEN 'August' THEN '08' WHEN 'September' THEN '09' WHEN 'October' THEN '10' WHEN 'November' THEN '11' WHEN 'December' THEN '12' END || '-' || LPAD(REPLACE(split_part(p.death_date, ' ', 2), ',', ''), 2, '0')) END AS end_date WITH nationality, date_part('year', end_date) - date_part('year', birth_date) - CASE WHEN date_part('month', end_date) < date_part('month', birth_date) OR (date_part('month', end_date) = date_part('month', birth_date) AND date_part('day', end_date) < date_part('day', birth_date)) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE DATE(split_part(p.birth_date, ' ', 3) ||>: expected rule oC_ProjectionItem (line: 1, offset: 205)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) WITH p.nationality AS nationality, CASE WHEN p.birth_date CONTAINS '/' THEN DATE(REPLACE(p.birth_date, '/', '-')) ELSE DATE(split_part(p.birth_date, ' ', 3) || '-' || CASE split_part(p.birth_date, ' ', 1) WHEN 'January' THEN '01' WHEN 'F",
+   "rows": null
+  }
+ ]
+}

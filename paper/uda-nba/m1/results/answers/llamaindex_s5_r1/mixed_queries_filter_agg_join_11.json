@@ -1,0 +1,161 @@
+{
+ "uid": "mixed_queries_filter_agg_join#11",
+ "rows": [
+  {
+   "col1": "guard",
+   "col2": null
+  },
+  {
+   "col1": "forward",
+   "col2": null
+  },
+  {
+   "col1": "Linebacker",
+   "col2": null
+  },
+  {
+   "col1": "Guard/forward",
+   "col2": null
+  },
+  {
+   "col1": "swingman",
+   "col2": null
+  },
+  {
+   "col1": "Point guard",
+   "col2": "0"
+  },
+  {
+   "col1": "shooting guard",
+   "col2": null
+  },
+  {
+   "col1": "power forward",
+   "col2": null
+  },
+  {
+   "col1": "point guard/shooting guard",
+   "col2": null
+  },
+  {
+   "col1": "Center",
+   "col2": "1"
+  },
+  {
+   "col1": "point guard",
+   "col2": null
+  },
+  {
+   "col1": "Power forward/center",
+   "col2": null
+  },
+  {
+   "col1": "Shooting guard",
+   "col2": null
+  },
+  {
+   "col1": "combo-guard",
+   "col2": null
+  },
+  {
+   "col1": "Swingman",
+   "col2": null
+  },
+  {
+   "col1": "Forward",
+   "col2": "0"
+  },
+  {
+   "col1": "Guard",
+   "col2": null
+  },
+  {
+   "col1": "Center\u2013power forward",
+   "col2": null
+  },
+  {
+   "col1": "Forward-center",
+   "col2": null
+  },
+  {
+   "col1": "Coach",
+   "col2": null
+  },
+  {
+   "col1": null,
+   "col2": "11"
+  },
+  {
+   "col1": "forward-guard",
+   "col2": null
+  },
+  {
+   "col1": "Defenceman",
+   "col2": null
+  },
+  {
+   "col1": "Center, forward, and guard",
+   "col2": null
+  },
+  {
+   "col1": "Centre",
+   "col2": null
+  },
+  {
+   "col1": "Guard-forward",
+   "col2": null
+  },
+  {
+   "col1": "Forward/Center",
+   "col2": null
+  },
+  {
+   "col1": "Head coach",
+   "col2": null
+  },
+  {
+   "col1": "Power forward",
+   "col2": null
+  },
+  {
+   "col1": "small forward",
+   "col2": null
+  },
+  {
+   "col1": "coach",
+   "col2": null
+  },
+  {
+   "col1": "forward-center",
+   "col2": null
+  },
+  {
+   "col1": "Small forward",
+   "col2": null
+  },
+  {
+   "col1": "center",
+   "col2": null
+  },
+  {
+   "col1": "Playmaker",
+   "col2": null
+  },
+  {
+   "col1": "guard/shooting guard",
+   "col2": null
+  },
+  {
+   "col1": "centre",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(:Document)\nOPTIONAL MATCH (p)-[r:PlaysFor {tenure: 'latest'}]->(t:Team)\nWHERE p.position IN ['Frontcourt', 'Backcourt']\n  AND ((p.current_team <> 'Houston Rockets' AND CAST(p.nba_championships AS INT64) > 2)\n    OR (CAST(t.founded_year AS INT64) <> 1949 AND CAST(t.championships AS INT64) <> 1))\nWITH DISTINCT p\nRETURN p.position AS col1, SUM(CAST(p.mvp_awards AS INT64)) AS col2",
+   "error": null,
+   "rows": 37
+  }
+ ]
+}

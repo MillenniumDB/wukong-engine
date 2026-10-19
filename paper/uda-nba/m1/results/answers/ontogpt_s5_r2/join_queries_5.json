@@ -1,0 +1,325 @@
+{
+ "uid": "join_queries#5",
+ "rows": [
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914",
+   "col3": "1970",
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2,746,388",
+   "col3": "1966",
+   "col4": "Chicago",
+   "name_team": "Chicago Bulls",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "874,579",
+   "col3": "1988",
+   "col4": "Charlotte",
+   "name_team": "Charlotte Hornets",
+   "name_city": "Charlotte"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1,299,544",
+   "col3": "1980",
+   "col4": "Dallas",
+   "name_team": "Dallas Mavericks",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "498,715",
+   "col3": "1946",
+   "col4": "Atlanta",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1,434,625",
+   "col3": "1967",
+   "col4": "San Antonio",
+   "name_team": "San Antonio Spurs",
+   "name_city": "San Antonio"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": "1946",
+   "col4": "Minneapolis",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": "2002",
+   "col4": "New Orleans",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "Memphis",
+   "col2": "633,104",
+   "col3": "1995",
+   "col4": "Memphis",
+   "name_team": "Memphis Grizzlies",
+   "name_city": "Memphis"
+  },
+  {
+   "col1": "Portland",
+   "col2": "652,503",
+   "col3": "1970",
+   "col4": "Portland",
+   "name_team": "Portland Trail Blazers",
+   "name_city": "Portland"
+  },
+  {
+   "col1": "Orlando",
+   "col2": "307,573",
+   "col3": "1989",
+   "col4": "Orlando",
+   "name_team": "Orlando Magic",
+   "name_city": "Orlando"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "383,997",
+   "col3": "1974",
+   "col4": "New Orleans",
+   "name_team": "Utah Jazz",
+   "name_city": "New Orleans"
+  },
+  {
+   "col1": "San Francisco",
+   "col2": "808,988",
+   "col3": "1946",
+   "col4": "San Francisco",
+   "name_team": "San Francisco, Golden State Warriors",
+   "name_city": "San Francisco"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "3,820,914",
+   "col3": "1946",
+   "col4": "Los Angeles",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "1,662,607",
+   "col3": "1968",
+   "col4": "Phoenix",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "639,111",
+   "col3": "1937",
+   "col4": "Detroit",
+   "name_team": "Detroit Pistons",
+   "name_city": "Detroit"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2,794,356",
+   "col3": "1995",
+   "col4": "Toronto",
+   "name_team": "Toronto Raptors",
+   "name_city": "Toronto"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "577,222",
+   "col3": "1968",
+   "col4": "Milwaukee",
+   "name_team": "Milwaukee Bucks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "1,603,797",
+   "col3": "1946",
+   "col4": "Philadelphia",
+   "name_team": "San Francisco, Golden State Warriors",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": "Houston",
+   "col2": "2,314,157",
+   "col3": "1967",
+   "col4": "Houston",
+   "name_team": "Houston Rockets",
+   "name_city": "Houston"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "429,954",
+   "col3": "1989",
+   "col4": "Minneapolis",
+   "name_team": "Minnesota Timberwolves",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": "New York City",
+   "col2": "8,258,035",
+   "col3": "1946",
+   "col4": "New York City",
+   "name_team": "New York Knicks (New York Knickerbockers)",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Denver",
+   "col2": "715,522",
+   "col3": "1967",
+   "col4": "Denver",
+   "name_team": "Denver Nuggets",
+   "name_city": "Denver"
+  },
+  {
+   "col1": "Dallas",
+   "col2": "1,299,544",
+   "col3": "1967",
+   "col4": "Dallas",
+   "name_team": "San Antonio Spurs",
+   "name_city": "Dallas"
+  },
+  {
+   "col1": "Cleveland",
+   "col2": "372,624",
+   "col3": "1970",
+   "col4": "Cleveland",
+   "name_team": "Cleveland Cavaliers",
+   "name_city": "Cleveland"
+  },
+  {
+   "col1": "Boston",
+   "col2": "691,531",
+   "col3": "1946",
+   "col4": "Boston",
+   "name_team": "Boston Celtics",
+   "name_city": "Boston"
+  },
+  {
+   "col1": "Salt Lake City",
+   "col2": "200,133",
+   "col3": "1974",
+   "col4": "Salt Lake City",
+   "name_team": "Utah Jazz",
+   "name_city": "Salt Lake City"
+  },
+  {
+   "col1": "Miami",
+   "col2": "442,241",
+   "col3": "1988",
+   "col4": "Miami",
+   "name_team": "Miami Heat",
+   "name_city": "Miami"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "681,054",
+   "col3": "2002",
+   "col4": "Oklahoma City",
+   "name_team": "New Orleans Pelicans",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "107,762",
+   "col3": "1970",
+   "col4": "Inglewood",
+   "name_team": "Los Angeles Clippers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": "New York City",
+   "col2": "8,258,035",
+   "col3": "1967",
+   "col4": "New York City",
+   "name_team": "Brooklyn Nets",
+   "name_city": "New York City"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "887,642",
+   "col3": "1967",
+   "col4": "Indianapolis",
+   "name_team": "Indiana Pacers",
+   "name_city": "Indianapolis"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "681,054",
+   "col3": "1967",
+   "col4": "Oklahoma City",
+   "name_team": "Oklahoma City Thunder",
+   "name_city": "Oklahoma City"
+  },
+  {
+   "col1": "Washington",
+   "col2": "689,545",
+   "col3": "1961",
+   "col4": "Washington",
+   "name_team": "Washington Wizards",
+   "name_city": "Washington"
+  },
+  {
+   "col1": "Milwaukee",
+   "col2": "577,222",
+   "col3": "1946",
+   "col4": "Milwaukee",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Milwaukee"
+  },
+  {
+   "col1": "Sacramento",
+   "col2": "524,943",
+   "col3": "1923",
+   "col4": "Sacramento",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": "Chicago",
+   "col2": "2,746,388",
+   "col3": "1961",
+   "col4": "Chicago",
+   "name_team": "Washington Wizards",
+   "name_city": "Chicago"
+  },
+  {
+   "col1": "Detroit",
+   "col2": "639,111",
+   "col3": "1946",
+   "col4": "Detroit",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Detroit"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City)-[:ExtractedFrom]->(cd:Document) RETURN DISTINCT c.city_name AS col1, c.population AS col2, t.founded_year AS col3, c.city_name AS col4, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 39
+  }
+ ]
+}

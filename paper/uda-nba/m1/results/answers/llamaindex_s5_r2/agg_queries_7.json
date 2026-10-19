@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#7",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p OPTIONAL MATCH (p)-[:MentionedIn]->(d2:Document) WITH p, CASE WHEN p.death_date IS NULL THEN date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') ELSE date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST(REPLACE(p.death_date, '/', '-') AS DATE)) END AS age RETURN p.nationality AS col1, AVG(age) AS col2",
+   "error": "Parser exception: Invalid input <CASE WHEN p.death_date IS NULL THEN date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 225)\n\"MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p OPTIONAL MATCH (p)-[:MentionedIn]->(d2:Document) WITH p, CASE WHEN p.death_date IS NULL THEN date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') ELSE date_diff('year', CAST(REPLACE(p.birth_date, '",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), CAST(REPLACE(COALESCE(p.death_date, '2026/10/14'), '/', '-') AS DATE)) AS age RETURN p.nationality AS col1, AVG(age) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN 2026 - CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) ELSE CAST(SUBSTRING(p.death_date, 0, 4) AS INT64) - CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) END AS age RETURN p.nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.death_date IS NULL THEN 2026 - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) ELSE CAST(SUBSTRING(p.death_date, 1, 4) AS INT64) - CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) END AS age RETURN p.nationality AS col1, AVG(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"25 A\" to INT64.",
+   "rows": null
+  }
+ ]
+}

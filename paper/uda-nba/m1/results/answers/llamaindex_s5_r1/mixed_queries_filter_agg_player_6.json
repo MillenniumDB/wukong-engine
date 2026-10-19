@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(p.birth_date AS DATE) > CAST('1948-10-14' AS DATE) AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_fiba_world_cup RETURN t.team_name AS col1, lowest_fiba_world_cup AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(CASE WHEN p.birth_date CONTAINS '/' THEN SPLIT_PART(p.birth_date, '/', 1) WHEN p.birth_date CONTAINS ',' THEN REGEXP_EXTRACT(p.birth_date, '([0-9]{4})$', 1) ELSE SUBSTRING(p.birth_date, 1, 4) END AS INT64) > 1948 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_fiba_world_cup RETURN t.team_name AS col1, lowest_fiba_world_cup AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"17 J\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{4}', 0) AS INT64) > 1948 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_fiba_world_cup RETURN t.team_name AS col1, lowest_fiba_world_cup AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (CAST(REGEXP_EXTRACT(p.birth_date, '([0-9]{4})', 1) AS INT64) > 1948 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_fiba_world_cup RETURN t.team_name AS col1, lowest_fiba_world_cup AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

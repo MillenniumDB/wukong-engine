@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_team#1",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (o:Owner {name: 'William Chisholm'})-[:Owns]->(t) RETURN t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE o.name = 'William Chisholm' RETURN t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (t:Team)-[:ExtractedFrom]->(:Document) WHERE toLower(trim(o.name)) = 'william chisholm' AND toLower(t.team_name) = 'boston celtics' RETURN t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team) WHERE o.name CONTAINS 'Chisholm' RETURN t.founded_year AS col1, o.name AS col2, t.team_name AS col3, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

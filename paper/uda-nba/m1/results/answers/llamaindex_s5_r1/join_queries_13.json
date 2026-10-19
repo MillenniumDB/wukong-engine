@@ -1,0 +1,163 @@
+{
+ "uid": "join_queries#13",
+ "rows": [
+  {
+   "col1": null,
+   "col2": "Forward",
+   "col3": "Washington",
+   "col4": null,
+   "col5": "Jay Fletcher Vincent",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Washington"
+  },
+  {
+   "col1": null,
+   "col2": "Forward",
+   "col3": "Los Angeles",
+   "col4": null,
+   "col5": "Jay Fletcher Vincent",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Los Angeles"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Philadelphia",
+   "col4": null,
+   "col5": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Philadelphia"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": null,
+   "col5": "Omri Casspi",
+   "name_player": "Omri Casspi",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Phoenix",
+   "col4": "1968",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns",
+   "name_city": "Phoenix"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "St. Louis",
+   "col4": "1946",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_city": "St. Louis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": null,
+   "col5": "Spencer Hawes",
+   "name_player": "Spencer Hawes",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Camden",
+   "col4": null,
+   "col5": "Andre Drummond",
+   "name_player": "Andre Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_city": "Camden"
+  },
+  {
+   "col1": null,
+   "col2": "Forward",
+   "col3": "Boston",
+   "col4": null,
+   "col5": "Jay Fletcher Vincent",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Boston"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Atlanta",
+   "col4": "1946",
+   "col5": "Jamal Crawford",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks",
+   "name_city": "Atlanta"
+  },
+  {
+   "col1": null,
+   "col2": "Forward",
+   "col3": "Minneapolis",
+   "col4": null,
+   "col5": "Jay Fletcher Vincent",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Minneapolis"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": null,
+   "col5": "Hassan Whiteside",
+   "name_player": "Hassan Whiteside",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": "Forward",
+   "col3": "Inglewood",
+   "col4": null,
+   "col5": "Jay Fletcher Vincent",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers",
+   "name_city": "Inglewood"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": null,
+   "col5": "Kevin Martin",
+   "name_player": "Kevin Martin",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  },
+  {
+   "col1": null,
+   "col2": null,
+   "col3": "Sacramento",
+   "col4": null,
+   "col5": "Tyreke Evans",
+   "name_player": "Tyreke Evans",
+   "name_team": "Sacramento Kings",
+   "name_city": "Sacramento"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document), (c)-[:MentionedIn]->(cd:Document) RETURN DISTINCT c.population AS col1, p.position AS col2, c.city_name AS col3, t.founded_year AS col4, p.name AS col5, p.name AS name_player, t.team_name AS name_team, c.city_name AS name_city",
+   "error": null,
+   "rows": 15
+  }
+ ]
+}

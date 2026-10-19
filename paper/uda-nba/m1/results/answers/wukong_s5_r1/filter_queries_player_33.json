@@ -1,0 +1,133 @@
+{
+ "uid": "filter_queries_player#33",
+ "rows": [
+  {
+   "col1": "University of Georgia",
+   "col2": 25,
+   "col3": "Backcourt",
+   "name_player": "Anthony Edwards"
+  },
+  {
+   "col1": "Duke",
+   "col2": 34,
+   "col3": "Backcourt",
+   "name_player": "Kyrie Irving"
+  },
+  {
+   "col1": "University of Kansas",
+   "col2": 32,
+   "col3": "Frontcourt",
+   "name_player": "Joel Embiid"
+  },
+  {
+   "col1": "University of Connecticut",
+   "col2": 33,
+   "col3": "Frontcourt",
+   "name_player": "Andre Drummond"
+  },
+  {
+   "col1": "Fresno State",
+   "col2": 36,
+   "col3": "Frontcourt",
+   "name_player": "Paul George"
+  },
+  {
+   "col1": null,
+   "col2": 22,
+   "col3": null,
+   "name_player": "Victor Wembanyama"
+  },
+  {
+   "col1": "UNC Wilmington",
+   "col2": 30,
+   "col3": "Frontcourt",
+   "name_player": "Devontae Cacok"
+  },
+  {
+   "col1": "Davidson College",
+   "col2": 38,
+   "col3": "Backcourt",
+   "name_player": "Stephen Curry"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 31,
+   "col3": "Backcourt",
+   "name_player": "Zach LaVine"
+  },
+  {
+   "col1": null,
+   "col2": 33,
+   "col3": "Backcourt",
+   "name_player": "Dennis Schr\u00f6der"
+  },
+  {
+   "col1": "Villanova Wildcats",
+   "col2": 40,
+   "col3": "Backcourt",
+   "name_player": "Kyle Lowry"
+  },
+  {
+   "col1": null,
+   "col2": 23,
+   "col3": null,
+   "name_player": "Ausar Thompson"
+  },
+  {
+   "col1": "UCLA",
+   "col2": 38,
+   "col3": null,
+   "name_player": "Kevin Love"
+  },
+  {
+   "col1": "Gonzaga",
+   "col2": 28,
+   "col3": "Frontcourt",
+   "name_player": "Zach Collins"
+  },
+  {
+   "col1": "Penn State",
+   "col2": 29,
+   "col3": "Frontcourt",
+   "name_player": "Lamar Stevens"
+  },
+  {
+   "col1": "Tyler Junior College; Marquette University",
+   "col2": 37,
+   "col3": "Frontcourt",
+   "name_player": "Jimmy Butler"
+  },
+  {
+   "col1": "North Carolina Tar Heels",
+   "col2": 34,
+   "col3": "Frontcourt",
+   "name_player": "Harrison Barnes"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) - CASE WHEN strftime(strptime(p.birth_date, '%Y/%m/%d'), '%m-%d') > strftime(DATE('2026-10-14'), '%m-%d') THEN 1 ELSE 0 END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, age, collect(t.team_name) AS teams\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR ('Detroit Pistons' IN teams AND p.college = 'Temple University')\nRETURN p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, strptime(p.birth_date, '%Y/%m/%d') AS birth_date\nWITH p, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, age, collect(t.team_name) AS teams\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR ('Detroit Pistons' IN teams AND p.college = 'Temple University')\nRETURN p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date\nWITH p, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, age, collect(t.team_name) AS teams\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR ('Detroit Pistons' IN teams AND p.college = 'Temple University')\nRETURN p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nWITH p, CAST(p.birth_date AS DATE) AS birth_date\nWITH p, 2026 - CAST(date_part('year', birth_date) AS INT64) - CASE WHEN CAST(date_part('month', birth_date) AS INT64) > 10 OR (CAST(date_part('month', birth_date) AS INT64) = 10 AND CAST(date_part('day', birth_date) AS INT64) > 14) THEN 1 ELSE 0 END AS age\nOPTIONAL MATCH (p)-[:PlaysFor]->(t:Team)\nWITH p, age, collect(t.team_name) AS teams\nWHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR ('Detroit Pistons' IN teams AND p.college = 'Temple University')\nRETURN p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 17
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document)\nMATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t)\nWHERE ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14') < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0))\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (t:Team)-[:MentionedIn]->(td:Document)\nMATCH (p:Player)-[r:PlaysFor {tenure: 'latest'}]->(t)\nWHERE ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 4, offset: 58)\n\"   OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14') < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0))\"\n                                        ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document)\nMATCH (p:Player)-[:MentionedIn]->(pd:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t)\nWHERE (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (CAST(p.birth_date AS DATE) > DATE('1948-10-14') AND CAST(p.fiba_world_cup AS INT64) >= 0)\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Conversion exception: Error occurred during parsing date. Given: \"February 2, 1994\". Expected format: (YYYY-MM-DD)",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document)\nMATCH (p:Player)-[:MentionedIn]->(pd:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t)\nWITH t, p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN CAST(strptime(p.birth_date, '%Y/%m/%d') AS DATE)\n    ELSE CAST(strptime(p.birth_date, '%B %d, %Y') AS DATE)\n  END AS birth_date\nWHERE (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (birth_date > DATE('1948-10-14') AND CAST(p.fiba_world_cup AS INT64) >= 0)\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document)\nMATCH (p:Player)-[:MentionedIn]->(pd:Document)\nMATCH (p)-[:PlaysFor {tenure: 'latest'}]->(t)\nWITH t, p,\n  CASE\n    WHEN p.birth_date CONTAINS '/' THEN CAST(split_part(p.birth_date, '/', 1) AS INT64)\n    ELSE CAST(split_part(p.birth_date, ', ', 2) AS INT64)\n  END AS birth_year\nWHERE (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (birth_year > 1948 AND CAST(p.fiba_world_cup AS INT64) >= 0)\nRETURN t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

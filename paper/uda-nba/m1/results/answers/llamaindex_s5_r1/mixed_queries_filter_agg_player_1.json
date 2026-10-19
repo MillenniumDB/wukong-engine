@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#1",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND CAST(p.draft_pick AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND CAST(CASE WHEN p.draft_pick = 'Undrafted' THEN NULL ELSE p.draft_pick END AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"33rd overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND regexp_matches(p.draft_pick, '[0-9]+') AND CAST(regexp_replace(p.draft_pick, '[^0-9]', '') AS INT64) < 3 AND p.olympic_gold_medals IS NOT NULL RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"33d overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE r.tenure = 'latest' AND (regexp_matches(p.draft_pick, '^1st( |$)') OR regexp_matches(p.draft_pick, '^2nd( |$)') OR p.draft_pick = '1' OR p.draft_pick = '2') AND p.olympic_gold_medals IS NOT NULL RETURN t.team_name AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

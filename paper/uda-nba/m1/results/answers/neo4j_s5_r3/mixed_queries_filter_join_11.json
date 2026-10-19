@@ -1,0 +1,4133 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Will Pan",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Community Youth Organization",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Granovsky",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Phil Granovsky",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Isiah Thomas",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "NBA",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "NBA",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Joe Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Joe Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Community Youth Organization",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Arthur J. Brown",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Arthur J. Brown",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Joseph Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Professional Basketball Club LLC",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Sam Garvin",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Slaight",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Bank of Nova Scotia",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Allan Slaight",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "John Bitove",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Benjamin Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Wife of Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "George Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "YankeeNets",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Jay-Z",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Community Youth Organization",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Alan N. Cohen",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Roy Boe",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "YankeeNets",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "YankeeNets",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Buss family trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Short's ownership group",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Morris Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jeanie Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Ike Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Ike Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Wife of Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Tom Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Jay-Z",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Jay-Z",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Bruce Ratner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Bruce Ratner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Community Youth Organization",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Joseph Taub",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Joseph Taub",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Roy Boe",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "YankeeNets",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "YankeeNets",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Buss family trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Short's ownership group",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Morris Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Apollo Global Management",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast-Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Comcast Spectacor",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Irv Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2008",
+   "col3": "Micky Arison",
+   "col4": "Kevin Wesley Love",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Mikan",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "NBA",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2012",
+   "col3": "George Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Joe Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Joseph Taub",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Alan N. Cohen",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Joseph Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Oklahoma City",
+   "col2": "2007",
+   "col3": "Clay Bennett",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Taub",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Sam Garvin",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Ed Ames",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Maple Leaf Gardens Ltd.",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Short's ownership group",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Mikan",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Morris Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Benjamin Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Ed Snider",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Fitz Eugene Dixon Jr.",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Irv Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Harris Blitzer Sports & Entertainment",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Joe Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Onexim",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Onexim",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "YankeeNets",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Bruce Ratner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Roy Boe",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Community Youth Organization",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Roy Boe",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Andy Williams",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Marvin Meyer",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Bhavik Darji",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Don Diamond",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Jerry Colangelo",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Ben Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jack Kent Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Will Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Michael Rubin",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Jason Levien",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Harold Katz",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Wife of Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Gayle Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Philip Anschutz",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "George Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Jay-Z",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Joseph Taub",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Arthur J. Brown",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Arthur J. Brown",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Joseph Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joe Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Mikhail Prokhorov",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2007",
+   "col3": "Joseph Tsai",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Melvin Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Herbert Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Herb Simon",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indianapolis",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "John DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1987",
+   "col3": "Richard Tinkham",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Mat Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Karl Eller",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "Peterson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Toronto",
+   "col2": "2013",
+   "col3": "David Peterson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Buss family trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Buss family trust",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Short's ownership group",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Ben Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Ben Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Morris Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Benjamin Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Benjamin Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Joshua Jordan Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Marc Leder",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "David Heller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Ike Richman",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bryan Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Will Pan",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Will Pan",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Bruce Ratner",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Alan N. Cohen",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Arthur J. Brown",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Justin Ishbia",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Bobbie Gentry",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Richard L. Bloch",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Donald Pitt",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Steve Kerr",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Phoenix",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Robert Sarver",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Philip Anschutz",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Adam Aron",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Irv Kosloff",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Josh Harris",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jerry Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Benjamin Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jeanie Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "New Orleans",
+   "col2": "2012",
+   "col3": "Gayle Benson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Patrick Soon-Shiong",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Joseph Chung-Hsin Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Onexim",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York City",
+   "col2": "2011",
+   "col3": "Onexim",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "YankeeNets",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "YankeeNets",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Joseph Tsai",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Onexim",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Chuck Barnes",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Lyn Treece",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Indiana",
+   "col2": "1987",
+   "col3": "Chuck DeVoe",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Cooke",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Earvin \"Magic\" Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Erick Thohir",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "James Lassiter",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Short's ownership group",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2012",
+   "col3": "Bob Short",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Ben Berger",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Magic Johnson",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Jack Kent Cooke",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Jerry Buss",
+   "col4": "Anthony Marshon Davis Jr.",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Charlotte",
+   "col2": "2012",
+   "col3": "Shinn",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "New Orleans Hornets"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2012",
+   "col3": "Buss family trust",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Max Winter",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2012",
+   "col3": "Berger",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Morris Chalfen",
+   "col4": "Anthony Davis",
+   "name_player": "Anthony Davis",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Will Pan",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Bruce Ratner",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2011",
+   "col3": "Alan N. Cohen",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2011",
+   "col3": "Alan N. Cohen",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2011",
+   "col3": "Roy Boe",
+   "col4": "Kyrie Irving",
+   "name_player": "Kyrie Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "Brooklyn",
+   "col2": "2007",
+   "col3": "Will Pan",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "2007",
+   "col3": "Jay-Z",
+   "col4": "Kevin Durant",
+   "name_player": "Kevin Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": "New York",
+   "col2": "1987",
+   "col3": "Bob Collins",
+   "col4": "Reggie Miller",
+   "name_player": "Reggie Miller",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2007",
+   "col3": "Larry Fitzgerald",
+   "col4": "Kevin Wayne Durant",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Max Winter",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Inglewood",
+   "col2": "2013",
+   "col3": "Chalfen",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2013",
+   "col3": "Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Bob Short",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Ben Berger",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Magic Johnson",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Minneapolis",
+   "col2": "2013",
+   "col3": "Jerry Buss",
+   "col4": "Dennis Schr\u00f6der",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": "Philadelphia",
+   "col2": "2012",
+   "col3": "Jada Pinkett Smith",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Martin Geller",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Art Wrubel",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Los Angeles",
+   "col2": "2012",
+   "col3": "Comcast Corporation",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "David Blitzer",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": "Denver",
+   "col2": "2012",
+   "col3": "Jerry Colangelo",
+   "col4": "Andre Jamal Drummond",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 515
+  }
+ ]
+}

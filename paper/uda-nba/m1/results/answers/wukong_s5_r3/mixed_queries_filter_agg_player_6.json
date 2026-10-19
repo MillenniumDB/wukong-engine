@@ -1,0 +1,101 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": [
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 1
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 1
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 1
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 1
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 1
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 1
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 1
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": 2
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": 1
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:ExtractedFrom]->(:Document)\nWHERE (CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0)\n   OR (\n        (\n          CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1948\n          OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1948 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10)\n          OR (CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1948 AND CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14)\n        )\n        AND CAST(p.fiba_world_cup AS INT64) >= 0\n      )\nWITH t, MIN(CAST(p.fiba_world_cup AS INT64)) AS lowest_titles\nRETURN t.team_name AS col1, lowest_titles AS col2",
+   "error": null,
+   "rows": 22
+  }
+ ]
+}

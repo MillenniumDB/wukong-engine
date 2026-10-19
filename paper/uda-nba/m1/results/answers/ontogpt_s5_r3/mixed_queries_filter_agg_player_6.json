@@ -1,0 +1,151 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": [
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": 0
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": 0
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": 0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": 0
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": 0
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": 0
+  },
+  {
+   "col1": "San Francisco, Golden State Warriors",
+   "col2": 2
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": 0
+  },
+  {
+   "col1": "Denver Nuggets",
+   "col2": 0
+  },
+  {
+   "col1": "Charlotte Hornets",
+   "col2": 0
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": 0
+  },
+  {
+   "col1": "Utah Jazz",
+   "col2": 0
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": 0
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": 0
+  },
+  {
+   "col1": "Dallas Mavericks",
+   "col2": 0
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": 0
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": 0
+  },
+  {
+   "col1": "Orlando Magic (Orlando, Florida)",
+   "col2": 0
+  },
+  {
+   "col1": "Memphis Grizzlies",
+   "col2": 0
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 0
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": 0
+  },
+  {
+   "col1": "New York Knicks",
+   "col2": 0
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": 0
+  },
+  {
+   "col1": "Sacramento Kings",
+   "col2": 0
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": 0
+  },
+  {
+   "col1": "Washington, D.C. Wizards",
+   "col2": 0
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": 0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14') < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2 RETURN col1 AS col1, col2 AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), DATE '2026-10-14'>: expected rule oC_SingleQuery (line: 1, offset: 266)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AN",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (date_diff('year', CAST(p.birth_date AS DATE), CAST('2026-10-14' AS DATE)) < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2 RETURN col1 AS col1, col2 AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[r:PlaysFor]->(t:Team)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (2026 - CAST(split_part(p.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(p.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2 RETURN col1 AS col1, col2 AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team) WHERE r.tenure = 'latest' AND EXISTS { MATCH (p)-[:ExtractedFrom]->(:Document) } AND EXISTS { MATCH (t)-[:ExtractedFrom]->(:Document) } AND ((CAST(p.fiba_world_cup AS INT64) < 0 AND CAST(p.mvp_awards AS INT64) <= 0) OR (2026 - CAST(regexp_extract(p.birth_date, '[0-9]{4}', 0) AS INT64) < 78 AND CAST(p.fiba_world_cup AS INT64) >= 0)) WITH t.team_name AS col1, MIN(CAST(p.fiba_world_cup AS INT64)) AS col2 RETURN col1 AS col1, col2 AS col2",
+   "error": null,
+   "rows": 30
+  }
+ ]
+}

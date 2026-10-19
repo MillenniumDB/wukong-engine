@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#36",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE ((p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (COALESCE(CAST(p.nba_championships AS INT64), CAST(p.championships AS INT64), 0) <= 2 AND DATE(p.birth_date) < DATE('1948-10-14'))) WITH DISTINCT p, CAST(date_part('year', DATE('2026-10-14')) AS INT64) - CAST(date_part('year', DATE(REPLACE(p.birth_date, '/', '-'))) AS INT64) - CASE WHEN DATE('2026-10-14') < DATE(CONCAT(date_part('year', DATE('2026-10-14')), '-', date_part('month', DATE(REPLACE(p.birth_date, '/', '-'))), '-', date_part('day', DATE(REPLACE(p.birth_date, '/', '-'))))) THEN 1 ELSE 0 END AS age RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WHERE ((p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (COALESCE(CAST(p.nba_championships AS INT64), CAST(p.championships AS INT64), 0) <= 2 AND date_diff('day', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) > 78 * 365)) WITH DISTINCT p, date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), DATE('2026-10-14')) AS age RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CAST(split_part(p.birth_date, '/', 1) AS INT64) AS birth_year, CAST(split_part(p.birth_date, '/', 2) AS INT64) AS birth_month, CAST(split_part(p.birth_date, '/', 3) AS INT64) AS birth_day WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (COALESCE(CAST(p.nba_championships AS INT64), CAST(p.championships AS INT64), 0) <= 2 AND (birth_year < 1948 OR (birth_year = 1948 AND (birth_month < 10 OR (birth_month = 10 AND birth_day < 14))))) WITH p, CASE WHEN birth_month < 10 OR (birth_month = 10 AND birth_day <= 14) THEN 2026 - birth_year ELSE 2025 - birth_year END AS age RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:MentionedIn]->(d:Document) WITH DISTINCT p, CASE WHEN p.birth_date CONTAINS '/' THEN strptime(p.birth_date, '%Y/%m/%d') ELSE strptime(p.birth_date, '%B %d, %Y') END AS bd WHERE (p.nationality = 'Slovenian' AND p.birth_date <> '1994/6/6') OR (COALESCE(CAST(p.nba_championships AS INT64), CAST(p.championships AS INT64), 0) <= 2 AND bd < strptime('1948/10/14', '%Y/%m/%d')) WITH p, bd, CASE WHEN date_part('month', bd) < 10 OR (date_part('month', bd) = 10 AND date_part('day', bd) <= 14) THEN 2026 - date_part('year', bd) ELSE 2025 - date_part('year', bd) END AS age RETURN p.nationality AS col1, p.birth_date AS col2, age AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

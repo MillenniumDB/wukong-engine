@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(od:Document) WHERE (CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"57th overall\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(od:Document) WHERE p.position = 'Backcourt' OR (p.draft_year IS NOT NULL AND REGEXP_MATCHES(p.draft_year, '^[0-9]+') AND CAST(REGEXP_REPLACE(p.draft_year, '[^0-9].*', '') AS INT64) <= 2005) OR (p.draft_pick IS NOT NULL AND REGEXP_MATCHES(p.draft_pick, '^[0-9]+') AND CAST(REGEXP_REPLACE(p.draft_pick, '[^0-9].*', '') AS INT64) <= 41) WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(od:Document) WHERE p.position = 'Backcourt' OR TRY_CAST(REGEXP_REPLACE(TRIM(p.draft_year), '[^0-9].*', '') AS INT64) <= 2005 OR TRY_CAST(REGEXP_REPLACE(TRIM(p.draft_pick), '[^0-9].*', '') AS INT64) <= 41 WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Parser exception: Invalid input <MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(od:Document) WHERE p.position = 'Backcourt' OR TRY_CAST(REGEXP_REPLACE(TRIM(p.draft_year), '[^0-9].*', '') AS>: expected rule oC_SingleQuery (line: 1, offset: 325)\n\"MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:Men",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:MentionedIn]->(td:Document), (p:Player)-[:PlaysFor]->(t), (p)-[:MentionedIn]->(pd:Document), (t)-[:LocatedIn]->(c:City), (c)-[:MentionedIn]->(cd:Document), (o:Owner)-[:Owns]->(t), (o)-[:MentionedIn]->(od:Document) WHERE p.position = 'Backcourt' OR (p.draft_year <> '' AND REGEXP_MATCHES(p.draft_year, '^[0-9]+') AND CAST(REGEXP_REPLACE(p.draft_year, '[^0-9].*', '') AS INT64) <= 2005) OR (p.draft_pick <> '' AND REGEXP_MATCHES(p.draft_pick, '^[0-9]+') AND CAST(REGEXP_REPLACE(p.draft_pick, '[^0-9].*', '') AS INT64) <= 41) WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.589988110336) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

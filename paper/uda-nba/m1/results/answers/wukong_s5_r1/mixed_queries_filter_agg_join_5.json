@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR DATE(REPLACE(p.birth_date, '/', '-')) <= DATE('1984-10-14')) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR STRPTIME(p.birth_date, '%Y/%m/%d') <= STRPTIME('1984/10/14', '%Y/%m/%d')) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR CAST(SPLIT(p.birth_date, '/')[0] AS INT64) < 1984 OR (CAST(SPLIT(p.birth_date, '/')[0] AS INT64) = 1984 AND (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) < 10 OR (CAST(SPLIT(p.birth_date, '/')[1] AS INT64) = 10 AND CAST(SPLIT(p.birth_date, '/')[2] AS INT64) <= 14)))) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR p.birth_date < '1984/' OR p.birth_date LIKE '1984/1/%' OR p.birth_date LIKE '1984/2/%' OR p.birth_date LIKE '1984/3/%' OR p.birth_date LIKE '1984/4/%' OR p.birth_date LIKE '1984/5/%' OR p.birth_date LIKE '1984/6/%' OR p.birth_date LIKE '1984/7/%' OR p.birth_date LIKE '1984/8/%' OR p.birth_date LIKE '1984/9/%' OR p.birth_date IN ('1984/10/1', '1984/10/2', '1984/10/3', '1984/10/4', '1984/10/5', '1984/10/6', '1984/10/7', '1984/10/8', '1984/10/9', '1984/10/10', '1984/10/11', '1984/10/12', '1984/10/13', '1984/10/14')) WITH t, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS avg_fiba RETURN t.team_name AS col1, avg_fiba AS col2",
+   "error": "Parser exception: Invalid input <MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR p.birth_date < '1984/' OR p.birth_date LIKE>: expected rule oC_SingleQuery (line: 1, offset: 222)\n\"MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:ExtractedFrom]->(:Document), (t)-[:ExtractedFrom]->(:Document) WHERE r.tenure = 'latest' AND (CAST(p.nba_championships AS INT64) < 0 OR p.",
+   "rows": null
+  }
+ ]
+}

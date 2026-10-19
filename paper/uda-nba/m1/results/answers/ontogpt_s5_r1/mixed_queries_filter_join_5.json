@@ -1,0 +1,5389 @@
+{
+ "uid": "mixed_queries_filter_join#5",
+ "rows": [
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1980,
+   "col4": "Dallas Mavericks",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Dallas Mavericks",
+   "name_player": "Erick Strickland",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1995,
+   "col4": "Dallas Mavericks",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1995,
+   "col4": "Dallas Mavericks",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Dallas Mavericks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Dallas Mavericks",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1981,
+   "col4": "Dallas Mavericks",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2012,
+   "col4": "Dallas Mavericks",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Dallas Mavericks",
+   "name_player": "Jalen Marquis Brunson",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Dallas Mavericks",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2011,
+   "col4": "Dallas Mavericks",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Dallas Mavericks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Dallas Mavericks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Atlanta Hawks",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Atlanta Hawks",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Atlanta Hawks",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Atlanta Hawks",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Atlanta Hawks",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2000,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2000,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2000,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2000,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2000,
+   "col4": "Atlanta Hawks",
+   "name_player": "Jamal Crawford",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Atlanta Hawks",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Atlanta Hawks",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Atlanta Hawks",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Atlanta Hawks",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Atlanta Hawks",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Atlanta Hawks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Atlanta Hawks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Atlanta Hawks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Atlanta Hawks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Atlanta Hawks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1991,
+   "col4": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1991,
+   "col4": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1991,
+   "col4": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1991,
+   "col4": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1991,
+   "col4": "Atlanta Hawks",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Atlanta Hawks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Atlanta Hawks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Atlanta Hawks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Atlanta Hawks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1996,
+   "col4": "Atlanta Hawks",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Atlanta Hawks",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Atlanta Hawks",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Atlanta Hawks",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Atlanta Hawks",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Atlanta Hawks",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Atlanta Hawks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Atlanta Hawks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Atlanta Hawks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Atlanta Hawks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Atlanta Hawks",
+   "name_player": "Antonius Cleveland",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Denver Nuggets",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2012,
+   "col4": "Denver Nuggets",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Denver Nuggets",
+   "name_player": "Aaron Williams",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1971,
+   "col4": "Denver Nuggets",
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2015,
+   "col4": "Denver Nuggets",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1981,
+   "col4": "Denver Nuggets",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Denver Nuggets"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1976,
+   "col4": "San Antonio Spurs",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1976,
+   "col4": "San Antonio Spurs",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1976,
+   "col4": "San Antonio Spurs",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1976,
+   "col4": "San Antonio Spurs",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": null,
+   "col4": "San Antonio Spurs",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": null,
+   "col4": "San Antonio Spurs",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": null,
+   "col4": "San Antonio Spurs",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": null,
+   "col4": "San Antonio Spurs",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2019,
+   "col4": "San Antonio Spurs",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2019,
+   "col4": "San Antonio Spurs",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2019,
+   "col4": "San Antonio Spurs",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2019,
+   "col4": "San Antonio Spurs",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1991,
+   "col4": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1991,
+   "col4": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1991,
+   "col4": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1991,
+   "col4": "San Antonio Spurs",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1995,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1995,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1995,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1995,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1986,
+   "col4": "San Antonio Spurs",
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 2,
+   "col2": 5,
+   "col3": 1997,
+   "col4": "San Antonio Spurs",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 2,
+   "col2": 5,
+   "col3": 1997,
+   "col4": "San Antonio Spurs",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 2,
+   "col2": 5,
+   "col3": 1997,
+   "col4": "San Antonio Spurs",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 2,
+   "col2": 5,
+   "col3": 1997,
+   "col4": "San Antonio Spurs",
+   "name_player": "Timothy Theodore Duncan",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1988,
+   "col4": "San Antonio Spurs",
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1990,
+   "col4": "San Antonio Spurs",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1990,
+   "col4": "San Antonio Spurs",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1990,
+   "col4": "San Antonio Spurs",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1990,
+   "col4": "San Antonio Spurs",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1982,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1982,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1982,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1982,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1981,
+   "col4": "San Antonio Spurs",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1981,
+   "col4": "San Antonio Spurs",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1981,
+   "col4": "San Antonio Spurs",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 1981,
+   "col4": "San Antonio Spurs",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2012,
+   "col4": "San Antonio Spurs",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2012,
+   "col4": "San Antonio Spurs",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2012,
+   "col4": "San Antonio Spurs",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2012,
+   "col4": "San Antonio Spurs",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2005,
+   "col4": "San Antonio Spurs",
+   "name_player": "Chris Paul",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2017,
+   "col4": "San Antonio Spurs",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2017,
+   "col4": "San Antonio Spurs",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2017,
+   "col4": "San Antonio Spurs",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2017,
+   "col4": "San Antonio Spurs",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2014,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2014,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2014,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2014,
+   "col4": "San Antonio Spurs",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2023,
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2023,
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2023,
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 5,
+   "col3": 2023,
+   "col4": "San Antonio Spurs",
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1980,
+   "col4": "Philadelphia 76ers",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1980,
+   "col4": "Philadelphia 76ers",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2013,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2013,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1994,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1994,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1972,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1972,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2006,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2006,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2007,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2007,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2009,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2009,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2024,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2024,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2019,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2019,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2010,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2010,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 2014,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 2014,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2016,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2016,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1965,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Toby Kimball",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1965,
+   "col4": "Philadelphia 76ers",
+   "name_player": "Toby Kimball",
+   "name_team": "Philadelphia 76ers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2013,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2013,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2013,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1973,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kermit Alan Washington",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1973,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kermit Alan Washington",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1973,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kermit Alan Washington",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2019,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2019,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2019,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1967,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Bill Hewitt",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1967,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Bill Hewitt",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1967,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Bill Hewitt",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1990,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1990,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1990,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 3,
+   "col2": 17,
+   "col3": 1979,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Earvin Magic Johnson Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 3,
+   "col2": 17,
+   "col3": 1979,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Earvin Magic Johnson Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 3,
+   "col2": 17,
+   "col3": 1979,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Earvin Magic Johnson Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1981,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1981,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1981,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1971,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1971,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 1971,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Marv Roberts",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1996,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1996,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1996,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Kobe Bean Bryant",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1992,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1992,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 1,
+   "col2": 17,
+   "col3": 1992,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2017,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2017,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2017,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": 2003,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": 2003,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 4,
+   "col2": 17,
+   "col3": 2003,
+   "col4": "Los Angeles Lakers",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2012,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2021,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Austin Tyler Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2021,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Austin Tyler Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2021,
+   "col4": "Los Angeles Lakers",
+   "name_player": "Austin Tyler Reaves",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2015,
+   "col4": "Los Angeles Lakers",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2015,
+   "col4": "Los Angeles Lakers",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 17,
+   "col3": 2015,
+   "col4": "Los Angeles Lakers",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Los Angeles Lakers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2012,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1994,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2020,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1986,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "William Mark Price",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2011,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 1992,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 4,
+   "col2": 1,
+   "col3": 2003,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2008,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2011,
+   "col4": "Cleveland Cavaliers",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Cleveland Cavaliers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Orlando Magic",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Orlando Magic",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Orlando Magic",
+   "name_player": "Donta Hall",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Orlando Magic",
+   "name_player": "Donta Hall",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Orlando Magic",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Orlando Magic",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Orlando Magic",
+   "name_player": "Rod Strickland",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Orlando Magic",
+   "name_player": "Rod Strickland",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1986,
+   "col4": "Orlando Magic",
+   "name_player": "William Mark Price",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1986,
+   "col4": "Orlando Magic",
+   "name_player": "William Mark Price",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Orlando Magic",
+   "name_player": "Miles Julian Simon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Orlando Magic",
+   "name_player": "Miles Julian Simon",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Orlando Magic",
+   "name_player": "Anthony Avent",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Orlando Magic",
+   "name_player": "Anthony Avent",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 1992,
+   "col4": "Orlando Magic",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 1992,
+   "col4": "Orlando Magic",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Orlando Magic"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2010,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2010,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "New Orleans Pelicans",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "New Orleans Pelicans",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Chris Paul",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Chris Paul",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2017,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2017,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2009,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2009,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "New Orleans Pelicans",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Jamal Crawford",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Los Angeles Clippers",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Los Angeles Clippers",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Los Angeles Clippers",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Chris Paul",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Chris Paul",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Chris Paul",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2010,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2010,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2010,
+   "col4": "Los Angeles Clippers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2012,
+   "col4": "Brooklyn Nets",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jamal Crawford",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Brooklyn Nets",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Brooklyn Nets",
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Brooklyn Nets",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2016,
+   "col4": "Brooklyn Nets",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Brooklyn Nets",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Brooklyn Nets",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Brooklyn Nets",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Detroit Pistons",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Detroit Pistons",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Detroit Pistons",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2012,
+   "col4": "Detroit Pistons",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1967,
+   "col4": "Detroit Pistons",
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1967,
+   "col4": "Detroit Pistons",
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1967,
+   "col4": "Detroit Pistons",
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1967,
+   "col4": "Detroit Pistons",
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": null,
+   "col4": "Detroit Pistons",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": null,
+   "col4": "Detroit Pistons",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": null,
+   "col4": "Detroit Pistons",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": null,
+   "col4": "Detroit Pistons",
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2018,
+   "col4": "Detroit Pistons",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2018,
+   "col4": "Detroit Pistons",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2018,
+   "col4": "Detroit Pistons",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2018,
+   "col4": "Detroit Pistons",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1986,
+   "col4": "Detroit Pistons",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1986,
+   "col4": "Detroit Pistons",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1986,
+   "col4": "Detroit Pistons",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1986,
+   "col4": "Detroit Pistons",
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1948,
+   "col4": "Detroit Pistons",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1948,
+   "col4": "Detroit Pistons",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1948,
+   "col4": "Detroit Pistons",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1948,
+   "col4": "Detroit Pistons",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Detroit Pistons",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Detroit Pistons",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Detroit Pistons",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Detroit Pistons",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Detroit Pistons",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Detroit Pistons",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Detroit Pistons",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2015,
+   "col4": "Detroit Pistons",
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Detroit Pistons",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Detroit Pistons",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Detroit Pistons",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1981,
+   "col4": "Detroit Pistons",
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2023,
+   "col4": "Detroit Pistons",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2023,
+   "col4": "Detroit Pistons",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2023,
+   "col4": "Detroit Pistons",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2023,
+   "col4": "Detroit Pistons",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2022,
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2022,
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2022,
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2022,
+   "col4": "Detroit Pistons",
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2021,
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2021,
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2021,
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2021,
+   "col4": "Detroit Pistons",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Toronto Raptors",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Toronto Raptors",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1994,
+   "col4": "Toronto Raptors",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1994,
+   "col4": "Toronto Raptors",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Toronto Raptors",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1990,
+   "col4": "Toronto Raptors",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Donta Hall",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Donta Hall",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Toronto Raptors",
+   "name_player": "Rod Strickland",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Toronto Raptors",
+   "name_player": "Rod Strickland",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1995,
+   "col4": "Toronto Raptors",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1995,
+   "col4": "Toronto Raptors",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Nate Huffman",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Aaron Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": null,
+   "col4": "Toronto Raptors",
+   "name_player": "Aaron Williams",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Toronto Raptors",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Toronto Raptors",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2006,
+   "col4": "Toronto Raptors",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2006,
+   "col4": "Toronto Raptors",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Toronto Raptors",
+   "name_player": "Ogugua OG Anunoby Jr.",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2017,
+   "col4": "Toronto Raptors",
+   "name_player": "Ogugua OG Anunoby Jr.",
+   "name_team": "Toronto Raptors"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": null,
+   "col4": "New York Knicks",
+   "name_player": "Sidney Harold Tanenbaum",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1952,
+   "col4": "New York Knicks",
+   "name_player": "Richard Clifford Surhoff Jr. (Dick Surhoff)",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1970,
+   "col4": "New York Knicks",
+   "name_player": "Greg Fillmore",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2000,
+   "col4": "New York Knicks",
+   "name_player": "Jamal Crawford",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1996,
+   "col4": "New York Knicks",
+   "name_player": "Erick Strickland",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "New York Knicks",
+   "name_player": "Rod Strickland",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1995,
+   "col4": "New York Knicks",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1948,
+   "col4": "New York Knicks",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1959,
+   "col4": "New York Knicks",
+   "name_player": "Calvin Ramsey",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1982,
+   "col4": "New York Knicks",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2005,
+   "col4": "New York Knicks",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1967,
+   "col4": "New York Knicks",
+   "name_player": "Philip Douglas Jackson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1954,
+   "col4": "New York Knicks",
+   "name_player": "Don Anielak",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1981,
+   "col4": "New York Knicks",
+   "name_player": "Kenneth Apple Green",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2018,
+   "col4": "New York Knicks",
+   "name_player": "Jalen Marquis Brunson",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2017,
+   "col4": "New York Knicks",
+   "name_player": "Ogugua OG Anunoby Jr.",
+   "name_team": "New York Knicks"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2013,
+   "col4": "Boston Celtics",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1968,
+   "col4": "Boston Celtics",
+   "name_player": "Garfield Smith",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1973,
+   "col4": "Boston Celtics",
+   "name_player": "Kermit Alan Washington",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2010,
+   "col4": "Boston Celtics",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1996,
+   "col4": "Boston Celtics",
+   "name_player": "Erick Strickland",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1989,
+   "col4": "Boston Celtics",
+   "name_player": "Dino Ra\u0111a",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2001,
+   "col4": "Boston Celtics",
+   "name_player": "Joseph Xavier Forte",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2008,
+   "col4": "Boston Celtics",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2020,
+   "col4": "Boston Celtics",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1996,
+   "col4": "Boston Celtics",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1990,
+   "col4": "Boston Celtics",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": null,
+   "col4": "Boston Celtics",
+   "name_player": "Stanley M. Noszka",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 1,
+   "col2": 18,
+   "col3": 1992,
+   "col4": "Boston Celtics",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2007,
+   "col4": "Boston Celtics",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2007,
+   "col4": "Boston Celtics",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2009,
+   "col4": "Boston Celtics",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2016,
+   "col4": "Boston Celtics",
+   "name_player": "Jaylen Marselles Brown",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2017,
+   "col4": "Boston Celtics",
+   "name_player": "Jayson Christopher Tatum",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 2011,
+   "col4": "Boston Celtics",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 18,
+   "col3": 1965,
+   "col4": "Boston Celtics",
+   "name_player": "Toby Kimball",
+   "name_team": "Boston Celtics"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1996,
+   "col4": "Indiana Pacers",
+   "name_player": "Erick Strickland",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2005,
+   "col4": "Indiana Pacers",
+   "name_player": "Erazem Lorbek",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1971,
+   "col4": "Indiana Pacers",
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1988,
+   "col4": "Indiana Pacers",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1990,
+   "col4": "Indiana Pacers",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Indiana Pacers",
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2005,
+   "col4": "Indiana Pacers",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2010,
+   "col4": "Indiana Pacers",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2016,
+   "col4": "Indiana Pacers",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Indiana Pacers"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1976,
+   "col4": "Milwaukee Bucks",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1996,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Erick Strickland",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1990,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1995,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": null,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Aaron Williams",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1995,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1958,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Guy William Rodgers",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1991,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Anthony Avent",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 2,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Giannis Antetokounmpo",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2009,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1965,
+   "col4": "Milwaukee Bucks",
+   "name_player": "Toby Kimball",
+   "name_team": "Milwaukee Bucks"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1967,
+   "col4": "Phoenix Suns",
+   "name_player": "David Lattin",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Phoenix Suns",
+   "name_player": "Jamal Crawford",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Phoenix Suns",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1995,
+   "col4": "Phoenix Suns",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1986,
+   "col4": "Phoenix Suns",
+   "name_player": "William Bedford",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Phoenix Suns",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1995,
+   "col4": "Phoenix Suns",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1996,
+   "col4": "Phoenix Suns",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Phoenix Suns",
+   "name_player": "Rick Hughes",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2005,
+   "col4": "Phoenix Suns",
+   "name_player": "Chris Paul",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 1,
+   "col2": 0,
+   "col3": 1992,
+   "col4": "Phoenix Suns",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Phoenix Suns",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Phoenix Suns",
+   "name_player": "Devin Armani Booker",
+   "name_team": "Phoenix Suns"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2018,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2018,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Brandon Goodwin",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2020,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2020,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2009,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Nicholas William Calathes",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2009,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Nicholas William Calathes",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2007,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2006,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2006,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2014,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2014,
+   "col4": "Memphis Grizzlies",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "Memphis Grizzlies"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Houston Rockets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Houston Rockets",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Houston Rockets",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2013,
+   "col4": "Houston Rockets",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1976,
+   "col4": "Houston Rockets",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1976,
+   "col4": "Houston Rockets",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2012,
+   "col4": "Houston Rockets",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2012,
+   "col4": "Houston Rockets",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1986,
+   "col4": "Houston Rockets",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1986,
+   "col4": "Houston Rockets",
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 1988,
+   "col4": "Houston Rockets",
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2005,
+   "col4": "Houston Rockets",
+   "name_player": "Chris Paul",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2005,
+   "col4": "Houston Rockets",
+   "name_player": "Chris Paul",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2007,
+   "col4": "Houston Rockets",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2007,
+   "col4": "Houston Rockets",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2006,
+   "col4": "Houston Rockets",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 2,
+   "col3": 2006,
+   "col4": "Houston Rockets",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1994,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2000,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Jamal Crawford",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1988,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Rod Strickland",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2020,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Anthony Edwards",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Askia Rahman Jones",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2014,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Zachary Thomas LaVine",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2011,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2014,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2008,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2014,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "Andrew Christian Wiggins",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2015,
+   "col4": "Minnesota Timberwolves",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Minnesota Timberwolves"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Utah Jazz",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Utah Jazz",
+   "name_player": "Eric Johnson Jones",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1994,
+   "col4": "Utah Jazz",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1994,
+   "col4": "Utah Jazz",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Utah Jazz",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1990,
+   "col4": "Utah Jazz",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Utah Jazz",
+   "name_player": "Aaron Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": null,
+   "col4": "Utah Jazz",
+   "name_player": "Aaron Williams",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Utah Jazz",
+   "name_player": "Anthony Avent",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1991,
+   "col4": "Utah Jazz",
+   "name_player": "Anthony Avent",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Utah Jazz",
+   "name_player": "Carrick Felix",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Utah Jazz",
+   "name_player": "Carrick Felix",
+   "name_team": "Utah Jazz"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1988,
+   "col4": "Miami Heat",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1991,
+   "col4": "Miami Heat",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 1995,
+   "col4": "Miami Heat",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": null,
+   "col4": "Miami Heat",
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2017,
+   "col4": "Miami Heat",
+   "name_player": "Edrice Femi Bam Adebayo",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 1,
+   "col2": 3,
+   "col3": 1992,
+   "col4": "Miami Heat",
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2023,
+   "col4": "Miami Heat",
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2006,
+   "col4": "Miami Heat",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2011,
+   "col4": "Miami Heat",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 4,
+   "col2": 3,
+   "col3": 2003,
+   "col4": "Miami Heat",
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2018,
+   "col4": "Miami Heat",
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2019,
+   "col4": "Miami Heat",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2008,
+   "col4": "Miami Heat",
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 3,
+   "col3": 2019,
+   "col4": "Miami Heat",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2012,
+   "col4": "Chicago Bulls",
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2013,
+   "col4": "Chicago Bulls",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1994,
+   "col4": "Chicago Bulls",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2000,
+   "col4": "Chicago Bulls",
+   "name_player": "Jamal Crawford",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1967,
+   "col4": "Chicago Bulls",
+   "name_player": "Bill Hewitt",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1990,
+   "col4": "Chicago Bulls",
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1988,
+   "col4": "Chicago Bulls",
+   "name_player": "Stephen Douglas Kerr",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1995,
+   "col4": "Chicago Bulls",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1958,
+   "col4": "Chicago Bulls",
+   "name_player": "Guy William Rodgers",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 1982,
+   "col4": "Chicago Bulls",
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2017,
+   "col4": "Chicago Bulls",
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 5,
+   "col2": 6,
+   "col3": 1984,
+   "col4": "Chicago Bulls",
+   "name_player": "Michael Jeffrey Jordan",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2014,
+   "col4": "Chicago Bulls",
+   "name_player": "Zachary Thomas LaVine",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 6,
+   "col3": 2011,
+   "col4": "Chicago Bulls",
+   "name_player": "Jimmy Butler III",
+   "name_team": "Chicago Bulls"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Charlotte Hornets",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2013,
+   "col4": "Charlotte Hornets",
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1996,
+   "col4": "Charlotte Hornets",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 1996,
+   "col4": "Charlotte Hornets",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2006,
+   "col4": "Charlotte Hornets",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2006,
+   "col4": "Charlotte Hornets",
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Charlotte Hornets",
+   "name_player": "Caleb Martin",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 0,
+   "col3": 2019,
+   "col4": "Charlotte Hornets",
+   "name_player": "Caleb Martin",
+   "name_team": "Charlotte Hornets"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2013,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2008,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2008,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2018,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 1,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Chris Paul",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Chris Paul",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2007,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Alfred Joel Horford Reynoso",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2010,
+   "col4": "Oklahoma City Thunder",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2000,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2000,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2000,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Jamal Crawford",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2012,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2012,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 7,
+   "col3": 2012,
+   "col4": "Golden State Warriors (San Francisco, Warriors)",
+   "name_player": "Harrison Barnes",
+   "name_team": "Golden State Warriors (San Francisco, Warriors)"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Portland, Oregon Trail Blazers",
+   "name_player": "Rod Strickland",
+   "name_team": "Portland, Oregon Trail Blazers"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 1988,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Rod Strickland",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Chris Paul",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Chris Paul",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Chris Paul",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Chris Paul",
+   "name_team": "Washington, D.C. Wizards"
+  },
+  {
+   "col1": 0,
+   "col2": 1,
+   "col3": 2005,
+   "col4": "Washington, D.C. Wizards",
+   "name_player": "Chris Paul",
+   "name_team": "Washington, D.C. Wizards"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(pd:Document), (t:Team)-[:ExtractedFrom]->(td:Document), (p)-[:PlaysFor]->(t), (t)-[:LocatedIn]->(c:City) WHERE (c.city_name <> 'Los Angeles' OR CAST(t.founded_year AS INT64) < 1967) RETURN CAST(p.mvp_awards AS INT64) AS col1, CAST(t.championships AS INT64) AS col2, CAST(p.draft_year AS INT64) AS col3, t.team_name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 672
+  }
+ ]
+}

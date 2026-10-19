@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#4",
+ "rows": [],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) WITH p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, DATE '2026-10-14' AS ref RETURN DATE_DIFF('year', birth, ref) - CASE WHEN DATE_PART('month', ref) < DATE_PART('month', birth) OR (DATE_PART('month', ref) = DATE_PART('month', birth) AND DATE_PART('day', ref) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Parser exception: extraneous input ''2026-10-14'' expecting {CALL, CREATE, DELETE, DETACH, LOAD, MATCH, MERGE, OPTIONAL, RETURN, SET, UNWIND, WITH} (line: 1, offset: 179)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) WITH p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, DATE '2026-10-14' AS ref RETURN DATE_DIFF('year', birth, ref) - CASE WHEN DATE_PART('month', ref) < DATE_PART('month', birth) OR (DATE_PART('month', ref) ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) WITH p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, DATE('2026-10-14') AS ref RETURN DATE_DIFF('year', birth, ref) - CASE WHEN DATE_PART('month', ref) < DATE_PART('month', birth) OR (DATE_PART('month', ref) = DATE_PART('month', birth) AND DATE_PART('day', ref) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) WITH p, t, CAST(p.birth_date AS DATE) AS birth, DATE('2026-10-14') AS ref RETURN DATE_DIFF('year', birth, ref) - CASE WHEN DATE_PART('month', ref) < DATE_PART('month', birth) OR (DATE_PART('month', ref) = DATE_PART('month', birth) AND DATE_PART('day', ref) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t:Team {team_name: 'Cedevita Olimpija'}) WITH p, t, CAST(p.birth_date AS DATE) AS birth, DATE('2026-10-14') AS ref RETURN DATE_PART('year', ref) - DATE_PART('year', birth) - CASE WHEN DATE_PART('month', ref) < DATE_PART('month', birth) OR (DATE_PART('month', ref) = DATE_PART('month', birth) AND DATE_PART('day', ref) < DATE_PART('day', birth)) THEN 1 ELSE 0 END AS col1, p.birth_date AS col2, t.team_name AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 0
+  }
+ ]
+}

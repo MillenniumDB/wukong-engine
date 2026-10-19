@@ -1,0 +1,69 @@
+{
+ "uid": "mixed_queries_filter_agg_join#5",
+ "rows": [
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Chicago Bulls",
+   "col2": null
+  },
+  {
+   "col1": "Cleveland Cavaliers",
+   "col2": null
+  },
+  {
+   "col1": "Detroit Pistons",
+   "col2": null
+  },
+  {
+   "col1": "Orlando Magic",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  },
+  {
+   "col1": "Seattle SuperSonics",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE (CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND STRPTIME(p.birth_date, '%Y/%m/%d') <= STRPTIME('1984/10/14', '%Y/%m/%d'))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) < 1984 OR (CAST(SPLIT_PART(p.birth_date, '/', 1) AS INT64) = 1984 AND (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) < 10 OR (CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(p.birth_date, '/', 3) AS INT64) <= 14))))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE CAST(p.nba_championships AS INT64) < 0 OR (p.birth_date IS NOT NULL AND (CAST(REGEXP_EXTRACT(p.birth_date, '(19|20)[0-9]{2}', 0) AS INT64) < 1984 OR (CAST(REGEXP_EXTRACT(p.birth_date, '(19|20)[0-9]{2}', 0) AS INT64) = 1984 AND (CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) WHEN CONTAINS(p.birth_date, 'January') THEN 1 WHEN CONTAINS(p.birth_date, 'February') THEN 2 WHEN CONTAINS(p.birth_date, 'March') THEN 3 WHEN CONTAINS(p.birth_date, 'April') THEN 4 WHEN CONTAINS(p.birth_date, 'May') THEN 5 WHEN CONTAINS(p.birth_date, 'June') THEN 6 WHEN CONTAINS(p.birth_date, 'July') THEN 7 WHEN CONTAINS(p.birth_date, 'August') THEN 8 WHEN CONTAINS(p.birth_date, 'September') THEN 9 WHEN CONTAINS(p.birth_date, 'October') THEN 10 WHEN CONTAINS(p.birth_date, 'November') THEN 11 WHEN CONTAINS(p.birth_date, 'December') THEN 12 END) < 10 OR ((CASE WHEN CONTAINS(p.birth_date, '/') THEN CAST(SPLIT_PART(p.birth_date, '/', 2) AS INT64) WHEN CONTAINS(p.birth_date, 'January') THEN 1 WHEN CONTAINS(p.birth_date, 'February') THEN 2 WHEN CONTAINS(p.birth_date, 'March') THEN 3 WHEN CONTAINS(p.birth_date, 'April') THEN 4 WHEN CONTAINS(p.birth_date, 'May') THEN 5 WHEN CONTAINS(p.birth_date, 'June') THEN 6 WHEN CONTAINS(p.birth_date, 'July') THEN 7 WHEN CONTAINS(p.birth_date, 'August') THEN 8 WHEN CONTAINS(p.birth_date, 'September') THEN 9 WHEN CONTAINS(p.birth_date, 'October') THEN 10 WHEN CONTAINS(p.birth_date, 'November') THEN 11 WHEN CONTAINS(p.birth_date, 'December') THEN 12 END) = 10 AND CAST(REGEXP_EXTRACT(p.birth_date, '[0-9]{1,2}', 0) AS INT64) <= 14)))) RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 11
+  }
+ ]
+}

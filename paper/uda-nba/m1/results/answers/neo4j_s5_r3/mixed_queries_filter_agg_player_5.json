@@ -1,0 +1,117 @@
+{
+ "uid": "mixed_queries_filter_agg_player#5",
+ "rows": [
+  {
+   "col1": "Charlotte Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Phoenix Suns",
+   "col2": null
+  },
+  {
+   "col1": "Golden State Warriors",
+   "col2": null
+  },
+  {
+   "col1": "Rochester Royals",
+   "col2": null
+  },
+  {
+   "col1": "LA Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0.0
+  },
+  {
+   "col1": "Oklahoma City Thunder",
+   "col2": null
+  },
+  {
+   "col1": "Houston Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Minnesota Timberwolves",
+   "col2": null
+  },
+  {
+   "col1": "San Antonio Spurs",
+   "col2": null
+  },
+  {
+   "col1": "Portland Trail Blazers",
+   "col2": null
+  },
+  {
+   "col1": "Atlanta Hawks",
+   "col2": null
+  },
+  {
+   "col1": "Rockets",
+   "col2": null
+  },
+  {
+   "col1": "Toronto Raptors",
+   "col2": 0.0
+  },
+  {
+   "col1": "Brooklyn Nets",
+   "col2": null
+  },
+  {
+   "col1": "Washington Wizards",
+   "col2": null
+  },
+  {
+   "col1": "Miami Heat",
+   "col2": null
+  },
+  {
+   "col1": "Boston Celtics",
+   "col2": 1.0
+  },
+  {
+   "col1": "New Orleans Hornets",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Clippers",
+   "col2": null
+  },
+  {
+   "col1": "Philadelphia 76ers",
+   "col2": null
+  },
+  {
+   "col1": "New Orleans Pelicans",
+   "col2": null
+  },
+  {
+   "col1": "Minneapolis Lakers",
+   "col2": null
+  },
+  {
+   "col1": "Syracuse Nationals",
+   "col2": null
+  },
+  {
+   "col1": "Los Angeles Lakers",
+   "col2": null
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team), (p)-[:MentionedIn]->(pd:Document), (t)-[:MentionedIn]->(td:Document) WHERE (t.team_name = 'Boston Celtics' OR CAST(p.nba_championships AS INT64) <= 0 OR CAST(p.fiba_world_cup AS INT64) < 0) WITH DISTINCT p, t RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 26
+  }
+ ]
+}

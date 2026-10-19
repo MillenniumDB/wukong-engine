@@ -1,0 +1,45 @@
+{
+ "uid": "mixed_queries_filter_agg_join#12",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": 1
+  },
+  {
+   "col1": "Israeli-American",
+   "col2": 1
+  },
+  {
+   "col1": "Taiwanese-Canadian",
+   "col2": 4
+  },
+  {
+   "col1": null,
+   "col2": 1
+  },
+  {
+   "col1": "Russian",
+   "col2": 4
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(p.draft_pick AS INT64) <> 41)) RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"45th\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(REGEXP_REPLACE(p.draft_pick, '[^0-9]', '') AS INT64) <> 41)) RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"45h\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((c.city_name = 'Brooklyn' AND CAST(p.nba_championships AS INT64) < 0) OR (t.team_name <> 'Detroit Pistons' AND CAST(REGEXP_EXTRACT(p.draft_pick, '[0-9]+') AS INT64) <> 41)) RETURN o.nationality AS col1, MIN(CAST(p.olympic_gold_medals AS INT64)) AS col2",
+   "error": null,
+   "rows": 5
+  }
+ ]
+}

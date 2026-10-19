@@ -1,68 +1,67 @@
 # M1: structured questions on UDA-Bench NBA (midpoint for E2)
 
 Does a graph built from an extraction schema answer UDA-Bench's structured NBA questions better than RAG systems
-answering the way they are meant to? Run on 2026-10-14 on Juan's graphs (`uda-nba-share`: Wukong E1 run 1 = schema
-s4, LightRAG and GraphRAG full builds); nothing was rebuilt. Design and fairness rules: `overleaf/outline-v2.tex`,
-box "M1".
+answering the way they are meant to? The graphs are those of the paper's NBA experiments: Wukong with the NBA schema
+(`workspace-x6-s5`, three builds), the schema-based extractors built from the same schema (three builds each), and
+the LightRAG and GraphRAG full builds (one each). Design and fairness rules: `overleaf/outline-v2.tex`, box "M1".
 
 ## Results (macro F1 per question, UDA-Bench evaluator, deterministic mode)
 
-| System | Select | Filter | Agg | Join | Mixed | All | Spend |
-|---|---|---|---|---|---|---|---|
-| LLM alone (floor) | 0.13 | 0.27 | 0.33 | 0.11 | 0.31 | **0.25** | $0.21 |
-| LightRAG local | 0.14 | 0.08 | 0.33 | 0.05 | 0.20 | **0.13** | |
-| LightRAG global | 0.10 | 0.16 | 0.39 | 0.02 | 0.16 | **0.16** | |
-| LightRAG hybrid | 0.11 | 0.13 | 0.41 | 0.02 | 0.19 | **0.16** | |
-| LightRAG mix | 0.13 | 0.15 | 0.42 | 0.06 | 0.23 | **0.18** | $2.69 (4 modes) |
-| LightRAG, best mode per type | 0.14 | 0.16 | 0.42 | 0.06 | 0.23 | **0.18** | |
-| GraphRAG local | 0.09 | 0.07 | 0.21 | 0.03 | 0.15 | **0.10** | ~$0.29 |
-| Neo4j-GraphRAG + Cypher agent | 0.05 | 0.13 | 0.57 | 0.02 | 0.17 | **0.16** | $0.21 |
-| LlamaIndex + Cypher agent | 0.04 | 0.06 | 0.36 | 0.01 | 0.04 | **0.08** | $0.21 |
-| OntoGPT + Cypher agent | 0.64 | 0.29 | 0.49 | 0.19 | 0.32 | **0.33** | $0.17 |
-| Wukong + Cypher agent | 0.49 | 0.42 | 0.90 | 0.28 | 0.36 | **0.44** | $0.14 |
+| System | Select | Filter | Agg | Join | Mixed | All | Runs | Spend per run |
+|---|---|---|---|---|---|---|---|---|
+| LLM alone (floor) | 0.13 | 0.27 | 0.33 | 0.10 | 0.30 | **0.25** | 1 | $0.21 |
+| LightRAG local | 0.14 | 0.08 | 0.33 | 0.05 | 0.20 | **0.13** | 1 | |
+| LightRAG global | 0.10 | 0.15 | 0.39 | 0.02 | 0.16 | **0.16** | 1 | |
+| LightRAG hybrid | 0.11 | 0.13 | 0.41 | 0.01 | 0.19 | **0.15** | 1 | |
+| LightRAG mix | 0.13 | 0.14 | 0.42 | 0.06 | 0.23 | **0.18** | 1 | $2.69 (4 modes) |
+| LightRAG, best mode per type | 0.14 | 0.15 | 0.42 | 0.06 | 0.23 | **0.18** | 1 | |
+| GraphRAG local | 0.09 | 0.07 | 0.21 | 0.03 | 0.15 | **0.10** | 1 | ~$0.29 |
+| Neo4j-GraphRAG + Cypher agent | 0.06 | 0.12 | 0.40 | 0.02 | 0.14 | **0.13** ±0.02 | 3 | $0.21 |
+| LlamaIndex + Cypher agent | 0.06 | 0.07 | 0.41 | 0.02 | 0.08 | **0.10** ±0.01 | 3 | $0.21 |
+| OntoGPT + Cypher agent | 0.65 | 0.33 | 0.37 | 0.21 | 0.32 | **0.34** ±0.00 | 3 | $0.17 |
+| Wukong + Cypher agent | 0.51 | 0.42 | 0.80 | 0.29 | 0.41 | **0.44** ±0.01 | 3 | $0.12 |
 
+Systems with three runs: the mean over the runs (one build each), with half the range of the overall score as ±.
 Questions: 101 of the 132 (Select 8, Filter 49, Agg 10, Join 13, Mixed 21). Excluded: 10 whose gold SQL fails on the
 benchmark's own gold tables (unscorable), 21 whose gold answer is empty (F1 undefined). The oracle (`oracle.py`:
-the gold answer pushed through the same conversion) scores 1.000 on every included question.
+the gold answer pushed through the same conversion) scores 1.000 on every included question. Every system is scored
+against the same gold copy, Bench-U (BIT-DataLab/Bench-U) at `f2da981`.
 
-Paired, per question (bootstrap 95% CI, 5,000 resamples): Wukong − LightRAG mix +0.26 [+0.21, +0.32], wins 86 /
-ties 8 / losses 7; Wukong − GraphRAG local +0.35 [+0.29, +0.41], 89/7/5; Wukong − LLM alone +0.19 [+0.12, +0.25],
-76/8/17.
+Paired, per question (`paired.py --base wukong_s5`; for three-run systems each question's score is the mean over
+the runs; bootstrap 95% CI, 5,000 resamples), Wukong minus: OntoGPT +0.10 [+0.04, +0.17], wins 65 / ties 8 /
+losses 28; LLM alone +0.20 [+0.14, +0.26], 74/8/19; LightRAG mix +0.27 [+0.21, +0.32], 88/5/8; Neo4j-GraphRAG +0.31
+[+0.27, +0.35], 93/5/3; GraphRAG local +0.35 [+0.29, +0.41], 93/3/5; LlamaIndex +0.35 [+0.30, +0.40], 94/3/4
+(all in `results/paired.txt`).
 
 Why: the RAG systems retrieve a few chunks, so they return a median of 2–7% of the rows a set question needs
-(GraphRAG local answers 32 of 101 with no rows); Wukong returns a full-size answer on 83% of questions. The LLM alone
-answers from memory (NBA is public knowledge), so it beats both RAG systems; on a private corpus it would not. Its
-17 wins over Wukong are mostly team questions about "the owner": the s4 schema's `Owns` has no current/former flag
-(unlike `PlaysFor.tenure`), so the agent joins every past owner (127 rows for 25). Wukong's two Mixed answers with
-1,000+ rows come from the agent dropping the article-subject restriction.
+(GraphRAG local answers 32 of 101 with no rows); Wukong returns at least half the gold rows on 83% of questions
+(run 1). The LLM alone answers from memory (NBA is public knowledge), so it beats both RAG systems; on a private
+corpus it would not. About a third of its 15–20 wins over Wukong (per run) are questions about team owners: the
+schema's `Owns` has no current/former flag (unlike the player's `current_team`), so the agent also returns past
+owners.
 
-Calls and tokens (all of M1, pilots included): Wukong 187 calls, 0.19M input; LightRAG 804 calls, 12.1M input (4
-modes); GraphRAG 9,015 calls, 13.5M input, of which 8,790 calls and $3.60 were the global-search pilot (3 questions).
-Total M1 spend $6.95 (cap $15).
-
-## Schema-based extractors + Cypher (added 2026-10-15)
+## Schema-based extractors + Cypher
 
 The graphs that Neo4j's `neo4j-graphrag`, LlamaIndex's `SchemaLLMPathExtractor` and OntoGPT's SPIRES built from the
-same extraction schema (`../baselines/*_build.py`; Wukong's s4 = `workspace-v1`), queried by Wukong's agent
-(`sys_typed.py`): same prompt, same schema text, same 4 attempts, loaded into Kuzu the same way (one table per type,
-every value a string, missing or empty values null). Only the link from entities to articles differs, as each tool
-records it: OntoGPT's root object per article is its subject (`ExtractedFrom`, as Wukong's); neo4j-graphrag and
-LlamaIndex record only the chunk an entity came from (`MentionedIn`, not necessarily the subject; OntoGPT gets it too).
-Properties a tool filled outside the schema are kept and listed. Edges whose endpoint types do not match the
-relationship type are not loaded (LlamaIndex 62, OntoGPT 9).
+same extraction schema as Wukong (`../baselines/*_build.py --schema ../workspace-x6-s5/knowledge_model.json`, three
+builds each, `runs/<tool>-s5-r{1,2,3}`), queried by Wukong's agent (`sys_typed.py`): same prompt, same schema text,
+same 4 attempts, loaded into Kuzu the same way (one table per type, every value a string, missing or empty values
+null). Only the link from entities to articles differs, as each tool records it: OntoGPT's root object per article is
+its subject (`ExtractedFrom`, as Wukong's); neo4j-graphrag and LlamaIndex record only the chunk an entity came from
+(`MentionedIn`, not necessarily the subject; OntoGPT gets it too). Properties a tool filled outside the schema are
+kept and listed. Edges whose endpoint types do not match the relationship type are not loaded (LlamaIndex 40–62,
+OntoGPT 5–9 per build).
 
 What breaks them: values not in a queryable form (dates as "February 2, 1994", "808988 (2023)", "367.9square
-miles", "Not drafted"), so the agent's casts fail (no rows on 23-27 questions, Wukong 2); no article subject in
-neo4j-graphrag and LlamaIndex, so set questions return every mentioned player (Neo4j: 2,184 Player nodes, one join
-answer of 356,535 rows); and duplicate nodes. OntoGPT, with subjects and one object per article, is closest to Wukong
-and better on Select (0.64 vs 0.49).
+miles", "Not drafted"), so the agent's casts fail: no rows on 18–31 questions per run, against 4–5 for Wukong; no
+article subject in neo4j-graphrag and LlamaIndex, so set questions return every mentioned player; and duplicate
+nodes. OntoGPT, with subjects and one object per article, is closest to Wukong and better on Select (0.65 vs 0.51).
 
-Run on Juan's laptop (env `../envs/m1-harness`: kuzu 0.11.3, duckdb 1.3.2), scored there against the current
-Bench-U (BIT-DataLab/Bench-U `f2da981`). Re-scoring the systems above on that machine changes 0-6 questions per
-system (`filter_queries_city#2,#5,#6`, `join_queries#5,#13`, `mixed_queries_agg_join#2`; Wukong 0.434 instead of
-0.44), the same questions for every system: the city gold differs from the copy used on the iMac. The earlier rows are
-left as scored there. The three agents were interrupted once by a sleep and resumed; the interrupted questions'
-calls stay in their usage logs.
+Run on Juan's laptop (env `../envs/m1-harness`: kuzu 0.11.3, duckdb 1.3.2, Python 3.12). Every agent is told the
+same date (`--today 2026-10-14`). The first neo4j-graphrag build lost four articles' calls to a sleep of the machine;
+those articles were re-extracted before its agent ran (its other failed chunk is a malformed model reply, kept as the
+tool's behaviour). Two agents were restarted after a sleep (Wukong run 2, neo4j-graphrag run 2) and resumed; the
+interrupted questions' calls stay in their usage logs.
 
 ## Fairness
 
@@ -76,21 +75,25 @@ calls stay in their usage logs.
   picked with the gold answers (an upper bound for LightRAG). No Cypher is run against the RAG graphs.
 - GraphRAG global search is not reported: with dynamic community selection it made 8,790 calls ($3.60) for 3
   questions, about $120 for M1; at its static default it maps ~4,400 reports per question (~$75).
-- Wukong: E1's s4 graph (written before any result; s5 was revised after seeing s4), loaded into Kùzu with every
-  value a string; an agent writes Cypher from the graph schema, up to 4 attempts. Wukong's schema was written for this
-  domain; that is how an extraction schema is used, and the paper says so.
+- Wukong: the NBA schema's three builds (`../runs/x6-s5-r{1,2,3}`), loaded into Kùzu with every value a string; an
+  agent writes Cypher from the graph schema, up to 4 attempts (`sys_wukong.py --run ... --name wukong_s5_rN`).
+  Wukong's schema was written for this domain; that is how an extraction schema is used, and the paper says so. The
+  schema-based extractors receive the same schema, translated into their own formats.
 - Scoring: rows → prediction CSV → UDA-Bench's `run_eval` (`--llm-provider none`), the same code for all. Entity
   names are mapped to document ids with one shared table (`common.NameIndex`: gold name and article title; exact,
   word-subset, or formal first name such as Timothy/Tim); an unmatched name is a wrong row. Nicknames that are not
-  prefixes (Earvin/Magic Johnson) stay unmatched for every system. Parse failures count as empty answers (Wukong 2,
-  others 0).
+  prefixes (Earvin/Magic Johnson) stay unmatched for every system. Answers with no rows (every query
+  failed, or a reply that cannot be parsed) count as empty answers.
 
 ## Files
 
-- `common.py` (shared rules), `translate.py`, `sys_floor.py`, `sys_wukong.py`, `sys_typed.py`, `sys_lightrag.py`, `sys_graphrag.py`,
-  `score.py`, `table.py`, `oracle.py`, `run_m1.sh` (the run, with a budget watchdog).
+- `common.py` (shared rules), `translate.py`, `sys_floor.py`, `sys_wukong.py`, `sys_typed.py`, `sys_lightrag.py`,
+  `sys_graphrag.py`, `score.py`, `table.py`, `paired.py`, `oracle.py`, `run_m1.sh` (the first run, with a budget
+  watchdog).
 - `results/`: `questions.{json,md}`, `queries.json` (uids, inclusion, oracle F1), `answers/<system>/`,
-  `scores/<system>.json`, `usage/`, `m1_table.{md,tex}`, `wukong_system_prompt.txt`, `excluded/` (GraphRAG global
-  pilot). The evaluator's per-question folders are archived in `WWW-Wukong/m1-input/m1-evaluator-dirs.tar.gz`.
+  `scores/<system>.json`, `usage/`, `m1_table.{md,tex}`, `paired.txt`, `<system>_system_prompt.txt`, `excluded/`
+  (GraphRAG global pilot). Three-run systems are `<name>_s5_r{1,2,3}`. Answers larger than 5 MB (14
+  neo4j-graphrag answers, up to millions of rows from a join over every mentioned player) keep their trace, their row
+  count (`rows_total`) and their first 1,000 rows; their scores were computed on all the rows. The evaluator's per-question folders are archived in `WWW-Wukong/m1-input/m1-evaluator-dirs.tar.gz`.
 - Environments (iMac, `~/wukong-runs/m1/envs/`): `harness` (Python 3.12, kuzu 0.11.3), `lightrag` and `graphrag` with
   the exact pins of the share's `versions.txt`.

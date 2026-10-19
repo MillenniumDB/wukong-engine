@@ -1,0 +1,85 @@
+{
+ "uid": "filter_queries_player#24",
+ "rows": [
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "Los Angeles Lakers",
+   "name_player": "Anthony Marshon Davis Jr."
+  },
+  {
+   "col1": "American",
+   "col2": "Undrafted",
+   "col3": "Philadelphia Warriors",
+   "name_player": "James Patrick Walsh"
+  },
+  {
+   "col1": "American",
+   "col2": "5",
+   "col3": "Miami Heat",
+   "name_player": "Steven Delano Smith"
+  },
+  {
+   "col1": "American",
+   "col2": "50",
+   "col3": "Golden State Warriors",
+   "name_player": "Steve Kerr"
+  },
+  {
+   "col1": "American",
+   "col2": "1",
+   "col3": "Dallas Mavericks",
+   "name_player": "Kyrie Andrew Irving"
+  },
+  {
+   "col1": "American",
+   "col2": "13",
+   "col3": "Chicago Bulls",
+   "name_player": "Zachary Thomas LaVine"
+  },
+  {
+   "col1": "American",
+   "col2": "24",
+   "col3": "Philadelphia 76ers",
+   "name_player": "Kyle Terrell Lowry"
+  },
+  {
+   "col1": "American",
+   "col2": "13",
+   "col3": "Phoenix Suns",
+   "name_player": "Devin Armani Booker"
+  },
+  {
+   "col1": "American",
+   "col2": "35",
+   "col3": "Golden State Warriors",
+   "name_player": "Draymond Jamal Green"
+  },
+  {
+   "col1": "American",
+   "col2": "4",
+   "col3": "San Antonio Spurs",
+   "name_player": "Christopher Emmanuel Paul"
+  },
+  {
+   "col1": "American",
+   "col2": "7",
+   "col3": "San Antonio Spurs",
+   "name_player": "Harrison Bryce Jordan Barnes"
+  },
+  {
+   "col1": "American",
+   "col2": "14",
+   "col3": "Miami Heat",
+   "name_player": "Edrice Femi Bam Adebayo"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) WHERE p.nationality <> 'German' AND CAST(p.olympic_gold_medals AS INT64) > 0 AND CAST(p.olympic_gold_medals AS INT64) <> 0 AND CAST(p.mvp_awards AS INT64) = 0 RETURN p.nationality AS col1, p.draft_pick AS col2, p.current_team AS col3, p.name AS name_player",
+   "error": null,
+   "rows": 12
+  }
+ ]
+}

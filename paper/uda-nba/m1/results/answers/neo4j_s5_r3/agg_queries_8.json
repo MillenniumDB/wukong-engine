@@ -1,0 +1,30 @@
+{
+ "uid": "agg_queries#8",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(:Team), (o)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 221)\n\"MATCH (o:Owner)-[:Owns]->(:Team), (o)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, date_diff('year', strptime(o.birth_date, '%Y/%m/%d'), DATE '2026-10-14') AS age RETURN nationality AS col1, MIN(age) AS col2\"\n                                                 ",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(:Team), (o)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, 2026 - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"January 17, 1962\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(:Team), (o)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, 2026 - CAST(date_part('year', strptime(o.birth_date, '%B %d, %Y')) AS INT64) - CASE WHEN CAST(date_part('month', strptime(o.birth_date, '%B %d, %Y')) AS INT64) > 10 OR (CAST(date_part('month', strptime(o.birth_date, '%B %d, %Y')) AS INT64) = 10 AND CAST(date_part('day', strptime(o.birth_date, '%B %d, %Y')) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(:Team), (o)-[:MentionedIn]->(:Document) WHERE o.birth_date IS NOT NULL AND o.nationality IS NOT NULL WITH o.nationality AS nationality, 2026 - CAST(split_part(o.birth_date, ', ', 2) AS INT64) - CASE WHEN CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END > 10 OR (CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 ELSE 0 END = 10 AND CAST(split_part(split_part(o.birth_date, ', ', 1), ' ', 2) AS INT64) > 14) THEN 1 ELSE 0 END AS age RETURN nationality AS col1, MIN(age) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

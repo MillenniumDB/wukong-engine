@@ -2,8 +2,9 @@
 
     envs/graphrag/bin/python nba_quality.py      # -> runs/quality/{runs.csv,summary.csv}, report/nba_quality_table.tex
 
-Systems: Wukong with the revised full schema (workspace-x6-s5, three runs), the schema-based extractors
-(neo4j-graphrag, LlamaIndex, OntoGPT) and the schema-free graphs (LightRAG, GraphRAG, KGGen).
+Systems: Wukong with the NBA schema (workspace-x6-s5, three runs), the schema-based extractors (neo4j-graphrag,
+LlamaIndex, OntoGPT), built three times from the same schema, and the schema-free graphs (LightRAG, GraphRAG,
+KGGen; one run each).
 
 Content against gold (the 216 subject entities; matching as in e1_analysis.py):
   entities      found, and split (matched by more than one node). As P/R/F1 of resolution: recall = found /
@@ -19,9 +20,9 @@ Content against gold (the 216 subject entities; matching as in e1_analysis.py):
                 found / 148, precision = found / edges matched to them (summed over gold relations).
   single-valued the benchmark defines a player's team as the current one and a team's location as the latest
                 city, so these 119 gold relations have one value: precision over the values a typed graph marks
-                (current team: Player.current_team for Wukong s5, PlaysFor edges whose tenure says current for
-                the others, read leniently since neo4j-graphrag and LlamaIndex had no slot for the closed set;
-                city: every LocatedIn edge of the team), recall over the 119 facts.
+                (current team: the Player.current_team field of schema s5, in every typed graph; city: every
+                LocatedIn edge of the team), recall over the 119 facts. is_current() reads PlaysFor tenure,
+                for graphs without the field.
 
 Schema conformance (typed graphs, against the schema they were built from, with Player.current_team for s5):
   edges         the endpoint types are those the relationship type declares
@@ -56,7 +57,9 @@ DOCS = HERE / 'data' / 'docs'
 OUT = A.RUNS / 'quality'
 KM = json.loads((HERE / 'workspace-x6-s5' / 'knowledge_model.json').read_text())
 WUKONG = ['x6-s5-r1', 'x6-s5-r2', 'x6-s5-r3']
-TYPED = {'Neo4j-GraphRAG': 'neo4j-graphrag-full', 'LlamaIndex': 'llamaindex-full', 'OntoGPT': 'ontogpt-full'}
+# the schema-based extractors, built three times from the same schema as Wukong (workspace-x6-s5)
+TYPED = {name: [f'{tool}-s5-r{r}' for r in (1, 2, 3)]
+         for name, tool in (('Neo4j-GraphRAG', 'neo4j-graphrag'), ('LlamaIndex', 'llamaindex'), ('OntoGPT', 'ontogpt'))}
 UNTYPED = ['LightRAG', 'GraphRAG', 'KGGen']
 COUNTS = {'nba_championships', 'mvp_awards', 'olympic_gold_medals', 'fiba_world_cup', 'championships'}
 POS = {'Frontcourt': r'forward|center|centre', 'Backcourt': r'guard'}
@@ -256,7 +259,8 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
     as several nodes). Single-valued relations (the benchmark defines a player's team as the current one and a
     team's location as the latest city): precision over the values a typed graph marks (the current team: the
     Player.current_team field for Wukong s5, PlaysFor edges marked current for the others; the city: every
-    LocatedIn edge of the team), recall over the 119 gold facts."""
+    LocatedIn edge of the team), recall over the 119 gold facts. Every typed graph is built from schema s5, which
+    states the current team as the Player.current_team field, so the field is what is scored."""
     m = A.Matcher(matcher_name, nodes)
     matched = {(e['kind'], e['id']): set().union(*m.match(e)) for e in gold}
     names = {(e['kind'], n): e for e in gold for n in e['names']}
@@ -348,13 +352,13 @@ def main() -> None:
                      **relations('Wukong', nodes, edges, gold, typed=True, field_team=True),
                      **conformance(nodes, [(e['src'], e['dst'], e['label'], e['props']) for e in edges], types),
                      **hallucination(nodes, with_own_articles('Wukong', nodes, ndocs, gold), typed=True)})
-    for name, run in TYPED.items():
+    for name, run in ((n, r) for n, rs in TYPED.items() for r in rs):
         raw_n = [json.loads(line) for line in (A.RUNS / run / 'graph' / 'nodes.jsonl').open()]
         raw_e = [json.loads(line) for line in (A.RUNS / run / 'graph' / 'edges.jsonl').open()]
         nodes, edges, _ = A.load_common(run)
         types = {n['id']: n['type'] for n in raw_n}
         rows.append({'system': name, 'run': run, **gold_typed(run, gold, A.load_common, A.common_usage),
-                     **relations('Wukong', nodes, edges, gold, typed=True, field_team=False),
+                     **relations('Wukong', nodes, edges, gold, typed=True, field_team=True),
                      **conformance(nodes, [(e['src'], e['dst'], e['label'], e.get('props', {})) for e in raw_e], types),
                      **hallucination(nodes, with_own_articles('Wukong', nodes, common_docs(name, run, raw_n), gold),
                                      typed=True)})

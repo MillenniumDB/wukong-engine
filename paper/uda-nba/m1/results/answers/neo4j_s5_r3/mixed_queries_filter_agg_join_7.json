@@ -1,0 +1,27 @@
+{
+ "uid": "mixed_queries_filter_agg_join#7",
+ "rows": [
+  {
+   "col1": "Milwaukee Bucks",
+   "col2": null
+  },
+  {
+   "col1": "Indiana Pacers",
+   "col2": 0.0
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team) WHERE p.olympic_gold_medals = '0' AND p.position <> 'Backcourt' AND t.founded_year <> '1989' RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team) WHERE p.current_team = t.team_name AND p.olympic_gold_medals = '0' AND p.position <> 'Backcourt' AND t.founded_year <> '1989' RETURN t.team_name AS col1, AVG(CAST(p.fiba_world_cup AS DOUBLE)) AS col2",
+   "error": null,
+   "rows": 2
+  }
+ ]
+}

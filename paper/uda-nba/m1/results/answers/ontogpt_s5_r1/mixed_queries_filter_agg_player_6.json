@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_player#6",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:ExtractedFrom]->(:Document)\nMATCH (t)-[:ExtractedFrom]->(:Document)\nWITH t, p, CAST(p.fiba_world_cup AS INT64) AS fiba, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age, CAST(p.mvp_awards AS INT64) AS mvps\nWHERE (fiba < 0 AND mvps <= 0) OR (age < 78 AND fiba >= 0)\nRETURN t.team_name AS col1, MIN(fiba) AS col2",
+   "error": "Parser exception: Invalid input <date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 4, offset: 122)\n\"WITH t, p, CAST(p.fiba_world_cup AS INT64) AS fiba, date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE '2026-10-14') AS age, CAST(p.mvp_awards AS INT64) AS mvps\"\n                                                                                                                           ^^^^^^^^^^^^",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:ExtractedFrom]->(:Document)\nMATCH (t)-[:ExtractedFrom]->(:Document)\nWITH t, p, CAST(p.fiba_world_cup AS INT64) AS fiba, CAST(p.mvp_awards AS INT64) AS mvps, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth_date\nWHERE (fiba < 0 AND mvps <= 0) OR (birth_date > DATE('1948-10-14') AND fiba >= 0)\nRETURN t.team_name AS col1, MIN(fiba) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:ExtractedFrom]->(:Document)\nMATCH (t)-[:ExtractedFrom]->(:Document)\nWITH t, p, CAST(p.fiba_world_cup AS INT64) AS fiba, CAST(p.mvp_awards AS INT64) AS mvps, CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) AS birth_year\nWHERE (fiba < 0 AND mvps <= 0) OR (birth_year > 1948 AND fiba >= 0)\nRETURN t.team_name AS col1, MIN(fiba) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t:Team)\nMATCH (p)-[:ExtractedFrom]->(:Document)\nMATCH (t)-[:ExtractedFrom]->(:Document)\nWITH t,\n     CASE WHEN p.fiba_world_cup IS NULL OR p.fiba_world_cup = '' THEN NULL ELSE CAST(p.fiba_world_cup AS INT64) END AS fiba,\n     CASE WHEN p.mvp_awards IS NULL OR p.mvp_awards = '' THEN NULL ELSE CAST(p.mvp_awards AS INT64) END AS mvps,\n     CASE WHEN p.birth_date IS NULL OR p.birth_date = '' THEN NULL ELSE CAST(SUBSTRING(p.birth_date, 0, 4) AS INT64) END AS birth_year\nWHERE (fiba < 0 AND mvps <= 0) OR (birth_year > 1948 AND fiba >= 0)\nRETURN t.team_name AS col1, MIN(fiba) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"\" to INT64.",
+   "rows": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#28",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(d:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor]->(t:Team)\nWITH p, CASE WHEN p.death_date IS NULL THEN date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), strptime('2026/10/14', '%Y/%m/%d')) ELSE date_diff('year', strptime(p.birth_date, '%Y/%m/%d'), strptime(p.death_date, '%Y/%m/%d')) END AS age, t\nWHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t.team_name = 'Capitanes de Arecibo' AND pf.tenure = 'latest') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN DISTINCT p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor]->(t:Team)\nWITH p, pf, t, strptime(p.birth_date, '%Y/%m/%d') AS birth, CASE WHEN p.death_date IS NULL THEN strptime('2026/10/14', '%Y/%m/%d') ELSE strptime(p.death_date, '%Y/%m/%d') END AS end_date\nWITH p, pf, t, date_part('year', end_date) - date_part('year', birth) - CASE WHEN date_part('month', end_date) < date_part('month', birth) OR (date_part('month', end_date) = date_part('month', birth) AND date_part('day', end_date) < date_part('day', birth)) THEN 1 ELSE 0 END AS age\nWHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t.team_name = 'Capitanes de Arecibo' AND pf.tenure = 'latest') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN DISTINCT p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor]->(t:Team)\nWITH p, pf, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS birth, CASE WHEN p.death_date IS NULL THEN CAST('2026-10-14' AS DATE) ELSE CAST(REPLACE(p.death_date, '/', '-') AS DATE) END AS end_date\nWITH p, pf, t, date_part('year', end_date) - date_part('year', birth) - CASE WHEN date_part('month', end_date) < date_part('month', birth) OR (date_part('month', end_date) = date_part('month', birth) AND date_part('day', end_date) < date_part('day', birth)) THEN 1 ELSE 0 END AS age\nWHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t.team_name = 'Capitanes de Arecibo' AND pf.tenure = 'latest') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN DISTINCT p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document)\nOPTIONAL MATCH (p)-[pf:PlaysFor]->(t:Team)\nWITH p, pf, t,\n  CAST(split_part(p.birth_date, '/', 1) AS INT64) AS by,\n  CAST(split_part(p.birth_date, '/', 2) AS INT64) AS bm,\n  CAST(split_part(p.birth_date, '/', 3) AS INT64) AS bd,\n  CASE WHEN p.death_date IS NULL THEN 2026 ELSE CAST(split_part(p.death_date, '/', 1) AS INT64) END AS ey,\n  CASE WHEN p.death_date IS NULL THEN 10 ELSE CAST(split_part(p.death_date, '/', 2) AS INT64) END AS em,\n  CASE WHEN p.death_date IS NULL THEN 14 ELSE CAST(split_part(p.death_date, '/', 3) AS INT64) END AS ed\nWITH p, pf, t, ey - by - CASE WHEN em < bm OR (em = bm AND ed < bd) THEN 1 ELSE 0 END AS age\nWHERE age <= 78 OR p.current_team = 'Capitanes de Arecibo' OR (t.team_name = 'Capitanes de Arecibo' AND pf.tenure = 'latest') OR CAST(p.mvp_awards AS INT64) = 0 OR CAST(p.olympic_gold_medals AS INT64) > 1\nRETURN DISTINCT p.draft_year AS col1, age AS col2, p.nationality AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"February 2, 1994\" to INT64.",
+   "rows": null
+  }
+ ]
+}

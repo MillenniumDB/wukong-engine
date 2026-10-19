@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#3",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND p.college = 'Michigan State University'\n  AND date_diff('year', CAST(REPLACE(p.birth_date, '/', '-') AS DATE), DATE('2026-10-14')) <= 62\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function DATE_DIFF does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND p.college = 'Michigan State University'\n  AND CAST(REPLACE(p.birth_date, '/', '-') AS DATE) >= CAST('1963-10-15' AS DATE)\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND p.college = 'Michigan State University'\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND (\n    CAST(split_part(p.birth_date, '/', 1) AS INT64) > 1964\n    OR CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1964\n    OR (\n      CAST(split_part(p.birth_date, '/', 1) AS INT64) = 1963\n      AND (\n        CAST(split_part(p.birth_date, '/', 2) AS INT64) > 10\n        OR (\n          CAST(split_part(p.birth_date, '/', 2) AS INT64) = 10\n          AND CAST(split_part(p.birth_date, '/', 3) AS INT64) >= 15\n        )\n      )\n    )\n  )\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"June 10, 1959\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[r:PlaysFor]->(t:Team)\nWHERE r.tenure = 'latest'\n  AND p.college = 'Michigan State University'\n  AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) }\n  AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) }\n  AND CASE\n    WHEN p.birth_date CONTAINS '/' THEN CAST(STRPTIME(p.birth_date, '%Y/%m/%d') AS DATE)\n    ELSE CAST(STRPTIME(p.birth_date, '%B %d, %Y') AS DATE)\n  END >= CAST('1963-10-15' AS DATE)\nRETURN t.team_name AS col1, AVG(CAST(p.mvp_awards AS DOUBLE)) AS col2",
+   "error": "Catalog exception: function STRPTIME does not exist.",
+   "rows": null
+  }
+ ]
+}

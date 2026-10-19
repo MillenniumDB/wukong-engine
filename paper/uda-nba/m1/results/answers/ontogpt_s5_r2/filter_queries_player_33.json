@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_player#33",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS bd WITH p, t, (date_part('year', DATE '2026-10-14') - date_part('year', bd) - CASE WHEN date_part('month', bd) > date_part('month', DATE '2026-10-14') OR (date_part('month', bd) = date_part('month', DATE '2026-10-14') AND date_part('day', bd) > date_part('day', DATE '2026-10-14')) THEN 1 ELSE 0 END) AS age WHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University') RETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <(date_part('year', DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 195)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS bd WITH p, t, (date_part('year', DATE '2026-10-14') - date_part('year', bd) - CASE WHEN date_part('month', bd) > date_part('month', DATE '2026-10-14') OR (date_part('month', bd) = date_part('month', DATE '2026-10-14",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS bd WITH p, t, DATE_DIFF('year', bd, DATE '2026-10-14') AS age WHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University') RETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Parser exception: Invalid input <DATE_DIFF('year', bd, DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 198)\n\"MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(REPLACE(p.birth_date, '/', '-') AS DATE) AS bd WITH p, t, DATE_DIFF('year', bd, DATE '2026-10-14') AS age WHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University') RETURN DISTINC",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(SPLIT(p.birth_date, '/')[0] AS INT64) AS by, CAST(SPLIT(p.birth_date, '/')[1] AS INT64) AS bm, CAST(SPLIT(p.birth_date, '/')[2] AS INT64) AS bd WITH p, t, 2026 - by - CASE WHEN bm > 10 OR (bm = 10 AND bd > 14) THEN 1 ELSE 0 END AS age WHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University') RETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Catalog exception: function SPLIT does not exist.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:ExtractedFrom]->(:Document) OPTIONAL MATCH (p)-[:PlaysFor]->(t:Team) WITH DISTINCT p, t, CAST(SUBSTRING(p.birth_date, 1, 4) AS INT64) AS birth_year, CAST(SUBSTRING(p.birth_date, 6, 1 + CASE WHEN SUBSTRING(p.birth_date, 7, 1) <> '/' THEN 1 ELSE 0 END) AS INT64) AS birth_month, CAST(SUBSTRING(p.birth_date, 8 + CASE WHEN SUBSTRING(p.birth_date, 7, 1) <> '/' THEN 1 ELSE 0 END, 2) AS INT64) AS birth_day WITH p, t, 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS age WHERE (age < 42 AND CAST(p.olympic_gold_medals AS INT64) <= 1) OR (t.team_name = 'Detroit Pistons' AND p.college = 'Temple University') RETURN DISTINCT p.college AS col1, age AS col2, p.position AS col3, p.name AS name_player",
+   "error": "Conversion exception: Cast failed. Could not convert \"Febr\" to INT64.",
+   "rows": null
+  }
+ ]
+}

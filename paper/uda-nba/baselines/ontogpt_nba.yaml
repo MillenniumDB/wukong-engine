@@ -92,6 +92,15 @@ classes:
         annotations:
           prompt: A count, as digits. Use 0 if none.
         pattern: ^[0-9]{1,2}$
+      current_team:
+        range: string
+        description: The player's current NBA team or, if the player is no longer active in the NBA, the
+          last NBA team the player played for.
+        annotations:
+          prompt: 'Full name of the team: location and nickname, never the nickname alone.'
+        examples:
+        - value: Vancouver Grizzlies
+        - value: Kansas City Kings
       plays_for:
         multivalued: true
         description: semicolon-separated list of teams. A player playing, or having played, for an NBA
@@ -115,8 +124,8 @@ classes:
         range: string
         description: 'Full name of the team: location and nickname.'
         annotations:
-          prompt: Always use the full name, even if the text uses only the nickname (write 'Los Angeles
-            Lakers', not 'Lakers').
+          prompt: Always use the full name, even if the text uses only the nickname (write 'Vancouver
+            Grizzlies', not 'Grizzlies').
         examples:
         - value: Vancouver Grizzlies
         - value: Kansas City Kings

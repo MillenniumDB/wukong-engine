@@ -1,0 +1,4175 @@
+{
+ "uid": "join_queries#15",
+ "rows": [
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Anthony Avent",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Zach Collins",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Ken Green",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Max Berning Fiedler",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "Bahamian",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "Bahamian",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Lamar Brandon Stevens",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Mark Price",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": null,
+   "name_player": "Jalen Marquis Brunson",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Shawn Christopher Respert",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Rick Hughes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": null,
+   "name_player": "Antonius Cleveland",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Cade Parker Cunningham",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Williams",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": null,
+   "name_player": "Anthony Avent",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Edrice Femi Adebayo",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Jimmy Butler III",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Miles Julian Simon",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "Greek",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jimmy Butler III",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Brandon Goodwin",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Derrick Joseph Chievous",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Mychel Thompson",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Erick Strickland",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Ausar XLNC Thompson",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Harry Junior Gallatin",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "Serbian",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "Serbian",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "Serbian",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "Serbian",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Edrice Femi Adebayo",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Jaime Jaquez Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Tim Duncan",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jordan Lee Crawford",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Aaron Williams",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Dan Gilbert",
+   "col2": "1970",
+   "col3": "Cleveland",
+   "col4": 64,
+   "col5": null,
+   "name_player": "Carrick Felix",
+   "name_team": "Cleveland Cavaliers",
+   "name_manager": "Dan Gilbert"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Harrison Barnes",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jaden Edward Dhananjay Ivey",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Isiah Lord Thomas III",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "LeBron Raymone James Sr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Tyler Christopher Herro",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Caleb Martin",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "John Harding Lucas II",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "Bahamian",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "Bahamian",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Brandon Goodwin",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Joel Hans Embiid",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": "Greek",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "Greek",
+   "name_player": "Konstantinos Papanikolaou",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kyrie Andrew Irving",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Erazem Lorbek",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Jimmy Butler III",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Bill Hewitt",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Lavoy Allen",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Devontae Calvin Cacok",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Walter Berry",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Al Horford",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Al Horford",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "American",
+   "name_player": "Paul Clifton Anthony George",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": null,
+   "name_player": "Darnell Hillman",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": null,
+   "name_player": "Lavoy Allen",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Michael Jeffrey Jordan",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Al Horford",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Michael Carter-Williams",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Gerald Madkins Jr.",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Mark Price",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "D'Angelo Russell",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Kevin Wayne Durant",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Harrison Barnes",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American-Chinese",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American-Chinese",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American-Chinese",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American-Chinese",
+   "name_player": "Kyle Forman Anderson",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Tim Duncan",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Dennis Schr\u00f6der",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": null,
+   "name_player": "Erazem Lorbek",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "American",
+   "name_player": "Erick Strickland",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": "American",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Gregory Clinton Foster",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Darnell Hillman",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jrue Randall Holiday",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Drew Edward Gordon",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Jarrett Matthew Jack",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Victor Wembanyama",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "William Bedford",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "Bahamian",
+   "name_player": "Chavano Rainer Buddy Hield",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "Dutch",
+   "name_player": "Rik Smits",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Zachary Thomas LaVine",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": "American",
+   "name_player": "Aaron Jamal Crawford",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Kelvin Trent Tucker",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": null,
+   "name_player": "Jahlil Obika Okafor",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Thomas Kimball",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Thomas Kimball",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "DaMon William Monti Davis",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Mark Cuban",
+   "col2": "1980",
+   "col3": "Dallas",
+   "col4": 68,
+   "col5": "American",
+   "name_player": "Jay Fletcher Vincent",
+   "name_team": "Dallas Mavericks",
+   "name_manager": "Mark Cuban"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Bill Hewitt",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Tony Lorenzo Delk",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Fort Wayne",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Detroit",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Pontiac",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Tom Gores",
+   "col2": "1937",
+   "col3": "Auburn Hills",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Detroit Pistons",
+   "name_manager": "Tom Gores"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Nathaniel Thomas Huffman",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Nathaniel Thomas Huffman",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Nathaniel Thomas Huffman",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "American",
+   "name_player": "Nathaniel Thomas Huffman",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Buffalo",
+   "col4": 70,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "San Diego",
+   "col4": 70,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Los Angeles",
+   "col4": 70,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Steve Ballmer",
+   "col2": "1970",
+   "col3": "Inglewood",
+   "col4": 70,
+   "col5": "French",
+   "name_player": "David Michineau",
+   "name_team": "Los Angeles Clippers",
+   "name_manager": "Steve Ballmer"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Shaquille Rashaun O'Neal",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Kyle Terrell Lowry",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Duncan McBryde Robinson",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Kevin Wesley Love",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Micky Arison",
+   "col2": "1988",
+   "col3": "Miami",
+   "col4": 77,
+   "col5": null,
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat",
+   "name_manager": "Micky Arison"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Steve Kerr",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Daniel G. DeVos",
+   "col2": "1989",
+   "col3": "Orlando",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Donta Hall",
+   "name_team": "Orlando Magic",
+   "name_manager": "Daniel G. DeVos"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Rod Strickland",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "San Diego",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Tilman Joseph Fertitta",
+   "col2": "1967",
+   "col3": "Houston",
+   "col4": 69,
+   "col5": "American",
+   "name_player": "Brandan Keith Wright",
+   "name_team": "Houston Rockets",
+   "name_manager": "Tilman Joseph Fertitta"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Vernon Maxwell",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": null,
+   "name_player": "Christopher Emmanuel Paul",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Seattle",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Oklahoma City",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Hamidou Diallo",
+   "name_team": "Oklahoma City Thunder",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Herbert Simon",
+   "col2": "1967",
+   "col3": "Indianapolis",
+   "col4": 92,
+   "col5": "American",
+   "name_player": "Dwayne Kenneth Schintzius",
+   "name_team": "Indiana Pacers",
+   "name_manager": "Herbert Simon"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Lonzo Anderson Ball",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": null,
+   "name_player": "Andre Jamal Drummond",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Freddie L. Boyd",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Brooklyn",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New York City",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Teaneck",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "Long Island",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Joseph Chung-Hsin Tsai",
+   "col2": "1967",
+   "col3": "New Jersey",
+   "col4": 62,
+   "col5": null,
+   "name_player": "Dewayne D. J. White, Jr.",
+   "name_team": "Brooklyn Nets",
+   "name_manager": "Joseph Chung-Hsin Tsai"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Thomas James Copa",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Dallas",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Fort Worth",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "Lubbock",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Clayton Ike Bennett",
+   "col2": "1967",
+   "col3": "San Antonio",
+   "col4": 67,
+   "col5": "American",
+   "name_player": "Kurt Vincent Thomas",
+   "name_team": "San Antonio Spurs",
+   "name_manager": "Clayton Ike Bennett"
+  },
+  {
+   "col1": "Jerry Michael Reinsdorf",
+   "col2": "1966",
+   "col3": "Chicago",
+   "col4": 90,
+   "col5": "American",
+   "name_player": "Guy William Rodgers",
+   "name_team": "Chicago Bulls",
+   "name_manager": "Jerry Michael Reinsdorf"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "New Orleans",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Gayle Marie LaJaunie Bird Benson",
+   "col2": "2002",
+   "col3": "Oklahoma City",
+   "col4": 79,
+   "col5": "American",
+   "name_player": "Anthony Marshon Davis Jr.",
+   "name_team": "New Orleans Pelicans",
+   "name_manager": "Gayle Marie LaJaunie Bird Benson"
+  },
+  {
+   "col1": "Enos Stanley Kroenke",
+   "col2": "1967",
+   "col3": "Denver",
+   "col4": 79,
+   "col5": "Serbian",
+   "name_player": "Nikola Radi\u010devi\u0107",
+   "name_team": "Denver Nuggets",
+   "name_manager": "Enos Stanley Kroenke"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Caleb Martin",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Syracuse",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  },
+  {
+   "col1": "Joshua Jordan Harris",
+   "col2": "1946",
+   "col3": "Philadelphia",
+   "col4": 62,
+   "col5": "American",
+   "name_player": "Donyell Lamar Marshall",
+   "name_team": "Philadelphia 76ers",
+   "name_manager": "Joshua Jordan Harris"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(od:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[pf:PlaysFor {tenure: 'latest'}]->(t)-[:ExtractedFrom]->(td2:Document), (p)-[:ExtractedFrom]->(pd:Document) RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) * 0 + 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(SPLIT_PART(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(SPLIT_PART(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"March 24, 1956\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(od:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(td:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(pd:Document) RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL WHEN CONTAINS(o.birth_date, '/') THEN 2026 - CAST(SPLIT_PART(o.birth_date, '/', 1) AS INT64) ELSE 2026 - CAST(SUBSTRING(o.birth_date, LENGTH(o.birth_date) - 3, 4) AS INT64) END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": "Binder exception: Function LENGTH did not receive correct arguments:\nActual:   (STRING)\nExpected: (RECURSIVE_REL)\n\n",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:ExtractedFrom]->(:Document), (o)-[:Owns]->(t:Team)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (p:Player)-[:PlaysFor {tenure: 'latest'}]->(t), (p)-[:ExtractedFrom]->(:Document) RETURN o.name AS col1, t.founded_year AS col2, c.city_name AS col3, CASE WHEN o.birth_date IS NULL THEN NULL ELSE 2026 - CAST(CASE WHEN CONTAINS(o.birth_date, '/') THEN SPLIT_PART(o.birth_date, '/', 1) ELSE REGEXP_EXTRACT(o.birth_date, '[0-9]{4}', 0) END AS INT64) END AS col4, p.nationality AS col5, p.name AS name_player, t.team_name AS name_team, o.name AS name_manager",
+   "error": null,
+   "rows": 415
+  }
+ ]
+}

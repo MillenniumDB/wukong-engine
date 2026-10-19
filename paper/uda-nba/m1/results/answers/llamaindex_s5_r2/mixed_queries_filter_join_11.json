@@ -1,0 +1,191 @@
+{
+ "uid": "mixed_queries_filter_join#11",
+ "rows": [
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Larry Weinberg",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Vulcan Sports and Entertainment",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Miami",
+   "col2": "1991",
+   "col3": "Micky Arison",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Miami Heat"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Red McCombs",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Thomas Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Carl Sanders",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Tony Ressler",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Thomas Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Paul Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Atlanta Spirit LLC",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Tom Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Ted Turner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Tony Ressler",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Atlanta",
+   "col2": "1991",
+   "col3": "Ted Turner",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Atlanta Spirit LLC",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Carl Sanders",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Clay Bennett",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "San Antonio",
+   "col2": "1991",
+   "col3": "Peter M. Holt",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "San Antonio Spurs"
+  },
+  {
+   "col1": "St. Louis",
+   "col2": "1991",
+   "col3": "Tom Cousins",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Atlanta Hawks"
+  },
+  {
+   "col1": "Portland",
+   "col2": "1991",
+   "col3": "Jody Allen",
+   "col4": "Steven Delano Smith",
+   "name_player": "Steven Delano Smith",
+   "name_team": "Portland Trail Blazers"
+  }
+ ],
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (p:Player)-[pf:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t) WHERE pf.tenure = 'latest' AND ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) AND EXISTS { MATCH (p)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (t)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (c)-[:MentionedIn]->(:Document) } AND EXISTS { MATCH (o)-[:MentionedIn]->(:Document) } RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 0
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(dp:Document), (t)-[:MentionedIn]->(dt:Document), (c)-[:MentionedIn]->(dc:Document), (o)-[:MentionedIn]->(do:Document) WHERE ((CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((t.founded_year =~ '^[0-9]{4}$' AND CAST(t.founded_year AS INT64) <= 1989 AND p.college = 'University of Connecticut') OR (p.fiba_world_cup =~ '^[0-9]+$' AND CAST(p.fiba_world_cup AS INT64) >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": "Conversion exception: Cast failed. Could not convert \"Before 2006\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (p:Player)-[:PlaysFor]->(t:Team)-[:LocatedIn]->(c:City), (o:Owner)-[:Owns]->(t), (p)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document), (c)-[:MentionedIn]->(:Document), (o)-[:MentionedIn]->(:Document) WHERE ((CASE WHEN t.founded_year =~ '^[0-9]{4}$' THEN CAST(t.founded_year AS INT64) ELSE NULL END <= 1989 AND p.college = 'University of Connecticut') OR (CASE WHEN p.fiba_world_cup =~ '^[0-9]+$' THEN CAST(p.fiba_world_cup AS INT64) ELSE NULL END >= 1 AND t.team_name <> 'Milwaukee Bucks')) RETURN DISTINCT c.city_name AS col1, p.draft_year AS col2, o.name AS col3, p.name AS col4, p.name AS name_player, t.team_name AS name_team",
+   "error": null,
+   "rows": 20
+  }
+ ]
+}

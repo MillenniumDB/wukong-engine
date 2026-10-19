@@ -1,0 +1,30 @@
+{
+ "uid": "filter_queries_manager#1",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:MentionedIn]->(:Document) WHERE t.team_name <> 'Cleveland Cavaliers' RETURN DISTINCT (CAST('2026' AS INT64) - CAST(split_part(o.birth_date, '/', 1) AS INT64) - CASE WHEN CAST(split_part(o.birth_date, '/', 2) AS INT64) > 10 OR (CAST(split_part(o.birth_date, '/', 2) AS INT64) = 10 AND CAST(split_part(o.birth_date, '/', 3) AS INT64) > 14) THEN 1 ELSE 0 END) AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"July 31, 1958\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE t.team_name <> 'Cleveland Cavaliers' WITH o, t, CASE WHEN o.birth_date CONTAINS '/' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS birth_date WITH o, t, date_part('year', birth_date) AS birth_year, date_part('month', birth_date) AS birth_month, date_part('day', birth_date) AS birth_day RETURN date_part('year', DATE '2026-10-14') - birth_year - CASE WHEN birth_month > date_part('month', DATE '2026-10-14') OR (birth_month = date_part('month', DATE '2026-10-14') AND birth_day > date_part('day', DATE '2026-10-14')) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Parser exception: Invalid input <date_part('year', DATE '2026-10-14'>: expected rule oC_ProjectionItem (line: 1, offset: 464)\n\"MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE t.team_name <> 'Cleveland Cavaliers' WITH o, t, CASE WHEN o.birth_date CONTAINS '/' THEN strptime(o.birth_date, '%Y/%m/%d') ELSE strptime(o.birth_date, '%B %d, %Y') END AS birth_date WITH o, t, date_part('year', birth_date) AS birth_year, date_part('month', birth_dat",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE t.team_name <> 'Cleveland Cavaliers' WITH o, t, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 1) AS INT64) ELSE CAST(split_part(o.birth_date, ',', 2) AS INT64) END AS birth_year, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) ELSE CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 3) AS INT64) ELSE CAST(split_part(o.birth_date, ' ', 2) AS INT64) END AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Conversion exception: Cast failed. Could not convert \"31,\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (o:Owner)-[:Owns]->(t:Team), (o)-[:MentionedIn]->(:Document), (t)-[:MentionedIn]->(:Document) WHERE t.team_name <> 'Cleveland Cavaliers' WITH o, t, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 1) AS INT64) ELSE CAST(trim(split_part(o.birth_date, ',', 2)) AS INT64) END AS birth_year, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 2) AS INT64) ELSE CASE split_part(o.birth_date, ' ', 1) WHEN 'January' THEN 1 WHEN 'February' THEN 2 WHEN 'March' THEN 3 WHEN 'April' THEN 4 WHEN 'May' THEN 5 WHEN 'June' THEN 6 WHEN 'July' THEN 7 WHEN 'August' THEN 8 WHEN 'September' THEN 9 WHEN 'October' THEN 10 WHEN 'November' THEN 11 WHEN 'December' THEN 12 END END AS birth_month, CASE WHEN o.birth_date CONTAINS '/' THEN CAST(split_part(o.birth_date, '/', 3) AS INT64) ELSE CAST(replace(split_part(o.birth_date, ' ', 2), ',', '') AS INT64) END AS birth_day RETURN 2026 - birth_year - CASE WHEN birth_month > 10 OR (birth_month = 10 AND birth_day > 14) THEN 1 ELSE 0 END AS col1, t.team_name AS col2, o.name AS col3, o.name AS name_manager",
+   "error": "Catalog exception: function REPLACE does not exist.",
+   "rows": null
+  }
+ ]
+}

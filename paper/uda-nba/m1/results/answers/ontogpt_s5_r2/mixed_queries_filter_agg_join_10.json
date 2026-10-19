@@ -1,0 +1,30 @@
+{
+ "uid": "mixed_queries_filter_agg_join#10",
+ "rows": null,
+ "trace": [
+  {
+   "attempt": 1,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE CAST(p.draft_year AS INT64) <= 2005 OR p.position = 'Backcourt' OR CAST(p.draft_pick AS INT64) <= 41 WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 2,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE (p.draft_year =~ '^[0-9]+$' AND CAST(p.draft_year AS INT64) <= 2005) OR p.position = 'Backcourt' OR (p.draft_pick =~ '^[0-9]+$' AND CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 3,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE (p.draft_year IS NOT NULL AND CAST(p.draft_year AS INT64) <= 2005) OR p.position = 'Backcourt' OR (p.draft_pick IS NOT NULL AND p.draft_pick <> 'Undrafted' AND CAST(p.draft_pick AS INT64) <= 41) WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. Could not convert \"Undrafted\" to INT64.",
+   "rows": null
+  },
+  {
+   "attempt": 4,
+   "cypher": "MATCH (t:Team)-[:ExtractedFrom]->(:Document), (p:Player)-[:ExtractedFrom]->(:Document), (p)-[:PlaysFor]->(t), (o:Owner)-[:Owns]->(t), (o)-[:ExtractedFrom]->(:Document), (t)-[:LocatedIn]->(c:City), (c)-[:ExtractedFrom]->(:Document) WHERE (p.draft_year >= '1900' AND p.draft_year <= '2005') OR p.position = 'Backcourt' OR p.draft_pick IN ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41'] WITH DISTINCT t, c RETURN t.team_name AS col1, SUM(CAST(c.area AS DOUBLE) * 2.58999) AS col2",
+   "error": "Conversion exception: Cast failed. 385.8 square miles is not in DOUBLE range.",
+   "rows": null
+  }
+ ]
+}
