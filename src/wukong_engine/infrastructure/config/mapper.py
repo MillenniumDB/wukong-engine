@@ -3,7 +3,7 @@
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.export import ExportConfig
-from wukong_engine.app.config.llm import LLM, LLMConfig
+from wukong_engine.app.config.llm import LLMConfig, LLMRegistry
 from wukong_engine.app.config.pipeline import PipelineConfig
 
 from .schemas import (
@@ -54,14 +54,15 @@ class ApplicationConfigMapper:
         """Map LLM configuration schema to LLM configuration model.
 
         Args:
-            schema: LLM configuration schema. A non-empty ``model`` name is wrapped into an ``LLM``.
+            schema: LLM configuration schema. A non-empty ``model`` name is resolved into an ``LLM`` of the provider
+                that supports it.
 
         Returns:
             The LLM configuration, using the model defaults for unset fields.
         """
         kwargs = schema.model_dump(exclude_none=True)
         if kwargs.get('model'):
-            kwargs['model'] = LLM(name=kwargs['model'])
+            kwargs['model'] = LLMRegistry.resolve_model(kwargs['model'])
         return LLMConfig(**kwargs)
 
     def _map_chunking(self, schema: ChunkingConfigSchema) -> ChunkingConfig:

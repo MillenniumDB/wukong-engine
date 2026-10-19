@@ -17,9 +17,10 @@ This document describes the environment variables and the engine configuration f
 
 The engine uses **environment variables** for secrets that must not live in a configuration file:
 
-| Variable         | Required | Description                         | Example              |
-| ---------------- | :------: | ----------------------------------- | -------------------- |
-| `OPENAI_API_KEY` |    ✅     | OpenAI API key for LLM interaction. | `sk-xxxxxxxxxxxxxxx` |
+| Variable            |        Required        | Description                            | Example                  |
+| ------------------- | :--------------------: | -------------------------------------- | ------------------------ |
+| `OPENAI_API_KEY`    | With an OpenAI model    | OpenAI API key for LLM interaction.    | `sk-xxxxxxxxxxxxxxx`     |
+| `ANTHROPIC_API_KEY` | With an Anthropic model | Anthropic API key for LLM interaction. | `sk-ant-xxxxxxxxxxxxxxx` |
 
 These variables are listed in the `.env.example` file in the root directory of the project, which serves as a template with placeholder values.
 
@@ -27,7 +28,7 @@ For **local development/usage**, create a `.env` file in the root directory of t
 
 For **production/deployment**, set these variables directly in your server/cloud environment.
 
-A missing or empty `OPENAI_API_KEY` aborts the run.
+Only the key of the provider of the configured [model](#-llm) is required, and a missing or empty one aborts the run.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -82,16 +83,21 @@ The `[llm]` section controls the language model used for extraction.
 
 | Key               | Description                                                                                      |   Type    | Default          |
 | ----------------- | -------------------------------------------------------------------------------------------------- | :-------: | ---------------- |
-| `model`           | The model to use. Only OpenAI models are currently supported.                                    | `string`  | `"gpt-5.6-luna"` |
+| `model`           | The model to use. Its provider is inferred from the name.                                        | `string`  | `"gpt-5.6-luna"` |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
 
 **Supported models:**
 
-| Model            | Notes                                                    |
-| ---------------- | -------------------------------------------------------- |
-| `"gpt-5.6-luna"` | Reasoning model, runs at `low` effort. Balanced default. |
-| `"gpt-4.1-mini"` | Non-reasoning. Cheaper, lower quality.                   |
+| Model                | Provider  | Notes                                                    |
+| -------------------- | --------- | -------------------------------------------------------- |
+| `"gpt-5.6-luna"`     | OpenAI    | Reasoning model, runs at `low` effort. Balanced default. |
+| `"gpt-4.1-mini"`     | OpenAI    | Non-reasoning. Cheaper, lower quality.                   |
+| `"claude-haiku-5-5"` | Anthropic | Reasoning model, runs at `low` effort.                   |
+
+> ⚠️ Anthropic limits the complexity of enforced response schemas, so with Anthropic models the fields of the types extracted in one request are sent as optional instead of nullable, which fits up to **24** of them. Beyond that, the schema is sent as instructions without being enforced, and a warning is logged: responses that don't follow it are retried if they are not valid JSON, and items that don't match their type are discarded.
+
+> 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, they can no longer be checked, and are cancelled once they exceed the maximum batch resolution time (30 hours), after which their jobs are retried with the new provider. To avoid the wait, let pending batches finish before switching.
 
 **Execution modes:**
 
@@ -102,7 +108,7 @@ The `[llm]` section controls the language model used for extraction.
 
 Both modes share the same work plan, validation and identity logic, so you can prototype interactively on a subset and then run the full corpus in batch mode by changing nothing but this key. In batch mode a run may be submitted in one session and collected in another.
 
-`max_concurrency` only applies to real-time mode, and the binding constraint is the provider's rate limits rather than local resources. Reference values for OpenAI usage tiers with mini models:
+`max_concurrency` only applies to real-time mode, and the binding constraint is the provider's rate limits rather than local resources. Reference values for OpenAI usage tiers with mini models (for Anthropic, check the rate limits of your usage tier):
 
 | Tier   | Suggested `max_concurrency` |
 | ------ | :-------------------------: |

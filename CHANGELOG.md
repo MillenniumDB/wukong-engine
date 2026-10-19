@@ -9,29 +9,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
-  - [🐛 Fixed](#-fixed)
-  - [🛠️ Build](#️-build)
-  - [📝 Documentation](#-documentation)
-- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
+  - [🛠️ Build](#️-build)
+  - [📝 Documentation](#-documentation)
+- [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
+  - [🐛 Fixed](#-fixed)
+  - [🛠️ Build](#️-build-1)
+  - [📝 Documentation](#-documentation-1)
+- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
+  - [✨ Added](#-added-1)
+  - [♻️ Changed](#️-changed-1)
   - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance)
-  - [📝 Documentation](#-documentation-1)
+  - [📝 Documentation](#-documentation-2)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
-  - [✨ Added](#-added-1)
-  - [♻️ Changed](#️-changed-1)
+  - [✨ Added](#-added-2)
+  - [♻️ Changed](#️-changed-2)
   - [🐛 Fixed](#-fixed-2)
   - [⚡ Performance](#-performance-1)
-  - [📝 Documentation](#-documentation-2)
-- [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
-  - [✨ Added](#-added-2)
-  - [🛠️ Build](#️-build-1)
   - [📝 Documentation](#-documentation-3)
+- [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
+  - [✨ Added](#-added-3)
+  - [🛠️ Build](#️-build-2)
+  - [📝 Documentation](#-documentation-4)
 
 ## [Unreleased]
+
+### ✨ Added
+
+- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name, and the default model is still `gpt-5.6-luna`. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them.
+- A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
+
+### ♻️ Changed
+
+- Only the API key of the configured model's provider is required: `OPENAI_API_KEY` for **OpenAI** models and `ANTHROPIC_API_KEY` for **Anthropic** models.
+- The error for an unsupported model now lists the supported models of every provider.
+
+### 🛠️ Build
+
+- Added the `anthropic` runtime dependency and the `pytest` development dependency.
+- Ignored the **Ruff** rules `S101`, `PLR2004` and `SLF001` under `tests/`, so tests can use plain asserts, literal expected values and private members.
+
+### 📝 Documentation
+
+- Documented the **Anthropic** model, its API key, its response schema limits and how to switch providers with batches in flight.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

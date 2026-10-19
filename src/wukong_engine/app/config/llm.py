@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model import LLM, LLMRegistry
+from wukong_engine.app.llm.model.values import LLMProvider
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -46,11 +47,12 @@ class LLMConfig:
             ValueError: If the model is not registered as supported for its provider.
         """
         if not LLMRegistry.is_supported_model(self.model):
-            supported_models = ', '.join(LLMRegistry.supported_models(self.model.provider))
-            raise ValueError(
-                f'Unsupported LLM model "{self.model.name}" for provider "{self.model.provider.value}". '
-                f'Supported models from {self.model.provider.value}: {supported_models}',
+            supported_models = ', '.join(
+                f'{name} ({provider.value})'
+                for provider in LLMProvider
+                for name in LLMRegistry.supported_models(provider)
             )
+            raise ValueError(f'Unsupported LLM model "{self.model.name}". Supported models: {supported_models}')
 
     def _validate_concurrency(self) -> None:
         """Validate that the max concurrency is a positive integer.

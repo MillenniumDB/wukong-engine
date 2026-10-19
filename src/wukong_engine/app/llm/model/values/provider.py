@@ -8,6 +8,8 @@ class LLMProvider(Enum):
 
     Attributes:
         OPENAI: OpenAI's LLM offerings.
+        ANTHROPIC: Anthropic's LLM offerings.
     """
 
     OPENAI = 'OpenAI'
+    ANTHROPIC = 'Anthropic'

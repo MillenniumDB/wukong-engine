@@ -21,12 +21,23 @@ class LLMRegistry:
                     'gpt-5.6-luna',
                 },
             ),
+            LLMProvider.ANTHROPIC: frozenset(
+                {
+                    'claude-haiku-5-5',
+                },
+            ),
         },
     )
     _REASONING: MappingProxyType[LLMProvider, Any] = MappingProxyType(
         {
             LLMProvider.OPENAI: {
                 'gpt-5.6-luna': {
+                    ReasoningEffort.EXTREME: 'xhigh',
+                },
+            },
+            LLMProvider.ANTHROPIC: {
+                'claude-haiku-5-5': {
+                    ReasoningEffort.NONE: 'low',  # Anthropic has no "none" effort level
                     ReasoningEffort.EXTREME: 'xhigh',
                 },
             },
@@ -37,6 +48,9 @@ class LLMRegistry:
             LLMProvider.OPENAI: {
                 'gpt-5.6-luna': 'low',
             },
+            LLMProvider.ANTHROPIC: {
+                'claude-haiku-5-5': 'low',
+            },
         },
     )
     _EXPLICIT_CACHING: MappingProxyType[LLMProvider, frozenset[str]] = MappingProxyType(
@@ -46,8 +60,26 @@ class LLMRegistry:
                     'gpt-5.6-luna',
                 },
             ),
+            LLMProvider.ANTHROPIC: frozenset(
+                {
+                    'claude-haiku-5-5',
+                },
+            ),
         },
     )
+
+    @classmethod
+    def resolve_model(cls, name: str) -> LLM:
+        """Resolve a model name into an LLM of the provider that supports it.
+
+        Args:
+            name: Model name to resolve.
+
+        Returns:
+            The model with the provider that supports it, or with the default provider if no provider supports it.
+        """
+        provider = next((provider for provider, models in cls._SUPPORTED.items() if name in models), None)
+        return LLM(name=name, provider=provider) if provider is not None else LLM(name=name)
 
     @classmethod
     def is_supported_model(cls, model: LLM) -> bool:
