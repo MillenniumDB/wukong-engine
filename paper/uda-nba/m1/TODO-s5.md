@@ -2,6 +2,11 @@
 
 Written on 2026-10-19 for Juan (or his Claude). Delete this file when it is done.
 
+**Cost: about $0.15 in total.** Only one new run is needed: Wukong on one s5 graph, through the same 101 questions.
+Nothing else is run again. The other nine systems (LLM alone, LightRAG's four modes, GraphRAG, Neo4j, LlamaIndex,
+OntoGPT) are only re-scored from their committed answers, which makes no LLM calls. Extra Wukong runs (r2, r3) are
+optional, at about $0.15 each.
+
 ## Why
 
 - **Wrong schema.** M1 is the question-answering experiment of the paper's Section 4.4 ("Downstream tasks", label
@@ -41,7 +46,8 @@ Written on 2026-10-19 for Juan (or his Claude). Delete this file when it is done
    `python sys_wukong.py --run <your x6-s5-r1 workspace> --name wukong_s5 --reload`
    - The workspace needs `knowledge_model.json` and `exports/neo4j/`.
    - It costs about $0.15: the s4 run made 187 calls in total.
-   - Optional: also r2 and r3 (`wukong_s5_r2`, `wukong_s5_r3`) for a mean, as in the NBA quality table.
+   - Optional, only if you want a mean like the NBA quality table: also r2 and r3 (`wukong_s5_r2`,
+     `wukong_s5_r3`). No other system needs more runs.
 5. **Re-score and rebuild the table.** Run `python score.py` (all systems), then `python table.py`. This writes
    `work/m1_table.{md,tex}`.
    Then run `python paired.py --base wukong_s5` for the per-question comparison: the mean difference with its
