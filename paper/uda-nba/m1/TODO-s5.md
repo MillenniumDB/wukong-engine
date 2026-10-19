@@ -44,6 +44,8 @@ Written on 2026-10-19 for Juan (or his Claude). Delete this file when it is done
    - Optional: also r2 and r3 (`wukong_s5_r2`, `wukong_s5_r3`) for a mean, as in the NBA quality table.
 5. **Re-score and rebuild the table.** Run `python score.py` (all systems), then `python table.py`. This writes
    `work/m1_table.{md,tex}`.
+   Then run `python paired.py --base wukong_s5` for the per-question comparison: the mean difference with its
+   95% confidence interval, and wins, ties and losses against each system. The README and the paper quote these.
 6. **Commit to `paper-experiments`** (gitmoji `⚗️ feat(paper): ...`), in the same layout as the existing results in
    `results/`:
    - the new answers, scores and usage log;
