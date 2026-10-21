@@ -95,6 +95,10 @@ def score_run(run, gold, load=A.load_wukong, usage=A.wukong_usage):
             ok = any(lenient_equal(v, g, k) for g in got)
             out['attr_lenient'] += ok
             out['attr_wrong'] += bool(got) and not ok
+            # one-to-one: the right value (in any form) counts once, each distinct wrong value of the matched
+            # nodes (a split entity can hold several) once; own_year is per owned team, so it is scored as filled
+            wrong = {A.norm(str(g)) for g in got if not lenient_equal(v, g, k)}
+            out['attr_pred'] += bool(got) if k == 'own_year' else ok + len(wrong)
     names = {(e['kind'], n): e for e in gold for n in e['names']}
     target = {'plays_for': 'team', 'located_in': 'city', 'owned_by': 'owner', 'owns': 'team'}
     label = {'plays_for': 'PlaysFor', 'located_in': 'LocatedIn', 'owned_by': 'Owns', 'owns': 'Owns'}
