@@ -28,7 +28,7 @@ For **local development/usage**, create a `.env` file in the root directory of t
 
 For **production/deployment**, set these variables directly in your server/cloud environment.
 
-Only the key of the provider of the configured [model](#-llm) is required, and a missing or empty one aborts the run.
+Only the key of the provider of the configured [model](#-llm) is required, and a missing or empty one aborts the run. The key of another provider is only needed while batches submitted to it are still pending (see [batch mode after switching providers](#-llm)).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -103,7 +103,7 @@ The `[llm]` section controls the language model used for extraction.
 
 > ⏱️ A batch that hasn't ended within **25 hours** of its submission (providers end batches within 24) is asked to be cancelled at the provider, and stays tracked so that the requests it finished are still collected, while the rest are retried. If it still hasn't ended **26 hours** after its submission (for instance because the cancellation could not be requested), it is discarded and its jobs are retried, with a warning to check the provider for it.
 
-> 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, they can no longer be checked or cancelled by the engine, and are discarded 26 hours after their submission, after which their jobs are retried with the new provider (any still running at the old provider must be cancelled from it). To avoid the wait, let pending batches finish before switching.
+> 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, new batches go to the configured model, while the pending ones keep being checked, collected and cancelled through the provider that received them, as long as its API key is still set. Without it they can't be reached: since they most likely ended with their results already billed, they are kept past the deadlines above, and each run logs an error telling how many are waiting, as the extraction can't finish until they are collected. Add the missing key to collect them. Batches still unreachable **30 days** after their submission, when the provider no longer keeps their results, are discarded and their jobs are retried with the configured model.
 
 **Execution modes:**
 

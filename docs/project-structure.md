@@ -65,7 +65,7 @@ src/wukong_engine/
 │   ├── persistence/  # SQLite staging database
 │   ├── storage/      # Filesystem document loading
 │   ├── chunking/     # Recursive, boundary-aware segmentation and tokenization
-│   ├── llm/          # OpenAI and Anthropic clients
+│   ├── llm/          # OpenAI and Anthropic clients, and the factory picking each provider's
 │   ├── export/graph/ # MillenniumDB and Neo4j exporters
 │   ├── config/       # TOML loading and environment variables
 │   ├── normalization/# Primary key normalization

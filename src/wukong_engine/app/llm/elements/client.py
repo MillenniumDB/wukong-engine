@@ -3,6 +3,8 @@
 from collections.abc import Iterable
 from typing import Protocol
 
+from wukong_engine.app.llm.model.values import LLMProvider
+
 from .request import LLMRequest
 from .response import LLMBatchCreationResponse, LLMBatchResult, LLMResponse
 
@@ -99,5 +101,26 @@ class LLMClient(Protocol):
             LLMTransientError: If the provider fails in a way that may succeed on retry (rate limits, timeouts,
                 connection or server-side errors).
             LLMInternalError: If an unexpected error occurs within the client or provider.
+        """
+        ...
+
+
+class LLMClientFactory(Protocol):
+    """Factory of LLM clients for each provider."""
+
+    def get_client(self, provider: LLMProvider) -> LLMClient:
+        """Get the client of a provider.
+
+        Only the configured model's provider gets a client set up for generating responses and creating batches. The
+        clients of other providers are only meant for managing the batches already submitted to them.
+
+        Args:
+            provider: Provider whose client is returned.
+
+        Returns:
+            The LLM client of the provider.
+
+        Raises:
+            LLMConfigurationError: If the client of the provider cannot be configured (e.g. its API key is missing).
         """
         ...

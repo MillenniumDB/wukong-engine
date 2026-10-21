@@ -1,8 +1,9 @@
 """Tests for how the batch synchronizer resolves completed batches whose results can't be retrieved."""
 
 import asyncio
+import logging
 import time
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Mapping
 from dataclasses import replace
 
 import pytest
@@ -25,13 +26,20 @@ from wukong_engine.app.data_extraction.services.batch_synchronizer import (
     MAX_BATCH_CANCELLATION_TIME,
     MAX_BATCH_RESOLUTION_TIME,
 )
-from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMRequest, LLMResponse
+from wukong_engine.app.llm.elements import (
+    LLMBatchCreationResponse,
+    LLMBatchResult,
+    LLMClient,
+    LLMRequest,
+    LLMResponse,
+)
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
     LLMResponseError,
     LLMTransientError,
     LLMTruncatedResponseError,
 )
+from wukong_engine.app.llm.model import LLMRegistry
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.elements import Entity
@@ -134,11 +142,29 @@ class UnusedLLMClient:
         raise NotImplementedError
 
 
+class ProviderClientFactory:
+    """LLM client factory returning the client given for each provider, failing for the others."""
+
+    def __init__(self, clients: Mapping[LLMProvider, LLMClient]) -> None:
+        """Initialize the factory.
+
+        Args:
+            clients: Client of each provider that has one.
+        """
+        self.clients = clients
+
+    def get_client(self, provider: LLMProvider) -> LLMClient:
+        """Return the client of the provider, failing like a missing API key if it has none."""
+        if provider not in self.clients:
+            raise LLMConfigurationError(f'Missing API key of {provider.value}')
+        return self.clients[provider]
+
+
 def _synchronizer(repository: RecordingRepository) -> ConcurrentExtractionBatchSynchronizer:
     """Build a synchronizer over the given repository."""
     return ConcurrentExtractionBatchSynchronizer(
         repository=repository,
-        llm_client=UnusedLLMClient(),
+        llm_client_factory=ProviderClientFactory({}),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
         metrics_tracker=ExtractionMetricsTracker(repository, ExecutionMode.BATCH),
     )
@@ -270,20 +296,21 @@ class CancellableLLMClient(UnusedLLMClient):
             raise LLMConfigurationError(f'Cannot cancel {batch_id}')
 
 
-def _batch(provider_id: str, age_hours: float) -> ExtractionBatch:
-    """Build a batch created the given number of hours ago."""
-    batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id=provider_id)
+def _batch(provider_id: str, age_hours: float, provider: LLMProvider = LLMProvider.ANTHROPIC) -> ExtractionBatch:
+    """Build a batch submitted to the provider the given number of hours ago."""
+    batch = ExtractionBatch.from_provider(provider=provider, provider_id=provider_id)
     return replace(batch, created_at=int((time.time() - age_hours * 3600) * 1000))
 
 
 def _cancelling_synchronizer(
     repository: RecordingRepository,
-    llm_client: CancellableLLMClient,
+    llm_client: CancellableLLMClient | Mapping[LLMProvider, LLMClient],
 ) -> ConcurrentExtractionBatchSynchronizer:
-    """Build a synchronizer over the given repository and client, without metrics."""
+    """Build a synchronizer over the given repository and Anthropic client (or client of each provider), without metrics."""
+    clients = llm_client if isinstance(llm_client, Mapping) else {LLMProvider.ANTHROPIC: llm_client}
     return ConcurrentExtractionBatchSynchronizer(
         repository=repository,
-        llm_client=llm_client,
+        llm_client_factory=ProviderClientFactory(clients),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
         metrics_tracker=SilentMetricsTracker(repository, ExecutionMode.BATCH),
     )
@@ -333,3 +360,53 @@ def test_active_batch_cancellations_are_requested_without_resolving_the_batches(
 
     assert sorted(llm_client.cancellations) == ['failing', 'first', 'last']
     assert repository.resolutions == []
+
+
+def test_batches_are_synchronized_with_the_client_of_the_provider_they_were_submitted_to(model: KnowledgeModel) -> None:
+    """Resolve the batches of each provider through its own client, as after switching providers mid-batch."""
+    openai_client, anthropic_client = CancellableLLMClient(), CancellableLLMClient()
+    overdue = MAX_BATCH_RESOLUTION_TIME + 0.5
+    repository = RecordingRepository(
+        batches=(_batch('batch_1', overdue, LLMProvider.OPENAI), _batch('msgbatch_1', overdue, LLMProvider.ANTHROPIC)),
+    )
+    clients: Mapping[LLMProvider, LLMClient] = {
+        LLMProvider.OPENAI: openai_client,
+        LLMProvider.ANTHROPIC: anthropic_client,
+    }
+
+    asyncio.run(_cancelling_synchronizer(repository, clients).synchronize(model))
+
+    assert openai_client.cancellations == ['batch_1']
+    assert anthropic_client.cancellations == ['msgbatch_1']
+
+
+def test_batches_of_a_provider_without_client_are_kept_until_it_no_longer_keeps_their_results(
+    model: KnowledgeModel,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """Keep the batches of a provider without client past the deadlines, until it no longer keeps their results."""
+    retention = LLMRegistry.batch_result_retention(LLMProvider.OPENAI)
+    repository = RecordingRepository(
+        batches=(
+            _batch('recent', 1, LLMProvider.OPENAI),
+            _batch('stale', MAX_BATCH_CANCELLATION_TIME + 0.5, LLMProvider.OPENAI),
+            _batch('expired', retention + 0.5, LLMProvider.OPENAI),
+        ),
+    )
+
+    with caplog.at_level(logging.ERROR):
+        asyncio.run(_cancelling_synchronizer(repository, {}).synchronize(model))
+
+    assert sorted(repository.resolutions) == [
+        (
+            (
+                'fail expired: Failed batch whose provider was unreachable until it no longer kept its results: '
+                'Missing API key of OpenAI'
+            ),
+            BatchStatus.FAILED,
+        ),
+        ('record recent: Missing API key of OpenAI', None),
+        ('record stale: Missing API key of OpenAI', None),
+    ]
+    [record] = caplog.records
+    assert record.getMessage().startswith('Cannot reach 2 batches submitted to OpenAI: Missing API key of OpenAI.')

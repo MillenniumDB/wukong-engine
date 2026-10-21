@@ -21,13 +21,15 @@ from wukong_engine.app.data_extraction.elements.values import (
     TokenUsageMetrics,
 )
 from wukong_engine.app.data_extraction.exceptions import ExtractionResultError
-from wukong_engine.app.llm.elements import LLMClient
+from wukong_engine.app.llm.elements import LLMClientFactory
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
     LLMInternalError,
     LLMResponseError,
     LLMTransientError,
 )
+from wukong_engine.app.llm.model import LLMRegistry
+from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from wukong_engine.core.knowledge.model import KnowledgeModel
 
@@ -71,7 +73,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
     def __init__(
         self,
         repository: ExtractionRepository,
-        llm_client: LLMClient,
+        llm_client_factory: LLMClientFactory,
         result_materializer: ExtractionResultMaterializer,
         metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
@@ -79,17 +81,19 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
         Args:
             repository: Repository used to stream active batches and jobs and persist their outcomes.
-            llm_client: LLM client used to query batch statuses and retrieve batch results from the provider.
+            llm_client_factory: Factory of the LLM client of each provider, used to query the statuses, retrieve the
+                results and request the cancellation of the batches submitted to it.
             result_materializer: Materializer that turns successful extraction results into knowledge objects.
             metrics_tracker: Tracker that logs extraction metrics while batches are resolved.
         """
         self._repository = repository
-        self._llm_client = llm_client
+        self._llm_client_factory = llm_client_factory
         self._result_materializer = result_materializer
         self._metrics_tracker = metrics_tracker
         self._ended_batches: list[ExtractionBatch] = []  # Batches whose results are retrieved
         self._overdue_batches: list[ExtractionBatch] = []  # Batches whose cancellation is requested
         self._end_statuses: dict[ExtractionBatchId, BatchStatus] = {}  # Status of those that ended unsuccessfully
+        self._unreachable_batches: dict[LLMProvider, tuple[int, str]] = {}  # Count and error of each unreachable one
 
     async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
         """Synchronize all submitted extraction batches.
@@ -97,15 +101,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         Queries the provider status of every active batch concurrently and resolves it locally (updating or
         cancelling it), requests the cancellation of the overdue ones from the provider, then retrieves the results of
         the batches that ended and persists them, before failing those that ended unsuccessfully (e.g. expired or
-        cancelled), whose finished results are kept.
+        cancelled), whose finished results are kept. The batches of providers that can't be reached are kept, logging
+        an error for each of those providers.
 
         Args:
             knowledge_model: Knowledge model used to materialize the results of completed batches.
         """
-        # Initialize the async runners and reset ended and overdue batches
+        # Initialize the async runners and reset ended, overdue and unreachable batches
         self._ended_batches = []
         self._end_statuses = {}
         self._overdue_batches = []
+        self._unreachable_batches = {}
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
         cancellation_runner = AsyncConcurrentRunner(
             fn=self._request_cancellation,
@@ -121,6 +127,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         async for batch, status_result in status_runner.run(batches):
             self._resolve_batch_status(batch, status_result)
             self._metrics_tracker.request_metrics()  # Request a metrics log after each batch status resolution
+        self._log_unreachable_batches()
 
         # Request the cancellation of overdue batches, which stay active until the provider ends them (collecting the
         # results they finished) or until they are dropped locally once their cancellation is overdue too
@@ -195,6 +202,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         async for _batch, _error in runner.run(self._repository.stream_active_batches()):
             pass  # Outcomes are already logged when requested
 
+    def _log_unreachable_batches(self) -> None:
+        """Log an error for each provider whose batches were kept for not being reachable."""
+        for provider, (count, error) in self._unreachable_batches.items():
+            retention_days = LLMRegistry.batch_result_retention(provider) // 24
+            logger.error(
+                f'Cannot reach {count} batches submitted to {provider.value}: {error}. The extraction cannot finish '
+                f'until they are collected, so configure the provider (e.g. add its API key) before the next run. '
+                f'Batches still unreachable {retention_days} days after their submission, when {provider.value} no '
+                'longer keeps their results, are discarded and their jobs are retried with the configured model.',
+            )
+
     async def _request_cancellation(self, batch: ExtractionBatch) -> str | None:
         """Request the cancellation of a batch from the provider, logging any failure.
 
@@ -205,7 +223,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             None if the cancellation was requested, or the error message if it could not be.
         """
         try:
-            await self._llm_client.cancel_batch(batch.provider_id)
+            await self._llm_client_factory.get_client(batch.provider).cancel_batch(batch.provider_id)
         except (LLMTransientError, LLMResponseError, LLMConfigurationError, LLMInternalError) as exc:
             logger.warning(
                 f'Failed to request the cancellation of batch {batch.provider_id} from {batch.provider.value}: {exc}. '
@@ -222,10 +240,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
         Returns:
             The mapped provider status, or the batch's current status with an error message if the status could
-            not be retrieved or is unknown.
+            not be retrieved or is unknown, marked as unreachable if the provider's client can't be configured.
         """
         try:
-            provider_status = await self._llm_client.get_batch_status(batch.provider_id)
+            client = self._llm_client_factory.get_client(batch.provider)
+        except LLMConfigurationError as exc:
+            return BatchStatusResult(batch.status, error=str(exc), reachable=False)
+
+        try:
+            provider_status = await client.get_batch_status(batch.provider_id)
             return BatchStatusResult(self._map_batch_status(provider_status))
 
         # Could not retrieve status, keep current batch status and store the error
@@ -240,7 +263,8 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
     def _resolve_batch_status(self, batch: ExtractionBatch, status_result: BatchStatusResult) -> None:
         """Perform provider status resolution.
 
-        Queues batches still pending after ``MAX_BATCH_RESOLUTION_TIME`` hours for cancellation at the provider, and
+        Keeps batches whose provider can't be reached, until the provider no longer keeps their results. Otherwise,
+        queues batches still pending after ``MAX_BATCH_RESOLUTION_TIME`` hours for cancellation at the provider, and
         cancels them locally once still pending after ``MAX_BATCH_CANCELLATION_TIME`` hours. Otherwise, records
         retrieval errors, updates the batch according to the provider status, and queues ended batches for result
         retrieval.
@@ -249,6 +273,12 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             batch: Batch being resolved.
             status_result: Provider status retrieved for the batch.
         """
+        # A batch whose provider can't be reached most likely ended there with its results already billed, so it isn't
+        # subject to the resolution deadlines, which would retry its jobs while those results can still be collected
+        if not status_result.reachable:
+            self._resolve_unreachable_batch(batch, status_result.error or 'Provider unreachable')
+            return
+
         # If the batch has not been resolved in the maximum allowed time, request its cancellation from the provider,
         # or cancel it locally if it hasn't ended since (e.g. the cancellation failed or never completes)
         if status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS) and self._is_overdue(batch):
@@ -287,6 +317,30 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             case BatchStatus.COMPLETED:  # Batch completed, mark for processing later
                 self._ended_batches.append(batch)
 
+    def _resolve_unreachable_batch(self, batch: ExtractionBatch, error: str) -> None:
+        """Keep a batch whose provider can't be reached, or fail it once the provider no longer keeps its results.
+
+        Args:
+            batch: Batch whose provider can't be reached.
+            error: Error message explaining why the provider can't be reached.
+        """
+        retention = LLMRegistry.batch_result_retention(batch.provider)
+        if self._is_overdue(batch, retention):
+            logger.warning(
+                f'Discarding batch {batch.provider_id}, whose results {batch.provider.value} no longer keeps after '
+                f'{retention // 24} days without being reachable. Its jobs are retried with the configured model.',
+            )
+            self._repository.fail_batch(
+                batch,
+                BatchStatus.FAILED,
+                error=f'Failed batch whose provider was unreachable until it no longer kept its results: {error}',
+            )
+            return
+
+        self._repository.record_batch_error(batch, error)
+        count, _ = self._unreachable_batches.get(batch.provider, (0, error))
+        self._unreachable_batches[batch.provider] = (count + 1, error)
+
     async def _get_batch_results(self, batch: ExtractionBatch) -> CompletedBatchResult:
         """Retrieve the results of a completed batch from the external provider, with error handling.
 
@@ -297,7 +351,9 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             The batch results, or no results with an error message if they could not be retrieved.
         """
         try:
-            batch_results = await self._llm_client.get_batch_results(batch.provider_id)
+            batch_results = await self._llm_client_factory.get_client(batch.provider).get_batch_results(
+                batch.provider_id
+            )
             return CompletedBatchResult(batch_results)
 
         # Could not retrieve results, keep current batch status and store the error

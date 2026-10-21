@@ -13,6 +13,20 @@ class LLMRegistry:
     """Registry of supported LLM providers and their models."""
 
     _DEFAULT_MODEL: LLM = LLM(provider=LLMProvider.OPENAI, name='gpt-5.6-luna')
+    _DEFAULT_PROVIDER_MODELS: MappingProxyType[LLMProvider, LLM] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: _DEFAULT_MODEL,
+            LLMProvider.ANTHROPIC: LLM(provider=LLMProvider.ANTHROPIC, name='claude-haiku-5-5'),
+        },
+    )
+    # Anthropic documents 29 days from the batch creation, while OpenAI's output files are reportedly deleted 30 days
+    # after being written (undocumented), so 30 days is used for both, a day late at most for Anthropic
+    _BATCH_RESULT_RETENTION_HOURS: MappingProxyType[LLMProvider, int] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: 30 * 24,
+            LLMProvider.ANTHROPIC: 30 * 24,
+        },
+    )
     _SUPPORTED: MappingProxyType[LLMProvider, frozenset[str]] = MappingProxyType(
         {
             LLMProvider.OPENAI: frozenset(
@@ -108,13 +122,30 @@ class LLMRegistry:
         return sorted(cls._SUPPORTED.get(provider, frozenset()))
 
     @classmethod
-    def default_model(cls) -> LLM:
-        """Return the default LLM model.
+    def default_model(cls, provider: LLMProvider | None = None) -> LLM:
+        """Return the default LLM model, overall or of a provider.
+
+        Args:
+            provider: Provider whose default model is returned. If None, the overall default model is returned.
 
         Returns:
-            The model used when none is configured.
+            The model used when none is configured, for the given provider if any.
         """
-        return cls._DEFAULT_MODEL
+        if provider is None:
+            return cls._DEFAULT_MODEL
+        return cls._DEFAULT_PROVIDER_MODELS[provider]
+
+    @classmethod
+    def batch_result_retention(cls, provider: LLMProvider) -> int:
+        """Return how long the provider keeps the results of a batch available.
+
+        Args:
+            provider: Provider to get the retention of.
+
+        Returns:
+            The time, in hours since the batch creation, after which its results can no longer be retrieved.
+        """
+        return cls._BATCH_RESULT_RETENTION_HOURS[provider]
 
     @classmethod
     def is_reasoning_model(cls, model: LLM) -> bool:

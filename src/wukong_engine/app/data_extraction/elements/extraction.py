@@ -123,10 +123,13 @@ class BatchStatusResult:
     Attributes:
         status: Status of the batch reported by the provider, or its last known status if the check failed.
         error: Error message, if the status could not be retrieved or mapped.
+        reachable: Whether the provider could be reached at all, which fails when its client cannot be configured
+            (e.g. its API key is missing).
     """
 
     status: BatchStatus
     error: str | None = None
+    reachable: bool = True
 
 
 @dataclass(frozen=True, slots=True)

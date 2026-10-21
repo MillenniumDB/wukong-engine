@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM, LLMRegistry
+from wukong_engine.app.llm.model.values import LLMProvider
 
 # Constants
 MIN_ALLOWED_TIMEOUT = 30  # Minimum allowed timeout in seconds
@@ -21,14 +22,15 @@ class AnthropicConfig:
 
     Attributes:
         api_key: Anthropic API key used to authenticate requests.
-        model: LLM used for requests; defaults to the registry's default model.
+        model: LLM used for requests; defaults to the registry's default Anthropic model, which is enough for clients
+            that only manage already submitted batches.
         max_output_tokens: Maximum number of tokens the model may generate per response, including thinking.
         timeout: Request timeout in seconds.
         max_retries: Number of retries the Anthropic SDK performs on failed requests.
     """
 
     api_key: str
-    model: LLM = field(default_factory=LLMRegistry.default_model)
+    model: LLM = field(default_factory=lambda: LLMRegistry.default_model(LLMProvider.ANTHROPIC))
     max_output_tokens: int = 16000  # Default: 16000 tokens, the recommended ceiling for non-streaming requests
     timeout: float = 120  # Default: 2 minutes, more than reasonable for extraction tasks
     max_retries: int = 2  # Default: 2 retries, enough for transient provider issues
