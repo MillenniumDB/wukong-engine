@@ -3,6 +3,7 @@
 import asyncio
 import json
 from collections.abc import Callable
+from dataclasses import replace
 from functools import partial
 from typing import Any
 
@@ -19,6 +20,7 @@ from wukong_engine.app.llm.model import LLM
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.infrastructure.llm.anthropic import AnthropicClient, AnthropicConfig
 from wukong_engine.infrastructure.llm.anthropic import client as client_module
+from wukong_engine.infrastructure.llm.anthropic import config as config_module
 from wukong_engine.infrastructure.llm.anthropic.schema import MAX_OPTIONAL_PARAMETERS
 
 MODEL = LLM(name='claude-haiku-5-5', provider=LLMProvider.ANTHROPIC)
@@ -51,6 +53,7 @@ EXPECTED_PARAMS = {
             ],
         },
     ],
+    'thinking': {'type': 'disabled'},
     'output_config': {'effort': 'low', 'format': {'type': 'json_schema', 'schema': SCHEMA}},
 }
 BATCH_URL = 'https://api.anthropic.com/v1/messages/batches/msgbatch_1'
@@ -98,33 +101,47 @@ def _batch(processing_status: str) -> dict[str, Any]:
 class MockAnthropicAPI:
     """Mocked Anthropic API that records the requests it receives and serves canned responses by URL path."""
 
-    def __init__(self, responses: dict[str, httpx2.Response]) -> None:
+    def __init__(self, responses: dict[str, MockResponses]) -> None:
         """Initialize the mocked API.
 
         Args:
-            responses: Response served for each URL path.
+            responses: Response served for each URL path, or responses served in turn (one per request).
         """
         self.responses = responses
         self.requests: list[httpx2.Request] = []
+        self.gate: asyncio.Event | None = None  # When set, responses are held until the event is set
+        self.delay = 0.0  # Seconds each response takes, so that overlapping requests can be observed
+        self.in_flight = 0
+        self.max_in_flight = 0
 
-    def handle(self, request: httpx2.Request) -> httpx2.Response:
-        """Record the request and serve the response for its path."""
+    async def handle(self, request: httpx2.Request) -> httpx2.Response:
+        """Record the request and serve the response for its path, once the gate (if any) opens."""
         self.requests.append(request)
-        return self.responses[request.url.path]
+        self.in_flight += 1
+        self.max_in_flight = max(self.max_in_flight, self.in_flight)
+        try:
+            if self.gate is not None:
+                await self.gate.wait()
+            await asyncio.sleep(self.delay)
+            response = self.responses[request.url.path]
+            return response.pop(0) if isinstance(response, list) else response
+        finally:
+            self.in_flight -= 1
 
     def request_body(self, index: int = 0) -> Any:
         """Return the decoded JSON body of a recorded request."""
         return json.loads(self.requests[index].content)
 
 
-type MockAPIInstaller = Callable[[dict[str, httpx2.Response]], MockAnthropicAPI]
+type MockResponses = httpx2.Response | list[httpx2.Response]
+type MockAPIInstaller = Callable[[dict[str, MockResponses]], MockAnthropicAPI]
 
 
 @pytest.fixture
 def mock_api(monkeypatch: pytest.MonkeyPatch) -> MockAPIInstaller:
     """Return a function that routes the clients created afterwards to a mocked API serving the given responses."""
 
-    def install(responses: dict[str, httpx2.Response]) -> MockAnthropicAPI:
+    def install(responses: dict[str, MockResponses]) -> MockAnthropicAPI:
         api = MockAnthropicAPI(responses)
         http_client = DefaultAsyncHttpxClient(transport=httpx2.MockTransport(api.handle))
         monkeypatch.setattr(client_module, 'AsyncAnthropic', partial(AsyncAnthropic, http_client=http_client))
@@ -138,13 +155,50 @@ def _client() -> AnthropicClient:
     return AnthropicClient(AnthropicConfig(api_key='test-key', model=MODEL, max_retries=0))
 
 
-def test_generate_sends_cache_breakpoint_effort_and_schema_without_temperature(mock_api: MockAPIInstaller) -> None:
-    """Send the shared content as a cache breakpoint, the mapped effort and the schema, and no temperature."""
+def test_generate_sends_cache_breakpoint_low_effort_without_thinking_and_schema(mock_api: MockAPIInstaller) -> None:
+    """Send the shared content as a cache breakpoint, low effort without thinking and the schema, and no temperature."""
     api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
 
     asyncio.run(_client().generate(REQUEST))
 
     assert api.request_body() == EXPECTED_PARAMS
+
+
+def test_generate_keeps_thinking_for_efforts_above_low(mock_api: MockAPIInstaller) -> None:
+    """Send the native effort level, leaving thinking on, for effort levels above low."""
+    api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
+
+    asyncio.run(_client().generate(replace(REQUEST, reasoning_effort=ReasoningEffort.MEDIUM)))
+
+    body = api.request_body()
+    assert 'thinking' not in body
+    assert body['output_config']['effort'] == 'medium'
+
+
+def test_generate_sends_requests_sharing_a_cached_prefix_once_the_first_one_is_answered(
+    mock_api: MockAPIInstaller,
+) -> None:
+    """Hold requests sharing a cached prefix until the first one is answered, without holding other prefixes."""
+    api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
+    other_prefix_request = replace(REQUEST, prompt=replace(REQUEST.prompt, shared_content='Other shared context. '))
+
+    async def run() -> list[str]:
+        client = _client()
+        api.gate = asyncio.Event()
+        requests = (REQUEST, REQUEST, REQUEST, other_prefix_request)
+        tasks = [asyncio.ensure_future(client.generate(request)) for request in requests]
+        await asyncio.sleep(0.1)  # Lets every request that isn't held reach the API
+        sent_while_unanswered = [
+            api.request_body(i)['messages'][0]['content'][0]['text'] for i in range(len(api.requests))
+        ]
+        api.gate.set()
+        await asyncio.gather(*tasks)
+        return sent_while_unanswered
+
+    sent_while_unanswered = asyncio.run(run())
+
+    assert sorted(sent_while_unanswered) == ['Other shared context. ', 'Shared context. ']
+    assert len(api.requests) == 4
 
 
 def test_generate_returns_text_and_usage_parsed_into_non_overlapping_categories(mock_api: MockAPIInstaller) -> None:
@@ -306,3 +360,89 @@ def test_generate_unwraps_code_fenced_json(mock_api: MockAPIInstaller) -> None:
     response = asyncio.run(_client().generate(REQUEST))
 
     assert response.content == '{"entities": []}'
+
+
+def _error(status_code: int, error_type: str, message: str) -> httpx2.Response:
+    """Build an Anthropic API error response."""
+    return httpx2.Response(status_code, json={'type': 'error', 'error': {'type': error_type, 'message': message}})
+
+
+def test_generate_resends_a_rejected_schema_as_instructions_and_remembers_it(mock_api: MockAPIInstaller) -> None:
+    """Resend a request whose enforced schema the API rejects without enforcing it, and stop enforcing that schema."""
+    rejection = _error(400, 'invalid_request_error', 'Schemas contains too many parameters with union types')
+    api = mock_api(
+        {'/v1/messages': [rejection, httpx2.Response(200, json=_message()), httpx2.Response(200, json=_message())]}
+    )
+    client = _client()
+
+    asyncio.run(client.generate(REQUEST))
+    asyncio.run(client.generate(REQUEST))
+
+    assert 'format' in api.request_body(0)['output_config']
+    for index in (1, 2):
+        assert 'format' not in api.request_body(index)['output_config']
+        assert api.request_body(index)['system'].endswith(json.dumps(SCHEMA))
+
+
+def test_generate_raises_the_original_error_when_the_request_is_invalid_for_another_reason(
+    mock_api: MockAPIInstaller,
+) -> None:
+    """Raise the original configuration error when the request also fails without enforcing its schema."""
+    invalid = _error(400, 'invalid_request_error', 'Invalid model')
+    api = mock_api({'/v1/messages': [invalid, _error(400, 'invalid_request_error', 'Invalid model')]})
+
+    with pytest.raises(LLMConfigurationError, match='Invalid model'):
+        asyncio.run(_client().generate(REQUEST))
+    assert len(api.requests) == 2
+
+
+def test_generate_writes_the_cache_again_once_the_entry_may_have_expired(
+    mock_api: MockAPIInstaller,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Hold requests sharing a prefix again behind a new first request once its cache entry may have expired."""
+    api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
+    api.delay = 0.05
+
+    async def run() -> None:
+        client = _client()
+        await client.generate(REQUEST)
+        monkeypatch.setattr(client_module, 'CACHE_ENTRY_LIFETIME', -1)
+        await asyncio.gather(client.generate(REQUEST), client.generate(REQUEST))
+
+    asyncio.run(run())
+
+    assert api.max_in_flight == 1
+
+
+def test_generate_lets_a_held_request_write_the_cache_when_the_first_one_fails(mock_api: MockAPIInstaller) -> None:
+    """Let one held request write the cache entry when the first one fails, still holding the others."""
+    api = mock_api(
+        {
+            '/v1/messages': [
+                _error(500, 'api_error', 'Internal server error'),
+                httpx2.Response(200, json=_message()),
+                httpx2.Response(200, json=_message()),
+            ],
+        },
+    )
+    api.delay = 0.05
+
+    async def run() -> list[Any]:
+        client = _client()
+        return await asyncio.gather(*(client.generate(REQUEST) for _ in range(3)), return_exceptions=True)
+
+    results = asyncio.run(run())
+
+    assert [type(result) for result in results].count(LLMTransientError) == 1
+    assert len(api.requests) == 3
+    assert api.max_in_flight == 1
+
+
+def test_config_rejects_disabled_thinking_for_models_that_cannot_disable_it(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Reject at configuration time a model whose efforts map to disabled thinking when it can't disable it."""
+    assert AnthropicConfig(api_key='test-key', model=MODEL).model == MODEL
+
+    monkeypatch.setattr(config_module, 'THINKING_OPTIONAL_MODELS', frozenset())
+    with pytest.raises(ValueError, match='cannot disable thinking'):
+        AnthropicConfig(api_key='test-key', model=MODEL)

@@ -39,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### ✨ Added
 
-- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name, and the default model is still `gpt-5.6-luna`. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them.
+- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name, and the default model is still `gpt-5.6-luna`. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs without thinking at the `low` effort level that extraction uses, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
+- Response schemas that exceed the provider's structured output limits, or that the provider rejects, are sent as instructions for the rest of the run instead of stopping it, with a warning, for both **OpenAI** and **Anthropic**.
 - A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
 
 ### ♻️ Changed

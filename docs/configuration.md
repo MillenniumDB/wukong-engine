@@ -93,9 +93,11 @@ The `[llm]` section controls the language model used for extraction.
 | -------------------- | --------- | -------------------------------------------------------- |
 | `"gpt-5.6-luna"`     | OpenAI    | Reasoning model, runs at `low` effort. Balanced default. |
 | `"gpt-4.1-mini"`     | OpenAI    | Non-reasoning. Cheaper, lower quality.                   |
-| `"claude-haiku-5-5"` | Anthropic | Reasoning model, runs at `low` effort.                   |
+| `"claude-haiku-5-5"` | Anthropic | Reasoning model, runs without thinking. Cheapest.        |
 
-> ⚠️ Anthropic limits the complexity of enforced response schemas, so with Anthropic models the fields of the types extracted in one request are sent as optional instead of nullable, which fits up to **24** of them. Beyond that, the schema is sent as instructions without being enforced, and a warning is logged: responses that don't follow it are retried if they are not valid JSON, and items that don't match their type are discarded.
+> ⚠️ Response schemas are enforced by the provider whenever possible, so that every response follows them. A schema that exceeds the provider's documented limits, or that the provider rejects, is sent as instructions instead for the rest of the run, and a warning is logged once per schema. With OpenAI, responses are then still valid JSON (JSON mode); with Anthropic, responses that are not valid JSON are retried. Either way, items that don't match their type are discarded.
+>
+> Anthropic's limits are much tighter: at most **16** nullable fields without options (plus one per extracted type list) in a single request. Past that, Anthropic models get the fields as optional instead of nullable, which fits up to **24** of them but makes the model leave out values more often, and only then the schema is sent as instructions.
 
 > 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, they can no longer be checked, and are cancelled once they exceed the maximum batch resolution time (30 hours), after which their jobs are retried with the new provider. To avoid the wait, let pending batches finish before switching.
 

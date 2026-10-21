@@ -10,26 +10,43 @@ MAX_UNION_PARAMETERS = 16  # Maximum properties using "anyOf" or type arrays per
 
 
 def adapt_schema(schema: dict[str, Any]) -> dict[str, Any] | None:
-    """Adapt a JSON schema to the structured output limits of the Anthropic API.
+    """Adapt a JSON schema to the Anthropic API, within its structured output limits.
 
-    Nullable properties (``"type": [<type>, "null"]``) are made optional instead: they are removed from their object's
-    ``required`` list and lose their ``null`` type and enum value, so a missing value is omitted rather than set to
-    null. This trades union-typed parameters, the most limited ones, for optional parameters.
+    The first of these forms that fits the limits is used:
+
+    1. Nullable properties stay required and nullable, except that nullable enums drop their declared type
+       (``{"enum": [..., null]}``), since the API rejects null enum values on a typed property.
+    2. Nullable properties are made optional instead, which trades union-typed parameters, the most limited ones, for
+       optional parameters. Models tend to omit optional properties more often than they fill nullable ones, so this
+       form is only used when the first one doesn't fit.
 
     Args:
         schema: JSON schema to adapt. It is not modified.
 
     Returns:
-        The adapted schema, or None if it still exceeds the limits even after the adaptation.
+        The adapted schema, or None if neither form fits the limits.
     """
-    adapted = copy.deepcopy(schema)
-    for node in _schema_nodes(adapted):
-        _make_nullable_properties_optional(node)
-    optional_parameters = sum(_count_optional_properties(node) for node in _schema_nodes(adapted))
-    union_parameters = sum(1 for node in _schema_nodes(adapted) if _is_union(node))
-    if optional_parameters > MAX_OPTIONAL_PARAMETERS or union_parameters > MAX_UNION_PARAMETERS:
-        return None
-    return adapted
+    for adapt_node in (_untype_nullable_enums, _make_nullable_properties_optional):
+        adapted = copy.deepcopy(schema)
+        for node in _schema_nodes(adapted):
+            adapt_node(node)
+        if _fits_limits(adapted):
+            return adapted
+    return None
+
+
+def _fits_limits(schema: dict[str, Any]) -> bool:
+    """Check whether a schema fits the structured output limits of the Anthropic API.
+
+    Args:
+        schema: Schema to check.
+
+    Returns:
+        True if both its optional and its union-typed parameters are within the limits, False otherwise.
+    """
+    optional_parameters = sum(_count_optional_properties(node) for node in _schema_nodes(schema))
+    union_parameters = sum(1 for node in _schema_nodes(schema) if _is_union(node))
+    return optional_parameters <= MAX_OPTIONAL_PARAMETERS and union_parameters <= MAX_UNION_PARAMETERS
 
 
 def _schema_nodes(schema: dict[str, Any]) -> Iterator[dict[str, Any]]:
@@ -54,6 +71,18 @@ def _schema_nodes(schema: dict[str, Any]) -> Iterator[dict[str, Any]]:
     for subschema in subschemas:
         if isinstance(subschema, dict):
             yield from _schema_nodes(subschema)
+
+
+def _untype_nullable_enums(node: dict[str, Any]) -> None:
+    """Drop the declared type of the nullable enum properties of an object schema, in place.
+
+    Args:
+        node: Schema node, which is left unchanged unless it is an object schema with nullable enum properties.
+    """
+    for prop in node.get('properties', {}).values():
+        prop_type = prop.get('type')
+        if 'enum' in prop and isinstance(prop_type, list) and 'null' in prop_type:
+            del prop['type']
 
 
 def _make_nullable_properties_optional(node: dict[str, Any]) -> None:

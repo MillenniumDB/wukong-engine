@@ -1,13 +1,15 @@
 """OpenAI adapter implementing the LLM client port."""
 
 import contextlib
+import hashlib
 import json
+import logging
 from collections.abc import Iterable
 from typing import Any
 
 from pydantic import ValidationError
 
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, BadRequestError
 from openai.types.responses import Response as OpenAIResponse
 from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
@@ -18,6 +20,25 @@ from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import OpenAIConfig
 from .decorators import translate_openai_errors
+from .schema import fits_limits
+
+# Logging
+logger = logging.getLogger(__name__)
+
+# Constants
+UNENFORCED_SCHEMA_INSTRUCTIONS = 'Respond only with a JSON object that follows this JSON schema:\n{schema}'
+
+
+def _schema_key(schema: dict[str, Any]) -> str:
+    """Identify a JSON schema by its content.
+
+    Args:
+        schema: JSON schema to identify.
+
+    Returns:
+        A digest that is equal for schemas with the same content.
+    """
+    return hashlib.sha256(json.dumps(schema, sort_keys=True).encode()).hexdigest()
 
 
 class OpenAIClient(LLMClient):
@@ -32,6 +53,7 @@ class OpenAIClient(LLMClient):
         self._config = config
         self._client = AsyncOpenAI(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.OPENAI
+        self._unenforced_schemas: set[str] = set()  # Keys of the schemas sent as instructions instead of enforced
 
     @staticmethod
     def _build_input(prompt: LLMPrompt, *, explicit_caching: bool) -> list[dict[str, Any]]:
@@ -54,14 +76,17 @@ class OpenAIClient(LLMClient):
         content.append({'type': 'input_text', 'text': prompt.content})
         return [{'role': 'user', 'content': content}]
 
-    def _build_request_payload(self, request: LLMRequest) -> dict[str, Any]:
+    def _build_request_payload(self, request: LLMRequest, *, enforce_schema: bool = True) -> dict[str, Any]:
         """Build the Responses API payload for a request.
 
         Adds explicit prompt caching options, reasoning effort and temperature only when the configured model
-        supports them, and a strict JSON schema response format when the prompt defines a schema.
+        supports them. A prompt schema is enforced as a strict JSON schema response format, unless it exceeds the
+        structured output limits or was already rejected by the API, in which case it leads the input as instructions
+        and only valid JSON is enforced.
 
         Args:
             request: LLM request to translate into an API payload.
+            enforce_schema: Whether to try enforcing the prompt schema. If False, it is sent as instructions.
 
         Returns:
             The keyword arguments for a Responses API call, including a ``prompt_cache_options`` entry when explicit
@@ -96,19 +121,48 @@ class OpenAIClient(LLMClient):
         if LLMRegistry.is_supported_model(model) and not LLMRegistry.is_reasoning_model(model):
             payload['temperature'] = temperature
 
-        # Include structured response schema if provided
+        # Include structured response schema if provided, enforced when possible or as instructions if not
         schema = request.prompt.schema
         if schema is not None:
-            payload['text'] = {
-                'format': {
-                    'type': 'json_schema',
-                    'name': 'schema',
-                    'strict': True,
-                    'schema': schema,
-                },
-            }
+            enforceable = enforce_schema and _schema_key(schema) not in self._unenforced_schemas
+            if enforceable and not fits_limits(schema):
+                self._mark_unenforced(schema, 'it exceeds the structured output limits of the OpenAI API')
+                enforceable = False
+            if enforceable:
+                payload['text'] = {
+                    'format': {
+                        'type': 'json_schema',
+                        'name': 'schema',
+                        'strict': True,
+                        'schema': schema,
+                    },
+                }
+            else:
+                # JSON mode requires the input messages, not the instructions, to mention JSON. Leading the input, the
+                # schema also stays inside the prefix cached for the requests that share it.
+                schema_block = {
+                    'type': 'input_text',
+                    'text': UNENFORCED_SCHEMA_INSTRUCTIONS.format(schema=json.dumps(schema)),
+                }
+                payload['input'][0]['content'].insert(0, schema_block)
+                payload['text'] = {'format': {'type': 'json_object'}}
 
         return payload
+
+    def _mark_unenforced(self, schema: dict[str, Any], reason: str) -> None:
+        """Send a schema as instructions from now on, warning the first time.
+
+        Args:
+            schema: Schema that won't be enforced.
+            reason: Why the schema can't be enforced, completing "since ...".
+        """
+        key = _schema_key(schema)
+        if key not in self._unenforced_schemas:
+            self._unenforced_schemas.add(key)
+            logger.warning(
+                f'A response schema is sent as instructions without being enforced, since {reason}. Responses are '
+                'still valid JSON, and items that do not match their type are discarded.',
+            )
 
     @staticmethod
     def _ensure_successful_response(response: OpenAIResponse) -> None:
@@ -245,20 +299,33 @@ class OpenAIClient(LLMClient):
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
             LLMInternalError: If any other unexpected provider error occurs.
         """
-        # Build the request payload for the API
-        payload = self._build_request_payload(request)
-
-        # The SDK has no typed parameter for the prompt caching options yet
-        extra_body = (
-            {'prompt_cache_options': payload.pop('prompt_cache_options')} if 'prompt_cache_options' in payload else None
-        )
-
-        # Send API request and await response
-        response: OpenAIResponse = await self._client.responses.create(**payload, extra_body=extra_body)
+        # Send the request, resending it with its schema as instructions if the API rejects the schema
+        try:
+            response = await self._send(self._build_request_payload(request))
+        except BadRequestError as exc:
+            if request.prompt.schema is None or exc.code != 'invalid_json_schema':
+                raise
+            self._mark_unenforced(request.prompt.schema, f'the OpenAI API rejected it ({exc.message})')
+            response = await self._send(self._build_request_payload(request, enforce_schema=False))
         self._ensure_successful_response(response)
 
         # Return the response in the expected format
         return self._build_llm_response(response)
+
+    async def _send(self, payload: dict[str, Any]) -> OpenAIResponse:
+        """Send a Responses API request.
+
+        Args:
+            payload: Keyword arguments of the call, as built by ``_build_request_payload``.
+
+        Returns:
+            The response returned by the API.
+        """
+        # The SDK has no typed parameter for the prompt caching options yet
+        extra_body = (
+            {'prompt_cache_options': payload.pop('prompt_cache_options')} if 'prompt_cache_options' in payload else None
+        )
+        return await self._client.responses.create(**payload, extra_body=extra_body)
 
     @translate_openai_errors
     async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:

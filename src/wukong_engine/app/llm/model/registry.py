@@ -37,7 +37,9 @@ class LLMRegistry:
             },
             LLMProvider.ANTHROPIC: {
                 'claude-haiku-5-5': {
-                    ReasoningEffort.NONE: 'low',  # Anthropic has no "none" effort level
+                    # At its low effort it thinks ~5x more than gpt-5.6-luna does at low on extraction, without
+                    # extracting better than it does with thinking disabled, which is what "none" maps to
+                    ReasoningEffort.LOW: 'none',
                     ReasoningEffort.EXTREME: 'xhigh',
                 },
             },
@@ -49,7 +51,7 @@ class LLMRegistry:
                 'gpt-5.6-luna': 'low',
             },
             LLMProvider.ANTHROPIC: {
-                'claude-haiku-5-5': 'low',
+                'claude-haiku-5-5': 'none',
             },
         },
     )

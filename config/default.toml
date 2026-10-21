@@ -38,10 +38,11 @@ export_knowledge = true
 [llm]
 
 ### The LLM model to use for extraction ###
-# Note: Currently only OpenAI models are supported
+# Note: The provider is inferred from the model name, and only its API key is required
 # Supported models:
-# "gpt-4.1-mini": Cheaper (non-reasoning)
-# "gpt-5.6-luna": Balanced (reasoning model, runs at low effort)
+# "gpt-4.1-mini": Cheaper (OpenAI non-reasoning)
+# "gpt-5.6-luna": Balanced (OpenAI reasoning model, runs at low effort)
+# "claude-haiku-5-5": Cheapest (Anthropic reasoning model, runs without thinking)
 # Built-in default: "gpt-5.6-luna"
 model = "gpt-5.6-luna"
 

@@ -10,18 +10,18 @@ from wukong_engine.infrastructure.llm.anthropic.schema import (
 )
 
 
-def _object(properties: dict[str, Any]) -> dict[str, Any]:
-    """Build an object schema requiring all of its properties, the way the request builders do."""
+def _object(properties: dict[str, Any], required: list[str] | None = None) -> dict[str, Any]:
+    """Build an object schema, requiring all of its properties by default, the way the request builders do."""
     return {
         'type': 'object',
         'properties': properties,
-        'required': list(properties),
+        'required': list(properties) if required is None else required,
         'additionalProperties': False,
     }
 
 
 def _response_schema(*item_schemas: dict[str, Any]) -> dict[str, Any]:
-    """Build a response schema holding a list of items that match any of the given schemas."""
+    """Build a response schema holding a list of items that match any of the given schemas (one union parameter)."""
     return _object({'entities': {'type': 'array', 'items': {'anyOf': list(item_schemas)}}})
 
 
@@ -30,8 +30,8 @@ def _nullable_fields(count: int) -> dict[str, Any]:
     return {f'field_{i}': {'type': ['string', 'null']} for i in range(count)}
 
 
-def test_nullable_properties_become_optional_without_null() -> None:
-    """Make nullable properties optional, dropping their null type and enum value, and keep the rest as is."""
+def test_nullable_properties_stay_required_with_untyped_nullable_enums() -> None:
+    """Keep nullable properties required and nullable, dropping only the declared type of nullable enums."""
     schema = _response_schema(
         _object(
             {
@@ -46,22 +46,36 @@ def test_nullable_properties_become_optional_without_null() -> None:
     adapted = adapt_schema(schema)
 
     assert adapted == _response_schema(
-        {
-            'type': 'object',
-            'properties': {
+        _object(
+            {
                 '_entity_type': {'type': 'string', 'const': 'Person'},
-                'name': {'type': 'string'},
-                'role': {'type': 'string', 'enum': ['actor', 'director']},
+                'name': {'type': ['string', 'null']},
+                'role': {'enum': ['actor', 'director', None]},
             },
-            'required': ['_entity_type'],
-            'additionalProperties': False,
-        },
+        ),
     )
     assert schema == original
 
 
-def test_schema_fits_up_to_the_optional_parameter_limit() -> None:
-    """Accept as many nullable fields as the optional parameter limit, across item types, and reject one more."""
+def test_nullable_properties_become_optional_when_they_exceed_the_union_limit() -> None:
+    """Make nullable properties optional, without null, only when keeping them nullable exceeds the union limit."""
+    fitting = _nullable_fields(MAX_UNION_PARAMETERS - 1)  # Plus the item type union
+    exceeding = _nullable_fields(MAX_UNION_PARAMETERS)
+    enum_field = {'role': {'type': ['string', 'null'], 'enum': ['actor', None]}}
+
+    assert adapt_schema(_response_schema(_object(fitting | enum_field))) == _response_schema(
+        _object(fitting | {'role': {'enum': ['actor', None]}}),
+    )
+    assert adapt_schema(_response_schema(_object(exceeding | enum_field))) == _response_schema(
+        _object(
+            {name: {'type': 'string'} for name in exceeding} | {'role': {'type': 'string', 'enum': ['actor']}},
+            required=[],
+        ),
+    )
+
+
+def test_schema_exceeding_both_limits_is_rejected() -> None:
+    """Accept as many nullable properties as the optional parameter limit, across item types, and reject one more."""
     half = MAX_OPTIONAL_PARAMETERS // 2
     fields = _nullable_fields(MAX_OPTIONAL_PARAMETERS + 1)
     first_type = _object(dict(list(fields.items())[:half]))
@@ -72,8 +86,8 @@ def test_schema_fits_up_to_the_optional_parameter_limit() -> None:
     assert adapt_schema(_response_schema(first_type, oversized_second_type)) is None
 
 
-def test_schema_over_the_union_parameter_limit_is_rejected() -> None:
-    """Reject schemas whose remaining union-typed properties exceed the limit, counting the item type union."""
+def test_schema_with_too_many_non_nullable_unions_is_rejected() -> None:
+    """Reject schemas whose union-typed properties that are not nullable exceed the limit, which no form reduces."""
     unions = {f'field_{i}': {'type': ['string', 'number']} for i in range(MAX_UNION_PARAMETERS)}
 
     assert adapt_schema(_response_schema(_object(dict(list(unions.items())[:-1])))) is not None

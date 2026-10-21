@@ -1,11 +1,15 @@
 """Anthropic adapter implementing the LLM client port."""
 
+import asyncio
+import hashlib
 import json
 import logging
+import time
 from collections.abc import Iterable
+from dataclasses import dataclass, field
 from typing import Any, ClassVar, Literal
 
-from anthropic import AsyncAnthropic
+from anthropic import AsyncAnthropic, BadRequestError
 from anthropic.types import Message, OutputConfigParam, TextBlockParam, Usage
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages import MessageBatchIndividualResponse
@@ -27,6 +31,40 @@ logger = logging.getLogger(__name__)
 UNENFORCED_SCHEMA_INSTRUCTIONS = (
     'Respond only with a JSON object that follows this JSON schema, without code fences or any other text:\n{schema}'
 )
+CACHE_ENTRY_LIFETIME = 270  # Seconds a prompt cache entry is assumed to live unused (the API's 5 minutes, with margin)
+
+
+def _schema_key(schema: dict[str, Any]) -> str:
+    """Identify a JSON schema by its content.
+
+    Args:
+        schema: JSON schema to identify.
+
+    Returns:
+        A digest that is equal for schemas with the same content.
+    """
+    return hashlib.sha256(json.dumps(schema, sort_keys=True).encode()).hexdigest()
+
+
+@dataclass
+class _CacheWarmup:
+    """State of the prompt cache entry of a prefix, as far as the client knows.
+
+    Attributes:
+        written: Set once the request writing the entry has been answered.
+        last_used: Monotonic time the entry was last written or read, in seconds.
+    """
+
+    written: asyncio.Event = field(default_factory=asyncio.Event)
+    last_used: float = 0.0
+
+    def is_expired(self) -> bool:
+        """Check whether the entry was written but may have expired since it was last used."""
+        return self.written.is_set() and time.monotonic() - self.last_used > CACHE_ENTRY_LIFETIME
+
+    def is_warm(self) -> bool:
+        """Check whether the entry was written and can still be read."""
+        return self.written.is_set() and not self.is_expired()
 
 
 class AnthropicClient(LLMClient):
@@ -40,7 +78,8 @@ class AnthropicClient(LLMClient):
         'ended': 'completed',
     }
 
-    # Native effort names, as given by the LLM registry, typed as the effort levels the API accepts
+    # Native effort names, as given by the LLM registry, typed as the effort levels the API accepts ("none" is handled
+    # separately, as disabled thinking)
     _EFFORTS: ClassVar[dict[str, Literal['low', 'medium', 'high', 'xhigh', 'max']]] = {
         'low': 'low',
         'medium': 'medium',
@@ -58,7 +97,8 @@ class AnthropicClient(LLMClient):
         self._config = config
         self._client = AsyncAnthropic(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.ANTHROPIC
-        self._warned_unenforced_schema = False
+        self._unenforced_schemas: set[str] = set()  # Keys of the schemas sent as instructions instead of enforced
+        self._cache_warmups: dict[str, _CacheWarmup] = {}  # Keyed by cached prefix
 
     @staticmethod
     def _build_content(prompt: LLMPrompt, *, explicit_caching: bool) -> list[TextBlockParam]:
@@ -80,16 +120,22 @@ class AnthropicClient(LLMClient):
         content.append({'type': 'text', 'text': prompt.content})
         return content
 
-    def _build_request_params(self, request: LLMRequest) -> MessageCreateParamsNonStreaming:
+    def _build_request_params(
+        self,
+        request: LLMRequest,
+        *,
+        enforce_schema: bool = True,
+    ) -> MessageCreateParamsNonStreaming:
         """Build the Messages API parameters for a request.
 
         Adds a prompt cache breakpoint and reasoning effort only when the configured model supports them. A prompt
-        schema is adapted to the structured output limits and enforced as the output format, or, if it can't fit them,
-        appended to the instructions without being enforced. The request's temperature is never sent, since the
-        supported models only accept the default one.
+        schema is adapted to the structured output limits and enforced as the output format, unless it can't fit them
+        or was already rejected by the API, in which case it is appended to the instructions without being enforced.
+        The request's temperature is never sent, since the supported models only accept the default one.
 
         Args:
             request: LLM request to translate into API parameters.
+            enforce_schema: Whether to try enforcing the prompt schema. If False, it is sent as instructions.
 
         Returns:
             The parameters of a non-streaming Messages API call.
@@ -111,18 +157,24 @@ class AnthropicClient(LLMClient):
             if request.reasoning_effort is not None
             else LLMRegistry.default_reasoning_effort(model)
         )
-        if LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
+        if LLMRegistry.is_reasoning_model(model) and reasoning_effort == 'none':
+            # The API has no "none" effort, and only accepts disabled thinking at an effort of high or below
+            params['thinking'] = {'type': 'disabled'}
+            output_config['effort'] = 'low'
+        elif LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
             output_config['effort'] = self._EFFORTS[reasoning_effort]
 
-        # Include structured response schema if provided, enforced when it fits the API limits or as instructions if not
+        # Include structured response schema if provided, enforced when possible or as instructions if not
         instructions = request.prompt.instructions
         schema = request.prompt.schema
         if schema is not None:
-            adapted_schema = adapt_schema(schema)
+            enforceable = enforce_schema and _schema_key(schema) not in self._unenforced_schemas
+            adapted_schema = adapt_schema(schema) if enforceable else None
+            if enforceable and adapted_schema is None:
+                self._mark_unenforced(schema, 'it exceeds the structured output limits of the Anthropic API')
             if adapted_schema is not None:
                 output_config['format'] = {'type': 'json_schema', 'schema': adapted_schema}
             else:
-                self._warn_unenforced_schema()
                 schema_instructions = UNENFORCED_SCHEMA_INSTRUCTIONS.format(schema=json.dumps(schema))
                 instructions = f'{instructions}\n\n{schema_instructions}' if instructions else schema_instructions
 
@@ -132,14 +184,20 @@ class AnthropicClient(LLMClient):
             params['output_config'] = output_config
         return params
 
-    def _warn_unenforced_schema(self) -> None:
-        """Warn, once per client, that a response schema exceeds the API limits and won't be enforced."""
-        if not self._warned_unenforced_schema:
+    def _mark_unenforced(self, schema: dict[str, Any], reason: str) -> None:
+        """Send a schema as instructions from now on, warning the first time.
+
+        Args:
+            schema: Schema that won't be enforced.
+            reason: Why the schema can't be enforced, completing "since ...".
+        """
+        key = _schema_key(schema)
+        if key not in self._unenforced_schemas:
+            self._unenforced_schemas.add(key)
             logger.warning(
-                'The response schema exceeds the structured output limits of the Anthropic API, so it is sent as '
-                'instructions and not enforced. Responses that do not follow it are discarded or retried.',
+                f'A response schema is sent as instructions without being enforced, since {reason}. Responses that '
+                'are not valid JSON are retried, and items that do not match their type are discarded.',
             )
-            self._warned_unenforced_schema = True
 
     @staticmethod
     def _ensure_successful_response(message: Message) -> None:
@@ -261,9 +319,115 @@ class AnthropicClient(LLMClient):
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
             LLMInternalError: If any other unexpected provider error occurs.
         """
-        message = await self._client.messages.create(**self._build_request_params(request))
+        # A cache entry can only be read once the request writing it has been answered, so concurrent requests sharing
+        # a prefix would all write it at 1.25x the input rate. Instead, the first one writes it while the rest wait,
+        # and the parameters are rebuilt after waiting, since the first request may have found the schema unenforceable.
+        while True:
+            params = self._build_request_params(request)
+            prefix_key = self._cache_prefix_key(request, params)
+            warmup = self._cache_warmups.get(prefix_key) if prefix_key is not None else None
+            if prefix_key is None or (warmup is not None and warmup.is_warm()):
+                if warmup is not None:
+                    warmup.last_used = time.monotonic()
+                return await self._generate_with_schema_fallback(request, params)
+            if warmup is None or warmup.is_expired():
+                return await self._generate_writing_cache(request, params, prefix_key)
+            await warmup.written.wait()
+
+    async def _generate_writing_cache(
+        self,
+        request: LLMRequest,
+        params: MessageCreateParamsNonStreaming,
+        prefix_key: str,
+    ) -> LLMResponse:
+        """Send the request that writes the cache entry of a prefix, holding the other requests sharing it meanwhile.
+
+        Args:
+            request: LLM request the parameters were built from.
+            params: Parameters of the request.
+            prefix_key: Key of the request's cached prefix.
+
+        Returns:
+            The generated response.
+        """
+        warmup = self._cache_warmups[prefix_key] = _CacheWarmup()
+        try:
+            response = await self._generate_with_schema_fallback(request, params)
+        except BaseException:
+            # Lets one of the held requests write the entry instead
+            self._cache_warmups.pop(prefix_key, None)
+            warmup.written.set()
+            raise
+        warmup.last_used = time.monotonic()
+        warmup.written.set()
+        return response
+
+    async def _generate_with_schema_fallback(
+        self,
+        request: LLMRequest,
+        params: MessageCreateParamsNonStreaming,
+    ) -> LLMResponse:
+        """Send a request, resending it with its schema as instructions if the API rejects the enforced schema.
+
+        The API reports schema rejections without a machine-readable error code, so the schema is confirmed as the
+        cause by resending the request without enforcing it: any other invalid request fails again, and its original
+        error is raised.
+
+        Args:
+            request: LLM request the parameters were built from.
+            params: Parameters of the request.
+
+        Returns:
+            The generated response.
+
+        Raises:
+            BadRequestError: If the request is invalid for a reason other than its enforced schema.
+        """
+        try:
+            return await self._generate_from_params(params)
+        except BadRequestError as exc:
+            schema = request.prompt.schema
+            if schema is None or 'format' not in params.get('output_config', {}):
+                raise
+            try:
+                response = await self._generate_from_params(self._build_request_params(request, enforce_schema=False))
+            except BadRequestError:
+                raise exc from None
+            self._mark_unenforced(schema, f'the Anthropic API rejected it ({exc.message})')
+            return response
+
+    async def _generate_from_params(self, params: MessageCreateParamsNonStreaming) -> LLMResponse:
+        """Send a Messages API request and build the response.
+
+        Args:
+            params: Parameters of the request.
+
+        Returns:
+            The generated response with its content, model and usage metrics.
+
+        Raises:
+            LLMResponseError: If the model refused to respond or stopped before finishing its turn.
+        """
+        message = await self._client.messages.create(**params)
         self._ensure_successful_response(message)
         return self._build_llm_response(message)
+
+    def _cache_prefix_key(self, request: LLMRequest, params: MessageCreateParamsNonStreaming) -> str | None:
+        """Identify the cached prefix of a request.
+
+        Args:
+            request: LLM request the parameters were built from.
+            params: Parameters built for the request.
+
+        Returns:
+            A key that is equal for requests sharing the prefix up to their cache breakpoint, or None if the request
+            has no cache breakpoint.
+        """
+        if not request.prompt.shared_content or not LLMRegistry.supports_explicit_caching(self._config.model):
+            return None
+        prefix = {key: params.get(key) for key in ('model', 'system', 'thinking', 'output_config')}
+        prefix_json = json.dumps(prefix | {'shared_content': request.prompt.shared_content}, sort_keys=True)
+        return hashlib.sha256(prefix_json.encode()).hexdigest()
 
     @translate_anthropic_errors
     async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:

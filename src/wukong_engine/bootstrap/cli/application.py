@@ -132,13 +132,15 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         The composed CLI application.
 
     Raises:
-        ConfigurationError: If the verbosity, environment or configuration file cannot be loaded.
+        ConfigurationError: If the verbosity, environment or configuration file cannot be loaded, or the LLM client
+            cannot be configured for the model.
     """
     # Configuration
     try:
         set_logger_verbosity(verbosity)
         app_config = ConfigProvider().get(config_path)
         env_config = load_env_config(app_config.llm.model.provider)
+        llm_client = _model_to_llm_client(app_config.llm.model, env_config.llm_api_key)
     except Exception as exc:
         error = f'Failed to load configuration: {exc}'
         logger.error(error)
@@ -162,7 +164,6 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         ),
     )
     staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
-    llm_client = _model_to_llm_client(app_config.llm.model, env_config.llm_api_key)
     pk_normalizer = DefaultPKNormalizer()
     knowledge_repository = KnowledgeRepository(uow=staging_uow)
     knowledge_exporter = _format_to_exporter(app_config.export.format, knowledge_repository)
