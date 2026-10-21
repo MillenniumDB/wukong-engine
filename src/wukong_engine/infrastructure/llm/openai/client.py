@@ -32,6 +32,7 @@ logger = logging.getLogger(__name__)
 
 # Constants
 UNENFORCED_SCHEMA_INSTRUCTIONS = 'Respond only with a JSON object that follows this JSON schema:\n{schema}'
+SCHEMA_CHECK_INPUT = 'Respond with the JSON object.'  # Input of the token counting requests checking batch schemas
 
 
 def _schema_key(schema: dict[str, Any]) -> str:
@@ -59,6 +60,7 @@ class OpenAIClient(LLMClient):
         self._client = AsyncOpenAI(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.OPENAI
         self._unenforced_schemas: set[str] = set()  # Keys of the schemas sent as instructions instead of enforced
+        self._checked_schemas: set[str] = set()  # Keys of the schemas the API accepted for batches
 
     @staticmethod
     def _build_input(prompt: LLMPrompt, *, explicit_caching: bool) -> list[dict[str, Any]]:
@@ -349,7 +351,9 @@ class OpenAIClient(LLMClient):
         """Create a batch for asynchronous request processing.
 
         The requests are uploaded as a JSONL file and submitted as a 24-hour Responses API batch; the uploaded file
-        is deleted if batch creation fails.
+        is deleted if batch creation fails. The schemas of the requests are checked first (see
+        ``_check_batch_schema``), so that a schema the API rejects is sent as instructions instead of failing every
+        request that uses it.
 
         Args:
             requests: LLM requests to include in the batch.
@@ -363,7 +367,10 @@ class OpenAIClient(LLMClient):
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
             LLMInternalError: If any other unexpected provider error occurs.
         """
-        # Build the JSONL payload for the batch
+        # Check the schemas of the requests, then build the JSONL payload for the batch
+        requests = tuple(requests)
+        for request in requests:
+            await self._check_batch_schema(request)
         lines = []
         for request, job_id in zip(requests, job_ids, strict=True):
             payload = self._build_request_payload(request)
@@ -396,6 +403,36 @@ class OpenAIClient(LLMClient):
                 with contextlib.suppress(Exception):
                     await self._client.files.delete(file_id)
             raise
+
+    async def _check_batch_schema(self, request: LLMRequest) -> None:
+        """Check, once per schema, whether the API accepts the enforced schema of a batch request.
+
+        In a batch, a rejected schema would only surface as an error of each request using it. Instead, the schema is
+        first validated through the free input token counting endpoint, which rejects invalid schemas like generation
+        does, and a rejected schema is sent as instructions from now on.
+
+        Args:
+            request: LLM request whose schema to check.
+
+        Raises:
+            BadRequestError: If the check is invalid for a reason other than its schema.
+        """
+        schema = request.prompt.schema
+        text_format = self._build_request_payload(request).get('text', {})
+        if schema is None or text_format.get('format', {}).get('type') != 'json_schema':
+            return
+        if _schema_key(schema) in self._checked_schemas:
+            return
+        check = {'model': self._config.model.name, 'input': SCHEMA_CHECK_INPUT, 'text': text_format}
+        try:
+            # The SDK has no typed method for the input token counting endpoint yet
+            await self._client.post('/responses/input_tokens', cast_to=object, body=check)
+        except BadRequestError as exc:
+            if exc.code != 'invalid_json_schema':
+                raise
+            self._mark_unenforced(schema, f'the OpenAI API rejected it ({exc.message})')
+        else:
+            self._checked_schemas.add(_schema_key(schema))
 
     @translate_openai_errors
     async def get_batch_status(self, batch_id: str) -> str:

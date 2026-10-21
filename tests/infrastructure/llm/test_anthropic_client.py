@@ -270,20 +270,68 @@ def test_generate_translates_api_errors(
         asyncio.run(_client().generate(REQUEST))
 
 
-def test_create_batch_sends_one_request_per_job(mock_api: MockAPIInstaller) -> None:
-    """Send one batch request per job, identified by the job ID, with the same parameters as a realtime call."""
-    api = mock_api({'/v1/messages/batches': httpx2.Response(200, json=_batch('in_progress'))})
+def test_create_batch_checks_each_schema_once_and_sends_one_request_per_job(mock_api: MockAPIInstaller) -> None:
+    """Check a shared schema once with a one-token request, then send one batch request per job."""
+    api = mock_api(
+        {
+            '/v1/messages': httpx2.Response(200, json=_message('max_tokens')),
+            '/v1/messages/batches': httpx2.Response(200, json=_batch('in_progress')),
+        },
+    )
 
     response = asyncio.run(_client().create_batch([REQUEST, REQUEST], ['job1', 'job2']))
 
     assert response.batch_id == 'msgbatch_1'
     assert response.provider == LLMProvider.ANTHROPIC
-    assert api.request_body() == {
+    assert [request.url.path for request in api.requests] == ['/v1/messages', '/v1/messages/batches']
+    check = api.request_body(0)
+    assert check['max_tokens'] == 1
+    assert check['output_config'] == {'format': EXPECTED_PARAMS['output_config']['format']}
+    assert api.request_body(1) == {
         'requests': [
             {'custom_id': 'job1', 'params': EXPECTED_PARAMS},
             {'custom_id': 'job2', 'params': EXPECTED_PARAMS},
         ],
     }
+
+
+def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: MockAPIInstaller) -> None:
+    """Send the batch with a schema the API rejects as instructions, without checking it again."""
+    rejection = _error(400, 'invalid_request_error', 'Schemas contains too many parameters with union types')
+    api = mock_api(
+        {
+            '/v1/messages': [rejection, httpx2.Response(200, json=_message('max_tokens'))],
+            '/v1/messages/batches': httpx2.Response(200, json=_batch('in_progress')),
+        },
+    )
+    client = _client()
+
+    asyncio.run(client.create_batch([REQUEST], ['job1']))
+    asyncio.run(client.create_batch([REQUEST], ['job2']))
+
+    paths = [request.url.path for request in api.requests]
+    assert paths == ['/v1/messages', '/v1/messages', '/v1/messages/batches', '/v1/messages/batches']
+    assert 'output_config' not in api.request_body(1)
+    for index in (2, 3):
+        [batch_request] = api.request_body(index)['requests']
+        assert 'format' not in batch_request['params']['output_config']
+        assert batch_request['params']['system'].endswith(json.dumps(SCHEMA))
+
+
+def test_create_batch_raises_when_the_check_is_invalid_for_another_reason(mock_api: MockAPIInstaller) -> None:
+    """Raise the check's configuration error, without creating the batch, when it also fails without the schema."""
+    api = mock_api(
+        {
+            '/v1/messages': [
+                _error(400, 'invalid_request_error', 'Invalid model'),
+                _error(400, 'invalid_request_error', 'Invalid model'),
+            ],
+        },
+    )
+
+    with pytest.raises(LLMConfigurationError, match='Invalid model'):
+        asyncio.run(_client().create_batch([REQUEST], ['job1']))
+    assert [request.url.path for request in api.requests] == ['/v1/messages', '/v1/messages']
 
 
 @pytest.mark.parametrize(

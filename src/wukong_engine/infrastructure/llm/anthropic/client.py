@@ -31,6 +31,7 @@ logger = logging.getLogger(__name__)
 UNENFORCED_SCHEMA_INSTRUCTIONS = (
     'Respond only with a JSON object that follows this JSON schema, without code fences or any other text:\n{schema}'
 )
+SCHEMA_CHECK_CONTENT = 'Respond with the JSON object.'  # Content of the one-token requests checking batch schemas
 CACHE_ENTRY_LIFETIME = 270  # Seconds a prompt cache entry is assumed to live unused (the API's 5 minutes, with margin)
 
 
@@ -98,6 +99,7 @@ class AnthropicClient(LLMClient):
         self._client = AsyncAnthropic(api_key=config.api_key, timeout=config.timeout, max_retries=config.max_retries)
         self._provider = LLMProvider.ANTHROPIC
         self._unenforced_schemas: set[str] = set()  # Keys of the schemas sent as instructions instead of enforced
+        self._checked_schemas: set[str] = set()  # Keys of the schemas the API accepted for batches
         self._cache_warmups: dict[str, _CacheWarmup] = {}  # Keyed by cached prefix
 
     @staticmethod
@@ -444,6 +446,9 @@ class AnthropicClient(LLMClient):
     async def create_batch(self, requests: Iterable[LLMRequest], job_ids: Iterable[str]) -> LLMBatchCreationResponse:
         """Create a batch for asynchronous request processing.
 
+        The schemas of the requests are checked first (see ``_check_batch_schema``), so that a schema the API rejects
+        is sent as instructions instead of failing every request that uses it.
+
         Args:
             requests: LLM requests to include in the batch.
             job_ids: Job identifiers used as the custom ID of each request, in the same order as ``requests``.
@@ -456,12 +461,51 @@ class AnthropicClient(LLMClient):
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
             LLMInternalError: If any other unexpected provider error occurs.
         """
+        requests = tuple(requests)
+        for request in requests:
+            await self._check_batch_schema(request)
         batch_requests: list[Request] = [
             {'custom_id': job_id, 'params': self._build_request_params(request)}
             for request, job_id in zip(requests, job_ids, strict=True)
         ]
         batch = await self._client.messages.batches.create(requests=batch_requests)
         return LLMBatchCreationResponse(batch_id=batch.id, provider=self._provider)
+
+    async def _check_batch_schema(self, request: LLMRequest) -> None:
+        """Check, once per schema, whether the API accepts the enforced schema of a batch request.
+
+        In a batch, a rejected schema would only surface as an error of each request using it. Instead, a one-token
+        request with the schema is sent first, which also makes the API compile the schema for the batch. As with
+        real-time requests, a rejection is confirmed by resending the check without the schema, and the schema is then
+        sent as instructions from now on.
+
+        Args:
+            request: LLM request whose schema to check.
+
+        Raises:
+            BadRequestError: If the check is invalid for a reason other than its schema.
+        """
+        schema = request.prompt.schema
+        output_format = self._build_request_params(request).get('output_config', {}).get('format')
+        if schema is None or output_format is None or _schema_key(schema) in self._checked_schemas:
+            return
+        check: MessageCreateParamsNonStreaming = {
+            'model': self._config.model.name,
+            'max_tokens': 1,
+            'messages': [{'role': 'user', 'content': SCHEMA_CHECK_CONTENT}],
+        }
+        check_with_schema = check.copy()
+        check_with_schema['output_config'] = {'format': output_format}
+        try:
+            await self._client.messages.create(**check_with_schema)
+        except BadRequestError as exc:
+            try:
+                await self._client.messages.create(**check)
+            except BadRequestError:
+                raise exc from None
+            self._mark_unenforced(schema, f'the Anthropic API rejected it ({exc.message})')
+        else:
+            self._checked_schemas.add(_schema_key(schema))
 
     @translate_anthropic_errors
     async def get_batch_status(self, batch_id: str) -> str:

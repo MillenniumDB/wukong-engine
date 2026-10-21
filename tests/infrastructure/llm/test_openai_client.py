@@ -79,11 +79,18 @@ class MockOpenAIAPI:
             responses: Responses served in turn, one per request.
         """
         self.responses = responses
+        self.paths: list[str] = []
         self.bodies: list[dict[str, Any]] = []
+        self.raw_bodies: list[str] = []
 
     def handle(self, request: httpx.Request) -> httpx.Response:
-        """Record the request body (empty for requests without one) and serve the next response."""
-        self.bodies.append(json.loads(request.content) if request.content else {})
+        """Record the request path and body (decoded if it is JSON, or empty) and serve the next response."""
+        self.paths.append(request.url.path)
+        self.raw_bodies.append(request.content.decode(errors='replace'))
+        try:
+            self.bodies.append(json.loads(request.content) if request.content else {})
+        except ValueError:
+            self.bodies.append({})  # Not a JSON body, e.g. a multipart file upload
         return self.responses.pop(0)
 
 
@@ -241,3 +248,71 @@ def test_get_batch_results_keeps_the_finished_requests_of_an_expired_batch(mock_
     assert result.error is None
     assert result.response is not None
     assert result.response.content == '{"entities": []}'
+
+
+BATCH_FILE = {
+    'id': 'file-in',
+    'object': 'file',
+    'bytes': 1,
+    'created_at': 0,
+    'filename': 'batch.jsonl',
+    'purpose': 'batch',
+    'status': 'processed',
+}
+NEW_BATCH = {
+    'id': 'batch_1',
+    'object': 'batch',
+    'endpoint': '/v1/responses',
+    'input_file_id': 'file-in',
+    'completion_window': '24h',
+    'status': 'validating',
+    'created_at': 0,
+}
+TOKEN_COUNT = {'object': 'response.input_tokens', 'input_tokens': 28}
+
+
+def test_create_batch_checks_each_schema_once_through_token_counting(mock_api: Any) -> None:
+    """Validate a schema once through the input token counting endpoint, enforcing it in the batches."""
+    api = mock_api(
+        [
+            httpx.Response(200, json=TOKEN_COUNT),
+            httpx.Response(200, json=BATCH_FILE),
+            httpx.Response(200, json=NEW_BATCH),
+            httpx.Response(200, json=BATCH_FILE),
+            httpx.Response(200, json=NEW_BATCH),
+        ],
+    )
+    client = _client()
+
+    asyncio.run(client.create_batch([_request(SCHEMA), _request(SCHEMA)], ['job1', 'job2']))
+    asyncio.run(client.create_batch([_request(SCHEMA)], ['job3']))
+
+    assert api.paths == ['/v1/responses/input_tokens', '/v1/files', '/v1/batches', '/v1/files', '/v1/batches']
+    assert api.bodies[0]['text']['format']['schema'] == SCHEMA
+    assert '"type": "json_schema"' in api.raw_bodies[1]
+
+
+def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: Any) -> None:
+    """Send the batch requests of a schema the API rejects in JSON mode, with the schema as instructions."""
+    api = mock_api(
+        [
+            _bad_request('invalid_json_schema', 'text.format.schema'),
+            httpx.Response(200, json=BATCH_FILE),
+            httpx.Response(200, json=NEW_BATCH),
+        ],
+    )
+
+    asyncio.run(_client().create_batch([_request(SCHEMA)], ['job1']))
+
+    assert api.paths == ['/v1/responses/input_tokens', '/v1/files', '/v1/batches']
+    assert '"type": "json_object"' in api.raw_bodies[1]
+    assert '"type": "json_schema"' not in api.raw_bodies[1]
+
+
+def test_create_batch_raises_other_invalid_checks_without_uploading(mock_api: Any) -> None:
+    """Raise a configuration error, without uploading the batch, when the check is invalid for another reason."""
+    api = mock_api([_bad_request('unknown_parameter', 'not_a_real_param')])
+
+    with pytest.raises(LLMConfigurationError):
+        asyncio.run(_client().create_batch([_request(SCHEMA)], ['job1']))
+    assert api.paths == ['/v1/responses/input_tokens']
