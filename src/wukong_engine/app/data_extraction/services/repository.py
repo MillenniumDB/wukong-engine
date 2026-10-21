@@ -1058,43 +1058,14 @@ class RelationshipExtractionRepository(ExtractionRepository):
         with self._uow as tx:
             tx.extraction.relationships.store_job_entity_ref_mapping(job, mapping)
 
-    def get_entity_ref_for_job(self, job: ExtractionJob, temp_entity_id: str) -> EntityRef | None:
-        """Retrieve the EntityRef for a given temporary entity ID in the context of a specific extraction job.
+    def get_job_entity_ref_mapping(self, job: ExtractionJob) -> dict[str, EntityRef]:
+        """Retrieve the EntityRef mapping of a given extraction job.
 
         Args:
-            job: Job whose stored mapping to look up.
-            temp_entity_id: Temporary entity ID used in the job's prompt.
+            job: Job whose stored mapping to retrieve.
 
         Returns:
-            The mapped entity reference, or None if the ID isn't in the job's mapping.
+            Mapping from the temporary entity IDs used in the job's prompt to their entity references.
         """
         with self._uow as tx:
-            mapping = tx.extraction.relationships.get_job_entity_ref_mapping(job)
-            return mapping.get(temp_entity_id)
-
-    def get_job_entity_ref_context_levels(
-        self,
-        job: ExtractionJob,
-        entity_ref: EntityRef,
-        model: KnowledgeModel,
-    ) -> set[ContextLevel]:
-        """Retrieve the context levels for a given EntityRef in a specific extraction job.
-
-        Args:
-            job: Job whose extraction elements to inspect.
-            entity_ref: Entity reference to locate.
-            model: Knowledge model used to resolve the job's extraction elements.
-
-        Returns:
-            The context levels (chunk and/or parent document) at which the entity is available to the job; empty if
-            it's in neither.
-        """
-        elements = self.get_job_extraction_elements(job, model)
-        chunk_entity_ids = {entity.id for entity in elements.chunk_entities}
-        document_entity_ids = {entity.id for entity in elements.parent_document_entities}
-        context_levels: set[ContextLevel] = set()
-        if entity_ref.entity_id in chunk_entity_ids:
-            context_levels.add(ContextLevel.CHUNK)
-        if entity_ref.entity_id in document_entity_ids:
-            context_levels.add(ContextLevel.DOCUMENT)
-        return context_levels
+            return tx.extraction.relationships.get_job_entity_ref_mapping(job)

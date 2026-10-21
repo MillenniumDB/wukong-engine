@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🐛 Fixed](#-fixed)
+  - [⚡ Performance](#-performance)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation)
 - [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
@@ -23,13 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - [♻️ Changed](#️-changed-1)
   - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed-2)
-  - [⚡ Performance](#-performance)
+  - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-2)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-2)
   - [♻️ Changed](#️-changed-2)
   - [🐛 Fixed](#-fixed-3)
-  - [⚡ Performance](#-performance-1)
+  - [⚡ Performance](#-performance-2)
   - [📝 Documentation](#-documentation-3)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
   - [✨ Added](#-added-3)
@@ -48,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Only the API key of the configured model's provider is required: `OPENAI_API_KEY` for **OpenAI** models and `ANTHROPIC_API_KEY` for **Anthropic** models.
 - The error for an unsupported model now lists the supported models of every provider.
+- An extracted value of an optional field that doesn't satisfy its `options` or `regex` is now discarded on its own, falling back to the field's default, instead of discarding the whole entity or relationship.
 
 ### 🐛 Fixed
 
@@ -55,6 +57,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Deferred retries (timeouts, rate limits, server errors) are now bounded: a source extraction is marked as failed after 10 attempts of any kind across runs, instead of keeping the later pipeline steps from ever running.
 - Responses cut off at the output token limit are no longer retried with the same request, which would be cut off again, and the tokens of cut-off and refused responses are now recorded in the usage metrics.
 - An exhausted **OpenAI** quota now stops the run, instead of being treated as a rate limit that defers every job.
+
+### ⚡ Performance
+
+- Relationship results load their job's context (types, entity ID mapping and candidate entities) once per response, instead of once or twice per extracted relationship.
 
 ### 🛠️ Build
 

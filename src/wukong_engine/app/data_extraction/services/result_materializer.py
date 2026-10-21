@@ -2,15 +2,20 @@
 
 from typing import Any, Protocol
 
-from wukong_engine.app.data_extraction.elements import ExtractionJob, ExtractionResult
+from wukong_engine.app.data_extraction.elements import (
+    ExtractionJob,
+    ExtractionResult,
+    RelationshipExtractionRequestObjects,
+)
 from wukong_engine.app.data_extraction.exceptions import ExtractionResultError
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
-from wukong_engine.core.knowledge.elements import Entity, Relationship
+from wukong_engine.core.knowledge.elements import Entity, EntityRef, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.shared.regex_pattern import RegexPattern
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
@@ -32,6 +37,22 @@ def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
     if not isinstance(items, list):
         raise ExtractionResultError(f'Malformed extraction result, expected an object with a "{key}" list')
     return [item for item in items if isinstance(item, dict)]
+
+
+def _is_valid_value(value: str, options: tuple[str, ...], regex: RegexPattern | None) -> bool:
+    """Check whether a field value satisfies the field's constraints.
+
+    Args:
+        value: Materialized field value.
+        options: Allowed values of the field. Empty if any value is allowed.
+        regex: Pattern the value must match, or None if unconstrained.
+
+    Returns:
+        True if the value is one of the options (if any) and matches the regex (if any), False otherwise.
+    """
+    if options and value not in options:
+        return False
+    return regex is None or regex.match(value) is not None
 
 
 class ExtractionResultMaterializer(Protocol):
@@ -73,7 +94,8 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the extraction result into entity instances.
 
         Items under the result's ``entities`` key are skipped when their type is unknown or not assigned to the job,
-        their properties fail validation, or their primary key doesn't normalize.
+        a required field is missing or invalid, or their primary key doesn't normalize. Invalid values of optional
+        fields are discarded instead, as if they had not been extracted.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -84,10 +106,10 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             The valid entities built from the result.
         """
         extracted_entities = _extracted_items(result.data, 'entities')
+        job_types = set(self._repository.get_job_entity_types(job))
         materialized_entities: list[Entity] = []
         for extracted in extracted_entities:
             # Get entity type
-            job_types = set(self._repository.get_job_entity_types(job))
             entity_type = self._materialize_entity_type(extracted, job_types, model)
             if entity_type is None:
                 continue
@@ -172,8 +194,9 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
     ) -> dict[str, Any]:
         """Materialize the entity properties obtained through a given retrieval mode.
 
-        Extracted values are stringified; fields with no extracted value fall back to their default for the context
-        level, and fields that end up null are omitted.
+        Extracted values are stringified, and those of optional fields that don't satisfy the field's options or regex
+        are discarded; fields with no (valid) extracted value fall back to their default for the context level, and
+        fields that end up null are omitted.
 
         Args:
             data: Single extracted item holding the extracted field values.
@@ -196,6 +219,11 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             # For extracted fields, assign the extracted value when it exists in the data
             if retrieval_mode == EntityRetrievalMode.EXTRACT:
                 value = data.get(field.name.value)
+
+            # Discard an invalid optional value (an invalid required one is left for validation to reject the entity)
+            regex = field.regex.get(context_level)
+            if value is not None and not field.required and not _is_valid_value(str(value), field.options, regex):
+                value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
             value = str(value) if value is not None else field.default_value.get(context_level)
@@ -231,13 +259,8 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             if field.required and value is None:
                 return False
 
-            # Allowed values must be respected when options are defined
-            if field.options and value is not None and value not in field.options:
-                return False
-
-            # Regex pattern must be respected when defined
-            regex_pattern = field.regex.get(context_level)
-            if regex_pattern is not None and value is not None and not regex_pattern.match(str(value)):
+            # Allowed values and regex pattern must be respected when defined
+            if value is not None and not _is_valid_value(str(value), field.options, field.regex.get(context_level)):
                 return False
 
         return True
@@ -262,8 +285,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the extraction result into relationship instances.
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
-        job, their endpoints don't resolve to a valid endpoint of the type, their properties fail validation, or a
-        required primary key is missing or doesn't normalize.
+        job, their endpoints don't resolve to a valid endpoint of the type, a required field is missing or invalid,
+        or a required primary key is missing or doesn't normalize. Invalid values of optional fields are discarded
+        instead, as if they had not been extracted.
 
         Args:
             result: Raw LLM extraction result to materialize.
@@ -274,16 +298,23 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             The valid relationships built from the result.
         """
         extracted_relationships = _extracted_items(result.data, 'relationships')
+        if not extracted_relationships:
+            return ()
+
+        # Load the job's context, which is the same for every extracted relationship
+        job_types = set(self._repository.get_job_relationship_types(job))
+        entity_refs = self._repository.get_job_entity_ref_mapping(job)
+        entity_context_levels = self._entity_context_levels(self._repository.get_job_extraction_elements(job, model))
+
         materialized_relationships: list[Relationship] = []
         for extracted in extracted_relationships:
             # Get relationship type
-            job_types = set(self._repository.get_job_relationship_types(job))
             relationship_type = self._materialize_relationship_type(extracted, job_types, model)
             if relationship_type is None:
                 continue
 
             # Get source and target entity IDs
-            endpoint = self._materialize_endpoint(extracted, relationship_type, job, model)
+            endpoint = self._materialize_endpoint(extracted, relationship_type, entity_refs, entity_context_levels)
             if endpoint is None:
                 continue
             source, target = endpoint
@@ -363,12 +394,29 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         except ValueError:
             return None  # Invalid relationship type name in extracted data
 
+    @staticmethod
+    def _entity_context_levels(elements: RelationshipExtractionRequestObjects) -> dict[EntityId, set[ContextLevel]]:
+        """Map each entity available to a job to the context levels it is available at.
+
+        Args:
+            elements: Extraction elements of the job, with its chunk and parent document entities.
+
+        Returns:
+            The context levels (chunk and/or parent document) of each entity available to the job.
+        """
+        context_levels: dict[EntityId, set[ContextLevel]] = {}
+        for entity in elements.chunk_entities:
+            context_levels.setdefault(entity.id, set()).add(ContextLevel.CHUNK)
+        for entity in elements.parent_document_entities:
+            context_levels.setdefault(entity.id, set()).add(ContextLevel.DOCUMENT)
+        return context_levels
+
+    @staticmethod
     def _materialize_endpoint(
-        self,
         data: dict[str, Any],
         relationship_type: RelationshipType,
-        job: ExtractionJob,
-        model: KnowledgeModel,
+        entity_refs: dict[str, EntityRef],
+        entity_context_levels: dict[EntityId, set[ContextLevel]],
     ) -> tuple[EntityId, EntityId] | None:
         """Materialize the source and target entity IDs.
 
@@ -378,8 +426,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         Args:
             data: Single extracted item holding the temporary source and target IDs.
             relationship_type: Relationship type whose endpoint definitions the pair must match.
-            job: Extraction job whose entity references the temporary IDs belong to.
-            model: Knowledge model used to resolve the context levels of the referenced entities.
+            entity_refs: Mapping from the temporary entity IDs of the job's prompt to their entity references.
+            entity_context_levels: Context levels of each entity available to the job.
 
         Returns:
             The source and target entity IDs, or None if either ID is missing or unknown, or the pair doesn't match
@@ -398,16 +446,16 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         target_id = str(target_id).capitalize()
 
         # Map the temporary IDs back to EntityRef instances
-        source_ref = self._repository.get_entity_ref_for_job(job, source_id)
-        target_ref = self._repository.get_entity_ref_for_job(job, target_id)
+        source_ref = entity_refs.get(source_id)
+        target_ref = entity_refs.get(target_id)
 
         # Invalid EntityRef instances
         if source_ref is None or target_ref is None:
             return None
 
         # Get context levels for source and target refs
-        source_ctx = self._repository.get_job_entity_ref_context_levels(job, source_ref, model)
-        target_ctx = self._repository.get_job_entity_ref_context_levels(job, target_ref, model)
+        source_ctx = entity_context_levels.get(source_ref.entity_id, set())
+        target_ctx = entity_context_levels.get(target_ref.entity_id, set())
 
         # Endpoint references do not match any endpoint defined in the relationship type
         if not relationship_type.is_valid_endpoint(
@@ -429,8 +477,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
     ) -> dict[str, Any]:
         """Materialize the relationship properties obtained through a given retrieval mode.
 
-        Extracted values are stringified; fields with no extracted value fall back to their default, and fields
-        that end up null are omitted.
+        Extracted values are stringified, and those of optional fields that don't satisfy the field's options or regex
+        are discarded; fields with no (valid) extracted value fall back to their default, and fields that end up null
+        are omitted.
 
         Args:
             data: Single extracted item holding the extracted field values.
@@ -448,6 +497,10 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             # For extracted fields, assign the extracted value when it exists in the data
             if retrieval_mode == RelationshipRetrievalMode.EXTRACT:
                 value = data.get(field.name.value)
+
+            # Discard an invalid optional value (an invalid required one is left for validation to reject the item)
+            if value is not None and not field.required and not _is_valid_value(str(value), field.options, field.regex):
+                value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
             value = str(value) if value is not None else field.default_value
@@ -477,13 +530,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             if field.required and value is None:
                 return False
 
-            # Allowed values must be respected when options are defined
-            if field.options and value is not None and value not in field.options:
-                return False
-
-            # Regex pattern must be respected when defined
-            regex_pattern = field.regex
-            if regex_pattern is not None and value is not None and not regex_pattern.match(str(value)):
+            # Allowed values and regex pattern must be respected when defined
+            if value is not None and not _is_valid_value(str(value), field.options, field.regex):
                 return False
 
         return True
