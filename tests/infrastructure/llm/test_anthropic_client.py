@@ -520,3 +520,13 @@ def test_config_rejects_disabled_thinking_for_models_that_cannot_disable_it(monk
     monkeypatch.setattr(config_module, 'THINKING_OPTIONAL_MODELS', frozenset())
     with pytest.raises(ValueError, match='cannot disable thinking'):
         AnthropicConfig(api_key='test-key', model=MODEL)
+
+
+def test_cancel_batch_requests_the_cancellation_from_the_api(mock_api: MockAPIInstaller) -> None:
+    """Send the cancellation request of a batch to its cancel endpoint."""
+    api = mock_api({'/v1/messages/batches/msgbatch_1/cancel': httpx2.Response(200, json=_batch('canceling'))})
+
+    asyncio.run(_client().cancel_batch('msgbatch_1'))
+
+    [request] = api.requests
+    assert (request.method, request.url.path) == ('POST', '/v1/messages/batches/msgbatch_1/cancel')

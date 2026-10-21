@@ -47,6 +47,23 @@ class LLMClient(Protocol):
         """
         ...
 
+    async def cancel_batch(self, batch_id: str) -> None:
+        """Request the cancellation of a batch, without waiting for the provider to stop it.
+
+        Requests the provider already finished stay billed, and their results remain retrievable once the batch ends.
+
+        Args:
+            batch_id: Provider identifier of the batch.
+
+        Raises:
+            LLMConfigurationError: If the client is misconfigured or the provider rejects the request as invalid (e.g.
+                the batch is unknown to it or has already ended).
+            LLMTransientError: If the provider fails in a way that may succeed on retry (rate limits, timeouts,
+                connection or server-side errors).
+            LLMInternalError: If an unexpected error occurs within the client or provider.
+        """
+        ...
+
     async def get_batch_status(self, batch_id: str) -> str:
         """Get the current status of a batch.
 

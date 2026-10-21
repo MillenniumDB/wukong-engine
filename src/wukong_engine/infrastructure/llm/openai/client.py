@@ -435,6 +435,21 @@ class OpenAIClient(LLMClient):
             self._checked_schemas.add(_schema_key(schema))
 
     @translate_openai_errors
+    async def cancel_batch(self, batch_id: str) -> None:
+        """Request the cancellation of a batch, without waiting for the provider to stop it.
+
+        Args:
+            batch_id: Provider identifier of the batch.
+
+        Raises:
+            LLMConfigurationError: If authentication fails or the provider rejects the request as invalid (e.g. the
+                batch is unknown to it or has already ended).
+            LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
+            LLMInternalError: If any other unexpected provider error occurs.
+        """
+        await self._client.batches.cancel(batch_id)
+
+    @translate_openai_errors
     async def get_batch_status(self, batch_id: str) -> str:
         """Get the current status of a batch.
 
@@ -486,7 +501,7 @@ class OpenAIClient(LLMClient):
         # Ensure the batch has results to retrieve
         output_file_id, error_file_id = provider_batch.output_file_id, provider_batch.error_file_id
         if output_file_id is None and error_file_id is None:
-            raise LLMInternalError(f'Completed batch {batch_id} has neither an output nor an error file')
+            raise LLMInternalError(f'Batch {batch_id} ended without an output or error file')
 
         # Retrieve the output file (absent when every request failed) and parse successful results
         results: list[LLMBatchResult] = []

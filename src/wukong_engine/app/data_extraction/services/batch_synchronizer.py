@@ -1,6 +1,7 @@
 """Extraction Batch Synchronizers."""
 
 import json
+import logging
 import time
 from typing import Protocol
 
@@ -35,10 +36,17 @@ from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
 from .result_materializer import ExtractionResultMaterializer
 
+# Logging
+logger = logging.getLogger(__name__)
+
 # Constants
 MAX_STATUS_CONCURRENCY = 50  # Maximum number of concurrent batch status requests (default: 50)
 MAX_RESULTS_CONCURRENCY = 10  # Maximum number of concurrent batch result retrievals (default: 10)
-MAX_BATCH_RESOLUTION_TIME = 30  # Maximum time (in hours) for the external provider to resolve a batch (default: 30)
+MAX_CANCELLATION_CONCURRENCY = 10  # Maximum number of concurrent batch cancellation requests (default: 10)
+# Providers end every batch within 24 hours, so one still pending after the resolution time is cancelled at the
+# provider, and discarded locally if it still hasn't ended an hour later (cancellations take minutes at most)
+MAX_BATCH_RESOLUTION_TIME = 25  # Maximum time (in hours) for the external provider to resolve a batch (default: 25)
+MAX_BATCH_CANCELLATION_TIME = 26  # Maximum time (in hours) for an overdue batch to end once cancelled (default: 26)
 
 
 class ExtractionBatchSynchronizer(Protocol):
@@ -50,6 +58,10 @@ class ExtractionBatchSynchronizer(Protocol):
         Args:
             knowledge_model: Knowledge model used to materialize the results of completed batches.
         """
+        ...
+
+    async def request_active_batch_cancellations(self) -> None:
+        """Request the cancellation of every active batch from the provider, without waiting for them to stop."""
         ...
 
 
@@ -76,22 +88,29 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._result_materializer = result_materializer
         self._metrics_tracker = metrics_tracker
         self._ended_batches: list[ExtractionBatch] = []  # Batches whose results are retrieved
+        self._overdue_batches: list[ExtractionBatch] = []  # Batches whose cancellation is requested
         self._end_statuses: dict[ExtractionBatchId, BatchStatus] = {}  # Status of those that ended unsuccessfully
 
     async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
         """Synchronize all submitted extraction batches.
 
         Queries the provider status of every active batch concurrently and resolves it locally (updating or
-        cancelling it), then retrieves the results of the batches that ended and persists them, before failing those
-        that ended unsuccessfully (e.g. expired), whose finished results are kept.
+        cancelling it), requests the cancellation of the overdue ones from the provider, then retrieves the results of
+        the batches that ended and persists them, before failing those that ended unsuccessfully (e.g. expired or
+        cancelled), whose finished results are kept.
 
         Args:
             knowledge_model: Knowledge model used to materialize the results of completed batches.
         """
-        # Initialize the async runners and reset ended batches
+        # Initialize the async runners and reset ended and overdue batches
         self._ended_batches = []
         self._end_statuses = {}
+        self._overdue_batches = []
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
+        cancellation_runner = AsyncConcurrentRunner(
+            fn=self._request_cancellation,
+            max_concurrency=MAX_CANCELLATION_CONCURRENCY,
+        )
         results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=MAX_RESULTS_CONCURRENCY)
 
         # Initial metrics log (do not force update since batching performance is long-lived)
@@ -102,6 +121,17 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         async for batch, status_result in status_runner.run(batches):
             self._resolve_batch_status(batch, status_result)
             self._metrics_tracker.request_metrics()  # Request a metrics log after each batch status resolution
+
+        # Request the cancellation of overdue batches, which stay active until the provider ends them (collecting the
+        # results they finished) or until they are dropped locally once their cancellation is overdue too
+        async for batch, error in cancellation_runner.run(self._overdue_batches):
+            if error is None:
+                self._repository.record_batch_error(
+                    batch,
+                    f'Requested the cancellation of the batch for not resolving within {MAX_BATCH_RESOLUTION_TIME} hours',
+                )
+            else:
+                self._repository.record_batch_error(batch, f'Failed to request the cancellation of the batch: {error}')
 
         # Process ended batches concurrently for result retrieval, then resolve them locally
         async for batch, completed_result in results_runner.run(self._ended_batches):
@@ -140,19 +170,49 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             raise ValueError(f'Unknown batch status "{provider_status}" returned by provider') from exc
 
     @staticmethod
-    def _is_overdue(batch: ExtractionBatch) -> bool:
-        """Check whether a batch has not been resolved within the maximum allowed time since its creation.
+    def _is_overdue(batch: ExtractionBatch, max_hours: int = MAX_BATCH_RESOLUTION_TIME) -> bool:
+        """Check whether a batch has not been resolved within a maximum time since its creation.
 
         Args:
             batch: Batch to check.
+            max_hours: Maximum time, in hours.
 
         Returns:
-            True if the batch was created over ``MAX_BATCH_RESOLUTION_TIME`` hours ago, False otherwise.
+            True if the batch was created over ``max_hours`` hours ago, False otherwise.
         """
         if batch.created_at is None:
             return False
         elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
-        return elapsed_time > MAX_BATCH_RESOLUTION_TIME
+        return elapsed_time > max_hours
+
+    async def request_active_batch_cancellations(self) -> None:
+        """Request the cancellation of every active batch from the provider, without waiting for them to stop.
+
+        Used before discarding the local batches, so that those still running don't keep billing requests whose
+        results would never be collected. Failed requests are only logged.
+        """
+        runner = AsyncConcurrentRunner(fn=self._request_cancellation, max_concurrency=MAX_CANCELLATION_CONCURRENCY)
+        async for _batch, _error in runner.run(self._repository.stream_active_batches()):
+            pass  # Outcomes are already logged when requested
+
+    async def _request_cancellation(self, batch: ExtractionBatch) -> str | None:
+        """Request the cancellation of a batch from the provider, logging any failure.
+
+        Args:
+            batch: Batch to cancel.
+
+        Returns:
+            None if the cancellation was requested, or the error message if it could not be.
+        """
+        try:
+            await self._llm_client.cancel_batch(batch.provider_id)
+        except (LLMTransientError, LLMResponseError, LLMConfigurationError, LLMInternalError) as exc:
+            logger.warning(
+                f'Failed to request the cancellation of batch {batch.provider_id} from {batch.provider.value}: {exc}. '
+                'If it is still running, cancel it from the provider to stop it from billing further requests.',
+            )
+            return str(exc)
+        return None
 
     async def _get_batch_status(self, batch: ExtractionBatch) -> BatchStatusResult:
         """Retrieve the status of a batch from the external provider, with error handling.
@@ -180,20 +240,30 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
     def _resolve_batch_status(self, batch: ExtractionBatch, status_result: BatchStatusResult) -> None:
         """Perform provider status resolution.
 
-        Cancels batches still pending after ``MAX_BATCH_RESOLUTION_TIME`` hours, records retrieval errors, updates
-        or fails the batch according to the provider status, and queues completed batches for result retrieval.
+        Queues batches still pending after ``MAX_BATCH_RESOLUTION_TIME`` hours for cancellation at the provider, and
+        cancels them locally once still pending after ``MAX_BATCH_CANCELLATION_TIME`` hours. Otherwise, records
+        retrieval errors, updates the batch according to the provider status, and queues ended batches for result
+        retrieval.
 
         Args:
             batch: Batch being resolved.
             status_result: Provider status retrieved for the batch.
         """
-        # If the batch has not been resolved in the maximum allowed time, cancel it and record the error
+        # If the batch has not been resolved in the maximum allowed time, request its cancellation from the provider,
+        # or cancel it locally if it hasn't ended since (e.g. the cancellation failed or never completes)
         if status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS) and self._is_overdue(batch):
-            self._repository.fail_batch(
-                batch,
-                BatchStatus.CANCELLED,
-                error=f'Cancelled batch due to not resolving within {MAX_BATCH_RESOLUTION_TIME} hours',
-            )
+            if self._is_overdue(batch, MAX_BATCH_CANCELLATION_TIME):
+                logger.warning(
+                    f'Discarding batch {batch.provider_id} after it did not end within {MAX_BATCH_CANCELLATION_TIME} '
+                    f'hours. If it is still running at {batch.provider.value}, cancel it from the provider.',
+                )
+                self._repository.fail_batch(
+                    batch,
+                    BatchStatus.CANCELLED,
+                    error=f'Cancelled batch due to not ending within {MAX_BATCH_CANCELLATION_TIME} hours',
+                )
+            else:
+                self._overdue_batches.append(batch)
             return
 
         # If there was an error retrieving the status, record the error and keep the current batch status

@@ -37,6 +37,10 @@ class FailingLLMClient:
         """Not used by the executor."""
         raise NotImplementedError
 
+    async def cancel_batch(self, batch_id: str) -> None:
+        """Not used by the executor."""
+        raise NotImplementedError
+
     async def get_batch_status(self, batch_id: str) -> str:
         """Not used by the executor."""
         raise NotImplementedError

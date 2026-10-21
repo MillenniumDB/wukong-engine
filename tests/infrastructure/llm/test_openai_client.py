@@ -316,3 +316,12 @@ def test_create_batch_raises_other_invalid_checks_without_uploading(mock_api: An
     with pytest.raises(LLMConfigurationError):
         asyncio.run(_client().create_batch([_request(SCHEMA)], ['job1']))
     assert api.paths == ['/v1/responses/input_tokens']
+
+
+def test_cancel_batch_requests_the_cancellation_from_the_api(mock_api: Any) -> None:
+    """Send the cancellation request of a batch to its cancel endpoint."""
+    api = mock_api([httpx.Response(200, json=NEW_BATCH | {'status': 'cancelling'})])
+
+    asyncio.run(_client().cancel_batch('batch_1'))
+
+    assert api.paths == ['/v1/batches/batch_1/cancel']

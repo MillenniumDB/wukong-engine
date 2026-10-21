@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name, and the default model is still `gpt-5.6-luna`. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs without thinking at the `low` effort level that extraction uses, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
 - Response schemas that exceed the provider's structured output limits, or that the provider rejects, are sent as instructions for the rest of the run instead of stopping it, with a warning, for both **OpenAI** and **Anthropic**.
+- Batch cancellation at the provider: a batch that hasn't ended within 25 hours (a provider's 24-hour limit plus a margin) is cancelled at the provider and its finished requests are still collected (it is discarded after 26 hours if it doesn't end), and resetting an extraction step requests the cancellation of its batches in flight, without waiting for them to stop.
 - A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
 
 ### ♻️ Changed
@@ -58,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Responses cut off at the output token limit are no longer retried with the same request, which would be cut off again, and the tokens of cut-off and refused responses are now recorded in the usage metrics.
 - An exhausted **OpenAI** quota now stops the run, instead of being treated as a rate limit that defers every job.
 - In batch mode, the jobs of a batch that fails as a whole now count toward the 10-attempt limit, instead of being resubmitted on every run forever.
-- In batch mode, a completed batch whose results can't be retrieved no longer blocks the pipeline forever: it is failed, and its jobs retried, once it is older than the maximum batch resolution time (30 hours). An **OpenAI** batch in which every request failed is now read from its error file instead of failing to retrieve.
+- In batch mode, a completed batch whose results can't be retrieved no longer blocks the pipeline forever: it is failed, and its jobs retried, once it is older than the maximum batch resolution time (25 hours). An **OpenAI** batch in which every request failed is now read from its error file instead of failing to retrieve.
 - In batch mode, a response schema the provider rejects is now detected before submitting, by checking each distinct schema once per run, and is sent as instructions, instead of failing every request that uses it until they run out of attempts.
 - In batch mode, the requests that an **OpenAI** batch finished before it expired or was cancelled are now kept, instead of being discarded and paid for again.
 - In batch mode, failed results now follow the same retry rules as in real time (cut-off responses aren't retried, refusals are retried immediately), and the token usage of unsuccessful responses is recorded.
