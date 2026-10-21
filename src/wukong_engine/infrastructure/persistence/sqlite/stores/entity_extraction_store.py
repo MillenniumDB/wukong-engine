@@ -478,7 +478,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     def get_active_batch_group(self, size: int, cursor: BatchCursor | None = None) -> tuple[ExtractionBatch, ...]:
         """Retrieve a group of active extraction batches using keyset pagination.
 
-        Active batches are those that are submitted or in progress, ordered by creation time and batch identifier.
+        Active batches are the entity extraction batches that are submitted or in progress, ordered by creation time and
+        batch identifier.
 
         Args:
             size: Maximum number of batches to retrieve.
@@ -497,8 +498,14 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 created_at
             FROM extraction_batches
             WHERE batch_status IN (?, ?)
+            AND EXISTS (
+                SELECT 1
+                FROM extraction_jobs j
+                WHERE j.batch_id = extraction_batches.batch_id
+                AND j.job_type = ?
+            )
         """
-        params: list[object] = [BatchStatus.SUBMITTED.value, BatchStatus.IN_PROGRESS.value]
+        params: list[object] = [BatchStatus.SUBMITTED.value, BatchStatus.IN_PROGRESS.value, EXTRACTION_JOB_TYPE]
 
         # Apply keyset pagination if a cursor is provided
         if cursor is not None:

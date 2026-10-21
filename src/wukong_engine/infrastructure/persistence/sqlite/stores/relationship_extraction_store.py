@@ -506,7 +506,8 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 beginning.
 
         Returns:
-            The SUBMITTED or IN_PROGRESS batches after the cursor, ordered by creation time and batch ID.
+            The SUBMITTED or IN_PROGRESS relationship extraction batches after the cursor, ordered by creation time and
+            batch ID.
         """
         # Base query and parameters
         query = """
@@ -518,8 +519,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 created_at
             FROM extraction_batches
             WHERE batch_status IN (?, ?)
+            AND EXISTS (
+                SELECT 1
+                FROM extraction_jobs j
+                WHERE j.batch_id = extraction_batches.batch_id
+                AND j.job_type = ?
+            )
         """
-        params: list[object] = [BatchStatus.SUBMITTED.value, BatchStatus.IN_PROGRESS.value]
+        params: list[object] = [BatchStatus.SUBMITTED.value, BatchStatus.IN_PROGRESS.value, EXTRACTION_JOB_TYPE]
 
         # Apply keyset pagination if a cursor is provided
         if cursor is not None:

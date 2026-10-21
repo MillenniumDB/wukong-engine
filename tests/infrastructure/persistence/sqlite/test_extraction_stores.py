@@ -1,4 +1,4 @@
-"""Tests for the attempt limits of source extractions in the SQLite extraction stores."""
+"""Tests for the SQLite extraction stores: attempt limits of source extractions and active batch listings."""
 
 import os
 import sqlite3
@@ -104,3 +104,27 @@ def test_failed_batches_defer_their_extractions_unless_out_of_attempts(
     store.fail_batch_jobs(batch, BatchStatus.FAILED)
 
     assert conn.execute(status_query).fetchone()[0] == expected_status
+
+
+def test_each_store_lists_only_the_active_batches_of_its_extraction_type(tmp_path: Path) -> None:
+    """List, in each store, only the active batches holding its own type of jobs, though all share one table."""
+    conn = _connect(tmp_path)
+    listed: dict[str, list[str]] = {}
+    for insert_extraction, provider_id in (
+        (_entity_extraction, 'entities'),
+        (_relationship_extraction, 'relationships'),
+    ):
+        store, _ = insert_extraction(conn, 0)
+        job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
+        batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id=provider_id)
+        store.schedule_jobs([job])
+        store.register_batch(batch)
+        store.link_jobs_to_batch([job], batch)
+
+    for store_type, label in (
+        (SQLiteEntityExtractionStore, 'entity'),
+        (SQLiteRelationshipExtractionStore, 'relationship'),
+    ):
+        listed[label] = [batch.provider_id for batch in store_type(conn).get_active_batch_group(size=10)]
+
+    assert listed == {'entity': ['entities'], 'relationship': ['relationships']}
