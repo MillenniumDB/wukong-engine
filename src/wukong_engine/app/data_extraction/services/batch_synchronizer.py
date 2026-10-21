@@ -29,6 +29,7 @@ from wukong_engine.app.llm.exceptions import (
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from wukong_engine.core.knowledge.model import KnowledgeModel
 
+from .executor import response_failure_result
 from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
 from .result_materializer import ExtractionResultMaterializer
@@ -134,6 +135,21 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         except KeyError as exc:
             raise ValueError(f'Unknown batch status "{provider_status}" returned by provider') from exc
 
+    @staticmethod
+    def _is_overdue(batch: ExtractionBatch) -> bool:
+        """Check whether a batch has not been resolved within the maximum allowed time since its creation.
+
+        Args:
+            batch: Batch to check.
+
+        Returns:
+            True if the batch was created over ``MAX_BATCH_RESOLUTION_TIME`` hours ago, False otherwise.
+        """
+        if batch.created_at is None:
+            return False
+        elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
+        return elapsed_time > MAX_BATCH_RESOLUTION_TIME
+
     async def _get_batch_status(self, batch: ExtractionBatch) -> BatchStatusResult:
         """Retrieve the status of a batch from the external provider, with error handling.
 
@@ -168,15 +184,13 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             status_result: Provider status retrieved for the batch.
         """
         # If the batch has not been resolved in the maximum allowed time, cancel it and record the error
-        if batch.created_at is not None and status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS):
-            elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
-            if elapsed_time > MAX_BATCH_RESOLUTION_TIME:
-                self._repository.fail_batch(
-                    batch,
-                    BatchStatus.CANCELLED,
-                    error=f'Cancelled batch due to not resolving within {MAX_BATCH_RESOLUTION_TIME} hours',
-                )
-                return
+        if status_result.status in (BatchStatus.SUBMITTED, BatchStatus.IN_PROGRESS) and self._is_overdue(batch):
+            self._repository.fail_batch(
+                batch,
+                BatchStatus.CANCELLED,
+                error=f'Cancelled batch due to not resolving within {MAX_BATCH_RESOLUTION_TIME} hours',
+            )
+            return
 
         # If there was an error retrieving the status, record the error and keep the current batch status
         if status_result.error is not None:
@@ -228,22 +242,26 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         """Process the results of a completed batch and persist them.
 
         Matches each active job of the batch with its provider result, completes or fails the job accordingly and
-        marks the batch as completed. Retrieval errors or missing results are recorded on the batch instead,
-        leaving its status unchanged.
+        marks the batch as completed. Retrieval errors or missing results are recorded on the batch instead, leaving its
+        status unchanged for a retry in the next run, until the batch is overdue and is failed.
 
         Args:
             batch: Completed batch being resolved.
             completed_result: Results retrieved for the batch.
             model: Knowledge model used to materialize successful results.
         """
-        # If there was an error retrieving the results, record the error and keep the current batch status
-        if completed_result.error is not None:
-            self._repository.record_batch_error(batch, completed_result.error)
-            return
-
-        # If there are no results, record an error and keep the current batch status
-        if completed_result.results is None:
-            self._repository.record_batch_error(batch, 'No results returned for completed batch')
+        # If the results could not be retrieved, record the error and keep the current batch status to retry in the next
+        # run, or fail the batch (deferring its jobs) once it is overdue, since the provider keeps reporting it completed
+        if completed_result.error is not None or completed_result.results is None:
+            error = completed_result.error or 'No results returned for completed batch'
+            if self._is_overdue(batch):
+                self._repository.fail_batch(
+                    batch,
+                    BatchStatus.FAILED,
+                    error=f'Failed batch whose results were not retrieved within {MAX_BATCH_RESOLUTION_TIME} hours: {error}',
+                )
+            else:
+                self._repository.record_batch_error(batch, error)
             return
 
         # Match jobs with results and process them individually
@@ -283,11 +301,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                     retry_policy=JobRetryPolicy.DEFERRED,
                 )
 
-            # Job result found, but it failed in the provider
+            # Job result found, but its response was unsuccessful (e.g. refused or truncated), handled like in real time
+            elif isinstance(provider_result.error, LLMResponseError):
+                result = response_failure_result(provider_result.error)
+
+            # Job result found, but its request failed in the provider, retried in a later batch
             elif provider_result.error is not None:
                 result = ExtractionResult(
                     status=JobStatus.FAILED,
-                    error=provider_result.error,
+                    error=str(provider_result.error),
                     error_severity=ErrorSeverity.RECOVERABLE,
                     retry_policy=JobRetryPolicy.DEFERRED,
                 )

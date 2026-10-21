@@ -584,7 +584,9 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             )
 
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
-        """Fail the in-progress jobs linked with a batch, resetting their in-progress extractions to pending for retry.
+        """Fail the in-progress jobs linked with a batch, deferring their in-progress extractions for retry.
+
+        Extractions that have reached ``MAX_ATTEMPTS`` attempts are marked as failed instead.
 
         Args:
             batch: Batch whose jobs are failed.
@@ -608,16 +610,21 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             ),
         )
 
-        # Reset associated in-progress extractions back to pending for retry, leaving other jobs' extractions untouched
+        # Defer the associated in-progress extractions for retry, or fail those out of attempts, leaving other jobs'
+        # extractions untouched
         self._conn.executemany(
             """
             UPDATE relationship_extractions
-            SET extraction_status = ?, last_error = ?
+            SET
+                extraction_status = CASE WHEN attempt_count >= ? THEN ? ELSE ? END,
+                last_error = ?
             WHERE chunk_content_id = ? AND extraction_status = ?
             """,
             [
                 (
-                    ExtractionStatus.PENDING.value,
+                    MAX_ATTEMPTS,
+                    ExtractionStatus.FAILED.value,
+                    ExtractionStatus.RETRY.value,
                     f'Batch failed with status "{status.value}"',
                     row['context_content_id'],
                     ExtractionStatus.IN_PROGRESS.value,

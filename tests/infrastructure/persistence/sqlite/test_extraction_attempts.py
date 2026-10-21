@@ -7,8 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from wukong_engine.app.data_extraction.elements import MAX_ATTEMPTS, ExtractionJob
-from wukong_engine.app.data_extraction.elements.values import JobRetryPolicy, JobStatus
+from wukong_engine.app.data_extraction.elements import MAX_ATTEMPTS, ExtractionBatch, ExtractionJob
+from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, JobStatus
+from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.shared.identity import ContentHash
 from wukong_engine.infrastructure.persistence.sqlite import SQLiteSessionFactory, initialize_sqlite_database
@@ -76,5 +77,30 @@ def test_deferred_retries_fail_the_extraction_once_its_attempts_reach_the_maximu
 
     store.schedule_jobs([job])
     store.update_job_status(job, JobStatus.FAILED, error='Timed out', retry_policy=JobRetryPolicy.DEFERRED)
+
+    assert conn.execute(status_query).fetchone()[0] == expected_status
+
+
+@pytest.mark.parametrize('insert_extraction', [_entity_extraction, _relationship_extraction])
+@pytest.mark.parametrize(
+    ('previous_attempts', 'expected_status'),
+    [(MAX_ATTEMPTS - 2, 'RETRY'), (MAX_ATTEMPTS - 1, 'FAILED')],
+)
+def test_failed_batches_defer_their_extractions_unless_out_of_attempts(
+    tmp_path: Path,
+    insert_extraction: Callable[[sqlite3.Connection, int], tuple[ExtractionStore, str]],
+    previous_attempts: int,
+    expected_status: str,
+) -> None:
+    """Defer the extractions of a failed batch for retry, unless the failed attempt was their last allowed one."""
+    conn = _connect(tmp_path)
+    store, status_query = insert_extraction(conn, previous_attempts)
+    job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
+    batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id='msgbatch_1')
+
+    store.schedule_jobs([job])
+    store.register_batch(batch)
+    store.link_jobs_to_batch([job], batch)
+    store.fail_batch_jobs(batch, BatchStatus.FAILED)
 
     assert conn.execute(status_query).fetchone()[0] == expected_status

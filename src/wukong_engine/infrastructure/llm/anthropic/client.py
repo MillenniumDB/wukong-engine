@@ -17,7 +17,7 @@ from anthropic.types.messages.batch_create_params import Request
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
-from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTruncatedResponseError
+from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTransientError, LLMTruncatedResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import AnthropicConfig
@@ -295,8 +295,8 @@ class AnthropicClient(LLMClient):
             item: Batch result for one request.
 
         Returns:
-            A successful result, or an error result if the request failed, was canceled or expired, or its response
-            was unsuccessful.
+            A successful result, or an error result: with the response error (and its usage) if the response was
+            unsuccessful, or with a transient error if the request failed, was canceled or expired.
         """
         result = item.result
         match result.type:
@@ -304,15 +304,15 @@ class AnthropicClient(LLMClient):
                 try:
                     cls._ensure_successful_response(result.message)
                 except LLMResponseError as exc:
-                    return LLMBatchResult(job_id=item.custom_id, response=None, error=str(exc))
+                    return LLMBatchResult(job_id=item.custom_id, response=None, error=exc)
                 return LLMBatchResult(job_id=item.custom_id, response=cls._build_llm_response(result.message))
             case 'errored':
-                error = f'Batch request failed: {result.error.error.message}'
+                message = f'Batch request failed: {result.error.error.message}'
             case 'canceled':
-                error = 'Batch request was canceled before processing'
+                message = 'Batch request was canceled before processing'
             case 'expired':
-                error = 'Batch request expired before processing'
-        return LLMBatchResult(job_id=item.custom_id, response=None, error=error)
+                message = 'Batch request expired before processing'
+        return LLMBatchResult(job_id=item.custom_id, response=None, error=LLMTransientError(message))
 
     @translate_anthropic_errors
     async def generate(self, request: LLMRequest) -> LLMResponse:

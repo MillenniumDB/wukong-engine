@@ -15,7 +15,12 @@ from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
-from wukong_engine.app.llm.exceptions import LLMInternalError, LLMResponseError, LLMTruncatedResponseError
+from wukong_engine.app.llm.exceptions import (
+    LLMInternalError,
+    LLMResponseError,
+    LLMTransientError,
+    LLMTruncatedResponseError,
+)
 from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import OpenAIConfig
@@ -220,8 +225,9 @@ class OpenAIClient(LLMClient):
             line: JSONL line of the batch output file.
 
         Returns:
-            A successful result, an error result if the response was unsuccessful or could not be parsed, or None
-            if the line carries no job identifier.
+            A successful result, an error result (with the response error and its usage if the response was
+            unsuccessful, or an internal error if it could not be parsed), or None if the line carries no job
+            identifier.
         """
         try:
             # Parse the JSON line and extract the item and job ID
@@ -241,7 +247,7 @@ class OpenAIClient(LLMClient):
         except LLMResponseError as exc:
             # If the response indicates a refusal or is incomplete, return an error result instead
             if custom_id is not None:
-                return LLMBatchResult(job_id=custom_id, response=None, error=str(exc))
+                return LLMBatchResult(job_id=custom_id, response=None, error=exc)
             return None
         except ValidationError, json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError:
             # If parsing fails, return an error result (if job ID is available)
@@ -249,7 +255,7 @@ class OpenAIClient(LLMClient):
                 return LLMBatchResult(
                     job_id=custom_id,
                     response=None,
-                    error=f'Failed to parse returned batch result: {line}',
+                    error=LLMInternalError(f'Failed to parse returned batch result: {line}'),
                 )
             return None
 
@@ -260,8 +266,8 @@ class OpenAIClient(LLMClient):
             line: JSONL line of the batch error file.
 
         Returns:
-            An error result with the provider's error message (or a parsing failure message), or None if the line
-            carries no job identifier.
+            An error result with a transient error holding the provider's error message (or an internal error if the
+            line could not be parsed), or None if the line carries no job identifier.
         """
         try:
             # Parse the JSON line and extract the item and job ID
@@ -281,7 +287,7 @@ class OpenAIClient(LLMClient):
                 error_msg = item.get('error', {}).get('message', 'Unknown API error.')
 
             # Return the error result
-            error = f'Batch request failed: {error_msg}'
+            error = LLMTransientError(f'Batch request failed: {error_msg}')
             return LLMBatchResult(job_id=custom_id, response=None, error=error)
 
         except json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError:
@@ -290,7 +296,7 @@ class OpenAIClient(LLMClient):
                 return LLMBatchResult(
                     job_id=custom_id,
                     response=None,
-                    error=f'Failed to parse returned batch error result: {line}',
+                    error=LLMInternalError(f'Failed to parse returned batch error result: {line}'),
                 )
             return None
 
@@ -413,8 +419,9 @@ class OpenAIClient(LLMClient):
     async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
         """Get the results of a completed batch.
 
-        Failures to read the batch error file are ignored, so only the successfully parsed error results are
-        included.
+        The output file holds the successful results and is absent when every request failed; the error file holds
+        the failed ones. Failures to read the error file are ignored when there is an output file, so that its results
+        are still returned.
 
         Args:
             batch_id: Provider identifier of the batch.
@@ -424,8 +431,8 @@ class OpenAIClient(LLMClient):
 
         Raises:
             LLMResponseError: If the batch is not completed.
-            LLMInternalError: If the completed batch has no output file, or any other unexpected provider error
-                occurs.
+            LLMInternalError: If the completed batch has neither an output nor an error file, or any other unexpected
+                provider error occurs.
             LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
         """
@@ -438,27 +445,40 @@ class OpenAIClient(LLMClient):
                 f'Cannot retrieve results for batch {batch_id} with current status "{provider_batch.status}"',
             )
 
-        # Ensure the batch has an output file before attempting to retrieve results
-        if provider_batch.output_file_id is None:
-            raise LLMInternalError(f'Completed batch {batch_id} has no output file!')
+        # Ensure the batch has results to retrieve
+        output_file_id, error_file_id = provider_batch.output_file_id, provider_batch.error_file_id
+        if output_file_id is None and error_file_id is None:
+            raise LLMInternalError(f'Completed batch {batch_id} has neither an output nor an error file')
 
-        # Retrieve the output file and parse successful results
+        # Retrieve the output file (absent when every request failed) and parse successful results
         results: list[LLMBatchResult] = []
-        output_file = await self._client.files.content(provider_batch.output_file_id)
-        for line in output_file.text.splitlines():
-            parsed_result = self._parse_batch_result(line)
-            if parsed_result is not None:
-                results.append(parsed_result)
+        if output_file_id is not None:
+            output_file = await self._client.files.content(output_file_id)
+            for line in output_file.text.splitlines():
+                parsed_result = self._parse_batch_result(line)
+                if parsed_result is not None:
+                    results.append(parsed_result)
 
-        # Retrieve the error file and parse failed results (if any)
+        # Retrieve the error file and parse failed results (if any), which are all the results without an output file
         errors: list[LLMBatchResult] = []
-        with contextlib.suppress(Exception):
-            if provider_batch.error_file_id is not None:
-                error_file = await self._client.files.content(provider_batch.error_file_id)
-                for line in error_file.text.splitlines():
-                    parsed_error = self._parse_batch_error(line)
-                    if parsed_error is not None:
-                        errors.append(parsed_error)
+        if error_file_id is not None and output_file_id is None:
+            errors = await self._read_batch_errors(error_file_id)
+        elif error_file_id is not None:
+            with contextlib.suppress(Exception):
+                errors = await self._read_batch_errors(error_file_id)
 
         # Return all results (successful and failed)
         return tuple(results + errors)
+
+    async def _read_batch_errors(self, error_file_id: str) -> list[LLMBatchResult]:
+        """Read and parse the error file of a batch.
+
+        Args:
+            error_file_id: Provider identifier of the batch's error file.
+
+        Returns:
+            The error results parsed from the file, skipping lines that can't be matched to a job.
+        """
+        error_file = await self._client.files.content(error_file_id)
+        parsed_errors = (self._parse_batch_error(line) for line in error_file.text.splitlines())
+        return [error for error in parsed_errors if error is not None]

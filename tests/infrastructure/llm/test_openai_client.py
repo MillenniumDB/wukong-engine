@@ -82,8 +82,8 @@ class MockOpenAIAPI:
         self.bodies: list[dict[str, Any]] = []
 
     def handle(self, request: httpx.Request) -> httpx.Response:
-        """Record the request body and serve the next response."""
-        self.bodies.append(json.loads(request.content))
+        """Record the request body (empty for requests without one) and serve the next response."""
+        self.bodies.append(json.loads(request.content) if request.content else {})
         return self.responses.pop(0)
 
 
@@ -188,3 +188,32 @@ def test_generate_stops_on_an_exhausted_quota_but_not_on_rate_limits(
 
     with pytest.raises(expected_error):
         asyncio.run(_client().generate(_request(SCHEMA)))
+
+
+def test_get_batch_results_reads_the_error_file_when_every_request_failed(mock_api: Any) -> None:
+    """Return the error file's results, instead of failing, for a completed batch without an output file."""
+    batch = {
+        'id': 'batch_1',
+        'object': 'batch',
+        'endpoint': '/v1/responses',
+        'input_file_id': 'file-in',
+        'completion_window': '24h',
+        'status': 'completed',
+        'created_at': 0,
+        'output_file_id': None,
+        'error_file_id': 'file-err',
+    }
+    error_line = {
+        'id': 'batch_req_1',
+        'custom_id': 'job1',
+        'response': {'status_code': 400, 'body': {'error': {'message': 'Invalid schema'}}},
+        'error': None,
+    }
+    mock_api([httpx.Response(200, json=batch), httpx.Response(200, text=json.dumps(error_line))])
+
+    results = asyncio.run(_client().get_batch_results('batch_1'))
+
+    [result] = results
+    assert (result.job_id, result.response) == ('job1', None)
+    assert isinstance(result.error, LLMTransientError)
+    assert str(result.error) == 'Batch request failed: Invalid schema'

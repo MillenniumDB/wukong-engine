@@ -13,7 +13,7 @@ from anthropic import AsyncAnthropic, DefaultAsyncHttpxClient
 
 from wukong_engine.app.data_extraction.elements.values import BatchStatus, TokenUsageMetrics
 from wukong_engine.app.data_extraction.services import ConcurrentExtractionBatchSynchronizer
-from wukong_engine.app.llm.elements import LLMBatchResult, LLMRequest
+from wukong_engine.app.llm.elements import LLMRequest
 from wukong_engine.app.llm.elements.values import LLMPrompt, ReasoningEffort
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
@@ -307,7 +307,9 @@ def test_batch_statuses_are_understood_by_the_batch_synchronizer(
     assert ConcurrentExtractionBatchSynchronizer._map_batch_status(status) == expected_status
 
 
-def test_get_batch_results_parses_every_result_type(mock_api: MockAPIInstaller) -> None:
+def test_get_batch_results_parses_every_result_type_keeping_unsuccessful_responses_usage(
+    mock_api: MockAPIInstaller,
+) -> None:
     """Parse succeeded results into responses and every unsuccessful result into an error."""
     error = {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Invalid schema'}}
     lines = [
@@ -333,12 +335,16 @@ def test_get_batch_results_parses_every_result_type(mock_api: MockAPIInstaller) 
     assert succeeded.error is None
     assert succeeded.response is not None
     assert succeeded.response.content == '{"entities": []}'
-    assert results == {
-        'refused': LLMBatchResult('refused', response=None, error='The LLM refused to generate a response'),
-        'errored': LLMBatchResult('errored', response=None, error='Batch request failed: Invalid schema'),
-        'canceled': LLMBatchResult('canceled', response=None, error='Batch request was canceled before processing'),
-        'expired': LLMBatchResult('expired', response=None, error='Batch request expired before processing'),
+    assert all(result.response is None for result in results.values())
+    assert {job_id: (type(result.error), str(result.error)) for job_id, result in results.items()} == {
+        'refused': (LLMResponseError, 'The LLM refused to generate a response'),
+        'errored': (LLMTransientError, 'Batch request failed: Invalid schema'),
+        'canceled': (LLMTransientError, 'Batch request was canceled before processing'),
+        'expired': (LLMTransientError, 'Batch request expired before processing'),
     }
+    refusal = results['refused'].error
+    assert isinstance(refusal, LLMResponseError)
+    assert refusal.metrics is not None
 
 
 def test_get_batch_results_rejects_unfinished_batch(mock_api: MockAPIInstaller) -> None:

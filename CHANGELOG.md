@@ -57,6 +57,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Deferred retries (timeouts, rate limits, server errors) are now bounded: a source extraction is marked as failed after 10 attempts of any kind across runs, instead of keeping the later pipeline steps from ever running.
 - Responses cut off at the output token limit are no longer retried with the same request, which would be cut off again, and the tokens of cut-off and refused responses are now recorded in the usage metrics.
 - An exhausted **OpenAI** quota now stops the run, instead of being treated as a rate limit that defers every job.
+- In batch mode, the jobs of a batch that fails as a whole now count toward the 10-attempt limit, instead of being resubmitted on every run forever.
+- In batch mode, a completed batch whose results can't be retrieved no longer blocks the pipeline forever: it is failed, and its jobs retried, once it is older than the maximum batch resolution time (30 hours). An **OpenAI** batch in which every request failed is now read from its error file instead of failing to retrieve.
+- In batch mode, failed results now follow the same retry rules as in real time (cut-off responses aren't retried, refusals are retried immediately), and the token usage of unsuccessful responses is recorded.
 
 ### ⚡ Performance
 

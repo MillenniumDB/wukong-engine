@@ -27,6 +27,27 @@ from .prompt_renderer import PromptRenderer
 DEFAULT_MAX_CONCURRENCY = 5  # Default maximum number of concurrent requests (default: 5)
 
 
+def response_failure_result(error: LLMResponseError) -> ExtractionResult:
+    """Build the failed result of an unsuccessful LLM response, shared by real-time and batch execution.
+
+    Truncated responses aren't retried, since the same request would truncate them again, while other unsuccessful
+    responses (e.g. refusals) are retried immediately. Either way, the tokens they used are kept.
+
+    Args:
+        error: Error the response failed with.
+
+    Returns:
+        The failed extraction result, with the response's token usage.
+    """
+    return ExtractionResult(
+        status=JobStatus.FAILED,
+        metrics=TokenUsageMetrics.from_usage(error.metrics) if error.metrics else None,
+        error=str(error),
+        error_severity=ErrorSeverity.RECOVERABLE,
+        retry_policy=JobRetryPolicy.NONE if isinstance(error, LLMTruncatedResponseError) else JobRetryPolicy.IMMEDIATE,
+    )
+
+
 class ExtractionExecutor(Protocol):
     """Executor for extraction requests that interacts with an LLM client."""
 
@@ -130,22 +151,8 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 error_severity=ErrorSeverity.RECOVERABLE,
                 retry_policy=JobRetryPolicy.DEFERRED,
             )
-        except LLMTruncatedResponseError as exc:
-            return ExtractionResult(
-                status=JobStatus.FAILED,
-                metrics=TokenUsageMetrics.from_usage(exc.metrics) if exc.metrics else None,
-                error=str(exc),
-                error_severity=ErrorSeverity.RECOVERABLE,
-                retry_policy=JobRetryPolicy.NONE,
-            )
         except LLMResponseError as exc:
-            return ExtractionResult(
-                status=JobStatus.FAILED,
-                metrics=TokenUsageMetrics.from_usage(exc.metrics) if exc.metrics else None,
-                error=str(exc),
-                error_severity=ErrorSeverity.RECOVERABLE,
-                retry_policy=JobRetryPolicy.IMMEDIATE,
-            )
+            return response_failure_result(exc)
         except (json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError) as exc:
             return ExtractionResult(
                 status=JobStatus.FAILED,
