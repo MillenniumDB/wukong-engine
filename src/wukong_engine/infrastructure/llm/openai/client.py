@@ -417,7 +417,7 @@ class OpenAIClient(LLMClient):
 
     @translate_openai_errors
     async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
-        """Get the results of a completed batch.
+        """Get the results of an ended batch, which for an expired or cancelled one are those of its finished requests.
 
         The output file holds the successful results and is absent when every request failed; the error file holds
         the failed ones. Failures to read the error file are ignored when there is an output file, so that its results
@@ -430,8 +430,8 @@ class OpenAIClient(LLMClient):
             The parsed results from the output file followed by the parsed error results from the error file.
 
         Raises:
-            LLMResponseError: If the batch is not completed.
-            LLMInternalError: If the completed batch has neither an output nor an error file, or any other unexpected
+            LLMResponseError: If the batch has not ended, or failed without running.
+            LLMInternalError: If the ended batch has neither an output nor an error file, or any other unexpected
                 provider error occurs.
             LLMConfigurationError: If authentication fails or the provider rejects the request as invalid.
             LLMTransientError: If the provider is rate limited, times out, is unreachable or fails server-side.
@@ -439,8 +439,9 @@ class OpenAIClient(LLMClient):
         # Retrieve the batch from the provider
         provider_batch = await self._client.batches.retrieve(batch_id)
 
-        # Ensure the batch is completed before attempting to retrieve results
-        if provider_batch.status != 'completed':
+        # Ensure the batch has ended with results to retrieve (expired and cancelled batches keep those of the requests
+        # they finished, while failed ones never ran)
+        if provider_batch.status not in {'completed', 'expired', 'cancelled'}:
             raise LLMResponseError(
                 f'Cannot retrieve results for batch {batch_id} with current status "{provider_batch.status}"',
             )

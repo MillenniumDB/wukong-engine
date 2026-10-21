@@ -217,3 +217,27 @@ def test_get_batch_results_reads_the_error_file_when_every_request_failed(mock_a
     assert (result.job_id, result.response) == ('job1', None)
     assert isinstance(result.error, LLMTransientError)
     assert str(result.error) == 'Batch request failed: Invalid schema'
+
+
+def test_get_batch_results_keeps_the_finished_requests_of_an_expired_batch(mock_api: Any) -> None:
+    """Return the results of the requests an expired batch finished, from its output file."""
+    batch = {
+        'id': 'batch_1',
+        'object': 'batch',
+        'endpoint': '/v1/responses',
+        'input_file_id': 'file-in',
+        'completion_window': '24h',
+        'status': 'expired',
+        'created_at': 0,
+        'output_file_id': 'file-out',
+        'error_file_id': None,
+    }
+    output_line = {'id': 'batch_req_1', 'custom_id': 'job1', 'response': {'status_code': 200, 'body': RESPONSE}}
+    mock_api([httpx.Response(200, json=batch), httpx.Response(200, text=json.dumps(output_line))])
+
+    [result] = asyncio.run(_client().get_batch_results('batch_1'))
+
+    assert result.job_id == 'job1'
+    assert result.error is None
+    assert result.response is not None
+    assert result.response.content == '{"entities": []}'

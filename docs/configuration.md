@@ -99,6 +99,8 @@ The `[llm]` section controls the language model used for extraction.
 >
 > Anthropic's limits are much tighter: at most **16** nullable fields without options (plus one per extracted type list) in a single request. Past that, Anthropic models get the fields as optional instead of nullable, which fits up to **24** of them but makes the model leave out values more often, and only then the schema is sent as instructions.
 
+> ⚠️ A run interrupted (killed or crashed) while it submits batches can leave a batch that reached the provider but was never recorded locally. The provider still processes and bills it, but the engine can't collect its results, and the next run submits its jobs again. Avoid interrupting batch runs during submission, and if one is interrupted, check the provider's batch dashboard for batches the engine doesn't know about.
+
 > 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, they can no longer be checked, and are cancelled once they exceed the maximum batch resolution time (30 hours), after which their jobs are retried with the new provider. To avoid the wait, let pending batches finish before switching.
 
 **Execution modes:**

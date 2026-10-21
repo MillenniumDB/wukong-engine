@@ -14,6 +14,7 @@ from wukong_engine.app.data_extraction.elements import (
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
     ErrorSeverity,
+    ExtractionBatchId,
     JobRetryPolicy,
     JobStatus,
     TokenUsageMetrics,
@@ -74,19 +75,22 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._llm_client = llm_client
         self._result_materializer = result_materializer
         self._metrics_tracker = metrics_tracker
-        self._completed_batches: list[ExtractionBatch] = []
+        self._ended_batches: list[ExtractionBatch] = []  # Batches whose results are retrieved
+        self._end_statuses: dict[ExtractionBatchId, BatchStatus] = {}  # Status of those that ended unsuccessfully
 
     async def synchronize(self, knowledge_model: KnowledgeModel) -> None:
         """Synchronize all submitted extraction batches.
 
-        Queries the provider status of every active batch concurrently and resolves it locally (updating, failing
-        or cancelling it), then retrieves the results of the batches that completed and persists them.
+        Queries the provider status of every active batch concurrently and resolves it locally (updating or
+        cancelling it), then retrieves the results of the batches that ended and persists them, before failing those
+        that ended unsuccessfully (e.g. expired), whose finished results are kept.
 
         Args:
             knowledge_model: Knowledge model used to materialize the results of completed batches.
         """
-        # Initialize the async runners and reset completed batches
-        self._completed_batches = []
+        # Initialize the async runners and reset ended batches
+        self._ended_batches = []
+        self._end_statuses = {}
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
         results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=MAX_RESULTS_CONCURRENCY)
 
@@ -99,8 +103,8 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             self._resolve_batch_status(batch, status_result)
             self._metrics_tracker.request_metrics()  # Request a metrics log after each batch status resolution
 
-        # Process completed batches concurrently for result retrieval, then resolve them locally
-        async for batch, completed_result in results_runner.run(self._completed_batches):
+        # Process ended batches concurrently for result retrieval, then resolve them locally
+        async for batch, completed_result in results_runner.run(self._ended_batches):
             self._resolve_batch_results(batch, completed_result, knowledge_model)
             self._metrics_tracker.request_metrics()  # Request a metrics log after each completed batch
 
@@ -206,15 +210,12 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             case BatchStatus.SUBMITTED | BatchStatus.IN_PROGRESS:  # Batch is in progress, update the status
                 self._repository.update_batch_status(batch, status_result.status)
 
-            case BatchStatus.FAILED | BatchStatus.CANCELLED:  # Batch failed or cancelled, process failure
-                self._repository.fail_batch(
-                    batch,
-                    status_result.status,
-                    error=f'Batch was {status_result.status.value} by the external provider',
-                )
+            case BatchStatus.FAILED | BatchStatus.CANCELLED:  # Batch ended unsuccessfully, keep its finished results
+                self._end_statuses[batch.id] = status_result.status
+                self._ended_batches.append(batch)
 
             case BatchStatus.COMPLETED:  # Batch completed, mark for processing later
-                self._completed_batches.append(batch)
+                self._ended_batches.append(batch)
 
     async def _get_batch_results(self, batch: ExtractionBatch) -> CompletedBatchResult:
         """Retrieve the results of a completed batch from the external provider, with error handling.
@@ -239,22 +240,30 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         completed_result: CompletedBatchResult,
         model: KnowledgeModel,
     ) -> None:
-        """Process the results of a completed batch and persist them.
+        """Process the results of an ended batch and persist them.
 
-        Matches each active job of the batch with its provider result, completes or fails the job accordingly and
-        marks the batch as completed. Retrieval errors or missing results are recorded on the batch instead, leaving its
-        status unchanged for a retry in the next run, until the batch is overdue and is failed.
+        Matches each active job of the batch with its provider result, completes or fails the job accordingly (jobs
+        without a result are deferred) and marks the batch as completed, or as failed or cancelled if it ended
+        unsuccessfully. For a completed batch, retrieval errors or missing results are recorded on the batch instead,
+        leaving its status unchanged for a retry in the next run, until the batch is overdue and is failed. A batch that
+        ended unsuccessfully without results to retrieve is failed right away.
 
         Args:
-            batch: Completed batch being resolved.
+            batch: Ended batch being resolved.
             completed_result: Results retrieved for the batch.
             model: Knowledge model used to materialize successful results.
         """
-        # If the results could not be retrieved, record the error and keep the current batch status to retry in the next
-        # run, or fail the batch (deferring its jobs) once it is overdue, since the provider keeps reporting it completed
+        # If the results could not be retrieved, fail a batch that ended unsuccessfully (deferring its jobs) right away.
+        # For a completed one, record the error and keep the current batch status to retry in the next run, or fail it
+        # once it is overdue, since the provider keeps reporting it completed.
+        end_status = self._end_statuses.get(batch.id)
         if completed_result.error is not None or completed_result.results is None:
             error = completed_result.error or 'No results returned for completed batch'
-            if self._is_overdue(batch):
+            if end_status is not None:
+                self._repository.fail_batch(
+                    batch, end_status, error=f'Batch was {end_status.value} by the external provider'
+                )
+            elif self._is_overdue(batch):
                 self._repository.fail_batch(
                     batch,
                     BatchStatus.FAILED,
@@ -318,8 +327,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             if result is not None:
                 self._process_extraction_result(result, job, model)
 
-        # Mark batch as completed
-        self._repository.complete_batch(batch)
+        # Mark batch as completed, or as failed or cancelled once its finished results are kept
+        if end_status is not None:
+            self._repository.fail_batch(
+                batch,
+                end_status,
+                error=f'Batch was {end_status.value} by the external provider, after finishing part of its requests',
+            )
+        else:
+            self._repository.complete_batch(batch)
 
     def _process_extraction_result(self, result: ExtractionResult, job: ExtractionJob, model: KnowledgeModel) -> None:
         """Process an individual extraction result, materializing and persisting it.

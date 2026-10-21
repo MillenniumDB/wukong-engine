@@ -6,7 +6,12 @@ from dataclasses import replace
 
 import pytest
 
-from wukong_engine.app.data_extraction.elements import CompletedBatchResult, ExtractionBatch, ExtractionJob
+from wukong_engine.app.data_extraction.elements import (
+    BatchStatusResult,
+    CompletedBatchResult,
+    ExtractionBatch,
+    ExtractionJob,
+)
 from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, TokenUsageMetrics
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
@@ -20,7 +25,9 @@ from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchRes
 from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTransientError, LLMTruncatedResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.knowledge.elements import Entity
 from wukong_engine.core.knowledge.model import KnowledgeModel
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 from wukong_engine.core.shared.identity import ContentHash
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 
@@ -39,6 +46,7 @@ class RecordingRepository(EntityExtractionRepository):
         self.jobs = jobs
         self.resolutions: list[tuple[str, BatchStatus | None]] = []
         self.job_failures: dict[ExtractionJob, tuple[JobRetryPolicy | None, TokenUsageMetrics | None]] = {}
+        self.completed_jobs: dict[ExtractionJob, tuple[tuple[Entity, ...], TokenUsageMetrics | None]] = {}
 
     def stream_active_jobs_for_batch(self, batch: ExtractionBatch) -> Iterator[ExtractionJob]:
         """Stream the active jobs, which are the same for every batch."""
@@ -59,6 +67,20 @@ class RecordingRepository(EntityExtractionRepository):
     def complete_batch(self, batch: ExtractionBatch) -> None:
         """Record the batch completion."""
         self.resolutions.append((f'complete {batch.provider_id}', BatchStatus.COMPLETED))
+
+    def complete_job(
+        self,
+        job: ExtractionJob,
+        results: tuple[Entity, ...],
+        usage_metrics: TokenUsageMetrics | None = None,
+    ) -> None:
+        """Record the job completion."""
+        self.completed_jobs[job] = (results, usage_metrics)
+
+    def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
+        """Assign the Mission type to every job."""
+        self.resolutions.append((f'types {job.id}', None))
+        return (EntityTypeName('Mission'),)
 
     def fail_batch(self, batch: ExtractionBatch, status: BatchStatus, error: str | None = None) -> None:
         """Record the batch failure."""
@@ -155,3 +177,40 @@ def test_failed_batch_results_follow_the_real_time_retry_policies(model: Knowled
         errored: (JobRetryPolicy.DEFERRED, None),
     }
     assert repository.resolutions[-1] == ('complete msgbatch_1', BatchStatus.COMPLETED)
+
+
+def test_unsuccessful_batches_keep_their_finished_results_before_failing(model: KnowledgeModel) -> None:
+    """Keep the finished results of a batch that expired, deferring the rest of its jobs, before failing it."""
+    finished, unfinished = (
+        ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string(name))
+        for name in ('finished', 'unfinished')
+    )
+    repository = RecordingRepository(jobs=(finished, unfinished))
+    synchronizer = _synchronizer(repository)
+    batch = ExtractionBatch.from_provider(provider=LLMProvider.OPENAI, provider_id='batch_1')
+    response = LLMResponse(content='{"entities": []}', model='gpt-5.6-luna', metrics=USAGE)
+
+    synchronizer._resolve_batch_status(batch, BatchStatusResult(BatchStatus.FAILED))
+    results = (LLMBatchResult(finished.id.instance.hex, response=response),)
+    synchronizer._resolve_batch_results(batch, CompletedBatchResult(results=results), model)
+
+    assert repository.completed_jobs == {finished: ((), TokenUsageMetrics.from_usage(USAGE))}
+    assert repository.job_failures[unfinished][0] == JobRetryPolicy.DEFERRED
+    assert repository.resolutions[-1] == (
+        'fail batch_1: Batch was FAILED by the external provider, after finishing part of its requests',
+        BatchStatus.FAILED,
+    )
+
+
+def test_unsuccessful_batches_without_results_are_failed_right_away(model: KnowledgeModel) -> None:
+    """Fail a batch that ended unsuccessfully without results right away, instead of retrying their retrieval."""
+    repository = RecordingRepository()
+    synchronizer = _synchronizer(repository)
+    batch = ExtractionBatch.from_provider(provider=LLMProvider.OPENAI, provider_id='batch_1')
+
+    synchronizer._resolve_batch_status(batch, BatchStatusResult(BatchStatus.CANCELLED))
+    synchronizer._resolve_batch_results(batch, CompletedBatchResult(results=None, error='No results'), model)
+
+    assert repository.resolutions == [
+        ('fail batch_1: Batch was CANCELLED by the external provider', BatchStatus.CANCELLED)
+    ]

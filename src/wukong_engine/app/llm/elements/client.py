@@ -65,7 +65,10 @@ class LLMClient(Protocol):
         ...
 
     async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
-        """Get the results of a completed batch.
+        """Get the results of an ended batch.
+
+        A batch that ended without completing (e.g. it expired or was cancelled) may still have results for the
+        requests it finished.
 
         Args:
             batch_id: Provider identifier of the batch.
@@ -74,7 +77,7 @@ class LLMClient(Protocol):
             One result per request that can be matched to a job, holding either its response or an error.
 
         Raises:
-            LLMResponseError: If the batch isn't completed yet.
+            LLMResponseError: If the batch hasn't ended yet, or has no results to retrieve.
             LLMConfigurationError: If the client is misconfigured or the provider rejects the request as invalid.
             LLMTransientError: If the provider fails in a way that may succeed on retry (rate limits, timeouts,
                 connection or server-side errors).
