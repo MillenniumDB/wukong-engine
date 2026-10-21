@@ -5,7 +5,13 @@ import sqlite3
 import time
 from collections.abc import Iterable
 
-from wukong_engine.app.data_extraction.elements import MAX_FAILED_ATTEMPTS, BatchCursor, ExtractionBatch, ExtractionJob
+from wukong_engine.app.data_extraction.elements import (
+    MAX_ATTEMPTS,
+    MAX_FAILED_ATTEMPTS,
+    BatchCursor,
+    ExtractionBatch,
+    ExtractionJob,
+)
 from wukong_engine.app.data_extraction.elements.values import (
     BatchStatus,
     DurationMetrics,
@@ -178,7 +184,8 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
 
         Only IN_PROGRESS jobs and extractions are affected. On failure, the extractions move to a status chosen by the
         retry policy (FAILED for NONE, RETRY for DEFERRED, PENDING for IMMEDIATE, which also counts a failed attempt),
-        or to FAILED once their failed attempts exceed ``MAX_FAILED_ATTEMPTS``.
+        or to FAILED once their failed attempts exceed ``MAX_FAILED_ATTEMPTS`` or their attempts of any kind reach
+        ``MAX_ATTEMPTS``.
 
         Args:
             job: Job to update.
@@ -268,13 +275,14 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                     (job.context_ref.content_id.bytes, ExtractionStatus.IN_PROGRESS.value),
                 )
 
-            # If max failed attempts surpassed, mark as FAILED, else reset to fallback status for retry
+            # If max failed attempts surpassed, or attempts of any kind (deferred ones included) exhausted, mark as
+            # FAILED, else reset to fallback status for retry
             self._conn.execute(
                 """
                 UPDATE relationship_extractions
                 SET
                     extraction_status = CASE
-                        WHEN failed_attempts > ?
+                        WHEN failed_attempts > ? OR attempt_count >= ?
                             THEN ?
                         ELSE ?
                     END,
@@ -283,6 +291,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
                 """,
                 (
                     MAX_FAILED_ATTEMPTS,
+                    MAX_ATTEMPTS,
                     ExtractionStatus.FAILED.value,
                     fallback_status.value,
                     error,

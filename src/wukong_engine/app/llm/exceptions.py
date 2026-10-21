@@ -1,5 +1,7 @@
 """LLM Exceptions."""
 
+from typing import Any
+
 from wukong_engine.app.shared.exceptions import ApplicationError
 
 
@@ -16,7 +18,25 @@ class LLMTransientError(LLMError):
 
 
 class LLMResponseError(LLMError):
-    """Errors related to the LLM response, such as incomplete responses or refusals."""
+    """Errors related to the LLM response, such as incomplete responses or refusals.
+
+    Attributes:
+        metrics: Provider-reported usage metrics of the failed response, or None if there is no response to report.
+    """
+
+    def __init__(self, message: str, metrics: dict[str, Any] | None = None) -> None:
+        """Initialize the error.
+
+        Args:
+            message: Error message.
+            metrics: Provider-reported usage metrics of the failed response, if any.
+        """
+        super().__init__(message)
+        self.metrics = metrics
+
+
+class LLMTruncatedResponseError(LLMResponseError):
+    """LLM response cut off before its end, by the output token limit or the context window."""
 
 
 class LLMInternalError(LLMError):

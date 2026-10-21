@@ -12,9 +12,10 @@ from .extraction import (
     RelationshipExtractionRequestContext,
     RelationshipExtractionRequestObjects,
 )
-from .job import MAX_FAILED_ATTEMPTS, ExtractionJob
+from .job import MAX_ATTEMPTS, MAX_FAILED_ATTEMPTS, ExtractionJob
 
 __all__ = [
+    'MAX_ATTEMPTS',
     'MAX_FAILED_ATTEMPTS',
     'BatchCursor',
     'BatchStatusResult',

@@ -17,7 +17,7 @@ from anthropic.types.messages.batch_create_params import Request
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
-from wukong_engine.app.llm.exceptions import LLMResponseError
+from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTruncatedResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import AnthropicConfig
@@ -199,24 +199,35 @@ class AnthropicClient(LLMClient):
                 'are not valid JSON are retried, and items that do not match their type are discarded.',
             )
 
-    @staticmethod
-    def _ensure_successful_response(message: Message) -> None:
+    @classmethod
+    def _ensure_successful_response(cls, message: Message) -> None:
         """Ensure the LLM response indicates a successful generation.
 
         Args:
             message: Message returned by the Anthropic API.
 
         Raises:
-            LLMResponseError: If the model refused to respond or stopped before finishing its turn.
+            LLMTruncatedResponseError: If the response was cut off by the output token limit or the context window.
+            LLMResponseError: If the model refused to respond or stopped before finishing its turn for another reason.
         """
+        metrics = cls._build_metrics(message.usage)
+
         # Refusal (if the model refused to generate a response, e.g. due to its safety classifiers)
         if message.stop_reason == 'refusal':
-            raise LLMResponseError('The LLM refused to generate a response')
+            raise LLMResponseError('The LLM refused to generate a response', metrics=metrics)
 
-        # Incomplete response (e.g. the output token limit was reached)
+        # Truncated response, which the same request would truncate again
+        if message.stop_reason in {'max_tokens', 'model_context_window_exceeded'}:
+            raise LLMTruncatedResponseError(
+                f'The LLM response was cut off before its end (stop reason "{message.stop_reason}")',
+                metrics=metrics,
+            )
+
+        # Incomplete response for any other reason
         if message.stop_reason != 'end_turn':
             raise LLMResponseError(
                 f'The LLM response stop reason was "{message.stop_reason}", indicating a generation failure',
+                metrics=metrics,
             )
 
     @staticmethod

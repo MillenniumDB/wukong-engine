@@ -15,7 +15,7 @@ from openai.types.responses import ResponseOutputRefusal
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
-from wukong_engine.app.llm.exceptions import LLMInternalError, LLMResponseError
+from wukong_engine.app.llm.exceptions import LLMInternalError, LLMResponseError, LLMTruncatedResponseError
 from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import OpenAIConfig
@@ -172,11 +172,22 @@ class OpenAIClient(LLMClient):
             response: Response returned by the OpenAI API.
 
         Raises:
-            LLMResponseError: If the response is not completed or contains a refusal.
+            LLMTruncatedResponseError: If the response was cut off by the output token limit.
+            LLMResponseError: If the response is not completed for another reason, or contains a refusal.
         """
-        # Incomplete response
+        metrics = response.usage.model_dump() if response.usage else None
+
+        # Truncated response, which the same request would truncate again
+        incomplete_reason = response.incomplete_details.reason if response.incomplete_details else None
+        if response.status == 'incomplete' and incomplete_reason == 'max_output_tokens':
+            raise LLMTruncatedResponseError('The LLM response was cut off by the output token limit', metrics=metrics)
+
+        # Incomplete response for any other reason
         if response.status != 'completed':
-            raise LLMResponseError(f'The LLM response status was "{response.status}", indicating a generation failure')
+            raise LLMResponseError(
+                f'The LLM response status was "{response.status}", indicating a generation failure',
+                metrics=metrics,
+            )
 
         # Refusal (if the model refused to generate a response, e.g. due to content moderation)
         refusal_item: ResponseOutputRefusal | None = next(
@@ -184,7 +195,7 @@ class OpenAIClient(LLMClient):
             None,
         )
         if refusal_item is not None:
-            raise LLMResponseError('The LLM refused to generate a response')
+            raise LLMResponseError('The LLM refused to generate a response', metrics=metrics)
 
     @staticmethod
     def _build_llm_response(response: OpenAIResponse) -> LLMResponse:

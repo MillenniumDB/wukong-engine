@@ -18,6 +18,7 @@ from wukong_engine.app.data_extraction.elements.values import (
     JobStatus,
     TokenUsageMetrics,
 )
+from wukong_engine.app.data_extraction.exceptions import ExtractionResultError
 from wukong_engine.app.llm.elements import LLMClient
 from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
@@ -311,8 +312,14 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             self._repository.fail_job(job, retry_policy=result.retry_policy, error=result.error, metrics=result.metrics)
             return
 
-        # Materialization of results into knowledge objects
-        knowledge_objects = self._result_materializer.materialize(result, job, model)
+        # Materialization of results into knowledge objects, retrying malformed results like undecodable ones
+        try:
+            knowledge_objects = self._result_materializer.materialize(result, job, model)
+        except ExtractionResultError as exc:
+            self._repository.fail_job(
+                job, retry_policy=JobRetryPolicy.IMMEDIATE, error=str(exc), metrics=result.metrics
+            )
+            return
 
         # Persist knowledge objects and provenance, update job status to completed
         self._repository.complete_job(job, knowledge_objects, usage_metrics=result.metrics)

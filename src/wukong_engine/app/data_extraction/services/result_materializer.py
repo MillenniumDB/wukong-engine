@@ -3,6 +3,7 @@
 from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionJob, ExtractionResult
+from wukong_engine.app.data_extraction.exceptions import ExtractionResultError
 from wukong_engine.app.data_extraction.ports import PKNormalizer
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
@@ -12,6 +13,25 @@ from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, Relat
 from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
+
+
+def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
+    """Get the extracted items of a result, skipping those that aren't objects.
+
+    Args:
+        data: Data parsed from the LLM response.
+        key: Key of the response holding the list of extracted items.
+
+    Returns:
+        The extracted items that are objects.
+
+    Raises:
+        ExtractionResultError: If the data is not an object holding a list under the key.
+    """
+    items = data.get(key) if isinstance(data, dict) else None
+    if not isinstance(items, list):
+        raise ExtractionResultError(f'Malformed extraction result, expected an object with a "{key}" list')
+    return [item for item in items if isinstance(item, dict)]
 
 
 class ExtractionResultMaterializer(Protocol):
@@ -29,6 +49,9 @@ class ExtractionResultMaterializer(Protocol):
 
         Returns:
             The valid knowledge objects built from the result.
+
+        Raises:
+            ExtractionResultError: If the result as a whole doesn't have the structure of the expected response.
         """
         ...
 
@@ -60,7 +83,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         Returns:
             The valid entities built from the result.
         """
-        extracted_entities = result.data.get('entities', [])
+        extracted_entities = _extracted_items(result.data, 'entities')
         materialized_entities: list[Entity] = []
         for extracted in extracted_entities:
             # Get entity type
@@ -250,7 +273,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         Returns:
             The valid relationships built from the result.
         """
-        extracted_relationships = result.data.get('relationships', [])
+        extracted_relationships = _extracted_items(result.data, 'relationships')
         materialized_relationships: list[Relationship] = []
         for extracted in extracted_relationships:
             # Get relationship type

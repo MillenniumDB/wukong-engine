@@ -11,23 +11,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [\[Unreleased\]](#unreleased)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
+  - [🐛 Fixed](#-fixed)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation)
 - [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
-  - [🐛 Fixed](#-fixed)
+  - [🐛 Fixed](#-fixed-1)
   - [🛠️ Build](#️-build-1)
   - [📝 Documentation](#-documentation-1)
 - [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed-1)
   - [🔥 Removed](#-removed)
-  - [🐛 Fixed](#-fixed-1)
+  - [🐛 Fixed](#-fixed-2)
   - [⚡ Performance](#-performance)
   - [📝 Documentation](#-documentation-2)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-2)
   - [♻️ Changed](#️-changed-2)
-  - [🐛 Fixed](#-fixed-2)
+  - [🐛 Fixed](#-fixed-3)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-3)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
@@ -48,6 +49,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Only the API key of the configured model's provider is required: `OPENAI_API_KEY` for **OpenAI** models and `ANTHROPIC_API_KEY` for **Anthropic** models.
 - The error for an unsupported model now lists the supported models of every provider.
 
+### 🐛 Fixed
+
+- A response that is valid JSON but not shaped like the expected result no longer crashes the run: items that aren't objects are skipped, and a malformed response is retried like invalid JSON.
+- Deferred retries (timeouts, rate limits, server errors) are now bounded: a source extraction is marked as failed after 10 attempts of any kind across runs, instead of keeping the later pipeline steps from ever running.
+- Responses cut off at the output token limit are no longer retried with the same request, which would be cut off again, and the tokens of cut-off and refused responses are now recorded in the usage metrics.
+- An exhausted **OpenAI** quota now stops the run, instead of being treated as a rate limit that defers every job.
+
 ### 🛠️ Build
 
 - Added the `anthropic` runtime dependency and the `pytest` development dependency.
@@ -55,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### 📝 Documentation
 
+- Clarified that a field's `regex` is checked after extraction rather than shown to the LLM, and documented the 8,000-token cap of document-level extraction.
 - Documented the **Anthropic** model, its API key, its response schema limits and how to switch providers with batches in flight.
 
 [📚 Back to Table of Contents](#-table-of-contents)

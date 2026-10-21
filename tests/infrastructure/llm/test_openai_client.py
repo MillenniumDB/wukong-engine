@@ -11,7 +11,13 @@ from openai import AsyncOpenAI, DefaultAsyncHttpxClient
 
 from wukong_engine.app.llm.elements import LLMRequest
 from wukong_engine.app.llm.elements.values import LLMPrompt, ReasoningEffort
-from wukong_engine.app.llm.exceptions import LLMConfigurationError
+from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
+    LLMError,
+    LLMResponseError,
+    LLMTransientError,
+    LLMTruncatedResponseError,
+)
 from wukong_engine.app.llm.model import LLM
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.llm.openai import client as client_module
@@ -145,3 +151,40 @@ def test_generate_sends_a_schema_over_the_limits_as_instructions(mock_api: Any) 
     asyncio.run(_client().generate(_request(oversized)))
 
     assert _is_unenforced(api.bodies[0], oversized)
+
+
+@pytest.mark.parametrize(
+    ('reason', 'expected_error'),
+    [('max_output_tokens', LLMTruncatedResponseError), ('content_filter', LLMResponseError)],
+)
+def test_generate_rejects_incomplete_responses_with_their_usage(
+    mock_api: Any,
+    reason: str,
+    expected_error: type[LLMResponseError],
+) -> None:
+    """Raise a response error carrying the usage, telling responses cut off by the output limit apart."""
+    incomplete = RESPONSE | {'status': 'incomplete', 'incomplete_details': {'reason': reason}}
+    mock_api([httpx.Response(200, json=incomplete)])
+
+    with pytest.raises(LLMResponseError) as exc_info:
+        asyncio.run(_client().generate(_request(SCHEMA)))
+
+    assert type(exc_info.value) is expected_error
+    assert (exc_info.value.metrics or {}).get('output_tokens') == RESPONSE['usage']['output_tokens']
+
+
+@pytest.mark.parametrize(
+    ('code', 'expected_error'),
+    [('insufficient_quota', LLMConfigurationError), ('rate_limit_exceeded', LLMTransientError)],
+)
+def test_generate_stops_on_an_exhausted_quota_but_not_on_rate_limits(
+    mock_api: Any,
+    code: str,
+    expected_error: type[LLMError],
+) -> None:
+    """Treat an exhausted quota as a configuration error, unlike a rate limit, though both are reported as 429."""
+    error = {'message': 'Too many requests', 'type': 'requests', 'param': None, 'code': code}
+    mock_api([httpx.Response(429, json={'error': error})])
+
+    with pytest.raises(expected_error):
+        asyncio.run(_client().generate(_request(SCHEMA)))

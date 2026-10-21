@@ -15,9 +15,9 @@ from wukong_engine.app.llm.exceptions import (
 def translate_openai_errors[T](fn: Callable[..., Awaitable[T]]) -> Callable[..., Awaitable[T]]:
     """Translate OpenAI API errors into custom LLM exceptions.
 
-    Authentication and invalid-request errors become ``LLMConfigurationError``; rate limits, timeouts, connection
-    failures and server-side errors become ``LLMTransientError``; ``LLMResponseError`` is propagated unchanged; any
-    other error becomes ``LLMInternalError``.
+    Authentication, invalid-request and exhausted-quota errors become ``LLMConfigurationError``; rate limits,
+    timeouts, connection failures and server-side errors become ``LLMTransientError``; ``LLMResponseError`` is
+    propagated unchanged; any other error becomes ``LLMInternalError``.
 
     Args:
         fn: Async function whose errors are translated.
@@ -34,6 +34,9 @@ def translate_openai_errors[T](fn: Callable[..., Awaitable[T]]) -> Callable[...,
         except AuthenticationError as exc:
             raise LLMConfigurationError(f'Authentication with the LLM provider failed: {exc}') from exc
         except RateLimitError as exc:
+            # An exhausted quota is reported as a rate limit, but no retry succeeds until it is topped up
+            if exc.code == 'insufficient_quota':
+                raise LLMConfigurationError(f'The LLM provider account has run out of quota: {exc}') from exc
             raise LLMTransientError(f'The LLM provider rate limit was exceeded: {exc}') from exc
         except APITimeoutError as exc:
             raise LLMTransientError(f'The LLM request timed out: {exc}') from exc

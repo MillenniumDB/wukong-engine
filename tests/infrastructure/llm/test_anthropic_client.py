@@ -15,7 +15,13 @@ from wukong_engine.app.data_extraction.elements.values import BatchStatus, Token
 from wukong_engine.app.data_extraction.services import ConcurrentExtractionBatchSynchronizer
 from wukong_engine.app.llm.elements import LLMBatchResult, LLMRequest
 from wukong_engine.app.llm.elements.values import LLMPrompt, ReasoningEffort
-from wukong_engine.app.llm.exceptions import LLMConfigurationError, LLMError, LLMResponseError, LLMTransientError
+from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
+    LLMError,
+    LLMResponseError,
+    LLMTransientError,
+    LLMTruncatedResponseError,
+)
 from wukong_engine.app.llm.model import LLM
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.infrastructure.llm.anthropic import AnthropicClient, AnthropicConfig
@@ -218,13 +224,27 @@ def test_generate_returns_text_and_usage_parsed_into_non_overlapping_categories(
     )
 
 
-@pytest.mark.parametrize('stop_reason', ['refusal', 'max_tokens'])
-def test_generate_rejects_unfinished_responses(mock_api: MockAPIInstaller, stop_reason: str) -> None:
-    """Raise a response error when the model refuses or stops before finishing its turn."""
+@pytest.mark.parametrize(
+    ('stop_reason', 'expected_error'),
+    [
+        ('refusal', LLMResponseError),
+        ('max_tokens', LLMTruncatedResponseError),
+        ('model_context_window_exceeded', LLMTruncatedResponseError),
+    ],
+)
+def test_generate_rejects_unfinished_responses_with_their_usage(
+    mock_api: MockAPIInstaller,
+    stop_reason: str,
+    expected_error: type[LLMResponseError],
+) -> None:
+    """Raise a response error carrying the usage, telling truncated responses apart, when the turn is unfinished."""
     mock_api({'/v1/messages': httpx2.Response(200, json=_message(stop_reason))})
 
-    with pytest.raises(LLMResponseError):
+    with pytest.raises(LLMResponseError) as exc_info:
         asyncio.run(_client().generate(REQUEST))
+
+    assert type(exc_info.value) is expected_error
+    assert TokenUsageMetrics.from_usage(exc_info.value.metrics or {}).reasoning_tokens == 200
 
 
 @pytest.mark.parametrize(

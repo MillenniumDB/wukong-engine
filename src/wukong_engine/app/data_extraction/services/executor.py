@@ -17,6 +17,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMInternalError,
     LLMResponseError,
     LLMTransientError,
+    LLMTruncatedResponseError,
 )
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 
@@ -94,8 +95,9 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         """Execute a single extraction request.
 
         Renders the request's prompt, sends it to the LLM and decodes the JSON response. Failures are mapped to
-        failed results: transient errors retry deferred, response and decoding errors retry immediately, and
-        configuration or internal errors are critical.
+        failed results: transient errors retry deferred, response and decoding errors retry immediately (except
+        truncated responses, which the same request would truncate again and so aren't retried), and configuration
+        or internal errors are critical. Failed responses keep their token usage.
 
         Args:
             request: Extraction request to execute.
@@ -128,9 +130,18 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 error_severity=ErrorSeverity.RECOVERABLE,
                 retry_policy=JobRetryPolicy.DEFERRED,
             )
+        except LLMTruncatedResponseError as exc:
+            return ExtractionResult(
+                status=JobStatus.FAILED,
+                metrics=TokenUsageMetrics.from_usage(exc.metrics) if exc.metrics else None,
+                error=str(exc),
+                error_severity=ErrorSeverity.RECOVERABLE,
+                retry_policy=JobRetryPolicy.NONE,
+            )
         except LLMResponseError as exc:
             return ExtractionResult(
                 status=JobStatus.FAILED,
+                metrics=TokenUsageMetrics.from_usage(exc.metrics) if exc.metrics else None,
                 error=str(exc),
                 error_severity=ErrorSeverity.RECOVERABLE,
                 retry_policy=JobRetryPolicy.IMMEDIATE,
