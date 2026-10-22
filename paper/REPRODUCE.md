@@ -86,7 +86,6 @@ Folder and file names use our internal experiment names:
 **The NBA schema of the paper** is `paper/uda-nba/workspace-x6-s5/` (called s5 in the repository).
 - Every NBA result uses it, and the schema-based extractors were built from it.
 - In Table 6, the paper's s0–s3 are `workspace-x6-s0` to `-s3`, and its s4 ("Full XSchema") is `workspace-x6-s5`.
-- `workspace-x6-s4` is an intermediate variant without the current-team field. It is not reported in the paper.
 - `workspace/` and `workspace-v1` to `-v3` are earlier versions of the schema.
 
 **The three Wukong configurations of Table 4** are the workspaces `tekgen_*` (ontology only), `examples_*` (+
