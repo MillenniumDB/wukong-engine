@@ -33,7 +33,7 @@ from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from wukong_engine.core.knowledge.model import KnowledgeModel
 
-from .executor import response_failure_result
+from .executor import decode_response, response_failure_result
 from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
 from .result_materializer import ExtractionResultMaterializer
@@ -410,7 +410,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
             if provider_result is not None and provider_result.response is not None:
                 try:
                     response = provider_result.response
-                    data = json.loads(response.content)
+                    data = decode_response(response.content)
                     result = ExtractionResult(
                         status=JobStatus.COMPLETED,
                         data=data,

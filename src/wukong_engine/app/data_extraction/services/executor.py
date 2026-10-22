@@ -2,7 +2,7 @@
 
 import json
 from collections.abc import AsyncIterator, Iterable
-from typing import Protocol
+from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionRequest, ExtractionResult
 from wukong_engine.app.data_extraction.elements.values import (
@@ -25,6 +25,36 @@ from .prompt_renderer import PromptRenderer
 
 # Constants
 DEFAULT_MAX_CONCURRENCY = 5  # Default maximum number of concurrent requests (default: 5)
+
+
+def decode_response(content: str) -> Any:
+    """Decode the JSON value of an LLM response, tolerating text around it, shared by real-time and batch execution.
+
+    Responses can surround their JSON with prose, or follow it with extra data (e.g. a repeated object), especially
+    when the provider doesn't enforce their schema. The first JSON object or array that decodes is returned, and
+    anything around it is ignored.
+
+    Args:
+        content: Text content of the response.
+
+    Returns:
+        The decoded JSON value.
+
+    Raises:
+        json.JSONDecodeError: If the content holds no JSON object or array that decodes.
+    """
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError as exc:
+        error = exc
+    decoder = json.JSONDecoder()
+    for index, char in enumerate(content):
+        if char in '{[':
+            try:
+                return decoder.raw_decode(content, index)[0]
+            except json.JSONDecodeError:
+                continue
+    raise error
 
 
 def response_failure_result(error: LLMResponseError) -> ExtractionResult:
@@ -134,7 +164,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         # Execute LLM request and handle response
         try:
             response = await self._llm_client.generate(llm_request)
-            data = json.loads(response.content)
+            data = decode_response(response.content)
             return ExtractionResult(
                 status=JobStatus.COMPLETED,
                 data=data,

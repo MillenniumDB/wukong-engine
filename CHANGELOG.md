@@ -72,6 +72,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - In batch mode, a response schema the provider rejects is now detected before submitting, by checking each distinct schema once per run, and is sent as instructions, instead of failing every request that uses it until they run out of attempts.
 - In batch mode, the requests that an **OpenAI** batch finished before it expired or was cancelled are now kept, instead of being discarded and paid for again.
 - In batch mode, entity and relationship extraction now only list their own active batches, which share one table, so each step synchronizes (and cancels) only its own batches.
+- Extracted values are normalized before being validated, instead of being dropped (or, for a required field, dropping their item) when they don't come as the expected text, which mostly happens when the provider doesn't enforce the schema: booleans and numbers become their text (a JSON `true` was stored as `True`, missing the `true` option), a single-element list becomes its element, strings are trimmed, empty and `null` strings count as missing, options and type names match regardless of case, and objects are no longer stored as their Python representation.
+- A response whose JSON is surrounded by text or followed by extra data is decoded from its first JSON object or array, instead of failing to decode and being retried.
 - In batch mode, failed results now follow the same retry rules as in real time (cut-off responses aren't retried, refusals are retried immediately), and the token usage of unsuccessful responses is recorded.
 
 ### ⚡ Performance

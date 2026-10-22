@@ -1,5 +1,6 @@
 """Result materializers for extraction tasks."""
 
+import math
 from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import (
@@ -23,6 +24,9 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
     """Get the extracted items of a result, skipping those that aren't objects.
 
+    A bare list is taken as the list of items, as a response that isn't validated against its schema may leave out
+    the object wrapping it.
+
     Args:
         data: Data parsed from the LLM response.
         key: Key of the response holding the list of extracted items.
@@ -31,12 +35,47 @@ def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
         The extracted items that are objects.
 
     Raises:
-        ExtractionResultError: If the data is not an object holding a list under the key.
+        ExtractionResultError: If the data is neither a list nor an object holding a list under the key.
     """
-    items = data.get(key) if isinstance(data, dict) else None
+    items = data if isinstance(data, list) else data.get(key) if isinstance(data, dict) else None
     if not isinstance(items, list):
         raise ExtractionResultError(f'Malformed extraction result, expected an object with a "{key}" list')
     return [item for item in items if isinstance(item, dict)]
+
+
+def _normalize_value(value: Any, options: tuple[str, ...]) -> str | None:
+    """Normalize an extracted value into the string form of a field value, as a lenient extractor would.
+
+    Responses that aren't validated against their schema can carry a value as another JSON type, so booleans become
+    ``true``/``false``, numbers their decimal text (``3.0`` becomes ``3``) and a single-element list its element.
+    Strings are stripped, an empty one or a literal ``null`` counts as missing, and a value equal to one of the
+    options regardless of case becomes that option.
+
+    Args:
+        value: Value extracted for the field, as decoded from the response.
+        options: Allowed values of the field. Empty if any value is allowed.
+
+    Returns:
+        The normalized value, or None if it is missing or has no string form (an object, a list of several values
+        or a non-finite number).
+    """
+    if isinstance(value, list) and len(value) == 1:
+        value = value[0]
+    if isinstance(value, bool):
+        text = str(value).lower()
+    elif isinstance(value, int):
+        text = str(value)
+    elif isinstance(value, float):
+        if not math.isfinite(value):
+            return None
+        text = str(int(value)) if value.is_integer() else str(value)
+    elif isinstance(value, str):
+        text = value.strip()
+    else:
+        return None
+    if not text or text.lower() == 'null':
+        return None
+    return next((option for option in options if option.casefold() == text.casefold()), text)
 
 
 def _is_valid_value(value: str, options: tuple[str, ...], regex: RegexPattern | None) -> bool:
@@ -53,6 +92,23 @@ def _is_valid_value(value: str, options: tuple[str, ...], regex: RegexPattern | 
     if options and value not in options:
         return False
     return regex is None or regex.match(value) is not None
+
+
+def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:
+    """Match an extracted type name to one of the types assigned to a job, regardless of case and surrounding spaces.
+
+    Args:
+        name: Type name extracted for an item, as decoded from the response.
+        job_types: Names of the types assigned to the job that produced the item.
+
+    Returns:
+        The job type with that name, preferring an exact match, or None if the name is missing or matches none.
+    """
+    if name is None:
+        return None
+    text = str(name).strip()
+    exact = next((job_type for job_type in job_types if job_type.value == text), None)
+    return exact or next((job_type for job_type in job_types if job_type.value.casefold() == text.casefold()), None)
 
 
 class ExtractionResultMaterializer(Protocol):
@@ -166,24 +222,11 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve the type name.
 
         Returns:
-            The entity type, or None if it is missing, invalid, unknown to the model, or not assigned to the job.
+            The entity type, or None if it is missing, or isn't the name of a type assigned to the job, regardless of
+            case and surrounding spaces.
         """
-        try:
-            extracted_et_name = data.get('_entity_type')
-
-            # Missing entity type in extracted data
-            if extracted_et_name is None:
-                return None
-
-            # Get EntityType instance from knowledge model
-            et_name = EntityTypeName(str(extracted_et_name))
-            entity_type = model.entity_type(et_name)
-
-            # Valid entity type found in knowledge model and job types
-            if entity_type is not None and entity_type.name in job_types:
-                return entity_type
-        except ValueError:
-            return None  # Invalid entity type name in extracted data
+        type_name = _match_type_name(data.get('_entity_type'), job_types)
+        return model.entity_type(type_name) if type_name is not None else None
 
     def _materialize_properties(
         self,
@@ -194,8 +237,8 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
     ) -> dict[str, Any]:
         """Materialize the entity properties obtained through a given retrieval mode.
 
-        Extracted values are stringified, and those of optional fields that don't satisfy the field's options or regex
-        are discarded; fields with no (valid) extracted value fall back to their default for the context level, and
+        Extracted values are normalized (see ``_normalize_value``), and those of optional fields that don't satisfy the
+        field's options or regex are discarded; fields with no (valid) extracted value fall back to their default for the context level, and
         fields that end up null are omitted.
 
         Args:
@@ -216,17 +259,17 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         for field in entity_type.fields_for(context_level, retrieval_mode):
             value = None
 
-            # For extracted fields, assign the extracted value when it exists in the data
+            # For extracted fields, assign the normalized extracted value when it exists in the data
             if retrieval_mode == EntityRetrievalMode.EXTRACT:
-                value = data.get(field.name.value)
+                value = _normalize_value(data.get(field.name.value), field.options)
 
             # Discard an invalid optional value (an invalid required one is left for validation to reject the entity)
             regex = field.regex.get(context_level)
-            if value is not None and not field.required and not _is_valid_value(str(value), field.options, regex):
+            if value is not None and not field.required and not _is_valid_value(value, field.options, regex):
                 value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
-            value = str(value) if value is not None else field.default_value.get(context_level)
+            value = value if value is not None else field.default_value.get(context_level)
 
             # If the assigned value is not null, add it to the materialized properties
             if value is not None:
@@ -374,25 +417,11 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             model: Knowledge model used to resolve the type name.
 
         Returns:
-            The relationship type, or None if it is missing, invalid, unknown to the model, or not assigned to the
-            job.
+            The relationship type, or None if it is missing, or isn't the name of a type assigned to the job,
+            regardless of case and surrounding spaces.
         """
-        try:
-            extracted_rt_name = data.get('_relationship_type')
-
-            # Missing relationship type in extracted data
-            if extracted_rt_name is None:
-                return None
-
-            # Get RelationshipType instance from knowledge model
-            rt_name = RelationshipTypeName(str(extracted_rt_name))
-            relationship_type = model.relationship_type(rt_name)
-
-            # Valid relationship type found in knowledge model and job types
-            if relationship_type is not None and relationship_type.name in job_types:
-                return relationship_type
-        except ValueError:
-            return None  # Invalid relationship type name in extracted data
+        type_name = _match_type_name(data.get('_relationship_type'), job_types)
+        return model.relationship_type(type_name) if type_name is not None else None
 
     @staticmethod
     def _entity_context_levels(elements: RelationshipExtractionRequestObjects) -> dict[EntityId, set[ContextLevel]]:
@@ -442,8 +471,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             return None
 
         # Normalize temporary entity IDs
-        source_id = str(source_id).capitalize()
-        target_id = str(target_id).capitalize()
+        source_id = str(source_id).strip().capitalize()
+        target_id = str(target_id).strip().capitalize()
 
         # Map the temporary IDs back to EntityRef instances
         source_ref = entity_refs.get(source_id)
@@ -477,8 +506,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
     ) -> dict[str, Any]:
         """Materialize the relationship properties obtained through a given retrieval mode.
 
-        Extracted values are stringified, and those of optional fields that don't satisfy the field's options or regex
-        are discarded; fields with no (valid) extracted value fall back to their default, and fields that end up null
+        Extracted values are normalized (see ``_normalize_value``), and those of optional fields that don't satisfy the
+        field's options or regex are discarded; fields with no (valid) extracted value fall back to their default, and fields that end up null
         are omitted.
 
         Args:
@@ -494,16 +523,16 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         for field in relationship_type.fields_for(retrieval_mode):
             value = None
 
-            # For extracted fields, assign the extracted value when it exists in the data
+            # For extracted fields, assign the normalized extracted value when it exists in the data
             if retrieval_mode == RelationshipRetrievalMode.EXTRACT:
-                value = data.get(field.name.value)
+                value = _normalize_value(data.get(field.name.value), field.options)
 
             # Discard an invalid optional value (an invalid required one is left for validation to reject the item)
-            if value is not None and not field.required and not _is_valid_value(str(value), field.options, field.regex):
+            if value is not None and not field.required and not _is_valid_value(value, field.options, field.regex):
                 value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
-            value = str(value) if value is not None else field.default_value
+            value = value if value is not None else field.default_value
 
             # If the assigned value is not null, add it to the materialized properties
             if value is not None:
