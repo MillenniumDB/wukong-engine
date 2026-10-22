@@ -5,7 +5,8 @@
 #   ./run_repeats.sh "v2 v3" "2 3"       # from paper/uda-nba
 set -euo pipefail
 cd "$(dirname "$0")"
-set -a; source ../../.env; set +a
+set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
+KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 VARIANTS=${1:-"v2 v3"}
 REPS=${2:-"2 3"}
 
@@ -21,7 +22,7 @@ for v in $VARIANTS; do
   done
 done
 
-caffeinate -i bash -c '
+$KEEP_AWAKE bash -c '
   for r in "$@"; do
     ( /usr/bin/time -p envs/wukong/bin/wukong run runs/$r data/docs \
         --config runs/$r/config.toml -v > runs/$r.log 2>&1 ) &

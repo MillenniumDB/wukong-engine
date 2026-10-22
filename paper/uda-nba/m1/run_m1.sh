@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # M1 full run: every system on the 101 scored questions, in parallel, with a budget watchdog.
 set -uo pipefail
-M=$HOME/wukong-runs/wukong-engine/paper/uda-nba/m1
-E=$HOME/wukong-runs/m1/envs
-L=$HOME/wukong-runs/m1/work/logs
+M=$(cd "$(dirname "$0")" && pwd)
+export M1_ROOT=${M1_ROOT:-$HOME/wukong-runs/m1}
+E=$M1_ROOT/envs
+L=$M1_ROOT/work/logs
 mkdir -p "$L"
-OPENAI_API_KEY="$(security find-generic-password -a "$USER" -s openai-wukong -w 2>/dev/null)" || true
-[[ -n ${OPENAI_API_KEY:-} ]] || { echo "No key" >&2; exit 1; }
+[[ -n ${OPENAI_API_KEY:-} ]] || { echo "Set OPENAI_API_KEY" >&2; exit 1; }
 export OPENAI_API_KEY
 cd "$M"
 $E/harness/bin/python sys_floor.py > "$L/floor.log" 2>&1 &

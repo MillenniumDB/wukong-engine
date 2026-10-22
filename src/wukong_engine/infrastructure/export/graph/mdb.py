@@ -1,4 +1,4 @@
-"""Provides the MillenniumDBKnowledgeExporter class."""
+"""Provides the QMKnowledgeExporter class."""
 
 import logging
 from pathlib import Path
@@ -20,8 +20,8 @@ logger = logging.getLogger(__name__)
 
 
 # Writer
-class MillenniumDBWriter:
-    """Writes entities and relationships to a MillenniumDB QM file."""
+class QMWriter:
+    """Writes entities and relationships to a QM file."""
 
     def __init__(self, path: Path) -> None:
         """Initialize the writer.
@@ -47,7 +47,7 @@ class MillenniumDBWriter:
         self._file.close()
 
     def _serialize_value(self, value: Any) -> str | None:
-        """Serialize a property value for MillenniumDB.
+        """Serialize a property value for a QM file.
 
         Args:
             value: Property value to serialize.
@@ -70,7 +70,7 @@ class MillenniumDBWriter:
         return serialized_value
 
     def _write_line(self, identity: str, label: str, properties: list[str]) -> None:
-        """Write a line to the QM file representing an object in the MillenniumDB format.
+        """Write a line to the QM file representing an object in the QM format.
 
         Args:
             identity: Node identifier, or ``source->target`` endpoint pair for an edge.
@@ -221,8 +221,8 @@ class MillenniumDBWriter:
 
 
 # Exporter
-class MillenniumDBKnowledgeExporter(KnowledgeExporter):
-    """Exports knowledge as a graph to the MillenniumDB graph database format."""
+class QMKnowledgeExporter(KnowledgeExporter):
+    """Exports knowledge as a graph to a QM (Quad Model) file."""
 
     def __init__(self, repository: KnowledgeRepository) -> None:
         """Initialize the exporter with necessary dependencies.
@@ -245,16 +245,16 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         base_export_dir = Path(export_uri).resolve() / 'mdb'
         base_export_dir.mkdir(parents=True, exist_ok=True)
         output_path = base_export_dir / 'knowledge_graph.qm'
-        logger.info(f'Exporting knowledge to MillenniumDB QM file at: {output_path}')
+        logger.info(f'Exporting knowledge to QM file at: {output_path}')
 
         # Export sources, entities, and relationships
-        with MillenniumDBWriter(output_path) as writer:
+        with QMWriter(output_path) as writer:
             self._export_sources(writer)
             self._export_entities(model, writer)
             self._export_relationships(model, writer)
 
-    def _export_sources(self, writer: MillenniumDBWriter) -> None:
-        """Export sources to the MillenniumDB format.
+    def _export_sources(self, writer: QMWriter) -> None:
+        """Export sources to the QM format.
 
         Args:
             writer: Open writer that receives the documents, chunks and ``ChunkOf`` edges.
@@ -270,8 +270,8 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             writer.write_chunk(chunk)
             writer.write_chunk_source(chunk)
 
-    def _export_entities(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
-        """Export entities to the MillenniumDB format.
+    def _export_entities(self, model: KnowledgeModel, writer: QMWriter) -> None:
+        """Export entities to the QM format.
 
         Args:
             model: Knowledge model whose active entity types are exported.
@@ -289,8 +289,8 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         for source_id, entity_id in self._repository.stream_entity_provenance():
             writer.write_entity_provenance(source_id, entity_id)
 
-    def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
-        """Export relationships to the MillenniumDB format.
+    def _export_relationships(self, model: KnowledgeModel, writer: QMWriter) -> None:
+        """Export relationships to the QM format.
 
         Args:
             model: Knowledge model whose active relationship types are exported.

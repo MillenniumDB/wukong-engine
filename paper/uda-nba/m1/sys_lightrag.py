@@ -1,6 +1,6 @@
 """M1, LightRAG answering natively: every query mode (local, global, hybrid, mix), default parameters.
 
-Uses the full LightRAG store Juan built (lightrag-hku 1.5.7, gpt-5.6-luna at low effort, text-embedding-3-small),
+Uses the full LightRAG store of the NBA experiments (lightrag-hku 1.5.7, gpt-5.6-luna at low effort, text-embedding-3-small),
 initialized exactly as lightrag_build.py does (same LLM wrapper, so usage is logged per call). The question is the
 query; the answer instruction goes in QueryParam.user_prompt, LightRAG's slot for output instructions, so it does not
 pollute keyword extraction or retrieval. No Cypher is ever run against this graph.

@@ -25,7 +25,7 @@ A shard whose output exists is skipped, so an interrupted run resumes.
 
 Example:
     OPENAI_API_KEY=... edc-venv/bin/python paper/benchmark/text2kg_edc.py --edc ../baselines/edc \
-        --inputs ../baselines/edc-inputs --out paper/benchmark/results-x1-edc-r1
+        --inputs paper/benchmark/baselines/edc-inputs --out paper/benchmark/results-x1-edc-r1
 """
 
 import argparse

@@ -110,8 +110,6 @@ Currently, the project **does not implement** testing functionalities. For now, 
 
 The project uses a variant of the **GitHub Flow** branching model to manage development and releases. This model is designed to be simple and effective for continuous delivery, allowing for quick iterations and deployments.
 
-> 🤝 For an overview of the expected workflow for external contributors, refer to our [Contribution Guide](/.github/CONTRIBUTING.md).
-
 ### Core Branch
 
 The project has a single core branch that serves as the foundation for development:

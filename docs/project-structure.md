@@ -15,7 +15,6 @@ This document provides an overview of how the repository is organized.
 - [📰 Paper](#-paper)
 - [📖 Documentation](#-documentation)
 - [🎨 Assets](#-assets)
-- [🐙 GitHub](#-github)
 - [🗃️ Project Files](#️-project-files)
 
 ## 🌳 Top Level
@@ -28,10 +27,9 @@ wukong-engine/
 ├── data/                # Input document corpora
 ├── tests/               # Test suite
 ├── scripts/             # Docker helper scripts
-├── paper/               # Research paper draft and benchmark harness
+├── paper/               # Experiments of the paper (see paper/REPRODUCE.md)
 ├── docs/                # Extended documentation
-├── assets/              # Logos and other static files
-└── .github/             # Community standards and issue/PR templates
+└── assets/              # Logos and other static files
 ```
 
 [📚 Back to Table of Contents](#-table-of-contents)
@@ -66,7 +64,7 @@ src/wukong_engine/
 │   ├── storage/      # Filesystem document loading
 │   ├── chunking/     # Recursive, boundary-aware segmentation and tokenization
 │   ├── llm/          # OpenAI client
-│   ├── export/graph/ # MillenniumDB and Neo4j exporters
+│   ├── export/graph/ # QM and Neo4j exporters
 │   ├── config/       # TOML loading and environment variables
 │   ├── normalization/# Primary key normalization
 │   ├── serialization/# Property value serialization
@@ -178,17 +176,6 @@ The extended documentation lives in `docs/`:
 The `assets/` directory holds static files used by the project:
 
 - `logo/`: The project's logo in several formats for different use cases (`banner/`, `icon/`, `stacked/`).
-
-[📚 Back to Table of Contents](#-table-of-contents)
-
-## 🐙 GitHub
-
-The `.github/` directory holds the files **GitHub** uses to manage community standards and collaboration workflows:
-
-- `CONTRIBUTING.md`: How to set up the project as an external contributor and how to submit changes.
-- `CODE_OF_CONDUCT.md`: Expected behavior and community standards.
-- `ISSUE_TEMPLATE/`: Templates and settings for creating issues.
-- `PULL_REQUEST_TEMPLATE.md`: Template for creating pull requests.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

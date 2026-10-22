@@ -7,10 +7,10 @@ class KnowledgeExportFormat(Enum):
     """Export formats for extracted knowledge.
 
     Attributes:
-        MDB: MillenniumDB graph database QM (Quad Model) file.
+        MDB: QM (Quad Model) graph file.
         NEO4J: Neo4j graph database CSV files.
     """
 
     # Knowledge Graphs
-    MDB = 'MillenniumDB'
+    MDB = 'QM'
     NEO4J = 'Neo4j'

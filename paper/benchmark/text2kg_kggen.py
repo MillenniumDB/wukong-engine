@@ -7,8 +7,9 @@ way to steer extraction is a free-text `context` hint. Two variants:
     - `context`: the ontology's relations (with their subject and object types) passed as the context hint, the same
       information the benchmark's own prompt gives. `KGGen.generate()` accepts the hint but (at 6259b4c) passes it
       only to deduplication, never to its relation step, so this variant runs generate()'s two steps itself and
-      gives the hint to `get_relations()`, which puts it in its instructions. `results-kggen-context-r1` predates
-      this: the hint never reached the model there, so it is a second `plain` run.
+      gives the hint to `get_relations()`, which puts it in its instructions. `results-kggen-plain-r2` was
+      launched as the context variant before this fix, so the hint never reached the model there: it is a second
+      `plain` run (see its NOTE.md).
 
 Each sentence is one KGGen call (entities, then relations: two LLM calls), with deduplication off (one sentence at a
 time) and the dspy cache disabled, so repetitions are independent. Run with KGGen's own environment (built from its

@@ -1,6 +1,6 @@
 """M1, GraphRAG answering natively: local search and global search.
 
-Uses the full GraphRAG index Juan built (graphrag 3.2.0, gpt-5.6-luna at low effort, text-embedding-3-small) and
+Uses the full GraphRAG index of the NBA experiments (graphrag 3.2.0, gpt-5.6-luna at low effort, text-embedding-3-small) and
 its settings.yaml. The question is the query; the answer instruction is GraphRAG's response_type, which its prompts
 insert as the target response format. Local search runs at its defaults (community level 2). Global search runs
 with dynamic community selection: at the default static level 2 it maps over ~4,400 community reports (3.8M tokens)

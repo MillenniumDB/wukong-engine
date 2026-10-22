@@ -32,7 +32,7 @@ from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumen
 from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.knowledge import LocalKnowledgeModelProvider
-from wukong_engine.infrastructure.export.graph import MillenniumDBKnowledgeExporter, Neo4jKnowledgeExporter
+from wukong_engine.infrastructure.export.graph import Neo4jKnowledgeExporter, QMKnowledgeExporter
 from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
 from wukong_engine.infrastructure.logging import set_logger_verbosity
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
@@ -84,7 +84,7 @@ def _format_to_exporter(export_format: KnowledgeExportFormat, repository: Knowle
     """
     match export_format:
         case KnowledgeExportFormat.MDB:
-            return MillenniumDBKnowledgeExporter(repository)
+            return QMKnowledgeExporter(repository)
         case KnowledgeExportFormat.NEO4J:
             return Neo4jKnowledgeExporter(repository)
         case _:

@@ -6,7 +6,8 @@
 #   ./run_x6.sh "1 2 3" ["s0 s1 s2 s3 s4 s5"]          # from paper/uda-nba
 set -euo pipefail
 cd "$(dirname "$0")"
-set -a; source ../../.env; set +a
+set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
+KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 REPS=${1:-"1 2 3"}
 VARIANTS=${2:-"s0 s1 s2 s3 s4 s5"}
 
@@ -22,7 +23,7 @@ for n in $REPS; do
     cp x6-config.toml runs/$r/config.toml
     runs+=("$r")
   done
-  caffeinate -i bash -c '
+  $KEEP_AWAKE bash -c '
     for r in "$@"; do
       ( /usr/bin/time -p envs/wukong/bin/wukong run runs/$r data/docs \
           --config runs/$r/config.toml -v > runs/$r.log 2>&1 ) &

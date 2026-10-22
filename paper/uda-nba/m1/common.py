@@ -10,7 +10,9 @@ through the same conversion before UDA-Bench's own evaluator scores it:
       names, the articles common ones, so both are accepted, for every system alike);
     - a row whose entity name matches no document keeps an empty id, so it cannot align: a miss, for any system.
 
-Paths default to the layout on the run machine (~/wukong-runs/m1, ~/wukong-runs/benchmarks/UDA-Bench).
+Paths: M1_ROOT is the working folder (input graphs under input/uda-nba-share, answers, scores, logs under work/),
+UDA_BENCH a checkout of the UDA-Bench repository; they default to ~/wukong-runs/m1 and
+~/wukong-runs/benchmarks/UDA-Bench.
 """
 
 import json

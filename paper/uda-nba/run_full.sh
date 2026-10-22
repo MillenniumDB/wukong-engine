@@ -9,7 +9,8 @@
 # its line below.
 set -euo pipefail
 cd "$(dirname "$0")"
-set -a; source ../../.env; set +a
+set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
+KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 
 mkdir -p runs
 
@@ -26,7 +27,7 @@ if [ ! -d runs/graphrag-full ]; then
 fi
 python3 graphrag_prepare.py full_docs.txt runs/graphrag-full
 
-caffeinate -i bash -c '
+$KEEP_AWAKE bash -c '
   ( /usr/bin/time -p envs/wukong/bin/wukong run runs/wukong-full data/docs \
       --config runs/wukong-full/config.toml -v > runs/wukong-full.log 2>&1 ) &
   ( envs/lightrag/bin/python lightrag_build.py --workdir runs/lightrag-full \

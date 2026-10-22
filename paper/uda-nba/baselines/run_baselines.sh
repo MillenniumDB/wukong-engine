@@ -6,10 +6,11 @@
 #   baselines/run_baselines.sh "neo4j-graphrag llamaindex ontogpt kggen edc"     # from paper/uda-nba
 set -euo pipefail
 cd "$(dirname "$0")/.."
-set -a; source ../../.env; set +a
+set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
+KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 SYSTEMS=${1:-"neo4j-graphrag llamaindex ontogpt"}
 
-caffeinate -i bash -c '
+$KEEP_AWAKE bash -c '
   for s in "$@"; do
     case $s in
       neo4j-graphrag) py=envs/neo4j-graphrag/bin/python; script=baselines/neo4j_graphrag_build.py ;;

@@ -8,6 +8,10 @@
 
 Engine for extracting structured knowledge from unstructured documents using the power of LLMs, exportable to graph and other formats.
 
+> **Anonymous copy for review.** This repository accompanies a paper under double-blind review.
+> To reproduce the paper's experiments, start with [paper/REPRODUCE.md](/paper/REPRODUCE.md).
+> To check that the engine works without an API key, run `python tests/test_pipeline_fake_llm.py` (see [tests/README.md](/tests/README.md)).
+
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [🐵 WUKONG: Weaving Unstructured Knowledge - Organize, Normalize, Generate](#-wukong-weaving-unstructured-knowledge---organize-normalize-generate)
@@ -25,7 +29,7 @@ Engine for extracting structured knowledge from unstructured documents using the
   - [Building the Image](#building-the-image)
   - [Running the Engine with Docker](#running-the-engine-with-docker)
   - [Important Considerations](#important-considerations)
-- [🤝 Contributing](#-contributing)
+- [📖 Documentation](#-documentation)
 
 ## 🐵 WUKONG: Weaving Unstructured Knowledge - Organize, Normalize, Generate
 
@@ -41,7 +45,7 @@ A few properties are worth calling out:
 - **Provenance by default.** The source documents and their chunks are part of the output, and every extracted object links back to the exact text it was read from.
 - **Resumable and cost-aware.** Work is decomposed into durable, independently retryable units, so long runs over large corpora can be interrupted, resumed and partially re-run, either interactively or through cheaper asynchronous batch execution.
 
-Extraction and representation are kept separate: what the engine produces is a canonical result, and a final rendering stage emits it in a target format. **Property graph** formats are what ship today (`MillenniumDB`, `Neo4j`), which makes the output well suited to **information retrieval**, **data integration** and **AI agents**.
+Extraction and representation are kept separate: what the engine produces is a canonical result, and a final rendering stage emits it in a target format. **Property graph** formats are what ship today (a QM quad-model file, `Neo4j` CSV files), which makes the output well suited to **information retrieval**, **data integration** and **AI agents**.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -77,12 +81,7 @@ Before setting up the project, ensure you have the following software installed:
 
 ### Installation
 
-Clone the repository and navigate to the project directory:
-
-```sh
-git clone https://github.com/MillenniumDB/wukong-engine.git
-cd wukong-engine
-```
+Download the repository and navigate to the project directory.
 
 Make sure that you have the correct **Python** version set up in your environment (this is simple with **pyenv** commands).
 
@@ -308,13 +307,8 @@ Make sure to take the following into consideration when setting up and running t
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
-## 🤝 Contributing
+## 📖 Documentation
 
-Contributions are welcome!
-Please review the following resources:
-
-- 📜 [Code of Conduct](/.github/CODE_OF_CONDUCT.md)
-- 🤝 [Contribution Guide](/.github/CONTRIBUTING.md)
 - 🛠️ [Development Guidelines](/docs/development.md)
 - 🏗️ [Architecture Guidelines](/docs/architecture.md)
 - 🧱 [Project Structure](/docs/project-structure.md)

@@ -6,7 +6,8 @@
 #   ./run_variants.sh            # from paper/uda-nba
 set -euo pipefail
 cd "$(dirname "$0")"
-set -a; source ../../.env; set +a
+set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
+KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 
 python3 make_schema_variants.py
 for v in v1 v2 v3; do
@@ -15,7 +16,7 @@ for v in v1 v2 v3; do
   cp wukong-config.toml runs/wukong-$v/config.toml
 done
 
-caffeinate -i bash -c '
+$KEEP_AWAKE bash -c '
   for v in v1 v2 v3; do
     ( /usr/bin/time -p envs/wukong/bin/wukong run runs/wukong-$v data/docs \
         --config runs/wukong-$v/config.toml -v > runs/wukong-$v.log 2>&1 ) &

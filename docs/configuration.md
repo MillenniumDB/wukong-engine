@@ -153,7 +153,7 @@ The `[export]` section selects the output format.
 
 | Value     | Aliases            | Output                                                                     |
 | --------- | ------------------ | ---------------------------------------------------------------------------- |
-| `"mdb"`   | `"millenniumdb"`   | A MillenniumDB QM (Quad Model) file at `<workspace>/exports/mdb/knowledge_graph.qm`. |
+| `"mdb"`   | —                  | A QM (Quad Model) graph file at `<workspace>/exports/mdb/knowledge_graph.qm`. |
 | `"neo4j"` | —                  | Neo4j bulk-import CSV files under `<workspace>/exports/neo4j/`.            |
 
 Only the selected format is written. Rendering is a deterministic traversal of the staging database and costs nothing compared to extraction, so producing a second format is a matter of changing this key and re-running with only `export_knowledge` enabled — no re-extraction required.

@@ -94,7 +94,7 @@ and the changes are **not backwards compatible** with a `0.2.0` data directory.
 
 ### 🔥 Removed
 
-- **JSON export format.** The supported formats are now `mdb` (MillenniumDB) and `neo4j`.
+- **JSON export format.** The supported formats are now `mdb` (QM file) and `neo4j`.
 - **Approximate deduplication.** Identity is exact on the normalized primary key. The recommended substitute is to move canonicalization into the schema, with a declared pattern and worked examples on the primary key field.
 - **Metadata files.** The `docs/metadata/` directory and property extraction from it are gone.
 - **Hybrid entities and document sets**, superseded by context levels and document collections.

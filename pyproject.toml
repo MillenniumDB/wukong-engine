@@ -5,8 +5,6 @@ version = "0.5.0"
 description = "Engine for extracting structured knowledge from unstructured documents using the power of LLMs, exportable to graph and other formats."
 readme = "README.md"
 requires-python = ">=3.14"
-license = "Proprietary"
-authors = [{ name = "BFFV" }]
 dependencies = [
     "python-dotenv (>=1.1.0,<2.0.0)",
     "openai (>=1.88.0,<2.0.0)",
@@ -15,9 +13,6 @@ dependencies = [
     "numpy (>=2.4.5,<3.0.0)",
     "transformers (>=5.8.1,<6.0.0)",
 ]
-
-[project.urls]
-repository = "https://github.com/MillenniumDB/wukong-engine"
 
 ### Scripts ###
 [project.scripts]

@@ -11,7 +11,7 @@ class ExportConfigSchema(BaseModel):
     """Export configuration schema.
 
     Attributes:
-        format: Knowledge export format. Case-insensitive aliases (``mdb``, ``millenniumdb``, ``neo4j``) are
+        format: Knowledge export format. Case-insensitive aliases (``mdb``, ``neo4j``) are
             accepted. If None, the model default is used.
     """
 
@@ -20,7 +20,6 @@ class ExportConfigSchema(BaseModel):
     # Mapping of various string representations to KnowledgeExportFormat members
     _EXPORT_FORMAT_ALIASES: ClassVar[dict[str, KnowledgeExportFormat]] = {
         'mdb': KnowledgeExportFormat.MDB,
-        'millenniumdb': KnowledgeExportFormat.MDB,
         'neo4j': KnowledgeExportFormat.NEO4J,
     }
 

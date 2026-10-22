@@ -1,9 +1,9 @@
-# M1: structured questions on UDA-Bench NBA (midpoint for E2)
+# M1: structured questions on UDA-Bench NBA (Section 4.4 and Appendix C of the paper)
 
 Does a graph built from an extraction schema answer UDA-Bench's structured NBA questions better than RAG systems
 answering the way they are meant to? The graphs are those of the paper's NBA experiments: Wukong with the NBA schema
 (`workspace-x6-s5`, three builds), the schema-based extractors built from the same schema (three builds each), and
-the LightRAG and GraphRAG full builds (one each). Design and fairness rules: `overleaf/outline-v2.tex`, box "M1".
+the LightRAG and GraphRAG full builds (one each). Design and fairness rules: Section 4.4 of the paper.
 
 ## Results (macro F1 per question, UDA-Bench evaluator, deterministic mode)
 
@@ -57,7 +57,7 @@ miles", "Not drafted"), so the agent's casts fail: no rows on 18–31 questions 
 article subject in neo4j-graphrag and LlamaIndex, so set questions return every mentioned player; and duplicate
 nodes. OntoGPT, with subjects and one object per article, is closest to Wukong and better on Select (0.65 vs 0.51).
 
-Run on Juan's laptop (env `../envs/m1-harness`: kuzu 0.11.3, duckdb 1.3.2, Python 3.12). Every agent is told the
+Run with the harness environment (`$M1_ROOT/envs/harness`: kuzu 0.11.3, duckdb 1.3.2, Python 3.12). Every agent is told the
 same date (`--today 2026-10-14`). The first neo4j-graphrag build lost four articles' calls to a sleep of the machine;
 those articles were re-extracted before its agent ran (its other failed chunk is a malformed model reply, kept as the
 tool's behaviour). Two agents were restarted after a sleep (Wukong run 2, neo4j-graphrag run 2) and resumed; the
@@ -94,6 +94,6 @@ interrupted questions' calls stay in their usage logs.
   `scores/<system>.json`, `usage/`, `m1_table.{md,tex}`, `paired.txt`, `<system>_system_prompt.txt`, `excluded/`
   (GraphRAG global pilot). Three-run systems are `<name>_s5_r{1,2,3}`. Answers larger than 5 MB (14
   neo4j-graphrag answers, up to millions of rows from a join over every mentioned player) keep their trace, their row
-  count (`rows_total`) and their first 1,000 rows; their scores were computed on all the rows. The evaluator's per-question folders are archived in `WWW-Wukong/m1-input/m1-evaluator-dirs.tar.gz`.
-- Environments (iMac, `~/wukong-runs/m1/envs/`): `harness` (Python 3.12, kuzu 0.11.3), `lightrag` and `graphrag` with
-  the exact pins of the share's `versions.txt`.
+  count (`rows_total`) and their first 1,000 rows; their scores were computed on all the rows. The evaluator's per-question working folders are not included.
+- Environments (`$M1_ROOT/envs/`): `harness` (Python 3.12, kuzu 0.11.3), `lightrag` and `graphrag` with
+  the exact pins of `versions.txt`.
