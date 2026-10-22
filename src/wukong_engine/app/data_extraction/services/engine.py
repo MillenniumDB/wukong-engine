@@ -6,7 +6,11 @@ from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements import BatchSubmissionRequest, ExtractionRequest
 from wukong_engine.app.data_extraction.elements.values import ErrorSeverity, JobRetryPolicy, JobStatus
-from wukong_engine.app.data_extraction.exceptions import ExtractionExecutionError, ExtractionRequestBuildError
+from wukong_engine.app.data_extraction.exceptions import (
+    ExtractionExecutionError,
+    ExtractionRequestBuildError,
+    ExtractionResultError,
+)
 from wukong_engine.app.shared.iterables import batched
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model import KnowledgeModel
@@ -146,8 +150,18 @@ class RealtimeExtractionEngine(ExtractionEngine):
 
                     continue
 
-                # Materialization of results into knowledge objects
-                knowledge_objects = self._result_materializer.materialize(result, request.job, knowledge_model)
+                # Materialization of results into knowledge objects, retrying malformed results like undecodable ones
+                try:
+                    knowledge_objects = self._result_materializer.materialize(result, request.job, knowledge_model)
+                except ExtractionResultError as exc:
+                    self._repository.fail_job(
+                        request.job,
+                        retry_policy=JobRetryPolicy.IMMEDIATE,
+                        error=str(exc),
+                        metrics=result.metrics,
+                    )
+                    self._metrics_tracker.request_metrics()
+                    continue
 
                 # Persist knowledge objects and provenance, update job status to completed
                 self._repository.complete_job(request.job, knowledge_objects, usage_metrics=result.metrics)

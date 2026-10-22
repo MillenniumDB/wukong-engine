@@ -13,3 +13,7 @@ class ExtractionRequestBuildError(DataExtractionError):
 
 class ExtractionExecutionError(DataExtractionError):
     """Error during extraction execution."""
+
+
+class ExtractionResultError(DataExtractionError):
+    """Error materializing an extraction result whose structure doesn't match the expected response."""

@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from typing import Any
 
+from wukong_engine.app.llm.exceptions import LLMError
 from wukong_engine.app.llm.model.values import LLMProvider
 
 
@@ -41,9 +42,10 @@ class LLMBatchResult:
     Attributes:
         job_id: Identifier of the job the result belongs to.
         response: LLM response for the job, or None if the request failed.
-        error: Error message if the request failed, or None if it succeeded.
+        error: Error the request failed with, or None if it succeeded. Unsuccessful responses (refusals, truncations)
+            are reported as ``LLMResponseError`` carrying their usage metrics, like in real-time generation.
     """
 
     job_id: str
     response: LLMResponse | None
-    error: str | None = None
+    error: LLMError | None = None

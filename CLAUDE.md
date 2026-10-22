@@ -21,6 +21,7 @@ poetry install                                   # includes dev tools (ruff, pyr
 poetry run ruff check src                        # lint
 poetry run ruff format src                       # format
 poetry run pyright src                           # type-check
+poetry run pytest                                # tests (no LLM calls)
 poetry run wukong run workspaces/example data/example   # end-to-end run
 ```
 
@@ -45,12 +46,14 @@ never imports `infrastructure` (it gets use cases through `bootstrap`).
 
 ## Verification and tests
 
-- There's no test suite yet. The baseline check is an end-to-end run on the
-  example workspace. It calls the OpenAI API (needs `.env`, costs money), so
-  ask before running it. `--reset` wipes the workspace's stored state.
+- `poetry run pytest` runs the small test suite under `tests/`, which never
+  calls an LLM. Beyond it, the baseline check is an end-to-end run on the
+  example workspace. It calls the configured LLM provider's API (needs
+  `.env`, costs money), so ask before running it. `--reset` wipes the
+  workspace's stored state.
 - Adding tests is welcome where they add real value, e.g. pure domain logic,
-  parsing, normalization and serialization. Use pytest under `tests/`, added
-  as a Poetry dev dependency when the first test lands.
+  parsing, normalization and serialization. Use pytest under `tests/`,
+  mirroring the layout of `src/wukong_engine/`.
 
 ## Dependencies
 

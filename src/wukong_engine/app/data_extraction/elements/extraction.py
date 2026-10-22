@@ -53,13 +53,11 @@ class ExtractionRequest:
         job: Extraction job to process.
         spec: Specification used to render the job's prompt.
         reasoning_effort: Reasoning effort to request from the LLM. If None, the LLM client picks its default.
-        temperature: Sampling temperature to request from the LLM. If None, the LLM client picks its default.
     """
 
     job: ExtractionJob
     spec: ExtractionSpec
     reasoning_effort: ReasoningEffort | None = None
-    temperature: float | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,10 +121,13 @@ class BatchStatusResult:
     Attributes:
         status: Status of the batch reported by the provider, or its last known status if the check failed.
         error: Error message, if the status could not be retrieved or mapped.
+        reachable: Whether the provider could be reached at all, which fails when its client cannot be configured
+            (e.g. its API key is missing).
     """
 
     status: BatchStatus
     error: str | None = None
+    reachable: bool = True
 
 
 @dataclass(frozen=True, slots=True)

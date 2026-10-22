@@ -1,0 +1,12 @@
+{
+    "collections": {
+        "news": {
+            "sources": [
+                {
+                    "root": ".",
+                    "mode": "recursive"
+                }
+            ]
+        }
+    }
+}

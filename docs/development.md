@@ -82,7 +82,7 @@ poetry run pyright src        # Type check
 
 **Pyright**: A static type checker for **Python** that helps catch type errors and enforce type annotations. The recommended way of using this tool is through the [Pylance VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance), which is usually installed automatically when installing the [Python VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python). Just like with **Ruff**, the specific configuration for **Pyright** is also defined in the `pyproject.toml` file and detected automatically by the tool. Note that **Pylance** bundles its own **Pyright** version, which may differ slightly from the one pinned for the command line.
 
-> 🧹 The **Ruff** configuration selects `ALL` rules, and the `ignore` list holds the rules that were deliberately disabled for the project. New code is expected to pass this configuration as-is, so avoid `# noqa` comments and discuss changes to the `ignore` list before making them. The research material in `paper/`, including the benchmark scripts with their own dependencies, is excluded from **Ruff** entirely.
+> 🧹 The **Ruff** configuration selects `ALL` rules, and the `ignore` list holds the rules that were deliberately disabled for the project, with a few more disabled only under `tests/` (plain asserts, literal expected values and private member access). New code is expected to pass this configuration as-is, so avoid `# noqa` comments and discuss changes to the `ignore` list before making them. The research material in `paper/`, including the benchmark scripts with their own dependencies, is excluded from **Ruff** entirely.
 
 **Claude Code**: The repository ships a project hook in `.claude/settings.json` that runs `.claude/hooks/ruff.sh` after every file **Claude Code** writes or edits. For **Python** files inside the repository, it applies the same `ruff check --fix` and `ruff format` as above with the version pinned in `poetry.lock`, then reports any issues **Ruff** could not fix back to **Claude** so they get addressed in the same session. The hook requires [jq](https://jqlang.org/) and a prior `poetry install`, and **Claude Code** may ask you to approve it the first time you open the project. Personal overrides belong in `.claude/settings.local.json`, which is ignored by **Git**.
 
@@ -114,7 +114,13 @@ def my_function(param1: int, param2: str) -> bool:
 
 ## 🧪 Testing
 
-Currently, the project **does not have** a test suite. The baseline check for any change is an end-to-end run over the provided **example**, made up of the workspace in `workspaces/example/` and the corpus in `data/example/`:
+The project has a small [pytest](https://docs.pytest.org/) suite in the `tests/` directory, which runs without calling any **LLM**:
+
+```sh
+poetry run pytest
+```
+
+Beyond it, the baseline check for any change is an end-to-end run over the provided **example**, made up of the workspace in `workspaces/example/` and the corpus in `data/example/`:
 
 ```sh
 poetry run wukong run workspaces/example data/example
@@ -122,7 +128,7 @@ poetry run wukong run workspaces/example data/example
 
 > 💸 This run calls the configured **LLM** provider, so it requires a valid `.env` file and incurs API costs.
 
-Adding automated tests is welcome wherever they provide real value, such as for **domain logic, parsing, normalization and serialization**, which can be tested without calling an **LLM**. Tests should be written with [pytest](https://docs.pytest.org/) inside the `tests/` directory, and **pytest** should be added as a development dependency along with the first test.
+Adding automated tests is welcome wherever they provide real value, such as for **domain logic, parsing, normalization and serialization**, which can be tested without calling an **LLM**. Tests are written with **pytest** inside the `tests/` directory, mirroring the layout of `src/wukong_engine/`.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

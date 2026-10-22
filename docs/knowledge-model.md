@@ -67,6 +67,8 @@ Many parameters can be specialized per **context level**, which is the kind of s
 | `"chunk"`     | A single text chunk.            | The entities a document **mentions**.                                              |
 | `"document"`  | A bounded prefix of a document. | The single entity of a given type that a document **is** (e.g. a specific report). |
 
+Document-level extraction reads only the **first 8,000 tokens** of each document (as counted by the engine's tokenizer, not the LLM's), since documents aren't processed piece by piece as a whole. Anything that only appears later in a longer document can only be extracted at the chunk level, so document-level types should be identifiable from the beginning of a document (e.g. a title page or header).
+
 Wherever a parameter accepts a context level mapping, you may write either:
 
 - an **object** keyed by context level, to give each level its own value:
@@ -169,10 +171,10 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `instructions`   |    🟡     | Detailed technical guidance for obtaining this field. Accepts a context level mapping.                                                                                                                  | `object[string, string]` or `string` | `{}`        |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take. An empty array means unrestricted.                                                                                                            |      `string array` or `string`      | `[]`        |
 | `examples`       |    🟡     | Example value(s) illustrating the expected form. Must themselves satisfy `options` and `regex`, otherwise the model is rejected.                                                                        |      `string array` or `string`      | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`). Accepts a context level mapping, so one level can be stricter than the other.                                       | `object[string, string]` or `string` | `{}`        |
+| `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`), checked after extraction: it isn't shown to the LLM, so use `examples` to show the expected form. Accepts a context level mapping, so one level can be stricter than the other. | `object[string, string]` or `string` | `{}`        |
 | `default_value`  |    🟡     | The value used when nothing can be extracted, or when the `"default"` retrieval mode is chosen. Accepts a context level mapping. Must itself satisfy `options` and `regex`.                             | `object[string, string]` or `string` | `{}`        |
 | `retrieval_mode` |    🟡     | How the value is obtained. Accepts a context level mapping. See the table below.                                                                                                                        | `object[string, string]` or `string` | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. An entity missing a required value is discarded rather than repaired. The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing, or doesn't satisfy `options` and `regex`, is discarded rather than repaired. An invalid value of an optional field is discarded instead, leaving the entity with the field's `default_value` (if any). The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
 | `merge_strategy` |    🟡     | Overrides the entity type's `default_merge_strategy` for this field. See [Merge Strategies](#merge-strategies).                                                                                         |               `string`               | `null`      |
 
 **Retrieval modes** determine where an entity field's value comes from:
@@ -308,10 +310,10 @@ Relationship fields work like entity fields, except that they take **plain value
 | `instructions`   |    🟡     | Detailed technical guidance for extracting this field.                                                                            |          `string`          | `null`      |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take.                                                                         | `string array` or `string` | `[]`        |
 | `examples`       |    🟡     | Example value(s). Must satisfy `options` and `regex`.                                                                             | `string array` or `string` | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid.                                                                            |          `string`          | `null`      |
+| `regex`          |    🟡     | A pattern the value must match to be considered valid, checked after extraction (it isn't shown to the LLM).                     |          `string`          | `null`      |
 | `default_value`  |    🟡     | The value used when nothing is extracted, or with the `"default"` retrieval mode. Must satisfy `options` and `regex`.             |          `string`          | `null`      |
 | `retrieval_mode` |    🟡     | Either `"extract"` (the LLM reads it from the text) or `"default"` (the declared `default_value` is used). `"default"` requires a non-null `default_value`. |          `string`          | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. A relationship missing a required value is discarded.                                             |           `bool`           | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing or invalid is discarded; an invalid optional value is discarded instead, falling back to `default_value` (if any). |           `bool`           | `false`     |
 | `merge_strategy` |    🟡     | Overrides the relationship type's `default_merge_strategy` for this field.                                                        |          `string`          | `null`      |
 
 ### Relationship Example
@@ -364,7 +366,7 @@ Identity in WUKONG is **declared, not inferred**. Whether two extracted objects 
 
 Before anything is compared, primary key values are **normalized**: Unicode normalization and transliteration, case folding, dash and whitespace unification, removal of non-printable characters, and trimming. The normalized form is used for identity only — the original extracted value is what the object carries as its property. A value that normalizes to nothing (an empty or purely punctuational key) invalidates its object, which is discarded.
 
-Normalization is deliberately conservative. It removes variation that carries no information (accents, casing, spacing, dash styles) and preserves everything else. Stemming, abbreviation expansion and token reordering are **not** performed, because they destroy distinctions that matter in some domains. The practical consequence is that a primary key with a declared `regex` and worked `examples` — which asks the LLM to emit a canonical form directly — deduplicates far better than a free-form name-like key.
+Normalization is deliberately conservative. It removes variation that carries no information (accents, casing, spacing, dash styles) and preserves everything else. Stemming, abbreviation expansion and token reordering are **not** performed, because they destroy distinctions that matter in some domains. The practical consequence is that a primary key with worked `examples` — which steer the LLM toward a canonical form — deduplicates far better than a free-form name-like key, and a declared `regex` then discards the values that still deviate from that form.
 
 ### Deduplication
 

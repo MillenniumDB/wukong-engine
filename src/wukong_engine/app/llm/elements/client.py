@@ -3,6 +3,8 @@
 from collections.abc import Iterable
 from typing import Protocol
 
+from wukong_engine.app.llm.model.values import LLMProvider
+
 from .request import LLMRequest
 from .response import LLMBatchCreationResponse, LLMBatchResult, LLMResponse
 
@@ -47,6 +49,23 @@ class LLMClient(Protocol):
         """
         ...
 
+    async def cancel_batch(self, batch_id: str) -> None:
+        """Request the cancellation of a batch, without waiting for the provider to stop it.
+
+        Requests the provider already finished stay billed, and their results remain retrievable once the batch ends.
+
+        Args:
+            batch_id: Provider identifier of the batch.
+
+        Raises:
+            LLMConfigurationError: If the client is misconfigured or the provider rejects the request as invalid (e.g.
+                the batch is unknown to it or has already ended).
+            LLMTransientError: If the provider fails in a way that may succeed on retry (rate limits, timeouts,
+                connection or server-side errors).
+            LLMInternalError: If an unexpected error occurs within the client or provider.
+        """
+        ...
+
     async def get_batch_status(self, batch_id: str) -> str:
         """Get the current status of a batch.
 
@@ -65,7 +84,10 @@ class LLMClient(Protocol):
         ...
 
     async def get_batch_results(self, batch_id: str) -> tuple[LLMBatchResult, ...]:
-        """Get the results of a completed batch.
+        """Get the results of an ended batch.
+
+        A batch that ended without completing (e.g. it expired or was cancelled) may still have results for the
+        requests it finished.
 
         Args:
             batch_id: Provider identifier of the batch.
@@ -74,10 +96,31 @@ class LLMClient(Protocol):
             One result per request that can be matched to a job, holding either its response or an error.
 
         Raises:
-            LLMResponseError: If the batch isn't completed yet.
+            LLMResponseError: If the batch hasn't ended yet, or has no results to retrieve.
             LLMConfigurationError: If the client is misconfigured or the provider rejects the request as invalid.
             LLMTransientError: If the provider fails in a way that may succeed on retry (rate limits, timeouts,
                 connection or server-side errors).
             LLMInternalError: If an unexpected error occurs within the client or provider.
+        """
+        ...
+
+
+class LLMClientFactory(Protocol):
+    """Factory of LLM clients for each provider."""
+
+    def get_client(self, provider: LLMProvider) -> LLMClient:
+        """Get the client of a provider.
+
+        Only the configured model's provider gets a client set up for generating responses and creating batches. The
+        clients of other providers are only meant for managing the batches already submitted to them.
+
+        Args:
+            provider: Provider whose client is returned.
+
+        Returns:
+            The LLM client of the provider.
+
+        Raises:
+            LLMConfigurationError: If the client of the provider cannot be configured (e.g. its API key is missing).
         """
         ...

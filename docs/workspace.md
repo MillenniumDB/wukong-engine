@@ -191,4 +191,6 @@ poetry run wukong run workspaces/example data/example --reset
 
 Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline.
 
+Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. The run doesn't wait for them to stop: the cancellations are only requested, and a failed request is logged as a warning so that the batch can be cancelled from the provider instead.
+
 [📚 Back to Table of Contents](#-table-of-contents)

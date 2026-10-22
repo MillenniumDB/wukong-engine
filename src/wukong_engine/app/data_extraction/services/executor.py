@@ -2,7 +2,7 @@
 
 import json
 from collections.abc import AsyncIterator, Iterable
-from typing import Protocol
+from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import ExtractionRequest, ExtractionResult
 from wukong_engine.app.data_extraction.elements.values import (
@@ -17,6 +17,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMInternalError,
     LLMResponseError,
     LLMTransientError,
+    LLMTruncatedResponseError,
 )
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 
@@ -24,6 +25,57 @@ from .prompt_renderer import PromptRenderer
 
 # Constants
 DEFAULT_MAX_CONCURRENCY = 5  # Default maximum number of concurrent requests (default: 5)
+
+
+def decode_response(content: str) -> Any:
+    """Decode the JSON value of an LLM response, tolerating text around it, shared by real-time and batch execution.
+
+    Responses can surround their JSON with prose, or follow it with extra data (e.g. a repeated object), especially
+    when the provider doesn't enforce their schema. The first JSON object or array that decodes is returned, and
+    anything around it is ignored.
+
+    Args:
+        content: Text content of the response.
+
+    Returns:
+        The decoded JSON value.
+
+    Raises:
+        json.JSONDecodeError: If the content holds no JSON object or array that decodes.
+    """
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError as exc:
+        error = exc
+    decoder = json.JSONDecoder()
+    for index, char in enumerate(content):
+        if char in '{[':
+            try:
+                return decoder.raw_decode(content, index)[0]
+            except json.JSONDecodeError:
+                continue
+    raise error
+
+
+def response_failure_result(error: LLMResponseError) -> ExtractionResult:
+    """Build the failed result of an unsuccessful LLM response, shared by real-time and batch execution.
+
+    Truncated responses aren't retried, since the same request would truncate them again, while other unsuccessful
+    responses (e.g. refusals) are retried immediately. Either way, the tokens they used are kept.
+
+    Args:
+        error: Error the response failed with.
+
+    Returns:
+        The failed extraction result, with the response's token usage.
+    """
+    return ExtractionResult(
+        status=JobStatus.FAILED,
+        metrics=TokenUsageMetrics.from_usage(error.metrics) if error.metrics else None,
+        error=str(error),
+        error_severity=ErrorSeverity.RECOVERABLE,
+        retry_policy=JobRetryPolicy.NONE if isinstance(error, LLMTruncatedResponseError) else JobRetryPolicy.IMMEDIATE,
+    )
 
 
 class ExtractionExecutor(Protocol):
@@ -94,8 +146,9 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         """Execute a single extraction request.
 
         Renders the request's prompt, sends it to the LLM and decodes the JSON response. Failures are mapped to
-        failed results: transient errors retry deferred, response and decoding errors retry immediately, and
-        configuration or internal errors are critical.
+        failed results: transient errors retry deferred, response and decoding errors retry immediately (except
+        truncated responses, which the same request would truncate again and so aren't retried), and configuration
+        or internal errors are critical. Failed responses keep their token usage.
 
         Args:
             request: Extraction request to execute.
@@ -106,16 +159,12 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         """
         # Build the LLM request from the extraction request
         prompt = self._prompt_renderer.render(request.spec)
-        llm_request = LLMRequest(
-            prompt=prompt,
-            reasoning_effort=request.reasoning_effort,
-            temperature=request.temperature,
-        )
+        llm_request = LLMRequest(prompt=prompt, reasoning_effort=request.reasoning_effort)
 
         # Execute LLM request and handle response
         try:
             response = await self._llm_client.generate(llm_request)
-            data = json.loads(response.content)
+            data = decode_response(response.content)
             return ExtractionResult(
                 status=JobStatus.COMPLETED,
                 data=data,
@@ -129,12 +178,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 retry_policy=JobRetryPolicy.DEFERRED,
             )
         except LLMResponseError as exc:
-            return ExtractionResult(
-                status=JobStatus.FAILED,
-                error=str(exc),
-                error_severity=ErrorSeverity.RECOVERABLE,
-                retry_policy=JobRetryPolicy.IMMEDIATE,
-            )
+            return response_failure_result(exc)
         except (json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError) as exc:
             return ExtractionResult(
                 status=JobStatus.FAILED,

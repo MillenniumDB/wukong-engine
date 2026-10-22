@@ -5,6 +5,7 @@ from typing import Any, ClassVar
 from pydantic import BaseModel, StrictStr, field_validator
 
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.llm.elements.values import ReasoningEffort
 
 
 class LLMConfigSchema(BaseModel):
@@ -15,11 +16,14 @@ class LLMConfigSchema(BaseModel):
         execution_mode: Execution mode for extraction jobs. Case-insensitive aliases (e.g. ``realtime``, ``sync``,
             ``batch``, ``async``) are accepted. If None, the model default is used.
         max_concurrency: Maximum number of concurrent LLM requests. If None, the model default is used.
+        reasoning_effort: Generalized reasoning effort level overriding the LLM model's default (e.g. ``none``,
+            ``low``, ``extreme``). If None, the LLM model's default is used.
     """
 
     model: StrictStr | None = None
     execution_mode: ExecutionMode | None = None
     max_concurrency: int | None = None
+    reasoning_effort: ReasoningEffort | None = None
 
     # Mapping of various string representations to ExecutionMode members
     _EXECUTION_MODE_ALIASES: ClassVar[dict[str, ExecutionMode]] = {

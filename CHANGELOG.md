@@ -9,29 +9,87 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
-  - [🐛 Fixed](#-fixed)
-  - [🛠️ Build](#️-build)
-  - [📝 Documentation](#-documentation)
-- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
-  - [🐛 Fixed](#-fixed-1)
+  - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
+  - [🛠️ Build](#️-build)
+  - [📝 Documentation](#-documentation)
+- [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
+  - [🐛 Fixed](#-fixed-1)
+  - [🛠️ Build](#️-build-1)
   - [📝 Documentation](#-documentation-1)
-- [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
+- [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed-1)
+  - [🔥 Removed](#-removed-1)
   - [🐛 Fixed](#-fixed-2)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-2)
-- [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
+- [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
   - [✨ Added](#-added-2)
-  - [🛠️ Build](#️-build-1)
+  - [♻️ Changed](#️-changed-2)
+  - [🐛 Fixed](#-fixed-3)
+  - [⚡ Performance](#-performance-2)
   - [📝 Documentation](#-documentation-3)
+- [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
+  - [✨ Added](#-added-3)
+  - [🛠️ Build](#️-build-2)
+  - [📝 Documentation](#-documentation-4)
 
 ## [Unreleased]
+
+### ✨ Added
+
+- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs at the `low` effort level, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
+- Response schemas that exceed the provider's structured output limits, or that the provider rejects, are sent as instructions for the rest of the run instead of stopping it, with a warning, for both **OpenAI** and **Anthropic**.
+- Batch cancellation at the provider: a batch that hasn't ended within 25 hours (a provider's 24-hour limit plus a margin) is cancelled at the provider and its finished requests are still collected (it is discarded after 26 hours if it doesn't end), and resetting an extraction step requests the cancellation of its batches in flight, without waiting for them to stop.
+- A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
+- **OpenAI**'s `gpt-6-luna` as a supported model and the new default, replacing `gpt-5.6-luna`: in `benchmark/llm_effort/` it extracted as well or better at under half the cost. It runs at the `low` effort level with explicit prompt caching.
+- An advanced `[llm]` `reasoning_effort` setting that overrides the reasoning effort of every extraction, which otherwise runs at `low` for every model.
+
+### ♻️ Changed
+
+- Only the API key of the configured model's provider is required: `OPENAI_API_KEY` for **OpenAI** models and `ANTHROPIC_API_KEY` for **Anthropic** models.
+- The error for an unsupported model now lists the supported models of every provider.
+- An extracted value of an optional field that doesn't satisfy its `options` or `regex` is now discarded on its own, falling back to the field's default, instead of discarding the whole entity or relationship.
+- Generalized reasoning effort levels now map to each model's closest native level, and extraction uses each model's own default effort instead of the `low` level for every model, which doesn't change the effort any supported model runs at.
+
+### 🔥 Removed
+
+- **OpenAI**'s `gpt-4.1-mini` is no longer supported: it now costs more than `gpt-6-luna` and extracts worse.
+- **OpenAI**'s `gpt-5.6-luna` is no longer supported, replaced by `gpt-6-luna` as the default model. Configurations naming it must switch to `gpt-6-luna`.
+
+### 🐛 Fixed
+
+- A response that is valid JSON but not shaped like the expected result no longer crashes the run: items that aren't objects are skipped, and a malformed response is retried like invalid JSON.
+- Deferred retries (timeouts, rate limits, server errors) are now bounded: a source extraction is marked as failed after 10 attempts of any kind across runs, instead of keeping the later pipeline steps from ever running.
+- Responses cut off at the output token limit are no longer retried with the same request, which would be cut off again, and the tokens of cut-off and refused responses are now recorded in the usage metrics.
+- An exhausted **OpenAI** quota now stops the run, instead of being treated as a rate limit that defers every job.
+- In batch mode, the jobs of a batch that fails as a whole now count toward the 10-attempt limit, instead of being resubmitted on every run forever.
+- In batch mode, a completed batch whose results can't be retrieved no longer blocks the pipeline forever: it is failed, and its jobs retried, once it is older than the maximum batch resolution time (25 hours). An **OpenAI** batch in which every request failed is now read from its error file instead of failing to retrieve.
+- In batch mode, a response schema the provider rejects is now detected before submitting, by checking each distinct schema once per run, and is sent as instructions, instead of failing every request that uses it until they run out of attempts.
+- In batch mode, the requests that an **OpenAI** batch finished before it expired or was cancelled are now kept, instead of being discarded and paid for again.
+- In batch mode, entity and relationship extraction now only list their own active batches, which share one table, so each step synchronizes (and cancels) only its own batches.
+- Extracted values are normalized before being validated, instead of being dropped (or, for a required field, dropping their item) when they don't come as the expected text, which mostly happens when the provider doesn't enforce the schema: booleans and numbers become their text (a JSON `true` was stored as `True`, missing the `true` option), a single-element list becomes its element, strings are trimmed, empty and `null` strings count as missing, options and type names match regardless of case, and objects are no longer stored as their Python representation.
+- A response whose JSON is surrounded by text or followed by extra data is decoded from its first JSON object or array, instead of failing to decode and being retried.
+- In batch mode, failed results now follow the same retry rules as in real time (cut-off responses aren't retried, refusals are retried immediately), and the token usage of unsuccessful responses is recorded.
+
+### ⚡ Performance
+
+- Relationship results load their job's context (types, entity ID mapping and candidate entities) once per response, instead of once or twice per extracted relationship.
+
+### 🛠️ Build
+
+- Added the `anthropic` runtime dependency and the `pytest` development dependency.
+- Ignored the **Ruff** rules `S101`, `PLR2004` and `SLF001` under `tests/`, so tests can use plain asserts, literal expected values and private members.
+
+### 📝 Documentation
+
+- Documented that an interrupted batch submission can leave a batch the engine doesn't track.
+- Clarified that a field's `regex` is checked after extraction rather than shown to the LLM, and documented the 8,000-token cap of document-level extraction.
+- Documented the **Anthropic** model, its API key, its response schema limits and how to switch providers with batches in flight.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

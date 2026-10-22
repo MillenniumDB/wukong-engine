@@ -65,7 +65,7 @@ src/wukong_engine/
 │   ├── persistence/  # SQLite staging database
 │   ├── storage/      # Filesystem document loading
 │   ├── chunking/     # Recursive, boundary-aware segmentation and tokenization
-│   ├── llm/          # OpenAI client
+│   ├── llm/          # OpenAI and Anthropic clients, and the factory picking each provider's
 │   ├── export/graph/ # MillenniumDB and Neo4j exporters
 │   ├── config/       # TOML loading and environment variables
 │   ├── normalization/# Primary key normalization
@@ -135,7 +135,7 @@ Everything else under `data/` is ignored by **Git**, so your own corpora can liv
 
 ## 🧪 Tests
 
-The `tests/` directory is meant to contain the test suite for the engine. This is currently **not implemented**.
+The `tests/` directory contains the **pytest** test suite for the engine, mirroring the layout of `src/wukong_engine/`. It currently covers the Anthropic LLM client, run against a mocked API, and the resolution of the LLM settings from the configuration.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

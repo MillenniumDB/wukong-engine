@@ -47,6 +47,10 @@ def configure_logging(verbosity: int) -> None:
     logging.getLogger('openai').setLevel(logging.ERROR)
     logging.getLogger('httpx').setLevel(logging.ERROR)
 
+    # Anthropic
+    logging.getLogger('anthropic').setLevel(logging.ERROR)
+    logging.getLogger('httpx2').setLevel(logging.ERROR)
+
 
 def set_logger_verbosity(verbosity: int, logger_name: str | None = None) -> None:
     """Set desired verbosity for a specific logger.

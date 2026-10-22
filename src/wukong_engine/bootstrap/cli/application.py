@@ -29,11 +29,11 @@ from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, Get
 from wukong_engine.app.workflows import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
-from wukong_engine.infrastructure.config import ConfigProvider, load_env_config
+from wukong_engine.infrastructure.config import ConfigProvider
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.knowledge import LocalKnowledgeModelProvider
 from wukong_engine.infrastructure.export.graph import MillenniumDBKnowledgeExporter, Neo4jKnowledgeExporter
-from wukong_engine.infrastructure.llm.openai import OpenAIClient, OpenAIConfig
+from wukong_engine.infrastructure.llm.factory import EnvLLMClientFactory
 from wukong_engine.infrastructure.logging import set_logger_verbosity
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 from wukong_engine.infrastructure.persistence.sqlite import (
@@ -106,13 +106,15 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         The composed CLI application.
 
     Raises:
-        ConfigurationError: If the verbosity, environment or configuration file cannot be loaded.
+        ConfigurationError: If the verbosity, environment or configuration file cannot be loaded, or the LLM client
+            cannot be configured for the model.
     """
     # Configuration
     try:
         set_logger_verbosity(verbosity)
-        env_config = load_env_config()
         app_config = ConfigProvider().get(config_path)
+        llm_client_factory = EnvLLMClientFactory(model=app_config.llm.model)
+        llm_client = llm_client_factory.get_client(app_config.llm.model.provider)
     except Exception as exc:
         error = f'Failed to load configuration: {exc}'
         logger.error(error)
@@ -136,8 +138,6 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         ),
     )
     staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
-    llm_config = OpenAIConfig(api_key=env_config.openai_api_key, model=app_config.llm.model)
-    llm_client = OpenAIClient(config=llm_config)
     pk_normalizer = DefaultPKNormalizer()
     knowledge_repository = KnowledgeRepository(uow=staging_uow)
     knowledge_exporter = _format_to_exporter(app_config.export.format, knowledge_repository)
@@ -158,6 +158,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     entity_request_builder = EntityExtractionRequestBuilder(
         repository=entity_extraction_repository,
         document_loader=document_loader,
+        reasoning_effort=app_config.llm.reasoning_effort,
     )
     entity_result_materializer = EntityExtractionResultMaterializer(
         repository=entity_extraction_repository,
@@ -165,7 +166,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
     entity_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
         repository=entity_extraction_repository,
-        llm_client=llm_client,
+        llm_client_factory=llm_client_factory,
         result_materializer=entity_result_materializer,
         metrics_tracker=entity_metrics_tracker,
     )
@@ -193,14 +194,17 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         repository=relationship_extraction_repository,
         execution_mode=app_config.llm.execution_mode,
     )
-    relationship_request_builder = RelationshipExtractionRequestBuilder(repository=relationship_extraction_repository)
+    relationship_request_builder = RelationshipExtractionRequestBuilder(
+        repository=relationship_extraction_repository,
+        reasoning_effort=app_config.llm.reasoning_effort,
+    )
     relationship_result_materializer = RelationshipExtractionResultMaterializer(
         repository=relationship_extraction_repository,
         pk_normalizer=pk_normalizer,
     )
     relationship_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
         repository=relationship_extraction_repository,
-        llm_client=llm_client,
+        llm_client_factory=llm_client_factory,
         result_materializer=relationship_result_materializer,
         metrics_tracker=relationship_metrics_tracker,
     )

@@ -11,6 +11,7 @@ from .values import ExtractionJobId
 
 # Constants
 MAX_FAILED_ATTEMPTS = 3  # Maximum number of failed attempts before marking as failed
+MAX_ATTEMPTS = 10  # Maximum number of attempts of any kind, across runs, before marking as failed
 
 
 @dataclass(frozen=True, slots=True)

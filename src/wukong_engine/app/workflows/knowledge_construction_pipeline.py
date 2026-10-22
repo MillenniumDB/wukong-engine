@@ -51,30 +51,24 @@ class KnowledgeConstructionPipeline:
         self._extract_relationships = extract_relationships
         self._export_knowledge = export_knowledge
 
-    def _step_to_use_case(
-        self,
-        step: PipelineStep,
-    ) -> IngestDocuments | ExtractEntities | ExtractRelationships | ExportKnowledge:
-        """Map a pipeline step to its corresponding use case.
+    async def _reset_step(self, step: PipelineStep) -> None:
+        """Reset the state of a pipeline step through its use case.
 
         Args:
-            step: Pipeline step to resolve.
-
-        Returns:
-            The use case that executes the given step.
+            step: Pipeline step to reset.
 
         Raises:
             PipelineExecutionError: If no use case is registered for the step.
         """
         match step:
             case PipelineStep.INGEST_DOCUMENTS:
-                return self._ingest_documents
+                self._ingest_documents.reset()
             case PipelineStep.EXTRACT_ENTITIES:
-                return self._extract_entities
+                await self._extract_entities.reset()
             case PipelineStep.EXTRACT_RELATIONSHIPS:
-                return self._extract_relationships
+                await self._extract_relationships.reset()
             case PipelineStep.EXPORT_KNOWLEDGE:
-                return self._export_knowledge
+                self._export_knowledge.reset()
             case _:
                 error = f'No use case found for pipeline step: {step.value}'
                 logger.error(error)
@@ -126,9 +120,6 @@ class KnowledgeConstructionPipeline:
 
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
-            # Map the step to its corresponding use case
-            use_case = self._step_to_use_case(step)
-
             # Stop if dependencies have not been completed
             with self._uow as tx:
                 if not tx.pipeline.are_dependencies_completed(step):
@@ -141,9 +132,8 @@ class KnowledgeConstructionPipeline:
             # Reset all steps downstream if the reset flag is present
             if should_reset:
                 for dependent_step in step.is_required_by:
-                    dependent_use_case = self._step_to_use_case(dependent_step)
-                    dependent_use_case.reset()
-                use_case.reset()
+                    await self._reset_step(dependent_step)
+                await self._reset_step(step)
                 with self._uow as tx:
                     tx.pipeline.reset_dependent_checkpoints(step)
 
@@ -179,10 +169,9 @@ class KnowledgeConstructionPipeline:
             else:
                 logger.info(f'Skipping {step.value} step because it has already been completed...')
 
-    def reset(self) -> None:
+    async def reset(self) -> None:
         """Reset the pipeline back to its initial state."""
         for step in PipelineStep:
-            use_case = self._step_to_use_case(step)
-            use_case.reset()
+            await self._reset_step(step)
         with self._uow as tx:
             tx.pipeline.clear()
