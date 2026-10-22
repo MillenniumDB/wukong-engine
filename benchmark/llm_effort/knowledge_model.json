@@ -1,0 +1,614 @@
+{
+    "extraction_config": {
+        "llm": {
+            "domain": "Crime as reported in Chilean news media",
+            "language": "es"
+        },
+        "projection": {
+            "enabled_entities": [
+                "Event",
+                "Weapon",
+                "Person",
+                "Organization",
+                "Place",
+                "Drug"
+            ],
+            "enabled_relationships": [
+                "OccurredIn",
+                "ParticipatesIn",
+                "IsMemberOf",
+                "IsBasedIn",
+                "InvolvedIn"
+            ]
+        }
+    },
+    "entity_types": {
+        "Event": {
+            "description": "A specific, concrete fact reported, meaning a bounded occurrence with its own actors, place, and moment in time.",
+            "instructions": "Use the following criteria to decide when to separate events: (1) different main actors; (2) different place or moment in time; (3) different purpose or nature of the action. Do not extract trends, analytical claims, statistics, opinions, or background context — only discrete reported occurrences.",
+            "primary_key": "description",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "A short descriptive name or title for the event.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "date": {
+                    "data_type": "string",
+                    "description": "The date on which the event occurred.",
+                    "instructions": "Must be in the format: <YYYY>-<MM>-<DD>. If only partial date is available, fill missing parts with '01'.",
+                    "retrieval_mode": "extract"
+                },
+                "time": {
+                    "data_type": "string",
+                    "description": "The time or time of day at which the event occurred, as mentioned in the text.",
+                    "instructions": "Extract the time as it appears in the text. Can be an exact time (e.g. '14:30'), an approximate time (e.g. 'alrededor de las 3'), or a time of day (e.g. 'en la madrugada', 'por la tarde').",
+                    "retrieval_mode": "extract"
+                },
+                "description": {
+                    "data_type": "string",
+                    "description": "A brief description of what happened in the event.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "is_criminal": {
+                    "data_type": "string",
+                    "description": "Whether the event involves a criminal act.",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "involves_law_enforcement": {
+                    "data_type": "string",
+                    "description": "Whether the event involves law enforcement acting in an official capacity, including police, detectives, or other public/private security forces.",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "number_of_victims": {
+                    "data_type": "string",
+                    "description": "The number of victims involved in the event.",
+                    "instructions": "Can be an integer (e.g. '3') or a descriptive string (e.g. 'varios', 'al menos 2') if the exact number is not specified. Only applicable if the event is criminal in nature.",
+                    "retrieval_mode": "extract"
+                },
+                "number_of_offenders": {
+                    "data_type": "string",
+                    "description": "The number of offenders involved in the event.",
+                    "instructions": "Can be an integer (e.g. '2') or a descriptive string (e.g. 'varios', 'al menos 3') if the exact number is not specified. Only applicable if the event is criminal in nature.",
+                    "retrieval_mode": "extract"
+                },
+                "offenders_description": {
+                    "data_type": "string",
+                    "description": "Short and general description of the offender group/individual.",
+                    "instructions": "Use only when offenders are unnamed.",
+                    "examples": [
+                        "grupo de 5 menores de edad",
+                        "tres sujetos encapuchados"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "offenders_are_minors": {
+                    "data_type": "string",
+                    "description": "Whether the offenders are minors, adults, or a mix.",
+                    "instructions": "Set to 'true' if all are minors, 'false' if all are adults, 'mixed' if the group includes both, 'unknown' if not mentioned.",
+                    "options": [
+                        "true",
+                        "false",
+                        "mixed",
+                        "unknown"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "victims_description": {
+                    "data_type": "string",
+                    "description": "Short and general description of the victim group/individual",
+                    "instructions": "Use only when victims are unnamed.",
+                    "examples": [
+                        "una pareja",
+                        "dos transeúntes",
+                        "una familia"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "victims_are_minors": {
+                    "data_type": "string",
+                    "description": "Whether the victims are minors, adults, or a mix.",
+                    "instructions": "Set to 'true' if all are minors, 'false' if all are adults, 'mixed' if the group includes both, 'unknown' if not mentioned.",
+                    "options": [
+                        "true",
+                        "false",
+                        "mixed",
+                        "unknown"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        },
+        "Weapon": {
+            "description": "A physical object used or threatened to cause harm or death.",
+            "instructions": "Includes firearms (real or blank-firing), edged weapons, blunt objects, incendiary devices, explosives, or any object deployed as a weapon.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The name or specific description of the weapon or object as mentioned in the text.",
+                    "examples": [
+                        "pistola",
+                        "cuchillo",
+                        "botella de vidrio",
+                        "molotov"
+                    ],
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "type": {
+                    "data_type": "string",
+                    "description": "The physical category of the weapon, based on its design and mechanism of harm.",
+                    "options": [
+                        "Handgun",
+                        "Long gun",
+                        "Firearm (unspecified)",
+                        "Edged weapon",
+                        "Blunt weapon",
+                        "Explosive or grenade"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        },
+        "Person": {
+            "description": "A person mentioned.",
+            "primary_key": "description",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The full or partial real name of the person.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "nickname": {
+                    "data_type": "string",
+                    "description": "The alias or nickname of the person.",
+                    "retrieval_mode": "extract"
+                },
+                "nationality": {
+                    "data_type": "string",
+                    "description": "The nationality or country of origin of the person.",
+                    "retrieval_mode": "extract"
+                },
+                "sex": {
+                    "data_type": "string",
+                    "description": "The sex of the person.",
+                    "options": [
+                        "Male",
+                        "Female",
+                        "Non-binary"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "age": {
+                    "data_type": "string",
+                    "description": "The age of the person at the time of the event.",
+                    "instructions": "Can be an integer (e.g. '34') or a descriptive string (e.g. 'alrededor de 30', 'entre 20 y 25 años') if the exact age is not specified.",
+                    "retrieval_mode": "extract"
+                },
+                "is_minor": {
+                    "data_type": "string",
+                    "description": "Whether the person is a minor (under 18 years of age) at the time of the event.",
+                    "instructions": "Set to 'true' if the text explicitly refers to the person as a minor, child, adolescent, or states an age under 18.",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "description": {
+                    "data_type": "string",
+                    "description": "A brief identifying description of the person combining all available information: name, role in the event, and any known characteristics such as age, sex, or nationality.",
+                    "instructions": "Include the name and as many distinguishing details as the text provides. If some details are unknown, include only what is available.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        },
+        "Organization": {
+            "description": "An organization mentioned in the article that is involved in, affected by, or otherwise linked to an event reported in the article.",
+            "primary_key": "description",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The name of the organization as mentioned in the text.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "type": {
+                    "data_type": "string",
+                    "description": "The general category of the organization based on its primary function or nature.",
+                    "options": [
+                        "Company",
+                        "Hospital",
+                        "Police",
+                        "Court",
+                        "Public Institution",
+                        "NGO",
+                        "School",
+                        "Criminal",
+                        "Political",
+                        "Other"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "description": {
+                    "data_type": "string",
+                    "description": "A brief description of the organization, including its purpose, activities, or role in the context of the article.",
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "volume": {
+                    "data_type": "string",
+                    "description": "A description of the size or scale of the organization. Can include number of members (e.g. 'tres integrantes', 'más de 50 miembros') or a qualitative assessment of its size (e.g. 'pequeña banda local', 'gran organización').",
+                    "retrieval_mode": "extract"
+                },
+                "scope": {
+                    "data_type": "string",
+                    "description": "The geographical scope of the organization's operations or presence.",
+                    "options": [
+                        "Local",
+                        "Regional",
+                        "National",
+                        "International"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        },
+        "Place": {
+            "description": "A physical location mentioned in the article where an event takes place or that is otherwise relevant to the article.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The name of the place as mentioned in the text",
+                    "examples": [
+                        "Santiago",
+                        "Mall Costanera Center",
+                        "Población La Victoria"
+                    ],
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "administrative_scale": {
+                    "data_type": "string",
+                    "description": "The administrative level of the place within the territorial hierarchy.",
+                    "options": [
+                        "Country",
+                        "State",
+                        "Region",
+                        "Province",
+                        "Municipality"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "social_space": {
+                    "data_type": "string",
+                    "description": "The socio-physical category of the place based on its primary social function.",
+                    "options": [
+                        "Residential space",
+                        "Commercial or economic space",
+                        "Institutional space",
+                        "Educational space",
+                        "Transport space",
+                        "Public space",
+                        "Other"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        },
+        "Drug": {
+            "description": "A drug or psychoactive substance.",
+            "instructions": "Must be referred to as a concept or category rather than a specific instance or seizure.",
+            "primary_key": "name",
+            "deduplication": "primary_key",
+            "fields": {
+                "name": {
+                    "data_type": "string",
+                    "description": "The name of the drug as mentioned in the text, including colloquial or street names.",
+                    "examples": [
+                        "tussi",
+                        "pasta base",
+                        "flakka",
+                        "pito",
+                        "neoprén"
+                    ],
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "type": {
+                    "data_type": "string",
+                    "description": "The classification of the drug based on its chemical nature and primary psychoactive effect.",
+                    "options": [
+                        "Cannabis",
+                        "Cocaine",
+                        "Opioids",
+                        "Synthetic stimulants",
+                        "Novel psychoactive substances",
+                        "Sedatives and tranquilizers",
+                        "Hallucinogens",
+                        "Inhalants"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            },
+            "document_collections": {
+                "chunk": [
+                    "news"
+                ]
+            }
+        }
+    },
+    "relationship_types": {
+        "OccurredIn": {
+            "description": "Relates an event to the place where it occurred or that is otherwise relevant to it.",
+            "endpoints": {
+                "Event": {
+                    "Place": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "primary_key",
+            "primary_key": "function",
+            "fields": {
+                "description": {
+                    "data_type": "string",
+                    "description": "A brief explanation of the relevance of the place to the event.",
+                    "retrieval_mode": "extract"
+                },
+                "function": {
+                    "required": true,
+                    "data_type": "string",
+                    "description": "The role or function that the place plays in relation to the event.",
+                    "options": [
+                        "Residence",
+                        "Transit",
+                        "Storage",
+                        "Transaction",
+                        "Attack",
+                        "Concealment",
+                        "Territorial control"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            }
+        },
+        "ParticipatesIn": {
+            "description": "Relates a person or organization to an event in which they participate, are affected by, or are otherwise linked to.",
+            "endpoints": {
+                "Person": {
+                    "Event": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                },
+                "Organization": {
+                    "Event": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "disabled",
+            "fields": {
+                "role": {
+                    "data_type": "string",
+                    "description": "The role that the person or organization plays in relation to the event.",
+                    "options": [
+                        "Victim",
+                        "Offender",
+                        "Suspect",
+                        "Witness",
+                        "Investigates",
+                        "Arrests",
+                        "Prosecutes",
+                        "Adjudicates",
+                        "Affected"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "status": {
+                    "data_type": "string",
+                    "description": "The degree of certainty or legal status with which the role is attributed to the person or organization in the context of the event.",
+                    "options": [
+                        "Confirmed",
+                        "Alleged",
+                        "Suspected",
+                        "Charged",
+                        "Convicted",
+                        "Acquitted"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            }
+        },
+        "IsMemberOf": {
+            "description": "Relates a person to an organization of which they are or were a member.",
+            "endpoints": {
+                "Person": {
+                    "Organization": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "disabled",
+            "fields": {
+                "role": {
+                    "data_type": "string",
+                    "description": "The role or function of the person within the organization",
+                    "options": [
+                        "Leader",
+                        "Organizer",
+                        "Enforcer",
+                        "Courier",
+                        "Recruiter",
+                        "Lookout",
+                        "Money launderer",
+                        "Corrupt facilitator",
+                        "Associate"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "status": {
+                    "data_type": "string",
+                    "description": "The current membership status of the person within the organization.",
+                    "options": [
+                        "Active",
+                        "Former"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            }
+        },
+        "IsBasedIn": {
+            "description": "Relates an organization to a place where it is based, operates, or has some form of physical or territorial presence.",
+            "endpoints": {
+                "Organization": {
+                    "Place": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "disabled",
+            "fields": {
+                "facility_type": {
+                    "data_type": "string",
+                    "description": "The type of physical installation or facility that the organization has in the place.",
+                    "options": [
+                        "Headquarters",
+                        "Branch",
+                        "Safe house",
+                        "Storage facility",
+                        "Meeting point"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "presence_type": {
+                    "data_type": "string",
+                    "description": "The nature of the organization's presence or control in the place.",
+                    "options": [
+                        "Permanent",
+                        "Operational",
+                        "Territorial"
+                    ],
+                    "retrieval_mode": "extract"
+                },
+                "status": {
+                    "data_type": "string",
+                    "description": "The current status of the organization's presence in the place.",
+                    "options": [
+                        "Active",
+                        "Dismantled",
+                        "Abandoned"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            }
+        },
+        "InvolvedIn": {
+            "primary_key": "type",
+            "description": "Relates a weapon or drug to an event in which it is used, seized, found, or otherwise materially present.",
+            "endpoints": {
+                "Weapon": {
+                    "Event": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                },
+                "Drug": {
+                    "Event": [
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "disabled",
+            "fields": {
+                "type": {
+                    "data_type": "string",
+                    "description": "The nature of the involvement of the weapon or drug in the event.",
+                    "options": [
+                        "Used",
+                        "Seized",
+                        "Found",
+                        "Mentioned"
+                    ],
+                    "required": true,
+                    "retrieval_mode": "extract"
+                },
+                "amount": {
+                    "data_type": "string",
+                    "description": "The quantity of the weapon or drug involved in the event, including the unit of measurement as mentioned.",
+                    "examples": [
+                        "500 gramos",
+                        "3 unidades",
+                        "dos pistolas"
+                    ],
+                    "retrieval_mode": "extract"
+                }
+            }
+        }
+    }
+}

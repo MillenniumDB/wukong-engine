@@ -1,0 +1,338 @@
+{
+  "settings": {
+    "claude-haiku-5-5@low": {
+      "extraction": {
+        "tokens": {
+          "input": 297778,
+          "cached": 703796,
+          "cache_write": 23248,
+          "output": 160465,
+          "reasoning": 271934
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 115
+        },
+        "usd": 0.25592126
+      },
+      "entities": {
+        "precision": 0.9831730769230769,
+        "recall": 0.6032448377581121,
+        "f1": 0.7477148080438757,
+        "field_accuracy": 0.9356153219233904,
+        "f1_ci95": [
+          0.7280008814331066,
+          0.7668509952555128
+        ],
+        "verdicts": {
+          "correct": 1148,
+          "field_error": 79,
+          "invalid": 21
+        },
+        "unjudged": 0,
+        "found": 1227,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.9867256637168141,
+        "recall": 0.16403089371092314,
+        "f1": 0.28129927467675814,
+        "field_accuracy": 0.9484304932735426,
+        "f1_ci95": [
+          0.24672302684685268,
+          0.317308713555153
+        ],
+        "verdicts": {
+          "correct": 423,
+          "field_error": 23,
+          "invalid": 6
+        },
+        "unjudged": 0,
+        "found": 446,
+        "reference": 2719,
+        "chunks": 116
+      }
+    },
+    "claude-haiku-5-5@none": {
+      "extraction": {
+        "tokens": {
+          "input": 282409,
+          "cached": 669895,
+          "cache_write": 23684,
+          "output": 156626,
+          "reasoning": 0
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 111
+        },
+        "usd": 0.11621335
+      },
+      "entities": {
+        "precision": 0.9653024911032029,
+        "recall": 0.5334316617502458,
+        "f1": 0.6871437618746041,
+        "field_accuracy": 0.8313364055299539,
+        "f1_ci95": [
+          0.6614635753911685,
+          0.7111846687556811
+        ],
+        "verdicts": {
+          "correct": 902,
+          "field_error": 183,
+          "invalid": 39
+        },
+        "unjudged": 0,
+        "found": 1085,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.9254302103250478,
+        "recall": 0.1780066200809121,
+        "f1": 0.2985811227637261,
+        "field_accuracy": 0.762396694214876,
+        "f1_ci95": [
+          0.2588809964897798,
+          0.33934757518360026
+        ],
+        "verdicts": {
+          "correct": 369,
+          "field_error": 115,
+          "invalid": 39
+        },
+        "unjudged": 0,
+        "found": 484,
+        "reference": 2719,
+        "chunks": 116
+      }
+    },
+    "gpt-5.6-luna@low": {
+      "extraction": {
+        "tokens": {
+          "input": 258124,
+          "cached": 312632,
+          "cache_write": 0,
+          "output": 122656,
+          "reasoning": 101396
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 116
+        },
+        "usd": 0.32673983999999995
+      },
+      "entities": {
+        "precision": 0.9563492063492064,
+        "recall": 0.7109144542772862,
+        "f1": 0.8155668358714044,
+        "field_accuracy": 0.8713692946058091,
+        "f1_ci95": [
+          0.8003401517792296,
+          0.8299005120156343
+        ],
+        "verdicts": {
+          "correct": 1260,
+          "field_error": 186,
+          "invalid": 66
+        },
+        "unjudged": 0,
+        "found": 1446,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.9608323133414932,
+        "recall": 0.2887090842221405,
+        "f1": 0.4440045248868778,
+        "field_accuracy": 0.9554140127388535,
+        "f1_ci95": [
+          0.40983354130703165,
+          0.47890905967039377
+        ],
+        "verdicts": {
+          "correct": 750,
+          "field_error": 35,
+          "invalid": 32
+        },
+        "unjudged": 0,
+        "found": 785,
+        "reference": 2719,
+        "chunks": 116
+      }
+    },
+    "gpt-5.6-luna@none": {
+      "extraction": {
+        "tokens": {
+          "input": 242694,
+          "cached": 338787,
+          "cache_write": 1030,
+          "output": 149428,
+          "reasoning": 0
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 116
+        },
+        "usd": 0.23488564
+      },
+      "entities": {
+        "precision": 0.8840669559826411,
+        "recall": 0.7010816125860374,
+        "f1": 0.782012613106663,
+        "field_accuracy": 0.8197755960729313,
+        "f1_ci95": [
+          0.7662510038342647,
+          0.7972912766892334
+        ],
+        "verdicts": {
+          "correct": 1169,
+          "field_error": 257,
+          "invalid": 187
+        },
+        "unjudged": 0,
+        "found": 1426,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.8283198826118855,
+        "recall": 0.41485840382493566,
+        "f1": 0.5528337618279155,
+        "field_accuracy": 0.7564216120460585,
+        "f1_ci95": [
+          0.5203183201217941,
+          0.5862204407759998
+        ],
+        "verdicts": {
+          "correct": 854,
+          "field_error": 275,
+          "invalid": 234
+        },
+        "unjudged": 0,
+        "found": 1128,
+        "reference": 2719,
+        "chunks": 116
+      }
+    },
+    "gpt-6-luna@low": {
+      "extraction": {
+        "tokens": {
+          "input": 254835,
+          "cached": 312813,
+          "cache_write": 0,
+          "output": 119429,
+          "reasoning": 87528
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 116
+        },
+        "usd": 0.13209013
+      },
+      "entities": {
+        "precision": 0.9628400796284008,
+        "recall": 0.7133726647000983,
+        "f1": 0.8195425021180458,
+        "field_accuracy": 0.9138525155065472,
+        "f1_ci95": [
+          0.8041354456672822,
+          0.8347424436597596
+        ],
+        "verdicts": {
+          "correct": 1326,
+          "field_error": 125,
+          "invalid": 56
+        },
+        "unjudged": 0,
+        "found": 1451,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.9651006711409396,
+        "recall": 0.26443545421110703,
+        "f1": 0.41512702078521946,
+        "field_accuracy": 0.9276773296244785,
+        "f1_ci95": [
+          0.3799540102531981,
+          0.45180141132995233
+        ],
+        "verdicts": {
+          "correct": 667,
+          "field_error": 52,
+          "invalid": 26
+        },
+        "unjudged": 0,
+        "found": 719,
+        "reference": 2719,
+        "chunks": 116
+      }
+    },
+    "gpt-6-luna@none": {
+      "extraction": {
+        "tokens": {
+          "input": 253110,
+          "cached": 322814,
+          "cache_write": 4531,
+          "output": 154788,
+          "reasoning": 0
+        },
+        "jobs": {
+          "entity_extraction:completed": 116,
+          "relationship_extraction:completed": 115,
+          "relationship_extraction:failed": 2
+        },
+        "usd": 0.106499515
+      },
+      "entities": {
+        "precision": 0.9117828500925355,
+        "recall": 0.7266470009832842,
+        "f1": 0.8087551299589604,
+        "field_accuracy": 0.8761840324763194,
+        "f1_ci95": [
+          0.7906219498092315,
+          0.8247024372292232
+        ],
+        "verdicts": {
+          "correct": 1295,
+          "field_error": 183,
+          "invalid": 143
+        },
+        "unjudged": 0,
+        "found": 1478,
+        "reference": 2034,
+        "chunks": 116
+      },
+      "relationships": {
+        "precision": 0.8585055643879174,
+        "recall": 0.3972048547260022,
+        "f1": 0.5431229570027658,
+        "field_accuracy": 0.7472222222222222,
+        "f1_ci95": [
+          0.5151938291352764,
+          0.571137226550649
+        ],
+        "verdicts": {
+          "correct": 807,
+          "field_error": 273,
+          "invalid": 178
+        },
+        "unjudged": 0,
+        "found": 1080,
+        "reference": 2719,
+        "chunks": 116
+      }
+    }
+  },
+  "failed_judgments": {
+    "entities": 0,
+    "relationships": 0
+  },
+  "judge_tokens": {
+    "input": 800847,
+    "cached": 349140,
+    "output": 249745
+  }
+}

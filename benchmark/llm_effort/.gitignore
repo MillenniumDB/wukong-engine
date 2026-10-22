@@ -1,0 +1,6 @@
+# Copies of the sampled crime documents, which are not tracked (see data/ in the root .gitignore)
+data/
+
+# Workspaces of the settings, with their staging databases, and the raw judge requests and judgments, which quote the
+# documents
+runs/
