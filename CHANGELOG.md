@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [\[Unreleased\]](#unreleased)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
+  - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed)
   - [⚡ Performance](#-performance)
   - [🛠️ Build](#️-build)
@@ -22,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
   - [✨ Added](#-added-1)
   - [♻️ Changed](#️-changed-1)
-  - [🔥 Removed](#-removed)
+  - [🔥 Removed](#-removed-1)
   - [🐛 Fixed](#-fixed-2)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-2)
@@ -41,16 +42,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### ✨ Added
 
-- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name, and the default model is still `gpt-5.6-luna`. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs without thinking at the `low` effort level that extraction uses, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
+- **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs at the `low` effort level, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
 - Response schemas that exceed the provider's structured output limits, or that the provider rejects, are sent as instructions for the rest of the run instead of stopping it, with a warning, for both **OpenAI** and **Anthropic**.
 - Batch cancellation at the provider: a batch that hasn't ended within 25 hours (a provider's 24-hour limit plus a margin) is cancelled at the provider and its finished requests are still collected (it is discarded after 26 hours if it doesn't end), and resetting an extraction step requests the cancellation of its batches in flight, without waiting for them to stop.
 - A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
+- **OpenAI**'s `gpt-6-luna` as a supported model and the new default, replacing `gpt-5.6-luna`: in `benchmark/llm_effort/` it extracted as well or better at under half the cost. It runs at the `low` effort level with explicit prompt caching.
+- An advanced `[llm]` `reasoning_effort` setting that overrides the reasoning effort of every extraction, which otherwise runs at `low` for every model.
 
 ### ♻️ Changed
 
 - Only the API key of the configured model's provider is required: `OPENAI_API_KEY` for **OpenAI** models and `ANTHROPIC_API_KEY` for **Anthropic** models.
 - The error for an unsupported model now lists the supported models of every provider.
 - An extracted value of an optional field that doesn't satisfy its `options` or `regex` is now discarded on its own, falling back to the field's default, instead of discarding the whole entity or relationship.
+- Generalized reasoning effort levels now map to each model's closest native level, and extraction uses each model's own default effort instead of the `low` level for every model, which doesn't change the effort any supported model runs at.
+
+### 🔥 Removed
+
+- **OpenAI**'s `gpt-4.1-mini` is no longer supported: it now costs more than `gpt-6-luna` and extracts worse.
+- **OpenAI**'s `gpt-5.6-luna` is no longer supported, replaced by `gpt-6-luna` as the default model. Configurations naming it must switch to `gpt-6-luna`.
 
 ### 🐛 Fixed
 

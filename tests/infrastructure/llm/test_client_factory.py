@@ -11,7 +11,7 @@ from wukong_engine.infrastructure.llm.anthropic import AnthropicClient
 from wukong_engine.infrastructure.llm.factory import EnvLLMClientFactory
 from wukong_engine.infrastructure.llm.openai import OpenAIClient
 
-MODEL = LLM(name='gpt-4.1-mini', provider=LLMProvider.OPENAI)
+MODEL = LLM(name='gpt-6-luna', provider=LLMProvider.OPENAI)
 
 
 @pytest.fixture(autouse=True)

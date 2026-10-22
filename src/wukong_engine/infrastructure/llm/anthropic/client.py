@@ -133,7 +133,6 @@ class AnthropicClient(LLMClient):
         Adds a prompt cache breakpoint and reasoning effort only when the configured model supports them. A prompt
         schema is adapted to the structured output limits and enforced as the output format, unless it can't fit them
         or was already rejected by the API, in which case it is appended to the instructions without being enforced.
-        The request's temperature is never sent, since the supported models only accept the default one.
 
         Args:
             request: LLM request to translate into API parameters.
@@ -154,11 +153,12 @@ class AnthropicClient(LLMClient):
         }
         # Set reasoning effort if supported by the model
         output_config: OutputConfigParam = {}
-        reasoning_effort = (
-            LLMRegistry.reasoning_effort(model, request.reasoning_effort)
+        level = (
+            request.reasoning_effort
             if request.reasoning_effort is not None
             else LLMRegistry.default_reasoning_effort(model)
         )
+        reasoning_effort = LLMRegistry.reasoning_effort(model, level) if level is not None else None
         if LLMRegistry.is_reasoning_model(model) and reasoning_effort == 'none':
             # The API has no "none" effort, and only accepts disabled thinking at an effort of high or below
             params['thinking'] = {'type': 'disabled'}

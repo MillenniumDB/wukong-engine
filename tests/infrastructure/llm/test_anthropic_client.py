@@ -43,8 +43,7 @@ REQUEST = LLMRequest(
         schema=SCHEMA,
         shared_content='Shared context. ',
     ),
-    reasoning_effort=ReasoningEffort.LOW,
-    temperature=0.0,
+    reasoning_effort=ReasoningEffort.NONE,
 )
 EXPECTED_PARAMS = {
     'model': 'claude-haiku-5-5',
@@ -161,8 +160,10 @@ def _client() -> AnthropicClient:
     return AnthropicClient(AnthropicConfig(api_key='test-key', model=MODEL, max_retries=0))
 
 
-def test_generate_sends_cache_breakpoint_low_effort_without_thinking_and_schema(mock_api: MockAPIInstaller) -> None:
-    """Send the shared content as a cache breakpoint, low effort without thinking and the schema, and no temperature."""
+def test_generate_sends_cache_breakpoint_none_effort_as_low_without_thinking_and_schema(
+    mock_api: MockAPIInstaller,
+) -> None:
+    """Send the shared content as a cache breakpoint, the schema, and the none effort as low effort without thinking."""
     api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
 
     asyncio.run(_client().generate(REQUEST))
@@ -170,15 +171,29 @@ def test_generate_sends_cache_breakpoint_low_effort_without_thinking_and_schema(
     assert api.request_body() == EXPECTED_PARAMS
 
 
-def test_generate_keeps_thinking_for_efforts_above_low(mock_api: MockAPIInstaller) -> None:
-    """Send the native effort level, leaving thinking on, for effort levels above low."""
+@pytest.mark.parametrize(
+    ('effort', 'expected'),
+    [
+        (ReasoningEffort.LOW, 'low'),
+        (ReasoningEffort.MEDIUM, 'medium'),
+        (ReasoningEffort.HIGH, 'high'),
+        (ReasoningEffort.EXTREME, 'xhigh'),
+        (ReasoningEffort.MAX, 'max'),
+    ],
+)
+def test_generate_keeps_thinking_for_efforts_above_none(
+    mock_api: MockAPIInstaller,
+    effort: ReasoningEffort,
+    expected: str,
+) -> None:
+    """Send the native effort level, leaving thinking on, for effort levels above none."""
     api = mock_api({'/v1/messages': httpx2.Response(200, json=_message())})
 
-    asyncio.run(_client().generate(replace(REQUEST, reasoning_effort=ReasoningEffort.MEDIUM)))
+    asyncio.run(_client().generate(replace(REQUEST, reasoning_effort=effort)))
 
     body = api.request_body()
     assert 'thinking' not in body
-    assert body['output_config']['effort'] == 'medium'
+    assert body['output_config']['effort'] == expected
 
 
 def test_generate_sends_requests_sharing_a_cached_prefix_once_the_first_one_is_answered(

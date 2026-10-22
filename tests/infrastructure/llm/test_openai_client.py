@@ -34,7 +34,7 @@ RESPONSE = {
     'object': 'response',
     'created_at': 0,
     'status': 'completed',
-    'model': 'gpt-5.6-luna',
+    'model': 'gpt-6-luna',
     'output': [
         {
             'type': 'message',
@@ -109,7 +109,7 @@ def mock_api(monkeypatch: pytest.MonkeyPatch) -> Any:
 
 def _client() -> OpenAIClient:
     """Build a client for the default model, without SDK retries."""
-    return OpenAIClient(OpenAIConfig(api_key='test-key', model=LLM(name='gpt-5.6-luna'), max_retries=0))
+    return OpenAIClient(OpenAIConfig(api_key='test-key', model=LLM(name='gpt-6-luna'), max_retries=0))
 
 
 def _is_unenforced(body: dict[str, Any], schema: dict[str, Any]) -> bool:
@@ -158,6 +158,34 @@ def test_generate_sends_a_schema_over_the_limits_as_instructions(mock_api: Any) 
     asyncio.run(_client().generate(_request(oversized)))
 
     assert _is_unenforced(api.bodies[0], oversized)
+
+
+@pytest.mark.parametrize(
+    ('effort', 'expected'),
+    [
+        (None, 'low'),
+        (ReasoningEffort.NONE, 'none'),
+        (ReasoningEffort.LOW, 'low'),
+        (ReasoningEffort.MEDIUM, 'medium'),
+        (ReasoningEffort.HIGH, 'high'),
+        (ReasoningEffort.EXTREME, 'xhigh'),
+        (ReasoningEffort.MAX, 'max'),
+    ],
+)
+def test_generate_sends_the_native_effort_with_explicit_caching(
+    mock_api: Any,
+    effort: ReasoningEffort | None,
+    expected: str,
+) -> None:
+    """Send each effort level as the model's native one, or its default without one, with explicit caching."""
+    api = mock_api([httpx.Response(200, json=RESPONSE)])
+    prompt = LLMPrompt(content='Sentence.', instructions='Extract the entities.', schema=SCHEMA)
+
+    asyncio.run(_client().generate(LLMRequest(prompt=prompt, reasoning_effort=effort)))
+
+    body = api.bodies[0]
+    assert body['reasoning'] == {'effort': expected}
+    assert body['prompt_cache_options'] == {'mode': 'explicit'}
 
 
 @pytest.mark.parametrize(

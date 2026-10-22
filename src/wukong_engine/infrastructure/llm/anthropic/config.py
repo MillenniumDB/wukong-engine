@@ -66,7 +66,6 @@ class AnthropicConfig:
         if not LLMRegistry.is_reasoning_model(self.model):
             return
         efforts = {LLMRegistry.reasoning_effort(self.model, level) for level in ReasoningEffort}
-        efforts.add(LLMRegistry.default_reasoning_effort(self.model))
         for effort in efforts - {None}:
             if effort not in SUPPORTED_EFFORTS:
                 raise ValueError(f'Reasoning effort "{effort}" of model "{self.model.name}" is not supported')

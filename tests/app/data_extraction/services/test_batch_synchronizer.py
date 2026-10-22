@@ -237,7 +237,7 @@ def test_unsuccessful_batches_keep_their_finished_results_before_failing(model: 
     repository = RecordingRepository(jobs=(finished, unfinished))
     synchronizer = _synchronizer(repository)
     batch = ExtractionBatch.from_provider(provider=LLMProvider.OPENAI, provider_id='batch_1')
-    response = LLMResponse(content='{"entities": []}', model='gpt-5.6-luna', metrics=USAGE)
+    response = LLMResponse(content='{"entities": []}', model='gpt-6-luna', metrics=USAGE)
 
     synchronizer._resolve_batch_status(batch, BatchStatusResult(BatchStatus.FAILED))
     results = (LLMBatchResult(finished.id.instance.hex, response=response),)

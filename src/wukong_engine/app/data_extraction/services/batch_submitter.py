@@ -98,11 +98,7 @@ class ConcurrentExtractionBatchSubmitter(ExtractionBatchSubmitter):
         job_ids: list[str] = []
         for request in submission_request.batch:
             prompt = self._prompt_renderer.render(request.spec)
-            llm_request = LLMRequest(
-                prompt=prompt,
-                reasoning_effort=request.reasoning_effort,
-                temperature=request.temperature,
-            )
+            llm_request = LLMRequest(prompt=prompt, reasoning_effort=request.reasoning_effort)
             llm_requests.append(llm_request)
             job_ids.append(request.job.id.instance.hex)
 

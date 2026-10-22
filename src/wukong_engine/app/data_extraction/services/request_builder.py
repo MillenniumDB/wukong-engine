@@ -37,8 +37,6 @@ from .repository import EntityExtractionRepository, RelationshipExtractionReposi
 logger = logging.getLogger(__name__)
 
 # Constants
-ENTITY_EXTRACTION_EFFORT = ReasoningEffort.LOW
-RELATIONSHIP_EXTRACTION_EFFORT = ReasoningEffort.LOW
 MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits
 
 
@@ -90,7 +88,7 @@ class ExtractionRequestBuilder(Protocol):
             model: Knowledge model providing the types and extraction config referenced by the job.
 
         Returns:
-            The extraction request, including its specification and reasoning effort.
+            The extraction request, including its specification and the configured reasoning effort, if any.
 
         Raises:
             ExtractionRequestBuildError: If the request can't be built for the job.
@@ -118,14 +116,21 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract an entity if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: EntityExtractionRepository, document_loader: DocumentLoader) -> None:
+    def __init__(
+        self,
+        repository: EntityExtractionRepository,
+        document_loader: DocumentLoader,
+        reasoning_effort: ReasoningEffort | None = None,
+    ) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's source context and entity types.
             document_loader: Loader used to read the content of document-level sources.
+            reasoning_effort: Reasoning effort requested for every job. If None, the LLM model's default is used.
         """
         self._repository = repository
+        self._reasoning_effort = reasoning_effort
         self._document_loader = document_loader
         self.max_document_tokens = MAX_DOCUMENT_TOKENS
 
@@ -137,7 +142,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
             model: Knowledge model containing the job's entity types and extraction config.
 
         Returns:
-            The extraction request, using the entity extraction reasoning effort.
+            The extraction request, with the configured reasoning effort, if any.
 
         Raises:
             ExtractionRequestBuildError: If the source content can't be loaded, one of the job's entity types is
@@ -170,8 +175,7 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
             response_schema=self._generate_response_schema(tuple(entity_types), job.context_ref.level),
         )
 
-        # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=ENTITY_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _render_document_context(self, extraction_config: ExtractionConfig) -> str:
         """Render the document context section.
@@ -406,14 +410,20 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         Do not extract a relationship if any required field value cannot be determined from the source text.
     """).strip()
 
-    def __init__(self, repository: RelationshipExtractionRepository) -> None:
+    def __init__(
+        self,
+        repository: RelationshipExtractionRepository,
+        reasoning_effort: ReasoningEffort | None = None,
+    ) -> None:
         """Initialize the request builder.
 
         Args:
             repository: Repository used to look up each job's relationship types, source chunk and available entities,
                 and to store the job's temporary entity ID mapping.
+            reasoning_effort: Reasoning effort requested for every job. If None, the LLM model's default is used.
         """
         self._repository = repository
+        self._reasoning_effort = reasoning_effort
         self._current_entity_count: int = 0  # Track the number of extracted entities for the current job (for temp IDs)
         self._entity_temp_to_ref: dict[str, EntityRef] = {}  # Mapping of temporary entity IDs to EntityRefs
         self._entity_true_to_temp_id: dict[EntityId, str] = {}  # Mapping of true EntityIds to temporary entity IDs
@@ -428,7 +438,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
             model: Knowledge model containing the job's relationship types and extraction config.
 
         Returns:
-            The extraction request, using the relationship extraction reasoning effort.
+            The extraction request, with the configured reasoning effort, if any.
 
         Raises:
             ExtractionRequestBuildError: If one of the job's relationship types is missing from the knowledge model.
@@ -467,8 +477,7 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
             source_definitions=self._render_source_definitions(extraction_elements),
         )
 
-        # Return the extraction request with the specified reasoning effort
-        return ExtractionRequest(job, spec, reasoning_effort=RELATIONSHIP_EXTRACTION_EFFORT)
+        return ExtractionRequest(job, spec, reasoning_effort=self._reasoning_effort)
 
     def _build_entity_id_mappings(self, entities: tuple[Entity, ...]) -> None:
         """Build mappings between temporary entity IDs and true EntityIds.

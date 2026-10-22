@@ -83,17 +83,17 @@ The `[llm]` section controls the language model used for extraction.
 
 | Key               | Description                                                                                      |   Type    | Default          |
 | ----------------- | -------------------------------------------------------------------------------------------------- | :-------: | ---------------- |
-| `model`           | The model to use. Its provider is inferred from the name.                                        | `string`  | `"gpt-5.6-luna"` |
+| `model`           | The model to use. Its provider is inferred from the name.                                        | `string`  | `"gpt-6-luna"`   |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
+| `reasoning_effort` | ⚙️ Advanced. Overrides the reasoning effort of every model, `low` by default. See below.        | `string`  | Model's default  |
 
 **Supported models:**
 
 | Model                | Provider  | Notes                                                    |
 | -------------------- | --------- | -------------------------------------------------------- |
-| `"gpt-5.6-luna"`     | OpenAI    | Reasoning model, runs at `low` effort. Balanced default. |
-| `"gpt-4.1-mini"`     | OpenAI    | Non-reasoning. Cheaper, lower quality.                   |
-| `"claude-haiku-5-5"` | Anthropic | Reasoning model, runs without thinking. Cheapest.        |
+| `"gpt-6-luna"`       | OpenAI    | Reasoning model, runs at `low` effort. Default.          |
+| `"claude-haiku-5-5"` | Anthropic | Reasoning model, runs at `low` effort. Lower recall.     |
 
 > ⚠️ Response schemas are enforced by the provider whenever possible, so that every response follows them. A schema that exceeds the provider's documented limits, or that the provider rejects, is sent as instructions instead for the rest of the run, and a warning is logged once per schema. In batch mode, where a rejection would otherwise only show up as an error of every request using the schema, each distinct schema is checked once per run before it's submitted: for free through **OpenAI**'s token counting, and with a one-token request on **Anthropic** (a fraction of a cent). With OpenAI, responses are then still valid JSON (JSON mode); with Anthropic, responses that are not valid JSON are retried. Either way, items that don't match their type are discarded.
 >
@@ -104,6 +104,8 @@ The `[llm]` section controls the language model used for extraction.
 > ⏱️ A batch that hasn't ended within **25 hours** of its submission (providers end batches within 24) is asked to be cancelled at the provider, and stays tracked so that the requests it finished are still collected, while the rest are retried. If it still hasn't ended **26 hours** after its submission (for instance because the cancellation could not be requested), it is discarded and its jobs are retried, with a warning to check the provider for it.
 
 > 🔀 Batches in flight are tied to the provider that received them. If the provider changes while batches are still pending, new batches go to the configured model, while the pending ones keep being checked, collected and cancelled through the provider that received them, as long as its API key is still set. Without it they can't be reached: since they most likely ended with their results already billed, they are kept past the deadlines above, and each run logs an error telling how many are waiting, as the extraction can't finish until they are collected. Add the missing key to collect them. Batches still unreachable **30 days** after their submission, when the provider no longer keeps their results, are discarded and their jobs are retried with the configured model.
+
+**Reasoning effort (advanced):** every model runs at `low` effort unless `reasoning_effort` is set, which is best left unset. It takes one of the generalized levels `"none"`, `"low"`, `"medium"`, `"high"`, `"extreme"` or `"max"`, which each model translates to its closest native level (`"extreme"` is `xhigh` for all supported models, and on `claude-haiku-5-5` `"none"` runs without thinking). In [the benchmark of the supported models](/benchmark/llm_effort/README.md), `low` extracted field values much more accurately than `"none"`, which extracted more relationships but with many more errors. `"none"` can still suit a workload where finding more items matters more than their field values, and `"medium"` one with a harder schema (many interdependent or normalized fields, document-level extraction, long chunks), at a higher cost and latency.
 
 **Execution modes:**
 

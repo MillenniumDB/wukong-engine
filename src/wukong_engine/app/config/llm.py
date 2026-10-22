@@ -4,6 +4,7 @@ import logging
 from dataclasses import dataclass, field
 
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.llm.elements.values import ReasoningEffort
 from wukong_engine.app.llm.model import LLM, LLMRegistry
 from wukong_engine.app.llm.model.values import LLMProvider
 
@@ -19,16 +20,22 @@ class LLMConfig:
         model: LLM used for extraction. Defaults to the registry's default model.
         execution_mode: Whether extraction jobs run in realtime or through the provider's batch API.
         max_concurrency: Maximum number of concurrent LLM requests.
+        reasoning_effort: Reasoning effort requested for every extraction, overriding the model's default. If None,
+            the model's default is used.
     """
 
     model: LLM = field(default_factory=LLMRegistry.default_model)
     execution_mode: ExecutionMode = ExecutionMode.REALTIME
     max_concurrency: int = 5
+    reasoning_effort: ReasoningEffort | None = None
 
     def __str__(self) -> str:
         """User-friendly string representation of the LLM configuration."""
+        effort = self.reasoning_effort or LLMRegistry.default_reasoning_effort(self.model)
+        reasoning_effort = effort.name if effort is not None else 'NOT SUPPORTED'
         return (
             f'Model: {self.model}\nExecution Mode: {self.execution_mode.value}\nMax Concurrency: {self.max_concurrency}'
+            f'\nReasoning Effort: {reasoning_effort}'
         )
 
     def __post_init__(self) -> None:

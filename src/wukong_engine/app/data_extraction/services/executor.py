@@ -129,11 +129,7 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         """
         # Build the LLM request from the extraction request
         prompt = self._prompt_renderer.render(request.spec)
-        llm_request = LLMRequest(
-            prompt=prompt,
-            reasoning_effort=request.reasoning_effort,
-            temperature=request.temperature,
-        )
+        llm_request = LLMRequest(prompt=prompt, reasoning_effort=request.reasoning_effort)
 
         # Execute LLM request and handle response
         try:

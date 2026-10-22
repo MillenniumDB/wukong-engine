@@ -86,8 +86,7 @@ class OpenAIClient(LLMClient):
     def _build_request_payload(self, request: LLMRequest, *, enforce_schema: bool = True) -> dict[str, Any]:
         """Build the Responses API payload for a request.
 
-        Adds explicit prompt caching options, reasoning effort and temperature only when the configured model
-        supports them. A prompt schema is enforced as a strict JSON schema response format, unless it exceeds the
+        Adds explicit prompt caching options and reasoning effort only when the configured model supports them. A prompt schema is enforced as a strict JSON schema response format, unless it exceeds the
         structured output limits or was already rejected by the API, in which case it leads the input as instructions
         and only valid JSON is enforced.
 
@@ -115,18 +114,14 @@ class OpenAIClient(LLMClient):
             payload['prompt_cache_options'] = {'mode': 'explicit'}
 
         # Set reasoning effort if supported by the model
-        reasoning_effort = (
-            LLMRegistry.reasoning_effort(model, request.reasoning_effort)
+        level = (
+            request.reasoning_effort
             if request.reasoning_effort is not None
             else LLMRegistry.default_reasoning_effort(model)
         )
+        reasoning_effort = LLMRegistry.reasoning_effort(model, level) if level is not None else None
         if LLMRegistry.is_reasoning_model(model) and reasoning_effort is not None:
             payload['reasoning'] = {'effort': reasoning_effort}
-
-        # Set temperature if supported by the model
-        temperature = request.temperature if request.temperature is not None else 0.0
-        if LLMRegistry.is_supported_model(model) and not LLMRegistry.is_reasoning_model(model):
-            payload['temperature'] = temperature
 
         # Include structured response schema if provided, enforced when possible or as instructions if not
         schema = request.prompt.schema

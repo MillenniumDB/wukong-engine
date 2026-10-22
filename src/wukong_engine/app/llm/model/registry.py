@@ -12,7 +12,7 @@ from .values import LLMProvider
 class LLMRegistry:
     """Registry of supported LLM providers and their models."""
 
-    _DEFAULT_MODEL: LLM = LLM(provider=LLMProvider.OPENAI, name='gpt-5.6-luna')
+    _DEFAULT_MODEL: LLM = LLM(provider=LLMProvider.OPENAI, name='gpt-6-luna')
     _DEFAULT_PROVIDER_MODELS: MappingProxyType[LLMProvider, LLM] = MappingProxyType(
         {
             LLMProvider.OPENAI: _DEFAULT_MODEL,
@@ -31,8 +31,7 @@ class LLMRegistry:
         {
             LLMProvider.OPENAI: frozenset(
                 {
-                    'gpt-4.1-mini',
-                    'gpt-5.6-luna',
+                    'gpt-6-luna',
                 },
             ),
             LLMProvider.ANTHROPIC: frozenset(
@@ -42,30 +41,29 @@ class LLMRegistry:
             ),
         },
     )
+    # Generalized levels mapped to the closest native one; a level without a mapping is sent by its own name
     _REASONING: MappingProxyType[LLMProvider, Any] = MappingProxyType(
         {
             LLMProvider.OPENAI: {
-                'gpt-5.6-luna': {
+                'gpt-6-luna': {
                     ReasoningEffort.EXTREME: 'xhigh',
                 },
             },
             LLMProvider.ANTHROPIC: {
                 'claude-haiku-5-5': {
-                    # At its low effort it thinks ~5x more than gpt-5.6-luna does at low on extraction, without
-                    # extracting better than it does with thinking disabled, which is what "none" maps to
-                    ReasoningEffort.LOW: 'none',
                     ReasoningEffort.EXTREME: 'xhigh',
                 },
             },
         },
     )
+    # Levels used when a request doesn't ask for one, as extraction requests don't, so these are tuned for it
     _DEFAULT_REASONING: MappingProxyType[LLMProvider, Any] = MappingProxyType(
         {
             LLMProvider.OPENAI: {
-                'gpt-5.6-luna': 'low',
+                'gpt-6-luna': ReasoningEffort.LOW,
             },
             LLMProvider.ANTHROPIC: {
-                'claude-haiku-5-5': 'none',
+                'claude-haiku-5-5': ReasoningEffort.LOW,
             },
         },
     )
@@ -73,7 +71,7 @@ class LLMRegistry:
         {
             LLMProvider.OPENAI: frozenset(
                 {
-                    'gpt-5.6-luna',
+                    'gpt-6-luna',
                 },
             ),
             LLMProvider.ANTHROPIC: frozenset(
@@ -189,13 +187,14 @@ class LLMRegistry:
         return model.name in cls._EXPLICIT_CACHING.get(model.provider, frozenset())
 
     @classmethod
-    def default_reasoning_effort(cls, model: LLM) -> str | None:
+    def default_reasoning_effort(cls, model: LLM) -> ReasoningEffort | None:
         """Return the default reasoning effort level for the given model, or None if not supported.
 
         Args:
             model: Model to get the default reasoning effort for.
 
         Returns:
-            The model's native name for its default reasoning effort, or None if it has no default.
+            The generalized level of the model's default reasoning effort (see ``reasoning_effort`` for its native
+            name), or None if it has no default.
         """
         return cls._DEFAULT_REASONING.get(model.provider, {}).get(model.name)
