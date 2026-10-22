@@ -23,10 +23,10 @@ import kuzu
 from openai import OpenAI
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SCOPE, SHARE, WORK, answer_keys, chat, load_queries, load_questions  # noqa: E402
+from common import SCOPE, WORK, answer_keys, chat, load_queries, load_questions  # noqa: E402
 from sys_floor import pilot_uids  # noqa: E402
 
-RUN = SHARE / 'wukong-e1-r1'
+RUN = Path(__file__).resolve().parent.parent / 'runs' / 'x6-s4-r1'
 DB = WORK / 'kuzu' / 'wukong.kz'
 ATTEMPTS = 4
 
@@ -172,7 +172,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument('--pilot', action='store_true')
     ap.add_argument('--reload', action='store_true', help='rebuild the Kuzu database from the export')
-    ap.add_argument('--run', type=Path, help='another Wukong run directory (default: the share\'s E1 run 1)')
+    ap.add_argument('--run', type=Path, help='another Wukong run directory (default: ../runs/x6-s4-r1)')
     ap.add_argument('--name', default='wukong', help='system name: answers/<name>/, usage/<name>.jsonl')
     ap.add_argument('--today', help='the date the agent is told (default: today)')
     args = ap.parse_args()

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Build the three graphs (Wukong, LightRAG, GraphRAG) over the full UDA-Bench NBA
-# corpus, in parallel, with the same LLM (gpt-5.6-luna, low reasoning effort).
-# caffeinate keeps the Mac awake until all three finish.
+# Build the LightRAG and GraphRAG graphs over the full UDA-Bench NBA corpus, in parallel, with
+# the same LLM as Wukong (gpt-5.6-luna, low reasoning effort). Wukong's graphs are built by
+# run_x6.sh (variant s4, the NBA schema of the paper).
 #
 #   ./run_full.sh            # from paper/uda-nba
 #
@@ -14,11 +14,6 @@ KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  
 
 mkdir -p runs
 
-# Wukong: the full corpus is data/docs, whose layout matches workspace/document_collections.json
-mkdir -p runs/wukong-full
-cp workspace/*.json runs/wukong-full/
-cp wukong-config.toml runs/wukong-full/config.toml
-
 # GraphRAG: settings.yaml and the default prompts of `graphrag init`, as used in the full run
 # (concurrent_requests raised from 25 to 50: the 8-doc pilot took 17 min, mostly community reports)
 if [ ! -d runs/graphrag-full ]; then
@@ -28,8 +23,6 @@ fi
 python3 graphrag_prepare.py full_docs.txt runs/graphrag-full
 
 $KEEP_AWAKE bash -c '
-  ( /usr/bin/time -p envs/wukong/bin/wukong run runs/wukong-full data/docs \
-      --config runs/wukong-full/config.toml -v > runs/wukong-full.log 2>&1 ) &
   ( envs/lightrag/bin/python lightrag_build.py --workdir runs/lightrag-full \
       --manifest full_docs.txt --max-async 16 > runs/lightrag-full.log 2>&1 ) &
   ( /usr/bin/time -p envs/graphrag/bin/graphrag index --root runs/graphrag-full \

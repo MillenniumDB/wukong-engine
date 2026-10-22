@@ -81,12 +81,12 @@ Folder and file names use our internal experiment names:
 | Table 4 (Text2KGBench) | `benchmark/text2kg_rescore.py`, `text2kg_typecheck.py` | `benchmark/results-*/`, `results-x2/scoring/`, `results-typecheck/` (with the judge's cache) | yes, everything |
 | Table 5, Section 4.4, Appendix C (question answering) | `uda-nba/m1/score.py`, `table.py`, `paired.py` | `uda-nba/m1/results/` (questions, answers, scores, usage) | yes, everything |
 | Table 6 (schema components) | `uda-nba/x6_analysis.py` | `uda-nba/runs/x6/` | no: it reads the graphs |
-| Table 7 (construction cost) | run logs | `uda-nba/runs/x6/summary.csv` (Wukong), `uda-nba/runs/e1/report.json` (KGGen); LightRAG and GraphRAG: their build logs, summarized in `uda-nba/report/uda_nba_report.tex` | read only |
+| Table 7 (construction cost) | run logs | `uda-nba/runs/x6/summary.csv` (Wukong), `uda-nba/runs/e1/report.json` (KGGen); LightRAG and GraphRAG: their build logs, summarized in `uda-nba/runs/e1/build_costs.md` | read only |
 
-**The NBA schema of the paper** is `paper/uda-nba/workspace-x6-s5/` (called s5 in the repository).
+**The NBA schema of the paper** is `paper/uda-nba/workspace-x6-s4/`.
 - Every NBA result uses it, and the schema-based extractors were built from it.
-- In Table 6, the paper's s0–s3 are `workspace-x6-s0` to `-s3`, and its s4 ("Full XSchema") is `workspace-x6-s5`.
-- `workspace/` and `workspace-v1` to `-v3` are earlier versions of the schema.
+- Table 6's variants s0–s4 are `workspace-x6-s0` to `-s4`. `make_coupling_variants.py` derives s0–s3 from the full
+  schema, s4.
 
 **The three Wukong configurations of Table 4** are the workspaces `tekgen_*` (ontology only), `examples_*` (+
 entity examples) and `props_*` (+ literal properties), all in `paper/benchmark/workspaces/`. Their three runs
@@ -105,7 +105,6 @@ The type-conformance column comes from the first run of each system.
 - `results-kggen-plain-r{1,2}`: KGGen without the ontology hint, mentioned only in the text;
 - the `perm_*` and `lenient_*` workspaces;
 - `uda-nba/m1/results/excluded/`: a GraphRAG global-search pilot;
-- the rows of earlier schema versions in `uda-nba/runs/e1/` and `uda-nba/runs/x6/`.
 
 ## 4. Rerunning with an API key
 
@@ -149,14 +148,10 @@ Run everything from `paper/uda-nba/`. Each system has its own environment under 
   (`baselines/*_build.py`).
 
 ```sh
-./run_x6.sh "1 2 3" "s0 s1 s2 s3 s5"      # Wukong, every schema variant, three runs: runs/x6-s<k>-r<n> (about 4,450 calls, $2.60 per run)
-./run_full.sh                             # Wukong, LightRAG and GraphRAG once each: runs/{wukong,lightrag,graphrag}-full
-for n in 1 2 3; do                        # the schema-based extractors, three builds each from the paper's schema
-  envs/neo4j-graphrag/bin/python baselines/neo4j_graphrag_build.py --data data/docs --schema workspace-x6-s5/knowledge_model.json --out runs/neo4j-graphrag-s5-r$n
-  envs/llamaindex/bin/python baselines/llamaindex_build.py --data data/docs --schema workspace-x6-s5/knowledge_model.json --out runs/llamaindex-s5-r$n
-  envs/ontogpt/bin/python baselines/ontogpt_build.py --data data/docs --schema workspace-x6-s5/knowledge_model.json --out runs/ontogpt-s5-r$n
-done
-envs/kggen/bin/python baselines/kggen_build.py --data data/docs --out runs/kggen-full
+./run_x6.sh "1 2 3"                       # Wukong, every schema variant, three runs: runs/x6-s<k>-r<n> (about 4,450 calls, $2.60 per run)
+./run_full.sh                             # LightRAG and GraphRAG once each: runs/{lightrag,graphrag}-full
+for n in 1 2 3; do RUN=$n baselines/run_baselines.sh "neo4j-graphrag llamaindex ontogpt"; done   # runs/<tool>-s4-r<n>
+baselines/run_baselines.sh kggen        # runs/kggen-full
 ```
 
 - **Rebuilding costs** (estimated from the token counts of Table 7): about $13 for LightRAG, $25 for GraphRAG and
@@ -165,7 +160,7 @@ envs/kggen/bin/python baselines/kggen_build.py --data data/docs --out runs/kggen
   `e1_table.py`, `nba_quality.py` and `x6_analysis.py`, each with the GraphRAG environment's Python. Their
   docstrings give their inputs and outputs.
 - **Where the scripts look for runs:** the run names in `e1_analysis.py`, `nba_quality.py` and `x6_analysis.py` are
-  those above. Wukong's three runs of the paper's schema are `x6-s5-r{1,2,3}`.
+  those above. Wukong's three runs of the paper's schema are `x6-s4-r{1,2,3}`.
 
 ### Question answering (Table 5)
 
@@ -181,13 +176,13 @@ python sys_floor.py                                   # the model alone
 ../envs/lightrag/bin/python sys_lightrag.py           # every LightRAG mode
 ../envs/graphrag/bin/python sys_graphrag.py --methods local
 for n in 1 2 3; do
-  python sys_wukong.py --run ../runs/x6-s5-r$n --name wukong_s5_r$n --today 2026-10-14 --reload
+  python sys_wukong.py --run ../runs/x6-s4-r$n --name wukong_s4_r$n --today 2026-10-14 --reload
   for t in neo4j:neo4j-graphrag llamaindex:llamaindex ontogpt:ontogpt; do
-    python sys_typed.py ${t%%:*} --run ../runs/${t#*:}-s5-r$n --schema ../workspace-x6-s5/knowledge_model.json \
-        --name ${t%%:*}_s5_r$n --today 2026-10-14 --reload
+    python sys_typed.py ${t%%:*} --run ../runs/${t#*:}-s4-r$n --schema ../workspace-x6-s4/knowledge_model.json \
+        --name ${t%%:*}_s4_r$n --today 2026-10-14 --reload
   done
 done
-python score.py && python table.py && python paired.py --base wukong_s5
+python score.py && python table.py && python paired.py --base wukong_s4
 ```
 
 Here `python` is the harness environment: Python 3.12 with `kuzu==0.11.3`, `duckdb==1.3.2`, `pandas<3`, `sqlglot`,

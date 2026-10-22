@@ -4,8 +4,9 @@ Always (no API key, no external data, under a minute):
     1. every number of the paper's result tables against the committed summaries: Table 2 (graph structure),
        Table 3 (graph quality), Table 4 (Text2KGBench), Table 5 and the paired differences of Section 4.4 (question
        answering), Table 6 (schema components), Table 7 (construction cost), and the LightRAG modes of Appendix C;
-    2. the scripts that turn committed outputs into those summaries, re-run on copies: e1_table.py (Table 2),
-       m1/table.py (Table 5) and m1/paired.py (paired differences).
+    2. the scripts that turn committed files into those results, re-run on copies: e1_table.py (Table 2),
+       make_coupling_variants.py (the five schemas of Table 6), m1/table.py (Table 5) and m1/paired.py (paired
+       differences).
 
 With --text2kgbench DIR, a clone of Text2KGBench at commit 50a3d25 (needs nltk; about 3 minutes on 8 cores):
     3. every Text2KGBench system re-scored from its committed outputs with the benchmark's own evaluator, under the
@@ -137,7 +138,7 @@ QUALITY_COLUMNS = (
 )
 _ = None
 QUALITY = {
-    'Wukong s5': (96, 99, 98, 92, 92, 92, 98, 91, 94, 79, 89, 84, 100.0, 100, 0.1, 0.3),
+    'Wukong': (96, 99, 98, 92, 92, 92, 98, 91, 94, 79, 89, 84, 100.0, 100, 0.1, 0.3),
     'Neo4j-GraphRAG': (80, 97, 88, 83, 93, 88, 97, 86, 91, 57, 85, 68, 100.0, 42, 0.7, 0.7),
     'LlamaIndex': (91, 99, 95, 93, 96, 95, 96, 35, 51, 61, 61, 61, 98.9, 36, 0.9, 1.5),
     'OntoGPT': (79, 98, 88, 80, 93, 86, 93, 81, 86, 75, 87, 81, 99.7, 90, 0.4, 7.7),
@@ -148,10 +149,10 @@ QUALITY = {
 # Table 5 and Appendix C: macro F1 per question class and overall; for three-run systems, the range of the overall
 QA_TYPES = ('Select', 'Filter', 'Agg', 'Join', 'Mixed')
 QA = {
-    'wukong_s5': ((0.51, 0.42, 0.80, 0.29, 0.41, 0.44), (0.43, 0.46)),
-    'ontogpt_s5': ((0.65, 0.33, 0.37, 0.21, 0.32, 0.34), (0.34, 0.34)),
-    'neo4j_s5': ((0.06, 0.12, 0.40, 0.02, 0.14, 0.13), (0.11, 0.15)),
-    'llamaindex_s5': ((0.06, 0.07, 0.41, 0.02, 0.08, 0.10), (0.09, 0.11)),
+    'wukong_s4': ((0.51, 0.42, 0.80, 0.29, 0.41, 0.44), (0.43, 0.46)),
+    'ontogpt_s4': ((0.65, 0.33, 0.37, 0.21, 0.32, 0.34), (0.34, 0.34)),
+    'neo4j_s4': ((0.06, 0.12, 0.40, 0.02, 0.14, 0.13), (0.11, 0.15)),
+    'llamaindex_s4': ((0.06, 0.07, 0.41, 0.02, 0.08, 0.10), (0.09, 0.11)),
     'lightrag-mix': ((0.13, 0.14, 0.42, 0.06, 0.23, 0.18), None),
     'graphrag-local': ((0.09, 0.07, 0.21, 0.03, 0.15, 0.10), None),
     'floor': ((0.13, 0.27, 0.33, 0.10, 0.30, 0.25), None),
@@ -162,11 +163,11 @@ QA = {
 # Section 4.4: Wukong minus each system, mean difference and 95% interval (the text gives the intervals of the first
 # three, and "0.31 to 0.35" for the other three)
 PAIRED = {
-    'ontogpt_s5': (0.10, 0.04, 0.17),
+    'ontogpt_s4': (0.10, 0.04, 0.17),
     'floor': (0.20, 0.14, 0.26),
     'lightrag-mix': (0.27, 0.21, 0.32),
-    'neo4j_s5': (0.31, None, None),
-    'llamaindex_s5': (0.35, None, None),
+    'neo4j_s4': (0.31, None, None),
+    'llamaindex_s4': (0.35, None, None),
     'graphrag-local': (0.35, None, None),
 }
 # Table 6: paper label -> (repository variant, output tokens (M), split entities, exact, lenient, wrong values, edges)
@@ -175,7 +176,7 @@ ABLATION = {
     's1': ('+bindings', 1.02, 47, 467, 801, 24, 6809),
     's2': ('+guidance', 1.08, 9, 861, 864, 22, 5905),
     's3': ('+validation', 1.10, 8, 870, 870, 19, 5149),
-    's4': ('+current_team', 1.11, 8, 871, 871, 21, 3212),  # the paper's full schema is the repository's s5
+    's4': ('full', 1.11, 8, 871, 871, 21, 3212),
 }
 # Table 7 (Appendix B.2): LLM calls, input and output tokens (M), wall time (min); LightRAG and GraphRAG come from
 # their build logs, which are not in the repository
@@ -316,7 +317,7 @@ def check_qa() -> None:
 
 def check_ablation() -> None:
     """Table 6."""
-    print('Table 6 (schema components) against uda-nba/runs/x6/summary.csv (paper s4 = repository s5):')
+    print('Table 6 (schema components) against uda-nba/runs/x6/summary.csv:')
     with (NBA / 'runs' / 'x6' / 'summary.csv').open() as f:
         reader = csv.reader(f)
         header = next(reader)
@@ -342,7 +343,7 @@ def check_cost() -> None:
         reader = csv.reader(f)
         header = next(reader)
         x6 = {r[0]: dict(zip(header[1:], r[1:], strict=True)) for r in reader}
-    wukong = [number(x6[m]['+current_team']) for m in ('calls', 'input_M', 'output_M', 'wall_min')]
+    wukong = [number(x6[m]['full']) for m in ('calls', 'input_M', 'output_M', 'wall_min')]
     usage = json.loads((NBA / 'runs' / 'e1' / 'report.json').read_text())['KGGen']['usage']
     kggen = [usage['calls'], usage['input'] / 1e6, usage['output'] / 1e6, usage['wall_min']]
     names = ['calls', 'input tokens (M)', 'output tokens (M)', 'wall time (min)']
@@ -366,6 +367,23 @@ def rerun_scripts(tmp: Path) -> None:
     same = (nba / 'runs' / 'e1' / 'summary.csv').read_bytes() == (NBA / 'runs' / 'e1' / 'summary.csv').read_bytes()
     check('e1_table.py reproduces runs/e1/summary.csv', result.returncode == 0 and same, result.stderr[-500:])
 
+    variants = tmp / 'variants'
+    variants.mkdir()
+    shutil.copy(NBA / 'make_coupling_variants.py', variants)
+    shutil.copytree(NBA / 'data', variants / 'data')
+    shutil.copytree(NBA / 'workspace-x6-s4', variants / 'workspace-x6-s4')
+    result = run([sys.executable, 'make_coupling_variants.py'], cwd=variants)
+    same = (
+        all(
+            (variants / f'workspace-x6-s{k}' / f).read_bytes() == (NBA / f'workspace-x6-s{k}' / f).read_bytes()
+            for k in range(5)
+            for f in ('knowledge_model.json', 'document_collections.json')
+        )
+        if result.returncode == 0
+        else False
+    )
+    check('make_coupling_variants.py regenerates workspace-x6-s0 to -s4 (Table 6)', same, result.stderr[-500:])
+
     m1_root = tmp / 'm1-root'
     shutil.copytree(M1 / 'results', m1_root / 'work')
     env = {**os.environ, 'M1_ROOT': str(m1_root)}
@@ -374,7 +392,7 @@ def rerun_scripts(tmp: Path) -> None:
     check('m1/table.py reproduces results/m1_table.tex', result.returncode == 0 and same, result.stderr[-500:])
 
     result = run(
-        [sys.executable, str(M1 / 'paired.py'), '--base', 'wukong_s5', '--scores', str(M1 / 'results' / 'scores')],
+        [sys.executable, str(M1 / 'paired.py'), '--base', 'wukong_s4', '--scores', str(M1 / 'results' / 'scores')],
     )
     committed = set((M1 / 'results' / 'paired.txt').read_text().splitlines())
     check(

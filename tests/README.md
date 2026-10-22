@@ -30,8 +30,9 @@ The test then checks:
 
 ## `check_paper_numbers.py`
 
-The test compares every number of the paper's result tables with the committed summaries, and re-runs the scripts
-that build those summaries from committed files.
+The test compares every number of the paper's result tables with the committed summaries. It also re-runs the
+scripts that build results from committed files: the structure table, the five schemas of Table 6, the
+question-answering table and the paired differences.
 
 - **`--text2kgbench DIR`:** also re-scores every Text2KGBench system with the benchmark's own evaluator, and re-runs
   the type check from its committed judge cache.

@@ -2,7 +2,7 @@
 
 Does a graph built from an extraction schema answer UDA-Bench's structured NBA questions better than RAG systems
 answering the way they are meant to? The graphs are those of the paper's NBA experiments: Wukong with the NBA schema
-(`workspace-x6-s5`, three builds), the schema-based extractors built from the same schema (three builds each), and
+(`workspace-x6-s4`, three builds), the schema-based extractors built from the same schema (three builds each), and
 the LightRAG and GraphRAG full builds (one each). Design and fairness rules: Section 4.4 of the paper.
 
 ## Results (macro F1 per question, UDA-Bench evaluator, deterministic mode)
@@ -27,7 +27,7 @@ benchmark's own gold tables (unscorable), 21 whose gold answer is empty (F1 unde
 the gold answer pushed through the same conversion) scores 1.000 on every included question. Every system is scored
 against the same gold copy, Bench-U (BIT-DataLab/Bench-U) at `f2da981`.
 
-Paired, per question (`paired.py --base wukong_s5`; for three-run systems each question's score is the mean over
+Paired, per question (`paired.py --base wukong_s4`; for three-run systems each question's score is the mean over
 the runs; bootstrap 95% CI, 5,000 resamples), Wukong minus: OntoGPT +0.10 [+0.04, +0.17], wins 65 / ties 8 /
 losses 28; LLM alone +0.20 [+0.14, +0.26], 74/8/19; LightRAG mix +0.27 [+0.21, +0.32], 88/5/8; Neo4j-GraphRAG +0.31
 [+0.27, +0.35], 93/5/3; GraphRAG local +0.35 [+0.29, +0.41], 93/3/5; LlamaIndex +0.35 [+0.30, +0.40], 94/3/4
@@ -43,8 +43,8 @@ owners.
 ## Schema-based extractors + Cypher
 
 The graphs that Neo4j's `neo4j-graphrag`, LlamaIndex's `SchemaLLMPathExtractor` and OntoGPT's SPIRES built from the
-same extraction schema as Wukong (`../baselines/*_build.py --schema ../workspace-x6-s5/knowledge_model.json`, three
-builds each, `runs/<tool>-s5-r{1,2,3}`), queried by Wukong's agent (`sys_typed.py`): same prompt, same schema text,
+same extraction schema as Wukong (`../baselines/*_build.py --schema ../workspace-x6-s4/knowledge_model.json`, three
+builds each, `runs/<tool>-s4-r{1,2,3}`), queried by Wukong's agent (`sys_typed.py`): same prompt, same schema text,
 same 4 attempts, loaded into Kuzu the same way (one table per type, every value a string, missing or empty values
 null). Only the link from entities to articles differs, as each tool records it: OntoGPT's root object per article is
 its subject (`ExtractedFrom`, as Wukong's); neo4j-graphrag and LlamaIndex record only the chunk an entity came from
@@ -75,8 +75,8 @@ interrupted questions' calls stay in their usage logs.
   picked with the gold answers (an upper bound for LightRAG). No Cypher is run against the RAG graphs.
 - GraphRAG global search is not reported: with dynamic community selection it made 8,790 calls ($3.60) for 3
   questions, about $120 for M1; at its static default it maps ~4,400 reports per question (~$75).
-- Wukong: the NBA schema's three builds (`../runs/x6-s5-r{1,2,3}`), loaded into Kùzu with every value a string; an
-  agent writes Cypher from the graph schema, up to 4 attempts (`sys_wukong.py --run ... --name wukong_s5_rN`).
+- Wukong: the NBA schema's three builds (`../runs/x6-s4-r{1,2,3}`), loaded into Kùzu with every value a string; an
+  agent writes Cypher from the graph schema, up to 4 attempts (`sys_wukong.py --run ... --name wukong_s4_rN`).
   Wukong's schema was written for this domain; that is how an extraction schema is used, and the paper says so. The
   schema-based extractors receive the same schema, translated into their own formats.
 - Scoring: rows → prediction CSV → UDA-Bench's `run_eval` (`--llm-provider none`), the same code for all. Entity
@@ -92,7 +92,7 @@ interrupted questions' calls stay in their usage logs.
   watchdog).
 - `results/`: `questions.{json,md}`, `queries.json` (uids, inclusion, oracle F1), `answers/<system>/`,
   `scores/<system>.json`, `usage/`, `m1_table.{md,tex}`, `paired.txt`, `<system>_system_prompt.txt`, `excluded/`
-  (GraphRAG global pilot). Three-run systems are `<name>_s5_r{1,2,3}`. Answers larger than 5 MB (14
+  (GraphRAG global pilot). Three-run systems are `<name>_s4_r{1,2,3}`. Answers larger than 5 MB (14
   neo4j-graphrag answers, up to millions of rows from a join over every mentioned player) keep their trace, their row
   count (`rows_total`) and their first 1,000 rows; their scores were computed on all the rows. The evaluator's per-question working folders are not included.
 - Environments (`$M1_ROOT/envs/`): `harness` (Python 3.12, kuzu 0.11.3), `lightrag` and `graphrag` with

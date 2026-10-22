@@ -2,7 +2,7 @@
 
     envs/graphrag/bin/python nba_quality.py      # -> runs/quality/{runs.csv,summary.csv}, report/nba_quality_table.tex
 
-Systems: Wukong with the NBA schema (workspace-x6-s5, three runs), the schema-based extractors (neo4j-graphrag,
+Systems: Wukong with the NBA schema (workspace-x6-s4, three runs), the schema-based extractors (neo4j-graphrag,
 LlamaIndex, OntoGPT), built three times from the same schema, and the schema-free graphs (LightRAG, GraphRAG,
 KGGen; one run each).
 
@@ -55,10 +55,10 @@ import x6_analysis as X
 HERE = A.RUNS.parent
 DOCS = HERE / 'data' / 'docs'
 OUT = A.RUNS / 'quality'
-KM = json.loads((HERE / 'workspace-x6-s5' / 'knowledge_model.json').read_text())
-WUKONG = ['x6-s5-r1', 'x6-s5-r2', 'x6-s5-r3']
-# the schema-based extractors, built three times from the same schema as Wukong (workspace-x6-s5)
-TYPED = {name: [f'{tool}-s5-r{r}' for r in (1, 2, 3)]
+KM = json.loads((HERE / 'workspace-x6-s4' / 'knowledge_model.json').read_text())
+WUKONG = ['x6-s4-r1', 'x6-s4-r2', 'x6-s4-r3']
+# the schema-based extractors, built three times from the same schema as Wukong (workspace-x6-s4)
+TYPED = {name: [f'{tool}-s4-r{r}' for r in (1, 2, 3)]
          for name, tool in (('Neo4j-GraphRAG', 'neo4j-graphrag'), ('LlamaIndex', 'llamaindex'), ('OntoGPT', 'ontogpt'))}
 UNTYPED = ['LightRAG', 'GraphRAG', 'KGGen']
 COUNTS = {'nba_championships', 'mvp_awards', 'olympic_gold_medals', 'fiba_world_cup', 'championships'}
@@ -258,7 +258,7 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
     """Relations between gold entities: found, and split (stored as several edges, mirroring an entity stored
     as several nodes). Single-valued relations (the benchmark defines a player's team as the current one and a
     team's location as the latest city): precision over the values a typed graph marks (the current team: the
-    Player.current_team field for Wukong s5, PlaysFor edges marked current for the others; the city: every
+    Player.current_team field for Wukong, PlaysFor edges marked current for the others; the city: every
     LocatedIn edge of the team), recall over the 119 gold facts. Every typed graph is built from schema s5, which
     states the current team as the Player.current_team field, so the field is what is scored."""
     m = A.Matcher(matcher_name, nodes)
@@ -321,13 +321,13 @@ def gold_typed(run, gold, load, usage) -> dict:
     r = X.score_run(run, gold, load=load, usage=usage)
     correct = r['attr_filled'] - r['attr_wrong']
     p, rec = correct / r['attr_filled'], correct / r['attr_gold']
-    is_s5 = r.get('current_team_field_marked', 0) > 0
+    has_field = r.get('current_team_field_marked', 0) > 0
     return {'entities_found': r['entities_found'], 'entities_split': r['entities_split'],
             'attr_precision': round(100 * p, 1), 'attr_recall': round(100 * rec, 1),
             'attr_f1': round(100 * 2 * p * rec / (p + rec), 1), 'attr_exact_recall': round(100 * r['attr_exact'] / r['attr_gold'], 1),
             'rel_found': r['rel_found'], 'rel_gold': r['rel_gold'],
-            'current_team_found': r['current_team_field_found'] if is_s5 else r['current_team_found'],
-            'current_team_precision': r['current_team_field_precision'] if is_s5 else r['current_team_precision']}
+            'current_team_found': r['current_team_field_found'] if has_field else r['current_team_found'],
+            'current_team_precision': r['current_team_field_precision'] if has_field else r['current_team_precision']}
 
 
 def gold_untyped(name) -> dict:
@@ -348,7 +348,7 @@ def main() -> None:
         nodes, edges, _ = A.load_wukong(run)
         types = {i: n['type'] for i, n in nodes.items()}
         ndocs, _ = wukong_docs(run)
-        rows.append({'system': 'Wukong s5', 'run': run, **gold_typed(run, gold, A.load_wukong, A.wukong_usage),
+        rows.append({'system': 'Wukong', 'run': run, **gold_typed(run, gold, A.load_wukong, A.wukong_usage),
                      **relations('Wukong', nodes, edges, gold, typed=True, field_team=True),
                      **conformance(nodes, [(e['src'], e['dst'], e['label'], e['props']) for e in edges], types),
                      **hallucination(nodes, with_own_articles('Wukong', nodes, ndocs, gold), typed=True)})
@@ -387,8 +387,8 @@ def write_tex(df: pd.DataFrame) -> None:
         half = fmt.format((v.max() - v.min()) / 2)
         return s if float(half) == 0 else s + r'\textsuperscript{$\pm$' + half + '}'
 
-    order = ['Wukong s5', 'Neo4j-GraphRAG', 'LlamaIndex', 'OntoGPT', 'LightRAG', 'GraphRAG', 'KGGen']
-    label = {'Wukong s5': r'\wk{}', 'Neo4j-GraphRAG': 'Neo4j GraphRAG'}
+    order = ['Wukong', 'Neo4j-GraphRAG', 'LlamaIndex', 'OntoGPT', 'LightRAG', 'GraphRAG', 'KGGen']
+    label = {'Wukong': r'\wk{}', 'Neo4j-GraphRAG': 'Neo4j GraphRAG'}
     lines = []
     for s in order:
         lines.append(' & '.join([label.get(s, s),

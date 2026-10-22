@@ -67,7 +67,7 @@ from llama_index.core.constants import DEFAULT_CHUNK_OVERLAP, DEFAULT_CHUNK_SIZE
 from llama_index.llms.openai import OpenAI
 
 HERE = Path(__file__).resolve().parent.parent
-KM_PATH = HERE / 'workspace-v1' / 'knowledge_model.json'
+KM_PATH = HERE / 'workspace-x6-s4' / 'knowledge_model.json'
 TYPES = ('player', 'team', 'city', 'owner')
 TRIPLET_SOURCE_KEY = 'triplet_source_id'
 
@@ -280,7 +280,7 @@ def write_mapping(km: dict, path: Path, ent_label, rel_label) -> None:
                 }.get(k, 'no slot (dropped)'))
     path.write_text(
         '# Knowledge model -> LlamaIndex SchemaLLMPathExtractor\n\n'
-        'Every key of `workspace-v1/knowledge_model.json` (dict-valued keys such as '
+        'Every key of `workspace-x6-s4/knowledge_model.json` (dict-valued keys such as '
         '`instructions` or `retrieval_mode` are listed as one key).\n\n'
         '| key | slot in the tool |\n|---|---|\n' + '\n'.join(rows) + '\n'
     )

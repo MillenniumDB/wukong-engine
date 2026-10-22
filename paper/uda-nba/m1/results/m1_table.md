@@ -12,4 +12,4 @@
 | OntoGPT + Cypher agent | 0.65 | 0.33 | 0.37 | 0.21 | 0.32 | **0.34** ±0.00 | 101 | 3 |
 | Wukong + Cypher agent | 0.51 | 0.42 | 0.80 | 0.29 | 0.41 | **0.44** ±0.01 | 101 | 3 |
 
-Spend by log (USD): floor 0.21, graphrag 3.89, lightrag 2.69, llamaindex_s5_r1 0.21, llamaindex_s5_r2 0.21, llamaindex_s5_r3 0.22, neo4j_s5_r1 0.21, neo4j_s5_r2 0.21, neo4j_s5_r3 0.21, ontogpt_s5_r1 0.17, ontogpt_s5_r2 0.17, ontogpt_s5_r3 0.17, translate 0.02, wukong_s5_r1 0.12, wukong_s5_r2 0.13, wukong_s5_r3 0.12; total 8.97
+Spend by log (USD): floor 0.21, graphrag 3.89, lightrag 2.69, llamaindex_s4_r1 0.21, llamaindex_s4_r2 0.21, llamaindex_s4_r3 0.22, neo4j_s4_r1 0.21, neo4j_s4_r2 0.21, neo4j_s4_r3 0.21, ontogpt_s4_r1 0.17, ontogpt_s4_r2 0.17, ontogpt_s4_r3 0.17, translate 0.02, wukong_s4_r1 0.12, wukong_s4_r2 0.13, wukong_s4_r3 0.12; total 8.97

@@ -12,7 +12,7 @@ runs without a database:
         --data runs/x6-pilot-data --out runs/neo4j-pilot
 
 Decisions:
-- Schema: workspace-v1/knowledge_model.json is translated slot by slot. A key
+- Schema: workspace-x6-s4/knowledge_model.json is translated slot by slot. A key
   goes into the tool's matching slot, or nowhere (see mapping.md in the run dir):
   - entity description -> NodeType.description
   - field description -> PropertyType.description (type STRING)
@@ -69,7 +69,7 @@ from neo4j_graphrag.llm import OpenAILLM
 from neo4j_graphrag.utils.rate_limit import RetryRateLimitHandler
 
 HERE = Path(__file__).resolve().parent.parent
-KM_PATH = HERE / 'workspace-v1' / 'knowledge_model.json'
+KM_PATH = HERE / 'workspace-x6-s4' / 'knowledge_model.json'
 TYPES = ('player', 'team', 'city', 'owner')
 LEX = LexicalGraphConfig()
 

@@ -1,7 +1,7 @@
 """M1, the schema-based extractors: their graphs in Kuzu, queried by Wukong's Cypher agent.
 
 Neo4j's neo4j-graphrag, LlamaIndex's SchemaLLMPathExtractor and OntoGPT's SPIRES built typed graphs over the same
-corpus from the same extraction schema (workspace-v1 = Wukong's s4; baselines/*_build.py, graph/nodes.jsonl and
+corpus from the same extraction schema (workspace-x6-s4; baselines/*_build.py, graph/nodes.jsonl and
 graph/edges.jsonl in each run). Each graph is loaded into Kuzu like Wukong's: one node table per entity type, one
 relationship table per relationship type, every value a string. The agent is sys_wukong.answer, unchanged (same
 prompt, same 4 attempts), and sees the same schema text, built from the same extraction schema. Only what links
@@ -41,8 +41,8 @@ from sys_floor import pilot_uids  # noqa: E402
 from sys_wukong import SYSTEM, answer, schema_text  # noqa: E402
 
 RUNS = Path(os.environ.get('UDA_NBA_RUNS', Path(__file__).resolve().parent.parent / 'runs'))
-KM = Path(__file__).resolve().parent.parent / 'workspace-v1' / 'knowledge_model.json'
-GRAPHS = {'neo4j': 'neo4j-graphrag-full', 'llamaindex': 'llamaindex-full', 'ontogpt': 'ontogpt-full'}
+KM = Path(__file__).resolve().parent.parent / 'workspace-x6-s4' / 'knowledge_model.json'
+GRAPHS = {'neo4j': 'neo4j-graphrag-s4-r1', 'llamaindex': 'llamaindex-s4-r1', 'ontogpt': 'ontogpt-s4-r1'}
 
 SUBJECT = ('- (:Player|Team|City|Owner)-[:ExtractedFrom]->(:Document): the entity was extracted from the whole '
            'article, so it is the subject of that article (the player, team, city or owner the article is about).')

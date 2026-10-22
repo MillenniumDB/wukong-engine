@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# X6 / E3 coupling ablation: Wukong on the full corpus with workspace-x6-s0..s4
-# (make_coupling_variants.py), current engine, x6-config.toml. Repetitions run as
+# Schema-component ablation (Table 6 of the paper): Wukong on the full corpus with workspace-x6-s0..s4
+# (make_coupling_variants.py), current engine, x6-config.toml. s4 is the NBA schema of the paper: its
+# three runs are the Wukong graphs of every NBA result. Repetitions run as
 # batches; each batch runs every variant once, in parallel. Output: runs/x6-s<k>-r<n>.
 #
-#   ./run_x6.sh "1 2 3" ["s0 s1 s2 s3 s4 s5"]          # from paper/uda-nba
+#   ./run_x6.sh "1 2 3" ["s0 s1 s2 s3 s4"]          # from paper/uda-nba
 set -euo pipefail
 cd "$(dirname "$0")"
 set -a; [[ -f ../../.env ]] && source ../../.env; set +a  # or export OPENAI_API_KEY yourself
 KEEP_AWAKE=$(command -v caffeinate >/dev/null && echo 'caffeinate -i' || true)  # macOS: keep the machine awake
 REPS=${1:-"1 2 3"}
-VARIANTS=${2:-"s0 s1 s2 s3 s4 s5"}
+VARIANTS=${2:-"s0 s1 s2 s3 s4"}
 
 python3 make_coupling_variants.py
 echo "engine: $(git rev-parse --short HEAD) $(git status --porcelain -- ../../src | wc -l | tr -d ' ') uncommitted src files"

@@ -15,14 +15,14 @@ sys.path.insert(0, str(Path(__file__).parent))
 from common import WORK, cost  # noqa: E402
 
 TYPES = ('Select', 'Filter', 'Agg', 'Join', 'Mixed')
-LABELS = {'floor': 'LLM alone (floor)', 'wukong_s5': 'Wukong + Cypher agent', 'graphrag-local': 'GraphRAG local',
+LABELS = {'floor': 'LLM alone (floor)', 'wukong_s4': 'Wukong + Cypher agent', 'graphrag-local': 'GraphRAG local',
           'lightrag-local': 'LightRAG local', 'lightrag-global': 'LightRAG global',
           'lightrag-hybrid': 'LightRAG hybrid', 'lightrag-mix': 'LightRAG mix',
-          'neo4j_s5': 'Neo4j-GraphRAG + Cypher agent', 'llamaindex_s5': 'LlamaIndex + Cypher agent',
-          'ontogpt_s5': 'OntoGPT + Cypher agent'}
-# Graphs built from the NBA schema (s5), three runs each; the RAG systems and the floor ran once
+          'neo4j_s4': 'Neo4j-GraphRAG + Cypher agent', 'llamaindex_s4': 'LlamaIndex + Cypher agent',
+          'ontogpt_s4': 'OntoGPT + Cypher agent'}
+# Graphs built from the NBA schema (s4), three runs each; the RAG systems and the floor ran once
 ORDER = ('floor', 'lightrag-local', 'lightrag-global', 'lightrag-hybrid', 'lightrag-mix', 'lightrag-best',
-         'graphrag-local', 'neo4j_s5', 'llamaindex_s5', 'ontogpt_s5', 'wukong_s5')
+         'graphrag-local', 'neo4j_s4', 'llamaindex_s4', 'ontogpt_s4', 'wukong_s4')
 
 
 def main() -> int:

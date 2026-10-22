@@ -11,7 +11,7 @@ Decisions:
   the repo's own lock (envs/kggen-src at that commit, `uv sync --frozen --no-dev`): newer semhash
   releases drop the attribute KGGen reads, and every document fails.
 - Schema: KGGen takes none. Its only slot is `context` ("description of data context"), which
-  gets the corpus domain statement of workspace-v1. At this commit generate() passes it to no
+  gets the corpus domain statement of workspace-x6-s4. At this commit generate() passes it to no
   prompt and deduplicate() marks it TODO; it is passed anyway, per the slot rule.
 - Model: gpt-5.6-luna through LiteLLM/DSPy, reasoning effort low. KGGen requires temperature 1.0
   and max_tokens >= 16000 for gpt-5 family models. DSPy's response cache is disabled, so every
@@ -46,7 +46,7 @@ from kg_gen.steps._3_deduplicate import DeduplicateMethod
 from openai_embed import OpenAIEmbedder
 
 HERE = Path(__file__).resolve().parent.parent
-KM_PATH = HERE / 'workspace-v1' / 'knowledge_model.json'
+KM_PATH = HERE / 'workspace-x6-s4' / 'knowledge_model.json'
 TYPES = ('player', 'team', 'city', 'owner')
 MODEL = 'openai/gpt-5.6-luna'
 REASONING = 'low'
@@ -83,8 +83,8 @@ class UsageLog:
 
 
 def write_mapping(km: dict, out: Path) -> None:
-    lines = ['# Schema mapping: workspace-v1 -> KGGen', '',
-             '| workspace-v1 | KGGen slot |', '|---|---|',
+    lines = ['# Schema mapping: workspace-x6-s4 -> KGGen', '',
+             '| workspace-x6-s4 | KGGen slot |', '|---|---|',
              '| extraction_config.llm.domain | `context` of generate() and deduplicate() (unused by the code at this commit) |',
              '| everything else (types, fields, relationships, annotations) | no slot |', '',
              f'context = {json.dumps(km["extraction_config"]["llm"]["domain"])}']

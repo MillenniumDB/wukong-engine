@@ -7,7 +7,7 @@ per-question scores written by score.py (work/scores/<system>.json) or, with --s
 as the committed results/scores.
 
     python paired.py                                   # wukong against every system in work/scores
-    python paired.py --base wukong_s5 --scores results/scores
+    python paired.py --base wukong_s4 --scores results/scores
 """
 
 import argparse

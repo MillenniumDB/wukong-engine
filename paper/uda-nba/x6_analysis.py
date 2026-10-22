@@ -25,11 +25,11 @@ from dateutil import parser as dateparser
 
 import e1_analysis as A
 
-VARIANTS = ['s0', 's1', 's2', 's3', 's4', 's5']
-NAMES = {'s0': 'core', 's1': '+bindings', 's2': '+guidance', 's3': '+validation', 's4': '+identity (full)', 's5': '+current_team'}
+VARIANTS = ['s0', 's1', 's2', 's3', 's4']
+NAMES = {'s0': 'core', 's1': '+bindings', 's2': '+guidance', 's3': '+validation', 's4': 'full'}
 # runs during which the Mac slept (lid closed, 14:25-14:52 on 2026-10-09, pmset log): extraction
 # resumed unharmed, but their wall time is not a measurement
-SLEPT = {'x6-s2-r2', 'x6-s3-r2', 'x6-s4-r2', 'x6-s5-r2'}
+SLEPT = {'x6-s2-r2', 'x6-s3-r2', 'x6-s4-r2'}
 WORDS = {w: i for i, w in enumerate(A.NUMBER_WORDS)} | {w: i for i, w in enumerate(A.ORDINALS) if w}
 FIELD = {'championships': 'championships'}  # gold column -> Wukong field, where names differ
 
@@ -118,7 +118,7 @@ def score_run(run, gold, load=A.load_wukong, usage=A.wukong_usage):
                               if x['label'] == 'PlaysFor' and x['props'].get('tenure') == 'latest'}
                     out['current_team_marked'] += len(marked)
                     out['current_team_marked_right'] += len(marked & dst)
-                    # s5: the current team as a document-level Player field (a team name)
+                    # s4: the current team as a document-level Player field (a team name)
                     values = {A.norm(nodes[i]['attrs']['current_team']) for i in src
                               if nodes[i]['attrs'].get('current_team')}
                     out['current_team_field_marked'] += len(values)

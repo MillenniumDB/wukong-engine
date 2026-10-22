@@ -68,7 +68,7 @@ def same_person(node, gold_names):
 # Unified form: nodes {id: dict(name, type, attrs, text)}, edges [dict(src, dst, label, text, props)]
 
 
-def load_wukong(run='wukong-full'):
+def load_wukong(run='x6-s4-r1'):
     d = RUNS / run / 'exports/neo4j'
     nodes, edges, prov = {}, [], Counter()
     for f in sorted((d / 'entities').glob('*.csv')):
@@ -176,19 +176,13 @@ def typed(system):
     return system.startswith(TYPED)
 
 
-BASELINES = {'Neo4j-GraphRAG': 'neo4j-graphrag-full', 'LlamaIndex': 'llamaindex-full', 'OntoGPT': 'ontogpt-full',
-             'EDC-target': 'edc-full/target'}
-# schema-free triple extractors with relation canonicalization (baselines/kggen_build.py, edc_build.py)
-TRIPLES = {'KGGen': 'kggen-full', 'EDC-self': 'edc-full/self'}
+# the schema-based extractors are scored by nba_quality.py, on their three builds from the paper's schema
+BASELINES: dict[str, str] = {}
+# schema-free triple extractor with relation canonicalization (baselines/kggen_build.py)
+TRIPLES = {'KGGen': 'kggen-full'}
 
-# Wukong runs, by name. E1 reports Wukong-r1..r3: the revised full schema (workspace-x6-s5, the schema of
-# every NBA result in the paper) on the current engine, three runs (run_x6.sh). The others are kept for
-# reference: Wukong-s4-r* is the full schema without Player.current_team; Wukong-orig used the original
-# schema, whose examples leaked gold values; Wukong-v1..v3 used the first clean schemas on engine 99d591e,
-# and their Team.team_name instruction still named a subject team (make_schema_variants.py).
-WUKONG_RUNS = {'Wukong-orig': 'wukong-full', 'Wukong-v1': 'wukong-v1', 'Wukong-v2': 'wukong-v2',
-               'Wukong-v3': 'wukong-v3', 'Wukong-s4-r1': 'x6-s4-r1', 'Wukong-s4-r2': 'x6-s4-r2',
-               'Wukong-s4-r3': 'x6-s4-r3', 'Wukong-r1': 'x6-s5-r1', 'Wukong-r2': 'x6-s5-r2', 'Wukong-r3': 'x6-s5-r3'}
+# Wukong runs, by name: the NBA schema of the paper (workspace-x6-s4) on the current engine, three runs (run_x6.sh)
+WUKONG_RUNS = {'Wukong-r1': 'x6-s4-r1', 'Wukong-r2': 'x6-s4-r2', 'Wukong-r3': 'x6-s4-r3'}
 
 SYSTEMS = {'LightRAG': load_lightrag, 'GraphRAG': load_graphrag}
 for _name, _run in WUKONG_RUNS.items():

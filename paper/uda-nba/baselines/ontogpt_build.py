@@ -1,9 +1,9 @@
 """Build a knowledge graph over the UDA-Bench NBA corpus with OntoGPT's SPIRES extractor.
 
-    envs/ontogpt/bin/python baselines/ontogpt_build.py --data data/docs --out runs/ontogpt-full
+    envs/ontogpt/bin/python baselines/ontogpt_build.py --data data/docs --out runs/ontogpt-s4-r1
 
 The LinkML template (baselines/ontogpt_nba.yaml) is generated mechanically from
-workspace-v1/knowledge_model.json: each key of our schema goes into the matching
+workspace-x6-s4/knowledge_model.json: each key of our schema goes into the matching
 LinkML/OntoGPT slot, or nowhere (see mapping.md in the run dir). There is one
 root class per article type (PlayerArticle, TeamArticle, CityArticle,
 OwnerArticle), used as the target class (`ontogpt extract -T`) for its collection.
@@ -388,7 +388,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument('--data', type=Path, required=True, help='dir with {player,team,city,owner}/{type}/N.txt')
     ap.add_argument('--out', type=Path, required=True)
-    ap.add_argument('--schema', type=Path, default=UDA / 'workspace-v1' / 'knowledge_model.json')
+    ap.add_argument('--schema', type=Path, default=UDA / 'workspace-x6-s4' / 'knowledge_model.json')
     ap.add_argument('--model', default='gpt-5.6-luna')
     ap.add_argument('--reasoning-effort', default='low', help="'' to use the model default")
     ap.add_argument('--workers', type=int, default=16, help='documents in flight')

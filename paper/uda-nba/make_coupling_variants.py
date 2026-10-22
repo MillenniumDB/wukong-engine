@@ -1,10 +1,10 @@
-"""X6 / E3, coupling ablation: Wukong schemas for UDA-Bench NBA, from the schema core alone up to
-the full extraction schema, adding one family of annotations at a time.
+"""Schema-component ablation (Table 6 of the paper): Wukong schemas for UDA-Bench NBA, from the schema core alone up
+to the full extraction schema, adding one family of annotations at a time.
 
     python3 make_coupling_variants.py        # -> workspace-x6-s0 ... workspace-x6-s4
 
-The full schema is workspace-v1 (the clean schema of E1). Every key of it belongs to exactly one
-family; s<k> keeps the core and the first k families:
+The full schema is workspace-x6-s4, the NBA schema of the paper. Every key of it belongs to exactly one family; s<k>
+keeps the core and the first k families:
 
   s0 core       types and their descriptions, fields (data type, description), the primary key
                 of each entity type (the engine requires one), relationship endpoints, the
@@ -15,24 +15,105 @@ family; s<k> keeps the core and the first k families:
                 field retrieval modes per level, endpoint context levels
   s2 +guidance  the corpus domain statement, type / field / relationship instructions, examples
   s3 +validation options, regex, required (other than the entity primary keys)
-  s4 +identity  relationship deduplication policies and primary keys, merge strategies
-                (s4 must equal workspace-v1, which the script checks)
-  s5 = s4 + Player.current_team, a schema revision made after X6 rather than an annotation
-                family. In s4 the current team is the PlaysFor tenure, decided by every chunk that
-                mentions a player and a team, so players got ~1.9 "latest" teams. A player article
-                *is* the player, so its current team is a document-level fact: a field read once
-                from the start of the player's own article and skipped in chunks.
+  s4 full       + identity: relationship deduplication policies and primary keys, merge strategies;
+                and Player.current_team. A player article *is* the player, so its current team is a
+                document-level fact: a field read once from the start of the player's own article and
+                skipped in chunks (without it, the current team is the PlaysFor tenure, decided by every
+                chunk that mentions a player and a team). The script checks that s4 equals the full schema.
 
-Examples are checked for contamination as in make_schema_variants.py.
+Examples and free text are checked for contamination: no example may equal a gold value or name one of the 216
+subject entities (small counts excepted), and no free text may name a gold value. The script refuses to write a
+schema that fails the check.
 """
 import copy
+import csv
 import json
+import re
 from pathlib import Path
 
-import make_schema_variants as M
-
 HERE = Path(__file__).parent
-FULL = json.loads((HERE / 'workspace-v1/knowledge_model.json').read_text())
+FULL = json.loads((HERE / 'workspace-x6-s4/knowledge_model.json').read_text())
+# s0-s3 are taken from the full schema without the current-team field, which s4 adds
+BASE = copy.deepcopy(FULL)
+del BASE['entity_types']['Player']['fields']['current_team']
+GOLD = HERE / 'data/ground_truth/Player'
+DOCS = HERE / 'data/docs'
+COUNT_FIELDS = {'nba_championships', 'mvp_awards', 'olympic_gold_medals', 'fiba_world_cup',
+                'championships', 'draft_pick'}
+
+
+def norm(s):
+    return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9/.$ ]', ' ', str(s).lower())).strip()
+
+
+def forbidden():
+    """Every gold cell (multi-valued ownership split), plus every subject's document title."""
+    bad = {}
+    for f in GOLD.glob('*.csv'):
+        for r in csv.DictReader(open(f, encoding='utf-8', errors='replace')):
+            for k, v in r.items():
+                if k == 'ID':
+                    continue
+                parts = re.split(r'\|\||,| and ', v) if k == 'ownership' else [v]
+                for x in parts + [v]:
+                    x = norm(x)
+                    if x:
+                        bad.setdefault(x, f'gold {f.stem}.{k}')
+                    if re.fullmatch(r'\d+\.0', x):  # 1981.0 in the CSV is the value 1981
+                        bad.setdefault(x[:-2], f'gold {f.stem}.{k}')
+    for f in DOCS.glob('*/*/*.txt'):
+        with open(f, encoding='utf-8', errors='replace') as fh:
+            title = next(line for line in fh if line.strip())
+        bad.setdefault(norm(re.sub(r'\(.*?\)', '', title)), f'subject {f.parent.name}/{f.name}')
+    return bad
+
+
+def check(name, km, bad):
+    errors = []
+    sections = [('entity_types', t, d) for t, d in km['entity_types'].items()]
+    sections += [('relationship_types', t, d) for t, d in km['relationship_types'].items()]
+    for _, t, d in sections:
+        for fname, fld in d.get('fields', {}).items():
+            for ex in fld.get('examples', []):
+                if fname in COUNT_FIELDS and re.fullmatch(r'\d', ex):
+                    continue
+                if ex in fld.get('options', []):  # declared vocabulary (e.g. Frontcourt), not an instance value
+                    continue
+                if norm(ex) in bad:
+                    errors.append(f'{name}: {t}.{fname} example {ex!r} is {bad[norm(ex)]}')
+    # free text (descriptions, instructions, the domain statement) must not name a gold value
+    # either; a field may mention its own declared options
+    for where, text, allowed in schema_texts(km):
+        n = norm(text)
+        for k, why in bad.items():
+            if len(k) >= 4 and not k.isdigit() and k not in TEXT_ALLOWED and k not in allowed \
+                    and re.search(rf'(?<![a-z0-9]){re.escape(k)}(?![a-z0-9])', n):
+                errors.append(f'{name}: {where} mentions {k!r} ({why})')
+    return errors
+
+
+# generic words that happen to equal a gold cell ("Canadian province" in City.state_name), and the
+# target vocabulary of Player.position, used on purpose (it also appears where its options are stripped)
+TEXT_ALLOWED = {'canadian', 'frontcourt', 'backcourt'}
+
+
+def schema_texts(km):
+    """(location, text, allowed values) for every description and instruction in the schema."""
+    def strings(v):
+        return list(v.values()) if isinstance(v, dict) else [v] if isinstance(v, str) else []
+    for k, v in km.get('extraction_config', {}).get('llm', {}).items():
+        yield f'extraction_config.llm.{k}', v, set()
+    for kind in ('entity_types', 'relationship_types'):
+        for t, d in km.get(kind, {}).items():
+            for key in ('description', 'instructions'):
+                for text in strings(d.get(key)):
+                    yield f'{t}.{key}', text, set()
+            for f, fd in d.get('fields', {}).items():
+                allowed = {norm(o) for o in fd.get('options', [])}
+                for key in ('description', 'instructions'):
+                    for text in strings(fd.get(key)):
+                        yield f'{t}.{f}.{key}', text, allowed
+
 FAMILIES = ['bindings', 'guidance', 'validation', 'identity']
 
 # family of each key, by where it occurs
@@ -98,20 +179,21 @@ CURRENT_TEAM = {
 
 
 def main():
-    bad = M.forbidden()
-    variants = {f's{k}': strip(FULL, {'core', *FAMILIES[:k]}) for k in range(len(FAMILIES) + 1)}
-    if variants['s4'] != FULL:
-        raise SystemExit('s4 differs from workspace-v1: some key is lost or added by strip()')
-    variants['s5'] = copy.deepcopy(variants['s4'])
-    variants['s5']['entity_types']['Player']['fields']['current_team'] = CURRENT_TEAM
-    errors = [e for n, km in variants.items() for e in M.check(n, km, bad)]
+    bad = forbidden()
+    variants = {f's{k}': strip(BASE, {'core', *FAMILIES[:k]}) for k in range(len(FAMILIES))}
+    full = strip(BASE, {'core', *FAMILIES})
+    full['entity_types']['Player']['fields']['current_team'] = CURRENT_TEAM
+    if full != FULL:
+        raise SystemExit('s4 differs from workspace-x6-s4: some key is lost or added by strip()')
+    variants['s4'] = full
+    errors = [e for n, km in variants.items() for e in check(n, km, bad)]
     if errors:
         raise SystemExit('contamination:\n  ' + '\n  '.join(errors))
     for name, km in variants.items():
         d = HERE / f'workspace-x6-{name}'
         d.mkdir(exist_ok=True)
         (d / 'knowledge_model.json').write_text(json.dumps(km, indent=4, ensure_ascii=False) + '\n')
-        (d / 'document_collections.json').write_text((HERE / 'workspace/document_collections.json').read_text())
+        (d / 'document_collections.json').write_text((HERE / 'workspace-x6-s4/document_collections.json').read_text())
         print(name, f'{len(json.dumps(km)):>6} chars ->', d)
 
 
