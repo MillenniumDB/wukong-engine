@@ -71,7 +71,7 @@ The `[pipeline]` section selects which steps of the pipeline are executed. Each 
 | `extract_relationships` | Extract relationships between the already-extracted entities.                                                      | `bool` | `true`  |
 | `export_knowledge`      | Render the extracted knowledge into the configured output format.                                                  | `bool` | `true`  |
 
-The steps run in the order listed and each depends on the ones before it. Disabling a step does **not** skip its results: because state is durable in the workspace's staging database, a disabled step whose work was completed on an earlier run still satisfies the dependency. Disabling a step whose work has *never* been completed aborts the run with a clear error, rather than producing a partial result.
+The steps run in the order listed and each depends on the ones before it. Disabling a step does **not** skip its results: because state is durable in the workspace's staging database, a disabled step whose work was completed on an earlier run still satisfies the dependency. Disabling a step whose work has *never* been completed aborts the run with a clear error, rather than producing a partial result. The whole plan is checked before anything runs, so such a run aborts without running or resetting any step.
 
 This is what lets you re-export without re-extracting, or add a relationship type and extract only it, by enabling just the step you need.
 

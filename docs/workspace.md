@@ -193,7 +193,7 @@ Passing `--reset` to the `run` command clears the stored data at the start of ea
 poetry run wukong run workspaces/example data/example --reset
 ```
 
-Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline.
+Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset.
 
 Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. The run doesn't wait for them to stop: the cancellations are only requested, and a failed request is logged as a warning so that the batch can be cancelled from the provider instead.
 

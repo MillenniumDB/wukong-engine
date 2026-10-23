@@ -74,6 +74,45 @@ class KnowledgeConstructionPipeline:
                 logger.error(error)
                 raise PipelineExecutionError(error)
 
+    def _validate_plan(self, *, should_reset: bool) -> None:
+        """Check that every configured step will find its required steps completed when it runs.
+
+        A required step is satisfied if it runs earlier in the plan, or if it is already completed and no earlier
+        step resets it.
+
+        Args:
+            should_reset: Whether each step resets itself and every step that depends on it before running.
+
+        Raises:
+            PipelineExecutionError: If a step's required steps are neither run before it nor left completed.
+        """
+        with self._uow as tx:
+            completed = {step for step in PipelineStep if tx.pipeline.is_step_completed(step)}
+
+        planned: set[PipelineStep] = set()
+        reset: set[PipelineStep] = set()
+        for step in self._app_config.pipeline.steps:
+            missing = sorted(
+                (required for required in step.depends_on if required not in planned and required not in completed),
+                key=lambda required: required.value,
+            )
+            if missing:
+                reasons = [
+                    f'{required.value} ({"reset by an earlier step" if required in reset else "not completed"})'
+                    for required in missing
+                ]
+                error = (
+                    f'Cannot execute {step.value} step because required steps that are not part of this run would be '
+                    f'missing: {", ".join(reasons)}. Nothing was run or reset.'
+                )
+                logger.error(error)
+                raise PipelineExecutionError(error)
+
+            planned.add(step)
+            if should_reset:
+                reset |= {step, *step.is_required_by} & completed
+                completed -= {step, *step.is_required_by}
+
     async def execute(self, workspace: Workspace, data_uri: str, *, should_reset: bool = True) -> None:
         """Execute the WUKONG engine pipeline.
 
@@ -118,17 +157,11 @@ class KnowledgeConstructionPipeline:
             f'Knowledge Model obtained successfully from "{workspace.paths.knowledge_model}"\n\n{knowledge_model}'
         )
 
+        # Check the whole plan before any step runs or resets data
+        self._validate_plan(should_reset=should_reset)
+
         # Run pipeline steps
         for step in self._app_config.pipeline.steps:
-            # Stop if dependencies have not been completed
-            with self._uow as tx:
-                if not tx.pipeline.are_dependencies_completed(step):
-                    error = (
-                        f'Cannot execute {step.value} step because the previous required steps have not been completed'
-                    )
-                    logger.error(error)
-                    raise PipelineExecutionError(error)
-
             # Reset all steps downstream if the reset flag is present
             if should_reset:
                 for dependent_step in step.is_required_by:
