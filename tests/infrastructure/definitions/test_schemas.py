@@ -82,3 +82,22 @@ def test_endpoint_sources_without_targets_are_rejected() -> None:
 
     with pytest.raises(ValidationError, match='at least 1 item'):
         KnowledgeModelSchema.model_validate(data)
+
+
+@pytest.mark.parametrize(
+    ('path', 'mapping'),
+    [
+        (['fields', 'code', 'retrieval_mode'], {'chunk': 'skip', 'CHUNK': 'extract'}),
+        (['document_collections'], {'chunk': 'missions', 'Chunk': 'crew'}),
+    ],
+)
+def test_context_levels_repeated_in_another_case_are_rejected(path: list[str], mapping: dict[str, str]) -> None:
+    """Reject a mapping naming a context level twice, which would otherwise silently keep the last value."""
+    data = _example('knowledge_model.json')
+    parent = data['entity_types']['Mission']
+    for key in path[:-1]:
+        parent = parent[key]
+    parent[path[-1]] = mapping
+
+    with pytest.raises(ValidationError, match='Context level given more than once'):
+        KnowledgeModelSchema.model_validate(data)
