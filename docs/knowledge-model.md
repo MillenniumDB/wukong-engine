@@ -453,7 +453,7 @@ In the exported output, identifiers appear as follows:
 
 ## 🔒 Reserved Names
 
-The engine always materializes the source documents as part of the result, so a few names are reserved and cannot be used in a knowledge model:
+The engine always materializes the source documents as part of the result, and the export formats have keywords of their own, so a few names are reserved and cannot be used in a knowledge model:
 
 | Reserved Name   | Kind              | Purpose                                                            |
 | --------------- | ----------------- | -------------------------------------------------------------------- |
@@ -461,6 +461,7 @@ The engine always materializes the source documents as part of the result, so a 
 | `Chunk`         | Entity type       | One object per text chunk, carrying its text and its exact span.   |
 | `ChunkOf`       | Relationship type | Links each `Chunk` to its parent `Document`.                       |
 | `ExtractedFrom` | Relationship type | Links each extracted entity to every source context it was seen in. |
+| `true`, `false` | Field             | Keywords of the MillenniumDB export format, which can't be used as property names. |
 
 The check is case-insensitive, so `document` and `CHUNKOF` are rejected too.
 

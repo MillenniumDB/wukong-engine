@@ -25,7 +25,7 @@ class DocumentCollectionName:
         Raises:
             ValueError: If the value doesn't match the allowed name pattern.
         """
-        if not re.match(self._PATTERN, self.value):
+        if not re.fullmatch(self._PATTERN, self.value):
             raise ValueError(
                 f'Invalid {self.__class__.__name__}: "{self.value}". Must match regex pattern: {self._PATTERN}',
             )

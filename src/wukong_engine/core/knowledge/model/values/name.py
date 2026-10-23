@@ -27,7 +27,7 @@ class _ModelName:
         Raises:
             ValueError: If the name doesn't match ``_PATTERN`` or its lowercased form is in ``_RESERVED``.
         """
-        if not re.match(self._PATTERN, self.value):
+        if not re.fullmatch(self._PATTERN, self.value):
             raise ValueError(
                 f'Invalid {self.__class__.__name__}: "{self.value}". Must match regex pattern: {self._PATTERN}',
             )
@@ -64,3 +64,4 @@ class FieldName(_ModelName):
     """Field name."""
 
     _PATTERN = r'^[a-z][a-z0-9_]{0,63}$'
+    _RESERVED = frozenset({'true', 'false'})  # Keywords of the MillenniumDB format, which can't be property keys
