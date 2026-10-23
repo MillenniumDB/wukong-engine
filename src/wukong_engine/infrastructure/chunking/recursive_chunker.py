@@ -227,12 +227,12 @@ class RecursiveDocumentChunker(DocumentChunker):
         segment_token_start, segment_token_end = tokenized_text.token_span(segment.start, segment.end)
         output: list[Segment] = []
         start_token = segment_token_start
+        char_start = segment.start
 
         # Iterate through token spans of target size
         while start_token < segment_token_end:
             end_token = min(start_token + self._plan.max_size, segment_token_end)
-            char_start, char_end = tokenized_text.char_span(start_token, end_token)
-            char_start = max(char_start, segment.start)
+            _, char_end = tokenized_text.char_span(start_token, end_token)
             char_end = min(char_end, segment.end)
 
             # Snap artificial split boundaries
@@ -242,11 +242,17 @@ class RecursiveDocumentChunker(DocumentChunker):
                 # Avoid creating an empty chunk
                 if snapped_end > char_start:
                     char_end = snapped_end
-                    _, end_token = tokenized_text.token_span(char_start, char_end)
 
-            # Finalize current chunk and start the next one
+            # Finalize current chunk and start the next one where it ends. The snap may cut through a token (one
+            # carrying its leading space), so the next window resumes at the token holding the cut rather than after
+            # it, which would drop the token's remaining characters
             output.append(Segment(char_start, char_end))
-            start_token = end_token
+            char_start = char_end
+            start_token = tokenized_text.token_span(char_end, segment.end)[0] if char_end < segment.end else end_token
+
+        # Trailing characters without tokens (e.g. whitespace for some tokenizers) belong to the last window
+        if output and output[-1].end < segment.end:
+            output[-1] = Segment(output[-1].start, segment.end)
 
         return output
 
@@ -303,7 +309,9 @@ class RecursiveDocumentChunker(DocumentChunker):
         for i in range(offset, limit):
             if text[i].isspace():
                 return i
-        if limit == len(text):
+
+        # The word may run to the end of the text, but only snap there if that end is within reach
+        if limit == len(text) and len(text) <= max_offset:
             return len(text)
 
         return offset
