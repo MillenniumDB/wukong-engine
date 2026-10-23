@@ -194,6 +194,35 @@ class SQLiteDocumentStore(DocumentStore):
         for row in rows:
             yield self._row_to_chunk(row)
 
+    def get_document_chunks(self, document_id: DocumentId) -> tuple[Chunk, ...]:
+        """Get the chunks of a document.
+
+        Args:
+            document_id: Identifier of the document whose chunks are retrieved.
+
+        Returns:
+            The document's chunks, ordered by chunk index (empty if it has none).
+        """
+        rows = self._conn.execute(
+            """
+            SELECT
+                c.content_id AS chunk_content_id,
+                c.instance_id AS chunk_instance_id,
+                c.chunk_index,
+                c.start_offset,
+                c.end_offset,
+                c.content,
+                d.content_id AS document_content_id,
+                d.instance_id AS document_instance_id
+            FROM chunks c
+            JOIN documents d ON d.content_id = c.document_content_id
+            WHERE c.document_content_id = ?
+            ORDER BY c.chunk_index
+            """,
+            (document_id.content.bytes,),
+        )
+        return tuple(self._row_to_chunk(row) for row in rows)
+
     def clear(self) -> None:
         """Reset the document store."""
         self._conn.execute('DELETE FROM chunks')

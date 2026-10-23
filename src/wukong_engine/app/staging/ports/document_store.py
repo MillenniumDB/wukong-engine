@@ -4,6 +4,7 @@ from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.core.documents.elements import Chunk, Document
+from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model.values import DocumentCollectionName
 
 
@@ -76,6 +77,17 @@ class DocumentStore(Protocol):
 
         Yields:
             Each stored chunk.
+        """
+        ...
+
+    def get_document_chunks(self, document_id: DocumentId) -> tuple[Chunk, ...]:
+        """Get the chunks of a document.
+
+        Args:
+            document_id: Identifier of the document whose chunks are retrieved.
+
+        Returns:
+            The document's chunks, ordered by chunk index (empty if it has none).
         """
         ...
 

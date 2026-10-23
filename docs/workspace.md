@@ -75,6 +75,8 @@ Editing a snapshotted input therefore has no effect on the workspace until the s
 
 The intended workflow follows from this. While setting a workspace up, enable only the steps you are testing and re-run them with `--reset` after editing the inputs: re-running entity extraction with `--reset`, for instance, applies an edited knowledge model without ingesting again. Once the inputs are ready, run the whole pipeline once with `--reset`, or step by step. From then on, the inputs stay as they were for that workspace until you reset it.
 
+Document files themselves are not snapshotted, since that would duplicate the corpus. Document-level extraction reads each document again from the data directory; if the file is no longer there or its contents changed since ingestion, the engine logs an error and rebuilds the document's text from its ingested chunks instead, logging that it did so.
+
 [📚 Back to Table of Contents](#-table-of-contents)
 
 ## 📚 Document Collections

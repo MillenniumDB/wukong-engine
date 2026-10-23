@@ -339,6 +339,18 @@ class EntityExtractionRepository(ExtractionRepository):
         with self._uow as tx:
             return tx.extraction.entities.get_job_source_context(job)
 
+    def get_document_chunks(self, document: Document) -> tuple[Chunk, ...]:
+        """Retrieve the ingested chunks of a document.
+
+        Args:
+            document: Document whose chunks to retrieve.
+
+        Returns:
+            The document's chunks, ordered by chunk index.
+        """
+        with self._uow as tx:
+            return tx.documents.get_document_chunks(document.id)
+
     def remaining_sources(self, context_level: ContextLevel) -> int:
         """Count the remaining sources to process for a given context level.
 

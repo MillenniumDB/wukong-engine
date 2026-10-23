@@ -79,3 +79,15 @@ class LocalDocumentLoader(DocumentLoader):
         """
         for document in documents:
             yield self.load(document=document, encoding=encoding, max_tokens=max_tokens)
+
+    def truncate(self, content: str, max_tokens: int) -> str:
+        """Truncate a document's text the way ``load`` does, for text obtained some other way.
+
+        Args:
+            content: Text of a document.
+            max_tokens: Maximum number of tokens to keep.
+
+        Returns:
+            The text, truncated beyond ``max_tokens`` tokens.
+        """
+        return self._tokenizer.truncate(content, max_tokens)

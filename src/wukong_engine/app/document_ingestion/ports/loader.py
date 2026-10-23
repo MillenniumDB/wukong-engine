@@ -46,3 +46,15 @@ class DocumentLoader(Protocol):
             ValueError: If a document's stored content no longer matches its content hash.
         """
         ...
+
+    def truncate(self, content: str, max_tokens: int) -> str:
+        """Truncate a document's text the way ``load`` does, for text obtained some other way.
+
+        Args:
+            content: Text of a document.
+            max_tokens: Maximum number of tokens to keep.
+
+        Returns:
+            The text, truncated beyond ``max_tokens`` tokens.
+        """
+        ...
