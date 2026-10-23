@@ -40,3 +40,11 @@ def test_load_retrieval_mode_is_rejected_until_implemented(field_name: str) -> N
 
     with pytest.raises(ValueError, match='"load" is not implemented yet'):
         _load_mission(**{field_name: field})
+
+
+def test_primary_key_cannot_declare_a_default_value() -> None:
+    """Reject a default primary key, which would merge every entity the LLM returned without one into one entity."""
+    code = {'data_type': 'string', 'description': 'Code.', 'required': True, 'default_value': 'ARTEMIS-7'}
+
+    with pytest.raises(ValueError, match='primary key "code" cannot declare a default value'):
+        _load_mission(code=code)

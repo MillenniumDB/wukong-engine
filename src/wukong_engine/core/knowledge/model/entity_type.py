@@ -87,8 +87,8 @@ class EntityType:
         """Validate primary key invariants.
 
         Raises:
-            ValueError: If the primary key is not one of the fields, is not required, or uses a retrieval mode other
-                than ``EXTRACT`` at some context level.
+            ValueError: If the primary key is not one of the fields, is not required, declares a default value, or uses
+                a retrieval mode other than ``EXTRACT`` at some context level.
         """
         # PK existence
         if self.primary_key not in self.fields:
@@ -99,6 +99,13 @@ class EntityType:
         if not primary_key_field.required:
             raise ValueError(
                 f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
+            )
+
+        # PK must not have a default value, which would merge every entity missing it into one
+        if primary_key_field.default_value:
+            raise ValueError(
+                f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" cannot declare a default value, '
+                f'since entities missing it would all share that key',
             )
 
         # PK retrieval mode must be EXTRACT

@@ -94,7 +94,7 @@ class RelationshipType:
 
         Raises:
             ValueError: If the primary key is not among the fields, is missing while the identity policy requires one,
-                doesn't use the extract retrieval mode, or isn't marked as required.
+                doesn't use the extract retrieval mode, isn't marked as required, or declares a default value.
         """
         # PK existence when specified
         if self.primary_key is not None and self.primary_key not in self.fields:
@@ -120,6 +120,11 @@ class RelationshipType:
             if not pk_field.required:
                 raise ValueError(
                     f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
+                )
+            if pk_field.default_value is not None:
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" cannot declare a default '
+                    f'value, since relationships missing it would all share that key',
                 )
 
     def _build_fields_index(self) -> MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]]:
