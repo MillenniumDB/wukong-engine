@@ -2,7 +2,7 @@
 
 import asyncio
 from pathlib import Path
-from types import SimpleNamespace
+from types import MappingProxyType, SimpleNamespace
 from typing import Any
 
 import pytest
@@ -11,7 +11,10 @@ from wukong_engine.app.config.pipeline import PipelineConfig
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
+from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.pipeline.model.values import PipelineCheckpointStatus, PipelineStep
+from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
+from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteSessionFactory,
     SQLiteUnitOfWork,
@@ -81,7 +84,7 @@ def _run(
         app_config=SimpleNamespace(pipeline=pipeline_config),
         uow=uow,
         get_document_registry=SimpleNamespace(execute=lambda *_: registry),
-        get_knowledge_model=SimpleNamespace(execute=lambda *_: SimpleNamespace(entity_types={})),
+        get_knowledge_model=SimpleNamespace(execute=lambda *_: SimpleNamespace(active_entity_types={})),
         ingest_documents=steps[PipelineStep.INGEST_DOCUMENTS],
         extract_entities=steps[PipelineStep.EXTRACT_ENTITIES],
         extract_relationships=steps[PipelineStep.EXTRACT_RELATIONSHIPS],
@@ -125,3 +128,44 @@ def test_a_plan_relying_on_completed_steps_runs(tmp_path: Path) -> None:
 
     assert set(calls[:2]) == {'reset EXTRACT_RELATIONSHIPS', 'reset EXPORT_KNOWLEDGE'}
     assert calls[2:] == ['reset EXTRACT_ENTITIES', 'run EXTRACT_ENTITIES']
+
+
+def test_only_the_collections_of_enabled_entity_types_must_exist(tmp_path: Path) -> None:
+    """Check the collections of enabled entity types only, so a disabled one may point at a removed collection."""
+    registry = DocumentRegistry(collections=MappingProxyType({}))
+    model = KnowledgeModelMapper().map_knowledge_model(
+        KnowledgeModelSchema.model_validate(
+            {
+                'extraction_config': {'projection': {'enabled_entities': []}},
+                'entity_types': {
+                    'Mission': {
+                        'description': 'A mission.',
+                        'primary_key': 'code',
+                        'fields': {'code': {'data_type': 'string', 'description': 'Code.', 'required': True}},
+                        'document_collections': {'chunk': 'removed'},
+                    },
+                },
+            },
+        ),
+    )
+    factory = SQLiteSessionFactory(db_path=tmp_path / 'staging.db')
+    initialize_sqlite_database(db_path=factory.db_path, connection_factory=factory)
+    pipeline = KnowledgeConstructionPipeline(
+        app_config=SimpleNamespace(
+            pipeline=PipelineConfig(
+                ingest_documents=False,
+                extract_entities=False,
+                extract_relationships=False,
+                export_knowledge=False,
+            )
+        ),
+        uow=SQLiteUnitOfWork(connection_factory=factory),
+        get_document_registry=SimpleNamespace(execute=lambda *_: registry),
+        get_knowledge_model=SimpleNamespace(execute=lambda *_: model),
+        ingest_documents=None,
+        extract_entities=None,
+        extract_relationships=None,
+        export_knowledge=None,
+    )
+
+    asyncio.run(pipeline.execute(Workspace(tmp_path), str(tmp_path)))

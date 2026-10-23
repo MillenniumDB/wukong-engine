@@ -135,8 +135,8 @@ class KnowledgeConstructionPipeline:
                 keeps existing data and appends any new results.
 
         Raises:
-            ModelIngestionError: If the document registry or the knowledge model can't be loaded, or the model
-                references unknown document collections.
+            ModelIngestionError: If the document registry or the knowledge model can't be loaded, or an enabled entity
+                type references unknown document collections.
             PipelineExecutionError: If a step has no use case or its required steps have not been completed.
         """
         # Initialize the pipeline checkpoints
@@ -149,10 +149,10 @@ class KnowledgeConstructionPipeline:
             f'Document Collections obtained successfully from "{workspace.paths.document_registry}"\n\n{document_registry}',
         )
 
-        # Get knowledge model and validate selected document collections
+        # Get knowledge model and validate the document collections of the enabled entity types
         knowledge_model = self._get_knowledge_model.execute(str(workspace.paths.knowledge_model))
         unique_collections = set()
-        for entity_type in knowledge_model.entity_types.values():
+        for entity_type in knowledge_model.active_entity_types.values():
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
         try:
