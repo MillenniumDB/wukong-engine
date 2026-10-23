@@ -91,7 +91,7 @@ def _is_valid_value(value: str, options: tuple[str, ...], regex: RegexPattern | 
     """
     if options and value not in options:
         return False
-    return regex is None or regex.match(value) is not None
+    return regex is None or regex.fullmatch(value) is not None
 
 
 def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:

@@ -48,3 +48,17 @@ def test_primary_key_cannot_declare_a_default_value() -> None:
 
     with pytest.raises(ValueError, match='primary key "code" cannot declare a default value'):
         _load_mission(code=code)
+
+
+REGEX_CODE = {'data_type': 'string', 'description': 'Code.', 'required': True, 'regex': '[A-Z]+-[0-9]+'}
+
+
+def test_regex_without_anchors_accepts_a_whole_match() -> None:
+    """Accept a value the regex matches as a whole, even when the pattern has no anchors."""
+    _load_mission(code={**REGEX_CODE, 'examples': 'ARTEMIS-7'})
+
+
+def test_regex_must_match_the_whole_value() -> None:
+    """Reject a value the regex only matches a prefix of, even when the pattern has no ``$`` anchor."""
+    with pytest.raises(ValueError, match='ARTEMIS-7 and more'):
+        _load_mission(code={**REGEX_CODE, 'examples': 'ARTEMIS-7 and more'})
