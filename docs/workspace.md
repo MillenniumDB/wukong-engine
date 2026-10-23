@@ -177,7 +177,7 @@ your-workspace/exports/
         └── <RelationshipType>.csv
 ```
 
-Only the format selected in the configuration is written. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
+Only the format selected in the configuration is written. Each export replaces that format's directory as a whole, and only once it has completed: files of types no longer exported don't linger, and a failed export leaves the previous one intact. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
 
 String values are written exactly as they were extracted. The Neo4j CSV files quote them, and chunk contents span several lines, so import them with `neo4j-admin database import` and the `--multiline-fields=true` option.
 

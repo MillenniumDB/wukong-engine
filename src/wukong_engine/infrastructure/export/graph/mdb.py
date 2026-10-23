@@ -13,7 +13,7 @@ from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
-from wukong_engine.infrastructure.storage.filesystem import clear_directory
+from wukong_engine.infrastructure.storage.filesystem import clear_directory, replacing_directory
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -235,20 +235,21 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
     def export(self, model: KnowledgeModel, export_uri: str) -> None:
         """Export knowledge to a specified output format.
 
-        Writes every source, entity and relationship to ``<export_uri>/mdb/knowledge_graph.qm``.
+        Writes every source, entity and relationship to ``<export_uri>/mdb/knowledge_graph.qm``. The ``mdb``
+        directory is only replaced once the whole export succeeds.
 
         Args:
             model: Knowledge model whose active entity and relationship types are exported.
             export_uri: Base export directory.
         """
-        # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'mdb'
-        base_export_dir.mkdir(parents=True, exist_ok=True)
-        output_path = base_export_dir / 'knowledge_graph.qm'
-        logger.info(f'Exporting knowledge to MillenniumDB QM file at: {output_path}')
+        logger.info(f'Exporting knowledge to MillenniumDB QM file at: {base_export_dir / "knowledge_graph.qm"}')
 
         # Export sources, entities, and relationships
-        with MillenniumDBWriter(output_path) as writer:
+        with (
+            replacing_directory(base_export_dir) as export_dir,
+            MillenniumDBWriter(export_dir / 'knowledge_graph.qm') as writer,
+        ):
             self._export_sources(writer)
             self._export_entities(model, writer)
             self._export_relationships(model, writer)
