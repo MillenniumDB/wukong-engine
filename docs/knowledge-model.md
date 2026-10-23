@@ -265,7 +265,7 @@ Each rule is an object with two parameters:
 | `source_context_levels` |    ✅     | The context level(s) at which the **source** entity may be found. | `string array` or `string` |
 | `target_context_levels` |    ✅     | The context level(s) at which the **target** entity may be found. | `string array` or `string` |
 
-Every combination of the two lists is generated. A pair may carry a single rule object instead of an array of rules.
+Every combination of the two lists is generated. A pair may carry a single rule object instead of an array of rules. Every source must list at least one target, every pair at least one rule, and every rule at least one level on each side, so an endpoint can never silently allow nothing.
 
 An endpoint therefore carries more information than a conventional domain/range declaration: it is not merely "`A` may reference `B`", but "`A` *as recognized at level l₁* may reference `B` *as recognized at level l₂*". The valid pairings are:
 

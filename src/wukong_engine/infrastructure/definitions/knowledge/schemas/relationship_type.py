@@ -1,6 +1,6 @@
 """Pydantic schemas for relationship type definitions."""
 
-from typing import Any, ClassVar
+from typing import Annotated, Any, ClassVar
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 
@@ -16,16 +16,16 @@ class EndpointContextRule(BaseModel):
     Every combination of a source level and a target level is an allowed context pair for the endpoint.
 
     Attributes:
-        source_context_levels: Context levels at which the source entity may be found; a single level is turned
-            into a one-item list.
-        target_context_levels: Context levels at which the target entity may be found; a single level is turned
-            into a one-item list.
+        source_context_levels: Context levels at which the source entity may be found, at least one; a single level
+            is turned into a one-item list.
+        target_context_levels: Context levels at which the target entity may be found, at least one; a single level
+            is turned into a one-item list.
     """
 
     model_config = ConfigDict(extra='forbid')
 
-    source_context_levels: list[ContextLevel] | ContextLevel
-    target_context_levels: list[ContextLevel] | ContextLevel
+    source_context_levels: Annotated[list[ContextLevel], Field(min_length=1)] | ContextLevel
+    target_context_levels: Annotated[list[ContextLevel], Field(min_length=1)] | ContextLevel
 
     @field_validator('source_context_levels', 'target_context_levels')
     @classmethod
@@ -49,7 +49,8 @@ class RelationshipTypeSchema(BaseModel):
     Attributes:
         description: Description of what the relationship represents.
         instructions: Extra extraction instructions for the relationship type, if any.
-        endpoints: Allowed endpoints as source entity type name -> target entity type name -> context rule(s).
+        endpoints: Allowed endpoints as source entity type name -> target entity type name -> context rule(s). Each
+            source lists at least one target, and each pair at least one rule.
         primary_key: Name of the field used as primary key, or None if the relationship has none.
         deduplication: Policy used to deduplicate relationships of this type; accepts aliases such as "pk" or
             "edge".
@@ -62,9 +63,13 @@ class RelationshipTypeSchema(BaseModel):
 
     description: StrictStr
     instructions: StrictStr | None = None
-    endpoints: dict[StrictStr, dict[StrictStr, list[EndpointContextRule] | EndpointContextRule]] = Field(
-        default_factory=dict,
-    )
+    endpoints: dict[
+        StrictStr,
+        Annotated[
+            dict[StrictStr, Annotated[list[EndpointContextRule], Field(min_length=1)] | EndpointContextRule],
+            Field(min_length=1),
+        ],
+    ] = Field(default_factory=dict)
     primary_key: StrictStr | None = None
     deduplication: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)

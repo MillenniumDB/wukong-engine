@@ -56,3 +56,29 @@ def test_misspelled_keys_are_rejected(
     data = _rename_key(_example(file_name), path, misspelled_key)
     with pytest.raises(ValidationError, match=rf'{misspelled_key}\s+Extra inputs are not permitted'):
         schema.model_validate(data)
+
+
+@pytest.mark.parametrize(
+    'rules',
+    [
+        [],
+        {'source_context_levels': [], 'target_context_levels': 'chunk'},
+        {'source_context_levels': 'chunk', 'target_context_levels': []},
+    ],
+)
+def test_endpoints_without_any_context_pair_are_rejected(rules: Any) -> None:
+    """Reject an endpoint with no rules or no levels, which would leave its relationship type active but jobless."""
+    data = _example('knowledge_model.json')
+    data['relationship_types']['AssignedTo']['endpoints'] = {'Astronaut': {'Mission': rules}}
+
+    with pytest.raises(ValidationError, match='at least 1 item'):
+        KnowledgeModelSchema.model_validate(data)
+
+
+def test_endpoint_sources_without_targets_are_rejected() -> None:
+    """Reject a source entity type listed in the endpoints with no target types."""
+    data = _example('knowledge_model.json')
+    data['relationship_types']['AssignedTo']['endpoints'] = {'Astronaut': {}}
+
+    with pytest.raises(ValidationError, match='at least 1 item'):
+        KnowledgeModelSchema.model_validate(data)
