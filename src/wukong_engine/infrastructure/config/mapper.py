@@ -54,14 +54,14 @@ class ApplicationConfigMapper:
         """Map LLM configuration schema to LLM configuration model.
 
         Args:
-            schema: LLM configuration schema. A non-empty ``model`` name is resolved into an ``LLM`` of the provider
-                that supports it.
+            schema: LLM configuration schema. A ``model`` name is resolved into an ``LLM`` of the provider that
+                supports it.
 
         Returns:
             The LLM configuration, using the model defaults for unset fields.
         """
         kwargs = schema.model_dump(exclude_none=True)
-        if kwargs.get('model'):
+        if 'model' in kwargs:
             kwargs['model'] = LLMRegistry.resolve_model(kwargs['model'])
         return LLMConfig(**kwargs)
 

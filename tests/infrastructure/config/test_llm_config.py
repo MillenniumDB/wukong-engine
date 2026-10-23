@@ -84,3 +84,27 @@ def test_configuration_shows_the_reasoning_effort_that_runs(value: str | None, e
     """Show the configured reasoning effort, or the model's default level when it isn't configured."""
     schema = ApplicationConfigSchema(llm=LLMConfigSchema.model_validate({'reasoning_effort': value}))
     assert f'Reasoning Effort: {expected}' in str(ApplicationConfigMapper().map_configuration(schema).llm)
+
+
+@pytest.mark.parametrize('name', ['', '   '])
+def test_empty_model_name_is_rejected_instead_of_running_the_default_model(name: str) -> None:
+    """Reject an empty model name, which would otherwise silently fall back to the default model."""
+    with pytest.raises(ValidationError, match='must not be empty'):
+        LLMConfigSchema.model_validate({'model': name})
+
+
+def test_model_and_reasoning_effort_are_trimmed_and_case_insensitive() -> None:
+    """Accept model names and reasoning efforts regardless of case and surrounding spaces, like the other keys."""
+    schema = ApplicationConfigSchema(
+        llm=LLMConfigSchema.model_validate({'model': ' Claude-Haiku-5-5 ', 'reasoning_effort': ' LOW '}),
+    )
+    llm = ApplicationConfigMapper().map_configuration(schema).llm
+
+    assert (llm.model.name, llm.reasoning_effort) == ('claude-haiku-5-5', ReasoningEffort.LOW)
+
+
+@pytest.mark.parametrize('value', [True, '8', 8.0])
+def test_max_concurrency_must_be_an_integer(value: object) -> None:
+    """Reject booleans, strings and floats for the concurrency, as the chunking sizes do."""
+    with pytest.raises(ValidationError):
+        LLMConfigSchema.model_validate({'max_concurrency': value})

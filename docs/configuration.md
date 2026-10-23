@@ -83,10 +83,10 @@ The `[llm]` section controls the language model used for extraction.
 
 | Key               | Description                                                                                      |   Type    | Default          |
 | ----------------- | -------------------------------------------------------------------------------------------------- | :-------: | ---------------- |
-| `model`           | The model to use. Its provider is inferred from the name.                                        | `string`  | `"gpt-6-luna"`   |
+| `model`           | The model to use, case-insensitive. Its provider is inferred from the name. An empty name is rejected; omit the key to use the default. | `string`  | `"gpt-6-luna"`   |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
-| `reasoning_effort` | ⚙️ Advanced. Overrides the reasoning effort of every model, `low` by default. See below.        | `string`  | Model's default  |
+| `reasoning_effort` | ⚙️ Advanced. Overrides the reasoning effort of every model, `low` by default. Case-insensitive. See below. | `string`  | Model's default  |
 
 **Supported models:**
 
