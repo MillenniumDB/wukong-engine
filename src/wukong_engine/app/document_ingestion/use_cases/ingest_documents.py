@@ -42,7 +42,7 @@ class IngestDocuments:
         self._chunker = chunker
         self._uow = uow
 
-    def execute(self, registry: DocumentRegistry) -> None:
+    def execute(self, registry: DocumentRegistry, data_uri: str) -> None:
         """Ingest all document collections into the system.
 
         Registers every collection, ingests the documents and chunks of each one, and marks the
@@ -50,6 +50,7 @@ class IngestDocuments:
 
         Args:
             registry: Registry holding the document collections to ingest.
+            data_uri: Data root directory every ingested document must be contained in.
 
         Raises:
             DocumentIngestionError: If ingesting any collection fails.
@@ -62,7 +63,7 @@ class IngestDocuments:
         # Ingest all document collections
         try:
             for collection in collections:
-                self._ingest_collection(collection)
+                self._ingest_collection(collection, data_uri)
                 logger.info(f'Ingested Document Collection: {collection.name}')
         except DocumentIngestionError as exc:
             error = 'Document Ingestion failed due to an unrecoverable error'
@@ -77,7 +78,7 @@ class IngestDocuments:
             logger.info(f'Total Chunks: {total_chunks}')
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
 
-    def _ingest_collection(self, collection: DocumentCollection) -> None:
+    def _ingest_collection(self, collection: DocumentCollection, data_uri: str) -> None:
         """Ingest a specific collection of documents into the system.
 
         Normalizes the collection's sources, then stores its documents, links them to the collection and stores their
@@ -85,13 +86,16 @@ class IngestDocuments:
 
         Args:
             collection: Collection whose documents and chunks are ingested.
+            data_uri: Data root directory every ingested document must be contained in.
 
         Raises:
             DocumentIngestionError: If any step of the ingestion fails.
         """
         try:
             normalized_sources = self._source_normalizer.normalize(collection.sources)
-            for doc_batch in batched(self._stream_provider.stream(normalized_sources), size=DOCUMENT_BATCH_SIZE):
+            for doc_batch in batched(
+                self._stream_provider.stream(normalized_sources, data_uri), size=DOCUMENT_BATCH_SIZE
+            ):
                 with self._uow as tx:
                     # Ingest documents
                     tx.documents.bulk_upsert_documents(doc_batch)

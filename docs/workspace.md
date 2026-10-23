@@ -102,7 +102,7 @@ A collection may draw from several sources, and the same file may belong to more
 | `"directory"` | `"dir"`, `"folder"`          | Every `.txt` file directly inside `root`, not descending into subdirectories. |
 | `"recursive"` | `"nested"`, `"deep"`         | Every `.txt` file inside `root` and all of its subdirectories.         |
 
-Mode values are case-insensitive. In every mode, only files with the `.txt` extension are picked up, and hidden or temporary files (those starting with `.`, `~` or `~$`) are ignored.
+Mode values are case-insensitive. In every mode, only files with the `.txt` extension are picked up, and hidden or temporary files (those starting with `.`, `~` or `~$`) are ignored, as is everything inside a hidden or temporary directory such as `.git/`. Symlinks are followed only when they resolve inside the data directory; any other one is skipped with a warning. Files are picked up in name order, so the same data directory always yields the same documents in the same order.
 
 Every `root` is resolved against the data directory given on the command line and must stay **inside** it. A source that resolves outside the data root is rejected, which is what keeps a workspace from reading arbitrary files on the machine.
 

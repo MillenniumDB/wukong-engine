@@ -150,7 +150,7 @@ class KnowledgeConstructionPipeline:
                 logger.info(f'Starting {step.value} step...')
                 match step:
                     case PipelineStep.INGEST_DOCUMENTS:
-                        self._ingest_documents.execute(document_registry)
+                        self._ingest_documents.execute(document_registry, data_uri)
                     case PipelineStep.EXTRACT_ENTITIES:
                         await self._extract_entities.execute(knowledge_model)
                     case PipelineStep.EXTRACT_RELATIONSHIPS:

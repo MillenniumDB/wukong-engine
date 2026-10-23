@@ -20,15 +20,15 @@ class LocalDocumentSourceValidator(DocumentSourceValidator):
 
         Args:
             sources: Document sources to validate.
-            data_uri: Data root directory every source must be contained in.
+            data_uri: Data root directory every source must be contained in; ``~`` is expanded.
 
         Raises:
             ValueError: If any source is invalid, listing the errors of every invalid source.
         """
         errors: list[str] = []
+        base_data_path = Path(data_uri).expanduser().resolve()
         for source in sources:
             root_path = Path(source.root).resolve()
-            base_data_path = Path(data_uri).resolve()
             source_label = str(source)
 
             if root_path != base_data_path and not root_path.is_relative_to(base_data_path):
