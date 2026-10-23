@@ -7,6 +7,7 @@ This document describes the two directories the engine needs to run: a **workspa
 ## 📚 Table of Contents
 - [🧱 Two Directories, Two Jobs](#-two-directories-two-jobs)
 - [📁 Workspace Layout](#-workspace-layout)
+- [🔒 Input Snapshots](#-input-snapshots)
 - [📚 Document Collections](#-document-collections)
   - [Registry Schema](#registry-schema)
   - [Sources](#sources)
@@ -41,7 +42,8 @@ your-workspace/
 ├── knowledge_model.json        # required — what knowledge to extract
 ├── document_collections.json   # required — which documents to read
 ├── staging/
-│   └── extraction.db           # created by the engine — durable run state
+│   ├── extraction.db           # created by the engine — durable run state
+│   └── snapshots/              # created by the engine — the inputs the stored results come from
 └── exports/                    # created by the engine — the rendered output
 ```
 
@@ -50,11 +52,28 @@ your-workspace/
 | `knowledge_model.json`      |    ✅     | The knowledge model. See the [Knowledge Model](/docs/knowledge-model.md) documentation.                                           |
 | `document_collections.json` |    ✅     | The document collection registry. See [Document Collections](#-document-collections).                                             |
 | `staging/extraction.db`     |  auto    | A SQLite database holding ingested documents, chunks, extracted objects and the state of every unit of work. Created on first run. |
+| `staging/snapshots/`        |  auto    | Copies of the input files and chunking settings the stored results were produced from. See [Input Snapshots](#-input-snapshots). |
 | `exports/`                  |  auto    | The rendered output. Created by the export step.                                                                                  |
 
 The engine validates the workspace before doing anything: the directory must exist, and both JSON files must be present. A missing file aborts the run with an `InvalidWorkspaceError`.
 
-The staging database is what makes runs **resumable**. Completed work is skipped on a re-run, so interrupting the engine loses at most the LLM calls in flight, and adding a type to the knowledge model only costs the genuinely new work.
+The staging database is what makes runs **resumable**. Completed work is skipped on a re-run, so interrupting the engine loses at most the LLM calls in flight.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## 🔒 Input Snapshots
+
+The inputs of a workspace are **fixed once the steps that use them have run**, so every stored result is consistent with the inputs it was produced from. When a step that first uses an input runs, the engine keeps a snapshot of it in `staging/snapshots/`, and later runs read the snapshot instead of the workspace files or the configuration:
+
+| Input                            | Snapshotted when                | Kept until                  |
+| -------------------------------- | ------------------------------- | --------------------------- |
+| `document_collections.json`      | Documents are first ingested    | Ingestion is reset          |
+| `[chunking]` settings            | Documents are first ingested    | Ingestion is reset          |
+| `knowledge_model.json`           | Entities are first extracted    | Entity extraction is reset, directly or by resetting ingestion |
+
+Editing a snapshotted input therefore has no effect on the workspace until the step that took the snapshot is reset. Each run compares the files with their snapshots and logs a warning naming any input that changed and the step to reset to apply it; formatting changes, such as whitespace or key order, don't count. Once documents are ingested, the data directory isn't read again for the registry's sources, so later steps still run if it moves or changes.
+
+The intended workflow follows from this. While setting a workspace up, enable only the steps you are testing and re-run them with `--reset` after editing the inputs: re-running entity extraction with `--reset`, for instance, applies an edited knowledge model without ingesting again. Once the inputs are ready, run the whole pipeline once with `--reset`, or step by step. From then on, the inputs stay as they were for that workspace until you reset it.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -193,7 +212,7 @@ Passing `--reset` to the `run` command clears the stored data at the start of ea
 poetry run wukong run workspaces/example data/example --reset
 ```
 
-Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset.
+Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Resetting a step also releases the [input snapshots](#-input-snapshots) it took, so the step runs with the current inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset.
 
 Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. The run doesn't wait for them to stop: the cancellations are only requested, and a failed request is logged as a warning so that the batch can be cancelled from the provider instead.
 

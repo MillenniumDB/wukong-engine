@@ -1,8 +1,10 @@
 """Composition root that wires the CLI application together."""
 
 import logging
+from functools import partial
 from pathlib import Path
 
+from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.exceptions import ConfigurationError
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
@@ -29,6 +31,7 @@ from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, Get
 from wukong_engine.app.workflows import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
+from wukong_engine.infrastructure.chunking.tokenization import HuggingFaceTokenizer, TextTokenizer
 from wukong_engine.infrastructure.config import ConfigProvider
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.knowledge import LocalKnowledgeModelProvider
@@ -41,6 +44,7 @@ from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteUnitOfWork,
     initialize_sqlite_database,
 )
+from wukong_engine.infrastructure.storage.filesystem import LocalInputSnapshotStore
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentLoader,
     LocalDocumentSourceValidator,
@@ -91,6 +95,26 @@ def _format_to_exporter(export_format: KnowledgeExportFormat, repository: Knowle
             raise ValueError(f'Unsupported export format: {export_format}')
 
 
+def _build_document_chunker(chunking: ChunkingConfig, tokenizer: TextTokenizer) -> RecursiveDocumentChunker:
+    """Build the document chunker for given chunking settings.
+
+    Args:
+        chunking: Chunking settings, with their derived token budgets resolved.
+        tokenizer: Tokenizer measuring chunk sizes, shared across chunkers so it's only loaded once.
+
+    Returns:
+        The chunker splitting documents according to the settings.
+    """
+    return RecursiveDocumentChunker(
+        plan=ChunkingPlan(
+            target_size=chunking.target_tokens,
+            overlap_size=chunking.overlap_tokens if chunking.overlap_tokens is not None else 0,
+            max_size=chunking.max_tokens if chunking.max_tokens is not None else 0,
+            tokenizer=tokenizer,
+        ),
+    )
+
+
 def build_application(workspace: Workspace, config_path: Path, verbosity: int) -> CLIApplication:
     """Build the CLI application.
 
@@ -130,13 +154,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     document_source_validator = LocalDocumentSourceValidator()
     document_stream_provider = LocalDocumentStreamProvider()
     document_loader = LocalDocumentLoader()
-    document_chunker = RecursiveDocumentChunker(
-        plan=ChunkingPlan(
-            target_size=app_config.chunking.target_tokens,
-            overlap_size=app_config.chunking.overlap_tokens if app_config.chunking.overlap_tokens is not None else 0,
-            max_size=app_config.chunking.max_tokens if app_config.chunking.max_tokens is not None else 0,
-        ),
-    )
+    input_snapshots = LocalInputSnapshotStore(directory=workspace.paths.snapshots)
     staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
     pk_normalizer = DefaultPKNormalizer()
     knowledge_repository = KnowledgeRepository(uow=staging_uow)
@@ -235,7 +253,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     ingest_documents = IngestDocuments(
         stream_provider=document_stream_provider,
         loader=document_loader,
-        chunker=document_chunker,
+        chunker_factory=partial(_build_document_chunker, tokenizer=HuggingFaceTokenizer()),
         uow=staging_uow,
     )
     extract_entities = ExtractEntities(
@@ -262,6 +280,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     knowledge_construction = KnowledgeConstructionPipeline(
         app_config=app_config,
         uow=staging_uow,
+        input_snapshots=input_snapshots,
         get_document_registry=get_document_registry,
         get_knowledge_model=get_knowledge_model,
         ingest_documents=ingest_documents,

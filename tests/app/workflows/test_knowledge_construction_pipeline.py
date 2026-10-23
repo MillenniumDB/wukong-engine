@@ -7,6 +7,7 @@ from typing import Any
 
 import pytest
 
+from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
@@ -20,6 +21,7 @@ from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteUnitOfWork,
     initialize_sqlite_database,
 )
+from wukong_engine.infrastructure.storage.filesystem import LocalInputSnapshotStore
 
 
 class RecordingStep:
@@ -53,6 +55,13 @@ class AsyncRecordingStep(RecordingStep):
         super().reset()
 
 
+def _snapshot_store(workspace_root: Path) -> LocalInputSnapshotStore:
+    """Create the workspace's input files, which the stubbed use cases ignore, and a store for their snapshots."""
+    for name in ('knowledge_model.json', 'document_collections.json'):
+        (workspace_root / name).write_text('{}')
+    return LocalInputSnapshotStore(workspace_root / 'staging' / 'snapshots')
+
+
 def _run(
     tmp_path: Path,
     pipeline_config: PipelineConfig,
@@ -81,9 +90,10 @@ def _run(
     }
     registry = SimpleNamespace(validate_collections=lambda _: None)
     pipeline = KnowledgeConstructionPipeline(
-        app_config=SimpleNamespace(pipeline=pipeline_config),
+        app_config=SimpleNamespace(pipeline=pipeline_config, chunking=ChunkingConfig()),
         uow=uow,
-        get_document_registry=SimpleNamespace(execute=lambda *_: registry),
+        input_snapshots=_snapshot_store(tmp_path),
+        get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: SimpleNamespace(active_entity_types={})),
         ingest_documents=steps[PipelineStep.INGEST_DOCUMENTS],
         extract_entities=steps[PipelineStep.EXTRACT_ENTITIES],
@@ -152,15 +162,17 @@ def test_only_the_collections_of_enabled_entity_types_must_exist(tmp_path: Path)
     initialize_sqlite_database(db_path=factory.db_path, connection_factory=factory)
     pipeline = KnowledgeConstructionPipeline(
         app_config=SimpleNamespace(
+            chunking=ChunkingConfig(),
             pipeline=PipelineConfig(
                 ingest_documents=False,
                 extract_entities=False,
                 extract_relationships=False,
                 export_knowledge=False,
-            )
+            ),
         ),
         uow=SQLiteUnitOfWork(connection_factory=factory),
-        get_document_registry=SimpleNamespace(execute=lambda *_: registry),
+        input_snapshots=_snapshot_store(tmp_path),
+        get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: model),
         ingest_documents=None,
         extract_entities=None,

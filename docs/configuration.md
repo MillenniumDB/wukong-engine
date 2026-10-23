@@ -73,7 +73,7 @@ The `[pipeline]` section selects which steps of the pipeline are executed. Each 
 
 The steps run in the order listed and each depends on the ones before it. Disabling a step does **not** skip its results: because state is durable in the workspace's staging database, a disabled step whose work was completed on an earlier run still satisfies the dependency. Disabling a step whose work has *never* been completed aborts the run with a clear error, rather than producing a partial result. The whole plan is checked before anything runs, so such a run aborts without running or resetting any step.
 
-This is what lets you re-export without re-extracting, or add a relationship type and extract only it, by enabling just the step you need.
+This is what lets you re-export without re-extracting, or test each step in isolation while setting up a workspace, by enabling just the step you need. The inputs a step has used stay fixed until it is reset; see [Input Snapshots](/docs/workspace.md#-input-snapshots).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -142,6 +142,8 @@ When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(
 Segmentation proceeds recursively along a hierarchy of boundaries, from most to least semantically meaningful — structural headings, paragraphs, lines, sentences, and finally words — so chunk boundaries coincide with document structure wherever the structure permits. The target size is treated as *soft*: when adding the next piece would overshoot, the packer keeps whichever alternative lands closer to the target.
 
 Before segmenting, line endings are normalized to `\n` (including CRLF, CR and the Unicode line and paragraph separators) and NUL characters are removed (a leading byte order mark is already dropped when the file is read). A chunk's `start_offset` and `end_offset` index this normalized text, counted in Unicode code points rather than bytes, so they map directly back to the source file only when it uses `\n` line endings and holds no NUL characters or byte order mark.
+
+The chunking settings documents were ingested with are kept for the workspace: changing them only takes effect after resetting ingestion (see [Input Snapshots](/docs/workspace.md#-input-snapshots)).
 
 These two values are the main quality/cost trade-off available:
 

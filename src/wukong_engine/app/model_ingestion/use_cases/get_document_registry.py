@@ -24,22 +24,26 @@ class GetDocumentRegistry:
         self._provider = provider
         self._validator = validator
 
-    def execute(self, document_registry_uri: str, data_uri: str) -> DocumentRegistry:
+    def execute(self, document_registry_uri: str, data_uri: str, *, validate_sources: bool = True) -> DocumentRegistry:
         """Retrieve the document registry from the specified URI and validate its sources.
 
         Args:
             document_registry_uri: Location of the document registry definition.
             data_uri: Base data location that sources are resolved against and must be contained in.
+            validate_sources: Whether to check that the sources exist in the data location, which only matters when
+                documents are going to be ingested from them.
 
         Returns:
             The loaded document registry.
 
         Raises:
-            ModelIngestionError: If the registry can't be read or is invalid, or any of its sources fails validation.
+            ModelIngestionError: If the registry can't be read or is invalid, or any of its validated sources is
+                invalid.
         """
         try:
             document_registry = self._provider.get(source_uri=document_registry_uri, data_uri=data_uri)
-            self._validator.validate(sources=document_registry.get_all_sources(), data_uri=data_uri)
+            if validate_sources:
+                self._validator.validate(sources=document_registry.get_all_sources(), data_uri=data_uri)
         except Exception as exc:
             error = f'Failed to load the document collections from "{document_registry_uri}": {exc}'
             logger.error(error)
