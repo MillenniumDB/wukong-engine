@@ -1,8 +1,14 @@
 """Use case for loading the document registry."""
 
+import logging
+
 from wukong_engine.app.document_ingestion.ports import DocumentSourceValidator
+from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.model_ingestion.ports import DocumentRegistryProvider
 from wukong_engine.core.documents.model import DocumentRegistry
+
+# Logging
+logger = logging.getLogger(__name__)
 
 
 class GetDocumentRegistry:
@@ -29,8 +35,13 @@ class GetDocumentRegistry:
             The loaded document registry.
 
         Raises:
-            ValueError: If the registry is invalid or any of its sources fails validation.
+            ModelIngestionError: If the registry can't be read or is invalid, or any of its sources fails validation.
         """
-        document_registry = self._provider.get(source_uri=document_registry_uri, data_uri=data_uri)
-        self._validator.validate(sources=document_registry.get_all_sources(), data_uri=data_uri)
+        try:
+            document_registry = self._provider.get(source_uri=document_registry_uri, data_uri=data_uri)
+            self._validator.validate(sources=document_registry.get_all_sources(), data_uri=data_uri)
+        except Exception as exc:
+            error = f'Failed to load the document collections from "{document_registry_uri}": {exc}'
+            logger.error(error)
+            raise ModelIngestionError(error) from exc
         return document_registry

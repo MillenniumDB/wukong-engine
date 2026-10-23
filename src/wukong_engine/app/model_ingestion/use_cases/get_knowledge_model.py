@@ -1,7 +1,13 @@
 """Use case for loading the knowledge model."""
 
+import logging
+
+from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.model_ingestion.ports import KnowledgeModelProvider
 from wukong_engine.core.knowledge.model import KnowledgeModel
+
+# Logging
+logger = logging.getLogger(__name__)
 
 
 class GetKnowledgeModel:
@@ -23,5 +29,13 @@ class GetKnowledgeModel:
 
         Returns:
             The validated knowledge model.
+
+        Raises:
+            ModelIngestionError: If the knowledge model can't be read or is invalid.
         """
-        return self._provider.get(knowledge_model_uri)
+        try:
+            return self._provider.get(knowledge_model_uri)
+        except Exception as exc:
+            error = f'Failed to load the knowledge model from "{knowledge_model_uri}": {exc}'
+            logger.error(error)
+            raise ModelIngestionError(error) from exc

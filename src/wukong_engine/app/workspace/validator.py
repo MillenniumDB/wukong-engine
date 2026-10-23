@@ -20,7 +20,7 @@ class WorkspaceValidator:
 
         Raises:
             InvalidWorkspaceError: If the root directory doesn't exist or isn't a directory, or if the document
-                collections or knowledge model file is missing.
+                collections or knowledge model file is missing or not a file.
         """
         root = workspace.paths.root
         paths = workspace.paths
@@ -32,11 +32,11 @@ class WorkspaceValidator:
             error = f'Workspace path "{root}" is not a directory'
             logger.error(error)
             raise InvalidWorkspaceError(error)
-        if not paths.document_registry.exists():
+        if not paths.document_registry.is_file():
             error = f'Missing document collections JSON file at "{paths.document_registry}"'
             logger.error(error)
             raise InvalidWorkspaceError(error)
-        if not paths.knowledge_model.exists():
+        if not paths.knowledge_model.is_file():
             error = f'Missing knowledge model JSON file at "{paths.knowledge_model}"'
             logger.error(error)
             raise InvalidWorkspaceError(error)

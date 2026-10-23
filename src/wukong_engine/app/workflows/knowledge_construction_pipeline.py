@@ -6,6 +6,7 @@ from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
 from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
+from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.staging.ports import UnitOfWork
@@ -134,6 +135,8 @@ class KnowledgeConstructionPipeline:
                 keeps existing data and appends any new results.
 
         Raises:
+            ModelIngestionError: If the document registry or the knowledge model can't be loaded, or the model
+                references unknown document collections.
             PipelineExecutionError: If a step has no use case or its required steps have not been completed.
         """
         # Initialize the pipeline checkpoints
@@ -152,7 +155,12 @@ class KnowledgeConstructionPipeline:
         for entity_type in knowledge_model.entity_types.values():
             for collections in entity_type.document_collections.values():
                 unique_collections.update(collections)
-        document_registry.validate_collections(frozenset(unique_collections))
+        try:
+            document_registry.validate_collections(frozenset(unique_collections))
+        except ValueError as exc:
+            error = f'Invalid knowledge model "{workspace.paths.knowledge_model}": {exc}'
+            logger.error(error)
+            raise ModelIngestionError(error) from exc
         logger.info(
             f'Knowledge Model obtained successfully from "{workspace.paths.knowledge_model}"\n\n{knowledge_model}'
         )
