@@ -21,7 +21,7 @@ class ChunkingConfig:
         target_tokens: Target size of each chunk, in tokens.
         overlap_tokens: Tokens shared between consecutive chunks. If None, it is derived from ``target_tokens``
             (15% of it but at least 20, then capped at a third of the target and at 200).
-        max_tokens: Hard upper bound on chunk size, in tokens. If None, it is derived as 130% of
+        max_tokens: Hard upper bound on chunk size, in tokens, before the overlap is added. If None, it is derived as 130% of
             ``target_tokens``, capped at ``MAX_ALLOWED_MAX_TOKENS``.
     """
 

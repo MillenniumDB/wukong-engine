@@ -137,9 +137,11 @@ The `[chunking]` section controls how documents are segmented into the text chun
 | `target_tokens`  | The size each chunk aims for. Must be in `[1, 5000]`; the recommended range is `[100, 2000]`, and a value outside it logs a warning. | `integer` | `800`    |
 | `overlap_tokens` | Tokens shared between consecutive chunks. Must be in `[0, target_tokens - 1]`.              | `integer` | derived  |
 
-When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum per chunk, derived as `min(1.3 × target_tokens, 10000)`, which is not user-configurable.
+When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum, derived as `min(1.3 × target_tokens, 10000)` and not user-configurable, that keeps each chunk from drifting too far above the target. It bounds a chunk **before** the overlap is added: the overlap is a separate concern, so a chunk with its overlap may exceed the maximum by up to `overlap_tokens` (1,160 tokens at the defaults).
 
 Segmentation proceeds recursively along a hierarchy of boundaries, from most to least semantically meaningful — structural headings, paragraphs, lines, sentences, and finally words — so chunk boundaries coincide with document structure wherever the structure permits. The target size is treated as *soft*: when adding the next piece would overshoot, the packer keeps whichever alternative lands closer to the target.
+
+Before segmenting, line endings are normalized to `\n` (including CRLF, CR and the Unicode line and paragraph separators) and NUL characters are removed (a leading byte order mark is already dropped when the file is read). A chunk's `start_offset` and `end_offset` index this normalized text, counted in Unicode code points rather than bytes, so they map directly back to the source file only when it uses `\n` line endings and holds no NUL characters or byte order mark.
 
 These two values are the main quality/cost trade-off available:
 

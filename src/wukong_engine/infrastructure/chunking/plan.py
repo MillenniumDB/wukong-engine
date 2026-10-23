@@ -22,7 +22,7 @@ class ChunkingPlan:
     Attributes:
         target_size: Desired chunk size in tokens; segments larger than this are split further.
         overlap_size: Number of tokens each chunk overlaps with the previous one.
-        max_size: Hard upper bound on chunk size in tokens.
+        max_size: Hard upper bound on chunk size in tokens, before the overlap with the previous chunk is added.
         boundaries: Boundary rules applied from coarsest to finest when splitting oversized segments.
         tokenizer: Tokenizer used to measure segment sizes.
     """
