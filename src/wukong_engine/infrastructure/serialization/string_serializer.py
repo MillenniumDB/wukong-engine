@@ -56,15 +56,17 @@ class IdentityStringSerializer(StringSerializer):
 
 
 class EscapedStringSerializer(StringSerializer):
-    """Escapes control characters while maintaining readability.
+    r"""Escapes control characters while maintaining readability.
 
-    This transformation is reversible, allowing for accurate retrieval of the original string value.
+    This transformation is reversible, allowing for accurate retrieval of the original string value. It only uses
+    escapes that JSON-style string literals decode (MillenniumDB's import among them), so the output can be quoted
+    as-is in those formats.
 
     Rules:
     - Preserves printable characters as-is.
     - Escapes backslashes to avoid ambiguity.
-    - Escapes common control characters (e.g., newline, tab) using backslash notation.
-    - Escapes other control characters (ASCII 0-31 and 127, excluding the common ones) using hex encoding.
+    - Escapes newline, carriage return and tab using backslash notation.
+    - Escapes other control characters (ASCII 0-31 and 127) as ``\uXXXX``.
     - Unknown escape sequences are preserved literally as printable characters.
     """
 
@@ -73,21 +75,13 @@ class EscapedStringSerializer(StringSerializer):
         '\n': '\\n',
         '\r': '\\r',
         '\t': '\\t',
-        '\b': '\\b',
-        '\f': '\\f',
-        '\v': '\\v',
-        '\0': '\\0',
     }
 
     _SIMPLE_ESCAPES: ClassVar[dict[str, str]] = {
         'n': '\n',
         'r': '\r',
         't': '\t',
-        'b': '\b',
-        'f': '\f',
-        'v': '\v',
         '\\': '\\',
-        '0': '\0',
     }
 
     def serialize(self, value: str) -> str:
@@ -107,9 +101,9 @@ class EscapedStringSerializer(StringSerializer):
             if char in self._ESCAPE_MAP:
                 out.append(self._ESCAPE_MAP[char])
 
-            # Escape rare control characters using hex encoding
+            # Escape rare control characters using their code point
             elif ord(char) < 32 or ord(char) == 127:  # noqa: PLR2004
-                out.append(f'\\x{ord(char):02X}')
+                out.append(f'\\u{ord(char):04X}')
 
             # Keep printable characters as-is
             else:
@@ -151,11 +145,11 @@ class EscapedStringSerializer(StringSerializer):
                 i += 2
                 continue
 
-            # Handle hex-encoded sequences
-            if nxt == 'x' and i + 3 < len(value):
+            # Handle code point sequences
+            if nxt == 'u' and i + 5 < len(value):
                 try:
-                    out.append(chr(int(value[i + 2 : i + 4], 16)))
-                    i += 4
+                    out.append(chr(int(value[i + 2 : i + 6], 16)))
+                    i += 6
                     continue
                 except ValueError:
                     pass

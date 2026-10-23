@@ -14,7 +14,7 @@ from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.core.knowledge.model.values import DataType
-from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
+from wukong_engine.infrastructure.serialization import IdentityStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import clear_directory
 
 # Logging
@@ -37,7 +37,7 @@ class Neo4jWriter:
             path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
         """
         self._path = path
-        self._serializer = PropertyValueSerializer(EscapedStringSerializer())
+        self._serializer = PropertyValueSerializer(IdentityStringSerializer())
 
     def __enter__(self) -> Self:
         """Open the CSV file and write the header."""
