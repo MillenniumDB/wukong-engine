@@ -71,7 +71,8 @@ class RelationshipMerger:
     def _choose_value(existing: Any, incoming: Any, strategy: MergeStrategy) -> Any:
         """Choose the value according to the field's merge strategy.
 
-        If either value is None, the other one is returned regardless of the strategy. Length ties keep ``existing``.
+        If either value is None, the other one is returned regardless of the strategy. Length ties are broken by
+        keeping the lexicographically smaller value, so the result doesn't depend on the order values are seen in.
 
         Args:
             existing: Current value of the field.
@@ -95,7 +96,7 @@ class RelationshipMerger:
             case MergeStrategy.REPLACE:
                 chosen = incoming
             case MergeStrategy.LONGEST:
-                chosen = existing if len(existing) >= len(incoming) else incoming
+                chosen = max(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
             case MergeStrategy.SHORTEST:
-                chosen = existing if len(existing) <= len(incoming) else incoming
+                chosen = min(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
         return chosen

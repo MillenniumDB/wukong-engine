@@ -394,10 +394,12 @@ When an object is observed again, each field is reconciled according to its merg
 | ------------ | ---------------------------------------------------- | -------------------------------------------------------------- |
 | `"keep"`     | `"existing"`, `"preserve"`, `"retain"`, `"first"`    | Keep the stored value, ignore the incoming one.              |
 | `"replace"`  | `"incoming"`, `"overwrite"`, `"update"`, `"last"`    | Replace the stored value with the incoming one.              |
-| `"longest"`  | `"verbose"`, `"complete"`                            | Prefer the longer value, assuming it carries more information. |
-| `"shortest"` | `"concise"`, `"minimal"`                             | Prefer the shorter value, assuming it is more precise.        |
+| `"longest"`  | `"verbose"`, `"complete"`                            | Prefer the longer value, assuming it carries more information. Between values of equal length, the alphabetically first one is kept. |
+| `"shortest"` | `"concise"`, `"minimal"`                             | Prefer the shorter value, assuming it is more precise. Between values of equal length, the alphabetically first one is kept. |
 
 A `NULL` value never overwrites a non-null one, regardless of strategy. Observations are therefore monotonically informative: seeing an object again can add knowledge but never remove it.
+
+`"keep"` and `"replace"` depend on the order observations arrive in, which follows the order extraction jobs finish in: with concurrent real-time calls or batches, that order can differ between otherwise identical runs, so a field using them may end up with a different value. `"longest"` and `"shortest"` give the same result in any order.
 
 A typical arrangement is `"keep"` as the type default (identifier-like fields should be immutable) with `"longest"` on descriptive fields such as summaries.
 
