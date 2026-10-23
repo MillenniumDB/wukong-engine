@@ -41,7 +41,8 @@ class RecursiveDocumentChunker(DocumentChunker):
     def chunk(self, document: LoadedDocument) -> Iterator[Chunk]:
         """Chunk a document into smaller pieces.
 
-        The document content is normalized first; chunk offsets and content refer to the normalized text.
+        The document content is normalized first; chunk offsets and content refer to the normalized text. Pieces of
+        the text holding only whitespace don't become chunks.
 
         Args:
             document: Loaded document whose content is chunked.
@@ -53,6 +54,7 @@ class RecursiveDocumentChunker(DocumentChunker):
         root_segment = Segment(0, len(text))
         tokenized_text = self._plan.tokenizer.tokenize(text)
         segments = self._split_recursive(tokenized_text, root_segment, 0)
+        segments = [segment for segment in segments if text[segment.start : segment.end].strip()]
         final_segments = self._apply_overlap(tokenized_text, segments)
         for chunk_index, segment in enumerate(final_segments):
             yield Chunk(

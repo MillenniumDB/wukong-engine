@@ -26,8 +26,8 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         """Find and stream documents from the given list of sources.
 
         Resolves each source to a set of file paths according to its mode, then yields all Documents found. Files
-        that resolve outside the data root through a symlink, or that can't be read or decoded, are skipped with a
-        warning, and the number of skipped files is reported after each source.
+        that resolve outside the data root through a symlink, can't be read or decoded, or hold no text are skipped
+        with a warning, and the number of skipped files is reported after each source.
 
         Args:
             sources: Document sources to expand, in order.
@@ -134,15 +134,18 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
 
         Returns:
             The document identified by the file's content, with the path as its source URI, or None (logging a
-            warning) if the file can't be read or isn't valid text in the documents' encoding.
+            warning) if the file can't be read, isn't valid text in the documents' encoding, or holds no text.
         """
         try:
             content = path.read_bytes()
-            content.decode(DOCUMENT_ENCODING)
+            text = content.decode(DOCUMENT_ENCODING)
         except OSError as exc:
             logger.warning(f'Skipping "{path}": it could not be read ({exc})')
             return None
         except UnicodeDecodeError as exc:
             logger.warning(f'Skipping "{path}": it is not valid {DOCUMENT_ENCODING} text ({exc})')
+            return None
+        if not text.strip():
+            logger.warning(f'Skipping "{path}": it holds no text')
             return None
         return Document(id=DocumentId.from_content(content), source_uri=str(path))

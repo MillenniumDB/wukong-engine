@@ -50,12 +50,13 @@ def test_sources_yield_only_visible_text_files_inside_the_data_root_in_name_orde
     assert _stream(data_dir, mode) == expected
 
 
-def test_files_that_are_not_valid_text_are_skipped_and_a_bom_is_dropped(tmp_path: Path) -> None:
-    """Skip a file that isn't valid UTF-8 instead of aborting the ingestion, and load BOM files without the BOM."""
+def test_files_without_valid_text_are_skipped_and_a_bom_is_dropped(tmp_path: Path) -> None:
+    """Skip files that aren't valid UTF-8 or hold no text instead of aborting, and load BOM files without the BOM."""
     data = tmp_path / 'data'
     data.mkdir()
     (data / 'latin1.txt').write_bytes('café'.encode('latin-1'))
-    (data / 'bom.txt').write_bytes('﻿hello'.encode())
+    (data / 'bom.txt').write_bytes(b'\xef\xbb\xbfhello')
+    (data / 'blank.txt').write_text(' \n\t\n')
     source = DocumentSource(root=str(data), mode=DocumentSourceMode.DIRECTORY)
 
     documents = list(LocalDocumentStreamProvider().stream((source,), str(data)))
