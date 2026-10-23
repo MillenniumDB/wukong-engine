@@ -10,6 +10,8 @@ from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model import DocumentSource
 from wukong_engine.core.documents.model.values import DocumentSourceMode
 
+from .loader import DOCUMENT_ENCODING
+
 # Logging
 logger = logging.getLogger(__name__)
 
@@ -24,7 +26,8 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         """Find and stream documents from the given list of sources.
 
         Resolves each source to a set of file paths according to its mode, then yields all Documents found. Files
-        that resolve outside the data root through a symlink are skipped with a warning.
+        that resolve outside the data root through a symlink, or that can't be read or decoded, are skipped with a
+        warning, and the number of skipped files is reported after each source.
 
         Args:
             sources: Document sources to expand, in order.
@@ -39,12 +42,20 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         """
         data_root = Path(data_uri).expanduser().resolve()
         for source in sources:
+            skipped = 0
             for path in self._expand_source(source):
                 canonical_path = path.resolve()
                 if not canonical_path.is_relative_to(data_root):
                     logger.warning(f'Skipping "{path}": it resolves to "{canonical_path}", outside the data root')
+                    skipped += 1
                     continue
-                yield self._load_document(canonical_path)
+                document = self._load_document(canonical_path)
+                if document is None:
+                    skipped += 1
+                    continue
+                yield document
+            if skipped:
+                logger.warning(f'Skipped {skipped} file(s) of source {source}')
 
     def _validate_source(self, source: DocumentSource) -> None:
         """Validate a document source.
@@ -114,20 +125,24 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
         """
         return path.suffix == '.txt' and path.is_file() and not path.name.startswith(IGNORE_PREFIXES)
 
-    def _load_document(self, path: Path) -> Document:
+    @staticmethod
+    def _load_document(path: Path) -> Document | None:
         """Load a Document from a file path.
 
         Args:
             path: Resolved path of the file.
 
         Returns:
-            The document identified by the file's content, with the path as its source URI.
+            The document identified by the file's content, with the path as its source URI, or None (logging a
+            warning) if the file can't be read or isn't valid text in the documents' encoding.
         """
         try:
-            return Document(
-                id=DocumentId.from_content(path.read_bytes()),
-                source_uri=str(path),
-            )
-        except OSError:
-            logger.error(f'Failed to load document from "{path}"')
-            raise
+            content = path.read_bytes()
+            content.decode(DOCUMENT_ENCODING)
+        except OSError as exc:
+            logger.warning(f'Skipping "{path}": it could not be read ({exc})')
+            return None
+        except UnicodeDecodeError as exc:
+            logger.warning(f'Skipping "{path}": it is not valid {DOCUMENT_ENCODING} text ({exc})')
+            return None
+        return Document(id=DocumentId.from_content(content), source_uri=str(path))

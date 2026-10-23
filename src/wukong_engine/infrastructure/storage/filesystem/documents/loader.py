@@ -12,6 +12,9 @@ from wukong_engine.infrastructure.chunking.tokenization import HuggingFaceTokeni
 # Logging
 logger = logging.getLogger(__name__)
 
+# Encoding of document files; the "-sig" variant drops a leading byte order mark instead of keeping it as text
+DOCUMENT_ENCODING = 'utf-8-sig'
+
 
 class LocalDocumentLoader(DocumentLoader):
     """Loads the text contents of documents stored on the local filesystem."""
@@ -20,7 +23,12 @@ class LocalDocumentLoader(DocumentLoader):
         """Initialize the document loader."""
         self._tokenizer = HuggingFaceTokenizer()
 
-    def load(self, document: Document, encoding: str = 'utf-8', max_tokens: int | None = None) -> LoadedDocument:
+    def load(
+        self,
+        document: Document,
+        encoding: str = DOCUMENT_ENCODING,
+        max_tokens: int | None = None,
+    ) -> LoadedDocument:
         """Load the text contents of a document from the local filesystem.
 
         Args:
@@ -53,7 +61,7 @@ class LocalDocumentLoader(DocumentLoader):
     def load_many(
         self,
         documents: Iterable[Document],
-        encoding: str = 'utf-8',
+        encoding: str = DOCUMENT_ENCODING,
         max_tokens: int | None = None,
     ) -> Iterator[LoadedDocument]:
         """Load the text contents of multiple documents from the local filesystem.

@@ -6,7 +6,7 @@ import pytest
 
 from wukong_engine.core.documents.model import DocumentSource
 from wukong_engine.core.documents.model.values import DocumentSourceMode
-from wukong_engine.infrastructure.storage.filesystem.documents import LocalDocumentStreamProvider
+from wukong_engine.infrastructure.storage.filesystem.documents import LocalDocumentLoader, LocalDocumentStreamProvider
 
 
 @pytest.fixture
@@ -48,3 +48,17 @@ def test_sources_yield_only_visible_text_files_inside_the_data_root_in_name_orde
 ) -> None:
     """Skip hidden and temporary entries and symlinks leaving the data root, and keep a stable order."""
     assert _stream(data_dir, mode) == expected
+
+
+def test_files_that_are_not_valid_text_are_skipped_and_a_bom_is_dropped(tmp_path: Path) -> None:
+    """Skip a file that isn't valid UTF-8 instead of aborting the ingestion, and load BOM files without the BOM."""
+    data = tmp_path / 'data'
+    data.mkdir()
+    (data / 'latin1.txt').write_bytes('café'.encode('latin-1'))
+    (data / 'bom.txt').write_bytes('﻿hello'.encode())
+    source = DocumentSource(root=str(data), mode=DocumentSourceMode.DIRECTORY)
+
+    documents = list(LocalDocumentStreamProvider().stream((source,), str(data)))
+
+    assert [Path(doc.source_uri).name for doc in documents] == ['bom.txt']
+    assert LocalDocumentLoader().load(documents[0]).content == 'hello'

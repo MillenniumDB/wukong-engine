@@ -135,7 +135,7 @@ Every `root` is resolved against the data directory given on the command line an
 
 ## 📄 Data Directory
 
-The data directory holds the documents, as **plain text files with the `.txt` extension**. There is no required layout: the engine finds files through the `root` and `mode` of each source in `document_collections.json`, so you are free to organize the directory however suits the corpus, as long as the registry points at it.
+The data directory holds the documents, as **UTF-8 plain text files with the `.txt` extension** (a leading byte order mark is dropped). A file that can't be read or isn't valid UTF-8 is skipped with a warning naming it, and the rest of the corpus is still ingested. There is no required layout: the engine finds files through the `root` and `mode` of each source in `document_collections.json`, so you are free to organize the directory however suits the corpus, as long as the registry points at it.
 
 Filenames are unrestricted. A document's identity is derived from the content of its bytes, not from its name, so renaming a file does not create a new document and re-ingesting an unchanged file is a no-op.
 
