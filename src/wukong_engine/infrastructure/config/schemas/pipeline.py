@@ -1,6 +1,6 @@
 """Schema for the pipeline configuration section."""
 
-from pydantic import BaseModel, StrictBool
+from pydantic import BaseModel, ConfigDict, StrictBool
 
 
 class PipelineConfigSchema(BaseModel):
@@ -12,6 +12,8 @@ class PipelineConfigSchema(BaseModel):
         extract_relationships: Whether the relationship extraction step runs. If None, the model default is used.
         export_knowledge: Whether the knowledge export step runs. If None, the model default is used.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     ingest_documents: StrictBool | None = None
     extract_entities: StrictBool | None = None

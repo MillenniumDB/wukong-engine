@@ -2,7 +2,7 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model.values import MergeStrategy, RelationshipIdentityPolicy
@@ -21,6 +21,8 @@ class EndpointContextRule(BaseModel):
         target_context_levels: Context levels at which the target entity may be found; a single level is turned
             into a one-item list.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     source_context_levels: list[ContextLevel] | ContextLevel
     target_context_levels: list[ContextLevel] | ContextLevel
@@ -55,6 +57,8 @@ class RelationshipTypeSchema(BaseModel):
         default_merge_strategy: Merge strategy for fields that don't define their own; accepts aliases such as
             "overwrite" or "first".
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     description: StrictStr
     instructions: StrictStr | None = None

@@ -1,6 +1,6 @@
 """Pydantic schema for a full knowledge model definition."""
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
 from .entity_type import EntityTypeSchema
 from .extraction_config import ExtractionConfigSchema
@@ -15,6 +15,8 @@ class KnowledgeModelSchema(BaseModel):
         entity_types: Entity type definitions, keyed by entity type name.
         relationship_types: Relationship type definitions, keyed by relationship type name.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     extraction_config: ExtractionConfigSchema = Field(default_factory=ExtractionConfigSchema)
     entity_types: dict[StrictStr, EntityTypeSchema] = Field(default_factory=dict)

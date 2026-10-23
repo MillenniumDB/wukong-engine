@@ -52,7 +52,7 @@ The knowledge model is a **JSON** object with three top-level sections:
 | `entity_types`       |    🟡     | The entity types to extract, keyed by entity type name.              | `object[string, type]` | `{}`    |
 | `relationship_types` |    🟡     | The relationship types to extract, keyed by relationship type name.  | `object[string, type]` | `{}`    |
 
-Every section is technically optional, but a model with no entity types extracts nothing.
+Every section is technically optional, but a model with no entity types extracts nothing. A key the engine doesn't know, at any level of the model, is rejected rather than ignored, so a misspelled parameter can't silently fall back to its default.
 
 Throughout this document, ✅ marks a **required** parameter and 🟡 marks an **optional** one.
 

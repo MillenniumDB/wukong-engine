@@ -2,7 +2,7 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 
 from wukong_engine.core.extraction.model.values import Language
 
@@ -15,6 +15,8 @@ class LLMSchema(BaseModel):
         language: Language of the source documents, or None if unspecified. Accepts codes or names (e.g. "en",
             "spanish"), case-insensitively.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     domain: StrictStr = 'General documents.'
     language: Language | None = None
@@ -54,6 +56,8 @@ class ProjectionSchema(BaseModel):
         enabled_relationships: Names of the relationship types enabled for extraction, or None to enable all.
     """
 
+    model_config = ConfigDict(extra='forbid')
+
     enabled_entities: list[StrictStr] | None = None
     enabled_relationships: list[StrictStr] | None = None
 
@@ -65,6 +69,8 @@ class ExtractionConfigSchema(BaseModel):
         llm: LLM parameters.
         projection: Which entity and relationship types are enabled for extraction.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     llm: LLMSchema = Field(default_factory=LLMSchema)
     projection: ProjectionSchema = Field(default_factory=ProjectionSchema)

@@ -3,7 +3,7 @@
 import re
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
@@ -22,6 +22,8 @@ class _FieldSchema(BaseModel):
         merge_strategy: How to merge values when deduplicating, or None to use the type's default. Accepts aliases
             such as "overwrite" or "first".
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     data_type: DataType
     description: StrictStr

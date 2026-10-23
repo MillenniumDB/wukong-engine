@@ -1,6 +1,6 @@
 """Schema for the application configuration file."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .chunking import ChunkingConfigSchema
 from .export import ExportConfigSchema
@@ -17,6 +17,8 @@ class ApplicationConfigSchema(BaseModel):
         chunking: Document chunking settings (``[chunking]`` table).
         export: Knowledge export settings (``[export]`` table).
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     pipeline: PipelineConfigSchema = Field(default_factory=PipelineConfigSchema)
     llm: LLMConfigSchema = Field(default_factory=LLMConfigSchema)

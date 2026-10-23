@@ -2,7 +2,7 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.elements.values import ReasoningEffort
@@ -19,6 +19,8 @@ class LLMConfigSchema(BaseModel):
         reasoning_effort: Generalized reasoning effort level overriding the LLM model's default (e.g. ``none``,
             ``low``, ``extreme``). If None, the LLM model's default is used.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     model: StrictStr | None = None
     execution_mode: ExecutionMode | None = None

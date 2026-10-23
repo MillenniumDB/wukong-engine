@@ -2,7 +2,7 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, ConfigDict, field_validator
 
 from wukong_engine.app.knowledge_export.model.values import KnowledgeExportFormat
 
@@ -14,6 +14,8 @@ class ExportConfigSchema(BaseModel):
         format: Knowledge export format. Case-insensitive aliases (``mdb``, ``millenniumdb``, ``neo4j``) are
             accepted. If None, the model default is used.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     format: KnowledgeExportFormat | None = None
 

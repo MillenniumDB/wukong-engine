@@ -1,6 +1,6 @@
 """Schema for document collection definitions."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .source import DocumentSourceSchema
 
@@ -11,5 +11,7 @@ class DocumentCollectionSchema(BaseModel):
     Attributes:
         sources: Sources whose documents belong to the collection.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     sources: list[DocumentSourceSchema] = Field(default_factory=list)

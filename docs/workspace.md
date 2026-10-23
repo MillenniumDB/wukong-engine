@@ -83,6 +83,8 @@ The `document_collections.json` file is the registry that maps each collection n
 | `collections` |    🟡     | The collections, keyed by collection name.                   | `object[string, object]` | `{}`    |
 | `sources`     |    🟡     | The sources that make up a collection. Duplicates are rejected. |     `Source array`      | `[]`    |
 
+Unknown keys, such as a misspelled `collection`, are rejected rather than ignored.
+
 Collection names may contain letters, digits, dots, hyphens and underscores, must start with a letter or digit, and must be at most 64 characters long (regex: `^[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}$`).
 
 A collection may draw from several sources, and the same file may belong to more than one collection — documents are identified by their content, so a file reachable from two collections is **one document belonging to two collections**, not two documents.

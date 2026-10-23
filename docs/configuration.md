@@ -42,7 +42,7 @@ poetry run wukong run <path/to/workspace_dir> <path/to/data_dir> --config <path/
 
 If no configuration is given, the engine uses `config/default.toml`, which runs the entire pipeline with the recommended values.
 
-The file has four sections, all of them optional. Any section or individual key you leave out falls back to the built-in default shown in the tables below, so a configuration file only needs to state what it changes:
+The file has four sections, all of them optional. Any section or individual key you leave out falls back to the built-in default shown in the tables below, so a configuration file only needs to state what it changes. A section or key the engine doesn't know, such as a misspelled one, aborts the run instead of being ignored:
 
 ```toml
 [pipeline]
