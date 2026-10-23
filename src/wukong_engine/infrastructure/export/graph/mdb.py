@@ -286,7 +286,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
 
         # Special Relationship: ExtractedFrom
         logger.info('Exporting Entity Provenance...')
-        for source_id, entity_id in self._repository.stream_entity_provenance():
+        for source_id, entity_id in self._repository.stream_entity_provenance(model.active_entity_types.keys()):
             writer.write_entity_provenance(source_id, entity_id)
 
     def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
@@ -302,6 +302,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             logger.info(f'Exporting Relationships of type: {relationship_type.name}')
             for relationship, provenance in self._repository.stream_relationships_by_type_with_provenance(
                 relationship_type,
+                model.active_endpoints(relationship_type),
             ):
                 writer.write_relationship(relationship, relationship_type, provenance)
 

@@ -478,7 +478,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         logger.info('Exporting Entity Provenance...')
         extracted_from_file_path = entities_dir.parent / 'relationships' / 'ExtractedFrom.csv'
         with Neo4jEntityProvenanceWriter(extracted_from_file_path) as writer:
-            for source_id, entity_id in self._repository.stream_entity_provenance():
+            for source_id, entity_id in self._repository.stream_entity_provenance(model.active_entity_types.keys()):
                 writer.write(source_id, entity_id)
 
     def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path) -> None:
@@ -496,6 +496,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             with Neo4jRelationshipWriter(relationship_type_file_path, relationship_type) as writer:
                 for relationship, provenance in self._repository.stream_relationships_by_type_with_provenance(
                     relationship_type,
+                    model.active_endpoints(relationship_type),
                 ):
                     writer.write(relationship, provenance)
 

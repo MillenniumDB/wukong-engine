@@ -5,7 +5,7 @@ from typing import Protocol
 
 from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.knowledge.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
-from wukong_engine.core.knowledge.model import RelationshipType
+from wukong_engine.core.knowledge.model import Endpoint, RelationshipType
 
 
 class RelationshipStore(Protocol):
@@ -38,14 +38,19 @@ class RelationshipStore(Protocol):
         """
         ...
 
-    def stream_by_relationship_type(self, relationship_type: RelationshipType) -> Iterator[Relationship]:
-        """Stream all relationships of a given type.
+    def stream_by_relationship_type(
+        self,
+        relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
+    ) -> Iterator[Relationship]:
+        """Stream all relationships of a given type whose endpoint entity types match one of the given endpoints.
 
         Args:
             relationship_type: Relationship type whose relationships are streamed.
+            endpoints: Allowed (source, target) entity type pairs; relationships between other types are skipped.
 
         Yields:
-            The stored relationships of the given type.
+            The stored relationships of the given type between the allowed entity types.
         """
         ...
 
@@ -60,11 +65,14 @@ class RelationshipStore(Protocol):
     def stream_provenance_by_relationship_type(
         self,
         relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
     ) -> Iterator[RelationshipChunkProvenance]:
         """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship.
 
         Args:
             relationship_type: Relationship type whose provenance is streamed.
+            endpoints: Allowed (source, target) entity type pairs, filtering relationships as in
+                ``stream_by_relationship_type``.
 
         Yields:
             One provenance object per relationship of the given type, holding the IDs of the chunks it was extracted
