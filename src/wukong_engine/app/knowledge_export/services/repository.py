@@ -1,13 +1,14 @@
 """Knowledge Repository."""
 
-from collections.abc import Iterator
+from collections.abc import Collection, Iterable, Iterator
 
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId, RelationshipId
-from wukong_engine.core.knowledge.model import EntityType, RelationshipType
+from wukong_engine.core.knowledge.model import Endpoint, EntityType, RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName
 
 
 class KnowledgeRepository:
@@ -51,21 +52,27 @@ class KnowledgeRepository:
         with self._uow as tx:
             yield from tx.entities.stream_by_entity_type(entity_type)
 
-    def stream_relationships_by_type(self, relationship_type: RelationshipType) -> Iterator[Relationship]:
+    def stream_relationships_by_type(
+        self,
+        relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
+    ) -> Iterator[Relationship]:
         """Stream relationships of a specific type from the knowledge base.
 
         Args:
             relationship_type: Relationship type whose relationships are streamed.
+            endpoints: Allowed (source, target) entity type pairs; relationships between other types are skipped.
 
         Yields:
-            Each stored relationship of the given type.
+            Each stored relationship of the given type between the allowed entity types.
         """
         with self._uow as tx:
-            yield from tx.relationships.stream_by_relationship_type(relationship_type)
+            yield from tx.relationships.stream_by_relationship_type(relationship_type, endpoints)
 
     def stream_relationships_by_type_with_provenance(
         self,
         relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
     ) -> Iterator[tuple[Relationship, tuple[ChunkId, ...]]]:
         """Stream relationships of a specific type along with their provenance information from the knowledge base.
 
@@ -74,6 +81,7 @@ class KnowledgeRepository:
 
         Args:
             relationship_type: Relationship type whose relationships are streamed.
+            endpoints: Allowed (source, target) entity type pairs; relationships between other types are skipped.
 
         Yields:
             Tuples of (relationship, identifiers of the chunks the relationship was extracted from).
@@ -83,8 +91,9 @@ class KnowledgeRepository:
                 relationship stream.
         """
         with self._uow as tx:
-            relationships = iter(tx.relationships.stream_by_relationship_type(relationship_type))
-            provenance = iter(tx.relationships.stream_provenance_by_relationship_type(relationship_type))
+            endpoints = tuple(endpoints)
+            relationships = iter(tx.relationships.stream_by_relationship_type(relationship_type, endpoints))
+            provenance = iter(tx.relationships.stream_provenance_by_relationship_type(relationship_type, endpoints))
 
             # Iterate through both streams in parallel, yielding relationships with their corresponding provenance information
             for relationship in relationships:
@@ -112,21 +121,29 @@ class KnowledgeRepository:
                     f'relationship {remaining_provenance.relationship_id}.',
                 )
 
-    def stream_entity_provenance(self) -> Iterator[tuple[DocumentId | ChunkId, EntityId]]:
+    def stream_entity_provenance(
+        self,
+        entity_types: Collection[EntityTypeName],
+    ) -> Iterator[tuple[DocumentId | ChunkId, EntityId]]:
         """Stream provenance information for documents/chunks and their associated entities from the knowledge base.
 
         Document-level provenance is streamed first, followed by chunk-level provenance.
+
+        Args:
+            entity_types: Entity types whose provenance is streamed; links to entities of other types are skipped.
 
         Yields:
             Tuples of (identifier of the source document or chunk, identifier of an entity extracted from it).
         """
         with self._uow as tx:
             for provenance in tx.entities.stream_provenance_by_document():
-                for entity_id in provenance.entity_ids:
-                    yield provenance.document_id, entity_id
+                for entity_id, entity_type in zip(provenance.entity_ids, provenance.entity_types, strict=True):
+                    if entity_type in entity_types:
+                        yield provenance.document_id, entity_id
             for provenance in tx.entities.stream_provenance_by_chunk():
-                for entity_id in provenance.entity_ids:
-                    yield provenance.chunk_id, entity_id
+                for entity_id, entity_type in zip(provenance.entity_ids, provenance.entity_types, strict=True):
+                    if entity_type in entity_types:
+                        yield provenance.chunk_id, entity_id
 
     def stream_relationship_provenance(self) -> Iterator[tuple[ChunkId, RelationshipId]]:
         """Stream provenance information for chunks and their associated relationships from the knowledge base.

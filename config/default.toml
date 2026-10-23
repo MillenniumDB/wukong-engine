@@ -41,7 +41,7 @@ export_knowledge = true
 # Note: The provider is inferred from the model name, and only its API key is required
 # Supported models:
 # "gpt-6-luna": Default (OpenAI reasoning model, runs at low effort)
-# "claude-haiku-5-5": Anthropic alternative, with lower recall (reasoning model, runs without thinking)
+# "claude-haiku-5-5": Anthropic alternative, with lower recall (reasoning model, runs at low effort)
 # Built-in default: "gpt-6-luna"
 model = "gpt-6-luna"
 
@@ -65,7 +65,7 @@ max_concurrency = 15
 
 ### Reasoning effort (advanced) ###
 # Note: Leave unset so that every model runs at low effort, the level benchmarked as the best default (see docs/configuration.md)
-# Levels: "none", "low", "medium", "high", "extreme", "max"
+# Levels: "none", "low", "medium", "high", "extreme", "max" ("none" runs claude-haiku-5-5 without thinking)
 # reasoning_effort = "low"
 
 ##############
@@ -82,8 +82,9 @@ target_tokens = 800
 
 ### Number of overlapping tokens between consecutive chunks ###
 # Note: This value should be in the range [0, target_tokens - 1]
-# Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200)
-overlap_tokens = 120
+# Note: Leave unset so that it follows target_tokens; setting it fixes the overlap even if target_tokens changes
+# Built-in default: derived from target_tokens as min(max(20, 0.15 * target_tokens), target_tokens / 3, 200), i.e. 120 for 800
+# overlap_tokens = 120
 
 ##############
 #   EXPORT   #

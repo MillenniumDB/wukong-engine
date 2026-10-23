@@ -108,7 +108,7 @@ class EntityField(Field):
 
             # Regex pattern must be respected when defined
             pattern = self.regex.get(ctx_level)
-            if pattern is not None and not pattern.match(def_val):
+            if pattern is not None and not pattern.fullmatch(def_val):
                 raise ValueError(
                     f'Invalid EntityField "{self.name}": Default value "{def_val}" '
                     f'for context level "{ctx_level.value}" does not match the '
@@ -146,7 +146,7 @@ class EntityField(Field):
         # Regex pattern must be respected when defined
         for ctx_level, pattern in self.regex.items():
             for example in self.examples:
-                if not pattern.match(example):
+                if not pattern.fullmatch(example):
                     raise ValueError(
                         f'Invalid EntityField "{self.name}": Example "{example}" '
                         f'does not match the specified regex pattern for '
@@ -200,7 +200,7 @@ class RelationshipField(Field):
             )
 
         # Regex pattern must be respected when defined
-        if self.regex is not None and self.default_value is not None and not self.regex.match(self.default_value):
+        if self.regex is not None and self.default_value is not None and not self.regex.fullmatch(self.default_value):
             raise ValueError(
                 f'Invalid RelationshipField "{self.name}": Default value "{self.default_value}" '
                 f'does not match the specified regex pattern: {self.regex.pattern}',
@@ -227,7 +227,7 @@ class RelationshipField(Field):
         # Regex pattern must be respected when defined
         if self.regex is not None:
             for example in self.examples:
-                if not self.regex.match(example):
+                if not self.regex.fullmatch(example):
                     raise ValueError(
                         f'Invalid RelationshipField "{self.name}": Example "{example}" '
                         f'does not match the specified regex pattern: {self.regex.pattern}',

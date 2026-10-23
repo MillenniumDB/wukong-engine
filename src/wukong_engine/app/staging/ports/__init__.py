@@ -4,6 +4,7 @@ from .document_store import DocumentStore
 from .entity_extraction_store import EntityExtractionStore
 from .entity_store import EntityStore
 from .extraction_store import ExtractionStore
+from .input_snapshot_store import InputSnapshotStore
 from .pipeline_store import PipelineStore
 from .relationship_extraction_store import RelationshipExtractionStore
 from .relationship_store import RelationshipStore
@@ -14,6 +15,7 @@ __all__ = [
     'EntityExtractionStore',
     'EntityStore',
     'ExtractionStore',
+    'InputSnapshotStore',
     'PipelineStore',
     'RelationshipExtractionStore',
     'RelationshipStore',

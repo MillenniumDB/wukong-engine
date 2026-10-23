@@ -9,7 +9,7 @@ from wukong_engine.core.documents.elements import Document, LoadedDocument
 class DocumentLoader(Protocol):
     """Loads the text contents of documents."""
 
-    def load(self, document: Document, encoding: str = 'utf-8', max_tokens: int | None = None) -> LoadedDocument:
+    def load(self, document: Document, encoding: str = 'utf-8-sig', max_tokens: int | None = None) -> LoadedDocument:
         """Load the text contents of a document.
 
         Args:
@@ -29,7 +29,7 @@ class DocumentLoader(Protocol):
     def load_many(
         self,
         documents: Iterable[Document],
-        encoding: str = 'utf-8',
+        encoding: str = 'utf-8-sig',
         max_tokens: int | None = None,
     ) -> Iterator[LoadedDocument]:
         """Load the text contents of multiple documents.
@@ -44,5 +44,17 @@ class DocumentLoader(Protocol):
 
         Raises:
             ValueError: If a document's stored content no longer matches its content hash.
+        """
+        ...
+
+    def truncate(self, content: str, max_tokens: int) -> str:
+        """Truncate a document's text the way ``load`` does, for text obtained some other way.
+
+        Args:
+            content: Text of a document.
+            max_tokens: Maximum number of tokens to keep.
+
+        Returns:
+            The text, truncated beyond ``max_tokens`` tokens.
         """
         ...

@@ -1,6 +1,6 @@
 """Schema for the chunking configuration section."""
 
-from pydantic import BaseModel, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt
 
 
 class ChunkingConfigSchema(BaseModel):
@@ -10,6 +10,8 @@ class ChunkingConfigSchema(BaseModel):
         target_tokens: Target size of each chunk, in tokens. If None, the model default is used.
         overlap_tokens: Tokens shared between consecutive chunks. If None, it is derived from ``target_tokens``.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     target_tokens: StrictInt | None = None
     overlap_tokens: StrictInt | None = None

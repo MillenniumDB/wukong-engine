@@ -1,6 +1,6 @@
 """Schema for document registry definitions."""
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
 from .collection import DocumentCollectionSchema
 
@@ -11,5 +11,7 @@ class DocumentRegistrySchema(BaseModel):
     Attributes:
         collections: Document collections keyed by collection name.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     collections: dict[StrictStr, DocumentCollectionSchema] = Field(default_factory=dict)

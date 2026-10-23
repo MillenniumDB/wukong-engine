@@ -2,11 +2,12 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model.values import EntityIdentityPolicy, MergeStrategy
 
+from .context_level import reject_repeated_context_levels
 from .field import EntityFieldSchema
 
 
@@ -23,6 +24,8 @@ class EntityTypeSchema(BaseModel):
             one-element list.
         default_merge_strategy: Merge strategy for fields that don't define their own.
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     description: StrictStr
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
@@ -88,6 +91,19 @@ class EntityTypeSchema(BaseModel):
         if isinstance(value, str):
             return cls._MERGE_STRATEGY_ALIASES.get(value.strip().lower(), value)
         return value
+
+    @field_validator('instructions', 'document_collections', mode='before')
+    @classmethod
+    def check_unique_context_levels(cls, value: Any) -> Any:
+        """Reject context level mappings naming the same level twice in different cases.
+
+        Args:
+            value: Raw value of a context level mapping.
+
+        Returns:
+            ``value`` unchanged, for pydantic to validate.
+        """
+        return reject_repeated_context_levels(value)
 
     @field_validator('instructions')
     @classmethod

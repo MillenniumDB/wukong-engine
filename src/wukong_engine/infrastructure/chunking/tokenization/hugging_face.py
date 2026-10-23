@@ -75,13 +75,11 @@ class HuggingFaceTokenizer(TextTokenizer):
             max_tokens: Maximum number of tokens, excluding special tokens, to keep.
 
         Returns:
-            The text decoded from its first ``max_tokens`` tokens.
-
-        Raises:
-            ValueError: If the decoded text is not a string.
+            The text unchanged if it fits, otherwise the prefix of it before its first token beyond ``max_tokens``.
+            Cutting the original text at a token offset, rather than decoding the kept tokens, never ends in half
+            of a character that spans several byte-level tokens.
         """
-        encoded = self._tokenizer(text, add_special_tokens=False, truncation=True, max_length=max_tokens)
-        decoded = self._tokenizer.decode(encoded['input_ids'], skip_special_tokens=True)
-        if isinstance(decoded, str):
-            return decoded
-        raise ValueError('Decoded truncated text is not a string.')
+        tokenized_text = self.tokenize(text)
+        if tokenized_text.token_count <= max_tokens:
+            return text
+        return text[: tokenized_text.token_starts[max_tokens]]

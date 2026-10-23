@@ -52,7 +52,7 @@ The knowledge model is a **JSON** object with three top-level sections:
 | `entity_types`       |    🟡     | The entity types to extract, keyed by entity type name.              | `object[string, type]` | `{}`    |
 | `relationship_types` |    🟡     | The relationship types to extract, keyed by relationship type name.  | `object[string, type]` | `{}`    |
 
-Every section is technically optional, but a model with no entity types extracts nothing.
+Every section is technically optional, but a model with no entity types extracts nothing. A key the engine doesn't know, at any level of the model, is rejected rather than ignored, so a misspelled parameter can't silently fall back to its default.
 
 Throughout this document, ✅ marks a **required** parameter and 🟡 marks an **optional** one.
 
@@ -152,7 +152,7 @@ Entity type names must start with an **uppercase letter**, contain only **alphan
 | ------------------------ | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------: | --------------- |
 | `description`            |    ✅     | What this type represents, in your own words. Reaches the LLM.                                                                                                                                                               |               `string`               | —               |
 | `instructions`           |    🟡     | Additional technical guidance for extracting this type. Accepts a context level mapping, since telling the model how to recognize "the mission this document *is*" differs from "the missions this text *mentions*".         | `object[string, string]` or `string` | `{}`            |
-| `primary_key`            |    ✅     | The name of the field that identifies instances of this type. Must be defined in `fields`, must be marked `"required": true`, and its retrieval mode must be `"extract"` at every context level it is used at — never `"default"` or `"skip"`.               |               `string`               | —               |
+| `primary_key`            |    ✅     | The name of the field that identifies instances of this type. Must be defined in `fields`, must be marked `"required": true`, its retrieval mode must be `"extract"` at every context level it is used at — never `"default"` or `"skip"` — and it can't declare a `default_value`.               |               `string`               | —               |
 | `deduplication`          |    🟡     | The identity policy for this type. Currently only `"primary_key"` is supported. See [Identity and Merging](#-identity-and-merging).                                                                                          |               `string`               | `"primary_key"` |
 | `default_merge_strategy` |    🟡     | How to reconcile field values when the same entity is observed again. Individual fields may override it. See [Merge Strategies](#merge-strategies).                                                                          |               `string`               | `"keep"`        |
 | `fields`                 |    🟡     | The **fields** of this entity type, keyed by field name. See [Entity Fields](#entity-fields).                                                                                                                                |       `object[string, Field]`        | `{}`            |
@@ -171,10 +171,10 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `instructions`   |    🟡     | Detailed technical guidance for obtaining this field. Accepts a context level mapping.                                                                                                                  | `object[string, string]` or `string` | `{}`        |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take. An empty array means unrestricted.                                                                                                            |      `string array` or `string`      | `[]`        |
 | `examples`       |    🟡     | Example value(s) illustrating the expected form. Must themselves satisfy `options` and `regex`, otherwise the model is rejected.                                                                        |      `string array` or `string`      | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid (e.g. `"^[a-z][a-z0-9_]*$"`), checked after extraction: it isn't shown to the LLM, so use `examples` to show the expected form. Accepts a context level mapping, so one level can be stricter than the other. | `object[string, string]` or `string` | `{}`        |
+| `regex`          |    🟡     | A pattern the **whole** value must match to be considered valid (e.g. `"[a-z][a-z0-9_]*"`), checked after extraction: it isn't shown to the LLM, so use `examples` to show the expected form. Accepts a context level mapping, so one level can be stricter than the other. | `object[string, string]` or `string` | `{}`        |
 | `default_value`  |    🟡     | The value used when nothing can be extracted, or when the `"default"` retrieval mode is chosen. Accepts a context level mapping. Must itself satisfy `options` and `regex`.                             | `object[string, string]` or `string` | `{}`        |
 | `retrieval_mode` |    🟡     | How the value is obtained. Accepts a context level mapping. See the table below.                                                                                                                        | `object[string, string]` or `string` | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing, or doesn't satisfy `options` and `regex`, is discarded rather than repaired. An invalid value of an optional field is discarded instead, leaving the entity with the field's `default_value` (if any). The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing (and has no `default_value` to fall back to), or doesn't satisfy `options` and `regex`, is discarded rather than repaired. An invalid value of an optional field is discarded instead, leaving the entity with the field's `default_value` (if any). The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
 | `merge_strategy` |    🟡     | Overrides the entity type's `default_merge_strategy` for this field. See [Merge Strategies](#merge-strategies).                                                                                         |               `string`               | `null`      |
 
 **Retrieval modes** determine where an entity field's value comes from:
@@ -245,7 +245,7 @@ Each relationship type is a key inside the `relationship_types` object (the **re
 | `description`            |    ✅     | What this relationship represents. Reaches the LLM.                                                                                                                                             |                           `string`                            | —               |
 | `instructions`           |    🟡     | Additional technical guidance for extracting this type. Unlike entity instructions, this is a plain string (relationships are only extracted at chunk level).                                   |                           `string`                            | `null`          |
 | `endpoints`              |    🟡     | The permitted source/target entity type pairs and their context level pairings. See [Endpoints](#endpoints).                                                                                    | `object[string, object[string, EndpointRule array \| object]]` | `{}`            |
-| `primary_key`            |    🟡     | The field that distinguishes relationships sharing the same endpoints. Required by the `"primary_key"` deduplication policy. Must be in `fields`, marked `"required": true`, and `"extract"`.    |                           `string`                            | `null`          |
+| `primary_key`            |    🟡     | The field that distinguishes relationships sharing the same endpoints. Required by the `"primary_key"` deduplication policy. Must be in `fields`, marked `"required": true`, and `"extract"`, with no `default_value`.    |                           `string`                            | `null`          |
 | `deduplication`          |    🟡     | The identity policy for this type: `"primary_key"`, `"endpoints"` or `"none"`. See [Deduplication](#deduplication).                                                                             |                           `string`                            | `"primary_key"` |
 | `default_merge_strategy` |    🟡     | How to reconcile field values when the same relationship is observed again. Individual fields may override it.                                                                                  |                           `string`                            | `"keep"`        |
 | `fields`                 |    🟡     | The **fields** of this relationship type, keyed by field name. See [Relationship Fields](#relationship-fields).                                                                                 |                     `object[string, Field]`                   | `{}`            |
@@ -265,7 +265,7 @@ Each rule is an object with two parameters:
 | `source_context_levels` |    ✅     | The context level(s) at which the **source** entity may be found. | `string array` or `string` |
 | `target_context_levels` |    ✅     | The context level(s) at which the **target** entity may be found. | `string array` or `string` |
 
-Every combination of the two lists is generated. A pair may carry a single rule object instead of an array of rules.
+Every combination of the two lists is generated. A pair may carry a single rule object instead of an array of rules. Every source must list at least one target, every pair at least one rule, and every rule at least one level on each side, so an endpoint can never silently allow nothing.
 
 An endpoint therefore carries more information than a conventional domain/range declaration: it is not merely "`A` may reference `B`", but "`A` *as recognized at level l₁* may reference `B` *as recognized at level l₂*". The valid pairings are:
 
@@ -310,10 +310,10 @@ Relationship fields work like entity fields, except that they take **plain value
 | `instructions`   |    🟡     | Detailed technical guidance for extracting this field.                                                                            |          `string`          | `null`      |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take.                                                                         | `string array` or `string` | `[]`        |
 | `examples`       |    🟡     | Example value(s). Must satisfy `options` and `regex`.                                                                             | `string array` or `string` | `[]`        |
-| `regex`          |    🟡     | A pattern the value must match to be considered valid, checked after extraction (it isn't shown to the LLM).                     |          `string`          | `null`      |
+| `regex`          |    🟡     | A pattern the **whole** value must match to be considered valid, checked after extraction (it isn't shown to the LLM).                     |          `string`          | `null`      |
 | `default_value`  |    🟡     | The value used when nothing is extracted, or with the `"default"` retrieval mode. Must satisfy `options` and `regex`.             |          `string`          | `null`      |
 | `retrieval_mode` |    🟡     | Either `"extract"` (the LLM reads it from the text) or `"default"` (the declared `default_value` is used). `"default"` requires a non-null `default_value`. |          `string`          | `"extract"` |
-| `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing or invalid is discarded; an invalid optional value is discarded instead, falling back to `default_value` (if any). |           `bool`           | `false`     |
+| `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing (with no `default_value` to fall back to) or invalid is discarded; an invalid optional value is discarded instead, falling back to `default_value` (if any). |           `bool`           | `false`     |
 | `merge_strategy` |    🟡     | Overrides the relationship type's `default_merge_strategy` for this field.                                                        |          `string`          | `null`      |
 
 ### Relationship Example
@@ -394,10 +394,12 @@ When an object is observed again, each field is reconciled according to its merg
 | ------------ | ---------------------------------------------------- | -------------------------------------------------------------- |
 | `"keep"`     | `"existing"`, `"preserve"`, `"retain"`, `"first"`    | Keep the stored value, ignore the incoming one.              |
 | `"replace"`  | `"incoming"`, `"overwrite"`, `"update"`, `"last"`    | Replace the stored value with the incoming one.              |
-| `"longest"`  | `"verbose"`, `"complete"`                            | Prefer the longer value, assuming it carries more information. |
-| `"shortest"` | `"concise"`, `"minimal"`                             | Prefer the shorter value, assuming it is more precise.        |
+| `"longest"`  | `"verbose"`, `"complete"`                            | Prefer the longer value, assuming it carries more information. Between values of equal length, the alphabetically first one is kept. |
+| `"shortest"` | `"concise"`, `"minimal"`                             | Prefer the shorter value, assuming it is more precise. Between values of equal length, the alphabetically first one is kept. |
 
 A `NULL` value never overwrites a non-null one, regardless of strategy. Observations are therefore monotonically informative: seeing an object again can add knowledge but never remove it.
+
+`"keep"` and `"replace"` depend on the order observations arrive in, which follows the order extraction jobs finish in: with concurrent real-time calls or batches, that order can differ between otherwise identical runs, so a field using them may end up with a different value. `"longest"` and `"shortest"` give the same result in any order.
 
 A typical arrangement is `"keep"` as the type default (identifier-like fields should be immutable) with `"longest"` on descriptive fields such as summaries.
 
@@ -453,7 +455,7 @@ In the exported output, identifiers appear as follows:
 
 ## 🔒 Reserved Names
 
-The engine always materializes the source documents as part of the result, so a few names are reserved and cannot be used in a knowledge model:
+The engine always materializes the source documents as part of the result, and the export formats have keywords of their own, so a few names are reserved and cannot be used in a knowledge model:
 
 | Reserved Name   | Kind              | Purpose                                                            |
 | --------------- | ----------------- | -------------------------------------------------------------------- |
@@ -461,6 +463,7 @@ The engine always materializes the source documents as part of the result, so a 
 | `Chunk`         | Entity type       | One object per text chunk, carrying its text and its exact span.   |
 | `ChunkOf`       | Relationship type | Links each `Chunk` to its parent `Document`.                       |
 | `ExtractedFrom` | Relationship type | Links each extracted entity to every source context it was seen in. |
+| `true`, `false` | Field             | Keywords of the MillenniumDB export format, which can't be used as property names. |
 
 The check is case-insensitive, so `document` and `CHUNKOF` are rejected too.
 

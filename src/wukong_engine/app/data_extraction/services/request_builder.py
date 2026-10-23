@@ -77,6 +77,26 @@ def _data_type_to_json(data_type: DataType) -> str:
         # TODO(BFFV): Map INTEGER to "integer", FLOAT to "number" and BOOLEAN to "boolean" once those data types exist
 
 
+def _rebuild_text(chunks: tuple[Chunk, ...]) -> str:
+    """Rebuild the text a document's chunks were cut from.
+
+    Args:
+        chunks: Chunks of the document, ordered by chunk index.
+
+    Returns:
+        The text covered by the chunks, without repeating their overlaps. A gap between two chunks, left by text
+        holding only whitespace, becomes a line break.
+    """
+    parts: list[str] = []
+    end = 0
+    for chunk in chunks:
+        if parts and chunk.start_offset > end:
+            parts.append('\n')
+        parts.append(chunk.content[max(end - chunk.start_offset, 0) :])
+        end = max(end, chunk.end_offset)
+    return ''.join(parts)
+
+
 class ExtractionRequestBuilder(Protocol):
     """Request builder for data extraction tasks."""
 
@@ -309,17 +329,34 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
 
         Args:
             source: Source context of the job. Documents are loaded up to ``max_document_tokens`` tokens, while
-                chunks use their stored content.
+                chunks use their stored content. A document whose file can no longer be read as it was ingested is
+                rebuilt from its ingested chunks instead.
 
         Returns:
             The source text to extract from.
+
+        Raises:
+            ExtractionRequestBuildError: If a document's file can't be read and it has no ingested chunks.
         """
-        if isinstance(source, Document):
-            loaded_doc = self._document_loader.load(source, max_tokens=self.max_document_tokens)
-            text = loaded_doc.content
-        else:
-            text = source.content
-        return text
+        if not isinstance(source, Document):
+            return source.content
+
+        try:
+            return self._document_loader.load(source, max_tokens=self.max_document_tokens).content
+        except (OSError, UnicodeDecodeError, ValueError) as exc:
+            logger.error(f'Failed to read document "{source.source_uri}" as it was ingested: {exc}')
+
+        # The file is gone or changed since ingestion, but its ingested chunks still hold its text
+        chunks = self._repository.get_document_chunks(source)
+        if not chunks:
+            error = f'Document "{source.source_uri}" has no ingested chunks to rebuild its text from'
+            logger.error(error)
+            raise ExtractionRequestBuildError(error)
+        logger.warning(
+            f'Using the text of document "{source.source_uri}" rebuilt from its {len(chunks)} ingested chunk(s) '
+            f'instead of the file, with normalized line endings',
+        )
+        return self._document_loader.truncate(_rebuild_text(chunks), self.max_document_tokens)
 
     def _generate_response_schema(
         self,

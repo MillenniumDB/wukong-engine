@@ -14,8 +14,8 @@ from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.core.knowledge.model.values import DataType
-from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
-from wukong_engine.infrastructure.storage.filesystem import clear_directory
+from wukong_engine.infrastructure.serialization import IdentityStringSerializer, PropertyValueSerializer
+from wukong_engine.infrastructure.storage.filesystem import clear_directory, replacing_directory
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -37,7 +37,7 @@ class Neo4jWriter:
             path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
         """
         self._path = path
-        self._serializer = PropertyValueSerializer(EscapedStringSerializer())
+        self._serializer = PropertyValueSerializer(IdentityStringSerializer())
 
     def __enter__(self) -> Self:
         """Open the CSV file and write the header."""
@@ -406,29 +406,30 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         """Export knowledge to a specified output format.
 
         Writes one CSV file per node/edge type under ``<export_uri>/neo4j/entities`` and
-        ``<export_uri>/neo4j/relationships``.
+        ``<export_uri>/neo4j/relationships``. The ``neo4j`` directory is only replaced once the whole export succeeds.
 
         Args:
             model: Knowledge model whose active entity and relationship types are exported.
             export_uri: Base export directory.
         """
-        # Setup export directories
         base_export_dir = Path(export_uri).resolve() / 'neo4j'
-        base_export_dir.mkdir(parents=True, exist_ok=True)
-        entities_dir = base_export_dir / 'entities'
-        entities_dir.mkdir(parents=True, exist_ok=True)
-        relationships_dir = base_export_dir / 'relationships'
-        relationships_dir.mkdir(parents=True, exist_ok=True)
         logger.info(f'Exporting knowledge to Neo4j CSV files at: {base_export_dir}')
 
-        # Export sources
-        self._export_sources(base_export_dir)
+        with replacing_directory(base_export_dir) as export_dir:
+            # Setup export directories
+            entities_dir = export_dir / 'entities'
+            entities_dir.mkdir()
+            relationships_dir = export_dir / 'relationships'
+            relationships_dir.mkdir()
 
-        # Export entities
-        self._export_entities(model, entities_dir)
+            # Export sources
+            self._export_sources(export_dir)
 
-        # Export relationships
-        self._export_relationships(model, relationships_dir)
+            # Export entities
+            self._export_entities(model, entities_dir)
+
+            # Export relationships
+            self._export_relationships(model, relationships_dir)
 
     def _export_sources(self, export_dir: Path) -> None:
         """Export sources to a set of Neo4j CSV files.
@@ -478,7 +479,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         logger.info('Exporting Entity Provenance...')
         extracted_from_file_path = entities_dir.parent / 'relationships' / 'ExtractedFrom.csv'
         with Neo4jEntityProvenanceWriter(extracted_from_file_path) as writer:
-            for source_id, entity_id in self._repository.stream_entity_provenance():
+            for source_id, entity_id in self._repository.stream_entity_provenance(model.active_entity_types.keys()):
                 writer.write(source_id, entity_id)
 
     def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path) -> None:
@@ -496,6 +497,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             with Neo4jRelationshipWriter(relationship_type_file_path, relationship_type) as writer:
                 for relationship, provenance in self._repository.stream_relationships_by_type_with_provenance(
                     relationship_type,
+                    model.active_endpoints(relationship_type),
                 ):
                     writer.write(relationship, provenance)
 

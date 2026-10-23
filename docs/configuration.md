@@ -42,7 +42,7 @@ poetry run wukong run <path/to/workspace_dir> <path/to/data_dir> --config <path/
 
 If no configuration is given, the engine uses `config/default.toml`, which runs the entire pipeline with the recommended values.
 
-The file has four sections, all of them optional. Any section or individual key you leave out falls back to the built-in default shown in the tables below, so a configuration file only needs to state what it changes:
+The file has four sections, all of them optional. Any section or individual key you leave out falls back to the built-in default shown in the tables below, so a configuration file only needs to state what it changes. A section or key the engine doesn't know, such as a misspelled one, aborts the run instead of being ignored:
 
 ```toml
 [pipeline]
@@ -71,9 +71,9 @@ The `[pipeline]` section selects which steps of the pipeline are executed. Each 
 | `extract_relationships` | Extract relationships between the already-extracted entities.                                                      | `bool` | `true`  |
 | `export_knowledge`      | Render the extracted knowledge into the configured output format.                                                  | `bool` | `true`  |
 
-The steps run in the order listed and each depends on the ones before it. Disabling a step does **not** skip its results: because state is durable in the workspace's staging database, a disabled step whose work was completed on an earlier run still satisfies the dependency. Disabling a step whose work has *never* been completed aborts the run with a clear error, rather than producing a partial result.
+The steps run in the order listed and each depends on the ones before it. Disabling a step does **not** skip its results: because state is durable in the workspace's staging database, a disabled step whose work was completed on an earlier run still satisfies the dependency. Disabling a step whose work has *never* been completed aborts the run with a clear error, rather than producing a partial result. The whole plan is checked before anything runs, so such a run aborts without running or resetting any step.
 
-This is what lets you re-export without re-extracting, or add a relationship type and extract only it, by enabling just the step you need.
+This is what lets you re-export without re-extracting, or test each step in isolation while setting up a workspace, by enabling just the step you need. The inputs a step has used stay fixed until it is reset; see [Input Snapshots](/docs/workspace.md#-input-snapshots).
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
@@ -83,10 +83,10 @@ The `[llm]` section controls the language model used for extraction.
 
 | Key               | Description                                                                                      |   Type    | Default          |
 | ----------------- | -------------------------------------------------------------------------------------------------- | :-------: | ---------------- |
-| `model`           | The model to use. Its provider is inferred from the name.                                        | `string`  | `"gpt-6-luna"`   |
+| `model`           | The model to use, case-insensitive. Its provider is inferred from the name. An empty name is rejected; omit the key to use the default. | `string`  | `"gpt-6-luna"`   |
 | `execution_mode`  | How requests reach the provider. See below.                                                      | `string`  | `"real-time"`    |
 | `max_concurrency` | Maximum number of in-flight LLM calls in real-time mode. Must be at least 1.                     | `integer` | `5`              |
-| `reasoning_effort` | ⚙️ Advanced. Overrides the reasoning effort of every model, `low` by default. See below.        | `string`  | Model's default  |
+| `reasoning_effort` | ⚙️ Advanced. Overrides the reasoning effort of every model, `low` by default. Case-insensitive. See below. | `string`  | Model's default  |
 
 **Supported models:**
 
@@ -137,9 +137,13 @@ The `[chunking]` section controls how documents are segmented into the text chun
 | `target_tokens`  | The size each chunk aims for. Must be in `[1, 5000]`; the recommended range is `[100, 2000]`, and a value outside it logs a warning. | `integer` | `800`    |
 | `overlap_tokens` | Tokens shared between consecutive chunks. Must be in `[0, target_tokens - 1]`.              | `integer` | derived  |
 
-When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum per chunk, derived as `min(1.3 × target_tokens, 10000)`, which is not user-configurable.
+When `overlap_tokens` is omitted it is derived from `target_tokens` as `min(max(20, 0.15 × target_tokens), target_tokens / 3, 200)` — so a target of 800 yields an overlap of 120. There is also an internal hard maximum, derived as `min(1.3 × target_tokens, 10000)` and not user-configurable, that keeps each chunk from drifting too far above the target. It bounds a chunk **before** the overlap is added: the overlap is a separate concern, so a chunk with its overlap may exceed the maximum by up to `overlap_tokens` (1,160 tokens at the defaults).
 
 Segmentation proceeds recursively along a hierarchy of boundaries, from most to least semantically meaningful — structural headings, paragraphs, lines, sentences, and finally words — so chunk boundaries coincide with document structure wherever the structure permits. The target size is treated as *soft*: when adding the next piece would overshoot, the packer keeps whichever alternative lands closer to the target.
+
+Before segmenting, line endings are normalized to `\n` (including CRLF, CR and the Unicode line and paragraph separators) and NUL characters are removed (a leading byte order mark is already dropped when the file is read). A chunk's `start_offset` and `end_offset` index this normalized text, counted in Unicode code points rather than bytes, so they map directly back to the source file only when it uses `\n` line endings and holds no NUL characters or byte order mark.
+
+The chunking settings documents were ingested with are kept for the workspace: changing them only takes effect after resetting ingestion (see [Input Snapshots](/docs/workspace.md#-input-snapshots)).
 
 These two values are the main quality/cost trade-off available:
 

@@ -1,7 +1,9 @@
 """Use case for ingesting document collections into staging storage."""
 
 import logging
+from collections.abc import Callable
 
+from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.document_ingestion.exceptions import DocumentIngestionError
 from wukong_engine.app.document_ingestion.ports import DocumentChunker, DocumentLoader, DocumentStreamProvider
 from wukong_engine.app.document_ingestion.services import DocumentSourceNormalizer
@@ -25,7 +27,7 @@ class IngestDocuments:
         self,
         stream_provider: DocumentStreamProvider,
         loader: DocumentLoader,
-        chunker: DocumentChunker,
+        chunker_factory: Callable[[ChunkingConfig], DocumentChunker],
         uow: UnitOfWork,
     ) -> None:
         """Initialize the use case with its dependencies.
@@ -33,16 +35,16 @@ class IngestDocuments:
         Args:
             stream_provider: Provider that discovers documents from each collection's sources.
             loader: Loader that reads the text contents of discovered documents.
-            chunker: Chunker that splits loaded documents into chunks.
+            chunker_factory: Factory of the chunker that splits loaded documents into chunks with given settings.
             uow: Unit of work used to persist documents, chunks and pipeline checkpoints.
         """
         self._source_normalizer = DocumentSourceNormalizer()
         self._stream_provider = stream_provider
         self._loader = loader
-        self._chunker = chunker
+        self._chunker_factory = chunker_factory
         self._uow = uow
 
-    def execute(self, registry: DocumentRegistry) -> None:
+    def execute(self, registry: DocumentRegistry, data_uri: str, chunking: ChunkingConfig) -> None:
         """Ingest all document collections into the system.
 
         Registers every collection, ingests the documents and chunks of each one, and marks the
@@ -50,6 +52,8 @@ class IngestDocuments:
 
         Args:
             registry: Registry holding the document collections to ingest.
+            data_uri: Data root directory every ingested document must be contained in.
+            chunking: Settings to chunk the documents with.
 
         Raises:
             DocumentIngestionError: If ingesting any collection fails.
@@ -60,9 +64,10 @@ class IngestDocuments:
             tx.documents.add_collections(collection.name for collection in collections)
 
         # Ingest all document collections
+        chunker = self._chunker_factory(chunking)
         try:
             for collection in collections:
-                self._ingest_collection(collection)
+                self._ingest_collection(collection, data_uri, chunker)
                 logger.info(f'Ingested Document Collection: {collection.name}')
         except DocumentIngestionError as exc:
             error = 'Document Ingestion failed due to an unrecoverable error'
@@ -77,7 +82,7 @@ class IngestDocuments:
             logger.info(f'Total Chunks: {total_chunks}')
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
 
-    def _ingest_collection(self, collection: DocumentCollection) -> None:
+    def _ingest_collection(self, collection: DocumentCollection, data_uri: str, chunker: DocumentChunker) -> None:
         """Ingest a specific collection of documents into the system.
 
         Normalizes the collection's sources, then stores its documents, links them to the collection and stores their
@@ -85,13 +90,17 @@ class IngestDocuments:
 
         Args:
             collection: Collection whose documents and chunks are ingested.
+            data_uri: Data root directory every ingested document must be contained in.
+            chunker: Chunker that splits the loaded documents into chunks.
 
         Raises:
             DocumentIngestionError: If any step of the ingestion fails.
         """
         try:
             normalized_sources = self._source_normalizer.normalize(collection.sources)
-            for doc_batch in batched(self._stream_provider.stream(normalized_sources), size=DOCUMENT_BATCH_SIZE):
+            for doc_batch in batched(
+                self._stream_provider.stream(normalized_sources, data_uri), size=DOCUMENT_BATCH_SIZE
+            ):
                 with self._uow as tx:
                     # Ingest documents
                     tx.documents.bulk_upsert_documents(doc_batch)
@@ -99,7 +108,7 @@ class IngestDocuments:
 
                     # Ingest chunks
                     loaded_docs = (doc for doc in self._loader.load_many(doc_batch) if doc is not None)
-                    for chunk_batch in batched(self._chunker.chunk_many(loaded_docs), size=CHUNK_BATCH_SIZE):
+                    for chunk_batch in batched(chunker.chunk_many(loaded_docs), size=CHUNK_BATCH_SIZE):
                         tx.documents.bulk_upsert_chunks(chunk_batch)
         except Exception as exc:
             error = f'Failed to ingest Document Collection "{collection.name}"'

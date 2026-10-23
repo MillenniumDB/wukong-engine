@@ -11,7 +11,7 @@ from wukong_engine.core.documents.elements import ContextRef
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.knowledge.elements import ChunkRelationshipProvenance, Relationship, RelationshipChunkProvenance
 from wukong_engine.core.knowledge.elements.values import EntityId, RelationshipId
-from wukong_engine.core.knowledge.model import RelationshipType
+from wukong_engine.core.knowledge.model import Endpoint, RelationshipType
 from wukong_engine.core.knowledge.model.values import RelationshipTypeName
 from wukong_engine.core.knowledge.services import RelationshipMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
@@ -211,14 +211,33 @@ class SQLiteRelationshipStore(RelationshipStore):
             ((context.content_id.bytes, relationship.id.content.bytes) for relationship in relationships),
         )
 
-    def stream_by_relationship_type(self, relationship_type: RelationshipType) -> Iterator[Relationship]:
-        """Stream all relationships of a given type.
+    @staticmethod
+    def _endpoint_params(relationship_type: RelationshipType, endpoints: Iterable[Endpoint]) -> tuple[str, str]:
+        """Build the query parameters that select relationships of a type between the allowed endpoint entity types.
+
+        Args:
+            relationship_type: Type whose relationships are selected.
+            endpoints: Allowed (source, target) entity type pairs.
+
+        Returns:
+            The relationship type name and the JSON-encoded list of allowed pairs.
+        """
+        pairs = sorted({(endpoint.source.value, endpoint.target.value) for endpoint in endpoints})
+        return relationship_type.name.value, json.dumps(pairs)
+
+    def stream_by_relationship_type(
+        self,
+        relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
+    ) -> Iterator[Relationship]:
+        """Stream all relationships of a given type whose endpoint entity types match one of the given endpoints.
 
         Args:
             relationship_type: Type whose relationships are streamed.
+            endpoints: Allowed (source, target) entity type pairs; relationships between other types are skipped.
 
         Yields:
-            Each relationship of the type, ordered by content identifier.
+            Each matching relationship of the type, ordered by content identifier.
         """
         rows = self._conn.execute(
             """
@@ -234,9 +253,13 @@ class SQLiteRelationshipStore(RelationshipStore):
             JOIN entities s ON r.source_content_id = s.content_id
             JOIN entities t ON r.target_content_id = t.content_id
             WHERE r.relationship_type_name = ?
+                AND EXISTS (
+                    SELECT 1 FROM json_each(?) AS pair
+                    WHERE pair.value ->> 0 = s.entity_type_name AND pair.value ->> 1 = t.entity_type_name
+                )
             ORDER BY r.content_id
             """,
-            (relationship_type.name.value,),
+            self._endpoint_params(relationship_type, endpoints),
         )
         for row in rows:
             yield self._row_to_relationship(row, relationship_type)
@@ -318,15 +341,18 @@ class SQLiteRelationshipStore(RelationshipStore):
     def stream_provenance_by_relationship_type(
         self,
         relationship_type: RelationshipType,
+        endpoints: Iterable[Endpoint],
     ) -> Iterator[RelationshipChunkProvenance]:
         """Stream all links of extracted relationships of a given type and their source chunks, grouped by relationship.
 
         Args:
             relationship_type: Type whose relationships' provenance is streamed.
+            endpoints: Allowed (source, target) entity type pairs, filtering relationships as in
+                ``stream_by_relationship_type``.
 
         Yields:
-            One provenance per relationship with the chunks it was extracted from, ordered by relationship content
-            identifier and then by document and chunk index.
+            One provenance per matching relationship with the chunks it was extracted from, ordered by relationship
+            content identifier and then by document and chunk index.
         """
         rows = self._conn.execute(
             """
@@ -337,11 +363,17 @@ class SQLiteRelationshipStore(RelationshipStore):
                 c.instance_id AS chunk_instance_id
             FROM relationship_provenance rp
             JOIN relationships r ON r.content_id = rp.relationship_content_id
+            JOIN entities s ON r.source_content_id = s.content_id
+            JOIN entities t ON r.target_content_id = t.content_id
             JOIN chunks c ON c.content_id = rp.chunk_content_id
             WHERE r.relationship_type_name = ?
+                AND EXISTS (
+                    SELECT 1 FROM json_each(?) AS pair
+                    WHERE pair.value ->> 0 = s.entity_type_name AND pair.value ->> 1 = t.entity_type_name
+                )
             ORDER BY r.content_id, c.document_content_id, c.chunk_index
             """,
-            (relationship_type.name.value,),
+            self._endpoint_params(relationship_type, endpoints),
         )
 
         # Track the current relationship and its associated chunk info to group them together

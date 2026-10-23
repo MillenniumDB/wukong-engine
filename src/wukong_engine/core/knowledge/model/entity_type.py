@@ -20,7 +20,7 @@ class EntityType:
         description: Description of what the entity type represents.
         instructions: Extra extraction instructions per context level.
         primary_key: Name of the field used as primary key. It must be a required field retrieved through
-            ``EXTRACT`` or ``LOAD`` at every configured context level.
+            ``EXTRACT`` at every configured context level.
         identity_policy: Policy used to deduplicate entities of this type.
         fields: Field definitions, keyed by field name.
         document_collections: Document collections to extract this entity type from, per context level.
@@ -87,8 +87,8 @@ class EntityType:
         """Validate primary key invariants.
 
         Raises:
-            ValueError: If the primary key is not one of the fields, is not required, or uses a retrieval mode other
-                than ``EXTRACT`` or ``LOAD`` at some context level.
+            ValueError: If the primary key is not one of the fields, is not required, declares a default value, or uses
+                a retrieval mode other than ``EXTRACT`` at some context level.
         """
         # PK existence
         if self.primary_key not in self.fields:
@@ -101,12 +101,19 @@ class EntityType:
                 f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
             )
 
-        # PK retrieval mode must be either EXTRACT or LOAD
+        # PK must not have a default value, which would merge every entity missing it into one
+        if primary_key_field.default_value:
+            raise ValueError(
+                f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" cannot declare a default value, '
+                f'since entities missing it would all share that key',
+            )
+
+        # PK retrieval mode must be EXTRACT
         for context_level, retrieval_mode in primary_key_field.retrieval_mode.items():
-            if retrieval_mode not in {EntityRetrievalMode.EXTRACT, EntityRetrievalMode.LOAD}:
+            if retrieval_mode != EntityRetrievalMode.EXTRACT:
                 raise ValueError(
                     f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" has retrieval mode '
-                    f'"{retrieval_mode.value}" for context level "{context_level.value}", expected "extract" or "load"',
+                    f'"{retrieval_mode.value}" for context level "{context_level.value}", expected "extract"',
                 )
 
     def _validate_document_collections(self) -> None:

@@ -2,7 +2,7 @@
 
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import DocumentSourceMode
 
@@ -14,6 +14,8 @@ class DocumentSourceSchema(BaseModel):
         root: Path to the source file or directory, relative to the data directory or absolute.
         mode: How the root is expanded into documents (single file, directory, or recursive directory).
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     root: StrictStr
     mode: DocumentSourceMode

@@ -10,6 +10,8 @@ from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model import DocumentSource
 from wukong_engine.core.documents.model.values import DocumentSourceMode
 
+from .loader import DOCUMENT_ENCODING
+
 # Logging
 logger = logging.getLogger(__name__)
 
@@ -20,24 +22,40 @@ IGNORE_PREFIXES = ('.', '~', '~$')  # Ignore hidden and temporary files
 class LocalDocumentStreamProvider(DocumentStreamProvider):
     """Streams documents from a list of sources stored on the local filesystem."""
 
-    def stream(self, sources: tuple[DocumentSource, ...]) -> Iterator[Document]:
+    def stream(self, sources: tuple[DocumentSource, ...], data_uri: str) -> Iterator[Document]:
         """Find and stream documents from the given list of sources.
 
-        Resolves each source to a set of file paths according to its mode, then yields all Documents found.
+        Resolves each source to a set of file paths according to its mode, then yields all Documents found. Files
+        that resolve outside the data root through a symlink, can't be read or decoded, or hold no text are skipped
+        with a warning, and the number of skipped files is reported after each source.
 
         Args:
             sources: Document sources to expand, in order.
+            data_uri: Data root directory every document must resolve inside of; ``~`` is expanded.
 
         Yields:
-            A document for each file found, identified by its content and located by its resolved path.
+            A document for each file found, identified by its content and located by its resolved path, in source
+            order and then in path order.
 
         Raises:
             ValueError: If a source root doesn't exist or doesn't match its mode.
         """
+        data_root = Path(data_uri).expanduser().resolve()
         for source in sources:
+            skipped = 0
             for path in self._expand_source(source):
                 canonical_path = path.resolve()
-                yield self._load_document(canonical_path)
+                if not canonical_path.is_relative_to(data_root):
+                    logger.warning(f'Skipping "{path}": it resolves to "{canonical_path}", outside the data root')
+                    skipped += 1
+                    continue
+                document = self._load_document(canonical_path)
+                if document is None:
+                    skipped += 1
+                    continue
+                yield document
+            if skipped:
+                logger.warning(f'Skipped {skipped} file(s) of source {source}')
 
     def _validate_source(self, source: DocumentSource) -> None:
         """Validate a document source.
@@ -67,10 +85,11 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
 
         Args:
             source: Source to expand. FILE mode yields the root itself, DIRECTORY mode its direct ".txt" files and
-                RECURSIVE mode all nested ".txt" files, skipping hidden and temporary files.
+                RECURSIVE mode all nested ".txt" files, skipping hidden and temporary files and directories.
 
         Yields:
-            The file paths of the source, built from its root as given (not resolved).
+            The file paths of the source, built from its root as given (not resolved), sorted by name within each
+            directory.
 
         Raises:
             ValueError: If the source fails validation.
@@ -86,36 +105,47 @@ class LocalDocumentStreamProvider(DocumentStreamProvider):
             case DocumentSourceMode.FILE:
                 yield path
             case DocumentSourceMode.DIRECTORY:
-                yield from (p for p in path.glob('*.txt') if self._is_valid_document(p))
+                yield from (p for p in sorted(path.iterdir()) if self._is_valid_document(p))
             case DocumentSourceMode.RECURSIVE:
-                yield from (p for p in path.rglob('*.txt') if self._is_valid_document(p))
+                for directory, dir_names, file_names in path.walk():
+                    # Pruning in place keeps the walk out of hidden directories, and sorting makes its order stable
+                    dir_names[:] = sorted(name for name in dir_names if not name.startswith(IGNORE_PREFIXES))
+                    yield from (p for p in map(directory.joinpath, sorted(file_names)) if self._is_valid_document(p))
 
     @staticmethod
     def _is_valid_document(path: Path) -> bool:
         """Return whether the given path is a valid text file, excluding common system/hidden files.
 
         Args:
-            path: Candidate ".txt" path.
+            path: Candidate path.
 
         Returns:
-            True if the path is a file whose name doesn't start with a hidden or temporary prefix, False otherwise.
+            True if the path is a ".txt" file whose name doesn't start with a hidden or temporary prefix, False
+            otherwise.
         """
-        return path.is_file() and not path.name.startswith(IGNORE_PREFIXES)
+        return path.suffix == '.txt' and path.is_file() and not path.name.startswith(IGNORE_PREFIXES)
 
-    def _load_document(self, path: Path) -> Document:
+    @staticmethod
+    def _load_document(path: Path) -> Document | None:
         """Load a Document from a file path.
 
         Args:
             path: Resolved path of the file.
 
         Returns:
-            The document identified by the file's content, with the path as its source URI.
+            The document identified by the file's content, with the path as its source URI, or None (logging a
+            warning) if the file can't be read, isn't valid text in the documents' encoding, or holds no text.
         """
         try:
-            return Document(
-                id=DocumentId.from_content(path.read_bytes()),
-                source_uri=str(path),
-            )
-        except OSError:
-            logger.error(f'Failed to load document from "{path}"')
-            raise
+            content = path.read_bytes()
+            text = content.decode(DOCUMENT_ENCODING)
+        except OSError as exc:
+            logger.warning(f'Skipping "{path}": it could not be read ({exc})')
+            return None
+        except UnicodeDecodeError as exc:
+            logger.warning(f'Skipping "{path}": it is not valid {DOCUMENT_ENCODING} text ({exc})')
+            return None
+        if not text.strip():
+            logger.warning(f'Skipping "{path}": it holds no text')
+            return None
+        return Document(id=DocumentId.from_content(content), source_uri=str(path))

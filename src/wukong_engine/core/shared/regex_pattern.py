@@ -27,13 +27,14 @@ class RegexPattern:
         self.pattern = pattern
         self._compiled = compiled
 
-    def match(self, text: str) -> re.Match[str] | None:
-        """Match the regex pattern against text.
+    def fullmatch(self, text: str) -> re.Match[str] | None:
+        """Match the regex pattern against the whole text.
 
         Args:
             text: The text to match against.
 
         Returns:
-            A match object if the pattern matches, None otherwise.
+            A match object if the pattern matches all of ``text``, None otherwise (including when it only matches a
+            prefix of it).
         """
-        return self._compiled.match(text)
+        return self._compiled.fullmatch(text)

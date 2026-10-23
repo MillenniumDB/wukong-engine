@@ -3,11 +3,13 @@
 import re
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.knowledge.model.values import DataType, MergeStrategy
+
+from .context_level import reject_repeated_context_levels
 
 
 class _FieldSchema(BaseModel):
@@ -22,6 +24,8 @@ class _FieldSchema(BaseModel):
         merge_strategy: How to merge values when deduplicating, or None to use the type's default. Accepts aliases
             such as "overwrite" or "first".
     """
+
+    model_config = ConfigDict(extra='forbid')
 
     data_type: DataType
     description: StrictStr
@@ -121,6 +125,19 @@ class EntityFieldSchema(_FieldSchema):
     regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode = Field(default_factory=dict)
+
+    @field_validator('instructions', 'regex', 'default_value', 'retrieval_mode', mode='before')
+    @classmethod
+    def check_unique_context_levels(cls, value: Any) -> Any:
+        """Reject context level mappings naming the same level twice in different cases.
+
+        Args:
+            value: Raw value of a context level mapping.
+
+        Returns:
+            ``value`` unchanged, for pydantic to validate.
+        """
+        return reject_repeated_context_levels(value)
 
     @field_validator('instructions', 'default_value')
     @classmethod

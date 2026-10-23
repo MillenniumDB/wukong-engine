@@ -1,10 +1,10 @@
 """Knowledge model provider backed by a local JSON file."""
 
-import json
 from pathlib import Path
 
 from wukong_engine.app.model_ingestion.ports import KnowledgeModelProvider
 from wukong_engine.core.knowledge.model import KnowledgeModel
+from wukong_engine.infrastructure.storage.filesystem import load_json_file
 
 from .mapper import KnowledgeModelMapper
 from .schemas import KnowledgeModelSchema
@@ -23,6 +23,6 @@ class LocalKnowledgeModelProvider(KnowledgeModelProvider):
             The validated knowledge model.
         """
         path = Path(source_uri)
-        raw = json.load(path.open())
+        raw = load_json_file(path)
         schema = KnowledgeModelSchema.model_validate(raw)
         return KnowledgeModelMapper().map_knowledge_model(schema)
