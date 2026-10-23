@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from wukong_engine.infrastructure.storage.filesystem import replacing_directory
+from wukong_engine.infrastructure.storage.filesystem import load_json_file, replacing_directory
 
 
 def _previous_export(tmp_path: Path) -> Path:
@@ -55,3 +55,27 @@ def test_replacing_a_missing_directory_creates_it(tmp_path: Path) -> None:
         (staging / 'knowledge_graph.qm').write_text('new')
 
     assert (target / 'knowledge_graph.qm').read_text() == 'new'
+
+
+@pytest.mark.parametrize(
+    'content',
+    [
+        '{"entity_types": {"Mission": {}, "Mission": {}}}',
+        '{"collections": {"c": {"sources": [{"root": "a", "root": "b"}]}}}',
+    ],
+)
+def test_json_objects_repeating_a_key_are_rejected(tmp_path: Path, content: str) -> None:
+    """Reject a repeated key at any depth, instead of silently keeping its last definition."""
+    path = tmp_path / 'definition.json'
+    path.write_text(content)
+
+    with pytest.raises(ValueError, match='Duplicate keys in a JSON object'):
+        load_json_file(path)
+
+
+def test_json_files_with_a_byte_order_mark_are_loaded(tmp_path: Path) -> None:
+    """Load a JSON file saved with a byte order mark, as some editors do."""
+    path = tmp_path / 'definition.json'
+    path.write_bytes(b'\xef\xbb\xbf{"collections": {}}')
+
+    assert load_json_file(path) == {'collections': {}}

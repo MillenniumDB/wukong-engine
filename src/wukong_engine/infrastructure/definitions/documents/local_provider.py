@@ -1,10 +1,10 @@
 """Document registry provider backed by a local JSON file."""
 
-import json
 from pathlib import Path
 
 from wukong_engine.app.model_ingestion.ports import DocumentRegistryProvider
 from wukong_engine.core.documents.model import DocumentRegistry
+from wukong_engine.infrastructure.storage.filesystem import load_json_file
 
 from .mapper import DocumentRegistryMapper
 from .schemas import DocumentRegistrySchema
@@ -25,6 +25,6 @@ class LocalDocumentRegistryProvider(DocumentRegistryProvider):
         """
         registry_path = Path(source_uri).expanduser().resolve()
         data_path = Path(data_uri).expanduser().resolve()
-        raw_registry = json.load(registry_path.open())
+        raw_registry = load_json_file(registry_path)
         registry_schema = DocumentRegistrySchema.model_validate(raw_registry)
         return DocumentRegistryMapper(base_dir=data_path).map_registry(registry_schema)
