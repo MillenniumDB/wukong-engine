@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/wukong/extraction-schema.schema.json",
+  "title": "WUKONG Extraction Schema",
+  "description": "Abstract schema for declaring entity and relationship extraction over named document collections. This is intentionally a superset of the current WUKONG implementation.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "collections": {
+      "type": "object",
+      "description": "Named document collections available to the extraction schema.",
+      "propertyNames": {
+        "$ref": "#/$defs/name"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/documentCollection"
+      }
+    },
+    "context_levels": {
+      "type": "object",
+      "description": "Named extraction contexts. In this abstract model, a context level combines a document collection with an extraction strategy.",
+      "propertyNames": {
+        "$ref": "#/$defs/name"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/contextLevel"
+      }
+    },
+    "entities": {
+      "type": "object",
+      "description": "Entity types, keyed by entity type name.",
+      "propertyNames": {
+        "$ref": "#/$defs/typeName"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/entityType"
+      }
+    },
+    "relations": {
+      "type": "object",
+      "description": "Relation types, keyed by relation type name.",
+      "propertyNames": {
+        "$ref": "#/$defs/typeName"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/relationType"
+      }
+    }
+  },
+  "required": [
+    "collections",
+    "entities",
+    "relations"
+  ],
+  "$defs": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "typeName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9_]{0,127}$"
+    },
+    "fieldName": {
+      "type": "string",
+      "pattern": "^[a-z][A-Za-z0-9_]{0,127}$"
+    },
+    "contextLevelRef": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of an entry in context_levels. Cross-reference validity requires semantic validation."
+    },
+    "entityTypeRef": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of an entry in entities. Cross-reference validity requires semantic validation."
+    },
+    "contextLevel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "collection": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Name of an entry in collections. Cross-reference validity requires semantic validation."
+        },
+        "extraction_strategy": {
+          "type": "string",
+          "enum": [
+            "document",
+            "chunk"
+          ],
+          "description": "Unit of text over which extraction is performed."
+        }
+      },
+      "required": [
+        "collection",
+        "extraction_strategy"
+      ]
+    },
+    "instructions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entityContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "context_level": {
+          "$ref": "#/$defs/contextLevelRef"
+        },
+        "instructions": {
+          "$ref": "#/$defs/instructions"
+        }
+      },
+      "required": [
+        "context_level"
+      ]
+    },
+    "relationContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_entity": {
+          "$ref": "#/$defs/entityTypeRef"
+        },
+        "target_entity": {
+          "$ref": "#/$defs/entityTypeRef"
+        },
+        "source_context_level": {
+          "$ref": "#/$defs/contextLevelRef"
+        },
+        "target_context_level": {
+          "$ref": "#/$defs/contextLevelRef"
+        },
+        "instructions": {
+          "$ref": "#/$defs/instructions"
+        }
+      },
+      "required": [
+        "source_entity",
+        "target_entity",
+        "source_context_level",
+        "target_context_level"
+      ]
+    },
+    "dataType": {
+      "description": "Logical field type. A superset of what WUKONG currently supports.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "string",
+            "integer",
+            "number",
+            "boolean",
+            "date",
+            "datetime",
+            "uri"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "array"
+            },
+            "items": {
+              "$ref": "#/$defs/dataType"
+            }
+          },
+          "required": [
+            "type",
+            "items"
+          ]
+        }
+      ]
+    },
+    "jsonScalar": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "null"
+      ]
+    },
+    "retrievalMode": {
+      "type": "string",
+      "enum": [
+        "extract",
+        "default",
+        "skip"
+      ],
+      "default": "extract",
+      "description": "Controls how the field participates in retrieval. If omitted by authoring tools, the intended default is 'extract'. JSON Schema's default keyword is an annotation and does not by itself mutate instances."
+    },
+    "mergeStrategy": {
+      "description": "How competing field values are reconciled after multiple observations have been identified as referring to the same entity or relation. Built-ins mirror the current engine; custom strategies are allowed in this abstract schema.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "keep",
+            "replace",
+            "longest",
+            "shortest"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "deduplicationPolicy": {
+      "description": "Identity/equivalence policy. The abstract form allows current built-ins plus named user-defined policies.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "primary_key",
+            "endpoints",
+            "none",
+            "identity",
+            "string"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "context_level": {
+          "$ref": "#/$defs/contextLevelRef",
+          "description": "Optional specialization for an entity field. If absent, the field declaration applies to all contexts. Relation fields should omit this property."
+        },
+        "data_type": {
+          "$ref": "#/$defs/dataType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "examples": {
+          "type": "array",
+          "items": {},
+          "uniqueItems": true
+        },
+        "allowed_values": {
+          "type": "array",
+          "items": {},
+          "uniqueItems": true
+        },
+        "regex": {
+          "type": "string"
+        },
+        "default_value": {},
+        "retrieval_mode": {
+          "$ref": "#/$defs/retrievalMode"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "merge_strategy": {
+          "$ref": "#/$defs/mergeStrategy"
+        }
+      },
+      "required": [
+        "data_type",
+        "description",
+        "retrieval_mode"
+      ]
+    },
+    "entityType": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_key": {
+          "$ref": "#/$defs/fieldName",
+          "description": "Name of the field that identifies this entity type."
+        },
+        "fields": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/fieldName"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/field"
+          }
+        },
+        "deduplication": {
+          "$ref": "#/$defs/deduplicationPolicy"
+        },
+        "merge_strategy": {
+          "$ref": "#/$defs/mergeStrategy",
+          "description": "Default field-value merge strategy for reconciling repeated observations of the same entity."
+        },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entityContext"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "description",
+        "primary_key"
+      ]
+    },
+    "relationType": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_key": {
+          "$ref": "#/$defs/fieldName",
+          "description": "Optional field used to distinguish relations with the same endpoints."
+        },
+        "fields": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/fieldName"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/field"
+          }
+        },
+        "deduplication": {
+          "$ref": "#/$defs/deduplicationPolicy"
+        },
+        "merge_strategy": {
+          "$ref": "#/$defs/mergeStrategy",
+          "description": "Default field-value merge strategy for reconciling repeated observations of the same relation."
+        },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationContext"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "documentCollection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional domain description associated with this document collection."
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional language identifier or name associated with this document collection."
+        }
+      }
+    }
+  }
+}
