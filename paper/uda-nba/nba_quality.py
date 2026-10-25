@@ -7,24 +7,28 @@ LlamaIndex, OntoGPT), built three times from the same schema, and the schema-fre
 KGGen; one run each).
 
 Content against gold (the 216 subject entities; matching as in e1_analysis.py):
-  entities      found, and split (matched by more than one node). As P/R/F1 of resolution: recall = found /
-                216, precision = found / distinct nodes matched to gold entities (one node per entity is 100%)
+  entities      found, and split (matched by more than one node). As P/R/F1 of resolution over a one-to-one
+                alignment of gold entities and nodes (entity-level CEAF): recall = aligned / 216, precision =
+                aligned / distinct nodes matched to gold entities (one node per entity is 100%). A split costs
+                precision; a node shared by several gold entities (a merge) is aligned to one, costing recall
   attributes    typed graphs: a gold attribute is filled if a matched node has the field; correct if the value
                 equals the gold value in any form (x6_analysis.lenient_equal); exact if in the gold's form, so a
-                query can compare it. Precision = correct / filled; recall = correct / 955; exact recall = exact /
-                955. Schema-free graphs have no fields: recall is whether the value appears in the text of the
+                query can compare it. One-to-one: the right value counts once in any form, each distinct wrong value of
+                the matched nodes (a split entity can hold several) once. Precision = correct / (correct + wrong
+                values); recall = correct / 955; exact recall = exact / 955. Schema-free graphs have no fields: recall is whether the value appears in the text of the
                 matched nodes or their edges (an upper bound), and precision is undefined.
-  relations     the 148 gold relations between gold entities (player's team, team's city, team's owners), found
-                if an edge of the right type joins the matched nodes (any edge, for schema-free graphs), and split
+  relations     the 135 gold relations between gold entities (player's team, team's city, team's owners; ownership
+                is listed from both sides and counted once), aligned one-to-one with edges: found if an edge of the right type joins the matched nodes (any edge, for schema-free graphs), and split
                 if stored as more than one edge (as an entity split over several nodes). As P/R/F1: recall =
-                found / 148, precision = found / edges matched to them (summed over gold relations).
+                aligned / 135, precision = aligned / distinct edges matched to them.
   single-valued the benchmark defines a player's team as the current one and a team's location as the latest
                 city, so these 119 gold relations have one value: precision over the values a typed graph marks
-                (current team: the Player.current_team field of schema s5, in every typed graph; city: every
-                LocatedIn edge of the team), recall over the 119 facts. is_current() reads PlaysFor tenure,
+                (current team: the Player.current_team field of schema s4, in every typed graph; city: every
+                LocatedIn edge of the team), recall over the 119 facts; the right value counts once (in any form, or
+                over a split target), each wrong one once. is_current() reads PlaysFor tenure,
                 for graphs without the field.
 
-Schema conformance (typed graphs, against the schema they were built from, with Player.current_team for s5):
+Schema conformance (typed graphs, against the schema they were built from, with Player.current_team for s4):
   edges         the endpoint types are those the relationship type declares
   values        every node and edge property is a field the schema declares for that type and, where the schema
                 constrains it (regex, closed options; 15 of 26 fields), satisfies the constraint. Reported over all
@@ -254,12 +258,28 @@ def is_current(tenure) -> bool:
     return bool(CURRENT.search(t)) and not NOT_CURRENT.search(t)
 
 
+def align(matched: dict) -> int:
+    """Size of a maximum one-to-one alignment between gold entities and their matched nodes (entity-level CEAF):
+    a node shared by several gold entities counts for one of them, extra nodes of a split entity for none."""
+    owner = {}
+
+    def augment(k, seen):
+        for i in matched[k]:
+            if i not in seen:
+                seen.add(i)
+                if i not in owner or augment(owner[i], seen):
+                    owner[i] = k
+                    return True
+        return False
+    return sum(augment(k, set()) for k in matched)
+
+
 def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bool, field_team: bool) -> dict:
     """Relations between gold entities: found, and split (stored as several edges, mirroring an entity stored
     as several nodes). Single-valued relations (the benchmark defines a player's team as the current one and a
     team's location as the latest city): precision over the values a typed graph marks (the current team: the
     Player.current_team field for Wukong, PlaysFor edges marked current for the others; the city: every
-    LocatedIn edge of the team), recall over the 119 gold facts. Every typed graph is built from schema s5, which
+    LocatedIn edge of the team), recall over the 119 gold facts. Every typed graph is built from schema s4, which
     states the current team as the Player.current_team field, so the field is what is scored."""
     m = A.Matcher(matcher_name, nodes)
     matched = {(e['kind'], e['id']): set().union(*m.match(e)) for e in gold}
@@ -268,11 +288,12 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
     for e in edges:
         adj[e['src']].append(e)
         adj[e['dst']].append(e)
-    found = split = split_pairs = 0
-    n_rel = rel_edges = 0
-    ent_found = sum(bool(v) for v in matched.values())
+    split = split_pairs = 0
+    ent_found = align(matched)
     ent_nodes = len(set().union(*matched.values()))
+    ent_merged = sum(len({k for k, v in matched.items() if i in v}) > 1 for i in set().union(*matched.values()))
     fv = {'pred': 0, 'right': 0, 'gold': 0, 'hit': 0}
+    rel_hits, seen = {}, set()
     for g in gold:
         src = matched[(g['kind'], g['id'])]
         for r, ts in g['rels'].items():
@@ -280,33 +301,41 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
                 te = names.get((TARGET[r], A.norm(t))) if t else None
                 if te is None:
                     continue
+                # the gold lists ownership from both sides (team owned_by, owner owns): one fact, one edge
+                fact = (('own',) + tuple(sorted([(g['kind'], g['id']), (te['kind'], te['id'])])) if r in ('owns', 'owned_by')
+                        else (r, g['kind'], g['id'], te['id']))
+                if fact in seen:
+                    continue
+                seen.add(fact)
                 dst = matched[(TARGET[r], te['id'])]
                 hits = {id(x): x for i in src for x in adj[i] if (x['src'] in dst or x['dst'] in dst)
-                        and (not typed or x['label'] == LABEL[r])}.values()
-                n_rel += 1
-                found += bool(hits)
-                rel_edges += len(hits)
+                        and (not typed or x['label'] == LABEL[r])}
+                rel_hits[fact] = set(hits)
                 split += len(hits) > 1
-                split_pairs += len({(x['src'], x['dst']) for x in hits}) > 1
+                split_pairs += len({(x['src'], x['dst']) for x in hits.values()}) > 1
                 if not typed or r not in ('plays_for', 'located_in'):
                     continue
+                # one-to-one: the right value counts once (in any form, or over a split target), each wrong one once
                 fv['gold'] += 1
                 if r == 'plays_for' and field_team:
                     vals = {A.norm(nodes[i]['attrs']['current_team']) for i in src if nodes[i]['attrs'].get('current_team')}
-                    fv['pred'] += len(vals)
-                    fv['right'] += len(vals & set(te['names']))
-                    fv['hit'] += bool(vals & set(te['names']))
-                    continue
-                marked = {x['dst'] if x['src'] in src else x['src'] for i in src for x in adj[i]
-                          if x['label'] == LABEL[r] and (r == 'located_in' or is_current(x['props'].get('tenure')))}
-                fv['pred'] += len(marked)
-                fv['right'] += len(marked & dst)
-                fv['hit'] += bool(marked & dst)
+                    hit, wrong = bool(vals & set(te['names'])), len(vals - set(te['names']))
+                else:
+                    marked = {x['dst'] if x['src'] in src else x['src'] for i in src for x in adj[i]
+                              if x['label'] == LABEL[r] and (r == 'located_in' or is_current(x['props'].get('tenure')))}
+                    hit, wrong = bool(marked & dst), len(marked - dst)
+                fv['pred'] += hit + wrong
+                fv['right'] += hit
+                fv['hit'] += hit
+    n_rel = len(rel_hits)
+    found = align(rel_hits)
+    rel_edges = len(set().union(*rel_hits.values()))
     prf = lambda p, r: (round(100 * p, 1), round(100 * r, 1), round(100 * 2 * p * r / (p + r), 1) if p + r else 0.0)  # noqa: E731
     ep, er, ef = prf(ent_found / ent_nodes if ent_nodes else 0.0, ent_found / len(gold))
     rp, rr, rf = prf(found / rel_edges if rel_edges else 0.0, found / n_rel)
     out = {'rel_found': found, 'rel_gold': n_rel, 'rel_split': split, 'rel_split_pairs': split_pairs,
-           'ent_matched_nodes': ent_nodes, 'ent_precision': ep, 'ent_recall': er, 'ent_f1': ef,
+           'ent_matched_nodes': ent_nodes, 'ent_aligned': ent_found, 'ent_merged_nodes': ent_merged,
+           'ent_precision': ep, 'ent_recall': er, 'ent_f1': ef,
            'rel_edges': rel_edges, 'rel_precision': rp, 'rel_recall': rr, 'rel_f1': rf}
     if typed:
         p = fv['right'] / fv['pred'] if fv['pred'] else 0.0
@@ -320,7 +349,7 @@ def relations(matcher_name: str, nodes: dict, edges: list, gold: list, typed: bo
 def gold_typed(run, gold, load, usage) -> dict:
     r = X.score_run(run, gold, load=load, usage=usage)
     correct = r['attr_filled'] - r['attr_wrong']
-    p, rec = correct / r['attr_filled'], correct / r['attr_gold']
+    p, rec = correct / r['attr_pred'], correct / r['attr_gold']
     has_field = r.get('current_team_field_marked', 0) > 0
     return {'entities_found': r['entities_found'], 'entities_split': r['entities_split'],
             'attr_precision': round(100 * p, 1), 'attr_recall': round(100 * rec, 1),
@@ -383,9 +412,7 @@ def write_tex(df: pd.DataFrame) -> None:
         v = df[df.system == sys][col].dropna()
         if v.empty:
             return '--'
-        s = fmt.format(v.mean()) + (r'\%' if pct else '')
-        half = fmt.format((v.max() - v.min()) / 2)
-        return s if float(half) == 0 else s + r'\textsuperscript{$\pm$' + half + '}'
+        return fmt.format(v.mean()) + (r'\%' if pct else '')  # spread across builds: runs/quality/summary.csv
 
     order = ['Wukong', 'Neo4j-GraphRAG', 'LlamaIndex', 'OntoGPT', 'LightRAG', 'GraphRAG', 'KGGen']
     label = {'Wukong': r'\wk{}', 'Neo4j-GraphRAG': 'Neo4j GraphRAG'}
