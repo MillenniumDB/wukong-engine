@@ -4,6 +4,7 @@ import logging
 from functools import partial
 from pathlib import Path
 
+from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.exceptions import ConfigurationError
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
@@ -28,7 +29,7 @@ from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
-from wukong_engine.app.workflows import KnowledgeConstructionPipeline
+from wukong_engine.app.workflows import GetPipelineStatus, KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
 from wukong_engine.infrastructure.chunking.tokenization import HuggingFaceTokenizer, TextTokenizer
@@ -61,15 +62,20 @@ class CLIApplication:
     Owns infrastructure and ready-to-use workflows and use cases.
 
     Attributes:
+        config: Application configuration the workflows were built with.
         knowledge_construction: Fully wired knowledge construction pipeline.
     """
 
-    def __init__(self, knowledge_construction_pipeline: KnowledgeConstructionPipeline) -> None:
+    def __init__(
+        self, config: ApplicationConfig, knowledge_construction_pipeline: KnowledgeConstructionPipeline
+    ) -> None:
         """Initialize the CLI application with its already composed workflows.
 
         Args:
+            config: Application configuration the workflows were built with.
             knowledge_construction_pipeline: Fully wired knowledge construction pipeline.
         """
+        self.config = config
         self.knowledge_construction = knowledge_construction_pipeline
 
 
@@ -288,4 +294,24 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         extract_relationships=extract_relationships,
         export_knowledge=export_knowledge,
     )
-    return CLIApplication(knowledge_construction_pipeline=knowledge_construction)
+    return CLIApplication(config=app_config, knowledge_construction_pipeline=knowledge_construction)
+
+
+def build_pipeline_status(workspace: Workspace) -> GetPipelineStatus:
+    """Build the use case reading the pipeline status of a workspace, which needs no configuration or API key.
+
+    Args:
+        workspace: Workspace whose staging database is read; it is created if missing, like on a run.
+
+    Returns:
+        The use case reading the pipeline status.
+    """
+    session_factory = SQLiteSessionFactory(db_path=workspace.paths.staging_db)
+    initialize_sqlite_database(db_path=workspace.paths.staging_db, connection_factory=session_factory)
+    staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
+    return GetPipelineStatus(
+        uow=staging_uow,
+        input_snapshots=LocalInputSnapshotStore(directory=workspace.paths.snapshots),
+        entity_repository=EntityExtractionRepository(uow=staging_uow),
+        relationship_repository=RelationshipExtractionRepository(uow=staging_uow),
+    )
