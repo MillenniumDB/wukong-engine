@@ -18,6 +18,7 @@ Engine for extracting structured knowledge from unstructured documents using the
 - [🚀 Usage](#-usage)
   - [Workspace and Data](#workspace-and-data)
   - [Running the Engine](#running-the-engine)
+  - [Managing a Workspace](#managing-a-workspace)
   - [Output](#output)
   - [Extraction Metrics](#extraction-metrics)
   - [Engine Configuration](#engine-configuration)
@@ -178,14 +179,37 @@ The following options are available:
 | `--config <FILE>` | Use a custom configuration file. Defaults to `config/default.toml`.                                                     |
 | `-v` / `-vv`      | Increase output verbosity. By default only warnings and errors are shown; `-v` adds info logs and `-vv` adds debug logs. |
 | `--reset`         | Clear the stored data at the start of each active pipeline step, so it recomputes from scratch.                         |
+| `--until-done`    | Keep running the pipeline until every enabled step is completed, waiting between runs (1 minute in real-time mode, 5 minutes in batch mode). |
 
 The engine will read the documents, extract the entities and relationships declared in the knowledge model, and write the result into the workspace. Depending on the size of the corpus and the complexity of the model, this may take anywhere from a few seconds to many hours.
 
 Runs are **resumable**: state is kept in the workspace, so an interrupted run loses at most the **LLM** calls in flight, and re-running skips work that has already completed.
 
+A run stops early when a step can't complete yet: in batch mode, extraction submits its batches and the next run collects their results once the provider has processed them, which can take hours. With `--until-done`, the engine runs again on its own until the whole pipeline is completed, which is the easiest way to see a batch run through. A run that fails is retried too, unless it failed because of its inputs (an invalid knowledge model, for example), and the engine gives up after 3 failed runs in a row. Stop it at any time with `Ctrl+C`: the progress is kept, and the next run resumes from it.
+
 > ⚙️ For details on providing a custom configuration, refer to the [Engine Configuration](#engine-configuration) section.
 >
 > 🐳 If using **Docker**, refer to the [Docker Support](#-docker-support) section.
+
+### Managing a Workspace
+
+Besides `run`, the engine provides commands to check a workspace before and after running it:
+
+| Command                                                    | Description                                                                                                       |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `wukong plan <workspace_dir> <data_dir> [options]`         | Show the configuration and what `run` would do with the same options, without running, resetting or calling the **LLM**. Takes `--config`, `--reset` and `-v`/`-vv`, like `run`. |
+| `wukong status <workspace_dir>`                            | Show the progress of each pipeline step (including the batches still pending at the provider) and the inputs whose snapshot is kept. Needs no configuration. |
+| `wukong reset <workspace_dir> [--from <STEP>] [options]`   | Clear the stored results, entirely or from a step onwards, after asking for confirmation. Takes `--config`, `--yes` (skip the confirmation) and `-v`/`-vv`. |
+
+A typical workflow is to tune the workspace on a subset of the documents, running only the steps being tested with `--reset`, and then to start the full run from a clean workspace:
+
+```sh
+poetry run wukong reset workspaces/example
+poetry run wukong plan workspaces/example data/example
+poetry run wukong run workspaces/example data/example --until-done
+```
+
+> 📂 For what each step keeps and what a reset clears, refer to the [Workspace](/docs/workspace.md) documentation.
 
 ### Output
 
@@ -269,17 +293,22 @@ Before running the engine, ensure that **all environment variables** are properl
 >
 > 📂 For more information on the two directories, refer to the [Workspace and Data](#workspace-and-data) section.
 
-After building the image, run the engine with the provided script, which mounts the workspace, the data directory and the configuration file into the container:
+After building the image, run any engine command with the provided script, which takes the same arguments as the `wukong` command and mounts the workspace, the data directory and the configuration file into the container:
 
 ```sh
-scripts/wukong_run.sh <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset]
+scripts/wukong.sh run <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset] [--until-done]
+scripts/wukong.sh plan <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset]
+scripts/wukong.sh status <path/to/workspace_dir>
+scripts/wukong.sh reset <path/to/workspace_dir> [--from <STEP>] [--config <path/to/config.toml>] [--yes]
 ```
 
 For example, to run over the example data with a custom configuration file located at `config/custom.toml`:
 
 ```sh
-scripts/wukong_run.sh workspaces/example data/example --config config/custom.toml
+scripts/wukong.sh run workspaces/example data/example --config config/custom.toml
 ```
+
+The `run` command shows info logs (`-v`) unless another verbosity is given. The `reset` confirmation can be answered from the terminal as usual; without one (e.g. in a scheduled job), pass `--yes`. Stopping the container, with `Ctrl+C` or `docker stop`, stops the engine right away, keeping its progress. The older `scripts/wukong_run.sh` script still works, as a shorthand for `scripts/wukong.sh run`.
 
 The container runs as your own user, so the files it writes into the workspace belong to you and need no ownership fixing afterwards.
 

@@ -73,7 +73,7 @@ The inputs of a workspace are **fixed once the steps that use them have run**, s
 
 Editing a snapshotted input therefore has no effect on the workspace until the step that took the snapshot is reset. Each run compares the files with their snapshots and logs a warning naming any input that changed and the step to reset to apply it; formatting changes, such as whitespace or key order, don't count. Once documents are ingested, the data directory isn't read again for the registry's sources, so later steps still run if it moves or changes.
 
-The intended workflow follows from this. While setting a workspace up, enable only the steps you are testing and re-run them with `--reset` after editing the inputs: re-running entity extraction with `--reset`, for instance, applies an edited knowledge model without ingesting again. Once the inputs are ready, run the whole pipeline once with `--reset`, or step by step. From then on, the inputs stay as they were for that workspace until you reset it.
+The intended workflow follows from this. While setting a workspace up, enable only the steps you are testing and re-run them with `--reset` after editing the inputs: re-running entity extraction with `--reset`, for instance, applies an edited knowledge model without ingesting again. Once the inputs are ready, clear the workspace with `wukong reset`, check what the full run will do with `wukong plan`, and start it with `wukong run`, adding `--until-done` to have it run until every step completes. From then on, the inputs stay as they were for that workspace until you reset it. `wukong status` shows how far the run got, and which inputs changed since their snapshot was taken.
 
 Document files themselves are not snapshotted, since that would duplicate the corpus. Document-level extraction reads each document again from the data directory; if the file is no longer there or its contents changed since ingestion, the engine logs an error and rebuilds the document's text from its ingested chunks instead, logging that it did so.
 
@@ -208,13 +208,20 @@ String values are written exactly as they were extracted. The Neo4j CSV files qu
 
 ## ♻️ Resetting a Workspace
 
-Passing `--reset` to the `run` command clears the stored data at the start of each **active** pipeline step, so the step recomputes from scratch:
+A workspace can be reset in two ways:
+
+- The `reset` command clears it without running anything: entirely by default, or from a given step onwards with `--from`. It lists the steps it will clear and asks for confirmation, which `--yes` skips. It takes `--config` like `run`, since resetting an extraction step needs the provider's API key to cancel its batches (see below).
+- The `--reset` flag of the `run` command clears the stored data at the start of each **active** pipeline step, so the step recomputes from scratch. It is meant for testing steps in isolation while setting a workspace up.
 
 ```sh
-poetry run wukong run workspaces/example data/example --reset
+poetry run wukong reset workspaces/example                          # Reset everything
+poetry run wukong reset workspaces/example --from extract_entities  # Keep the ingested documents
+poetry run wukong run workspaces/example data/example --reset       # Reset and re-run the active steps
 ```
 
-Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Resetting a step also releases the [input snapshots](#-input-snapshots) it took, so the step runs with the current inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset.
+The steps are named `ingest_documents`, `extract_entities`, `extract_relationships` and `export_knowledge`. A declined confirmation exits with status 1, so commands chained after `reset` with `&&` don't run.
+
+Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Resetting a step also releases the [input snapshots](#-input-snapshots) it took, so the step runs with the current inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset. Run `wukong plan` with the same arguments, `--reset` included, to see what a run would reset before running it.
 
 Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. The run doesn't wait for them to stop: the cancellations are only requested, and a failed request is logged as a warning so that the batch can be cancelled from the provider instead.
 
