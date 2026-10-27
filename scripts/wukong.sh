@@ -10,7 +10,7 @@ usage() {
     echo "Usage: scripts/wukong.sh run    <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [--until-done] [-v|-vv]"
     echo "       scripts/wukong.sh plan   <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [-v|-vv]"
     echo "       scripts/wukong.sh status <workspace_dir>"
-    echo "       scripts/wukong.sh reset  <workspace_dir> [--from <STEP>] [--config <CONFIG_FILE>] [--yes] [-v|-vv]"
+    echo "       scripts/wukong.sh reset  <workspace_dir> [--from <STEP>] [--yes] [-v|-vv]"
     echo "Run 'scripts/wukong.sh <command> --help' for the details of a command."
 }
 
@@ -55,7 +55,7 @@ case "$COMMAND" in
         ;;
     reset)
         DIRECTORIES=1
-        USES_CONFIG=true
+        USES_CONFIG=false
         ;;
     status)
         DIRECTORIES=1
@@ -127,7 +127,7 @@ if [[ "$COMMAND" == "run" && "$VERBOSE" == false ]]; then
     CLI_ARGS+=(-v)
 fi
 
-# Config File and Env file
+# Config File
 if [[ "$USES_CONFIG" == true ]]; then
     if [[ -z "$CONFIG_PATH" ]]; then
         CONFIG_PATH="./config/default.toml"
@@ -141,12 +141,21 @@ if [[ "$USES_CONFIG" == true ]]; then
     fi
     DOCKER_ARGS+=(-v "$(abs_path "$CONFIG_PATH"):/config/config.toml")
     CLI_ARGS+=(--config /config/config.toml)
+fi
 
+# Env file: required to run, and read by a reset to cancel the batches still running at the provider
+if [[ "$COMMAND" == "run" || "$COMMAND" == "plan" ]]; then
     if [[ ! -f ".env" ]]; then
         echo "[CRITICAL] The required \".env\" file for environment variables is not present"
         exit 1
     fi
     DOCKER_ARGS+=(--env-file .env)
+elif [[ "$COMMAND" == "reset" ]]; then
+    if [[ -f ".env" ]]; then
+        DOCKER_ARGS+=(--env-file .env)
+    else
+        echo "[WARNING] No \".env\" file is present, so batches still running at the provider can't be cancelled"
+    fi
 fi
 
 # Cache directory

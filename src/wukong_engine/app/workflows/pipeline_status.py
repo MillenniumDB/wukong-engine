@@ -10,8 +10,7 @@ from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.pipeline.model.values import InputSnapshot, PipelineStep
 
-from .knowledge_construction_pipeline import CHUNKING_INPUT_NAME, SNAPSHOT_STEPS
-from .pipeline_plan import InputPlan, InputSource
+from .pipeline_plan import CHUNKING_INPUT_NAME, SNAPSHOT_STEPS, InputPlan, InputSource
 
 
 class StepState(Enum):

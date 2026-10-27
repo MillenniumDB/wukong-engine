@@ -199,7 +199,7 @@ Besides `run`, the engine provides commands to check a workspace before and afte
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `wukong plan <workspace_dir> <data_dir> [options]`         | Show the configuration and what `run` would do with the same options, without running, resetting or calling the **LLM**. Takes `--config`, `--reset` and `-v`/`-vv`, like `run`. |
 | `wukong status <workspace_dir>`                            | Show the progress of each pipeline step (including the batches still pending at the provider) and the inputs whose snapshot is kept. Needs no configuration. |
-| `wukong reset <workspace_dir> [--from <STEP>] [options]`   | Clear the stored results, entirely or from a step onwards, after asking for confirmation. Takes `--config`, `--yes` (skip the confirmation) and `-v`/`-vv`. |
+| `wukong reset <workspace_dir> [--from <STEP>] [options]`   | Clear the stored results, entirely or from a step onwards, after asking for confirmation. Takes `--yes` (skip the confirmation) and `-v`/`-vv`. Needs no configuration, only the API keys of the providers with batches still running, to cancel them. |
 
 A typical workflow is to tune the workspace on a subset of the documents, running only the steps being tested with `--reset`, and then to start the full run from a clean workspace:
 
@@ -299,7 +299,7 @@ After building the image, run any engine command with the provided script, which
 scripts/wukong.sh run <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset] [--until-done]
 scripts/wukong.sh plan <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset]
 scripts/wukong.sh status <path/to/workspace_dir>
-scripts/wukong.sh reset <path/to/workspace_dir> [--from <STEP>] [--config <path/to/config.toml>] [--yes]
+scripts/wukong.sh reset <path/to/workspace_dir> [--from <STEP>] [--yes]
 ```
 
 For example, to run over the example data with a custom configuration file located at `config/custom.toml`:
@@ -308,7 +308,7 @@ For example, to run over the example data with a custom configuration file locat
 scripts/wukong.sh run workspaces/example data/example --config config/custom.toml
 ```
 
-The `run` command shows info logs (`-v`) unless another verbosity is given. The `reset` confirmation can be answered from the terminal as usual; without one (e.g. in a scheduled job), pass `--yes`. Stopping the container, with `Ctrl+C` or `docker stop`, stops the engine right away, keeping its progress. The older `scripts/wukong_run.sh` script still works, as a shorthand for `scripts/wukong.sh run`.
+The `run` command shows info logs (`-v`) unless another verbosity is given. The `reset` command mounts no configuration file, and passes the `.env` file only if present, to cancel the batches still running at the provider. Its confirmation can be answered from the terminal as usual; without one (e.g. in a scheduled job), pass `--yes`. Stopping the container, with `Ctrl+C` or `docker stop`, stops the engine right away, keeping its progress. The older `scripts/wukong_run.sh` script still works, as a shorthand for `scripts/wukong.sh run`.
 
 The container runs as your own user, so the files it writes into the workspace belong to you and need no ownership fixing afterwards.
 

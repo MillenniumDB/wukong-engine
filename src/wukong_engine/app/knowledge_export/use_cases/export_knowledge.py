@@ -21,7 +21,7 @@ class ExportKnowledge:
         Args:
             uow: Unit of work used to record the export pipeline checkpoint.
             exporter: Exporter that writes the knowledge in the target output format.
-            export_uri: Base location where the exporter writes (and clears) its output.
+            export_uri: Base location where the exporter writes its output.
         """
         self._uow = uow
         self._exporter = exporter
@@ -48,17 +48,3 @@ class ExportKnowledge:
 
         with self._uow as tx:
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.KNOWLEDGE_EXPORTED, PipelineCheckpointStatus.COMPLETED)
-
-    def reset(self) -> None:
-        """Reset the knowledge export state by clearing all exported output.
-
-        Raises:
-            KnowledgeExportError: If the exporter fails to clear the exported output.
-        """
-        logger.warning('Resetting knowledge export state. This will clear ALL exports...')
-        try:
-            self._exporter.clear(self._export_uri)
-        except Exception as exc:
-            error = 'Failed to clear the knowledge export state'
-            logger.error(error)
-            raise KnowledgeExportError(error) from exc

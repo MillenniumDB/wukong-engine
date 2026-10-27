@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - A **pytest** suite under `tests/`, covering the **Anthropic** client against a mocked API and the resolution of the **LLM** settings.
 - **OpenAI**'s `gpt-6-luna` as a supported model and the new default, replacing `gpt-5.6-luna`: in `benchmark/llm_effort/` it extracted as well or better at under half the cost. It runs at the `low` effort level with explicit prompt caching.
 - An advanced `[llm]` `reasoning_effort` setting that overrides the reasoning effort of every extraction, which otherwise runs at `low` for every model.
-- `reset` **CLI** command, which clears a workspace without running the pipeline, entirely or from a step onwards with `--from`, after a confirmation that `--yes` skips.
+- `reset` **CLI** command, which clears a workspace without running the pipeline, entirely or from a step onwards with `--from`, after a confirmation that `--yes` skips. It needs no configuration file: it only reads the API keys of the providers whose batches it cancels from the environment.
 - `plan` **CLI** command, which shows the configuration and what `run` would do with the same arguments (which steps it runs, skips or resets, and which inputs it reads from their snapshots), without running, resetting or snapshotting anything.
 - `status` **CLI** command, which shows the progress of each pipeline step in a workspace, including the batches pending at the provider, and whether the inputs changed since their snapshots were taken.
 - `--until-done` flag for the `run` **CLI** command, which runs the pipeline again, waiting between runs, until every enabled step is completed, retrying failed runs unless their inputs caused the failure.

@@ -19,7 +19,7 @@ from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.shared.exceptions import ApplicationError, PipelineExecutionError
 from wukong_engine.app.workspace import Workspace, WorkspaceValidator
-from wukong_engine.bootstrap.cli import CLIApplication, build_application, build_pipeline_status
+from wukong_engine.bootstrap.cli import CLIApplication, build_application, build_pipeline_status, build_reset_pipeline
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 # Logging
@@ -70,8 +70,8 @@ def _add_data_argument(parser: argparse.ArgumentParser) -> None:
     )
 
 
-def _add_config_arguments(parser: argparse.ArgumentParser) -> None:
-    """Add the configuration file and verbosity options to a command parser.
+def _add_config_argument(parser: argparse.ArgumentParser) -> None:
+    """Add the configuration file option to a command parser.
 
     Args:
         parser: Parser of the command.
@@ -83,6 +83,14 @@ def _add_config_arguments(parser: argparse.ArgumentParser) -> None:
         help='Path to the engine configuration file (e.g. config/default.toml)',
         metavar='CONFIG_FILE',
     )
+
+
+def _add_verbose_argument(parser: argparse.ArgumentParser) -> None:
+    """Add the verbosity option to a command parser.
+
+    Args:
+        parser: Parser of the command.
+    """
     parser.add_argument(
         '-v',
         '--verbose',
@@ -128,7 +136,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_workspace_argument(run_parser)
     _add_data_argument(run_parser)
-    _add_config_arguments(run_parser)
+    _add_config_argument(run_parser)
+    _add_verbose_argument(run_parser)
     _add_reset_argument(run_parser)
     run_parser.add_argument(
         '--until-done',
@@ -145,7 +154,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_workspace_argument(plan_parser)
     _add_data_argument(plan_parser)
-    _add_config_arguments(plan_parser)
+    _add_config_argument(plan_parser)
+    _add_verbose_argument(plan_parser)
     _add_reset_argument(plan_parser)
     plan_parser.set_defaults(func=handle_plan)
 
@@ -174,7 +184,7 @@ def build_parser() -> argparse.ArgumentParser:
         help='First step to reset, along with every step after it (default: the first step, resetting everything)',
         metavar='STEP',
     )
-    _add_config_arguments(reset_parser)
+    _add_verbose_argument(reset_parser)
     reset_parser.add_argument(
         '-y',
         '--yes',
@@ -254,7 +264,7 @@ async def _run_until_done(app: CLIApplication, workspace: Workspace, data_uri: s
     # exactly the steps a run with --reset does, since every step after it depends on it
     if should_reset and app.config.pipeline.steps:
         pipeline.plan(workspace, data_uri, should_reset=True)
-        await pipeline.reset(from_step=app.config.pipeline.steps[0])
+        await app.reset_pipeline.execute(from_step=app.config.pipeline.steps[0])
 
     failures = 0
     attempt = 0
@@ -370,8 +380,8 @@ def handle_reset(args: argparse.Namespace) -> None:
             print('Reset cancelled.')
             sys.exit(1)
 
-    app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
-    asyncio.run(app.knowledge_construction.reset(from_step=from_step))
+    reset_pipeline = build_reset_pipeline(workspace=workspace, verbosity=args.verbose)
+    asyncio.run(reset_pipeline.execute(from_step=from_step))
     print(f'Reset {", ".join(step.value for step in steps)}.')
 
 

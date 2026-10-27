@@ -22,19 +22,11 @@ from wukong_engine.core.pipeline.model.values import (
     PipelineStep,
 )
 
-from .pipeline_plan import InputPlan, InputSource, PipelinePlan, StepAction
+from .pipeline_plan import CHUNKING_INPUT_NAME, SNAPSHOT_STEPS, InputPlan, InputSource, PipelinePlan, StepAction
+from .pipeline_reset import ResetPipeline
 
 # Logging
 logger = logging.getLogger(__name__)
-
-# First step consuming each input snapshot: it is taken when that step runs, and kept until that step is reset
-SNAPSHOT_STEPS: dict[InputSnapshot, PipelineStep] = {
-    InputSnapshot.DOCUMENT_REGISTRY: PipelineStep.INGEST_DOCUMENTS,
-    InputSnapshot.KNOWLEDGE_MODEL: PipelineStep.EXTRACT_ENTITIES,
-}
-
-# Name of the chunking settings in plans and warnings, which are snapshotted along with the document registry
-CHUNKING_INPUT_NAME = '[chunking] settings'
 
 
 @dataclass(frozen=True, slots=True)
@@ -74,6 +66,7 @@ class KnowledgeConstructionPipeline:
         extract_entities: ExtractEntities,
         extract_relationships: ExtractRelationships,
         export_knowledge: ExportKnowledge,
+        reset_pipeline: ResetPipeline,
     ) -> None:
         """Initialize the knowledge construction workflow with its use cases.
 
@@ -87,6 +80,7 @@ class KnowledgeConstructionPipeline:
             extract_entities: Use case for the entity extraction step.
             extract_relationships: Use case for the relationship extraction step.
             export_knowledge: Use case for the knowledge export step.
+            reset_pipeline: Workflow resetting the results of the steps, used when a run resets them.
         """
         self._app_config = app_config
         self._uow = uow
@@ -97,29 +91,7 @@ class KnowledgeConstructionPipeline:
         self._extract_entities = extract_entities
         self._extract_relationships = extract_relationships
         self._export_knowledge = export_knowledge
-
-    async def _reset_step(self, step: PipelineStep) -> None:
-        """Reset the state of a pipeline step through its use case.
-
-        Args:
-            step: Pipeline step to reset.
-
-        Raises:
-            PipelineExecutionError: If no use case is registered for the step.
-        """
-        match step:
-            case PipelineStep.INGEST_DOCUMENTS:
-                self._ingest_documents.reset()
-            case PipelineStep.EXTRACT_ENTITIES:
-                await self._extract_entities.reset()
-            case PipelineStep.EXTRACT_RELATIONSHIPS:
-                await self._extract_relationships.reset()
-            case PipelineStep.EXPORT_KNOWLEDGE:
-                self._export_knowledge.reset()
-            case _:
-                error = f'No use case found for pipeline step: {step.value}'
-                logger.error(error)
-                raise PipelineExecutionError(error)
+        self._reset_pipeline = reset_pipeline
 
     def _validate_plan(self, *, should_reset: bool) -> None:
         """Check that every configured step will find its required steps completed when it runs.
@@ -454,7 +426,7 @@ class KnowledgeConstructionPipeline:
         Raises:
             ModelIngestionError: If the document registry or the knowledge model can't be loaded, or an enabled entity
                 type references unknown document collections.
-            PipelineExecutionError: If a step has no use case or its required steps have not been completed.
+            PipelineExecutionError: If a step's required steps have not been completed.
         """
         # Initialize the pipeline checkpoints
         with self._uow as tx:
@@ -469,8 +441,8 @@ class KnowledgeConstructionPipeline:
             # Reset all steps downstream if the reset flag is present
             if should_reset:
                 for dependent_step in step.is_required_by:
-                    await self._reset_step(dependent_step)
-                await self._reset_step(step)
+                    await self._reset_pipeline.reset_step(dependent_step)
+                await self._reset_pipeline.reset_step(step)
                 with self._uow as tx:
                     tx.pipeline.reset_dependent_checkpoints(step)
 
@@ -506,28 +478,3 @@ class KnowledgeConstructionPipeline:
             else:
                 logger.info(f'Skipping {step.value} step because it has already been completed...')
         return True
-
-    async def reset(self, from_step: PipelineStep = PipelineStep.INGEST_DOCUMENTS) -> None:
-        """Reset a step and every step that depends on it, without running any of them.
-
-        Their results and checkpoints are cleared, and the input snapshots they took are released, so that the next run
-        uses the current inputs. Resetting from the first step resets the whole pipeline.
-
-        Args:
-            from_step: First step to reset.
-        """
-        steps = {from_step, *from_step.is_required_by}
-
-        # Downstream steps are reset first, as when a run resets a step
-        for step in reversed(PipelineStep):
-            if step in steps:
-                await self._reset_step(step)
-        with self._uow as tx:
-            for step in steps:
-                tx.pipeline.reset_step_checkpoints(step)
-
-        for snapshot, step in SNAPSHOT_STEPS.items():
-            if step in steps:
-                self._input_snapshots.discard(snapshot)
-        if PipelineStep.INGEST_DOCUMENTS in steps:
-            self._input_snapshots.discard_chunking()

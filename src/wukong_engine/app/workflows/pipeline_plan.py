@@ -3,7 +3,16 @@
 from dataclasses import dataclass
 from enum import Enum
 
-from wukong_engine.core.pipeline.model.values import PipelineStep
+from wukong_engine.core.pipeline.model.values import InputSnapshot, PipelineStep
+
+# First step consuming each input snapshot: it is taken when that step runs, and kept until that step is reset
+SNAPSHOT_STEPS: dict[InputSnapshot, PipelineStep] = {
+    InputSnapshot.DOCUMENT_REGISTRY: PipelineStep.INGEST_DOCUMENTS,
+    InputSnapshot.KNOWLEDGE_MODEL: PipelineStep.EXTRACT_ENTITIES,
+}
+
+# Name of the chunking settings in plans and warnings, which are snapshotted along with the document registry
+CHUNKING_INPUT_NAME = '[chunking] settings'
 
 
 class StepAction(Enum):

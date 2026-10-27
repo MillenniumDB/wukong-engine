@@ -210,7 +210,7 @@ String values are written exactly as they were extracted. The Neo4j CSV files qu
 
 A workspace can be reset in two ways:
 
-- The `reset` command clears it without running anything: entirely by default, or from a given step onwards with `--from`. It lists the steps it will clear and asks for confirmation, which `--yes` skips. It takes `--config` like `run`, since resetting an extraction step needs the provider's API key to cancel its batches (see below).
+- The `reset` command clears it without running anything: entirely by default, or from a given step onwards with `--from`. It lists the steps it will clear and asks for confirmation, which `--yes` skips. It needs no configuration file, since nothing it does depends on the configuration; it only reads the API keys from the environment, to cancel the batches still running at their provider (see below).
 - The `--reset` flag of the `run` command clears the stored data at the start of each **active** pipeline step, so the step recomputes from scratch. It is meant for testing steps in isolation while setting a workspace up.
 
 ```sh
@@ -223,6 +223,6 @@ The steps are named `ingest_documents`, `extract_entities`, `extract_relationshi
 
 Because later steps depend on earlier ones, resetting a step also resets the steps downstream of it — their results are no longer justified by their inputs. Resetting a step also releases the [input snapshots](#-input-snapshots) it took, so the step runs with the current inputs. Combine `--reset` with the `pipeline` section of the configuration file to re-run only part of the pipeline. A plan whose reset would wipe the results of a disabled step that a later enabled step needs (for example, resetting ingestion but only exporting) is refused before anything is reset. Run `wukong plan` with the same arguments, `--reset` included, to see what a run would reset before running it.
 
-Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. The run doesn't wait for them to stop: the cancellations are only requested, and a failed request is logged as a warning so that the batch can be cancelled from the provider instead.
+Resetting an extraction step also asks the provider to cancel the batches it still has in flight, so they stop billing requests whose results would be discarded. Each batch is cancelled through the provider it was submitted to, with that provider's API key. The reset doesn't wait for them to stop: the cancellations are only requested, and a failed request (for example, because the provider's API key is missing) is logged as a warning so that the batch can be cancelled from the provider instead.
 
 [📚 Back to Table of Contents](#-table-of-contents)

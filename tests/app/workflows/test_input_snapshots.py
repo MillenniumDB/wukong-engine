@@ -13,7 +13,7 @@ import pytest
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
-from wukong_engine.app.workflows import InputSource
+from wukong_engine.app.workflows import InputSource, ResetPipeline
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.knowledge.model import KnowledgeModel
@@ -49,9 +49,6 @@ class RecordingStep:
             for checkpoint in self.step.checkpoints:
                 tx.pipeline.set_checkpoint_status(checkpoint, PipelineCheckpointStatus.COMPLETED)
 
-    def reset(self) -> None:
-        """Reset nothing, since the step stores no results."""
-
 
 class AsyncRecordingStep(RecordingStep):
     """Asynchronous variant of the recording step, as used by the extraction steps."""
@@ -60,8 +57,19 @@ class AsyncRecordingStep(RecordingStep):
         """Record the inputs and complete the step."""
         super().execute(*args)
 
-    async def reset(self) -> None:
-        """Reset nothing, since the step stores no results."""
+
+class NoReset:
+    """Reset use case of a step that stores no results, so it has nothing to reset."""
+
+    def execute(self) -> None:
+        """Reset nothing."""
+
+
+class AsyncNoReset:
+    """Asynchronous variant of the empty reset, as used by the extraction steps."""
+
+    async def execute(self) -> None:
+        """Reset nothing."""
 
 
 class Workbench:
@@ -102,6 +110,19 @@ class Workbench:
             extract_entities=self.steps[PipelineStep.EXTRACT_ENTITIES],
             extract_relationships=self.steps[PipelineStep.EXTRACT_RELATIONSHIPS],
             export_knowledge=self.steps[PipelineStep.EXPORT_KNOWLEDGE],
+            reset_pipeline=self.reset_pipeline,
+        )
+
+    @property
+    def reset_pipeline(self) -> ResetPipeline:
+        """Workflow resetting the steps, whose results are only their checkpoints and input snapshots."""
+        return ResetPipeline(
+            uow=self.uow,
+            input_snapshots=self.snapshots,
+            reset_document_ingestion=NoReset(),
+            reset_entity_extraction=AsyncNoReset(),
+            reset_relationship_extraction=AsyncNoReset(),
+            reset_knowledge_export=NoReset(),
         )
 
     @property
@@ -231,7 +252,7 @@ def test_resetting_from_entity_extraction_releases_only_the_model_snapshot(bench
     bench.run(PipelineStep.INGEST_DOCUMENTS, PipelineStep.EXTRACT_ENTITIES)
     bench.edit_model('An edited description.')
 
-    asyncio.run(bench.pipeline().reset(from_step=PipelineStep.EXTRACT_ENTITIES))
+    asyncio.run(bench.reset_pipeline.execute(from_step=PipelineStep.EXTRACT_ENTITIES))
     bench.run(PipelineStep.EXTRACT_ENTITIES)
 
     assert bench.last_description(PipelineStep.EXTRACT_ENTITIES) == 'An edited description.'

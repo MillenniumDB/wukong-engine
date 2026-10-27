@@ -21,7 +21,7 @@ UNFINISHED = False
 
 
 class FakePipeline:
-    """Pipeline recording its calls, whose runs end with the given outcomes in turn: done, unfinished or an error."""
+    """Pipeline (and reset) recording its calls, whose runs end with the given outcomes in turn: done, unfinished or an error."""
 
     def __init__(self, *outcomes: bool | Exception) -> None:
         """Initialize the pipeline with the outcome of each run."""
@@ -53,6 +53,7 @@ def _run_until_done(pipeline: FakePipeline, *, should_reset: bool = False) -> No
             pipeline=PipelineConfig(ingest_documents=False),
         ),
         knowledge_construction=pipeline,
+        reset_pipeline=SimpleNamespace(execute=pipeline.reset),
     )
     asyncio.run(cli._run_until_done(app, SimpleNamespace(), 'data', should_reset=should_reset))
 

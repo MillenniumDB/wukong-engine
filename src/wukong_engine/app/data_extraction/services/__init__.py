@@ -1,5 +1,6 @@
 """The services package for data extraction."""
 
+from .batch_canceller import ConcurrentExtractionBatchCanceller, ExtractionBatchCanceller
 from .batch_submitter import ConcurrentExtractionBatchSubmitter, ExtractionBatchSubmitter
 from .batch_synchronizer import ConcurrentExtractionBatchSynchronizer, ExtractionBatchSynchronizer
 from .engine import BatchExtractionEngine, ExtractionEngine, RealtimeExtractionEngine
@@ -19,12 +20,14 @@ from .result_materializer import (
 
 __all__ = [
     'BatchExtractionEngine',
+    'ConcurrentExtractionBatchCanceller',
     'ConcurrentExtractionBatchSubmitter',
     'ConcurrentExtractionBatchSynchronizer',
     'ConcurrentExtractionExecutor',
     'EntityExtractionRepository',
     'EntityExtractionRequestBuilder',
     'EntityExtractionResultMaterializer',
+    'ExtractionBatchCanceller',
     'ExtractionBatchSubmitter',
     'ExtractionBatchSynchronizer',
     'ExtractionEngine',
