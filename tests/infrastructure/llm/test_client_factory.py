@@ -54,3 +54,19 @@ def test_other_providers_fail_only_when_their_client_is_requested_without_its_ap
     assert isinstance(client, AnthropicClient)
     assert client._config.model == LLMRegistry.default_model(LLMProvider.ANTHROPIC)
     assert factory.get_client(LLMProvider.ANTHROPIC) is client
+
+
+def test_without_a_configured_model_no_api_key_is_needed_until_a_client_is_requested(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Start without any API key, as a reset does, failing only for the providers whose client is requested."""
+    factory = EnvLLMClientFactory()
+
+    with pytest.raises(LLMConfigurationError, match='OPENAI_API_KEY'):
+        factory.get_client(LLMProvider.OPENAI)
+
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+    client = factory.get_client(LLMProvider.OPENAI)
+
+    assert isinstance(client, OpenAIClient)
+    assert client._config.model == LLMRegistry.default_model(LLMProvider.OPENAI)

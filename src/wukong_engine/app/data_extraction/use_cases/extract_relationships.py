@@ -133,14 +133,3 @@ class ExtractRelationships:
             error = 'Relationship Extraction failed due to an unrecoverable error'
             logger.error(error)
             raise DataExtractionError(error) from exc
-
-    async def reset(self) -> None:
-        """Reset the relationship extraction state.
-
-        The cancellation of the batches still active at the provider is requested first, without waiting for them to
-        stop, so that they don't keep billing requests whose results would never be collected.
-        """
-        logger.warning('Resetting relationship extraction state. This will clear ALL extracted relationships...')
-        await self._batch_synchronizer.request_active_batch_cancellations()
-        self._repository.reset()
-        self._metrics_tracker.reset()

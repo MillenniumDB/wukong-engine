@@ -13,7 +13,7 @@ from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
-from wukong_engine.infrastructure.storage.filesystem import clear_directory, replacing_directory
+from wukong_engine.infrastructure.storage.filesystem import replacing_directory
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -306,13 +306,3 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
                 model.active_endpoints(relationship_type),
             ):
                 writer.write_relationship(relationship, relationship_type, provenance)
-
-    def clear(self, export_uri: str) -> None:
-        """Clear the exported knowledge state, removing any exported data.
-
-        Args:
-            export_uri: Base export directory; its whole contents are removed if it exists.
-        """
-        export_path = Path(export_uri).resolve()
-        if export_path.exists() and export_path.is_dir():
-            clear_directory(export_path)

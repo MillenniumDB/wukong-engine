@@ -16,11 +16,3 @@ class KnowledgeExporter(Protocol):
             export_uri: Base location where the exported output is written.
         """
         ...
-
-    def clear(self, export_uri: str) -> None:
-        """Clear the exported knowledge state, removing any exported data.
-
-        Args:
-            export_uri: Base location whose previously exported output is removed.
-        """
-        ...

@@ -144,7 +144,8 @@ The `tests/` directory contains the **pytest** test suite for the engine, mirror
 The `scripts/` directory contains **Bash** helper scripts for the **Docker** workflow:
 
 - `build_image.sh`: Builds the `wukong-engine:latest` **Docker** image.
-- `wukong_run.sh`: Runs the engine inside a container, mounting the workspace, data directory and configuration file.
+- `wukong.sh`: Runs any engine command (`run`, `plan`, `status`, `reset`) inside a container, mounting the workspace, data directory and configuration file it is given.
+- `wukong_run.sh`: Shorthand for `wukong.sh run`, kept for compatibility.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

@@ -4,11 +4,13 @@ import logging
 from functools import partial
 from pathlib import Path
 
+from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.exceptions import ConfigurationError
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
     BatchExtractionEngine,
+    ConcurrentExtractionBatchCanceller,
     ConcurrentExtractionBatchSubmitter,
     ConcurrentExtractionBatchSynchronizer,
     ConcurrentExtractionExecutor,
@@ -21,15 +23,18 @@ from wukong_engine.app.data_extraction.services import (
     RelationshipExtractionRequestBuilder,
     RelationshipExtractionResultMaterializer,
 )
-from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
-from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
+from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships, ResetExtraction
+from wukong_engine.app.document_ingestion.use_cases import IngestDocuments, ResetDocumentIngestion
 from wukong_engine.app.knowledge_export.model.values import KnowledgeExportFormat
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
-from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
+from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge, ResetKnowledgeExport
+from wukong_engine.app.llm.elements import LLMClientFactory
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
-from wukong_engine.app.workflows import KnowledgeConstructionPipeline
+from wukong_engine.app.staging.ports import UnitOfWork
+from wukong_engine.app.workflows import GetPipelineStatus, KnowledgeConstructionPipeline, ResetPipeline
 from wukong_engine.app.workspace import Workspace
+from wukong_engine.core.extraction.model.values import ExtractionTask
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
 from wukong_engine.infrastructure.chunking.tokenization import HuggingFaceTokenizer, TextTokenizer
 from wukong_engine.infrastructure.config import ConfigProvider
@@ -44,7 +49,7 @@ from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteUnitOfWork,
     initialize_sqlite_database,
 )
-from wukong_engine.infrastructure.storage.filesystem import LocalInputSnapshotStore
+from wukong_engine.infrastructure.storage.filesystem import LocalExportCleaner, LocalInputSnapshotStore
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentLoader,
     LocalDocumentSourceValidator,
@@ -61,16 +66,27 @@ class CLIApplication:
     Owns infrastructure and ready-to-use workflows and use cases.
 
     Attributes:
+        config: Application configuration the workflows were built with.
         knowledge_construction: Fully wired knowledge construction pipeline.
+        reset_pipeline: Fully wired workflow resetting the results of the pipeline steps.
     """
 
-    def __init__(self, knowledge_construction_pipeline: KnowledgeConstructionPipeline) -> None:
+    def __init__(
+        self,
+        config: ApplicationConfig,
+        knowledge_construction_pipeline: KnowledgeConstructionPipeline,
+        reset_pipeline: ResetPipeline,
+    ) -> None:
         """Initialize the CLI application with its already composed workflows.
 
         Args:
+            config: Application configuration the workflows were built with.
             knowledge_construction_pipeline: Fully wired knowledge construction pipeline.
+            reset_pipeline: Fully wired workflow resetting the results of the pipeline steps.
         """
+        self.config = config
         self.knowledge_construction = knowledge_construction_pipeline
+        self.reset_pipeline = reset_pipeline
 
 
 def _format_to_exporter(export_format: KnowledgeExportFormat, repository: KnowledgeRepository) -> KnowledgeExporter:
@@ -111,6 +127,44 @@ def _build_document_chunker(chunking: ChunkingConfig, tokenizer: TextTokenizer) 
             overlap_size=chunking.overlap_tokens if chunking.overlap_tokens is not None else 0,
             max_size=chunking.max_tokens if chunking.max_tokens is not None else 0,
             tokenizer=tokenizer,
+        ),
+    )
+
+
+def _build_reset_pipeline(
+    workspace: Workspace,
+    staging_uow: UnitOfWork,
+    llm_client_factory: LLMClientFactory,
+) -> ResetPipeline:
+    """Build the workflow resetting the results of the pipeline steps, which needs no configuration.
+
+    Args:
+        workspace: Workspace whose input snapshots and export directory are reset.
+        staging_uow: Unit of work over the workspace's staging database.
+        llm_client_factory: Factory of the LLM client of each provider, used to cancel the batches still active there.
+
+    Returns:
+        The workflow resetting the pipeline steps.
+    """
+    entity_extraction_repository = EntityExtractionRepository(uow=staging_uow)
+    relationship_extraction_repository = RelationshipExtractionRepository(uow=staging_uow)
+    return ResetPipeline(
+        uow=staging_uow,
+        input_snapshots=LocalInputSnapshotStore(directory=workspace.paths.snapshots),
+        reset_document_ingestion=ResetDocumentIngestion(uow=staging_uow),
+        reset_entity_extraction=ResetExtraction(
+            task=ExtractionTask.ENTITY_EXTRACTION,
+            repository=entity_extraction_repository,
+            batch_canceller=ConcurrentExtractionBatchCanceller(entity_extraction_repository, llm_client_factory),
+        ),
+        reset_relationship_extraction=ResetExtraction(
+            task=ExtractionTask.RELATIONSHIP_EXTRACTION,
+            repository=relationship_extraction_repository,
+            batch_canceller=ConcurrentExtractionBatchCanceller(relationship_extraction_repository, llm_client_factory),
+        ),
+        reset_knowledge_export=ResetKnowledgeExport(
+            cleaner=LocalExportCleaner(),
+            export_uri=str(workspace.paths.exports),
         ),
     )
 
@@ -185,6 +239,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     entity_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
         repository=entity_extraction_repository,
         llm_client_factory=llm_client_factory,
+        batch_canceller=ConcurrentExtractionBatchCanceller(entity_extraction_repository, llm_client_factory),
         result_materializer=entity_result_materializer,
         metrics_tracker=entity_metrics_tracker,
     )
@@ -223,6 +278,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     relationship_batch_synchronizer = ConcurrentExtractionBatchSynchronizer(
         repository=relationship_extraction_repository,
         llm_client_factory=llm_client_factory,
+        batch_canceller=ConcurrentExtractionBatchCanceller(relationship_extraction_repository, llm_client_factory),
         result_materializer=relationship_result_materializer,
         metrics_tracker=relationship_metrics_tracker,
     )
@@ -277,6 +333,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     )
 
     # Workflows
+    reset_pipeline = _build_reset_pipeline(workspace, staging_uow, llm_client_factory)
     knowledge_construction = KnowledgeConstructionPipeline(
         app_config=app_config,
         uow=staging_uow,
@@ -287,5 +344,53 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         extract_entities=extract_entities,
         extract_relationships=extract_relationships,
         export_knowledge=export_knowledge,
+        reset_pipeline=reset_pipeline,
     )
-    return CLIApplication(knowledge_construction_pipeline=knowledge_construction)
+    return CLIApplication(
+        config=app_config,
+        knowledge_construction_pipeline=knowledge_construction,
+        reset_pipeline=reset_pipeline,
+    )
+
+
+def build_reset_pipeline(workspace: Workspace, verbosity: int) -> ResetPipeline:
+    """Build the workflow resetting the results of the pipeline steps, which needs no configuration.
+
+    The API key of each provider is read from the environment only when one of its batches is cancelled, so a missing
+    key only fails the cancellation of that provider's batches, which is logged.
+
+    Args:
+        workspace: Workspace whose staging database, input snapshots and export directory are reset.
+        verbosity: Logging verbosity level (0 for WARNING, 1 for INFO, 2 or more for DEBUG).
+
+    Returns:
+        The workflow resetting the pipeline steps.
+    """
+    set_logger_verbosity(verbosity)
+    session_factory = SQLiteSessionFactory(db_path=workspace.paths.staging_db)
+    initialize_sqlite_database(db_path=workspace.paths.staging_db, connection_factory=session_factory)
+    return _build_reset_pipeline(
+        workspace,
+        SQLiteUnitOfWork(connection_factory=session_factory),
+        EnvLLMClientFactory(),
+    )
+
+
+def build_pipeline_status(workspace: Workspace) -> GetPipelineStatus:
+    """Build the use case reading the pipeline status of a workspace, which needs no configuration or API key.
+
+    Args:
+        workspace: Workspace whose staging database is read; it is created if missing, like on a run.
+
+    Returns:
+        The use case reading the pipeline status.
+    """
+    session_factory = SQLiteSessionFactory(db_path=workspace.paths.staging_db)
+    initialize_sqlite_database(db_path=workspace.paths.staging_db, connection_factory=session_factory)
+    staging_uow = SQLiteUnitOfWork(connection_factory=session_factory)
+    return GetPipelineStatus(
+        uow=staging_uow,
+        input_snapshots=LocalInputSnapshotStore(directory=workspace.paths.snapshots),
+        entity_repository=EntityExtractionRepository(uow=staging_uow),
+        relationship_repository=RelationshipExtractionRepository(uow=staging_uow),
+    )

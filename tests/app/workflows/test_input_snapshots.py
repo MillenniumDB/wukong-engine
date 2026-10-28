@@ -13,11 +13,12 @@ import pytest
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
+from wukong_engine.app.workflows import InputSource, ResetPipeline
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.knowledge.model.values import EntityTypeName
-from wukong_engine.core.pipeline.model.values import PipelineCheckpointStatus, PipelineStep
+from wukong_engine.core.pipeline.model.values import InputSnapshot, PipelineCheckpointStatus, PipelineStep
 from wukong_engine.infrastructure.definitions.documents import LocalDocumentRegistryProvider
 from wukong_engine.infrastructure.definitions.knowledge import LocalKnowledgeModelProvider
 from wukong_engine.infrastructure.persistence.sqlite import (
@@ -48,9 +49,6 @@ class RecordingStep:
             for checkpoint in self.step.checkpoints:
                 tx.pipeline.set_checkpoint_status(checkpoint, PipelineCheckpointStatus.COMPLETED)
 
-    def reset(self) -> None:
-        """Reset nothing, since the step stores no results."""
-
 
 class AsyncRecordingStep(RecordingStep):
     """Asynchronous variant of the recording step, as used by the extraction steps."""
@@ -59,8 +57,19 @@ class AsyncRecordingStep(RecordingStep):
         """Record the inputs and complete the step."""
         super().execute(*args)
 
-    async def reset(self) -> None:
-        """Reset nothing, since the step stores no results."""
+
+class NoReset:
+    """Reset use case of a step that stores no results, so it has nothing to reset."""
+
+    def execute(self) -> None:
+        """Reset nothing."""
+
+
+class AsyncNoReset:
+    """Asynchronous variant of the empty reset, as used by the extraction steps."""
+
+    async def execute(self) -> None:
+        """Reset nothing."""
 
 
 class Workbench:
@@ -88,6 +97,39 @@ class Workbench:
         model['entity_types']['Mission']['description'] = description
         path.write_text(json.dumps(model))
 
+    def pipeline(self, *steps: PipelineStep, chunking: ChunkingConfig | None = None) -> KnowledgeConstructionPipeline:
+        """Build the pipeline with only the given steps enabled."""
+        pipeline_config = PipelineConfig(**{step.value.lower(): step in steps for step in PipelineStep})
+        return KnowledgeConstructionPipeline(
+            app_config=SimpleNamespace(pipeline=pipeline_config, chunking=chunking or ChunkingConfig()),
+            uow=self.uow,
+            input_snapshots=self.snapshots,
+            get_document_registry=GetDocumentRegistry(LocalDocumentRegistryProvider(), LocalDocumentSourceValidator()),
+            get_knowledge_model=GetKnowledgeModel(LocalKnowledgeModelProvider()),
+            ingest_documents=self.steps[PipelineStep.INGEST_DOCUMENTS],
+            extract_entities=self.steps[PipelineStep.EXTRACT_ENTITIES],
+            extract_relationships=self.steps[PipelineStep.EXTRACT_RELATIONSHIPS],
+            export_knowledge=self.steps[PipelineStep.EXPORT_KNOWLEDGE],
+            reset_pipeline=self.reset_pipeline,
+        )
+
+    @property
+    def reset_pipeline(self) -> ResetPipeline:
+        """Workflow resetting the steps, whose results are only their checkpoints and input snapshots."""
+        return ResetPipeline(
+            uow=self.uow,
+            input_snapshots=self.snapshots,
+            reset_document_ingestion=NoReset(),
+            reset_entity_extraction=AsyncNoReset(),
+            reset_relationship_extraction=AsyncNoReset(),
+            reset_knowledge_export=NoReset(),
+        )
+
+    @property
+    def snapshots(self) -> LocalInputSnapshotStore:
+        """Store of the workspace's input snapshots."""
+        return LocalInputSnapshotStore(self.workspace.paths.snapshots)
+
     def run(
         self,
         *steps: PipelineStep,
@@ -96,18 +138,7 @@ class Workbench:
         data_dir: Path = DATA_DIR,
     ) -> None:
         """Run the pipeline with only the given steps enabled."""
-        pipeline_config = PipelineConfig(**{step.value.lower(): step in steps for step in PipelineStep})
-        pipeline = KnowledgeConstructionPipeline(
-            app_config=SimpleNamespace(pipeline=pipeline_config, chunking=chunking or ChunkingConfig()),
-            uow=self.uow,
-            input_snapshots=LocalInputSnapshotStore(self.workspace.paths.snapshots),
-            get_document_registry=GetDocumentRegistry(LocalDocumentRegistryProvider(), LocalDocumentSourceValidator()),
-            get_knowledge_model=GetKnowledgeModel(LocalKnowledgeModelProvider()),
-            ingest_documents=self.steps[PipelineStep.INGEST_DOCUMENTS],
-            extract_entities=self.steps[PipelineStep.EXTRACT_ENTITIES],
-            extract_relationships=self.steps[PipelineStep.EXTRACT_RELATIONSHIPS],
-            export_knowledge=self.steps[PipelineStep.EXPORT_KNOWLEDGE],
-        )
+        pipeline = self.pipeline(*steps, chunking=chunking)
         asyncio.run(pipeline.execute(self.workspace, str(data_dir), should_reset=reset))
 
     def last_description(self, step: PipelineStep) -> str:
@@ -195,3 +226,35 @@ def test_sources_are_not_revalidated_once_documents_are_ingested(bench: Workbenc
     bench.run(PipelineStep.EXTRACT_ENTITIES, data_dir=tmp_path / 'moved')
 
     assert len(bench.steps[PipelineStep.EXTRACT_ENTITIES].runs) == 1
+
+
+def test_a_plan_takes_no_snapshot_and_reports_edited_inputs(bench: Workbench) -> None:
+    """Tell which inputs a run would snapshot or read from edited snapshots, without snapshotting anything itself."""
+    steps = (PipelineStep.INGEST_DOCUMENTS, PipelineStep.EXTRACT_ENTITIES)
+    plan = bench.pipeline(*steps).plan(bench.workspace, str(DATA_DIR), should_reset=False)
+
+    assert {input_plan.source for input_plan in plan.inputs} == {InputSource.NEW_SNAPSHOT}
+    assert not bench.workspace.paths.snapshots.exists()
+
+    bench.run(*steps)
+    bench.edit_model('An edited description.')
+    plan = bench.pipeline(PipelineStep.EXTRACT_RELATIONSHIPS).plan(bench.workspace, str(DATA_DIR), should_reset=False)
+
+    assert [input_plan.source for input_plan in plan.inputs] == [
+        InputSource.SNAPSHOT,
+        InputSource.OUTDATED_SNAPSHOT,
+        InputSource.SNAPSHOT,
+    ]
+
+
+def test_resetting_from_entity_extraction_releases_only_the_model_snapshot(bench: Workbench) -> None:
+    """Apply an edited model after a reset from entity extraction, keeping the inputs documents were ingested with."""
+    bench.run(PipelineStep.INGEST_DOCUMENTS, PipelineStep.EXTRACT_ENTITIES)
+    bench.edit_model('An edited description.')
+
+    asyncio.run(bench.reset_pipeline.execute(from_step=PipelineStep.EXTRACT_ENTITIES))
+    bench.run(PipelineStep.EXTRACT_ENTITIES)
+
+    assert bench.last_description(PipelineStep.EXTRACT_ENTITIES) == 'An edited description.'
+    assert bench.snapshots.exists(InputSnapshot.DOCUMENT_REGISTRY)
+    assert bench.snapshots.load_chunking() is not None

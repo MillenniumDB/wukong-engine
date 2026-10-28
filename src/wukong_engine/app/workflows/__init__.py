@@ -4,7 +4,19 @@ This package contains the main workflows for the engine, such as building the kn
 """
 
 from .knowledge_construction_pipeline import KnowledgeConstructionPipeline
+from .pipeline_plan import InputPlan, InputSource, PipelinePlan, StepAction
+from .pipeline_reset import ResetPipeline
+from .pipeline_status import ExtractionProgress, GetPipelineStatus, PipelineStatus, StepState
 
 __all__ = [
+    'ExtractionProgress',
+    'GetPipelineStatus',
+    'InputPlan',
+    'InputSource',
     'KnowledgeConstructionPipeline',
+    'PipelinePlan',
+    'PipelineStatus',
+    'ResetPipeline',
+    'StepAction',
+    'StepState',
 ]

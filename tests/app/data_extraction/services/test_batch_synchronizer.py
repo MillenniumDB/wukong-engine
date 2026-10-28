@@ -17,6 +17,7 @@ from wukong_engine.app.data_extraction.elements import (
 from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, TokenUsageMetrics
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import (
+    ConcurrentExtractionBatchCanceller,
     ConcurrentExtractionBatchSynchronizer,
     EntityExtractionRepository,
     EntityExtractionResultMaterializer,
@@ -162,9 +163,11 @@ class ProviderClientFactory:
 
 def _synchronizer(repository: RecordingRepository) -> ConcurrentExtractionBatchSynchronizer:
     """Build a synchronizer over the given repository."""
+    llm_client_factory = ProviderClientFactory({})
     return ConcurrentExtractionBatchSynchronizer(
         repository=repository,
-        llm_client_factory=ProviderClientFactory({}),
+        llm_client_factory=llm_client_factory,
+        batch_canceller=ConcurrentExtractionBatchCanceller(repository, llm_client_factory),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
         metrics_tracker=ExtractionMetricsTracker(repository, ExecutionMode.BATCH),
     )
@@ -308,9 +311,11 @@ def _cancelling_synchronizer(
 ) -> ConcurrentExtractionBatchSynchronizer:
     """Build a synchronizer over the given repository and Anthropic client (or client of each provider), without metrics."""
     clients = llm_client if isinstance(llm_client, Mapping) else {LLMProvider.ANTHROPIC: llm_client}
+    llm_client_factory = ProviderClientFactory(clients)
     return ConcurrentExtractionBatchSynchronizer(
         repository=repository,
-        llm_client_factory=ProviderClientFactory(clients),
+        llm_client_factory=llm_client_factory,
+        batch_canceller=ConcurrentExtractionBatchCanceller(repository, llm_client_factory),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
         metrics_tracker=SilentMetricsTracker(repository, ExecutionMode.BATCH),
     )
@@ -356,7 +361,10 @@ def test_active_batch_cancellations_are_requested_without_resolving_the_batches(
     repository = RecordingRepository(batches=(_batch('first', 1), _batch('failing', 1), _batch('last', 1)))
     llm_client = CancellableLLMClient(failing_batch_ids=frozenset({'failing'}))
 
-    asyncio.run(_cancelling_synchronizer(repository, llm_client).request_active_batch_cancellations())
+    canceller = ConcurrentExtractionBatchCanceller(
+        repository, ProviderClientFactory({LLMProvider.ANTHROPIC: llm_client})
+    )
+    asyncio.run(canceller.request_active_batch_cancellations())
 
     assert sorted(llm_client.cancellations) == ['failing', 'first', 'last']
     assert repository.resolutions == []

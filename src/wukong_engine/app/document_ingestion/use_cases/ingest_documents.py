@@ -114,9 +114,3 @@ class IngestDocuments:
             error = f'Failed to ingest Document Collection "{collection.name}"'
             logger.error(error)
             raise DocumentIngestionError(error) from exc
-
-    def reset(self) -> None:
-        """Reset the document ingestion state."""
-        logger.warning('Resetting document ingestion state. This will clear ALL ingested documents and chunks...')
-        with self._uow as tx:
-            tx.documents.clear()

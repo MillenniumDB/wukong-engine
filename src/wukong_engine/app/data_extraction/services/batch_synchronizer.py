@@ -33,6 +33,7 @@ from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.app.shared.concurrency import AsyncConcurrentRunner
 from wukong_engine.core.knowledge.model import KnowledgeModel
 
+from .batch_canceller import MAX_CANCELLATION_CONCURRENCY, ExtractionBatchCanceller
 from .executor import decode_response, response_failure_result
 from .metrics_tracker import ExtractionMetricsTracker
 from .repository import ExtractionRepository
@@ -44,7 +45,6 @@ logger = logging.getLogger(__name__)
 # Constants
 MAX_STATUS_CONCURRENCY = 50  # Maximum number of concurrent batch status requests (default: 50)
 MAX_RESULTS_CONCURRENCY = 10  # Maximum number of concurrent batch result retrievals (default: 10)
-MAX_CANCELLATION_CONCURRENCY = 10  # Maximum number of concurrent batch cancellation requests (default: 10)
 # Providers end every batch within 24 hours, so one still pending after the resolution time is cancelled at the
 # provider, and discarded locally if it still hasn't ended an hour later (cancellations take minutes at most)
 MAX_BATCH_RESOLUTION_TIME = 25  # Maximum time (in hours) for the external provider to resolve a batch (default: 25)
@@ -62,10 +62,6 @@ class ExtractionBatchSynchronizer(Protocol):
         """
         ...
 
-    async def request_active_batch_cancellations(self) -> None:
-        """Request the cancellation of every active batch from the provider, without waiting for them to stop."""
-        ...
-
 
 class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
     """Synchronizer that manages the lifecycle of submitted extraction batches concurrently."""
@@ -74,6 +70,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self,
         repository: ExtractionRepository,
         llm_client_factory: LLMClientFactory,
+        batch_canceller: ExtractionBatchCanceller,
         result_materializer: ExtractionResultMaterializer,
         metrics_tracker: ExtractionMetricsTracker,
     ) -> None:
@@ -81,13 +78,15 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
 
         Args:
             repository: Repository used to stream active batches and jobs and persist their outcomes.
-            llm_client_factory: Factory of the LLM client of each provider, used to query the statuses, retrieve the
-                results and request the cancellation of the batches submitted to it.
+            llm_client_factory: Factory of the LLM client of each provider, used to query the statuses and retrieve the
+                results of the batches submitted to it.
+            batch_canceller: Canceller requesting the cancellation of overdue batches from their provider.
             result_materializer: Materializer that turns successful extraction results into knowledge objects.
             metrics_tracker: Tracker that logs extraction metrics while batches are resolved.
         """
         self._repository = repository
         self._llm_client_factory = llm_client_factory
+        self._batch_canceller = batch_canceller
         self._result_materializer = result_materializer
         self._metrics_tracker = metrics_tracker
         self._ended_batches: list[ExtractionBatch] = []  # Batches whose results are retrieved
@@ -114,7 +113,7 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         self._unreachable_batches = {}
         status_runner = AsyncConcurrentRunner(fn=self._get_batch_status, max_concurrency=MAX_STATUS_CONCURRENCY)
         cancellation_runner = AsyncConcurrentRunner(
-            fn=self._request_cancellation,
+            fn=self._batch_canceller.request_cancellation,
             max_concurrency=MAX_CANCELLATION_CONCURRENCY,
         )
         results_runner = AsyncConcurrentRunner(fn=self._get_batch_results, max_concurrency=MAX_RESULTS_CONCURRENCY)
@@ -192,16 +191,6 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
         elapsed_time = (int(time.time() * 1000) - batch.created_at) / (1000 * 3600)  # Convert milliseconds to hours
         return elapsed_time > max_hours
 
-    async def request_active_batch_cancellations(self) -> None:
-        """Request the cancellation of every active batch from the provider, without waiting for them to stop.
-
-        Used before discarding the local batches, so that those still running don't keep billing requests whose
-        results would never be collected. Failed requests are only logged.
-        """
-        runner = AsyncConcurrentRunner(fn=self._request_cancellation, max_concurrency=MAX_CANCELLATION_CONCURRENCY)
-        async for _batch, _error in runner.run(self._repository.stream_active_batches()):
-            pass  # Outcomes are already logged when requested
-
     def _log_unreachable_batches(self) -> None:
         """Log an error for each provider whose batches were kept for not being reachable."""
         for provider, (count, error) in self._unreachable_batches.items():
@@ -212,25 +201,6 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                 f'Batches still unreachable {retention_days} days after their submission, when {provider.value} no '
                 'longer keeps their results, are discarded and their jobs are retried with the configured model.',
             )
-
-    async def _request_cancellation(self, batch: ExtractionBatch) -> str | None:
-        """Request the cancellation of a batch from the provider, logging any failure.
-
-        Args:
-            batch: Batch to cancel.
-
-        Returns:
-            None if the cancellation was requested, or the error message if it could not be.
-        """
-        try:
-            await self._llm_client_factory.get_client(batch.provider).cancel_batch(batch.provider_id)
-        except (LLMTransientError, LLMResponseError, LLMConfigurationError, LLMInternalError) as exc:
-            logger.warning(
-                f'Failed to request the cancellation of batch {batch.provider_id} from {batch.provider.value}: {exc}. '
-                'If it is still running, cancel it from the provider to stop it from billing further requests.',
-            )
-            return str(exc)
-        return None
 
     async def _get_batch_status(self, batch: ExtractionBatch) -> BatchStatusResult:
         """Retrieve the status of a batch from the external provider, with error handling.

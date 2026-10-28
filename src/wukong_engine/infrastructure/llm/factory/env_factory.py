@@ -14,21 +14,24 @@ class EnvLLMClientFactory(LLMClientFactory):
 
     The configured model's client is created on initialization, so that a missing API key of its provider aborts the
     run. The clients of other providers are created once first requested, with their provider's default model, which
-    they never use since they only manage the batches already submitted to them.
+    they never use since they only manage the batches already submitted to them. Without a configured model, as when
+    only managing batches, every client is created once first requested.
     """
 
-    def __init__(self, model: LLM) -> None:
-        """Initialize the factory with the client of the configured model.
+    def __init__(self, model: LLM | None = None) -> None:
+        """Initialize the factory with the client of the configured model, if any.
 
         Args:
-            model: Configured model, used by the client of its provider.
+            model: Configured model, used by the client of its provider. None if no model is configured.
 
         Raises:
             RuntimeError: If the API key of the model's provider is missing or blank.
             ValueError: If the provider is not supported or its client cannot be configured for the model.
         """
-        api_key = load_env_config(model.provider).llm_api_key
-        self._clients: dict[LLMProvider, LLMClient] = {model.provider: self._create_client(model, api_key)}
+        self._clients: dict[LLMProvider, LLMClient] = {}
+        if model is not None:
+            api_key = load_env_config(model.provider).llm_api_key
+            self._clients[model.provider] = self._create_client(model, api_key)
 
     @staticmethod
     def _create_client(model: LLM, api_key: str) -> LLMClient:
