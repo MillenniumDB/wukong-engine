@@ -1,5 +1,6 @@
 """Result materializers for extraction tasks."""
 
+import logging
 import math
 from typing import Any, Protocol
 
@@ -19,6 +20,8 @@ from wukong_engine.core.knowledge.model.values import EntityTypeName, Relationsh
 from wukong_engine.core.shared.regex_pattern import RegexPattern
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
+
+logger = logging.getLogger(__name__)
 
 
 def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
@@ -266,6 +269,10 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
             # Discard an invalid optional value (an invalid required one is left for validation to reject the entity)
             regex = field.regex.get(context_level)
             if value is not None and not field.required and not _is_valid_value(value, field.options, regex):
+                logger.info(
+                    f'Discarded invalid value {value!r} of optional field "{entity_type.name}.{field.name}": '
+                    f"it does not satisfy the field's options or regex",
+                )
                 value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
@@ -300,10 +307,17 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # Required fields must be present and not null
             if field.required and value is None:
+                logger.info(
+                    f'Discarded extracted "{entity_type.name}" entity: required field "{field.name}" is missing'
+                )
                 return False
 
             # Allowed values and regex pattern must be respected when defined
             if value is not None and not _is_valid_value(str(value), field.options, field.regex.get(context_level)):
+                logger.info(
+                    f'Discarded extracted "{entity_type.name}" entity: value {value!r} of field "{field.name}" '
+                    f"does not satisfy the field's options or regex",
+                )
                 return False
 
         return True
@@ -529,6 +543,10 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # Discard an invalid optional value (an invalid required one is left for validation to reject the item)
             if value is not None and not field.required and not _is_valid_value(value, field.options, field.regex):
+                logger.info(
+                    f'Discarded invalid value {value!r} of optional field "{relationship_type.name}.{field.name}": '
+                    f"it does not satisfy the field's options or regex",
+                )
                 value = None
 
             # Assign default value when it corresponds to a constant field or when the extracted value is null
@@ -557,10 +575,18 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # Required fields must be present and not null
             if field.required and value is None:
+                logger.info(
+                    f'Discarded extracted "{relationship_type.name}" relationship: required field "{field.name}" '
+                    f'is missing',
+                )
                 return False
 
             # Allowed values and regex pattern must be respected when defined
             if value is not None and not _is_valid_value(str(value), field.options, field.regex):
+                logger.info(
+                    f'Discarded extracted "{relationship_type.name}" relationship: value {value!r} of field '
+                    f'"{field.name}" does not satisfy the field\'s options or regex',
+                )
                 return False
 
         return True
