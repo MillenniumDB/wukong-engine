@@ -143,6 +143,33 @@ def test_entities_lose_only_invalid_optional_values_but_are_dropped_for_invalid_
     assert repository.looked_up_jobs == [JOB]
 
 
+def test_discarded_entity_values_and_entities_are_logged(
+    model: KnowledgeModel, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Log each invalid optional value discarded and each entity dropped, naming the type, field and value."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'status': 'in progress'},
+            {'_entity_type': 'Mission', 'code': 'artemis 7', 'status': 'active'},
+        ],
+    }
+
+    with caplog.at_level('INFO'):
+        materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [record.getMessage() for record in caplog.records] == [
+        (
+            'Discarded invalid value \'in progress\' of optional field "Mission.status": '
+            "it does not satisfy the field's options or regex"
+        ),
+        (
+            'Discarded extracted "Mission" entity: value \'artemis 7\' of field "code" '
+            "does not satisfy the field's options or regex"
+        ),
+    ]
+
+
 def test_relationships_load_the_job_context_once_and_lose_only_invalid_optional_values(model: KnowledgeModel) -> None:
     """Load the job's types, ID mapping and entities once per result, discarding invalid optional values."""
     incident, mission = _entity(model, 'Incident', 'INC-1'), _entity(model, 'Mission', 'ARTEMIS-7')
