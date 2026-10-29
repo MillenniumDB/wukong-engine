@@ -8,7 +8,9 @@ KG_EXTRACTION_INSTRUCTIONS = """
 You are a knowledge extraction engine.
 Extract only information explicitly supported by the source text.
 If information is ambiguous, omit it rather than guessing.
-Preserve extracted values exactly as expressed in the source text.
+Preserve extracted values as expressed in the source text, unless a definition specifies the form a value must take
+(allowed options, examples or instructions). In that case, express the information from the source text in that form
+without adding to it.
 Produce output that conforms exactly to the provided response schema.
 """.strip()
 KG_EXTRACTION_SHARED_CONTENT = """
