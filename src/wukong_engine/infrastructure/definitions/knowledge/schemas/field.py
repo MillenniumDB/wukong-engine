@@ -11,9 +11,10 @@ from wukong_engine.core.knowledge.model.values import DataType, MergeStrategy
 
 from .context_level import reject_repeated_context_levels
 
-# Values are taken as written, so a quoted number is a string; integers stay integers until mapped to a float field
-_Number = StrictInt | StrictFloat
-_Value = StrictStr | _Number | StrictBool
+# Values are taken as written, so a quoted number is a string; integers stay integers until mapped to a float field,
+# and strings until mapped to a date field, which reads them as ISO dates
+_Bound = StrictInt | StrictFloat | StrictStr
+_Value = _Bound | StrictBool
 
 
 class _FieldSchema(BaseModel):
@@ -50,6 +51,7 @@ class _FieldSchema(BaseModel):
         'number': DataType.FLOAT,
         'bool': DataType.BOOLEAN,
         'boolean': DataType.BOOLEAN,
+        'date': DataType.DATE,
     }
 
     # Mapping of various string representations to MergeStrategy members
@@ -76,10 +78,12 @@ class _FieldSchema(BaseModel):
         'smallest': MergeStrategy.SMALLEST,
         'min': MergeStrategy.SMALLEST,
         'minimum': MergeStrategy.SMALLEST,
-        'any': MergeStrategy.ANY,
-        'or': MergeStrategy.ANY,
-        'all': MergeStrategy.ALL,
-        'and': MergeStrategy.ALL,
+        'latest': MergeStrategy.LARGEST,
+        'any': MergeStrategy.LARGEST,
+        'or': MergeStrategy.LARGEST,
+        'earliest': MergeStrategy.SMALLEST,
+        'all': MergeStrategy.SMALLEST,
+        'and': MergeStrategy.SMALLEST,
     }
 
     @field_validator('data_type', mode='before')
@@ -136,9 +140,9 @@ class EntityFieldSchema(_FieldSchema):
     Attributes:
         instructions: Extra extraction instructions per context level; a single string applies to all levels.
         regex: Regex pattern that string values must match, per context level; a single string applies to all levels.
-        minimum: Lowest allowed numeric value per context level, under the ``min`` key; a single value applies to all
+        minimum: Lowest allowed value per context level, under the ``min`` key; a single value applies to all
             levels.
-        maximum: Highest allowed numeric value per context level, under the ``max`` key; a single value applies to all
+        maximum: Highest allowed value per context level, under the ``max`` key; a single value applies to all
             levels.
         default_value: Default value per context level; a single value applies to all levels.
         retrieval_mode: How the field's value is obtained, per context level; a single mode applies to all levels.
@@ -146,8 +150,8 @@ class EntityFieldSchema(_FieldSchema):
 
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    minimum: dict[ContextLevel, _Number] | _Number = Field(default_factory=dict, alias='min')
-    maximum: dict[ContextLevel, _Number] | _Number = Field(default_factory=dict, alias='max')
+    minimum: dict[ContextLevel, _Bound] | _Bound = Field(default_factory=dict, alias='min')
+    maximum: dict[ContextLevel, _Bound] | _Bound = Field(default_factory=dict, alias='max')
     default_value: dict[ContextLevel, _Value] | _Value = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode = Field(default_factory=dict)
 
@@ -232,16 +236,16 @@ class RelationshipFieldSchema(_FieldSchema):
     Attributes:
         instructions: Extra extraction instructions for the field, if any.
         regex: Regex pattern that string values must match, if any.
-        minimum: Lowest allowed numeric value, under the ``min`` key, if any.
-        maximum: Highest allowed numeric value, under the ``max`` key, if any.
+        minimum: Lowest allowed value, under the ``min`` key, if any.
+        maximum: Highest allowed value, under the ``max`` key, if any.
         default_value: Default value for the field, if any.
         retrieval_mode: How the field's value is obtained.
     """
 
     instructions: StrictStr | None = None
     regex: StrictStr | None = None
-    minimum: _Number | None = Field(default=None, alias='min')
-    maximum: _Number | None = Field(default=None, alias='max')
+    minimum: _Bound | None = Field(default=None, alias='min')
+    maximum: _Bound | None = Field(default=None, alias='max')
     default_value: _Value | None = None
     retrieval_mode: RelationshipRetrievalMode = RelationshipRetrievalMode.EXTRACT
 

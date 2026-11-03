@@ -16,6 +16,8 @@ from wukong_engine.core.knowledge.model.values import RelationshipTypeName
 from wukong_engine.core.knowledge.services import RelationshipMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 
+from .properties import dump_properties, load_properties
+
 
 class SQLiteRelationshipStore(RelationshipStore):
     """SQLite implementation of the RelationshipStore."""
@@ -54,7 +56,7 @@ class SQLiteRelationshipStore(RelationshipStore):
                 instance=InstanceId.from_bytes(row['target_instance_id']),
                 content=ContentHash.from_bytes(row['target_content_id']),
             ),
-            properties=json.loads(row['properties']),
+            properties=load_properties(row['properties'], relationship_type.fields.values()),
         )
 
     def _find_duplicates(self, relationships: Iterable[Relationship]) -> dict[bytes, Relationship]:
@@ -116,7 +118,7 @@ class SQLiteRelationshipStore(RelationshipStore):
                     relationship.type.name.value,
                     relationship.source.content.bytes,
                     relationship.target.content.bytes,
-                    json.dumps(relationship.properties, sort_keys=True, separators=(',', ':')),
+                    dump_properties(relationship.properties),
                 )
                 for relationship in relationships
             ],
@@ -137,7 +139,7 @@ class SQLiteRelationshipStore(RelationshipStore):
             """,
             [
                 (
-                    json.dumps(relationship.properties, sort_keys=True, separators=(',', ':')),
+                    dump_properties(relationship.properties),
                     relationship.id.content.bytes,
                 )
                 for relationship in relationships

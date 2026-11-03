@@ -26,6 +26,7 @@ DATA_TYPE_NAME_MAPPING = {
     DataType.INTEGER: 'long',
     DataType.FLOAT: 'double',
     DataType.BOOLEAN: 'boolean',
+    DataType.DATE: 'date',
 }
 
 

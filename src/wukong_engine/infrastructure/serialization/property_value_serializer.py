@@ -2,6 +2,8 @@
 
 from typing import Any
 
+from wukong_engine.core.knowledge.model.values import PartialDate
+
 from .string_serializer import StringSerializer
 
 
@@ -23,8 +25,9 @@ class PropertyValueSerializer:
     def serialize(self, value: Any) -> str | None:
         """Serialize a property value.
 
-        Strings are kept as-is, booleans become ``true`` or ``false``, and integers and floats are converted with ``str``
-        before applying the string serializer.
+        Strings are kept as-is, booleans become ``true`` or ``false``, integers and floats are converted with ``str``,
+        and dates become the ISO 8601 form of the first day of their period (``2021-03`` becomes ``2021-03-01``), since
+        export formats only store complete dates. The string serializer is applied to the result.
 
         Args:
             value: Property value to serialize.
@@ -33,7 +36,7 @@ class PropertyValueSerializer:
             The serialized string, or None if the value is None.
 
         Raises:
-            ValueError: If the value is not a string, a boolean, an integer or a float.
+            ValueError: If the value is not a string, a boolean, an integer, a float or a date.
         """
         # Null values can have different external representations, so return None to be explicit
         if value is None:
@@ -49,6 +52,8 @@ class PropertyValueSerializer:
                 value = str(value)
             case float():  # Shortest text that round-trips, always with a point or exponent (4.0, 1e-05)
                 value = str(value)
+            case PartialDate():
+                value = value.start.isoformat()
             case _:  # All other types are unsupported for serialization
                 raise ValueError(f'Unsupported property value type: {type(value)}')
 

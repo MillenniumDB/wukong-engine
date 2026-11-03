@@ -20,6 +20,7 @@ from wukong_engine.app.data_extraction.services import (
 from wukong_engine.app.data_extraction.services.result_materializer import (
     _extracted_items,
     _normalize_boolean,
+    _normalize_date,
     _normalize_float,
     _normalize_integer,
     _normalize_string,
@@ -28,7 +29,7 @@ from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.elements import Entity, EntityRef
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import KnowledgeModel
-from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate, RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 
@@ -163,6 +164,44 @@ def test_boolean_values_are_normalized_from_yes_and_no_forms(value: Any, *, expe
 def test_values_without_a_boolean_form_are_left_for_validation_to_reject(value: Any) -> None:
     """Leave values that aren't yes or no unchanged, so they are discarded as invalid, not as missing."""
     assert _normalize_boolean(value) is value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        ('2024-03-01', '2024-03-01'),
+        ('1969-07', '1969-07'),
+        (1969, '1969'),
+        ('2024/3/1', '2024-03-01'),
+        ('01/03/2024', '2024-03-01'),
+        ('13/03/2024', '2024-03-13'),
+        ('03/13/2024', '2024-03-13'),
+        ('03.2024', '2024-03'),
+        ('1 March 2024', '2024-03-01'),
+        ('March 1, 2024', '2024-03-01'),
+        ('1° de marzo del 2024', '2024-03-01'),
+        ('1-MAR-2024', '2024-03-01'),
+        ('setiembre de 2021', '2021-09'),
+    ],
+)
+def test_date_values_are_normalized_from_their_written_forms(value: Any, expected: str) -> None:
+    """Convert ISO, numeric (day first unless only month first is a date) and month name forms to partial dates."""
+    assert _normalize_date(value) == PartialDate.from_iso(expected)
+
+
+@pytest.mark.parametrize('value', ['', ' null ', None])
+def test_missing_dates_are_none(value: Any) -> None:
+    """Treat empty text and a literal null as a missing date."""
+    assert _normalize_date(value) is None
+
+
+@pytest.mark.parametrize(
+    'value',
+    ['01/03/24', '13/13/2024', '30 de febrero de 2024', '2024-02-30', 'smarch 2024', 'next tuesday', 2.5, True],
+)
+def test_values_without_a_date_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave two-digit years, impossible dates and other text unchanged, so they are discarded as invalid."""
+    assert _normalize_date(value) is value
 
 
 JOB = ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string('chunk'))
@@ -402,3 +441,19 @@ def test_boolean_values_are_converted_and_not_confused_with_numbers(model: Knowl
         {'code': 'ARTEMIS-8', 'crewed': False, 'status': 'planned'},
         {'code': 'KEPLER-12', 'status': 'planned'},
     ]
+
+
+def test_date_values_are_converted_and_validated_against_their_bounds(model: KnowledgeModel) -> None:
+    """Convert written dates to partial dates, discarding optional ones before the minimum or without a date form."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'launch': '16 de julio de 1969'},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'launch': '1957'},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'launch': '01/02/57'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [entity.properties.get('launch') for entity in entities] == [PartialDate(1969, 7, 16), None, None]

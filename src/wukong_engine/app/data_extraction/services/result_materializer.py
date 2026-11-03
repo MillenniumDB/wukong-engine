@@ -19,9 +19,11 @@ from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, Field, KnowledgeModel, RelationshipType
 from wukong_engine.core.knowledge.model.values import (
     MAX_FLOAT,
+    MONTHS_IN_YEAR,
     DataType,
     EntityTypeName,
     FieldValue,
+    PartialDate,
     RelationshipTypeName,
 )
 
@@ -45,6 +47,44 @@ _BOOLEAN_WORDS = {
     'no': False,
     'falso': False,
     '0': False,
+}
+# Dates with a four-digit year: a two-digit one would leave the century to a guess
+_YEAR_FIRST_DATE = re.compile(
+    r'(?P<year>[0-9]{4})(?:(?P<separator>[-/.])(?P<month>[0-9]{1,2})(?:(?P=separator)(?P<day>[0-9]{1,2}))?)?',
+)
+_NUMERIC_DATE = re.compile(
+    r'(?P<first>[0-9]{1,2})(?P<separator>[-/.])(?P<second>[0-9]{1,2})(?P=separator)(?P<year>[0-9]{4})'
+)
+_NUMERIC_MONTH = re.compile(r'(?P<month>[0-9]{1,2})[-/.](?P<year>[0-9]{4})')
+_DAY = r'(?P<day>[0-9]{1,2})(?:º|°|st|nd|rd|th)?'
+_MONTH_NAME = r'(?P<month>[^\W\d_]+)\.?'
+_DATE_SEPARATOR = r'(?:\s*[-/,]\s*|\s+)(?:del?\s+|of\s+)?'
+_NAMED_MONTH_DATES = (
+    re.compile(rf'{_DAY}{_DATE_SEPARATOR}{_MONTH_NAME}{_DATE_SEPARATOR}(?P<year>[0-9]{{4}})'),
+    re.compile(rf'{_MONTH_NAME}\s+{_DAY},?\s+(?P<year>[0-9]{{4}})'),
+    re.compile(rf'{_MONTH_NAME}{_DATE_SEPARATOR}(?P<year>[0-9]{{4}})'),
+)
+# English and Spanish month names and abbreviations, casefolded
+_MONTH_NUMBERS = {
+    name: number
+    for number, names in enumerate(
+        (
+            ('january', 'jan', 'enero', 'ene'),
+            ('february', 'feb', 'febrero'),
+            ('march', 'mar', 'marzo'),
+            ('april', 'apr', 'abril', 'abr'),
+            ('may', 'mayo'),
+            ('june', 'jun', 'junio'),
+            ('july', 'jul', 'julio'),
+            ('august', 'aug', 'agosto', 'ago'),
+            ('september', 'sep', 'sept', 'septiembre', 'setiembre', 'set'),
+            ('october', 'oct', 'octubre'),
+            ('november', 'nov', 'noviembre'),
+            ('december', 'dec', 'diciembre', 'dic'),
+        ),
+        start=1,
+    )
+    for name in names
 }
 # Tried in order: a lone '.' or ',' is read as the decimal separator (1.234 is 1.234), and only otherwise as grouping
 _DECIMAL_NUMBER = re.compile(
@@ -82,7 +122,7 @@ def _normalize_value(value: Any, field: Field) -> Any:
 
     Responses that aren't validated against their schema can carry a value as another JSON type, so a single-element
     list becomes its element before converting it (see ``_normalize_string``, ``_normalize_integer``,
-    ``_normalize_float`` and ``_normalize_boolean``).
+    ``_normalize_float``, ``_normalize_boolean`` and ``_normalize_date``).
 
     Args:
         value: Value extracted for the field, as decoded from the response.
@@ -103,6 +143,8 @@ def _normalize_value(value: Any, field: Field) -> Any:
             return _normalize_float(value)
         case DataType.BOOLEAN:
             return _normalize_boolean(value)
+        case DataType.DATE:
+            return _normalize_date(value)
 
 
 def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None:
@@ -220,6 +262,74 @@ def _normalize_boolean(value: Any) -> Any:
     if not text or text == 'null':
         return None
     return _BOOLEAN_WORDS.get(text, value)
+
+
+def _normalize_date(value: Any) -> Any:
+    """Normalize an extracted value into a partial date.
+
+    Dates are read with a four-digit year, down to the day, the month or the year: year first (``2024-03-01``,
+    ``2024/3/1``, ``2024-03``, ``2024``, also as a number), with numeric day and month (``01/03/2024``, ``03.2024``) or
+    with an English or Spanish month name (``1 March 2024``, ``March 1, 2024``, ``1 de marzo de 2024``, ``1-mar-2024``,
+    ``marzo de 2024``). Numeric days and months are read in the only order that forms a date, and day first when both
+    do, as most sources outside the United States write them. An empty string or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The date, None if the value is missing, or the value unchanged if it has no date form.
+    """
+    if isinstance(value, int) and not isinstance(value, bool):
+        text = str(value)
+    elif isinstance(value, str):
+        text = value.strip().casefold()
+        if not text or text == 'null':
+            return None
+    else:
+        return value
+    date = _parse_date(text)
+    return value if date is None else date
+
+
+def _parse_date(text: str) -> PartialDate | None:
+    """Parse the text of a date in one of the forms ``_normalize_date`` reads.
+
+    Args:
+        text: Stripped and casefolded text of the date.
+
+    Returns:
+        The date, or None if the text has none of the forms or isn't a calendar date.
+    """
+    if match := _YEAR_FIRST_DATE.fullmatch(text):
+        return _partial_date(match['year'], match['month'], match['day'])
+    if match := _NUMERIC_DATE.fullmatch(text):
+        first, second = int(match['first']), int(match['second'])
+        day, month = (second, first) if first <= MONTHS_IN_YEAR < second else (first, second)
+        return _partial_date(match['year'], month, day)
+    if match := _NUMERIC_MONTH.fullmatch(text):
+        return _partial_date(match['year'], match['month'], None)
+    for pattern in _NAMED_MONTH_DATES:
+        if match := pattern.fullmatch(text):
+            month = _MONTH_NUMBERS.get(match['month'])
+            return None if month is None else _partial_date(match['year'], month, match.groupdict().get('day'))
+    return None
+
+
+def _partial_date(year: str, month: str | int | None, day: str | int | None) -> PartialDate | None:
+    """Build a partial date from parsed parts.
+
+    Args:
+        year: Year digits.
+        month: Month number or digits, or None if the date has no month.
+        day: Day number or digits, or None if the date has no day.
+
+    Returns:
+        The date, or None if the parts don't form a calendar date.
+    """
+    try:
+        return PartialDate(int(year), None if month is None else int(month), None if day is None else int(day))
+    except ValueError:
+        return None
 
 
 def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:

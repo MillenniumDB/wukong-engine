@@ -4,8 +4,9 @@ from typing import Any
 
 import pytest
 
+from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model import KnowledgeModel
-from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName
+from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName, PartialDate
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 
@@ -87,7 +88,7 @@ def _crew_size(**settings: Any) -> dict[str, Any]:
         (_crew_size(regex='[0-9]+'), 'regex only applies to string fields'),
         (
             {'data_type': 'string', 'description': 'Name.', 'max': 10},
-            'min and max only apply to integer and float fields',
+            'min and max only apply to integer, float and date fields',
         ),
         (_crew_size(min={'chunk': 5}, max=4), 'min 5 is greater than max 4 for context level "CHUNK"'),
         (_crew_size(min=1, default_value={'document': 0}), 'Default value 0 for context level "DOCUMENT" is less'),
@@ -199,10 +200,10 @@ def _crewed(**settings: Any) -> dict[str, Any]:
     [
         ({'crewed': _crewed(default_value=1)}, 'Default value 1 is not a valid boolean value'),
         ({'crewed': _crewed(options=['yes'])}, "Option 'yes' is not a valid boolean value"),
-        ({'crewed': _crewed(min=0)}, 'min and max only apply to integer and float fields'),
+        ({'crewed': _crewed(min=0)}, 'min and max only apply to integer, float and date fields'),
         ({'crewed': _crewed(regex='true')}, 'regex only applies to string fields'),
-        ({'crewed': _crewed(merge_strategy='largest')}, '"largest" does not apply to boolean values'),
-        ({'crew_size': _crew_size(merge_strategy='any')}, '"any" does not apply to integer values'),
+        ({'crewed': _crewed(merge_strategy='longest')}, '"longest" does not apply to boolean values'),
+        ({'name': {'data_type': 'string', 'description': 'Name.', 'merge_strategy': 'any'}}, '"largest" does not'),
         ({'payload': _payload(default_value=True)}, 'Default value True is not a valid float value'),
         ({'code': _crewed(required=True)}, 'primary key "code" cannot be a boolean field'),
     ],
@@ -214,8 +215,62 @@ def test_boolean_fields_hold_booleans_and_take_no_bounds(fields: dict[str, Any],
 
 
 def test_boolean_fields_accept_their_values_and_merge_strategies() -> None:
-    """Accept boolean options, examples and defaults, and merging by logical OR or AND under any alias."""
+    """Accept boolean options, examples and defaults, and merging by logical OR or AND as largest and smallest."""
     _load_mission(
         crewed=_crewed(options=[True, False], examples=True, default_value={'chunk': False}, merge_strategy='or'),
         docked=_crewed(merge_strategy='all'),
+    )
+
+
+def _launch(**settings: Any) -> dict[str, Any]:
+    """Build the definition of an optional date ``launch`` field with the given settings."""
+    return {'data_type': 'date', 'description': 'Launch date.', **settings}
+
+
+def test_date_values_are_written_as_iso_text() -> None:
+    """Read options, examples, defaults and bounds of a date field from their ISO 8601 text, at any precision."""
+    field = _launch(options=['1969', '1969-07-16'], examples='1969', default_value='1969-07-16', min='1960-01')
+
+    launch = _load_mission(launch=field).entity_types[EntityTypeName('Mission')].fields[FieldName('launch')]
+
+    values = [
+        *launch.options,
+        *launch.examples,
+        launch.default_value[ContextLevel.CHUNK],
+        launch.minimum[ContextLevel.CHUNK],
+    ]
+    assert values == [
+        PartialDate(1969),
+        PartialDate(1969, 7, 16),
+        PartialDate(1969),
+        PartialDate(1969, 7, 16),
+        PartialDate(1960, 1),
+    ]
+
+
+@pytest.mark.parametrize(
+    ('fields', 'error'),
+    [
+        ({'launch': _launch(default_value='1969-02-30')}, "Default value '1969-02-30' is not a valid date value"),
+        ({'launch': _launch(examples='16/07/1969')}, "Example '16/07/1969' is not a valid date value"),
+        ({'launch': _launch(min='1970', max='1969-12')}, 'min 1970 is greater than max 1969-12'),
+        ({'launch': _launch(max='1969-07', examples='1969-08-01')}, 'Example 1969-08-01 for context level "CHUNK" is'),
+        ({'launch': _launch(regex='[0-9]{4}')}, 'regex only applies to string fields'),
+        ({'launch': _launch(min=1960)}, 'Bound 1960 is not a valid date value'),
+        ({'crew_size': _crew_size(max='12')}, "Bound '12' is not a valid integer value"),
+        ({'launch': _launch(merge_strategy='longest')}, '"longest" does not apply to date values'),
+    ],
+)
+def test_date_fields_hold_calendar_dates_and_check_bounds(fields: dict[str, Any], error: str) -> None:
+    """Reject text that isn't an ISO calendar date, misplaced constraints and values outside the bounds."""
+    with pytest.raises(ValueError, match=error):
+        _load_mission(**fields)
+
+
+def test_date_fields_can_be_primary_keys_and_merge_by_time() -> None:
+    """Accept a date primary key, and merging dates by the latest or earliest one."""
+    _load_mission(
+        code=_launch(required=True),
+        launch=_launch(merge_strategy='latest'),
+        landing=_launch(merge_strategy='earliest'),
     )

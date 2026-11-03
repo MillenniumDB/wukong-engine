@@ -11,7 +11,7 @@ from wukong_engine.core.extraction.model.rules.compatibility import ensure_compa
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.shared import RegexPattern
 
-from .values import DataType, FieldName, FieldValue, MergeStrategy
+from .values import DataType, FieldBound, FieldName, FieldValue, MergeStrategy, PartialDate
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,9 +49,9 @@ class Field:
             'description': self.description,
         }
         if self.options:
-            field_info['options'] = list(self.options)
+            field_info['options'] = [_to_json(option) for option in self.options]
         if self.examples:
-            field_info['examples'] = list(self.examples)
+            field_info['examples'] = [_to_json(example) for example in self.examples]
         return json.dumps(field_info)
 
     def _validate_values(self, default_values: Iterable[FieldValue]) -> None:
@@ -92,7 +92,7 @@ class Field:
                 f'apply to {self.data_type.value} values',
             )
 
-    def _validate_bound_types(self, bounds: Iterable[float]) -> None:
+    def _validate_bound_types(self, bounds: Iterable[FieldBound]) -> None:
         """Validate that bounds are values of the field's data type.
 
         Args:
@@ -108,14 +108,16 @@ class Field:
                     f'{self.data_type.value} value',
                 )
 
-    def _is_valid(self, value: Any, regex: RegexPattern | None, minimum: float | None, maximum: float | None) -> bool:
+    def _is_valid(
+        self, value: Any, regex: RegexPattern | None, minimum: FieldBound | None, maximum: FieldBound | None
+    ) -> bool:
         """Check whether a value satisfies the field's data type, options and the given constraints.
 
         Args:
             value: Value to check.
             regex: Pattern a string value must match, or None if unconstrained.
-            minimum: Lowest allowed numeric value, or None if unbounded.
-            maximum: Highest allowed numeric value, or None if unbounded.
+            minimum: Lowest allowed value, or None if unbounded.
+            maximum: Highest allowed value, or None if unbounded.
 
         Returns:
             True if the value is valid, False otherwise.
@@ -134,8 +136,8 @@ class EntityField(Field):
     Attributes:
         instructions: Extra extraction instructions per context level.
         regex: Pattern that string values must match, per context level.
-        minimum: Lowest allowed numeric value, per context level.
-        maximum: Highest allowed numeric value, per context level.
+        minimum: Lowest allowed value, per context level.
+        maximum: Highest allowed value, per context level.
         default_value: Default value per context level, used by the ``DEFAULT`` retrieval mode and when an
             extracted value is null.
         retrieval_mode: How the field's value is retrieved, per context level. Levels not listed use ``EXTRACT``.
@@ -143,8 +145,8 @@ class EntityField(Field):
 
     instructions: MappingProxyType[ContextLevel, str] = field(compare=False, hash=False)
     regex: MappingProxyType[ContextLevel, RegexPattern] = field(compare=False, hash=False)
-    minimum: MappingProxyType[ContextLevel, float] = field(compare=False, hash=False)
-    maximum: MappingProxyType[ContextLevel, float] = field(compare=False, hash=False)
+    minimum: MappingProxyType[ContextLevel, FieldBound] = field(compare=False, hash=False)
+    maximum: MappingProxyType[ContextLevel, FieldBound] = field(compare=False, hash=False)
     default_value: MappingProxyType[ContextLevel, FieldValue] = field(compare=False, hash=False)
     retrieval_mode: MappingProxyType[ContextLevel, EntityRetrievalMode] = field(compare=False, hash=False)
 
@@ -183,13 +185,15 @@ class EntityField(Field):
         """Validate that the constraints apply to the field's data type and are satisfiable.
 
         Raises:
-            ValueError: If a regex is set on a non-string field, bounds are set on a non-numeric field or aren't of its
+            ValueError: If a regex is set on a non-string field, bounds are set on a field of a data type without bounds or aren't of its
                 data type, or the minimum of a context level is greater than its maximum.
         """
         if self.regex and self.data_type != DataType.STRING:
             raise ValueError(f'Invalid EntityField "{self.name}": regex only applies to string fields')
-        if (self.minimum or self.maximum) and not self.data_type.is_numeric:
-            raise ValueError(f'Invalid EntityField "{self.name}": min and max only apply to integer and float fields')
+        if (self.minimum or self.maximum) and not self.data_type.supports_bounds:
+            raise ValueError(
+                f'Invalid EntityField "{self.name}": min and max only apply to integer, float and date fields',
+            )
         self._validate_bound_types((*self.minimum.values(), *self.maximum.values()))
         for ctx_level, minimum in self.minimum.items():
             maximum = self.maximum.get(ctx_level)
@@ -298,16 +302,16 @@ class RelationshipField(Field):
     Attributes:
         instructions: Extra extraction instructions, or None if there are none.
         regex: Pattern that string values must match, or None if unconstrained.
-        minimum: Lowest allowed numeric value, or None if unbounded.
-        maximum: Highest allowed numeric value, or None if unbounded.
+        minimum: Lowest allowed value, or None if unbounded.
+        maximum: Highest allowed value, or None if unbounded.
         default_value: Default value, used by the ``DEFAULT`` retrieval mode and when an extracted value is null.
         retrieval_mode: How the field's value is retrieved.
     """
 
     instructions: str | None
     regex: RegexPattern | None
-    minimum: float | None
-    maximum: float | None
+    minimum: FieldBound | None
+    maximum: FieldBound | None
     default_value: FieldValue | None
     retrieval_mode: RelationshipRetrievalMode
 
@@ -339,14 +343,14 @@ class RelationshipField(Field):
         """Validate that the constraints apply to the field's data type and are satisfiable.
 
         Raises:
-            ValueError: If a regex is set on a non-string field, bounds are set on a non-numeric field or aren't of its
+            ValueError: If a regex is set on a non-string field, bounds are set on a field of a data type without bounds or aren't of its
                 data type, or the minimum is greater than the maximum.
         """
         if self.regex is not None and self.data_type != DataType.STRING:
             raise ValueError(f'Invalid RelationshipField "{self.name}": regex only applies to string fields')
-        if (self.minimum is not None or self.maximum is not None) and not self.data_type.is_numeric:
+        if (self.minimum is not None or self.maximum is not None) and not self.data_type.supports_bounds:
             raise ValueError(
-                f'Invalid RelationshipField "{self.name}": min and max only apply to integer and float fields',
+                f'Invalid RelationshipField "{self.name}": min and max only apply to integer, float and date fields',
             )
         self._validate_bound_types(bound for bound in (self.minimum, self.maximum) if bound is not None)
         if self.minimum is not None and self.maximum is not None and self.minimum > self.maximum:
@@ -423,7 +427,7 @@ class RelationshipField(Field):
                 )
 
 
-def _within_bounds(value: FieldValue, minimum: float | None, maximum: float | None) -> bool:
+def _within_bounds(value: FieldValue, minimum: FieldBound | None, maximum: FieldBound | None) -> bool:
     """Check whether a value is within a field's bounds.
 
     Args:
@@ -439,7 +443,7 @@ def _within_bounds(value: FieldValue, minimum: float | None, maximum: float | No
     return (minimum is None or value >= minimum) and (maximum is None or value <= maximum)
 
 
-def _describe_bounds_violation(minimum: float | None, maximum: float | None) -> str:
+def _describe_bounds_violation(minimum: FieldBound | None, maximum: FieldBound | None) -> str:
     """Describe the range a value outside a field's bounds should have been in.
 
     Args:
@@ -454,3 +458,15 @@ def _describe_bounds_violation(minimum: float | None, maximum: float | None) -> 
     if minimum is None:
         return f'greater than the max {maximum}'
     return f'outside the range between the min {minimum} and the max {maximum}'
+
+
+def _to_json(value: FieldValue) -> str | float | bool:
+    """Convert a field value to a JSON value, writing dates in their ISO 8601 form.
+
+    Args:
+        value: Field value to convert.
+
+    Returns:
+        The ISO 8601 text of a date, otherwise the same value.
+    """
+    return str(value) if isinstance(value, PartialDate) else value

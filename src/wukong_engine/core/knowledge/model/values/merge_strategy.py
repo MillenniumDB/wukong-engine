@@ -13,10 +13,10 @@ class MergeStrategy(Enum):
         REPLACE: Replace the existing value with the incoming value.
         LONGEST: For string fields, prefer the longest value (assuming it may contain more information).
         SHORTEST: For string fields, prefer the shortest value (assuming it may be more concise).
-        LARGEST: For numeric fields, prefer the largest value.
-        SMALLEST: For numeric fields, prefer the smallest value.
-        ANY: For boolean fields, prefer true (logical OR).
-        ALL: For boolean fields, prefer false (logical AND).
+        LARGEST: For ordered fields, prefer the largest value: the highest number, true (logical OR) or the latest
+            date.
+        SMALLEST: For ordered fields, prefer the smallest value: the lowest number, false (logical AND) or the earliest
+            date.
     """
 
     KEEP = 'keep'
@@ -25,8 +25,6 @@ class MergeStrategy(Enum):
     SHORTEST = 'shortest'
     LARGEST = 'largest'
     SMALLEST = 'smallest'
-    ANY = 'any'
-    ALL = 'all'
     # TODO(BFFV): Add UNION (combine unique values) for list fields
 
     def supports(self, data_type: DataType) -> bool:
@@ -44,6 +42,4 @@ class MergeStrategy(Enum):
             case MergeStrategy.LONGEST | MergeStrategy.SHORTEST:
                 return data_type == DataType.STRING
             case MergeStrategy.LARGEST | MergeStrategy.SMALLEST:
-                return data_type.is_numeric
-            case MergeStrategy.ANY | MergeStrategy.ALL:
-                return data_type == DataType.BOOLEAN
+                return data_type.is_ordered

@@ -5,7 +5,7 @@ import pytest
 from wukong_engine.core.knowledge.elements import Entity
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType
-from wukong_engine.core.knowledge.model.values import EntityTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate
 from wukong_engine.core.knowledge.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
@@ -95,3 +95,35 @@ def test_boolean_strategies_combine_values_in_either_order(merge_strategy: str, 
     }
 
     assert merged == {expected}
+
+
+@pytest.mark.parametrize('merge_strategy', ['keep', 'replace', 'latest', 'earliest'])
+def test_a_more_precise_date_refines_a_partial_one_under_any_strategy(merge_strategy: str) -> None:
+    """Keep the more precise of two dates that agree, whichever strategy applies and whichever is seen first."""
+    entity_type = _crew_type(merge_strategy, data_type='date')
+    entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
+    dates = (PartialDate(1969), PartialDate(1969, 7, 16))
+    first, second = (Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': value}) for value in dates)
+
+    merged = {
+        EntityMerger().merge(first, second).properties['crew_size'],
+        EntityMerger().merge(second, first).properties['crew_size'],
+    }
+
+    assert merged == {PartialDate(1969, 7, 16)}
+
+
+@pytest.mark.parametrize(('merge_strategy', 'expected'), [('latest', '1970'), ('earliest', '1969-07-16')])
+def test_dates_that_disagree_merge_by_time(merge_strategy: str, expected: str) -> None:
+    """Pick the latest or earliest of two dates that don't refine each other, whichever is seen first."""
+    entity_type = _crew_type(merge_strategy, data_type='date')
+    entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
+    dates = (PartialDate(1969, 7, 16), PartialDate(1970))
+    first, second = (Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': value}) for value in dates)
+
+    merged = {
+        EntityMerger().merge(first, second).properties['crew_size'],
+        EntityMerger().merge(second, first).properties['crew_size'],
+    }
+
+    assert merged == {PartialDate.from_iso(expected)}

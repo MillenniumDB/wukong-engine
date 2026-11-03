@@ -17,6 +17,7 @@ from wukong_engine.core.knowledge.model.values import (
     DataType,
     EntityTypeName,
     FieldName,
+    PartialDate,
     RelationshipTypeName,
 )
 from wukong_engine.core.shared import RegexPattern
@@ -277,15 +278,22 @@ def _as_list(value: Any) -> list:
 def _as_data_type(value: Any, data_type: DataType) -> Any:
     """Convert a value written for a field to the field's data type where the definition format allows another form.
 
-    Integers are also float values, so ``"min": 0`` in a float field means ``0.0``.
+    Integers are also float values, so ``"min": 0`` in a float field means ``0.0``, and dates are written in their ISO
+    8601 form (``"2021"``, ``"2021-03"`` or ``"2021-03-15"``).
 
     Args:
         value: Value from the field's definition (already validated by the schema).
         data_type: Data type of the field.
 
     Returns:
-        The value as a float if it is an integer written for a float field, otherwise the same value.
+        The value as a float if it is an integer written for a float field, as a date if it is the ISO 8601 form of one
+        written for a date field, otherwise the same value, for the field to reject if it isn't of its data type.
     """
     if data_type == DataType.FLOAT and isinstance(value, int) and not isinstance(value, bool):
         return float(value)
+    if data_type == DataType.DATE and isinstance(value, str):
+        try:
+            return PartialDate.from_iso(value)
+        except ValueError:
+            return value
     return value
