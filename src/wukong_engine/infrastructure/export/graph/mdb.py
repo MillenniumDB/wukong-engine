@@ -5,6 +5,7 @@ from pathlib import Path
 from types import TracebackType
 from typing import Any, Self
 
+from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.core.documents.elements import Chunk, Document
@@ -15,6 +16,8 @@ from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, Relat
 from wukong_engine.core.knowledge.model.values import PartialDate
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import replacing_directory
+
+from .tally import ExportTally
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -236,7 +239,7 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         """
         self._repository = repository
 
-    def export(self, model: KnowledgeModel, export_uri: str) -> None:
+    def export(self, model: KnowledgeModel, export_uri: str) -> ExportReport:
         """Export knowledge to a specified output format.
 
         Writes every source, entity and relationship to ``<export_uri>/mdb/knowledge_graph.qm``. The ``mdb``
@@ -245,42 +248,53 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
         Args:
             model: Knowledge model whose active entity and relationship types are exported.
             export_uri: Base export directory.
+
+        Returns:
+            The objects written of each label and type, and the size of the written file.
         """
         base_export_dir = Path(export_uri).resolve() / 'mdb'
         logger.info(f'Exporting knowledge to MillenniumDB QM file at: {base_export_dir / "knowledge_graph.qm"}')
 
         # Export sources, entities, and relationships
+        tally = ExportTally(model)
         with (
             replacing_directory(base_export_dir) as export_dir,
             MillenniumDBWriter(export_dir / 'knowledge_graph.qm') as writer,
         ):
-            self._export_sources(writer)
-            self._export_entities(model, writer)
-            self._export_relationships(model, writer)
+            self._export_sources(writer, tally)
+            self._export_entities(model, writer, tally)
+            self._export_relationships(model, writer, tally)
+        return tally.report(base_export_dir)
 
-    def _export_sources(self, writer: MillenniumDBWriter) -> None:
+    def _export_sources(self, writer: MillenniumDBWriter, tally: ExportTally) -> None:
         """Export sources to the MillenniumDB format.
 
         Args:
             writer: Open writer that receives the documents, chunks and ``ChunkOf`` edges.
+            tally: Tally counting the written objects.
         """
         # Documents
         logger.info('Exporting Documents...')
         for doc in self._repository.stream_all_documents():
             writer.write_document(doc)
+            tally.nodes['Document'] += 1
 
         # Chunks and ChunkOf (Special Relationship)
         logger.info('Exporting Chunks...')
         for chunk in self._repository.stream_all_chunks():
             writer.write_chunk(chunk)
             writer.write_chunk_source(chunk)
+            tally.nodes['Chunk'] += 1
+            tally.edges['ChunkOf'] += 1
+        logger.info(f'Exported {tally.nodes["Document"]:,} Documents and {tally.nodes["Chunk"]:,} Chunks')
 
-    def _export_entities(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
+    def _export_entities(self, model: KnowledgeModel, writer: MillenniumDBWriter, tally: ExportTally) -> None:
         """Export entities to the MillenniumDB format.
 
         Args:
             model: Knowledge model whose active entity types are exported.
             writer: Open writer that receives the entities and their ``ExtractedFrom`` edges.
+            tally: Tally counting the written objects.
         """
         # Entities
         logger.info('Exporting Entities...')
@@ -288,18 +302,23 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
             logger.info(f'Exporting Entities of type: {entity_type.name}')
             for entity in self._repository.stream_entities_by_type(entity_type):
                 writer.write_entity(entity, entity_type)
+                tally.nodes[entity_type.name.value] += 1
+            logger.info(f'Exported {tally.nodes[entity_type.name.value]:,} {entity_type.name} entities')
 
         # Special Relationship: ExtractedFrom
         logger.info('Exporting Entity Provenance...')
         for source_id, entity_id in self._repository.stream_entity_provenance(model.active_entity_types.keys()):
             writer.write_entity_provenance(source_id, entity_id)
+            tally.edges['ExtractedFrom'] += 1
+        logger.info(f'Exported {tally.edges["ExtractedFrom"]:,} ExtractedFrom provenance links')
 
-    def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter) -> None:
+    def _export_relationships(self, model: KnowledgeModel, writer: MillenniumDBWriter, tally: ExportTally) -> None:
         """Export relationships to the MillenniumDB format.
 
         Args:
             model: Knowledge model whose active relationship types are exported.
             writer: Open writer that receives the relationships.
+            tally: Tally counting the written objects.
         """
         # Relationships
         logger.info('Exporting Relationships...')
@@ -310,3 +329,8 @@ class MillenniumDBKnowledgeExporter(KnowledgeExporter):
                 model.active_endpoints(relationship_type),
             ):
                 writer.write_relationship(relationship, relationship_type, provenance)
+                tally.edges[relationship_type.name.value] += 1
+                tally.relationship_provenance += len(provenance)
+            logger.info(
+                f'Exported {tally.edges[relationship_type.name.value]:,} {relationship_type.name} relationships'
+            )

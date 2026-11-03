@@ -46,6 +46,7 @@ from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.elements import Entity
 from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.knowledge.model.values import EntityTypeName
+from wukong_engine.core.pipeline.model.values import PipelineStep
 from wukong_engine.core.shared.identity import ContentHash
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 
@@ -169,7 +170,7 @@ def _synchronizer(repository: RecordingRepository) -> ConcurrentExtractionBatchS
         llm_client_factory=llm_client_factory,
         batch_canceller=ConcurrentExtractionBatchCanceller(repository, llm_client_factory),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
-        metrics_tracker=ExtractionMetricsTracker(repository, ExecutionMode.BATCH),
+        metrics_tracker=ExtractionMetricsTracker(repository, ExecutionMode.BATCH, PipelineStep.EXTRACT_ENTITIES),
     )
 
 
@@ -317,7 +318,7 @@ def _cancelling_synchronizer(
         llm_client_factory=llm_client_factory,
         batch_canceller=ConcurrentExtractionBatchCanceller(repository, llm_client_factory),
         result_materializer=EntityExtractionResultMaterializer(repository, DefaultPKNormalizer()),
-        metrics_tracker=SilentMetricsTracker(repository, ExecutionMode.BATCH),
+        metrics_tracker=SilentMetricsTracker(repository, ExecutionMode.BATCH, PipelineStep.EXTRACT_ENTITIES),
     )
 
 

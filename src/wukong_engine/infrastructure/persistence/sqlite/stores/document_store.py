@@ -157,6 +157,72 @@ class SQLiteDocumentStore(DocumentStore):
         row = self._conn.execute('SELECT COUNT(*) AS count FROM chunks').fetchone()
         return int(row['count']) if row else 0
 
+    def count_documents_by_collection(self) -> dict[str, int]:
+        """Count the documents of each collection.
+
+        Returns:
+            The number of documents linked to each stored collection, including those with none.
+        """
+        rows = self._conn.execute(
+            """
+            SELECT c.collection_name, COUNT(dc.document_content_id) AS count
+            FROM collections c
+            LEFT JOIN document_collections dc ON dc.collection_name = c.collection_name
+            GROUP BY c.collection_name
+            """,
+        )
+        return {row['collection_name']: int(row['count']) for row in rows}
+
+    def count_chunks_by_collection(self) -> dict[str, int]:
+        """Count the chunks of the documents of each collection.
+
+        Returns:
+            The number of chunks of the documents linked to each stored collection, including those with none.
+        """
+        rows = self._conn.execute(
+            """
+            SELECT c.collection_name, COUNT(ch.content_id) AS count
+            FROM collections c
+            LEFT JOIN document_collections dc ON dc.collection_name = c.collection_name
+            LEFT JOIN chunks ch ON ch.document_content_id = dc.document_content_id
+            GROUP BY c.collection_name
+            """,
+        )
+        return {row['collection_name']: int(row['count']) for row in rows}
+
+    def count_shared_documents(self) -> int:
+        """Count the documents that belong to more than one collection.
+
+        Returns:
+            The number of documents linked to two or more collections.
+        """
+        row = self._conn.execute(
+            """
+            SELECT COUNT(*) AS count FROM (
+                SELECT document_content_id
+                FROM document_collections
+                GROUP BY document_content_id
+                HAVING COUNT(*) > 1
+            )
+            """,
+        ).fetchone()
+        return int(row['count']) if row else 0
+
+    def count_empty_documents(self) -> int:
+        """Count the documents that have no chunks, such as empty files.
+
+        Returns:
+            The number of stored documents without any chunk.
+        """
+        row = self._conn.execute(
+            """
+            SELECT COUNT(*) AS count
+            FROM documents d
+            WHERE NOT EXISTS (SELECT 1 FROM chunks ch WHERE ch.document_content_id = d.content_id)
+            """,
+        ).fetchone()
+        return int(row['count']) if row else 0
+
     def stream_all_documents(self) -> Iterator[Document]:
         """Stream all documents present in the store.
 

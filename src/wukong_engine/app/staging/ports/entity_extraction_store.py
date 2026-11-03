@@ -12,6 +12,7 @@ from wukong_engine.app.data_extraction.elements.values import (
     JobStatus,
     TokenUsageMetrics,
 )
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model.values import EntityTypeName
@@ -227,6 +228,20 @@ class EntityExtractionStore(Protocol):
 
         Returns:
             The aggregated token usage of jobs in each job status.
+        """
+        ...
+
+    def get_job_token_metrics_by_execution_mode(
+        self, context_level: ContextLevel
+    ) -> dict[ExecutionMode, TokenUsageMetrics]:
+        """Get job token usage metrics grouped by the execution mode the jobs ran in, for a given context level.
+
+        Args:
+            context_level: Context level (document or chunk) to aggregate token usage for.
+
+        Returns:
+            The summed token usage of the jobs of every status run in each mode, since providers bill batches at a
+            discount.
         """
         ...
 

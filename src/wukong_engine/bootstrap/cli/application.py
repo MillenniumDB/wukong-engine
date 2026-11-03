@@ -32,9 +32,16 @@ from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge, ResetK
 from wukong_engine.app.llm.elements import LLMClientFactory
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
 from wukong_engine.app.staging.ports import UnitOfWork
-from wukong_engine.app.workflows import GetPipelineStatus, KnowledgeConstructionPipeline, ResetPipeline
+from wukong_engine.app.workflows import (
+    GetPipelineStatus,
+    KnowledgeConstructionPipeline,
+    PipelineSteps,
+    ResetPipeline,
+    RunStatsService,
+)
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.extraction.model.values import ExtractionTask
+from wukong_engine.core.pipeline.model.values import PipelineStep
 from wukong_engine.infrastructure.chunking import ChunkingPlan, RecursiveDocumentChunker
 from wukong_engine.infrastructure.chunking.tokenization import HuggingFaceTokenizer, TextTokenizer
 from wukong_engine.infrastructure.config import ConfigProvider
@@ -52,6 +59,7 @@ from wukong_engine.infrastructure.persistence.sqlite import (
 from wukong_engine.infrastructure.storage.filesystem import (
     LocalExportCleaner,
     LocalInputSnapshotStore,
+    LocalRunStatsWriter,
     LocalWorkspaceInitializer,
 )
 from wukong_engine.infrastructure.storage.filesystem.documents import (
@@ -230,6 +238,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     entity_metrics_tracker = ExtractionMetricsTracker(
         repository=entity_extraction_repository,
         execution_mode=app_config.llm.execution_mode,
+        step=PipelineStep.EXTRACT_ENTITIES,
     )
     entity_request_builder = EntityExtractionRequestBuilder(
         repository=entity_extraction_repository,
@@ -270,6 +279,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
     relationship_metrics_tracker = ExtractionMetricsTracker(
         repository=relationship_extraction_repository,
         execution_mode=app_config.llm.execution_mode,
+        step=PipelineStep.EXTRACT_RELATIONSHIPS,
     )
     relationship_request_builder = RelationshipExtractionRequestBuilder(
         repository=relationship_extraction_repository,
@@ -344,11 +354,22 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         input_snapshots=input_snapshots,
         get_document_registry=get_document_registry,
         get_knowledge_model=get_knowledge_model,
-        ingest_documents=ingest_documents,
-        extract_entities=extract_entities,
-        extract_relationships=extract_relationships,
-        export_knowledge=export_knowledge,
+        steps=PipelineSteps(
+            ingest_documents=ingest_documents,
+            extract_entities=extract_entities,
+            extract_relationships=extract_relationships,
+            export_knowledge=export_knowledge,
+        ),
         reset_pipeline=reset_pipeline,
+        run_stats=RunStatsService(
+            uow=staging_uow,
+            entity_repository=entity_extraction_repository,
+            relationship_repository=relationship_extraction_repository,
+            model=app_config.llm.model,
+            execution_mode=app_config.llm.execution_mode,
+            export_format=app_config.export.format.value,
+            writer=LocalRunStatsWriter(),
+        ),
     )
     return CLIApplication(
         config=app_config,

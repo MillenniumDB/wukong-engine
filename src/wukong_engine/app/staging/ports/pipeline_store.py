@@ -44,10 +44,27 @@ class PipelineStore(Protocol):
         ...
 
     def reset_step_checkpoints(self, step: PipelineStep) -> None:
-        """Reset all checkpoints associated with a specific pipeline step.
+        """Reset all checkpoints associated with a specific pipeline step, along with its recorded run durations.
 
         Args:
-            step: Step whose checkpoints are set back to PENDING.
+            step: Step whose checkpoints are set back to PENDING and whose run durations are cleared.
+        """
+        ...
+
+    def record_step_run(self, step: PipelineStep, duration: float) -> None:
+        """Record how long a run of a pipeline step took, whether or not it completed the step.
+
+        Args:
+            step: Step that ran.
+            duration: Time the step ran for, in seconds.
+        """
+        ...
+
+    def get_step_durations(self) -> dict[PipelineStep, float]:
+        """Get the time spent running each pipeline step since its checkpoints were last reset.
+
+        Returns:
+            The summed duration of the recorded runs of each step that has any, in seconds.
         """
         ...
 
@@ -84,5 +101,5 @@ class PipelineStore(Protocol):
         ...
 
     def clear(self) -> None:
-        """Reset the pipeline store."""
+        """Reset the pipeline store, setting every checkpoint back to PENDING and clearing every run duration."""
         ...

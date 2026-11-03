@@ -63,6 +63,19 @@ def replacing_directory(target: Path) -> Iterator[Path]:
         staging.rename(target)
 
 
+def file_sizes(directory: Path) -> dict[str, int]:
+    """Get the size of every file under a directory.
+
+    Args:
+        directory: Directory to walk, including its subdirectories.
+
+    Returns:
+        The size of each file in bytes, keyed by its POSIX path relative to the directory, sorted by path.
+    """
+    files = sorted(path for path in directory.rglob('*') if path.is_file())
+    return {path.relative_to(directory).as_posix(): path.stat().st_size for path in files}
+
+
 def load_json_file(path: Path) -> Any:
     """Load a JSON file written by a user, such as a workspace definition.
 

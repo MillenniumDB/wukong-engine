@@ -5,7 +5,9 @@ import time
 
 from wukong_engine.app.data_extraction.elements.values import ExtractionMetrics, PerformanceMetricsState
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.shared.progress import progress
 from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.pipeline.model.values import PipelineStep
 
 from .repository import ExtractionRepository
 
@@ -26,15 +28,17 @@ BATCH_PERFORMANCE_INTERVAL = 300  # Update performance state (default: 300 secon
 class ExtractionMetricsTracker:
     """Manages and tracks data extraction metrics."""
 
-    def __init__(self, repository: ExtractionRepository, execution_mode: ExecutionMode) -> None:
+    def __init__(self, repository: ExtractionRepository, execution_mode: ExecutionMode, step: PipelineStep) -> None:
         """Initialize the tracker with necessary dependencies.
 
         Args:
             repository: Repository used to query extraction metrics.
             execution_mode: Execution mode being tracked, which sets the logging and performance update intervals
                 and the execution section shown in the logs.
+            step: Pipeline step whose extractions are tracked, named in the progress lines.
         """
         self._repository = repository
+        self._step = step
         self._execution_mode = execution_mode
         self._log_interval = BATCH_LOG_INTERVAL if execution_mode == ExecutionMode.BATCH else REALTIME_LOG_INTERVAL
         self._performance_interval = (
@@ -187,6 +191,27 @@ class ExtractionMetricsTracker:
 
         return f'{title}{progress}{execution}{output}{usage}{ending}'
 
+    def _format_progress(self, metrics: ExtractionMetrics, context_level: ContextLevel) -> str:
+        """Format the key extraction metrics as a progress line.
+
+        Args:
+            metrics: Metrics to format.
+            context_level: Context level the metrics belong to.
+
+        Returns:
+            The sources extracted so far out of the total, the failed ones if any, the objects extracted, the tokens
+            used and the estimated time left.
+        """
+        completed = metrics.source_counts['completed']
+        failed = metrics.source_counts['failed']
+        return (
+            f'  {self._step.value} ({context_level.value}S): {completed:,}/{metrics.total_sources:,} sources '
+            f'({metrics.source_percentages["completed"]:.1f}%)'
+            + (f', {failed:,} failed' if failed else '')
+            + f', {metrics.object_count:,} objects, {sum(metrics.token_counts.values()):,} tokens, '
+            f'ETA {metrics.estimated_completion_time_str}'
+        )
+
     def request_metrics(self, *, force_log: bool = False, force_update: bool = False) -> None:
         """Collect and log extraction metrics for the current context level, depending on the elapsed time.
 
@@ -220,8 +245,9 @@ class ExtractionMetricsTracker:
             logger.warning('Metrics collection failed. Skipping metrics logging.')
             return
 
-        # Log the formatted metrics
+        # Show a progress line, and log the formatted metrics in detail
         if should_log:
+            progress.info(self._format_progress(metrics, context_level))
             formatted_metrics = self._format_metrics(metrics, context_level)
             logger.info(f'Current extraction metrics for {context_level.value}S\n\n{formatted_metrics}')
             self._log_timestamp = time.monotonic()

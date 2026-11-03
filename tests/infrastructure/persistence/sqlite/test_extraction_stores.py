@@ -1,4 +1,4 @@
-"""Tests for the SQLite extraction stores: attempt limits of source extractions and active batch listings."""
+"""Tests for the SQLite extraction stores: attempt limits of extractions, batch listings and token usage."""
 
 import os
 import sqlite3
@@ -8,7 +8,8 @@ from pathlib import Path
 import pytest
 
 from wukong_engine.app.data_extraction.elements import MAX_ATTEMPTS, ExtractionBatch, ExtractionJob
-from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, JobStatus
+from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, JobStatus, TokenUsageMetrics
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.shared.identity import ContentHash
@@ -128,3 +129,30 @@ def test_each_store_lists_only_the_active_batches_of_its_extraction_type(tmp_pat
         listed[label] = [batch.provider_id for batch in store_type(conn).get_active_batch_group(size=10)]
 
     assert listed == {'entity': ['entities'], 'relationship': ['relationships']}
+
+
+@pytest.mark.parametrize('insert_extraction', [_entity_extraction, _relationship_extraction])
+def test_token_usage_is_split_by_whether_jobs_ran_in_a_batch(
+    tmp_path: Path,
+    insert_extraction: Callable[[sqlite3.Connection, int], tuple[ExtractionStore, str]],
+) -> None:
+    """Sum the tokens of jobs linked to a batch apart from the others, whatever their status, since batches cost less."""
+    conn = _connect(tmp_path)
+    store, _ = insert_extraction(conn, 0)
+    realtime_job, batch_job = (ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID) for _ in range(2))
+    batch = ExtractionBatch.from_provider(provider=LLMProvider.OPENAI, provider_id='batch_1')
+    store.schedule_jobs([realtime_job, batch_job])
+    store.register_batch(batch)
+    store.link_jobs_to_batch([batch_job], batch)
+    store.update_job_status(realtime_job, JobStatus.COMPLETED, TokenUsageMetrics(10, 1, 2, 3, 4))
+    store.update_job_status(batch_job, JobStatus.FAILED, TokenUsageMetrics(100, 0, 0, 30, 0))
+
+    if isinstance(store, SQLiteEntityExtractionStore):
+        usage = store.get_job_token_metrics_by_execution_mode(ContextLevel.CHUNK)
+    else:
+        usage = store.get_job_token_metrics_by_execution_mode()
+
+    assert usage == {
+        ExecutionMode.REALTIME: TokenUsageMetrics(10, 1, 2, 3, 4),
+        ExecutionMode.BATCH: TokenUsageMetrics(100, 0, 0, 30, 0),
+    }

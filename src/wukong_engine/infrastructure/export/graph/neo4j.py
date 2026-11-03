@@ -6,6 +6,7 @@ from pathlib import Path
 from types import TracebackType
 from typing import Any, Self
 
+from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
 from wukong_engine.core.documents.elements import Chunk, Document
@@ -16,6 +17,8 @@ from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, Relat
 from wukong_engine.core.knowledge.model.values import DataType
 from wukong_engine.infrastructure.serialization import IdentityStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import replacing_directory
+
+from .tally import ExportTally
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -406,7 +409,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         """
         self._repository = repository
 
-    def export(self, model: KnowledgeModel, export_uri: str) -> None:
+    def export(self, model: KnowledgeModel, export_uri: str) -> ExportReport:
         """Export knowledge to a specified output format.
 
         Writes one CSV file per node/edge type under ``<export_uri>/neo4j/entities`` and
@@ -416,10 +419,14 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         Args:
             model: Knowledge model whose active entity and relationship types are exported.
             export_uri: Base export directory.
+
+        Returns:
+            The objects written of each label and type, and the size of every written file.
         """
         base_export_dir = Path(export_uri).resolve() / 'neo4j'
         logger.info(f'Exporting knowledge to Neo4j CSV files at: {base_export_dir}')
 
+        tally = ExportTally(model)
         with replacing_directory(base_export_dir) as export_dir:
             # Setup export directories
             entities_dir = export_dir / 'entities'
@@ -428,22 +435,24 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             relationships_dir.mkdir()
 
             # Export sources
-            self._export_sources(export_dir)
+            self._export_sources(export_dir, tally)
 
             # Export entities
-            self._export_entities(model, entities_dir)
+            self._export_entities(model, entities_dir, tally)
 
             # Export relationships
-            self._export_relationships(model, relationships_dir)
+            self._export_relationships(model, relationships_dir, tally)
 
             # Import script
             self._write_import_script(model, export_dir)
+        return tally.report(base_export_dir)
 
-    def _export_sources(self, export_dir: Path) -> None:
+    def _export_sources(self, export_dir: Path, tally: ExportTally) -> None:
         """Export sources to a set of Neo4j CSV files.
 
         Args:
             export_dir: Neo4j export directory containing the ``entities`` and ``relationships`` subdirectories.
+            tally: Tally counting the written objects.
         """
         # Documents
         logger.info('Exporting Documents...')
@@ -451,6 +460,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         with Neo4jDocumentWriter(docs_file_path) as writer:
             for doc in self._repository.stream_all_documents():
                 writer.write(doc)
+                tally.nodes['Document'] += 1
 
         # Chunks
         logger.info('Exporting Chunks...')
@@ -458,14 +468,17 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         with Neo4jChunkWriter(chunks_file_path) as writer:
             for chunk in self._repository.stream_all_chunks():
                 writer.write(chunk)
+                tally.nodes['Chunk'] += 1
 
         # Special Relationship: ChunkOf
         chunk_of_file_path = export_dir / 'relationships' / 'ChunkOf.csv'
         with Neo4jChunkSourceWriter(chunk_of_file_path) as writer:
             for chunk in self._repository.stream_all_chunks():
                 writer.write(chunk)
+                tally.edges['ChunkOf'] += 1
+        logger.info(f'Exported {tally.nodes["Document"]:,} Documents and {tally.nodes["Chunk"]:,} Chunks')
 
-    def _export_entities(self, model: KnowledgeModel, entities_dir: Path) -> None:
+    def _export_entities(self, model: KnowledgeModel, entities_dir: Path, tally: ExportTally) -> None:
         """Export entities to a set of Neo4j CSV files.
 
         Also writes the ``ExtractedFrom`` provenance edges to the sibling ``relationships`` directory.
@@ -473,6 +486,7 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         Args:
             model: Knowledge model whose active entity types are exported.
             entities_dir: Directory where one CSV file per entity type is written.
+            tally: Tally counting the written objects.
         """
         # Entities
         logger.info('Exporting Entities...')
@@ -482,6 +496,8 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
             with Neo4jEntityWriter(entity_type_file_path, entity_type) as writer:
                 for entity in self._repository.stream_entities_by_type(entity_type):
                     writer.write(entity)
+                    tally.nodes[entity_type.name.value] += 1
+            logger.info(f'Exported {tally.nodes[entity_type.name.value]:,} {entity_type.name} entities')
 
         # Special Relationship: ExtractedFrom
         logger.info('Exporting Entity Provenance...')
@@ -489,13 +505,16 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         with Neo4jEntityProvenanceWriter(extracted_from_file_path) as writer:
             for source_id, entity_id in self._repository.stream_entity_provenance(model.active_entity_types.keys()):
                 writer.write(source_id, entity_id)
+                tally.edges['ExtractedFrom'] += 1
+        logger.info(f'Exported {tally.edges["ExtractedFrom"]:,} ExtractedFrom provenance links')
 
-    def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path) -> None:
+    def _export_relationships(self, model: KnowledgeModel, relationships_dir: Path, tally: ExportTally) -> None:
         """Export relationships to a set of Neo4j CSV files.
 
         Args:
             model: Knowledge model whose active relationship types are exported.
             relationships_dir: Directory where one CSV file per relationship type is written.
+            tally: Tally counting the written objects.
         """
         # Relationships
         logger.info('Exporting Relationships...')
@@ -508,6 +527,11 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
                     model.active_endpoints(relationship_type),
                 ):
                     writer.write(relationship, provenance)
+                    tally.edges[relationship_type.name.value] += 1
+                    tally.relationship_provenance += len(provenance)
+            logger.info(
+                f'Exported {tally.edges[relationship_type.name.value]:,} {relationship_type.name} relationships',
+            )
 
     def _write_import_script(self, model: KnowledgeModel, export_dir: Path) -> None:
         """Write the ``import.sh`` script that imports the exported CSV files with ``neo4j-admin``.

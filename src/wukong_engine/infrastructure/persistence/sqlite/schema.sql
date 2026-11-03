@@ -223,6 +223,11 @@ CREATE TABLE IF NOT EXISTS pipeline_checkpoints (
         )
     )
 );
+CREATE TABLE IF NOT EXISTS pipeline_step_runs (
+    step_name TEXT NOT NULL,
+    finished_at INTEGER NOT NULL,
+    duration_ms INTEGER NOT NULL
+);
 -- =========================================================
 -- Indexes
 -- =========================================================

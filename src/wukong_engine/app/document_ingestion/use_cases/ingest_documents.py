@@ -65,10 +65,17 @@ class IngestDocuments:
 
         # Ingest all document collections
         chunker = self._chunker_factory(chunking)
+        processed_documents = processed_chunks = 0
         try:
-            for collection in collections:
-                self._ingest_collection(collection, data_uri, chunker)
-                logger.info(f'Ingested Document Collection: {collection.name}')
+            for position, collection in enumerate(collections, start=1):
+                logger.info(f'Ingesting collection "{collection.name}" ({position}/{len(collections)})...')
+                documents, chunks = self._ingest_collection(collection, data_uri, chunker)
+                processed_documents += documents
+                processed_chunks += chunks
+                logger.info(
+                    f'Ingested collection "{collection.name}": {documents:,} documents, {chunks:,} chunks '
+                    f'({processed_documents:,} documents and {processed_chunks:,} chunks processed so far)',
+                )
         except DocumentIngestionError as exc:
             error = 'Document Ingestion failed due to an unrecoverable error'
             logger.error(error)
@@ -76,26 +83,43 @@ class IngestDocuments:
 
         # Log ingestion stats and mark the DOCUMENTS_INGESTED checkpoint as completed
         with self._uow as tx:
-            total_docs = tx.documents.count_documents()
+            total_documents = tx.documents.count_documents()
             total_chunks = tx.documents.count_chunks()
-            logger.info(f'Total Documents: {total_docs}')
-            logger.info(f'Total Chunks: {total_chunks}')
+            shared_documents = tx.documents.count_shared_documents()
+            empty_documents = tx.documents.count_empty_documents()
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.DOCUMENTS_INGESTED, PipelineCheckpointStatus.COMPLETED)
+        logger.info(
+            f'Ingested {total_documents:,} unique documents and {total_chunks:,} chunks from {len(collections)} '
+            f'collections ({shared_documents:,} documents in several collections, stored once; {empty_documents:,} '
+            f'empty documents without chunks)',
+        )
+        if empty_documents:
+            logger.warning(f'{empty_documents:,} documents are empty, so they have no chunks to extract from')
 
-    def _ingest_collection(self, collection: DocumentCollection, data_uri: str, chunker: DocumentChunker) -> None:
+    def _ingest_collection(
+        self,
+        collection: DocumentCollection,
+        data_uri: str,
+        chunker: DocumentChunker,
+    ) -> tuple[int, int]:
         """Ingest a specific collection of documents into the system.
 
         Normalizes the collection's sources, then stores its documents, links them to the collection and stores their
-        chunks, in batches.
+        chunks, in batches, logging the counts so far after each batch.
 
         Args:
             collection: Collection whose documents and chunks are ingested.
             data_uri: Data root directory every ingested document must be contained in.
             chunker: Chunker that splits the loaded documents into chunks.
 
+        Returns:
+            The number of documents and chunks of the collection, including those already stored for another
+            collection.
+
         Raises:
             DocumentIngestionError: If any step of the ingestion fails.
         """
+        documents = chunks = 0
         try:
             normalized_sources = self._source_normalizer.normalize(collection.sources)
             for doc_batch in batched(
@@ -110,7 +134,11 @@ class IngestDocuments:
                     loaded_docs = (doc for doc in self._loader.load_many(doc_batch) if doc is not None)
                     for chunk_batch in batched(chunker.chunk_many(loaded_docs), size=CHUNK_BATCH_SIZE):
                         tx.documents.bulk_upsert_chunks(chunk_batch)
+                        chunks += len(chunk_batch)
+                documents += len(doc_batch)
+                logger.info(f'  "{collection.name}": {documents:,} documents, {chunks:,} chunks so far...')
         except Exception as exc:
             error = f'Failed to ingest Document Collection "{collection.name}"'
             logger.error(error)
             raise DocumentIngestionError(error) from exc
+        return documents, chunks

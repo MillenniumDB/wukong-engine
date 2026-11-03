@@ -20,7 +20,7 @@ Engine for extracting structured knowledge from unstructured documents using the
   - [Running the Engine](#running-the-engine)
   - [Managing a Workspace](#managing-a-workspace)
   - [Output](#output)
-  - [Extraction Metrics](#extraction-metrics)
+  - [Run Progress and Stats](#run-progress-and-stats)
   - [Engine Configuration](#engine-configuration)
 - [🐳 Docker Support](#-docker-support)
   - [Building the Image](#building-the-image)
@@ -177,7 +177,7 @@ The following options are available:
 | Option            | Description                                                                                                             |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `--config <FILE>` | Use a custom configuration file. Defaults to `config/default.toml`.                                                     |
-| `-v` / `-vv`      | Increase output verbosity. By default only warnings and errors are shown; `-v` adds info logs and `-vv` adds debug logs. |
+| `-v` / `-vv`      | Increase output verbosity. By default a run shows its progress (see [Run Progress and Stats](#run-progress-and-stats)) along with warnings and errors; `-v` adds detailed info logs and `-vv` adds debug logs. |
 | `--reset`         | Clear the stored data at the start of each active pipeline step, so it recomputes from scratch.                         |
 | `--until-done`    | Keep running the pipeline until every enabled step is completed, waiting between runs (1 minute in real-time mode, 5 minutes in batch mode). |
 
@@ -193,7 +193,7 @@ A run stops early when a step can't complete yet: in batch mode, extraction subm
 
 ### Managing a Workspace
 
-Besides `run`, the engine provides commands to check a workspace before and after running it:
+Besides `run`, the engine provides commands to create a workspace and to check it before and after running it:
 
 | Command                                                    | Description                                                                                                       |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -230,9 +230,17 @@ Because the sources are part of the output, the result is self-contained: it can
 
 > 📂 For the exact layout of the exported files, refer to the [Workspace](/docs/workspace.md) documentation.
 
-### Extraction Metrics
+### Run Progress and Stats
 
-With `-v` or higher verbosity, the engine periodically logs **extraction metrics** for the step in progress: every 20 seconds in real-time mode and every 5 minutes in batch mode. They cover progress, execution throughput and timing, the extracted objects, and **token usage**, both in total and per request.
+Every run shows its progress, at any verbosity:
+
+- **The plan:** what the run does with each step (skip it as already completed, run it, or reset it first), as `wukong plan` shows it.
+- **A line per step:** when it starts, and when it finishes, with how long it took and its key numbers, such as the documents and chunks ingested, the sources extracted with the objects found and the tokens used, or the size of the export. While an extraction step runs, a progress line also shows the sources extracted so far and the estimated time left, every 20 seconds in real-time mode and every 5 minutes in batch mode.
+- **The run stats:** once the whole pipeline is completed, a report of what the workspace holds and what it took: how long each step took in this run and across every run since it was last reset; the documents and chunks of each collection, including documents shared by several collections and empty ones; the sources, objects and mentions of each extraction step; the tokens used, with their estimated cost; and the exported objects of every type, `Document`, `Chunk`, `ChunkOf` and `ExtractedFrom` included, along with the relationships' provenance and the size of the export.
+
+The run stats are also saved as `stats.json` next to the exported files, so every export carries a record of what produced it.
+
+With `-v` or higher verbosity, the engine also logs detailed **extraction metrics** for the step in progress, at the same intervals: progress, execution throughput and timing, the extracted objects, and **token usage**, both in total and per request. Document ingestion logs each collection as it is ingested, with a line every 500 documents.
 
 Token usage is split into categories that **do not overlap**, each billed at its own rate by the provider:
 
@@ -244,7 +252,7 @@ Token usage is split into categories that **do not overlap**, each billed at its
 | `Output`        | Generated tokens, excluding reasoning.                                  |
 | `Reasoning`     | Tokens spent on reasoning, for reasoning models.                        |
 
-The engine does not track prices, since they change over time. The cost of a run is the sum of each category multiplied by its current per-token rate for the configured model. A category the model does not report (e.g. `Cache (Write)` on models without a write charge) is always zero.
+The cost of a run is the sum of each category multiplied by its per-token rate for the configured model, with reasoning tokens billed as output, and batch requests at the provider's batch discount. The run stats estimate it from the published rates the engine knows for each supported model, taken from the providers' pricing pages on the date the stats show next to the cost (2026-11-03 for the current defaults). Prices change over time, so it is only an estimate: the provider's bill is the reference. The rates are those for regular prompts; a provider may charge more for very long prompts (over 272K tokens on `gpt-6-luna`, 100K on `claude-haiku-5-5`), which the estimate doesn't account for. A category the model does not report (e.g. `Cache (Write)` on models without a write charge) is always zero.
 
 The same counts are also stored per extraction job in the staging database, in the `input_tokens`, `cached_tokens`, `cache_write_tokens`, `output_tokens` and `reasoning_tokens` columns of the `extraction_jobs` table.
 

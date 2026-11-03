@@ -21,6 +21,7 @@ from wukong_engine.app.data_extraction.elements.values import (
     JobStatus,
     TokenUsageMetrics,
 )
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.app.staging.ports import EntityExtractionStore
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
@@ -849,6 +850,47 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
                 reasoning_tokens=int(group['total_reasoning_tokens'] or 0),
             )
             job_tokens[status] = metrics
+        return job_tokens
+
+    def get_job_token_metrics_by_execution_mode(
+        self, context_level: ContextLevel
+    ) -> dict[ExecutionMode, TokenUsageMetrics]:
+        """Get job token usage metrics grouped by the execution mode the jobs ran in, for a given context level.
+
+        A job ran in batch mode exactly when it is linked to a batch.
+
+        Args:
+            context_level: Context level (document or chunk) to aggregate token usage for.
+
+        Returns:
+            The summed token usage of the jobs of every status run in each mode, with both modes present (all zeros if
+            none).
+        """
+        job_tokens = dict.fromkeys(ExecutionMode, TokenUsageMetrics(0, 0, 0, 0, 0))
+        groups = self._conn.execute(
+            """
+            SELECT
+                batch_id IS NOT NULL AS in_batch,
+                SUM(input_tokens) AS total_input_tokens,
+                SUM(cached_tokens) AS total_cached_tokens,
+                SUM(cache_write_tokens) AS total_cache_write_tokens,
+                SUM(output_tokens) AS total_output_tokens,
+                SUM(reasoning_tokens) AS total_reasoning_tokens
+            FROM extraction_jobs
+            WHERE job_type = ? AND context_level = ?
+            GROUP BY in_batch
+            """,
+            (EXTRACTION_JOB_TYPE, context_level.value),
+        )
+        for group in groups:
+            mode = ExecutionMode.BATCH if group['in_batch'] else ExecutionMode.REALTIME
+            job_tokens[mode] = TokenUsageMetrics(
+                input_tokens=int(group['total_input_tokens'] or 0),
+                cached_tokens=int(group['total_cached_tokens'] or 0),
+                cache_write_tokens=int(group['total_cache_write_tokens'] or 0),
+                output_tokens=int(group['total_output_tokens'] or 0),
+                reasoning_tokens=int(group['total_reasoning_tokens'] or 0),
+            )
         return job_tokens
 
     # Recovery

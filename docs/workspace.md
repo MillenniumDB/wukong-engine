@@ -192,9 +192,11 @@ The export step writes to `<workspace>/exports/`, in a subdirectory named after 
 ```sh
 your-workspace/exports/
 ├── mdb/
-│   └── knowledge_graph.qm          # format = "mdb"
+│   ├── knowledge_graph.qm          # format = "mdb"
+│   └── stats.json                  # the run stats of the export
 └── neo4j/                          # format = "neo4j"
     ├── import.sh                   # imports the CSV files with neo4j-admin
+    ├── stats.json                  # the run stats of the export
     ├── entities/
     │   ├── Document.csv
     │   ├── Chunk.csv
@@ -205,7 +207,7 @@ your-workspace/exports/
         └── <RelationshipType>.csv
 ```
 
-Only the format selected in the configuration is written. Each export replaces that format's directory as a whole, and only once it has completed: files of types no longer exported don't linger, and a failed export leaves the previous one intact. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
+Only the format selected in the configuration is written. Next to the exported files, `stats.json` records the run stats the run ended with (see [Run Progress and Stats](/README.md#run-progress-and-stats)): the time each step took, the ingested documents per collection, the extraction results and token usage with their estimated cost, and the exported objects of every type with the size of each exported file. Durations and costs carry their unit in their name (`this_run_seconds`, `estimated_cost_usd`), an estimated cost is `null` when the model's rates aren't known, and `token_rates_as_of` gives the date of the prices it was estimated with. Each export replaces that format's directory as a whole, and only once it has completed: files of types no longer exported don't linger, and a failed export leaves the previous one intact. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
 
 String values are written exactly as they were extracted. The Neo4j CSV files carry no label or relationship type column, so each file has to be imported under its own name, with the `--multiline-fields=true` option since chunk contents span several lines. The generated `import.sh` does exactly that with `neo4j-admin database import full`, into a stopped database:
 
