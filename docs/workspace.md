@@ -202,6 +202,18 @@ Only the format selected in the configuration is written. Each export replaces t
 
 String values are written exactly as they were extracted. The Neo4j CSV files quote them, and chunk contents span several lines, so import them with `neo4j-admin database import` and the `--multiline-fields=true` option.
 
+Relationships are edges, so they can't link to the chunks they were extracted from the way entities do. Instead, each relationship lists their instance IDs: in Neo4j as the string array `_provenance_chunk_ids`, and in MillenniumDB as the string `P_provenance_chunk_ids`, joined by `;` (MillenniumDB lists can't be searched). There, a text index makes the reverse lookup ("which relationships come from this chunk?") indexed rather than a scan of every edge:
+
+```
+CREATE TEXT INDEX "provenance" WITH {"property" = "P_provenance_chunk_ids", "normalization" = "identity", "tokenization" = "wsSplitPunc"}
+```
+
+```
+CALL TEXT_SEARCH("provenance", "<ChunkInstanceID>", "match") YIELD ?object
+MATCH (?source)-[?object]->(?target)
+RETURN ?object, ?source, ?target
+```
+
 > ⚙️ For selecting the export format, refer to the [Configuration](/docs/configuration.md) documentation.
 
 [📚 Back to Table of Contents](#-table-of-contents)
