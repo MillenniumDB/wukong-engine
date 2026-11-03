@@ -197,6 +197,7 @@ Besides `run`, the engine provides commands to check a workspace before and afte
 
 | Command                                                    | Description                                                                                                       |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `wukong init <workspace_dir>`                              | Create a workspace with skeleton input files: a document collection and a knowledge model with one entity type, full of `<...>` placeholders to replace before the first run. Never overwrites existing files. |
 | `wukong plan <workspace_dir> <data_dir> [options]`         | Show the configuration and what `run` would do with the same options, without running, resetting or calling the **LLM**. Takes `--config`, `--reset` and `-v`/`-vv`, like `run`. |
 | `wukong status <workspace_dir>`                            | Show the progress of each pipeline step (including the batches still pending at the provider) and the inputs whose snapshot is kept. Needs no configuration. |
 | `wukong reset <workspace_dir> [--from <STEP>] [options]`   | Clear the stored results, entirely or from a step onwards, after asking for confirmation. Takes `--yes` (skip the confirmation) and `-v`/`-vv`. Needs no configuration, only the API keys of the providers with batches still running, to cancel them. |

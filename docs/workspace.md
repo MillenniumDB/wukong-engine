@@ -57,6 +57,12 @@ your-workspace/
 
 The engine validates the workspace before doing anything: the directory must exist, and both JSON files must be present. A missing file aborts the run with an `InvalidWorkspaceError`.
 
+To start a new workspace, `wukong init <workspace_dir>` creates the directory (if needed) with both JSON files: a registry with one collection, and a knowledge model with one entity type. They are a **starting point to edit**, not a model to run: every `<...>` text is a placeholder to replace, the example names (`my-documents`, `Organization`, `name`) are there to rename, and the collection points at a path that doesn't exist, so documents can't be ingested until the registry is edited. Existing files are never overwritten.
+
+```sh
+poetry run wukong init workspaces/my-workspace
+```
+
 The staging database is what makes runs **resumable**. Completed work is skipped on a re-run, so interrupting the engine loses at most the LLM calls in flight.
 
 [📚 Back to Table of Contents](#-table-of-contents)

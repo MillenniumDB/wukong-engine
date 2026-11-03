@@ -49,7 +49,11 @@ from wukong_engine.infrastructure.persistence.sqlite import (
     SQLiteUnitOfWork,
     initialize_sqlite_database,
 )
-from wukong_engine.infrastructure.storage.filesystem import LocalExportCleaner, LocalInputSnapshotStore
+from wukong_engine.infrastructure.storage.filesystem import (
+    LocalExportCleaner,
+    LocalInputSnapshotStore,
+    LocalWorkspaceInitializer,
+)
 from wukong_engine.infrastructure.storage.filesystem.documents import (
     LocalDocumentLoader,
     LocalDocumentSourceValidator,
@@ -394,3 +398,12 @@ def build_pipeline_status(workspace: Workspace) -> GetPipelineStatus:
         entity_repository=EntityExtractionRepository(uow=staging_uow),
         relationship_repository=RelationshipExtractionRepository(uow=staging_uow),
     )
+
+
+def build_workspace_initializer() -> LocalWorkspaceInitializer:
+    """Build the initializer creating new workspaces, which needs no configuration.
+
+    Returns:
+        The initializer writing skeleton input files.
+    """
+    return LocalWorkspaceInitializer()

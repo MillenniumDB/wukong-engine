@@ -3,6 +3,18 @@
 This package handles the wiring of components for CLI entry points.
 """
 
-from .application import CLIApplication, build_application, build_pipeline_status, build_reset_pipeline
+from .application import (
+    CLIApplication,
+    build_application,
+    build_pipeline_status,
+    build_reset_pipeline,
+    build_workspace_initializer,
+)
 
-__all__ = ['CLIApplication', 'build_application', 'build_pipeline_status', 'build_reset_pipeline']
+__all__ = [
+    'CLIApplication',
+    'build_application',
+    'build_pipeline_status',
+    'build_reset_pipeline',
+    'build_workspace_initializer',
+]
