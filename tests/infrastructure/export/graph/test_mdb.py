@@ -1,0 +1,38 @@
+"""Tests for the MillenniumDB QM file exporter."""
+
+from pathlib import Path
+
+from wukong_engine.core.knowledge.elements import Entity
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model.values import EntityTypeName
+from wukong_engine.core.shared.identity import ContentHash, InstanceId
+from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
+from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
+from wukong_engine.infrastructure.export.graph.mdb import MillenniumDBWriter
+
+
+def test_integers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None:
+    """Write integer values as QM integer literals, down to the lowest one MillenniumDB supports, and strings quoted."""
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {
+                'Mission': {
+                    'description': 'A mission.',
+                    'primary_key': 'code',
+                    'fields': {
+                        'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
+                        'crew_size': {'data_type': 'integer', 'description': 'Crew size.'},
+                    },
+                    'document_collections': {'chunk': 'missions'},
+                },
+            },
+        },
+    )
+    entity_type = KnowledgeModelMapper().map_knowledge_model(schema).entity_types[EntityTypeName('Mission')]
+    entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
+    path = tmp_path / 'knowledge_graph.qm'
+
+    with MillenniumDBWriter(path) as writer:
+        writer.write_entity(Entity(entity_id, entity_type, {'code': '12', 'crew_size': -(2**56 - 1)}), entity_type)
+
+    assert path.read_text(encoding='utf-8').split()[-2:] == ['code:"12"', 'crew_size:-72057594037927935']

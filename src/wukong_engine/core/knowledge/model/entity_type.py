@@ -77,10 +77,12 @@ class EntityType:
         """Validate entity type invariants and build fields index.
 
         Raises:
-            ValueError: If the primary key is invalid or a context level lists duplicated document collections.
+            ValueError: If the primary key is invalid, a context level lists duplicated document collections, or the
+                default merge strategy doesn't apply to a field without its own.
         """
         self._validate_primary_key()
         self._validate_document_collections()
+        self._validate_default_merge_strategy()
         object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_primary_key(self) -> None:
@@ -128,6 +130,20 @@ class EntityType:
                 raise ValueError(
                     f'Invalid EntityType "{self.name}": duplicate document collection names found '
                     f'for context level "{context_level.value}": {duplicates}',
+                )
+
+    def _validate_default_merge_strategy(self) -> None:
+        """Validate that the default merge strategy applies to every field without its own.
+
+        Raises:
+            ValueError: If the default merge strategy can't merge values of such a field's data type.
+        """
+        for entity_field in self.fields.values():
+            if entity_field.merge_strategy is None and not self.default_merge_strategy.supports(entity_field.data_type):
+                raise ValueError(
+                    f'Invalid EntityType "{self.name}": default merge strategy "{self.default_merge_strategy.value}" '
+                    f'does not apply to {entity_field.data_type.value} field "{entity_field.name}", which must set '
+                    f'its own merge strategy',
                 )
 
     def _build_fields_index(

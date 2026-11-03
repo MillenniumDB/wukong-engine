@@ -22,8 +22,15 @@ KNOWLEDGE_MODEL = {
                     'options': ['planned', 'active', 'completed'],
                     'default_value': 'planned',
                 },
+                'crew_size': {'data_type': 'integer', 'description': 'Crew size.', 'min': 1, 'max': 12},
             },
             'document_collections': {'document': 'missions', 'chunk': 'missions'},
+        },
+        'Sol': {
+            'description': 'A mission day.',
+            'primary_key': 'number',
+            'fields': {'number': {'data_type': 'int', 'description': 'Day number.', 'required': True}},
+            'document_collections': {'chunk': 'missions'},
         },
         'Incident': {
             'description': 'An incident.',

@@ -69,10 +69,12 @@ class RelationshipType:
         """Validate relationship type invariants and build the fields index.
 
         Raises:
-            ValueError: If an endpoint has incompatible context level pairings or the primary key is invalid.
+            ValueError: If an endpoint has incompatible context level pairings, the primary key is invalid, or the
+                default merge strategy doesn't apply to a field without its own.
         """
         self._validate_endpoints()
         self._validate_primary_key()
+        self._validate_default_merge_strategy()
         object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_endpoints(self) -> None:
@@ -125,6 +127,22 @@ class RelationshipType:
                 raise ValueError(
                     f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" cannot declare a default '
                     f'value, since relationships missing it would all share that key',
+                )
+
+    def _validate_default_merge_strategy(self) -> None:
+        """Validate that the default merge strategy applies to every field without its own.
+
+        Raises:
+            ValueError: If the default merge strategy can't merge values of such a field's data type.
+        """
+        for relationship_field in self.fields.values():
+            if relationship_field.merge_strategy is None and not self.default_merge_strategy.supports(
+                relationship_field.data_type,
+            ):
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": default merge strategy '
+                    f'"{self.default_merge_strategy.value}" does not apply to {relationship_field.data_type.value} '
+                    f'field "{relationship_field.name}", which must set its own merge strategy',
                 )
 
     def _build_fields_index(self) -> MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]]:

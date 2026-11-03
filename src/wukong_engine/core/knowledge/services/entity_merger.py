@@ -97,4 +97,8 @@ class EntityMerger:
                 chosen = max(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
             case MergeStrategy.SHORTEST:
                 chosen = min(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
+            case MergeStrategy.LARGEST:
+                chosen = max(existing, incoming)
+            case MergeStrategy.SMALLEST:
+                chosen = min(existing, incoming)
         return chosen

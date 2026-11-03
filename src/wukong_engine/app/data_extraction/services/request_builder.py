@@ -74,7 +74,9 @@ def _data_type_to_json(data_type: DataType) -> str:
     match data_type:
         case DataType.STRING:
             return 'string'
-        # TODO(BFFV): Map INTEGER to "integer", FLOAT to "number" and BOOLEAN to "boolean" once those data types exist
+        case DataType.INTEGER:
+            return 'integer'
+        # TODO(BFFV): Map FLOAT to "number" and BOOLEAN to "boolean" once those data types exist
 
 
 def _rebuild_text(chunks: tuple[Chunk, ...]) -> str:

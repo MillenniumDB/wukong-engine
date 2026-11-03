@@ -3,7 +3,7 @@
 import re
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
@@ -16,10 +16,10 @@ class _FieldSchema(BaseModel):
     """Base schema for field definitions.
 
     Attributes:
-        data_type: Data type of the field's values; accepts aliases such as "str" or "text".
+        data_type: Data type of the field's values; accepts aliases such as "str" or "int".
         description: Description of what the field holds.
-        options: Allowed values for the field; a single string is turned into a one-item list.
-        examples: Example values for the field; a single string is turned into a one-item list.
+        options: Allowed values for the field; a single value is turned into a one-item list.
+        examples: Example values for the field; a single value is turned into a one-item list.
         required: Whether the field must be present in extracted objects.
         merge_strategy: How to merge values when deduplicating, or None to use the type's default. Accepts aliases
             such as "overwrite" or "first".
@@ -29,8 +29,8 @@ class _FieldSchema(BaseModel):
 
     data_type: DataType
     description: StrictStr
-    options: list[StrictStr] | StrictStr = Field(default_factory=list)
-    examples: list[StrictStr] | StrictStr = Field(default_factory=list)
+    options: list[StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=list)
+    examples: list[StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=list)
     required: StrictBool = False
     merge_strategy: MergeStrategy | None = None
 
@@ -39,8 +39,10 @@ class _FieldSchema(BaseModel):
         'str': DataType.STRING,
         'string': DataType.STRING,
         'text': DataType.STRING,
-        # TODO(BFFV): Add aliases for INTEGER ("int", "integer", "number"), FLOAT ("float", "double") and BOOLEAN
-        # ("bool", "boolean") once those data types exist
+        'int': DataType.INTEGER,
+        'integer': DataType.INTEGER,
+        # TODO(BFFV): Add aliases for FLOAT ("float", "double", "number") and BOOLEAN ("bool", "boolean") once those
+        # data types exist
     }
 
     # Mapping of various string representations to MergeStrategy members
@@ -61,6 +63,12 @@ class _FieldSchema(BaseModel):
         'shortest': MergeStrategy.SHORTEST,
         'concise': MergeStrategy.SHORTEST,
         'minimal': MergeStrategy.SHORTEST,
+        'largest': MergeStrategy.LARGEST,
+        'max': MergeStrategy.LARGEST,
+        'maximum': MergeStrategy.LARGEST,
+        'smallest': MergeStrategy.SMALLEST,
+        'min': MergeStrategy.SMALLEST,
+        'minimum': MergeStrategy.SMALLEST,
     }
 
     @field_validator('data_type', mode='before')
@@ -97,16 +105,16 @@ class _FieldSchema(BaseModel):
 
     @field_validator('options', 'examples')
     @classmethod
-    def normalize_value_lists(cls, value: list[str] | str) -> list[str]:
-        """Normalize lists containing string values.
+    def normalize_value_lists(cls, value: list[str | int] | str | int) -> list[str | int]:
+        """Normalize lists of field values.
 
         Args:
-            value: Validated list of strings, or a single string.
+            value: Validated list of values, or a single value.
 
         Returns:
-            ``value`` wrapped in a list if it's a single string, otherwise ``value`` unchanged.
+            ``value`` wrapped in a list if it's a single value, otherwise ``value`` unchanged.
         """
-        if isinstance(value, str):
+        if not isinstance(value, list):
             return [value]
         return value
 
@@ -116,17 +124,23 @@ class EntityFieldSchema(_FieldSchema):
 
     Attributes:
         instructions: Extra extraction instructions per context level; a single string applies to all levels.
-        regex: Regex pattern that values must match, per context level; a single string applies to all levels.
-        default_value: Default value per context level; a single string applies to all levels.
+        regex: Regex pattern that string values must match, per context level; a single string applies to all levels.
+        minimum: Lowest allowed numeric value per context level, under the ``min`` key; a single value applies to all
+            levels.
+        maximum: Highest allowed numeric value per context level, under the ``max`` key; a single value applies to all
+            levels.
+        default_value: Default value per context level; a single value applies to all levels.
         retrieval_mode: How the field's value is obtained, per context level; a single mode applies to all levels.
     """
 
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    default_value: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
+    minimum: dict[ContextLevel, StrictInt] | StrictInt = Field(default_factory=dict, alias='min')
+    maximum: dict[ContextLevel, StrictInt] | StrictInt = Field(default_factory=dict, alias='max')
+    default_value: dict[ContextLevel, StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode = Field(default_factory=dict)
 
-    @field_validator('instructions', 'regex', 'default_value', 'retrieval_mode', mode='before')
+    @field_validator('instructions', 'regex', 'minimum', 'maximum', 'default_value', 'retrieval_mode', mode='before')
     @classmethod
     def check_unique_context_levels(cls, value: Any) -> Any:
         """Reject context level mappings naming the same level twice in different cases.
@@ -139,18 +153,21 @@ class EntityFieldSchema(_FieldSchema):
         """
         return reject_repeated_context_levels(value)
 
-    @field_validator('instructions', 'default_value')
+    @field_validator('instructions', 'minimum', 'maximum', 'default_value')
     @classmethod
-    def normalize_context_level_mappings(cls, value: dict[ContextLevel, str] | str) -> dict[ContextLevel, str]:
-        """Normalize context level -> string mappings.
+    def normalize_context_level_mappings(
+        cls,
+        value: dict[ContextLevel, str | int] | str | int,
+    ) -> dict[ContextLevel, str | int]:
+        """Normalize context level -> value mappings.
 
         Args:
-            value: Validated mapping from context level to string, or a single string.
+            value: Validated mapping from context level to value, or a single value.
 
         Returns:
-            A mapping of every context level to ``value`` if it's a single string, otherwise ``value`` unchanged.
+            A mapping of every context level to ``value`` if it's a single value, otherwise ``value`` unchanged.
         """
-        if isinstance(value, str):
+        if not isinstance(value, dict):
             return dict.fromkeys(ContextLevel, value)
         return value
 
@@ -203,14 +220,18 @@ class RelationshipFieldSchema(_FieldSchema):
 
     Attributes:
         instructions: Extra extraction instructions for the field, if any.
-        regex: Regex pattern that values must match, if any.
+        regex: Regex pattern that string values must match, if any.
+        minimum: Lowest allowed numeric value, under the ``min`` key, if any.
+        maximum: Highest allowed numeric value, under the ``max`` key, if any.
         default_value: Default value for the field, if any.
         retrieval_mode: How the field's value is obtained.
     """
 
     instructions: StrictStr | None = None
     regex: StrictStr | None = None
-    default_value: StrictStr | None = None
+    minimum: StrictInt | None = Field(default=None, alias='min')
+    maximum: StrictInt | None = Field(default=None, alias='max')
+    default_value: StrictStr | StrictInt | None = None
     retrieval_mode: RelationshipRetrievalMode = RelationshipRetrievalMode.EXTRACT
 
     @field_validator('regex')

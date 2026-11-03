@@ -29,7 +29,7 @@ class Entity:
     Attributes:
         id: Unique identifier of the entity.
         type: Entity type the instance conforms to.
-        properties: Mapping from field name to string value. Null values are omitted rather than stored.
+        properties: Mapping from field name to a value of the field's data type. Null values are omitted rather than stored.
     """
 
     id: EntityId
@@ -42,7 +42,7 @@ class Entity:
         Raises:
             ValueError: If a property is not a field of the entity type, a required field is missing, a stored value
                 is null, or a value is not among the field's options.
-            TypeError: If a property value is not a string.
+            TypeError: If a property value is not of its field's data type.
         """
         self._validate_property_fields()
         self._validate_property_values()
@@ -74,7 +74,7 @@ class Entity:
 
         Raises:
             ValueError: If a stored value is null or not among the field's defined options.
-            TypeError: If a stored value is not a string.
+            TypeError: If a stored value is not of its field's data type.
         """
         fields_by_name = {f_name.value: field for f_name, field in self.type.fields.items()}
         for property_name, value in self.properties.items():
@@ -86,11 +86,11 @@ class Entity:
                     f'Invalid Entity: property "{property_name}" has a null value stored (should be omitted instead)\n<Invalid Entity>\n{self}',
                 )
 
-            # Property values must be strings (currently)
-            if not isinstance(value, str):
+            # Property values must be of the field's data type
+            if not field.data_type.accepts(value):
                 raise TypeError(
-                    f'Invalid Entity: property "{property_name}" must be of type string, '
-                    f'got {type(value).__name__} instead\n<Invalid Entity>\n{self}',
+                    f'Invalid Entity: property "{property_name}" must be a valid {field.data_type.value} value, '
+                    f'got {value!r} instead\n<Invalid Entity>\n{self}',
                 )
 
             # Value must be contained in allowed values (options) if defined for the field
@@ -131,7 +131,7 @@ class Entity:
 
         Raises:
             ValueError: If the remaining properties miss a required field or hold a value outside a field's options.
-            TypeError: If a remaining property value is not a string.
+            TypeError: If a remaining property value is not of its field's data type.
         """
         entity_id = EntityId.from_identity(entity_type=entity_type.name, normalized_pk=normalized_pk)
         valid_properties = {}

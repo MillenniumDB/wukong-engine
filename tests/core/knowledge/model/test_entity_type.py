@@ -70,3 +70,76 @@ def test_regex_must_match_the_whole_value() -> None:
     """Reject a value the regex only matches a prefix of, even when the pattern has no ``$`` anchor."""
     with pytest.raises(ValueError, match='ARTEMIS-7 and more'):
         _load_mission(code={**REGEX_CODE, 'examples': 'ARTEMIS-7 and more'})
+
+
+def _crew_size(**settings: Any) -> dict[str, Any]:
+    """Build the definition of an optional integer ``crew_size`` field with the given settings."""
+    return {'data_type': 'integer', 'description': 'Crew size.', **settings}
+
+
+@pytest.mark.parametrize(
+    ('field', 'error'),
+    [
+        (_crew_size(default_value='4'), "Default value '4' is not a valid integer value"),
+        (_crew_size(options=[2, 2**56]), 'Option 72057594037927936 is not a valid integer value'),
+        ({'data_type': 'string', 'description': 'Name.', 'examples': 4}, 'Example 4 is not a valid string value'),
+        (_crew_size(regex='[0-9]+'), 'regex only applies to string fields'),
+        ({'data_type': 'string', 'description': 'Name.', 'max': 10}, 'min and max only apply to integer fields'),
+        (_crew_size(min={'chunk': 5}, max=4), 'min 5 is greater than max 4 for context level "CHUNK"'),
+        (_crew_size(min=1, default_value={'document': 0}), 'Default value 0 for context level "DOCUMENT" is less'),
+        (_crew_size(min=1, max=12, examples=[4, 13]), 'Example 13 for context level "CHUNK" is outside the range'),
+    ],
+)
+def test_integer_fields_hold_integers_and_only_take_bounds(field: dict[str, Any], error: str) -> None:
+    """Reject values of another data type and constraints that don't apply to it, and check values against bounds."""
+    with pytest.raises(ValueError, match=error):
+        _load_mission(crew_size=field)
+
+
+def test_booleans_are_not_integers() -> None:
+    """Reject a boolean where an integer is expected, even though Python treats booleans as integers."""
+    with pytest.raises(ValueError, match='default_value'):
+        _load_mission(crew_size=_crew_size(default_value=True))
+
+
+def test_integer_fields_can_be_primary_keys() -> None:
+    """Accept an integer primary key with bounds, options and examples that satisfy each other."""
+    number = {'data_type': 'int', 'description': 'Number.', 'required': True, 'min': 1, 'examples': [1, 1204]}
+
+    _load_mission(code=number)
+
+
+@pytest.mark.parametrize(
+    ('field', 'error'),
+    [
+        (_crew_size(merge_strategy='longest'), 'Merge strategy "longest" does not apply to integer values'),
+        ({'data_type': 'string', 'description': 'Name.', 'merge_strategy': 'max'}, '"largest" does not apply'),
+    ],
+)
+def test_merge_strategies_must_apply_to_the_field_data_type(field: dict[str, Any], error: str) -> None:
+    """Reject a field merge strategy that compares values in a way that doesn't apply to the field's data type."""
+    with pytest.raises(ValueError, match=error):
+        _load_mission(crew_size=field)
+
+
+def test_the_default_merge_strategy_must_apply_to_fields_without_their_own() -> None:
+    """Reject a type default merge strategy that doesn't apply to a field without its own, asking to set one."""
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {
+                'Mission': {
+                    'description': 'A mission.',
+                    'primary_key': 'code',
+                    'default_merge_strategy': 'longest',
+                    'fields': {
+                        'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
+                        'crew_size': _crew_size(),
+                    },
+                    'document_collections': {'document': 'missions'},
+                },
+            },
+        },
+    )
+
+    with pytest.raises(ValueError, match='integer field "crew_size", which must set its own merge strategy'):
+        KnowledgeModelMapper().map_knowledge_model(schema)

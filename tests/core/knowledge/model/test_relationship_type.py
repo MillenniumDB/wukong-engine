@@ -55,3 +55,17 @@ def test_values_must_have_the_form_of_an_extracted_value(key: str) -> None:
     """Reject a value no extraction can produce, since extracted values are stripped and an empty one is missing."""
     with pytest.raises(ValueError, match='leading or trailing whitespace'):
         _load_follows(note={'data_type': 'string', 'description': 'Note.', key: ' late'})
+
+
+@pytest.mark.parametrize(
+    ('field', 'error'),
+    [
+        ({'data_type': 'integer', 'description': 'Delay.', 'min': 2, 'max': 1}, 'min 2 is greater than max 1'),
+        ({'data_type': 'integer', 'description': 'Delay.', 'min': 0, 'default_value': -1}, 'Default value -1 is less'),
+        ({'data_type': 'integer', 'description': 'Delay.', 'regex': '[0-9]+'}, 'regex only applies to string fields'),
+    ],
+)
+def test_integer_fields_take_single_bounds(field: dict[str, Any], error: str) -> None:
+    """Check relationship field bounds, which take a single value instead of one per context level."""
+    with pytest.raises(ValueError, match=error):
+        _load_follows(delay=field)
