@@ -52,7 +52,7 @@ def _normalize_value(value: Any, options: tuple[str, ...]) -> str | None:
     Responses that aren't validated against their schema can carry a value as another JSON type, so booleans become
     ``true``/``false``, numbers their decimal text (``3.0`` becomes ``3``) and a single-element list its element.
     Strings are stripped, an empty one or a literal ``null`` counts as missing, and a value equal to one of the
-    options regardless of case becomes that option.
+    options regardless of case becomes that option, preferring an exact match.
 
     Args:
         value: Value extracted for the field, as decoded from the response.
@@ -78,6 +78,8 @@ def _normalize_value(value: Any, options: tuple[str, ...]) -> str | None:
         return None
     if not text or text.lower() == 'null':
         return None
+    if text in options:
+        return text
     return next((option for option in options if option.casefold() == text.casefold()), text)
 
 

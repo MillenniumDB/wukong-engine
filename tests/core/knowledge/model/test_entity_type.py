@@ -50,6 +50,14 @@ def test_primary_key_cannot_declare_a_default_value() -> None:
         _load_mission(code=code)
 
 
+@pytest.mark.parametrize('key', ['options', 'examples', 'default_value'])
+@pytest.mark.parametrize('value', ['', '  ', ' active', 'active '])
+def test_values_must_have_the_form_of_an_extracted_value(key: str, value: str) -> None:
+    """Reject a value no extraction can produce, since extracted values are stripped and an empty one is missing."""
+    with pytest.raises(ValueError, match='leading or trailing whitespace'):
+        _load_mission(name={'data_type': 'string', 'description': 'Name.', key: value})
+
+
 REGEX_CODE = {'data_type': 'string', 'description': 'Code.', 'required': True, 'regex': '[A-Z]+-[0-9]+'}
 
 

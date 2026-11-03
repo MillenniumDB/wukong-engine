@@ -1,6 +1,7 @@
 """Knowledge model field classes."""
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from types import MappingProxyType
 from typing import Any
@@ -53,6 +54,26 @@ class Field:
             field_info['examples'] = list(self.examples)
         return json.dumps(field_info)
 
+    def _validate_value_forms(self, default_values: Iterable[str]) -> None:
+        """Validate that options, examples and default values have the form of an extracted value.
+
+        Extracted strings are stripped and an empty one counts as missing, so a value without that form could never be
+        matched or would be stored in a form no extracted value has.
+
+        Args:
+            default_values: Default values of the field.
+
+        Raises:
+            ValueError: If an option, example or default value is empty or has leading or trailing whitespace.
+        """
+        for kind, values in (('Option', self.options), ('Example', self.examples), ('Default value', default_values)):
+            for value in values:
+                if not value or value != value.strip():
+                    raise ValueError(
+                        f'Invalid {type(self).__name__} "{self.name}": {kind} {value!r} is empty or has leading or '
+                        f'trailing whitespace, which extracted values never have',
+                    )
+
 
 @dataclass(frozen=True, slots=True, repr=False)
 class EntityField(Field):
@@ -77,6 +98,7 @@ class EntityField(Field):
         Raises:
             ValueError: If the default values, retrieval modes, or examples are inconsistent with the field rules.
         """
+        self._validate_value_forms(self.default_value.values())
         self._validate_default_values()
         self._validate_retrieval_mode()
         self._validate_examples()
@@ -176,6 +198,7 @@ class RelationshipField(Field):
         Raises:
             ValueError: If the default value or examples are inconsistent with the field rules.
         """
+        self._validate_value_forms(() if self.default_value is None else (self.default_value,))
         self._validate_default_value()
         self._validate_examples()
 

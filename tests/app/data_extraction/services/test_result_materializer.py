@@ -52,6 +52,8 @@ def test_items_that_are_not_objects_are_skipped(wrap: Any) -> None:
         (2.5, (), '2.5'),
         (['Ada'], (), 'Ada'),
         ('ACTIVE', ('planned', 'active'), 'active'),
+        ('active', ('Active', 'active'), 'active'),
+        ('ACTIVE', ('Active', 'active'), 'Active'),
         ('retired', ('planned', 'active'), 'retired'),
         ('', (), None),
         ('null', (), None),

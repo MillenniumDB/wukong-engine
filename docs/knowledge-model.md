@@ -177,6 +177,8 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 | `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing (and has no `default_value` to fall back to), or doesn't satisfy `options` and `regex`, is discarded rather than repaired. An invalid value of an optional field is discarded instead, leaving the entity with the field's `default_value` (if any). The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
 | `merge_strategy` |    🟡     | Overrides the entity type's `default_merge_strategy` for this field. See [Merge Strategies](#merge-strategies).                                                                                         |               `string`               | `null`      |
 
+Extracted values are trimmed of surrounding whitespace, and an empty one counts as missing, so `options`, `examples` and `default_value` can't be empty or have surrounding whitespace either. An extracted value equal to one of the `options` regardless of case becomes that option, preferring an exact match.
+
 **Retrieval modes** determine where an entity field's value comes from:
 
 | Mode        | Description                                                                 | `chunk` | `document` |
