@@ -7,6 +7,7 @@ import pytest
 
 from wukong_engine.app.data_extraction.elements import ExtractionJob
 from wukong_engine.app.data_extraction.services import EntityExtractionRequestBuilder
+from wukong_engine.app.data_extraction.services.request_builder import _render_value
 from wukong_engine.core.documents.elements import Chunk, Document, LoadedDocument
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
@@ -81,3 +82,11 @@ def test_a_document_that_cannot_be_read_is_rebuilt_from_its_chunks(
     assert text == 'Mission ARTEMIS-7 launched.\n\nThe crew landed on day 3.'
     assert [record.levelname for record in caplog.records] == ['ERROR', 'WARNING']
     assert 'rebuilt from its 3 ingested chunk(s)' in caplog.text
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'), [(True, 'true'), (False, 'false'), (4, '4'), (2.5, '2.5'), ('Ada', 'Ada')]
+)
+def test_values_are_rendered_in_prompts_as_responses_write_them(value: Any, expected: str) -> None:
+    """Render booleans as the JSON literals responses use, not as Python's ``True`` and ``False``."""
+    assert _render_value(value) == expected

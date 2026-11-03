@@ -11,8 +11,8 @@ from wukong_engine.infrastructure.definitions.knowledge.schemas import Knowledge
 from wukong_engine.infrastructure.export.graph.mdb import MillenniumDBWriter
 
 
-def test_numbers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None:
-    """Write numbers as QM literals, with floats always as floats (a point or exponent), and strings quoted."""
+def test_numbers_and_booleans_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None:
+    """Write numbers and booleans as QM literals, with floats always as floats (a point or exponent), strings quoted."""
     schema = KnowledgeModelSchema.model_validate(
         {
             'entity_types': {
@@ -24,6 +24,7 @@ def test_numbers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None
                         'crew_size': {'data_type': 'integer', 'description': 'Crew size.'},
                         'payload': {'data_type': 'float', 'description': 'Payload mass.'},
                         'margin': {'data_type': 'float', 'description': 'Safety margin.'},
+                        'crewed': {'data_type': 'boolean', 'description': 'Crewed.'},
                     },
                     'document_collections': {'chunk': 'missions'},
                 },
@@ -35,12 +36,13 @@ def test_numbers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None
     path = tmp_path / 'knowledge_graph.qm'
 
     with MillenniumDBWriter(path) as writer:
-        properties = {'code': '12', 'crew_size': -(2**56 - 1), 'payload': 4.0, 'margin': 1e-05}
+        properties = {'code': '12', 'crew_size': -(2**56 - 1), 'payload': 4.0, 'margin': 1e-05, 'crewed': False}
         writer.write_entity(Entity(entity_id, entity_type, properties), entity_type)
 
-    assert path.read_text(encoding='utf-8').split()[-4:] == [
+    assert path.read_text(encoding='utf-8').split()[-5:] == [
         'code:"12"',
         'crew_size:-72057594037927935',
         'payload:4.0',
         'margin:1e-05',
+        'crewed:false',
     ]

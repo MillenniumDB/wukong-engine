@@ -103,7 +103,7 @@ class RelationshipType:
 
         Raises:
             ValueError: If the primary key is not among the fields, is missing while the identity policy requires one,
-                is a float field, doesn't use the extract retrieval mode, isn't marked as required, or declares a
+                is a float or boolean field, doesn't use the extract retrieval mode, isn't marked as required, or declares a
                 default value.
         """
         # PK existence when specified
@@ -122,9 +122,10 @@ class RelationshipType:
         # PK retrieval mode must be EXTRACT and the field must be required (if PK is specified)
         if self.primary_key is not None:
             pk_field = self.fields[self.primary_key]
-            if pk_field.data_type == DataType.FLOAT:
+            if pk_field.data_type in {DataType.FLOAT, DataType.BOOLEAN}:
                 raise ValueError(
-                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" cannot be a float field',
+                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" cannot be a '
+                    f'{pk_field.data_type.value} field',
                 )
             if pk_field.retrieval_mode != RelationshipRetrievalMode.EXTRACT:
                 raise ValueError(

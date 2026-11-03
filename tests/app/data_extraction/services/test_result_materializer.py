@@ -19,6 +19,7 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.data_extraction.services.result_materializer import (
     _extracted_items,
+    _normalize_boolean,
     _normalize_float,
     _normalize_integer,
     _normalize_string,
@@ -134,6 +135,34 @@ def test_float_values_are_normalized_from_their_decimal_forms(value: Any, expect
 def test_values_without_a_float_form_are_left_for_validation_to_reject(value: Any) -> None:
     """Leave values that aren't decimal numbers unchanged, so they are discarded as invalid, not as missing."""
     assert _normalize_float(value) is value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        (True, True),
+        (0, False),
+        (1.0, True),
+        (' TRUE ', True),
+        ('no', False),
+        ('Sí', True),
+        ('si', True),
+        ('Falso', False),
+        ('1', True),
+        ('', None),
+        ('null', None),
+        (None, None),
+    ],
+)
+def test_boolean_values_are_normalized_from_yes_and_no_forms(value: Any, *, expected: bool | None) -> None:
+    """Convert 1 and 0, and yes or no words in English or Spanish regardless of case, to booleans."""
+    assert _normalize_boolean(value) is expected
+
+
+@pytest.mark.parametrize('value', [2, 0.5, 'maybe', 'tal vez', 'yes!', {}])
+def test_values_without_a_boolean_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave values that aren't yes or no unchanged, so they are discarded as invalid, not as missing."""
+    assert _normalize_boolean(value) is value
 
 
 JOB = ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string('chunk'))
@@ -353,3 +382,23 @@ def test_float_values_are_converted_and_validated_against_their_bounds(model: Kn
     payloads = [entity.properties.get('payload_tons') for entity in entities]
     assert payloads == [4.0, 12.5, None, None]
     assert isinstance(payloads[0], float)
+
+
+def test_boolean_values_are_converted_and_not_confused_with_numbers(model: KnowledgeModel) -> None:
+    """Convert yes or no forms to booleans, and discard booleans extracted for numeric fields as invalid."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'crewed': 'Sí', 'crew_size': True},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'crewed': 0, 'payload_tons': False},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'crewed': 'maybe'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [entity.properties for entity in entities] == [
+        {'code': 'ARTEMIS-7', 'crewed': True, 'status': 'planned'},
+        {'code': 'ARTEMIS-8', 'crewed': False, 'status': 'planned'},
+        {'code': 'KEPLER-12', 'status': 'planned'},
+    ]

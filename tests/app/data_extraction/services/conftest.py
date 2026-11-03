@@ -24,6 +24,7 @@ KNOWLEDGE_MODEL = {
                 },
                 'crew_size': {'data_type': 'integer', 'description': 'Crew size.', 'min': 1, 'max': 12},
                 'payload_tons': {'data_type': 'float', 'description': 'Payload mass.', 'min': 0, 'max': 100},
+                'crewed': {'data_type': 'bool', 'description': 'Whether the mission is crewed.'},
             },
             'document_collections': {'document': 'missions', 'chunk': 'missions'},
         },

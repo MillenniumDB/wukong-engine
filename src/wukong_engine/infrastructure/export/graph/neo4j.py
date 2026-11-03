@@ -25,6 +25,7 @@ DATA_TYPE_NAME_MAPPING = {
     DataType.STRING: 'string',
     DataType.INTEGER: 'long',
     DataType.FLOAT: 'double',
+    DataType.BOOLEAN: 'boolean',
 }
 
 

@@ -33,6 +33,19 @@ logger = logging.getLogger(__name__)
 _PLAIN_INTEGER = re.compile(r'[+-]?[0-9]+')
 _GROUPED_INTEGER = re.compile(r'[+-]?[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*')
 _THOUSANDS_SEPARATORS = re.compile(r'[., _]')
+# English and Spanish words, which the sources are written in; "no" means false in both
+_BOOLEAN_WORDS = {
+    'true': True,
+    'yes': True,
+    'sí': True,
+    'si': True,
+    'verdadero': True,
+    '1': True,
+    'false': False,
+    'no': False,
+    'falso': False,
+    '0': False,
+}
 # Tried in order: a lone '.' or ',' is read as the decimal separator (1.234 is 1.234), and only otherwise as grouping
 _DECIMAL_NUMBER = re.compile(
     r'(?P<sign>[+-]?)'
@@ -68,8 +81,8 @@ def _normalize_value(value: Any, field: Field) -> Any:
     """Normalize an extracted value into a value of the field's data type, as a lenient extractor would.
 
     Responses that aren't validated against their schema can carry a value as another JSON type, so a single-element
-    list becomes its element before converting it (see ``_normalize_string``, ``_normalize_integer`` and
-    ``_normalize_float``).
+    list becomes its element before converting it (see ``_normalize_string``, ``_normalize_integer``,
+    ``_normalize_float`` and ``_normalize_boolean``).
 
     Args:
         value: Value extracted for the field, as decoded from the response.
@@ -88,6 +101,8 @@ def _normalize_value(value: Any, field: Field) -> Any:
             return _normalize_integer(value)
         case DataType.FLOAT:
             return _normalize_float(value)
+        case DataType.BOOLEAN:
+            return _normalize_boolean(value)
 
 
 def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None:
@@ -180,6 +195,31 @@ def _normalize_float(value: Any) -> Any:
         return value
     integer = _THOUSANDS_SEPARATORS.sub('', match['integer'])
     return float(f'{match["sign"]}{integer}.{match["fraction"] or 0}{match["exponent"] or ""}')
+
+
+def _normalize_boolean(value: Any) -> Any:
+    """Normalize an extracted value into a boolean.
+
+    The numbers ``1`` and ``0`` become ``True`` and ``False``, and so do strings holding a yes or no word in English or
+    Spanish (``true``/``false``, ``yes``/``no``, ``sí``/``no``, ``verdadero``/``falso``, ``1``/``0``), regardless of
+    case. An empty string or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The boolean, None if the value is missing, or the value unchanged if it has no boolean form.
+    """
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, int | float):
+        return bool(value) if value in {0, 1} else value
+    if not isinstance(value, str):
+        return value
+    text = value.strip().casefold()
+    if not text or text == 'null':
+        return None
+    return _BOOLEAN_WORDS.get(text, value)
 
 
 def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:

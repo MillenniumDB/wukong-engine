@@ -62,6 +62,20 @@ def _generate_field_schema(field: Field) -> dict[str, Any]:
     return schema
 
 
+def _render_value(value: Any) -> str:
+    """Render a property value in a prompt, writing booleans as the JSON literals responses use for them.
+
+    Args:
+        value: Property value to render.
+
+    Returns:
+        ``true`` or ``false`` for a boolean, otherwise the value's text.
+    """
+    if isinstance(value, bool):
+        return 'true' if value else 'false'
+    return str(value)
+
+
 def _data_type_to_json(data_type: DataType) -> str:
     """Map a field data type to a JSON schema type.
 
@@ -78,7 +92,8 @@ def _data_type_to_json(data_type: DataType) -> str:
             return 'integer'
         case DataType.FLOAT:
             return 'number'
-        # TODO(BFFV): Map BOOLEAN to "boolean" once that data type exists
+        case DataType.BOOLEAN:
+            return 'boolean'
 
 
 def _rebuild_text(chunks: tuple[Chunk, ...]) -> str:
@@ -718,14 +733,14 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
 
         # Primary Key
         pk_field, pk_value = entity.primary_key_property
-        lines.append(f'{pk_field.name}: {pk_value}')
+        lines.append(f'{pk_field.name}: {_render_value(pk_value)}')
 
         # Properties
         for field, value in entity.required_properties.items():
             if field != pk_field:  # Avoid repeating the primary key property
-                lines.append(f'{field.name}: {value}')
+                lines.append(f'{field.name}: {_render_value(value)}')
         for field, value in entity.optional_properties.items():
-            lines.append(f'{field.name}: {value}')
+            lines.append(f'{field.name}: {_render_value(value)}')
 
         return lines
 

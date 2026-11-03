@@ -13,7 +13,7 @@ from .context_level import reject_repeated_context_levels
 
 # Values are taken as written, so a quoted number is a string; integers stay integers until mapped to a float field
 _Number = StrictInt | StrictFloat
-_Value = StrictStr | _Number
+_Value = StrictStr | _Number | StrictBool
 
 
 class _FieldSchema(BaseModel):
@@ -48,7 +48,8 @@ class _FieldSchema(BaseModel):
         'float': DataType.FLOAT,
         'double': DataType.FLOAT,
         'number': DataType.FLOAT,
-        # TODO(BFFV): Add aliases for BOOLEAN ("bool", "boolean") once that data type exists
+        'bool': DataType.BOOLEAN,
+        'boolean': DataType.BOOLEAN,
     }
 
     # Mapping of various string representations to MergeStrategy members
@@ -75,6 +76,10 @@ class _FieldSchema(BaseModel):
         'smallest': MergeStrategy.SMALLEST,
         'min': MergeStrategy.SMALLEST,
         'minimum': MergeStrategy.SMALLEST,
+        'any': MergeStrategy.ANY,
+        'or': MergeStrategy.ANY,
+        'all': MergeStrategy.ALL,
+        'and': MergeStrategy.ALL,
     }
 
     @field_validator('data_type', mode='before')

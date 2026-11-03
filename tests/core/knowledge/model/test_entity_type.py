@@ -102,7 +102,7 @@ def test_integer_fields_hold_integers_and_only_take_bounds(field: dict[str, Any]
 
 def test_booleans_are_not_integers() -> None:
     """Reject a boolean where an integer is expected, even though Python treats booleans as integers."""
-    with pytest.raises(ValueError, match='default_value'):
+    with pytest.raises(ValueError, match='Default value True is not a valid integer value'):
         _load_mission(crew_size=_crew_size(default_value=True))
 
 
@@ -187,3 +187,35 @@ def test_the_default_merge_strategy_must_apply_to_fields_without_their_own() -> 
 
     with pytest.raises(ValueError, match='integer field "crew_size", which must set its own merge strategy'):
         KnowledgeModelMapper().map_knowledge_model(schema)
+
+
+def _crewed(**settings: Any) -> dict[str, Any]:
+    """Build the definition of an optional boolean ``crewed`` field with the given settings."""
+    return {'data_type': 'boolean', 'description': 'Whether the mission is crewed.', **settings}
+
+
+@pytest.mark.parametrize(
+    ('fields', 'error'),
+    [
+        ({'crewed': _crewed(default_value=1)}, 'Default value 1 is not a valid boolean value'),
+        ({'crewed': _crewed(options=['yes'])}, "Option 'yes' is not a valid boolean value"),
+        ({'crewed': _crewed(min=0)}, 'min and max only apply to integer and float fields'),
+        ({'crewed': _crewed(regex='true')}, 'regex only applies to string fields'),
+        ({'crewed': _crewed(merge_strategy='largest')}, '"largest" does not apply to boolean values'),
+        ({'crew_size': _crew_size(merge_strategy='any')}, '"any" does not apply to integer values'),
+        ({'payload': _payload(default_value=True)}, 'Default value True is not a valid float value'),
+        ({'code': _crewed(required=True)}, 'primary key "code" cannot be a boolean field'),
+    ],
+)
+def test_boolean_fields_hold_booleans_and_take_no_bounds(fields: dict[str, Any], error: str) -> None:
+    """Reject numbers as booleans and booleans as numbers, constraints and merge strategies that don't apply, and keys."""
+    with pytest.raises(ValueError, match=error):
+        _load_mission(**fields)
+
+
+def test_boolean_fields_accept_their_values_and_merge_strategies() -> None:
+    """Accept boolean options, examples and defaults, and merging by logical OR or AND under any alias."""
+    _load_mission(
+        crewed=_crewed(options=[True, False], examples=True, default_value={'chunk': False}, merge_strategy='or'),
+        docked=_crewed(merge_strategy='all'),
+    )

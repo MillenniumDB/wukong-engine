@@ -47,8 +47,8 @@ def test_length_ties_resolve_the_same_way_in_either_order(merge_strategy: str) -
     assert merged == {'Lunar'}
 
 
-def _crew_type(merge_strategy: str) -> EntityType:
-    """Build a ``Mission`` entity type whose integer ``crew_size`` field uses the given merge strategy."""
+def _crew_type(merge_strategy: str, data_type: str = 'integer') -> EntityType:
+    """Build a ``Mission`` entity type whose ``crew_size`` field has the given data type and merge strategy."""
     schema = KnowledgeModelSchema.model_validate(
         {
             'entity_types': {
@@ -57,7 +57,7 @@ def _crew_type(merge_strategy: str) -> EntityType:
                     'primary_key': 'code',
                     'fields': {
                         'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
-                        'crew_size': {'data_type': 'integer', 'description': 'Crew.', 'merge_strategy': merge_strategy},
+                        'crew_size': {'data_type': data_type, 'description': 'Crew.', 'merge_strategy': merge_strategy},
                     },
                     'document_collections': {'chunk': 'missions'},
                 },
@@ -73,6 +73,21 @@ def test_numeric_strategies_pick_by_value_in_either_order(merge_strategy: str, e
     entity_type = _crew_type(merge_strategy)
     entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
     first, second = (Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': value}) for value in (12, 9))
+
+    merged = {
+        EntityMerger().merge(first, second).properties['crew_size'],
+        EntityMerger().merge(second, first).properties['crew_size'],
+    }
+
+    assert merged == {expected}
+
+
+@pytest.mark.parametrize(('merge_strategy', 'expected'), [('any', True), ('or', True), ('all', False), ('and', False)])
+def test_boolean_strategies_combine_values_in_either_order(merge_strategy: str, *, expected: bool) -> None:
+    """Merge booleans by logical OR or AND, whichever is seen first."""
+    entity_type = _crew_type(merge_strategy, data_type='boolean')
+    entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
+    first, second = (Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': value}) for value in (True, False))
 
     merged = {
         EntityMerger().merge(first, second).properties['crew_size'],

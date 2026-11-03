@@ -167,7 +167,7 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 
 | Parameter        | Required | Description                                                                                                                                                                                             |                 Type                 | Default     |
 | ---------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------: | ----------- |
-| `data_type`      |    ✅     | The data type of the field's values: `"string"`, `"integer"` or `"float"`. See [Data Types](#data-types).                                                                                              |               `string`               | —           |
+| `data_type`      |    ✅     | The data type of the field's values: `"string"`, `"integer"`, `"float"` or `"boolean"`. See [Data Types](#data-types).                                                                                  |               `string`               | —           |
 | `description`    |    ✅     | What this field represents. Reaches the LLM.                                                                                                                                                            |               `string`               | —           |
 | `instructions`   |    🟡     | Detailed technical guidance for obtaining this field. Accepts a context level mapping.                                                                                                                  | `object[string, string]` or `string` | `{}`        |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take. An empty array means unrestricted.                                                                                                            |      `value array` or `value`      | `[]`        |
@@ -192,23 +192,25 @@ Choosing `"default"` or `"skip"` where possible is a real cost and precision lev
 
 ### Data Types
 
-A *value* in the tables above is a JSON value of the field's data type: `"active"` for a string field, `4` for an integer field, `2.5` for a float field. A value of another JSON type is rejected, so `"4"` is not an integer and `true` is neither. The one exception is that an integer is also a float value: `"min": 0` in a float field means `0.0`.
+A *value* in the tables above is a JSON value of the field's data type: `"active"` for a string field, `4` for an integer field, `2.5` for a float field, `true` for a boolean field. A value of another JSON type is rejected, so `"4"` is not an integer and `true` is neither. The one exception is that an integer is also a float value: `"min": 0` in a float field means `0.0`.
 
 | Data Type   | Aliases          | Values                                                         | Constraints        | Merge Strategies                          |
 | ----------- | ---------------- | -------------------------------------------------------------- | ------------------ | ----------------------------------------- |
 | `"string"`  | `"str"`, `"text"` | Text.                                                         | `options`, `regex` | `keep`, `replace`, `longest`, `shortest`  |
 | `"integer"` | `"int"`          | Whole numbers between -(2⁵⁶-1) and 2⁵⁶-1, the range every export format stores. | `options`, `min`, `max` | `keep`, `replace`, `largest`, `smallest`  |
 | `"float"`   | `"double"`, `"number"` | Finite 64-bit floating point numbers between -3.4×10³⁸ and 3.4×10³⁸, the range of MillenniumDB's 32-bit floats. | `options`, `min`, `max` | `keep`, `replace`, `largest`, `smallest`  |
+| `"boolean"` | `"bool"`         | `true` or `false`.                                             | `options`          | `keep`, `replace`, `any`, `all`           |
 
 An extracted value is **valid** when it has the field's data type and satisfies its `options` and the constraints of the context level it was extracted at. When a response isn't validated against its schema (see the [Configuration](/docs/configuration.md) documentation), values may arrive in a looser form, which is converted before validation:
 
 - **Strings** are trimmed of surrounding whitespace, and an empty one or a literal `"null"` counts as missing. Numbers and booleans become their text (`3.0` becomes `"3"`, `true` becomes `"true"`), and a value equal to one of the `options` regardless of case becomes that option, preferring an exact match. Since no extracted string can be empty or have surrounding whitespace, `options`, `examples` and `default_value` can't either.
 - **Integers** may also arrive as integral numbers (`4.0`) or as text holding a signed integer (`" -7 "`, `"+3"`), whose digits may be grouped in threes by a single kind of thousands separator: `.`, `,`, `_` or a space (`"1.234.567"`, `"12 345"`). Anything else (`"1.5"`, `"1,234.00"`, `"4 people"`, `true`) is invalid, since reading it as an integer would be a guess.
 - **Floats** may also arrive as integers (`4` becomes `4.0`) or as text holding a signed decimal number, optionally with an exponent (`"-0.5"`, `"2.5e3"`). Its decimal separator may be a point or a comma, and its integer digits may be grouped in threes by a single kind of thousands separator other than the decimal one (`"1.234.567,8"`, `"1,234,567.8"`, `"12 345,6"`). A lone point or comma is always the decimal separator, so `"1.234"` and `"1,234"` are both `1.234`, unlike in an integer field. Anything else (`"1.2.3"`, `"1.5 kg"`, `".5"`, `"NaN"`, `"inf"`) is invalid.
+- **Booleans** may also arrive as the numbers `1` and `0`, or as text holding a yes or no word in English or Spanish, regardless of case: `"true"`/`"false"`, `"yes"`/`"no"`, `"sí"`/`"si"`/`"no"`, `"verdadero"`/`"falso"` or `"1"`/`"0"`. Anything else (`"maybe"`, `2`) is invalid.
 
 A value with no form of the field's data type is invalid, not missing, so it never falls back to the `default_value` of a required field.
 
-An integer field can be a primary key: its decimal text (`4` becomes `"4"`) is what gets [normalized](#-identity-and-merging). A float field can't, since one float has several texts (`1.0`, `1`, `1e0`) and extracted ones carry rounding noise.
+An integer field can be a primary key: its decimal text (`4` becomes `"4"`) is what gets [normalized](#-identity-and-merging). A float field can't, since one float has several texts (`1.0`, `1`, `1e0`) and extracted ones carry rounding noise, and neither can a boolean field, which would leave room for two objects at most.
 
 > ⚠️ Floats are kept at full 64-bit precision, and exported that way to Neo4j (`double`), but MillenniumDB stores them as 32-bit floats, so it keeps only about 7 significant digits (`0.1` becomes `0.100000001`).
 
@@ -432,8 +434,10 @@ When an object is observed again, each field is reconciled according to its merg
 | `"shortest"` | `"concise"`, `"minimal"`                             | Prefer the shorter value, assuming it is more precise. Between values of equal length, the alphabetically first one is kept. |
 | `"largest"`  | `"max"`, `"maximum"`                                 | Prefer the larger number.                                     |
 | `"smallest"` | `"min"`, `"minimum"`                                 | Prefer the smaller number.                                    |
+| `"any"`      | `"or"`                                               | Prefer `true`: the value is `true` once any observation says so. |
+| `"all"`      | `"and"`                                              | Prefer `false`: the value is `true` only while every observation says so. |
 
-`"keep"` and `"replace"` apply to every data type, `"longest"` and `"shortest"` only to strings, and `"largest"` and `"smallest"` only to integers and floats. A strategy that doesn't apply to a field's data type is rejected, including a type's `default_merge_strategy` for a field that doesn't set its own `merge_strategy`.
+`"keep"` and `"replace"` apply to every data type, `"longest"` and `"shortest"` only to strings, `"largest"` and `"smallest"` only to integers and floats, and `"any"` and `"all"` only to booleans. A strategy that doesn't apply to a field's data type is rejected, including a type's `default_merge_strategy` for a field that doesn't set its own `merge_strategy`.
 
 A `NULL` value never overwrites a non-null one, regardless of strategy. Observations are therefore monotonically informative: seeing an object again can add knowledge but never remove it.
 

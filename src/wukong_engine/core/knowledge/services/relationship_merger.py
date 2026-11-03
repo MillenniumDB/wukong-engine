@@ -103,4 +103,8 @@ class RelationshipMerger:
                 chosen = max(existing, incoming)
             case MergeStrategy.SMALLEST:
                 chosen = min(existing, incoming)
+            case MergeStrategy.ANY:
+                chosen = existing or incoming
+            case MergeStrategy.ALL:
+                chosen = existing and incoming
         return chosen

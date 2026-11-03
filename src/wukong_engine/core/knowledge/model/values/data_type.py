@@ -14,7 +14,7 @@ MAX_INTEGER = 2**56 - 1
 # Largest finite 32-bit float, the precision MillenniumDB stores floats in, so no exported float becomes an infinity
 MAX_FLOAT = 3.4028234663852886e38
 
-type FieldValue = str | int | float
+type FieldValue = str | int | float | bool
 
 
 class DataType(Enum):
@@ -24,12 +24,13 @@ class DataType(Enum):
         STRING: Textual data.
         INTEGER: Whole numbers between ``-(2**56 - 1)`` and ``2**56 - 1``.
         FLOAT: Finite 64-bit floating point numbers between ``-MAX_FLOAT`` and ``MAX_FLOAT``.
+        BOOLEAN: True or false.
     """
 
     STRING = 'string'
     INTEGER = 'integer'
     FLOAT = 'float'
-    # TODO(BFFV): Add BOOLEAN data type
+    BOOLEAN = 'boolean'
 
     @property
     def is_numeric(self) -> bool:
@@ -54,3 +55,5 @@ class DataType(Enum):
                 return isinstance(value, int) and not isinstance(value, bool) and MIN_INTEGER <= value <= MAX_INTEGER
             case DataType.FLOAT:
                 return isinstance(value, float) and -MAX_FLOAT <= value <= MAX_FLOAT
+            case DataType.BOOLEAN:
+                return isinstance(value, bool)
