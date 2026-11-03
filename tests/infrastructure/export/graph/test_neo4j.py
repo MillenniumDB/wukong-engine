@@ -11,7 +11,7 @@ from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDat
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
-from wukong_engine.infrastructure.export.graph.neo4j import Neo4jChunkWriter, Neo4jEntityWriter
+from wukong_engine.infrastructure.export.graph.neo4j import Neo4jChunkWriter, Neo4jEntityWriter, neo4j_import_script
 
 
 def test_strings_are_written_raw_for_the_csv_quoting_to_carry(tmp_path: Path) -> None:
@@ -74,3 +74,21 @@ def test_typed_fields_are_written_as_typed_columns(tmp_path: Path) -> None:
     columns = dict(zip(header, row, strict=True))
     typed_columns = ('crew_size:long', 'payload:double', 'crewed:boolean', 'launch:date')
     assert [columns[column] for column in typed_columns] == ['-4', '2.5', 'true', '1969-01-01']
+
+
+def test_import_script_labels_every_exported_file() -> None:
+    """Import the source files and every exported type's file under its label or relationship type, in that order."""
+    script = neo4j_import_script(['Mission', 'Astronaut'], ['AssignedTo'])
+
+    arguments = [line.strip().removesuffix(' \\') for line in script.splitlines() if line.startswith('    --')]
+    assert arguments == [
+        '--multiline-fields=true',
+        '--nodes=Document=entities/Document.csv',
+        '--nodes=Chunk=entities/Chunk.csv',
+        '--nodes=Mission=entities/Mission.csv',
+        '--nodes=Astronaut=entities/Astronaut.csv',
+        '--relationships=ChunkOf=relationships/ChunkOf.csv',
+        '--relationships=ExtractedFrom=relationships/ExtractedFrom.csv',
+        '--relationships=AssignedTo=relationships/AssignedTo.csv',
+    ]
+    assert script.rstrip().endswith('"$@"')

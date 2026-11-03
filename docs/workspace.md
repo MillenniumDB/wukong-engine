@@ -188,6 +188,7 @@ your-workspace/exports/
 ├── mdb/
 │   └── knowledge_graph.qm          # format = "mdb"
 └── neo4j/                          # format = "neo4j"
+    ├── import.sh                   # imports the CSV files with neo4j-admin
     ├── entities/
     │   ├── Document.csv
     │   ├── Chunk.csv
@@ -200,7 +201,13 @@ your-workspace/exports/
 
 Only the format selected in the configuration is written. Each export replaces that format's directory as a whole, and only once it has completed: files of types no longer exported don't linger, and a failed export leaves the previous one intact. Resetting the export step clears the whole `exports/` directory, including previous exports in other formats, so its contents always reflect the latest run. Alongside the entity and relationship types from the knowledge model, the output always contains the source `Document` and `Chunk` objects and the `ChunkOf` / `ExtractedFrom` provenance links, so the result is self-contained: it can be queried for domain facts, for the text supporting them, or for both at once, without consulting the original corpus.
 
-String values are written exactly as they were extracted. The Neo4j CSV files quote them, and chunk contents span several lines, so import them with `neo4j-admin database import` and the `--multiline-fields=true` option.
+String values are written exactly as they were extracted. The Neo4j CSV files carry no label or relationship type column, so each file has to be imported under its own name, with the `--multiline-fields=true` option since chunk contents span several lines. The generated `import.sh` does exactly that with `neo4j-admin database import full`, into a stopped database:
+
+```sh
+./import.sh                                  # into the "neo4j" database, which must not exist yet
+./import.sh neo4j --overwrite-destination    # replacing it; further options go on to neo4j-admin
+NEO4J_ADMIN=/path/to/neo4j/bin/neo4j-admin ./import.sh   # if neo4j-admin isn't on the PATH
+```
 
 Relationships are edges, so they can't link to the chunks they were extracted from the way entities do. Instead, each relationship lists their instance IDs: in Neo4j as the string array `_provenance_chunk_ids`, and in MillenniumDB as the string `P_provenance_chunk_ids`, joined by `;` (MillenniumDB lists can't be searched). There, a text index makes the reverse lookup ("which relationships come from this chunk?") indexed rather than a scan of every edge:
 

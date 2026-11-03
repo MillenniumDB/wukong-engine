@@ -410,7 +410,8 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
         """Export knowledge to a specified output format.
 
         Writes one CSV file per node/edge type under ``<export_uri>/neo4j/entities`` and
-        ``<export_uri>/neo4j/relationships``. The ``neo4j`` directory is only replaced once the whole export succeeds.
+        ``<export_uri>/neo4j/relationships``, and an ``import.sh`` script that imports them with ``neo4j-admin``. The
+        ``neo4j`` directory is only replaced once the whole export succeeds.
 
         Args:
             model: Knowledge model whose active entity and relationship types are exported.
@@ -434,6 +435,9 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
 
             # Export relationships
             self._export_relationships(model, relationships_dir)
+
+            # Import script
+            self._write_import_script(model, export_dir)
 
     def _export_sources(self, export_dir: Path) -> None:
         """Export sources to a set of Neo4j CSV files.
@@ -504,3 +508,58 @@ class Neo4jKnowledgeExporter(KnowledgeExporter):
                     model.active_endpoints(relationship_type),
                 ):
                     writer.write(relationship, provenance)
+
+    def _write_import_script(self, model: KnowledgeModel, export_dir: Path) -> None:
+        """Write the ``import.sh`` script that imports the exported CSV files with ``neo4j-admin``.
+
+        Args:
+            model: Knowledge model whose active entity and relationship types were exported.
+            export_dir: Neo4j export directory containing the ``entities`` and ``relationships`` subdirectories.
+        """
+        script_path = export_dir / 'import.sh'
+        script_path.write_text(
+            neo4j_import_script(
+                [entity_type.name.value for entity_type in model.active_entity_types.values()],
+                [relationship_type.name.value for relationship_type in model.active_relationship_types.values()],
+            ),
+            encoding='utf-8',
+            newline='\n',
+        )
+        script_path.chmod(0o755)
+
+
+def neo4j_import_script(entity_type_names: list[str], relationship_type_names: list[str]) -> str:
+    """Build a shell script that imports an export's CSV files into a Neo4j database with ``neo4j-admin``.
+
+    Each CSV file is given its label or relationship type on the command line, since the files carry no ``:LABEL`` or
+    ``:TYPE`` column. The script takes the database name (``neo4j`` by default) and passes any further arguments on to
+    ``neo4j-admin``; ``NEO4J_ADMIN`` can point at the ``neo4j-admin`` executable when it isn't on the ``PATH``.
+
+    Args:
+        entity_type_names: Names of the exported entity types, besides ``Document`` and ``Chunk``.
+        relationship_type_names: Names of the exported relationship types, besides ``ChunkOf`` and ``ExtractedFrom``.
+
+    Returns:
+        The script's text.
+    """
+    nodes = [f'--nodes={name}=entities/{name}.csv' for name in ['Document', 'Chunk', *entity_type_names]]
+    relationships = [
+        f'--relationships={name}=relationships/{name}.csv'
+        for name in ['ChunkOf', 'ExtractedFrom', *relationship_type_names]
+    ]
+    arguments = ''.join(f'    {argument} \\\n' for argument in [*nodes, *relationships])
+    # Type names are alphanumeric, so the arguments need no quoting
+    return (
+        '#!/bin/sh\n'
+        '# Imports this export into a stopped Neo4j database with neo4j-admin.\n'
+        '# Usage: ./import.sh [database] [neo4j-admin options], e.g. ./import.sh neo4j --overwrite-destination\n'
+        '# Set NEO4J_ADMIN to the neo4j-admin executable if it is not on the PATH.\n'
+        'set -e\n'
+        'cd "$(dirname "$0")"\n'
+        'database="${1:-neo4j}"\n'
+        '[ "$#" -gt 0 ] && shift\n'
+        '"${NEO4J_ADMIN:-neo4j-admin}" database import full "$database" \\\n'
+        '    --multiline-fields=true \\\n'
+        f'{arguments}'
+        '    "$@"\n'
+    )
