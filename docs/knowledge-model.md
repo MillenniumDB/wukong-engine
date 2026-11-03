@@ -237,7 +237,7 @@ A value with no form of the field's data type is invalid, not missing, so it nev
 
 An integer or date field can be a primary key: its decimal or ISO 8601 text (`4` becomes `"4"`, a July 1969 date `"1969-07"`) is what gets [normalized](#-identity-and-merging). A float field can't, since one float has several texts (`1.0`, `1`, `1e0`) and extracted ones carry rounding noise, and neither can a boolean field, which would leave room for two objects at most.
 
-> ⚠️ Floats are kept at full 64-bit precision, and exported that way to Neo4j (`double`), but MillenniumDB stores them as 32-bit floats, so it keeps only about 7 significant digits (`0.1` becomes `0.100000001`).
+> ⚠️ Floats are kept at full 64-bit precision, and exported that way to Neo4j (`double`), but MillenniumDB stores them as 32-bit floats, so it keeps only about 7 significant digits (`0.1` becomes `0.100000001`). Very small magnitudes lose more: below about 1.2×10⁻³⁸ fewer digits are kept (`1e-40` becomes `9.99995e-41`), and below about 1.4×10⁻⁴⁵ the value becomes `0` (`1e-50`).
 >
 > Dates keep their precision internally, but both export formats only store complete dates, so a partial date is exported as the first day of its period: `"1969"` as 1969-01-01 and `"1969-07"` as 1969-07-01. Neo4j gets `date` columns and MillenniumDB `date("...")` values.
 
