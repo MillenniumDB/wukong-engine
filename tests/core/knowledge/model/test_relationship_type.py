@@ -69,3 +69,16 @@ def test_integer_fields_take_single_bounds(field: dict[str, Any], error: str) ->
     """Check relationship field bounds, which take a single value instead of one per context level."""
     with pytest.raises(ValueError, match=error):
         _load_follows(delay=field)
+
+
+@pytest.mark.parametrize(
+    ('fields', 'error'),
+    [
+        ({'distance': {'data_type': 'float', 'description': 'Distance.', 'min': 1, 'default_value': 0}}, 'less than'),
+        ({'order': {'data_type': 'double', 'description': 'Order.', 'required': True}}, 'cannot be a float field'),
+    ],
+)
+def test_float_fields_take_single_bounds_and_cannot_be_primary_keys(fields: dict[str, Any], error: str) -> None:
+    """Check relationship float field bounds, read from integers, and reject a float primary key."""
+    with pytest.raises(ValueError, match=error):
+        _load_follows(**fields)

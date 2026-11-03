@@ -40,4 +40,4 @@ class MergeStrategy(Enum):
             case MergeStrategy.LONGEST | MergeStrategy.SHORTEST:
                 return data_type == DataType.STRING
             case MergeStrategy.LARGEST | MergeStrategy.SMALLEST:
-                return data_type == DataType.INTEGER
+                return data_type.is_numeric

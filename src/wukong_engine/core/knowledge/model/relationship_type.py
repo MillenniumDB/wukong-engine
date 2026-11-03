@@ -11,7 +11,14 @@ from wukong_engine.core.extraction.model.values import RelationshipRetrievalMode
 
 from .endpoint import Endpoint
 from .field import RelationshipField
-from .values import EntityTypeName, FieldName, MergeStrategy, RelationshipIdentityPolicy, RelationshipTypeName
+from .values import (
+    DataType,
+    EntityTypeName,
+    FieldName,
+    MergeStrategy,
+    RelationshipIdentityPolicy,
+    RelationshipTypeName,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,7 +103,8 @@ class RelationshipType:
 
         Raises:
             ValueError: If the primary key is not among the fields, is missing while the identity policy requires one,
-                doesn't use the extract retrieval mode, isn't marked as required, or declares a default value.
+                is a float field, doesn't use the extract retrieval mode, isn't marked as required, or declares a
+                default value.
         """
         # PK existence when specified
         if self.primary_key is not None and self.primary_key not in self.fields:
@@ -114,6 +122,10 @@ class RelationshipType:
         # PK retrieval mode must be EXTRACT and the field must be required (if PK is specified)
         if self.primary_key is not None:
             pk_field = self.fields[self.primary_key]
+            if pk_field.data_type == DataType.FLOAT:
+                raise ValueError(
+                    f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" cannot be a float field',
+                )
             if pk_field.retrieval_mode != RelationshipRetrievalMode.EXTRACT:
                 raise ValueError(
                     f'Invalid RelationshipType "{self.name}": primary key "{self.primary_key}" has retrieval mode '

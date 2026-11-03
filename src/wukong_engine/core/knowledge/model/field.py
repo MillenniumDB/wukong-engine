@@ -92,7 +92,23 @@ class Field:
                 f'apply to {self.data_type.value} values',
             )
 
-    def _is_valid(self, value: Any, regex: RegexPattern | None, minimum: int | None, maximum: int | None) -> bool:
+    def _validate_bound_types(self, bounds: Iterable[float]) -> None:
+        """Validate that bounds are values of the field's data type.
+
+        Args:
+            bounds: Minimum and maximum values of the field.
+
+        Raises:
+            ValueError: If a bound isn't of the field's data type.
+        """
+        for bound in bounds:
+            if not self.data_type.accepts(bound):
+                raise ValueError(
+                    f'Invalid {type(self).__name__} "{self.name}": Bound {bound!r} is not a valid '
+                    f'{self.data_type.value} value',
+                )
+
+    def _is_valid(self, value: Any, regex: RegexPattern | None, minimum: float | None, maximum: float | None) -> bool:
         """Check whether a value satisfies the field's data type, options and the given constraints.
 
         Args:
@@ -127,8 +143,8 @@ class EntityField(Field):
 
     instructions: MappingProxyType[ContextLevel, str] = field(compare=False, hash=False)
     regex: MappingProxyType[ContextLevel, RegexPattern] = field(compare=False, hash=False)
-    minimum: MappingProxyType[ContextLevel, int] = field(compare=False, hash=False)
-    maximum: MappingProxyType[ContextLevel, int] = field(compare=False, hash=False)
+    minimum: MappingProxyType[ContextLevel, float] = field(compare=False, hash=False)
+    maximum: MappingProxyType[ContextLevel, float] = field(compare=False, hash=False)
     default_value: MappingProxyType[ContextLevel, FieldValue] = field(compare=False, hash=False)
     retrieval_mode: MappingProxyType[ContextLevel, EntityRetrievalMode] = field(compare=False, hash=False)
 
@@ -167,13 +183,14 @@ class EntityField(Field):
         """Validate that the constraints apply to the field's data type and are satisfiable.
 
         Raises:
-            ValueError: If a regex is set on a non-string field, bounds are set on a non-integer field, or the minimum
-                of a context level is greater than its maximum.
+            ValueError: If a regex is set on a non-string field, bounds are set on a non-numeric field or aren't of its
+                data type, or the minimum of a context level is greater than its maximum.
         """
         if self.regex and self.data_type != DataType.STRING:
             raise ValueError(f'Invalid EntityField "{self.name}": regex only applies to string fields')
-        if (self.minimum or self.maximum) and self.data_type != DataType.INTEGER:
-            raise ValueError(f'Invalid EntityField "{self.name}": min and max only apply to integer fields')
+        if (self.minimum or self.maximum) and not self.data_type.is_numeric:
+            raise ValueError(f'Invalid EntityField "{self.name}": min and max only apply to integer and float fields')
+        self._validate_bound_types((*self.minimum.values(), *self.maximum.values()))
         for ctx_level, minimum in self.minimum.items():
             maximum = self.maximum.get(ctx_level)
             if maximum is not None and minimum > maximum:
@@ -289,8 +306,8 @@ class RelationshipField(Field):
 
     instructions: str | None
     regex: RegexPattern | None
-    minimum: int | None
-    maximum: int | None
+    minimum: float | None
+    maximum: float | None
     default_value: FieldValue | None
     retrieval_mode: RelationshipRetrievalMode
 
@@ -322,13 +339,16 @@ class RelationshipField(Field):
         """Validate that the constraints apply to the field's data type and are satisfiable.
 
         Raises:
-            ValueError: If a regex is set on a non-string field, bounds are set on a non-integer field, or the minimum
-                is greater than the maximum.
+            ValueError: If a regex is set on a non-string field, bounds are set on a non-numeric field or aren't of its
+                data type, or the minimum is greater than the maximum.
         """
         if self.regex is not None and self.data_type != DataType.STRING:
             raise ValueError(f'Invalid RelationshipField "{self.name}": regex only applies to string fields')
-        if (self.minimum is not None or self.maximum is not None) and self.data_type != DataType.INTEGER:
-            raise ValueError(f'Invalid RelationshipField "{self.name}": min and max only apply to integer fields')
+        if (self.minimum is not None or self.maximum is not None) and not self.data_type.is_numeric:
+            raise ValueError(
+                f'Invalid RelationshipField "{self.name}": min and max only apply to integer and float fields',
+            )
+        self._validate_bound_types(bound for bound in (self.minimum, self.maximum) if bound is not None)
         if self.minimum is not None and self.maximum is not None and self.minimum > self.maximum:
             raise ValueError(
                 f'Invalid RelationshipField "{self.name}": min {self.minimum} is greater than max {self.maximum}',
@@ -403,7 +423,7 @@ class RelationshipField(Field):
                 )
 
 
-def _within_bounds(value: FieldValue, minimum: int | None, maximum: int | None) -> bool:
+def _within_bounds(value: FieldValue, minimum: float | None, maximum: float | None) -> bool:
     """Check whether a value is within a field's bounds.
 
     Args:
@@ -419,7 +439,7 @@ def _within_bounds(value: FieldValue, minimum: int | None, maximum: int | None) 
     return (minimum is None or value >= minimum) and (maximum is None or value <= maximum)
 
 
-def _describe_bounds_violation(minimum: int | None, maximum: int | None) -> str:
+def _describe_bounds_violation(minimum: float | None, maximum: float | None) -> str:
     """Describe the range a value outside a field's bounds should have been in.
 
     Args:

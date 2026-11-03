@@ -19,6 +19,7 @@ from wukong_engine.app.data_extraction.services import (
 )
 from wukong_engine.app.data_extraction.services.result_materializer import (
     _extracted_items,
+    _normalize_float,
     _normalize_integer,
     _normalize_string,
 )
@@ -97,6 +98,42 @@ def test_integer_values_are_normalized_from_their_integral_forms(value: Any, exp
 def test_values_without_an_integer_form_are_left_for_validation_to_reject(value: Any) -> None:
     """Leave values that aren't unambiguously integers unchanged, so they are discarded as invalid, not as missing."""
     assert _normalize_integer(value) == value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        (4, 4.0),
+        (2.5, 2.5),
+        (' -0,5 ', -0.5),
+        ('1.234', 1.234),
+        ('1,234', 1.234),
+        ('1.234,5', 1234.5),
+        ('1,234.5', 1234.5),
+        ('1.234.567', 1234567.0),
+        ('12 345,6', 12345.6),
+        ('+2.5e3', 2500.0),
+        ('1e-5', 1e-05),
+        ('', None),
+        (' null ', None),
+        (None, None),
+    ],
+)
+def test_float_values_are_normalized_from_their_decimal_forms(value: Any, expected: float | None) -> None:
+    """Convert integers and decimal text, reading a lone point or comma as the decimal separator, to floats."""
+    result = _normalize_float(value)
+
+    assert result == expected
+    assert expected is None or isinstance(result, float)
+
+
+@pytest.mark.parametrize(
+    'value',
+    ['1.234.5', '1,234,5', '12,34,5', '.5', '1.5 kg', 'inf', 'NaN', True, pytest.param(10**400, id='huge integer'), {}],
+)
+def test_values_without_a_float_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave values that aren't decimal numbers unchanged, so they are discarded as invalid, not as missing."""
+    assert _normalize_float(value) is value
 
 
 JOB = ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string('chunk'))
@@ -297,3 +334,22 @@ def test_integer_values_are_converted_and_validated_against_their_bounds(model: 
     sol_pk = DefaultPKNormalizer().normalize('1204')
     assert sol_pk is not None
     assert entities[-1].id.content == EntityId.from_identity(EntityTypeName('Sol'), sol_pk).content
+
+
+def test_float_values_are_converted_and_validated_against_their_bounds(model: KnowledgeModel) -> None:
+    """Convert integers and decimal text to floats, discarding optional values out of bounds or without a float form."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'payload_tons': 4},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'payload_tons': '12,5'},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'payload_tons': -0.5},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-13', 'payload_tons': 'heavy'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    payloads = [entity.properties.get('payload_tons') for entity in entities]
+    assert payloads == [4.0, 12.5, None, None]
+    assert isinstance(payloads[0], float)

@@ -11,8 +11,8 @@ from wukong_engine.infrastructure.definitions.knowledge.schemas import Knowledge
 from wukong_engine.infrastructure.export.graph.mdb import MillenniumDBWriter
 
 
-def test_integers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None:
-    """Write integer values as QM integer literals, down to the lowest one MillenniumDB supports, and strings quoted."""
+def test_numbers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> None:
+    """Write numbers as QM literals, with floats always as floats (a point or exponent), and strings quoted."""
     schema = KnowledgeModelSchema.model_validate(
         {
             'entity_types': {
@@ -22,6 +22,8 @@ def test_integers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> Non
                     'fields': {
                         'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
                         'crew_size': {'data_type': 'integer', 'description': 'Crew size.'},
+                        'payload': {'data_type': 'float', 'description': 'Payload mass.'},
+                        'margin': {'data_type': 'float', 'description': 'Safety margin.'},
                     },
                     'document_collections': {'chunk': 'missions'},
                 },
@@ -33,6 +35,12 @@ def test_integers_are_written_unquoted_and_strings_quoted(tmp_path: Path) -> Non
     path = tmp_path / 'knowledge_graph.qm'
 
     with MillenniumDBWriter(path) as writer:
-        writer.write_entity(Entity(entity_id, entity_type, {'code': '12', 'crew_size': -(2**56 - 1)}), entity_type)
+        properties = {'code': '12', 'crew_size': -(2**56 - 1), 'payload': 4.0, 'margin': 1e-05}
+        writer.write_entity(Entity(entity_id, entity_type, properties), entity_type)
 
-    assert path.read_text(encoding='utf-8').split()[-2:] == ['code:"12"', 'crew_size:-72057594037927935']
+    assert path.read_text(encoding='utf-8').split()[-4:] == [
+        'code:"12"',
+        'crew_size:-72057594037927935',
+        'payload:4.0',
+        'margin:1e-05',
+    ]

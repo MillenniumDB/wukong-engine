@@ -5,6 +5,7 @@ from typing import Any
 import pytest
 
 from wukong_engine.core.knowledge.model import KnowledgeModel
+from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 
@@ -84,7 +85,10 @@ def _crew_size(**settings: Any) -> dict[str, Any]:
         (_crew_size(options=[2, 2**56]), 'Option 72057594037927936 is not a valid integer value'),
         ({'data_type': 'string', 'description': 'Name.', 'examples': 4}, 'Example 4 is not a valid string value'),
         (_crew_size(regex='[0-9]+'), 'regex only applies to string fields'),
-        ({'data_type': 'string', 'description': 'Name.', 'max': 10}, 'min and max only apply to integer fields'),
+        (
+            {'data_type': 'string', 'description': 'Name.', 'max': 10},
+            'min and max only apply to integer and float fields',
+        ),
         (_crew_size(min={'chunk': 5}, max=4), 'min 5 is greater than max 4 for context level "CHUNK"'),
         (_crew_size(min=1, default_value={'document': 0}), 'Default value 0 for context level "DOCUMENT" is less'),
         (_crew_size(min=1, max=12, examples=[4, 13]), 'Example 13 for context level "CHUNK" is outside the range'),
@@ -107,6 +111,46 @@ def test_integer_fields_can_be_primary_keys() -> None:
     number = {'data_type': 'int', 'description': 'Number.', 'required': True, 'min': 1, 'examples': [1, 1204]}
 
     _load_mission(code=number)
+
+
+def _payload(**settings: Any) -> dict[str, Any]:
+    """Build the definition of an optional float ``payload`` field with the given settings."""
+    return {'data_type': 'float', 'description': 'Payload mass.', **settings}
+
+
+def test_integers_in_float_fields_become_floats() -> None:
+    """Read integers written for a float field as floats, since every integer is also a float value."""
+    field = _payload(options=[1, 2.5], examples=1, default_value={'chunk': 2.5, 'document': 1}, min=0, max=2.5)
+
+    payload = _load_mission(payload=field).entity_types[EntityTypeName('Mission')].fields[FieldName('payload')]
+
+    values = [*payload.options, *payload.examples, *payload.default_value.values(), *payload.minimum.values()]
+    assert values == [1.0, 2.5, 1.0, 2.5, 1.0, 0.0, 0.0]
+    assert all(isinstance(value, float) for value in values)
+
+
+@pytest.mark.parametrize(
+    ('field', 'error'),
+    [
+        (_payload(default_value=float('nan')), 'Default value nan is not a valid float value'),
+        (_payload(options=[1.5, 1e39]), 'Option 1e[+]39 is not a valid float value'),
+        (_payload(regex='[0-9.]+'), 'regex only applies to string fields'),
+        (_payload(min=0.5, max=0.25), 'min 0.5 is greater than max 0.25'),
+        (_payload(max=10, examples=[10.5]), 'Example 10.5 for context level "CHUNK" is greater than the max 10.0'),
+        (_crew_size(min=0.5), 'Bound 0.5 is not a valid integer value'),
+        ({'data_type': 'number', 'description': 'Code.', 'required': True}, 'primary key "code" cannot be a float'),
+    ],
+)
+def test_float_fields_hold_finite_floats_and_cannot_be_primary_keys(field: dict[str, Any], error: str) -> None:
+    """Reject non-finite or out of range floats, misplaced constraints, float bounds on integers and float keys."""
+    name = 'code' if field.get('required') else 'payload'
+    with pytest.raises(ValueError, match=error):
+        _load_mission(**{name: field})
+
+
+def test_largest_and_smallest_apply_to_float_fields() -> None:
+    """Accept merging float values by size."""
+    _load_mission(payload=_payload(merge_strategy='max'), mass=_payload(merge_strategy='smallest'))
 
 
 @pytest.mark.parametrize(

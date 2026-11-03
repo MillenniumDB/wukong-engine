@@ -3,13 +3,17 @@
 import re
 from typing import Any, ClassVar
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.knowledge.model.values import DataType, MergeStrategy
 
 from .context_level import reject_repeated_context_levels
+
+# Values are taken as written, so a quoted number is a string; integers stay integers until mapped to a float field
+_Number = StrictInt | StrictFloat
+_Value = StrictStr | _Number
 
 
 class _FieldSchema(BaseModel):
@@ -29,8 +33,8 @@ class _FieldSchema(BaseModel):
 
     data_type: DataType
     description: StrictStr
-    options: list[StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=list)
-    examples: list[StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=list)
+    options: list[_Value] | _Value = Field(default_factory=list)
+    examples: list[_Value] | _Value = Field(default_factory=list)
     required: StrictBool = False
     merge_strategy: MergeStrategy | None = None
 
@@ -41,8 +45,10 @@ class _FieldSchema(BaseModel):
         'text': DataType.STRING,
         'int': DataType.INTEGER,
         'integer': DataType.INTEGER,
-        # TODO(BFFV): Add aliases for FLOAT ("float", "double", "number") and BOOLEAN ("bool", "boolean") once those
-        # data types exist
+        'float': DataType.FLOAT,
+        'double': DataType.FLOAT,
+        'number': DataType.FLOAT,
+        # TODO(BFFV): Add aliases for BOOLEAN ("bool", "boolean") once that data type exists
     }
 
     # Mapping of various string representations to MergeStrategy members
@@ -105,7 +111,7 @@ class _FieldSchema(BaseModel):
 
     @field_validator('options', 'examples')
     @classmethod
-    def normalize_value_lists(cls, value: list[str | int] | str | int) -> list[str | int]:
+    def normalize_value_lists(cls, value: list[str | float] | str | float) -> list[str | float]:
         """Normalize lists of field values.
 
         Args:
@@ -135,9 +141,9 @@ class EntityFieldSchema(_FieldSchema):
 
     instructions: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
     regex: dict[ContextLevel, StrictStr] | StrictStr = Field(default_factory=dict)
-    minimum: dict[ContextLevel, StrictInt] | StrictInt = Field(default_factory=dict, alias='min')
-    maximum: dict[ContextLevel, StrictInt] | StrictInt = Field(default_factory=dict, alias='max')
-    default_value: dict[ContextLevel, StrictStr | StrictInt] | StrictStr | StrictInt = Field(default_factory=dict)
+    minimum: dict[ContextLevel, _Number] | _Number = Field(default_factory=dict, alias='min')
+    maximum: dict[ContextLevel, _Number] | _Number = Field(default_factory=dict, alias='max')
+    default_value: dict[ContextLevel, _Value] | _Value = Field(default_factory=dict)
     retrieval_mode: dict[ContextLevel, EntityRetrievalMode] | EntityRetrievalMode = Field(default_factory=dict)
 
     @field_validator('instructions', 'regex', 'minimum', 'maximum', 'default_value', 'retrieval_mode', mode='before')
@@ -157,8 +163,8 @@ class EntityFieldSchema(_FieldSchema):
     @classmethod
     def normalize_context_level_mappings(
         cls,
-        value: dict[ContextLevel, str | int] | str | int,
-    ) -> dict[ContextLevel, str | int]:
+        value: dict[ContextLevel, str | float] | str | float,
+    ) -> dict[ContextLevel, str | float]:
         """Normalize context level -> value mappings.
 
         Args:
@@ -229,9 +235,9 @@ class RelationshipFieldSchema(_FieldSchema):
 
     instructions: StrictStr | None = None
     regex: StrictStr | None = None
-    minimum: StrictInt | None = Field(default=None, alias='min')
-    maximum: StrictInt | None = Field(default=None, alias='max')
-    default_value: StrictStr | StrictInt | None = None
+    minimum: _Number | None = Field(default=None, alias='min')
+    maximum: _Number | None = Field(default=None, alias='max')
+    default_value: _Value | None = None
     retrieval_mode: RelationshipRetrievalMode = RelationshipRetrievalMode.EXTRACT
 
     @field_validator('regex')

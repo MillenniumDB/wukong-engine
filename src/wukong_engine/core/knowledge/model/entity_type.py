@@ -8,7 +8,7 @@ from wukong_engine.core.documents.model.values import ContextLevel, DocumentColl
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode
 
 from .field import EntityField
-from .values import EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
+from .values import DataType, EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,15 +89,21 @@ class EntityType:
         """Validate primary key invariants.
 
         Raises:
-            ValueError: If the primary key is not one of the fields, is not required, declares a default value, or uses
-                a retrieval mode other than ``EXTRACT`` at some context level.
+            ValueError: If the primary key is not one of the fields, is a float field, is not required, declares a
+                default value, or uses a retrieval mode other than ``EXTRACT`` at some context level.
         """
         # PK existence
         if self.primary_key not in self.fields:
             raise ValueError(f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" not found in fields')
 
-        # PK field must be required
+        # PK must not be a float, since one value has several texts (1.0, 1e0) and LLM output adds rounding noise
         primary_key_field = self.fields[self.primary_key]
+        if primary_key_field.data_type == DataType.FLOAT:
+            raise ValueError(
+                f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" cannot be a float field',
+            )
+
+        # PK field must be required
         if not primary_key_field.required:
             raise ValueError(
                 f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',

@@ -17,7 +17,13 @@ from wukong_engine.core.extraction.model.values import EntityRetrievalMode, Rela
 from wukong_engine.core.knowledge.elements import Entity, EntityRef, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, Field, KnowledgeModel, RelationshipType
-from wukong_engine.core.knowledge.model.values import DataType, EntityTypeName, FieldValue, RelationshipTypeName
+from wukong_engine.core.knowledge.model.values import (
+    MAX_FLOAT,
+    DataType,
+    EntityTypeName,
+    FieldValue,
+    RelationshipTypeName,
+)
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
@@ -27,6 +33,13 @@ logger = logging.getLogger(__name__)
 _PLAIN_INTEGER = re.compile(r'[+-]?[0-9]+')
 _GROUPED_INTEGER = re.compile(r'[+-]?[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*')
 _THOUSANDS_SEPARATORS = re.compile(r'[., _]')
+# Tried in order: a lone '.' or ',' is read as the decimal separator (1.234 is 1.234), and only otherwise as grouping
+_DECIMAL_NUMBER = re.compile(
+    r'(?P<sign>[+-]?)'
+    r'(?P<integer>[0-9]+|[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*)'
+    r'(?:(?P<decimal>[.,])(?P<fraction>[0-9]+))?'
+    r'(?P<exponent>[eE][+-]?[0-9]+)?',
+)
 
 
 def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
@@ -55,7 +68,8 @@ def _normalize_value(value: Any, field: Field) -> Any:
     """Normalize an extracted value into a value of the field's data type, as a lenient extractor would.
 
     Responses that aren't validated against their schema can carry a value as another JSON type, so a single-element
-    list becomes its element before converting it (see ``_normalize_string`` and ``_normalize_integer``).
+    list becomes its element before converting it (see ``_normalize_string``, ``_normalize_integer`` and
+    ``_normalize_float``).
 
     Args:
         value: Value extracted for the field, as decoded from the response.
@@ -72,6 +86,8 @@ def _normalize_value(value: Any, field: Field) -> Any:
             return _normalize_string(value, field.options)
         case DataType.INTEGER:
             return _normalize_integer(value)
+        case DataType.FLOAT:
+            return _normalize_float(value)
 
 
 def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None:
@@ -134,6 +150,36 @@ def _normalize_integer(value: Any) -> Any:
     if _PLAIN_INTEGER.fullmatch(text) or _GROUPED_INTEGER.fullmatch(text):
         return int(_THOUSANDS_SEPARATORS.sub('', text))
     return value
+
+
+def _normalize_float(value: Any) -> Any:
+    """Normalize an extracted value into a float.
+
+    Integers become floats, and so do strings holding a signed decimal number, optionally with an exponent. Its
+    decimal separator may be a point or a comma, and its integer digits may be grouped in threes by a single kind of
+    thousands separator (``.``, ``,``, ``_`` or a space) other than the decimal one, as in ``1.234.567,8`` or
+    ``1,234,567.8``. A lone point or comma is always the decimal separator, so ``1,234`` is ``1.234``. An empty string
+    or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The float, None if the value is missing, or the value unchanged if it has no float form.
+    """
+    if isinstance(value, int) and not isinstance(value, bool):
+        # Converting an integer beyond any float would raise instead of leaving it for validation to reject
+        return float(value) if abs(value) <= MAX_FLOAT else value
+    if not isinstance(value, str):
+        return value
+    text = value.strip()
+    if not text or text.lower() == 'null':
+        return None
+    match = _DECIMAL_NUMBER.fullmatch(text)
+    if match is None or (match['separator'] is not None and match['separator'] == match['decimal']):
+        return value
+    integer = _THOUSANDS_SEPARATORS.sub('', match['integer'])
+    return float(f'{match["sign"]}{integer}.{match["fraction"] or 0}{match["exponent"] or ""}')
 
 
 def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:

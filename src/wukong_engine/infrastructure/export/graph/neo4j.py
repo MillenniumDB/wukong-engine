@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 DATA_TYPE_NAME_MAPPING = {
     DataType.STRING: 'string',
     DataType.INTEGER: 'long',
+    DataType.FLOAT: 'double',
 }
 
 

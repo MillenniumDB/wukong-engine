@@ -36,8 +36,8 @@ def test_strings_are_written_raw_for_the_csv_quoting_to_carry(tmp_path: Path) ->
     assert row[[column.split(':')[0] for column in header].index('content')] == content
 
 
-def test_integer_fields_are_written_as_long_columns(tmp_path: Path) -> None:
-    """Type integer columns as ``long``, which holds every integer field value, and write their decimal text."""
+def test_number_fields_are_written_as_long_and_double_columns(tmp_path: Path) -> None:
+    """Type integer columns as ``long`` and float columns as ``double``, which hold every value of those fields."""
     schema = KnowledgeModelSchema.model_validate(
         {
             'entity_types': {
@@ -47,6 +47,7 @@ def test_integer_fields_are_written_as_long_columns(tmp_path: Path) -> None:
                     'fields': {
                         'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
                         'crew_size': {'data_type': 'integer', 'description': 'Crew size.'},
+                        'payload': {'data_type': 'float', 'description': 'Payload mass.'},
                     },
                     'document_collections': {'chunk': 'missions'},
                 },
@@ -58,8 +59,9 @@ def test_integer_fields_are_written_as_long_columns(tmp_path: Path) -> None:
     path = tmp_path / 'Mission.csv'
 
     with Neo4jEntityWriter(path, entity_type) as writer:
-        writer.write(Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': -4}))
+        writer.write(Entity(entity_id, entity_type, {'code': 'A-1', 'crew_size': -4, 'payload': 2.5}))
 
     with path.open(newline='', encoding='utf-8') as file:
         header, row = list(csv.reader(file))
-    assert dict(zip(header, row, strict=True))['crew_size:long'] == '-4'
+    columns = dict(zip(header, row, strict=True))
+    assert (columns['crew_size:long'], columns['payload:double']) == ('-4', '2.5')

@@ -23,7 +23,7 @@ class PropertyValueSerializer:
     def serialize(self, value: Any) -> str | None:
         """Serialize a property value.
 
-        Strings are kept as-is and integers are converted with ``str`` before applying the string serializer.
+        Strings are kept as-is, and integers and floats are converted with ``str`` before applying the string serializer.
 
         Args:
             value: Property value to serialize.
@@ -32,7 +32,7 @@ class PropertyValueSerializer:
             The serialized string, or None if the value is None.
 
         Raises:
-            ValueError: If the value is neither a string nor an integer.
+            ValueError: If the value is not a string, an integer or a float.
         """
         # Null values can have different external representations, so return None to be explicit
         if value is None:
@@ -43,6 +43,8 @@ class PropertyValueSerializer:
             case str():  # Keep the string value as-is
                 pass
             case int():  # Convert integers to strings directly
+                value = str(value)
+            case float():  # Shortest text that round-trips, always with a point or exponent (4.0, 1e-05)
                 value = str(value)
             case _:  # All other types are unsupported for serialization
                 raise ValueError(f'Unsupported property value type: {type(value)}')

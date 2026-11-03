@@ -167,14 +167,14 @@ The `fields` object defines the attributes of an entity type. Each key is the **
 
 | Parameter        | Required | Description                                                                                                                                                                                             |                 Type                 | Default     |
 | ---------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------: | ----------- |
-| `data_type`      |    ✅     | The data type of the field's values: `"string"` (aliases: `"str"`, `"text"`) or `"integer"` (alias: `"int"`). See [Data Types](#data-types).                                                         |               `string`               | —           |
+| `data_type`      |    ✅     | The data type of the field's values: `"string"`, `"integer"` or `"float"`. See [Data Types](#data-types).                                                                                              |               `string`               | —           |
 | `description`    |    ✅     | What this field represents. Reaches the LLM.                                                                                                                                                            |               `string`               | —           |
 | `instructions`   |    🟡     | Detailed technical guidance for obtaining this field. Accepts a context level mapping.                                                                                                                  | `object[string, string]` or `string` | `{}`        |
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take. An empty array means unrestricted.                                                                                                            |      `value array` or `value`      | `[]`        |
 | `examples`       |    🟡     | Example value(s) illustrating the expected form. Must themselves satisfy `options`, `regex`, `min` and `max`, otherwise the model is rejected.                                                          |      `value array` or `value`      | `[]`        |
 | `regex`          |    🟡     | String fields only. A pattern the **whole** value must match to be considered valid (e.g. `"[a-z][a-z0-9_]*"`), checked after extraction: it isn't shown to the LLM, so use `examples` to show the expected form. Accepts a context level mapping, so one level can be stricter than the other. | `object[string, string]` or `string` | `{}`        |
-| `min`            |    🟡     | Integer fields only. The lowest valid value, checked after extraction like `regex`. Accepts a context level mapping.                                                                                     | `object[string, integer]` or `integer` | `{}`        |
-| `max`            |    🟡     | Integer fields only. The highest valid value, checked after extraction like `regex`. Accepts a context level mapping. Must not be lower than `min`.                                                      | `object[string, integer]` or `integer` | `{}`        |
+| `min`            |    🟡     | Integer and float fields only. The lowest valid value, checked after extraction like `regex`. Accepts a context level mapping.                                                                           | `object[string, value]` or `value` | `{}`        |
+| `max`            |    🟡     | Integer and float fields only. The highest valid value, checked after extraction like `regex`. Accepts a context level mapping. Must not be lower than `min`.                                            | `object[string, value]` or `value` | `{}`        |
 | `default_value`  |    🟡     | The value used when nothing can be extracted, or when the `"default"` retrieval mode is chosen. Accepts a context level mapping. Must itself satisfy `options`, `regex`, `min` and `max`.              | `object[string, value]` or `value` | `{}`        |
 | `retrieval_mode` |    🟡     | How the value is obtained. Accepts a context level mapping. See the table below.                                                                                                                        | `object[string, string]` or `string` | `"extract"` |
 | `required`       |    🟡     | Whether the field is mandatory. An entity whose required value is missing (and has no `default_value` to fall back to), or isn't valid (see [Data Types](#data-types)), is discarded rather than repaired. An invalid value of an optional field is discarded instead, leaving the entity with the field's `default_value` (if any). The primary key field must set this to `true` explicitly.                                         |                `bool`                | `false`     |
@@ -192,21 +192,25 @@ Choosing `"default"` or `"skip"` where possible is a real cost and precision lev
 
 ### Data Types
 
-A *value* in the tables above is a JSON value of the field's data type: `"active"` for a string field, `4` for an integer field. A value of another JSON type is rejected, so `"4"` is not an integer and `true` is neither.
+A *value* in the tables above is a JSON value of the field's data type: `"active"` for a string field, `4` for an integer field, `2.5` for a float field. A value of another JSON type is rejected, so `"4"` is not an integer and `true` is neither. The one exception is that an integer is also a float value: `"min": 0` in a float field means `0.0`.
 
 | Data Type   | Aliases          | Values                                                         | Constraints        | Merge Strategies                          |
 | ----------- | ---------------- | -------------------------------------------------------------- | ------------------ | ----------------------------------------- |
 | `"string"`  | `"str"`, `"text"` | Text.                                                         | `options`, `regex` | `keep`, `replace`, `longest`, `shortest`  |
 | `"integer"` | `"int"`          | Whole numbers between -(2⁵⁶-1) and 2⁵⁶-1, the range every export format stores. | `options`, `min`, `max` | `keep`, `replace`, `largest`, `smallest`  |
+| `"float"`   | `"double"`, `"number"` | Finite 64-bit floating point numbers between -3.4×10³⁸ and 3.4×10³⁸, the range of MillenniumDB's 32-bit floats. | `options`, `min`, `max` | `keep`, `replace`, `largest`, `smallest`  |
 
 An extracted value is **valid** when it has the field's data type and satisfies its `options` and the constraints of the context level it was extracted at. When a response isn't validated against its schema (see the [Configuration](/docs/configuration.md) documentation), values may arrive in a looser form, which is converted before validation:
 
 - **Strings** are trimmed of surrounding whitespace, and an empty one or a literal `"null"` counts as missing. Numbers and booleans become their text (`3.0` becomes `"3"`, `true` becomes `"true"`), and a value equal to one of the `options` regardless of case becomes that option, preferring an exact match. Since no extracted string can be empty or have surrounding whitespace, `options`, `examples` and `default_value` can't either.
 - **Integers** may also arrive as integral numbers (`4.0`) or as text holding a signed integer (`" -7 "`, `"+3"`), whose digits may be grouped in threes by a single kind of thousands separator: `.`, `,`, `_` or a space (`"1.234.567"`, `"12 345"`). Anything else (`"1.5"`, `"1,234.00"`, `"4 people"`, `true`) is invalid, since reading it as an integer would be a guess.
+- **Floats** may also arrive as integers (`4` becomes `4.0`) or as text holding a signed decimal number, optionally with an exponent (`"-0.5"`, `"2.5e3"`). Its decimal separator may be a point or a comma, and its integer digits may be grouped in threes by a single kind of thousands separator other than the decimal one (`"1.234.567,8"`, `"1,234,567.8"`, `"12 345,6"`). A lone point or comma is always the decimal separator, so `"1.234"` and `"1,234"` are both `1.234`, unlike in an integer field. Anything else (`"1.2.3"`, `"1.5 kg"`, `".5"`, `"NaN"`, `"inf"`) is invalid.
 
 A value with no form of the field's data type is invalid, not missing, so it never falls back to the `default_value` of a required field.
 
-An integer field can be a primary key: its decimal text (`4` becomes `"4"`) is what gets [normalized](#-identity-and-merging).
+An integer field can be a primary key: its decimal text (`4` becomes `"4"`) is what gets [normalized](#-identity-and-merging). A float field can't, since one float has several texts (`1.0`, `1`, `1e0`) and extracted ones carry rounding noise.
+
+> ⚠️ Floats are kept at full 64-bit precision, and exported that way to Neo4j (`double`), but MillenniumDB stores them as 32-bit floats, so it keeps only about 7 significant digits (`0.1` becomes `0.100000001`).
 
 ### Entity Example
 
@@ -339,8 +343,8 @@ Relationship fields work like entity fields, except that they take **plain value
 | `options`        |    🟡     | A closed vocabulary: the only values this field may take.                                                                         | `value array` or `value` | `[]`        |
 | `examples`       |    🟡     | Example value(s). Must satisfy `options`, `regex`, `min` and `max`.                                                               | `value array` or `value` | `[]`        |
 | `regex`          |    🟡     | String fields only. A pattern the **whole** value must match to be considered valid, checked after extraction (it isn't shown to the LLM). |          `string`          | `null`      |
-| `min`            |    🟡     | Integer fields only. The lowest valid value, checked after extraction.                                                            |         `integer`          | `null`      |
-| `max`            |    🟡     | Integer fields only. The highest valid value, checked after extraction. Must not be lower than `min`.                             |         `integer`          | `null`      |
+| `min`            |    🟡     | Integer and float fields only. The lowest valid value, checked after extraction.                                                  |          `value`           | `null`      |
+| `max`            |    🟡     | Integer and float fields only. The highest valid value, checked after extraction. Must not be lower than `min`.                   |          `value`           | `null`      |
 | `default_value`  |    🟡     | The value used when nothing is extracted, or with the `"default"` retrieval mode. Must satisfy `options`, `regex`, `min` and `max`. |          `value`           | `null`      |
 | `retrieval_mode` |    🟡     | Either `"extract"` (the LLM reads it from the text) or `"default"` (the declared `default_value` is used). `"default"` requires a non-null `default_value`. |          `string`          | `"extract"` |
 | `required`       |    🟡     | Whether the field is mandatory. A relationship whose required value is missing (with no `default_value` to fall back to) or invalid is discarded; an invalid optional value is discarded instead, falling back to `default_value` (if any). |           `bool`           | `false`     |
@@ -429,7 +433,7 @@ When an object is observed again, each field is reconciled according to its merg
 | `"largest"`  | `"max"`, `"maximum"`                                 | Prefer the larger number.                                     |
 | `"smallest"` | `"min"`, `"minimum"`                                 | Prefer the smaller number.                                    |
 
-`"keep"` and `"replace"` apply to every data type, `"longest"` and `"shortest"` only to strings, and `"largest"` and `"smallest"` only to integers. A strategy that doesn't apply to a field's data type is rejected, including a type's `default_merge_strategy` for a field that doesn't set its own `merge_strategy`.
+`"keep"` and `"replace"` apply to every data type, `"longest"` and `"shortest"` only to strings, and `"largest"` and `"smallest"` only to integers and floats. A strategy that doesn't apply to a field's data type is rejected, including a type's `default_merge_strategy` for a field that doesn't set its own `merge_strategy`.
 
 A `NULL` value never overwrites a non-null one, regardless of strategy. Observations are therefore monotonically informative: seeing an object again can add knowledge but never remove it.
 

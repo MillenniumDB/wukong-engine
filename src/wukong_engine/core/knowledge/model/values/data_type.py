@@ -11,7 +11,10 @@ from typing import Any
 MIN_INTEGER = -(2**56 - 1)
 MAX_INTEGER = 2**56 - 1
 
-type FieldValue = str | int
+# Largest finite 32-bit float, the precision MillenniumDB stores floats in, so no exported float becomes an infinity
+MAX_FLOAT = 3.4028234663852886e38
+
+type FieldValue = str | int | float
 
 
 class DataType(Enum):
@@ -20,11 +23,18 @@ class DataType(Enum):
     Attributes:
         STRING: Textual data.
         INTEGER: Whole numbers between ``-(2**56 - 1)`` and ``2**56 - 1``.
+        FLOAT: Finite 64-bit floating point numbers between ``-MAX_FLOAT`` and ``MAX_FLOAT``.
     """
 
     STRING = 'string'
     INTEGER = 'integer'
-    # TODO(BFFV): Add FLOAT and BOOLEAN data types
+    FLOAT = 'float'
+    # TODO(BFFV): Add BOOLEAN data type
+
+    @property
+    def is_numeric(self) -> bool:
+        """Whether values of this data type are numbers, which can be bounded and compared by size."""
+        return self in {DataType.INTEGER, DataType.FLOAT}
 
     def accepts(self, value: Any) -> bool:
         """Check whether a value is of this data type.
@@ -34,10 +44,13 @@ class DataType(Enum):
 
         Returns:
             True if the value is of this data type, False otherwise. Booleans are never integers, even though Python
-            treats them as such.
+            treats them as such, and integers are never floats: they must be converted first. NaN and infinities are
+            not floats either.
         """
         match self:
             case DataType.STRING:
                 return isinstance(value, str)
             case DataType.INTEGER:
                 return isinstance(value, int) and not isinstance(value, bool) and MIN_INTEGER <= value <= MAX_INTEGER
+            case DataType.FLOAT:
+                return isinstance(value, float) and -MAX_FLOAT <= value <= MAX_FLOAT

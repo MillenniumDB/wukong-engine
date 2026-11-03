@@ -14,6 +14,7 @@ from wukong_engine.core.knowledge.model import (
     RelationshipType,
 )
 from wukong_engine.core.knowledge.model.values import (
+    DataType,
     EntityTypeName,
     FieldName,
     RelationshipTypeName,
@@ -147,12 +148,18 @@ class KnowledgeModelMapper:
             data_type=schema.data_type,
             description=schema.description,
             instructions=MappingProxyType(_as_dict(schema.instructions)),
-            options=tuple(_as_list(schema.options)),
-            examples=tuple(_as_list(schema.examples)),
+            options=tuple(_as_data_type(v, schema.data_type) for v in _as_list(schema.options)),
+            examples=tuple(_as_data_type(v, schema.data_type) for v in _as_list(schema.examples)),
             regex=MappingProxyType({k: RegexPattern(v) for k, v in _as_dict(schema.regex).items()}),
-            minimum=MappingProxyType(_as_dict(schema.minimum)),
-            maximum=MappingProxyType(_as_dict(schema.maximum)),
-            default_value=MappingProxyType(_as_dict(schema.default_value)),
+            minimum=MappingProxyType(
+                {k: _as_data_type(v, schema.data_type) for k, v in _as_dict(schema.minimum).items()}
+            ),
+            maximum=MappingProxyType(
+                {k: _as_data_type(v, schema.data_type) for k, v in _as_dict(schema.maximum).items()}
+            ),
+            default_value=MappingProxyType(
+                {k: _as_data_type(v, schema.data_type) for k, v in _as_dict(schema.default_value).items()},
+            ),
             retrieval_mode=MappingProxyType(_as_dict(schema.retrieval_mode)),
             required=schema.required,
             merge_strategy=schema.merge_strategy,
@@ -173,12 +180,12 @@ class KnowledgeModelMapper:
             data_type=schema.data_type,
             description=schema.description,
             instructions=schema.instructions,
-            options=tuple(_as_list(schema.options)),
-            examples=tuple(_as_list(schema.examples)),
+            options=tuple(_as_data_type(v, schema.data_type) for v in _as_list(schema.options)),
+            examples=tuple(_as_data_type(v, schema.data_type) for v in _as_list(schema.examples)),
             regex=RegexPattern(schema.regex) if schema.regex is not None else None,
-            minimum=schema.minimum,
-            maximum=schema.maximum,
-            default_value=schema.default_value,
+            minimum=_as_data_type(schema.minimum, schema.data_type),
+            maximum=_as_data_type(schema.maximum, schema.data_type),
+            default_value=_as_data_type(schema.default_value, schema.data_type),
             retrieval_mode=schema.retrieval_mode,
             required=schema.required,
             merge_strategy=schema.merge_strategy,
@@ -264,4 +271,21 @@ def _as_list(value: Any) -> list:
     """
     if not isinstance(value, list):
         raise TypeError(f'Mapping Error: expected a list, got {type(value)} instead')
+    return value
+
+
+def _as_data_type(value: Any, data_type: DataType) -> Any:
+    """Convert a value written for a field to the field's data type where the definition format allows another form.
+
+    Integers are also float values, so ``"min": 0`` in a float field means ``0.0``.
+
+    Args:
+        value: Value from the field's definition (already validated by the schema).
+        data_type: Data type of the field.
+
+    Returns:
+        The value as a float if it is an integer written for a float field, otherwise the same value.
+    """
+    if data_type == DataType.FLOAT and isinstance(value, int) and not isinstance(value, bool):
+        return float(value)
     return value

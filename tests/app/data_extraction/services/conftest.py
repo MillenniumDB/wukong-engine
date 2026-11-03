@@ -23,6 +23,7 @@ KNOWLEDGE_MODEL = {
                     'default_value': 'planned',
                 },
                 'crew_size': {'data_type': 'integer', 'description': 'Crew size.', 'min': 1, 'max': 12},
+                'payload_tons': {'data_type': 'float', 'description': 'Payload mass.', 'min': 0, 'max': 100},
             },
             'document_collections': {'document': 'missions', 'chunk': 'missions'},
         },
