@@ -65,7 +65,7 @@ class Field:
 
         Raises:
             ValueError: If an option, example or default value isn't of the field's data type, or is a string that is
-                empty or has leading or trailing whitespace.
+                empty, has leading or trailing whitespace, or holds a NUL character or a lone surrogate.
         """
         for kind, values in (('Option', self.options), ('Example', self.examples), ('Default value', default_values)):
             for value in values:
@@ -78,6 +78,11 @@ class Field:
                     raise ValueError(
                         f'Invalid {type(self).__name__} "{self.name}": {kind} {value!r} is empty or has leading or '
                         f'trailing whitespace, which extracted values never have',
+                    )
+                if isinstance(value, str) and any(char == '\x00' or '\ud800' <= char <= '\udfff' for char in value):
+                    raise ValueError(
+                        f'Invalid {type(self).__name__} "{self.name}": {kind} {value!r} holds a NUL character or a lone '
+                        f'surrogate, which extracted values never have',
                     )
 
     def _validate_merge_strategy(self) -> None:

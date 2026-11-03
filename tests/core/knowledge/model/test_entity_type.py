@@ -60,6 +60,14 @@ def test_values_must_have_the_form_of_an_extracted_value(key: str, value: str) -
         _load_mission(name={'data_type': 'string', 'description': 'Name.', key: value})
 
 
+@pytest.mark.parametrize('key', ['options', 'examples', 'default_value'])
+@pytest.mark.parametrize('value', ['act\x00ive', 'half \ud83d emoji'])
+def test_values_cannot_hold_characters_extracted_values_lose(key: str, value: str) -> None:
+    """Reject a NUL character or a lone surrogate, which extraction removes or replaces and no export can store."""
+    with pytest.raises(ValueError, match='NUL character or a lone surrogate'):
+        _load_mission(name={'data_type': 'string', 'description': 'Name.', key: value})
+
+
 REGEX_CODE = {'data_type': 'string', 'description': 'Code.', 'required': True, 'regex': '[A-Z]+-[0-9]+'}
 
 
