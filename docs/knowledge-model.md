@@ -9,6 +9,7 @@ This document describes the expected format for a `knowledge_model.json` file, w
 ## 📚 Table of Contents
 - [🧾 Knowledge Model Schema](#-knowledge-model-schema)
 - [🧭 Context Levels](#-context-levels)
+  - [What Can Vary per Context Level](#what-can-vary-per-context-level)
 - [⚙️ Extraction Configuration](#️-extraction-configuration)
   - [LLM Settings](#llm-settings)
   - [Projection Settings](#projection-settings)
@@ -85,6 +86,27 @@ Wherever a parameter accepts a context level mapping, you may write either:
     ```
 
 Context level keys are case-insensitive (`"chunk"` and `"CHUNK"` are equivalent).
+
+### What Can Vary per Context Level
+
+Only these parameters accept a context level mapping. A level left out of a mapping falls back as shown:
+
+| Parameter              | Defined On     | A Level Left Out                                                     |
+| ---------------------- | -------------- | -------------------------------------------------------------------- |
+| `instructions`         | Entity type    | Gets no extra instructions.                                          |
+| `document_collections` | Entity type    | Is never attempted. This one is always an object: a single value isn't applied to every level. |
+| `instructions`         | Entity field   | Gets no extra instructions.                                          |
+| `retrieval_mode`       | Entity field   | Uses `"extract"`.                                                    |
+| `default_value`        | Entity field   | Has no default, so a missing value stays `NULL`.                     |
+| `regex`                | Entity field   | Accepts any string.                                                  |
+| `min`, `max`           | Entity field   | Has no lower or upper bound.                                         |
+
+Everything else is shared by both levels:
+- **Entity types:** `description`, `primary_key`, `deduplication`, `default_merge_strategy` and `fields`.
+- **Entity fields:** `data_type`, `description`, `options`, `examples`, `required` and `merge_strategy`. Since `examples` are shared, they must satisfy the `regex`, `min` and `max` of every level. A required field is checked only at the levels where it's extracted, so a field that is `"skip"` at one level doesn't discard the entities found there.
+- **Relationship types:** nothing takes a context level mapping, since relationships are only extracted from chunks. Their [endpoints](#endpoints) say which context levels each connected entity may come from.
+
+To use a field at one level only, set its `retrieval_mode` to `"skip"` at the other. To validate one level more strictly, give that level its own `regex`, `min` or `max`. `options` can't vary by level.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
