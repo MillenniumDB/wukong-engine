@@ -23,6 +23,10 @@ logger = logging.getLogger(__name__)
 # Neo4j data type name mapping
 DATA_TYPE_NAME_MAPPING = {
     DataType.STRING: 'string',
+    DataType.INTEGER: 'long',
+    DataType.FLOAT: 'double',
+    DataType.BOOLEAN: 'boolean',
+    DataType.DATE: 'date',
 }
 
 

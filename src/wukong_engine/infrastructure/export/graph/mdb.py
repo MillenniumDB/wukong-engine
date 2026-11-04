@@ -12,6 +12,7 @@ from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import PartialDate
 from wukong_engine.infrastructure.serialization import EscapedStringSerializer, PropertyValueSerializer
 from wukong_engine.infrastructure.storage.filesystem import replacing_directory
 
@@ -53,14 +54,17 @@ class MillenniumDBWriter:
             value: Property value to serialize.
 
         Returns:
-            The serialized value (strings are double-quoted with internal quotes escaped), or None if the value is
-            null.
+            The serialized value (strings are double-quoted with internal quotes escaped, and dates are written as
+            ``date("YYYY-MM-DD")`` typed values), or None if the value is null.
         """
         serialized_value = self._serializer.serialize(value)
 
         # If the value is null, return None to be explicit
         if serialized_value is None:
             return None
+
+        if isinstance(value, PartialDate):
+            return f'date("{serialized_value}")'
 
         # If the value is a string, wrap it in double quotes and escape any internal ones
         if isinstance(value, str):

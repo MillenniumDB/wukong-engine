@@ -4,7 +4,7 @@ from typing import Any
 
 from wukong_engine.core.knowledge.elements import Entity
 from wukong_engine.core.knowledge.model import EntityType
-from wukong_engine.core.knowledge.model.values import MergeStrategy
+from wukong_engine.core.knowledge.model.values import MergeStrategy, PartialDate
 
 
 class EntityMerger:
@@ -69,8 +69,10 @@ class EntityMerger:
     def _choose_value(existing: Any, incoming: Any, strategy: MergeStrategy) -> Any:
         """Choose the value according to the field's merge strategy.
 
-        If either value is None, the other one is returned regardless of the strategy. Length ties are broken by
-        keeping the lexicographically smaller value, so the result doesn't depend on the order values are seen in.
+        If either value is None, the other one is returned regardless of the strategy, and so is the more precise of
+        two dates when it agrees with every part the other one knows (``2021-03-15`` refines ``2021``). Length ties
+        are broken by keeping the lexicographically smaller value, so the result doesn't depend on the order values are
+        seen in.
 
         Args:
             existing: Current value of the field.
@@ -85,6 +87,9 @@ class EntityMerger:
             return incoming
         if incoming is None:
             return existing
+        refined = _refined_date(existing, incoming)
+        if refined is not None:
+            return refined
 
         # If both values are present, apply the merge strategy
         chosen = existing
@@ -97,4 +102,27 @@ class EntityMerger:
                 chosen = max(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
             case MergeStrategy.SHORTEST:
                 chosen = min(existing, incoming, key=len) if len(existing) != len(incoming) else min(existing, incoming)
+            case MergeStrategy.LARGEST:
+                chosen = max(existing, incoming)
+            case MergeStrategy.SMALLEST:
+                chosen = min(existing, incoming)
         return chosen
+
+
+def _refined_date(existing: Any, incoming: Any) -> PartialDate | None:
+    """Find the more precise of two dates when it agrees with every part the other one knows.
+
+    Args:
+        existing: Current value of the field.
+        incoming: New value of the field.
+
+    Returns:
+        The date that refines the other one, or None if the values aren't two dates where one refines the other.
+    """
+    if not isinstance(existing, PartialDate) or not isinstance(incoming, PartialDate):
+        return None
+    if existing.is_refined_by(incoming):
+        return incoming
+    if incoming.is_refined_by(existing):
+        return existing
+    return None

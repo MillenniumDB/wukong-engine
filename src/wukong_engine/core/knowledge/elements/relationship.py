@@ -17,7 +17,7 @@ class Relationship:
         type: Relationship type the instance conforms to.
         source: Identifier of the source entity.
         target: Identifier of the target entity.
-        properties: Mapping from field name to string value. Null values are omitted rather than stored.
+        properties: Mapping from field name to a value of the field's data type. Null values are omitted rather than stored.
     """
 
     id: RelationshipId
@@ -32,7 +32,7 @@ class Relationship:
         Raises:
             ValueError: If a property is not a field of the relationship type, a required field is missing, a stored
                 value is null, or a value is not among the field's options.
-            TypeError: If a property value is not a string.
+            TypeError: If a property value is not of its field's data type.
         """
         self._validate_property_fields()
         self._validate_property_values()
@@ -65,7 +65,7 @@ class Relationship:
 
         Raises:
             ValueError: If a stored value is null or not among the field's defined options.
-            TypeError: If a stored value is not a string.
+            TypeError: If a stored value is not of its field's data type.
         """
         fields_by_name = {f_name.value: field for f_name, field in self.type.fields.items()}
         for property_name, value in self.properties.items():
@@ -77,11 +77,11 @@ class Relationship:
                     f'Invalid Relationship: property "{property_name}" has a null value stored (should be omitted instead)\n<Invalid Relationship>\n{self}',
                 )
 
-            # Property values must be strings (currently)
-            if not isinstance(value, str):
+            # Property values must be of the field's data type
+            if not field.data_type.accepts(value):
                 raise TypeError(
-                    f'Invalid Relationship: property "{property_name}" must be of type string, '
-                    f'got {type(value).__name__} instead\n<Invalid Relationship>\n{self}',
+                    f'Invalid Relationship: property "{property_name}" must be a valid {field.data_type.value} value, '
+                    f'got {value!r} instead\n<Invalid Relationship>\n{self}',
                 )
 
             # Value must be contained in allowed values (options) if defined for the field
@@ -131,7 +131,7 @@ class Relationship:
         Raises:
             ValueError: If the identity policy requires a primary key and ``normalized_pk`` is None, or the remaining
                 properties miss a required field or hold a value outside a field's options.
-            TypeError: If a remaining property value is not a string.
+            TypeError: If a remaining property value is not of its field's data type.
         """
         relationship_id = RelationshipId.from_identity(
             relationship_type=relationship_type.name,

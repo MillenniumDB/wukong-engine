@@ -5,8 +5,13 @@ from pathlib import Path
 
 from wukong_engine.core.documents.elements import Chunk
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
+from wukong_engine.core.knowledge.elements import Entity
+from wukong_engine.core.knowledge.elements.values import EntityId
+from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
-from wukong_engine.infrastructure.export.graph.neo4j import Neo4jChunkWriter
+from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
+from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
+from wukong_engine.infrastructure.export.graph.neo4j import Neo4jChunkWriter, Neo4jEntityWriter
 
 
 def test_strings_are_written_raw_for_the_csv_quoting_to_carry(tmp_path: Path) -> None:
@@ -29,3 +34,43 @@ def test_strings_are_written_raw_for_the_csv_quoting_to_carry(tmp_path: Path) ->
     with path.open(newline='', encoding='utf-8') as file:
         header, row = list(csv.reader(file))
     assert row[[column.split(':')[0] for column in header].index('content')] == content
+
+
+def test_typed_fields_are_written_as_typed_columns(tmp_path: Path) -> None:
+    """Type integer, float, boolean and date columns, writing booleans in lowercase and dates from their first day."""
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {
+                'Mission': {
+                    'description': 'A mission.',
+                    'primary_key': 'code',
+                    'fields': {
+                        'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
+                        'crew_size': {'data_type': 'integer', 'description': 'Crew size.'},
+                        'payload': {'data_type': 'float', 'description': 'Payload mass.'},
+                        'crewed': {'data_type': 'boolean', 'description': 'Crewed.'},
+                        'launch': {'data_type': 'date', 'description': 'Launch.'},
+                    },
+                    'document_collections': {'chunk': 'missions'},
+                },
+            },
+        },
+    )
+    entity_type = KnowledgeModelMapper().map_knowledge_model(schema).entity_types[EntityTypeName('Mission')]
+    entity_id = EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string('mission'))
+    path = tmp_path / 'Mission.csv'
+
+    with Neo4jEntityWriter(path, entity_type) as writer:
+        writer.write(
+            Entity(
+                entity_id,
+                entity_type,
+                {'code': 'A-1', 'crew_size': -4, 'payload': 2.5, 'crewed': True, 'launch': PartialDate(1969)},
+            )
+        )
+
+    with path.open(newline='', encoding='utf-8') as file:
+        header, row = list(csv.reader(file))
+    columns = dict(zip(header, row, strict=True))
+    typed_columns = ('crew_size:long', 'payload:double', 'crewed:boolean', 'launch:date')
+    assert [columns[column] for column in typed_columns] == ['-4', '2.5', 'true', '1969-01-01']

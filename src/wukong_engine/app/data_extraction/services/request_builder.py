@@ -29,7 +29,7 @@ from wukong_engine.core.knowledge.model import (
     RelationshipField,
     RelationshipType,
 )
-from wukong_engine.core.knowledge.model.values import DataType, EntityTypeName
+from wukong_engine.core.knowledge.model.values import DataType, EntityTypeName, FieldValue, PartialDate
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
@@ -39,11 +39,18 @@ logger = logging.getLogger(__name__)
 # Constants
 MAX_DOCUMENT_TOKENS = 8000  # To avoid hitting LLM context window limits
 
+# Partial dates in ISO 8601 form; calendar validity (no February 30th) is checked after extraction
+DATE_PATTERN = '^[0-9]{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12][0-9]|3[01]))?)?$'
+DATE_FORMAT_INSTRUCTIONS = (
+    'Write the date as YYYY-MM-DD, as precise as the text states it: YYYY-MM or YYYY when it gives no day or no month.'
+)
+
 
 def _generate_field_schema(field: Field) -> dict[str, Any]:
     """Generate a JSON schema for a single field.
 
     The schema is always nullable, and restricts the value to the field's options (plus None) when it defines any.
+    Dates are requested as text in their ISO 8601 form, down to the day, the month or the year.
 
     Args:
         field: Field whose data type and allowed options define the schema.
@@ -57,9 +64,37 @@ def _generate_field_schema(field: Field) -> dict[str, Any]:
 
     # Allowed values if specified
     if field.options:
-        schema['enum'] = [*field.options, None]
+        schema['enum'] = [_to_json(option) for option in field.options] + [None]
+    elif field.data_type == DataType.DATE:
+        schema['pattern'] = DATE_PATTERN
 
     return schema
+
+
+def _to_json(value: FieldValue) -> str | float | bool:
+    """Convert a field value to a JSON value, writing dates in their ISO 8601 form.
+
+    Args:
+        value: Field value to convert.
+
+    Returns:
+        The ISO 8601 text of a date, otherwise the same value.
+    """
+    return str(value) if isinstance(value, PartialDate) else value
+
+
+def _render_value(value: Any) -> str:
+    """Render a property value in a prompt, writing booleans as the JSON literals responses use for them.
+
+    Args:
+        value: Property value to render.
+
+    Returns:
+        ``true`` or ``false`` for a boolean, otherwise the value's text (the ISO 8601 form of a date).
+    """
+    if isinstance(value, bool):
+        return 'true' if value else 'false'
+    return str(value)
 
 
 def _data_type_to_json(data_type: DataType) -> str:
@@ -74,7 +109,14 @@ def _data_type_to_json(data_type: DataType) -> str:
     match data_type:
         case DataType.STRING:
             return 'string'
-        # TODO(BFFV): Map INTEGER to "integer", FLOAT to "number" and BOOLEAN to "boolean" once those data types exist
+        case DataType.INTEGER:
+            return 'integer'
+        case DataType.FLOAT:
+            return 'number'
+        case DataType.BOOLEAN:
+            return 'boolean'
+        case DataType.DATE:
+            return 'string'
 
 
 def _rebuild_text(chunks: tuple[Chunk, ...]) -> str:
@@ -318,10 +360,14 @@ class EntityExtractionRequestBuilder(ExtractionRequestBuilder):
         if instructions is not None:
             lines.append(f'  {instructions}')
 
+        # Form of dates, which the response schema may not enforce
+        if field.data_type == DataType.DATE:
+            lines.append(f'  {DATE_FORMAT_INSTRUCTIONS}')
+
         # Optional examples
         if field.examples:
             lines.append('  Examples:')
-            lines.extend(f'  - {example}' for example in field.examples)
+            lines.extend(f'  - {_render_value(example)}' for example in field.examples)
         return lines
 
     def _get_source_text(self, source: Document | Chunk) -> str:
@@ -663,10 +709,14 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         if instructions is not None:
             lines.append(f'  {instructions}')
 
+        # Form of dates, which the response schema may not enforce
+        if field.data_type == DataType.DATE:
+            lines.append(f'  {DATE_FORMAT_INSTRUCTIONS}')
+
         # Optional examples
         if field.examples:
             lines.append('  Examples:')
-            lines.extend(f'  - {example}' for example in field.examples)
+            lines.extend(f'  - {_render_value(example)}' for example in field.examples)
         return lines
 
     def _render_available_entities(self, entities: tuple[Entity, ...]) -> list[str]:
@@ -714,14 +764,14 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
 
         # Primary Key
         pk_field, pk_value = entity.primary_key_property
-        lines.append(f'{pk_field.name}: {pk_value}')
+        lines.append(f'{pk_field.name}: {_render_value(pk_value)}')
 
         # Properties
         for field, value in entity.required_properties.items():
             if field != pk_field:  # Avoid repeating the primary key property
-                lines.append(f'{field.name}: {value}')
+                lines.append(f'{field.name}: {_render_value(value)}')
         for field, value in entity.optional_properties.items():
-            lines.append(f'{field.name}: {value}')
+            lines.append(f'{field.name}: {_render_value(value)}')
 
         return lines
 

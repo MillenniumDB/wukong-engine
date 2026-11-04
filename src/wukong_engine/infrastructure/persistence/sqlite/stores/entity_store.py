@@ -1,6 +1,5 @@
 """SQLite-backed entity store implementation."""
 
-import json
 import sqlite3
 from collections import defaultdict
 from collections.abc import Iterable, Iterator
@@ -16,6 +15,8 @@ from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel
 from wukong_engine.core.knowledge.model.values import EntityTypeName
 from wukong_engine.core.knowledge.services import EntityMerger
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
+
+from .properties import dump_properties, load_properties
 
 
 class SQLiteEntityStore(EntityStore):
@@ -46,7 +47,7 @@ class SQLiteEntityStore(EntityStore):
                 content=ContentHash.from_bytes(row['content_id']),
             ),
             type=entity_type,
-            properties=json.loads(row['properties']),
+            properties=load_properties(row['properties'], entity_type.fields.values()),
         )
 
     def _find_duplicates(self, entities: Iterable[Entity]) -> dict[bytes, Entity]:
@@ -98,7 +99,7 @@ class SQLiteEntityStore(EntityStore):
                     entity.id.content.bytes,
                     entity.id.instance.bytes,
                     entity.type.name.value,
-                    json.dumps(entity.properties, sort_keys=True, separators=(',', ':')),
+                    dump_properties(entity.properties),
                 )
                 for entity in entities
             ],
@@ -116,10 +117,7 @@ class SQLiteEntityStore(EntityStore):
             SET properties = ?
             WHERE content_id = ?
             """,
-            [
-                (json.dumps(entity.properties, sort_keys=True, separators=(',', ':')), entity.id.content.bytes)
-                for entity in entities
-            ],
+            [(dump_properties(entity.properties), entity.id.content.bytes) for entity in entities],
         )
 
     def add_entity_types(self, entity_type_names: Iterable[EntityTypeName]) -> None:

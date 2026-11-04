@@ -1,17 +1,25 @@
 """Tests for building the requests of entity extraction jobs."""
 
 import logging
+import re
 from typing import Any
 
 import pytest
 
 from wukong_engine.app.data_extraction.elements import ExtractionJob
 from wukong_engine.app.data_extraction.services import EntityExtractionRequestBuilder
+from wukong_engine.app.data_extraction.services.request_builder import (
+    DATE_PATTERN,
+    _generate_field_schema,
+    _render_value,
+)
 from wukong_engine.core.documents.elements import Chunk, Document, LoadedDocument
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model import KnowledgeModel
-from wukong_engine.core.knowledge.model.values import EntityTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName
+from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
+from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 
 TEXT = 'Mission ARTEMIS-7 launched.\n\nThe crew landed on day 3.'
 DOCUMENT = Document(id=DocumentId.from_content(TEXT.encode()), source_uri='/data/missions/artemis_7.txt')
@@ -81,3 +89,45 @@ def test_a_document_that_cannot_be_read_is_rebuilt_from_its_chunks(
     assert text == 'Mission ARTEMIS-7 launched.\n\nThe crew landed on day 3.'
     assert [record.levelname for record in caplog.records] == ['ERROR', 'WARNING']
     assert 'rebuilt from its 3 ingested chunk(s)' in caplog.text
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'), [(True, 'true'), (False, 'false'), (4, '4'), (2.5, '2.5'), ('Ada', 'Ada')]
+)
+def test_values_are_rendered_in_prompts_as_responses_write_them(value: Any, expected: str) -> None:
+    """Render booleans as the JSON literals responses use, not as Python's ``True`` and ``False``."""
+    assert _render_value(value) == expected
+
+
+def test_dates_are_requested_as_iso_text_at_any_precision() -> None:
+    """Ask for dates as text matching an ISO pattern down to the year, and write date options as ISO text."""
+    model = KnowledgeModelMapper().map_knowledge_model(
+        KnowledgeModelSchema.model_validate(
+            {
+                'entity_types': {
+                    'Mission': {
+                        'description': 'A mission.',
+                        'primary_key': 'code',
+                        'fields': {
+                            'code': {'data_type': 'string', 'description': 'Code.', 'required': True},
+                            'launch': {'data_type': 'date', 'description': 'Launch.'},
+                            'era': {'data_type': 'date', 'description': 'Era.', 'options': ['1960', '1970']},
+                        },
+                        'document_collections': {'chunk': 'missions'},
+                    },
+                },
+            },
+        ),
+    )
+    fields = model.entity_types[EntityTypeName('Mission')].fields
+
+    launch, era = _generate_field_schema(fields[FieldName('launch')]), _generate_field_schema(fields[FieldName('era')])
+
+    assert launch == {'type': ['string', 'null'], 'pattern': DATE_PATTERN}
+    assert era == {'type': ['string', 'null'], 'enum': ['1960', '1970', None]}
+    assert [bool(re.fullmatch(DATE_PATTERN[1:-1], text)) for text in ('1969', '1969-07', '1969-07-16', '1969-13')] == [
+        True,
+        True,
+        True,
+        False,
+    ]

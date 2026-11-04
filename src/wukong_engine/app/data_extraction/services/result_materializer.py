@@ -2,6 +2,7 @@
 
 import logging
 import math
+import re
 from typing import Any, Protocol
 
 from wukong_engine.app.data_extraction.elements import (
@@ -15,13 +16,83 @@ from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode, RelationshipRetrievalMode
 from wukong_engine.core.knowledge.elements import Entity, EntityRef, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
-from wukong_engine.core.knowledge.model import EntityType, KnowledgeModel, RelationshipType
-from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
-from wukong_engine.core.shared.regex_pattern import RegexPattern
+from wukong_engine.core.knowledge.model import EntityType, Field, KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import (
+    MAX_FLOAT,
+    MONTHS_IN_YEAR,
+    DataType,
+    EntityTypeName,
+    FieldValue,
+    PartialDate,
+    RelationshipTypeName,
+)
 
 from .repository import EntityExtractionRepository, RelationshipExtractionRepository
 
 logger = logging.getLogger(__name__)
+
+# Integers as written in text, either plain or with their digits grouped by a single kind of thousands separator
+_PLAIN_INTEGER = re.compile(r'[+-]?[0-9]+')
+_GROUPED_INTEGER = re.compile(r'[+-]?[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*')
+_THOUSANDS_SEPARATORS = re.compile(r'[., _]')
+# English and Spanish words, which the sources are written in; "no" means false in both
+_BOOLEAN_WORDS = {
+    'true': True,
+    'yes': True,
+    'sí': True,
+    'si': True,
+    'verdadero': True,
+    '1': True,
+    'false': False,
+    'no': False,
+    'falso': False,
+    '0': False,
+}
+# Dates with a four-digit year: a two-digit one would leave the century to a guess
+_YEAR_FIRST_DATE = re.compile(
+    r'(?P<year>[0-9]{4})(?:(?P<separator>[-/.])(?P<month>[0-9]{1,2})(?:(?P=separator)(?P<day>[0-9]{1,2}))?)?',
+)
+_NUMERIC_DATE = re.compile(
+    r'(?P<first>[0-9]{1,2})(?P<separator>[-/.])(?P<second>[0-9]{1,2})(?P=separator)(?P<year>[0-9]{4})'
+)
+_NUMERIC_MONTH = re.compile(r'(?P<month>[0-9]{1,2})[-/.](?P<year>[0-9]{4})')
+_DAY = r'(?P<day>[0-9]{1,2})(?:º|°|st|nd|rd|th)?'
+_MONTH_NAME = r'(?P<month>[^\W\d_]+)\.?'
+_DATE_SEPARATOR = r'(?:\s*[-/,]\s*|\s+)(?:del?\s+|of\s+)?'
+_NAMED_MONTH_DATES = (
+    re.compile(rf'{_DAY}{_DATE_SEPARATOR}{_MONTH_NAME}{_DATE_SEPARATOR}(?P<year>[0-9]{{4}})'),
+    re.compile(rf'{_MONTH_NAME}\s+{_DAY},?\s+(?P<year>[0-9]{{4}})'),
+    re.compile(rf'{_MONTH_NAME}{_DATE_SEPARATOR}(?P<year>[0-9]{{4}})'),
+)
+# English and Spanish month names and abbreviations, casefolded
+_MONTH_NUMBERS = {
+    name: number
+    for number, names in enumerate(
+        (
+            ('january', 'jan', 'enero', 'ene'),
+            ('february', 'feb', 'febrero'),
+            ('march', 'mar', 'marzo'),
+            ('april', 'apr', 'abril', 'abr'),
+            ('may', 'mayo'),
+            ('june', 'jun', 'junio'),
+            ('july', 'jul', 'julio'),
+            ('august', 'aug', 'agosto', 'ago'),
+            ('september', 'sep', 'sept', 'septiembre', 'setiembre', 'set'),
+            ('october', 'oct', 'octubre'),
+            ('november', 'nov', 'noviembre'),
+            ('december', 'dec', 'diciembre', 'dic'),
+        ),
+        start=1,
+    )
+    for name in names
+}
+# Tried in order: a lone '.' or ',' is read as the decimal separator (1.234 is 1.234), and only otherwise as grouping
+_DECIMAL_NUMBER = re.compile(
+    r'(?P<sign>[+-]?)'
+    r'(?P<integer>[0-9]+|[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*)'
+    r'(?:(?P<decimal>[.,])(?P<fraction>[0-9]+))?'
+    r'(?P<exponent>[eE][+-]?[0-9]+)?',
+)
 
 
 def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
@@ -46,24 +117,51 @@ def _extracted_items(data: Any, key: str) -> list[dict[str, Any]]:
     return [item for item in items if isinstance(item, dict)]
 
 
-def _normalize_value(value: Any, options: tuple[str, ...]) -> str | None:
-    """Normalize an extracted value into the string form of a field value, as a lenient extractor would.
+def _normalize_value(value: Any, field: Field) -> Any:
+    """Normalize an extracted value into a value of the field's data type, as a lenient extractor would.
 
-    Responses that aren't validated against their schema can carry a value as another JSON type, so booleans become
-    ``true``/``false``, numbers their decimal text (``3.0`` becomes ``3``) and a single-element list its element.
-    Strings are stripped, an empty one or a literal ``null`` counts as missing, and a value equal to one of the
-    options regardless of case becomes that option.
+    Responses that aren't validated against their schema can carry a value as another JSON type, so a single-element
+    list becomes its element before converting it (see ``_normalize_string``, ``_normalize_integer``,
+    ``_normalize_float``, ``_normalize_boolean`` and ``_normalize_date``).
 
     Args:
         value: Value extracted for the field, as decoded from the response.
+        field: Field the value was extracted for.
+
+    Returns:
+        The normalized value, None if it is missing, or a value of another type if it has no form of the field's data
+        type, for validation to reject.
+    """
+    if isinstance(value, list) and len(value) == 1:
+        value = value[0]
+    match field.data_type:
+        case DataType.STRING:
+            return _normalize_string(value, field.options)
+        case DataType.INTEGER:
+            return _normalize_integer(value)
+        case DataType.FLOAT:
+            return _normalize_float(value)
+        case DataType.BOOLEAN:
+            return _normalize_boolean(value)
+        case DataType.DATE:
+            return _normalize_date(value)
+
+
+def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None:
+    """Normalize an extracted value into the string form of a field value.
+
+    Booleans become ``true``/``false`` and numbers their decimal text (``3.0`` becomes ``3``). Strings are stripped,
+    an empty one or a literal ``null`` counts as missing, and a value equal to one of the options regardless of case
+    becomes that option, preferring an exact match.
+
+    Args:
+        value: Value extracted for the field.
         options: Allowed values of the field. Empty if any value is allowed.
 
     Returns:
         The normalized value, or None if it is missing or has no string form (an object, a list of several values
         or a non-finite number).
     """
-    if isinstance(value, list) and len(value) == 1:
-        value = value[0]
     if isinstance(value, bool):
         text = str(value).lower()
     elif isinstance(value, int):
@@ -78,23 +176,160 @@ def _normalize_value(value: Any, options: tuple[str, ...]) -> str | None:
         return None
     if not text or text.lower() == 'null':
         return None
-    return next((option for option in options if option.casefold() == text.casefold()), text)
+    if text in options:
+        return text
+    return next(
+        (option for option in options if isinstance(option, str) and option.casefold() == text.casefold()),
+        text,
+    )
 
 
-def _is_valid_value(value: str, options: tuple[str, ...], regex: RegexPattern | None) -> bool:
-    """Check whether a field value satisfies the field's constraints.
+def _normalize_integer(value: Any) -> Any:
+    """Normalize an extracted value into an integer.
+
+    Integral floats (``3.0``) become integers, and so do strings holding a signed integer, whose digits may be grouped
+    in threes by a single kind of thousands separator (``.``, ``,``, ``_`` or a space), as in ``1.234.567``. An empty
+    string or a literal ``null`` counts as missing.
 
     Args:
-        value: Materialized field value.
-        options: Allowed values of the field. Empty if any value is allowed.
-        regex: Pattern the value must match, or None if unconstrained.
+        value: Value extracted for the field.
 
     Returns:
-        True if the value is one of the options (if any) and matches the regex (if any), False otherwise.
+        The integer, None if the value is missing, or the value unchanged if it has no integer form.
     """
-    if options and value not in options:
-        return False
-    return regex is None or regex.fullmatch(value) is not None
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    if not isinstance(value, str):
+        return value
+    text = value.strip()
+    if not text or text.lower() == 'null':
+        return None
+    if _PLAIN_INTEGER.fullmatch(text) or _GROUPED_INTEGER.fullmatch(text):
+        return int(_THOUSANDS_SEPARATORS.sub('', text))
+    return value
+
+
+def _normalize_float(value: Any) -> Any:
+    """Normalize an extracted value into a float.
+
+    Integers become floats, and so do strings holding a signed decimal number, optionally with an exponent. Its
+    decimal separator may be a point or a comma, and its integer digits may be grouped in threes by a single kind of
+    thousands separator (``.``, ``,``, ``_`` or a space) other than the decimal one, as in ``1.234.567,8`` or
+    ``1,234,567.8``. A lone point or comma is always the decimal separator, so ``1,234`` is ``1.234``. An empty string
+    or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The float, None if the value is missing, or the value unchanged if it has no float form.
+    """
+    if isinstance(value, int) and not isinstance(value, bool):
+        # Converting an integer beyond any float would raise instead of leaving it for validation to reject
+        return float(value) if abs(value) <= MAX_FLOAT else value
+    if not isinstance(value, str):
+        return value
+    text = value.strip()
+    if not text or text.lower() == 'null':
+        return None
+    match = _DECIMAL_NUMBER.fullmatch(text)
+    if match is None or (match['separator'] is not None and match['separator'] == match['decimal']):
+        return value
+    integer = _THOUSANDS_SEPARATORS.sub('', match['integer'])
+    return float(f'{match["sign"]}{integer}.{match["fraction"] or 0}{match["exponent"] or ""}')
+
+
+def _normalize_boolean(value: Any) -> Any:
+    """Normalize an extracted value into a boolean.
+
+    The numbers ``1`` and ``0`` become ``True`` and ``False``, and so do strings holding a yes or no word in English or
+    Spanish (``true``/``false``, ``yes``/``no``, ``sí``/``no``, ``verdadero``/``falso``, ``1``/``0``), regardless of
+    case. An empty string or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The boolean, None if the value is missing, or the value unchanged if it has no boolean form.
+    """
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, int | float):
+        return bool(value) if value in {0, 1} else value
+    if not isinstance(value, str):
+        return value
+    text = value.strip().casefold()
+    if not text or text == 'null':
+        return None
+    return _BOOLEAN_WORDS.get(text, value)
+
+
+def _normalize_date(value: Any) -> Any:
+    """Normalize an extracted value into a partial date.
+
+    Dates are read with a four-digit year, down to the day, the month or the year: year first (``2024-03-01``,
+    ``2024/3/1``, ``2024-03``, ``2024``, also as a number), with numeric day and month (``01/03/2024``, ``03.2024``) or
+    with an English or Spanish month name (``1 March 2024``, ``March 1, 2024``, ``1 de marzo de 2024``, ``1-mar-2024``,
+    ``marzo de 2024``). Numeric days and months are read in the only order that forms a date, and day first when both
+    do, as most sources outside the United States write them. An empty string or a literal ``null`` counts as missing.
+
+    Args:
+        value: Value extracted for the field.
+
+    Returns:
+        The date, None if the value is missing, or the value unchanged if it has no date form.
+    """
+    if isinstance(value, int) and not isinstance(value, bool):
+        text = str(value)
+    elif isinstance(value, str):
+        text = value.strip().casefold()
+        if not text or text == 'null':
+            return None
+    else:
+        return value
+    date = _parse_date(text)
+    return value if date is None else date
+
+
+def _parse_date(text: str) -> PartialDate | None:
+    """Parse the text of a date in one of the forms ``_normalize_date`` reads.
+
+    Args:
+        text: Stripped and casefolded text of the date.
+
+    Returns:
+        The date, or None if the text has none of the forms or isn't a calendar date.
+    """
+    if match := _YEAR_FIRST_DATE.fullmatch(text):
+        return _partial_date(match['year'], match['month'], match['day'])
+    if match := _NUMERIC_DATE.fullmatch(text):
+        first, second = int(match['first']), int(match['second'])
+        day, month = (second, first) if first <= MONTHS_IN_YEAR < second else (first, second)
+        return _partial_date(match['year'], month, day)
+    if match := _NUMERIC_MONTH.fullmatch(text):
+        return _partial_date(match['year'], match['month'], None)
+    for pattern in _NAMED_MONTH_DATES:
+        if match := pattern.fullmatch(text):
+            month = _MONTH_NUMBERS.get(match['month'])
+            return None if month is None else _partial_date(match['year'], month, match.groupdict().get('day'))
+    return None
+
+
+def _partial_date(year: str, month: str | int | None, day: str | int | None) -> PartialDate | None:
+    """Build a partial date from parsed parts.
+
+    Args:
+        year: Year digits.
+        month: Month number or digits, or None if the date has no month.
+        day: Day number or digits, or None if the date has no day.
+
+    Returns:
+        The date, or None if the parts don't form a calendar date.
+    """
+    try:
+        return PartialDate(int(year), None if month is None else int(month), None if day is None else int(day))
+    except ValueError:
+        return None
 
 
 def _match_type_name[T: (EntityTypeName, RelationshipTypeName)](name: Any, job_types: set[T]) -> T | None:
@@ -201,7 +436,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
                 continue
 
             # Normalize PK value and skip materialization if invalid
-            normalized_pk = self._pk_normalizer.normalize(properties[entity_type.primary_key.value])
+            normalized_pk = self._pk_normalizer.normalize(str(properties[entity_type.primary_key.value]))
             if normalized_pk is None:
                 continue  # Invalid primary key value
 
@@ -241,7 +476,7 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the entity properties obtained through a given retrieval mode.
 
         Extracted values are normalized (see ``_normalize_value``), and those of optional fields that don't satisfy the
-        field's options or regex are discarded; fields with no (valid) extracted value fall back to their default for the context level, and
+        field's data type or constraints are discarded; fields with no (valid) extracted value fall back to their default for the context level, and
         fields that end up null are omitted.
 
         Args:
@@ -264,14 +499,13 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # For extracted fields, assign the normalized extracted value when it exists in the data
             if retrieval_mode == EntityRetrievalMode.EXTRACT:
-                value = _normalize_value(data.get(field.name.value), field.options)
+                value = _normalize_value(data.get(field.name.value), field)
 
             # Discard an invalid optional value (an invalid required one is left for validation to reject the entity)
-            regex = field.regex.get(context_level)
-            if value is not None and not field.required and not _is_valid_value(value, field.options, regex):
+            if value is not None and not field.required and not field.is_valid_value(value, context_level):
                 logger.info(
                     f'Discarded invalid value {value!r} of optional field "{entity_type.name}.{field.name}": '
-                    f"it does not satisfy the field's options or regex",
+                    f"it does not satisfy the field's data type or constraints",
                 )
                 value = None
 
@@ -292,12 +526,12 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
     ) -> bool:
         """Check whether the materialized properties are valid according to the entity type definition.
 
-        Only extracted fields are checked, against their required flag, allowed options, and regex.
+        Only extracted fields are checked, against their required flag, data type, allowed options and constraints.
 
         Args:
             properties: Materialized properties to validate.
             entity_type: Entity type defining the field constraints.
-            context_level: Context level of the job, which selects the applicable fields and regexes.
+            context_level: Context level of the job, which selects the applicable fields and constraints.
 
         Returns:
             True if every extracted field satisfies its constraints, False otherwise.
@@ -312,11 +546,11 @@ class EntityExtractionResultMaterializer(ExtractionResultMaterializer):
                 )
                 return False
 
-            # Allowed values and regex pattern must be respected when defined
-            if value is not None and not _is_valid_value(str(value), field.options, field.regex.get(context_level)):
+            # Values must satisfy the field's data type, options and constraints
+            if value is not None and not field.is_valid_value(value, context_level):
                 logger.info(
                     f'Discarded extracted "{entity_type.name}" entity: value {value!r} of field "{field.name}" '
-                    f"does not satisfy the field's options or regex",
+                    f"does not satisfy the field's data type or constraints",
                 )
                 return False
 
@@ -407,7 +641,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
                 pk_field = relationship_type.primary_key
                 if pk_field is None or pk_field.value not in properties:
                     continue  # No valid primary key field
-                normalized_pk = self._pk_normalizer.normalize(properties[pk_field.value])
+                normalized_pk = self._pk_normalizer.normalize(str(properties[pk_field.value]))
                 if normalized_pk is None:
                     continue  # Invalid primary key value
 
@@ -521,7 +755,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the relationship properties obtained through a given retrieval mode.
 
         Extracted values are normalized (see ``_normalize_value``), and those of optional fields that don't satisfy the
-        field's options or regex are discarded; fields with no (valid) extracted value fall back to their default, and fields that end up null
+        field's data type or constraints are discarded; fields with no (valid) extracted value fall back to their default, and fields that end up null
         are omitted.
 
         Args:
@@ -539,13 +773,13 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
 
             # For extracted fields, assign the normalized extracted value when it exists in the data
             if retrieval_mode == RelationshipRetrievalMode.EXTRACT:
-                value = _normalize_value(data.get(field.name.value), field.options)
+                value = _normalize_value(data.get(field.name.value), field)
 
             # Discard an invalid optional value (an invalid required one is left for validation to reject the item)
-            if value is not None and not field.required and not _is_valid_value(value, field.options, field.regex):
+            if value is not None and not field.required and not field.is_valid_value(value):
                 logger.info(
                     f'Discarded invalid value {value!r} of optional field "{relationship_type.name}.{field.name}": '
-                    f"it does not satisfy the field's options or regex",
+                    f"it does not satisfy the field's data type or constraints",
                 )
                 value = None
 
@@ -561,7 +795,7 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
     def _are_valid_properties(self, properties: dict[str, Any], relationship_type: RelationshipType) -> bool:
         """Check whether the materialized properties are valid according to the relationship type definition.
 
-        Only extracted fields are checked, against their required flag, allowed options, and regex.
+        Only extracted fields are checked, against their required flag, data type, allowed options and constraints.
 
         Args:
             properties: Materialized properties to validate.
@@ -581,11 +815,11 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
                 )
                 return False
 
-            # Allowed values and regex pattern must be respected when defined
-            if value is not None and not _is_valid_value(str(value), field.options, field.regex):
+            # Values must satisfy the field's data type, options and constraints
+            if value is not None and not field.is_valid_value(value):
                 logger.info(
                     f'Discarded extracted "{relationship_type.name}" relationship: value {value!r} of field '
-                    f'"{field.name}" does not satisfy the field\'s options or regex',
+                    f'"{field.name}" does not satisfy the field\'s data type or constraints',
                 )
                 return False
 

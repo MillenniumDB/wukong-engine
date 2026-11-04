@@ -22,8 +22,18 @@ KNOWLEDGE_MODEL = {
                     'options': ['planned', 'active', 'completed'],
                     'default_value': 'planned',
                 },
+                'crew_size': {'data_type': 'integer', 'description': 'Crew size.', 'min': 1, 'max': 12},
+                'payload_tons': {'data_type': 'float', 'description': 'Payload mass.', 'min': 0, 'max': 100},
+                'crewed': {'data_type': 'bool', 'description': 'Whether the mission is crewed.'},
+                'launch': {'data_type': 'date', 'description': 'Launch date.', 'min': '1957-10'},
             },
             'document_collections': {'document': 'missions', 'chunk': 'missions'},
+        },
+        'Sol': {
+            'description': 'A mission day.',
+            'primary_key': 'number',
+            'fields': {'number': {'data_type': 'int', 'description': 'Day number.', 'required': True}},
+            'document_collections': {'chunk': 'missions'},
         },
         'Incident': {
             'description': 'An incident.',

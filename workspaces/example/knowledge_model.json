@@ -75,6 +75,46 @@
                         "document": "extract"
                     },
                     "merge_strategy": "longest"
+                },
+                "launch_date": {
+                    "data_type": "date",
+                    "description": "The date the mission launched.",
+                    "instructions": "Printed in the 'Launch' header field of a mission report. In other documents, use a launch date the passage states for this mission.",
+                    "min": "2100",
+                    "merge_strategy": "earliest"
+                },
+                "crew_size": {
+                    "data_type": "integer",
+                    "description": "The number of crew members who flew the mission.",
+                    "min": 1,
+                    "max": 12,
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "largest"
+                },
+                "survey_boundary_au": {
+                    "data_type": "float",
+                    "description": "The outer boundary of the mission's survey region, in astronomical units (AU).",
+                    "instructions": "The number alone. Omit the field if the mission has no survey region.",
+                    "min": 0,
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "max"
+                },
+                "bodies_catalogued": {
+                    "data_type": "integer",
+                    "description": "The number of bodies the mission has catalogued so far.",
+                    "instructions": "Omit the field if the report gives no count.",
+                    "min": 0,
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "largest"
                 }
             },
             "document_collections": {
@@ -143,6 +183,29 @@
                         "document": "extract"
                     },
                     "merge_strategy": "longest"
+                },
+                "joined_agency": {
+                    "data_type": "date",
+                    "description": "When the crew member joined the agency.",
+                    "examples": [
+                        "2181",
+                        "2183-06"
+                    ],
+                    "max": "2200",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "on_flight": {
+                    "data_type": "boolean",
+                    "description": "Whether the crew member is currently on a mission in flight.",
+                    "instructions": "From the 'Status' header field of a crew dossier: true when it reads 'on flight'.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "or"
                 }
             },
             "document_collections": {
@@ -262,6 +325,34 @@
                         "document": "extract"
                     },
                     "merge_strategy": "longest"
+                },
+                "occurred_on": {
+                    "data_type": "date",
+                    "description": "The date the incident occurred.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
+                },
+                "crew_injured": {
+                    "data_type": "boolean",
+                    "description": "Whether any crew member was injured in the incident.",
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    },
+                    "merge_strategy": "any"
+                },
+                "breach_size_mm": {
+                    "data_type": "float",
+                    "description": "The estimated size of the hull breach, in millimetres.",
+                    "instructions": "Omit the field if the incident involved no hull breach.",
+                    "min": 0,
+                    "max": 1000,
+                    "retrieval_mode": {
+                        "chunk": "skip",
+                        "document": "extract"
+                    }
                 }
             },
             "document_collections": {
@@ -372,14 +463,15 @@
             "default_merge_strategy": "longest",
             "fields": {
                 "flight_day": {
-                    "data_type": "string",
+                    "data_type": "integer",
                     "description": "The mission flight day on which the incident occurred.",
-                    "instructions": "The number alone, without the words 'flight day'. Omit the field if the text does not state it.",
-                    "regex": "^[0-9]{1,4}$",
+                    "instructions": "Omit the field if the text does not state it.",
                     "examples": [
-                        "45",
-                        "703"
-                    ]
+                        45,
+                        703
+                    ],
+                    "min": 1,
+                    "merge_strategy": "smallest"
                 },
                 "impact": {
                     "data_type": "string",

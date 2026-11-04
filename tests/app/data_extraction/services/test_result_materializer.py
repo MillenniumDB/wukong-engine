@@ -17,11 +17,19 @@ from wukong_engine.app.data_extraction.services import (
     RelationshipExtractionRepository,
     RelationshipExtractionResultMaterializer,
 )
-from wukong_engine.app.data_extraction.services.result_materializer import _extracted_items, _normalize_value
+from wukong_engine.app.data_extraction.services.result_materializer import (
+    _extracted_items,
+    _normalize_boolean,
+    _normalize_date,
+    _normalize_float,
+    _normalize_integer,
+    _normalize_string,
+)
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.elements import Entity, EntityRef
+from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import KnowledgeModel
-from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
+from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate, RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 
@@ -50,8 +58,9 @@ def test_items_that_are_not_objects_are_skipped(wrap: Any) -> None:
         (3, (), '3'),
         (3.0, (), '3'),
         (2.5, (), '2.5'),
-        (['Ada'], (), 'Ada'),
         ('ACTIVE', ('planned', 'active'), 'active'),
+        ('active', ('Active', 'active'), 'active'),
+        ('ACTIVE', ('Active', 'active'), 'Active'),
         ('retired', ('planned', 'active'), 'retired'),
         ('', (), None),
         ('null', (), None),
@@ -63,7 +72,136 @@ def test_items_that_are_not_objects_are_skipped(wrap: Any) -> None:
 )
 def test_values_are_normalized_to_their_string_form(value: Any, options: tuple[str, ...], expected: str | None) -> None:
     """Convert values of other JSON types and casings to the field's string form, or to None if they have none."""
-    assert _normalize_value(value, options) == expected
+    assert _normalize_string(value, options) == expected
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        (42, 42),
+        (42.0, 42),
+        (' -7 ', -7),
+        ('+3', 3),
+        ('1.234', 1234),
+        ('1,234,567', 1234567),
+        ('12 345', 12345),
+        ('1_000', 1000),
+        ('', None),
+        (' null ', None),
+        (None, None),
+    ],
+)
+def test_integer_values_are_normalized_from_their_integral_forms(value: Any, expected: int | None) -> None:
+    """Convert integral floats and integer text, with consistently grouped thousands separators, to integers."""
+    assert _normalize_integer(value) == expected
+
+
+@pytest.mark.parametrize('value', [42.5, '1.5', '1.2345', '1,234.00', '1.234,567', '12.34', '42 people', True, {}])
+def test_values_without_an_integer_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave values that aren't unambiguously integers unchanged, so they are discarded as invalid, not as missing."""
+    assert _normalize_integer(value) == value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        (4, 4.0),
+        (2.5, 2.5),
+        (' -0,5 ', -0.5),
+        ('1.234', 1.234),
+        ('1,234', 1.234),
+        ('1.234,5', 1234.5),
+        ('1,234.5', 1234.5),
+        ('1.234.567', 1234567.0),
+        ('12 345,6', 12345.6),
+        ('+2.5e3', 2500.0),
+        ('1e-5', 1e-05),
+        ('', None),
+        (' null ', None),
+        (None, None),
+    ],
+)
+def test_float_values_are_normalized_from_their_decimal_forms(value: Any, expected: float | None) -> None:
+    """Convert integers and decimal text, reading a lone point or comma as the decimal separator, to floats."""
+    result = _normalize_float(value)
+
+    assert result == expected
+    assert expected is None or isinstance(result, float)
+
+
+@pytest.mark.parametrize(
+    'value',
+    ['1.234.5', '1,234,5', '12,34,5', '.5', '1.5 kg', 'inf', 'NaN', True, pytest.param(10**400, id='huge integer'), {}],
+)
+def test_values_without_a_float_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave values that aren't decimal numbers unchanged, so they are discarded as invalid, not as missing."""
+    assert _normalize_float(value) is value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        (True, True),
+        (0, False),
+        (1.0, True),
+        (' TRUE ', True),
+        ('no', False),
+        ('Sí', True),
+        ('si', True),
+        ('Falso', False),
+        ('1', True),
+        ('', None),
+        ('null', None),
+        (None, None),
+    ],
+)
+def test_boolean_values_are_normalized_from_yes_and_no_forms(value: Any, *, expected: bool | None) -> None:
+    """Convert 1 and 0, and yes or no words in English or Spanish regardless of case, to booleans."""
+    assert _normalize_boolean(value) is expected
+
+
+@pytest.mark.parametrize('value', [2, 0.5, 'maybe', 'tal vez', 'yes!', {}])
+def test_values_without_a_boolean_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave values that aren't yes or no unchanged, so they are discarded as invalid, not as missing."""
+    assert _normalize_boolean(value) is value
+
+
+@pytest.mark.parametrize(
+    ('value', 'expected'),
+    [
+        ('2024-03-01', '2024-03-01'),
+        ('1969-07', '1969-07'),
+        (1969, '1969'),
+        ('2024/3/1', '2024-03-01'),
+        ('01/03/2024', '2024-03-01'),
+        ('13/03/2024', '2024-03-13'),
+        ('03/13/2024', '2024-03-13'),
+        ('03.2024', '2024-03'),
+        ('1 March 2024', '2024-03-01'),
+        ('March 1, 2024', '2024-03-01'),
+        ('1° de marzo del 2024', '2024-03-01'),
+        ('1-MAR-2024', '2024-03-01'),
+        ('setiembre de 2021', '2021-09'),
+    ],
+)
+def test_date_values_are_normalized_from_their_written_forms(value: Any, expected: str) -> None:
+    """Convert ISO, numeric (day first unless only month first is a date) and month name forms to partial dates."""
+    assert _normalize_date(value) == PartialDate.from_iso(expected)
+
+
+@pytest.mark.parametrize('value', ['', ' null ', None])
+def test_missing_dates_are_none(value: Any) -> None:
+    """Treat empty text and a literal null as a missing date."""
+    assert _normalize_date(value) is None
+
+
+@pytest.mark.parametrize(
+    'value',
+    ['01/03/24', '13/13/2024', '30 de febrero de 2024', '2024-02-30', 'smarch 2024', 'next tuesday', 2.5, True],
+)
+def test_values_without_a_date_form_are_left_for_validation_to_reject(value: Any) -> None:
+    """Leave two-digit years, impossible dates and other text unchanged, so they are discarded as invalid."""
+    assert _normalize_date(value) is value
 
 
 JOB = ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string('chunk'))
@@ -79,16 +217,16 @@ def _entity(model: KnowledgeModel, type_name: str, code: str) -> Entity:
 
 
 class StubEntityRepository(EntityExtractionRepository):
-    """Entity extraction repository assigning the Mission type to every job, recording the jobs looked up."""
+    """Entity extraction repository assigning the Mission and Sol types to every job, recording the jobs looked up."""
 
     def __init__(self) -> None:
         """Initialize the repository without a unit of work, since no lookup reaches the database."""
         self.looked_up_jobs: list[ExtractionJob] = []
 
     def get_job_entity_types(self, job: ExtractionJob) -> tuple[EntityTypeName, ...]:
-        """Record the lookup and assign the Mission type to the job."""
+        """Record the lookup and assign the Mission and Sol types to the job."""
         self.looked_up_jobs.append(job)
-        return (EntityTypeName('Mission'),)
+        return (EntityTypeName('Mission'), EntityTypeName('Sol'))
 
 
 class StubRelationshipRepository(RelationshipExtractionRepository):
@@ -161,11 +299,11 @@ def test_discarded_entity_values_and_entities_are_logged(
     assert [record.getMessage() for record in caplog.records] == [
         (
             'Discarded invalid value \'in progress\' of optional field "Mission.status": '
-            "it does not satisfy the field's options or regex"
+            "it does not satisfy the field's data type or constraints"
         ),
         (
             'Discarded extracted "Mission" entity: value \'artemis 7\' of field "code" '
-            "does not satisfy the field's options or regex"
+            "does not satisfy the field's data type or constraints"
         ),
     ]
 
@@ -236,3 +374,86 @@ def test_relationships_of_unvalidated_responses_keep_their_normalized_values(mod
     relationships = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
 
     assert [relationship.properties for relationship in relationships] == [{'flight_day': '45'}] * 2 + [{}]
+
+
+def test_integer_values_are_converted_and_validated_against_their_bounds(model: KnowledgeModel) -> None:
+    """Convert integer forms, discarding optional values out of bounds or without one, and key entities by integers."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'crew_size': '4'},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'crew_size': [3.0]},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'crew_size': 40},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-13', 'crew_size': 'four'},
+            {'_entity_type': 'Sol', 'number': '1.204'},
+            {'_entity_type': 'Sol', 'number': 'day 3'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [entity.properties for entity in entities] == [
+        {'code': 'ARTEMIS-7', 'crew_size': 4, 'status': 'planned'},
+        {'code': 'ARTEMIS-8', 'crew_size': 3, 'status': 'planned'},
+        {'code': 'KEPLER-12', 'status': 'planned'},
+        {'code': 'KEPLER-13', 'status': 'planned'},
+        {'number': 1204},
+    ]
+    sol_pk = DefaultPKNormalizer().normalize('1204')
+    assert sol_pk is not None
+    assert entities[-1].id.content == EntityId.from_identity(EntityTypeName('Sol'), sol_pk).content
+
+
+def test_float_values_are_converted_and_validated_against_their_bounds(model: KnowledgeModel) -> None:
+    """Convert integers and decimal text to floats, discarding optional values out of bounds or without a float form."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'payload_tons': 4},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'payload_tons': '12,5'},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'payload_tons': -0.5},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-13', 'payload_tons': 'heavy'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    payloads = [entity.properties.get('payload_tons') for entity in entities]
+    assert payloads == [4.0, 12.5, None, None]
+    assert isinstance(payloads[0], float)
+
+
+def test_boolean_values_are_converted_and_not_confused_with_numbers(model: KnowledgeModel) -> None:
+    """Convert yes or no forms to booleans, and discard booleans extracted for numeric fields as invalid."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'crewed': 'Sí', 'crew_size': True},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'crewed': 0, 'payload_tons': False},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'crewed': 'maybe'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [entity.properties for entity in entities] == [
+        {'code': 'ARTEMIS-7', 'crewed': True, 'status': 'planned'},
+        {'code': 'ARTEMIS-8', 'crewed': False, 'status': 'planned'},
+        {'code': 'KEPLER-12', 'status': 'planned'},
+    ]
+
+
+def test_date_values_are_converted_and_validated_against_their_bounds(model: KnowledgeModel) -> None:
+    """Convert written dates to partial dates, discarding optional ones before the minimum or without a date form."""
+    materializer = EntityExtractionResultMaterializer(StubEntityRepository(), DefaultPKNormalizer())
+    data = {
+        'entities': [
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-7', 'launch': '16 de julio de 1969'},
+            {'_entity_type': 'Mission', 'code': 'ARTEMIS-8', 'launch': '1957'},
+            {'_entity_type': 'Mission', 'code': 'KEPLER-12', 'launch': '01/02/57'},
+        ],
+    }
+
+    entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
+
+    assert [entity.properties.get('launch') for entity in entities] == [PartialDate(1969, 7, 16), None, None]

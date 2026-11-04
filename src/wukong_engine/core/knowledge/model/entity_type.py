@@ -8,7 +8,7 @@ from wukong_engine.core.documents.model.values import ContextLevel, DocumentColl
 from wukong_engine.core.extraction.model.values import EntityRetrievalMode
 
 from .field import EntityField
-from .values import EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
+from .values import DataType, EntityIdentityPolicy, EntityTypeName, FieldName, MergeStrategy
 
 
 @dataclass(frozen=True, slots=True)
@@ -77,25 +77,35 @@ class EntityType:
         """Validate entity type invariants and build fields index.
 
         Raises:
-            ValueError: If the primary key is invalid or a context level lists duplicated document collections.
+            ValueError: If the primary key is invalid, a context level lists duplicated document collections, or the
+                default merge strategy doesn't apply to a field without its own.
         """
         self._validate_primary_key()
         self._validate_document_collections()
+        self._validate_default_merge_strategy()
         object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_primary_key(self) -> None:
         """Validate primary key invariants.
 
         Raises:
-            ValueError: If the primary key is not one of the fields, is not required, declares a default value, or uses
-                a retrieval mode other than ``EXTRACT`` at some context level.
+            ValueError: If the primary key is not one of the fields, is a float or boolean field, is not required,
+                declares a default value, or uses a retrieval mode other than ``EXTRACT`` at some context level.
         """
         # PK existence
         if self.primary_key not in self.fields:
             raise ValueError(f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" not found in fields')
 
-        # PK field must be required
+        # PK must not be a float, since one value has several texts (1.0, 1e0) and LLM output adds rounding noise, nor
+        # a boolean, which would leave room for two entities at most
         primary_key_field = self.fields[self.primary_key]
+        if primary_key_field.data_type in {DataType.FLOAT, DataType.BOOLEAN}:
+            raise ValueError(
+                f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" cannot be a '
+                f'{primary_key_field.data_type.value} field',
+            )
+
+        # PK field must be required
         if not primary_key_field.required:
             raise ValueError(
                 f'Invalid EntityType "{self.name}": primary key "{self.primary_key}" must be explicitly marked as required (boolean)',
@@ -128,6 +138,20 @@ class EntityType:
                 raise ValueError(
                     f'Invalid EntityType "{self.name}": duplicate document collection names found '
                     f'for context level "{context_level.value}": {duplicates}',
+                )
+
+    def _validate_default_merge_strategy(self) -> None:
+        """Validate that the default merge strategy applies to every field without its own.
+
+        Raises:
+            ValueError: If the default merge strategy can't merge values of such a field's data type.
+        """
+        for entity_field in self.fields.values():
+            if entity_field.merge_strategy is None and not self.default_merge_strategy.supports(entity_field.data_type):
+                raise ValueError(
+                    f'Invalid EntityType "{self.name}": default merge strategy "{self.default_merge_strategy.value}" '
+                    f'does not apply to {entity_field.data_type.value} field "{entity_field.name}", which must set '
+                    f'its own merge strategy',
                 )
 
     def _build_fields_index(
