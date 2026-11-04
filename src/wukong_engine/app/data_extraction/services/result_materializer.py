@@ -35,6 +35,8 @@ logger = logging.getLogger(__name__)
 _PLAIN_INTEGER = re.compile(r'[+-]?[0-9]+')
 _GROUPED_INTEGER = re.compile(r'[+-]?[0-9]{1,3}(?P<separator>[., _])[0-9]{3}(?:(?P=separator)[0-9]{3})*')
 _THOUSANDS_SEPARATORS = re.compile(r'[., _]')
+# Only a half of a pair can be left over, since JSON decoding joins escaped surrogate pairs into one character
+_LONE_SURROGATE = re.compile('[\ud800-\udfff]')
 # English and Spanish words, which the sources are written in; "no" means false in both
 _BOOLEAN_WORDS = {
     'true': True,
@@ -148,11 +150,12 @@ def _normalize_value(value: Any, field: Field) -> Any:
 
 
 def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None:
-    """Normalize an extracted value into the string form of a field value.
+    r"""Normalize an extracted value into the string form of a field value.
 
-    Booleans become ``true``/``false`` and numbers their decimal text (``3.0`` becomes ``3``). Strings are stripped,
-    an empty one or a literal ``null`` counts as missing, and a value equal to one of the options regardless of case
-    becomes that option, preferring an exact match.
+    Booleans become ``true``/``false`` and numbers their decimal text (``3.0`` becomes ``3``). Strings lose their NUL
+    characters, have each lone surrogate (half of a pair, from a JSON escape like ``\ud83d``) replaced with U+FFFD,
+    since neither can be exported, and are then stripped. An empty one or a literal ``null`` counts as missing, and a
+    value equal to one of the options regardless of case becomes that option, preferring an exact match.
 
     Args:
         value: Value extracted for the field.
@@ -171,7 +174,7 @@ def _normalize_string(value: Any, options: tuple[FieldValue, ...]) -> str | None
             return None
         text = str(int(value)) if value.is_integer() else str(value)
     elif isinstance(value, str):
-        text = value.strip()
+        text = _LONE_SURROGATE.sub('�', value.replace('\x00', '')).strip()
     else:
         return None
     if not text or text.lower() == 'null':
