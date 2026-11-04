@@ -180,6 +180,7 @@ The following options are available:
 | `-v` / `-vv`      | Increase output verbosity. By default a run shows its progress (see [Run Progress and Stats](#run-progress-and-stats)) along with warnings and errors; `-v` adds detailed info logs and `-vv` adds debug logs. |
 | `--reset`         | Clear the stored data at the start of each active pipeline step, so it recomputes from scratch.                         |
 | `--until-done`    | Keep running the pipeline until every enabled step is completed, waiting between runs (1 minute in real-time mode, 5 minutes in batch mode). |
+| `--add-documents` | Ingest the documents not ingested yet, such as new files or collections, and extract them, keeping everything already extracted. See [Adding Documents](/docs/workspace.md#-adding-documents). |
 
 The engine will read the documents, extract the entities and relationships declared in the knowledge model, and write the result into the workspace. Depending on the size of the corpus and the complexity of the model, this may take anywhere from a few seconds to many hours.
 
@@ -198,7 +199,7 @@ Besides `run`, the engine provides commands to create a workspace and to check i
 | Command                                                    | Description                                                                                                       |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `wukong init <workspace_dir>`                              | Create a workspace with skeleton input files: a document collection and a knowledge model with one entity type, full of `<...>` placeholders to replace before the first run. Never overwrites existing files. |
-| `wukong plan <workspace_dir> <data_dir> [options]`         | Show the configuration and what `run` would do with the same options, without running, resetting or calling the **LLM**. Takes `--config`, `--reset` and `-v`/`-vv`, like `run`. |
+| `wukong plan <workspace_dir> <data_dir> [options]`         | Show the configuration and what `run` would do with the same options, without running, resetting or calling the **LLM**. Takes `--config`, `--reset`, `--add-documents` and `-v`/`-vv`, like `run`. |
 | `wukong status <workspace_dir>`                            | Show the progress of each pipeline step (including the batches still pending at the provider) and the inputs whose snapshot is kept. Needs no configuration. |
 | `wukong reset <workspace_dir> [--from <STEP>] [options]`   | Clear the stored results, entirely or from a step onwards, after asking for confirmation. Takes `--yes` (skip the confirmation) and `-v`/`-vv`. Needs no configuration, only the API keys of the providers with batches still running, to cancel them. |
 
@@ -305,8 +306,8 @@ Before running the engine, ensure that **all environment variables** are properl
 After building the image, run any engine command with the provided script, which takes the same arguments as the `wukong` command and mounts the workspace, the data directory and the configuration file into the container:
 
 ```sh
-scripts/wukong.sh run <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset] [--until-done]
-scripts/wukong.sh plan <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset]
+scripts/wukong.sh run <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset] [--until-done] [--add-documents]
+scripts/wukong.sh plan <path/to/workspace_dir> <path/to/data_dir> [--config <path/to/config.toml>] [--reset] [--add-documents]
 scripts/wukong.sh status <path/to/workspace_dir>
 scripts/wukong.sh reset <path/to/workspace_dir> [--from <STEP>] [--yes]
 ```

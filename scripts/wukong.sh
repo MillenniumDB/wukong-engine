@@ -7,8 +7,8 @@ set -euo pipefail
 IMAGE_NAME="wukong-engine:latest"
 
 usage() {
-    echo "Usage: scripts/wukong.sh run    <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [--until-done] [-v|-vv]"
-    echo "       scripts/wukong.sh plan   <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [-v|-vv]"
+    echo "Usage: scripts/wukong.sh run    <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [--until-done] [--add-documents] [-v|-vv]"
+    echo "       scripts/wukong.sh plan   <workspace_dir> <data_dir> [--config <CONFIG_FILE>] [--reset] [--add-documents] [-v|-vv]"
     echo "       scripts/wukong.sh status <workspace_dir>"
     echo "       scripts/wukong.sh reset  <workspace_dir> [--from <STEP>] [--yes] [-v|-vv]"
     echo "Run 'scripts/wukong.sh <command> --help' for the details of a command."

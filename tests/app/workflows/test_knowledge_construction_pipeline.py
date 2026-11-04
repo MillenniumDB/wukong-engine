@@ -12,6 +12,7 @@ from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import EntityExtractionRepository, RelationshipExtractionRepository
+from wukong_engine.app.document_ingestion.elements import DocumentAdditions
 from wukong_engine.app.llm.model import LLMRegistry
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
 from wukong_engine.app.workflows import PipelineSteps, ResetPipeline, RunStatsService, StepAction
@@ -136,6 +137,7 @@ def _pipeline(
         input_snapshots=input_snapshots,
         get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: SimpleNamespace(active_entity_types={})),
+        check_document_additions=SimpleNamespace(execute=lambda *_: DocumentAdditions(0, 0, ())),
         steps=PipelineSteps(
             ingest_documents=steps[PipelineStep.INGEST_DOCUMENTS],
             extract_entities=steps[PipelineStep.EXTRACT_ENTITIES],
@@ -300,6 +302,7 @@ def test_only_the_collections_of_enabled_entity_types_must_exist(tmp_path: Path)
         input_snapshots=_snapshot_store(tmp_path),
         get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: model),
+        check_document_additions=None,
         steps=None,
         reset_pipeline=None,
         run_stats=_run_stats(SQLiteUnitOfWork(connection_factory=factory)),

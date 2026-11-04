@@ -24,7 +24,11 @@ from wukong_engine.app.data_extraction.services import (
     RelationshipExtractionResultMaterializer,
 )
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships, ResetExtraction
-from wukong_engine.app.document_ingestion.use_cases import IngestDocuments, ResetDocumentIngestion
+from wukong_engine.app.document_ingestion.use_cases import (
+    CheckDocumentAdditions,
+    IngestDocuments,
+    ResetDocumentIngestion,
+)
 from wukong_engine.app.knowledge_export.model.values import KnowledgeExportFormat
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.knowledge_export.services import KnowledgeRepository
@@ -354,6 +358,7 @@ def build_application(workspace: Workspace, config_path: Path, verbosity: int) -
         input_snapshots=input_snapshots,
         get_document_registry=get_document_registry,
         get_knowledge_model=get_knowledge_model,
+        check_document_additions=CheckDocumentAdditions(stream_provider=document_stream_provider, uow=staging_uow),
         steps=PipelineSteps(
             ingest_documents=ingest_documents,
             extract_entities=extract_entities,
