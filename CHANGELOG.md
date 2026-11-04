@@ -53,6 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `status` **CLI** command, which shows the progress of each pipeline step in a workspace, including the batches pending at the provider, and whether the inputs changed since their snapshots were taken.
 - `--until-done` flag for the `run` **CLI** command, which runs the pipeline again, waiting between runs, until every enabled step is completed, retrying failed runs unless their inputs caused the failure.
 - `scripts/wukong.sh`, which runs any **CLI** command inside the **Docker** container. `scripts/wukong_run.sh` is kept as a shorthand for its `run` command.
+- Symmetric relationship types, declared with `"symmetric": true`, whose endpoints are unordered: each endpoint is valid in both orientations, both orientations of a relationship share one identity and deduplicate into one relationship, and it is stored and exported as a single edge in a canonical order. Their `v1` identities carry a `SYMMETRIC` marker, so directed identities are unchanged.
+- `allow_self_relationships` relationship type option, which lets a relationship connect an entity to itself.
 
 ### ♻️ Changed
 
@@ -61,6 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - An extracted value of an optional field that doesn't satisfy its `options` or `regex` is now discarded on its own, falling back to the field's default, instead of discarding the whole entity or relationship.
 - Generalized reasoning effort levels now map to each model's closest native level, and extraction uses each model's own default effort instead of the `low` level for every model, which doesn't change the effort any supported model runs at.
 - A run that stops with steps left unfinished (e.g. while batches are pending) now says so, instead of reporting that the pipeline completed.
+- Relationships that connect an entity to itself are now discarded unless their type sets `allow_self_relationships`, and the **LLM** is told so for every type with an endpoint between the same entity type.
+- Exported relationship edges now carry whether their type is symmetric: `P_symmetric` in **MillenniumDB** and `_symmetric` in **Neo4j**.
 - The **Docker** container now runs with an init process, so stopping it (`docker stop` or `Ctrl+C`) stops the engine right away instead of after a 10-second timeout, and keeps stdin open so that confirmation prompts can be answered.
 
 ### 🔥 Removed
@@ -98,6 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Documented that an interrupted batch submission can leave a batch the engine doesn't track.
 - Clarified that a field's `regex` is checked after extraction rather than shown to the LLM, and documented the 8,000-token cap of document-level extraction.
 - Documented the **Anthropic** model, its API key, its response schema limits and how to switch providers with batches in flight.
+- Documented symmetric relationships, self-relationships, their identities and how to query symmetric edges.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

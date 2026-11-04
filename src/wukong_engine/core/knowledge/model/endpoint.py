@@ -31,3 +31,18 @@ class Endpoint:
     def __repr__(self) -> str:
         """JSON representation of the endpoint."""
         return json.dumps({'source': str(self.source), 'target': str(self.target)})
+
+    def reversed(self) -> Endpoint:
+        """Return the endpoint with its source and target swapped, together with their context levels.
+
+        Returns:
+            The endpoint from this endpoint's target to its source.
+        """
+        return Endpoint(
+            source=self.target,
+            target=self.source,
+            context_pairs=tuple(
+                EndpointContext(source_level=pair.target_level, target_level=pair.source_level)
+                for pair in self.context_pairs
+            ),
+        )

@@ -579,7 +579,8 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
         """Materialize the extraction result into relationship instances.
 
         Items under the result's ``relationships`` key are skipped when their type is unknown or not assigned to the
-        job, their endpoints don't resolve to a valid endpoint of the type, a required field is missing or invalid,
+        job, their endpoints don't resolve to a valid endpoint of the type, they connect an entity to itself without
+        the type allowing it, a required field is missing or invalid,
         or a required primary key is missing or doesn't normalize. Invalid values of optional fields are discarded
         instead, as if they had not been extracted.
 
@@ -710,8 +711,9 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             entity_context_levels: Context levels of each entity available to the job.
 
         Returns:
-            The source and target entity IDs, or None if either ID is missing or unknown, or the pair doesn't match
-            an endpoint of the relationship type.
+            The source and target entity IDs, or None if either ID is missing or unknown, the pair doesn't match an
+            endpoint of the relationship type, or both are the same entity and the type doesn't allow
+            self-relationships.
         """
         # Get source and target temporary entity IDs from extracted data
         source_id = data.get('_source_entity_id')
@@ -744,6 +746,17 @@ class RelationshipExtractionResultMaterializer(ExtractionResultMaterializer):
             target_ref.entity_type_name,
             target_ctx,
         ):
+            return None
+
+        # Self-relationship not allowed by the relationship type
+        if (
+            source_ref.entity_id.content == target_ref.entity_id.content
+            and not relationship_type.allow_self_relationships
+        ):
+            logger.info(
+                f'Discarded extracted "{relationship_type.name}" relationship: it connects an entity to itself, '
+                f'which the relationship type does not allow',
+            )
             return None
 
         # Return valid endpoint

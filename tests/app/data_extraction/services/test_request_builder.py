@@ -1,13 +1,17 @@
-"""Tests for building the requests of entity extraction jobs."""
+"""Tests for building the requests of entity and relationship extraction jobs."""
 
 import logging
 import re
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
 from wukong_engine.app.data_extraction.elements import ExtractionJob
-from wukong_engine.app.data_extraction.services import EntityExtractionRequestBuilder
+from wukong_engine.app.data_extraction.services import (
+    EntityExtractionRequestBuilder,
+    RelationshipExtractionRepository,
+    RelationshipExtractionRequestBuilder,
+)
 from wukong_engine.app.data_extraction.services.request_builder import (
     DATE_PATTERN,
     _generate_field_schema,
@@ -16,8 +20,8 @@ from wukong_engine.app.data_extraction.services.request_builder import (
 from wukong_engine.core.documents.elements import Chunk, Document, LoadedDocument
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.knowledge.model import KnowledgeModel
-from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName
+from wukong_engine.core.knowledge.model import KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName, FieldName, RelationshipTypeName
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 
@@ -131,3 +135,55 @@ def test_dates_are_requested_as_iso_text_at_any_precision() -> None:
         True,
         False,
     ]
+
+
+def _link_type(endpoints: dict[str, Any], **flags: bool) -> RelationshipType:
+    """Load a ``Link`` relationship type with the given endpoints and flags, between missions and crews."""
+    entity_type = {
+        'description': 'An entity.',
+        'primary_key': 'code',
+        'fields': {'code': {'data_type': 'string', 'description': 'Code.', 'required': True}},
+        'document_collections': {'document': 'missions', 'chunk': 'missions'},
+    }
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {'Mission': entity_type, 'Crew': entity_type},
+            'relationship_types': {
+                'Link': {'description': 'A link.', 'endpoints': endpoints, 'deduplication': 'endpoints', **flags},
+            },
+        },
+    )
+    return KnowledgeModelMapper().map_knowledge_model(schema).relationship_types[RelationshipTypeName('Link')]
+
+
+def _render(relationship_type: RelationshipType) -> str:
+    """Render the prompt definition of a relationship type."""
+    builder = RelationshipExtractionRequestBuilder(repository=cast('RelationshipExtractionRepository', None))
+    return builder._render_relationship_type(relationship_type)
+
+
+MISSION_TO_MISSION = {'Mission': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'document'}}}
+
+
+def test_symmetric_types_are_rendered_with_undirected_endpoints() -> None:
+    """Render a symmetric type's endpoints as undirected and ask for each pair once, unlike a directed type's."""
+    directed, symmetric = (
+        _render(_link_type(MISSION_TO_MISSION)),
+        _render(_link_type(MISSION_TO_MISSION, symmetric=True)),
+    )
+
+    assert '- Mission (CHUNK) -> Mission (DOCUMENT)' in directed
+    assert 'symmetric' not in directed
+    assert '- Mission (CHUNK) <-> Mission (DOCUMENT)' in symmetric
+    assert 'Extract each pair of related entities only once.' in symmetric
+
+
+def test_self_relationships_are_ruled_out_only_where_an_endpoint_makes_them_possible() -> None:
+    """Forbid or allow relating an entity to itself, saying nothing when no endpoint connects a type to itself."""
+    crew_to_mission = {'Crew': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'chunk'}}}
+
+    assert 'Never relate an entity to itself' in _render(_link_type(MISSION_TO_MISSION))
+    assert 'An entity may be related to itself' in _render(
+        _link_type(MISSION_TO_MISSION, allow_self_relationships=True),
+    )
+    assert 'itself' not in _render(_link_type(crew_to_mission))

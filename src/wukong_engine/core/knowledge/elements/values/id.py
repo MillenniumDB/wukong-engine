@@ -76,6 +76,9 @@ class RelationshipId:
     - PRIMARY_KEY: sha-256 hash of "Version|RelationshipType|IdentityPolicy|SRC_ID|TGT_ID|NormalizedPK" (first 128
       bits).
 
+    For symmetric relationship types, "SRC_ID|TGT_ID" is replaced by "SYMMETRIC|MIN_ID|MAX_ID", the two endpoint
+    content IDs in ascending order, so both orientations of a relationship share its identity.
+
     Attributes:
         instance: Unique id for the runtime instance, used as the id in the exported knowledge.
         content: Content-based id, used for efficient deduplication.
@@ -103,6 +106,8 @@ class RelationshipId:
         source: EntityId,
         target: EntityId,
         normalized_pk: NormalizedPK | None = None,
+        *,
+        symmetric: bool = False,
     ) -> Self:
         """Create a RelationshipId from relationship identity-defining components.
 
@@ -113,6 +118,8 @@ class RelationshipId:
             target: The target entity id.
             normalized_pk: Normalized relationship primary key. Required when the policy is ``PRIMARY_KEY``,
                 ignored otherwise.
+            symmetric: Whether the relationship type is symmetric, making the identity independent of the order of
+                ``source`` and ``target``.
 
         Returns:
             A RelationshipId that contains instance and content components.
@@ -123,14 +130,24 @@ class RelationshipId:
         """
         instance_id = InstanceId.generate()
 
+        # The marker keeps symmetric identities apart from directed ones: a directed identity has a content ID in its
+        # place, which is never "SYMMETRIC"
+        if symmetric:
+            low, high = sorted((source.content.hex, target.content.hex))
+            endpoints = f'SYMMETRIC|{low}|{high}'
+        else:
+            endpoints = f'{source.content.hex}|{target.content.hex}'
+
         # Assign identity based on policy
         if identity_policy == RelationshipIdentityPolicy.PRIMARY_KEY:
             if normalized_pk is None:
                 raise ValueError('A Normalized PK is required when relationship identity policy is: "primary_key"')
-            identity = f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{source.content.hex}|{target.content.hex}|{normalized_pk.value}'
+            identity = (
+                f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{endpoints}|{normalized_pk.value}'
+            )
             content_id = ContentHash.from_content_string(identity)
         elif identity_policy == RelationshipIdentityPolicy.ENDPOINTS:
-            identity = f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{source.content.hex}|{target.content.hex}'
+            identity = f'{cls.VERSION}|{relationship_type.value}|{identity_policy.value}|{endpoints}'
             content_id = ContentHash.from_content_string(identity)
         else:  # If policy is NONE, we fall back to instance-based identity (no deduplication)
             identity = instance_id.bytes

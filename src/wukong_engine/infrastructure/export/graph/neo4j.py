@@ -260,7 +260,7 @@ class Neo4jRelationshipWriter(Neo4jWriter):
 
         Args:
             path: Path of the CSV file to write; it is opened (and truncated) on entering the context.
-            relationship_type: Relationship type whose identity policy and fields define the CSV columns.
+            relationship_type: Relationship type whose identity policy, symmetry and fields define the CSV columns.
         """
         super().__init__(path)
         self._relationship_type = relationship_type
@@ -272,6 +272,9 @@ class Neo4jRelationshipWriter(Neo4jWriter):
 
         # Identity: Instance ID (main ID), Content ID, Identity Policy, Identity Version
         header.extend(['_id:string', '_content_id:string', '_id_policy:string', '_id_version:string'])
+
+        # Symmetry: whether the edge's direction carries meaning
+        header.append('_symmetric:boolean')
 
         # Provenance: Chunk IDs (multiple)
         header.append('_provenance_chunk_ids:string[]')
@@ -295,8 +298,8 @@ class Neo4jRelationshipWriter(Neo4jWriter):
             provenance: Identifiers of the chunks the relationship was extracted from.
 
         Returns:
-            The source and target entity IDs, the identity columns, the ``;``-joined provenance chunk IDs, and one
-            value per relationship type field.
+            The source and target entity IDs, the identity columns, the symmetry flag, the ``;``-joined provenance
+            chunk IDs, and one value per relationship type field.
         """
         # Endpoint: Source ID, Target ID
         row = [relationship.source.instance.hex, relationship.target.instance.hex]
@@ -310,6 +313,9 @@ class Neo4jRelationshipWriter(Neo4jWriter):
                 relationship.id.VERSION,
             ],
         )
+
+        # Symmetry: whether the edge's direction carries meaning
+        row.append('true' if self._relationship_type.symmetric else 'false')
 
         # Provenance: Chunk IDs (multiple)
         row.append(';'.join(chunk_id.instance.hex for chunk_id in provenance))
