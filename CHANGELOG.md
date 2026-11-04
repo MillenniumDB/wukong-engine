@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
+- [\[0.6.0\] - 2026-11-04](#060---2026-11-04)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🔥 Removed](#-removed)
@@ -40,6 +41,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## [0.6.0] - 2026-11-04
+
+This release adds **Anthropic** as a second **LLM** provider, typed fields, symmetric relationships, run reporting, and adding documents to a workspace without resetting it. Some changes need attention when upgrading from `0.5.x`:
+
+- Knowledge models, document registries and configurations are validated more strictly, so some that loaded before are now rejected (see [Changed](#️-changed)).
+- A workspace's inputs are now snapshotted when first used: editing the knowledge model, the document registry or the `[chunking]` settings afterwards only takes effect after resetting the step that first used them, or with `--add-documents` for additions.
+- **OpenAI**'s `gpt-4.1-mini` and `gpt-5.6-luna` are no longer supported. `gpt-6-luna` is the new default.
+- Relationships that connect an entity to itself are now discarded unless their type sets `allow_self_relationships`.
+- **Neo4j** imports need `--multiline-fields=true`, which the `import.sh` written with each export passes.
+
 ### ✨ Added
 
 - **Anthropic** support as an **LLM** provider, with `claude-haiku-5-5` in both real-time and batch modes. The provider is inferred from the configured model name. Response schemas are adapted to Anthropic's structured output limits, and fall back to unenforced instructions when they can't fit them. The model runs at the `low` effort level, and concurrent real-time requests sharing a cached prompt prefix wait for the first one to write the cache instead of all writing it.
@@ -55,6 +68,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `scripts/wukong.sh`, which runs any **CLI** command inside the **Docker** container. `scripts/wukong_run.sh` is kept as a shorthand for its `run` command.
 - Symmetric relationship types, declared with `"symmetric": true`, whose endpoints are unordered: each endpoint is valid in both orientations, both orientations of a relationship share one identity and deduplicate into one relationship, and it is stored and exported as a single edge in a canonical order. Their `v1` identities carry a `SYMMETRIC` marker, so directed identities are unchanged.
 - `allow_self_relationships` relationship type option, which lets a relationship connect an entity to itself.
+- `integer`, `float`, `boolean` and `date` field data types, alongside `string`, each with its own parsing of extracted text, validation, merging and typed export (**MillenniumDB** literals and **Neo4j** column types). Integers are limited to ±(2^56−1) and floats to the 32-bit range, as **MillenniumDB** stores them. Dates may be partial (`YYYY`, `YYYY-MM` or `YYYY-MM-DD`), and a more precise date replaces a less precise one it agrees with when merging.
+- `min` and `max` bounds for integer, float and date fields, checked after extraction and settable per context level for entities, and the `largest` and `smallest` merge strategies.
+- Input snapshots: the knowledge model, the document registry and the `[chunking]` settings are copied to `staging/snapshots/` when the step that first uses them runs, and later runs read the copies until that step is reset, warning when the files changed. The model is only snapshotted once entities are extracted, so a workspace can still be tried step by step with `--reset` before the full run.
+- `--add-documents` flag for the `run` and `plan` **CLI** commands, which ingests and extracts the documents not ingested yet while keeping every stored result. It accepts new files under existing sources, new sources or collections, and collections added to entity types. An addition that would leave already extracted relationships missing entities is refused before anything is written.
+- Run progress at the default verbosity: each run prints its plan, each step a start line and an end line with its duration and main results, and extraction a progress line with the sources done, failures, objects, tokens and estimated time left.
+- Run stats at the end of a completed pipeline: step durations (for the run and since the step was last reset), documents and chunks per collection, extraction results, token usage with an estimated cost, and the nodes, edges and files exported. They are also saved as `stats.json` next to the exported files.
+- `init` **CLI** command, which writes a skeleton document registry and knowledge model into a workspace, never overwriting existing files.
+- An `import.sh` script written with every **Neo4j** export, which imports all of its files with `neo4j-admin database import full`.
+- If a document's file is gone or changed when document-level extraction runs, its text is rebuilt from its ingested chunks, logging the error and the fallback.
+- Info logs (shown with `-v`) for every extracted value, entity and relationship that validation discards, naming the type, field and value.
 
 ### ♻️ Changed
 
@@ -65,6 +88,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - A run that stops with steps left unfinished (e.g. while batches are pending) now says so, instead of reporting that the pipeline completed.
 - Relationships that connect an entity to itself are now discarded unless their type sets `allow_self_relationships`, and the **LLM** is told so for every type with an endpoint between the same entity type.
 - Exported relationship edges now carry whether their type is symmetric: `P_symmetric` in **MillenniumDB** and `_symmetric` in **Neo4j**.
+- Knowledge models, document registries and configurations are validated more strictly. Unknown or misspelled keys, repeated JSON keys, context levels repeated in another case, the unimplemented `load` retrieval mode, default values on primary keys, endpoints allowing no context pair, names with a trailing newline and the field names `true` and `false` are now rejected. Invalid definition files are reported naming the file, and enabled types that can never be extracted are warned about.
+- A field's `regex` must now match the whole value.
+- String options, examples and defaults that extraction could never produce (empty, with surrounding whitespace, or containing NUL characters or lone UTF-16 surrogates) are rejected when the model loads, and so is a merge strategy or constraint that doesn't apply to a field's data type.
+- A value that can't be converted to its field's data type counts as invalid (logged and discarded), not as missing.
+- `[llm]` values are parsed like the other settings: an empty model is rejected, model and effort names are case-insensitive, and `max_concurrency` must be an integer.
+- Only the collections of enabled entity types must exist.
+- The extraction prompt no longer tells the **LLM** to preserve every value exactly as written, which contradicted `options`, `examples` and instructions asking for a canonical form. Values are preserved as expressed unless a definition specifies their form, without adding information.
+- `config/default.toml` derives the chunk overlap from the target chunk size instead of fixing it at 120 tokens.
 - The **Docker** container now runs with an init process, so stopping it (`docker stop` or `Ctrl+C`) stops the engine right away instead of after a 10-second timeout, and keeps stdin open so that confirmation prompts can be answered.
 
 ### 🔥 Removed
@@ -87,15 +118,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Extracted values are normalized before being validated, instead of being dropped (or, for a required field, dropping their item) when they don't come as the expected text, which mostly happens when the provider doesn't enforce the schema: booleans and numbers become their text (a JSON `true` was stored as `True`, missing the `true` option), a single-element list becomes its element, strings are trimmed, empty and `null` strings count as missing, options and type names match regardless of case, and objects are no longer stored as their Python representation.
 - A response whose JSON is surrounded by text or followed by extra data is decoded from its first JSON object or array, instead of failing to decode and being retried.
 - In batch mode, failed results now follow the same retry rules as in real time (cut-off responses aren't retried, refusals are retried immediately), and the token usage of unsuccessful responses is recorded.
+- The whole step plan is checked before anything is reset, so a `--reset` run can no longer wipe results and then abort.
+- Strings are exported in the form each format decodes: raw in **Neo4j** CSV files, since `neo4j-admin import` doesn't decode backslash escapes, and with only the escapes **MillenniumDB** decodes.
+- Extracted strings drop NUL characters and replace lone UTF-16 surrogates with U+FFFD, either of which broke the export files or their import.
+- Edges to entity types left out of the export (provenance links and relationships) are skipped, so no edge points at a missing node.
+- An export directory is only replaced once the export succeeds, so a failed export keeps the previous one and no stale files linger.
+- Document discovery stays inside the data root when following symlinks, skips hidden directories and walks in name order. Unreadable, non-UTF-8 and empty files are skipped with a warning instead of aborting ingestion, a BOM is dropped, and whitespace-only chunks are no longer emitted.
+- The chunker no longer drops characters at hard splits or overlap boundaries with small budgets, and truncation cuts the original text instead of decoding tokens.
+- The `longest` and `shortest` merge strategies break length ties the same way in any order, instead of depending on the order extraction jobs finish in.
+- An exact option match now wins over a case-insensitive one.
 
 ### ⚡ Performance
 
 - Relationship results load their job's context (types, entity ID mapping and candidate entities) once per response, instead of once or twice per extracted relationship.
+- Documents already stored are only linked to the collection being ingested, not loaded and chunked again, so ingesting again, or ingesting a document that belongs to several collections, no longer re-chunks it.
 
 ### 🛠️ Build
 
 - Added the `anthropic` runtime dependency and the `pytest` development dependency.
 - Ignored the **Ruff** rules `S101`, `PLR2004` and `SLF001` under `tests/`, so tests can use plain asserts, literal expected values and private members.
+- Added a shared **Claude Code** hook that runs **Ruff** on every Python file Claude writes or edits, and excluded the `paper/` research material from **Ruff**.
 
 ### 📝 Documentation
 
@@ -103,6 +145,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Clarified that a field's `regex` is checked after extraction rather than shown to the LLM, and documented the 8,000-token cap of document-level extraction.
 - Documented the **Anthropic** model, its API key, its response schema limits and how to switch providers with batches in flight.
 - Documented symmetric relationships, self-relationships, their identities and how to query symmetric edges.
+- Documented the field data types, their bounds and merge strategies, and what can vary per context level.
+- Documented input snapshots, adding documents to a workspace, the run stats and `stats.json`.
+- Documented the **Neo4j** import script, how **MillenniumDB** stores very small floats, and how to look up chunk provenance in **MillenniumDB** through a text index.
+- Documented that the `keep` and `replace` merge strategies depend on the order extraction jobs finish in.
+- Documented the **Claude Code** **Ruff** hook in the **Development Guidelines**.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
