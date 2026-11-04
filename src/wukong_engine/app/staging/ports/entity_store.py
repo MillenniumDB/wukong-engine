@@ -36,6 +36,14 @@ class EntityStore(Protocol):
         """
         ...
 
+    def get_collection_links(self) -> frozenset[tuple[EntityTypeName, ContextLevel, DocumentCollectionName]]:
+        """Get every link between an entity type and a document collection.
+
+        Returns:
+            The entity type, context level and collection of each stored link.
+        """
+        ...
+
     def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
         """Insert or update a batch of entities, ensuring deduplication.
 

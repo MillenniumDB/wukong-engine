@@ -5,7 +5,7 @@ Classes:
 """
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from types import MappingProxyType
 
 from .endpoint import Endpoint
@@ -119,6 +119,34 @@ class KnowledgeModel:
                     raise ValueError(
                         f'Relationship type "{relationship_type.name}" has invalid target entity type "{endpoint.target}" in its endpoints.',
                     )
+
+    def only_adds_collections_to(self, previous: KnowledgeModel) -> bool:
+        """Check whether this model differs from a previous one only by document collections added to entity types.
+
+        Args:
+            previous: Model this one is compared with.
+
+        Returns:
+            True if both models define the same types and settings, and every entity type keeps all of its previous
+            document collections at each context level, adding any others; False otherwise.
+        """
+        if self.entity_types.keys() != previous.entity_types.keys():
+            return False
+        for name, entity_type in self.entity_types.items():
+            for context_level, collections in previous.entity_types[name].document_collections.items():
+                if not set(collections) <= set(entity_type.document_collections.get(context_level, ())):
+                    return False
+
+        with_previous_collections = replace(
+            self,
+            entity_types=MappingProxyType(
+                {
+                    name: replace(entity_type, document_collections=previous.entity_types[name].document_collections)
+                    for name, entity_type in self.entity_types.items()
+                },
+            ),
+        )
+        return with_previous_collections == previous
 
     @property
     def active_entity_types(self) -> MappingProxyType[EntityTypeName, EntityType]:

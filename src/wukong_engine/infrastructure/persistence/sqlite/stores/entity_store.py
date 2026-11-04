@@ -155,6 +155,24 @@ class SQLiteEntityStore(EntityStore):
             [(context_level.value, entity_type_name.value, c_name.value) for c_name in collection_names],
         )
 
+    def get_collection_links(self) -> frozenset[tuple[EntityTypeName, ContextLevel, DocumentCollectionName]]:
+        """Get every link between an entity type and a document collection.
+
+        Returns:
+            The entity type, context level and collection of each stored link.
+        """
+        rows = self._conn.execute(
+            'SELECT entity_type_name, context_level, collection_name FROM entity_type_collections'
+        )
+        return frozenset(
+            (
+                EntityTypeName(row['entity_type_name']),
+                ContextLevel(row['context_level']),
+                DocumentCollectionName(row['collection_name']),
+            )
+            for row in rows
+        )
+
     def bulk_upsert_entities(self, entities: Iterable[Entity]) -> None:
         """Insert or update a batch of entities, ensuring deduplication.
 

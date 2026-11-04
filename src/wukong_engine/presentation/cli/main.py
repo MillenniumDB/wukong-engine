@@ -119,6 +119,23 @@ def _add_reset_argument(parser: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_add_documents_argument(parser: argparse.ArgumentParser) -> None:
+    """Add the flag adding documents to a command parser.
+
+    Args:
+        parser: Parser of the command.
+    """
+    parser.add_argument(
+        '--add-documents',
+        action='store_true',
+        help=(
+            'Ingest the documents of the data directory that are not ingested yet and extract them, keeping every '
+            'stored result. The document collections may gain collections and sources, and the knowledge model may '
+            'add collections to entity types; any other change still needs a reset'
+        ),
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build the command-line argument parser for the WUKONG CLI.
 
@@ -154,6 +171,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_config_argument(run_parser)
     _add_verbose_argument(run_parser)
     _add_reset_argument(run_parser)
+    _add_add_documents_argument(run_parser)
     run_parser.add_argument(
         '--until-done',
         action='store_true',
@@ -172,6 +190,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_config_argument(plan_parser)
     _add_verbose_argument(plan_parser)
     _add_reset_argument(plan_parser)
+    _add_add_documents_argument(plan_parser)
     plan_parser.set_defaults(func=handle_plan)
 
     # Status command
@@ -257,7 +276,14 @@ def _confirm(question: str) -> bool:
     return answer.strip().lower() in AFFIRMATIVE_ANSWERS
 
 
-async def _run_until_done(app: CLIApplication, workspace: Workspace, data_uri: str, *, should_reset: bool) -> None:
+async def _run_until_done(
+    app: CLIApplication,
+    workspace: Workspace,
+    data_uri: str,
+    *,
+    should_reset: bool,
+    add_documents: bool,
+) -> None:
     """Run the pipeline again and again, waiting between passes, until every enabled step is completed.
 
     A pass that fails is retried, unless the failure comes from the inputs, until it fails too many times in a row.
@@ -267,6 +293,7 @@ async def _run_until_done(app: CLIApplication, workspace: Workspace, data_uri: s
         workspace: Workspace the pipeline runs over.
         data_uri: Data location the documents are ingested from.
         should_reset: Whether to reset the enabled steps and the steps depending on them before the first pass.
+        add_documents: Whether to add the documents of the registry to the ingested ones before the first pass.
 
     Raises:
         ApplicationError: If a pass fails because of the inputs, or too many passes fail in a row.
@@ -278,8 +305,12 @@ async def _run_until_done(app: CLIApplication, workspace: Workspace, data_uri: s
     # failed, so the reset is done on its own, once the plan is checked. Resetting from the first enabled step resets
     # exactly the steps a run with --reset does, since every step after it depends on it
     if should_reset and app.config.pipeline.steps:
-        pipeline.plan(workspace, data_uri, should_reset=True)
+        pipeline.plan(workspace, data_uri, should_reset=True, add_documents=add_documents)
         await app.reset_pipeline.execute(from_step=app.config.pipeline.steps[0])
+
+    # Adding documents is done on its own too, so that the passes after a failed one don't skip it or redo it
+    if add_documents:
+        pipeline.add_documents(workspace, data_uri)
 
     failures = 0
     attempt = 0
@@ -338,9 +369,16 @@ def handle_run(args: argparse.Namespace) -> None:
 
     app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
     if args.until_done:
-        asyncio.run(_run_until_done(app, workspace, data_uri, should_reset=args.reset))
+        asyncio.run(
+            _run_until_done(app, workspace, data_uri, should_reset=args.reset, add_documents=args.add_documents),
+        )
     elif not asyncio.run(
-        app.knowledge_construction.execute(workspace=workspace, data_uri=data_uri, should_reset=args.reset),
+        app.knowledge_construction.execute(
+            workspace=workspace,
+            data_uri=data_uri,
+            should_reset=args.reset,
+            add_documents=args.add_documents,
+        ),
     ):
         print('WUKONG engine pipeline stopped with steps left unfinished. Run it again, or use --until-done.')
         return
@@ -361,12 +399,17 @@ def handle_plan(args: argparse.Namespace) -> None:
 
     app = build_application(workspace=workspace, config_path=args.config, verbosity=args.verbose)
     print(app.config)
-    plan = app.knowledge_construction.plan(workspace=workspace, data_uri=str(args.data_dir), should_reset=args.reset)
+    plan = app.knowledge_construction.plan(
+        workspace=workspace,
+        data_uri=str(args.data_dir),
+        should_reset=args.reset,
+        add_documents=args.add_documents,
+    )
     print(plan)
     if not plan.runs_any_step and app.config.pipeline.steps:
         print(
-            'No step would run: every enabled step is already completed. Pass --reset to run them again, or clear '
-            'the workspace with the reset command.',
+            'No step would run: every enabled step is already completed. Pass --reset to run them again, '
+            '--add-documents to process documents added since, or clear the workspace with the reset command.',
         )
     elif not plan.runs_any_step:
         print('No step would run: enable the steps to run in the [pipeline] section of the configuration.')

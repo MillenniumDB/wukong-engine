@@ -8,6 +8,7 @@ This document describes the two directories the engine needs to run: a **workspa
 - [🧱 Two Directories, Two Jobs](#-two-directories-two-jobs)
 - [📁 Workspace Layout](#-workspace-layout)
 - [🔒 Input Snapshots](#-input-snapshots)
+- [➕ Adding Documents](#-adding-documents)
 - [📚 Document Collections](#-document-collections)
   - [Registry Schema](#registry-schema)
   - [Sources](#sources)
@@ -73,15 +74,38 @@ The inputs of a workspace are **fixed once the steps that use them have run**, s
 
 | Input                            | Snapshotted when                | Kept until                  |
 | -------------------------------- | ------------------------------- | --------------------------- |
-| `document_collections.json`      | Documents are first ingested    | Ingestion is reset          |
+| `document_collections.json`      | Documents are first ingested    | Ingestion is reset, or documents are added |
 | `[chunking]` settings            | Documents are first ingested    | Ingestion is reset          |
-| `knowledge_model.json`           | Entities are first extracted    | Entity extraction is reset, directly or by resetting ingestion |
+| `knowledge_model.json`           | Entities are first extracted    | Entity extraction is reset, directly or by resetting ingestion, or documents are added |
 
-Editing a snapshotted input therefore has no effect on the workspace until the step that took the snapshot is reset. Each run compares the files with their snapshots and logs a warning naming any input that changed and the step to reset to apply it; formatting changes, such as whitespace or key order, don't count. Once documents are ingested, the data directory isn't read again for the registry's sources, so later steps still run if it moves or changes.
+Editing a snapshotted input therefore has no effect on the workspace until the step that took the snapshot is reset, except for the edits that only add documents, which a run [adding documents](#-adding-documents) applies. Each run compares the files with their snapshots and logs a warning naming any input that changed and the step to reset to apply it; formatting changes, such as whitespace or key order, don't count. Once documents are ingested, the data directory isn't read again for the registry's sources, unless documents are added, so later steps still run if it moves or changes.
 
 The intended workflow follows from this. While setting a workspace up, enable only the steps you are testing and re-run them with `--reset` after editing the inputs: re-running entity extraction with `--reset`, for instance, applies an edited knowledge model without ingesting again. Once the inputs are ready, clear the workspace with `wukong reset`, check what the full run will do with `wukong plan`, and start it with `wukong run`, adding `--until-done` to have it run until every step completes. From then on, the inputs stay as they were for that workspace until you reset it. `wukong status` shows how far the run got, and which inputs changed since their snapshot was taken.
 
 Document files themselves are not snapshotted, since that would duplicate the corpus. Document-level extraction reads each document again from the data directory; if the file is no longer there or its contents changed since ingestion, the engine logs an error and rebuilds the document's text from its ingested chunks instead, logging that it did so.
+
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## ➕ Adding Documents
+
+Once documents are ingested, a run doesn't look for new ones. To add documents to a workspace while keeping everything already extracted from it, run with `--add-documents`:
+
+```sh
+poetry run wukong plan workspaces/example data/example --add-documents   # Check what would be added
+poetry run wukong run workspaces/example data/example --add-documents
+```
+
+The run reads every source of the registry again, ingests the documents that aren't ingested yet, and extracts entities and relationships from them. The documents, entities and relationships already stored are kept, and the knowledge extracted from the new documents merges into them as usual (see [Identity and Merging](/docs/knowledge-model.md#-identity-and-merging)). Documents can be added in three ways:
+
+- **New files** under the sources of existing collections, such as a new file in a `directory` source.
+- **New sources or collections** in `document_collections.json`. Every collection and source of the registry's snapshot must be kept: removing documents isn't supported, so a registry that leaves one out is refused before anything changes.
+- **Collections added to entity types** in `knowledge_model.json`, at any context level, which is how the documents of a new collection are extracted from. This is the only edit of the model that adding documents applies. Any other edit is ignored with a warning, as on any run, until entity extraction is reset.
+
+The edited files replace their snapshots, and ingestion and both extraction steps are opened again: an enabled step runs for the added documents, and a disabled one waits for a later run. `wukong plan --add-documents` shows how many of the documents found are new. The chunking settings stay those of the first ingestion, so the added documents are chunked like the others. Adding documents can't be combined with `--reset`, and needs the `ingest_documents` step enabled. With `--until-done`, the documents are added once, before the first run.
+
+**A document that relationships were extracted from can't be extracted for more entity types.** Relationships are extracted from the entities found in a chunk and its document, so the entities of the new types would be missing from them. This happens when an ingested file is also placed in another collection, or a collection holding it is added to an entity type. Such an addition is refused before anything changes, naming the documents. Leave them out of the change, or first reset relationship extraction with `wukong reset --from extract_relationships`, which keeps the extracted entities and extracts the relationships of every chunk again.
+
+Since a document is identified by its content, a file whose contents changed is added as a new document, and the previous version stays along with what was extracted from it. Removing or replacing documents needs a reset of ingestion.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 

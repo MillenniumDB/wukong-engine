@@ -1,6 +1,6 @@
 """Port for the relationship extraction store."""
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from typing import Protocol
 
 from wukong_engine.app.data_extraction.elements import BatchCursor, ExtractionBatch, ExtractionJob
@@ -13,8 +13,9 @@ from wukong_engine.app.data_extraction.elements.values import (
     TokenUsageMetrics,
 )
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
-from wukong_engine.core.documents.elements import Chunk
+from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import ChunkId
+from wukong_engine.core.documents.model.values import DocumentCollectionName
 from wukong_engine.core.knowledge.elements import EntityRef
 from wukong_engine.core.knowledge.model.values import RelationshipTypeName
 
@@ -39,6 +40,14 @@ class RelationshipExtractionStore(Protocol):
 
         Raises:
             ValueError: If ``chunks`` and ``relationship_type_groups`` differ in length.
+        """
+        ...
+
+    def stream_extracted_documents(self) -> Iterator[tuple[Document, frozenset[DocumentCollectionName]]]:
+        """Stream the documents with a chunk that relationship extractions were materialized for.
+
+        Yields:
+            Each such document, with the collections it belongs to.
         """
         ...
 

@@ -6,6 +6,7 @@ from typing import Protocol
 from wukong_engine.core.documents.elements import Chunk, Document
 from wukong_engine.core.documents.elements.values import DocumentId
 from wukong_engine.core.documents.model.values import DocumentCollectionName
+from wukong_engine.core.shared.identity import ContentHash
 
 
 class DocumentStore(Protocol):
@@ -45,6 +46,17 @@ class DocumentStore(Protocol):
         Args:
             documents: Documents to link.
             collection_name: Name of the collection to link the documents to.
+        """
+        ...
+
+    def find_stored_documents(self, documents: Iterable[Document]) -> set[ContentHash]:
+        """Find which of a batch of documents are already stored.
+
+        Args:
+            documents: Documents to look for.
+
+        Returns:
+            The content IDs of the given documents that are stored.
         """
         ...
 

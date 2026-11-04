@@ -3,7 +3,8 @@
 import json
 import sqlite3
 import time
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
+from itertools import groupby
 
 from wukong_engine.app.data_extraction.elements import (
     MAX_ATTEMPTS,
@@ -25,9 +26,9 @@ from wukong_engine.app.data_extraction.elements.values import (
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model.values import LLMProvider
 from wukong_engine.app.staging.ports import RelationshipExtractionStore
-from wukong_engine.core.documents.elements import Chunk, ContextRef
+from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.documents.model.values import ContextLevel, DocumentCollectionName
 from wukong_engine.core.extraction.model.values import ExtractionTask
 from wukong_engine.core.knowledge.elements import EntityRef
 from wukong_engine.core.knowledge.elements.values import EntityId
@@ -83,6 +84,37 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             """,
             to_materialize,
         )
+
+    def stream_extracted_documents(self) -> Iterator[tuple[Document, frozenset[DocumentCollectionName]]]:
+        """Stream the documents with a chunk that relationship extractions were materialized for.
+
+        Yields:
+            Each such document, with the collections it belongs to, ordered by content ID.
+        """
+        rows = self._conn.execute(
+            """
+            SELECT d.content_id, d.instance_id, d.source_uri, dc.collection_name
+            FROM documents d
+            JOIN document_collections dc ON dc.document_content_id = d.content_id
+            WHERE d.content_id IN (
+                SELECT c.document_content_id
+                FROM relationship_extractions re
+                JOIN chunks c ON c.content_id = re.chunk_content_id
+            )
+            ORDER BY d.content_id
+            """,
+        )
+        for _, document_rows in groupby(rows, key=lambda row: row['content_id']):
+            group = list(document_rows)
+            first = group[0]
+            document = Document(
+                id=DocumentId.from_components(
+                    instance=InstanceId.from_bytes(first['instance_id']),
+                    content=ContentHash.from_bytes(first['content_id']),
+                ),
+                source_uri=first['source_uri'],
+            )
+            yield document, frozenset(DocumentCollectionName(row['collection_name']) for row in group)
 
     def create_job_batch(self, size: int) -> tuple[ExtractionJob, ...]:
         """Create a batch of jobs to process pending extractions.

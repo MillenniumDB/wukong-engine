@@ -28,9 +28,13 @@ class FakePipeline:
         self.outcomes = list(outcomes)
         self.calls: list[str] = []
 
-    def plan(self, *_: Any, should_reset: bool) -> None:
+    def plan(self, *_: Any, should_reset: bool, add_documents: bool) -> None:
         """Record the plan."""
-        self.calls.append(f'plan reset={should_reset}')
+        self.calls.append(f'plan reset={should_reset} add={add_documents}')
+
+    def add_documents(self, *_: Any) -> None:
+        """Record the addition of documents."""
+        self.calls.append('add documents')
 
     async def reset(self, from_step: PipelineStep) -> None:
         """Record the reset."""
@@ -45,7 +49,7 @@ class FakePipeline:
         return outcome
 
 
-def _run_until_done(pipeline: FakePipeline, *, should_reset: bool = False) -> None:
+def _run_until_done(pipeline: FakePipeline, *, should_reset: bool = False, add_documents: bool = False) -> None:
     """Run the pipeline until done with entity extraction as its first enabled step and no wait between runs."""
     app = SimpleNamespace(
         config=SimpleNamespace(
@@ -55,7 +59,9 @@ def _run_until_done(pipeline: FakePipeline, *, should_reset: bool = False) -> No
         knowledge_construction=pipeline,
         reset_pipeline=SimpleNamespace(execute=pipeline.reset),
     )
-    asyncio.run(cli._run_until_done(app, SimpleNamespace(), 'data', should_reset=should_reset))
+    asyncio.run(
+        cli._run_until_done(app, SimpleNamespace(), 'data', should_reset=should_reset, add_documents=add_documents),
+    )
 
 
 @pytest.fixture(autouse=True)
@@ -71,13 +77,22 @@ def test_until_done_resets_once_before_the_first_run(capsys: pytest.CaptureFixtu
     _run_until_done(pipeline, should_reset=True)
 
     assert pipeline.calls == [
-        'plan reset=True',
+        'plan reset=True add=False',
         'reset from EXTRACT_ENTITIES',
         'run reset=False',
         'run reset=False',
         'run reset=False',
     ]
     assert 'Run 2 left steps unfinished' in capsys.readouterr().out
+
+
+def test_until_done_adds_documents_once_before_the_first_run() -> None:
+    """Add the documents on their own, so that the runs after a failed first one neither skip nor redo it."""
+    pipeline = FakePipeline(RuntimeError(), DONE)
+
+    _run_until_done(pipeline, add_documents=True)
+
+    assert pipeline.calls == ['add documents', 'run reset=False', 'run reset=False']
 
 
 def test_until_done_gives_up_after_too_many_failed_runs_in_a_row() -> None:

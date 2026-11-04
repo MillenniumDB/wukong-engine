@@ -73,8 +73,8 @@ class IngestDocuments:
                 processed_documents += documents
                 processed_chunks += chunks
                 logger.info(
-                    f'Ingested collection "{collection.name}": {documents:,} documents, {chunks:,} chunks '
-                    f'({processed_documents:,} documents and {processed_chunks:,} chunks processed so far)',
+                    f'Ingested collection "{collection.name}": {documents:,} documents, {chunks:,} new chunks '
+                    f'({processed_documents:,} documents and {processed_chunks:,} new chunks processed so far)',
                 )
         except DocumentIngestionError as exc:
             error = 'Document Ingestion failed due to an unrecoverable error'
@@ -112,9 +112,12 @@ class IngestDocuments:
             data_uri: Data root directory every ingested document must be contained in.
             chunker: Chunker that splits the loaded documents into chunks.
 
+        Documents already stored, by an earlier run or for another collection, are only linked to the collection: they
+        were stored along with their chunks, so they aren't loaded and chunked again.
+
         Returns:
-            The number of documents and chunks of the collection, including those already stored for another
-            collection.
+            The number of documents of the collection, including those already stored, and the number of chunks
+            stored for its newly stored documents.
 
         Raises:
             DocumentIngestionError: If any step of the ingestion fails.
@@ -127,16 +130,18 @@ class IngestDocuments:
             ):
                 with self._uow as tx:
                     # Ingest documents
-                    tx.documents.bulk_upsert_documents(doc_batch)
+                    stored = tx.documents.find_stored_documents(doc_batch)
+                    new_docs = [doc for doc in doc_batch if doc.id.content not in stored]
+                    tx.documents.bulk_upsert_documents(new_docs)
                     tx.documents.link_documents_to_collection(doc_batch, collection.name)
 
                     # Ingest chunks
-                    loaded_docs = (doc for doc in self._loader.load_many(doc_batch) if doc is not None)
+                    loaded_docs = (doc for doc in self._loader.load_many(new_docs) if doc is not None)
                     for chunk_batch in batched(chunker.chunk_many(loaded_docs), size=CHUNK_BATCH_SIZE):
                         tx.documents.bulk_upsert_chunks(chunk_batch)
                         chunks += len(chunk_batch)
                 documents += len(doc_batch)
-                logger.info(f'  "{collection.name}": {documents:,} documents, {chunks:,} chunks so far...')
+                logger.info(f'  "{collection.name}": {documents:,} documents, {chunks:,} new chunks so far...')
         except Exception as exc:
             error = f'Failed to ingest Document Collection "{collection.name}"'
             logger.error(error)
