@@ -59,18 +59,18 @@ src/wukong_engine/
 │   ├── staging/             # Ports for the durable staging stores
 │   ├── llm/                 # LLM abstractions and the model registry
 │   ├── config/              # Application configuration model
-│   └── workflows/           # The knowledge construction pipeline
+│   └── workflows/           # The knowledge construction pipeline, its plan, status and run stats
 ├── infrastructure/  # Concrete adapters for the ports declared in `app`
 │   ├── definitions/  # Loading knowledge models and document registries from JSON
 │   ├── persistence/  # SQLite staging database
-│   ├── storage/      # Filesystem document loading
+│   ├── storage/      # Filesystem document loading, workspace creation, snapshots and run stats files
 │   ├── chunking/     # Recursive, boundary-aware segmentation and tokenization
 │   ├── llm/          # OpenAI and Anthropic clients, and the factory picking each provider's
 │   ├── export/graph/ # MillenniumDB and Neo4j exporters
 │   ├── config/       # TOML loading and environment variables
 │   ├── normalization/# Primary key normalization
 │   ├── serialization/# Property value serialization
-│   └── logging/      # Logging setup
+│   └── logging/      # Logging setup, including the progress output shown at every verbosity
 ├── bootstrap/       # Composition roots that wire everything together
 └── presentation/    # Entry points — currently the CLI
 ```

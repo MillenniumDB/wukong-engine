@@ -3,10 +3,11 @@
 This package contains the main workflows for the engine, such as building the knowledge base from unstructured documents.
 """
 
-from .knowledge_construction_pipeline import KnowledgeConstructionPipeline
+from .knowledge_construction_pipeline import KnowledgeConstructionPipeline, PipelineSteps
 from .pipeline_plan import InputPlan, InputSource, PipelinePlan, StepAction
 from .pipeline_reset import ResetPipeline
 from .pipeline_status import ExtractionProgress, GetPipelineStatus, PipelineStatus, StepState
+from .run_stats import RunStats, RunStatsService
 
 __all__ = [
     'ExtractionProgress',
@@ -16,7 +17,10 @@ __all__ = [
     'KnowledgeConstructionPipeline',
     'PipelinePlan',
     'PipelineStatus',
+    'PipelineSteps',
     'ResetPipeline',
+    'RunStats',
+    'RunStatsService',
     'StepAction',
     'StepState',
 ]

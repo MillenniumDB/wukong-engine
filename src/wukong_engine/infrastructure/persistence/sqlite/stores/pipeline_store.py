@@ -96,13 +96,37 @@ class SQLitePipelineStore(PipelineStore):
         return self.get_checkpoint_status(checkpoint) == PipelineCheckpointStatus.COMPLETED
 
     def reset_step_checkpoints(self, step: PipelineStep) -> None:
-        """Reset all checkpoints associated with a specific pipeline step.
+        """Reset all checkpoints associated with a specific pipeline step, along with its recorded run durations.
 
         Args:
-            step: Step whose checkpoints are set back to PENDING.
+            step: Step whose checkpoints are set back to PENDING and whose run durations are cleared.
         """
         for checkpoint in step.checkpoints:
             self.set_checkpoint_status(checkpoint, PipelineCheckpointStatus.PENDING)
+        self._conn.execute('DELETE FROM pipeline_step_runs WHERE step_name = ?', (step.value,))
+
+    def record_step_run(self, step: PipelineStep, duration: float) -> None:
+        """Record how long a run of a pipeline step took, whether or not it completed the step.
+
+        Args:
+            step: Step that ran.
+            duration: Time the step ran for, in seconds.
+        """
+        self._conn.execute(
+            'INSERT INTO pipeline_step_runs (step_name, finished_at, duration_ms) VALUES (?, ?, ?)',
+            (step.value, int(time.time() * 1000), round(duration * 1000)),
+        )
+
+    def get_step_durations(self) -> dict[PipelineStep, float]:
+        """Get the time spent running each pipeline step since its checkpoints were last reset.
+
+        Returns:
+            The summed duration of the recorded runs of each step that has any, in seconds.
+        """
+        rows = self._conn.execute(
+            'SELECT step_name, SUM(duration_ms) AS total_ms FROM pipeline_step_runs GROUP BY step_name',
+        )
+        return {PipelineStep(row['step_name']): row['total_ms'] / 1000 for row in rows}
 
     def reset_dependent_checkpoints(self, step: PipelineStep) -> None:
         """Reset all checkpoints dependent on a specific pipeline step.
@@ -139,7 +163,7 @@ class SQLitePipelineStore(PipelineStore):
         return all(self.is_step_completed(dependency) for dependency in step.depends_on)
 
     def clear(self) -> None:
-        """Reset the pipeline store."""
+        """Reset the pipeline store, setting every checkpoint back to PENDING and clearing every run duration."""
         self._conn.execute(
             """
             UPDATE pipeline_checkpoints
@@ -147,3 +171,4 @@ class SQLitePipelineStore(PipelineStore):
             """,
             (PipelineCheckpointStatus.PENDING.value, int(time.time() * 1000)),
         )
+        self._conn.execute('DELETE FROM pipeline_step_runs')

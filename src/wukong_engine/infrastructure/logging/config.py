@@ -4,6 +4,9 @@ This module defines functions to configure and manage the logging system of the 
 """
 
 import logging
+import sys
+
+from wukong_engine.app.shared.progress import PROGRESS_LOGGER_NAME
 
 
 def _map_verbosity_to_level(verbosity: int) -> int:
@@ -34,6 +37,16 @@ def configure_logging(verbosity: int) -> None:
     # Root
     level = _map_verbosity_to_level(verbosity)
     logging.basicConfig(level=level, format='[%(levelname)s] %(name)s → %(message)s')
+
+    # Progress: shown at every verbosity, as plain messages on stdout alongside the command's own output, and not
+    # passed on to the root logger, whose level would hide them
+    progress = logging.getLogger(PROGRESS_LOGGER_NAME)
+    if not progress.handlers:
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(logging.Formatter('%(message)s'))
+        progress.addHandler(handler)
+    progress.setLevel(logging.INFO)
+    progress.propagate = False
 
     # Asyncio
     logging.getLogger('asyncio').setLevel(logging.ERROR)

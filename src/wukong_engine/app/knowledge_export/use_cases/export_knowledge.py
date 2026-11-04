@@ -2,6 +2,7 @@
 
 import logging
 
+from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.knowledge_export.exceptions import KnowledgeExportError
 from wukong_engine.app.knowledge_export.ports import KnowledgeExporter
 from wukong_engine.app.staging.ports import UnitOfWork
@@ -27,7 +28,7 @@ class ExportKnowledge:
         self._exporter = exporter
         self._export_uri = export_uri
 
-    def execute(self, model: KnowledgeModel) -> None:
+    def execute(self, model: KnowledgeModel) -> ExportReport:
         """Export the extracted knowledge to output files using a specified format.
 
         On success, the knowledge-exported pipeline checkpoint is marked as completed.
@@ -35,11 +36,14 @@ class ExportKnowledge:
         Args:
             model: Knowledge model whose entity and relationship types define what gets exported.
 
+        Returns:
+            What was exported: the objects of each label and type, and the files written.
+
         Raises:
             KnowledgeExportError: If the exporter fails.
         """
         try:
-            self._exporter.export(model, self._export_uri)
+            report = self._exporter.export(model, self._export_uri)
             logger.info('Knowledge exported successfully!')
         except Exception as exc:
             error = 'Knowledge export failed'
@@ -48,3 +52,4 @@ class ExportKnowledge:
 
         with self._uow as tx:
             tx.pipeline.set_checkpoint_status(PipelineCheckpoint.KNOWLEDGE_EXPORTED, PipelineCheckpointStatus.COMPLETED)
+        return report

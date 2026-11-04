@@ -6,7 +6,7 @@ from typing import Any
 from wukong_engine.app.llm.elements.values import ReasoningEffort
 
 from .llm import LLM
-from .values import LLMProvider
+from .values import LLMProvider, TokenRates
 
 
 class LLMRegistry:
@@ -79,6 +79,38 @@ class LLMRegistry:
                     'claude-haiku-5-5',
                 },
             ),
+        },
+    )
+
+    # Published prices, used only to estimate the cost of a run; a model without rates gets no estimate. Providers
+    # change their prices, so each entry records when it was taken (shown with every estimate). Their sources:
+    # - https://developers.openai.com/api/docs/pricing
+    # - https://platform.claude.com/docs/en/about-claude/pricing
+    # Cache writes are priced at the shortest retention, the one the clients request (OpenAI's 30-minute explicit
+    # cache, Anthropic's 5-minute ephemeral one). These are the short-prompt prices: prompts over a model's long-context
+    # threshold (272K tokens for gpt-6-luna, 100K for claude-haiku-5-5) cost more, so their runs are underestimated.
+    _TOKEN_RATES: MappingProxyType[LLMProvider, dict[str, TokenRates]] = MappingProxyType(
+        {
+            LLMProvider.OPENAI: {
+                'gpt-6-luna': TokenRates(
+                    input=0.10,
+                    cached_input=0.01,
+                    cache_write=0.125,
+                    output=0.50,
+                    as_of='2026-11-03',
+                    batch_discount=0.5,
+                ),
+            },
+            LLMProvider.ANTHROPIC: {
+                'claude-haiku-5-5': TokenRates(
+                    input=0.10,
+                    cached_input=0.01,
+                    cache_write=0.125,
+                    output=0.50,
+                    as_of='2026-11-03',
+                    batch_discount=0.5,
+                ),
+            },
         },
     )
 
@@ -185,6 +217,18 @@ class LLMRegistry:
             True if the model supports explicit prompt caching, False otherwise.
         """
         return model.name in cls._EXPLICIT_CACHING.get(model.provider, frozenset())
+
+    @classmethod
+    def token_rates(cls, model: LLM) -> TokenRates | None:
+        """Return the prices of the given model's tokens, or None if they aren't known.
+
+        Args:
+            model: Model to get the prices of.
+
+        Returns:
+            The model's token prices and batch discount, or None if the registry has none for it.
+        """
+        return cls._TOKEN_RATES.get(model.provider, {}).get(model.name)
 
     @classmethod
     def default_reasoning_effort(cls, model: LLM) -> ReasoningEffort | None:

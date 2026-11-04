@@ -64,6 +64,38 @@ class DocumentStore(Protocol):
         """
         ...
 
+    def count_documents_by_collection(self) -> dict[str, int]:
+        """Count the documents of each collection.
+
+        Returns:
+            The number of documents linked to each stored collection, including those with none.
+        """
+        ...
+
+    def count_chunks_by_collection(self) -> dict[str, int]:
+        """Count the chunks of the documents of each collection.
+
+        Returns:
+            The number of chunks of the documents linked to each stored collection, including those with none.
+        """
+        ...
+
+    def count_shared_documents(self) -> int:
+        """Count the documents that belong to more than one collection.
+
+        Returns:
+            The number of documents linked to two or more collections.
+        """
+        ...
+
+    def count_empty_documents(self) -> int:
+        """Count the documents that have no chunks, such as empty files.
+
+        Returns:
+            The number of stored documents without any chunk.
+        """
+        ...
+
     def stream_all_documents(self) -> Iterator[Document]:
         """Stream all documents present in the store.
 

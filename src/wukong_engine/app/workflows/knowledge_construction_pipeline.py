@@ -1,29 +1,31 @@
 """Implements the engine pipeline."""
 
 import logging
+import time
 from dataclasses import dataclass
 
 from wukong_engine.app.config import ApplicationConfig
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.data_extraction.use_cases import ExtractEntities, ExtractRelationships
 from wukong_engine.app.document_ingestion.use_cases import IngestDocuments
+from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
+from wukong_engine.app.shared.progress import progress
 from wukong_engine.app.staging.ports import InputSnapshotStore, UnitOfWork
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.documents.model import DocumentRegistry
 from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.pipeline.model.values import (
     InputSnapshot,
-    PipelineCheckpoint,
-    PipelineCheckpointStatus,
     PipelineStep,
 )
 
 from .pipeline_plan import CHUNKING_INPUT_NAME, SNAPSHOT_STEPS, InputPlan, InputSource, PipelinePlan, StepAction
 from .pipeline_reset import ResetPipeline
+from .run_stats import RunStatsService, format_duration
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -52,6 +54,23 @@ class _PreparedRun:
     chunking: ChunkingConfig
 
 
+@dataclass(frozen=True, slots=True)
+class PipelineSteps:
+    """Use cases running each pipeline step.
+
+    Attributes:
+        ingest_documents: Use case for the document ingestion step.
+        extract_entities: Use case for the entity extraction step.
+        extract_relationships: Use case for the relationship extraction step.
+        export_knowledge: Use case for the knowledge export step.
+    """
+
+    ingest_documents: IngestDocuments
+    extract_entities: ExtractEntities
+    extract_relationships: ExtractRelationships
+    export_knowledge: ExportKnowledge
+
+
 class KnowledgeConstructionPipeline:
     """Pipeline to build a knowledge base from unstructured documents."""
 
@@ -62,11 +81,9 @@ class KnowledgeConstructionPipeline:
         input_snapshots: InputSnapshotStore,
         get_document_registry: GetDocumentRegistry,
         get_knowledge_model: GetKnowledgeModel,
-        ingest_documents: IngestDocuments,
-        extract_entities: ExtractEntities,
-        extract_relationships: ExtractRelationships,
-        export_knowledge: ExportKnowledge,
+        steps: PipelineSteps,
         reset_pipeline: ResetPipeline,
+        run_stats: RunStatsService,
     ) -> None:
         """Initialize the knowledge construction workflow with its use cases.
 
@@ -76,22 +93,19 @@ class KnowledgeConstructionPipeline:
             input_snapshots: Store of the snapshots of the input files and chunking settings the steps use.
             get_document_registry: Use case that loads and validates the document registry.
             get_knowledge_model: Use case that loads the knowledge model.
-            ingest_documents: Use case for the document ingestion step.
-            extract_entities: Use case for the entity extraction step.
-            extract_relationships: Use case for the relationship extraction step.
-            export_knowledge: Use case for the knowledge export step.
+            steps: Use cases running each pipeline step.
             reset_pipeline: Workflow resetting the results of the steps, used when a run resets them.
+            run_stats: Service reading the statistics shown after each step and at the end of a run, and recording
+                them next to the export.
         """
         self._app_config = app_config
         self._uow = uow
         self._input_snapshots = input_snapshots
         self._get_document_registry = get_document_registry
         self._get_knowledge_model = get_knowledge_model
-        self._ingest_documents = ingest_documents
-        self._extract_entities = extract_entities
-        self._extract_relationships = extract_relationships
-        self._export_knowledge = export_knowledge
+        self._steps = steps
         self._reset_pipeline = reset_pipeline
+        self._run_stats = run_stats
 
     def _validate_plan(self, *, should_reset: bool) -> None:
         """Check that every configured step will find its required steps completed when it runs.
@@ -435,8 +449,11 @@ class KnowledgeConstructionPipeline:
         # Check the whole plan and load the inputs before any input snapshot is taken, or any step runs or resets data
         prepared = self._prepare(workspace, data_uri, should_reset=should_reset)
         self._update_input_snapshots(workspace, prepared)
+        progress.info(str(prepared.plan).rstrip())
 
         # Run pipeline steps
+        durations: dict[PipelineStep, float] = {}
+        export_report: ExportReport | None = None
         for step in self._app_config.pipeline.steps:
             # Reset all steps downstream if the reset flag is present
             if should_reset:
@@ -448,33 +465,46 @@ class KnowledgeConstructionPipeline:
 
             # Check if step has already been completed
             with self._uow as tx:
-                tx.pipeline.set_checkpoint_status(
-                    PipelineCheckpoint.KNOWLEDGE_EXPORTED,
-                    PipelineCheckpointStatus.PENDING,
-                )  # Reset the knowledge export checkpoint to be able to export every run
+                # Knowledge is exported again on every run, so the previous export no longer counts as done
+                tx.pipeline.reset_step_checkpoints(PipelineStep.EXPORT_KNOWLEDGE)
                 completed = tx.pipeline.is_step_completed(step)
 
-            # If not completed, execute the step
-            if not completed:
-                logger.info(f'Starting {step.value} step...')
+            # If completed, skip the step, as the plan shown at the start of the run says
+            if completed:
+                logger.info(f'Skipping {step.value} step because it has already been completed...')
+                continue
+
+            # Execute the step, recording how long it ran even if it fails
+            progress.info(f'\n▶ {step.value}...')
+            started = time.monotonic()
+            try:
                 match step:
                     case PipelineStep.INGEST_DOCUMENTS:
-                        self._ingest_documents.execute(prepared.document_registry, data_uri, prepared.chunking)
+                        self._steps.ingest_documents.execute(prepared.document_registry, data_uri, prepared.chunking)
                     case PipelineStep.EXTRACT_ENTITIES:
-                        await self._extract_entities.execute(prepared.knowledge_model)
+                        await self._steps.extract_entities.execute(prepared.knowledge_model)
                     case PipelineStep.EXTRACT_RELATIONSHIPS:
-                        await self._extract_relationships.execute(prepared.knowledge_model)
+                        await self._steps.extract_relationships.execute(prepared.knowledge_model)
                     case PipelineStep.EXPORT_KNOWLEDGE:
-                        self._export_knowledge.execute(prepared.knowledge_model)
-
-                # Stop the pipeline if the step did not fully complete
-                completed = False
+                        export_report = self._steps.export_knowledge.execute(prepared.knowledge_model)
+            finally:
+                durations[step] = time.monotonic() - started
                 with self._uow as tx:
-                    completed = tx.pipeline.is_step_completed(step)
-                if not completed:
-                    logger.info(f'{step.value} step is not fully completed. Stopping the pipeline...')
-                    return False
-                logger.info(f'{step.value} step completed successfully!')
-            else:
-                logger.info(f'Skipping {step.value} step because it has already been completed...')
+                    tx.pipeline.record_step_run(step, durations[step])
+
+            # Stop the pipeline if the step did not fully complete
+            with self._uow as tx:
+                completed = tx.pipeline.is_step_completed(step)
+            summary = self._run_stats.collect(durations, export_report).step_summary(step)
+            if not completed:
+                progress.info(f'… {step.value} left unfinished after {format_duration(durations[step])}: {summary}')
+                return False
+            progress.info(f'✓ {step.value} completed in {format_duration(durations[step])}: {summary}')
+
+        # Show the stats of the finished run, and record them with its export
+        stats = self._run_stats.collect(durations, export_report)
+        progress.info(f'\n{stats}')
+        if export_report is not None:
+            self._run_stats.save(stats, export_report.directory)
+            progress.info(f'Run stats saved to {export_report.directory}')
         return True

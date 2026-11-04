@@ -12,8 +12,11 @@ import pytest
 
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.data_extraction.services import EntityExtractionRepository, RelationshipExtractionRepository
+from wukong_engine.app.llm.model import LLMRegistry
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
-from wukong_engine.app.workflows import InputSource, ResetPipeline
+from wukong_engine.app.workflows import InputSource, PipelineSteps, ResetPipeline, RunStatsService
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.knowledge.model import KnowledgeModel
@@ -32,6 +35,19 @@ from wukong_engine.infrastructure.storage.filesystem.documents import LocalDocum
 REPOSITORY = Path(__file__).parents[3]
 DATA_DIR = REPOSITORY / 'data' / 'example'
 MISSION = EntityTypeName('Mission')
+
+
+def _run_stats(uow: SQLiteUnitOfWork) -> RunStatsService:
+    """Build the run stats service over the test database, discarding the stats it would save."""
+    return RunStatsService(
+        uow=uow,
+        entity_repository=EntityExtractionRepository(uow=uow),
+        relationship_repository=RelationshipExtractionRepository(uow=uow),
+        model=LLMRegistry.default_model(),
+        execution_mode=ExecutionMode.REALTIME,
+        export_format='MillenniumDB',
+        writer=SimpleNamespace(write=lambda *_: None),
+    )
 
 
 class RecordingStep:
@@ -106,11 +122,14 @@ class Workbench:
             input_snapshots=self.snapshots,
             get_document_registry=GetDocumentRegistry(LocalDocumentRegistryProvider(), LocalDocumentSourceValidator()),
             get_knowledge_model=GetKnowledgeModel(LocalKnowledgeModelProvider()),
-            ingest_documents=self.steps[PipelineStep.INGEST_DOCUMENTS],
-            extract_entities=self.steps[PipelineStep.EXTRACT_ENTITIES],
-            extract_relationships=self.steps[PipelineStep.EXTRACT_RELATIONSHIPS],
-            export_knowledge=self.steps[PipelineStep.EXPORT_KNOWLEDGE],
+            steps=PipelineSteps(
+                ingest_documents=self.steps[PipelineStep.INGEST_DOCUMENTS],
+                extract_entities=self.steps[PipelineStep.EXTRACT_ENTITIES],
+                extract_relationships=self.steps[PipelineStep.EXTRACT_RELATIONSHIPS],
+                export_knowledge=self.steps[PipelineStep.EXPORT_KNOWLEDGE],
+            ),
             reset_pipeline=self.reset_pipeline,
+            run_stats=_run_stats(self.uow),
         )
 
     @property

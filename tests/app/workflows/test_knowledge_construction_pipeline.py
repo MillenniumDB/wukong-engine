@@ -1,6 +1,7 @@
 """Tests for the step planning of the knowledge construction pipeline."""
 
 import asyncio
+import sqlite3
 from pathlib import Path
 from types import MappingProxyType, SimpleNamespace
 from typing import Any
@@ -9,8 +10,11 @@ import pytest
 
 from wukong_engine.app.config.chunking import ChunkingConfig
 from wukong_engine.app.config.pipeline import PipelineConfig
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.data_extraction.services import EntityExtractionRepository, RelationshipExtractionRepository
+from wukong_engine.app.llm.model import LLMRegistry
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
-from wukong_engine.app.workflows import ResetPipeline, StepAction
+from wukong_engine.app.workflows import PipelineSteps, ResetPipeline, RunStatsService, StepAction
 from wukong_engine.app.workflows.knowledge_construction_pipeline import KnowledgeConstructionPipeline
 from wukong_engine.app.workspace import Workspace
 from wukong_engine.core.documents.model import DocumentRegistry
@@ -77,6 +81,19 @@ def _snapshot_store(workspace_root: Path) -> LocalInputSnapshotStore:
     return LocalInputSnapshotStore(workspace_root / 'staging' / 'snapshots')
 
 
+def _run_stats(uow: SQLiteUnitOfWork) -> RunStatsService:
+    """Build the run stats service over the test database, discarding the stats it would save."""
+    return RunStatsService(
+        uow=uow,
+        entity_repository=EntityExtractionRepository(uow=uow),
+        relationship_repository=RelationshipExtractionRepository(uow=uow),
+        model=LLMRegistry.default_model(),
+        execution_mode=ExecutionMode.REALTIME,
+        export_format='MillenniumDB',
+        writer=SimpleNamespace(write=lambda *_: None),
+    )
+
+
 def _pipeline(
     tmp_path: Path,
     pipeline_config: PipelineConfig,
@@ -119,11 +136,14 @@ def _pipeline(
         input_snapshots=input_snapshots,
         get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: SimpleNamespace(active_entity_types={})),
-        ingest_documents=steps[PipelineStep.INGEST_DOCUMENTS],
-        extract_entities=steps[PipelineStep.EXTRACT_ENTITIES],
-        extract_relationships=steps[PipelineStep.EXTRACT_RELATIONSHIPS],
-        export_knowledge=steps[PipelineStep.EXPORT_KNOWLEDGE],
+        steps=PipelineSteps(
+            ingest_documents=steps[PipelineStep.INGEST_DOCUMENTS],
+            extract_entities=steps[PipelineStep.EXTRACT_ENTITIES],
+            extract_relationships=steps[PipelineStep.EXTRACT_RELATIONSHIPS],
+            export_knowledge=steps[PipelineStep.EXPORT_KNOWLEDGE],
+        ),
         reset_pipeline=reset_pipeline,
+        run_stats=_run_stats(uow),
     )
     return pipeline, reset_pipeline, uow
 
@@ -280,11 +300,23 @@ def test_only_the_collections_of_enabled_entity_types_must_exist(tmp_path: Path)
         input_snapshots=_snapshot_store(tmp_path),
         get_document_registry=SimpleNamespace(execute=lambda *_, **__: registry),
         get_knowledge_model=SimpleNamespace(execute=lambda *_: model),
-        ingest_documents=None,
-        extract_entities=None,
-        extract_relationships=None,
-        export_knowledge=None,
+        steps=None,
         reset_pipeline=None,
+        run_stats=_run_stats(SQLiteUnitOfWork(connection_factory=factory)),
     )
 
     asyncio.run(pipeline.execute(Workspace(tmp_path), str(tmp_path)))
+
+
+@pytest.mark.parametrize('reset_again', [False, True])
+def test_runs_record_how_long_each_step_took_keeping_only_the_latest_export(
+    tmp_path: Path, *, reset_again: bool
+) -> None:
+    """Record a run of every step that ran, replacing the previous export's, which every run redoes."""
+    pipeline, _, _ = _pipeline(tmp_path, PipelineConfig(), completed=set(), calls=[])
+    for should_reset in (False, reset_again):
+        assert asyncio.run(pipeline.execute(Workspace(tmp_path), str(tmp_path), should_reset=should_reset))
+
+    with sqlite3.connect(tmp_path / 'staging.db') as conn:
+        runs = dict(conn.execute('SELECT step_name, COUNT(*) FROM pipeline_step_runs GROUP BY step_name').fetchall())
+    assert runs == dict.fromkeys((step.value for step in PipelineStep), 1)

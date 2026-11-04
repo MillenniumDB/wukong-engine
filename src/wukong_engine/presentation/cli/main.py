@@ -3,7 +3,7 @@
 This module is executed as a script and handles:
     - Parsing command-line arguments
     - Initializing the engine
-    - Running, planning, resetting or reporting the status of the engine pipeline
+    - Creating a workspace, and running, planning, resetting or reporting the status of the engine pipeline
 
 Example:
     wukong run workspaces/example data/example --config config/default.toml -v
@@ -19,7 +19,13 @@ from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.shared.exceptions import ApplicationError, PipelineExecutionError
 from wukong_engine.app.workspace import Workspace, WorkspaceValidator
-from wukong_engine.bootstrap.cli import CLIApplication, build_application, build_pipeline_status, build_reset_pipeline
+from wukong_engine.bootstrap.cli import (
+    CLIApplication,
+    build_application,
+    build_pipeline_status,
+    build_reset_pipeline,
+    build_workspace_initializer,
+)
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 # Logging
@@ -117,8 +123,8 @@ def build_parser() -> argparse.ArgumentParser:
     """Build the command-line argument parser for the WUKONG CLI.
 
     Returns:
-        A configured ArgumentParser instance, with the ``run``, ``plan``, ``status`` and ``reset`` subcommands bound to
-        their handlers.
+        A configured ArgumentParser instance, with the ``init``, ``run``, ``plan``, ``status`` and ``reset`` subcommands
+        bound to their handlers.
     """
     # Main parser
     parser = argparse.ArgumentParser(
@@ -127,6 +133,15 @@ def build_parser() -> argparse.ArgumentParser:
         allow_abbrev=False,
     )
     subparsers = parser.add_subparsers(dest='command', required=True)
+
+    # Init command
+    init_parser = subparsers.add_parser(
+        'init',
+        help='Create a workspace with skeleton input files to edit before the first run',
+        allow_abbrev=False,
+    )
+    _add_workspace_argument(init_parser)
+    init_parser.set_defaults(func=handle_init)
 
     # Run command
     run_parser = subparsers.add_parser(
@@ -288,6 +303,23 @@ async def _run_until_done(app: CLIApplication, workspace: Workspace, data_uri: s
                 f'Retrying in {interval} seconds (Ctrl+C to stop)...',
             )
         await asyncio.sleep(interval)
+
+
+def handle_init(args: argparse.Namespace) -> None:
+    """Execute the init command.
+
+    Creates the workspace directory, if needed, with skeleton input files, and says what to edit in them.
+
+    Args:
+        args: Parsed command-line arguments.
+    """
+    workspace = Workspace(root=args.workspace_dir)
+    registry, model = build_workspace_initializer().initialize(workspace)
+    print(f'Created workspace "{workspace.paths.root}" with skeleton input files to edit:')
+    print(f'  {registry}: point the "my-documents" collection at your documents (docs/workspace.md)')
+    print(f'  {model}: describe your domain and the entities to extract (docs/knowledge-model.md)')
+    print('Every <...> text is a placeholder to replace, and the example names are there to rename.')
+    print(f'Then check what a run would do with: wukong plan {workspace.paths.root} <data_dir>')
 
 
 def handle_run(args: argparse.Namespace) -> None:

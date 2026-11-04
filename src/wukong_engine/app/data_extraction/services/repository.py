@@ -20,6 +20,7 @@ from wukong_engine.app.data_extraction.elements.values import (
     PerformanceMetricsState,
     TokenUsageMetrics,
 )
+from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.elements import Chunk, ContextRef, Document
 from wukong_engine.core.documents.elements.values import ChunkId
@@ -210,6 +211,17 @@ class ExtractionRepository(Protocol):
 
         Returns:
             Aggregated source, job, batch, object and token usage metrics.
+        """
+        ...
+
+    def get_token_usage_by_execution_mode(self, context_level: ContextLevel) -> dict[ExecutionMode, TokenUsageMetrics]:
+        """Retrieve the token usage of the jobs at a given context level, by the execution mode they ran in.
+
+        Args:
+            context_level: Context level to sum the token usage of.
+
+        Returns:
+            The summed token usage of the jobs of every status run in each mode, with zeros for a mode none ran in.
         """
         ...
 
@@ -504,6 +516,18 @@ class EntityExtractionRepository(ExtractionRepository):
                 token_usage=tx.extraction.entities.get_job_token_metrics_by_status(context_level),
                 performance_state=performance_state,
             )
+
+    def get_token_usage_by_execution_mode(self, context_level: ContextLevel) -> dict[ExecutionMode, TokenUsageMetrics]:
+        """Retrieve the token usage of the jobs at a given context level, by the execution mode they ran in.
+
+        Args:
+            context_level: Context level to sum the token usage of.
+
+        Returns:
+            The summed token usage of the jobs of every status run in each mode, with zeros for a mode none ran in.
+        """
+        with self._uow as tx:
+            return tx.extraction.entities.get_job_token_metrics_by_execution_mode(context_level)
 
     # Recovery
 
@@ -872,6 +896,22 @@ class RelationshipExtractionRepository(ExtractionRepository):
                 token_usage=tx.extraction.relationships.get_job_token_metrics_by_status(),
                 performance_state=performance_state,
             )
+
+    def get_token_usage_by_execution_mode(self, context_level: ContextLevel) -> dict[ExecutionMode, TokenUsageMetrics]:
+        """Retrieve the token usage of the jobs at a given context level, by the execution mode they ran in.
+
+        Relationships are only extracted from chunks, so other context levels have no usage.
+
+        Args:
+            context_level: Context level to sum the token usage of.
+
+        Returns:
+            The summed token usage of the jobs of every status run in each mode, with zeros for a mode none ran in.
+        """
+        if context_level != ContextLevel.CHUNK:
+            return dict.fromkeys(ExecutionMode, TokenUsageMetrics(0, 0, 0, 0, 0))
+        with self._uow as tx:
+            return tx.extraction.relationships.get_job_token_metrics_by_execution_mode()
 
     # Recovery
 
