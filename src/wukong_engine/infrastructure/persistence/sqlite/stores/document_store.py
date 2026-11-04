@@ -139,6 +139,21 @@ class SQLiteDocumentStore(DocumentStore):
             [(doc.id.content.bytes, collection_name.value) for doc in documents],
         )
 
+    def find_stored_documents(self, documents: Iterable[Document]) -> set[ContentHash]:
+        """Find which of a batch of documents are already stored.
+
+        Args:
+            documents: Documents to look for.
+
+        Returns:
+            The content IDs of the given documents that are stored.
+        """
+        return {
+            doc.id.content
+            for doc in documents
+            if self._conn.execute('SELECT 1 FROM documents WHERE content_id = ?', (doc.id.content.bytes,)).fetchone()
+        }
+
     def count_documents(self) -> int:
         """Count the total number of documents.
 
