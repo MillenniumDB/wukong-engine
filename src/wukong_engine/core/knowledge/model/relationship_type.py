@@ -29,11 +29,14 @@ class RelationshipType:
         name: Name of the relationship type.
         description: Description of what the relationship represents.
         instructions: Optional extra extraction instructions for this relationship type.
-        endpoints: Allowed source/target entity type pairs and their context level pairings.
+        endpoints: Allowed source/target entity type pairs and their context level pairings, as declared.
         primary_key: Name of the field used as primary key, or None if the relationship has none.
         identity_policy: Policy used to deduplicate relationships of this type.
         fields: Field definitions, keyed by field name.
         default_merge_strategy: Merge strategy for fields that don't define their own.
+        symmetric: Whether the order of the endpoints carries no meaning, so a relationship from A to B is the same
+            relationship as one from B to A, and every endpoint is valid in both orientations.
+        allow_self_relationships: Whether a relationship may connect an entity to itself.
     """
 
     name: RelationshipTypeName
@@ -44,6 +47,11 @@ class RelationshipType:
     identity_policy: RelationshipIdentityPolicy
     fields: MappingProxyType[FieldName, RelationshipField]
     default_merge_strategy: MergeStrategy
+    symmetric: bool
+    allow_self_relationships: bool
+
+    # Every orientation an endpoint is valid in: the declared ones, plus their reverses for symmetric types
+    _oriented_endpoints: tuple[Endpoint, ...] = field(init=False, repr=False)
 
     # Private index for fast retrieval of fields by retrieval mode
     _fields_index: MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]] = field(
@@ -58,6 +66,8 @@ class RelationshipType:
         lines.append(f'  • Description: {self.description}')
         lines.append(f'  • Primary Key: {self.primary_key or "NONE"}')
         lines.append(f'  • Identity Policy (Deduplication): {self.identity_policy.value}')
+        lines.append(f'  • Symmetric: {"YES" if self.symmetric else "NO"}')
+        lines.append(f'  • Self-Relationships: {"ALLOWED" if self.allow_self_relationships else "NOT ALLOWED"}')
         lines.append(f'  • Fields: {len(self.fields)}')
         lines.append(f'      * {"\n      * ".join(str(field) for field in self.fields.values())}')
         return '\n'.join(lines)
@@ -73,15 +83,18 @@ class RelationshipType:
         return json.dumps(rel_info)
 
     def __post_init__(self) -> None:
-        """Validate relationship type invariants and build the fields index.
+        """Validate relationship type invariants and build the endpoint orientations and fields index.
 
         Raises:
-            ValueError: If an endpoint has incompatible context level pairings, the primary key is invalid, or the
-                default merge strategy doesn't apply to a field without its own.
+            ValueError: If an endpoint has incompatible context level pairings, self-relationships are allowed but no
+                endpoint connects an entity type to itself, the primary key is invalid, or the default merge strategy
+                doesn't apply to a field without its own.
         """
         self._validate_endpoints()
+        self._validate_self_relationships()
         self._validate_primary_key()
         self._validate_default_merge_strategy()
+        object.__setattr__(self, '_oriented_endpoints', self._build_oriented_endpoints())
         object.__setattr__(self, '_fields_index', self._build_fields_index())
 
     def _validate_endpoints(self) -> None:
@@ -97,6 +110,18 @@ class RelationshipType:
                 raise ValueError(
                     f'Invalid RelationshipType "{self.name}": endpoint {endpoint} has incompatible context level pairings',
                 ) from error
+
+    def _validate_self_relationships(self) -> None:
+        """Validate that allowing self-relationships has an effect.
+
+        Raises:
+            ValueError: If self-relationships are allowed but no endpoint connects an entity type to itself.
+        """
+        if self.allow_self_relationships and not self.has_same_type_endpoint:
+            raise ValueError(
+                f'Invalid RelationshipType "{self.name}": self-relationships are allowed, but no endpoint connects an '
+                f'entity type to itself, so none could ever be extracted',
+            )
 
     def _validate_primary_key(self) -> None:
         """Validate primary key invariants.
@@ -158,6 +183,16 @@ class RelationshipType:
                     f'field "{relationship_field.name}", which must set its own merge strategy',
                 )
 
+    def _build_oriented_endpoints(self) -> tuple[Endpoint, ...]:
+        """Build every orientation the endpoints are valid in.
+
+        Returns:
+            The declared endpoints, followed for symmetric types by the reverse of each of them.
+        """
+        if not self.symmetric:
+            return self.endpoints
+        return self.endpoints + tuple(endpoint.reversed() for endpoint in self.endpoints)
+
     def _build_fields_index(self) -> MappingProxyType[RelationshipRetrievalMode, tuple[RelationshipField, ...]]:
         """Precompute fields by retrieval mode for fast lookups.
 
@@ -172,6 +207,11 @@ class RelationshipType:
         return MappingProxyType(
             {retrieval_mode: tuple(relationship_fields) for retrieval_mode, relationship_fields in index.items()},
         )
+
+    @property
+    def has_same_type_endpoint(self) -> bool:
+        """Whether some endpoint connects an entity type to itself, the only way a self-relationship can occur."""
+        return any(endpoint.source == endpoint.target for endpoint in self.endpoints)
 
     def fields_for(self, retrieval_mode: RelationshipRetrievalMode) -> tuple[RelationshipField, ...]:
         """Get the relevant fields for a specific retrieval mode.
@@ -200,12 +240,12 @@ class RelationshipType:
             target_ctx: Context level, or set of candidate context levels, of the target.
 
         Returns:
-            True if some endpoint has matching source and target types and a context pairing whose levels are among
-            the given ones, False otherwise.
+            True if some endpoint, in either orientation for symmetric types, has matching source and target types and
+            a context pairing whose levels are among the given ones, False otherwise.
         """
         source_ctx_levels = {source_ctx} if isinstance(source_ctx, ContextLevel) else set(source_ctx)
         target_ctx_levels = {target_ctx} if isinstance(target_ctx, ContextLevel) else set(target_ctx)
-        for endpoint in self.endpoints:
+        for endpoint in self._oriented_endpoints:
             if endpoint.source == source_type and endpoint.target == target_type:
                 for pair in endpoint.context_pairs:
                     if pair.source_level in source_ctx_levels and pair.target_level in target_ctx_levels:

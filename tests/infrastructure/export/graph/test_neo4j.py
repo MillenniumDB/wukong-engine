@@ -3,15 +3,22 @@
 import csv
 from pathlib import Path
 
+import pytest
+
 from wukong_engine.core.documents.elements import Chunk
 from wukong_engine.core.documents.elements.values import ChunkId, DocumentId
-from wukong_engine.core.knowledge.elements import Entity
+from wukong_engine.core.knowledge.elements import Entity, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
-from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate
+from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate, RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash, InstanceId
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
-from wukong_engine.infrastructure.export.graph.neo4j import Neo4jChunkWriter, Neo4jEntityWriter, neo4j_import_script
+from wukong_engine.infrastructure.export.graph.neo4j import (
+    Neo4jChunkWriter,
+    Neo4jEntityWriter,
+    Neo4jRelationshipWriter,
+    neo4j_import_script,
+)
 
 
 def test_strings_are_written_raw_for_the_csv_quoting_to_carry(tmp_path: Path) -> None:
@@ -92,3 +99,45 @@ def test_import_script_labels_every_exported_file() -> None:
         '--relationships=AssignedTo=relationships/AssignedTo.csv',
     ]
     assert script.rstrip().endswith('"$@"')
+
+
+@pytest.mark.parametrize('symmetric', [False, True])
+def test_relationships_are_written_as_one_row_marked_with_their_symmetry(tmp_path: Path, *, symmetric: bool) -> None:
+    """Write a single typed row per relationship, marking whether its direction carries meaning."""
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {
+                'Mission': {
+                    'description': 'A mission.',
+                    'primary_key': 'code',
+                    'fields': {'code': {'data_type': 'string', 'description': 'Code.', 'required': True}},
+                    'document_collections': {'chunk': 'missions'},
+                },
+            },
+            'relationship_types': {
+                'Link': {
+                    'description': 'A link between missions.',
+                    'endpoints': {
+                        'Mission': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'chunk'}},
+                    },
+                    'deduplication': 'endpoints',
+                    'symmetric': symmetric,
+                },
+            },
+        },
+    )
+    relationship_type = (
+        KnowledgeModelMapper().map_knowledge_model(schema).relationship_types[RelationshipTypeName('Link')]
+    )
+    source, target = (
+        EntityId.from_components(InstanceId.generate(), ContentHash.from_content_string(code)) for code in ('a', 'b')
+    )
+    path = tmp_path / 'Link.csv'
+
+    with Neo4jRelationshipWriter(path, relationship_type) as writer:
+        writer.write(Relationship.from_extraction(relationship_type, source, target, {}), ())
+
+    with path.open(newline='', encoding='utf-8') as file:
+        header, *rows = list(csv.reader(file))
+    assert len(rows) == 1
+    assert dict(zip(header, rows[0], strict=True))['_symmetric:boolean'] == str(symmetric).lower()

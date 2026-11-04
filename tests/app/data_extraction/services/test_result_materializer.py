@@ -26,11 +26,13 @@ from wukong_engine.app.data_extraction.services.result_materializer import (
     _normalize_string,
 )
 from wukong_engine.core.documents.model.values import ContextLevel
-from wukong_engine.core.knowledge.elements import Entity, EntityRef
+from wukong_engine.core.knowledge.elements import Entity, EntityRef, Relationship
 from wukong_engine.core.knowledge.elements.values import EntityId
 from wukong_engine.core.knowledge.model import KnowledgeModel
 from wukong_engine.core.knowledge.model.values import EntityTypeName, PartialDate, RelationshipTypeName
 from wukong_engine.core.shared.identity import ContentHash
+from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
+from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 from wukong_engine.infrastructure.normalization.primary_key import DefaultPKNormalizer
 
 
@@ -245,9 +247,9 @@ class StubRelationshipRepository(RelationshipExtractionRepository):
         self.elements_model: KnowledgeModel | None = None
 
     def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
-        """Record the lookup and assign the OccurredDuring type to the job."""
+        """Record the lookup and assign the relationship types of the job's elements to the job."""
         self.lookups.append(('types', job))
-        return (RelationshipTypeName('OccurredDuring'),)
+        return tuple(relationship_type.name for relationship_type in self.elements.relationship_types)
 
     def get_job_entity_ref_mapping(self, job: ExtractionJob) -> dict[str, EntityRef]:
         """Record the lookup and serve the temporary entity ID mapping."""
@@ -462,3 +464,74 @@ def test_date_values_are_converted_and_validated_against_their_bounds(model: Kno
     entities = materializer.materialize(ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model)
 
     assert [entity.properties.get('launch') for entity in entities] == [PartialDate(1969, 7, 16), None, None]
+
+
+def _materialize_mission_links(
+    items: list[dict[str, Any]], **flags: bool
+) -> tuple[tuple[Entity, Entity], tuple[Relationship, ...]]:
+    """Materialize ``Link`` relationships between two missions, E1 and E2, for a type with the given flags."""
+    mission = {
+        'description': 'A mission.',
+        'primary_key': 'code',
+        'fields': {'code': {'data_type': 'string', 'description': 'Code.', 'required': True}},
+        'document_collections': {'chunk': 'missions'},
+    }
+    link = {
+        'description': 'A link between missions.',
+        'endpoints': {'Mission': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'chunk'}}},
+        'deduplication': 'endpoints',
+        **flags,
+    }
+    schema = KnowledgeModelSchema.model_validate(
+        {'entity_types': {'Mission': mission}, 'relationship_types': {'Link': link}},
+    )
+    model = KnowledgeModelMapper().map_knowledge_model(schema)
+    first, second = _entity(model, 'Mission', 'ARTEMIS-7'), _entity(model, 'Mission', 'KEPLER-12')
+    repository = StubRelationshipRepository(
+        entity_refs={
+            'E1': EntityRef(entity_id=first.id, entity_type_name=first.type.name),
+            'E2': EntityRef(entity_id=second.id, entity_type_name=second.type.name),
+        },
+        elements=RelationshipExtractionRequestObjects(
+            relationship_types=tuple(model.relationship_types.values()),
+            chunk_entities=(first, second),
+            parent_document_entities=(),
+        ),
+    )
+    materializer = RelationshipExtractionResultMaterializer(repository, DefaultPKNormalizer())
+    data = {'relationships': [{'_relationship_type': 'Link'} | item for item in items]}
+    return (first, second), materializer.materialize(
+        ExtractionResult(status=JobStatus.COMPLETED, data=data), JOB, model
+    )
+
+
+SELF_LINK = {'_source_entity_id': 'E1', '_target_entity_id': 'E1'}
+LINK = {'_source_entity_id': 'E1', '_target_entity_id': 'E2'}
+REVERSED_LINK = {'_source_entity_id': 'E2', '_target_entity_id': 'E1'}
+
+
+def test_self_relationships_are_discarded_unless_the_type_allows_them(caplog: pytest.LogCaptureFixture) -> None:
+    """Drop a relationship connecting an entity to itself, logging why, unless its type allows self-relationships."""
+    with caplog.at_level('INFO'):
+        (first, second), relationships = _materialize_mission_links([SELF_LINK, LINK])
+
+    assert [(relationship.source, relationship.target) for relationship in relationships] == [(first.id, second.id)]
+    assert [record.getMessage() for record in caplog.records] == [
+        (
+            'Discarded extracted "Link" relationship: it connects an entity to itself, which the relationship type '
+            'does not allow'
+        ),
+    ]
+
+    (first, _), relationships = _materialize_mission_links([SELF_LINK], allow_self_relationships=True)
+
+    assert [(relationship.source, relationship.target) for relationship in relationships] == [(first.id, first.id)]
+
+
+def test_both_orientations_of_a_symmetric_relationship_materialize_as_the_same_relationship() -> None:
+    """Store both orientations with the same endpoint order and identity, so they deduplicate into one."""
+    (first, second), relationships = _materialize_mission_links([LINK, REVERSED_LINK], symmetric=True)
+
+    low, high = sorted((first.id, second.id), key=lambda entity_id: entity_id.content.hex)
+    assert [(relationship.source, relationship.target) for relationship in relationships] == [(low, high)] * 2
+    assert relationships[0].id.content == relationships[1].id.content

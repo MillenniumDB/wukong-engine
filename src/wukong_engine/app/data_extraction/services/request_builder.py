@@ -658,9 +658,20 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
         # Endpoints
         endpoints: list[str] = []
         for endpoint in sorted(relationship_type.endpoints, key=lambda f: f.source.value + f.target.value):
-            endpoints.extend(self._render_endpoint(endpoint))
+            endpoints.extend(self._render_endpoint(endpoint, symmetric=relationship_type.symmetric))
         lines.append('\nValid Endpoints\n')
         lines.extend(endpoints)
+        if relationship_type.symmetric:
+            lines.append(
+                '\nThis relationship is symmetric: the order of its endpoints carries no meaning, so either entity may '
+                'be the source. Extract each pair of related entities only once.',
+            )
+        if relationship_type.has_same_type_endpoint:
+            lines.append(
+                '\nAn entity may be related to itself (the same entity ID as source and target).'
+                if relationship_type.allow_self_relationships
+                else '\nNever relate an entity to itself: the source and target must be different entities.',
+            )
 
         # Fields
         fields_to_extract = relationship_type.fields_for(RelationshipRetrievalMode.EXTRACT)
@@ -675,17 +686,19 @@ class RelationshipExtractionRequestBuilder(ExtractionRequestBuilder):
 
         return '\n'.join(lines)
 
-    def _render_endpoint(self, endpoint: Endpoint) -> list[str]:
+    def _render_endpoint(self, endpoint: Endpoint, *, symmetric: bool) -> list[str]:
         """Render the definition for a single endpoint.
 
         Args:
             endpoint: Endpoint to render.
+            symmetric: Whether the endpoint's relationship type is symmetric, so it's valid in both orientations.
 
         Returns:
             One line per context level pair of the endpoint.
         """
+        arrow = '<->' if symmetric else '->'
         return [
-            f'- {endpoint.source} ({pair.source_level.value}) -> {endpoint.target} ({pair.target_level.value})'
+            f'- {endpoint.source} ({pair.source_level.value}) {arrow} {endpoint.target} ({pair.target_level.value})'
             for pair in endpoint.context_pairs
         ]
 

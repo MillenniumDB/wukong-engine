@@ -169,7 +169,8 @@ class MillenniumDBWriter:
 
         Args:
             relationship: Relationship to write as an edge between its endpoint entities.
-            relationship_type: Type of the relationship, providing its label, identity policy and fields to export.
+            relationship_type: Type of the relationship, providing its label, identity policy, symmetry and fields to
+                export.
             provenance: Identifiers of the chunks the relationship was extracted from.
         """
         # Label
@@ -183,6 +184,9 @@ class MillenniumDBWriter:
             f'P_id_policy:"{relationship_type.identity_policy.value}"',
             f'P_id_version:"{relationship.id.VERSION}"',
         ]
+
+        # Symmetry: whether the edge's direction carries meaning
+        properties.append(f'P_symmetric:{"true" if relationship_type.symmetric else "false"}')
 
         # Provenance: Chunk IDs (multiple)
         provenance_chunks = ';'.join(chunk_id.instance.hex for chunk_id in provenance)

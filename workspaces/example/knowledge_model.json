@@ -14,7 +14,9 @@
             "enabled_relationships": [
                 "AssignedTo",
                 "Operates",
-                "OccurredDuring"
+                "OccurredDuring",
+                "CrewmateOf",
+                "Assessed"
             ]
         }
     },
@@ -479,6 +481,65 @@
                     "instructions": "One sentence.",
                     "examples": "Deferred the release of relay Node C by six days.",
                     "merge_strategy": "longest"
+                }
+            }
+        },
+        "CrewmateOf": {
+            "description": "Two crew members who served together on the same mission. The relationship has no direction.",
+            "instructions": "Only assert this when the text states that both crew members served on the same mission, or worked together during one. Do not infer it from two crew members merely being mentioned in the same document.",
+            "endpoints": {
+                "Astronaut": {
+                    "Astronaut": [
+                        {
+                            "source_context_levels": [
+                                "document",
+                                "chunk"
+                            ],
+                            "target_context_levels": "chunk"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints",
+            "symmetric": true,
+            "default_merge_strategy": "longest",
+            "fields": {
+                "context": {
+                    "data_type": "string",
+                    "description": "A short note on what the two crew members did together.",
+                    "instructions": "One sentence. Omit the field if the text says nothing beyond them serving together.",
+                    "examples": "Carried out the unscheduled hull repair EVA on ARTEMIS-7."
+                }
+            }
+        },
+        "Assessed": {
+            "description": "A crew member performing a medical assessment of a crew member, which may be themselves (a self-assessment).",
+            "instructions": "Only assert this when the text states who was assessed. A crew member who assessed themselves is related to themselves.",
+            "endpoints": {
+                "Astronaut": {
+                    "Astronaut": [
+                        {
+                            "source_context_levels": [
+                                "document",
+                                "chunk"
+                            ],
+                            "target_context_levels": "chunk"
+                        },
+                        {
+                            "source_context_levels": "chunk",
+                            "target_context_levels": "document"
+                        }
+                    ]
+                }
+            },
+            "deduplication": "endpoints",
+            "allow_self_relationships": true,
+            "default_merge_strategy": "longest",
+            "fields": {
+                "occasion": {
+                    "data_type": "string",
+                    "description": "What prompted the assessment.",
+                    "examples": "Post-incident assessment following INC-0412."
                 }
             }
         }

@@ -4,7 +4,9 @@ from typing import Any
 
 import pytest
 
-from wukong_engine.core.knowledge.model import KnowledgeModel
+from wukong_engine.core.documents.model.values import ContextLevel
+from wukong_engine.core.knowledge.model import KnowledgeModel, RelationshipType
+from wukong_engine.core.knowledge.model.values import EntityTypeName, RelationshipTypeName
 from wukong_engine.infrastructure.definitions.knowledge.mapper import KnowledgeModelMapper
 from wukong_engine.infrastructure.definitions.knowledge.schemas import KnowledgeModelSchema
 
@@ -82,3 +84,55 @@ def test_float_fields_take_single_bounds_and_cannot_be_primary_keys(fields: dict
     """Check relationship float field bounds, read from integers, and reject a float primary key."""
     with pytest.raises(ValueError, match=error):
         _load_follows(**fields)
+
+
+def _load_link(endpoints: dict[str, Any], **flags: bool) -> RelationshipType:
+    """Load a ``Link`` relationship type with the given endpoints and flags, between missions and crews."""
+    entity_type = {
+        'description': 'An entity.',
+        'primary_key': 'code',
+        'fields': {'code': {'data_type': 'string', 'description': 'Code.', 'required': True}},
+        'document_collections': {'document': 'missions', 'chunk': 'missions'},
+    }
+    schema = KnowledgeModelSchema.model_validate(
+        {
+            'entity_types': {'Mission': entity_type, 'Crew': entity_type},
+            'relationship_types': {
+                'Link': {
+                    'description': 'A link.',
+                    'endpoints': endpoints,
+                    'deduplication': 'endpoints',
+                    **flags,
+                },
+            },
+        },
+    )
+    return KnowledgeModelMapper().map_knowledge_model(schema).relationship_types[RelationshipTypeName('Link')]
+
+
+CREW_IN_CHUNK_TO_MISSION_IN_DOCUMENT = {
+    'Crew': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'document'}},
+}
+
+
+def test_symmetric_endpoints_are_valid_in_both_orientations_with_their_context_levels_swapped() -> None:
+    """Accept a symmetric type's endpoint reversed, carrying each entity's context level along with it."""
+    crew, mission = EntityTypeName('Crew'), EntityTypeName('Mission')
+    chunk, document = ContextLevel.CHUNK, ContextLevel.DOCUMENT
+    directed = _load_link(CREW_IN_CHUNK_TO_MISSION_IN_DOCUMENT)
+    symmetric = _load_link(CREW_IN_CHUNK_TO_MISSION_IN_DOCUMENT, symmetric=True)
+
+    assert directed.is_valid_endpoint(crew, chunk, mission, document)
+    assert not directed.is_valid_endpoint(mission, document, crew, chunk)
+    assert symmetric.is_valid_endpoint(crew, chunk, mission, document)
+    assert symmetric.is_valid_endpoint(mission, document, crew, chunk)
+    assert not symmetric.is_valid_endpoint(mission, chunk, crew, document)
+
+
+def test_self_relationships_can_only_be_allowed_with_an_endpoint_between_the_same_type() -> None:
+    """Reject allowing self-relationships when no endpoint could ever connect an entity to itself."""
+    with pytest.raises(ValueError, match='no endpoint connects an entity type to itself'):
+        _load_link(CREW_IN_CHUNK_TO_MISSION_IN_DOCUMENT, allow_self_relationships=True)
+
+    same_type = {'Mission': {'Mission': {'source_context_levels': 'chunk', 'target_context_levels': 'chunk'}}}
+    assert _load_link(same_type, allow_self_relationships=True).allow_self_relationships

@@ -2,7 +2,7 @@
 
 from typing import Annotated, Any, ClassVar
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.knowledge.model.values import MergeStrategy, RelationshipIdentityPolicy
@@ -57,6 +57,9 @@ class RelationshipTypeSchema(BaseModel):
         fields: Field definitions, keyed by field name.
         default_merge_strategy: Merge strategy for fields that don't define their own; accepts aliases such as
             "overwrite" or "first".
+        symmetric: Whether the order of the endpoints carries no meaning, making every endpoint valid in both
+            orientations.
+        allow_self_relationships: Whether a relationship may connect an entity to itself.
     """
 
     model_config = ConfigDict(extra='forbid')
@@ -74,6 +77,8 @@ class RelationshipTypeSchema(BaseModel):
     deduplication: RelationshipIdentityPolicy = RelationshipIdentityPolicy.PRIMARY_KEY
     fields: dict[StrictStr, RelationshipFieldSchema] = Field(default_factory=dict)
     default_merge_strategy: MergeStrategy = MergeStrategy.KEEP
+    symmetric: StrictBool = False
+    allow_self_relationships: StrictBool = False
 
     # Mapping of various string representations to RelationshipIdentityPolicy members
     _DEDUPLICATION_ALIASES: ClassVar[dict[str, RelationshipIdentityPolicy]] = {

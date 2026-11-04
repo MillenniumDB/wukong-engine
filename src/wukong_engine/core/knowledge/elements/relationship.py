@@ -114,7 +114,9 @@ class Relationship:
     ) -> Relationship:
         """Create a relationship instance from extraction results.
 
-        Properties that are not fields of the relationship type, or whose value is None, are dropped.
+        Properties that are not fields of the relationship type, or whose value is None, are dropped. For symmetric
+        types, the endpoints are stored in ascending order of their content IDs, so both orientations of a relationship
+        are stored the same way.
 
         Args:
             relationship_type: Relationship type of the extracted relationship.
@@ -133,12 +135,15 @@ class Relationship:
                 properties miss a required field or hold a value outside a field's options.
             TypeError: If a remaining property value is not of its field's data type.
         """
+        if relationship_type.symmetric and target.content.bytes < source.content.bytes:
+            source, target = target, source
         relationship_id = RelationshipId.from_identity(
             relationship_type=relationship_type.name,
             identity_policy=relationship_type.identity_policy,
             source=source,
             target=target,
             normalized_pk=normalized_pk,
+            symmetric=relationship_type.symmetric,
         )
         valid_properties = {}
         for field in relationship_type.fields.values():
