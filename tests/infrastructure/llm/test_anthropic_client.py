@@ -310,6 +310,25 @@ def test_create_batch_checks_each_schema_once_and_sends_one_request_per_job(mock
     }
 
 
+def test_create_batch_is_not_retried_since_a_lost_response_could_duplicate_the_batch(
+    mock_api: MockAPIInstaller,
+) -> None:
+    """Send a failed batch creation once, even with SDK retries enabled, while other requests keep them."""
+    error = {'type': 'error', 'error': {'type': 'api_error', 'message': 'Internal error'}}
+    api = mock_api(
+        {
+            '/v1/messages': httpx2.Response(200, json=_message('max_tokens')),
+            '/v1/messages/batches': httpx2.Response(500, json=error),
+        },
+    )
+    client = AnthropicClient(AnthropicConfig(api_key='test-key', model=MODEL, max_retries=2))
+
+    with pytest.raises(LLMTransientError):
+        asyncio.run(client.create_batch([REQUEST], ['job1']))
+
+    assert [request.url.path for request in api.requests] == ['/v1/messages', '/v1/messages/batches']
+
+
 def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: MockAPIInstaller) -> None:
     """Send the batch with a schema the API rejects as instructions, without checking it again."""
     rejection = _error(400, 'invalid_request_error', 'Schemas contains too many parameters with union types')

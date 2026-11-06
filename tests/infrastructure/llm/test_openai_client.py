@@ -339,6 +339,24 @@ def test_create_batch_checks_each_schema_once_through_token_counting(mock_api: A
     assert '"type": "json_schema"' in api.raw_bodies[1]
 
 
+def test_create_batch_is_not_retried_since_a_lost_response_could_duplicate_the_batch(mock_api: Any) -> None:
+    """Send a failed batch creation once, even with SDK retries enabled, deleting the uploaded file."""
+    api = mock_api(
+        [
+            httpx.Response(200, json=TOKEN_COUNT),
+            httpx.Response(200, json=BATCH_FILE),
+            httpx.Response(500, json={'error': {'message': 'Internal error'}}),
+            httpx.Response(200, json={'id': 'file-in', 'object': 'file', 'deleted': True}),
+        ],
+    )
+    client = OpenAIClient(OpenAIConfig(api_key='test-key', model=LLM(name='gpt-6-luna'), max_retries=2))
+
+    with pytest.raises(LLMTransientError):
+        asyncio.run(client.create_batch([_request(SCHEMA)], ['job1']))
+
+    assert api.paths == ['/v1/responses/input_tokens', '/v1/files', '/v1/batches', '/v1/files/file-in']
+
+
 def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: Any) -> None:
     """Send the batch requests of a schema the API rejects in JSON mode, with the schema as instructions."""
     api = mock_api(

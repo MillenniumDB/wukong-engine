@@ -354,7 +354,8 @@ class OpenAIClient(LLMClient):
         """Create a batch for asynchronous request processing.
 
         The requests are uploaded as a JSONL file and submitted as a 24-hour Responses API batch; the uploaded file
-        is deleted if batch creation fails. The schemas of the requests are checked first (see
+        is deleted if batch creation fails. Batch creation itself is never retried, since a retry after a lost response
+        could create a duplicate batch. The schemas of the requests are checked first (see
         ``_check_batch_schema``), so that a schema the API rejects is sent as instructions instead of failing every
         request that uses it.
 
@@ -390,8 +391,9 @@ class OpenAIClient(LLMClient):
             file = await self._client.files.create(file=('batch.jsonl', jsonl.encode()), purpose='batch')
             file_id = file.id
 
-            # Send the batch creation request to the API
-            batch = await self._client.batches.create(
+            # Send the batch creation request to the API. Not retried: a retry after a lost response could create a
+            # second billed batch for the same jobs, while a failed submission is just sent again in the next run
+            batch = await self._client.with_options(max_retries=0).batches.create(
                 input_file_id=file.id,
                 endpoint='/v1/responses',
                 completion_window='24h',
