@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
+- [\[0.6.1\] - 2026-11-06](#061---2026-11-06)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
   - [🐛 Fixed](#-fixed)
@@ -44,6 +45,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+[📚 Back to Table of Contents](#-table-of-contents)
+
+## [0.6.1] - 2026-11-06
+
+This patch keeps failures outside an extraction's control from failing it for good, such as batch uploads timing out, and makes batch submission safer and visible. Some changes need attention when upgrading from `0.6.0`:
+
+- Extractions now fail for good after 5 counted attempts instead of 10, so an extraction of an existing workspace already at 5 to 9 attempts fails on its next counted failure.
+- Failures unrelated to an extraction are retried as many runs as needed, so `--until-done` keeps running through a long provider outage instead of giving up on the affected extractions.
+
 ### ✨ Added
 
 - Batch submission shows a progress line for each uploaded batch, with the requests uploaded so far, the batches that failed to upload and the estimated time left.
@@ -67,7 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 This release adds **Anthropic** as a second **LLM** provider, typed fields, symmetric relationships, run reporting, and adding documents to a workspace without resetting it. Some changes need attention when upgrading from `0.5.x`:
 
-- Knowledge models, document registries and configurations are validated more strictly, so some that loaded before are now rejected (see [Changed](#️-changed)).
+- Knowledge models, document registries and configurations are validated more strictly, so some that loaded before are now rejected (see [Changed](#️-changed-1)).
 - A workspace's inputs are now snapshotted when first used: editing the knowledge model, the document registry or the `[chunking]` settings afterwards only takes effect after resetting the step that first used them, or with `--add-documents` for additions.
 - **OpenAI**'s `gpt-4.1-mini` and `gpt-5.6-luna` are no longer supported. `gpt-6-luna` is the new default.
 - Relationships that connect an entity to itself are now discarded unless their type sets `allow_self_relationships`.
