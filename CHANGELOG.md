@@ -9,37 +9,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 <!-- omit from toc -->
 ## 📚 Table of Contents
 - [\[Unreleased\]](#unreleased)
-- [\[0.6.0\] - 2026-11-04](#060---2026-11-04)
   - [✨ Added](#-added)
   - [♻️ Changed](#️-changed)
-  - [🔥 Removed](#-removed)
   - [🐛 Fixed](#-fixed)
+- [\[0.6.0\] - 2026-11-04](#060---2026-11-04)
+  - [✨ Added](#-added-1)
+  - [♻️ Changed](#️-changed-1)
+  - [🔥 Removed](#-removed)
+  - [🐛 Fixed](#-fixed-1)
   - [⚡ Performance](#-performance)
   - [🛠️ Build](#️-build)
   - [📝 Documentation](#-documentation)
 - [\[0.5.1\] - 2026-10-16](#051---2026-10-16)
-  - [🐛 Fixed](#-fixed-1)
+  - [🐛 Fixed](#-fixed-2)
   - [🛠️ Build](#️-build-1)
   - [📝 Documentation](#-documentation-1)
 - [\[0.5.0\] - 2026-09-25](#050---2026-09-25)
-  - [✨ Added](#-added-1)
-  - [♻️ Changed](#️-changed-1)
+  - [✨ Added](#-added-2)
+  - [♻️ Changed](#️-changed-2)
   - [🔥 Removed](#-removed-1)
-  - [🐛 Fixed](#-fixed-2)
+  - [🐛 Fixed](#-fixed-3)
   - [⚡ Performance](#-performance-1)
   - [📝 Documentation](#-documentation-2)
 - [\[0.2.0\] - 2025-10-23](#020---2025-10-23)
-  - [✨ Added](#-added-2)
-  - [♻️ Changed](#️-changed-2)
-  - [🐛 Fixed](#-fixed-3)
+  - [✨ Added](#-added-3)
+  - [♻️ Changed](#️-changed-3)
+  - [🐛 Fixed](#-fixed-4)
   - [⚡ Performance](#-performance-2)
   - [📝 Documentation](#-documentation-3)
 - [\[0.1.0\] - 2025-07-25](#010---2025-07-25)
-  - [✨ Added](#-added-3)
+  - [✨ Added](#-added-4)
   - [🛠️ Build](#️-build-2)
   - [📝 Documentation](#-documentation-4)
 
 ## [Unreleased]
+
+### ✨ Added
+
+- Batch submission shows a progress line for each uploaded batch, with the requests uploaded so far, the batches that failed to upload and the estimated time left.
+
+### ♻️ Changed
+
+- An extraction now fails for good after 5 counted attempts across runs, instead of 10, and an unusable response (refused or not valid JSON) is retried twice in the same run, instead of three times. Only failures that may come from the extraction itself are counted: rejected requests, real-time requests that time out, and unusable responses.
+- **LLM** requests now wait up to 5 minutes for a response, instead of 2.
+- Batches are uploaded 5 at a time, instead of 10.
+- Counts from a million up are shortened to millions or billions (`12.35 M`) in the progress lines and run stats. `stats.json` keeps them in full.
+
+### 🐛 Fixed
+
+- Repeated failures unrelated to an extraction, such as batch uploads timing out, no longer fail it for good: provider outages, rate limits and server errors, batches that failed to upload or that the provider didn't finish, and interrupted runs are now retried as many runs as needed, without counting against its attempts.
+- A batch creation whose response was lost is no longer retried by the provider's client, which could create a second, billed batch for the same jobs. The submission is left for the next run instead.
+- An **OpenAI** batch error file line without a response no longer crashes the collection of the batch results.
 
 [📚 Back to Table of Contents](#-table-of-contents)
 
