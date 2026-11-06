@@ -236,8 +236,10 @@ Because the sources are part of the output, the result is self-contained: it can
 Every run shows its progress, at any verbosity:
 
 - **The plan:** what the run does with each step (skip it as already completed, run it, or reset it first), as `wukong plan` shows it.
-- **A line per step:** when it starts, and when it finishes, with how long it took and its key numbers, such as the documents and chunks ingested, the sources extracted with the objects found and the tokens used, or the size of the export. While an extraction step runs, a progress line also shows the sources extracted so far and the estimated time left, every 20 seconds in real-time mode and every 5 minutes in batch mode.
+- **A line per step:** when it starts, and when it finishes, with how long it took and its key numbers, such as the documents and chunks ingested, the sources extracted with the objects found and the tokens used, or the size of the export. While an extraction step runs, a progress line also shows the sources extracted so far and the estimated time left, every 20 seconds in real-time mode and every 5 minutes in batch mode. In batch mode, a line also follows each batch uploaded while the batches are submitted, with the requests uploaded so far, the batches that failed to upload and the estimated time left.
 - **The run stats:** once the whole pipeline is completed, a report of what the workspace holds and what it took: how long each step took in this run and across every run since it was last reset; the documents and chunks of each collection, including documents shared by several collections and empty ones; the sources, objects and mentions of each extraction step; the tokens used, with their estimated cost; and the exported objects of every type, `Document`, `Chunk`, `ChunkOf` and `ExtractedFrom` included, along with the relationships' provenance and the size of the export.
+
+Counts from a million up are shortened to millions or billions (`12.35 M`, `1.20 B`) in the progress and the run stats, while `stats.json` keeps them in full.
 
 The run stats are also saved as `stats.json` next to the exported files, so every export carries a record of what produced it.
 

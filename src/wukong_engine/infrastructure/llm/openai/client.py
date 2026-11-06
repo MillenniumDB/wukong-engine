@@ -16,6 +16,7 @@ from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
 from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
     LLMInternalError,
     LLMResponseError,
     LLMTransientError,
@@ -33,6 +34,8 @@ logger = logging.getLogger(__name__)
 # Constants
 UNENFORCED_SCHEMA_INSTRUCTIONS = 'Respond only with a JSON object that follows this JSON schema:\n{schema}'
 SCHEMA_CHECK_INPUT = 'Respond with the JSON object.'  # Input of the token counting requests checking batch schemas
+TRANSIENT_STATUS_CODES = frozenset({408, 409, 429})  # Client error statuses that a retry can get past
+MIN_SERVER_ERROR_STATUS = 500  # Status codes from this one onwards are server-side errors
 
 
 def _schema_key(schema: dict[str, Any]) -> str:
@@ -263,8 +266,9 @@ class OpenAIClient(LLMClient):
             line: JSONL line of the batch error file.
 
         Returns:
-            An error result with a transient error holding the provider's error message (or an internal error if the
-            line could not be parsed), or None if the line carries no job identifier.
+            An error result holding the provider's error message, as a configuration error if the request was
+            rejected (a client error status other than a timeout or rate limit) or a transient error otherwise (or an
+            internal error if the line could not be parsed), or None if the line carries no job identifier.
         """
         try:
             # Parse the JSON line and extract the item and job ID
@@ -276,16 +280,20 @@ class OpenAIClient(LLMClient):
             if custom_id is None:
                 return None
 
-            # Look for an API/HTTP endpoint error message
-            error_msg = item.get('response', {}).get('body', {}).get('error', {}).get('message')
+            # Look for an API/HTTP endpoint error message (the response is null for top-level errors)
+            response = item.get('response') or {}
+            error_msg = ((response.get('body') or {}).get('error') or {}).get('message')
 
             # If no API error, look for a top-level Batch/System error or fallback to a generic message
             if error_msg is None:
-                error_msg = item.get('error', {}).get('message', 'Unknown API error.')
+                error_msg = (item.get('error') or {}).get('message', 'Unknown API error.')
 
-            # Return the error result
-            error = LLMTransientError(f'Batch request failed: {error_msg}')
-            return LLMBatchResult(job_id=custom_id, response=None, error=error)
+            # Return the error result, transient unless the request itself was rejected (e.g. as invalid)
+            message = f'Batch request failed: {error_msg}'
+            status_code = response.get('status_code')
+            if status_code is None or status_code in TRANSIENT_STATUS_CODES or status_code >= MIN_SERVER_ERROR_STATUS:
+                return LLMBatchResult(job_id=custom_id, response=None, error=LLMTransientError(message))
+            return LLMBatchResult(job_id=custom_id, response=None, error=LLMConfigurationError(message))
 
         except json.JSONDecodeError, KeyError, TypeError, IndexError, ValueError:
             # If parsing fails, return a generic error result (if job ID is available)

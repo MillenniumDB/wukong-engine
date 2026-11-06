@@ -8,6 +8,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
     LLMInternalError,
     LLMResponseError,
+    LLMTimeoutError,
     LLMTransientError,
 )
 
@@ -39,7 +40,7 @@ def translate_openai_errors[T](fn: Callable[..., Awaitable[T]]) -> Callable[...,
                 raise LLMConfigurationError(f'The LLM provider account has run out of quota: {exc}') from exc
             raise LLMTransientError(f'The LLM provider rate limit was exceeded: {exc}') from exc
         except APITimeoutError as exc:
-            raise LLMTransientError(f'The LLM request timed out: {exc}') from exc
+            raise LLMTimeoutError(f'The LLM request timed out: {exc}') from exc
         except APIConnectionError as exc:
             raise LLMTransientError(f'Failed to connect to the LLM provider: {exc}') from exc
         except APIStatusError as exc:

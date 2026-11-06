@@ -14,6 +14,7 @@ from wukong_engine.app.knowledge_export.use_cases import ExportKnowledge
 from wukong_engine.app.model_ingestion.exceptions import ModelIngestionError
 from wukong_engine.app.model_ingestion.use_cases import GetDocumentRegistry, GetKnowledgeModel
 from wukong_engine.app.shared.exceptions import PipelineExecutionError
+from wukong_engine.app.shared.formatting import format_duration
 from wukong_engine.app.shared.progress import progress
 from wukong_engine.app.staging.ports import InputSnapshotStore, UnitOfWork
 from wukong_engine.app.workspace import Workspace
@@ -35,7 +36,7 @@ from .pipeline_plan import (
     StepAction,
 )
 from .pipeline_reset import ResetPipeline
-from .run_stats import RunStatsService, format_duration
+from .run_stats import RunStatsService
 
 # Logging
 logger = logging.getLogger(__name__)

@@ -16,6 +16,7 @@ from wukong_engine.app.llm.exceptions import (
     LLMConfigurationError,
     LLMInternalError,
     LLMResponseError,
+    LLMTimeoutError,
     LLMTransientError,
     LLMTruncatedResponseError,
 )
@@ -146,9 +147,10 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
         """Execute a single extraction request.
 
         Renders the request's prompt, sends it to the LLM and decodes the JSON response. Failures are mapped to
-        failed results: transient errors retry deferred, response and decoding errors retry immediately (except
-        truncated responses, which the same request would truncate again and so aren't retried), and configuration
-        or internal errors are critical. Failed responses keep their token usage.
+        failed results: transient errors retry deferred (without counting the attempt, except for timeouts), response
+        and decoding errors retry immediately (except truncated responses, which the same request would truncate again
+        and so aren't retried), and configuration or internal errors are critical. Failed responses keep their token
+        usage.
 
         Args:
             request: Extraction request to execute.
@@ -171,11 +173,15 @@ class ConcurrentExtractionExecutor(ExtractionExecutor):
                 metrics=TokenUsageMetrics.from_usage(response.metrics),
             )
         except LLMTransientError as exc:
+            # A timeout can also come from the request itself (e.g. one too long to answer in time), and is paid for
+            # whenever the provider keeps generating, so unlike outages it counts against the job's attempts
             return ExtractionResult(
                 status=JobStatus.FAILED,
                 error=str(exc),
                 error_severity=ErrorSeverity.RECOVERABLE,
-                retry_policy=JobRetryPolicy.DEFERRED,
+                retry_policy=(
+                    JobRetryPolicy.DEFERRED if isinstance(exc, LLMTimeoutError) else JobRetryPolicy.DEFERRED_UNCOUNTED
+                ),
             )
         except LLMResponseError as exc:
             return response_failure_result(exc)

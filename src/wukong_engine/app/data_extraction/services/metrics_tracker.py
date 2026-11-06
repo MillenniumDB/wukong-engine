@@ -2,9 +2,11 @@
 
 import logging
 import time
+from dataclasses import dataclass, field
 
 from wukong_engine.app.data_extraction.elements.values import ExtractionMetrics, PerformanceMetricsState
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
+from wukong_engine.app.shared.formatting import format_count, format_duration
 from wukong_engine.app.shared.progress import progress
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.pipeline.model.values import PipelineStep
@@ -23,6 +25,36 @@ REALTIME_PERFORMANCE_INTERVAL = 10  # Update performance state (default: 10 seco
 # Batch mode intervals
 BATCH_LOG_INTERVAL = 300  # Display metrics (default: 300 seconds / 5 minutes)
 BATCH_PERFORMANCE_INTERVAL = 300  # Update performance state (default: 300 seconds / 5 minutes)
+
+
+@dataclass(slots=True)
+class UploadProgress:
+    """Progress of the batch uploads of a run.
+
+    Attributes:
+        total_requests: Requests pending submission when the uploads started.
+        started_at: Monotonic time the uploads started at.
+        uploaded_batches: Batches uploaded so far.
+        uploaded_requests: Requests in the uploaded batches.
+        failed_batches: Batches whose upload failed.
+        failed_requests: Requests in the batches whose upload failed.
+    """
+
+    total_requests: int
+    started_at: float = field(default_factory=time.monotonic)
+    uploaded_batches: int = 0
+    uploaded_requests: int = 0
+    failed_batches: int = 0
+    failed_requests: int = 0
+
+    @property
+    def eta_seconds(self) -> float | None:
+        """Estimated seconds left at the pace so far, or None if nothing is done yet or nothing is left."""
+        done = self.uploaded_requests + self.failed_requests
+        left = self.total_requests - done
+        if done == 0 or left <= 0:
+            return None
+        return (time.monotonic() - self.started_at) / done * left
 
 
 class ExtractionMetricsTracker:
@@ -47,6 +79,7 @@ class ExtractionMetricsTracker:
         self._context_level: ContextLevel | None = None
         self._performance_state = PerformanceMetricsState()
         self._log_timestamp = time.monotonic()
+        self._uploads: UploadProgress | None = None
 
     def _update_performance_state(self, metrics: ExtractionMetrics) -> None:
         """Update the performance state with new metrics.
@@ -208,7 +241,7 @@ class ExtractionMetricsTracker:
             f'  {self._step.value} ({context_level.value}S): {completed:,}/{metrics.total_sources:,} sources '
             f'({metrics.source_percentages["completed"]:.1f}%)'
             + (f', {failed:,} failed' if failed else '')
-            + f', {metrics.object_count:,} objects, {sum(metrics.token_counts.values()):,} tokens, '
+            + f', {format_count(metrics.object_count)} objects, {format_count(sum(metrics.token_counts.values()))} tokens, '
             f'ETA {metrics.estimated_completion_time_str}'
         )
 
@@ -278,8 +311,58 @@ class ExtractionMetricsTracker:
         self._collect_metrics(should_update_performance=should_update)
         logger.info(f'Now tracking {self._execution_mode.value} extraction metrics for {context_level.value}S...')
 
+    def start_uploads(self, batch_size: int) -> None:
+        """Start following the batch uploads of the current context level, showing how many requests are to upload.
+
+        Nothing is shown when no request is pending, as in the runs that only wait for submitted batches.
+
+        Args:
+            batch_size: Maximum number of requests per batch, shown in the starting line.
+        """
+        metrics = self._collect_metrics(should_update_performance=False)
+        context_level = self._context_level
+        self._uploads = None
+        if metrics is None or context_level is None or metrics.source_counts['pending'] == 0:
+            return
+        self._uploads = UploadProgress(total_requests=metrics.source_counts['pending'])
+        progress.info(
+            f'  {self._step.value} ({context_level.value}S): uploading {self._uploads.total_requests:,} requests in '
+            f'batches of up to {batch_size:,}...',
+        )
+
+    def record_upload(self, requests: int, *, uploaded: bool) -> None:
+        """Record the upload of a batch, successful or not, and show the uploads' progress.
+
+        Has no effect unless ``start_uploads`` was called first.
+
+        Args:
+            requests: Number of requests in the batch.
+            uploaded: Whether the batch was uploaded, or its upload failed.
+        """
+        uploads = self._uploads
+        context_level = self._context_level
+        if uploads is None or context_level is None:
+            return
+        if uploaded:
+            uploads.uploaded_batches += 1
+            uploads.uploaded_requests += requests
+        else:
+            uploads.failed_batches += 1
+            uploads.failed_requests += requests
+
+        percentage = uploads.uploaded_requests / uploads.total_requests * 100 if uploads.total_requests else 100.0
+        batches = f'{uploads.uploaded_batches:,} {"batch" if uploads.uploaded_batches == 1 else "batches"}'
+        failed = f', {uploads.failed_batches:,} failed to upload (retried next run)' if uploads.failed_batches else ''
+        eta = uploads.eta_seconds
+        progress.info(
+            f'  {self._step.value} ({context_level.value}S): uploaded {uploads.uploaded_requests:,}/'
+            f'{uploads.total_requests:,} requests ({percentage:.1f}%) in {batches}{failed}'
+            + (f', ETA {format_duration(eta)}' if eta is not None else ''),
+        )
+
     def reset(self) -> None:
         """Reset the metrics tracker back to its initial state."""
         self._context_level = None
         self._performance_state = PerformanceMetricsState()
         self._log_timestamp = time.monotonic()
+        self._uploads = None

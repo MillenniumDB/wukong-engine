@@ -373,12 +373,17 @@ def test_batch_statuses_are_understood_by_the_batch_synchronizer(
 def test_get_batch_results_parses_every_result_type_keeping_unsuccessful_responses_usage(
     mock_api: MockAPIInstaller,
 ) -> None:
-    """Parse succeeded results into responses and every unsuccessful result into an error."""
-    error = {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Invalid schema'}}
+    """Parse succeeded results into responses and every unsuccessful result into an error.
+
+    Rejected requests are configuration errors, while those that failed in the provider are transient.
+    """
+    invalid = {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Invalid schema'}}
+    overloaded = {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
     lines = [
         {'custom_id': 'succeeded', 'result': {'type': 'succeeded', 'message': _message()}},
         {'custom_id': 'refused', 'result': {'type': 'succeeded', 'message': _message('refusal')}},
-        {'custom_id': 'errored', 'result': {'type': 'errored', 'error': error}},
+        {'custom_id': 'rejected', 'result': {'type': 'errored', 'error': invalid}},
+        {'custom_id': 'errored', 'result': {'type': 'errored', 'error': overloaded}},
         {'custom_id': 'canceled', 'result': {'type': 'canceled'}},
         {'custom_id': 'expired', 'result': {'type': 'expired'}},
     ]
@@ -401,7 +406,8 @@ def test_get_batch_results_parses_every_result_type_keeping_unsuccessful_respons
     assert all(result.response is None for result in results.values())
     assert {job_id: (type(result.error), str(result.error)) for job_id, result in results.items()} == {
         'refused': (LLMResponseError, 'The LLM refused to generate a response'),
-        'errored': (LLMTransientError, 'Batch request failed: Invalid schema'),
+        'rejected': (LLMConfigurationError, 'Batch request failed: Invalid schema'),
+        'errored': (LLMTransientError, 'Batch request failed: Overloaded'),
         'canceled': (LLMTransientError, 'Batch request was canceled before processing'),
         'expired': (LLMTransientError, 'Batch request expired before processing'),
     }

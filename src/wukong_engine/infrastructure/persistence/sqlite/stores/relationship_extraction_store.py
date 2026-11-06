@@ -218,7 +218,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         Only IN_PROGRESS jobs and extractions are affected. On failure, the extractions move to a status chosen by the
         retry policy (FAILED for NONE, RETRY for DEFERRED, PENDING for IMMEDIATE, which also counts a failed attempt),
         or to FAILED once their failed attempts exceed ``MAX_FAILED_ATTEMPTS`` or their attempts of any kind reach
-        ``MAX_ATTEMPTS``.
+        ``MAX_ATTEMPTS``. DEFERRED_UNCOUNTED moves them to RETRY giving back their attempt, and never fails them.
 
         Args:
             job: Job to update.
@@ -295,6 +295,23 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             # If retry policy is deferred, mark extractions as RETRY so they can be processed in the next execution cycle
             elif retry_policy == JobRetryPolicy.DEFERRED:
                 fallback_status = ExtractionStatus.RETRY
+
+            # If the failure is unrelated to the job, defer it giving back its attempt, without ever failing it for good
+            elif retry_policy == JobRetryPolicy.DEFERRED_UNCOUNTED:
+                self._conn.execute(
+                    """
+                    UPDATE relationship_extractions
+                    SET extraction_status = ?, attempt_count = attempt_count - 1, last_error = ?
+                    WHERE chunk_content_id = ? AND extraction_status = ?
+                    """,
+                    (
+                        ExtractionStatus.RETRY.value,
+                        error,
+                        job.context_ref.content_id.bytes,
+                        ExtractionStatus.IN_PROGRESS.value,
+                    ),
+                )
+                return
 
             # If retry policy is immediate, increment failed attempts and reset extractions to pending for immediate retry
             elif retry_policy == JobRetryPolicy.IMMEDIATE:
@@ -626,7 +643,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
         """Fail the in-progress jobs linked with a batch, deferring their in-progress extractions for retry.
 
-        Extractions that have reached ``MAX_ATTEMPTS`` attempts are marked as failed instead.
+        A failed batch says nothing about its jobs, so the extractions get their attempt back.
 
         Args:
             batch: Batch whose jobs are failed.
@@ -650,20 +667,15 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
             ),
         )
 
-        # Defer the associated in-progress extractions for retry, or fail those out of attempts, leaving other jobs'
-        # extractions untouched
+        # Defer the associated in-progress extractions for retry, leaving other jobs' extractions untouched
         self._conn.executemany(
             """
             UPDATE relationship_extractions
-            SET
-                extraction_status = CASE WHEN attempt_count >= ? THEN ? ELSE ? END,
-                last_error = ?
+            SET extraction_status = ?, attempt_count = attempt_count - 1, last_error = ?
             WHERE chunk_content_id = ? AND extraction_status = ?
             """,
             [
                 (
-                    MAX_ATTEMPTS,
-                    ExtractionStatus.FAILED.value,
                     ExtractionStatus.RETRY.value,
                     f'Batch failed with status "{status.value}"',
                     row['context_content_id'],
@@ -925,7 +937,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         """Terminate stalled jobs that were never resolved to completion.
 
         Stalled jobs are IN_PROGRESS jobs not linked to any batch. They are marked FAILED and their IN_PROGRESS
-        extractions are reset to PENDING.
+        extractions are reset to PENDING, getting their attempt back since an interrupted run says nothing about them.
 
         Returns:
             The number of stalled jobs terminated.
@@ -958,7 +970,7 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         self._conn.executemany(
             """
             UPDATE relationship_extractions
-            SET extraction_status = ?
+            SET extraction_status = ?, attempt_count = attempt_count - 1
             WHERE chunk_content_id = ? AND extraction_status = ?
             """,
             [
