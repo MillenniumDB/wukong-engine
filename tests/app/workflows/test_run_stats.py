@@ -12,7 +12,6 @@ from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.llm.model import LLMRegistry
 from wukong_engine.app.llm.model.values import TokenRates
 from wukong_engine.app.workflows import RunStatsService
-from wukong_engine.app.workflows.run_stats import format_duration, format_size
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.pipeline.model.values import PipelineStep
 from wukong_engine.infrastructure.persistence.sqlite import (
@@ -65,21 +64,6 @@ def _service(tmp_path: Path, usage: dict[ExecutionMode, TokenUsageMetrics]) -> R
     )
 
 
-@pytest.mark.parametrize(
-    ('seconds', 'expected'),
-    [(0.012, '12ms'), (3.24, '3.2s'), (245, '4m 05s'), (7380, '2h 03m')],
-)
-def test_durations_are_shown_with_the_precision_of_their_scale(seconds: float, expected: str) -> None:
-    """Show milliseconds, seconds, minutes or hours, depending on how long the duration is."""
-    assert format_duration(seconds) == expected
-
-
-@pytest.mark.parametrize(('size', 'expected'), [(512, '512 B'), (40_000, '39.1 KB'), (5 * 1024**3, '5.0 GB')])
-def test_sizes_are_shown_in_the_largest_unit_keeping_them_above_one(size: int, expected: str) -> None:
-    """Show sizes in bytes, kilobytes, megabytes or gigabytes."""
-    assert format_size(size) == expected
-
-
 def test_batch_tokens_are_priced_at_the_discount_and_reasoning_as_output(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -101,7 +85,7 @@ def test_batch_tokens_are_priced_at_the_discount_and_reasoning_as_output(
     assert stats.token_rates_as_of == RATES.as_of
     assert 'had on 2026-01-01' in str(stats)
     assert stats.step_summary(PipelineStep.EXTRACT_ENTITIES) == (
-        'CHUNKS 9/10 (1 failed) sources, 40 entities, 5,400,000 tokens (~$6.60)'
+        'CHUNKS 9/10 (1 failed) sources, 40 entities, 5.40 M tokens (~$6.60)'
     )
 
 

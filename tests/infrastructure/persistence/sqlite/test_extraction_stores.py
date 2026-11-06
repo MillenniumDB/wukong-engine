@@ -7,7 +7,12 @@ from pathlib import Path
 
 import pytest
 
-from wukong_engine.app.data_extraction.elements import MAX_ATTEMPTS, ExtractionBatch, ExtractionJob
+from wukong_engine.app.data_extraction.elements import (
+    MAX_ATTEMPTS,
+    MAX_FAILED_ATTEMPTS,
+    ExtractionBatch,
+    ExtractionJob,
+)
 from wukong_engine.app.data_extraction.elements.values import BatchStatus, JobRetryPolicy, JobStatus, TokenUsageMetrics
 from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.llm.model.values import LLMProvider
@@ -83,28 +88,66 @@ def test_deferred_retries_fail_the_extraction_once_its_attempts_reach_the_maximu
 
 
 @pytest.mark.parametrize('insert_extraction', [_entity_extraction, _relationship_extraction])
-@pytest.mark.parametrize(
-    ('previous_attempts', 'expected_status'),
-    [(MAX_ATTEMPTS - 2, 'RETRY'), (MAX_ATTEMPTS - 1, 'FAILED')],
-)
-def test_failed_batches_defer_their_extractions_unless_out_of_attempts(
+def test_immediate_retries_fail_the_extraction_once_its_failed_attempts_exceed_the_maximum(
     tmp_path: Path,
     insert_extraction: Callable[[sqlite3.Connection, int], tuple[ExtractionStore, str]],
-    previous_attempts: int,
-    expected_status: str,
 ) -> None:
-    """Defer the extractions of a failed batch for retry, unless the failed attempt was their last allowed one."""
+    """Retry an unusable response right away ``MAX_FAILED_ATTEMPTS`` times, then fail the extraction for good."""
     conn = _connect(tmp_path)
-    store, status_query = insert_extraction(conn, previous_attempts)
-    job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
-    batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id='msgbatch_1')
+    store, status_query = insert_extraction(conn, 0)
 
-    store.schedule_jobs([job])
+    statuses = []
+    for _ in range(MAX_FAILED_ATTEMPTS + 1):
+        job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
+        store.schedule_jobs([job])
+        store.update_job_status(job, JobStatus.FAILED, error='Refused', retry_policy=JobRetryPolicy.IMMEDIATE)
+        statuses.append(conn.execute(status_query).fetchone()[0])
+
+    assert statuses == ['PENDING'] * MAX_FAILED_ATTEMPTS + ['FAILED']
+
+
+def _fail_uncounted(store: ExtractionStore, job: ExtractionJob) -> None:
+    """Fail a scheduled job with an uncounted deferred retry."""
+    store.update_job_status(job, JobStatus.FAILED, error='Overloaded', retry_policy=JobRetryPolicy.DEFERRED_UNCOUNTED)
+
+
+def _fail_batch(store: ExtractionStore, job: ExtractionJob) -> None:
+    """Submit a scheduled job in a batch, then fail the batch."""
+    batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id='msgbatch_1')
     store.register_batch(batch)
     store.link_jobs_to_batch([job], batch)
     store.fail_batch_jobs(batch, BatchStatus.FAILED)
 
+
+def _interrupt(store: ExtractionStore, _: ExtractionJob) -> None:
+    """Terminate the scheduled job as stalled, as the next run does after an interruption."""
+    store.terminate_stalled_jobs()
+
+
+@pytest.mark.parametrize('insert_extraction', [_entity_extraction, _relationship_extraction])
+@pytest.mark.parametrize(
+    ('fail', 'expected_status'),
+    [(_fail_uncounted, 'RETRY'), (_fail_batch, 'RETRY'), (_interrupt, 'PENDING')],
+)
+@pytest.mark.parametrize('previous_attempts', [0, MAX_ATTEMPTS - 1, MAX_ATTEMPTS + 3])
+def test_failures_unrelated_to_the_job_give_its_attempt_back_and_never_fail_it(
+    tmp_path: Path,
+    insert_extraction: Callable[[sqlite3.Connection, int], tuple[ExtractionStore, str]],
+    fail: Callable[[ExtractionStore, ExtractionJob], None],
+    expected_status: str,
+    previous_attempts: int,
+) -> None:
+    """Retry the extraction without counting the attempt, even past the maximum (e.g. from an older workspace)."""
+    conn = _connect(tmp_path)
+    store, status_query = insert_extraction(conn, previous_attempts)
+    job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
+
+    store.schedule_jobs([job])
+    fail(store, job)
+
+    attempts_query = status_query.replace('extraction_status', 'attempt_count')
     assert conn.execute(status_query).fetchone()[0] == expected_status
+    assert conn.execute(attempts_query).fetchone()[0] == previous_attempts
 
 
 def test_each_store_lists_only_the_active_batches_of_its_extraction_type(tmp_path: Path) -> None:

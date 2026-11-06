@@ -32,7 +32,7 @@ class AnthropicConfig:
     api_key: str
     model: LLM = field(default_factory=lambda: LLMRegistry.default_model(LLMProvider.ANTHROPIC))
     max_output_tokens: int = 16000  # Default: 16000 tokens, the recommended ceiling for non-streaming requests
-    timeout: float = 120  # Default: 2 minutes, more than reasonable for extraction tasks
+    timeout: float = 300  # Default: 5 minutes, room for long responses and large batch uploads
     max_retries: int = 2  # Default: 2 retries, enough for transient provider issues
 
     def __post_init__(self) -> None:

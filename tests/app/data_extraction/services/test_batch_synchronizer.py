@@ -208,16 +208,20 @@ def test_completed_batches_without_results_are_retried_until_overdue(
 
 
 def test_failed_batch_results_follow_the_real_time_retry_policies(model: KnowledgeModel) -> None:
-    """Retry failed batch results like real-time ones, keeping the usage of unsuccessful responses."""
-    truncated, refused, errored = (
+    """Retry failed batch results like real-time ones, keeping the usage of unsuccessful responses.
+
+    Requests that failed in the provider are retried in a later batch, counting the attempt only if they were rejected.
+    """
+    truncated, refused, errored, rejected = (
         ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string(name))
-        for name in ('truncated', 'refused', 'errored')
+        for name in ('truncated', 'refused', 'errored', 'rejected')
     )
-    repository = RecordingRepository(jobs=(truncated, refused, errored))
+    repository = RecordingRepository(jobs=(truncated, refused, errored, rejected))
     results = (
         LLMBatchResult(truncated.id.instance.hex, response=None, error=LLMTruncatedResponseError('Cut off', USAGE)),
         LLMBatchResult(refused.id.instance.hex, response=None, error=LLMResponseError('Refused', USAGE)),
         LLMBatchResult(errored.id.instance.hex, response=None, error=LLMTransientError('Batch request failed')),
+        LLMBatchResult(rejected.id.instance.hex, response=None, error=LLMConfigurationError('Invalid request')),
     )
     batch = ExtractionBatch.from_provider(provider=LLMProvider.ANTHROPIC, provider_id='msgbatch_1')
 
@@ -227,13 +231,14 @@ def test_failed_batch_results_follow_the_real_time_retry_policies(model: Knowled
     assert repository.job_failures == {
         truncated: (JobRetryPolicy.NONE, usage),
         refused: (JobRetryPolicy.IMMEDIATE, usage),
-        errored: (JobRetryPolicy.DEFERRED, None),
+        errored: (JobRetryPolicy.DEFERRED_UNCOUNTED, None),
+        rejected: (JobRetryPolicy.DEFERRED, None),
     }
     assert repository.resolutions[-1] == ('complete msgbatch_1', BatchStatus.COMPLETED)
 
 
 def test_unsuccessful_batches_keep_their_finished_results_before_failing(model: KnowledgeModel) -> None:
-    """Keep the finished results of a batch that expired, deferring the rest of its jobs, before failing it."""
+    """Keep the finished results of a batch that expired, deferring the rest of its jobs uncounted, before failing it."""
     finished, unfinished = (
         ExtractionJob.from_context(ContextLevel.CHUNK, ContentHash.from_content_string(name))
         for name in ('finished', 'unfinished')
@@ -248,7 +253,7 @@ def test_unsuccessful_batches_keep_their_finished_results_before_failing(model: 
     synchronizer._resolve_batch_results(batch, CompletedBatchResult(results=results), model)
 
     assert repository.completed_jobs == {finished: ((), TokenUsageMetrics.from_usage(USAGE))}
-    assert repository.job_failures[unfinished][0] == JobRetryPolicy.DEFERRED
+    assert repository.job_failures[unfinished][0] == JobRetryPolicy.DEFERRED_UNCOUNTED
     assert repository.resolutions[-1] == (
         'fail batch_1: Batch was FAILED by the external provider, after finishing part of its requests',
         BatchStatus.FAILED,

@@ -9,7 +9,12 @@ from wukong_engine.app.data_extraction.elements import ExtractionJob, Extraction
 from wukong_engine.app.data_extraction.elements.values import JobRetryPolicy, JobStatus, TokenUsageMetrics
 from wukong_engine.app.data_extraction.services import ConcurrentExtractionExecutor
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMRequest, LLMResponse
-from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTruncatedResponseError
+from wukong_engine.app.llm.exceptions import (
+    LLMResponseError,
+    LLMTimeoutError,
+    LLMTransientError,
+    LLMTruncatedResponseError,
+)
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.shared.identity import ContentHash
 
@@ -69,3 +74,23 @@ def test_failed_responses_keep_their_usage_and_truncated_ones_are_not_retried(
     assert result.status == JobStatus.FAILED
     assert result.retry_policy == expected_retry_policy
     assert result.metrics == TokenUsageMetrics.from_usage(USAGE)
+
+
+@pytest.mark.parametrize(
+    ('error', 'expected_retry_policy'),
+    [
+        (LLMTransientError('Overloaded'), JobRetryPolicy.DEFERRED_UNCOUNTED),
+        (LLMTimeoutError('Timed out'), JobRetryPolicy.DEFERRED),
+    ],
+)
+def test_provider_failures_are_retried_without_counting_the_attempt_unless_they_time_out(
+    error: LLMTransientError,
+    expected_retry_policy: JobRetryPolicy,
+) -> None:
+    """Retry outages without counting them against the job, but count timeouts, which the request may cause."""
+    executor = ConcurrentExtractionExecutor(llm_client=FailingLLMClient(error))
+
+    result = asyncio.run(executor.execute(REQUEST))
+
+    assert result.status == JobStatus.FAILED
+    assert result.retry_policy == expected_retry_policy

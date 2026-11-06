@@ -262,9 +262,10 @@ class BatchExtractionEngine(ExtractionEngine):
     async def run(self, context_level: ContextLevel, knowledge_model: KnowledgeModel) -> None:
         """Run extractions for a given context level, using the provided knowledge model.
 
-        Submits every pending job of the context level in provider batches and registers each submitted batch.
-        Jobs of a failed submission are failed with a deferred retry; a critical failure requests termination:
-        active submissions finish, then the run stops.
+        Submits every pending job of the context level in provider batches and registers each submitted batch,
+        showing the progress of the uploads. Jobs of a failed submission are failed with a deferred retry that doesn't
+        count against their attempts; a critical failure requests termination: active submissions finish, then the
+        run stops.
 
         Args:
             context_level: Context level whose pending jobs are submitted.
@@ -275,6 +276,7 @@ class BatchExtractionEngine(ExtractionEngine):
         """
         # Initial metrics log (do not force update since batching performance is long-lived)
         self._metrics_tracker.request_metrics(force_log=True)
+        self._metrics_tracker.start_uploads(batch_size=BATCH_SIZE)
 
         # Stream all batches and submit them
         batch_submissions = self._stream_batch_submissions(context_level, knowledge_model)
@@ -282,11 +284,14 @@ class BatchExtractionEngine(ExtractionEngine):
             async for submission, result in self._submitter.submit_many(batch_submissions):
                 # Get jobs from the batch
                 jobs = tuple(request.job for request in submission.batch)
+                self._metrics_tracker.record_upload(len(jobs), uploaded=result.batch is not None)
 
-                # Handle failed submission
+                # Handle failed submission, which says nothing about its jobs
                 if result.batch is None:
                     for job in jobs:
-                        self._repository.fail_job(job, retry_policy=JobRetryPolicy.DEFERRED, error=result.error)
+                        self._repository.fail_job(
+                            job, retry_policy=JobRetryPolicy.DEFERRED_UNCOUNTED, error=result.error
+                        )
 
                     # Request a metrics log after each batch submission failure
                     self._metrics_tracker.request_metrics()

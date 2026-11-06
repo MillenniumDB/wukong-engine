@@ -8,54 +8,14 @@ from wukong_engine.app.data_extraction.model.values import ExecutionMode
 from wukong_engine.app.data_extraction.services import ExtractionRepository
 from wukong_engine.app.knowledge_export.elements import ExportReport
 from wukong_engine.app.llm.model import LLM, LLMRegistry
+from wukong_engine.app.shared.formatting import format_count, format_duration, format_size
 from wukong_engine.app.staging.ports import UnitOfWork
 from wukong_engine.core.documents.model.values import ContextLevel
 from wukong_engine.core.pipeline.model.values import PipelineStep
 
 from .ports import RunStatsWriter
 
-SECONDS_PER_MINUTE = 60
-SECONDS_PER_HOUR = 3600
-BYTES_PER_UNIT = 1024
 LINE_WIDTH = 80
-
-
-def format_duration(seconds: float) -> str:
-    """Format a duration for people to read, with the precision that matters at its scale.
-
-    Args:
-        seconds: Duration in seconds.
-
-    Returns:
-        The duration as milliseconds (``12ms``), seconds with a decimal (``3.2s``), minutes and seconds (``4m 05s``)
-        or hours and minutes (``2h 03m``).
-    """
-    if seconds < 1:
-        return f'{seconds * 1000:.0f}ms'
-    if seconds < SECONDS_PER_MINUTE:
-        return f'{seconds:.1f}s'
-    if seconds < SECONDS_PER_HOUR:
-        minutes, rest = divmod(round(seconds), SECONDS_PER_MINUTE)
-        return f'{minutes}m {rest:02d}s'
-    hours, rest = divmod(round(seconds), SECONDS_PER_HOUR)
-    return f'{hours}h {rest // SECONDS_PER_MINUTE:02d}m'
-
-
-def format_size(size: int) -> str:
-    """Format a size in bytes for people to read.
-
-    Args:
-        size: Size in bytes.
-
-    Returns:
-        The size in the largest binary unit that keeps it at least 1, with a decimal above bytes (``1.2 MB``).
-    """
-    value = float(size)
-    for unit in ('B', 'KB', 'MB', 'GB'):
-        if value < BYTES_PER_UNIT or unit == 'GB':
-            return f'{size} B' if unit == 'B' else f'{value:.1f} {unit}'
-        value /= BYTES_PER_UNIT
-    raise AssertionError  # Unreachable: the loop returns at its last unit
 
 
 @dataclass(frozen=True, slots=True)
@@ -237,8 +197,8 @@ class RunStats:
         match step:
             case PipelineStep.INGEST_DOCUMENTS:
                 return (
-                    f'{self.documents.documents:,} documents, {self.documents.chunks:,} chunks from '
-                    f'{len(self.documents.collections)} collections'
+                    f'{format_count(self.documents.documents)} documents, '
+                    f'{format_count(self.documents.chunks)} chunks from {len(self.documents.collections)} collections'
                 )
             case PipelineStep.EXTRACT_ENTITIES:
                 return _extraction_summary(self.entities, 'entities')
@@ -248,7 +208,8 @@ class RunStats:
                 if self.export is None:
                     return 'nothing exported'
                 return (
-                    f'{sum(self.export.nodes.values()):,} nodes, {sum(self.export.edges.values()):,} edges, '
+                    f'{format_count(sum(self.export.nodes.values()))} nodes, '
+                    f'{format_count(sum(self.export.edges.values()))} edges, '
                     f'{format_size(self.export.total_bytes)} in {self.export.directory}'
                 )
 
@@ -285,15 +246,15 @@ class RunStats:
         documents = self.documents
         lines = [
             '\n[DOCUMENTS]\n',
-            f'  {"Documents:":<24}{documents.documents:>12,}',
-            f'  {"Chunks:":<24}{documents.chunks:>12,}',
-            f'  {"In several collections:":<24}{documents.shared_documents:>12,}',
-            f'  {"Empty (no chunks):":<24}{documents.empty_documents:>12,}',
+            f'  {"Documents:":<24}{format_count(documents.documents):>12}',
+            f'  {"Chunks:":<24}{format_count(documents.chunks):>12}',
+            f'  {"In several collections:":<24}{format_count(documents.shared_documents):>12}',
+            f'  {"Empty (no chunks):":<24}{format_count(documents.empty_documents):>12}',
         ]
         if documents.collections:
             lines.append(f'\n  {"Collection":<24}{"Documents":>12}{"Chunks":>12}')
             lines += [
-                f'  {name:<24}{collection.documents:>12,}{collection.chunks:>12,}'
+                f'  {name:<24}{format_count(collection.documents):>12}{format_count(collection.chunks):>12}'
                 for name, collection in documents.collections.items()
             ]
         return lines
@@ -308,8 +269,9 @@ class RunStats:
             if not stats.levels:
                 lines.append(f'  {name:<24}{"-":>12}')
             lines.extend(
-                f'  {f"{name} ({level.context_level}S)":<24}{level.sources:>12,}{level.completed:>12,}'
-                f'{level.failed:>10,}{level.objects:>10,}{level.mentions:>10,}'
+                f'  {f"{name} ({level.context_level}S)":<24}'
+                f'{format_count(level.sources):>12}{format_count(level.completed):>12}'
+                f'{format_count(level.failed):>10}{format_count(level.objects):>10}{format_count(level.mentions):>10}'
                 for level in stats.levels
             )
         return lines
@@ -326,9 +288,11 @@ class RunStats:
             ('Relationships', self.relationships.tokens, self.relationships.estimated_cost_usd),
             ('Total', self.tokens, self.estimated_cost_usd),
         ):
+            counts = (tokens.input, tokens.cached, tokens.cache_write, tokens.output, tokens.reasoning, tokens.total)
             lines.append(
-                f'  {name:<16}{tokens.input:>10,}{tokens.cached:>10,}{tokens.cache_write:>10,}{tokens.output:>10,}'
-                f'{tokens.reasoning:>10,}{tokens.total:>10,}{_format_cost(cost):>11}',
+                f'  {name:<16}'
+                + ''.join(f'{format_count(count):>10}' for count in counts)
+                + f'{_format_cost(cost):>11}',
             )
         if self.token_rates_as_of is None:
             lines.append(f'\n  No token rates are known for {self.model}, so no cost is estimated.')
@@ -351,12 +315,14 @@ class RunStats:
             f'  {"Size:":<24}{format_size(export.total_bytes)} in {files}',
             f'\n  {"Nodes":<24}{"Count":>12}',
         ]
-        lines += [f'  {label:<24}{count:>12,}' for label, count in export.nodes.items()]
-        lines.append(f'  {"Total":<24}{sum(export.nodes.values()):>12,}')
+        lines += [f'  {label:<24}{format_count(count):>12}' for label, count in export.nodes.items()]
+        lines.append(f'  {"Total":<24}{format_count(sum(export.nodes.values())):>12}')
         lines.append(f'\n  {"Edges":<24}{"Count":>12}')
-        lines += [f'  {edge_type:<24}{count:>12,}' for edge_type, count in export.edges.items()]
-        lines.append(f'  {"Total":<24}{sum(export.edges.values()):>12,}')
-        lines.append(f'\n  {"Relationship provenance:":<24}{export.relationship_provenance:>12,} chunk references')
+        lines += [f'  {edge_type:<24}{format_count(count):>12}' for edge_type, count in export.edges.items()]
+        lines.append(f'  {"Total":<24}{format_count(sum(export.edges.values())):>12}')
+        lines.append(
+            f'\n  {"Relationship provenance:":<24}{format_count(export.relationship_provenance):>12} chunk references'
+        )
         return lines
 
 
@@ -380,14 +346,14 @@ def _extraction_summary(stats: ExtractionStats, objects: str) -> str:
     if not stats.levels:
         return 'nothing to extract'
     levels = ', '.join(
-        f'{level.context_level}S {level.completed:,}/{level.sources:,}'
-        + (f' ({level.failed:,} failed)' if level.failed else '')
+        f'{level.context_level}S {format_count(level.completed)}/{format_count(level.sources)}'
+        + (f' ({format_count(level.failed)} failed)' if level.failed else '')
         for level in stats.levels
     )
     cost = '' if stats.estimated_cost_usd is None else f' (~{_format_cost(stats.estimated_cost_usd)})'
     return (
-        f'{levels} sources, {sum(level.objects for level in stats.levels):,} {objects}, '
-        f'{stats.tokens.total:,} tokens{cost}'
+        f'{levels} sources, {format_count(sum(level.objects for level in stats.levels))} {objects}, '
+        f'{format_count(stats.tokens.total)} tokens{cost}'
     )
 
 

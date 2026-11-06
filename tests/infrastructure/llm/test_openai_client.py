@@ -225,8 +225,32 @@ def test_generate_stops_on_an_exhausted_quota_but_not_on_rate_limits(
         asyncio.run(_client().generate(_request(SCHEMA)))
 
 
-def test_get_batch_results_reads_the_error_file_when_every_request_failed(mock_api: Any) -> None:
-    """Return the error file's results, instead of failing, for a completed batch without an output file."""
+@pytest.mark.parametrize(
+    ('response', 'error', 'expected_error', 'expected_message'),
+    [
+        (
+            {'status_code': 400, 'body': {'error': {'message': 'Invalid schema'}}},
+            None,
+            LLMConfigurationError,
+            'Batch request failed: Invalid schema',
+        ),
+        (
+            {'status_code': 500, 'body': {'error': {'message': 'Server error'}}},
+            None,
+            LLMTransientError,
+            'Batch request failed: Server error',
+        ),
+        (None, {'code': 'batch_expired', 'message': 'Expired'}, LLMTransientError, 'Batch request failed: Expired'),
+    ],
+)
+def test_get_batch_results_reads_the_error_file_when_every_request_failed(
+    mock_api: Any,
+    response: dict[str, Any] | None,
+    error: dict[str, Any] | None,
+    expected_error: type[LLMError],
+    expected_message: str,
+) -> None:
+    """Return the error file's results for a completed batch without an output file, transient unless rejected."""
     batch = {
         'id': 'batch_1',
         'object': 'batch',
@@ -238,20 +262,15 @@ def test_get_batch_results_reads_the_error_file_when_every_request_failed(mock_a
         'output_file_id': None,
         'error_file_id': 'file-err',
     }
-    error_line = {
-        'id': 'batch_req_1',
-        'custom_id': 'job1',
-        'response': {'status_code': 400, 'body': {'error': {'message': 'Invalid schema'}}},
-        'error': None,
-    }
+    error_line = {'id': 'batch_req_1', 'custom_id': 'job1', 'response': response, 'error': error}
     mock_api([httpx.Response(200, json=batch), httpx.Response(200, text=json.dumps(error_line))])
 
     results = asyncio.run(_client().get_batch_results('batch_1'))
 
     [result] = results
     assert (result.job_id, result.response) == ('job1', None)
-    assert isinstance(result.error, LLMTransientError)
-    assert str(result.error) == 'Batch request failed: Invalid schema'
+    assert type(result.error) is expected_error
+    assert str(result.error) == expected_message
 
 
 def test_get_batch_results_keeps_the_finished_requests_of_an_expired_batch(mock_api: Any) -> None:
@@ -318,6 +337,24 @@ def test_create_batch_checks_each_schema_once_through_token_counting(mock_api: A
     assert api.paths == ['/v1/responses/input_tokens', '/v1/files', '/v1/batches', '/v1/files', '/v1/batches']
     assert api.bodies[0]['text']['format']['schema'] == SCHEMA
     assert '"type": "json_schema"' in api.raw_bodies[1]
+
+
+def test_create_batch_is_not_retried_since_a_lost_response_could_duplicate_the_batch(mock_api: Any) -> None:
+    """Send a failed batch creation once, even with SDK retries enabled, deleting the uploaded file."""
+    api = mock_api(
+        [
+            httpx.Response(200, json=TOKEN_COUNT),
+            httpx.Response(200, json=BATCH_FILE),
+            httpx.Response(500, json={'error': {'message': 'Internal error'}}),
+            httpx.Response(200, json={'id': 'file-in', 'object': 'file', 'deleted': True}),
+        ],
+    )
+    client = OpenAIClient(OpenAIConfig(api_key='test-key', model=LLM(name='gpt-6-luna'), max_retries=2))
+
+    with pytest.raises(LLMTransientError):
+        asyncio.run(client.create_batch([_request(SCHEMA)], ['job1']))
+
+    assert api.paths == ['/v1/responses/input_tokens', '/v1/files', '/v1/batches', '/v1/files/file-in']
 
 
 def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: Any) -> None:

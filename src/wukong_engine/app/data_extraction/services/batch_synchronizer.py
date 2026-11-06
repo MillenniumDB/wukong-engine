@@ -403,20 +403,25 @@ class ConcurrentExtractionBatchSynchronizer(ExtractionBatchSynchronizer):
                     status=JobStatus.FAILED,
                     error=f'No result found for job {job.id} in completed batch',
                     error_severity=ErrorSeverity.RECOVERABLE,
-                    retry_policy=JobRetryPolicy.DEFERRED,
+                    retry_policy=JobRetryPolicy.DEFERRED_UNCOUNTED,
                 )
 
             # Job result found, but its response was unsuccessful (e.g. refused or truncated), handled like in real time
             elif isinstance(provider_result.error, LLMResponseError):
                 result = response_failure_result(provider_result.error)
 
-            # Job result found, but its request failed in the provider, retried in a later batch
+            # Job result found, but its request failed in the provider, retried in a later batch, counting the attempt
+            # only if the request itself was at fault (e.g. rejected as invalid) rather than the provider
             elif provider_result.error is not None:
                 result = ExtractionResult(
                     status=JobStatus.FAILED,
                     error=str(provider_result.error),
                     error_severity=ErrorSeverity.RECOVERABLE,
-                    retry_policy=JobRetryPolicy.DEFERRED,
+                    retry_policy=(
+                        JobRetryPolicy.DEFERRED_UNCOUNTED
+                        if isinstance(provider_result.error, LLMTransientError)
+                        else JobRetryPolicy.DEFERRED
+                    ),
                 )
 
             # Process the extraction result for the job

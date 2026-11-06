@@ -10,8 +10,8 @@ from wukong_engine.core.shared.identity import ContentHash
 from .values import ExtractionJobId
 
 # Constants
-MAX_FAILED_ATTEMPTS = 3  # Maximum number of failed attempts before marking as failed
-MAX_ATTEMPTS = 10  # Maximum number of attempts of any kind, across runs, before marking as failed
+MAX_FAILED_ATTEMPTS = 2  # Immediate retries of an unusable response (refused, undecodable), each one paid in full
+MAX_ATTEMPTS = 5  # Counted attempts of any kind, across runs, before marking as failed (uncounted ones excluded)
 
 
 @dataclass(frozen=True, slots=True)

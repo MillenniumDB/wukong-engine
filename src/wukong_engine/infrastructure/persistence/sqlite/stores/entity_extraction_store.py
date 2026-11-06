@@ -204,7 +204,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         Only in-progress jobs and extractions are updated. On completion, the extractions are marked as completed.
         On failure, the extractions move to a status determined by ``retry_policy``, unless their failed attempts
         exceed the maximum or their attempts of any kind (deferred ones included) reach the maximum, in which case they
-        are marked as failed.
+        are marked as failed. An uncounted deferral gives back their attempt instead, and never fails them.
 
         Args:
             job: Job to update.
@@ -212,7 +212,8 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             metrics: Token usage recorded for the job. If None, no token metrics are stored.
             error: Error message recorded for the job and, on failure, for its extractions.
             retry_policy: How failed extractions are retried: immediately (back to pending, counting a failed
-                attempt), deferred (to retry in the next execution cycle) or not at all. If None, no retry.
+                attempt), deferred (to retry in the next execution cycle, with or without counting the attempt) or not
+                at all. If None, no retry.
 
         Raises:
             ValueError: If ``status`` is neither completed nor failed.
@@ -283,6 +284,24 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             # If retry policy is deferred, mark extractions as RETRY so they can be processed in the next execution cycle
             elif retry_policy == JobRetryPolicy.DEFERRED:
                 fallback_status = ExtractionStatus.RETRY
+
+            # If the failure is unrelated to the job, defer it giving back its attempt, without ever failing it for good
+            elif retry_policy == JobRetryPolicy.DEFERRED_UNCOUNTED:
+                self._conn.execute(
+                    """
+                    UPDATE entity_extractions
+                    SET extraction_status = ?, attempt_count = attempt_count - 1, last_error = ?
+                    WHERE context_level = ? AND context_content_id = ? AND extraction_status = ?
+                    """,
+                    (
+                        ExtractionStatus.RETRY.value,
+                        error,
+                        job.context_ref.level.value,
+                        job.context_ref.content_id.bytes,
+                        ExtractionStatus.IN_PROGRESS.value,
+                    ),
+                )
+                return
 
             # If retry policy is immediate, increment failed attempts and reset extractions to pending for immediate retry
             elif retry_policy == JobRetryPolicy.IMMEDIATE:
@@ -573,7 +592,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
     def fail_batch_jobs(self, batch: ExtractionBatch, status: BatchStatus) -> None:
         """Fail the in-progress jobs linked with a batch, deferring their in-progress extractions for retry.
 
-        Extractions that have reached ``MAX_ATTEMPTS`` attempts are marked as failed instead.
+        A failed batch says nothing about its jobs, so the extractions get their attempt back.
 
         Args:
             batch: Batch whose jobs are failed.
@@ -597,20 +616,15 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
             ),
         )
 
-        # Defer the associated in-progress extractions for retry, or fail those out of attempts, leaving other jobs'
-        # extractions untouched
+        # Defer the associated in-progress extractions for retry, leaving other jobs' extractions untouched
         self._conn.executemany(
             """
             UPDATE entity_extractions
-            SET
-                extraction_status = CASE WHEN attempt_count >= ? THEN ? ELSE ? END,
-                last_error = ?
+            SET extraction_status = ?, attempt_count = attempt_count - 1, last_error = ?
             WHERE context_level = ? AND context_content_id = ? AND extraction_status = ?
             """,
             [
                 (
-                    MAX_ATTEMPTS,
-                    ExtractionStatus.FAILED.value,
                     ExtractionStatus.RETRY.value,
                     f'Batch failed with status "{status.value}"',
                     context_level,
@@ -899,7 +913,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         """Terminate stalled jobs that were never resolved to completion.
 
         Stalled jobs are in-progress jobs not linked to any batch. They are marked as failed and their in-progress
-        extractions are reset to pending.
+        extractions are reset to pending, getting their attempt back since an interrupted run says nothing about them.
 
         Returns:
             The number of terminated jobs.
@@ -933,7 +947,7 @@ class SQLiteEntityExtractionStore(EntityExtractionStore):
         self._conn.executemany(
             """
             UPDATE entity_extractions
-            SET extraction_status = ?
+            SET extraction_status = ?, attempt_count = attempt_count - 1
             WHERE context_level = ? AND context_content_id = ? AND extraction_status = ?
             """,
             [

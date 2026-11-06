@@ -310,6 +310,25 @@ def test_create_batch_checks_each_schema_once_and_sends_one_request_per_job(mock
     }
 
 
+def test_create_batch_is_not_retried_since_a_lost_response_could_duplicate_the_batch(
+    mock_api: MockAPIInstaller,
+) -> None:
+    """Send a failed batch creation once, even with SDK retries enabled, while other requests keep them."""
+    error = {'type': 'error', 'error': {'type': 'api_error', 'message': 'Internal error'}}
+    api = mock_api(
+        {
+            '/v1/messages': httpx2.Response(200, json=_message('max_tokens')),
+            '/v1/messages/batches': httpx2.Response(500, json=error),
+        },
+    )
+    client = AnthropicClient(AnthropicConfig(api_key='test-key', model=MODEL, max_retries=2))
+
+    with pytest.raises(LLMTransientError):
+        asyncio.run(client.create_batch([REQUEST], ['job1']))
+
+    assert [request.url.path for request in api.requests] == ['/v1/messages', '/v1/messages/batches']
+
+
 def test_create_batch_sends_a_rejected_schema_as_instructions(mock_api: MockAPIInstaller) -> None:
     """Send the batch with a schema the API rejects as instructions, without checking it again."""
     rejection = _error(400, 'invalid_request_error', 'Schemas contains too many parameters with union types')
@@ -373,12 +392,17 @@ def test_batch_statuses_are_understood_by_the_batch_synchronizer(
 def test_get_batch_results_parses_every_result_type_keeping_unsuccessful_responses_usage(
     mock_api: MockAPIInstaller,
 ) -> None:
-    """Parse succeeded results into responses and every unsuccessful result into an error."""
-    error = {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Invalid schema'}}
+    """Parse succeeded results into responses and every unsuccessful result into an error.
+
+    Rejected requests are configuration errors, while those that failed in the provider are transient.
+    """
+    invalid = {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Invalid schema'}}
+    overloaded = {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
     lines = [
         {'custom_id': 'succeeded', 'result': {'type': 'succeeded', 'message': _message()}},
         {'custom_id': 'refused', 'result': {'type': 'succeeded', 'message': _message('refusal')}},
-        {'custom_id': 'errored', 'result': {'type': 'errored', 'error': error}},
+        {'custom_id': 'rejected', 'result': {'type': 'errored', 'error': invalid}},
+        {'custom_id': 'errored', 'result': {'type': 'errored', 'error': overloaded}},
         {'custom_id': 'canceled', 'result': {'type': 'canceled'}},
         {'custom_id': 'expired', 'result': {'type': 'expired'}},
     ]
@@ -401,7 +425,8 @@ def test_get_batch_results_parses_every_result_type_keeping_unsuccessful_respons
     assert all(result.response is None for result in results.values())
     assert {job_id: (type(result.error), str(result.error)) for job_id, result in results.items()} == {
         'refused': (LLMResponseError, 'The LLM refused to generate a response'),
-        'errored': (LLMTransientError, 'Batch request failed: Invalid schema'),
+        'rejected': (LLMConfigurationError, 'Batch request failed: Invalid schema'),
+        'errored': (LLMTransientError, 'Batch request failed: Overloaded'),
         'canceled': (LLMTransientError, 'Batch request was canceled before processing'),
         'expired': (LLMTransientError, 'Batch request expired before processing'),
     }

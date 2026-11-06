@@ -17,6 +17,10 @@ class LLMTransientError(LLMError):
     """Transient errors that may succeed on retry."""
 
 
+class LLMTimeoutError(LLMTransientError):
+    """Request that got no response within the client timeout, which may also come from the request itself."""
+
+
 class LLMResponseError(LLMError):
     """Errors related to the LLM response, such as incomplete responses or refusals.
 

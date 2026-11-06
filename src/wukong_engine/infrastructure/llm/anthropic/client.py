@@ -17,7 +17,12 @@ from anthropic.types.messages.batch_create_params import Request
 from wukong_engine.app.config.llm import LLMRegistry
 from wukong_engine.app.llm.elements import LLMBatchCreationResponse, LLMBatchResult, LLMClient, LLMRequest, LLMResponse
 from wukong_engine.app.llm.elements.values import LLMPrompt
-from wukong_engine.app.llm.exceptions import LLMResponseError, LLMTransientError, LLMTruncatedResponseError
+from wukong_engine.app.llm.exceptions import (
+    LLMConfigurationError,
+    LLMResponseError,
+    LLMTransientError,
+    LLMTruncatedResponseError,
+)
 from wukong_engine.app.llm.model.values import LLMProvider
 
 from .config import AnthropicConfig
@@ -33,6 +38,7 @@ UNENFORCED_SCHEMA_INSTRUCTIONS = (
 )
 SCHEMA_CHECK_CONTENT = 'Respond with the JSON object.'  # Content of the one-token requests checking batch schemas
 CACHE_ENTRY_LIFETIME = 270  # Seconds a prompt cache entry is assumed to live unused (the API's 5 minutes, with margin)
+TRANSIENT_BATCH_ERROR_TYPES = frozenset({'api_error', 'overloaded_error', 'rate_limit_error', 'timeout_error'})
 
 
 def _schema_key(schema: dict[str, Any]) -> str:
@@ -298,7 +304,8 @@ class AnthropicClient(LLMClient):
 
         Returns:
             A successful result, or an error result: with the response error (and its usage) if the response was
-            unsuccessful, or with a transient error if the request failed, was canceled or expired.
+            unsuccessful, with a configuration error if the request was rejected (e.g. as invalid), or with a transient
+            error if it failed in the provider, was canceled or expired.
         """
         result = item.result
         match result.type:
@@ -309,7 +316,10 @@ class AnthropicClient(LLMClient):
                     return LLMBatchResult(job_id=item.custom_id, response=None, error=exc)
                 return LLMBatchResult(job_id=item.custom_id, response=cls._build_llm_response(result.message))
             case 'errored':
-                message = f'Batch request failed: {result.error.error.message}'
+                error = result.error.error
+                message = f'Batch request failed: {error.message}'
+                if error.type not in TRANSIENT_BATCH_ERROR_TYPES:
+                    return LLMBatchResult(job_id=item.custom_id, response=None, error=LLMConfigurationError(message))
             case 'canceled':
                 message = 'Batch request was canceled before processing'
             case 'expired':
@@ -447,7 +457,8 @@ class AnthropicClient(LLMClient):
         """Create a batch for asynchronous request processing.
 
         The schemas of the requests are checked first (see ``_check_batch_schema``), so that a schema the API rejects
-        is sent as instructions instead of failing every request that uses it.
+        is sent as instructions instead of failing every request that uses it. Batch creation itself is never retried,
+        since a retry after a lost response could create a duplicate batch.
 
         Args:
             requests: LLM requests to include in the batch.
@@ -468,7 +479,9 @@ class AnthropicClient(LLMClient):
             {'custom_id': job_id, 'params': self._build_request_params(request)}
             for request, job_id in zip(requests, job_ids, strict=True)
         ]
-        batch = await self._client.messages.batches.create(requests=batch_requests)
+        # Not retried: a retry after a lost response could create a second billed batch for the same jobs, while a
+        # failed submission is just sent again in the next run
+        batch = await self._client.with_options(max_retries=0).messages.batches.create(requests=batch_requests)
         return LLMBatchCreationResponse(batch_id=batch.id, provider=self._provider)
 
     async def _check_batch_schema(self, request: LLMRequest) -> None:

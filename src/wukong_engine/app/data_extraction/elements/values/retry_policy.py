@@ -8,10 +8,14 @@ class JobRetryPolicy(Enum):
 
     Attributes:
         NONE: No retries allowed.
-        DEFERRED: Can be retried indefinitely, but only once per run.
-        IMMEDIATE: Can be retried a fixed amount of times, in the current run only.
+        DEFERRED: Retried once per run, until the attempts of any kind reach ``MAX_ATTEMPTS``.
+        DEFERRED_UNCOUNTED: Retried once per run like ``DEFERRED``, but without counting the attempt, for failures
+            unrelated to the job itself (e.g. a provider outage or a failed batch submission), so that they never fail
+            it for good.
+        IMMEDIATE: Retried in the current run, until the failed attempts exceed ``MAX_FAILED_ATTEMPTS``.
     """
 
     NONE = 'NONE'
     DEFERRED = 'DEFERRED'
+    DEFERRED_UNCOUNTED = 'DEFERRED_UNCOUNTED'
     IMMEDIATE = 'IMMEDIATE'
