@@ -400,24 +400,36 @@ class SQLiteRelationshipExtractionStore(RelationshipExtractionStore):
         )
 
     def get_job_relationship_types(self, job: ExtractionJob) -> tuple[RelationshipTypeName, ...]:
-        """Retrieve the relationship types associated with a given extraction job.
+        """Retrieve the relationship types a given extraction job extracts.
 
         Args:
             job: Job whose relationship types are retrieved.
 
         Returns:
-            The distinct relationship types materialized for the job's chunk, sorted by name, regardless of their
-            extraction status.
+            The distinct relationship types of the job's chunk whose extraction is in progress, sorted by name: the
+            ones scheduled with the job. If none is in progress, every relationship type materialized for the chunk.
         """
+        chunk_id = job.context_ref.content_id.bytes
         rows = self._conn.execute(
             """
             SELECT DISTINCT relationship_type_name
             FROM relationship_extractions
-            WHERE chunk_content_id = ?
+            WHERE chunk_content_id = ? AND extraction_status = ?
             ORDER BY relationship_type_name
             """,
-            (job.context_ref.content_id.bytes,),
-        )
+            (chunk_id, ExtractionStatus.IN_PROGRESS.value),
+        ).fetchall()
+        if not rows:
+            # A job read back after its extractions left IN_PROGRESS keeps the types of its whole chunk.
+            rows = self._conn.execute(
+                """
+                SELECT DISTINCT relationship_type_name
+                FROM relationship_extractions
+                WHERE chunk_content_id = ?
+                ORDER BY relationship_type_name
+                """,
+                (chunk_id,),
+            ).fetchall()
         return tuple(RelationshipTypeName(row['relationship_type_name']) for row in rows)
 
     def store_job_entity_ref_mapping(self, job: ExtractionJob, mapping: dict[str, EntityRef]) -> None:

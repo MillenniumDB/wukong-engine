@@ -174,6 +174,25 @@ def test_each_store_lists_only_the_active_batches_of_its_extraction_type(tmp_pat
     assert listed == {'entity': ['entities'], 'relationship': ['relationships']}
 
 
+def test_a_relationship_job_extracts_only_the_types_scheduled_with_it(tmp_path: Path) -> None:
+    """Give a job only the types of its chunk it was scheduled for, and every type once it no longer runs."""
+    conn = _connect(tmp_path)
+    store, _ = _relationship_extraction(conn, 0)
+    conn.execute("INSERT INTO relationship_types VALUES ('WorksAt')")
+    conn.execute(
+        "INSERT INTO relationship_extractions VALUES (?, 'WorksAt', 'COMPLETED', 1, 0, NULL)", (CHUNK_ID.bytes,)
+    )
+    job = ExtractionJob.from_context(ContextLevel.CHUNK, CHUNK_ID)
+
+    store.schedule_jobs([job])
+    scheduled = [name.value for name in store.get_job_relationship_types(job)]
+    store.update_job_status(job, JobStatus.COMPLETED)
+    finished = [name.value for name in store.get_job_relationship_types(job)]
+
+    assert scheduled == ['Knows']
+    assert finished == ['Knows', 'WorksAt']
+
+
 @pytest.mark.parametrize('insert_extraction', [_entity_extraction, _relationship_extraction])
 def test_token_usage_is_split_by_whether_jobs_ran_in_a_batch(
     tmp_path: Path,
